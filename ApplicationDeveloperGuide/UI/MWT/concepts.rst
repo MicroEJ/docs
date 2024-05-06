@@ -69,15 +69,16 @@ The render policy can be changed by overridding `Desktop.createRenderPolicy()`_.
 Widget Lifecycle
 ----------------
 
-Desktop and widgets pass through different states. Once created, they can be attached, then they can be laid out, finally they can be shown.
+Desktops and widgets run through different states.
+Once created, they can be attached, then they can be laid out, and finally they can be shown.
 
 A desktop is attached automatically as soon as it is shown on the display and detached when hidden.
 It can also be attached manually by calling `Desktop.setAttached()`_ or detached by calling `Desktop.setDetached()`_.
 It is particularly useful to render the desktop (and its widgets) in a buffered image for example.
 
-A widget is considered as attached when it is contained by a desktop that is attached.
+A widget is considered as attached when it is contained in a desktop that is attached.
 In the same way, by default, a widget is shown when its desktop is shown.
-But for optimization purpose, a container can control when its children are shown or hidden.
+But for optimization purposes, a container can control when its children are shown or hidden.
 A typical use case is when the widgets are moved outside the display (in a scroll container for instance).
 
 .. _Desktop.setAttached(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Desktop.html#setAttached--
@@ -88,22 +89,22 @@ Hooks
 
 When attached, a widget is notified by a call to its `onAttached()`_ method.
 This notification can be useful to allocate some images or other resources for example.
-These resources can be used to compute the size of widget and to render it.
-In other words, after this call a widget is ready to be laid out.
+These resources can be used to compute the size of the widget and to render it.
+In other words, after this call, a widget is ready to be laid out.
 
 After being laid out, a widget is notified by a call to its `onLaidOut()`_ method.
 Being laid out means that its bounds inside its parent are set.
-During this call, the widget can prepare some stuff used later by the rendering.
+During this call, the widget can prepare some resources used later by the rendering.
 For example, it can split a string into several lines based on its width.
 Another idea could be to allocate a buffered image and draw the background to avoid repainting everything during the rendering.
 
 Beware that a widget can be laid out several times once attached (typically each time a `Desktop.requestLayOut()`_ or `Widget.requestLayOut()`_ is done).
 
-When a whole hierarchy is ready to be rendered, all the widgets are notified by a call to their `onShown()`_.
+When a whole hierarchy is ready to be rendered, all the widgets are notified by a call to their `onShown()`_ method.
 This notification is particularly useful to start a periodic refresh or an animation.
 
-A widget can finally be `onHidden()`_ and `onDetached()`_.
-All that is started/allocated during the previous phases must be stopped/freed correctly to avoid memory leaks.
+A widget can finally be hidden and detached, in which cases its methods `onHidden()`_ and `onDetached()`_ will be called respectively.
+In these methods, anything that has been started or allocated during the previous phases must be stopped or freed correctly to avoid memory leaks.
 
 .. _onAttached(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#onAttached--
 .. _onLaidOut(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#onLaidOut--
@@ -118,18 +119,19 @@ All widgets are laid out at once during the lay out process.
 This process can be started by `Desktop.requestLayOut()`_ or `Widget.requestLayOut()`_.
 The layout is also automatically done when the desktop is shown (`Desktop.onShown()`_).
 
-This process is composed of two steps, each step browses the hierarchy of widgets following a depth-first algorithm:
+This process is composed of two steps.
+Each step browses the hierarchy of widgets following a depth-first algorithm:
 
 - Compute the optimal size for each widget and container (considering the constraints of the lay out).
-- Set position and size for each widget.
+- Set the position and size for each widget.
 
 A widget must implement its `Widget.computeContentOptimalSize()`_ method.
-It is explained in details in this section: :ref:`mwt_widget_optimalsize`.
+It is explained in detail in this section: :ref:`mwt_widget_optimalsize`.
 
-A container is responsible of layouting its children.
-For that it must implement its `Widget.computeContentOptimalSize()`_ method and call the `Container.computeChildOptimalSize()`_ method for each of its children.
+A container is responsible for laying out its children.
+For that it must implement its own `Widget.computeContentOptimalSize()`_ method and call the `Container.computeChildOptimalSize()`_ method for each of its children.
 And it must implement its `Container.layOutChildren()`_ method and call the `Container.layOutChild()`_ method for each of its children.
-It is explained in details in these sections: :ref:`mwt_container_optimalsize` and :ref:`mwt_container_layout`.
+It is explained in detail in these sections: :ref:`mwt_container_optimalsize` and :ref:`mwt_container_layout`.
 
 .. _Desktop.requestLayOut(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Desktop.html#requestLayOut--
 .. _Widget.requestLayOut(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#requestLayOut--
@@ -325,12 +327,12 @@ At any time, a widget has a style that can be retrieved using `Widget.getStyle()
 When created, the widget's style contains the default value for each field.
 These default values are defined in the `DefaultStyle`_ class.
 
-Once it is attached to a desktop, the widget's style is computed from the stylesheet set to the desktop.
+Once it is attached to a desktop, the widget's style is computed from the stylesheet set in the desktop.
 This is done using the `Stylesheet.getStyle()`_ method.
-The style can then be used during the layouting and the rendering of the widget.
+The style can then be used when laying out and rendering the widget.
 
 At any time, the style of the widget can be recomputed by calling `Widget.updateStyle()`_.
-For example when its state change:
+For example when its state changes:
 
 - When a button is pressed or released.
 - When a checkbox is checked or unchecked.
