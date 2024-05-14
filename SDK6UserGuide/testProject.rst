@@ -170,6 +170,36 @@ which means that the tests are also executed when launching one of these tasks.
 
          $ ./gradlew test
 
+.. _sdk_6_test_generate_code_coverage:
+
+Generate Code Coverage
+~~~~~~~~~~~~~~~~~~~~~~
+
+To generate the Code Coverage files (``.cc``) for each test, configure the test suite as follows:
+
+.. code-block::
+
+   testing {
+      suites {
+         val test by getting(JvmTestSuite::class) {
+
+            ...
+
+            targets {
+               all {
+                  testTask.configure {
+                     doFirst {
+                        systemProperties["microej.testsuite.properties.s3.cc.activated"] = "true"
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+
+Then, to generate an HTML report, see :ref:`sdk6.section.code_coverage_analyzer`.
+
 Filter the Tests
 ~~~~~~~~~~~~~~~~
 
