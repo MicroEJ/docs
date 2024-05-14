@@ -50,6 +50,12 @@ These VEE ports are ideal to evaluate MicroEJ's technology. They include the lat
      - |image_stm32f7508|
        :ref:`STM32F7508-DK Evaluation Kit <sdk_6_getting_started_stm32f7508>`
 
+.. toctree::
+   :hidden:
+
+   gettingStartedIMXRT1170
+   gettingStartedSTM32F7508
+   
 VEE Port Examples
 -----------------
 
@@ -77,11 +83,6 @@ All VEE Port source code examples can be found at `GitHub <https://github.com/Mi
    :hidden:
 
    gettingStartedIMXRT595
-   gettingStartedIMXRT1170
-   gettingStartedSTM32F7508
-
-  
-
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 

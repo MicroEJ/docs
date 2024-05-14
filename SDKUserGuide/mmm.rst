@@ -457,6 +457,10 @@ The ``mmm`` tool can run on any supported :ref:`Operating Systems <system-requir
 - on Windows, either in the command prompt using the Windows batch script ``mmm.bat`` or in `MinGW environments <https://en.wikipedia.org/wiki/MinGW>`_ such as `Git BASH <https://gitforwindows.org/>`_ using the bash script ``mmm``.
 - on macOS and Linux distributions using the bash script ``mmm``.
 
+.. warning::
+
+   When copying a build kit from one system to another, make sure to delete the cache of the buildtype repository (``/microej-build-repository/cache``) which may contain absolute paths.
+
 The build repository (``microej-build-repository`` directory) contains scripts and tools for building modules. It is specific to a SDK version and shall not be modified by default.
 
 The module repository (``microej-module-repository`` directory) contains a default :ref:`mmm_settings_file` for importing modules from :ref:`central_repository` and this local repository (modules that are locally built will be published to this directory).
@@ -942,6 +946,23 @@ Make sure it is one of the following ones:
 - ``build-application``, with version ``7.1.0`` or higher
 - ``build-microej-javalib``, with version ``4.2.0`` or higher
 - ``build-firmware-singleapp``, with version ``1.3.0`` or higher
+
+Could not load SWT library
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| Trying to use MMM Build Kit on headless system may lead to this error when building a VEE Port.
+| To fix this on Ubuntu (tested on 22.04), install the ``libwebkit2gtk-4.0-37`` package.
+
+.. note::
+
+   Also see our full Docker image configuration: https://github.com/MicroEJ/Tool-SDK-Docker/blob/67a9f4397a9c1d5608a244e2778c0cfecc5c6113/5.8.2-jdk11/Dockerfile
+
+systemmicroui.xml:47: Terminated with errors
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| Trying to build a VEE Port may lead to an "Internal limits reached" for which the log file contains this error.
+| This is caused by using an incompatible JDK distribution (such as ``openjdk-11-jdk`` Ubuntu distribution).
+| To fix this, change your JDK distribution. See :ref:`recommended JDK distributions <get_jdk>`.
 
 .. _mmm_former_sdk_5_2:
 

@@ -23,7 +23,7 @@ files.
 Dependencies
 ============
 
-In order to work properly, the Code Coverage Analyzer should input the ``.cc`` files (See :ref:`sdk_6_generate_code_coverage`).
+In order to work properly, the Code Coverage Analyzer should input the ``.cc`` files (See :ref:`sdk_6_test_generate_code_coverage`).
 The ``.cc`` files rely on the classpath used during the execution of the Simulator to the Code Coverage Analyzer.
 Therefore the classpath is considered to be a dependency of the Code Coverage Analyzer.
 
@@ -46,8 +46,8 @@ hyperlinks to navigate into the report and source / bytecode level code.
 ::
 
    ./gradlew execTool --name=codeCoverageAnalyzer \
-       --toolProperty="cc.dir=/MODULE_PATH/build/output/com.microej.Main/cc/" \
-       --toolProperty="cc.includes=" \
+       --toolProperty="cc.dir=/MODULE_PATH/build/output/com.company.Main/cc/" \
+       --toolProperty="cc.includes=com.company.*" \
        --toolProperty="cc.excludes=" \
        --toolProperty="cc.src.folders=/MODULE_PATH/src" \
        --toolProperty="cc.html.dir=/MODULE_PATH/cc"
@@ -90,9 +90,9 @@ Option: Includes
 
 *Description*:
 
-List packages and classes to include to code coverage report. If no
-package/class is specified, all classes found in the project classpath will
-be analyzed.
+List packages and classes to include to code coverage report (``;`` separated).
+If no package/class is specified, all classes found in the project classpath
+will be analyzed.
 
 Examples:
 
@@ -111,9 +111,9 @@ Option: Excludes
 
 *Description*:
 
-List packages and classes to exclude to code coverage report. If no
-package/class is specified, all classes found in the project classpath will
-be analyzed.
+List packages and classes to exclude to code coverage report (``;`` separated).
+If no package/class is specified, all classes found in the project classpath
+will be analyzed.
 
 Examples:
 
