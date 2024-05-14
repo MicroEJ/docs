@@ -114,6 +114,7 @@ The three following IDEs are supported:
 - `Android Studio <https://developer.android.com/studio>`__ - Minimum supported version is ``Hedgehog - 2023.1.1``.
 - `IntelliJ IDEA <https://www.jetbrains.com/idea/>`__ (Community or Ultimate edition) - Minimum supported version is ``2021.2``.
 - `Eclipse IDE for Java Developers <https://www.eclipse.org/downloads/packages/>`__ - Minimum supported version is ``2022-03``.
+- `Visual Studio Code <https://code.visualstudio.com/download>`__ - Minimum supported version is ``1.89.0``.
 
 Follow their respective documentation to install one of them.
 
@@ -122,10 +123,10 @@ These 3 IDEs come with the Gradle plugin installed by default.
 
 .. _sdk_6_install_ide_plugin:
 
-Install the IDE Plugin
-----------------------
+Install the IDE Plugins
+-----------------------
 
-Once your favorite IDE is installed, the MicroEJ plugin must be installed.
+Once your favorite IDE is installed, plugins must be installed to develop MicroEJ Applications.
 
 .. tabs::
 
@@ -226,6 +227,29 @@ Once your favorite IDE is installed, the MicroEJ plugin must be installed.
             Eclipse Plugin Installation - Trust Artifacts
             
          - In the upcoming window, click on the :guilabel:`Restart Now` button.
+
+   .. tab:: Visual Studio Code
+
+      MicroEJ does not provide a dedicated plugin for VS Code, but Microsoft provides a plugin that brings a usefull collection of plugins for Java
+      called `Extension Pack for Java <https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack>`__. To install this plugin:
+
+      - In Visual Studio Code, open the :guilabel:`Extensions` tab (Ctrl+Shift+X)
+      - In the search field, type ``extension pack for Java``:
+
+      .. figure:: images/vscode_java_extensions.png
+            :alt: VS Code Java Plugins Installation
+            :align: center
+            :scale: 70%
+         
+            VS Code Java Plugins Installation
+
+      - Click on the :guilabel:`Install` button of the extension
+
+      .. warning::
+         Unlinke other supported IDEs (Android Studio/IntelliJ/Eclipse), there is no MicroEJ plugin which removes
+         the JDK dependency. As a result, `IntelliSense <https://code.visualstudio.com/docs/editor/intellisense>`__ may propose classes and methods from the JDK which are
+         not present in Gradle dependencies.
+
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free

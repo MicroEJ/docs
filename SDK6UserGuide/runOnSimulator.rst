@@ -33,6 +33,14 @@ Once these prerequisites are fulfilled, the Application can be started with the 
          :width: 50%
          :align: center
 
+   .. tab:: Visual Studio Code
+
+      By double-clicking on the ``runOnSimulator`` task in the Gradle tasks view:
+
+      .. image:: images/vscode-run-gradle-project.png
+         :width: 25%
+         :align: center
+
    .. tab:: Command Line Interface
 
       From the command line interface::

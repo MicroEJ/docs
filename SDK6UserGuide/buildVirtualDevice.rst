@@ -34,6 +34,14 @@ Once these prerequisites are fulfilled, the Virtual Device can be built:
          :width: 50%
          :align: center
 
+   .. tab:: Visual Studio Code
+
+      By double-clicking on the ``buildVirtualDevice`` task in the Gradle tasks view:
+
+      .. image:: images/vscode-buildVirtualDevice-gradle-project.png
+         :width: 25%
+         :align: center
+
    .. tab:: Command Line Interface
 
       From the command line interface::

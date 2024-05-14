@@ -30,6 +30,14 @@ Once these prerequisites are fulfilled, the Executable can be built:
          :width: 50%
          :align: center
 
+   .. tab:: Visual Studio Code
+
+      By double-clicking on the ``buildExecutable`` task in the Gradle tasks view:
+
+      .. image:: images/vscode-buildExecutable-gradle-project.png
+         :width: 25%
+         :align: center
+
    .. tab:: Command Line Interface
 
       From the command line interface::

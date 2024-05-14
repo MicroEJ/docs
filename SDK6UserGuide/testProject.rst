@@ -126,6 +126,11 @@ This can be done manually or with IDE menu:
       - right-click on the ``src/test/java`` folder.
       - select :guilabel:`New` > :guilabel:`Other…` > :guilabel:`Java` > :guilabel:`JUnit` > :guilabel:`New JUnit Test Case`.
 
+   .. tab:: Visual Studio Code
+
+      - right-click on the ``src/test/java`` folder in :guilabel:`JAVA PROJECTS` view.
+      - select the :guilabel:`+` icon (:guilabel:`New…`) > :guilabel:`Class`, then enter the test class name you want to create.
+
 .. note::
 
    Gradle allows to define alternative folders for test sources but it would require additional configuration, 
@@ -162,6 +167,14 @@ which means that the tests are also executed when launching one of these tasks.
 
       .. image:: images/eclipse-test-gradle-project.png
          :width: 50%
+         :align: center
+
+   .. tab:: Visual Studio Code
+
+      In order to execute the testsuite from VS Code, double-click on the task in the Gradle tasks view:
+
+      .. image:: images/vscode-test-gradle-project.png
+         :width: 25%
          :align: center
 
    .. tab:: Command Line Interface

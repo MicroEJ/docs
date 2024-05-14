@@ -35,6 +35,14 @@ Once these prerequisites are fulfilled, the Application can be deployed on the D
          :width: 50%
          :align: center
 
+   .. tab:: Visual Studio Code
+
+      By double-clicking on the ``runOnDevice`` task in the Gradle tasks view:
+
+      .. image:: images/vscode-runOnDevice-gradle-project.png
+         :width: 25%
+         :align: center
+
    .. tab:: Command Line Interface
 
       From the command line interface::
