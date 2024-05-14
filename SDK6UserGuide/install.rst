@@ -230,7 +230,7 @@ Once your favorite IDE is installed, plugins must be installed to develop MicroE
 
    .. tab:: Visual Studio Code
 
-      MicroEJ does not provide a dedicated plugin for VS Code, but Microsoft provides a plugin that brings a usefull collection of plugins for Java
+      MicroEJ does not provide a dedicated plugin for VS Code, but Microsoft provides a plugin that brings a useful collection of plugins for Java
       called `Extension Pack for Java <https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack>`__. To install this plugin:
 
       - In Visual Studio Code, open the :guilabel:`Extensions` tab (Ctrl+Shift+X)
