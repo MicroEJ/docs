@@ -130,7 +130,7 @@ To simplify the file structure you can also choose to have an empty object value
 This example:
 * allows the usage of any permission name and any actions for the ``ej.microui.display.DisplayPermission`` permission.
 * allows the usage of any permission name and any actions for the ``ej.microui.display.FontPermission`` permission.
-* allows the ``exit`` permission name and any actions for the ``java.lang.RuntimePermission`` permission.
+* allows the ``exit`` permission name and any actions for the ``java.lang.RuntimePermission`` permission. 
 
 Using an empty value or the ``*`` wildcard is left to the developer preference and should be processed in the exact same way by the security policy resource loader.
 
