@@ -246,9 +246,9 @@ Once your favorite IDE is installed, plugins must be installed to develop MicroE
       - Click on the :guilabel:`Install` button of the extension
 
       .. warning::
-         Unlinke other supported IDEs (Android Studio/IntelliJ/Eclipse), there is no MicroEJ plugin which removes
+         Unlike other supported IDEs (Android Studio/IntelliJ IDEA/Eclipse), there is no MicroEJ plugin which removes
          the JDK dependency. As a result, `IntelliSense <https://code.visualstudio.com/docs/editor/intellisense>`__ may propose classes and methods from the JDK which are
-         not present in Gradle dependencies.
+         not present in your project dependencies.
 
 
 ..
