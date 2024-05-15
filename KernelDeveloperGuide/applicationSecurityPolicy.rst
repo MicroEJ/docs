@@ -29,8 +29,11 @@ The sections below document how to implement such policy.
 Ready-to-use policy managers
 ----------------------------
 
-A ready-to-use KF policy manager is provided by the ``KF-Util`` library (since 2.8.0).
-An example of integration of this KF policy manager is available in the `Kernel-GREEN`_ project on GitHub.
+Ready-to-use policy managers are provided by the ``KF-Util`` library (since 2.8.0): the "Kernel Security Policy Manager" and the "Kernel Security Manager".
+
+.. note::
+
+   An example of integration of the latter is available in the `Kernel-GREEN`_ project on GitHub.
 
 Kernel Security Policy Manager
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
