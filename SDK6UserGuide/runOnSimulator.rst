@@ -101,23 +101,79 @@ If you want to connect the IDE debugger:
          Android Studio and IntelliJ IDEA need an Architecture 8.1 or higher for debug mode.
 
       - Add a breakpoint in your Application code.
-      - Click on ``Run > Edit Configurations...``.
-      - Click on ``+`` button (``Add New Configuration``).
-      - Select ``Remote JVM Debug``.
-      - Click on the ``New launch configuration`` button.
-      - Give a name to the launcher in the ``Name`` field.
+      - Click on :guilabel:`Run` > :guilabel:`Edit Configurations...`.
+      - Click on :guilabel:`+` button (:guilabel:`Add New Configuration`).
+      - Select :guilabel:`Remote JVM Debug`.
+      - Click on the :guilabel:`New launch configuration` button.
+      - Give a name to the launcher in the :guilabel:`Name` field.
       - Set the debug host and port.
-      - Click on the ``Debug`` button.
+      - Click on the :guilabel:`Debug` button.
 
    .. tab:: Eclipse
 
       - Add a breakpoint in your Application code.
-      - Click on ``Run > Debug Configurations...``.
-      - Select ``Remote Java Application``.
-      - Click on the ``New launch configuration`` button.
-      - Give a name to the launcher in the ``Name`` field.
+      - Click on :guilabel:`Run` > :guilabel:`Debug Configurations...`.
+      - Select :guilabel:`Remote Java Application`.
+      - Click on the :guilabel:`New launch configuration` button.
+      - Give a name to the launcher in the :guilabel:`Name` field.
       - Set the debug host and port.
-      - Click on the ``Debug`` button.
+      - Click on the :guilabel:`Debug` button.
+
+   .. tab:: Visual Studio Code
+
+      .. warning::
+         VS Code needs an Architecture 8.1 or higher for debug mode.
+
+      - Add a breakpoint in your Application code.
+
+         .. figure:: images/vscode-add-breakpoint.png
+            :alt: VS Code add a breakpoint
+            :align: center
+            :scale: 70%
+
+      - Click on the :guilabel:`Run and Debug (Ctrl+Shift+D)` icon on the right panel.
+      - Click on ``create a launch.json file`` in the opened panel.
+      
+         .. figure:: images/vscode-open-debug-launcher.png
+            :alt: VS Code open debug launchers
+            :align: center
+            :scale: 70%
+
+      - Click on the ``Java`` entry proposed in the search field.
+
+         .. figure:: images/vscode-select-java-debug.png
+            :alt: VS Code select Java debug
+            :align: center
+            :scale: 70%
+
+      - Click on :guilabel:`Add Configuration` button
+      - Select ``{} Java: Attach to Remote Program`` entry in the popup list.
+
+         .. figure:: images/vscode-add-attach-remote-configuration.png
+            :alt: VS Code add attach remote debug configuration
+            :align: center
+            :scale: 70%
+
+      - Set ``localhost`` as ``hostName`` and  the ``port`` (default is ``1200``) in the generated json.
+
+         .. figure:: images/vscode-configure-remote-debug.png
+            :alt: VS Code configure remote debug in json
+            :align: center
+            :scale: 70%
+
+      - Select ``Attach to Remote Program`` in the selection box of the launcher.
+
+         .. figure:: images/vscode-attach-remote-program.png
+            :alt: VS Code run debug
+            :align: center
+            :scale: 70%
+
+      - Click on the ``Start`` button
+
+         .. figure:: images/vscode-stopped-on-breakpoint.png
+            :alt: VS Code stopped on breakpoint
+            :align: center
+            :scale: 70%
 
 The debugger should connect to the Simulator and you should be able to debug your Application.
 
