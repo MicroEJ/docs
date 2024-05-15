@@ -29,8 +29,11 @@ The sections below document how to implement such policy.
 Ready-to-use policy managers
 ----------------------------
 
-A ready-to-use KF policy manager is provided by the ``KF-Util`` library (since 2.8.0).
-An example of integration of this KF policy manager is available in the `Kernel-GREEN`_ project on GitHub.
+Ready-to-use policy managers are provided by the ``KF-Util`` library (since 2.8.0): the "Kernel Security Policy Manager" and the "Kernel Security Manager".
+
+.. note::
+
+   An example of integration of the latter is available in the `Kernel-GREEN`_ project on GitHub.
 
 Kernel Security Policy Manager
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -108,6 +111,7 @@ Here is now an example of what a real JSON file can look like:
     The permission ``name`` attribute is specific to the permission implementation therefore, each permission has its own definition of what a name is.
 
 The parser contains two key words to allow more flexibility over the content of the file:
+
 * "*": the wildcard symbol means "any". It can be used for permission class name, permission name and permission actions.
 * "null": the ``null`` keyword represents a Java ``null`` value. It can be used for permission name and permission actions.
 
@@ -129,6 +133,7 @@ To simplify the file structure you can also choose to have an empty object value
 
 
 This example:
+
 * allows the usage of any permission name and any actions for the ``ej.microui.display.DisplayPermission`` permission.
 * allows the usage of any permission name and any actions for the ``ej.microui.display.FontPermission`` permission.
 * allows the ``exit`` permission name and any actions for the ``java.lang.RuntimePermission`` permission. 
