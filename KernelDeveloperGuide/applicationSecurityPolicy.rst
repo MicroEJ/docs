@@ -108,6 +108,7 @@ Here is now an example of what a real JSON file can look like:
     The permission ``name`` attribute is specific to the permission implementation therefore, each permission has its own definition of what a name is.
 
 The parser contains two key words to allow more flexibility over the content of the file:
+
 * "*": the wildcard symbol means "any". It can be used for permission class name, permission name and permission actions.
 * "null": the ``null`` keyword represents a Java ``null`` value. It can be used for permission name and permission actions.
 
@@ -129,6 +130,7 @@ To simplify the file structure you can also choose to have an empty object value
 
 
 This example:
+
 * allows the usage of any permission name and any actions for the ``ej.microui.display.DisplayPermission`` permission.
 * allows the usage of any permission name and any actions for the ``ej.microui.display.FontPermission`` permission.
 * allows the ``exit`` permission name and any actions for the ``java.lang.RuntimePermission`` permission. 
