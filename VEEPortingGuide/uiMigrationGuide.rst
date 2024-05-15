@@ -29,10 +29,8 @@ Front Panel
 * The ``FlushVisualizerDisplay`` widget has been merged with the ``Display`` widget.
   To use this functionality, use the ``Display`` widget instead of the ``FlushVisualizerDisplay`` widget in the Front Panel ``.fp`` file and set the option ``ej.fp.display.flushVisualizer=true`` in the options of the application launcher.
 
-XXX_TODO wrong links
-
-.. _Front Panel Widgets 4.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/4.0.0/
-.. _UI Pack 14.0.1: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/14.0.0/
+.. _Front Panel Widgets 4.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/4.0.1/
+.. _UI Pack 14.0.1: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/14.0.1/
 
 BSP Without GPU
 """""""""""""""
