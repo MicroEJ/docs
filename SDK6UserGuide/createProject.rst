@@ -194,6 +194,10 @@ This chapter explains the different ways to create a new project.
       You can then learn :ref:`how to launch the build of the project <sdk_6_build_project>`, 
       or :ref:`how to run it on the Simulator <sdk_6_run_on_simulator>` in the case of an Application.
 
+   .. tab:: Visual Studio Code
+
+      MicroEJ does not provide wizards in VS Code to create new MicroEJ projects. Refer to the Command Line Interface tab to see how to create a project from Gradle.
+
    .. tab:: Command Line Interface
 
       The creation of a project can be done via the command line interface via the Gradle ``init`` task.
