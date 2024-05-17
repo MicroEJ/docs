@@ -62,7 +62,7 @@ A Kernel must define the set of classes, methods and static fields all applicati
 
    According to the :ref:`Kernel and Features specification <kf_specification>`, no API is open by default to Sandboxed Applications.
 
-This can be done either by declaring :ref:`Kernel APIs <kernel.api>` or by definining a :ref:`Runtime Environment <runtime_environment>`.
+This can be done either by declaring :ref:`Kernel APIs <kernel.api>` or by defining a :ref:`Runtime Environment <runtime_environment>`.
 
 The main difference is from the Application development point of view. 
 In the first case, the Application project still declares standard module dependencies.
@@ -81,49 +81,7 @@ A Kernel API or a Runtime Environment module is added as a dependency with the c
 Implement a Security Policy
 ---------------------------
 
-The Kernel can restrict sensitive or possibly unsafe operations performed by Sandboxed Applications, thus defining a security policy.
-Implementing a security policy is achieved by enabling support for Security Management system-wide and by registering to the Kernel a custom `SecurityManager`_ that will handle the `Permission`_ checks.
-
-.. note::
-
-   An API controlled by the Security Manager must be guarded by a :ref:`Permission check <securitymanager_permission_check>`.
-   The usual API documentation convention is to declare to throw a `SecurityException`_ with details about the requested Permission.
-
-Enable the Security Management
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-For the sake of ROM footprint optimization, calls to Permission checks are disabled by default.
-In order to activate this feature the :ref:`option_enable_security_manager` option must be set.
-
-Implement your Security Policy
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-This can be achieved by subclassing the base `SecurityManager`_ class, overriding its `SecurityManager.checkPermission(Permission)`_ method,
-and registering an instance of this class to the Kernel by a call to `System.setSecurityManager(SecurityManager)`_.
-
-.. code-block:: java
-
-      // create a new Security Manager
-      SecurityManager sm = new SecurityManager() {
-         @Override
-         public void checkPermission(java.security.Permission perm) {
-            // here implement your Kernel Security Policy
-         };
-      };
-      // register the Security Manager
-      System.setSecurityManager(sm);
-
-Then you have to implement your own Security Policy.
-
-Implementation of a Security Policy is demonstrated in the `Kernel-GREEN`_ project. This Kernel implements a logging-only Security Policy using the utility class `FeaturePermissionCheckDelegate`_ that helps in implementing Permission checks in a Multi-Sandbox environment.
-
-.. _SecurityManager: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/SecurityManager.html
-.. _SecurityManager.checkPermission(Permission): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/SecurityManager.html#checkPermission-java.security.Permission-
-.. _System.setSecurityManager(SecurityManager): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#setSecurityManager-java.lang.SecurityManager-
-.. _Kernel-GREEN: https://github.com/MicroEJ/Kernel-GREEN
-.. _FeaturePermissionCheckDelegate: https://repository.microej.com/javadoc/microej_5.x/apis/com/microej/kf/util/security/FeaturePermissionCheckDelegate.html
-.. _SecurityException: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/SecurityException.html
-.. _Permission: https://repository.microej.com/javadoc/microej_5.x/apis/java/security/Permission.html
+A complete section about how to setup a security policy is available in the :ref:`Application security policy <applicationSecurityPolicy>` page.
 
 .. _pre_installed_application_vd:
 

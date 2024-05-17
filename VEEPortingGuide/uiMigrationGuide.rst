@@ -6,17 +6,17 @@
 Migration Guide
 ===============
 
-From 13.7.x to 14.0.0
+From 13.7.x to 14.0.1
 =====================
 
 Front Panel
 """""""""""
 
-* Fetch `Front Panel Widgets 4.0.0`_ (it fetches by transitivity the `UI Pack 14.0.0`_):
+* Fetch `Front Panel Widgets 4.0.1`_ (it fetches by transitivity the `UI Pack 14.0.1`_):
 
   .. code-block:: xml
   
-     <dependency org="ej.tool.frontpanel" name="widget" rev="4.0.0"/>
+     <dependency org="ej.tool.frontpanel" name="widget" rev="4.0.1"/>
 
 * Re-organize imports of all Java classes (classes ``MicroUIImageFormat``, ``MicroUIImage`` and ``MicroUIGraphicsContext`` have been extracted from ``LLUIPainter``).
 * The ``doubleBufferFeature`` attribute has been removed from the ``Display`` widget.
@@ -29,16 +29,15 @@ Front Panel
 * The ``FlushVisualizerDisplay`` widget has been merged with the ``Display`` widget.
   To use this functionality, use the ``Display`` widget instead of the ``FlushVisualizerDisplay`` widget in the Front Panel ``.fp`` file and set the option ``ej.fp.display.flushVisualizer=true`` in the options of the application launcher.
 
-.. _Front Panel Widgets 4.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/4.0.0/
-.. _UI Pack 14.0.0: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/14.0.0/
-
+.. _Front Panel Widgets 4.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/4.0.1/
+.. _UI Pack 14.0.1: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/14.0.1/
 
 BSP Without GPU
 """""""""""""""
 
 * *[VEE Port configuration project]*
 
-    * Fetch the `C Module MicroUI 4.0.0`_.
+    * Fetch the `C Module MicroUI 4.0.1`_.
 
 * *[BSP project]*
 
@@ -60,7 +59,7 @@ BSP Without GPU
             +---------+--------+----------------------------------+
             |    3    |  yes   | *[Display "Swap triple buffer"]* |
             +---------+--------+----------------------------------+
-            | 3 (2+1) |   no   |   *[Display "Copy and Swap"]*    |
+            | 3 (2+1) |   no   | *[Display "Transmit and Swap"]*  |
             +---------+--------+----------------------------------+
 
 * *[Display "Copy"]*
@@ -72,10 +71,10 @@ BSP Without GPU
         
         * Store (in a static field) the rectangle to flush (the array contains only one rectangle).
         * Store (in a static field) the flush identifier.
-        * Unlock (immediately or wait for the LCD tearing signal interrupt) the *flush task* (hardware or software) that will flush (copy or transmit) the back buffer data to the front buffer.
+        * Unlock (immediately or wait for the LCD tearing signal interrupt) the *flush task* (hardware or software) that will transmit the back buffer data to the front buffer.
         * Remove the returned value (the back buffer address).
     
-    * At the end of the flush (in an interrupt or at the end of the software *flush task*), replace the call to ``LLUI_DISPLAY_flushDone()`` with ``LLUI_DISPLAY_setDrawingBuffer()``: it will unlock the Graphics Engine. Give the back buffer address (same address as at start-up) and the flush identifier.
+    * At the end of the flush (in an interrupt or at the end of the software *flush task*), replace the call to ``LLUI_DISPLAY_flushDone()`` with ``LLUI_DISPLAY_setBackBuffer()``: it will unlock the Graphics Engine. Give the back buffer address (same address as at start-up) and the flush identifier.
 
 * *[Display "Swap double buffer"]*
 
@@ -92,14 +91,14 @@ BSP Without GPU
     * Case of *hardware swap* (LCD *swap* interrupt): change the implementation of the LCD *swap* interrupt:
 
         * Remove all the code concerning the post-flush restoration (remove the *flush task* or the use of a DMA). In both cases, the call to ``LLUI_DISPLAY_flushDone()`` is removed.
-        * Unlock the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the new back buffer address and the flush identifier.
+        * Unlock the Graphics Engine by calling ``LLUI_DISPLAY_setBackBuffer()``, giving the new back buffer address and the flush identifier.
   
     * Case of *software swap* (dedicated *swap task*): change the task actions:
 
         * Swap back and front buffers.
         * Wait for the end of the buffers swap: ensure the LCD driver does not use the old front buffer anymore.
         * Remove all the code concerning the post-flush restoration (the call to ``memcpy`` or the use of a DMA). In both cases, the call to ``LLUI_DISPLAY_flushDone()`` is removed.
-        * Unlock the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the new back buffer address and the flush identifier.
+        * Unlock the Graphics Engine by calling ``LLUI_DISPLAY_setBackBuffer()``, giving the new back buffer address and the flush identifier.
   
 * *[Display "Swap triple buffer"]*
 
@@ -117,10 +116,10 @@ BSP Without GPU
 
         * Swap buffers.
         * Remove all the code concerning the post-flush restoration (the call to ``memcpy`` or the use of a DMA). In both cases, the call to ``LLUI_DISPLAY_flushDone()`` is removed.
-        * Unlock the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the new back buffer address and the flush identifier (the Graphics Engine can be unlocked immediately because a buffer is freed for sure).
+        * Unlock the Graphics Engine by calling ``LLUI_DISPLAY_setBackBuffer()``, giving the new back buffer address and the flush identifier (the Graphics Engine can be unlocked immediately because a buffer is freed for sure).
         * Wait for the end of the buffers swap: ensure the LCD driver does not use the old front buffer anymore.
 
-* *[Display "Copy and Swap"]*
+* *[Display "Transmit and Swap"]*
 
     * Set the value of the define ``UI_DISPLAY_BRS``: ``UI_DISPLAY_BRS_PREDRAW``.
     * Set the value of the define ``UI_DISPLAY_BRS_DRAWING_BUFFER_COUNT``: ``2``.
@@ -130,28 +129,28 @@ BSP Without GPU
         * Store (in a static field) the rectangle to flush (the array contains only one rectangle).
         * Store (in a static field) the back buffer address (`LLUI_DISPLAY_getBufferAddress(&gc->image)`).
         * Store (in a static field) the flush identifier.
-        * Unlock (immediately or wait for the LCD tearing signal interrupt) the *copy & swap task* that will flush (copy or transmit) the current back buffer data to the front buffer, and that will swap the back buffers.
+        * Unlock (immediately or wait for the LCD tearing signal interrupt) the *transmit & swap task* that will transmit the current back buffer data to the front buffer, and that will swap the back buffers.
         * Remove the returned value (the back buffer address).
       
-    * In the *copy & swap task*: change the "copy & swap" actions:
+    * In the *transmit & swap task*: change the "transmit & swap" actions:
 
         * Start the transmission of the current back buffer (called *buffer A*) data to the front buffer.
         * Swap back *buffer A* and back *buffer B*.
         * Wait for the end of the back buffers swap: ensure the LCD driver is now using the *buffer A* as the *transmission* buffer.
         * Remove all the code concerning to the post-flush restoration (the call to ``memcpy`` or the use of a DMA). In both cases, the call to ``LLUI_DISPLAY_flushDone()`` is removed.
-        * Unlock the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the back *buffer B* address and the flush identifier.
+        * Unlock the Graphics Engine by calling ``LLUI_DISPLAY_setBackBuffer()``, giving the back *buffer B* address and the flush identifier.
         * Wait for the end of the *transmission*: ensure the LCD driver has finished to flush the data.
-        * (optional) Unlock again the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the *buffer A* address and the flush identifier:
+        * (optional) Unlock again the Graphics Engine by calling ``LLUI_DISPLAY_setBackBuffer()``, giving the *buffer A* address and the flush identifier:
 
-            * The call to ``LLUI_DISPLAY_setDrawingBuffer()`` returns ``false``: that means at least one drawing has been performed in the *buffer B*; there is nothing else to do.
-            * The call to ``LLUI_DISPLAY_setDrawingBuffer()`` returns ``true``: that means no drawing has started yet in the *buffer B*. In that case, the Graphics Engine will reuse the *buffer A* as a back buffer, and the *restoration of the past* becomes useless. The back buffers swap is so canceled; update the LCD driver status in consequence.
+            * The call to ``LLUI_DISPLAY_setBackBuffer()`` returns ``false``: that means at least one drawing has been performed in the *buffer B*; there is nothing else to do.
+            * The call to ``LLUI_DISPLAY_setBackBuffer()`` returns ``true``: that means no drawing has started yet in the *buffer B*. In that case, the Graphics Engine will reuse the *buffer A* as a back buffer, and the *restoration of the past* becomes useless. The back buffers swap is so canceled; update the LCD driver status in consequence.
   
 BSP with DMA2D
 """"""""""""""
 
 * *[VEE Port configuration project]*
 
-    * Fetch the `C Module DMA2D 5.0.0`_.
+    * Fetch the `C Module DMA2D 5.0.1`_.
 
 * *[BSP project]*
 
@@ -167,7 +166,7 @@ BSP with VGLite
 
 * *[VEE Port configuration project]*
 
-    * Fetch the `C Module VGLite 8.0.0`_.
+    * Fetch the `C Module VGLite 8.0.1`_.
 
 * *[BSP project]*
 
@@ -187,7 +186,7 @@ BSP with NemaGFX
 
 * *[VEE Port configuration project]*
 
-    * Fetch the `C Module NemaGFX 2.0.0`_.
+    * Fetch the `C Module NemaGFX 2.0.1`_.
 
 * *[BSP project]*
 

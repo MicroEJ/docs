@@ -5,7 +5,7 @@
 Migration Guide
 ===============
 
-From 1.4.x to 1.5.0
+From 1.4.x to 1.5.1
 ===================
 
 VEE Port Configuration Project
@@ -19,7 +19,7 @@ BSP with VGLite
 * Follow the migration steps of :ref:`C Module MicroUI-VGLite 8.0.0 <section_ui_migrationguide_14.0_vglite>`.
 * *[VEE Port configuration project]*
 
-	* Fetch VG Pack 1.5.0, C Modules MicroVG 5.0.0 and MicroVG-VGLite 7.0.0.
+	* Fetch VG Pack 1.5.1, C Modules MicroVG 5.0.0 and MicroVG-VGLite 7.0.1.
 
 * *[BSP project]*
 
