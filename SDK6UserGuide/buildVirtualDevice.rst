@@ -25,7 +25,14 @@ Once these prerequisites are fulfilled, the Virtual Device can be built:
       .. image:: images/intellij-buildVirtualDevice-gradle-project.png
          :width: 30%
          :align: center
-      
+
+      |
+
+      .. warning::
+         Android Studio does not allow to run multiple Gradle tasks in parallel.
+         If you still want to execute several Gradle tasks simultaneously, 
+         you can launch them from a terminal with the Gradle Command Line Interface (CLI).
+
    .. tab:: Eclipse
 
       By double-clicking on the ``buildVirtualDevice`` task in the Gradle tasks view:
