@@ -154,6 +154,35 @@ Kernel Security Manager
 | An example of this policy manager is used by the `Kernel-GREEN`_.
 | The policy grants all applications the permission for a list of permission classes and logs all protected accesses by Applications.
 
+Here is how to implement a custom delegate to implement a security policy according to the system needs.
+
+1. Create a new class that implements the `FeaturePermissionCheckDelegate`_ interface like ``CustomPermissionCheckDelegate`` below.
+
+.. code-block:: java
+
+   public class CustomPermissionCheckDelegate implements FeaturePermissionCheckDelegate {
+
+       @Override
+       public void checkPermission(Permission permission, Feature feature) {
+
+           // Actual permission check goes here...
+
+       }
+
+   }
+
+2. Associate an instance of this `FeaturePermissionCheckDelegate`_ subclass with the [Permission](https://repository.microej.com/javadoc/microej_5.x/apis/java/security/Permission.html) to be checked (like `NetPermission` in the example below) by means of the security manager.
+
+.. code-block:: java
+
+   KernelSecurityManager securityManager = new KernelSecurityManager();
+
+   securityManager.setFeaturePermissionDelegate(NetPermission.class, new CustomPermissionCheckDelegate());
+
+
+This code will apply the code inside of the CustomPermissionCheckDelegate#checkPermission(Permission permission, Feature feature) method to all mapped permissions (such as ``NetPermission.class`` for this specific example).
+
+
 
 .. _SecurityManager: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/SecurityManager.html
 .. _SecurityManager.checkPermission(Permission): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/SecurityManager.html#checkPermission-java.security.Permission-
