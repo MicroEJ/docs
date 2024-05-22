@@ -183,7 +183,6 @@ Here is how to implement a custom delegate to implement a security policy accord
 This code will apply the code inside of the CustomPermissionCheckDelegate#checkPermission(Permission permission, Feature feature) method to all mapped permissions (such as ``NetPermission.class`` for this specific example).
 
 
-
 .. _SecurityManager: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/SecurityManager.html
 .. _SecurityManager.checkPermission(Permission): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/SecurityManager.html#checkPermission-java.security.Permission-
 .. _System.setSecurityManager(SecurityManager): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#setSecurityManager-java.lang.SecurityManager-
