@@ -171,7 +171,7 @@ Here is how to implement a custom delegate to implement a security policy accord
 
    }
 
-2. Associate an instance of this `FeaturePermissionCheckDelegate`_ subclass with the [Permission](https://repository.microej.com/javadoc/microej_5.x/apis/java/security/Permission.html) to be checked (like `NetPermission` in the example below) by means of the security manager.
+2. Associate an instance of this `FeaturePermissionCheckDelegate`_ subclass with the `java.security.Permission`_ to be checked (like ``NetPermission`` in the example below) by means of the security manager.
 
 .. code-block:: java
 
@@ -180,7 +180,8 @@ Here is how to implement a custom delegate to implement a security policy accord
    securityManager.setFeaturePermissionDelegate(NetPermission.class, new CustomPermissionCheckDelegate());
 
 
-This code will apply the code inside of the CustomPermissionCheckDelegate#checkPermission(Permission permission, Feature feature) method to all mapped permissions (such as ``NetPermission.class`` for this specific example).
+This code will apply the logic inside of the ``CustomPermissionCheckDelegate#checkPermission(Permission permission, Feature feature)`` method to all mapped permissions (such as ``NetPermission.class`` for this specific example).
+
 
 
 .. _SecurityManager: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/SecurityManager.html
