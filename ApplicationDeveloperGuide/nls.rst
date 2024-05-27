@@ -938,11 +938,11 @@ must be consistent with the translations embedded in External Memory (``HelloWor
 
 .. warning:: This implementation only checks the consistency of ``msgid``, it does not check the content of ``msgstr``. PO files should be checked carefully to avoid deviation between translations.
 
-The logs below are showing the expected behavior when the External Resource can be loaded or can't be loaded:
+The logs below are showing the expected behavior when the resource can be loaded or can't be loaded from External Memory:
 
 .. tabs::
 
-   .. tab:: Resource Loaded form External Memory
+   .. tab:: Resource Loaded from External Memory
 
       .. code-block:: console
 
