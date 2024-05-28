@@ -886,12 +886,12 @@ This resource can be a "lighter" version of the one loaded using the External Re
 Usage
 ^^^^^
 
-The below procedure assumes that the application already has localization source files named ``HelloWorldMessages*.po`` that are referenced as External Resource.
+The procedure below assumes that the application already has localization source files named ``HelloWorldMessages*.po`` that are referenced as External Resource.
 
 The procedure below explains how to setup the fallback on a default resource embedding the ``en_US`` locale only:
 
 - Create a new localization source file in the ``src/main/resources`` folder (e.g. ``HelloWorldMessagesDefault_en_US.po``).
-  This file should contain the same translations that ``HelloWorldMessages_en_US.po``,
+  This file should contain the same translations as ``HelloWorldMessages_en_US.po``,
 - Declare it in the ``*.nls.list`` file (e.g. ``com.microej.example.nls.generated.HelloWorldMessagesDefault``),
 - Create a new class that implements the ``NLS`` interface (e.g. ``DefaultNLS``),
 - Implement every method, wrapping on ``HelloWorldMessagesDefault``:
@@ -914,7 +914,7 @@ The procedure below explains how to setup the fallback on a default resource emb
 - Set the ``DefaultNLS`` class as the default NLS implementation:
 
   - Create a ``*.properties.list`` file in the ``src/main/resources`` folder (if not already created),
-  - Add the following property: ``com.microej.binarynls.defaultImplementation=[FULLY QUALIFIED NAME TO DEFAULT IMPLEMENTATION CLASS]``
+  - Add the following property in this file: ``com.microej.binarynls.defaultImplementation=[FULLY QUALIFIED NAME TO DEFAULT IMPLEMENTATION CLASS]``
     (e.g. ``com.microej.binarynls.defaultImplementation=com.microej.example.nls.DefaultNLS``).
 
 - Declare ``DefaultNLS`` as a :ref:`Required type <section.classpath.elements.types>`:
@@ -924,6 +924,7 @@ The procedure below explains how to setup the fallback on a default resource emb
 
 To guarantee the proper application operation, the default translations (``HelloWorldMessagesDefault``) 
 must be consistent with the translations embedded in External Memory (``HelloWorldMessages``).
+In other words, they must contain the exact same set of messages.
 
 - Add the following code in the ``Main`` class to perform the consistency check at startup:
 
