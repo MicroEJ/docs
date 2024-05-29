@@ -209,7 +209,7 @@ The Executable is built using a Yocto SDK. It contains the following:
 * All the necessary headers (libc, but also the headers of the kernel and the libraries installed in the firmware rootfs).
 * An environment setup script (to set $CC, $LD, $SDKSYSROOT variables).
 
-A prebuilt version of the Yocto SDK is available here: `Yocto SDK Installer for iMX93 <https://repository.microej.com/packages/yocto/i.MX93EVK/2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh>`
+A prebuilt version of the Yocto SDK is available here: `Yocto SDK Installer for iMX93 <https://repository.microej.com/packages/yocto/i.MX93EVK/2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh>`_
 
 To install the Yocto SDK, use the following commands in WSL or Linux:
 
@@ -243,7 +243,7 @@ Some additionnal packages will be required in order to build an executable. Run 
 Flash the image on an SD card
 """""""""""""""""""""""""""""
 
-The Linux image is available here: `Yocto WIC Image for iMX93 <https://repository.microej.com/packages/yocto/i.MX93EVK/2024-05-24-IMX93-lib32-core-image-microej-microej-imx93-1.0.2.wic.gz>`
+The Linux image is available here: `Yocto WIC Image for iMX93 <https://repository.microej.com/packages/yocto/i.MX93EVK/2024-05-24-IMX93-lib32-core-image-microej-microej-imx93-1.0.2.wic.gz>`_
 
 For this getting started we use a Linux image flashed on an SD card.
 
