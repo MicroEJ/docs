@@ -248,9 +248,9 @@ Tools
 - Fixed an incorrect generation of a debug file beside the memory file when launching the Heap Dumper.
 - [Multi] Added Heap Dumper support for dynamically installed Features.
 
-.. _changelog-7.20.3:
+.. _changelog-7.20.5:
 
-[maintenance/7.20.3] - 2024-02-28
+[maintenance/7.20.5] - 2024-05-24
 ---------------------------------
 
 Foundation Libraries
