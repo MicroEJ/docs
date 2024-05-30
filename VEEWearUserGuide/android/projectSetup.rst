@@ -1,7 +1,7 @@
 
 .. _ack_create_project_:
 .. |ACK_PLUGIN_VERSION| replace:: 0.3.6
-.. |SDK_VERSION| replace:: 0.16.0
+.. |SDK_VERSION| replace:: 0.17.0
 .. |SUPPORT_LIB_VERSION| replace:: 2.0.1
 
 Project Setup

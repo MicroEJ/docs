@@ -3,6 +3,47 @@
 Changelog
 ---------
 
+.. _changelog-0.17.0:
+
+[0.17.0] - 2024-05-30
+~~~~~~~~~~~~~~~~~~~~~
+
+Added
+"""""
+
+- Allow to add tools to a Virtual Device.
+- Allow to fetch Runtime APIs with the ``microejRuntimeApi`` configuration.
+
+Changed
+"""""""
+
+- Merge the ``loadXXXConfiguration`` tasks with their matching task.
+- Split ``buildExecutable`` in 2 tasks to support incremental build of the ``microejapp.o`` file.
+- Make FeatureEntryPoint take priority over main method when generating the Application entryPoint wrapper.
+
+Fixed
+"""""
+
+- Re-Generate the Application entrypoint wrapper if the entrypoint class is
+  modified, if the ``applicationEntryPoint`` property is changed or if the resources changed.
+- Simplify Ant classpath when executing an Ant script to avoid too long classpath and support multiple Windows drives.
+- Append Applications provided with the ``microejApplication`` configuration to a Virtual Device.
+- Make sure to always generate the Kernel certificate if it does not exist.
+- Remove deprecated APIs used to generate Application certificates.
+- Log filter in Ant scripts.
+- Print last relevant logs as exception message when Ant script execution fails.
+- Fix failing Javadoc generation when using EDC 1.3.6 and Null Analysis annotations.
+- Make the generated Wrapper Feature class call the main method of the Application with an empty array as
+  parameter instead of null.
+- Generate Application entrypoint wrapper if the entrypoint class extends a class implementing the
+  FeatureEntryPoint interface.
+- Do not embed generated KF files in Application JAR to avoid switching in KF mode when executing an Application on a
+  VEE Port.
+- Fix configurations used to fetch Kernels to avoid NPE during build when a project is provided
+  as dependency.
+- Set ADP generated folders in the sourcesets to be detected by the IDEs.
+- Make sure to copy the Assembly file in the BSP when it is generated.
+
 .. _changelog-0.16.0:
 
 [0.16.0] - 2024-03-18
@@ -45,7 +86,7 @@ Fixed
 Added
 """""
 
-- Unify ``microejVeePort`` and ``microejKernel`` configurations into `microejVee`.
+- Unify ``microejVeePort`` and ``microejKernel`` configurations into ``microejVee``.
 - Add verification of dependencies checksums during build.
 - Add the plugin ``com.microej.gradle.mock`` to build a Mock.
 - Mention the system property to accept SDK EULA in error message.
