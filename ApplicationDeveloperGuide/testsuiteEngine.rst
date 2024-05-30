@@ -21,7 +21,7 @@ projects within the configuration of a generic Ant file.
       :width: 500px
 
 The MicroEJ Test Suite Engine is already pre-configured for running
-test suites on a MicroEJ Platform (either on Simulator or on Device).
+test suites on a VEE Port (either on Simulator or on Device).
 
 - For Application and Libraries, refer to :ref:`application_testsuite`
   section.

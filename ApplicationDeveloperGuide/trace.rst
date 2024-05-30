@@ -32,7 +32,7 @@ Event Tracing can be accessed from two APIs:
          <dependency org="ej.api" name="trace" rev="1.1.0"/>
      
   
-- A C API, provided by the Platform header file named ``LLTRACE_impl.h``.
+- A C API, provided by the Foundation Library header file named ``LLTRACE_impl.h``.
 
 .. _Trace API module: https://repository.microej.com/modules/ej/api/trace/
 
@@ -147,7 +147,7 @@ Examples:
 
 .. _trace_implementations:
 
-Platform Implementation
+VEE Port Implementation
 =======================
 
 By default, when enabled, the Trace API displays a message in the standard output for every ``recordEvent(...)`` and ``recordEventEnd(...)`` method calls. 
@@ -155,14 +155,14 @@ By default, when enabled, the Trace API displays a message in the standard outpu
 It does not print a timestamp when displaying the trace message because it can drastically affect execution performances.
 It only prints the ID of the recorded event followed by the values given in parameters.
 
-A Platform can connect its own implementation by overriding the functions defined in the ``LLTRACE_impl.h`` file.
+A VEE Port can connect its own implementation by overriding the functions defined in the ``LLTRACE_impl.h`` file.
 
 MicroEJ Corp. provides an implementation that redirects the events to :ref:`systemview` tool, 
 the real-time recording and visualization tool from `Segger <https://www.segger.com/>`_. It is perfect for a finer understanding of the runtime behavior by showing events sequence and duration.
 
 A implementation example for the `NXP OM13098 development board <https://www.nxp.com/products/processors-and-microcontrollers/arm-microcontrollers/general-purpose-mcus/lpc54000-cortex-m4-/lpcxpresso54628-development-board:OM13098>`_ with SystemView support is available `here <https://developer.microej.com/packages/referenceimplementations/U3OER/2.0.1/OM13098-U3OER-fullPackaging-eval-2.0.1.zip>`__.
 
-Please contact :ref:`our support team <get_support>` for more information about how to integrate this Platform module.
+Please contact :ref:`our support team <get_support>` for more information about how to integrate this module.
 
 Advanced Event Tracing
 ======================
