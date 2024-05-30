@@ -53,7 +53,7 @@ It is similar to what `Maven Central Repository <https://repo1.maven.org/maven2/
 
 MicroEJ Corp. contributes to the developer repository in the following cases:
 
-- Demos (Platforms, Firmware, Virtual Devices, Applications),
+- Demos (VEE Ports, Kernel Executables, Virtual Devices, Applications),
 - Incubating Libraries,
 - Former Central Repository versions,
 - Hardware specific modules.
