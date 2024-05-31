@@ -1,0 +1,33 @@
+/*
+ * IAR C-SPY Macro
+ *
+ * Copyright 2015-2024 MicroEJ Corp. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be found with this software.
+ */
+heapdump(){
+  memdump("_java_heap_start", "_java_heap_end", "c:\\tmp\\vm_heap.hex");
+}
+
+memdump(startSymbol, endSymbol, outputFile){
+	__var startAddr;
+	__var endAddr;
+	__var startAddrString;
+	__var endAddrString;
+	__var file;
+
+	__evaluate(startSymbol, &startAddr);
+	__evaluate(endSymbol, &endAddr);	
+	__message "Dumping 0x",startAddr:%X," - 0x",endAddr:%X;
+	if(startAddr < endAddr) {
+                startAddrString = __smessage "0x",startAddr:%X;
+		endAddr = endAddr - 1;
+		endAddrString = __smessage "0x",endAddr:%X;	
+		__memorySave(startAddrString, endAddrString, "intel-extended", outputFile);
+                __message "Successfully dumped ",outputFile;
+	}
+	else {
+	  file = __openFile(outputFile, "w");
+	  __closeFile(file);
+	}
+}
+

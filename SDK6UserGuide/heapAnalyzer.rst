@@ -131,35 +131,130 @@ Retrieve the ``.hex`` file from the device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you are in a Mono-Sandbox context, you only have to dump the Core Engine heap section.
-Here is an example of GDB commands:
-  
-  .. code-block:: console
+
+.. tabs::
+
+   .. tab:: Dump the Heap using GDB
+
+      Here is an example using GDB commands:
       
-      b LLMJVM_on_Runtime_gc_done
-      b LLMJVM_on_OutOfMemoryError_thrown
-      continue
-      dump ihex memory heap.hex &_java_heap_start &_java_heap_end
+      .. code-block:: console
+            
+            b LLMJVM_on_Runtime_gc_done
+            b LLMJVM_on_OutOfMemoryError_thrown
+            continue
+            dump ihex memory heap.hex &_java_heap_start &_java_heap_end
 
-You now have the ``.hex`` file and need to extract the Heap dump.
+      You now have the ``.hex`` file and need to extract the Heap dump.
 
-If you are in a Multi-Sandbox context, the following sections must be dumped additionally:
+      If you are in a Multi-Sandbox context, the following sections must be dumped additionally:
 
-- the installed features table.
-  
-  .. code-block:: console
-   
-      dump ihex memory &java_features_dynamic_start &java_features_dynamic_end
+      - the installed features table:
+      
+        .. code-block:: console
+           
+              dump ihex memory &java_features_dynamic_start &java_features_dynamic_end
 
-- the installed features sections. These are specific to your VEE Port, depending on the `LLKERNEL implementation <LLKF-API-SECTION>`.
-  
-  .. code-block:: console
-   
-      dump ihex memory <installed features_start_adress> <installed features_end_adress>
+      - the installed features sections. These are specific to your VEE Port, depending on the `LLKERNEL implementation <LLKF-API-SECTION>`:
+      
+        .. code-block:: console
+           
+              dump ihex memory <installed features_start_adress> <installed features_end_adress>
 
-  To simplify the dump commands, you can also consider the following options :
+   .. tab:: Dump the Heap using IAR EmbeddedWorkbench
 
-  - either dump the entire memory where microej runtime and code sections are linked,
-  - or generate the :ref:`VEE memory dump script <generate_vee_memory_dump_script>` which will dump all the required sections instead.
+      **1) Get the IAR Memory Dump Script**
+
+      The IAR Memory Dump script is used to automate the heap dump.
+
+      Get the proper script, depending on your IAR EmbeddedWorkbench version:
+
+      - :download:`heapdump_iar8.x.mac <resources/heap_dumper/heapdump_iar8.x.mac>`
+      - :download:`heapdump_iar9.x.mac <resources/heap_dumper/heapdump_iar9.x.mac>`
+
+      **2) Retrieve the .hex File from the Device**
+
+      - Register the downloaded ``.mac`` script in the debugger project option:
+
+          - Open the Debugger Project option window by clicking on ``Project > Options... > Debugger > Setup``,
+          - Check the option ``Use macro file(s)`` and browse to the ``.mac`` file,
+          - Click on ``OK`` to confirm:
+
+            .. figure:: images/iar-project-options.png
+               :alt: IAR project options
+               :align: center
+               :scale: 70%
+
+               IAR project options
+
+         - Run your code in debug mode in IAR (or attach to the running target).
+
+      The ``.mac`` file contains a ``heapdump()`` method that allows to dump the VEE memory. 
+      The output folder can be edited in the ``.mac`` file.
+      
+      .. note::
+         The default folder is ``C:\tmp``, note that the ``tmp/`` folder needs to be created before script execution, otherwise the script will fail.
+
+      **3) Trigger the Heap Dump**
+
+      The ``heapdump()`` method can be triggered in several ways.
+
+      Trigger the Dump from a Native Function:
+
+      - In this example, the ``LLMJVM_on_Runtime_gc_done`` done hook is used to trigger the VM Dump.
+      - Add the macro ``heapdump()`` as an action expression to the code breakpoint:
+         
+         - Open IAR Breakpoints window by clicking on ``View > Breakpoints``,
+         - Right-Click on IAR Breakpoints window and select ``New Breakpoint > Code``,
+         - In the Expression text field, enter ``heapdump()`` and click on ``OK``.
+
+            .. figure:: images/iar-cspy2.png
+               :alt: IAR Breakpoint editor
+               :align: center
+               :scale: 70%
+
+               IAR Breakpoint editor
+
+      - When ``System.gc()`` will be triggered from the application, the debugger will hit the breakpoint,
+        the ``heapdump()`` macro function is executed and the memory is dumped into a ``*.hex`` file:
+
+            .. figure:: images/iar-debug-view-heap-dump.png
+               :alt: IAR Debug viaiew
+               :align: center
+               :scale: 70%
+
+               IAR Debug view
+
+      - The ``vm_heap.hex`` file is available in the ``tmp/`` folder:
+
+            .. figure:: images/explorer-heap-dumper-files.png
+               :alt: Dump script output folder
+               :align: center
+               :scale: 70%
+
+               Dump script output folder
+
+      Trigger the Dump from the Debugger view:
+
+      - In IAR, enable the ``View > Quick Watch`` view,
+      - Pause the debugger,
+      - In the Quick Watch field, write ``heapdump()`` and press enter:
+      
+            .. figure:: images/iar-quick-watch-view.png
+               :alt: IAR Quick Watch View
+               :align: center
+               :scale: 70%
+
+               IAR Quick Watch view
+
+      - The memory is dumped in a ``.hex`` file in the ``tmp/`` folder.
+
+      .. warning:: This method may lead to inconsistent memory dumps if the VEE is running while the dump is triggered.
+
+To simplify the dump process, you can also consider the following options :
+
+- either dump the entire memory where microej runtime and code sections are linked,
+- or generate the :ref:`VEE memory dump script <generate_vee_memory_dump_script>` which will dump all the required sections instead.
 
 .. _sdk6_heapdumper_extract_heap:
 
