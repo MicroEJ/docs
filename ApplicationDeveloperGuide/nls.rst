@@ -875,6 +875,125 @@ Unless it is also referenced by an ``.externresources.list`` in which case the S
 
 This resource is loaded as soon as the BinaryNLS instance is created, in the clinit of the generated NLS interface (see :ref:`Principle <section.nls.principle>`).
 
+Fallback on Default Resource
+----------------------------
+
+When using a resource referenced as External Resource (``.externresources.list``), the application is not guaranteed to access it at startup (external memory failure, corruption, ...).
+
+The application can be configured to fallback on a default resource embedded in the Application binary.
+This resource can be a "lighter" version of the one loaded using the External Resources Loader (e.g. only embed the English language).
+
+Usage
+^^^^^
+
+The procedure below assumes that the application already has localization source files named ``HelloWorldMessages*.po`` that are referenced as External Resource.
+
+The procedure below explains how to setup the fallback on a default resource embedding the ``en_US`` locale only:
+
+- Create a new localization source file in the ``src/main/resources`` folder (e.g. ``HelloWorldMessagesDefault_en_US.po``).
+  This file should contain the same translations as ``HelloWorldMessages_en_US.po``,
+- Declare it in the ``*.nls.list`` file (e.g. ``com.microej.example.nls.generated.HelloWorldMessagesDefault``),
+- Create a new class that implements the ``NLS`` interface (e.g. ``DefaultNLS``),
+- Implement every method, wrapping on ``HelloWorldMessagesDefault``:
+
+.. code-block:: java
+
+	public class DefaultNLS implements NLS {
+	
+		@Override
+		public String[] getAvailableLocales() {
+			return HelloWorldMessagesDefault.NLS.getAvailableLocales();
+		}
+	
+		@Override
+		public String getDisplayName(String locale) {
+			return HelloWorldMessagesDefault.NLS.getDisplayName(locale);
+		}
+		...
+
+- Set the ``DefaultNLS`` class as the default NLS implementation:
+
+  - Create a ``*.properties.list`` file in the ``src/main/resources`` folder (if not already created),
+  - Add the following property in this file: ``com.microej.binarynls.defaultImplementation=[FULLY QUALIFIED NAME TO DEFAULT IMPLEMENTATION CLASS]``
+    (e.g. ``com.microej.binarynls.defaultImplementation=com.microej.example.nls.DefaultNLS``).
+
+- Declare ``DefaultNLS`` as a :ref:`Required type <section.classpath.elements.types>`:
+
+   - Create a ``*.types.list`` file in the ``src/main/resources`` folder (if not already created),
+   - Add the fully qualified name of the class (e.g. ``com.microej.example.nls.DefaultNLS``).
+
+To guarantee the proper application operation, the default translations (``HelloWorldMessagesDefault``) 
+must be consistent with the translations embedded in External Memory (``HelloWorldMessages``).
+In other words, they must contain the exact same set of messages.
+
+- Add the following code in the ``Main`` class to perform the consistency check at startup:
+
+.. code-block:: java
+
+	static {
+		if (HelloWorldMessagesDefault.KeysCRC32 != HelloWorldMessages.KeysCRC32) {
+			throw new RuntimeException(
+					"CRC check fail between default and fallback translations. Make sure PO files are aligned.");
+		}
+	}
+
+.. warning:: This implementation only checks the consistency of ``msgid``, it does not check the content of ``msgstr``. PO files should be checked carefully to avoid deviation between translations.
+
+The logs below are showing the expected behavior when the resource can be loaded or can't be loaded from External Memory:
+
+.. tabs::
+
+   .. tab:: Resource Loaded from External Memory
+
+      .. code-block:: console
+
+         MicroEJ START
+         Available locales:
+         - en_US
+         - es_FR
+         - fr_FR
+         Saying:
+         English (US) (en_US)
+         - Hello, World
+         - What's up?
+         Español (es_FR)
+         - Hola, Mundo
+         - ¿ Qué tal ?
+         Français (fr_FR)
+         - Bonjour, Le Monde
+         - Ça va ?
+         MicroEJ END (exit code = 0)
+
+   .. tab:: Fallback on Default Resource (External Memory failure)
+
+      .. code-block:: console
+
+         MicroEJ START
+         NLS-PO:I=6
+         Exception in thread "main" java.io.IOException: NLS-PO:S=1
+             at java.lang.System.getStackTrace(Unknown Source)
+             at java.lang.Throwable.fillInStackTrace(Throwable.java:82)
+             at java.lang.Throwable.<init>(Throwable.java:37)
+             at java.lang.Exception.<init>(Exception.java:18)
+             at java.io.IOException.<init>(IOException.java:18)
+             at com.microej.nls.BinaryNLS.loadBinFile(BinaryNLS.java:385)
+             at com.microej.nls.BinaryNLS.<init>(BinaryNLS.java:203)
+             at com.microej.nls.BinaryNLS.newBinaryNLSInternal(BinaryNLS.java:161)
+             at com.microej.nls.BinaryNLS.newBinaryNLS(BinaryNLS.java:155)
+             at com.microej.example.nls.generated.HelloWorldMessages.<clinit>(HelloWorldMessages.java:19)
+             at java.lang.Thread.execClinit(Unknown Source)
+             at java.lang.Thread.clinitWrapper(Thread.java:483)
+             at java.lang.Thread.callWrapper(Thread.java:449)
+ 
+         Available locales:
+         - en_US
+         Saying:
+         English (US) (en_US)
+         - Hello, World
+         - What's up?
+         MicroEJ END (exit code = 0)
+
+
 .. _section.nls.limitations:
 
 Limitations
