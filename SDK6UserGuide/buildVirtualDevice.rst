@@ -99,6 +99,33 @@ This can be done by declaring :ref:`Kernel APIs <kernel.api>` as a dependency in
       implementation("com.microej.kernelapi:edc:1.2.0")
    }
 
+.. _sdk_6_buildVirtualDevice_add_runtime_api:
+
+Add a Runtime Environment in a Virtual Device
+---------------------------------------------
+
+When building a Virtual Device for a Kernel, the set of classes, methods and static fields allowed to be used 
+by all applications can be defined by declaring a :ref:`runtime_environment` as a dependency in the build file::
+
+   dependencies {
+      microejRuntimeApi("com.mycompany:myruntimeapi:1.0.0")
+   }
+
+The transitive dependencies of the Runtime Environment are then embedded in the Virtual Device.
+
+.. _sdk_6_buildVirtualDevice_add_tool:
+
+Add a Tool in a Virtual Device
+------------------------------
+
+When building a Virtual Device, it is possible to define additional MicroEJ Tools to install inside, 
+by adding a dependency with the ``microejTool`` configuration. For example, to install the :ref:`sdk6_localDeployTool` tool,
+add the following dependency to the build file of the project::
+
+   dependencies {
+      microejTool("com.microej.tool.kernel:localdeploy-extension:1.0.0")
+   }
+
 .. _sdk_6_skip_virtual_device_build:
 
 Skip Virtual Device Build by Default

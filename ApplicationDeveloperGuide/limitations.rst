@@ -9,7 +9,7 @@ Please consult :ref:`architecture_changelog` for limitations changes on former v
 .. note::
  
    The term `unlimited` means there is no Architecture specific limitation. However, there may be limitations driven by device memory layout.   
-   Please refer to Platform specific documentation to get the memory mapping of :ref:`MicroEJ Core Engine sections <core_engine_link>`.
+   Please refer to your VEE Port specific documentation to get the memory mapping of :ref:`MicroEJ Core Engine sections <core_engine_link>`.
 
 
 .. list-table:: Architecture Limitations

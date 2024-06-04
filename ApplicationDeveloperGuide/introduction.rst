@@ -22,8 +22,8 @@ resources such as:
 
 
 MicroEJ Applications are developed as standard Java applications on
-Eclipse JDT, using Foundation Libraries. MicroEJ SDK allows you to
-run / debug / deploy MicroEJ Applications on a MicroEJ Platform.
+Eclipse JDT, using Foundation Libraries. The SDK allows you to
+run / debug / deploy Applications on a VEE Port.
 
 Two kinds of applications can be developed on MicroEJ: MicroEJ
 Standalone Applications and MicroEJ Sanboxed Applications.

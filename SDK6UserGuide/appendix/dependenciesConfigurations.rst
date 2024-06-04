@@ -14,7 +14,7 @@ This chapter describes all the dependency configurations added to your project b
       - `Java plugin <https://docs.gradle.org/current/userguide/java_plugin.html#sec:java_plugin_and_dependency_management>`__
       - `Java Library plugin <https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation>`__
 
-The following diagrams show the dependency configurations. Use this legend to interpret the colors:
+The following graph describes the dependency configurations. Use this legend to interpret the colors:
 
     - Green background : Dependencies can be declared against this configuration
     - Gray background : This configuration is for consumption by tasks only
@@ -22,6 +22,12 @@ The following diagrams show the dependency configurations. Use this legend to in
 
 .. graphviz:: graphConfigurations.dot
 
+The MicroEJ Gradle plugins also define dependency configurations for internal use:
+
+    - ``antScriptLauncherClasspath``, used by the :ref:`sdk6_module_natures.tasks.buildVirtualDevice` task
+    - ``addonProcessorClasspath`` , used by the :ref:`sdk6_module_natures.tasks.adp` task
+    - ``jdtCompilerClasspath``, used by the :ref:`sdk6_module_natures.addon_lib` and :ref:`sdk6_module_natures.application` plugins
+    - ``wrapperClasspath``, used by the ``compileJava`` task
 
 Publication Variants
 --------------------
