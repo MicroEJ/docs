@@ -203,6 +203,7 @@ To generate the Code Coverage files (``.cc``) for each test, configure the test 
                   testTask.configure {
                      doFirst {
                         systemProperties["microej.testsuite.properties.s3.cc.activated"] = "true"
+                        systemProperties["microej.testsuite.properties.s3.cc.thread.period"] = "15"
                      }
                   }
                }
