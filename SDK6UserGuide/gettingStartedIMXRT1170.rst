@@ -432,7 +432,7 @@ You can also learn how to build bigger and better applications by reading our :r
 
 If you are an embedded engineer you could look at our VEE port examples at `Github <https://github.com/microej?q=vee&type=all&language=&sort=>`_. And to learn how create custom VEE ports you can read our :ref:`VEE Porting Guide <vee-porting-guide>`.
 
-You can also follow the :ref:`Kernel Developer Guide <kernel-developer-guide>` for more information on our multi-applications framework or read about our powerful wearable solution called VEE Wear.
+You can also follow the :ref:`Kernel Developer Guide <kernel-developer-guide>` for more information on our multi-applications framework or read about our powerful wearable solution called :ref:`VEE Wear <vee-wear>`.
 
 Last but not least you can choose to learn about specific topics by following one of our many :ref:`tutorials <tutorials>` ranging from how easily debug application to setting up a Continuous Integration process and a lot of things in between.
 

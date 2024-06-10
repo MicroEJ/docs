@@ -38,7 +38,7 @@ VEE Ports for Evaluation
 ------------------------
 
 These VEE ports are ideal to evaluate MicroEJ's technology. They include the latest versions of MicroEJ software components as much as possible.
-In case you can not get hands on your desired starter kit, please contact us, we may help to find hardware for you.
+In case you cannot get hands on your desired starter kit, please contact us, we may help to find hardware for you.
 
 .. list-table::
    :widths: 50 50
