@@ -286,9 +286,9 @@ Here is the modified application running in simulation:
 Going Further
 -------------
 
-You have now successfully executed a MicroEJ application on an embedded device, so what's next?
+You have now successfully executed a MicroEJ application on an embedded device so what's next?
 
-If you are application developer you can continue to explore MicroEJ's API and functionalities by running and studying our samples at GitHub:
+If you are an application developer you can continue to explore MicroEJ's API and functionalities by running and studying our samples at GitHub:
 
 .. list-table::
    :widths: 33 33 33
@@ -296,20 +296,20 @@ If you are application developer you can continue to explore MicroEJ's API and f
    * - Foundation Libraries
      - Eclasspath
      - IoT
-   * - Description
-     - Description
-     - Description
+   * - This project gathers all the basic examples of the foundation libraries. 
+     - This project gather all the examples of eclasspath. 
+     - This project gathers simple applications using net libraries. 
    * - https://github.com/MicroEJ/Example-Foundation-Libraries
      - https://github.com/MicroEJ/Example-Eclasspath
      - https://github.com/MicroEJ/Example-IOT
 
-You can also learn how to build bigger and better applications by reading our Application Developer Guide.
+You can also learn how to build bigger and better applications by reading our :ref:`Application Developer Guide <application-developer-guide>`.
 
 If you are an embedded engineer you could look at our VEE port examples at `Github <https://github.com/microej?q=vee&type=all&language=&sort=>`_. And to learn how create custom VEE ports you can read our VEE Porting Guide. 
 
-You can also follow the Kernel Developer Guide for more information on our multi-applications framework or read about our powerful wearable solution called VEE Wear.
+You can also follow the :ref:`Kernel Developer Guide <kernel-developer-guide>` for more information on our multi-applications framework or read about our powerful wearable solution called VEE Wear.
 
-Last but not least you can choose to learn about specific topics by following one of our many tutorials ranging from how easily debug application to setting up a Continuous Integration process and a lot of things in between.
+Last but not least you can choose to learn about specific topics by following one of our many :ref:`tutorials <tutorials>` ranging from how easily debug application to setting up a Continuous Integration process and a lot of things in between.
 
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 
