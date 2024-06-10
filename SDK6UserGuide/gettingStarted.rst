@@ -15,7 +15,7 @@ Before you get started, be sure to understand the fundamentals about `MICROEJ VE
 
 What you will do:
 
-- Choose a starter kit
+- Choose a starter kit in the tables below
 - Install MICROEJ SDK
 - Watch the Get Started Tutorial
 - Get Started with MICROEJ VEE
@@ -37,7 +37,7 @@ What you will learn:
 VEE Ports for Evaluation
 ------------------------
 
-These VEE ports are ideal to evaluate MicroEJ's technology. They include the latest software components.
+These VEE ports are ideal to evaluate MicroEJ's technology. They are maintained to include the latest released software components as much as possible. Choose your VEE port by clicking on the links below.
 
 .. list-table::
    :widths: 50 50
@@ -63,7 +63,7 @@ These VEE ports are ideal to evaluate MicroEJ's technology. They include the lat
 VEE Port Examples
 -----------------
 
-These VEE ports are provided as-is. They can include libraries that are not the latest version.
+These VEE ports are provided as-is. They can include libraries that are not the latest version. Choose your VEE port by clicking on the links below.
 
 .. list-table::
    :widths: 50 50

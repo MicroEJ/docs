@@ -15,7 +15,7 @@ Prerequisites
 
 .. note::
   
-   This Getting Started has been tested on Windows 10 & 11 with a WSL distribution Ubuntu 22.04.
+   This Getting Started has been tested on Windows 10 & 11 with a WSL distribution Ubuntu 22.04. Also note that examples used in this Getting Started could depend on older tools and libraries. Most notably the MicroEJ Gradle plugin could be an older version, implying syntax changes.
 
 This Getting Started is separated into two main parts.
 
@@ -444,6 +444,35 @@ with
          :alt: runOnDevice task
          :align: center
          :scale: 70%
+
+Going Further
+-------------
+
+You have now successfully executing a MicroEJ application on an embedded device so what's next?
+
+If you are application developer you can continue to explore MicroEJ's API and functionalities by running and studying our samples at GitHub:
+
+.. list-table::
+   :widths: 50 50
+   :header-rows: 0
+
+   * - Foundation Libraries
+     - Eclasspath
+     - IoT
+   * - Description
+     - Description
+     - Description
+   * - https://github.com/MicroEJ/Example-Foundation-Libraries
+     - https://github.com/MicroEJ/Example-Eclasspath
+     - https://github.com/MicroEJ/Example-IOT
+
+You can also learn how to build bigger and better applications by reading our Application Developer Guide.
+
+If you are an embedded engineer you could look at our VEE port examples at `Github <https://github.com/microej?q=vee&type=all&language=&sort=>`_. And to learn how create custom VEE ports you can read our VEE Porting Guide. 
+
+You can also follow the Kernel Developer Guide for more information on our multi-applications framework or read about our powerful wearable solution called VEE Wear.
+
+Last but not least you can choose to learn about specific topics by following one of our many tutorials ranging from how easily debug application to setting up a Continuous Integration process and a lot of things in between.
 
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 
