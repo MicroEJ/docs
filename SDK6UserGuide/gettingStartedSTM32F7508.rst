@@ -15,7 +15,7 @@ Prerequisites
 
 .. note::
   
-   This Getting Started has been tested on Windows 10. Also note that examples used in this Getting Started could depend on older tools and libraries. Most notably our dependency manager plugin (called Gradle) could be an older version.
+   This Getting Started has been tested on Windows 10. Also note that examples used in this Getting Started could depend on older tools and libraries. Most notably our dependency manager plugin (using `Gradle <https://gradle.org/>`_) could be an older version.
 
 This Getting Started is separated in two main parts.
 
@@ -305,7 +305,7 @@ If you are an application developer you can continue to explore MicroEJ's API an
 
 You can also learn how to build bigger and better applications by reading our :ref:`Application Developer Guide <application-developer-guide>`.
 
-If you are an embedded engineer you could look at our VEE port examples at `Github <https://github.com/microej?q=vee&type=all&language=&sort=>`_. And to learn how create custom VEE ports you can read our :ref:`VEE Porting Guide <vee-porting-guide>`.
+If you are an embedded engineer you could look at our VEE port examples at `GitHub <https://github.com/microej?q=vee&type=all&language=&sort=>`_. And to learn how create custom VEE ports you can read our :ref:`VEE Porting Guide <vee-porting-guide>`.
 
 You can also follow the :ref:`Kernel Developer Guide <kernel-developer-guide>` for more information on our multi-applications framework or read about our powerful wearable solution called :ref:`VEE Wear <vee-wear>`.
 
