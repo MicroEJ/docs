@@ -10,7 +10,6 @@ Tutorials
    tutorialCreateCustomPlatform
    tutorialCreateFirmwareFromScratch
    tutorialCreatePlatformBuildAndRunScripts
-   tutorialSetupBuildUsingJenkinsAndArtifactory
    tutorialImproveCodeQuality
    tutorialOptimizeMemoryFootprint
    tutorialExploreDataSerializationFormats

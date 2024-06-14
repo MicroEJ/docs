@@ -1,10 +1,9 @@
+.. _sdk_5_howto_setup_automated_build_using_jenkins_and_artifactory:
 
-.. _tutorial_setup_automated_build_using_jenkins_and_artifactory:
+How To Setup an Automated Build using Jenkins and Artifactory
+=============================================================
 
-Setup an Automated Build using Jenkins and Artifactory
-======================================================
-
-This tutorial explains how to setup an environment for automating :ref:`MicroEJ Module build <mmm>` and deployment using `Jenkins <https://www.jenkins.io/>`_, `JFrog Artifactory <https://jfrog.com/artifactory/>`_ and a `Git plateform <https://about.gitea.com/>`_ (you can also use Gitlab or Github for example).
+This guide explains how to setup an environment for automating :ref:`MicroEJ Module build <mmm>` and deployment using `Jenkins <https://www.jenkins.io/>`_, `JFrog Artifactory <https://jfrog.com/artifactory/>`_ and a `Git platform <https://about.gitea.com/>`_ (you can also use Gitlab or Github for example).
 
 Such environment setup facilitates continuous integration (CI) and continuous delivery (CD), which improves productivity across your development ecosystem,
 by automatically:
@@ -14,7 +13,7 @@ by automatically:
 * reproducing builds
 * archiving binary modules
 
-The tutorial should take 1 hour to complete.
+This guide should take 1 hour to complete.
 
 
 Intended Audience
@@ -23,10 +22,10 @@ Intended Audience
 The audience for this document is engineers who are in charge of integrating
 :ref:`MicroEJ Module Manager (MMM) <mmm>` to their continuous integration environment.
 
-In addition, this tutorial should be of interest to all developers
+In addition, this document should be of interest to all developers
 wishing to understand how MicroEJ works with headless module builds.
 
-For those who are only interested by command line module build, consider using the :ref:`MMM Command Line Interface <mmm_cli>`.
+For those who are only interested in command line module build, consider using the :ref:`MMM Command Line Interface <mmm_cli>`.
 
 Introduction
 ------------
@@ -47,7 +46,7 @@ The overall build and deployment flow of a module can be summarized as follows:
 Prerequisites
 -------------
 
-*  `MicroEJ SDK 5 <https://docs.microej.com/en/latest/SDKUserGuide/>`_ ``5.8.1`` or higher.
+*  `MICROEJ SDK 5 <https://docs.microej.com/en/latest/SDKUserGuide/>`_ ``5.8.1`` or higher.
 *  `Docker and Docker Compose V2 <https://docs.docker.com/>`_ on Linux, Windows or Mac
 *  Git ``2.x`` installed, with Git executable in path. We recommend installing Git Bash if your operating system is Windows (`<https://gitforwindows.org/>`_).
 
@@ -105,7 +104,7 @@ Get a Module Repository
 A Module Repository is a portable ZIP file that bundles a set of modules for extending the MicroEJ development environment.
 Please consult the :ref:`Module Repository <module_repository>` section for more information.
 
-This tutorial uses the MicroEJ Central Repository, which is the Module Repository used by MicroEJ SDK to fetch dependencies when starting an empty workspace. 
+This tutorial uses the MicroEJ Central Repository, which is the Module Repository used by MICROEJ SDK to fetch dependencies when starting an empty workspace. 
 It bundles Foundation Library APIs and numerous Add-On Libraries.
 
 Next step is to download a local copy of this repository:
@@ -224,7 +223,7 @@ In this example, we will create a very simple module using the Sandbox Applicati
    For demonstration purposes, we'll create a new project and share it on a local Git bare repository.
    You can adapt the following sections to use an existing MicroEJ project and your own Git repository.
 
-#. Start MicroEJ SDK. 
+#. Start MICROEJ SDK. 
 #. Go to :guilabel:`File` > :guilabel:`New` > :guilabel:`Sandboxed Application Project`.
 #. Fill in the template fields, set :guilabel:`Project name` to ``com.example.hello-world``.
        
@@ -248,7 +247,7 @@ In this example, we will create a very simple module using the Sandbox Applicati
         :align: center
 
 .. note::
-   For more details about MicroEJ Applications development, refer to the :ref:`Application Developer Guide <application-developer-guide>`.
+   For more details about Applications development, refer to the :ref:`Application Developer Guide <application-developer-guide>`.
 
 Upload to your Git repository
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -467,7 +467,7 @@ The module repository (``microej-module-repository`` directory) contains a defau
 You can override with custom settings or by extracting an :ref:`offline repository <repository_offline>`.
 
 To go further with headless builds, please consult :ref:`the next chapter <mmm_cli>` for command line builds, 
-and this :ref:`tutorial <tutorial_setup_automated_build_using_jenkins_and_artifactory>` to setup MicroEJ modules build in continuous integration environments.
+and this :ref:`tutorial <sdk_5_howto_setup_automated_build_using_jenkins_and_artifactory>` to setup MicroEJ modules build in continuous integration environments.
 
 .. [#warning_check_sdk_5_2] If using SDK versions lower than ``5.2.0``, please refer to the :ref:`following section <mmm_former_sdk_5_2>`.
 .. [#warning_check_sdk_5_3] If using SDK versions lower than ``5.4.0``, please refer to the :ref:`following section <mmm_former_sdk_5_2_to_5_3>`.
