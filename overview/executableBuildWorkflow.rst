@@ -1,14 +1,14 @@
-.. _tutorialUnderstandMicroEJFirmwareBuild:
+.. _executableBuildWorkflow:
 
-Understand How to Build a Firmware and its Dependencies
-=======================================================
+Introduction to Executable Build Workflow
+==========================================
 
-A Firmware is built from several input resources and tools.
+An Executable is built from several input resources and tools.
 Each component has dependencies and requirements that must be
-carefully respected in order to build a Firmware.
+carefully respected in order to build an Executable.
 
 This document describes the components, their dependencies and the
-process involved in the build of a Firmware.
+process involved in the build of an Executable.
 
 Good knowledge of the :ref:`chapter-glossary` is required.
 
@@ -16,7 +16,7 @@ The Components
 --------------
 
 As depicted in the following image, several resources and tools are
-used to build a Firmware.
+used to build an Executable.
 
 .. image:: images/qa_resources-v3.PNG
     :scale: 70
@@ -48,87 +48,80 @@ The Architecture is either provided from:
   Ask MicroEJ sales or support team if the requested architecture is not listed as available.
 
 
-Platform Sources
+VEE Port Sources
 ~~~~~~~~~~~~~~~~
 
-A Platform includes development tools and a runtime environment:
+A VEE Port is an implementation of :ref:`vee` for a target device, it includes:
 
 * the Architecture and :ref:`pack_overview`,
 * the Abstraction Layers implementations,
-* the Simulator and its associated Mocks,
+* the :ref:`Simulator <simulator_principle>` and its associated :ref:`Mocks <mock>`,
 * a C Board Support Package (BSP) with C drivers and an optional RTOS.
 
-The Platform sources contains the following projects:
+The VEE Port sources contain the following projects:
 
-* ``<platform>-configuration``: The Platform Configuration project.
-* ``<platform>-bsp``: The C code for the board-specific files
+* ``<veeport>-configuration``: The VEE Port Configuration project.
+* ``<veeport>-bsp``: The C code for the board-specific files
   (drivers).
-* ``<platform>-fp``: Front Panel mockup for the simulator.
+* ``<veeport>-fp``: Front Panel mockup for the simulator.
 
-See :ref:`platform_import` to learn how to import an existing Platform, and :ref:`new_platform_creation` 
-to learn how to create a Platform.
+Follow the :ref:`sdk_6_getting_started` to learn how to import an existing VEE Port,
+and :ref:`new_platform_creation` to learn how to create a VEE Port project.
 
-Depending on the project's requirements, the Platform can
+Depending on the project's requirements, the VEE Port can
 be connected in various ways to the BSP; see :ref:`bsp_connection` for
 more information on how to do it.
 
 Application
 ~~~~~~~~~~~
 
-An Application is a Java project that can be configured (in the
-:guilabel:`Run configurations ...` properties):
+An Application is a software program that runs on a MICROEJ VEE, it is
+written in Managed Code (Java, Javascript, managed-C, etc.).
 
-1. to either run on:
+An Application project can:
+
+1. either run on:
 
   * the Simulator (computer desktop),
   * a device (actual embedded hardware).
 
-2. to setup:
+2. be configured to:
 
-  * memory (example: Java heap, Java stack),
-  * Foundation Libraries,
+  * use Foundation and Add-On Libraries (GUI, Networking, Filesystem, etc.),
+  * adapt to the device requirements (e.g. heap size configuration),
   * etc.
 
 To run on a device, the application is compiled and optimized for a
-specific Platform.  It generates a ``microejapp.o`` (native
-object code) linked with the ``<platform>-bsp`` project.
+specific VEE Port.  It generates a ``microejapp.o`` (native
+object code) linked with the ``<veeport>-bsp`` project.
 
-To import an existing Application as a zipped project in the SDK:
+Refer to the :ref:`sdk_6_user_guide` for more information on how to
+create/import and run an Application.
 
-* Go to :guilabel:`File` > :guilabel:`Import…` > :guilabel:`General` >
-  :guilabel:`Existing Projects into Workspace` > :guilabel:`Select
-  archive file` > :guilabel:`Browse…`.
-* Select the zip file of the project.
-* And select :guilabel:`Finish` import.
-
-See :ref:`simulator_execution` for more information on how to
-create, configure, and develop a Standalone Application.
+Refer to :ref:`application-developer-guide` for more information on how to develop and configure an Application.
 
 C Toolchain (GCC, KEIL, IAR, …)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Used to compile and link the following files into the final executable
+The C Toolchain is used to compile and link the following files into the final executable
 (binary, hex, elf, … that will be programmed on the hardware):
 
   * the ``microejapp.o`` (application),
-  * the ``microejruntime.lib`` or ``microejruntime.a`` (Platform runtime),
+  * the ``microejruntime.lib`` or ``microejruntime.a`` (MICROEJ VEE runtime),
   * the BSP C files (C application files and Board Support Package).
 
 Module Repository
 ~~~~~~~~~~~~~~~~~
 
-A Module Repository provides the modules required to build
-Platforms and Applications.
+A Module Repository provides modules required to build
+VEE Ports and Applications.
 
-* The MicroEJ Central Repository is an online repository of software
-  modules (libraries, tools, etc.), see
-  https://repository.microej.com/. This repository can also be used as an offline repository, see https://developer.microej.com/central-repository/.
+By default, MICROEJ SDK is configured to import modules from online repositories hosted by MicroEJ Corp.:
+* :ref:`central_repository`
+* :ref:`developer_repository`
 
-* (Optional) It can be extended with an offline repository (``.zip``)
-  that can be imported in the workspace (see
-  :ref:`repository_offline`):
-
-See :ref:`module_repository` for more information.
+Optionally, an Offline Repository can be used to extend online repositories (``.zip``).
+See :ref:`module_repositories` for more information.
 
 Dependencies Between Components
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -139,45 +132,45 @@ Dependencies Between Components
   * The C toolchain used for the Architecture must be the same
     as the one used to compile and link the BSP project.
 
-* A Platform consists of the aggregation of both an Architecture and a BSP with a C toolchain.
+* A VEE Port consists of the aggregation of both an Architecture and a BSP with a C toolchain.
 
   * Changing either the Architecture or the C toolchain
-    results in a change of the Platform.
+    results in a change of the VEE Port.
 
 * An Application is independent of the Architecture.
 
-  * It can run on any Platform as long the Platform provides the required APIs.
+  * It can run on any VEE Port as long the VEE Port provides the required APIs.
 
   * To run an Application on a new device, create a new
-    Platform for this device with the exact
+    VEE Port for this device with the exact
     same features. The Application will not require any change.
 
 How to Build
 ------------
 
-The process of building a Firmware is two-fold:
+The process of building an Executable is two-fold:
 
-1. Build a Platform,
+1. Build a VEE Port,
 2. Compile/link the application and BSP using the C toolchain.
 
 .. note::
 
-   The Application will also run on the Simulator using the mocks provided by the Platform.
+   The Application will also run on the Simulator using the mocks provided by the VEE Port.
 
-Build a Platform
+Build a VEE Port
 ~~~~~~~~~~~~~~~~
 
-The next schema presents the components and process to build a Platform.
+The next schema presents the components and process to build a VEE Port.
 
 .. image:: images/platform-build_workflow.PNG
     :scale: 80
     :align: center
 
-Build a Firmware
-~~~~~~~~~~~~~~~~
+Build an Executable
+~~~~~~~~~~~~~~~~~~~
 
 The next schema presents the build flow of a Mono-Sandbox
-Firmware (previously known as a MicroEJ Single-app Firmware). The steps
+Executable (previously known as a MicroEJ Single-app Firmware). The steps
 are:
 
 
@@ -186,19 +179,19 @@ are:
 2. Compile the BSP C sources using the C toolchain (generates ``.o`` files).
 
 3. Link the BSP files (``.o``), the Application (``microejapp.o``) and
-   the Platform runtime library (``microejruntime.a``) using the C toolchain to produce the
+   the VEE Port runtime library (``microejruntime.a``) using the C toolchain to produce the
    final executable (ELF or binary, for example ``application.out``).
 
 .. image:: images/build_microej_mono_sandbox_firmware_numbered.PNG
     :scale: 80
     :align: center
 
-See :ref:`bsp_connection` for more information on how to connect a Platform to a BSP.
+See :ref:`bsp_connection` for more information on how to connect a VEE Port to a BSP.
 
 Dependencies Between Processes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Rebuild the Platform:
+* Rebuild the VEE Port:
 
   * When the Architecture (``.xpf``) changes.
 
@@ -210,7 +203,7 @@ Dependencies Between Processes
 
     * The front-panel or mock implementation (``.java``) changes.
 
-* Rebuild of the Platform is not required:
+* Rebuild of the VEE Port is not required:
 
   * When the implementation (``.c``) of a Foundation Library changes.
 
@@ -222,21 +215,21 @@ Dependencies Between Processes
 
   * When its code changes.
 
-  * When the Platform changes.
+  * When the VEE Port changes.
 
 * Rebuild the BSP:
 
   * When its code changes.
 
-  * When the Platform changes.
+  * When the VEE Port changes.
 
-* Rebuild the Firmware:
+* Rebuild the Executable:
 
   * When the Application (``microejapp.o``) changes.
 
   * When the BSP (``*.o``) changes.
 
-  * When the Platform (``microejruntime.a``) changes.
+  * When the VEE Port (``microejruntime.a``) changes.
 
 
 ..
