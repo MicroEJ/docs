@@ -21,7 +21,6 @@ Tutorials
    tutorialDiscoverEmbeddedDebuggingTechniques
    getStartedWithGUI/index
    tutorialValidateGUIs
-   tutorialAppendEmojisToVectorFont
 
 ..
    | Copyright 2021-2024, MicroEJ Corp. Content in this space is free 
