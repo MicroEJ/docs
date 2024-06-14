@@ -1,7 +1,7 @@
-.. _tutorials_software_robot:
+.. _guiSoftwareRobot:
 
-How to Test a GUI Application with a (Software) Robot
-=====================================================
+GUI Software Robot
+==================
 
 This document presents how to test a GUI application with a software robot for robotic process automation (RPA).
 
@@ -16,15 +16,15 @@ The robot implementation proposed here targets the following errors detection:
 
 The following document covers:
 
-* Recording human touch events on the simulator or on the embedded platform
-* Running recorded events on the simulator or on the embedded platform
+* Recording human touch events on the simulator or on the device
+* Running recorded events on the simulator or on the device
 
 The following document does not cover:
 
 * The display rendering validation (this can be done using the `Test Automation <https://github.com/MicroEJ/Tool-UITestAutomation>`_ Tool)
 * Integration of the robot into an automatic JUnit test suite
 
-We will now present the basic architecture and code required to create and to run a robot within a MicroEJ application on the simulator and embedded platform.
+We will now present the basic architecture and code required to create and to run a robot within a MicroEJ application on the simulator and on device.
 
 In the following sections, we assume the MicroEJ VEE Port has a display interface and a touch controller.
  

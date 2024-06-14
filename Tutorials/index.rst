@@ -21,7 +21,6 @@ Tutorials
    tutorialDiscoverEmbeddedDebuggingTechniques
    getStartedWithGUI/index
    tutorialValidateGUIs
-   tutorialSoftwareRobot
    tutorialTextOverflow
    tutorialAppendEmojisToVectorFont
 
