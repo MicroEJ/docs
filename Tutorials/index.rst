@@ -15,7 +15,6 @@ Tutorials
    tutorialImproveCodeQuality
    tutorialOptimizeMemoryFootprint
    tutorialExploreDataSerializationFormats
-   tutorialInstrumentJavaCodeForLogging
    tutorialRunATestSuiteOnDevice
    tutorialImplementABlockingNativeMethodWithSNI
    tutorialDiscoverEmbeddedDebuggingTechniques
