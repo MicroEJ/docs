@@ -1,53 +1,36 @@
-.. _tutorial_run_test_suite_on_device:
+.. _run_fs_test_suite_on_esp32_wrover:
 
-Run a Test Suite on a Device
-============================
+Run FS Test Suite on ESP32-WROVER VEE Port
+==========================================
 
-This tutorial describes all the steps to configure and run a
-:ref:`vee_port_testsuite` on a device using the `Platform
+This guide describes all the steps to configure and run a
+:ref:`vee_port_testsuite` on a device using the `Port
 Qualification Tools
 <https://github.com/MicroEJ/VEEPortQualificationTools>`_.
 
-In this tutorial, the target device is the Espressif ESP32-WROVER-KIT
+The target device is the Espressif ESP32-WROVER-KIT
 V4.1 board and the Filesystem Test Suite for :ref:`FS <pack_fs>`
 module will be used as an example.
 
-The tutorial should take 1 hour to complete (excluding the Platform
+This guide should take 1 hour to complete (excluding the VEE Port
 Getting Started setup).
-
-Intended Audience and Scope
----------------------------
-
-The audience for this document is software engineers who want to
-validate an Abstraction Layer implementation or understand how to automatically
-run a MicroEJ Test Suite on their device.
-
-The following topics are out of the scope of this tutorial:
-
-- How to write test cases and package a Test Suite module. See
-  :ref:`application_testsuite` for this topic.
-- How to create a new Foundation Library. See the `Foundation Library
-  Getting Started
-  <https://github.com/MicroEJ/How-To/tree/1.8.3/FoundationLibrary-Get-Started>`_
-  to learn more about creating custom Foundation Library.
 
 Prerequisites
 -------------
 
-This tutorial assumes the following:
+This guide assumes the following:
 
 - Good knowledge of the :ref:`chapter-glossary`.
 
 - Tutorial :ref:`tutorialUnderstandMicroEJFirmwareBuild` has been followed.
 
-- MicroEJ SDK distribution 20.07 or more (see :ref:`get_sdk_version`).
+- MICROEJ SDK distribution 20.07 or more (see :ref:`get_sdk_version`).
 
-- The `WROVER Platform
+- The `WROVER VEE Port
   <https://github.com/MicroEJ/Platform-Espressif-ESP-WROVER-KIT-V4.1/tree/1.6.2>`__
   has been properly setup (i.e., it can be used to generate a Mono-Sandbox Executable).
 
-The explanation can be adapted to run the test suite on any other
-MicroEJ Platform providing:
+The explanation can be adapted to run the test suite on any other VEE Port providing:
 
 - An implementation of :ref:`LLFS-API-SECTION` version 1.0.2 in
   `com.microej.pack#fs-4.0.3`_.
@@ -55,7 +38,7 @@ MicroEJ Platform providing:
 
 .. note::
 
-   This tutorial can also be adapted to run other test suites in addition to the
+   This documentation can also be adapted to run other test suites in addition to the
    Filesystem Test Suite presented here.
 
 .. _com.microej.pack#fs-4.0.3: https://repository.microej.com/modules/com/microej/pack/fs/4.0.3/
@@ -63,7 +46,7 @@ MicroEJ Platform providing:
 Introduction
 ------------
 
-This tutorial presents a local setup of the :ref:`vee_port_testsuite`
+This guide presents a local setup of the :ref:`vee_port_testsuite`
 for the :ref:`FS <pack_fs>` Foundation Library on a concrete
 device (not on Simulator).
 
@@ -73,7 +56,7 @@ In essence, a Foundation Library provides an API to be used by an Application or
    :alt: MicroEJ Foundation Libraries and Add-On Libraries
    :align: center
 
-   MicroEJ Foundation Libraries, Add-On Libraries and MicroEJ Application
+   MicroEJ Foundation Libraries, Add-On Libraries and Application
 
 For example, the Java file system API `java.io.File`_ is provided by
 the MicroEJ Foundation Library named `FS`_. The Abstraction Layer of
@@ -88,15 +71,15 @@ Import the Test Suite
 ---------------------
 
 Follow these steps to import the Filesystem Test Suite into the
-workspace from the `Platform Qualification Tools
+workspace from the `Port Qualification Tools
 <https://github.com/MicroEJ/VEEPortQualificationTools/blob/2.3.0/tests/fs>`__:
 
-- Clone or download the `Platform Qualitification Tools project 2.3.0
+- Clone or download the `Port Qualitification Tools project 2.3.0
   <https://github.com/MicroEJ/VEEPortQualificationTools/releases/tag/2.3.0>`__.
 - Select :guilabel:`File` > :guilabel:`Import...`.
 - Select :guilabel:`Existing Projects into Workspace`.
 - Set :guilabel:`Select the root directory` to the directory
-  ``tests/fs`` in the Platform Qualification Tools fetched in the
+  ``tests/fs`` in the Port Qualification Tools fetched in the
   previous step.
 - Ensure :guilabel:`Copy projects into workspace` is checked.
 - Click on :guilabel:`Finish`.
@@ -115,8 +98,8 @@ should be used to validate the Abstraction Layer implementation.
 Please refer to :ref:`test_suite_versioning` to determine the correct
 Test Suite version to use.
 
-On the WROVER Platform, the FS Test Suite version to use is specified
-in ``{PLATFORM}-configuration/testsuites/fs/README.md``.  The Test
+On the WROVER VEE Port, the FS Test Suite version to use is specified
+in ``{VEE Port}-configuration/testsuites/fs/README.md``.  The Test
 Suite version must be set in the ``module.ivy`` of the
 ``java-testsuite-fs`` project (e.g. ``java-testsuite-fs/module.ivy``).
 For example:
@@ -125,13 +108,13 @@ For example:
 
    <dependency org="com.microej.pack.fs" name="fs-testsuite" rev="3.0.3"/>
 
-Configure the Platform BSP Connection
+Configure the VEE Port BSP Connection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Several properties must be defined depending on the type of BSP
-Connection used by the MicroEJ Platform.
+Connection used by the VEE Port.
 
-For a MicroEJ Application, these properties are set using the launcher
+For a Application, these properties are set using the launcher
 of the application.  For a Test Suite, the properties are defined in a
 file named ``config.properties`` in the root folder of the Test Suite.
 For example, see this example of `config.properties
@@ -151,11 +134,11 @@ trace to determine the result of the execution.  To do that, we will
 use the :ref:`tool_serial_to_socket` tool to redirect the execution
 traces dumped to a COM port.
 
-The WROVER platform used in this tutorial is particular because
+The WROVER VEE Port used in this documentation is particular because
 the UART port is already used to flash the device. Thus, a separate
 UART port must be used for the trace output.
 
-This platform defines the option
+This VEE Port defines the option
 ``microej.testsuite.properties.debug.traces.uart`` to redirect traces
 from standard input to UART.
 
@@ -163,7 +146,7 @@ from standard input to UART.
    :alt: Plug alternative UART on WROVER GND/D0
    :align: center
 
-See the `Testsuite Configuration section of the WROVER Platform documentation
+See the `Testsuite Configuration section of the WROVER VEE Port documentation
 <https://github.com/MicroEJ/Platform-Espressif-ESP-WROVER-KIT-V4.1/tree/1.6.2>`__
 for more details.
 
@@ -187,7 +170,7 @@ Transmitter:
 
   - Set :guilabel:`Name` to ``Serial To Socket Transmitter``.
 
-  - Select a MicroEJ Platform available in the workspace in
+  - Select a VEE Port available in the workspace in
     :guilabel:`Target` > :guilabel:`Platform`.
 
   - Select ``Serial To Socket Transmitter`` in :guilabel:`Execution` >
@@ -214,19 +197,19 @@ various properties may be required and adjusted.  See the file
 https://github.com/MicroEJ/VEEPortQualificationTools/blob/2.3.0/tests/fs/java/java-testsuite-fs/validation/microej-testsuite-common.properties)
 and the README of the Test Suite for a description of each property.
 
-On the WROVER Platform, the configuration files ``config.properties``
+On the WROVER VEE Port, the configuration files ``config.properties``
 and ``microej-testsuite-common.properties`` are provided in
-``{PLATFORM}-configuration/testsuites/fs/``.
+``{VEE Port}-configuration/testsuites/fs/``.
 
 In ``config.properties``, the property ``target.platform.dir`` must be
-set to the absolute path to the platform.  For example
+set to the absolute path to the VEE Port.  For example
 ``C:/P0065_ESP32-WROVER-Platform/ESP32-WROVER-Xtensa-FreeRTOS-platform/source``.
 
 
 Run the Test Suite
 ----------------------
 
-To run the Test Suite, right click on the Test Suite module and select
+To run the Test Suite, right-click on the Test Suite module and select
 ``Build Module``.
 
 Configure the Tests to Run
@@ -256,7 +239,7 @@ Several reasons might explain why to exclude some tests:
 
 - **Known bugs in the Foundation Library**. The latest version of the Test
   Suite for a given Foundation Library might contain regression
-  tests or tests for new features.  If the MicroEJ Platform doesn't
+  tests or tests for new features.  If the VEE Port doesn't
   use the latest Foundation Library, then it can be necessary to exclude
   the new tests.
 
