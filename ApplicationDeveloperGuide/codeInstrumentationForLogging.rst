@@ -1,18 +1,9 @@
-.. _tutorial_instrument_java_code_for_logging:
+.. _codeInstrumentationForLogging:
 
-Instrument Java Code for Logging
+Code Instrumentation for Logging
 ================================
 
 This document explains how to add logging and tracing to MicroEJ applications and libraries with three different solutions. The aim is to help developers to report precise execution context for further debugging and monitoring.
-
-
-Intended Audience
------------------
-
-The audience for this document is application developers who are looking for ways to add logging to their MicroEJ applications and libraries.
-
-It should also be of interest to Firmware engineers how are looking for adjusting the log level while keeping low memory footprint and good performances.
-
 
 Introduction
 ------------
@@ -29,13 +20,13 @@ However, this is not desirable when writing production-grade code, where it shou
 Overview
 --------
 
-In this tutorial, we will describe 3 ways for logging data: 
+This documentation describes 3 ways for logging data: 
    
 - Using `Trace`_ library: a real-time event recording library designed for performance and interaction analysis.
 - Using `Message`_ library: a lightweight and simple logging library.
 - Using `Logging`_ library: a complete and highly configurable standard logging library. 
 
-Through this tutorial, we will illustrate the usage of each library by instrumenting the following code snippet:
+The usage of each library will be illustrated by instrumenting the following code snippet:
 
 .. code-block:: java
 
@@ -75,11 +66,21 @@ Its features and principles are described in the :ref:`event-tracing` section.
 
 Here is a short example of how to use this library to log the entry/exit of the ``switchState()`` method:
 
-#. Add the following dependency to the ``module.ivy``: 
+#. To use this library, add the following line to the project build file:
 
-   .. code-block:: xml
+   .. tabs::
 
-      <dependency org="ej.api" name="trace" rev="1.1.0"/>
+      .. tab:: Gradle (build.gradle.kts)
+
+         .. code-block:: kotlin
+
+            implementation("ej.api:trace:1.1.1")
+
+      .. tab:: MMM (module.ivy)
+
+         .. code-block:: xml
+
+            <dependency org="ej.api" name="trace" rev="1.1.1"/>
 
 #. Start by initializing a `Tracer`_ object:
 
@@ -119,11 +120,7 @@ Here is a short example of how to use this library to log the entry/exit of the 
    
    The `Tracer`_ object records the entry/exit of method ``switchState`` with event ID ``0``.
    
-#. Finally, to enable the MicroEJ Core Engine trace system, set the ``core.trace.enabled`` :ref:`option <application_options>` to ``true``. 
-   This can be done from a :ref:`launch configuration <define_option_in_launcher>`: check :guilabel:`Runtime` > :guilabel:`Enable execution traces` option.
-
-   .. image:: images/tuto_microej_trace_property.png
-      :align: center
+#. Finally, to enable the MicroEJ Core Engine trace system, set the ``core.trace.enabled`` :ref:`option <application_options>` to ``true``.
 
 This produces the following output:
 
@@ -134,7 +131,7 @@ This produces the following output:
 
 .. note::
 
-   The default Platform implementation of the `Trace`_ library prints the events to the console.
+   The default VEE Port implementation of the `Trace`_ library prints the events to the console.
    See :ref:`trace_implementations` for other available implementations such as :ref:`systemview` tool.
 
 .. _Tracer: https://repository.microej.com/javadoc/microej_5.x/apis/ej/trace/Tracer.html
@@ -166,11 +163,22 @@ Principles:
 
 Here is a short example of how to use this library to log the entry/exit of the ``switchState()`` method:
 
-#. To use this library, add this dependency line in the ``module.ivy``:
+#. To use this library, add the following line to the project build file:
 
-   .. code-block:: xml 
-   
-      <dependency org="ej.library.runtime" name="message" rev="2.1.0"/>
+   .. tabs::
+
+      .. tab:: Gradle (build.gradle.kts)
+
+         .. code-block:: kotlin
+
+            implementation("ej.library.runtime:message:2.2.1")
+
+      .. tab:: MMM (module.ivy)
+
+         .. code-block:: xml
+
+            <dependency org="ej.library.runtime" name="message" rev="2.2.1"/>
+
 
 #. Call the message API to log some info:
    
@@ -228,11 +236,21 @@ The ``ej.library.eclasspath.logging`` `Logging`_ library implements a subset of 
 
 Here is a short example of how to use this library to log the entry/exit of the ``switchState()`` method:
 
-#. Add the following dependency to the ``module.ivy``: 
+#. To use this library, add the following line to the project build file:
 
-   .. code-block:: xml
+   .. tabs::
 
-      <dependency org="ej.library.eclasspath" name="logging" rev="1.1.0"/>
+      .. tab:: Gradle (build.gradle.kts)
+
+         .. code-block:: kotlin
+
+            implementation("ej.library.eclasspath:logging:1.2.1")
+
+      .. tab:: MMM (module.ivy)
+
+         .. code-block:: xml
+
+            <dependency org="ej.library.eclasspath" name="logging" rev="1.2.1"/>
 
 #. Call the logging API to log some info text:
 
@@ -291,10 +309,6 @@ When this boolean constant is detected to be ``false``, the wrapped code becomes
 
 
 #. Let's consider a constant ``com.mycompany.logging`` declared as ``false`` in a resource file named ``example.constants.list``.
-
-    .. image:: images/tuto_microej_trace_constant.png
-        :align: center
-
 
 #. Wrap the log code by an ``if`` statement, as follows:
    
