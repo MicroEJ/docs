@@ -6,7 +6,7 @@ Define a Security Policy
 A security policy allows the Kernel to prevent an Application from accessing resources or calling specific APIs. 
 Whereas APIs :ref:`exposed by the Kernel <kernel.api>` allows to control at build-time, the security policy here controls the APIs called at runtime.
 
-The way of declaring a security policy is to implement the standard `SecurityManager`_ class.
+Defining a security policy is done by implementing the standard `SecurityManager`_ class.
 Basically, all sensitive APIs exposed by the Kernel have already been protected by a :ref:`Permission Check <securitymanager_permission_check>`.
 Each time an Application calls such API, the Security Manager `SecurityManager.checkPermission(Permission)`_ implementation verifies that the requested permission has been granted to the Application.
 
