@@ -41,8 +41,8 @@ The next section will guide you to implement the desired security policy.
 Implement a Security Manager
 ----------------------------
 
-The implementation of the `SecurityManager.checkPermission(Permission)`_ method first requires to retrieve the API caller 
-and then check the permission if it is not the Kernel.
+The implementation of the `SecurityManager.checkPermission(Permission)`_ method first retrieves the owner of the requested Permission,
+then checks if it is a Feature (not the Kernel), and finally, checks the permission according to the given Feature.
 
 The following code snippet shows the typical implementation:
 
