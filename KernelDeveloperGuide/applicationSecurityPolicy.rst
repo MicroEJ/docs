@@ -89,7 +89,7 @@ Principle
 Basically, Applications embed a policy resource file that describes the permissions they need at runtime.
 This file is then loaded when the Application is installed.
 Finally, this Security Manager checks if the permission has been granted to the calling Application.
-If a permission check is reached but has not been declared, it throws a `SecurityException`_.
+If a permission check is triggered but has not been declared, the Security Manager throws a `SecurityException`_.
 
 Here is a sequence diagram to describe the entire flow from Feature installation to uninstallation:
 
