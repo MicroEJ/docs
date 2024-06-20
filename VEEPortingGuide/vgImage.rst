@@ -36,7 +36,7 @@ Image Generator
 The offline tool is an extension of the MicroUI :ref:`section_image_generator`.
 This tool is automatically installed during the VEE Port build.
 
-The tool converts :
+The tool converts:
 
 * The Android Vector Drawable (AVD): this kind of image can hold linear gradients, animations on colors, opacity, path transformations, etc. 
 * The Scalable Vector Graphics (SVG): this kind of image is partially supported: linear gradients but no animations. It is advised to convert the SVG files into AVD files before using the Image Converter tool.
@@ -58,6 +58,8 @@ This is an example of a ``vectorimage.list`` file:
    /path/to/avd_image_2.xml:VG16
    # Convert an SVG in signed 8-bit format
    /svg_image.svg:VG8
+
+Refer to the chapter :ref:`section_microvg_installation` for more information about the image generator configuration.
 
 MicroVG Library
 ---------------
