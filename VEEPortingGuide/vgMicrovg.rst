@@ -48,6 +48,18 @@ The VG Pack will be automatically available after a VEE Port rebuild.
 
 .. _MicroVG library: https://repository.microej.com/modules/com/microej/pack/vg/vg-pack/
 
+The properties file ``microvg/microvg.properties`` is required to configure the VG Pack.
+More specifically, it allows to configure the :ref:`section_vg_image_generator` and the front panel to fit a specific GPU.
+This properties file must contain a property named ``implementation``.
+Two values are currently available: ``vglite`` and ``nema``.
+Example:
+
+.. code-block:: XML
+
+   implementation=nema
+
+
+
 Use
 ===
 
