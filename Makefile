@@ -7,7 +7,7 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 ifndef PYTHON
-	PYTHON    := python
+	PYTHON    := python3
 endif
 SPHINXBUILD   = $(PYTHON) -m sphinx
 PAPER         =

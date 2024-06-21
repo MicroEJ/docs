@@ -1734,3 +1734,31 @@ padding-bottom: 7px;
   color: #4b5357;
   font-family: 'Source Sans Pro';
 }
+
+.training_items {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.training_items > div {
+  width: 350px;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+  transition: box-shadow 0.3s ease;
+}
+
+.training_items > div:hover {
+  box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.2);
+}
+
+/* @media (max-width: 1300px) {
+  .training_items {
+    flex-direction: column;
+  }
+} */
+
+.training_link {
+  display: block;
+}
