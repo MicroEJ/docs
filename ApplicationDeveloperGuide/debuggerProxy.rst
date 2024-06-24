@@ -221,6 +221,13 @@ Open a shell terminal on your workstation and run the following command:
 
 Open the SDK and run a :ref:`Remote Java Application Launch <debug_on_device>` to debug your code.
 
+
+Refresh the state of the memory dump
+------------------------------------
+
+While the VEE Debugger Proxy is running, you can continue to run the application and perform a new memory dump at a later time. With this new memory dump there's no need to stop and restart the VEE Debugger Proxy to use it, just stop the :ref:`Remote Java Application Launch <debug_on_device>`
+and restart it.
+
 .. note:: 
 
     If you have multiple ``*.hex`` files generated in the previous step, you can if you want merge them into a single ``*.hex`` file.
@@ -253,6 +260,7 @@ Open the SDK and run a :ref:`Remote Java Application Launch <debug_on_device>` t
         cat *.hex > $ALL_HEX
 
     Now, use this single ``all.hex`` file as value to the Debugger Proxy option ``-Ddebugger.out.hex.path``
+
 
 VEE Debugger Proxy Options Summary
 ==================================
