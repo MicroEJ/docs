@@ -83,8 +83,13 @@ latex_engine = 'lualatex'
 # setting for pygments. This is the same style class used by the HTML builder.
 pygments_style = 'microej.MicroEJStyle'
 
-# Have linkcheck ignore all links except those containing "microej.com" (main website, docs, developer, repository, forge...) or starting with a "#" (inner references)
-linkcheck_ignore = [r'^(?!#|.*microej\.com)']
+# Have linkcheck ignore all links except those : 
+# - starting with a "#" (inner references)
+# - containing "microej.com" (main website, docs, developer, repository, forge...)
+# - containing "github.com/MicroEJ"
+# - containing "nxp.com"
+# - containing "facer.io"
+linkcheck_ignore = [r'^(?!#|.*microej\.com|.*nxp\.com|.*facer\.io|.*github\.com\/MicroEJ)']
 
 # Keep these legacy linkcheck_ignore patterns for occasional monitoring of external links 
 # Ignore some links:
