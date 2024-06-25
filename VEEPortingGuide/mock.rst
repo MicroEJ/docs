@@ -356,6 +356,92 @@ The Module serves two purposes, depending on whether it is added to a Mock or a 
 - In a Mock project, JavaFX is added as a compile-time dependency, its content is not included in the Mock.
 - If your VEE Port contains at least one Mock, JavaFX must be added to the VEE Port project in order to embed its content in the VEE Port.  
 
+Mock Framework
+==============
+
+The Mock Framework is a framework, based on JavaFX, that aim to ease the development of mock UIs.
+
+The Mock Framework provides a set of widgets. It allows to automatically generate the natives implementation and to link them with the widgets.
+
+Usage
+-----
+
+Create a Mock property
+~~~~~~~~~~~~~~~~~~~~~~
+
+A Mock properties is wrapper around a value. It can be bound to a Mock widget. 
+
+SNI natives implementations can be automatically generated from the Mock properties with the ``@Property`` annotation:
+
+.. code-block:: java
+
+   @Property(getter = "com.microej.example.Natives.setBoolean", setter = "com.microej.example.Natives.getBoolean")
+   public class MyBooleanProperty extends BooleanProperty {
+
+   }
+
+Create a Mock dashboard
+~~~~~~~~~~~~~~~~~~~~~~~
+
+A Mock dashboard represents the window that is opened when the mock is launched. It holds the Mock widgets.
+
+Mock widgets can be bound to Mock properties by passing the Mock property class as an argument of the Mock widget.
+
+.. code-block:: java
+
+   @DashBoard(title = "My Mock DashBoard")
+   public class MockDashBoard extends AbstractDashboard {
+
+	public MockDashBoard() {
+		addWidget(new CheckBox("My boolean property", MyBooleanProperty.class));
+	}
+}
+
+Examples
+--------
+
+Examples using the Mock Framework can be found (here TODO put the github examples link)
+
+Dependencies
+------------
+
+.. tabs::
+
+   .. tab:: SDK 5
+
+      - Add the Mock Framework dependency to your Mock module:
+
+         .. code-block:: xml
+
+            <dependency org="com.microej.library.mock" name="mock-framework" rev="1.0.1" />
+
+      - Add the JavaFX dependency to your Mock module which is required to compile the mock:
+
+         .. code-block:: xml
+
+            <dependency org="com.microej.tool" name="javafx" rev="1.2.0" />
+
+   .. tab:: SDK6
+
+      - Add the Mock Framework dependency to your Mock module:
+
+         .. code-block:: kotlin
+
+            implementation("com.microej.library.mock:mock-framework:1.0.1")
+
+      - Add the JavaFX dependency to your Mock module which is required to compile the mock:
+
+         .. code-block:: kotlin
+
+            compileOnly(group="com.microej.tool", name="javafx", version="1.2.0", configuration="provided")
+
+      - Add the Mock Framework and JavaFX annotation processors dependencies to your Mock module:
+
+         .. code-block:: kotlin
+
+            annotationProcessor("com.microej.library.mock:mock-framework:1.0.1")
+            annotationProcessor(group="com.microej.tool", name="javafx", version="1.2.0", configuration="provided")
+
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
