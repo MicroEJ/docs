@@ -59,6 +59,7 @@ In addition to generic C modules, the specific implementation of the VG Pack ove
 * the UI Pack (see upper),
 * the UI Pack C module: see :ref:`UI Pack <section_display_llapi>`,
 * and by consequence, the specific C module MicroUI over VGLite: see :ref:`section_ui_c_module_microui_vglite`.
+XXX add a reference to Nema and to :ref:`section_ui_c-module-microui-nemagfx`
 
 The following table describes the compatibility ranges between the VG Packs and the C modules (generic and specific):
 
@@ -84,6 +85,7 @@ The following table describes the compatibility ranges between the VG Packs and 
 | [1.0.0-1.1.0[ | n/a     | n/a      | n/a      | n/a            | n/a            | n/a          |
 +---------------+---------+----------+----------+----------------+----------------+--------------+
 
+XXX Reformulate this.
 .. note:: The C module ``MicroVG over VGLite`` fetches automatically by transitivity the other C modules. No need to fetch explicitly the different modules (except the C module ``Harfbuzz``). An update of this C module also updates (if necessary) the other C modules.
 
 ..

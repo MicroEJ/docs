@@ -4,6 +4,8 @@
 C Modules
 =========
 
+XXX Multiple references to VGLite. Add information about Nema and rework the picture.
+
 Principle
 =========
 

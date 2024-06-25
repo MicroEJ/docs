@@ -5,6 +5,11 @@
 Migration Guide
 ===============
 
+From 1.5.x to 1.6.0
+===================
+
+XXX Specify the implementation name :ref:`section_microvg_installation`
+
 From 1.4.x to 1.5.1
 ===================
 

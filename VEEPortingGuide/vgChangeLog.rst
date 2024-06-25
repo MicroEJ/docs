@@ -16,7 +16,7 @@ MicroVG Implementation
 
 **Changed**
 
-* Increase the UI Pack dependency to version 14.1.0.
+* Compatible with UI Pack 14.1.0.
 
 Front Panel
 """""""""""
@@ -24,11 +24,6 @@ Front Panel
 **Added**
 
 * Support ``nema`` image format and limitations (blend modes ``SCREEN`` and ``MULTIPLY`` are not supported).
-
-**Fixed**
-
-* Fix the drawing of a BufferedVectorImage in a BufferedVectorImage with a clip.
-* Fix the drawing of a glyph with path overlap.
 
 LLAPIs
 """"""

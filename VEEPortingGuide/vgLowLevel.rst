@@ -43,6 +43,7 @@ Simulator
 
 The Simulator's five VG engines are grouped in a :ref:`Front Panel extension <section_ui_simulation>`. 
 
+XXX review this note, the implementation is now compatible with several GPUs.
 .. note:: The current implementation is built-in in the VG Pack and is only compatible with the i.MX RT595 MCU (see :ref:`VG Pack note<pack_vg>`).
 
 ..
