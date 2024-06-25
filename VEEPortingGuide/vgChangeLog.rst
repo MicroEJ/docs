@@ -4,6 +4,34 @@
 Changelog
 =========
 
+[1.6.0] - RC
+====================
+
+MicroVG Implementation
+""""""""""""""""""""""
+
+**Added**
+
+* Allow the ``nema`` value for the MicroVG implementation.
+
+**Changed**
+
+* Compatible with UI Pack 14.1.0.
+
+Front Panel
+"""""""""""
+
+**Added**
+
+* Support ``nema`` image format and limitations (blend modes ``SCREEN`` and ``MULTIPLY`` are not supported).
+
+LLAPIs
+""""""
+
+**Changed**
+
+* Change the semantic of the LLAPI `LLVG_GRADIENT_IMPL_initializeGradient()`: the positions array cannot be null.
+
 [1.5.1] - 2024-04-11
 ====================
 

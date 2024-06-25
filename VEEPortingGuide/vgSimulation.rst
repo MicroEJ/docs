@@ -14,7 +14,7 @@ The implementation simulates the same characteristics and limitations as the emb
 Installation
 ============
 
-No action is required in the VEE Port's Front Panel project: the MicroVG simulation part is automatically used when an application uses MicroVG APIs on the simulator.
+Refer to the chapter :ref:`section_microvg_installation` for more information about the front panel configuration.
 
 Use
 ===
