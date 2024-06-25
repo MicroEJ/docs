@@ -1,4 +1,4 @@
-.. _tutorial_veeport_and_application_develoment:
+.. _training_veeport_and_application_development:
 
 ====================================
 VEE Port and Application Development
@@ -28,11 +28,13 @@ This training is for developers wishing to familiarize themselves with the Micro
 Prerequisites
 =============
 
-- Read :ref:`overview` section.
+- Good knowledge of the :ref:`overview` section.
+- Good knowledge of the :ref:`chapter-glossary`.
+- STM32F7508-DK Board and a mini-USB cable.
 - A computer that can run MICROEJ SDK (see :ref:`system-requirements`).
 
-Resources
-=========
+Training Resources
+==================
 
 This training is provided in PDF format with resources provided in a ``.zip`` package:
 

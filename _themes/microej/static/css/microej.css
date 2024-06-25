@@ -1747,10 +1747,12 @@ padding-bottom: 7px;
   border-radius: 10px;
   background-color: white;
   transition: box-shadow 0.3s ease;
+  transition: 0.3s;
 }
 
 .training_items > div:hover {
   box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.2);
+  transform: translateY(-10px);
 }
 
 /* @media (max-width: 1300px) {
@@ -1761,4 +1763,18 @@ padding-bottom: 7px;
 
 .training_link {
   display: block;
+}
+
+.training_image_container {
+  display: flex;
+  align-items: center;
+  height: 200px;
+}
+
+.training_image_container > img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: contain;
+  height: 200px !important; /* Fit training_image_container height */
 }
