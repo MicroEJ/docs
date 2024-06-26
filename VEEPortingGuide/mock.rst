@@ -359,63 +359,196 @@ The Module serves two purposes, depending on whether it is added to a Mock or a 
 Mock Framework
 ==============
 
-The Mock Framework is a framework, based on JavaFX, that aim to ease the development of mock UIs.
+The Mock Framework is a framework, based on JavaFX, that aims to ease the development of mock UIs.
 
-The Mock Framework provides a set of widgets. It allows to automatically generate the natives implementation and to link them with the widgets.
+The Mock Framework provides a set of widgets. It allows to automatically generate the native method implementation
+of an application and link it with the widgets of the mock UI.
+
+.. figure:: images/mock-framework-RT595_VirtualDevice_WearableDemo.png
+   :alt: Mock Framework used to mock Heart Rate sensor on Wearable Demo
+   :align: center
+   :scale: 75 %
+
+   Mock Framework used to mock Heart Rate sensor on Wearable Demo.
 
 Usage
 -----
 
-Create a Mock property
-~~~~~~~~~~~~~~~~~~~~~~
+The following steps should be followed to create a mock using Mock Framework:
 
-A Mock properties is wrapper around a value. It can be bound to a Mock widget. 
+- Create a Mock Framework Property to bind the native method to mock to the mock UI,
+- Create a Dashboard, 
+- Add widgets.
 
-SNI natives implementations can be automatically generated from the Mock properties with the ``@Property`` annotation:
+Mock Framework Property
+~~~~~~~~~~~~~~~~~~~~~~~
+
+The Mock Framework uses a property system to bind widgets to the native methods.
+A property holds a value and can trigger listeners when updated.
+
+A property must extend ``MockProperty`` and be annotated with ``@Property``:
 
 .. code-block:: java
 
-   @Property(getter = "com.microej.example.Natives.setBoolean", setter = "com.microej.example.Natives.getBoolean")
-   public class MyBooleanProperty extends BooleanProperty {
+    @Property
+    public class MyProperty extends MockProperty {
+        ...
+    }
 
-   }
+The annotation is used by the framework to find any property declared in the mock project. 
+The property can then be retrieved from its class:
 
-Create a Mock dashboard
-~~~~~~~~~~~~~~~~~~~~~~~
+.. code-block:: java
 
-A Mock dashboard represents the window that is opened when the mock is launched. It holds the Mock widgets.
+    MyProperty property = MockupApplication.getProperty(MyProperty.class);
 
-Mock widgets can be bound to Mock properties by passing the Mock property class as an argument of the Mock widget.
+
+There are ready to use implementations of ``MockProperty``:
+
+- ``BooleanProperty``
+- ``IntegerProperty``
+- ``LongProperty``
+- ``FloatProperty``
+- ``DoubleProperty``
+- ``NumberProperty``
+- ``StringProperty``
+- ``FileProperty``
+
+Getter and Setter Attributes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Let's consider the following application code that defines getter and setter native methods:
+
+.. code-block:: java
+
+   package com.microej.example;
+
+   public class RandomService {
+
+      private RandomService() {
+      }
+
+      /**
+      * Gets the service state.
+      *
+      * @return true if the service is enabled, false otherwise.
+      */
+      public static native boolean getEnable();
+
+      /**
+      * Sets the service state.
+      *
+      * @param enable
+      *            enables or disables the service.
+      */
+      public static native void setEnable(boolean enable);
+
+      ...
+
+The native method implementation code can be generated using the following attributes in the Property annotation:
+
+- ``getter="<method name>"`` for the native method that retrieves a value from the mock.
+- ``setter="<method name>"`` for the native method that sets a value in the mock.
+
+.. code-block:: java
+
+    @Property(getter = "com.microej.example.RandomService.getEnable")
+    public class MyProperty extends BooleanProperty {
+        ...
+    }
+
+or
+
+.. code-block:: java
+
+    @Property(getter = "com.microej.example.RandomService.getEnable", setter = "com.microej.example.RandomService.setEnable")
+    public class MyProperty extends BooleanProperty {
+        ...
+    }
+
+These attributes are optional. When not specified, the corresponding code will not be generated. 
+
+The ``<method name>`` is the fully qualified name of the method, 
+it must contain the package, the name of the class in which the native is implemented, and the native method name. 
+It must not contain parenthesis and arguments.
+
+Note that the class containing the ``getter`` and the ``setter`` can be different.
+
+Property values can be changed from the mock code with ``getValue()`` and ``setValue()`` methods:
+
+.. code-block:: java
+
+   /* Get MyProperty value */
+   boolean state = MockupApplication.getProperty(MyProperty.class).getValue();
+   
+   /* Set MyProperty value */
+   MockupApplication.getProperty(MyProperty.class).setValue(!state);
+
+
+Mock Framework Widgets
+~~~~~~~~~~~~~~~~~~~~~~
+
+The Mock Framework provides some widgets to manipulate properties.
+
+Interacting with the widget modifies the underlying property,
+and in the contrary, updating the property value modifies the state of the widget.
+
+- ``CheckBox``: sets the value of a ``BooleanProperty``. The property is set to ``true`` when the box is checked, and ``false`` otherwise.
+- ``NumberSlider``: sets a value of a ``NumberProperty`` between the bounds defined by the property. The bounds and the position of the slider are automatically updated with the property.
+- ``BoundsSetter``: displays the upper and lower bounds defined in the ``NumberProperty``. This class is abstract and needs to be used as a specialized subclass, such as ``IntegerBoundsSetter`` for integer values.
+- ``Container``: widget that contains other Mock Framework Widgets. By default, it displays contained widgets vertically.
+- ``Choice``: widget container providing a radio button list for each contained widget. Only the selected widget will be enabled and the other disabled (not clickable).
+- ``FileChooser``: displays a button that opens a standard platform file dialog for selecting a file. Once the file is selected, the property is updated with the corresponding file object.
+- ``TitledWidget``: decorator to add a title to a widget. 
+- ``ImageSwapWidget``: stores two images and shows one of them based on a boolean property.
+- ``JavaFxWidget``: abstract class that can be extended to create custom widgets using JavaFX components.
+
+
+Mock Framework Dashboard
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Mock Framework Dashboard represents the window that is opened at Application startup on Simulator. It holds the Mock widgets.
+
+Mock widgets can be bound to Mock properties by passing the property class as an argument of the Mock widget.
+
+A Dashboard must extend ``AbstractDashboard`` and be annotated with ``@DashBoard`` annotation.
 
 .. code-block:: java
 
    @DashBoard(title = "My Mock DashBoard")
    public class MockDashBoard extends AbstractDashboard {
 
-	public MockDashBoard() {
-		addWidget(new CheckBox("My boolean property", MyBooleanProperty.class));
-	}
-}
+      public MockDashBoard() {
+         addWidget(new CheckBox("Enable RandomService", MyProperty.class));
+      }
+   }
+
+``@DashBoard`` attributes are optional, find below the list of available ones:
+
+- ``title``: sets the title of the mock window, default title is *VD Control Center*. 
+- ``icon``: sets the icon of the mock window, the path is relative to the ``src/main/resources`` folder of the mock project (e.g. ``icon="images/myIcon.png"``).
+- ``width``: sets the width of the mock window. The default value is negative. When not specified, the system sets the mock window size automatically.
+- ``height``: sets the height of the mock window. The default value is negative. When not specified, the system sets the mock window size automatically.
 
 Examples
 --------
 
-Examples using the Mock Framework can be found (here TODO put the github examples link)
+- `Mock Framework Examples <TODO>`__ demonstrate the use of the Mock Framework.
 
-Dependencies
+Installation
 ------------
 
 .. tabs::
 
    .. tab:: SDK 5
 
-      - Add the Mock Framework dependency to your Mock module:
+      - Add the Mock Framework dependency to your Mock project:
 
          .. code-block:: xml
 
             <dependency org="com.microej.library.mock" name="mock-framework" rev="1.0.1" />
 
-      - Add the JavaFX dependency to your Mock module which is required to compile the mock:
+      - Add the JavaFX dependency to your Mock project which is required to compile the mock:
 
          .. code-block:: xml
 
@@ -423,19 +556,19 @@ Dependencies
 
    .. tab:: SDK6
 
-      - Add the Mock Framework dependency to your Mock module:
+      - Add the Mock Framework dependency to your Mock project:
 
          .. code-block:: kotlin
 
             implementation("com.microej.library.mock:mock-framework:1.0.1")
 
-      - Add the JavaFX dependency to your Mock module which is required to compile the mock:
+      - Add the JavaFX dependency to your Mock project which is required to compile the mock:
 
          .. code-block:: kotlin
 
             compileOnly(group="com.microej.tool", name="javafx", version="1.2.0", configuration="provided")
 
-      - Add the Mock Framework and JavaFX annotation processors dependencies to your Mock module:
+      - Add the Mock Framework and JavaFX annotation processors dependencies to your Mock project:
 
          .. code-block:: kotlin
 
