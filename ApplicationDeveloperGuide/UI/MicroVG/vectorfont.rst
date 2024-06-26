@@ -189,7 +189,7 @@ Only font files with CPAL/COLR tables are supported.
 
 Font files with CBDT/CBLC tables are not supported.
 
-To add colored emojis to a font, see the tutorial :ref:`how_to_add_emoji_to_vector_font`.
+To add colored emojis to a font, see the tutorial :ref:`tutorial_append_emojis`.
 
  
 .. _metrics_and_text_positioning:

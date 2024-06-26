@@ -11,7 +11,6 @@ Development Tools
    linker
    testsuiteEngine
    heapUsageMonitoring
-   guiSoftwareRobot
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free
