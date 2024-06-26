@@ -323,6 +323,7 @@ Here are the steps to integrate this Security Manager in your Kernel:
 .. _KernelSecurityPolicyManager: https://repository.microej.com/javadoc/microej_5.x/apis/com/microej/kf/util/security/KernelSecurityPolicyManager.html
 
 
+
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free
    for read and redistribute. Except if otherwise stated, modification
