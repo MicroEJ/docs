@@ -15,7 +15,7 @@ Before you get started, be sure to understand the fundamentals about `MICROEJ VE
 
 What you will do:
 
-- Choose a starter kit
+- Choose a starter kit in the tables below
 - Install MICROEJ SDK
 - Watch the Get Started Tutorial
 - Get Started with MICROEJ VEE
@@ -37,12 +37,16 @@ What you will learn:
 VEE Ports for Evaluation
 ------------------------
 
-These VEE ports are ideal to evaluate MicroEJ's technology. They include the latest software components.
+These VEE ports are ideal to evaluate MicroEJ's technology. They include the latest versions of MicroEJ software components as much as possible.
+In case you cannot get hands on your desired starter kit, please contact us, we may help to find hardware for you.
 
 .. list-table::
    :widths: 50 50
    :header-rows: 0
 
+   * - |logo_nxp|
+     - |image_imx93|
+       :ref:`i.MX 93 Evaluation Kit <sdk_6_getting_started_imx93>`
    * - |logo_nxp|
      - |image_rt1170|
        :ref:`i.MX RT1170 Evaluation Kit <sdk_6_getting_started_imxrt1170>`
@@ -53,13 +57,14 @@ These VEE ports are ideal to evaluate MicroEJ's technology. They include the lat
 .. toctree::
    :hidden:
 
+   gettingStartedIMX93
    gettingStartedIMXRT1170
    gettingStartedSTM32F7508
    
 VEE Port Examples
 -----------------
 
-These VEE ports are provided as-is. They can include libraries that are not the latest version.
+These VEE ports are provided as-is. They can include libraries that are not the latest version. Choose your VEE port by clicking on the links below.
 
 .. list-table::
    :widths: 50 50
@@ -76,6 +81,7 @@ All VEE Port source code examples can be found at `GitHub <https://github.com/Mi
 .. |logo_st| image:: images/gettingStarted/logo-st_100px.png
 
 .. |image_rt595| image:: images/gettingStarted/Board-NXP_i.MX-RT595-EK_100px.png
+.. |image_imx93| image:: images/gettingStarted/Board-NXP_i.MX-93-EK_100px.png
 .. |image_rt1170| image:: images/gettingStarted/Board-NXP_i.MX-RT1170-EK_100px.png
 .. |image_stm32f7508| image:: images/gettingStarted/Board-ST_STM32F7508-DK_100px.png
 

@@ -34,6 +34,57 @@ specific configuration:
    -  ``QNX65``: BlackBerry QNX 6.5
    -  ``QNX70``: BlackBerry QNX 7.0
 
+.. _changelog-8.1.1:
+
+[8.1.1] - 2024-06-17
+--------------------
+
+Core Engine
+~~~~~~~~~~~
+
+- [Multi] - Fixed call to ``LLKERNEL_IMPL_freeFeature(int32_t handle)`` with handle ``0`` when an FO file is corrupted or not compatible with the Core Engine.
+
+Foundation Libraries
+~~~~~~~~~~~~~~~~~~~~
+
+- Fixed unexpected `java.lang.NullPointerException`_ when a runtime exception or a native exception occurs in a try-with-resources block, and the method `AutoCloseable.close()`_ throws an exception.
+- Fixed `Throwable.getSuppressed()`_ which exposes a private mutable member.
+- Fixed `Throwable.printStackTrace()`_ which does not print suppressed exceptions.
+- Fixed `Throwable.printStackTrace()`_ which erroneously printed the thread name.
+
+.. _AutoCloseable.close(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/AutoCloseable.html#close--
+.. _Throwable.getSuppressed(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Throwable.html#getSuppressed--
+.. _Throwable.printStackTrace(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Throwable.html#printStackTrace--
+
+Integration
+~~~~~~~~~~~
+
+- [ESP32] Fixed copy of ``microejapp.s`` into the C project.
+- Fixed properties defined in VEE Port ``release.properties`` file not passed to the SOAR.
+- Fixed Virtual Device that could not override HIL options for debugging the Mock.
+- Fixed build and run scripts end-of-line (EOL) characters if a Linux VEE port is built on Windows.
+- Removed warning messages related to missing HIL debug options when running the Simulator.
+
+Simulator
+~~~~~~~~~
+
+- Fixed breakpoint not taken into account by IntelliJ Idea's debugger when a class is not loaded during the startup.
+- Fixed boostrap thread which could be visible in the thread list when debugging.
+- Fixed debugger error when clinit code takes time to execute.
+- Fixed debugger stuck when stepping over another breakpoint in Eclipse.
+- Fixed missing traces when debug logs are activated.
+
+SOAR
+~~~~
+
+- [Multi] - Fixed the 64 KB size limitation for Java Strings section that caused an ``AssertionError`` in the SOAR when building a Sandboxed Application.
+
+
+Tools
+~~~~~
+
+- Fixed Resource Buffer Generator that keeps a lock on input files and prevents them from being deleted.
+
 .. _changelog-8.1.0:
 
 [8.1.0] - 2023-12-22
@@ -248,9 +299,9 @@ Tools
 - Fixed an incorrect generation of a debug file beside the memory file when launching the Heap Dumper.
 - [Multi] Added Heap Dumper support for dynamically installed Features.
 
-.. _changelog-7.20.3:
+.. _changelog-7.20.5:
 
-[maintenance/7.20.3] - 2024-02-28
+[maintenance/7.20.5] - 2024-05-24
 ---------------------------------
 
 Foundation Libraries
