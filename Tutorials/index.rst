@@ -14,8 +14,6 @@ Tutorials
    tutorialSetupBuildUsingJenkinsAndArtifactory
    tutorialImproveCodeQuality
    tutorialOptimizeMemoryFootprint
-   tutorialExploreDataSerializationFormats
-   tutorialInstrumentJavaCodeForLogging
    tutorialRunATestSuiteOnDevice
    tutorialImplementABlockingNativeMethodWithSNI
    tutorialDiscoverEmbeddedDebuggingTechniques

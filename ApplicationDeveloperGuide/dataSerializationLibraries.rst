@@ -1,15 +1,9 @@
-Explore Data Serialization Formats
-==================================
+Data Serialization
+==================
 
-This tutorial highlights some data serialization formats that are provided on MicroEJ Central Repository and their usage through basic code samples.
+This documentation highlights some data serialization formats that are provided on MicroEJ Central Repository and their usage through basic code samples.
 
-Intended Audience
------------------
-
-The audience for this document is Application engineers who want to implement data serialization.
-In addition, this tutorial should be of interest to software architects who are looking for a suitable data format for their use case.
-
-.. _tutorial_xml:
+.. _data_serialization_xml:
 
 XML
 ---
@@ -19,12 +13,22 @@ XML
 XML Module
 ~~~~~~~~~~
 
-The `XML Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
-Application project to use the KXML library.
+To use the `XML Module`_, add the following line to the project build file:
 
-::
+   .. tabs::
 
-	<dependency org="org.kxml2" name="kxml2" rev="2.3.2"/>
+      .. tab:: Gradle (build.gradle.kts)
+
+         .. code-block:: kotlin
+
+            implementation("org.kxml2:kxml2:2.3.2")
+
+      .. tab:: MMM (module.ivy)
+
+         .. code-block:: xml
+
+            <dependency org="org.kxml2" name="kxml2" rev="2.3.2"/>
+
 
 .. _XML Module: https://repository.microej.com/modules/org/kxml2/kxml2/
 
@@ -32,9 +36,9 @@ Example Of Use
 ~~~~~~~~~~~~~~
 
 An example is available at https://github.com/MicroEJ/Example-XML.
-It presents how to use XML data exchange for your MicroEJ Application. It also details how to use the `KXmlParser <http://kxml.org/>`_ module.
+It presents how to use XML data exchange for your Application. It also details how to use the `KXmlParser <http://kxml.org/>`_ module.
 
-The example parses a short poem written in XML and prints the result on the standard output. The project can run on any MicroEJ Platform (no external dependencies).
+The example parses a short poem written in XML and prints the result on the standard output. The project can run on any VEE Port (no external dependencies).
 
 
 ::
@@ -102,7 +106,7 @@ Running ``MyXmlPullApp`` gives more details on the XML parsing and should print 
 
 	SUCCESS
 
-.. _tutorial_json:
+.. _data_serialization_json:
 
 JSON
 ----
@@ -120,12 +124,22 @@ JSON is easily readable by humans compared to XML. To parse this data format, se
 JSON Module
 ~~~~~~~~~~~
 
-The `JSON Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
-Application project to use the JSON library.
+To use the `JSON Module`_, add the following line to the project build file:
 
-::
+   .. tabs::
 
-	<dependency org="org.json.me" name="json" rev="1.3.0"/>
+      .. tab:: Gradle (build.gradle.kts)
+
+         .. code-block:: kotlin
+
+            implementation("org.json.me:json:1.4.0")
+
+      .. tab:: MMM (module.ivy)
+
+         .. code-block:: xml
+
+            <dependency org="org.json.me" name="json" rev="1.4.0"/>
+
 
 The instantiation and use of the parser is pretty straightforward. 
 First you need to get the JSON content as a ``String``,  and then create a `JSONObject`_ instance with the string. 
@@ -243,7 +257,7 @@ The example below will parse the file, browse the resulting data structure (``or
 
 	}
 
-The execution of this example on the MicroEJ Simulator should print the following trace:
+The execution of this example on the Simulator should print the following trace:
 
 ::
 
@@ -255,7 +269,7 @@ The execution of this example on the MicroEJ Simulator should print the followin
 
 	SUCCESS
 
-.. _tutorial_cbor:
+.. _data_serialization_cbor:
 
 CBOR
 ----
@@ -267,12 +281,22 @@ The `CBOR (Concise Binary Object Representation) <https://cbor.io/>`_ binary dat
 CBOR Module
 ~~~~~~~~~~~
 
-The `CBOR Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
-Application project to use the CBOR library.
+To use the `CBOR Module`_, add the following line to the project build file:
 
-::
+   .. tabs::
 
-	<dependency org="ej.library.iot" name="cbor" rev="1.1.0"/>
+      .. tab:: Gradle (build.gradle.kts)
+
+         .. code-block:: kotlin
+
+            implementation("ej.library.iot:cbor:1.2.0")
+
+      .. tab:: MMM (module.ivy)
+
+         .. code-block:: xml
+
+            <dependency org="ej.library.iot" name="cbor" rev="1.2.0"/>
+
 
 .. _CBOR Module: https://repository.microej.com/modules/ej/library/iot/cbor/
 
@@ -280,10 +304,10 @@ Example Of Use
 ~~~~~~~~~~~~~~
 
 An example is available at https://github.com/MicroEJ/Example-IOT/tree/master/cbor.
-It shows how to use the CBOR library in your MicroEJ Application by encoding some data and reading it back, printing it on the standard output both as a raw byte string and in a JSON-like format.
-You can use tools like cbor.me to convert the byte string output to a JSON format and check that it matches the encoded data. The project can run on any MicroEJ Platform (no external dependencies).
+It shows how to use the CBOR library in your Application by encoding some data and reading it back, printing it on the standard output both as a raw byte string and in a JSON-like format.
+You can use tools like cbor.me to convert the byte string output to a JSON format and check that it matches the encoded data. The project can run on any VEE Port (no external dependencies).
 
-The execution of this example on the MicroEJ Simulator should print the following trace:
+The execution of this example on the Simulator should print the following trace:
 
 ::
 
@@ -313,7 +337,7 @@ The execution of this example on the MicroEJ Simulator should print the followin
 
 Another example showing how to use the :ref:`JSON <json_module>` module along with the :ref:`CBOR <cbor_module>` module to convert data from JSON to CBOR is available here : https://github.com/MicroEJ/Example-IOT/tree/master/cbor-json.
 
-The execution of this example on the MicroEJ Simulator should print the following trace:
+The execution of this example on the Simulator should print the following trace:
 
 ::
 
