@@ -27,7 +27,7 @@ The first part consists of running a demo application on the Virtual Device. All
 
 The second part consists of running the same demo application on your device. For that you will need:
 
-* i.MX RT1170 Evaluation Kit, available `here <https://www.nxp.com/design/design-center/development-boards/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVK>`__.
+* i.MX RT1170 Evaluation Kit, available `here <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__.
 * RK055HDMIPI4MA0 display panel, available `here <https://www.nxp.com/part/RK055HDMIPI4MA0>`__.
 * A GNU ARM Embedded Toolchain, Cmake and Make are needed to build the BSP. You will be guided on how to install the toolchain later.
 * LinkServer tool to flash the board. You will be guided on how to install this tool later.
