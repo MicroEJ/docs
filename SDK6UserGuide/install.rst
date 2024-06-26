@@ -109,7 +109,7 @@ Install the IDE
 ---------------
 
 Using an IDE is highly recommended for developing MicroEJ projects, making the development more comfortable and increasing productivity.
-The three following IDEs are supported: 
+The following IDEs are supported: 
 
 - `Android Studio <https://developer.android.com/studio>`__ - Minimum supported version is ``Hedgehog - 2023.1.1``.
 - `IntelliJ IDEA <https://www.jetbrains.com/idea/>`__ (Community or Ultimate edition) - Minimum supported version is ``2021.2``.
