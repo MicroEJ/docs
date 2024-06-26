@@ -1,16 +1,28 @@
 .. _applicationSecurityPolicy:
 
-Application security policy
-===========================
+Define a Security Policy
+========================
 
-Enforcing an Application Security Policy can be done in various ways, the most common way of declaring a security management policy is by the usage of the standard `SecurityManager`_ class.
+A security policy allows the Kernel to prevent an Application from accessing resources or calling specific APIs. 
+Whereas APIs :ref:`exposed by the Kernel <kernel.api>` allows to control at build-time, the security policy here controls the APIs called at runtime.
 
-For the sake of ROM footprint optimization, permission checks calls are disabled by default to avoid extra code processing if the system owner does not want to use the Security Manager.
-In order to activate this feature the :ref:`option_enable_security_manager` option must be set.
+Defining a security policy is done by implementing the standard `SecurityManager`_ class.
+Basically, all sensitive APIs exposed by the Kernel have already been protected by a :ref:`Permission Check <securitymanager_permission_check>`.
+Each time an Application calls such API, the Security Manager `SecurityManager.checkPermission(Permission)`_ implementation verifies that the requested permission has been granted to the Application.
 
-Once the security manager checks are enabled, you can then implement your own policy.
+Register a Security Manager
+---------------------------
 
-To apply a security policy, in the Kernel boot sequence, instantiate a `SecurityManager`_ and register it with `System.setSecurityManager(SecurityManager)`_ method.
+The first step for the Kernel is to register a `SecurityManager`_ implementation.
+Usually this is done in the Kernel boot sequence, before starting to run Applications.
+However, the Security Manager can be updated at any-time, and a Kernel can also register different implementations during its execution.
+
+For the purpose of ROM footprint optimization, permission checks calls are disabled by default to avoid extra code processing if the system owner does not want to use the Security Manager.
+In order to activate this feature, set the :ref:`option_enable_security_manager` option.
+
+Once the Security Manager checks are enabled, you can then implement your own security policy.
+
+To apply a security policy, instantiate a `SecurityManager`_ and register it with `System.setSecurityManager(SecurityManager)`_ method.
 
 .. code-block:: java
 
@@ -24,46 +36,78 @@ To apply a security policy, in the Kernel boot sequence, instantiate a `Security
       // set the Security Manager
       System.setSecurityManager(sm);
 
-The sections below document how to implement such policy.
+The next section will guide you to implement the desired security policy.
 
-Ready-to-use policy managers
+Implement a Security Manager
 ----------------------------
 
-Ready-to-use policy managers are provided by the ``KF-Util`` library (since 2.8.0): the "Kernel Security Policy Manager" and the "Kernel Security Manager".
+The implementation of the `SecurityManager.checkPermission(Permission)`_ method first retrieves the owner of the requested Permission,
+then checks if it is a Feature (not the Kernel), and finally, checks the permission according to the given Feature.
 
-.. note::
+The following code snippet shows the typical implementation:
 
-   An example of integration of the latter is available in the `Kernel-GREEN`_ project on GitHub.
+.. code-block:: java
 
-Kernel Security Policy Manager
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    public class MyKernelSecurityManager extends SecurityManager {
 
-| This implementation is inspired from the `JavaSE JDK Policy File Syntax`_.
-| Applications come with a policy resource file that describes the permissions they need at runtime.
-| By default, the path and the name of this file should be ``/feature.policy.json``. It can be configured using the system property ``feature.policy.name``.
-| The permission file is loaded when the application is installed.
-| It assumes the application (and its permissions file) has been approved beforehand.
-| Typically, the permission file being part of the application binary, this can be verified by signing the application binary and checking the signature at installation.
-| Finally, the Kernel Security Policy Manager is responsible for checking if the permission has been granted to the calling Application on permission checks requested by the system libraries or not in which case it throws a `SecurityException`_.
-| Here is a schema to describe the entire flow of the Kernel Security Policy Manager from a feature install to a feature stop.
+      @Override
+      public void checkPermission(Permission perm) {
+        Module caller = Kernel.getContextOwner();
+        if(caller == Kernel.getInstance()) {
+          // Kernel has all the rights: no checks
+        }
+        else{
+          Feature callerApp = (Feature)caller;
+          Kernel.enter();
+          if(!isAllowed(callerApp, perm)) {
+            throw new SecurityException();
+          }
+        }
+      }
+
+      private boolean isAllowed(Feature callerApp, Permission perm) {
+        // implement here the Application Security Policy
+      }
+
+    }
+
+You are now ready to implement your policy to decide whether the given permission is granted to the given Application.
+
+The `KF-Util module <https://repository.microej.com/modules/com/microej/library/util/kf-util/>`_ provides ready-to-use implementations, described in the next sections.
+Examples of integration are also available in the `Kernel-GREEN`_ project on GitHub.
+
+Security Manager with Application Declared Permissions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This Security Manager provides a ready-to-use implementation based on permissions declared by the Application itself.
+It assumes the application and its permissions file have been approved beforehand by a moderator.
+
+
+Principle
+^^^^^^^^^
+
+Basically, Applications embed a policy resource file that describes the permissions they need at runtime.
+This file is then loaded when the Application is installed.
+Finally, this Security Manager checks if the permission has been granted to the calling Application.
+If a permission check is triggered but has not been declared, the Security Manager throws a `SecurityException`_.
+
+Here is a sequence diagram to describe the entire flow from Feature installation to uninstallation:
 
 .. image:: png/kernelSecurityPolicyManagerFlow.png
    :align: center
 
-This implementation requires a parsing of the feature policy file to create the correct list of `FeaturePolicyPermission`_ objects that will be handled by the security manager.
-the ``KF-Util`` module provides a JSON implementation for the file format as the default implementation.
 
-This can be done by creating a class that implements the `SecurityPolicyResourceLoader`_ interface.
+Policy File Format
+^^^^^^^^^^^^^^^^^^
 
-.. note::
-    To log every authorized access, change the logger level to ``FINE`` in the Kernel system properties such as
-    ``.level=FINE``.
+An Application must define its Application policy file as a :ref:`resource <section.classpath.elements.raw_resources>`. 
+By default, the resource name must be ``/feature.policy.json``. 
 
+The policy file format is described in JSON, which is the default syntax supported by this Security Manager. 
 
-Before going further we strongly advise to take a look to the `java.security.Permission`_ Javadoc to fully understand the way permissions work (name, action...).
+Before going further we strongly advise to take a look to the `java.security.Permission`_ specification and its class hierarchy to fully understand the way permissions work (name, action).
 
-
-Here is an example of what a JSON file looks like with placeholders:
+The Application policy file declares the list of required `java.security.Permission`_ classes, names and actions as following:
 
 .. code-block:: json
 
@@ -79,8 +123,18 @@ Here is an example of what a JSON file looks like with placeholders:
       }
     }
 
+The permission ``name`` and ``action`` attributes are specific to the permission implementation.
+Therefore each permission has its own definition of what a name is.
 
-Here is now an example of what a real JSON file can look like:
+The following keywords allow more flexibility over the content of the file:
+
+* the ``*`` (wildcard) symbol means "any". It can be used for permission class name, permission name and permission actions.
+* the ``null`` keyword represents a Java ``null`` value. It can be used for permission name and permission actions.
+
+Policy File Example
+^^^^^^^^^^^^^^^^^^^
+
+Here is now an example of what a real JSON Application policy file can look like:
 
 .. code-block:: json
 
@@ -107,15 +161,8 @@ Here is now an example of what a real JSON file can look like:
       }
     }
 
-.. note::
-    The permission ``name`` attribute is specific to the permission implementation therefore, each permission has its own definition of what a name is.
 
-The parser contains two key words to allow more flexibility over the content of the file:
-
-* "*": the wildcard symbol means "any". It can be used for permission class name, permission name and permission actions.
-* "null": the ``null`` keyword represents a Java ``null`` value. It can be used for permission name and permission actions.
-
-To simplify the file structure you can also choose to have an empty object value for permission className or/and permission actions such as shown in the example above:
+To simplify the file structure you can also choose to have an empty object value for permission class name or/and permission actions such as shown in the example above:
 
 .. code-block:: json
 
@@ -140,49 +187,127 @@ This example:
 
 Using an empty value or the ``*`` wildcard is left to the developer preference and should be processed in the exact same way by the security policy resource loader.
 
-.. warning::
+Kernel Implementation
+^^^^^^^^^^^^^^^^^^^^^
+
+Here are the steps to integrate this Security Manager in your Kernel:
+
+
+#. Add the dependency to the `KF-Util library <https://repository.microej.com/modules/com/microej/library/util/kf-util/>`_ in the Kernel build file
+
+  .. tabs::
+
+    .. tab:: Gradle (build.gradle.kts)
+
+        .. code-block:: kotlin
+
+          implementation("com.microej.library.util:kf-util:2.8.0")
+
+    .. tab:: MMM (module.ivy)
+
+        .. code-block:: xml
+
+          <dependency org="com.microej.library.util" name="kf-util" rev="2.8.0"/>
+
+#. Make sure to embed `java.security.Permission`_ class names
+    
     If the Kernel does not embed all class names (see :ref:`Stripping Class Names from an Application <stripclassnames>`),
-    make sure that specified permission class names are embedded by declaring them as :ref:`Required Types <section.classpath.elements.types>`.
+    the specified Permission class names must be embedded by declaring them as :ref:`Required Types <section.classpath.elements.types>`.
     Any permission check done on a permission class without embedded name will result in a `SecurityException`_.
 
+#. Create the policy resource loader. By default, the library comes with a policy resource loader for the JSON format.
+ 
+   .. code-block:: java
+		
+		  SecurityPolicyResourceLoader loader = new JsonSecurityPolicyLoader();
 
-Kernel Security Manager
-~~~~~~~~~~~~~~~~~~~~~~~
+   You can also define your own format for the policy resource file by implementing the `_SecurityPolicyResourceLoader`` interface.
+   Optionally, you can change the Application file policy name, by setting the :ref:`System Property <system_properties>` ``feature.policy.name`` (defaults to ``/feature.policy.json``).
 
-| This implementation is based on the creation of `FeaturePermissionCheckDelegate`_ to specify the behavior of the `SecurityManager.checkPermission(Permission)`_ for each permission class.
-| If a permission check is done and no delegate for its permission is found, a `SecurityException`_ is thrown.
-| An example of this policy manager is used by the `Kernel-GREEN`_.
-| The policy grants all applications the permission for a list of permission classes and logs all protected accesses by Applications.
+#. Create the `KernelSecurityPolicyManager`_ instance with the policy resource loader
+  
+   .. code-block:: java
+		  
+      SecurityManager sm =  new KernelSecurityPolicyManager(loader);
+		
+#. Register this instance as the current Security Manager
+  
+   .. code-block:: java
 
-Here is how to implement a custom delegate to implement a security policy according to the system needs.
+      System.setSecurityManager(sm);
 
-1. Create a new class that implements the `FeaturePermissionCheckDelegate`_ interface like ``CustomPermissionCheckDelegate`` below.
-
-.. code-block:: java
-
-   public class CustomPermissionCheckDelegate implements FeaturePermissionCheckDelegate {
-
-       @Override
-       public void checkPermission(Permission permission, Feature feature) {
-
-           // Actual permission check goes here...
-
-       }
-
-   }
-
-2. Associate an instance of this `FeaturePermissionCheckDelegate`_ subclass with the `java.security.Permission`_ to be checked (like ``NetPermission`` in the example below) by means of the security manager.
-
-.. code-block:: java
-
-   KernelSecurityManager securityManager = new KernelSecurityManager();
-
-   securityManager.setFeaturePermissionDelegate(NetPermission.class, new CustomPermissionCheckDelegate());
+.. note::
+    To log every authorized access, change the logger level to ``FINE`` in the Kernel system properties such as
+    ``.level=FINE``.
 
 
-This code will apply the logic inside of the ``CustomPermissionCheckDelegate#checkPermission(Permission permission, Feature feature)`` method to all mapped permissions (such as ``NetPermission.class`` for this specific example).
+Security Manager with Permission Dispatch
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+This Security Manager provides a template for dispatching the permission check per kind of `java.security.Permission`_ class.
+The Kernel implementation must provide instances of `FeaturePermissionCheckDelegate`_ to specify the behavior of the `SecurityManager.checkPermission(Permission)`_ for each permission class.
+If a permission check is done and no delegate for its permission is found, a `SecurityException`_ is thrown.
+The policy grants all applications the permission for a list of permission classes and logs all protected accesses by Applications.
 
+Here are the steps to integrate this Security Manager in your Kernel:
+
+#. Add the dependency to the `KF-Util library <https://repository.microej.com/modules/com/microej/library/util/kf-util/>`_ in the Kernel build file
+
+  .. tabs::
+
+    .. tab:: Gradle (build.gradle.kts)
+
+        .. code-block:: kotlin
+
+          implementation("com.microej.library.util:kf-util:2.8.0")
+
+    .. tab:: MMM (module.ivy)
+
+        .. code-block:: xml
+
+          <dependency org="com.microej.library.util" name="kf-util" rev="2.8.0"/>
+
+#. Create the `KernelSecurityManager`_ instance
+  
+   .. code-block:: java
+		  
+      KernelSecurityManager sm = new KernelSecurityManager(loader);
+
+#. Create a new class that implements the `FeaturePermissionCheckDelegate`_ interface like ``MySocketPermissionCheckDelegate`` below.
+
+    .. code-block:: java
+
+      public class CustomPermissionCheckDelegate implements FeaturePermissionCheckDelegate {
+
+          @Override
+          public void checkPermission(Permission permission, Feature feature) {
+              SocketPermission sPerm = (SocketPermission)permission;
+              
+              // implement here the SocketPermission check for this Application
+
+          }
+
+      }
+
+#. Associate an instance of this `FeaturePermissionCheckDelegate`_ subclass with the `java.security.Permission`_ to be checked (like ``SocketPermission`` in the example below) by means of the Security Manager.
+
+    .. code-block:: java
+
+        sm.setFeaturePermissionDelegate(SocketPermission.class, new MySocketPermissionCheckDelegate());
+  
+   This code will apply the logic inside of the ``MySocketPermissionCheckDelegate#checkPermission(Permission permission, Feature feature)`` method to all mapped permissions (such as ``SocketPermission.class`` for this specific example).
+
+#. Repeat the two previous steps for each supported `java.security.Permission`_ class.
+		
+#. Register this instance as the current Security Manager
+  
+   .. code-block:: java
+
+      System.setSecurityManager(sm);
+
+.. note::
+
+  The `Kernel-GREEN`_ uses this Security Manager template to log all the Permission checks on the standard output.
 
 .. _SecurityManager: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/SecurityManager.html
 .. _SecurityManager.checkPermission(Permission): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/SecurityManager.html#checkPermission-java.security.Permission-
@@ -193,8 +318,10 @@ This code will apply the logic inside of the ``CustomPermissionCheckDelegate#che
 .. _FeaturePolicyPermission: https://repository.microej.com/javadoc/microej_5.x/apis/com/microej/kf/util/security/FeaturePolicyPermission.html
 .. _SecurityPolicyResourceLoader: https://repository.microej.com/javadoc/microej_5.x/apis/com/microej/kf/util/security/SecurityPolicyResourceLoader.html
 .. _java.security.Permission: https://repository.microej.com/javadoc/microej_5.x/apis/java/security/Permission.html
-.. _JavaSE JDK Policy File Syntax: https://docs.oracle.com/javase/8/docs/technotes/guides/security/PolicyFiles.html
 .. _com.microej.library.util.kf-util: https://repository.microej.com/javadoc/microej_5.x/apis/com/microej/kf/util/security/package-summary.html
+.. _KernelSecurityManager: https://repository.microej.com/javadoc/microej_5.x/apis/com/microej/kf/util/security/KernelSecurityManager.html
+.. _KernelSecurityPolicyManager: https://repository.microej.com/javadoc/microej_5.x/apis/com/microej/kf/util/security/KernelSecurityPolicyManager.html
+
 
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free
