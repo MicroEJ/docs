@@ -359,7 +359,7 @@ The Module serves two purposes, depending on whether it is added to a Mock or a 
 Mock Framework
 ==============
 
-The Mock Framework is a framework, based on JavaFX, that aims to ease the development of mock UIs.
+The Mock Framework is based on JavaFX, it aims to ease the development of mock UIs.
 
 The Mock Framework provides a set of widgets. It allows to automatically generate the native method implementation
 of an application and link it with the widgets of the mock UI.
@@ -374,9 +374,9 @@ of an application and link it with the widgets of the mock UI.
 Usage
 -----
 
-The following steps should be followed to create a mock using Mock Framework:
+The following steps should be followed to create a mock using the Mock Framework:
 
-- Create a Mock Framework Property to bind the native method to mock to the mock UI,
+- Create a Mock Framework Property to bind the native method to the mock UI,
 - Create a Dashboard, 
 - Add widgets.
 
@@ -466,7 +466,7 @@ or
         ...
     }
 
-These attributes are optional. When not specified, the corresponding code will not be generated. 
+These attributes are optional. When no attribute is specified, the corresponding code will not be generated. 
 
 The ``<method name>`` is the fully qualified name of the method, 
 it must contain the package, the name of the class in which the native is implemented, and the native method name. 
@@ -491,7 +491,7 @@ Mock Framework Widgets
 The Mock Framework provides some widgets to manipulate properties.
 
 Interacting with the widget modifies the underlying property,
-and in the contrary, updating the property value modifies the state of the widget.
+and similarly, updating the property value modifies the state of the widget.
 
 - ``CheckBox``: sets the value of a ``BooleanProperty``. The property is set to ``true`` when the box is checked, and ``false`` otherwise.
 - ``NumberSlider``: sets a value of a ``NumberProperty`` between the bounds defined by the property. The bounds and the position of the slider are automatically updated with the property.
