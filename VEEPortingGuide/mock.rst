@@ -376,9 +376,9 @@ Usage
 
 The following steps should be followed to create a mock using the Mock Framework:
 
-- Create a Mock Framework Property to bind the native method to the mock UI,
-- Create a Dashboard, 
-- Add widgets.
+- Create Mock Framework Properties to bind the native methods to the mock UI,
+- Create Widgets to manipulate the values of the above Properties,
+- Create a Dashboard to hold the Widgets.
 
 Mock Framework Property
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -540,21 +540,7 @@ Installation
 
 .. tabs::
 
-   .. tab:: SDK 5
-
-      - Add the Mock Framework dependency to your Mock project:
-
-         .. code-block:: xml
-
-            <dependency org="com.microej.library.mock" name="mock-framework" rev="1.0.1" />
-
-      - Add the JavaFX dependency to your Mock project which is required to compile the mock:
-
-         .. code-block:: xml
-
-            <dependency org="com.microej.tool" name="javafx" rev="1.2.0" />
-
-   .. tab:: SDK6
+   .. tab:: SDK 6
 
       - Add the Mock Framework dependency to your Mock project:
 
@@ -574,6 +560,20 @@ Installation
 
             annotationProcessor("com.microej.library.mock:mock-framework:1.0.1")
             annotationProcessor(group="com.microej.tool", name="javafx", version="1.2.0", configuration="provided")
+
+   .. tab:: SDK 5
+
+      - Add the Mock Framework dependency to your Mock project:
+
+         .. code-block:: xml
+
+            <dependency org="com.microej.library.mock" name="mock-framework" rev="1.0.1" />
+
+      - Add the JavaFX dependency to your Mock project which is required to compile the mock:
+
+         .. code-block:: xml
+
+            <dependency org="com.microej.tool" name="javafx" rev="1.2.0" />
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
