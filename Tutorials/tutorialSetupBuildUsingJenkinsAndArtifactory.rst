@@ -1,9 +1,8 @@
-.. _sdk_5_howto_setup_automated_build_using_jenkins_and_artifactory:
 
-How To Setup an Automated Build using Jenkins and Artifactory
-=============================================================
+.. _tutorial_setup_automated_build_using_jenkins_and_artifactory:
 
-This guide explains how to setup an environment for automating :ref:`MicroEJ Module build <mmm>` and deployment using `Jenkins <https://www.jenkins.io/>`_, `JFrog Artifactory <https://jfrog.com/artifactory/>`_ and a `Git platform <https://about.gitea.com/>`_ (you can also use Gitlab or Github for example).
+Setup an Automated Build using Jenkins and Artifactory
+======================================================
 
 Such environment setup facilitates continuous integration (CI) and continuous delivery (CD), which improves productivity across your development ecosystem,
 by automatically:

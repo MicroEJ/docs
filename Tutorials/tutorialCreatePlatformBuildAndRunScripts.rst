@@ -381,7 +381,7 @@ Going Further
 - More about build and run scripts in :ref:`bsp_connection_build_script` and :ref:`bsp_connection_run_script` sections
 - Some build scripts examples from `Platform Qualification Tools`_
 - Perform the :ref:`tutorial_run_test_suite_on_device` tutorial to learn how to run an automated testsuite
-- Perform the :ref:`sdk_5_howto_setup_automated_build_using_jenkins_and_artifactory` tutorial to learn how to automate the build of a MicroEJ Platform module
+- Perform the :ref:`tutorial_setup_automated_build_using_jenkins_and_artifactory` tutorial to learn how to automate the build of a MicroEJ Platform module
 
 .. _Platform Qualification Tools: https://github.com/MicroEJ/VEEPortQualificationTools/tree/master/framework/platform/scripts
 

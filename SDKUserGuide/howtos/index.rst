@@ -7,7 +7,6 @@ How-to Guides
    :maxdepth: 1
 
    createIARImage
-   setupBuildUsingJenkinsAndArtifactory
    
 
 ..
