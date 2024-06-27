@@ -90,8 +90,12 @@ In order to generate a Heap dump of an Application running on the Simulator:
 - Update your Application code to call the `System.gc()`_ method where you need a Heap dump.
 - run the Application on the Simulator.
 
-When the `System.gc()`_ method is called, 
-a ``.heap`` file is generated in the ``build/output/application/heapDump/`` folder of the Application project.
+When the `System.gc()`_ method is called:
+
+- if it is called from the Application, the ``.heap`` file is generated in the ``build/output/<fqnMainClass>/heapDump/`` folder of the project,
+  where ``<fqnMainClass>`` is the Fully Qualified Name of the Application Main class, for example (``com.mycompany.Main``).
+- if it is called from a test class, the ``.heap`` file is generated in the ``build/testsuite/output/<buildDate>/bin/<fqnMainClass>/heapDump/`` folder of the project,
+  where ``<fqnMainClass>`` is the Fully Qualified Name of the generated Main class and ``<buildDate>`` is the date of the test execution, for example (``build/testsuite/output/20240625-1605-24/bin/com.mycompany._AllTests_MyTest/heapDump/``).
 
 Device
 ^^^^^^
