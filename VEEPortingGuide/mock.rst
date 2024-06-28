@@ -359,7 +359,7 @@ The Module serves two purposes, depending on whether it is added to a Mock or a 
 Mock Framework
 ==============
 
-The Mock Framework is based on JavaFX, it aims to ease the development of mock UIs.
+The Mock Framework is a library based on JavaFX, it aims to ease the development of mock UIs.
 
 The Mock Framework provides a set of widgets. It allows to automatically generate the native method implementation
 of an application and link it with the widgets of the mock UI.
