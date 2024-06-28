@@ -316,84 +316,116 @@ The Time API introduces multiple types for time zone management:
 Default Zone Rules Provider
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-By default, the library uses a provider that is lightweight and designed to handle only the time zone rules for the ``GMT`` (Greenwich Mean Time) zone.
+By default, the library uses a lightweight provider designed to handle only the time zone rules for ``GMT`` (Greenwich Mean Time).
 This is suitable for operations on dates and times that do not depend on time zone considerations.
-Any attempt to use another zone ID than ``GMT`` will throw a `ZoneRulesException`_ because the ID is unknown.
+This provider only supports the ``GMT`` zone ID. Any attempt to get a different zone ID will throw a `ZoneRulesException`_.
 For example,
 
 .. code-block:: java
 
-    // Displaying the available time zones - will list a single item: "GMT"
-    Set<String> zoneIds = ZoneId.getAvailableZoneIds();
-    for (String zoneId : zoneIds) {
-        System.out.println(zoneId);
-    }
+   ZoneId.of("GMT"); // ok
+   ZoneId.of("+0200"); // ok
+   ZoneId.of("GMT+0530"); // ok
+   ZoneId.of("PST"); // throws ZoneRulesException
+   ZoneId.of("CST-0115"); // throws ZoneRulesException
+   ZoneId.of("Asia/Tokyo"); // throws ZoneRulesException
 
-    // Creating a ZonedDateTime instance - will throw a ZoneRulesException
-    ZonedDateTime specificDateTime = ZonedDateTime.of(2023, 7, 15, 14, 30, 0, 0, ZoneId.of("Europe/Dublin")); // July 15, 2023, 2:30 PM in Dublin
-
-    // Creating a ZoneId instance from a region ID - will throw a ZoneRulesException 
-    ZoneId tokyoTimeZone = ZoneId.of("Asia/Tokyo");
+   Set<String> zoneIds = ZoneId.getAvailableZoneIds(); // returned set contains only "GMT"
 
 TZDB Zone Rules Provider
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 The library also defines a provider of zone rules for the time zones defined in the `IANA Time Zone Database <https://www.iana.org/time-zones>`_ (TZDB).
-The TZDB zone rules provider reads the zones and rules from a binary resource at runtime.
 
-To use this provider, set the constant ``java.time.zone.DefaultZoneRulesProvider`` to ``java.time.zone.TzdbZoneRulesProvider``.
+The TZDB provider reads the zones and rules from a raw resource at runtime.
+Compared to the ``TzdbZoneRulesProvider`` of Java SE distributions, this implementation uses less Java heap at runtime, making it more suitable for embedded devices.
 
-Here is an example of a ``*.constants.list`` file, defining this provider as the default:
+.. warning::
+   The TZDB provider requires a target VEE Port that uses an architecture version ``8.1.1`` minimum (for ``8.x``), or ``7.20.5`` minimum (for ``7.x``).
+
+Using the TZDB Provider
+^^^^^^^^^^^^^^^^^^^^^^^
+
+To use this provider, set the constant ``java.time.zone.DefaultZoneRulesProvider`` to ``java.time.zone.TzdbZoneRulesProvider`` in a ``*.constants.list`` file, like below:
 
 .. code-block:: jproperties 
 
    java.time.zone.DefaultZoneRulesProvider=java.time.zone.TzdbZoneRulesProvider
 
-It is also recommended to add the class name ``java.time.zone.TzdbZoneRulesProvider`` to a ``*.types.list`` file: the class name is required to 
-instantiate the provider and can not be known at compile-time.
+.. note:: 
+   It is also recommended to add the class name ``java.time.zone.TzdbZoneRulesProvider`` to a ``*.types.list`` file: the class name is required to instantiate the provider and can not be known at compile-time.
 
-Compared to the ``TzdbZoneRulesProvider`` of Java SE distributions, this implementation uses less Java heap at runtime, making it more suitable for embedded devices.
+The raw resource from which the provider reads the zone rules is generated from the timezone database file included in the JDK/JRE installation (``tzdb.dat``).
 
-.. note::
-   The TZDB zone rules provider requires a target VEE that uses an architecture version ``8.1.1`` minimum (for ``8.x``), or ``7.20.5`` minimum (for ``7.x``).
+To generate the resource and use it in an application, do the following:
 
-TZDB Binary Generation
-^^^^^^^^^^^^^^^^^^^^^^
-
-The binary resource from which the provider reads the zone rules is generated from the timezone database file included in the JDK installation (``tzdb.dat``).
-
-To generate the binary file and use it in an application, do the following:
-
-1. Locate the ``tzdb.dat`` file in a local JDK installation (``/path/to/jdk/lib/tzdb.dat``),
-2. Copy the ``tzdb.dat`` file to one of the ``main`` folders of an application project (e.g., ``/src/main/resources/com/mycompany/tzdb.dat``),
-3. Create a ``*.tzdb.list`` file in one of the ``main`` folders (e.g., ``/src/main/resources/com/mycompany/myapp.tzdb.list``),
+1. Locate the ``tzdb.dat`` file in a local JDK/JRE installation (``path/to/JRE/lib/tzdb.dat``),
+2. Add the ``tzdb.dat`` file to the application resources (e.g., ``src/main/resources/com/mycompany/tzdb.dat``),
+3. Create a ``*.tzdb.list`` file in the application resources (e.g., ``src/main/resources/com/mycompany/myapp.tzdb.list``),
 4. Open the ``*.tzdb.list`` file and add the path to the ``tzdb.dat`` file (e.g., ``/com/mycompany/tzdb.dat``).
 
-The ``tzdb`` Add-On Processor (ADP) will process the specified ``tzdb.dat`` file, and convert it into a format compatible with the TZDB provider.
+The resource will be automatically generated when building the application or running it in the Simulator.
+By default, it will be embedded in the application binary (as an :ref:`internal resource<chapter.microej.applicationResources>`).
 
-The following files are generated in ``src-adpgenerated/tzdb/java``:
 
-- a ``.resourcebuffer``, a resource buffer containing a binary representation of the zone rules,
-- a ``.resourcebuffer.list`` which references the ``.resourcebuffer``,
-- a ``.resources.list`` which references the ``tzdb`` binary to embed (``/java/time/zone/tzdb``).
+.. note:: 
 
-The ``/java/time/zone/tzdb`` binary will be automatically generated from the ``.resourcebuffer`` when building the application or running it in the Simulator.
+   To get a ``tzdb.dat`` with the most current timezone data available, use the `TZUpdater tool <https://www.oracle.com/java/technologies/downloads/tools/#TZUpdater>`_ and run the following command:
+   
+   .. code::
+      
+      java -jar tzupdater.jar -l
+   
+   The TZUpdater tool updates the JDK/JRE instance that is used to execute the tool: copy ``path/to/JRE/lib/tzdb.dat`` into the application resources, as described above.
 
-.. note::
-   Since the ``tzdb`` binary is referenced by the generated ``.resources.list``, the SOAR will embed it in the application binary (as an internal resource).
+   In addition, you can check that the version of the timezone data is correct in the logs of the Add-on Processor that generates the raw resource.
 
-Loading the TZDB Binary as an External Resource
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   .. tabs::
 
-The ``tzdb`` binary can be declared as an external resource to be loaded from another location (e.g. from a FileSystem).
-To load it as an external resource, it has to be referenced in a ``*.externresources.list`` file, 
-in which case the SOAR will output the resource in the :ref:`external_resources_folder` instead. 
+      .. tab:: SDK 6
+
+         When running on Simulator or building an executable in verbose mode (with the ``--info`` Gradle option), look in the console for an output similar to:
+
+         .. code:: text
+            
+            [myapp:tzdb] Successfully deserialized TZDB data: version = 2024a, zones count = 603, resource buffer size = 102532
+
+         where ``2024a`` is the version of the timezone data in this example.
+
+      .. tab:: SDK 5
+
+         The Add-on Processor is executed when changes occur in the resources files.
+         Open the Add-on Processor console and set the log level to ``debug``.
+         After copying a ``tzdb.dat`` file in the resources files, look in the console for an output similar to:
+
+         .. code:: text
+            
+            [myapp:tzdb] Successfully deserialized TZDB data: version = 2024a, zones count = 603, resource buffer size = 102532
+
+         where ``2024a`` is the version of the timezone data in this example.
+
+
+If the TZDB provider can't find the resource, it will throw an exception at runtime:
+
+.. code-block:: java
+   
+   Exception in thread "main" java.lang.ExceptionInInitializerError: java.lang.IllegalStateException: Cannot open the tzdb binary resource
+
+In this case, follow the steps described above to generate the resource, and make sure that the resource is available at runtime:
+when the resource is internal, the ``tzdb`` resource should be listed in the ``Application Resources`` group of the :ref:`SOAR.map<soar_map_file>` file.
+
+
+Loading the TZDB Data as an External Resource
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The resource can be declared as an external resource to be loaded from another location (e.g. from a FileSystem).
+It has to be referenced in a ``*.externresources.list`` file, in which case the SOAR will output the resource in the :ref:`external_resources_folder`. 
 See :ref:`chapter.microej.applicationResources` for more information about external resources.
 
-.. note::
-   Loading external resources requires a target VEE that uses the :ref:`External Resources Loader<section_externalresourceloader>`.
+.. warning::
+   Loading external resources requires a target VEE Port that uses the :ref:`External Resources Loader<section_externalresourceloader>`.
 
-Follow the steps below to declare the ``tzdb`` binary as an external resource:
+Follow the steps below to declare the ``tzdb`` resource as an external resource:
 
 - Create a ``*.externresources.list`` file in the ``src/main/resources/`` folder,
 - Add the following path to the file:
@@ -403,19 +435,8 @@ Follow the steps below to declare the ``tzdb`` binary as an external resource:
    /java/time/zone/tzdb
 
 - Build the application executable,
-- The ``tzdb`` resource is now available in the :ref:`external_resources_folder`.
+- The raw resource is now available in the :ref:`external_resources_folder`.
   This resource must be transferred to the target device's memory and loaded from the path ``/java/time/zone/tzdb``, using the :ref:`External Resources Loader<section_externalresourceloader>`.
-
-TZDB Updates
-^^^^^^^^^^^^
-
-To get the latest zone rules, use the ``tzdb.dat`` file of an updated JDK. 
-To update the JDK at ``JDK_HOME``, use the `TZUpdater tool <https://www.oracle.com/java/technologies/downloads/tools/#TZUpdater>`_ and run the following command:
-  
-  .. code::
-
-   java -jar tzupdater.jar -l https://www.iana.org/time-zones/repository/tzdata-latest.tar.gz
-
 
 .. _time_migration_guide:
 
@@ -570,7 +591,7 @@ Restrictions
 ------------
 
 The library's goal is to offer Application developers an API that closely mirrors the one found in Java SE 8.
-However, we had to make the library compatible with both pre-Java 8 features and the constraints found in embedded devices.
+However, we had to make the library compatible with both pre-Java 8 features and the constraints found in embedded devices, such as limited memory size.
 Here are the items where the backport differs from its Java 8 counterpart:
 
 - Non-ISO chronologies are not present (`Hijrah`, `Japanese`, `Minguo`, `ThaiBuddhist`). The overwhelming majority of applications use the ISO calendar system. Applications still have the option to introduce their own chronologies.
@@ -581,7 +602,7 @@ Here are the items where the backport differs from its Java 8 counterpart:
 - Removed static methods ``TemporalAdjusters.ofDateAdjuster(UnaryOperator<LocalDate> dateBasedAdjuster)`` and ``WeekFields.of(Locale locale)``.
 - No overflow checks on calculations (removed ``throws ArithmeticException`` when relevant). Excessively checking for overflow in all calculations can impact performance negatively.
 - No null checks on method arguments. Developers are encouraged to use the :ref:`Null Analysis <null_analysis>` tool to detect null access and adhere to the API Javadoc specifications.
-- Remove the ``toString()`` methods in the classes of package ``java.time.zone`` (used for debugging only).
+- The classes from the ``java.time.zone`` package do not provide a human readable implementation of ``toString()``.
 
 .. note::
     For a comprehensive list of restrictions, refer to the ``README`` of the module.
