@@ -213,10 +213,13 @@ MISC
    tutorialExploreDataSerializationFormats
    tutorialInstrumentJavaCodeForLogging
    tutorialRunATestSuiteOnDevice
-   tutorialSetupBuildUsingJenkinsAndArtifactory
+   tutorialImplementABlockingNativeMethodWithSNI
+   tutorialDiscoverEmbeddedDebuggingTechniques
+   getStartedWithGUI/index
+   tutorialValidateGUIs
    tutorialSoftwareRobot
    tutorialTextOverflow
-   tutorialUnderstandMicroEJFirmwareBuild
+   tutorialAppendEmojisToVectorFont
 
 ..
    | Copyright 2021-2024, MicroEJ Corp. Content in this space is free 
