@@ -1,11 +1,26 @@
 .. _tutorials_debug_gui_performances:
 
+====================
 How to Validate GUIs
 ====================
+
+Description
+===========
 
 This document explains how to validate Graphical User Interfaces. 
 It describes common pitfalls that can affect GUI performances, provides tools that allow to detect performance issues and how to solve them, 
 and finally offers ways to test GUIs automatically.
+
+Intended Audience
+=================
+
+This training is for developers wishing to develop GUI Applications in MICROEJ VEE.
+
+Prerequisites
+=============
+
+- Knowledge of Java programming language.
+- Knowledge of :ref:`training_gui_raster`.
 
 Implementing GUIs Efficiently
 ------------------------------

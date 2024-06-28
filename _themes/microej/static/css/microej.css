@@ -1741,7 +1741,10 @@ padding-bottom: 7px;
 }
 
 .training_items > div {
-  width: 350px;
+  display:flex;
+  flex-direction:column;
+  align-content:flex-start;
+  width: 270px;
   margin: 10px;
   padding: 10px;
   border-radius: 10px;
@@ -1761,14 +1764,35 @@ padding-bottom: 7px;
   }
 } */
 
+.training_learn_more_link {
+  align-self:left;
+}
+
 .training_link {
   display: block;
 }
 
+.training_title {
+  font-size: 20px;
+}
+
+.training_description {
+  font-size: 16px;
+}
+
+
 .training_image_container {
-  display: flex;
-  align-items: center;
-  height: 200px;
+  position: relative;
+}
+
+.training_image_text{
+  position: absolute;
+  background: #CBD3D7;
+  border-radius: 10px;
+  color: #222;
+  font-weight: 700;
+  padding: 6px 16px;
+  opacity: 0.7;
 }
 
 .training_image_container > img {
@@ -1776,5 +1800,5 @@ padding-bottom: 7px;
   margin-left: auto;
   margin-right: auto;
   object-fit: contain;
-  height: 200px !important; /* Fit training_image_container height */
+  height: 150px !important; /* Fit training_image_container height */
 }

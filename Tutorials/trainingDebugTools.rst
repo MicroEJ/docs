@@ -33,7 +33,7 @@ This training is composed of 2 units:
 - Unit 2: concrete debug use cases (GUI application freeze and HardFault).
 
 Unit 1: MicroEJ Debug Tools Overview
-----------------------------------------
+------------------------------------
 
 - :download:`MicroEJ Debug Tools Overview Slides <resources/DEV-M0127-PRE-VEE_Port_and_Application_development-STM32F7508-5.0.pdf>`
 
