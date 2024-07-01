@@ -352,11 +352,9 @@ To use this provider, set the constant ``java.time.zone.DefaultZoneRulesProvider
 
    java.time.zone.DefaultZoneRulesProvider=java.time.zone.TzdbZoneRulesProvider
 
-.. note:: 
-   It is also recommended to add the class name ``java.time.zone.TzdbZoneRulesProvider`` to a ``*.types.list`` file: the class name is required to instantiate the provider and can not be known at compile-time.
+It is also required to add the class name ``java.time.zone.TzdbZoneRulesProvider`` to a ``*.types.list`` file: the class name is required to instantiate the provider and can not be known at compile-time.
 
 The raw resource from which the provider reads the zone rules is generated from the timezone database file included in the JDK/JRE installation (``tzdb.dat``).
-
 To generate the resource and use it in an application, do the following:
 
 1. Locate the ``tzdb.dat`` file in a local JDK/JRE installation (``path/to/JRE/lib/tzdb.dat``),
@@ -414,7 +412,6 @@ If the TZDB provider can't find the resource, it will throw an exception at runt
 In this case, follow the steps described above to generate the resource, and make sure that the resource is available at runtime:
 when the resource is internal, the ``tzdb`` resource should be listed in the ``Application Resources`` group of the :ref:`SOAR.map<soar_map_file>` file.
 
-
 Loading the TZDB Data as an External Resource
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -437,6 +434,7 @@ Follow the steps below to declare the ``tzdb`` resource as an external resource:
 - Build the application executable,
 - The raw resource is now available in the :ref:`external_resources_folder`.
   This resource must be transferred to the target device's memory and loaded from the path ``/java/time/zone/tzdb``, using the :ref:`External Resources Loader<section_externalresourceloader>`.
+
 
 .. _time_migration_guide:
 
