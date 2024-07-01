@@ -175,7 +175,7 @@ If you are in a Multi-Sandbox context, the following sections must be dumped add
 
             .. tab:: Command Prompt
 
-               .. code-block:: console
+               .. code-block:: bat
 
                   copy /b 1_java_heap.hex + 9_installed_features.hex memory.hex
 
@@ -184,6 +184,12 @@ If you are in a Multi-Sandbox context, the following sections must be dumped add
                .. code-block:: powershell
 
                   Get-Content 1_java_heap.hex, 9_installed_features.hex | Set-Content memory.hex
+
+            .. tab:: Bash
+
+               .. code-block:: bash
+
+                  cat 1_java_heap.hex 9_installed_features.hex > memory.hex
 
 .. _sdk6_heapdumper_extract_heap:
 
