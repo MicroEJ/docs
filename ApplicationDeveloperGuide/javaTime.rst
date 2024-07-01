@@ -364,7 +364,7 @@ To generate the resource and use it in an application, do the following:
 
 The resource will be automatically generated when building the application or running it in the Simulator.
 By default, it will be embedded in the application binary (as an :ref:`internal resource<chapter.microej.applicationResources>`).
-
+For reference, the size of the resource is 100 KB for version ``2024a``.
 
 .. note:: 
 
