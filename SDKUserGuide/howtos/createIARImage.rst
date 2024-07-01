@@ -1,9 +1,9 @@
-.. _tutorials_create_iar_image:
+.. _sdk_5_howto_create_iar_image:
 
-Add IAR to MicroEJ SDK Docker Image
-===================================
+How To Add IAR to MICROEJ SDK Docker Image
+==========================================
 
-This document presents how to create a Dockerfile with `MicroEJ SDK version 5.x <https://docs.microej.com/en/latest/SDKUserGuide/>`_ and `Cross-platform Build Tools for Arm <https://www.iar.com/products/architectures/arm/iar-build-tools-for-arm/>`_ to build a MicroEJ application. 
+This document presents how to create a Dockerfile with `MICROEJ SDK version 5.x <https://docs.microej.com/en/latest/SDKUserGuide/>`_ and `Cross-platform Build Tools for Arm <https://www.iar.com/products/architectures/arm/iar-build-tools-for-arm/>`_ to build a MicroEJ application. 
 You can use this image in your automated CI.
 
 
@@ -12,7 +12,7 @@ Prerequisites
 
 * A recent version of IAR BXARM and its user licence.
 
-This tutorial was tested with MicroEJ SDK ``5.8.1-jdk11``, IAR ``9.30.1``, and Docker ``24.0.6``.
+This tutorial was tested with MICROEJ SDK ``5.8.1-jdk11``, IAR ``9.30.1``, and Docker ``24.0.6``.
 
 Create the Dockerfile
 ---------------------
@@ -23,7 +23,7 @@ Here is our final Dockerfile. We will explain each specific step below.
         :language: dockerfile
 
 #. In a new directory create a file named ``Dockerfile``.
-#. We use MicroEJ SDK base image, they are available on `docker hub <https://hub.docker.com/r/microej/sdk>`_. In your Dockerfile add this code:
+#. We use MICROEJ SDK base image, they are available on `docker hub <https://hub.docker.com/r/microej/sdk>`_. In your Dockerfile add this code:
 
     .. code-block:: dockerfile
 
