@@ -392,7 +392,7 @@ Going further
 
 Now that the Platform is connected to the BSP it can leverage
 the Java Test Suites provided by the `Platform Qualification Tools`_.
-See :ref:`tutorial_run_test_suite_on_device` for a step by step
+See :ref:`run_test_suite_on_device` documentation for a step by step
 explanation on how to do so.
 
 .. _Platform Qualification Tools: https://github.com/MicroEJ/VEEPortQualificationTools

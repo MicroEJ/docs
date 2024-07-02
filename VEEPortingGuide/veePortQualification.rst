@@ -70,8 +70,8 @@ The VEE Port Qualification Tools provide the following components:
   - Used to validate the Low Level APIs implementations.
   - Validated during the BSP development and whenever an Abstraction
     Layer implementation is added or changed (see
-    :ref:`vee_port_testsuite` or check the tutorial
-    :ref:`tutorial_run_test_suite_on_device`).
+    :ref:`vee_port_testsuite` or check the section
+    :ref:`run_test_suite_on_device`).
 
 Please refer to the `VEE Port Qualification Tools README
 <https://github.com/MicroEJ/VEEPortQualificationTools>`__ for more
@@ -302,10 +302,17 @@ Create the Test Suite Runner Project
 
 .. note:: ``{PROJECT_LOC}`` refers here to the location of your Test Suite runner project.
 
-Configure and Run the Test Suite
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. _run_test_suite_on_device:
 
-Follow the :ref:`tutorial_run_test_suite_on_device` tutorial to configure your VEE Port and run the Test Suite on your Device.
+Run a Test Suite on Device
+==========================
+
+Follow the :ref:`run_fs_test_suite_on_esp32_wrover` guide to configure your VEE Port and run the Test Suite on your Device.
+
+.. toctree::
+   :hidden:
+
+   runFsTestSuiteOnESP32WROVER
 
 .. _test_suite_versioning:
 
