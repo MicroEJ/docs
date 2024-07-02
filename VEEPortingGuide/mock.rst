@@ -533,7 +533,7 @@ A Dashboard must extend ``AbstractDashboard`` and be annotated with ``@DashBoard
 Examples
 --------
 
-- `Mock Framework Examples <TODO>`__ demonstrate the use of the Mock Framework.
+- `Mock Framework Examples <https://github.com/MicroEJ/Example-Mock-Framework>`__ demonstrate the use of the Mock Framework.
 
 Installation
 ------------
