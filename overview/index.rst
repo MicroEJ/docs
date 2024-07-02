@@ -9,7 +9,7 @@ What is MicroEJ?
 
 MicroEJ (pronounced “micro-EDGE”) is a software vendor of cost-driven solutions for embedded and IoT devices.
 
-TODO
+MICROEJ SDK allows developers to develop applications in Managed Code and deploy them to resource-constrained devices, such as microcontrollers.
 
 .. _vee:
 
