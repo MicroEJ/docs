@@ -279,6 +279,33 @@ Multi-Sandbox
 
          </div>
 
+Connectivity
+============
+
+.. toctree::
+   :hidden:
+
+   trainingNetworking
+
+.. raw:: html
+
+         <div class="training_items">
+
+            <a class="training_link" href="trainingNetworking.html">
+            <div>
+               <div class="training_image_container">
+                  <img src="../_static/images/training/training_networking.jpg" alt="Networking Basics">
+               </div>
+               <h3 class="training_title">Networking Basics</h3>
+               <p class="training_description">In this training, you will discover 
+               network connectivity with MicroEJ, illustrated by samples.
+               </p>
+               <a class="training_learn_more_link" href="trainingNetworking.html">Learn more</a>
+            </div>
+            </a>
+
+         </div>
+
 For DevOps
 ==========
 
@@ -307,15 +334,33 @@ For DevOps
 
          </div>
 
-Connectivity
-============
-
-Coming Soon!
-
 Advanced
 ========
 
-Async Worker
+.. toctree::
+   :hidden:
+
+   trainingAsyncWorker
+
+.. raw:: html
+
+         <div class="training_items">
+
+            <a class="training_link" href="trainingAsyncWorker.html">
+            <div>
+               <div class="training_image_container">
+                  <img src="../_static/images/training/training_async_worker.jpg" alt="Async Worker">
+               </div>
+               <h3 class="training_title">Delegate Blocking Operations using Async Worker</h3>
+               <p class="training_description">In this training, you will get an introduction to
+               the Async Worker component that helps to delegate blocking operations 
+               from VEE RTOS context to another RTOS task context.
+               </p>
+               <a class="training_learn_more_link" href="trainingAsyncWorker.html">Learn more</a>
+            </div>
+            </a>
+
+         </div>
 
 .. toctree::
    :hidden:
