@@ -12,9 +12,9 @@
 .. _TimeZone: https://repository.microej.com/javadoc/microej_5.x/apis/java/util/TimeZone.html
 .. _ZoneRulesException: https://repository.microej.com/javadoc/microej_5.x/apis/java/time/zone/ZoneRulesException.html
 .. _ZoneRulesProvider: https://repository.microej.com/javadoc/microej_5.x/apis/java/time/zone/ZoneRulesProvider.html
+.. _ZoneRules: https://repository.microej.com/javadoc/microej_5.x/apis/java/time/zone/ZoneRules.html
 .. _ZoneId: https://repository.microej.com/javadoc/microej_5.x/apis/java/time/ZoneId.html
 .. _ZoneOffset: https://repository.microej.com/javadoc/microej_5.x/apis/java/time/ZoneOffset.html
-.. _IANADatabase: https://www.iana.org/time-zones
 
 Date and Time
 =============
@@ -82,13 +82,13 @@ To use the `time <https://repository.microej.com/modules/ej/library/eclasspath/t
 
       .. code-block:: kotlin
 
-         implementation("ej.library.eclasspath:time:1.0.0")
+         implementation("ej.library.eclasspath:time:1.1.0")
 
    .. tab:: MMM (module.ivy)
 
       .. code-block:: xml
 
-         <dependency org="ej.library.eclasspath" name="time" rev="1.0.0"/>
+         <dependency org="ej.library.eclasspath" name="time" rev="1.1.0"/>
 
 
 
@@ -305,79 +305,135 @@ For example, it can represent periods such as 2 years, 3 months, and 5 days.
 Time Zone Support
 -----------------
 
-The library relies on a time zone rules provider to supply the rules and data required for managing time zones.
-The zone rules provider offers information about how time zones are defined, including their offsets from Coordinated Universal Time (UTC), daylight saving time (DST) rules and historical changes.
-
 The Time API introduces multiple types for time zone management:
 
-- `ZoneId`_ : represents a time zone identifier (e.g., ``Africa/Johannesburg``).
-- `ZoneOffset`_ :  represents a fixed time zone offset from Coordinated Universal Time (UTC).
-- `ZonedDateTime`_ : represents the local time for a specific location.
-- `ZoneRulesProvider`_ : foundation for supplying time zone rules and data and implementing custom time zone rules providers.
+- `ZoneId`_ : represents a time zone identifier: a fixed offset (e.g., ``+0200``) or a geographical region (e.g., ``Africa/Johannesburg``).
+- `ZoneOffset`_ :  represents a fixed time zone offset from UTC, usually a fixed number of hours and minutes.
+- `ZonedDateTime`_ : a date time with a time zone: the combination of a `LocalDateTime`_ and a `ZoneId`_.
+- `ZoneRules`_ : defines the offsets from UTC, the daylight saving time rules, and how they change over time, for a specific time zone.
+- `ZoneRulesProvider`_ : provides the time zone rules to all the zone-aware classes of the library. Meant to be implemented by custom time zone rule providers.
 
-All the zone-aware classes of the library rely on the underlying time zone rules provider to supply accurate information about the time zone.
+Default Zone Rules Provider
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Java SE 8 and higher have a default provider that delivers zone rules for the time zones defined by `IANADatabase`_.
-The ``time`` library does not use this provider as the default (see :ref:`Restrictions <time_restrictions>`).
-Instead, the library comes with a default provider which is very lightweight and designed to handle only the time zone rules for the "GMT" (Greenwich Mean Time) zone.
+By default, the library uses a lightweight provider designed to handle only the time zone rules for ``GMT`` (Greenwich Mean Time).
 This is suitable for operations on dates and times that do not depend on time zone considerations.
-Any attempt to use another zone ID will throw a `ZoneRulesException`_ because the ID is unknown.
+This provider only supports the ``GMT`` zone ID. Any attempt to get a different zone ID will throw a `ZoneRulesException`_.
 For example,
 
 .. code-block:: java
 
-    // Displaying available time zones - will list a single item: "GMT"
-    Set<String> timeZones = ZoneId.getAvailableZoneIds();
-    for (String timeZone : timeZones) {
-        System.out.println(timeZone);
-    }
+   ZoneId.of("GMT"); // ok
+   ZoneId.of("+0200"); // ok
+   ZoneId.of("GMT+0530"); // ok
+   ZoneId.of("PST"); // throws ZoneRulesException
+   ZoneId.of("CST-0115"); // throws ZoneRulesException
+   ZoneId.of("Asia/Tokyo"); // throws ZoneRulesException
 
-    // Creating ZonedDateTime instance - will throw a ZoneRulesException
-    ZonedDateTime specificDateTime = ZonedDateTime.of(2023, 7, 15, 14, 30, 0, 0, ZoneId.of("Europe/Dublin")); // July 15, 2023, 2:30 PM in Dublin
+   Set<String> zoneIds = ZoneId.getAvailableZoneIds(); // returned set contains only "GMT"
 
-    // Creating ZoneId instance from a region ID - will throw a ZoneRulesException 
-    ZoneId tokyoTimeZone = ZoneId.of("Asia/Tokyo");
+TZDB Zone Rules Provider
+~~~~~~~~~~~~~~~~~~~~~~~~
 
+The library also defines a provider of zone rules for the time zones defined in the `IANA Time Zone Database <https://www.iana.org/time-zones>`_ (TZDB).
 
-However, you can define a custom default provider for loading time zone rules.
-First, create a class that extends `ZoneRulesProvider`_ and defines custom zone rules like in the example after:
+The TZDB provider reads the zones and rules from a raw resource at runtime.
+Compared to the ``TzdbZoneRulesProvider`` of Java SE distributions, this implementation uses less Java heap at runtime, making it more suitable for embedded devices.
 
-.. code-block:: java
+.. warning::
+   The TZDB provider requires a target VEE Port that uses an architecture version ``8.1.1`` minimum (for ``8.x``), or ``7.20.5`` minimum (for ``7.x``).
 
-    public class CustomZoneRulesProvider extends ZoneRulesProvider {
+Using the TZDB Provider
+^^^^^^^^^^^^^^^^^^^^^^^
 
-        @Override
-        protected Set<String> provideZoneIds() {
-            Set<String> set = new HashSet<>(1);
-            set.add("CustomZone");
-            return set;
-        }
-
-        @Override
-        protected ZoneRules provideRules(String zoneId, boolean forCaching) {
-            if ("CustomZone".equals(zoneId)) {
-                // this custom zone has a fixed offset (+02:00)
-                return ZoneRules.of(ZoneOffset.ofHours(2));
-            }
-            throw new ZoneRulesException("Unknown zone ID");
-        }
-
-        @Override
-        protected NavigableMap<String, ZoneRules> provideVersions(String zoneId) {
-            throw new ZoneRulesException("No version history available for this zone ID " + zoneId);
-        }
-    }
-
-To make this class the default provider, set the constant ``java.time.zone.DefaultZoneRulesProvider`` to be the Full Qualified name of the custom provider class.
-
-Here is an example of a ``xxx.constants.list`` file with the constant in an application:
+To use this provider, set the constant ``java.time.zone.DefaultZoneRulesProvider`` to ``java.time.zone.TzdbZoneRulesProvider`` in a ``*.constants.list`` file, like below:
 
 .. code-block:: jproperties 
 
-    java.time.zone.DefaultZoneRulesProvider=com.mycompany.CustomZoneRulesProvider
+   java.time.zone.DefaultZoneRulesProvider=java.time.zone.TzdbZoneRulesProvider
 
-.. note::
-    Custom time zone rules providers are usually made for specific needs or to work with non-standard data sources.
+It is also required to add the class name ``java.time.zone.TzdbZoneRulesProvider`` to a ``*.types.list`` file: the class name is required to instantiate the provider and can not be known at compile-time.
+
+The raw resource from which the provider reads the zone rules is generated from the timezone database file included in the JDK/JRE installation (``tzdb.dat``).
+To generate the resource and use it in an application, do the following:
+
+1. Locate the ``tzdb.dat`` file in a local JDK/JRE installation (``path/to/JRE/lib/tzdb.dat``),
+2. Add the ``tzdb.dat`` file to the application resources (e.g., ``src/main/resources/com/mycompany/tzdb.dat``),
+3. Create a ``*.tzdb.list`` file in the application resources (e.g., ``src/main/resources/com/mycompany/myapp.tzdb.list``),
+4. Open the ``*.tzdb.list`` file and add the path to the ``tzdb.dat`` file (e.g., ``/com/mycompany/tzdb.dat``).
+
+The resource will be automatically generated when building the application or running it in the Simulator.
+By default, it will be embedded in the application binary (as an :ref:`internal resource<chapter.microej.applicationResources>`).
+For reference, the size of the resource is 100 KB for version ``2024a``.
+
+.. note:: 
+
+   To get a ``tzdb.dat`` with the most current timezone data available, use the `TZUpdater tool <https://www.oracle.com/java/technologies/downloads/tools/#TZUpdater>`_ and run the following command:
+   
+   .. code::
+      
+      java -jar tzupdater.jar -l
+   
+   The TZUpdater tool updates the JDK/JRE instance that is used to execute the tool: copy ``path/to/JRE/lib/tzdb.dat`` into the application resources, as described above.
+
+   In addition, you can check that the version of the timezone data is correct in the logs of the Add-on Processor that generates the raw resource.
+
+   .. tabs::
+
+      .. tab:: SDK 6
+
+         When running on Simulator or building an executable in verbose mode (with the ``--info`` Gradle option), look in the console for an output similar to:
+
+         .. code:: text
+            
+            [myapp:tzdb] Successfully deserialized TZDB data: version = 2024a, zones count = 603, resource buffer size = 102532
+
+         where ``2024a`` is the version of the timezone data in this example.
+
+      .. tab:: SDK 5
+
+         The Add-on Processor is executed when changes occur in the resources files.
+         Open the Add-on Processor console and set the log level to ``debug``.
+         After copying a ``tzdb.dat`` file in the resources files, look in the console for an output similar to:
+
+         .. code:: text
+            
+            [myapp:tzdb] Successfully deserialized TZDB data: version = 2024a, zones count = 603, resource buffer size = 102532
+
+         where ``2024a`` is the version of the timezone data in this example.
+
+
+If the TZDB provider can't find the resource, it will throw an exception at runtime:
+
+.. code-block:: java
+   
+   Exception in thread "main" java.lang.ExceptionInInitializerError: java.lang.IllegalStateException: Cannot open the tzdb binary resource
+
+In this case, follow the steps described above to generate the resource, and make sure that the resource is available at runtime:
+when the resource is internal, the ``tzdb`` resource should be listed in the ``Application Resources`` group of the :ref:`SOAR.map<soar_map_file>` file.
+
+Loading the TZDB Data as an External Resource
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The resource can be declared as an external resource to be loaded from another location (e.g. from a FileSystem).
+It has to be referenced in a ``*.externresources.list`` file, in which case the SOAR will output the resource in the :ref:`external_resources_folder`. 
+See :ref:`chapter.microej.applicationResources` for more information about external resources.
+
+.. warning::
+   Loading external resources requires a target VEE Port that uses the :ref:`External Resources Loader<section_externalresourceloader>`.
+
+Follow the steps below to declare the ``tzdb`` resource as an external resource:
+
+- Create a ``*.externresources.list`` file in the ``src/main/resources/`` folder,
+- Add the following path to the file:
+  
+  .. code::
+  
+   /java/time/zone/tzdb
+
+- Build the application executable,
+- The raw resource is now available in the :ref:`external_resources_folder`.
+  This resource must be transferred to the target device's memory and loaded from the path ``/java/time/zone/tzdb``, using the :ref:`External Resources Loader<section_externalresourceloader>`.
 
 
 .. _time_migration_guide:
@@ -533,18 +589,18 @@ Restrictions
 ------------
 
 The library's goal is to offer Application developers an API that closely mirrors the one found in Java SE 8.
-However, we had to make the library compatible with both pre-Java 8 features and the constraints found in embedded devices.
+However, we had to make the library compatible with both pre-Java 8 features and the constraints found in embedded devices, such as limited memory size.
 Here are the items where the backport differs from its Java 8 counterpart:
 
 - Non-ISO chronologies are not present (`Hijrah`, `Japanese`, `Minguo`, `ThaiBuddhist`). The overwhelming majority of applications use the ISO calendar system. Applications still have the option to introduce their own chronologies.
 - No formatting or parsing methods (methods ``parse``, ``format``, ``getDisplayName``, ``ofLocale``).
-- The default zone-rules provider does not use `IANADatabase`_. This provider loads zone rules from a local TZDB database and it consumes a significant amount of RAM. We plan to add this support shortly.
 - Removed the method ``ZoneRulesProvider.registerProvider(ZoneRulesProvider provider)``. The unique provider is defined with the constant ``java.time.zone.DefaultZoneRulesProvider``.
 - Static methods in interfaces are not supported and were removed or moved (see below).
 - Default methods in interfaces are not supported and were removed (pulled down in concrete types).
 - Removed static methods ``TemporalAdjusters.ofDateAdjuster(UnaryOperator<LocalDate> dateBasedAdjuster)`` and ``WeekFields.of(Locale locale)``.
 - No overflow checks on calculations (removed ``throws ArithmeticException`` when relevant). Excessively checking for overflow in all calculations can impact performance negatively.
-- No null checks on method arguments. Developers are encouraged to use the :ref:`Null Analysis <null_analysis>` tool to detect null access and adhere to the API javadoc specifications.
+- No null checks on method arguments. Developers are encouraged to use the :ref:`Null Analysis <null_analysis>` tool to detect null access and adhere to the API Javadoc specifications.
+- The classes from the ``java.time.zone`` package do not provide a human readable implementation of ``toString()``.
 
 .. note::
     For a comprehensive list of restrictions, refer to the ``README`` of the module.
