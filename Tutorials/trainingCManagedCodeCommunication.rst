@@ -23,28 +23,32 @@ What you will learn:
 Intended Audience
 =================
 
-The audience for this document is for VEE Port Developers who want to learn more about communication mechanisms between Managed Code and C.
+The audience for this document is for developers who want to learn more about communication mechanisms between C and Managed Code.
 
 Prerequisites
 =============
 
-- Good knowledge of :ref:`training_veeport_and_application_development`.
+- Good knowledge of the :ref:`overview` section.
+- Good knowledge of the :ref:`chapter-glossary`.
+- Knowledge of C programming language.
+- Knowledge of Java programming language.
 
 Training Resources
 ==================
 
-This training is composed of 2 units:
-
-- Unit 1: in depth view of the different ways to perform C / Managed Code communication.
-- Unit 2: concrete use case showing how to properly implement a blocking native method.
-
 Unit 1: C / Managed Code Communication with MICROEJ VEE
 -------------------------------------------------------
 
-- :download:`C / Managed Code Communication with MICROEJ VEE Slides <resources/DEV-M0127-PRE-VEE_Port_and_Application_development-STM32F7508-5.0.pdf>`
+This training provides an in depth view of the different ways to perform
+C / Managed Code communication:
+
+- :download:`Slides: C / Managed Code Communication with MICROEJ VEE <resources/DEV-M0127-PRE-VEE_Port_and_Application_development-STM32F7508-5.0.pdf>`
 
 Unit 2: Implement a Blocking Java Native Method with SNI
 --------------------------------------------------------
+
+This training describes a use case showing 
+how to properly implement a blocking native method:
 
 - :ref:`tutorial_sni_implement_blocking_native_method`
 

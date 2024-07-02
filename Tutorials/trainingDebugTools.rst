@@ -1,8 +1,8 @@
 .. _training_debug_tools:
 
-===========
-Debug Tools 
-===========
+==========================
+Debugging with MICROEJ SDK
+==========================
 
 Description
 ===========
@@ -27,16 +27,10 @@ Prerequisites
 Training Resources
 ==================
 
-This training is composed of 2 units:
-
-- Unit 1: overview of MicroEJ Debug Tools.
-- Unit 2: concrete debug use cases (GUI application freeze and HardFault).
-
 Unit 1: MicroEJ Debug Tools Overview
 ------------------------------------
 
-- :download:`MicroEJ Debug Tools Overview Slides <resources/DEV-M0127-PRE-VEE_Port_and_Application_development-STM32F7508-5.0.pdf>`
-
+- :download:`Slides: MicroEJ Debug Tools Overview <resources/DEV-M0127-PRE-VEE_Port_and_Application_development-STM32F7508-5.0.pdf>` (for MICROEJ SDK 5)
 
 Unit 2: Concrete Debug Use Cases
 --------------------------------

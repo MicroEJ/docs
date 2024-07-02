@@ -20,7 +20,6 @@ Prerequisites
 =============
 
 - Knowledge of Java programming language.
-- Knowledge of :ref:`training_gui_raster`.
 
 Implementing GUIs Efficiently
 ------------------------------

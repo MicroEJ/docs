@@ -6,6 +6,24 @@ Training
 
 Welcome to the MicroEJ training courses!
 
+This documentation provides online courses to learn the essentials of
+Firmware development using MICROEJ SDK.
+
+From Beginners training to more advanced ones, you will get a solid
+understanding of Application development using MICROEJ SDK and
+MICROEJ VEE integration on custom devices. In addition, you will discover
+the feature-rich ecosystem provided to developers to ease developments on a daily basis.
+
+Each training announces its prerequisites. 
+For those including hands-on, it may be required to use one of those development kits:
+
+- `i.MX RT1170 Evaluation Kit <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__.
+- `STM32F7508-DK Evaluation Kit <https://www.st.com/en/evaluation-tools/stm32f7508-dk.html>`__.
+
+Otherwise, the hands-on can be fully completed using MICROEJ SDK Simulator.
+
+.. _training_for_beginners:
+
 For Beginners
 =============
 
@@ -16,7 +34,8 @@ Basics
 
    trainingVEEPortAppDev
    trainingDebugTools
-   trainingApplicationTesting
+   trainingCManagedCodeCommunication
+   trainingMock
 
 .. raw:: html
 
@@ -26,9 +45,9 @@ Basics
             <div>
                <div class="training_image_container">
                   <div class="training_image_text">Course 1</div>
-                  <img src="../_static/images/training/training_sdk_veeport.jpg" alt="MICROEJ SDK / VEE Port">
+                  <img src="../_static/images/training/training_sdk_veeport.jpg" alt="MICROEJ SDK Basics">
                </div>
-               <h3 class="training_title">VEE Port & Application Development</h3>
+               <h3 class="training_title">MICROEJ SDK Basics</h3>
                <p class="training_description">In this training, you will get an introduction to MicroEJ ecosystem.
                You will create your first application project,
                run it on Simulator and on Device using MICROEJ SDK.
@@ -43,7 +62,7 @@ Basics
                   <div class="training_image_text">Course 2</div>
                   <img src="../_static/images/training/training_debug.jpg" alt="Debug Tools">
                </div>
-               <h3 class="training_title">Debug Tools</h3>
+               <h3 class="training_title">Debugging with MICROEJ SDK</h3>
                <p class="training_description">In this training, you will get an overview of the debug tools provided 
                to developers to debug an application. 
                </p>
@@ -51,42 +70,33 @@ Basics
             </div>
             </a>
             
-            <a class="training_link" href="trainingApplicationTesting.html">
+            <a class="training_link" href="trainingCManagedCodeCommunication.html">
             <div>
                <div class="training_image_container">
                   <div class="training_image_text">Course 3</div>
-                  <img src="../_static/images/training/training_junit.jpg" alt="JUnit">
+                  <img src="../_static/images/training/training_managed_code_c_communication.jpg" alt="C / Managed Code Communication">
                </div>
-               <h3 class="training_title">Application Testing</h3>
-               <p class="training_description">In this training, you will learn the basics to
-               develop and run unit tests on an application using the JUnit framework.
+               <h3 class="training_title">C / Managed Code Communication</h3>
+               <p class="training_description">In this training, you will get an in depth view of the different ways
+               to perform C / Managed Code communication using Native Interface Mechanisms.
                </p>
-               <a class="training_learn_more_link" href="trainingApplicationTesting.html">Learn more</a>
+               <a class="training_learn_more_link" href="trainingCManagedCodeCommunication.html">Learn more</a>
             </div>
             </a>
-            
+
+            <a class="training_link" href="trainingMock.html">
             <div>
                <div class="training_image_container">
                   <div class="training_image_text">Course 4</div>
-                  <img src="../_static/images/training/training_microej_java.jpg" alt="MicroEJ Java Specificities">
-               </div>
-               <h3 class="training_title">MicroEJ Java Specificities</h3>
-               <p class="training_description">Coming Soon!
-               </p>
-               <a>Learn more</a>
-            </div>
-
-            <div>
-               <div class="training_image_container">
-                  <div class="training_image_text">Course 5</div>
                   <img src="../_static/images/training/training_mock.jpg" alt="MicroEJ Java Specificities">
                </div>   
                <h3 class="training_title">Simulate Hardware Behavior using Mocks</h3>
                <p class="training_description">In this training, you will learn how to use mocks
                in order to enhance application development on Simulator.
                </p>
-               <a>Learn more</a>
+               <a class="training_learn_more_link" href="trainingMock.html">Learn more</a>
             </div>
+            </a>
 
          </div>
 
@@ -97,9 +107,7 @@ For VEE Developers
    :hidden:
    
    trainingVEEPortDevFromScratch
-   trainingCManagedCodeCommunication
    trainingPQT
-
 
 .. raw:: html
 
@@ -116,19 +124,6 @@ For VEE Developers
                a target device.
                </p>
                <a class="training_learn_more_link" href="trainingVEEPortDevFromScratch.html">Learn more</a>
-            </div>
-            </a>
-            
-            <a class="training_link" href="trainingCManagedCodeCommunication.html">
-            <div>
-               <div class="training_image_container">
-                  <img src="../_static/images/training/training_managed_code_c_communication.jpg" alt="C / Managed Code Communication">
-               </div>
-               <h3 class="training_title">C / Managed Code Communication</h3>
-               <p class="training_description">In this training, you will get an in depth view of the different ways
-               to perform C / Managed Code communication using Native Interface Mechanisms.
-               </p>
-               <a class="training_learn_more_link" href="trainingCManagedCodeCommunication.html">Learn more</a>
             </div>
             </a>
 
@@ -155,10 +150,35 @@ For Application Developers
    
    tutorialImproveCodeQuality
    tutorialOptimizeMemoryFootprint
+   trainingApplicationTesting
 
 .. raw:: html
 
          <div class="training_items">
+
+            
+            <a class="training_link" href="trainingApplicationTesting.html">
+            <div>
+               <div class="training_image_container">
+                  <img src="../_static/images/training/training_junit.jpg" alt="JUnit">
+               </div>
+               <h3 class="training_title">Application Testing</h3>
+               <p class="training_description">In this training, you will learn the basics to
+               develop and run unit tests on an application using the JUnit framework.
+               </p>
+               <a class="training_learn_more_link" href="trainingApplicationTesting.html">Learn more</a>
+            </div>
+            </a>
+            
+            <div>
+               <div class="training_image_container">
+                  <img src="../_static/images/training/training_microej_java.jpg" alt="MicroEJ Java Specificities">
+               </div>
+               <h3 class="training_title">MicroEJ Java Specificities</h3>
+               <p class="training_description">Coming Soon!
+               </p>
+               <a>Learn more</a>
+            </div>
 
             <a class="training_link" href="tutorialImproveCodeQuality.html">
             <div>
@@ -188,8 +208,80 @@ For Application Developers
 
          </div>
 
+GUI
+===
+
+.. toctree::
+   :hidden:
+
+   trainingGuiRaster
+
+
+
+.. raw:: html
+
+         <div class="training_items">
+
+            <a class="training_link" href="trainingGuiRaster.html">
+            <div>
+               <div class="training_image_container">
+                  <img src="../_static/images/training/training_gui.jpg" alt="Develop GUI with MicroEJ">
+               </div>
+               <h3 class="training_title">Develop GUI with MicroEJ</h3>
+               <p class="training_description">In this training, you will learn how to develop GUIs using the
+               MicroEJ Graphical Framework.
+               </p>
+               <a class="training_learn_more_link" href="trainingGuiRaster.html">Learn more</a>
+            </div>
+            </a>
+
+         </div>
+
+
+Multi-Sandbox
+=============
+
+.. toctree::
+   :hidden:
+   
+   trainingKernel
+   trainingSandboxedApps
+
+.. raw:: html
+
+         <div class="training_items">
+
+            <a class="training_link" href="trainingKernel.html">
+            <div>
+               <div class="training_image_container">
+                  <img src="../_static/images/training/training_kernel.jpg" alt="GUI Application Development">
+               </div>
+               <h3 class="training_title">Kernel Development</h3>
+               <p class="training_description">In this training, you will get an introduction to Kernel development
+               in a Multi-Sandbox context.
+               </p>
+               <a class="training_learn_more_link" href="trainingKernel.html">Learn more</a>
+            </div>
+            </a>
+            
+            <a class="training_link" href="trainingSandboxedApps.html">
+            <div>
+               <div class="training_image_container">
+                  <img src="../_static/images/training/training_sandboxed_apps.jpg" alt="GUI Validation">
+               </div>
+               <h3 class="training_title">Sandboxed Applications Development</h3>
+               <p class="training_description">In this training, you will get an introduction to Application development
+               in a Multi-Sandbox context.
+               </p>
+               <a class="training_learn_more_link" href="trainingSandboxedApps.html">Learn more</a>
+            </div>
+            </a>
+
+         </div>
+
 For DevOps
-----------
+==========
+
 .. toctree::
    :hidden:
 
@@ -215,95 +307,15 @@ For DevOps
 
          </div>
 
-Feature Oriented
-================
-
-GUI
----
-
-.. toctree::
-   :hidden:
-
-   trainingGuiRaster
-   tutorialValidateGUIs
-
-
-
-.. raw:: html
-
-         <div class="training_items">
-
-            <a class="training_link" href="trainingGuiRaster.html">
-            <div>
-               <div class="training_image_container">
-                  <img src="../_static/images/training/training_gui.jpg" alt="GUI Application Development">
-               </div>
-               <h3 class="training_title">GUI Application Development</h3>
-               <p class="training_description">In this training, you will learn how to develop GUIs using the
-               MicroEJ Graphical Framework.
-               </p>
-               <a class="training_learn_more_link" href="trainingGuiRaster.html">Learn more</a>
-            </div>
-            </a>
-            
-            <a class="training_link" href="tutorialValidateGUIs.html">
-            <div>
-               <div class="training_image_container">
-                  <img src="../_static/images/training/training_gui_validation.jpg" alt="GUI Validation">
-               </div>
-               <h3 class="training_title">GUI Validation</h3>
-               <p class="training_description">In this training, you will get an overview of
-               the technics to properly implement, debug and automatically test a GUI application.
-               </p>
-               <a class="training_learn_more_link" href="tutorialValidateGUIs.html">Learn more</a>
-            </div>
-            </a>
-
-         </div>
-
-
-Multi-Sandbox
--------------
-
-
-.. raw:: html
-
-         <div class="training_items">
-
-            <a class="training_link" href="trainingGuiRaster.html">
-            <div>
-               <div class="training_image_container">
-                  <img src="../_static/images/training/training_gui.jpg" alt="GUI Application Development">
-               </div>
-               <h3 class="training_title">GUI Application Development</h3>
-               <p class="training_description">In this training, you will learn how to develop GUIs using the
-               MicroEJ Graphical Framework.
-               </p>
-               <a class="training_learn_more_link" href="trainingGuiRaster.html">Learn more</a>
-            </div>
-            </a>
-            
-            <a class="training_link" href="tutorialValidateGUIs.html">
-            <div>
-               <div class="training_image_container">
-                  <img src="../_static/images/training/training_gui_validation.jpg" alt="GUI Validation">
-               </div>
-               <h3 class="training_title">GUI Validation</h3>
-               <p class="training_description">In this training, you will get an overview of
-               the technics to properly implement, debug and automatically test a GUI application.
-               </p>
-               <a class="training_learn_more_link" href="tutorialValidateGUIs.html">Learn more</a>
-            </div>
-            </a>
-
-         </div>
-
-
 Connectivity
-------------
+============
 
-MISC
-====
+Coming Soon!
+
+Advanced
+========
+
+Async Worker
 
 .. toctree::
    :hidden:

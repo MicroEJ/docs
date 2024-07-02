@@ -1,8 +1,8 @@
 .. _training_veeport_and_application_development:
 
-====================================
-VEE Port and Application Development
-====================================
+==================
+MICROEJ SDK Basics
+==================
 
 Description
 ===========
@@ -30,19 +30,18 @@ Prerequisites
 
 - Good knowledge of the :ref:`overview` section.
 - Good knowledge of the :ref:`chapter-glossary`.
-- STM32F7508-DK Board and a mini-USB cable.
-- A computer that can run MICROEJ SDK (see :ref:`system-requirements`).
+- `i.MX RT1170 Evaluation Kit <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__.
 
 Training Resources
 ==================
 
 This training is provided in PDF format with resources provided in a ``.zip`` package:
 
-- :download:`VEE Port and Application Development Slides <resources/DEV-M0127-PRE-VEE_Port_and_Application_development-STM32F7508-5.0.pdf>`
-- :download:`VEE Port and Application Development Resources <resources/DEV-M0127-PRE-VEE_Port_and_Application_development-STM32F7508-5.0_resources.zip>`
+- :download:`Slides: VEE Port and Application Development with MICROEJ SDK <resources/DEV-M0127-PRE-VEE_Port_and_Application_development-STM32F7508-5.0.pdf>` (for MICROEJ SDK 5)
+- :download:`Resources: VEE Port and Application Development with MICROEJ SDK <resources/DEV-M0127-PRE-VEE_Port_and_Application_development-STM32F7508-5.0_resources.zip>`
 
 ..
-   | Copyright 2021-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

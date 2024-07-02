@@ -13,6 +13,12 @@ of MICROEJ VEE on a device using PQT (Port Qualification Tools).
 VEE Port Qualification is the process of validating the conformance of the Abstraction
 Layer that implements the :ref:`Low Level APIs <low_level_api>` of a Foundation Library.
 
+What you will learn:
+
+- Reminder of Foundation Libraries architecture.
+- Test Suite role in Abstraction Layer validation.
+- Run a Test Suite on a Device
+
 Intended Audience
 =================
 
@@ -25,25 +31,22 @@ Prerequisites
 
 - Good knowledge of the :ref:`overview` section.
 - Good knowledge of the :ref:`chapter-glossary`.
+- `i.MX RT1170 Evaluation Kit <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__.
 
 Training Resources
 ==================
 
-This training is composed of 2 units:
-
-- Unit 1: Port Qualification Tools overview.
-- Unit 2: step-by-step guide to run a VEE Port Test Suite on a device using the Port Qualification Tools.
-
 Unit 1: PQT Overview
 --------------------
 
-- :download:`PQT Overview Slides <resources/DEV-M0127-PRE-VEE_Port_and_Application_development-STM32F7508-5.0.pdf>`
-
+- :download:`Slides: PQT Overview <resources/DEV-M0127-PRE-VEE_Port_and_Application_development-STM32F7508-5.0.pdf>`
 
 Unit 2: Run a Test Suite on a Device
 ------------------------------------
 
-- :ref:`tutorial_run_test_suite_on_device`
+Step-by-step hands-on to run a VEE Port Test Suite on a device using the Port Qualification Tools:
+
+- :ref:`tutorial_run_test_suite_on_device` (for MICROEJ SDK 5)
 
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 
