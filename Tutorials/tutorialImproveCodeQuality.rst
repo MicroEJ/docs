@@ -1,15 +1,23 @@
 .. _improve_code_quality:
 
-Improve the Quality of Java Code
-================================
+Best Java Code Practices
+========================
 
-This tutorial describes some rules and tools aimed at improving the quality of a Java code to simplify its maintenance.
+Description
+-----------
+
+This training describes some rules and tools aimed at improving the quality of a Java code to simplify its maintenance.
 It makes up a minimum consistent set of rules which can be applied in any situation, especially on embedded systems where performance and low memory footprint matter.
 
 Intended Audience
 -----------------
 
-The audience for this document is engineers who are developing any kind of Java code (application or library).
+The audience for this document is for Application Developers developing any kind of Java code (application or library).
+
+Prerequisites
+-------------
+
+- Knowledge of Java programming language.
 
 Readable Code
 -------------
