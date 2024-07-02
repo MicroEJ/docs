@@ -7,7 +7,6 @@ Tutorials
    :maxdepth: 1
 
    tutorialUnderstandMicroEJFirmwareBuild
-   tutorialCreateCustomPlatform
    tutorialCreateFirmwareFromScratch
    tutorialCreatePlatformBuildAndRunScripts
    tutorialSetupBuildUsingJenkinsAndArtifactory
