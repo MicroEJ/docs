@@ -136,6 +136,55 @@ The license key zip file must be simply dropped to the ``~/.microej/licenses/`` 
 
    MicroEJ Shared Licenses Directory
 
+.. _sdk6_production_license_check:
+
+Check Activation
+~~~~~~~~~~~~~~~~
+
+This section contains instructions that will allow you to verify that your Evaluation license has been properly installed.
+
+To get more details on installed Evaluation licenses, run the debug tool as following:
+
+#. Open a terminal.
+#. Change directory to an Evaluation VEE Port.
+#. Execute the command:
+   
+   .. code:: console
+
+      java -Djava.library.path=resources/os/[OS_NAME] -jar licenseManager/licenseManagerKeyHardware.jar
+
+   with ``OS_NAME`` set to ``Windows64`` for Windows OS, ``Linux64`` for Linux OS, ``Mac`` for macOS x86_64 (Intel chip) or ``MacA64`` for macOS aarch64 (M1 chip).
+
+   You should get something similar to the following output:
+   
+   .. code:: console
+
+      [DEBUG] ===== MicroEJ Evaluation License Debug Tool =====
+      [DEBUG] => UID: 39B7C108972A5C36.
+      [DEBUG] => Please specify a license directory containing 'keysHardware.txt'
+
+   This step is sufficient if you want to check the machine's UID. 
+   For an analysis of the available licenses, proceed with the following steps.
+
+#. :ref:`Build your Executable <sdk_6_build_executable>` with verbose mode enabled.
+#. Retrieve in the logs the path to the licenses directory by searching for ``-Dlicenses.working.dir=[path_to_license_dir]``.
+#. Execute the same command than before with the path to the licenses directory as argument:
+   
+   .. code:: console
+
+      java -Djava.library.path=resources/os/[OS_NAME] -jar licenseManager/licenseManagerKeyHardware.jar [path_to_license_dir]
+
+   You should get something similar to the following output:
+
+   .. code:: console
+
+      [DEBUG] ===== MicroEJ Evaluation License Debug Tool =====
+      [DEBUG] => UID: 39B7C108972A5C36.
+      [DEBUG] => Detected MicroEJ License HQB48-VCQDQ-I7QDL-IAZUF - valid until YYYY-MM-DD.
+      [DEBUG] ===== SUCCESS =====
+
+   Now the list of detected licenses and their validity are dumped.
+
 .. _sdk6_evaluation_license_troubleshooting:
 
 Troubleshooting
