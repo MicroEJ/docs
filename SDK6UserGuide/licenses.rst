@@ -136,7 +136,7 @@ The license key zip file must be simply dropped to the ``~/.microej/licenses/`` 
 
    MicroEJ Shared Licenses Directory
 
-.. _sdk6_production_license_check:
+.. _sdk6_evaluation_license_check:
 
 Check Activation
 ~~~~~~~~~~~~~~~~
