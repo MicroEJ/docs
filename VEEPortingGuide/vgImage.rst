@@ -17,6 +17,9 @@ This module is composed of several elements:
 Compile-time Image
 ==================
 
+Overview
+--------
+
 The Image module implements the MicroVG `VectorImage`_ framework.
 It provides an offline tool that consists in opening and decoding an image file and some Abstraction Layer APIs that manipulate the image at runtime.
 
@@ -59,7 +62,62 @@ This is an example of a ``vectorimage.list`` file:
    # Convert an SVG in signed 8-bit format
    /svg_image.svg:VG8
 
-Refer to the chapter :ref:`section_microvg_installation` for more information about the image generator configuration.
+The image generator provides some implementations that targets different GPUs:
+
+* ``NemaImageGenerator``: generates binary files compatible with the :ref:`section_vg_c_module_microvg_nema`.
+* ``VgliteImageGenerator``: generates binary files compatible with the :ref:`section_vg_c_module_microvg_vglite`.
+
+Refer to the chapter :ref:`section_microvg_installation` for more information about the image generator configuration or to the next chapter to target another GPU.
+
+.. _section_vg_image_generator_extension:
+
+Image Generator Extension
+-------------------------
+
+The Image Generator can be extended to target a new GPU. 
+This extension follows the same rules than the :ref:`MicroUI Image Generator extension<section_image_generator_extended>`.
+
+1. Create a ``std-javalib`` project. The module name must start with the prefix ``imageGenerator`` (for instance ``imageGeneratorMyGPU``).
+2. Add the dependency:
+
+   .. code-block:: xml
+
+      <dependency org="com.microej.pack.vg" name="vg-pack" rev="x.y.z">
+         <artifact name="vg-imageGenerator" type="jar"/>
+      </dependency>
+
+   Where ``x.y.z`` is the VG Pack version used to build the VEE Port (minimum ``1.6.0``). The ``module.ivy`` should look like:
+
+   .. code-block:: xml
+
+      <ivy-module version="2.0" xmlns:ea="http://www.easyant.org" xmlns:m="http://www.easyant.org/ivy/maven" xmlns:ej="https://developer.microej.com" ej:version="2.0.0">
+
+         <info organisation="com.microej.microui" module="imageGeneratorMyGPU" status="integration" revision="1.0.0">      
+            <ea:build organisation="com.is2t.easyant.buildtypes" module="build-std-javalib" revision="2.+"/>
+         </info>
+         
+         <configurations defaultconfmapping="default->default;provided->provided">
+            <conf name="default" visibility="public" description="Runtime dependencies to other artifacts"/>
+            <conf name="provided" visibility="public" description="Compile-time dependencies to APIs provided by the VEE Port"/>
+            <conf name="documentation" visibility="public" description="Documentation related to the artifact (javadoc, PDF)"/>
+            <conf name="source" visibility="public" description="Source code"/>
+            <conf name="dist" visibility="public" description="Contains extra files like README.md, licenses"/>
+            <conf name="test" visibility="private" description="Dependencies for test execution. It is not required for normal use of the application, and is only available for the test compilation and execution phases."/>
+         </configurations>
+         
+         <publications/>
+         
+         <dependencies>
+            <dependency org="com.microej.pack.vg" name="vg-pack" rev="[VG Pack version]">
+               <artifact name="vg-imageGenerator" type="jar"/>
+            </dependency>
+         </dependencies>
+      </ivy-module>
+
+3. Implements the interface ``ej.microvg.image.ImageGenerator``; the name of the class must be ``[Prefix]ImageGenerator`` where ``[Prefix]`` is the name that will be set in the VEE Port configuration file (see :ref:`section_microvg_installation`).
+4. Build the project.
+5. Copy the generated jar: ``target~/artifacts/imageGeneratorMyGPU.jar`` in the VEE Port configuration project folder: ``MyVEEPort-configuration/dropins/tools/``
+6. Rebuild the VEE Port.
 
 MicroVG Library
 ---------------
@@ -150,7 +208,7 @@ The way to register the drawing commands is strongly linked to the targeted GPU:
 As a consequence, the implementation is dedicated to the GPU.
 The :ref:`section_vg_cco` provide some implementations, and the Front Panel (for the Simulation) features the same limitations as the embedded side (it is not possible to store a MicroUI drawing in the simulator if the embedded side is not able to perform it).
 
-.. [#note_uibvi] The compatible MicroUI drawings depend on the GPU Port; see:ref:`section_vg_cco`.
+.. [#note_uibvi] The compatible MicroUI drawings depend on the GPU Port; see :ref:`section_vg_cco`.
 
 Runtime Image
 =============

@@ -1,7 +1,7 @@
 .. include:: aliases.rst
 
 Path
-============
+====
 
 .. _Path creation:
 

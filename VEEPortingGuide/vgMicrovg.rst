@@ -42,7 +42,7 @@ In the VEE Port configuration's :ref:`module description file <mmm_module_descri
    <dependency org="com.microej.pack.vg" name="vg-pack" rev="[VG Pack version]" conf="default->default"/>
 
 
-.. note:: The latest current pack version is |VGPACKVERSION|.
+.. note:: The latest current Pack version is |VGPACKVERSION|.
 
 The VG Pack will be automatically available after a VEE Port rebuild.
 
@@ -51,14 +51,19 @@ The VG Pack will be automatically available after a VEE Port rebuild.
 The properties file ``microvg/microvg.properties`` is required to configure the VG Pack.
 More specifically, it allows to configure the :ref:`section_vg_image_generator` and the front panel to fit a specific GPU.
 This properties file must contain a property named ``implementation``.
-Two values are currently available: ``vglite`` and ``nema``.
+Two values are currently available: 
+
+* ``nema``: to be compatible with the :ref:`Think Silicon Nema VG<section_vg_c_module_microvg_nema>` GPU.
+* ``vglite``: to be compatible with the :ref:`Vivante VGLite<section_vg_c_module_microvg_vglite>` GPU.
+
 Example:
 
 .. code-block:: XML
 
    implementation=nema
 
-
+A custom extension can be used to target another GPU. 
+The name of the property ``implementation`` is used to identify the :ref:`section_vg_image_generator_extension` and the :ref:`Front Panel Extension<section_vg_frontpanel_extension>`.
 
 Use
 ===

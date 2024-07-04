@@ -4,8 +4,6 @@
 C Modules
 =========
 
-XXX Multiple references to VGLite. Add information about Nema and rework the picture.
-
 Principle
 =========
 
@@ -18,7 +16,7 @@ The following picture illustrates the available C modules and their relations fo
 
 * FreeType library for the font renderer and the font layouter in simple layout mode.
 * Harfbuzz library for the font layouter in complex layout mode.
-* Vivante VGLite library for the drawing of vector paths
+* *GPU* library symbolizes the library for the drawing of vector paths over a GPU.
 
 The following chapters explain the aim and relations of each C module.
 
@@ -36,14 +34,6 @@ UI Pack & MicroUI C Modules
 
 The UI Pack provides a header file to implement the MicroUI drawings: ``LLUI_PAINTER_impl.h``.
 See :ref:`section_ui_cco` chapter to have more information.
-
-Library: Vivante VGLite
-=======================
-
-This library is the official Vivante VGLite library.
-The C modules use its header files to target the GPU.
-
-.. note:: The library must be patched to be compatible with the C module "MicroUI over VGLite". Consult the C module's ReadMe file for more information.
 
 VG Pack
 =======
@@ -175,7 +165,7 @@ Overview
 
 This C module is a specific implementation of the VG Pack drawings over the official Vivante VGLite library (that targets some GPU with vector graphics acceleration):
 
-* It implements the MicroVG API ``vg_drawing.h`` in ``vg_drawing_vglite.c`` and ``LLVG_PAINTER_FONT_freetype_vglite.c``.
+* It implements the MicroVG API ``vg_drawing.h`` in ``vg_drawing_vglite.c``.
 * It implements the MicroVG Image management (draw a compile-time image, create a BufferedVectorImage, etc.): ``LLVG_RAW_impl.c``. 
 * It provides an implementation of MicroVG drawings to the MicroVG BufferedVectorImage: ``vg_drawing_bvi.c``.
 * It also implements MicroUI drawings to the MicroVG BufferedVectorImage: ``ui_drawing_bvi.c``.
@@ -189,6 +179,8 @@ The implementation requires:
 
 This C module is available on the :ref:`developer_repository`: `com.microej.clibrary.llimpl#microvg-vglite`_.
 
+.. warning:: The library must be patched to be compatible with the C module "MicroUI over VGLite". Consult the C module's ReadMe file for more information.
+
 Usage
 -----
 
@@ -196,6 +188,42 @@ Usage
 2. Add all C files in the BSP project.
 
 .. _com.microej.clibrary.llimpl#microvg-vglite: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-vglite/
+
+
+.. _section_vg_c_module_microvg_nema:
+
+C Module: MicroVG Over NemaVG
+=============================
+
+Overview
+--------
+
+This C module is a specific implementation of the VG Pack drawings over the official Think Silicon Nema VG library (that targets some GPU with vector graphics acceleration):
+
+* It implements the MicroVG API ``vg_drawing.h`` in ``vg_drawing_nema.c``.
+* It implements the MicroVG Image management (draw a compile-time image, create a BufferedVectorImage, etc.): ``vg_drawing_nema_image.c``. 
+* It provides an implementation of MicroVG drawings to the MicroVG BufferedVectorImage: ``vg_drawing_bvi.c``.
+* It also implements MicroUI drawings to the MicroVG BufferedVectorImage: ``ui_drawing_bvi.c``.
+
+The implementation requires:
+
+* the concepts of the C module MicroVG,
+* the concepts of the C module MicroUI over NemaVG,
+* the FreeType library,
+* the Think Silicon NemaVG library.
+
+This C module is available on the :ref:`developer_repository`: `com.microej.clibrary.llimpl#microvg-nema`_. 
+
+Usage
+-----
+
+1. This C module transitively fetches the :ref:`C Module for MicroUI for NemaGFX<section_ui_cco>`, follow its implementation rules.
+2. Add all C files in the BSP project.
+
+
+.. XXX_TODO wrong link
+.. _com.microej.clibrary.llimpl#microvg-nema: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-vglite/
+
 
 Compatibility
 =============

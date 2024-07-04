@@ -22,6 +22,8 @@ Embedded VEE Port
 
    MicroVG Embedded Abstraction Layer API
 
+XXX_TODO review the boxes with the latest version of naming convention
+
 The specification of header files names is:
 
 - Name starts with ``LLVG_``.
@@ -43,8 +45,7 @@ Simulator
 
 The Simulator's five VG engines are grouped in a :ref:`Front Panel extension <section_ui_simulation>`. 
 
-XXX review this note, the implementation is now compatible with several GPUs.
-.. note:: The current implementation is built-in in the VG Pack and is only compatible with the i.MX RT595 MCU (see :ref:`VG Pack note<pack_vg>`).
+This engine provides the compatibility with Vivante VGLite and Think Silicon Nema VG GPUs and it can be extended to fit another GPU.
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
