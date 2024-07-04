@@ -143,7 +143,11 @@ Check Activation
 
 This section contains instructions that will allow you to verify that your Evaluation license has been properly installed.
 
-To get more details on installed Evaluation licenses, run the debug tool as following:
+.. note::
+   
+   The command line tool requires :ref:`Architecture 8.2.0 <changelog-8.2.0>` or higher. 
+
+To get more details on installed Evaluation licenses, proceed with the following steps:
 
 #. Open a terminal.
 #. Change directory to an Evaluation VEE Port.
