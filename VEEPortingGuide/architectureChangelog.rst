@@ -34,6 +34,18 @@ specific configuration:
    -  ``QNX65``: BlackBerry QNX 6.5
    -  ``QNX70``: BlackBerry QNX 7.0
 
+
+.. _changelog-8.2.0:
+
+[8.2.0] - RC
+------------
+
+
+Tools
+~~~~~
+
+-  Updated License Manager (Evaluation) to debug installed license from command line (see :ref:`sdk6_evaluation_license_check`).
+
 .. _changelog-8.1.1:
 
 [8.1.1] - 2024-06-17
@@ -1383,7 +1395,7 @@ Tools
 ~~~~~
 
 -  Updated License Manager (Production) to debug dongle recognition
-   issues from command line (see :ref:`production_license_check_cli`).
+   issues from command line (see :ref:`sdk6_production_license_check`).
 -  Updated License Manager (Production) to support dongle recognition
    on macOS ``10.14`` (Mojave)
 -  Fixed ELF To Map to produce correct sizes from an executable
