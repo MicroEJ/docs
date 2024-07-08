@@ -32,6 +32,8 @@ Front Panel
 .. _Front Panel Widgets 4.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/4.0.1/
 .. _UI Pack 14.0.1: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/14.0.1/
 
+.. _section_ui_migrationguide_pack_14.0.1_bsp_without_gpu:
+
 BSP Without GPU
 """""""""""""""
 
@@ -154,7 +156,7 @@ BSP with DMA2D
 
 * *[BSP project]*
 
-    * Follow the migration steps of "BSP without GPU".
+    * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.0.1_bsp_without_gpu`.
     * Check the content of the configuration file ``ui_drawing_dma2d_configuration.h`` (a versioning has been added).
     * Comment the line ``#error [...]"``.
     * According to the display :ref:`section_brs`, unlock the MicroUI Graphics Engine in the LCD interrupt or the DMA2D memcpy callback (see :ref:`section_ui_c_module_microui_dma2d`).
@@ -170,7 +172,7 @@ BSP with VGLite
 
 * *[BSP project]*
 
-    * Follow the migration steps of "BSP without GPU".
+    * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.0.1_bsp_without_gpu`.
     * Migrate VGLite library to the version **3.0.15_rev7**.
     * Modify the VGLite library **3.0.15_rev7** by applying the patch ``3.0.15_rev7.patch`` (see README.md near the patch file for more information).
     * In the file ``vglite_window.c``, add the function ``VGLITE_CancelSwapBuffers()`` and its prototype in ``vglite_window.h``:
@@ -190,7 +192,7 @@ BSP with NemaGFX
 
 * *[BSP project]*
 
-    * Follow the migration steps of "BSP without GPU".
+    * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.0.1_bsp_without_gpu`.
     * Check the content of the configuration file ``ui_drawing_nema_configuration.h`` (new version ``2``).
 
 From 13.6.x to 13.7.2
@@ -208,6 +210,8 @@ Front Panel
 	 </dependency>
 
 .. _UI Pack 13.7.2: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.7.2/
+
+.. _section_ui_migrationguide_pack_13.7.2_bsp_without_gpu:
 
 BSP without GPU
 """""""""""""""
@@ -229,7 +233,7 @@ BSP with DMA2D
 
 * *[BSP project]*
 
-	* Follow the migration steps of "BSP without GPU".
+	* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_13.7.2_bsp_without_gpu`.
 
 BSP with VGLite
 """"""""""""""""
@@ -240,7 +244,7 @@ BSP with VGLite
 
 * *[BSP project]*
 
-	* Follow the migration steps of "BSP without GPU".
+	* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_13.7.2_bsp_without_gpu`.
 
 BSP with NemaGFX
 """"""""""""""""
@@ -251,7 +255,7 @@ BSP with NemaGFX
 
 * *[BSP project]*
 
-	* Follow the migration steps of "BSP without GPU".
+	* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_13.7.2_bsp_without_gpu`.
 	* Review all options of ``ui_drawing_nema_configuration.h`` (version ``2``).
 
 From 13.5.x to 13.6.2
@@ -375,6 +379,8 @@ Front Panel
 
 .. _UI Pack 13.5.1: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.5.1/
 
+.. _section_ui_migrationguide_pack_13.5.1_bsp_without_gpu:
+
 BSP without GPU
 """""""""""""""
 
@@ -391,7 +397,7 @@ BSP without GPU
 BSP with DMA2D
 """"""""""""""
 
-* Follow the migration steps of "BSP without GPU".
+* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_13.5.1_bsp_without_gpu`.
 * *[VEE Port configuration project]*
 
 	* Fetch the `C Module DMA2D 4.0.0`_.
@@ -414,7 +420,7 @@ BSP with VGLite
 .. note:: 
 	The C Module is designed to target the `NXP i.MX RT500`_; however it can be locally customized for other boards (see :ref:`[Custom project]<section_cmodule_vglite_custom>`)
 
-* Follow the migration steps of "BSP without GPU".
+* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_13.5.1_bsp_without_gpu`.
 * *[VEE Port configuration project]*
 
 	* Fetch the `C Module VGLite 6.0.1`_.
@@ -428,6 +434,8 @@ BSP with VGLite
 
 From 13.3.x to 13.4.1
 =====================
+
+.. _section_ui_migrationguide_pack_13.4.1_bsp_without_gpu:
 
 BSP without GPU
 """""""""""""""
@@ -443,7 +451,7 @@ BSP without GPU
 BSP with DMA2D
 """"""""""""""
 
-* Follow the migration steps of "BSP without GPU".
+* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_13.4.1_bsp_without_gpu`.
 * *[VEE Port configuration project]*
 
 	* Fetch the `C Module DMA2D 3.0.2`_.
@@ -458,7 +466,7 @@ BSP with VGLite
 .. note:: 
 	The C Module is designed to target the `NXP i.MX RT500`_; however it can be locally customized for other boards (see :ref:`[Custom project]<section_cmodule_vglite_custom>`)
 
-* Follow the migration steps of "BSP without GPU".
+* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_13.4.1_bsp_without_gpu`.
 * *[VEE Port configuration project]*
 
 	* Fetch the `C Module VGLite 5.0.1`_.
@@ -482,6 +490,8 @@ Front Panel
 		<artifact name="frontpanel" type="jar"/>
 	 </dependency>
 
+.. _section_ui_migrationguide_pack_13.3.1_bsp_without_gpu:
+
 BSP without GPU
 """""""""""""""
 
@@ -496,7 +506,7 @@ BSP without GPU
 BSP with DMA2D
 """"""""""""""
 
-* Follow the migration steps of "BSP without GPU".
+* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_13.3.1_bsp_without_gpu`.
 * *[VEE Port configuration project]*
 
 	* Fetch the `C Module DMA2D 3.0.0`_.
@@ -511,7 +521,7 @@ BSP with VGLite
 .. note:: 
 	The C Module is designed to target the `NXP i.MX RT500`_; however it can be locally customized for other boards (see :ref:`[Custom project]<section_cmodule_vglite_custom>`).
 
-* Follow the migration steps of "BSP without GPU".
+* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_13.3.1_bsp_without_gpu`.
 * *[VEE Port configuration project]*
 
 	* Fetch the `C Module VGLite 3.0.0`_.
@@ -567,6 +577,8 @@ Front Panel
 		<artifact name="frontpanel" type="jar"/>
 	 </dependency>
 
+.. _section_ui_migrationguide_pack_13.1.0_bsp_without_gpu:
+
 BSP without GPU
 """""""""""""""
 
@@ -586,7 +598,7 @@ BSP without GPU
 BSP with DMA2D
 """"""""""""""
 
-* Follow the migration steps of "BSP without GPU".
+* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_13.1.0_bsp_without_gpu`.
 * *[VEE Port configuration project]*
 
 	* Fetch the `C Module DMA2D 2.1.0`_.
