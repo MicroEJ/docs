@@ -273,20 +273,22 @@ The following table describes the compatibility versions between the MicroEJ UI 
 +-----------------+----------------+------------------------------------------+
 | UI Pack Range   | C Module Range | Comment                                  |
 +=================+================+==========================================+
-| [14.0.0-14.0.1] | [4.0.0-4.0.1]  | buffer refresh strategies                |
+| [14.0.0-14.0.1] | [4.0.0-4.1.0]  | Buffer refresh strategies                |
 +-----------------+----------------+------------------------------------------+
-| [13.7.0-13.7.2] | 3.1.0          | free image resources                     |
+| [13.7.0-13.7.2] | 3.1.0          | Free image resources                     |
 +-----------------+----------------+------------------------------------------+
-| [13.5.0-13.6.2] | 3.0.0          | multiple Graphics Context output formats |
+| [13.5.0-13.6.2] | 3.0.0          | Multiple Graphics Context output formats |
 +-----------------+----------------+------------------------------------------+
-| [13.3.0-13.4.1] | [2.0.0-2.0.1]  | copy and draw image                      |
+| [13.3.0-13.4.1] | [2.0.0-2.0.1]  | Copy and draw image                      |
 +-----------------+----------------+------------------------------------------+
-| [13.1.0-13.2.0] | [1.1.0-1.1.1]  | image heap, events queue, drawing limits |
+| [13.1.0-13.2.0] | [1.1.0-1.1.1]  | Image heap, events queue, drawing limits |
 +-----------------+----------------+------------------------------------------+
 | [13.0.0-13.1.0] | [1.0.0-1.0.3]  |                                          |
 +-----------------+----------------+------------------------------------------+
 
 .. _com.microej.clibrary.llimpl(microui): https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/
+
+.. _section_ui_releasenotes_cmodule_extended:
 
 Extended C Modules
 """"""""""""""""""
@@ -294,7 +296,7 @@ Extended C Modules
 Some C modules extend the main MicroUI C module.
 They override the default implementation to use a GPU to perform some drawings.
 Contrary to the main MicroUI C module, they are optional: when they are not available, the default implementation of drawings is used.
-The default implementations use the Graphics Engine software algorithms.
+The default implementation uses the Graphics Engine software algorithms.
 
 **STM32 Chrom-ART**
 
@@ -305,15 +307,15 @@ The following table describes the version compatibility between the MicroEJ UI P
 +-----------------+----------------+------------------------------------------+
 | UI Pack Range   | C Module Range | Comment                                  |
 +=================+================+==========================================+
-| [14.0.0-14.0.1] | [5.0.0-5.0.1]  | buffer refresh strategies                |
+| [14.0.0-14.0.1] | [5.0.0-5.0.1]  | Buffer refresh strategies                |
 +-----------------+----------------+------------------------------------------+
-| [13.7.0-13.7.2] | 4.1.0          | free image resources                     |
+| [13.7.0-13.7.2] | 4.1.0          | Free image resources                     |
 +-----------------+----------------+------------------------------------------+
-| [13.5.0-13.6.2] | 4.0.0          | multiple Graphics Context output formats |
+| [13.5.0-13.6.2] | 4.0.0          | Multiple Graphics Context output formats |
 +-----------------+----------------+------------------------------------------+
-| [13.3.0-13.4.1] | [3.0.0-3.0.2]  | copy and draw image                      |
+| [13.3.0-13.4.1] | [3.0.0-3.0.2]  | Copy and draw image                      |
 +-----------------+----------------+------------------------------------------+
-| [13.1.0-13.2.0] | [2.0.0-2.1.0]  | drawing limits                           |
+| [13.1.0-13.2.0] | [2.0.0-2.1.0]  | Drawing limits                           |
 +-----------------+----------------+------------------------------------------+
 | [13.0.0-13.0.7] | [1.0.6-1.0.8]  |                                          |
 +-----------------+----------------+------------------------------------------+
@@ -327,13 +329,13 @@ The following table describes the version compatibility between the MicroEJ UI P
 +-----------------+----------------+------------------------------------------+
 | UI Pack Range   | C module Range | Comment                                  |
 +=================+================+==========================================+
-| [14.0.0-14.0.1] | [8.0.0-8.0.1]  | buffer refresh strategies                |
+| [14.0.0-14.0.1] | [8.0.0-9.0.0]  | Buffer refresh strategies                |
 +-----------------+----------------+------------------------------------------+
-| [13.7.0-13.7.2] | 7.2.0          | free image resources                     |
+| [13.7.0-13.7.2] | 7.2.0          | Free image resources                     |
 +-----------------+----------------+------------------------------------------+
-| [13.5.0-13.6.2] | [6.0.0-7.1.0]  | multiple Graphics Context output formats |
+| [13.5.0-13.6.2] | [6.0.0-7.1.0]  | Multiple Graphics Context output formats |
 +-----------------+----------------+------------------------------------------+
-| [13.3.0-13.4.1] | [3.0.0-5.0.1]  | copy and draw image                      |
+| [13.3.0-13.4.1] | [3.0.0-5.0.1]  | Copy and draw image                      |
 +-----------------+----------------+------------------------------------------+
 | [13.1.0-13.2.0] | [1.0.0-2.0.0]  |                                          |
 +-----------------+----------------+------------------------------------------+
@@ -343,7 +345,9 @@ The following table describes the version compatibility between the C module and
 +----------------+-----------------------------+
 | C Module Range | VGLite Libraries Range      |
 +================+=============================+
-| [7.1.0-8.0.1]  | 3.0.15_rev4 and 3.0.15_rev7 |
+| [8.0.0-9.0.0]  | 3.0.15_rev7                 |
++----------------+-----------------------------+
+| [7.1.0-7.2.0]  | 3.0.15_rev4 and 3.0.15_rev7 |
 +----------------+-----------------------------+
 | [4.0.0-7.0.0]  | 3.0.15_rev4                 |
 +----------------+-----------------------------+
@@ -361,9 +365,9 @@ The following table describes the version compatibility between the MicroEJ UI P
 +-----------------+----------------+---------------------------+
 | UI Pack Range   | C module Range | Comment                   |
 +=================+================+===========================+
-| [14.0.0-14.0.1] | [2.0.0-2.0.1]  | buffer refresh strategies |
+| [14.0.0-14.0.1] | [2.0.0-2.0.1]  | Buffer refresh strategies |
 +-----------------+----------------+---------------------------+
-| [13.7.0-13.7.2] | [1.1.0-1.2.0]  | free image resources      |
+| [13.7.0-13.7.2] | [1.1.0-1.2.0]  | Free image resources      |
 +-----------------+----------------+---------------------------+
 | [13.5.0-13.6.2] | 1.0.0          |                           |
 +-----------------+----------------+---------------------------+

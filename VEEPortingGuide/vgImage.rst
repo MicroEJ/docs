@@ -62,6 +62,11 @@ This is an example of a ``vectorimage.list`` file:
    # Convert an SVG in signed 8-bit format
    /svg_image.svg:VG8
 
+The image generator must be extended to encode the binary data in a format compatible with the GPU.
+
+Default Extensions
+------------------
+
 The image generator provides some implementations that targets different GPUs:
 
 * ``NemaImageGenerator``: generates binary files compatible with the :ref:`section_vg_c_module_microvg_nema`.
@@ -71,8 +76,8 @@ Refer to the chapter :ref:`section_microvg_installation` for more information ab
 
 .. _section_vg_image_generator_extension:
 
-Image Generator Extension
--------------------------
+Custom Extension
+----------------
 
 The Image Generator can be extended to target a new GPU. 
 This extension follows the same rules than the :ref:`MicroUI Image Generator extension<section_image_generator_extended>`.
@@ -109,12 +114,12 @@ This extension follows the same rules than the :ref:`MicroUI Image Generator ext
          
          <dependencies>
             <dependency org="com.microej.pack.vg" name="vg-pack" rev="[VG Pack version]">
-               <artifact name="vg-imageGenerator" type="jar"/>
+               <artifact name="vg-imagegenerator" type="jar"/>
             </dependency>
          </dependencies>
       </ivy-module>
 
-3. Implements the interface ``ej.microvg.image.ImageGenerator``; the name of the class must be ``[Prefix]ImageGenerator`` where ``[Prefix]`` is the name that will be set in the VEE Port configuration file (see :ref:`section_microvg_installation`).
+3. Implements the interface ``ej.microvg.image.ImageGenerator``; the name of the class must be ``ej.microvg.image.[Prefix]ImageGenerator`` where ``[Prefix]`` is the name that will be set in the VEE Port configuration file (see :ref:`section_microvg_installation`).
 4. Build the project.
 5. Copy the generated jar: ``target~/artifacts/imageGeneratorMyGPU.jar`` in the VEE Port configuration project folder: ``MyVEEPort-configuration/dropins/tools/``
 6. Rebuild the VEE Port.
