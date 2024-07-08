@@ -41,7 +41,7 @@ In the VEE Port's Front Panel project:
       </dependency>
 
    Where ``x.y.z`` is the VG Pack version used to build the VEE Port (minimum ``1.6.0``).
-2. Implement one or several interface to simulate the embedded GPU (see next chapters).
+2. Implement one or several interfaces / classes to simulate the embedded GPU (see next chapters).
 3. Rebuild the VEE Port.
 
 Image Decoder
@@ -50,12 +50,14 @@ Image Decoder
 To decode the images generarated by the :ref:`image generator<section_vg_image_generator_extension>`, implement the interface ``ej.microvg.image.ImageDecoder`` in the VEE Port's Front Panel project. 
 The name of the class must be ``ej.microvg.image.[Prefix]ImageDecoder`` where ``[Prefix]`` is the name that will be set in the VEE Port configuration file (see :ref:`section_microvg_installation`).
 
+.. note:: This implementation is mandatory to allow the use of encoded images.
+
 Display Drawer
 --------------
 
 This feature allows to simulate the same limitations of the GPU to draw the MicroVG drawings (path, gradient, blend modes, etc.) in the display buffer (and in the ``BufferedImage`` with same format than the display buffer).
 
-.. note:: By default, all the MicroVG drawings are implemented.
+.. note:: This implementation is optional; by default, all the MicroVG drawings are implemented.
 
 1. Extend the class ``ej.microvg.display.DisplayDrawer``; the name of the class must be ``ej.microvg.display.[Prefix]DisplayDrawer`` where ``[Prefix]`` is the name that will be set in the VEE Port configuration file (see :ref:`section_microvg_installation`).
 2. Override the method ``drawPath()`` to simulate some limitations.
@@ -66,7 +68,7 @@ Buffered Vector Image
 On the embedded side, the MicroUI drawings (line, rectangle, etc.) must be explicitly implemented to be stored in a ``BufferedVectorImage`` (a drawing should not be stored if the GPU is not able to render it).
 The Front Panel extension allows to simulate the same limitations.
 
-.. note:: By default, all the MicroUI drawings in a BufferedVectorImage are disabled.
+.. note:: This implementation is optional; by default, all the MicroUI drawings in a BufferedVectorImage are disabled (whereas all the MicroVG drawings are enabled).
 
 The Front Panel extension already provides an engine that implements all MicroUI drawings in a ``BufferedVectorImage``.
 Each drawing of this extension can be used independently to simulate the behavior of the embedded side.
