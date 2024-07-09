@@ -60,9 +60,10 @@ The SDK is licensed under the :ref:`SDK End User License Agreement (EULA) <sdk6_
    testProject
    publishProject
    tools
+   veePort
    manageVersion
    manageResolutionConflicts
-   migrateMMMProject
+   migrate
    moduleNatures
    troubleshooting
    tutorials/index
