@@ -110,9 +110,20 @@ Dependencies
 Installation
 ============
 
-The External Resources Loader is an additional module. In the platform
-configuration file, check :guilabel:`External Resources Loader` to install this
-module.
+The External Resources Loader is an additional module. 
+The installation process is different in SDK 5 and SDK 6:
+
+.. tabs::
+
+   .. tab:: SDK 6
+
+      In the VEE Port configuration file, add the following property::
+
+         com.microej.runtime.externalresourceloader.enabled=true
+
+   .. tab:: SDK 5      
+
+      In the VEE Port configuration file, check :guilabel:`External Resources Loader` to install this module.
 
 
 Use

@@ -1,69 +1,37 @@
-.. _sdk_6_migrate_mmm_project:
+.. _sdk_6_migrate_sdk5_application_project:
 
-Migrate an MMM Project
-======================
+Migrate an Application/Library Project
+======================================
 
-This page explains how to migrate a project created with the SDK 5 or lower to the SDK 6.
+This page is the entry point to learn how to migrate an Application or a Library project created with the SDK 5 or lower to the SDK 6.
 It covers the following items:
 
-- Project structure
 - Build descriptor file
+- Configuration
 - Build scripts
-
-.. _sdk_6_migrate_project_structure:
-
-Project structure
------------------
-
-The structure of an SDK 6 Gradle project is similar to an MMM project.
-The differences are:
-
-- The ``module.ivy`` file is replaced by a ``build.gradle.kts`` file and a ``settings.gradle.kts`` file (see :ref:`sdk_6_migrate_build_file`).
-- The ``module.ant`` and ``override.module.ant`` files are removed (see :ref:`sdk_6_migrate_build_scripts`).
-- The ``build`` folder located at the root of the project and containing the Application configuration properties is replaced by the ``configuration`` folder.
-  This change is required since Gradle uses the ``build`` folder to store the generated files and artifacts (equivalent of the MMM ``target~`` folder).
-
-Therefore, here are the 2 project structures side by side: 
-
-+--------------------------------+--------------------------------+
-| MMM Project                    | Gradle Project                 |
-+================================+================================+
-| .. code-block::                | .. code-block::                |
-|                                |                                |
-|    |- src                      |    |- src                      |
-|    |   |- main                 |    |   |- main                 |
-|    |   |   |- java             |    |   |   |- java             |
-|    |   |   |- resources        |    |   |   |- resources        |
-|    |   |- test                 |    |   |- test                 |
-|    |       |- java             |    |       |- java             |
-|    |       |- resources        |    |       |- resources        |
-|    |- build                    |    |- configuration            |
-|    |   |- common.properties    |    |   |- common.properties    |
-|    |- module.ivy               |    |- build.gradle.kts         |
-|    |- module.ant               |    |- settings.gradle.kts      |
-|                                |                                |
-+--------------------------------+--------------------------------+
 
 .. _sdk_6_migrate_build_file:
 
 Build Descriptor File
 ---------------------
 
-The ``module.ivy`` file of the MMM project must be replaced by a ``build.gradle.kts`` file and a ``settings.gradle.kts`` file.
+The ``module.ivy`` file of the SDK 5 project must be replaced by a ``build.gradle.kts`` file and a ``settings.gradle.kts`` file.
 The ``settings.gradle.kts`` contains the name of the project, 
 whereas the ``build.gradle.kts`` file contains all the other information (module type, group, version, ...).
 
-Build Type
-~~~~~~~~~~
+The following chapters describe how to convert the sections of the ``module.ivy`` file to the SDK 6 format.
 
-The MMM build type defined in the ``module.ivy`` file with the ``ea:build`` tag is replaced by a plugin in the ``build.gradle.kts`` file.
-For example, here is the block to add at the beginning of the file to migrate a ``build-microej-javalib`` MMM module::
+Build Type
+^^^^^^^^^^
+
+The SDK 5 build type defined in the ``module.ivy`` file with the ``ea:build`` tag is replaced by a plugin in the ``build.gradle.kts`` file.
+For example, here is the block to add at the beginning of the file to migrate a ``build-microej-javalib`` SDK 5 module::
 
    plugins {
        id("com.microej.gradle.addon-library") version "0.19.0"
    }
 
-The mapping between MMM build types and Gradle plugins is:
+The mapping between the main SDK 5 build types and Gradle plugins is:
 
 .. list-table::
    :widths: 50 50
@@ -86,7 +54,7 @@ The mapping between MMM build types and Gradle plugins is:
      - ``com.microej.gradle.runtime-api``
 
 Module Information
-~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^
 
 The module information defined by the ``info`` tag in the ``module.ivy`` file are split in the 2 following descriptor files:
 
@@ -120,50 +88,8 @@ will be converted to:
 
    Refer to :ref:`sdk6_manage_versioning` section for more information on the way to define the module version.
 
-Configuration
-~~~~~~~~~~~~~
-
-The configuration of an MMM build is only done with ``ea:property`` tags in the ``module.ivy`` file, 
-whereas it can take multiple form in Gradle. 
-You can refer to the :ref:`sdk6_module_natures` page for a complete list of configurations.
-
-As a first example, the main class is defined in MMM with the property ``application.main.class``::
-
-   <ea:property name="application.main.class" value="com.mycompany.Main"/>
-
-whereas it is defined by the ``applicationEntryPoint`` property of the ``microej`` block in Gradle::
-
-   microej {
-      applicationEntryPoint = "com.mycompany.Main"
-   }
-
-As a second example, the pattern of the executed tests is defined in MMM with the property ``test.run.includes.pattern``::
-
-   <ea:property name="test.run.includes.pattern" value="**/_AllTests_MyTest.class"/>
-
-whereas it is defined by the ``filter`` object of the ``test`` task in Gradle::
-
-   testing {
-      suites {
-        val test by getting(JvmTestSuite::class) {
-
-            ...
-
-            targets {
-                all {
-                    testTask.configure {
-                        filter {
-                            includeTestsMatching("MyTest")
-                        }
-                    }
-                }
-            }
-        }
-      }
-   }
-
 Dependencies
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 The ``dependencies`` tag in the ``module.ivy`` file is replaced by the ``dependencies`` block in the ``build.gradle.kts`` file.
 Each dependency is tight to a Gradle configuration.
@@ -194,10 +120,102 @@ To resolve both snapshot and release versions, use ``[1.0.0-RC,1.0.0]`` instead 
 
 Refer to the :ref:`sdk_6_add_dependency` page to go further on the Gradle dependencies and configurations.
 
-Example
-~~~~~~~
+Configuration Folder
+--------------------
 
-This section gives an example of migration from a ``module.ivy`` file to a ``build.gradle.kts`` file and a ``settings.gradle.kts`` file.
+The ``build`` folder located at the root of the project and containing the Application configuration properties is replaced by the ``configuration`` folder.
+This change is required since Gradle uses the ``build`` folder to store the generated files and artifacts (equivalent of the MMM ``target~`` folder).
+
+Specific Configuration
+----------------------
+
+Some configuration options are available in SDK 6 in a different way than in SDK 5. 
+This chapter goes through all this specific configuration options.
+
+You can refer to the :ref:`sdk6_module_natures` page for a complete list of configurations.
+
+Main class of Standalone Application
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The main class of a Standalone Application is defined in SDK 5 with the property ``application.main.class`` in the ``module.ivy`` file::
+
+   <ea:property name="application.main.class" value="com.mycompany.Main"/>
+
+It must now be defined in SDK 6 by the ``applicationEntryPoint`` property of the ``microej`` block in ``build.gradke.kts`` file::
+
+   microej {
+      applicationEntryPoint = "com.mycompany.Main"
+   }
+
+Feature Entry Point class of Sandboxed Application
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Feature Entry Point class of a Sandboxed Application is defined in SDK 5 with the property ``entryPoint`` in the ``*.kf`` file::
+
+   entryPoint=com.mycompany.MyFeature
+
+It must now be defined in SDK 6 by the ``applicationEntryPoint`` property of the ``microej`` block in the ``build.gradke.kts`` file::
+
+   microej {
+      applicationEntryPoint = "com.mycompany.MyFeature"
+   }
+
+
+Tests Pattern
+^^^^^^^^^^^^^
+
+The pattern of the executed tests is defined in SDK 5 with the property ``test.run.includes.pattern``::
+
+   <ea:property name="test.run.includes.pattern" value="**/_AllTests_MyTest.class"/>
+
+It must now be defined in SDK 6 by the ``filter`` object of the ``test`` task in the ``build.gradke.kts`` file::
+
+   testing {
+      suites {
+        val test by getting(JvmTestSuite::class) {
+
+            ...
+
+            targets {
+                all {
+                    testTask.configure {
+                        filter {
+                            includeTestsMatching("MyTest")
+                        }
+                    }
+                }
+            }
+        }
+      }
+   }
+
+
+Example
+^^^^^^^
+
+This section gives an example of a migration from a SDK 5 Application project to SDK 6.
+Here are the projects strucuture side by side:
+
++--------------------------------+--------------------------------+
+| SDK 5 Project                  | SDK 6 Project                  |
++================================+================================+
+| .. code-block::                | .. code-block::                |
+|                                |                                |
+|    |- src                      |    |- src                      |
+|    |   |- main                 |    |   |- main                 |
+|    |   |   |- java             |    |   |   |- java             |
+|    |   |   |- resources        |    |   |   |- resources        |
+|    |   |- test                 |    |   |- test                 |
+|    |       |- java             |    |       |- java             |
+|    |       |- resources        |    |       |- resources        |
+|    |- build                    |    |- configuration            |
+|    |   |- common.properties    |    |   |- common.properties    |
+|    |- module.ivy               |    |- build.gradle.kts         |
+|    |- module.ant               |    |- settings.gradle.kts      |
+|                                |                                |
++--------------------------------+--------------------------------+
+
+And here the migration from a ``module.ivy`` file to a ``build.gradle.kts`` file and a ``settings.gradle.kts`` file:
 
 **SDK 5 and lower**
 
@@ -276,7 +294,7 @@ This section gives an example of migration from a ``module.ivy`` file to a ``bui
 Build Scripts
 -------------
 
-MMM supports the use of the ``module.ant`` and ``override.module.ant`` to customize the build process.
+SDK 5 supports the use of the ``module.ant`` and ``override.module.ant`` to customize the build process.
 These files are not supported anymore with Gradle.
 Instead, since Gradle build files are code, customizations can be applied directly in the build files.
 

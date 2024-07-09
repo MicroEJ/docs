@@ -9,7 +9,7 @@ VEE Porting Guide
    introduction
    architecture
    pack
-   platformCreation
+   bspConnection
    veePortQualification
    coreEngine
    advanceTrace

@@ -134,7 +134,7 @@ The next step is adding the module that contains the MicroEJ Application to the 
 
       .. note::
          If the MicroEJ Application has been created with the :ref:`SDK 5 <sdk_user_guide>` or lower, it is required to first migrate it to :ref:`SDK 6 <sdk_6_user_guide>`.
-         Read the comprehensive :ref:`Migration Guide <sdk_6_migrate_mmm_project>` before proceeding.
+         Read the comprehensive :ref:`Migration Guide <sdk_6_migrate_sdk5_project>` before proceeding.
 
       - Click on :guilabel:`File` > :guilabel:`New` > :guilabel:`Import Module...`.
       - Browse to the source directory of the Gradle project.

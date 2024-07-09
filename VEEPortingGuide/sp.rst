@@ -185,10 +185,21 @@ Dependencies
 Installation
 ============
 
-The ``[SP]`` library and its relative tools are an optional feature of the
-platform. In the platform configuration file, check
-:guilabel:`Java to C Interface` > :guilabel:`Shielded Plug` to install the library and
-its relative tools.
+The ``[SP]`` library and its relative tools are an optional feature of the VEE Port. 
+The installation process is different in SDK 5 and SDK 6:
+
+.. tabs::
+
+   .. tab:: SDK 6
+
+      In the VEE Port configuration file, add the following property::
+
+         com.microej.runtime.shieldedplug.enabled=true
+
+   .. tab:: SDK 5      
+
+      In the VEE Port configuration file, check :guilabel:`Java to C Interface` > :guilabel:`Shielded Plug` to install the library and
+      its relative tools.
 
 
 .. _sp-api-mmm:
