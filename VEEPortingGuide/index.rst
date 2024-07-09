@@ -46,7 +46,7 @@ The steps are as follow:
 
    architecture
    pack
-   platformCreation
+   bspConnection
    veePortQualification
    coreEngine
    advanceTrace
