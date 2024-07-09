@@ -3,7 +3,8 @@
 Create a Project
 ================
 
-This chapter explains the different ways to create a new project.
+This chapter explains the different ways to create a new Application, Library or Mock project.
+If you want to create a VEE Port project, refer to the :ref:`sdk_6_veeport_create` section.
 
 .. note::
   The different project creation systems do not produce exactly the same project content and structure.
