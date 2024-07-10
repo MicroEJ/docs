@@ -30,7 +30,7 @@ Prerequisites
 
 - Good knowledge of the :ref:`overview` section.
 - Good knowledge of the :ref:`chapter-glossary`.
-- `i.MX RT1170 Evaluation Kit <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__.
+- `NXP i.MX RT1170 Evaluation Kit <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__.
 
 Training Resources
 ==================
@@ -38,7 +38,9 @@ Training Resources
 This training is provided in PDF format with resources provided in a ``.zip`` package:
 
 - :download:`Slides: VEE Port and Application Development with MICROEJ SDK <resources/DEV-M0127-PRE-VEE_Port_and_Application_development-STM32F7508-5.0.pdf>` (for MICROEJ SDK 5)
-- :download:`Resources: VEE Port and Application Development with MICROEJ SDK <resources/DEV-M0127-PRE-VEE_Port_and_Application_development-STM32F7508-5.0_resources.zip>`
+- :download:`Resources: VEE Port and Application Development with MICROEJ SDK <resources/DEV-M0127-PRE-VEE_Port_and_Application_development-STM32F7508-5.0_resources.zip>` (for MICROEJ SDK 5)
+
+Training for MICROEJ SDK 6 coming soon!
 
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 

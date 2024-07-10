@@ -27,12 +27,17 @@ Prerequisites
 Training Resources
 ==================
 
-Unit 1: MicroEJ Debug Tools Overview
+Unit 1: Master logging within your Application
+----------------------------------------------
+
+- Read the following documentation: :ref:`tutorial_instrument_java_code_for_logging`.
+
+Unit 2: MicroEJ Debug Tools Overview
 ------------------------------------
 
 - :download:`Slides: MicroEJ Debug Tools Overview <resources/DEV-M0127-PRE-VEE_Port_and_Application_development-STM32F7508-5.0.pdf>` (for MICROEJ SDK 5)
 
-Unit 2: Concrete Debug Use Cases
+Unit 3: Concrete Debug Use Cases
 --------------------------------
 
 - :ref:`tutorial_discover_embedded_debugging_techniques.use_case_1`

@@ -17,7 +17,7 @@ the feature-rich ecosystem provided to developers to ease developments on a dail
 Each training announces its prerequisites. 
 For those including hands-on, it may be required to use one of those development kits:
 
-- `i.MX RT1170 Evaluation Kit <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__.
+- `NXP i.MX RT1170 Evaluation Kit <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__.
 - `STM32F7508-DK Evaluation Kit <https://www.st.com/en/evaluation-tools/stm32f7508-dk.html>`__.
 
 Otherwise, the hands-on can be fully completed using MICROEJ SDK Simulator.
@@ -116,6 +116,7 @@ For VEE Developers
             <a class="training_link" href="trainingVEEPortDevFromScratch.html">
             <div>
                <div class="training_image_container">
+                  <div class="training_image_text">Course 1</div>
                   <img src="../_static/images/training/training_createFirmwareFromScratch.jpg" alt="VEE Port Creation for a Custom Device">
                </div>
                <h3 class="training_title">VEE Port Creation for a Custom Device</h3>
@@ -130,6 +131,7 @@ For VEE Developers
             <a class="training_link" href="trainingPQT.html">
             <div>
                <div class="training_image_container">
+                  <div class="training_image_text">Course 2</div>
                   <img src="../_static/images/training/training_pqt.jpg" alt="PQT">
                </div>
                <h3 class="training_title">Qualify & Test your VEE Port</h3>
@@ -156,33 +158,10 @@ For Application Developers
 
          <div class="training_items">
 
-            
-            <a class="training_link" href="trainingApplicationTesting.html">
-            <div>
-               <div class="training_image_container">
-                  <img src="../_static/images/training/training_junit.jpg" alt="JUnit">
-               </div>
-               <h3 class="training_title">Application Testing</h3>
-               <p class="training_description">In this training, you will learn the basics to
-               develop and run unit tests on an application using the JUnit framework.
-               </p>
-               <a class="training_learn_more_link" href="trainingApplicationTesting.html">Learn more</a>
-            </div>
-            </a>
-            
-            <div>
-               <div class="training_image_container">
-                  <img src="../_static/images/training/training_microej_java.jpg" alt="MicroEJ Java Specificities">
-               </div>
-               <h3 class="training_title">MicroEJ Java Specificities</h3>
-               <p class="training_description">Coming Soon!
-               </p>
-               <a>Learn more</a>
-            </div>
-
             <a class="training_link" href="tutorialImproveCodeQuality.html">
             <div>
                <div class="training_image_container">
+                  <div class="training_image_text">Course 1</div>
                   <img src="../_static/images/training/training_java_code_practices.jpg" alt="Best Java Code Practices">
                </div>
                <h3 class="training_title">Best Java Code Practices</h3>
@@ -193,9 +172,24 @@ For Application Developers
             </div>
             </a>
             
+            <a class="training_link" href="trainingApplicationTesting.html">
+            <div>
+               <div class="training_image_container">
+                  <div class="training_image_text">Course 2</div>
+                  <img src="../_static/images/training/training_junit.jpg" alt="JUnit">
+               </div>
+               <h3 class="training_title">Application Testing</h3>
+               <p class="training_description">In this training, you will learn the basics to
+               develop and run unit tests on an application using the JUnit framework.
+               </p>
+               <a class="training_learn_more_link" href="trainingApplicationTesting.html">Learn more</a>
+            </div>
+            </a>
+            
             <a class="training_link" href="tutorialOptimizeMemoryFootprint.html">
             <div>
                <div class="training_image_container">
+                  <div class="training_image_text">Course 3</div>
                   <img src="../_static/images/training/training_optimize_footprint.jpg" alt="Optimize the Memory Footprint of an Application">
                </div>
                <h3 class="training_title">Optimize the Memory Footprint of an Application</h3>
@@ -206,6 +200,17 @@ For Application Developers
             </div>
             </a>
 
+            <div>
+               <div class="training_image_container">
+                  <div class="training_image_text">Course 4</div>
+                  <img src="../_static/images/training/training_microej_java.jpg" alt="MicroEJ Java Specificities">
+               </div>
+               <h3 class="training_title">MicroEJ Java Specificities</h3>
+               <p class="training_description">Coming Soon!
+               </p>
+               <a>Learn more</a>
+            </div>
+            
          </div>
 
 GUI
@@ -225,6 +230,7 @@ GUI
             <a class="training_link" href="trainingGuiRaster.html">
             <div>
                <div class="training_image_container">
+                  <div class="training_image_text">Course 1</div>
                   <img src="../_static/images/training/training_gui.jpg" alt="Develop GUI with MicroEJ">
                </div>
                <h3 class="training_title">Develop GUI with MicroEJ</h3>
@@ -254,6 +260,7 @@ Multi-Sandbox
             <a class="training_link" href="trainingKernel.html">
             <div>
                <div class="training_image_container">
+                  <div class="training_image_text">Course 1</div>
                   <img src="../_static/images/training/training_kernel.jpg" alt="GUI Application Development">
                </div>
                <h3 class="training_title">Kernel Development</h3>
@@ -267,6 +274,7 @@ Multi-Sandbox
             <a class="training_link" href="trainingSandboxedApps.html">
             <div>
                <div class="training_image_container">
+                  <div class="training_image_text">Course 2</div>
                   <img src="../_static/images/training/training_sandboxed_apps.jpg" alt="GUI Validation">
                </div>
                <h3 class="training_title">Sandboxed Applications Development</h3>
@@ -286,6 +294,7 @@ Connectivity
    :hidden:
 
    trainingNetworking
+   tutorialExploreDataSerializationFormats
 
 .. raw:: html
 
@@ -294,6 +303,7 @@ Connectivity
             <a class="training_link" href="trainingNetworking.html">
             <div>
                <div class="training_image_container">
+                  <div class="training_image_text">Course 1</div>
                   <img src="../_static/images/training/training_networking.jpg" alt="Networking Basics">
                </div>
                <h3 class="training_title">Networking Basics</h3>
@@ -301,6 +311,20 @@ Connectivity
                network connectivity with MicroEJ, illustrated by samples.
                </p>
                <a class="training_learn_more_link" href="trainingNetworking.html">Learn more</a>
+            </div>
+            </a>
+
+            <a class="training_link" href="tutorialExploreDataSerializationFormats.html">
+            <div>
+               <div class="training_image_container">
+                  <div class="training_image_text">Course 2</div>
+                  <img src="../_static/images/training/code.jpg" alt="Explore Data Serialization Formats">
+               </div>
+               <h3 class="training_title">Explore Data Serialization Formats</h3>
+               <p class="training_description">In this training, you will discover 
+               some data serialization formats through basic code samples.
+               </p>
+               <a class="training_learn_more_link" href="tutorialExploreDataSerializationFormats.html">Learn more</a>
             </div>
             </a>
 
@@ -321,6 +345,7 @@ For DevOps
             <a class="training_link" href="tutorialSetupBuildUsingJenkinsAndArtifactory.html">
             <div>
                <div class="training_image_container">
+                  <div class="training_image_text">Course 1</div>
                   <img src="../_static/images/training/training_ci_jenkins_artifactory.jpg" alt="Setup Build Using Jenkins And Artifactory">
                </div>
                <h3 class="training_title">Setup Build Using Jenkins And Artifactory</h3>
@@ -349,6 +374,7 @@ Advanced
             <a class="training_link" href="trainingAsyncWorker.html">
             <div>
                <div class="training_image_container">
+                  <div class="training_image_text">Course 1</div>
                   <img src="../_static/images/training/training_async_worker.jpg" alt="Async Worker">
                </div>
                <h3 class="training_title">Delegate Blocking Operations using Async Worker</h3>
@@ -367,7 +393,6 @@ Advanced
    
    tutorialCreateCustomPlatform
    tutorialUnderstandMicroEJFirmwareBuild
-   tutorialExploreDataSerializationFormats
    tutorialInstrumentJavaCodeForLogging
    tutorialRunATestSuiteOnDevice
 

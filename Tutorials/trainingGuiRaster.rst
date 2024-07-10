@@ -57,7 +57,7 @@ Unit 2: Coding Challenges
 -------------------------
 
 This project contains coding challenges to learn the basics of UI development with MicroEJ.
-The training is divided into 10 steps, each helping the user create the views of a smartwatch.
+The training is divided into multiple steps, each helping the user create the views of a smartwatch.
 
 - `Tutorial-UI-Wearable <https://github.com/MicroEJ/Tutorial-UI-Wearable>`_ (for MICROEJ SDK 6)
 
