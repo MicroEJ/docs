@@ -7,7 +7,7 @@ Abstraction Layer API
 Principle
 =========
 
-The MicroVG implementation for MicroEJ requires an Abstraction Layer implementation. 
+The MicroVG implementation for MicroEJ requires an Abstraction Layer implementation.
 The Abstraction Layer implementation consists of a set of header files to implement in C to target the hardware drivers.
 
 The VG Pack's embedded Front Panel extension implements all MicroVG features for the simulator.
@@ -21,8 +21,6 @@ Embedded VEE Port
    :align: center
 
    MicroVG Embedded Abstraction Layer API
-
-XXX_TODO review the boxes with the latest version of naming convention
 
 The specification of header files names is:
 
@@ -43,13 +41,13 @@ Simulator
 
    MicroVG Simulator Abstraction Layer API
 
-The Simulator's five VG engines are grouped in a :ref:`Front Panel extension <section_ui_simulation>`. 
+The Simulator's five VG engines are grouped in a :ref:`Front Panel extension <section_ui_simulation>`.
 
 This engine provides the compatibility with Vivante VGLite and Think Silicon Nema VG GPUs and it can be extended to fit another GPU.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
-   for read and redistribute. Except if otherwise stated, modification 
+   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free
+   for read and redistribute. Except if otherwise stated, modification
    is subject to MicroEJ Corp prior approval.
-   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and
    copyrights are the property of their respective owners.
