@@ -55,7 +55,7 @@ Usage
 
 .. note::
 
-  Since MICROEJ SDK 6, the application output folder is located under the ``build/output/`` folder.
+  Since MICROEJ SDK 6, the application output folder is located under the ``build/application/executable/`` folder.
 
 Limitations
 -----------
