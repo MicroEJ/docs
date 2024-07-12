@@ -9,7 +9,7 @@ Principle
 
 Several C modules implement the VG Pack's Abstraction Layer APIs.
 Some are generic, and some are VEE Port dependent (more precisely: GPU dependent).
-The generic modules provide header files to be extended by the specific modules. 
+The generic modules provide header files to be extended by the specific modules.
 The generic C modules are available on the :ref:`central_repository` and the specific C modules on the :ref:`developer_repository`.
 
 The following picture illustrates the available C modules and their relations for an implementation that uses:
@@ -103,7 +103,7 @@ Memory Heap Configuration
 -------------------------
 
 The FreeType library requires a memory Heap for FreeType internal objects allocated when a font file is loaded (see https://freetype.org/freetype2/docs/design/design-4.html).
-The size of this heap depends on the number of fonts loaded in parallel and on the fonts themselves. 
+The size of this heap depends on the number of fonts loaded in parallel and on the fonts themselves.
 This size is defined by ``VG_FEATURE_FREETYPE_HEAP_SIZE`` in ``microvg_configuration.h``.
 
 All fonts do not require the same heap size. FreeType heap usage can be monitored using the following configurations:
@@ -147,8 +147,8 @@ The library Harfbuzz compatible with MicroEJ is packaged in a C module on the :r
 
 This C module provides a fork of Harfbuzz 4.2.1.
 
-The Harfbuzz library requires a memory Heap for Harfbuzz internal objects allocated when a font file is loaded. 
-The size of this heap depends on the number of fonts loaded in parallel and on the fonts themselves. 
+The Harfbuzz library requires a memory Heap for Harfbuzz internal objects allocated when a font file is loaded.
+The size of this heap depends on the number of fonts loaded in parallel and on the fonts themselves.
 This size is defined by ``VG_FEATURE_HARFBUZZ_HEAP_SIZE_HEAP`` in ``microvg_configuration.h``.
 
 All fonts do not require the same heap size. The ``MICROVG_MONITOR_HEAP`` define in ``microvg_helper.h`` and ``MEJ_LOG_MICROVG`` and ``MEJ_LOG_INFO_LEVEL`` defines in ``mej_log.h`` can be used to monitor the Harfbuzz heap evolution.
@@ -165,8 +165,11 @@ Overview
 
 This C module is a specific implementation of the VG Pack drawings over the official Vivante VGLite library (that targets some GPU with vector graphics acceleration):
 
+* It implements the MicroVG API ``LLVG_impl.h`` in ``LLVG_impl_vglite.c``.
+* It implements the MicroVG API ``LLVG_GRADIENT_impl.h`` in ``LLVG_GRADIENT_impl_vglite.c``.
 * It implements the MicroVG API ``vg_drawing.h`` in ``vg_drawing_vglite.c``.
-* It implements the MicroVG Image management (draw a compile-time image, create a BufferedVectorImage, etc.): ``LLVG_RAW_impl.c``. 
+* It implements the MicroVG API ``vg_path.h`` in ``vg_path_vglite.c``.
+* It implements the MicroVG Image management (draw a compile-time image, create a BufferedVectorImage, etc.) in ``vg_drawing_vglite_image.c``.
 * It provides an implementation of MicroVG drawings to the MicroVG BufferedVectorImage: ``vg_drawing_bvi.c``.
 * It also implements MicroUI drawings to the MicroVG BufferedVectorImage: ``ui_drawing_bvi.c``.
 
@@ -201,7 +204,7 @@ Overview
 This C module is a specific implementation of the VG Pack drawings over the official Think Silicon Nema VG library (that targets some GPU with vector graphics acceleration):
 
 * It implements the MicroVG API ``vg_drawing.h`` in ``vg_drawing_nema.c``.
-* It implements the MicroVG Image management (draw a compile-time image, create a BufferedVectorImage, etc.): ``vg_drawing_nema_image.c``. 
+* It implements the MicroVG Image management (draw a compile-time image, create a BufferedVectorImage, etc.): ``vg_drawing_nema_image.c``.
 * It provides an implementation of MicroVG drawings to the MicroVG BufferedVectorImage: ``vg_drawing_bvi.c``.
 * It also implements MicroUI drawings to the MicroVG BufferedVectorImage: ``ui_drawing_bvi.c``.
 
@@ -212,7 +215,7 @@ The implementation requires:
 * the FreeType library,
 * the Think Silicon NemaVG library.
 
-This C module is available on the :ref:`developer_repository`: `com.microej.clibrary.llimpl#microvg-nema`_. 
+This C module is available on the :ref:`developer_repository`: `com.microej.clibrary.llimpl#microvg-nema`_.
 
 Usage
 -----
@@ -235,8 +238,8 @@ The compatibility between the components (Packs, C modules, and Libraries) is de
 .. _ej.microvg.VectorFont.close(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html#close--
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
-   for read and redistribute. Except if otherwise stated, modification 
+   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free
+   for read and redistribute. Except if otherwise stated, modification
    is subject to MicroEJ Corp prior approval.
-   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and
    copyrights are the property of their respective owners.
