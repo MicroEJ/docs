@@ -15,7 +15,7 @@ Front Panel
 * Fetch `Front Panel Widgets 4.0.1`_ (it fetches by transitivity the `UI Pack 14.0.1`_):
 
   .. code-block:: xml
-  
+
      <dependency org="ej.tool.frontpanel" name="widget" rev="4.0.1"/>
 
 * Re-organize imports of all Java classes (classes ``MicroUIImageFormat``, ``MicroUIImage`` and ``MicroUIGraphicsContext`` have been extracted from ``LLUIPainter``).
@@ -23,7 +23,7 @@ Front Panel
   The ``bufferPolicyClass`` replaces it (see :ref:`Buffer Refresh Strategy on the Simulator<section_brs_sim>`).
 
   .. code-block:: xml
-  
+
      <ej.fp.widget.Display x="0" y="0" width="480" height="272" bufferPolicyClass="ej.fp.widget.display.buffer.SwapDoubleBufferPolicy"/>
 
 * The ``FlushVisualizerDisplay`` widget has been merged with the ``Display`` widget.
@@ -70,12 +70,12 @@ BSP Without GPU
     * Set the value of the define ``UI_DISPLAY_BRS_DRAWING_BUFFER_COUNT``: ``1``.
     * Uncomment the define ``UI_DISPLAY_BRS_FLUSH_SINGLE_RECTANGLE``.
     * Change the signature and the implementation of the function flush: ``void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t flush_identifier, const ui_rect_t regions[], size_t length)``
-        
+
         * Store (in a static field) the rectangle to flush (the array contains only one rectangle).
         * Store (in a static field) the flush identifier.
         * Unlock (immediately or wait for the LCD tearing signal interrupt) the *flush task* (hardware or software) that will transmit the back buffer data to the front buffer.
         * Remove the returned value (the back buffer address).
-    
+
     * At the end of the flush (in an interrupt or at the end of the software *flush task*), replace the call to ``LLUI_DISPLAY_flushDone()`` with ``LLUI_DISPLAY_setBackBuffer()``: it will unlock the Graphics Engine. Give the back buffer address (same address as at start-up) and the flush identifier.
 
 * *[Display "Swap double buffer"]*
@@ -83,37 +83,37 @@ BSP Without GPU
     * Set the value of the define ``UI_DISPLAY_BRS``: ``UI_DISPLAY_BRS_PREDRAW``.
     * Set the value of the define ``UI_DISPLAY_BRS_DRAWING_BUFFER_COUNT``: ``2``.
     * Change the signature and the implementation of the function flush: ``void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t flush_identifier, const ui_rect_t regions[], size_t length)``
-        
+
         * Store (in a static field) the back buffer address (`LLUI_DISPLAY_getBufferAddress(&gc->image)`).
         * Store (in a static field) the flush identifier.
         * Unlock (immediately or wait for the LCD tearing signal interrupt) the *swap task* (hardware or software) that will swap the back buffer and the front buffer.
         * Remove the static fields ``ymin`` and ``ymax`` (now useless).
         * Remove the returned value (the back buffer address).
-    
+
     * Case of *hardware swap* (LCD *swap* interrupt): change the implementation of the LCD *swap* interrupt:
 
         * Remove all the code concerning the post-flush restoration (remove the *flush task* or the use of a DMA). In both cases, the call to ``LLUI_DISPLAY_flushDone()`` is removed.
         * Unlock the Graphics Engine by calling ``LLUI_DISPLAY_setBackBuffer()``, giving the new back buffer address and the flush identifier.
-  
+
     * Case of *software swap* (dedicated *swap task*): change the task actions:
 
         * Swap back and front buffers.
         * Wait for the end of the buffers swap: ensure the LCD driver does not use the old front buffer anymore.
         * Remove all the code concerning the post-flush restoration (the call to ``memcpy`` or the use of a DMA). In both cases, the call to ``LLUI_DISPLAY_flushDone()`` is removed.
         * Unlock the Graphics Engine by calling ``LLUI_DISPLAY_setBackBuffer()``, giving the new back buffer address and the flush identifier.
-  
+
 * *[Display "Swap triple buffer"]*
 
     * Set the value of the define ``UI_DISPLAY_BRS``: ``UI_DISPLAY_BRS_PREDRAW``.
     * Set the value of the define ``UI_DISPLAY_BRS_DRAWING_BUFFER_COUNT``: ``3``.
     * Change the signature and the implementation of the function flush: ``void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t flush_identifier, const ui_rect_t regions[], size_t length)``
-        
+
         * Store (in a static field) the back buffer address (`LLUI_DISPLAY_getBufferAddress(&gc->image)`).
         * Store (in a static field) the flush identifier.
         * Unlock (immediately or wait for the LCD tearing signal interrupt) the *swap task* that will swap the buffers.
         * Remove the static fields ``ymin`` and ``ymax`` (now useless).
         * Remove the returned value (the back buffer address).
-      
+
     * In the *swap task*:  change the task actions:
 
         * Swap buffers.
@@ -125,15 +125,15 @@ BSP Without GPU
 
     * Set the value of the define ``UI_DISPLAY_BRS``: ``UI_DISPLAY_BRS_PREDRAW``.
     * Set the value of the define ``UI_DISPLAY_BRS_DRAWING_BUFFER_COUNT``: ``2``.
-    * Uncomment the define ``UI_DISPLAY_BRS_FLUSH_SINGLE_RECTANGLE``.   
+    * Uncomment the define ``UI_DISPLAY_BRS_FLUSH_SINGLE_RECTANGLE``.
     * Change the signature and the implementation of the function flush: ``void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t flush_identifier, const ui_rect_t regions[], size_t length)``
-        
+
         * Store (in a static field) the rectangle to flush (the array contains only one rectangle).
         * Store (in a static field) the back buffer address (`LLUI_DISPLAY_getBufferAddress(&gc->image)`).
         * Store (in a static field) the flush identifier.
         * Unlock (immediately or wait for the LCD tearing signal interrupt) the *transmit & swap task* that will transmit the current back buffer data to the front buffer, and that will swap the back buffers.
         * Remove the returned value (the back buffer address).
-      
+
     * In the *transmit & swap task*: change the "transmit & swap" actions:
 
         * Start the transmission of the current back buffer (called *buffer A*) data to the front buffer.
@@ -146,7 +146,7 @@ BSP Without GPU
 
             * The call to ``LLUI_DISPLAY_setBackBuffer()`` returns ``false``: that means at least one drawing has been performed in the *buffer B*; there is nothing else to do.
             * The call to ``LLUI_DISPLAY_setBackBuffer()`` returns ``true``: that means no drawing has started yet in the *buffer B*. In that case, the Graphics Engine will reuse the *buffer A* as a back buffer, and the *restoration of the past* becomes useless. The back buffers swap is so canceled; update the LCD driver status in consequence.
-  
+
 BSP with DMA2D
 """"""""""""""
 
@@ -179,7 +179,7 @@ BSP with VGLite
 
     .. code-block:: c
 
-            void VGLITE_CancelSwapBuffers(void) {   
+            void VGLITE_CancelSwapBuffers(void) {
                 fb_idx = fb_idx == 0 ? (APP_BUFFER_COUNT - 1) : (fb_idx ) - 1;
             }
 
@@ -267,7 +267,7 @@ Front Panel
 * (optional) Fetch `Front Panel Widgets 3.0.0`_ to use the new features of the Front Panel Widget library:
 
   .. code-block:: xml
-  
+
      <dependency org="ej.tool.frontpanel" name="widget" rev="3.0.0"/>
 
 * (optional) Fetch explicitly the `UI Pack 13.6.2`_ to use the new API of the UI Pack:
@@ -292,12 +292,12 @@ These steps are for a VEE Port that manages its own implementation of ``LLUI_DIS
 
 	* Fetch the `C Module VGLite 7.1.0`_.
 	* (optional) Fetch `C Module RT500 7.0.0`_
-  
+
 * *[BSP project]*
 
 	* Delete the properties file ``cco_microui-vglite.properties``.
-	* Delete the following files from the file-system and from the C project configuration: 
-	
+	* Delete the following files from the file-system and from the C project configuration:
+
           - ``inc/display_utils.h``
           - ``inc/display_vglite.h``
           - ``inc/drawing_vglite.h``
@@ -308,12 +308,12 @@ These steps are for a VEE Port that manages its own implementation of ``LLUI_DIS
           - ``src/drawing_vglite.c``
           - ``src/vglite_path.c``
 
-	* Add the new files to the C project configuration:		
-  
+	* Add the new files to the C project configuration:
+
           - ``src/ui_drawing_vglite_path.c``
           - ``src/ui_drawing_vglite_process.c``
           - ``src/ui_vglite.c``
- 
+
 	* Review all imports of the removed header files.
 	* In the implementation of ``LLUI_DISPLAY_impl.h``, call ``UI_VGLITE_init()`` during the initialization step.
 	* In the GPU interrupt rountine, call ``UI_VGLITE_IRQHandler()``.
@@ -336,7 +336,7 @@ These steps are for a VEE Port that uses the implementation of ``LLUI_DISPLAY_im
 
 	* Fetch the `C Module VGLite 7.1.0`_.
 	* Fetch `C Module RT500 7.0.0`_
-  
+
 * *[BSP project]*
 
 	* Follow the steps of :ref:`section_ui_migrationguide_13.6_vglite` (described above) except the calls to ``UI_VGLITE_init()`` and ``UI_VGLITE_IRQHandler()``.
@@ -348,12 +348,12 @@ BSP with NemaGFX
 * *[VEE Port configuration project]*
 
 	* Fetch the `C Module NemaGFX 1.0.0`_.
-  
+
 * *[BSP project]*
 
 	* Add all the C files available in ``src`` folder.
 	* Configure the C project to include the ``inc`` folder.
-	* Read the comments in ``ui_drawing_nema_configuration.h`` and configures the C module.
+	* Read the comments in ``ui_drawing_nema_configuration.h`` and configure the C module.
 
 From 13.4.x to 13.5.1
 =====================
@@ -417,16 +417,16 @@ BSP with DMA2D
 BSP with VGLite
 """"""""""""""""
 
-.. note:: 
+.. note::
 	The C Module is designed to target the `NXP i.MX RT500`_; however it can be locally customized for other boards (see :ref:`[Custom project]<section_cmodule_vglite_custom>`)
 
 * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_13.5.1_bsp_without_gpu`.
 * *[VEE Port configuration project]*
 
 	* Fetch the `C Module VGLite 6.0.1`_.
-  
+
 * *[BSP project]*
-	
+
 	* Delete the properties file ``cco_microui-vglite.properties``.
 	* Delete the C files ``vg_drawer.h`` and  ``vg_drawer.c`` and remove them from the C project configuration.
 	* Verify the options in ``display_configuration.h``.
@@ -463,7 +463,7 @@ BSP with DMA2D
 BSP with VGLite
 """"""""""""""""
 
-.. note:: 
+.. note::
 	The C Module is designed to target the `NXP i.MX RT500`_; however it can be locally customized for other boards (see :ref:`[Custom project]<section_cmodule_vglite_custom>`)
 
 * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_13.4.1_bsp_without_gpu`.
@@ -518,7 +518,7 @@ BSP with DMA2D
 BSP with VGLite
 """"""""""""""""
 
-.. note:: 
+.. note::
 	The C Module is designed to target the `NXP i.MX RT500`_; however it can be locally customized for other boards (see :ref:`[Custom project]<section_cmodule_vglite_custom>`).
 
 * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_13.3.1_bsp_without_gpu`.
@@ -566,7 +566,7 @@ Front Panel
 * (optional) Fetch `Front Panel Widgets 2.1.0`_ to use the new features of the Front Panel Widget library (it fetches by transitivity the `UI Pack 13.1.0`_):
 
   .. code-block:: xml
-  
+
      <dependency org="ej.tool.frontpanel" name="widget" rev="2.1.0"/>
 
 * (optional) Or fetch explicitly the `UI Pack 13.1.0`_ to use the new API of the UI Pack:
@@ -617,7 +617,7 @@ VEE Port Configuration Project
 """"""""""""""""""""""""""""""
 
 * Update Architecture version: 7.16.0 or higher.
-* Add `the following module <https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/1.0.3/>`__ in the :ref:`module description file <mmm_module_description>`: 
+* Add `the following module <https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/1.0.3/>`__ in the :ref:`module description file <mmm_module_description>`:
 
   .. code-block:: xml
 
@@ -629,10 +629,10 @@ Hardware Accelerator
 """"""""""""""""""""
 
 * Open :guilabel:`-configuration` project > :guilabel:`display` > :guilabel:`display.properties`
-* Remove optional property ``hardwareAccelerator``. If old value was ``dma2d``, add `the following module <https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/1.0.8/>`__ in the :ref:`module description file <mmm_module_description>`: 
-  
+* Remove optional property ``hardwareAccelerator``. If old value was ``dma2d``, add `the following module <https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/1.0.8/>`__ in the :ref:`module description file <mmm_module_description>`:
+
   .. code-block:: xml
-  
+
      <dependency org="com.microej.clibrary.llimpl" name="display-dma2d" rev="1.0.8"/>
 
 * For the hardware accelerator DMA2D, please consult STM32F7Discovery board updates. Add the file ``lldisplay_dma2d.c``, the global defines ``DRAWING_DMA2D_BPP=16`` (or another value) and ``STM32F4XX`` or ``STM32F7XX``
@@ -648,7 +648,7 @@ The available changes in Front Panel API are described in :ref:`next chapter<sec
 * Fetch the new Front Panel Widget library:
 
   .. code-block:: xml
-  
+
      <dependency org="ej.tool.frontpanel" name="widget" rev="2.0.0"/>
 
 * ``ej.fp.event.MicroUIButtons`` has been renamed in ``ej.microui.event.EventButton``, and all others ``ej.fp.event.MicroUIxxx`` in ``ej.microui.event.Eventxxx``
@@ -738,7 +738,7 @@ Front Panel API
 	* [Added] ``MicroUIGraphicsContext#requestDrawing()``: allows to take the hand on the back buffer.
 	* [Added] ``MicroUIImage``: representation of a MicroUI `Image`_ in front panel. This interface (implemented by the Graphics Engine) provides several function to get information on image.
 	* [Added] ``setDrawer(UIDrawing)``: allows to configure the implementation of ``UIDrawing`` the ``LLUIPainter`` has to use. When no drawer is configured, ``LLUIPainter`` redirects all drawings to the internal Graphics Engine software algorithms.
-	* 
+
 * ``ej.microui.display.UIDrawing``
 
 	* [Added] Equivalent of ``ui_drawing.h`` and ``ui_drawing_soft.h**``: allows to implement some drawing algorithms and/or to use the ones provided by the Graphics Engine. The drawing methods are related to the library ``ej.api.microui``.
@@ -803,10 +803,10 @@ This project must be updated.
 
       <ivy-module version="2.0" xmlns:ea="http://www.easyant.org" xmlns:m="http://www.easyant.org/ivy/maven" xmlns:ej="https://developer.microej.com" ej:version="2.0.0">
 
-         <info organisation="com.is2t.microui" module="imageGenerator-xxx" status="integration" revision="1.0.0">      
+         <info organisation="com.is2t.microui" module="imageGenerator-xxx" status="integration" revision="1.0.0">
             <ea:build organisation="com.is2t.easyant.buildtypes" module="build-std-javalib" revision="2.+"/>
          </info>
-         
+
          <configurations defaultconfmapping="default->default;provided->provided">
             <conf name="default" visibility="public" description="Runtime dependencies to other artifacts"/>
             <conf name="provided" visibility="public" description="Compile-time dependencies to APIs provided by the VEE Port"/>
@@ -815,9 +815,9 @@ This project must be updated.
             <conf name="dist" visibility="public" description="Contains extra files like README.md, licenses"/>
             <conf name="test" visibility="private" description="Dependencies for test execution. It is not required for normal use of the application, and is only available for the test compilation and execution phases."/>
          </configurations>
-         
+
          <publications/>
-         
+
          <dependencies>
             <dependency org="com.microej.pack.ui" name="ui-pack" rev="[UI Pack version]">
                <artifact name="imageGenerator" type="jar"/>
@@ -850,7 +850,7 @@ Image Generator API
 
 * ``com.is2t.microej.microui.image.DisplayExtension``
 
-	* [Removed] 
+	* [Removed]
 
 * ``com.is2t.microej.microui.image.GenericDisplayExtension``
 
@@ -894,7 +894,7 @@ The available changes in LLAPI are described in :ref:`next chapter<section_ui_mi
     * ``LLDISPLAY*``
     * ``LLINPUT*``
     * ``LLLEDS*``
-	
+
 * Replace all ``#include "LLDISPLAY.h"``, ``#include "LLDISPLAY_EXTRA.h"`` and ``#include "LLDISPLAY_UTILS.h"`` by ``#include "LLUI_DISPLAY.h"``
 * Replace all ``#include "LLDISPLAY_impl.h"``, ``#include "LLDISPLAY_EXTRA_drawing.h"`` and ``#include "LLDISPLAY_EXTRA_impl.h"`` by ``#include "LLUI_DISPLAY_impl.h"``
 * Replace all ``LLDISPLAY_EXTRA_IMAGE_xxx`` by ``MICROUI_IMAGE_FORMAT_xxx``
@@ -926,11 +926,11 @@ LLAPI
 
 * ``LLDISPLAY.h`` and ``intern/LLDISPLAY.h``
 
-	* [Removed] 
+	* [Removed]
 
 * ``LLDISPLAY_DECODER.h`` and ``intern/LLDISPLAY_DECODER.h``
 
-	* [Removed] 
+	* [Removed]
 
 * ``LLDISPLAY_EXTRA.h`` and ``intern/LLDISPLAY_EXTRA.h`` merged in ``LLUI_PAINTER_impl.h`` and ``LLDW_PAINTER_impl.h``
 
@@ -939,7 +939,7 @@ LLAPI
 
 * ``LLDISPLAY_EXTRA_drawing.h``
 
-	* [Removed] 
+	* [Removed]
 
 * ``LLDISPLAY_EXTRA_impl.h`` and ``intern/LLDISPLAY_EXTRA_impl.h`` merged in ``LLUI_DISPLAY_impl.h``, ``ui_drawing.h`` and ``dw_drawing.h``
 
@@ -986,7 +986,7 @@ LLAPI
 	* [Removed] ``LLDISPLAY_UTILS_setClip(int32_t,int32_t,int32_t,int32_t,int32_t)``.
 	* [Removed] ``LLDISPLAY_UTILS_getClipX1/X2/Y1/Y2(int32_t)``: use ``MICROUI_GraphicsContext`` elements instead.
 	* [Removed] ``LLDISPLAY_UTILS_drawPixel(int32_t,int32_t,int32_t)`` and ``LLDISPLAY_UTILS_readPixel(int32_t,int32_t,int32_t)``.
- 
+
 * ``LLDW_PAINTER_impl.h``
 
 	* [Added] List of ``ej.api.drawing`` library's native functions implemented in module `com.microej.clibrary.llimpl#microui`_.
@@ -1015,15 +1015,15 @@ LLAPI
 	* [Changed] ``LLINPUT_sendTouchMovedEvent(int32_t,int32_t,int32_t)``: replaced by ``LLUI_INPUT_sendTouchMovedEvent(jint,jint,jint)``.
 	* [Changed] ``LLINPUT_sendStateEvent(int32_t,int32_t,int32_t)``: replaced by ``LLUI_INPUT_sendStateEvent(jint,jint,jint)``.
 	* [Changed] ``LLINPUT_getMaxEventsBufferUsage(void)``: replaced by ``LLUI_INPUT_getMaxEventsBufferUsage(void)``.
- 
+
 * ``LLINPUT_impl.h`` and ``intern/LLINPUT_impl.h`` merged in ``LLUI_INPUT_impl.h``
 
 	* [Changed] ``LLINPUT_IMPL_initialize(void)``: replaced by ``LLUI_INPUT_IMPL_initialize(void)`` (_mandatory_).
 	* [Changed] ``LLINPUT_IMPL_getInitialStateValue(int32_t,int32_t)``: replaced by ``LLUI_INPUT_IMPL_getInitialStateValue(jint,jint)`` (_mandatory_).
 	* [Changed] ``LLINPUT_IMPL_enterCriticalSection(void)``: replaced by ``LLUI_INPUT_IMPL_enterCriticalSection(void)`` (_mandatory_).
 	* [Changed] ``LLINPUT_IMPL_leaveCriticalSection(void)``: replaced by ``LLUI_INPUT_IMPL_leaveCriticalSection(void)`` (_mandatory_).
- 
-* ``LLUI_DISPLAY.h`` 
+
+* ``LLUI_DISPLAY.h``
 
 	* [Added] Renaming of ``LLDISPLAY_UTILS.h``.
 	* [Added] Several functions to interact with the Graphics Engine and to get information on images, graphics context, clip, etc.
@@ -1032,7 +1032,7 @@ LLAPI
 	* [Added] ``LLUI_DISPLAY_freeImageBuffer(MICROUI_Image*)``: frees an image previously allocated by ``LLUI_DISPLAY_allocateImageBuffer(MICROUI_Image*,uint8_t)``.
 	* [Added] ``LLUI_DISPLAY_requestDrawing(MICROUI_GraphicsContext*,SNI_callback)``: allows to take the hand on the shared back buffer.
 	* [Added] ``LLUI_DISPLAY_setDrawingStatus(DRAWING_Status)``: specifies the drawing status to the Graphics Engine.
- 
+
 * ``LLUI_DISPLAY_impl.h``
 
 	* [Added] Merge of ``LLDISPLAY_EXTRA_impl.h`` and ``LLDISPLAY_impl.h``.
@@ -1129,23 +1129,23 @@ Front Panel
     5. Keep or remove the attribute ``listenerClass`` according next notes.
 
 * Widget "pointer": ``ej.fp.widget.Pointer`` Listener Class:
-  
+
     This extension class is useless if the implementation respects these rules:
-	
+
     * *(a)* ``press`` method is sending a ``press`` MicroUI Pointer event.
     * *(b)* ``release`` method is sending a ``release`` MicroUI Pointer event.
     * *(c )* ``move`` method is sending a ``move`` MicroUI Pointer event.
     * *(d)* The MicroUI Pointer event generator name is ``POINTER`` when ``ej.fp.widget.Pointer``'s ``touch`` attribute is ``false`` (or not set).
     * *(e)* The MicroUI Pointer event generator name is ``TOUCH`` when ``ej.fp.widget.Pointer``'s ``touch`` attribute is ``true``.
 
-    If only *(d)* or *(e)* is different: 
-	
+    If only *(d)* or *(e)* is different:
+
     1. Open the listener class.
     2. Extends the class ``ej.fp.widget.Pointer.PointerListenerToPointerEvents`` instead of implementing the interface ``com.is2t.microej.frontpanel.input.listener.PointerListener``.
     3. Implements the method ``getMicroUIGeneratorTag()``.
 
     In all other cases:
-	
+
     1. Open the listener class.
     2. Implements the interface ``ej.fp.widget.Pointer.PointerListener`` instead of ``com.is2t.microej.frontpanel.input.listener.PointerListener``.
 
@@ -1160,19 +1160,19 @@ Front Panel
 * Widget "push": ``ej.fp.widget.Button`` Listener Class:
 
     This extension class is useless if the implementation respects these rules:
-	
+
     * *(a)* ``press`` method is sending a ``press`` MicroUI Buttons event with button ``label`` (equals to old button ``id``) as button index.
     * *(b)* ``release`` method is sending a ``release`` MicroUI Buttons event with button ``label`` (equals to old button ``id``) as button index.
     * *(c )* The MicroUI Buttons event generator name is ``BUTTONS``.
 
-    If only *(c )* is different: 
-	
+    If only *(c )* is different:
+
     1. Open the listener class.
     2. Extends the class ``ej.fp.widget.Button.ButtonListenerToButtonEvents`` instead of implementing the interface ``com.is2t.microej.frontpanel.input.listener.ButtonListener``.
     3. Overrides the method ``getMicroUIGeneratorTag()``.
 
     In all other cases:
-	
+
     1. Open the listener class.
     2. Implements the interface ``ej.fp.widget.Button.ButtonListener`` instead of ``com.is2t.microej.frontpanel.input.listener.ButtonListener``.
 
@@ -1198,25 +1198,25 @@ Front Panel
 * Widget "joystick": ``ej.fp.widget.Joystick`` Listener Class:
 
     This extension class is useless if the implementation respects these rules:
-	
+
     * *(a)* ``press`` methods are sending some MicroUI Command events ``UP``, ``DOWN``, ``LEFT``, ``RIGHT`` and ``SELECT``.
     * *(b)* ``repeat`` methods are sending same MicroUI Command events ``UP``, ``DOWN``, ``LEFT``, ``RIGHT`` and ``SELECT``.
     * *(c)* ``release`` methods are sending nothing.
     * *(d)* The MicroUI Command event generator name is ``JOYSTICK``.
 
-    If only *(d)* is different: 
-	
+    If only *(d)* is different:
+
     1. Open the listener class
     2. Extends the class ``ej.fp.widget.Joystick.JoystickListenerToCommandEvents`` instead of implementing the interface ``com.is2t.microej.frontpanel.input.listener.JoystickListener``.
     3. Overrides the method ``getMicroUIGeneratorTag()``.
 
     In all other cases:
-	
+
     1. Open the listener class.
     2. Implements the interface ``ej.fp.widget.Joystick.JoystickListener`` instead of ``com.is2t.microej.frontpanel.input.listener.JoystickListener``.
 
 * Others Widgets:
-    
+
     These widgets may have not been migrated.
     Check in ``ej.tool.frontpanel.widget`` library if some widgets are compatible or write your own widgets.
 
@@ -1224,7 +1224,7 @@ Application
 """""""""""
 
 * See application :ref:`section_mui_migrationguide`.
- 
+
 From 10.x to 11.2.0
 ===================
 
@@ -1232,7 +1232,7 @@ VEE Port Configuration Project
 """"""""""""""""""""""""""""""
 
 * Update Architecture version: 7.0.0 or higher.
- 
+
 From 9.x to 10.0.2
 ==================
 
@@ -1282,24 +1282,24 @@ BSP
 
 * Edit ``LLDISPLAY*.c``
 * For LLDISPLAY ``SWITCH``
- 
+
 	- Remove the function ``LLDISPLAY_SWITCH_IMPL_getDisplayBufferAddress()``
 	- Replace the function ``void LLDISPLAY_SWITCH_IMPL_getDisplayBufferAddress()`` by ``int32_t LLDISPLAY_IMPL_flush()``
 	- In this function, return the old front buffer address
 	- Replace the function ``LLDISPLAY_COPY_IMPL_getBackBufferAddress()`` by ``LLDISPLAY_IMPL_getGraphicsBufferAddress()``
-	
+
 * For LLDISPLAY ``COPY``
 
 	- Replace the function ``void LLDISPLAY_COPY_IMPL_copyBuffer()`` by ``int32_t LLDISPLAY_IMPL_flush()``
 	- In this function, return the back buffer address (given in argument)
 	- Replace the function ``LLDISPLAY_COPY_IMPL_getBackBufferAddress()`` by ``LLDISPLAY_IMPL_getGraphicsBufferAddress()``
-	
-* For LLDISPLAY ``DIRECT`` 
+
+* For LLDISPLAY ``DIRECT``
 
 	- Add the function ``void LLDISPLAY_IMPL_synchorize(void)`` (do nothing)
 	- Add the function ``int32_t LLDISPLAY_IMPL_flush()``
 	- In this function, just return the back buffer address (given in argument)
-	
+
 * Replace h file ``LLDISPLAY_SWITCH_IMPL.h``, ``LLDISPLAY_COPY_IMPL.h`` or ``LLDISPLAY_DIRECT_IMPL.h`` by ``LLDISPLAY_IMPL.h``
 * Replace all functions ``LLDISPLAY_SWITCH_IMPL_xxx``, ``LLDISPLAY_COPY_IMPL_xxx`` and ``LLDISPLAY_DIRECT_IMPL_xxx`` by ``LLDISPLAY_IMPL_xxx``
 * Remove the argument ``int32_t type`` from ``getWidth`` and ``getHeight``
@@ -1327,15 +1327,15 @@ STM32 VEE Ports with DMA2D only
          printf("lldisplay error: %d\n", errorCode);
          while(1);
       }
- 
+
 * Launch an application with images and fillrect
 * Compile, link and debug the BSP
 * Set some breakpoints on three functions
 * Ensure the functions are called
 
 ..
-   | Copyright 2021-2024, MicroEJ Corp. Content in this space is free 
-   for read and redistribute. Except if otherwise stated, modification 
+   | Copyright 2021-2024, MicroEJ Corp. Content in this space is free
+   for read and redistribute. Except if otherwise stated, modification
    is subject to MicroEJ Corp prior approval.
-   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and
    copyrights are the property of their respective owners.
