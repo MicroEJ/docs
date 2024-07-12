@@ -13,15 +13,15 @@ This subset includes most expressions but excludes statements and blocks.
 
 The strengths of VEE Script are its low footprint, its optimized performance, its customizable semantics and its ability to evaluate expressions depending on the runtime context.
 
-To have the best runtime performance, expressions must be preprocessed offboard.
+To have the best runtime performance, expressions are preprocessed offboard.
 During this phase, expressions are parsed, converted into `ASTs <https://en.wikipedia.org/wiki/Abstract_syntax_tree>`_ and serialized into a binary file.
 At runtime, the ASTs are deserialized from the binary file and the expressions can be evaluated efficiently.
 
-.. figure:: images/vee-script-interpretation-process.png
-    :alt: Interpretation Process
+.. figure:: images/vee-script-flow.png
+    :alt: Preprocessing and Interpretation Flow
     :align: center
 
-    Interpretation Process
+    Preprocessing and Interpretation Flow
 
 VEE Script can be used for various use cases, including the design and rendering of dynamic GUIs and real-time information displays.
 For instance, VEE Script is currently used in the VEE Wear Kernel to design and render watchfaces.
@@ -76,7 +76,7 @@ Language Syntax
 ---------------
 
 The scripting language is a subset of JavaScript.
-Its syntax and semantics are specified by `ECMAScript <https://262.ecma-international.org>`_.
+Its syntax and semantics are specified by `ECMAScript 5.1 <https://262.ecma-international.org/5.1/>`_.
 
 The following table summarizes the grammar rules of the language:
 
