@@ -7,6 +7,7 @@ VEE Port
    :maxdepth: 1
 
    veePortCreate
+   veePortTest
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
