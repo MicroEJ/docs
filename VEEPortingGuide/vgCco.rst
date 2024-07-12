@@ -57,11 +57,11 @@ C Module: MicroVG
 Description
 -----------
 
-This generic C module provides an implementation of MicroVG concepts: matrix, path, linear gradient and font; respectively ``LLVG_MATRIX_impl.c``, ``LLVG_PATH_impl.c``, ``LLVG_GRADIENT_impl.c`` and ``LLVG_FONT_freetype.c``.
+This generic C module provides an implementation of MicroVG concepts: matrix, path, gradient and font; respectively ``LLVG_MATRIX_impl.c``, ``LLVG_PATH_impl_single.c``/``LLVG_PATH_impl_dual.c``, ``LLVG_GRADIENT_impl_stub.c`` and ``LLVG_FONT_impl_freetype.c``.
 
 * Matrix (see Matrix module's :ref:`section_vg_matrix_llapi`): a basic software implementation.
-* Path (see Path module's :ref:`section_vg_path_llapi`): a generic implementation that manages the command buffer's life cycle and dispatches the command encoding to a 3rd-party header file ``microvg_path.h``.
-* Gradient (see Gradient module's :ref:`section_vg_gradient_llapi`): a generic implementation that manages the gradient buffer's life cycle and dispatches the gradient encoding to a 3rd-party header file ``microvg_gradient.h``.
+* Path (see Path module's :ref:`section_vg_path_llapi`): a generic implementation that manages the command buffer's life cycle and dispatches the command encoding to a 3rd-party header file ``vg_path.h``.
+* Gradient (see Gradient module's :ref:`section_vg_gradient_llapi`): a generic minimal implementation that only handles a single color (resulting in filling paths with a solid color). To fully handle linear gradients, the API from ``LLVG_GRADIENT_impl.h`` must be implemented.
 * Font (see Font module's :ref:`section_vg_font_llapi`): an implementation of vector font over FreeType: open font file and retrieve font's characteristics.
 * The MicroVG painter native functions are implemented in ``LLVG_PAINTER_impl.c`` and the drawings are redirected to ``vg_drawing.h``.
 * Image management is too specific to the GPU and is not implemented in this C module.
@@ -83,7 +83,7 @@ Usage
 
 1. This C module transitively fetches the :ref:`C Module for MicroUI<section_ui_cco>`, follow its implementation rules.
 2. Add all C files in the BSP project.
-3. Configure the option in the header file ``microvg_configuration.h``.
+3. Configure the options in the header file ``vg_configuration.h``.
 
 .. _section_vg_c_module_freetype:
 
@@ -104,11 +104,11 @@ Memory Heap Configuration
 
 The FreeType library requires a memory Heap for FreeType internal objects allocated when a font file is loaded (see https://freetype.org/freetype2/docs/design/design-4.html).
 The size of this heap depends on the number of fonts loaded in parallel and on the fonts themselves.
-This size is defined by ``VG_FEATURE_FREETYPE_HEAP_SIZE`` in ``microvg_configuration.h``.
+This size is defined by ``VG_FEATURE_FREETYPE_HEAP_SIZE`` in ``vg_configuration.h``.
 
 All fonts do not require the same heap size. FreeType heap usage can be monitored using the following configurations:
 
-* ``MICROVG_MONITOR_HEAP`` defined in ``microvg_helper.h``
+* ``MICROVG_MONITOR_HEAP`` defined in ``vg_helper.h``
 * ``MEJ_LOG_MICROVG`` and ``MEJ_LOG_INFO_LEVEL`` defined in ``mej_log.h``
 
 Principle
@@ -149,9 +149,9 @@ This C module provides a fork of Harfbuzz 4.2.1.
 
 The Harfbuzz library requires a memory Heap for Harfbuzz internal objects allocated when a font file is loaded.
 The size of this heap depends on the number of fonts loaded in parallel and on the fonts themselves.
-This size is defined by ``VG_FEATURE_HARFBUZZ_HEAP_SIZE_HEAP`` in ``microvg_configuration.h``.
+This size is defined by ``VG_FEATURE_HARFBUZZ_HEAP_SIZE_HEAP`` in ``vg_configuration.h``.
 
-All fonts do not require the same heap size. The ``MICROVG_MONITOR_HEAP`` define in ``microvg_helper.h`` and ``MEJ_LOG_MICROVG`` and ``MEJ_LOG_INFO_LEVEL`` defines in ``mej_log.h`` can be used to monitor the Harfbuzz heap evolution.
+All fonts do not require the same heap size. The ``MICROVG_MONITOR_HEAP`` define in ``vg_helper.h`` and ``MEJ_LOG_MICROVG`` and ``MEJ_LOG_INFO_LEVEL`` defines in ``mej_log.h`` can be used to monitor the Harfbuzz heap evolution.
 
 FreeType and Harfbuzz libraries are not sharing the same heap, but this could easilly be done by updating ``ft_system.c`` and ``hb-alloc.c`` files.
 
