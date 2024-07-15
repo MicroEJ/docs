@@ -50,12 +50,12 @@ BSP Without GPU
     * Comment the line ``#error "This header must [...]"``.
     * The next actions depend on the available numbers of buffers allocated in the MCU memories and if the front buffer is mapped on an MCU's buffer (if not, that means the LCD device owns a buffer). The following table redirects the next steps according to the display connection with the MCU:
 
-        .. table:: Copy and/or Swap actions
+        .. table:: Transmit and/or Swap actions
 
             +---------+--------+----------------------------------+
             | Buffers | Mapped |           Next Actions           |
             +=========+========+==================================+
-            | 2 (1+1) |   no   |        *[Display "Copy"]*        |
+            | 2 (1+1) |   no   |        *[Display "Transmit"]*    |
             +---------+--------+----------------------------------+
             |    2    |  yes   | *[Display "Swap double buffer"]* |
             +---------+--------+----------------------------------+
@@ -64,7 +64,7 @@ BSP Without GPU
             | 3 (2+1) |   no   | *[Display "Transmit and Swap"]*  |
             +---------+--------+----------------------------------+
 
-* *[Display "Copy"]*
+* *[Display "Transmit"]*
 
     * Set the value of the define ``UI_DISPLAY_BRS``: ``UI_DISPLAY_BRS_SINGLE``.
     * Set the value of the define ``UI_DISPLAY_BRS_DRAWING_BUFFER_COUNT``: ``1``.
