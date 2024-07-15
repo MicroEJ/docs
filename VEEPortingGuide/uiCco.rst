@@ -398,26 +398,27 @@ Files
 -----
 
 * Implements some functions of ``ui_drawing.h`` (see above).
-* C files: ``ui_drawing_vglite_path.c``, ``ui_drawing_vglite_process.c``, ``ui_drawing_vglite.c`` and ``ui_vglite.c``.
+* C files: ``mej_math.c``, ``ui_drawing_vglite_path.c``, ``ui_drawing_vglite_process.c``, ``ui_drawing_vglite.c`` and ``ui_vglite.c``.
 * Status: optional.
 
 Usage
 -----
 
 1. Add the C files to the BSP project.
-2. Call ``UI_VGLITE_init()`` from ``LLUI_DISPLAY_IMPL_initialize()``.
-3. Configure the options in ``ui_vglite_configuration.h``.
-4. Comment the line ``#error [...]"``.
-5. Call ``UI_VGLITE_IRQHandler()`` during the GPU interrupt routine.
-6. Set the VGLite library's preprocessor define ``VG_DRIVER_SINGLE_THREAD``.
-7. The VGLite library must be patched to be compatible with this C module:
+2. Call ``UI_VGLITE_initialize`` from ``LLUI_DISPLAY_IMPL_initialize`` before calling any VGLite-related function.
+3. Call ``UI_VGLITE_start`` from ``LLUI_DISPLAY_IMPL_initialize`` after configuring the VGLite library.
+4. Configure the options in ``ui_vglite_configuration.h``.
+5. Comment the line ``#error [...]"``.
+6. Call ``UI_VGLITE_IRQHandler`` during the GPU interrupt routine.
+7. Set the VGLite library's preprocessor define ``VG_DRIVER_SINGLE_THREAD``.
+8. The VGLite library must be patched to be compatible with this C module:
 
    .. code-block:: bash
 
          cd [...]/sdk/middleware/vglite
          patch -p1 < [...]/3.0.15_rev7.patch
 
-8. In the file ``vglite_window.c``, add the function ``VGLITE_CancelSwapBuffers()`` and its prototype in ``vglite_window.h``:
+9. In the file ``vglite_window.c``, add the function ``VGLITE_CancelSwapBuffers()`` and its prototype in ``vglite_window.h``:
 
    .. code-block:: c
 
