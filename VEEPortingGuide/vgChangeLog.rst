@@ -16,7 +16,7 @@ MicroVG Implementation
 
 **Changed**
 
-* Compatible with UI Pack 14.1.0.
+* Compatible with UI Pack 14.0.1.
 
 Front Panel
 """""""""""
