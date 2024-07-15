@@ -302,6 +302,8 @@ The default implementation uses the Graphics Engine software algorithms.
 
 The :ref:`DMA2D C module <section_ui_c_module_microui_dma2d>` targets the STM32 CPU that provides the Chrom-ART accelerator.
 
+.. note:: Since version 6.0.0, this module has been moved from the MicroEJ `DMA2D_Central`_ Repository to the MicroEJ `DMA2D_Developer`_ Repository.
+
 The following table describes the version compatibility between the MicroEJ UI Packs and the C modules:
 
 +-----------------+---------------+------------------+------------------------------------------+
@@ -321,6 +323,11 @@ The following table describes the version compatibility between the MicroEJ UI P
 +-----------------+---------------+------------------+------------------------------------------+
 | [13.0.0-13.0.7] | [1.0.6-1.0.8] | 1.0.3            |                                          |
 +-----------------+---------------+------------------+------------------------------------------+
+
+XXX_TODO wrong link
+
+.. _DMA2D_Central: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/
+.. _DMA2D_Developer: https://forge.microej.com/ui/native/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx/
 
 **Vivante VGLite**
 

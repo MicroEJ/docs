@@ -181,7 +181,7 @@ This C module is a specific implementation of the C module MicroUI over STM32 DM
 * It is compatible with the :ref:`multiple destination formats <section_bufferedimage_cco>` module (but can only handle one destination format).
 * It is compatible with the :ref:`Buffer Refresh Strategies (BRS)<section_brs>` ``predraw``, ``single`` and ``legacy`` (switch).
 
-This C module is available on the :ref:`central_repository`: `com.microej.clibrary.llimpl#display-dma2d`_.
+This C module is available on the :ref:`developer_repository`: `com.microej.clibrary.llimpl#microui-dma2d`_.
 
 Files
 -----
@@ -372,7 +372,10 @@ Example of Implementation
       LLUI_DISPLAY_setBackBuffer(g_current_flush_identifier, buffer, from_isr);
    }
 
-.. _com.microej.clibrary.llimpl#display-dma2d: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/
+
+XXX_TODO wrong link
+
+.. _com.microej.clibrary.llimpl#microui-dma2d: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/
 
 .. _section_ui_c_module_microui_vglite:
 
