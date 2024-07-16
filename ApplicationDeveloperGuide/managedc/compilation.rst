@@ -34,7 +34,7 @@ In the terminal, navigate to the ``src/main/c`` directory and execute the follow
 
 .. code:: console
 
-    [path_to_wasi_sdk]/bin/clang -Wl,--no-entry -Wl,--export-all -Wl,--allow-undefined -o my_app.wasm my_appp.o
+    [path_to_wasi_sdk]/bin/clang -Wl,--no-entry -Wl,--export-all -Wl,--allow-undefined -o my_app.wasm my_app.o
 
 .. note::
     
