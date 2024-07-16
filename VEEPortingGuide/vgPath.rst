@@ -63,9 +63,9 @@ There are two separate Abstraction Layer API header files (see :ref:`LLVG-PATH-A
 
 * MicroVG library calls the BSP functions through the header files ``LLVG_PATH_impl.h`` and ``LLVG_PAINTER_impl.h``.
 * The :ref:`C module MicroVG <section_vg_c_module_microvg>` provides a default implementation of ``LLVG_PATH_impl.h``: it manages the path buffer creation and filling, then redirect the command encoding to ``vg_path.h``.
-* This C module also provides an implementation of ``LLVG_PAINTER_impl.c`` that synchronizes the drawing with the MicroUI Graphics Engine and redirects the drawing itself to a third-party drawer.
-* A C module dedicated to a GPU provides an implementation of this drawer and ``vg_path.h``: it encodes the path commands and implements the drawings over the GPU library.
-* The drawer also manages the :ref:`section_vg_gradient`.
+* This C module also provides an implementation of ``LLVG_PAINTER_impl.c`` that synchronizes the drawing with the MicroUI Graphics Engine and redirects the drawing itself to a third-party drawer through ``vg_drawing.h``.
+* A C module dedicated to a GPU provides an implementation of this drawer (``vg_drawing_gpu.c``) that implements the drawings over the GPU library (it also manages the :ref:`section_vg_gradient`).
+* This dedicated GPU C module provides an implementation of ``vg_path.h`` (``vg_path_gpu.c``) that encodes the path commands.
 * These files are automatically copied in the BSP project when fetching the C modules during the VEE Port build.
 
 .. _VectorGraphicsPainter: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html
