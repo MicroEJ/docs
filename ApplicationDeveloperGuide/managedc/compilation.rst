@@ -36,6 +36,9 @@ In the terminal, navigate to the ``src/main/c`` directory and execute the follow
 
     [path_to_wasi_sdk]/bin/clang -Wl,--no-entry -Wl,--export-all -Wl,--allow-undefined -o my_app.wasm my_appp.o
 
+.. note::
+    
+    If your module is composed of multiple C files, append all object files to the command line.
 .. _managedc.link.command_line_options:
 
 Command Line Options
