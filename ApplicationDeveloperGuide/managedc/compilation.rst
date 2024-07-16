@@ -21,16 +21,33 @@ In the terminal, navigate to the ``src/main/c`` directory and execute the follow
 
 .. code:: console
 
-    [path_to_wasi_sdk]/bin/clang -Wl,--no-entry -Wl,--export-all -Wl,--allow-undefined -nostdlib -mcpu=mvp -O3 my_app.c -o my_app.wasm
+    [path_to_wasi_sdk]/bin/clang -mcpu=mvp -O3 -o my_app.o -c my_app.c
 
 .. _managedc.compilation.command_line_options:
+
+Link object file
+----------------
+
+Let's assume we have now an object file named ``my_app.o`` in the folder ``src/main/c``.
+
+In the terminal, navigate to the ``src/main/c`` directory and execute the following command:
+
+.. code:: console
+
+    [path_to_wasi_sdk]/bin/clang -Wl,--no-entry -Wl,--export-all -Wl,--allow-undefined -o my_app.wasm my_appp.o
+
+.. _managedc.link.command_line_options:
 
 Command Line Options
 --------------------
 
 For a comprehensive understanding of command line options, please consult the official documentation for `clang <https://clang.llvm.org/docs/ClangCommandLineReference.html>`_ and `wasm-ld <https://lld.llvm.org/WebAssembly.html>`_. 
 
-Here are some useful options:
+Here are some useful compilation options:
+
+* ``-mcpu=mvp``: Restrict generation to WebAssembly MVP specification.
+
+Here are some useful link options:
 
 * ``-nostdlib``: Omits the standard library.
 * ``-Wl,--no-entry``: Specifies no entry point for the WebAssembly module.
@@ -39,8 +56,6 @@ Here are some useful options:
 * ``-Wl,--allow-undefined``: Allow undefined symbols.
 * ``-Wl,--global-base=n``: Sets the global base to 'n'.
 * ``-z stack-size=n``: Adjusts the stack size to 'n'.
-* ``-mcpu=mvp``: Restrict generation to WebAssembly MVP specification.
-
 
 ..
    | Copyright 2023-2024, MicroEJ Corp. Content in this space is free 
