@@ -267,7 +267,9 @@ There are two separate Abstraction Layer API header files:
    Image Abstraction Layer API
 
 * MicroVG library calls the BSP functions through the header files ``LLVG_BVI_impl.h`` and ``LLVG_PAINTER_impl.h``.
-* A C module dedicated to a GPU provides an implementation of ``LLVG_BVI_impl.h`` and ``LLVG_PATH_PAINTER_impl.h``: the implementation is specific to the target (the GPU): the format of the RAW paths, gradients, and animations are GPU compliant.
+* The :ref:`C module MicroVG <section_vg_c_module_microvg>` an implementation of ``LLVG_PAINTER_impl.c`` that synchronizes the drawing with the MicroUI Graphics Engine and redirects the drawing itself to a third-party drawer through ``vg_drawing.h``.
+* A C module dedicated to a GPU provides an implementation of this drawer (``vg_drawing_gpu.c``) that implements the drawings over the GPU library.
+* This dedicated GPU C module provides an implementation of ``LLVG_BVI_impl.h`` (``LLVG_BVI_impl_gpu.c``): the implementation is specific to the target (the GPU): the format of the RAW paths, gradients, and animations are GPU compliant.
 * These files are automatically copied in the BSP project when fetching the C modules during the VEE Port build.
 
 Simulation
