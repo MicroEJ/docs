@@ -45,9 +45,11 @@ There are two separate Abstraction Layer API header files (see :ref:`LLVG-GRADIE
 
    Gradient Abstraction Layer API
 
-* MicroVG library calls the BSP functions through the header files ``LLVG_PAINTER_impl.h`` and ``LLVG_GRADIENT_impl.h``.
-* The :ref:`C module MicroVG <section_vg_c_module_microvg>` provides an implementation of ``LLVG_PAINTER_impl.c`` that synchronizes the drawing with the MicroUI Graphics Engine and redirects the drawing itself to a third-party drawer.
-* A C module dedicated to a GPU provides an implementation of ``LLVG_PAINTER_impl.h`` and ``LLVG_GRADIENT_impl.h``: it encodes the gradient and implements the drawings over the GPU library.
+
+* MicroVG library calls the BSP functions through the header files ``LLVG_GRADIENT_impl.h`` and ``LLVG_PAINTER_impl.h``.
+*  The :ref:`C module MicroVG <section_vg_c_module_microvg>` provides an implementation of ``LLVG_PAINTER_impl.c`` that synchronizes the drawing with the MicroUI Graphics Engine and redirects the drawing itself to a third-party drawer through ``vg_drawing.h``..
+* A C module dedicated to a GPU provides an implementation of this drawer (``vg_drawing_gpu.c``) that implements the drawings over the GPU library.
+* This dedicated GPU C module provides an implementation of ``LLVG_GRADIENT_impl.h`` (``LLVG_GRADIENT_impl_gpu.c``) that encodes the gradient.
 * These files are automatically copied in the BSP project when fetching the C modules during the VEE Port build.
 
 .. _VectorGraphicsPainter: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html
