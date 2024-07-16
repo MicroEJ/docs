@@ -26,7 +26,7 @@ In the terminal, navigate to the ``src/main/c`` directory and execute the follow
 .. _managedc.compilation.command_line_options:
 
 Link a WebAssembly Module
-----------------
+-------------------------
 
 Let's assume we have now an object file named ``my_app.o`` in the folder ``src/main/c``.
 
