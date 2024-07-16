@@ -6,6 +6,67 @@
 Migration Guide
 ===============
 
+14.0.1 (C Module update)
+========================
+
+BSP with VGLite
+"""""""""""""""
+
+* *[VEE Port configuration project]*
+
+    * Set the dependency to the C Module MicroUI over VGLite to version 9.0.0. XXX_TODO
+
+* *[BSP project]*
+
+    * In the directory ``ui``, delete the following files:
+
+        * ``inc/color.h``,
+        * ``inc/ui_drawing_bvi.h``,
+        * ``inc/ui_drawing_vglite.h``,
+        * ``inc/ui_drawing_vglite_path.h``,
+        * ``inc/ui_drawing_vglite_process.h``,
+        * ``inc/ui_vglite.h``,
+        * ``src/ui_drawing_bvi.c``,
+        * ``src/ui_drawing_vglite.c``,
+        * ``src/ui_drawing_vglite_path.c``,
+        * ``src/ui_drawing_vglite_process.c``.
+
+    * In ``LLUI_DISPLAY_IMPL_initialize``:
+
+        * Call ``UI_VGLITE_initialize`` to initialize the VGLite controller and the VGLite library.
+        * Replace the call to ``UI_VGLITE_init`` with ``UI_VGLITE_start``.
+
+	* Delete the properties files ``cco_microui.properties`` and ``cco_microui-vglite.properties``.
+    * Build the VEE Port.
+    * In ``ui_vglite/inc/ui_vglite_configuration.h``, copy the settings from ``ui/inc/ui_vglite_configuration.h``.
+    * Delete ``ui/inc/ui_vglite_configuration.h``.
+    * Add the source files in ``ui_vglite/src`` to the project.
+    * Add the path ``ui_vglite/inc`` to the include path.
+
+BSP with NemaGFX
+""""""""""""""""
+
+* *[VEE Port configuration project]*
+
+    * Set the dependency to the C Module MicroUI over NemaGFX to version 3.0.0. XXX_TODO
+
+* *[BSP project]*
+
+    * Delete ``ui/src/ui_drawing_nema.c``.
+    * Replace the following calls with the new function names:
+
+        * ``UI_DRAWING_NEMA_initialize`` becomes ``UI_NEMA_initialize``,
+        * ``UI_DRAWING_NEMA_post_operation`` becomes ``UI_NEMA_post_operation``,
+        * ``UI_DRAWING_NEMA_configure_memcpy`` becomes ``UI_NEMA_configure_memcpy``,
+        * ``UI_DRAWING_NEMA_start_memcpy`` becomes ``UI_NEMA_start_memcpy``.
+
+    * Delete the properties files ``cco_microui.properties`` and ``cco_microui-nemagfx.properties``.
+    * Build the VEE Port.
+    * Configure ``ui_nemagfx/inc/ui_nema_configuration.h``, based on your previous settings in ``ui/inc/ui_drawing_nema_configuration.h``.
+    * Add the source files in ``ui_nemagfx/src`` to the project.
+    * Add the path ``ui_nemagfx/inc`` to the include path.
+    * If you were using the task mode, switch to interrupt mode. XXX_TODO Link
+
 From 13.7.x to 14.0.1
 =====================
 
