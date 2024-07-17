@@ -13,7 +13,7 @@ V4.1 board and the Filesystem Test Suite for :ref:`FS <pack_fs>`
 module will be used as an example.
 
 This guide should take 1 hour to complete (excluding the VEE Port
-Getting Started setup).
+setup from the Getting Started page).
 
 Prerequisites
 -------------
