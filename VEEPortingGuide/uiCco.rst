@@ -225,7 +225,7 @@ This cache must be cleared before using the DMA2D:
 Usage
 """""
 
-1. Check the configuration of the define ``DRAWING_DMA2D_CACHE_MANAGEMENT`` in ``ui_drawing_dma2d_configuration.h``.
+1. Check the configuration of the define ``DRAWING_DMA2D_CACHE_MANAGEMENT`` in ``ui_dma2d_configuration.h``.
 
 Buffer Refresh Strategy "Predraw"
 ---------------------------------

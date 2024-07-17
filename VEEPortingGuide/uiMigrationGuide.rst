@@ -11,6 +11,29 @@ Migration Guide
 14.0.1 (C Module update)
 ========================
 
+BSP with DMA2D
+""""""""""""""
+
+* *[VEE Port configuration project]*
+
+    * Set the dependency to the `C Module MicroUI over DMA2D to version 6.0.0`_.
+
+        * Notice that the name of the module changed from ``display-dma2d`` to ``microui-dma2d``.
+
+* *[BSP project]*
+
+    * In the directory ``ui``, delete the following files:
+
+        * ``inc/ui_drawing_dma2d.h``,
+        * ``src/ui_drawing_dma2d.c``.
+
+    * Delete the properties files ``cco_microui.properties`` and ``cco_display-dma2d.properties``.
+    * Build the VEE Port.
+    * Configure ``ui_dma2d/inc/ui_dma2d_configuration.h``, based on your previous settings in ``ui/inc/ui_drawing_dma2d_configuration.h``.
+    * Delete ``ui/inc/ui_dma2d_configuration.h``.
+    * Add the source files in ``ui_dma2d/src`` to the project.
+    * Add the path ``ui_dma2d/inc`` to the include path.
+
 BSP with VGLite
 """""""""""""""
 
@@ -76,6 +99,7 @@ BSP with NemaGFX
           Adjust your code so that only the code targeting the interrupt mode remains.
         * Follow the steps detailed in the section :ref:`section_ui_c_module_microui_nemagfx_implementation`.
 
+.. _C Module MicroUI over DMA2D to version 6.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-dma2d/6.0.0/
 .. _C Module MicroUI over VGLite to version 9.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/9.0.0/
 .. _C Module MicroUI over NemaGFX to version 3.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx/3.0.0/
 
