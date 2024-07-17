@@ -3,26 +3,26 @@ Introduction
 ============
 
 A MicroEJ Architecture is a software package that includes the MicroEJ Runtime port to a specific target Instruction Set Architecture (ISA) and C compiler.
-It contains a set of libraries, tools and C header files. The MicroEJ Architectures are provided by MICROEJ SDK.
+It contains a set of libraries, tools and C header files. MicroEJ Architectures are provided by MICROEJ SDK.
 
 A VEE Port is a MicroEJ Architecture port for a custom device.
 
-It relies on C drivers (aka low level LL drivers) for each VEE Port feature.
-These drivers are implemented in the VEE Pot BSP project. This project is edited in the C compiler IDE/dev environment (e.g. KEIL, GCC, IAR).
-E.g. the MicroUI library LED feature will require a ``LLUI_LED.c`` that implements the native on/off IO drive.
+It relies on C drivers (a.k.a. low level LL drivers) for each VEE Port feature.
+These drivers are implemented in the VEE Port BSP project. This project is edited in the C compiler IDE/dev environment (e.g. KEIL, GCC, IAR).
+For example, the MicroUI library LED feature will require a ``LLUI_LED.c`` that implements the native on/off IO drive.
 
 Each VEE Port is specific to:
 
 * a MicroEJ Architecture (MCU ISA and C compiler)
 * an optional RTOS (e.g. FreeRTOS - note: the MicroEJ Runtime can run bare metal)
-* a device: the OS bring up code that is device specific (e.g. the MCU specific code/IO/RAM/Clock/Middleware… configurations)
+* a device: the OS bring up code that is device-specific (e.g. the MCU specific code/IO/RAM/Clock/Middleware… configurations)
 
 MicroEJ Corp. provides MicroEJ Evaluation Architectures at https://repository.microej.com/modules/com/microej/architecture,
 and `VEE Port Examples`_ for various evaluation boards.
 
 The VEE Porting Guide explains how the core features are
-accessed, configured and used for creating a port of MICROEJ VEE (VEE Port) on your dedicated device. 
-It also explains how an Application can interoperate with native code, and
+accessed, configured and used to create a port of MICROEJ VEE (VEE Port) on your dedicated device. 
+It also explains how an Application interacts with native code, and
 the details of the Architecture modules, including their APIs, error codes
 and options. 
 
@@ -35,7 +35,7 @@ to different targets.
 VEE Port Build Process
 ======================
 
-The following figure shows the overall process to obtain an Executable file to deploy on a device.
+The following figure shows the overall process to create an Executable file to deploy on a device.
 The first three steps are performed within MICROEJ SDK. The remaining steps are performed within the C IDE.
 
 .. _fig_overall-process:
@@ -67,7 +67,7 @@ The steps are as follow:
 Create a VEE Port for a Custom Device
 =====================================
 
-VEE Port creation can be either done from scratch or modifying an existing VEE Port example project.
+VEE Port creation can either be done from scratch or modifying an existing VEE Port example project.
 The following chart provides a handy guide to ease decision:
 
    .. figure:: images/veeport-creation-decision-tree.png
@@ -87,14 +87,14 @@ A VEE Port Example is already available for the same MCU/RTOS/C Compiler
 This is the fastest way: `VEE Port Examples`_ are usually provided for a silicon vendor evaluation board.
 Import this VEE Port in MICROEJ SDK.
 
-As the MCU, RTOS and compiler are the same, only the device specific code needs to be changed (external RAM, external oscillator, communication interfaces).
+As the MCU, RTOS and compiler are the same, only the device-specific code needs to be changed (external RAM, external oscillator, communication interfaces).
 
 VEE Port Configuration
 ::::::::::::::::::::::
 
 * Modify the ``xxx-configuration`` project to match the device features and its associated configuration (e.g. GUI, Networking, ...).
 
-Refer to MICROEJ SDK5 :ref:`platform_module_configuration` or MICROEJ SDK 6 VEE Porting Guide to learn more about VEE Port configuration.
+Refer to :ref:`VEE Port configuration <platform_module_configuration>` to learn more about it.
 
 More details on available modules can be found in the :ref:`vee-porting-guide`.
 
@@ -114,7 +114,7 @@ Required actions:
   .. note::
     
     A number of ``LL*.h`` files are referenced from the project. 
-    Implement the function prototypes declared there so that the JVM can delegate the relevant operations to the provided BSP C functions.
+    Implement the function prototypes declared there so that the Core Engine can delegate the relevant operations to the provided BSP C functions.
 
 Simulator
 :::::::::
@@ -140,12 +140,12 @@ At this point, consider either to modify the closest VEE Port:
 Or to start from scratch a new VEE Port:
 
 * In the SDK: create the VEE Port and refer to the selected VEE Port as a model for implementation
-  (refer to MICROEJ SDK5 :ref:`platform_configuration_creation` or MICROEJ SDK6 VEE Porting Guide)
+  (refer to the :ref:`VEE Port Creation <new_platform_creation>` documentation).
 * in the C IDE: start from an empty project and implement the drivers of each of the LL drivers API. 
   
   Make sure to link with:
 
-  * the ``microejruntime.a`` that runs the JVM for the MCU Architecture
+  * the ``microejruntime.a`` that runs the Core Engine for a specific MCU Architecture
   * the ``microejapp.o`` that contains the compiled Java application
 
 MCU
