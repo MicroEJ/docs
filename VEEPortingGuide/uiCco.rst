@@ -550,6 +550,8 @@ Usage
 4. Configure the options in ``ui_nema_configuration.h``.
 5. Comment the line ``#error [...]"``.
 
+.. _section_ui_c_module_microui_nemagfx_implementation:
+
 Implementation
 --------------
 

@@ -67,7 +67,14 @@ BSP with NemaGFX
     * Configure ``ui_nemagfx/inc/ui_nema_configuration.h``, based on your previous settings in ``ui/inc/ui_drawing_nema_configuration.h``.
     * Add the source files in ``ui_nemagfx/src`` to the project.
     * Add the path ``ui_nemagfx/inc`` to the include path.
-    * If you were using the task mode, switch to interrupt mode. XXX_TODO Link
+    * If you were using the task mode, switch to interrupt mode.
+
+        * Remove your implementation of ``UI_DRAWING_NEMA_IMPL_operation_submitted``.
+        * Remove the task that called ``UI_DRAWING_NEMA_post_operation``.
+        * Look for any use of the macro ``NEMA_INTERRUPT_MODE``, which denotes a differentiation between the task mode and the interrupt mode.
+          This macro is no longer used.
+          Adjust your code so that only the code targeting the interrupt mode remains.
+        * Follow the steps detailed in the section :ref:`section_ui_c_module_microui_nemagfx_implementation`.
 
 .. _C Module MicroUI over VGLite to version 9.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/9.0.0/
 .. _C Module MicroUI over NemaGFX to version 3.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx/3.0.0/
