@@ -10,7 +10,7 @@ UI Pack Compatibility Version
 =============================
 
 The current VG Pack version is |VGPACKVERSION|.
-The following table describes the compatibility ranges between VG and UI Packs. 
+The following table describes the compatibility ranges between VG and UI Packs.
 
 +---------------+-----------------+----------------------------------+
 | VG Pack Range | UI Pack Range   | Comment                          |
@@ -38,7 +38,7 @@ The following table describes Foundation Libraries API versions implemented in M
    * - VG Pack Range
      - MicroVG
    * - [1.4.0-1.6.0]
-     - `1.4.0 <https://repository.microej.com/modules/ej/api/microvg/1.4.0/>`_ and `1.5.0 <https://repository.microej.com/modules/ej/api/microvg/1.4.0/>`_ XXX_TODO wrong link
+     - `1.4.0 <https://repository.microej.com/modules/ej/api/microvg/1.4.0/>`_
    * - 1.3.0
      - `1.3.0 <https://repository.microej.com/modules/ej/api/microvg/1.3.0/>`_
    * - 1.2.1
@@ -55,8 +55,8 @@ The C modules are described :ref:`here <section_vg_cco>`.
 
 Several generic C modules are available for a given version of the VG Pack.
 In addition to generic C modules, the specific implementations of the VG Pack over Vivante VGLite and Think Silicon NemaVG extend the main MicroVG C module.
-They override the default implementation to use a GPU to perform the drawings. 
-Contrary to the main MicroVG C module, they are optional: when they are not available, the default implementation of drawings is used. 
+They override the default implementation to use a GPU to perform the drawings.
+Contrary to the main MicroVG C module, they are optional: when they are not available, the default implementation of drawings is used.
 The default implementation does nothing (no drawing) and throws the :ref:`drawing log<section.veeport.ui.drawings.drawing_logs>` ``DRAWING_LOG_NOT_IMPLEMENTED``.
 
 These C Modules fetches automatically by transitivity the generic MicroUI and MicroVG C modules and the :ref:`Extended C Module<section_ui_releasenotes_cmodule_extended>` for the selected GPU.
@@ -117,8 +117,8 @@ The following table describes the version compatibility between the MicroEJ VG P
 +---------+---------+-----------+---------+------------------+------------------+----------+----------+---------+
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
-   for read and redistribute. Except if otherwise stated, modification 
+   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free
+   for read and redistribute. Except if otherwise stated, modification
    is subject to MicroEJ Corp prior approval.
-   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and
    copyrights are the property of their respective owners.
