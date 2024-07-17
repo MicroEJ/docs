@@ -28,9 +28,27 @@ Front Panel
 LLAPIs
 """"""
 
+**Added**
+
+* Add the LLAPI ``LLVG_MATRIX_IMPL_transformPoint``.
+* Add the new type ``MICROVG_Image``.
+
 **Changed**
 
-* Change the semantic of the LLAPI `LLVG_GRADIENT_IMPL_initializeGradient()`: the positions array cannot be null.
+* Change the semantic of the LLAPI ``LLVG_GRADIENT_IMPL_initializeGradient``: the positions array cannot be ``NULL``.
+* Add ``const`` modifiers for parameters of the following functions:
+
+    * ``LLVG_GRADIENT_IMPL_initializeGradient``,
+    * ``LLVG_MATRIX_IMPL_copy``,
+    * ``LLVG_MATRIX_IMPL_multiply``,
+    * ``LLVG_MATRIX_IMPL_setConcat``,
+    * ``LLVG_MATRIX_IMPL_concatenate``,
+    * ``LLVG_MATRIX_IMPL_postConcat``.
+
+* Use the new type ``MICROVG_Image`` in the signature of the following functions:
+
+    * ``LLVG_BVI_IMPL_map_context``,
+    * ``LLVG_PAINTER_IMPL_drawImage``.
 
 [1.5.1] - 2024-04-11
 ====================

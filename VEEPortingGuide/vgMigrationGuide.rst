@@ -14,6 +14,20 @@ VEE Port Configuration project
 * Update the UI Pack to version 14.0.1 or higher.
 * Specify the ``implementation`` property, as written in the section :ref:`section_microvg_installation`.
 
+LLAPIs
+""""""
+
+* Update your implementation of the following functions to match the signature changes.
+
+    * ``LLVG_GRADIENT_IMPL_initializeGradient``,
+    * ``LLVG_MATRIX_IMPL_copy``,
+    * ``LLVG_MATRIX_IMPL_multiply``,
+    * ``LLVG_MATRIX_IMPL_setConcat``,
+    * ``LLVG_MATRIX_IMPL_concatenate``,
+    * ``LLVG_MATRIX_IMPL_postConcat``,
+    * ``LLVG_BVI_IMPL_map_context``,
+    * ``LLVG_PAINTER_IMPL_drawImage``.
+
 BSP with VGLite
 """""""""""""""
 
