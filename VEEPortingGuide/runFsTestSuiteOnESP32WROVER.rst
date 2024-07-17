@@ -1,6 +1,6 @@
 .. _run_fs_test_suite_on_esp32_wrover:
 
-Run FS Test Suite on ESP32-WROVER VEE Port
+Run the FS Test Suite on ESP32-WROVER VEE Port
 ==========================================
 
 This guide describes all the steps to configure and run a
@@ -30,7 +30,7 @@ This guide assumes the following:
   <https://github.com/MicroEJ/Platform-Espressif-ESP-WROVER-KIT-V4.1/tree/1.6.2>`__
   has been properly setup (i.e., it can be used to generate a Mono-Sandbox Executable).
 
-The explanation can be adapted to run the test suite on any other VEE Port providing:
+The instructions of this page can be adapted to run the test suite on any other VEE Port providing:
 
 - An implementation of :ref:`LLFS-API-SECTION` version 1.0.2 in
   `com.microej.pack#fs-4.0.3`_.
