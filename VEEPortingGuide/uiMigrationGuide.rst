@@ -92,6 +92,7 @@ Front Panel
      <dependency org="ej.tool.frontpanel" name="widget" rev="4.0.1"/>
 
 * Re-organize imports of all Java classes (classes ``MicroUIImageFormat``, ``MicroUIImage`` and ``MicroUIGraphicsContext`` have been extracted from ``LLUIPainter``).
+* Remove all calls to ``MicroUIGraphicsContext.setDrawingLimits``.
 * The ``doubleBufferFeature`` attribute has been removed from the ``Display`` widget.
   The ``bufferPolicyClass`` replaces it (see :ref:`Buffer Refresh Strategy on the Simulator<section_brs_sim>`).
 
