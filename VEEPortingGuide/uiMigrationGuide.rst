@@ -6,6 +6,8 @@
 Migration Guide
 ===============
 
+.. _section_ui_migrationguide_pack_14.0.1_c_module_update:
+
 14.0.1 (C Module update)
 ========================
 
@@ -14,7 +16,7 @@ BSP with VGLite
 
 * *[VEE Port configuration project]*
 
-    * Set the dependency to the C Module MicroUI over VGLite to version 9.0.0. XXX_TODO
+    * Set the dependency to the `C Module MicroUI over VGLite to version 9.0.0`_.
 
 * *[BSP project]*
 
@@ -48,7 +50,7 @@ BSP with NemaGFX
 
 * *[VEE Port configuration project]*
 
-    * Set the dependency to the C Module MicroUI over NemaGFX to version 3.0.0. XXX_TODO
+    * Set the dependency to the `C Module MicroUI over NemaGFX to version 3.0.0`_.
 
 * *[BSP project]*
 
@@ -66,6 +68,9 @@ BSP with NemaGFX
     * Add the source files in ``ui_nemagfx/src`` to the project.
     * Add the path ``ui_nemagfx/inc`` to the include path.
     * If you were using the task mode, switch to interrupt mode. XXX_TODO Link
+
+.. _C Module MicroUI over VGLite to version 9.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/9.0.0/
+.. _C Module MicroUI over NemaGFX to version 3.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx/3.0.0/
 
 From 13.7.x to 14.0.1
 =====================
