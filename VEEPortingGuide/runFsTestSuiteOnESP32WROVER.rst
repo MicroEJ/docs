@@ -1,7 +1,7 @@
 .. _run_fs_test_suite_on_esp32_wrover:
 
 Run the FS Test Suite on ESP32-WROVER VEE Port
-==========================================
+==============================================
 
 This guide describes all the steps to configure and run a
 :ref:`vee_port_testsuite` on a device using the `Port
