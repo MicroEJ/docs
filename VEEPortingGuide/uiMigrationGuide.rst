@@ -38,9 +38,9 @@ BSP with VGLite
         * Call ``UI_VGLITE_initialize`` to initialize the VGLite controller and the VGLite library.
         * Replace the call to ``UI_VGLITE_init`` with ``UI_VGLITE_start``.
 
-	* Delete the properties files ``cco_microui.properties`` and ``cco_microui-vglite.properties``.
+    * Delete the properties files ``cco_microui.properties`` and ``cco_microui-vglite.properties``.
     * Build the VEE Port.
-    * In ``ui_vglite/inc/ui_vglite_configuration.h``, copy the settings from ``ui/inc/ui_vglite_configuration.h``.
+    * Configure ``ui_vglite/inc/ui_vglite_configuration.h``, based on your previous settings in ``ui/inc/ui_vglite_configuration.h``.
     * Delete ``ui/inc/ui_vglite_configuration.h``.
     * Add the source files in ``ui_vglite/src`` to the project.
     * Add the path ``ui_vglite/inc`` to the include path.
