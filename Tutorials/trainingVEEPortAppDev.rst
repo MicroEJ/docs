@@ -40,7 +40,8 @@ This training is provided in PDF format with resources provided in a ``.zip`` pa
 - :download:`Slides: VEE Port and Application Development with MICROEJ SDK <resources/DEV-M0127-PRE-VEE_Port_and_Application_development-STM32F7508-5.0.pdf>` (for MICROEJ SDK 5)
 - :download:`Resources: VEE Port and Application Development with MICROEJ SDK <resources/DEV-M0127-PRE-VEE_Port_and_Application_development-STM32F7508-5.0_resources.zip>` (for MICROEJ SDK 5)
 
-Training for MICROEJ SDK 6 coming soon!
+Training for MICROEJ SDK 6 is coming soon!
+In the mean time, you can follow the :ref:`SDK 6 Getting Started <sdk_6_getting_started>`.
 
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 
