@@ -46,15 +46,18 @@ BSP with VGLite
     * In the directory ``ui``, delete the following files:
 
         * ``inc/color.h``,
-        * ``inc/ui_drawing_bvi.h``,
         * ``inc/ui_drawing_vglite.h``,
         * ``inc/ui_drawing_vglite_path.h``,
         * ``inc/ui_drawing_vglite_process.h``,
         * ``inc/ui_vglite.h``,
-        * ``src/ui_drawing_bvi.c``,
         * ``src/ui_drawing_vglite.c``,
         * ``src/ui_drawing_vglite_path.c``,
         * ``src/ui_drawing_vglite_process.c``.
+
+    * In the directory ``util``, delete the following files:
+
+        * ``inc/mej_math.h``,
+        * ``src/mej_math.c``,
 
     * In ``LLUI_DISPLAY_IMPL_initialize``:
 
