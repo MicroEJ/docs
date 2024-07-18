@@ -99,10 +99,6 @@ BSP with NemaGFX
           Adjust your code so that only the code targeting the interrupt mode remains.
         * Follow the steps detailed in the section :ref:`section_ui_c_module_microui_nemagfx_implementation`.
 
-.. _C Module MicroUI over DMA2D to version 6.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-dma2d/6.0.0/
-.. _C Module MicroUI over VGLite to version 9.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/9.0.0/
-.. _C Module MicroUI over NemaGFX to version 3.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx/3.0.0/
-
 From 13.7.x to 14.0.1
 =====================
 

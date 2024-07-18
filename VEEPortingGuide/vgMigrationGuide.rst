@@ -1,3 +1,4 @@
+.. include:: uiReplaces.rst
 
 .. _section_vg_migrationguide:
 
@@ -75,9 +76,6 @@ BSP with VGLite
 	* Delete ``vg/inc/microvg_configuration.h``.
 	* Add the source files in ``vg/src`` and ``vg_vglite/src`` to the project.
 	* Add the path ``vg_vglite/inc`` to the include path.
-
-.. _VG Pack 1.6.0: https://repository.microej.com/modules/com/microej/pack/vg/vg-pack/1.6.0/
-.. _C Module MicroVG over VGLite 8.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-vglite/8.0.0/
 
 From 1.4.x to 1.5.1
 ===================
