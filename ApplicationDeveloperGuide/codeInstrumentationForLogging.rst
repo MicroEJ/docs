@@ -26,7 +26,7 @@ This documentation describes 3 ways for logging data:
 - Using `Message`_ library: a lightweight and simple logging library.
 - Using `Logging`_ library: a complete and highly configurable standard logging library. 
 
-The usage of each library will be illustrated by instrumenting the following code snippet:
+The use of each library will be illustrated by instrumenting the following code snippet:
 
 .. code-block:: java
 
