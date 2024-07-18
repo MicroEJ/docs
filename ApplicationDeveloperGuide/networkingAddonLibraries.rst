@@ -81,7 +81,7 @@ Data Serialization Libraries
       -  `cbor <https://repository.microej.com/modules/ej/library/iot/cbor/>`_
       -  - `CborEncoder class <https://repository.microej.com/javadoc/microej_5.x/apis/ej/cbor/CborEncoder.html>`_
          - `CborDecoder class <https://repository.microej.com/javadoc/microej_5.x/apis/ej/cbor/CborDecoder.html>`_
-      -  - :ref:`CBOR Documentation <data_serialization_cbor>`
+      -  - :ref:`CBOR Tutorial <tutorial_cbor>`
 
    *  -  ``JSON``
       -  JavaScript Object Notation (JSON) encoder and decoder.
@@ -89,21 +89,21 @@ Data Serialization Libraries
       -  - `JSONObject class <https://repository.microej.com/javadoc/microej_5.x/apis/org/json/me/JSONObject.html>`_ (decoder)
          - `JSONWriter class <https://repository.microej.com/javadoc/microej_5.x/apis/org/json/me/JSONWriter.html>`_ (encoder)
       -  - `README <https://repository.microej.com/modules/ej/library/iot/json/1.0.0/README-1.0.0.md>`_
-         - :ref:`JSON Documentation <data_serialization_json>`
+         - :ref:`JSON Tutorial <tutorial_json>`
 
    *  -  ``Protocol Buffers``
       -  Google Protocol Buffers 3 encoder and decoder, supporting files compiled by ``protoc`` with lite plugin.
       -  `protobuf3 <https://repository.microej.com/modules/com/google/protobuf3/>`_
       -  - `CodedInputStream class <https://repository.microej.com/javadoc/microej_5.x/apis/com/google/protobuf/CodedInputStream.html>`_ (decoder)
          - `CodedOutputStream class <https://repository.microej.com/javadoc/microej_5.x/apis/com/google/protobuf/CodedOutputStream.html>`_ (encoder)
-      -  - `Protobuf3 Documentation <https://github.com/MicroEJ/Demo-Protobuf3>`_
+      -  - `Protobuf3 Example <https://github.com/MicroEJ/Demo-Protobuf3>`_
 
    *  -  ``XML``
       -  eXtensible Markup Language encoder and decoder (`kXML 3 <http://kxml.sourceforge.net/about.shtml>`_).
       -  `kxml2 <https://repository.microej.com/modules/org/kxml2/kxml2/>`_
       -  - `XmlPullParser class <https://repository.microej.com/javadoc/microej_5.x/apis/org/xmlpull/v1/XmlPullParser.html>`_ (decoder)
          - `XmlSerializer class <https://repository.microej.com/javadoc/microej_5.x/apis/org/xmlpull/v1/XmlSerializer.html>`_ (encoder)
-      - - :ref:`XML Documentation <data_serialization_xml>`
+      - - :ref:`XML Tutorial <tutorial_xml>`
 
 
 Cloud Agent Libraries

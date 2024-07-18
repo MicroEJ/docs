@@ -39,7 +39,6 @@ To consult its libraries APIs documentation, please visit `<https://developer.mi
 
    UI/ui
    nls
-   dataSerializationLibraries
    networking
    bluetooth
    javaTime

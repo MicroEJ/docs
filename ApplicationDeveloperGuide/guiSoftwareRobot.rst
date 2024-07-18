@@ -1,7 +1,7 @@
-.. _tutorials_software_robot:
+.. _guiSoftwareRobot:
 
-How to Test a GUI Application with a (Software) Robot
-=====================================================
+GUI Software Robot
+==================
 
 This document presents how to test a GUI application with a software robot for robotic process automation (RPA).
 
@@ -16,8 +16,8 @@ The robot implementation proposed here targets the following errors detection:
 
 The following document covers:
 
-* Recording human touch events on the simulator or on the embedded platform
-* Running recorded events on the simulator or on the embedded platform
+* Recording human touch events on the simulator or on the device
+* Running recorded events on the simulator or on the device
 
 The following document does not cover:
 
