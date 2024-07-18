@@ -395,6 +395,10 @@ Advanced
    tutorialUnderstandMicroEJFirmwareBuild
    tutorialInstrumentJavaCodeForLogging
    tutorialRunATestSuiteOnDevice
+   tutorialImplementABlockingNativeMethodWithSNI
+   tutorialDiscoverEmbeddedDebuggingTechniques
+   getStartedWithGUI/index
+   tutorialValidateGUIs
 
 ..
    | Copyright 2021-2024, MicroEJ Corp. Content in this space is free 
