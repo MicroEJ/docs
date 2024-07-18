@@ -24,7 +24,7 @@ The following document does not cover:
 * The display rendering validation (this can be done using the `Test Automation <https://github.com/MicroEJ/Tool-UITestAutomation>`_ Tool)
 * Integration of the robot into an automatic JUnit test suite
 
-We will now present the basic architecture and code required to create and to run a robot within a MicroEJ application on the simulator and embedded platform.
+We will now present the basic architecture and code required to create and to run a robot within a MicroEJ application on the simulator and on the device.
 
 In the following sections, we assume the MicroEJ VEE Port has a display interface and a touch controller.
  

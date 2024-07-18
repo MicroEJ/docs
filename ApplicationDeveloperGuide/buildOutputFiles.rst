@@ -43,6 +43,7 @@ After :ref:`building <mmm_module_build>` the Standalone Application, the publish
 
    Published Standalone Application Module Files
 
+.. _soar_map_file:
 
 The SOAR Map File
 ~~~~~~~~~~~~~~~~~
