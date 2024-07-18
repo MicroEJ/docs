@@ -4,13 +4,13 @@ Development Tools
 .. toctree::
    :maxdepth: 2
 
-   codeInstrumentationForLogging
    trace
    debuggerProxy
    dependencyDiscoverer
    linker
    testsuiteEngine
    heapUsageMonitoring
+   guiSoftwareRobot
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free
