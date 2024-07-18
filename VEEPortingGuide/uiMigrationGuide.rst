@@ -18,7 +18,7 @@ BSP with DMA2D
 
     * Set the dependency to the `C Module MicroUI over DMA2D to version 6.0.0`_.
 
-        * Notice that the name of the module changed from ``display-dma2d`` to ``microui-dma2d``.
+        * Notice that the name of the module changed from ``display-dma2d`` to ``microui-dma2d``, and that the module was moved to the :ref:`developer_repository`.
 
 * *[BSP project]*
 
@@ -112,7 +112,7 @@ Front Panel
      <dependency org="ej.tool.frontpanel" name="widget" rev="4.0.1"/>
 
 * Re-organize imports of all Java classes (classes ``MicroUIImageFormat``, ``MicroUIImage`` and ``MicroUIGraphicsContext`` have been extracted from ``LLUIPainter``).
-* Remove all calls to ``MicroUIGraphicsContext.setDrawingLimits``.
+* Remove all calls to ``MicroUIGraphicsContext.setDrawingLimits``. This method has been removed as it is no longer needed.
 * The ``doubleBufferFeature`` attribute has been removed from the ``Display`` widget.
   The ``bufferPolicyClass`` replaces it (see :ref:`Buffer Refresh Strategy on the Simulator<section_brs_sim>`).
 
