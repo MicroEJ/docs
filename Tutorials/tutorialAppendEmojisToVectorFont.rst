@@ -1,4 +1,4 @@
-.. _how_to_add_emoji_to_vector_font:
+.. _tutorial_append_emojis:
 
 How to Add Emojis to a Vector Font
 ==================================
@@ -16,6 +16,16 @@ This article shows how to achieve this using FontLab, a third-party font editor.
     FontLab is not a free software (it has a 30-days trial period).
     Tests with other tools, including free solutions, were unsuccessful in this very specific task 
     (e.g. `FontTools <https://github.com/fonttools/fonttools>`_, `FontForge <https://fontforge.org/>`_ which are great tools for font editing).
+
+
+Intended Audience
+-----------------
+
+The audience for this document is Application engineers who want to
+use :ref:`section_vector_fonts` in their applications.
+
+In addition, this tutorial should be of interest to all developers
+wishing to familiarize themselves with the vector features of :ref:`MicroVG <section_app_microvg>`.
 
 
 Prerequisites
