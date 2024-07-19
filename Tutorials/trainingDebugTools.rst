@@ -30,7 +30,7 @@ Training Resources
 Unit 1: Master logging within your Application
 ----------------------------------------------
 
-- Read the following documentation: :ref:`tutorial_instrument_java_code_for_logging`.
+- Read the following documentation: :ref:`codeInstrumentationForLogging`.
 
 Unit 2: MicroEJ Debug Tools Overview
 ------------------------------------

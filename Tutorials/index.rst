@@ -294,7 +294,6 @@ Connectivity
    :hidden:
 
    trainingNetworking
-   tutorialExploreDataSerializationFormats
 
 .. raw:: html
 
@@ -314,7 +313,7 @@ Connectivity
             </div>
             </a>
 
-            <a class="training_link" href="tutorialExploreDataSerializationFormats.html">
+            <a class="training_link" href="../ApplicationDeveloperGuide/dataSerializationLibraries.html">
             <div>
                <div class="training_image_container">
                   <div class="training_image_text">Course 2</div>
@@ -324,7 +323,7 @@ Connectivity
                <p class="training_description">In this training, you will discover 
                some data serialization formats through basic code samples.
                </p>
-               <a class="training_learn_more_link" href="tutorialExploreDataSerializationFormats.html">Learn more</a>
+               <a class="training_learn_more_link" href="../ApplicationDeveloperGuide/dataSerializationLibraries.html">Learn more</a>
             </div>
             </a>
 
@@ -391,14 +390,7 @@ Advanced
 .. toctree::
    :hidden:
    
-   tutorialCreateCustomPlatform
    tutorialUnderstandMicroEJFirmwareBuild
-   tutorialInstrumentJavaCodeForLogging
-   tutorialRunATestSuiteOnDevice
-   tutorialImplementABlockingNativeMethodWithSNI
-   tutorialDiscoverEmbeddedDebuggingTechniques
-   getStartedWithGUI/index
-   tutorialValidateGUIs
 
 ..
    | Copyright 2021-2024, MicroEJ Corp. Content in this space is free 
