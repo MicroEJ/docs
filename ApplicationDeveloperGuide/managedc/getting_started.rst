@@ -62,6 +62,7 @@ To use Managed C in your Application, follow these steps:
             
             @Target(ElementType.METHOD)
             public @interface ManagedCFunction {
+               String value() default "";
             }
 
 
@@ -125,7 +126,37 @@ To use Managed C in your Application, follow these steps:
             }
         }
 
-   .. note:: The Managed C function name and signature in the C file match the Java annotated native method.
+   .. note:: 
+         
+      The Managed C function signature in the C file must match the annotated Java native method signature.
+
+      The Managed C function name can be specified in the ``@ManagedCFunction`` annotation.
+      
+      .. code-block:: java
+         :emphasize-lines: 8
+
+         @ManagedCModule("factorial.wasm")
+         public class Main {
+
+            public static void main(String[] args) {
+               System.out.println("factorial(10) = " + factorial(10));
+            }
+
+            @ManagedCFunction("my_managedC_factorial")
+            public static native int factorial(int n);
+         }
+
+      .. code:: c
+
+        int my_managedC_factorial(int n) {
+            if (n == 1) {
+                return 1;
+            } else {
+                return n * factorial(n - 1);
+            }
+        }
+
+      If no name is specified in the ``@ManagedCFunction`` annotation, the Managed C function name must match the name of the annotated native Java method.
 
 #. **Compile the C File to WebAssembly:**
 
