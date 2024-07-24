@@ -48,6 +48,11 @@ The following artifacts are automatically published:
 - The WPK file, if the project is an Application.
 - The Virtual Device, if the project is an Application.
 
+.. note::
+
+  Ivy descriptor publication can be disabled. You can refer to :ref:`disable Ivy Descriptor publication How-to page <sdk_6_disable_ivy_descriptor_publication>`
+  if you don't need to publish Ivy descriptor. 
+
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
