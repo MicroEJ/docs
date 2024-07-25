@@ -3,7 +3,8 @@
 How To Disable Ivy Descriptor Publication
 =========================================
 
-By default, SDK 6 adds an Ivy descriptor file to published artifacts in order for SDK 5 projects to be able to consume the module (e.g. an SDK 5 application built with SDK 5 depending on a library published with SDK 6).
+By default, SDK 6 adds an Ivy descriptor file to published artifacts in order for SDK 5 projects to be able to consume the module (e.g. an application built with SDK 5 depending on a library published with SDK 6).
+
 
 
 Disable Ivy Descriptor Publication by Default
