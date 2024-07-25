@@ -16,16 +16,11 @@ This property can be set in a ``gradle.properties`` file in ``<user.home>/.gradl
 apply it at project level.
 It can also passed to command line with ``-Penable.ivy.descriptor.default=false`` option.
 
-.. note::
-
-    You can get more information about Gradle properties in `Gradle offical documentation <https://docs.gradle.org/current/userguide/build_environment.html#sec:gradle_configuration_properties>`__.
-  
 
 Force Ivy Descriptor Publication When Disabled by Default
 ---------------------------------------------------------
 
 Even when Ivy descriptor publication is globally disabled with the Gradle property, it can be forced in a project by adding ``withIvyDescriptor()`` to the ``microej`` block
-
 in ``build.gradle.kts`` file::
 
   microej {
