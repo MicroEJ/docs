@@ -1,4 +1,4 @@
-# Copyright 2008-2024, MicroEJ Corp. Content in this space is free for read and redistribute. Except if otherwise stated, modification is subject to MicroEJ Corp prior approval.
+# Copyright 2008-2024, MicroEJ Corp. Content in this space is free for read and redistribute. Except if otherwise stated, modification is subject to MicroEJ Corp prior approval. 
 # MicroEJ is a trademark of MicroEJ Corp. All other trademarks and copyrights are the property of their respective owners.
 
 import os
@@ -83,18 +83,15 @@ latex_engine = 'lualatex'
 # setting for pygments. This is the same style class used by the HTML builder.
 pygments_style = 'microej.MicroEJStyle'
 
-# Have linkcheck ignore all links except those :
+# Have linkcheck ignore all links except those : 
 # - starting with a "#" (inner references)
 # - containing "microej.com" (main website, docs, developer, repository, forge...)
 # - containing "github.com/MicroEJ"
 # - containing "nxp.com"
 # - containing "facer.io"
-linkcheck_ignore = [
-    r'.*(repository|forge)\.microej\.com', # Ignore repository.microej.com and forge.microej.com. For development only, remove when releasing.
-    r'^(?!#|.*microej\.com|.*nxp\.com|.*facer\.io|.*github\.com\/MicroEJ)'
-]
+linkcheck_ignore = [r'^(?!#|.*microej\.com|.*nxp\.com|.*facer\.io|.*github\.com\/MicroEJ)']
 
-# Keep these legacy linkcheck_ignore patterns for occasional monitoring of external links
+# Keep these legacy linkcheck_ignore patterns for occasional monitoring of external links 
 # Ignore some links:
 #   - local index links flagged as broken by linkcheck. Hopefully temporary solution
 #     until https://github.com/sphinx-doc/sphinx/issues/9383 is resolved.
