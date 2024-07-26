@@ -14,7 +14,8 @@ If you don't need SDK 5 backward compatibility, you can disable Ivy descriptor p
 
 This property can be set in a ``gradle.properties`` file in ``<user.home>/.gradle/`` to apply it globally, or at the root of the Gradle project to
 apply it at project level.
-It can also passed to command line with ``-Penable.ivy.descriptor.default=false`` option.
+It can also be passed to command line with ``-Penable.ivy.descriptor.default=false`` option.
+
 
 
 Force Ivy Descriptor Publication When Disabled by Default
