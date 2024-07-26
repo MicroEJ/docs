@@ -1,6 +1,6 @@
 .. _sdk_6_install_plugin_snapshot:
 
-How to Install MicroEJ Plugin Snapshot Version on Android Studio or IntelliJ IDEA
+How To Install MicroEJ Plugin Snapshot Version on Android Studio or IntelliJ IDEA
 =================================================================================
 
 If you want to test the version under development, the latest snapshot version of the plugin can be installed:

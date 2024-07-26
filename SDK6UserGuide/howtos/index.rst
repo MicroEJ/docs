@@ -18,6 +18,7 @@ How-to Guides
    buildExecutableWithMultipleVeePorts
    createCustomConfigurationInIDE
    useFeatureEntryPointClass
+   disableIvyDescriptorPublication
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 

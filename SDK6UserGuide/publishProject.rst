@@ -18,6 +18,10 @@ The requirements to publish a module are:
     group = "com.mycompany"
     version = "1.0.0"
 
+  .. warning::
+
+    Refer to :ref:`Manage Versioning page <sdk6_manage_versioning>` to know how to version your module.
+
 - Declaring a ``maven`` publication repository.
   This can be done in the build file for example, with::
 
@@ -47,6 +51,11 @@ The following artifacts are automatically published:
 - The Ivy descriptor file (to allow SDK 5 project to fetch it).
 - The WPK file, if the project is an Application.
 - The Virtual Device, if the project is an Application.
+
+.. note::
+
+  Ivy descriptor publication can be disabled. You can refer to :ref:`disable Ivy Descriptor publication How-to page <sdk_6_disable_ivy_descriptor_publication>`
+  if you don't need to publish Ivy descriptor. 
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
