@@ -18,6 +18,10 @@ The requirements to publish a module are:
     group = "com.mycompany"
     version = "1.0.0"
 
+  .. warning::
+
+    Refer to :ref:`Manage Versioning page <sdk6_manage_versioning>` to know how to version your module.
+
 - Declaring a ``maven`` publication repository.
   This can be done in the build file for example, with::
 
