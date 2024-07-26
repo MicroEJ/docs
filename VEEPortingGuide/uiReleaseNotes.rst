@@ -324,10 +324,8 @@ The following table describes the version compatibility between the MicroEJ UI P
 | [13.0.0-13.0.7] | [1.0.6-1.0.8] | 1.0.3            |                                          |
 +-----------------+---------------+------------------+------------------------------------------+
 
-XXX_TODO wrong link
-
 .. _DMA2D_Central: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/
-.. _DMA2D_Developer: https://forge.microej.com/ui/native/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx/
+.. _DMA2D_Developer: https://forge.microej.com/ui/native/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-dma2d/
 
 **Vivante VGLite**
 

@@ -223,10 +223,7 @@ Usage
 1. This C module transitively fetches the :ref:`C Module for MicroUI for NemaGFX<section_ui_cco>`, follow its implementation rules.
 2. Add all C files in the BSP project.
 
-
-.. XXX_TODO wrong link
-.. _com.microej.clibrary.llimpl#microvg-nema: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-vglite/
-
+.. _com.microej.clibrary.llimpl#microvg-nema: https://forge.microej.com/ui/native/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-nemavg/
 
 Compatibility
 =============

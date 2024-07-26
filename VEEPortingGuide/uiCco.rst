@@ -372,10 +372,7 @@ Example of Implementation
       LLUI_DISPLAY_setBackBuffer(g_current_flush_identifier, buffer, from_isr);
    }
 
-
-XXX_TODO wrong link
-
-.. _com.microej.clibrary.llimpl#microui-dma2d: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/
+.. _com.microej.clibrary.llimpl#microui-dma2d: https://forge.microej.com/ui/native/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-dma2d/
 
 .. _section_ui_c_module_microui_vglite:
 
