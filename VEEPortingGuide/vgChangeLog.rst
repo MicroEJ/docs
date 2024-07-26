@@ -4,7 +4,7 @@
 Changelog
 =========
 
-[1.6.0] - RC
+[1.6.0] - 2024-07-19
 ====================
 
 MicroVG Implementation
@@ -12,7 +12,7 @@ MicroVG Implementation
 
 **Added**
 
-* Allow the ``nema`` value for the MicroVG implementation.
+* Allow the ``nema`` value for the MicroVG implementation (see :ref:`section_microvg_installation`).
 
 **Changed**
 
