@@ -6,6 +6,11 @@
 Migration Guide
 ===============
 
+From 14.0.1 to 14.0.2
+=====================
+
+Just fetch the UI Pack 14.0.2.
+
 .. _section_ui_migrationguide_pack_14.0.1_c_module_update:
 
 14.0.1 (C Module update)
