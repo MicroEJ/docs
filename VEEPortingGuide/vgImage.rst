@@ -17,6 +17,9 @@ This module is composed of several elements:
 Compile-time Image
 ==================
 
+Overview
+--------
+
 The Image module implements the MicroVG `VectorImage`_ framework.
 It provides an offline tool that consists in opening and decoding an image file and some Abstraction Layer APIs that manipulate the image at runtime.
 
@@ -36,7 +39,7 @@ Image Generator
 The offline tool is an extension of the MicroUI :ref:`section_image_generator`.
 This tool is automatically installed during the VEE Port build.
 
-The tool converts :
+The tool converts:
 
 * The Android Vector Drawable (AVD): this kind of image can hold linear gradients, animations on colors, opacity, path transformations, etc. 
 * The Scalable Vector Graphics (SVG): this kind of image is partially supported: linear gradients but no animations. It is advised to convert the SVG files into AVD files before using the Image Converter tool.
@@ -58,6 +61,68 @@ This is an example of a ``vectorimage.list`` file:
    /path/to/avd_image_2.xml:VG16
    # Convert an SVG in signed 8-bit format
    /svg_image.svg:VG8
+
+The image generator must be extended to encode the binary data in a format compatible with the GPU.
+
+Default Extensions
+------------------
+
+The image generator provides some implementations that targets different GPUs:
+
+* ``NemaImageGenerator``: generates binary files compatible with the :ref:`section_vg_c_module_microvg_nema`.
+* ``VgliteImageGenerator``: generates binary files compatible with the :ref:`section_vg_c_module_microvg_vglite`.
+
+Refer to the chapter :ref:`section_microvg_installation` for more information about the image generator configuration or to the next chapter to target another GPU.
+
+.. _section_vg_image_generator_extension:
+
+Custom Extension
+----------------
+
+The Image Generator can be extended to target a new GPU. 
+This extension follows the same rules than the :ref:`MicroUI Image Generator extension<section_image_generator_extended>`.
+
+1. Create a ``std-javalib`` project. The module name must start with the prefix ``imageGenerator`` (for instance ``imageGeneratorMyGPU``).
+2. Add the dependency:
+
+   .. code-block:: xml
+
+      <dependency org="com.microej.pack.vg" name="vg-pack" rev="x.y.z">
+         <artifact name="vg-imageGenerator" type="jar"/>
+      </dependency>
+
+   Where ``x.y.z`` is the VG Pack version used to build the VEE Port (minimum ``1.6.0``). The ``module.ivy`` should look like:
+
+   .. code-block:: xml
+
+      <ivy-module version="2.0" xmlns:ea="http://www.easyant.org" xmlns:m="http://www.easyant.org/ivy/maven" xmlns:ej="https://developer.microej.com" ej:version="2.0.0">
+
+         <info organisation="com.microej.microui" module="imageGeneratorMyGPU" status="integration" revision="1.0.0">      
+            <ea:build organisation="com.is2t.easyant.buildtypes" module="build-std-javalib" revision="2.+"/>
+         </info>
+         
+         <configurations defaultconfmapping="default->default;provided->provided">
+            <conf name="default" visibility="public" description="Runtime dependencies to other artifacts"/>
+            <conf name="provided" visibility="public" description="Compile-time dependencies to APIs provided by the VEE Port"/>
+            <conf name="documentation" visibility="public" description="Documentation related to the artifact (javadoc, PDF)"/>
+            <conf name="source" visibility="public" description="Source code"/>
+            <conf name="dist" visibility="public" description="Contains extra files like README.md, licenses"/>
+            <conf name="test" visibility="private" description="Dependencies for test execution. It is not required for normal use of the application, and is only available for the test compilation and execution phases."/>
+         </configurations>
+         
+         <publications/>
+         
+         <dependencies>
+            <dependency org="com.microej.pack.vg" name="vg-pack" rev="[VG Pack version]">
+               <artifact name="vg-imagegenerator" type="jar"/>
+            </dependency>
+         </dependencies>
+      </ivy-module>
+
+3. Implements the interface ``ej.microvg.image.ImageGenerator``; the name of the class must be ``ej.microvg.image.[Prefix]ImageGenerator`` where ``[Prefix]`` is the name that will be set in the VEE Port configuration file (see :ref:`section_microvg_installation`).
+4. Build the project.
+5. Copy the generated jar: ``target~/artifacts/imageGeneratorMyGPU.jar`` in the VEE Port configuration project folder: ``MyVEEPort-configuration/dropins/tools/``
+6. Rebuild the VEE Port.
 
 MicroVG Library
 ---------------
@@ -148,7 +213,7 @@ The way to register the drawing commands is strongly linked to the targeted GPU:
 As a consequence, the implementation is dedicated to the GPU.
 The :ref:`section_vg_cco` provide some implementations, and the Front Panel (for the Simulation) features the same limitations as the embedded side (it is not possible to store a MicroUI drawing in the simulator if the embedded side is not able to perform it).
 
-.. [#note_uibvi] The compatible MicroUI drawings depend on the GPU Port; see:ref:`section_vg_cco`.
+.. [#note_uibvi] The compatible MicroUI drawings depend on the GPU Port; see :ref:`section_vg_cco`.
 
 Runtime Image
 =============
@@ -202,7 +267,9 @@ There are two separate Abstraction Layer API header files:
    Image Abstraction Layer API
 
 * MicroVG library calls the BSP functions through the header files ``LLVG_BVI_impl.h`` and ``LLVG_PAINTER_impl.h``.
-* A C module dedicated to a GPU provides an implementation of ``LLVG_BVI_impl.h`` and ``LLVG_PATH_PAINTER_impl.h``: the implementation is specific to the target (the GPU): the format of the RAW paths, gradients, and animations are GPU compliant.
+* The :ref:`C module MicroVG <section_vg_c_module_microvg>` an implementation of ``LLVG_PAINTER_impl.c`` that synchronizes the drawing with the MicroUI Graphics Engine and redirects the drawing itself to a third-party drawer through ``vg_drawing.h``.
+* A C module dedicated to a GPU provides an implementation of this drawer (``vg_drawing_gpu.c``) that implements the drawings over the GPU library.
+* This dedicated GPU C module provides an implementation of ``LLVG_BVI_impl.h`` (``LLVG_BVI_impl_gpu.c``): the implementation is specific to the target (the GPU): the format of the RAW paths, gradients, and animations are GPU compliant.
 * These files are automatically copied in the BSP project when fetching the C modules during the VEE Port build.
 
 Simulation

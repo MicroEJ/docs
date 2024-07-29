@@ -76,7 +76,7 @@ To do that the Image Generator provides some services to implement.
 This chapter explain how to create and include this extension in the VEE Port.
 Next chapters explain the aim of each service.
 
-1. Create a ``std-javalib`` project. The module name must start with the prefix ``imageGenerator`` (for instance ``imageGeneratorMyPlatform``).
+1. Create a ``std-javalib`` project. The module name must start with the prefix ``imageGenerator`` (for instance ``imageGeneratorMyVEEPort``).
 2. Add the dependency:
 
    .. code-block:: xml
@@ -85,13 +85,13 @@ Next chapters explain the aim of each service.
          <artifact name="imageGenerator" type="jar"/>
       </dependency>
 
-   Where ``x.y.z`` is the UI pack version used to build the VEE Port (minimum ``13.0.0``). The ``module.ivy`` should look like:
+   Where ``x.y.z`` is the UI Pack version used to build the VEE Port (minimum ``13.0.0``). The ``module.ivy`` should look like:
 
    .. code-block:: xml
 
       <ivy-module version="2.0" xmlns:ea="http://www.easyant.org" xmlns:m="http://www.easyant.org/ivy/maven" xmlns:ej="https://developer.microej.com" ej:version="2.0.0">
 
-         <info organisation="com.microej.microui" module="imageGeneratorMyPlatform" status="integration" revision="1.0.0">      
+         <info organisation="com.microej.microui" module="imageGeneratorMyVEEPort" status="integration" revision="1.0.0">      
             <ea:build organisation="com.is2t.easyant.buildtypes" module="build-std-javalib" revision="2.+"/>
          </info>
          
@@ -114,9 +114,9 @@ Next chapters explain the aim of each service.
       </ivy-module>
 
 3. Create the folder ``META-INF/services`` in source folder ``src/main/resources`` (this folder will be filled in later).
-4. When a service is added (see next chapters), build the easyant project.
-5. Copy the generated jar: ``target~/artifacts/imageGeneratorMyPlatform.jar`` in the VEE Port configuration project folder: ``MyPlatform-configuration/dropins/tools/``
-6. Rebuild the platform.
+4. When a service is added (see next chapters), build the project.
+5. Copy the generated jar: ``target~/artifacts/imageGeneratorMyVEEPort.jar`` in the VEE Port configuration project folder: ``MyVEEPort-configuration/dropins/tools/``
+6. Rebuild the VEE Port.
 
 .. _section_image_generator_test_extension_project:
 
