@@ -154,7 +154,7 @@ Application project to use the FS library.
 
 .. code-block:: xml
 
-   <dependency org="ej.api" name="fs" rev="2.0.6"/>
+   <dependency org="ej.api" name="fs" rev="2.1.1"/>
 
 .. _FS API Module: https://repository.microej.com/modules/ej/api/fs/
 
