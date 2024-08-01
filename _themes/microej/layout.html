@@ -3,6 +3,19 @@
 {% block sidebartitle %}
 
 <!-- {% include "searchbox.html" %} -->
+<div role="search">
+	<form id="sidebar-search-form" class="wy-form" action="#" method="get">
+	  <input type="text" name="q" placeholder="Search docs" />
+	  <input type="hidden" name="check_keywords" value="yes" />
+	  <input type="hidden" name="area" value="default" />
+	</form>
+</div>
+<script type="text/javascript">
+	document.querySelector("#sidebar-search-form").addEventListener("focusin", () => {
+      const event = new CustomEvent("readthedocs-search-show");
+      document.dispatchEvent(event);
+    });
+</script>
 
 {% endblock %}
 
