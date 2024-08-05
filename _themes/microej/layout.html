@@ -1,5 +1,10 @@
 {% extends "!sphinx_rtd_theme/layout.html" %}
 
+{%- block scripts %}
+    {{ block.super }}
+    <script type="text/javascript" src="{{ pathto('_static/js/versions.js', 1) }}"></script>
+{%- endblock %}
+
 {% block sidebartitle %}
 
 <!-- {% include "searchbox.html" %} -->
@@ -10,12 +15,6 @@
 	  <input type="hidden" name="area" value="default" />
 	</form>
 </div>
-<script type="text/javascript">
-	document.querySelector("#sidebar-search-form").addEventListener("focusin", () => {
-      const event = new CustomEvent("readthedocs-search-show");
-      document.dispatchEvent(event);
-    });
-</script>
 
 {% endblock %}
 
