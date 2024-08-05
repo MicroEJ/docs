@@ -14,6 +14,11 @@ copyright = '2008-2024, MicroEJ Corp. Content in this space is free for read and
 author = 'MicroEJ'
 release = '1.0'
 
+# html_context = {}
+# if 'READTHEDOCS' in os.environ:
+#     html_context['READTHEDOCS'] = True
+#     html_context['READTHEDOCS_PROJECT'] = os.environ.get("READTHEDOCS_PROJECT")
+
 # This isn't executed on normal builds, but can be used to build multiple doc
 # sets from this common source. See the ``microej.py`` extension for more
 # information.
@@ -55,6 +60,10 @@ html_theme_options = {
     'collapse_navigation': False,
 }
 html_show_sphinx = False
+html_static_path = ['_themes/microej/static']
+html_js_files = [
+    'js/versions.js'
+]
 
 # # remove headers permalinks
 # html_add_permalinks = ''
