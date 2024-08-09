@@ -112,9 +112,7 @@ document.addEventListener("readthedocs-addons-data-ready", function(event) {
 
   // Inject the generated flyout into the body HTML element.
   //document.body.insertAdjacentHTML("beforeend", flyout);
-  document.querySelector("wy-grid-for-nav").insertAdjacentHTML("afterend", flyout);
-
-  console.log(document.querySelector("wy-grid-for-nav"));
+  document.querySelector("#wy-grid-for-nav").insertAdjacentHTML("afterend", flyout);
 
   // Trigger the Read the Docs Addons Search modal when clicking on the "Search docs" input from inside the flyout.
   document.querySelector("#flyout-search-form").addEventListener("focusin", () => {
