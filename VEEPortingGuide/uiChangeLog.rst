@@ -6,6 +6,24 @@
 Changelog
 =========
 
+14.0.2 (2024-07-26)
+===================
+
+MicroUI
+"""""""
+
+**Fixed**
+
+* Fix the rendering of anti-aliased arcs for some compilers (rounding issue).
+* Fix a synchronization issue that may cause invalid parameters to be sent in the flush request.
+
+Front Panel
+"""""""""""
+
+**Fixed**
+
+* Fix the infinite waiting on a display event when killing a feature.
+
 14.0.1 (2024-04-09)
 ===================
 
