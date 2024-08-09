@@ -71,7 +71,7 @@ html_js_files = [
 # This is required because the version of the Read the Docs Sphinx theme the
 # microej theme was forked from does not support the HTML5 writer used by
 # default by Sphinx 2+
-html4_writer = True
+html4_writer = False
 
 # The default Sphinx HTML title includes the release number and some other
 # unwanted bits.
