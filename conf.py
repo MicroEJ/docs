@@ -14,9 +14,9 @@ copyright = '2008-2024, MicroEJ Corp. Content in this space is free for read and
 author = 'MicroEJ'
 release = '1.0'
 
-# html_context = {}
-# if 'READTHEDOCS' in os.environ:
-#     html_context['READTHEDOCS'] = True
+html_context = {}
+if 'READTHEDOCS' in os.environ:
+    html_context['READTHEDOCS'] = True
 #     html_context['READTHEDOCS_PROJECT'] = os.environ.get("READTHEDOCS_PROJECT")
 
 # This isn't executed on normal builds, but can be used to build multiple doc
@@ -71,7 +71,7 @@ html_js_files = [
 # This is required because the version of the Read the Docs Sphinx theme the
 # microej theme was forked from does not support the HTML5 writer used by
 # default by Sphinx 2+
-html4_writer = True
+html4_writer = False
 
 # The default Sphinx HTML title includes the release number and some other
 # unwanted bits.
