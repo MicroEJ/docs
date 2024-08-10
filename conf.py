@@ -61,9 +61,9 @@ html_theme_options = {
 }
 html_show_sphinx = False
 html_static_path = ['_themes/microej/static']
-html_js_files = [
-    'js/versions.js'
-]
+# html_js_files = [
+#     'js/versions.js'
+# ]
 
 # # remove headers permalinks
 # html_add_permalinks = ''

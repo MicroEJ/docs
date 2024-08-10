@@ -2,24 +2,6 @@
   Adapted from the Readthedocs theme version.js template
   https://github.com/readthedocs/sphinx_rtd_theme/blob/master/sphinx_rtd_theme/static/js/versions.js_t
  */
-function renderLanguages(config) {
-   if (!config.projects.translations.length) {
-     return "";
-   }
-
-   const languagesHTML = `
-     <dl>
-       <dt>{{ _('Languages') }}</dt>
-       ${ config.projects.translations.map(
-       (translation) => `
-       <dd ${ translation.slug == config.projects.current.slug ? 'class="rtd-current-item"' : '' }>
-         <a href="${ translation.urls.documentation }">${ translation.language.code }</a>
-       </dd>
-       `).join("\n")}
-     </dl>
-   `;
-   return languagesHTML;
- }
 
 function renderVersions(config) {
   if (!config.versions.active.length) {
@@ -27,7 +9,7 @@ function renderVersions(config) {
   }
   const versionsHTML = `
     <dl>
-      <dt>{{ _('Versions') }}</dt>
+      <dt>Versions</dt>
       ${ config.versions.active.map(
       (version) => `
       <dd ${ version.slug === config.versions.current.slug ? 'class="rtd-current-item"' : '' }>
@@ -49,7 +31,7 @@ function renderDownloads(config) {
 
   const downloadsHTML = `
     <dl>
-      <dt>{{ _('Downloads') }}</dt>
+      <dt>Downloads</dt>
       ${ Object.entries(config.versions.current.downloads).map(
       ([name, url]) => `
         <dd>
@@ -73,31 +55,30 @@ document.addEventListener("readthedocs-addons-data-ready", function(event) {
       </span>
       <div class="rst-other-versions">
         <div class="injected">
-          ${ renderLanguages(config) }
           ${ renderVersions(config) }
           ${ renderDownloads(config) }
           <dl>
-            <dt>{{ _('On Read the Docs !!! :3') }}</dt>
+            <dt>On Read the Docs</dt>
             <dd>
-              <a href="${ config.projects.current.urls.home }">{{ _('Project Home') }}</a>
+              <a href="${ config.projects.current.urls.home }">Project Home</a>
             </dd>
             <dd>
-              <a href="${ config.projects.current.urls.builds }">{{ _('Builds') }}</a>
+              <a href="${ config.projects.current.urls.builds }">Builds</a>
             </dd>
             <dd>
-              <a href="${ config.projects.current.urls.downloads }">{{ _('Downloads') }}</a>
+              <a href="${ config.projects.current.urls.downloads }">Downloads</a>
             </dd>
           </dl>
           <dl>
-            <dt>{{ _('Search') }}</dt>
+            <dt>Search</dt>
             <dd>
               <form id="flyout-search-form">
                 <input
                   class="wy-form"
                   type="text"
                   name="q"
-                  aria-label="{{ _('Search docs') }}"
-                  placeholder="{{ _('Search docs') }}"
+                  aria-label="Search docs"
+                  placeholder="Search docs"
                   />
               </form>
             </dd>
@@ -112,7 +93,7 @@ document.addEventListener("readthedocs-addons-data-ready", function(event) {
 
   // Inject the generated flyout into the body HTML element.
   //document.body.insertAdjacentHTML("beforeend", flyout);
-  document.querySelector("#wy-grid-for-nav").insertAdjacentHTML("afterend", flyout);
+  document.querySelector("div.wy-grid-for-nav").insertAdjacentHTML("afterend", flyout);
 
   // Trigger the Read the Docs Addons Search modal when clicking on the "Search docs" input from inside the flyout.
   document.querySelector("#flyout-search-form").addEventListener("focusin", () => {
