@@ -122,7 +122,7 @@ Depending on the selected Architecture, several Runtime Capabilities are availab
 The Capability used for the VEE Port can be defined thanks to the ``com.microej.runtime.capability`` property in the configuration file of the VEE Port Configuration project::
 
   com.microej.runtime.capability=multi
-  
+
 
 .. _sdk_6_veeport_pack_import:
 
@@ -205,8 +205,6 @@ And to declare the `Legacy MicroEJ Generic Pack Net version 9.2.3`_:
 .. _MicroEJ Generic Pack Bluetooth version 2.1.0: https://repository.microej.com/modules/com/microej/pack/bluetooth/bluetooth-pack/2.1.0/
 .. _Legacy MicroEJ Generic Pack Net version 9.2.3: https://repository.microej.com/modules/com/microej/pack/net/9.2.3/
 
-// TODO where do we find the list of available Packs?
-
 .. _sdk_6_veeport_pack_enable_modules:
 
 Enabling/Disabling modules of Legacy and Architecture Specific Packs
@@ -245,8 +243,6 @@ Here are some examples::
 
     # Defines the native stack you want to use
     com.microej.pack.net.stack=bsd
-
-// TODO where do we redirect to get all the Packs and their options?
 
 .. _sdk_6_veeport_build:
 
