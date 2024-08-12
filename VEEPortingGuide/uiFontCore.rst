@@ -42,9 +42,9 @@ This option is very useful when building a kernel: the kernel may anticipate the
 
 .. warning:: When this size is smaller than the size required by an external font, some characters may be not drawn.
 
-Also, the Font Renderer copies a very short part of the resource (the font file) into a RAM memory (into CPU addresses space range): the font header.
-This header stays located in RAM until the application is using the font.
-As soon as the application uses another external font, new font replaces the old one.
+Also, the Font Renderer copies a very short part of the resource (the font file) in RAM (into CPU address space range): the font header.
+This header remains located in RAM as long as the application is using the font.
+As soon as the application uses another external font, the new font replaces the old one.
 
 Configuration File
 ------------------
