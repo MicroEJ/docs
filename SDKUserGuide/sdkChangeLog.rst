@@ -177,6 +177,39 @@ SDK Distribution Changelog
 SDK Changelog
 -------------
 
+.. _changelog-5.9.0:
+
+[5.9.0] - 2024-07-23
+~~~~~~~~~~~~~~~~~~~~
+
+General
+"""""""
+
+- Hide MicroEJ project wizards when SDK 5 is installed in an Eclipse distribution including SDK 6 plugins.
+
+MicroEJ Module Manager
+""""""""""""""""""""""
+
+General
+^^^^^^^
+
+- Upgraded Testsuite Engine to version 5.8.1 to separate test cases in the testsuite reports and escape console output in HTML report to prevent code injection.
+
+Build Types
+^^^^^^^^^^^
+
+- Set default Java test compile version to 1.8 for ``build-std-javalib`` and ``build-microej-mock`` build types.
+
+- New build types added:
+
+  - build-application#9.3.0
+  - build-firmware-singleapp#2.4.0
+  - build-microej-javaimpl#5.3.0
+  - build-microej-javalib#6.3.0
+  - build-microej-mock#2.2.1
+  - build-microej-testsuite#4.3.0
+  - build-std-javalib#3.3.1
+
 .. _changelog-5.8.2:
 
 [5.8.2] - 2024-01-31
@@ -1200,6 +1233,28 @@ Skeletons
 -------------------
 Build Types per SDK
 -------------------
+
+- SDK 5.9.0
+
+  - build-addon-processor#2.2.0
+  - build-application#9.3.0
+  - build-artifact-repository#3.4.0
+  - build-custom#2.2.0
+  - build-firmware-customizer#3.2.0
+  - build-firmware-multiapp#8.2.0
+  - build-firmware-singleapp#2.4.0
+  - build-izpack#3.3.0
+  - build-microej-extension#2.2.0
+  - build-microej-javaapi#5.2.0
+  - build-microej-javaimpl#5.3.0
+  - build-microej-javalib#6.3.0
+  - build-microej-mock#2.2.1
+  - build-microej-ri#3.2.0
+  - build-microej-testsuite#4.3.0
+  - build-product-java#2.2.0
+  - build-runtime-api#4.1.0
+  - build-std-javalib#3.3.1
+  - microej-meta-build#3.0.0
 
 - SDK 5.8.2
 

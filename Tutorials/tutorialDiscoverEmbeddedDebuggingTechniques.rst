@@ -96,7 +96,7 @@ When an application has issues, the first step is to understand what is happenin
                + currentState.toString() + ".");
       }
 
-Please refer to the tutorial :ref:`tutorial_instrument_java_code_for_logging` for a comparison of these libraries.
+Please refer to the :ref:`codeInstrumentationForLogging` documentation for a comparison of these libraries.
 
 .. _Trace Library: https://repository.microej.com/javadoc/microej_5.x/apis/ej/trace/Tracer.html
 .. _Message Library: https://repository.microej.com/javadoc/microej_5.x/apis/ej/util/message/basic/BasicMessageLogger.html

@@ -181,7 +181,7 @@ This C module is a specific implementation of the C module MicroUI over STM32 DM
 * It is compatible with the :ref:`multiple destination formats <section_bufferedimage_cco>` module (but can only handle one destination format).
 * It is compatible with the :ref:`Buffer Refresh Strategies (BRS)<section_brs>` ``predraw``, ``single`` and ``legacy`` (switch).
 
-This C module is available on the :ref:`central_repository`: `com.microej.clibrary.llimpl#display-dma2d`_.
+This C module is available on the :ref:`developer_repository`: `com.microej.clibrary.llimpl#microui-dma2d`_.
 
 Files
 -----
@@ -225,7 +225,7 @@ This cache must be cleared before using the DMA2D:
 Usage
 """""
 
-1. Check the configuration of the define ``DRAWING_DMA2D_CACHE_MANAGEMENT`` in ``ui_drawing_dma2d_configuration.h``.
+1. Check the configuration of the define ``DRAWING_DMA2D_CACHE_MANAGEMENT`` in ``ui_dma2d_configuration.h``.
 
 Buffer Refresh Strategy "Predraw"
 ---------------------------------
@@ -372,7 +372,7 @@ Example of Implementation
       LLUI_DISPLAY_setBackBuffer(g_current_flush_identifier, buffer, from_isr);
    }
 
-.. _com.microej.clibrary.llimpl#display-dma2d: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/
+.. _com.microej.clibrary.llimpl#microui-dma2d: https://forge.microej.com/ui/native/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-dma2d/
 
 .. _section_ui_c_module_microui_vglite:
 
@@ -395,26 +395,27 @@ Files
 -----
 
 * Implements some functions of ``ui_drawing.h`` (see above).
-* C files: ``ui_drawing_vglite_path.c``, ``ui_drawing_vglite_process.c``, ``ui_drawing_vglite.c`` and ``ui_vglite.c``.
+* C files: ``mej_math.c``, ``ui_drawing_vglite_path.c``, ``ui_drawing_vglite_process.c``, ``ui_drawing_vglite.c`` and ``ui_vglite.c``.
 * Status: optional.
 
 Usage
 -----
 
 1. Add the C files to the BSP project.
-2. Call ``UI_VGLITE_init()`` from ``LLUI_DISPLAY_IMPL_initialize()``.
-3. Configure the options in ``ui_vglite_configuration.h``.
-4. Comment the line ``#error [...]"``.
-5. Call ``UI_VGLITE_IRQHandler()`` during the GPU interrupt routine.
-6. Set the VGLite library's preprocessor define ``VG_DRIVER_SINGLE_THREAD``.
-7. The VGLite library must be patched to be compatible with this C module:
+2. Call ``UI_VGLITE_initialize`` from ``LLUI_DISPLAY_IMPL_initialize`` before calling any VGLite-related function.
+3. Call ``UI_VGLITE_start`` from ``LLUI_DISPLAY_IMPL_initialize`` after configuring the VGLite library.
+4. Configure the options in ``ui_vglite_configuration.h``.
+5. Comment the line ``#error [...]"``.
+6. Call ``UI_VGLITE_IRQHandler`` during the GPU interrupt routine.
+7. Set the VGLite library's preprocessor define ``VG_DRIVER_SINGLE_THREAD``.
+8. The VGLite library must be patched to be compatible with this C module:
 
    .. code-block:: bash
 
          cd [...]/sdk/middleware/vglite
          patch -p1 < [...]/3.0.15_rev7.patch
 
-8. In the file ``vglite_window.c``, add the function ``VGLITE_CancelSwapBuffers()`` and its prototype in ``vglite_window.h``:
+9. In the file ``vglite_window.c``, add the function ``VGLITE_CancelSwapBuffers()`` and its prototype in ``vglite_window.h``:
 
    .. code-block:: c
 
@@ -535,81 +536,78 @@ Files
 -----
 
 * Implements some functions of ``ui_drawing.h`` (see above).
-* C file: ``ui_drawing_nema.c``.
+* C files: ``ui_nema.c`` and ``ui_drawing_nema.c``.
 * Status: optional.
 
 Usage
 -----
-1. Add the C file to the BSP project.
-2. Call ``UI_DRAWING_NEMA_initialize()`` from ``LLUI_DISPLAY_IMPL_initialize()``.
-3. Configure the options in ``ui_drawing_nema_configuration.h``.
-4. Comment the line ``#error [...]"``.
-5. Choose between *interrupt mode* and *task mode* (see Implementation).
+1. Add the C files to the BSP project.
+2. Add ``ui_nemagfx/inc`` to the include path.
+3. Call ``UI_NEMA_initialize()`` from ``LLUI_DISPLAY_IMPL_initialize()``.
+4. Configure the options in ``ui_nema_configuration.h``.
+5. Comment the line ``#error [...]"``.
+
+.. _section_ui_c_module_microui_nemagfx_implementation:
 
 Implementation
 --------------
 
 The MicroUI Graphics Engine waits for the end of the asynchronous drawings (performed by the GPU).
-The VEE Port must unlock this waiting by using one of these two solutions:
+The VEE Port must stop this wait with a call to the function ``UI_NEMA_post_operation()`` in the GPU interrupt routine.
 
-* `Interrupt` mode: the GPU interrupt routine has to call the function ``UI_DRAWING_NEMA_post_operation()`` (the GPU interrupt routine is often written in the same file as the implementation of ``nema_sys_init()``).
-* `Task` mode: the VEE Port has to add a dedicated task that will wait until the end of the drawings.
+.. tip::
 
-The `interrupt` mode is enabled by default.
-To use the `task` mode, comment the define ``NEMA_INTERRUPT_MODE`` in ``ui_drawing_nema_configuration.h``
-
-.. note:: You will find more details in the ``#define NEMA_INTERRUPT_MODE`` documentation.
+   The GPU interrupt routine is often written in the same file as the implementation of ``nema_sys_init()``.
 
 Options
 -------
 
 This C module provides some drawing algorithms that are disabled by default.
 
-* The rendering time of a simple shape with the GPU (time in the NemaGFX library + GPU setup time + rendering time) is longer than with software rendering. To enable the hardware rendering for simple shapes, uncomment the definition of ``ENABLE_SIMPLE_LINES``  in ``ui_drawing_nema_configuration.h``.
-* The rendering of thick faded lines with the GPU is disabled by default: the quality of the rendering is too random. To enable it, uncomment the definition of ``ENABLE_FADED_LINES``  in ``ui_drawing_nema_configuration.h``.
-* To draw a shape, the GPU uses the commands list. For rectangular shapes (draw/fill rectangles and images), the maximum list size is fixed (around 300 bytes). For the other shapes (circle, etc.), the list increases according to the shape size (dynamic shape): several blocks of 1024 bytes and 40 bytes are allocated and never freed. By default, the dynamic shapes are disabled, and the software algorithms are used instead. To enable the hardware rendering for dynamic shapes, uncomment the definition of ``ENABLE_DYNAMIC_SHAPES``  in ``ui_drawing_nema_configuration.h``.
-* Some GPUs might not be able to render the images in specific memories. Comment the define ``ENABLE_IMAGE_ROTATION`` in ``ui_drawing_nema_configuration.h`` to not use the GPU to render the rotated images.
+* The rendering time of a simple shape with the GPU (time in the NemaGFX library + GPU setup time + rendering time) is longer than with software rendering. To enable the hardware rendering for simple shapes, uncomment the definition of ``ENABLE_SIMPLE_LINES``  in ``ui_nema_configuration.h``.
+* The rendering of thick faded lines with the GPU is disabled by default: the quality of the rendering is too random. To enable it, uncomment the definition of ``ENABLE_FADED_LINES``  in ``ui_nema_configuration.h``.
+* Some GPUs might not be able to render the images in specific memories. Comment the define ``ENABLE_IMAGE_ROTATION`` in ``ui_nema_configuration.h`` to not use the GPU to render the rotated images.
 
 Drawings
 --------
 
 The following table describes the accelerated drawings:
 
-+-------------------------+-----------------------------------------------------------------------------+
-| Feature                 | Comment                                                                     |
-+=========================+=============================================================================+
-| Draw line               |                                                                             |
-+-------------------------+-----------------------------------------------------------------------------+
-| Draw horizontal line    | Disabled by default (see above: ENABLE_SIMPLE_LINES)                        |
-+-------------------------+-----------------------------------------------------------------------------+
-| Draw vertical line      | Disabled by default (see above: ENABLE_SIMPLE_LINES)                        |
-+-------------------------+-----------------------------------------------------------------------------+
-| Draw rectangle          | Disabled by default (see above: ENABLE_SIMPLE_LINES)                        |
-+-------------------------+-----------------------------------------------------------------------------+
-| Fill rectangle          |                                                                             |
-+-------------------------+-----------------------------------------------------------------------------+
-| Draw rounded rectangle  | Disabled by default (see above: ENABLE_DYNAMIC_SHAPES)                      |
-+-------------------------+-----------------------------------------------------------------------------+
-| Fill rounded rectangle  | Disabled by default (see above: ENABLE_DYNAMIC_SHAPES)                      |
-+-------------------------+-----------------------------------------------------------------------------+
-| Draw circle             | Disabled by default (see above: ENABLE_DYNAMIC_SHAPES)                      |
-+-------------------------+-----------------------------------------------------------------------------+
-| Fill circle             | Disabled by default (see above: ENABLE_DYNAMIC_SHAPES)                      |
-+-------------------------+-----------------------------------------------------------------------------+
-| Draw image              | ARGB8888, RGB565, A8                                                        |
-+-------------------------+-----------------------------------------------------------------------------+
-| Draw thick faded line   | Only with fade <= 1                                                         |
-+-------------------------+-----------------------------------------------------------------------------+
-| Draw thick faded circle | Only with fade <= 1, disabled by default (see above: ENABLE_DYNAMIC_SHAPES) |
-+-------------------------+-----------------------------------------------------------------------------+
-| Draw thick line         | Disabled by default (see above: ENABLE_FADED_LINES)                         |
-+-------------------------+-----------------------------------------------------------------------------+
-| Draw thick circle       | Disabled by default (see above: ENABLE_DYNAMIC_SHAPES)                      |
-+-------------------------+-----------------------------------------------------------------------------+
-| Draw rotated image      | See draw image                                                              |
-+-------------------------+-----------------------------------------------------------------------------+
-| Draw scaled image       | See draw image                                                              |
-+-------------------------+-----------------------------------------------------------------------------+
++-------------------------+------------------------------------------------------+
+|         Feature         |                       Comment                        |
++=========================+======================================================+
+| Draw line               |                                                      |
++-------------------------+------------------------------------------------------+
+| Draw horizontal line    | Disabled by default (see above: ENABLE_SIMPLE_LINES) |
++-------------------------+------------------------------------------------------+
+| Draw vertical line      | Disabled by default (see above: ENABLE_SIMPLE_LINES) |
++-------------------------+------------------------------------------------------+
+| Draw rectangle          | Disabled by default (see above: ENABLE_SIMPLE_LINES) |
++-------------------------+------------------------------------------------------+
+| Fill rectangle          |                                                      |
++-------------------------+------------------------------------------------------+
+| Draw rounded rectangle  |                                                      |
++-------------------------+------------------------------------------------------+
+| Fill rounded rectangle  |                                                      |
++-------------------------+------------------------------------------------------+
+| Draw circle             |                                                      |
++-------------------------+------------------------------------------------------+
+| Fill circle             |                                                      |
++-------------------------+------------------------------------------------------+
+| Draw image              | ARGB8888, RGB565, A8                                 |
++-------------------------+------------------------------------------------------+
+| Draw thick faded line   | Only with fade <= 1                                  |
++-------------------------+------------------------------------------------------+
+| Draw thick faded circle | Only with fade <= 1                                  |
++-------------------------+------------------------------------------------------+
+| Draw thick line         | Disabled by default (see above: ENABLE_FADED_LINES)  |
++-------------------------+------------------------------------------------------+
+| Draw thick circle       |                                                      |
++-------------------------+------------------------------------------------------+
+| Draw rotated image      | See draw image                                       |
++-------------------------+------------------------------------------------------+
+| Draw scaled image       | See draw image                                       |
++-------------------------+------------------------------------------------------+
 
 Compatibility
 =============

@@ -7,15 +7,11 @@ Tutorials
    :maxdepth: 1
 
    tutorialUnderstandMicroEJFirmwareBuild
-   tutorialCreateCustomPlatform
    tutorialCreateFirmwareFromScratch
    tutorialCreatePlatformBuildAndRunScripts
    tutorialSetupBuildUsingJenkinsAndArtifactory
    tutorialImproveCodeQuality
    tutorialOptimizeMemoryFootprint
-   tutorialExploreDataSerializationFormats
-   tutorialInstrumentJavaCodeForLogging
-   tutorialRunATestSuiteOnDevice
    tutorialImplementABlockingNativeMethodWithSNI
    tutorialDiscoverEmbeddedDebuggingTechniques
    getStartedWithGUI/index
