@@ -23,7 +23,7 @@ System Requirements
    - macOS aarch64 with M1 chip
 
 - **Java Runtime Environment**
-    - JDK 11 or 17 - Eclipse Temurin or Oracle Distributions
+    - JDK 11 or higher LTS version (``11``, ``17`` or ``21``) - Eclipse Temurin or Oracle Distributions
 
 
 .. _sdk_6_check_jdk:
