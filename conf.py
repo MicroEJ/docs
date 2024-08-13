@@ -37,6 +37,10 @@ html_theme_path = ['_themes']
 master_doc = 'index'
 sphinx_tabs_valid_builders = ['linkcheck']
 
+html_context = {}
+if 'READTHEDOCS' in os.environ:
+    html_context['READTHEDOCS'] = True
+
 # Generic options
 exclude_patterns = [
     '_build',
@@ -55,6 +59,7 @@ html_theme_options = {
     'collapse_navigation': False,
 }
 html_show_sphinx = False
+html_static_path = ['_themes/microej/static']
 
 # # remove headers permalinks
 # html_add_permalinks = ''
