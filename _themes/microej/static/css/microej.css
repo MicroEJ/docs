@@ -818,7 +818,7 @@ footer hr {
 }
 
 .rst-content.style-external-links a.reference.external:after {
-  //font-family: Source Sans Pro;
+  /* font-family: Source Sans Pro; */
 }
 
 .rst-content pre.literal-block {
