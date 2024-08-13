@@ -805,6 +805,18 @@ footer hr {
   border-top: 2px solid #e5e9eb;
 }
 
+.rst-versions {
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.rst-versions a {
+  color: #ee502e;
+}
+
+.rst-versions .rst-current-version {
+  color: #48a23f;
+}
+
 .rst-content.style-external-links a.reference.external:after {
   /*font-family: Source Sans Pro;*/
 }
@@ -900,7 +912,10 @@ footer hr {
 
 body > .rst-versions {
   width: 395px;
-  overflow-x: hidden;
+}
+
+body > .rst-versions.shift-up {
+  overflow: hidden;
 }
 
 .wy-breadcrumbs + hr {
@@ -919,13 +934,6 @@ body > .rst-versions {
   padding-right: 50px;
 }
 
-readthedocs-flyout {
-  font-family: "Source Sans Pro", sans-serif;
-}
-
-readthedocs-flyout a {
-  color: #ee502e;
-}
 
 body > .rst-versions > .rst-current-version {
   background-color: #efefef;

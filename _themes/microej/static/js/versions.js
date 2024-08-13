@@ -83,10 +83,6 @@ document.addEventListener("readthedocs-addons-data-ready", function(event) {
               </form>
             </dd>
           </dl>
-          <hr />
-          <small>
-            <span>Hosted by <a href="https://about.readthedocs.org/?utm_source={{ READTHEDOCS_PROJECT }}&utm_content=flyout">Read the Docs</a></span>
-          </small>
         </div>
       </div>
   `;
@@ -102,7 +98,7 @@ document.addEventListener("readthedocs-addons-data-ready", function(event) {
   });
 
   // Trigger the Read the Docs Addons Search modal when clicking on "Search docs" input from the topnav.
-  document.querySelector("#sidebar-search-form").addEventListener("focusin", () => {
+  document.querySelector("#rtd-search-form").addEventListener("focusin", () => {
     const event = new CustomEvent("readthedocs-search-show");
     document.dispatchEvent(event);
   });

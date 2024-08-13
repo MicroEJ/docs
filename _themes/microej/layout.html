@@ -2,13 +2,7 @@
 
 {% block sidebartitle %}
 
-<div role="search">
-	<form id="sidebar-search-form" class="wy-form" action="#" method="get">
-	  <input type="text" name="q" placeholder="Search docs" />
-	  <input type="hidden" name="check_keywords" value="yes" />
-	  <input type="hidden" name="area" value="default" />
-	</form>
-</div>
+{% include "searchbox.html" %}
 
 {% endblock %}
 
