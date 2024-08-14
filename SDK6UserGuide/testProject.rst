@@ -709,11 +709,14 @@ Inject Application Options For a Specific Test
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In order to define an Application Option for a specific test, 
-it must set in a file with the same name as the generated test case file, 
-but with the ``.properties`` extension instead of the ``.java`` extension. 
+it must be set in a file with the same name as the test case file,
+but with the ``.properties`` extension instead of the ``.java`` extension.
 The file must be put in the ``src/test/resources`` folder and within the same package than the test file.
-For example, to inject a Application Option for the test class ``com.mycompany.MyTest``, 
-it must be set in a file named ``src/test/resources/com.mycompany/MyTest.properties``.
+
+For example, to inject an Application Option for the test class ``com.mycompany.MyTest``, 
+a ``MyTest.properties`` file should be created with the following path: ``src/test/resources/com/mycompany/MyTest.properties``.
+
+Application Options defined in this file do not require the ``microej.testsuite.properties.`` prefix.
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
