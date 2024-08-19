@@ -713,8 +713,8 @@ it must be set in a file with the same name as the test case file,
 but with the ``.properties`` extension instead of the ``.java`` extension.
 The file must be put in the ``src/test/resources`` folder and within the same package than the test file.
 
-For example, to inject an Application Option for the test class ``com.mycompany.MyTest``, 
-a ``MyTest.properties`` file should be created with the following path: ``src/test/resources/com/mycompany/MyTest.properties``.
+For example, to inject an Application Option for the test class ``MyTest`` located in the ``com.mycompany`` package, 
+a ``MyTest.properties`` file must be created. Its path must be: ``src/test/resources/com/mycompany/MyTest.properties``.
 
 Application Options defined in this file do not require the ``microej.testsuite.properties.`` prefix.
 
