@@ -34,6 +34,21 @@ specific configuration:
    -  ``QNX65``: BlackBerry QNX 6.5
    -  ``QNX70``: BlackBerry QNX 7.0
 
+
+
+.. _changelog-8.2.0:
+
+[8.2.0] - unreleased
+--------------------
+
+Core Engine
+~~~~~~~~~~~
+
+- [Multi] - Increased execution quota precision
+- [Multi] - Added function `LLKERNEL_quantaConsumed(int32_t quanta)` in `LLKERNEL.h` to allow a native function to increase the execution counter.
+- [Multi] - Fixed watchdog which prevents the Core Engine to stop because of a pending thread.
+
+
 .. _changelog-8.1.1:
 
 [8.1.1] - 2024-06-17
