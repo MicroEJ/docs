@@ -16,13 +16,15 @@ The SDK 6 allows to:
 - Build the Virtual Device of an Application.
 - Use the Stack Trace Reader.
 - Use the Code Coverage Analyzer.
+- Use the Local Deploy.
+- Use the Serial to Socket Transmitter.
 - Use the Font Designer, Memory Map Analyzer, Heap Analyzer and Front Panel Designer tools.
 - Build a Kernel Application.
 
 Therefore, it does not support all the features of the SDK 5, especially:
 
 - Build of Foundation Libraries, VEE Ports or any other component type except Applications, Add-On Libraries and Mocks.
-- Launch of some MicroEJ tools, such as the Local Deploy, the Serial to Socket Transmitter or the Kernel Metadata Generator.
+- Launch of some MicroEJ tools, such as the Kernel Metadata Generator.
 
 
 If you need these features, you have to use :ref:`the SDK 5 <sdk_user_guide>`.
