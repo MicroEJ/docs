@@ -51,7 +51,7 @@
 
 .. _VG Pack 1.6.0: https://repository.microej.com/modules/com/microej/pack/vg/vg-pack/1.6.0/
 
-.. _C Module MicroVG over VGLite 8.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-vglite/8.0.0/
+.. _C Module MicroVG over VGLite 8.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-vglite/8.0.1/
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free
