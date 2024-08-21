@@ -28,7 +28,7 @@ Training Resources
 Unit 1: Async Worker Overview
 -----------------------------
 
-- :download:`Slides: Async Worker Overview <resources/DEV-M0127-PRE-VEE_Port_and_Application_development-STM32F7508-5.0.pdf>`
+- :download:`Slides: Async Worker Overview <https://repository.microej.com/packages/training/DEV-M0127-PRE-MicroEJ_Async_Worker_1.0.pdf>`
 
 Unit 2: Implementation Guide
 ----------------------------

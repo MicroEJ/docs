@@ -31,15 +31,15 @@ Prerequisites
 
 - Good knowledge of the :ref:`overview` section.
 - Good knowledge of the :ref:`chapter-glossary`.
-- `i.MX RT1170 Evaluation Kit <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__.
+- `ESP-WROVER-KIT V4.1 Evaluation Kit <https://docs.espressif.com/projects/esp-idf/en/stable/esp32/hw-reference/esp32/get-started-wrover-kit.html#get-started-esp-wrover-kit-v4-1-board-front>`_.
 
 Training Resources
 ==================
 
-Unit 1: PQT Overview
---------------------
+Unit 1: Port Qualification Tool Overview
+----------------------------------------
 
-- :download:`Slides: PQT Overview <resources/DEV-M0127-PRE-VEE_Port_and_Application_development-STM32F7508-5.0.pdf>`
+- :download:`Slides: PQT Overview <https://repository.microej.com/packages/training/DEV-M0018PQT_0002-PRE-Platform_Qualification_Tools_Overview-1.0.pdf>`
 
 Unit 2: Run a Test Suite on a Device
 ------------------------------------

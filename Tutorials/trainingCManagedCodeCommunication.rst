@@ -42,7 +42,7 @@ Unit 1: C / Managed Code Communication with MICROEJ VEE
 This training provides an in depth view of the different ways to perform
 C / Managed Code communication:
 
-- :download:`Slides: C / Managed Code Communication with MICROEJ VEE <resources/DEV-M0127-PRE-VEE_Port_and_Application_development-STM32F7508-5.0.pdf>`
+- :download:`Slides: C / Managed Code Communication with MICROEJ VEE <https://repository.microej.com/packages/training/DEV-M0127_0030-PRE-C_Managed_Code_Communication-1.4-RC20240820.pdf>`
 
 Unit 2: Implement a Blocking Java Native Method with SNI
 --------------------------------------------------------

@@ -34,7 +34,7 @@ Unit 1: Sandboxed Application Training
 
 This training is provided in PDF format:
 
-- :download:`Slides: Sandboxed Application Development <resources/DEV-M0127-PRE-VEE_Port_and_Application_development-STM32F7508-5.0.pdf>`
+- :download:`Slides: Sandboxed Application Development <https://repository.microej.com/packages/training/DEV-M0127_0001_Sandboxed_Applications_SDK5_2.1-RC20240820.pdf>` (for MICROEJ SDK 5)
 
 Unit 2: Run Demo Sandboxed Application
 --------------------------------------

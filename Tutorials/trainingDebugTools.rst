@@ -23,6 +23,7 @@ Prerequisites
 
 - Good knowledge of the :ref:`overview` section.
 - Good knowledge of the :ref:`chapter-glossary`.
+- `STM32F7508-DK Evaluation Kit <https://www.st.com/en/evaluation-tools/stm32f7508-dk.html>`__.
 
 Training Resources
 ==================
@@ -35,7 +36,8 @@ Unit 1: Master logging within your Application
 Unit 2: MicroEJ Debug Tools Overview
 ------------------------------------
 
-- :download:`Slides: MicroEJ Debug Tools Overview <resources/DEV-M0127-PRE-VEE_Port_and_Application_development-STM32F7508-5.0.pdf>` (for MICROEJ SDK 5)
+- :download:`Slides: MicroEJ Debug Tools Overview <https://repository.microej.com/packages/training/debugging_with_microej_sdk/DEV-M0127-PRE-MicroEJ-Debug-Tools-SDK5-STM32F7508-2.2-RC20240820.pdf>` (for MICROEJ SDK 5)
+- :download:`Resources <https://repository.microej.com/packages/training/debugging_with_microej_sdk/debugging_with_microej_sdk_e4cb0a54.zip>` (for MICROEJ SDK 5)
 
 Unit 3: Concrete Debug Use Cases
 --------------------------------

@@ -37,9 +37,7 @@ Training Resources
 Unit 1: Kernel Development with MICROEJ SDK
 -------------------------------------------
 
-This training is provided in PDF format:
-
-- :download:`Slides: Kernel Development <resources/DEV-M0127-PRE-VEE_Port_and_Application_development-STM32F7508-5.0.pdf>` (for MICROEJ SDK 5)
+Training for MICROEJ SDK 6 is coming soon!
 
 Unit 2: Kernel-GREEN
 --------------------
@@ -50,6 +48,8 @@ Additionally, this project serves as a starting point for Kernel developers to l
 most of the Multi-Sandboxing capabilities of the MicroEJ technology.
 
 - `Kernel GREEN on GitHub <https://github.com/MicroEJ/Kernel-GREEN>`_ (for MICROEJ SDK 5)
+
+Kernel GREEN for MICROEJ SDK 6 is coming soon!
 
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 

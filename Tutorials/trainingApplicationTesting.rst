@@ -30,7 +30,7 @@ Training Resources
 
 This training is provided in PDF format:
 
-- :download:`Slides: testing Java Code with MICROEJ SDK <resources/DEV-M0127-PRE-VEE_Port_and_Application_development-STM32F7508-5.0.pdf>` (for MICROEJ SDK 5)
+- :download:`Slides: Testing Java Code with MICROEJ SDK <https://repository.microej.com/packages/training/DEV-M0127-PRE-Test-Java-Code-SDK6-3.0-RC20240820.pdf>`
 
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 

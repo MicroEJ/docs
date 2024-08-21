@@ -18,7 +18,6 @@ What you will learn:
 - Create a VEE Port project.
 - Integrate MICROEJ VEE in the BSP / RTOS.
 - Create and Run a HelloWorld Application.
-- Validate the resulting VEE Port with the Port Qualification Tools (PQT).
 - Create Build and Run Scripts.
 
 No Evaluation kit is required to follow this training. Everything is emulated on the developer’s PC.

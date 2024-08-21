@@ -36,7 +36,7 @@ Those examples are showing how to implement mocks using the Mock Framework.
 
 Run the samples on Simulator to get familiar with the Mock Framework:
 
-- `Mock Framework Examples (for MICROEJ SDK6) <TODO>`_
+- `Mock Framework Examples <https://github.com/MicroEJ/Example-Mock-Framework>`_
 
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 

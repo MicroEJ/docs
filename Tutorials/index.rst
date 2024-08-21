@@ -32,7 +32,7 @@ Basics
 .. toctree::
    :hidden:
 
-   trainingVEEPortAppDev
+   trainingSdkBasics
    trainingDebugTools
    trainingCManagedCodeCommunication
    trainingMock
@@ -41,7 +41,7 @@ Basics
 
          <div class="training_items">
 
-            <a class="training_link" href="trainingVEEPortAppDev.html">
+            <a class="training_link" href="trainingSdkBasics.html">
             <div>
                <div class="training_image_container">
                   <div class="training_image_text">Course 1</div>
@@ -52,7 +52,7 @@ Basics
                You will create your first application project,
                run it on Simulator and on Device using MICROEJ SDK.
                </p>
-               <a class="training_learn_more_link" href="trainingVEEPortAppDev.html">Learn more</a>
+               <a class="training_learn_more_link" href="trainingSdkBasics.html">Learn more</a>
             </div>
             </a>
 
