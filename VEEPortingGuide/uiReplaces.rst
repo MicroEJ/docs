@@ -4,6 +4,7 @@
 .. |VGPACKVERSION| replace:: 1.6.0
 .. |VGAPIVERSION| replace:: 1.6.0
 
+.. _C Module MicroUI 4.1.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/4.1.0/
 .. _C Module MicroUI 4.0.1: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/4.0.1/
 .. _C Module MicroUI 4.0.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/4.0.0/
 .. _C Module MicroUI 3.1.1: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/3.1.1/
