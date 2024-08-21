@@ -17,6 +17,7 @@ The SDK 6 allows to:
 - Use the Stack Trace Reader.
 - Use the Code Coverage Analyzer.
 - Use the Font Designer, Memory Map Analyzer, Heap Analyzer and Front Panel Designer tools.
+- Build a Kernel Application.
 
 Therefore, it does not support all the features of the SDK 5, especially:
 
