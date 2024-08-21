@@ -4,12 +4,6 @@
 Vector Graphics
 ===============
 
-.. note::
-
-   This chapter describes the VG Pack implementation.
-   The current VG Pack only targets the i.MX RT595 MCU (it is part of the `NXP i.MX RT500 <https://www.nxp.com/products/processors-and-microcontrollers/arm-microcontrollers/i-mx-rt-crossover-mcus/i-mx-rt500-crossover-mcu-with-arm-cortex-m33-dsp-and-gpu-cores:i.MX-RT500>`_  crossover MCU product line that embeds the Vivante GCNanoLiteV IP from Verisilicon).
-   Please contact our support team for other hardware accelerators (GPU with vector graphics acceleration).
-
 .. toctree::
     :maxdepth: 2
 

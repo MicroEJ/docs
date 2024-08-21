@@ -10,12 +10,12 @@ UI Pack Compatibility Version
 =============================
 
 The current VG Pack version is |VGPACKVERSION|.
-The following table describes the compatibility ranges between VG and UI Packs. 
+The following table describes the compatibility ranges between VG and UI Packs.
 
 +---------------+-----------------+----------------------------------+
 | VG Pack Range | UI Pack Range   | Comment                          |
 +===============+=================+==================================+
-| [1.5.0-1.5.1] | [14.0.0-15.0.0[ | UI Pack major version            |
+| [1.5.0-1.6.0] | [14.0.0-15.0.0[ | UI Pack major version            |
 +---------------+-----------------+----------------------------------+
 | [1.3.0-1.4.2] | [13.5.0-14.0.0[ | BufferedImage with custom format |
 +---------------+-----------------+----------------------------------+
@@ -37,7 +37,7 @@ The following table describes Foundation Libraries API versions implemented in M
 
    * - VG Pack Range
      - MicroVG
-   * - [1.4.0-1.5.1]
+   * - [1.4.0-1.6.0]
      - `1.4.0 <https://repository.microej.com/modules/ej/api/microvg/1.4.0/>`_
    * - 1.3.0
      - `1.3.0 <https://repository.microej.com/modules/ej/api/microvg/1.3.0/>`_
@@ -54,39 +54,71 @@ C Modules Compatibility Version
 The C modules are described :ref:`here <section_vg_cco>`.
 
 Several generic C modules are available for a given version of the VG Pack.
-In addition to generic C modules, the specific implementation of the VG Pack over Vivante VGLite depends on:
+In addition to generic C modules, the specific implementations of the VG Pack over Vivante VGLite and Think Silicon NemaVG extend the main MicroVG C module.
+They override the default implementation to use a GPU to perform the drawings.
+Contrary to the main MicroVG C module, they are optional: when they are not available, the default implementation of drawings is used.
+The default implementation does nothing (no drawing) and throws the :ref:`drawing log<section.veeport.ui.drawings.drawing_logs>` ``DRAWING_LOG_NOT_IMPLEMENTED``.
+
+These C Modules fetches automatically by transitivity the generic MicroUI and MicroVG C modules and the :ref:`Extended C Module<section_ui_releasenotes_cmodule_extended>` for the selected GPU.
+
+The next tables summarizes the VG Packs with:
 
 * the UI Pack (see upper),
+* the specific C module that implements MicroVG over the GPU (called ``VG-xxx`` in next tables),
+* the specific C module that implements MicroUI over the GPU (called ``UI-xxx`` in next tables), see :ref:`section_ui_releasenotes_cmodule_extended`,
+* the VG Pack C module,
 * the UI Pack C module: see :ref:`UI Pack <section_display_llapi>`,
-* and by consequence, the specific C module MicroUI over VGLite: see :ref:`section_ui_c_module_microui_vglite`.
+* Freetype and Harfbuzz
 
-The following table describes the compatibility ranges between the VG Packs and the C modules (generic and specific):
+.. warning:: Compatible versions are more restrictive than for use of the UI pack (and its C modules) alone.
 
-+---------------+---------+----------+----------+----------------+----------------+
-| VG Pack       | MicroVG | FreeType | Harfbuzz | MicroUI-VGLite | MicroVG-VGLite |
-+===============+=========+==========+==========+================+================+
-| 1.5.1         | 5.0.0   | 2.0.2    | 1.0.2    | [8.0.0-8.0.1]  | 7.0.1          |
-+---------------+---------+----------+----------+----------------+----------------+
-| 1.5.0         | 5.0.0   | 2.0.2    | 1.0.2    | [8.0.0-8.0.1]  | 7.0.0          |
-+---------------+---------+----------+----------+----------------+----------------+
-| 1.4.2         | 4.0.0   | 2.0.2    | 1.0.2    | 7.2.0          | 6.1.1          |
-+---------------+---------+----------+----------+----------------+----------------+
-| [1.4.0-1.4.1] | 3.0.1   | 2.0.2    | 1.0.2    | [7.0.0-7.1.0]  | [6.0.0-6.1.0]  |
-+---------------+---------+----------+----------+----------------+----------------+
-| 1.3.0         | 3.0.0   | 2.0.2    | 1.0.2    | 6.0.1          | 5.0.1          |
-+---------------+---------+----------+----------+----------------+----------------+
-| [1.2.0-1.2.1[ | 2.1.0   | 2.0.2    | 1.0.2    | 5.0.1          | 4.0.4          |
-+---------------+---------+----------+----------+----------------+----------------+
-| [1.1.0-1.1.1[ | 2.0.0   | 2.0.2    | 1.0.2    | 3.0.0          | 3.0.2          |
-+---------------+---------+----------+----------+----------------+----------------+
-| [1.0.0-1.1.0[ | n/a     | n/a      | n/a      | n/a            | n/a            |
-+---------------+---------+----------+----------+----------------+----------------+
+**Vivante VGLite**
 
-.. note:: The C module ``MicroVG over VGLite`` fetches automatically by transitivity the other C modules. No need to fetch explicitly the different modules (except the C module ``Harfbuzz``). An update of this C module also updates (if necessary) the other C modules.
+The :ref:`VGLite C module <section_vg_c_module_microvg_vglite>` targets the NXP CPU that provides the Vivante VGLite accelerator.
+
+The following table describes the version compatibility between the MicroEJ VG Packs, the UI Packs, the generic C modules and the VGLite C modules:
+
++---------------+-----------------+---------------+-----------+------------------+------------------+----------+----------+-------------------------+
+| VG Pack       | UI Pack         | VG-VGLite     | UI-VGLite | MicroVG C Module | MicroUI C Module | FreeType | Harfbuzz | Comment                 |
++===============+=================+===============+===========+==================+==================+==========+==========+=========================+
+| 1.6.0         | [14.0.1-14.0.2] | 8.0.1         | 9.0.0     | 6.0.1            | 4.1.0            | 3.0.0    | 2.0.0    | VG Pack extensibility   |
++---------------+-----------------+---------------+-----------+------------------+------------------+----------+----------+-------------------------+
+| 1.5.1         | [14.0.0-14.0.2] | 7.0.1         | 8.0.1     | 5.0.0            | 4.0.1            | 2.0.2    | 1.0.2    | Scissor issue           |
++---------------+-----------------+---------------+-----------+------------------+------------------+----------+----------+-------------------------+
+| 1.5.0         | [14.0.1-14.0.2] | 7.0.1         | 8.0.1     | 5.0.0            | 4.0.1            | 2.0.2    | 1.0.2    | C modules harmonization |
++---------------+-----------------+---------------+-----------+------------------+------------------+----------+----------+-------------------------+
+| 1.5.0         | 14.0.0          | 7.0.0         | 8.0.0     | 5.0.0            | 4.0.0            | 2.0.2    | 1.0.2    | UI Pack major version   |
++---------------+-----------------+---------------+-----------+------------------+------------------+----------+----------+-------------------------+
+| 1.4.2         | [13.7.0-13.7.2] | 6.1.1         | 7.2.0     | 4.0.0            | 3.1.1            | 2.0.2    | 1.0.2    | Very long paths         |
++---------------+-----------------+---------------+-----------+------------------+------------------+----------+----------+-------------------------+
+| [1.4.0-1.4.1] | [13.7.0-13.7.2] | [6.0.0-6.1.0] | 7.2.0     | 3.0.1            | 3.1.0            | 2.0.2    | 1.0.2    | Free image resources    |
++---------------+-----------------+---------------+-----------+------------------+------------------+----------+----------+-------------------------+
+| [1.4.0-1.4.1] | [13.5.1-13.6.2] | 6.1.0         | 7.1.0     | 3.0.1            | 3.0.0            | 2.0.2    | 1.0.2    | VGLite `3.0.15_rev7`    |
++---------------+-----------------+---------------+-----------+------------------+------------------+----------+----------+-------------------------+
+| 1.4.0         | [13.5.1-13.6.2] | 6.0.0         | 7.0.0     | 3.0.1            | 3.0.0            | 2.0.2    | 1.0.2    | Blend modes             |
++---------------+-----------------+---------------+-----------+------------------+------------------+----------+----------+-------------------------+
+| 1.3.0         | [13.5.1-13.6.2] | 5.0.1         | 6.0.1     | 3.0.0            | 3.0.0            | 2.0.2    | 1.0.2    | Buffered vector image   |
++---------------+-----------------+---------------+-----------+------------------+------------------+----------+----------+-------------------------+
+| 1.2.1         | [13.3.0-13.4.1] | 4.0.3         | 5.0.1     | 2.1.0            | 2.0.1            | 2.0.2    | 1.0.2    | Image raw format        |
++---------------+-----------------+---------------+-----------+------------------+------------------+----------+----------+-------------------------+
+| 1.1.1         | [13.3.0-13.4.1] | 3.0.2         | 3.0.0     | 2.0.0            | 2.0.0            | 2.0.2    | 1.0.2    |                         |
++---------------+-----------------+---------------+-----------+------------------+------------------+----------+----------+-------------------------+
+
+**Think Silicon NemaGFX**
+
+The :ref:`NemaGFX C module <section_ui_c_module_microui_nemagfx>` targets the CPU that provides the NemaGFX accelerator.
+
+The following table describes the version compatibility between the MicroEJ VG Packs and the C modules:
+
++---------+-----------------+-----------+---------+------------------+------------------+----------+----------+---------+
+| VG Pack | UI Pack         | VG-NemaVG | UI-Nema | MicroVG C Module | MicroUI C Module | FreeType | Harfbuzz | Comment |
++=========+=================+===========+=========+==================+==================+==========+==========+=========+
+| 1.6.0   | [14.0.1-14.0.2] | 1.0.1     | 3.0.0   | 6.0.1            | 4.1.0            | 3.0.0    | 2.0.0    |         |
++---------+-----------------+-----------+---------+------------------+------------------+----------+----------+---------+
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
-   for read and redistribute. Except if otherwise stated, modification 
+   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free
+   for read and redistribute. Except if otherwise stated, modification
    is subject to MicroEJ Corp prior approval.
-   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and
    copyrights are the property of their respective owners.

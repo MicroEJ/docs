@@ -23,7 +23,7 @@ System Requirements
    - macOS aarch64 with M1 chip
 
 - **Java Runtime Environment**
-    - JDK 11 or 17 - Eclipse Temurin or Oracle Distributions
+    - JDK 11 or higher LTS version (``11``, ``17`` or ``21``) - Eclipse Temurin or Oracle Distributions
 
 
 .. _sdk_6_check_jdk:
@@ -50,7 +50,7 @@ To check, run ``java -version`` in a terminal::
    OpenJDK 64-Bit Server VM Temurin-11.0.15+10 (build 11.0.15+10, mixed mode)
 
 If you don't have a JDK installed, 
-you can download and install one from `Adoptium <https://adoptium.net/temurin/releases/>`__ or `Oracle <https://www.oracle.com/fr/java/technologies/downloads/>`__.
+you can download and install one from `Adoptium <https://adoptium.net/temurin/releases/>`__ or `Oracle <https://www.oracle.com/java/technologies/downloads/>`__.
 
 
 .. _sdk_6_install_gradle:

@@ -125,8 +125,6 @@ The following text can be copied in a file called ``SYSVIEW_MicroVG.txt`` and co
    NamedType VGDraw 4=DRAW_STRING_ON_CIRCLE
    NamedType VGDraw 5=DRAW_STRING_ON_CIRCLE_GRADIENT
    NamedType VGDraw 6=DRAW_IMAGE
-   NamedType VGDraw 7=DRAW_VGLITE_PATH
-   NamedType VGDraw 8=UPLOAD_VGLITE_PATH
 
    0        VG_ImageEvent      (MicroVG) Execute image event %VGImage  | (MicroVG) Image event %VGImage done
    1        VG_FontEvent       (MicroVG) Execute font event %VGFont  | (MicroVG) Font event %VGFont done
