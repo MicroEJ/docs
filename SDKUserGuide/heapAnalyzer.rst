@@ -85,8 +85,6 @@ MicroEJ environment.
     |                       |               | values                        |
     +-----------------------+---------------+-------------------------------+
 
-Here's the enhanced Sphinx RST documentation for the Heap Dumper:
-
 Heap Dumper
 ------------
 
