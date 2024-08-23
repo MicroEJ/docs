@@ -9,7 +9,7 @@ Description
 
 In this training, you will learn how to develop GUIs using the
 MicroEJ Graphical Framework.
-This training is raster oriented.
+This training is raster-oriented.
 
 What you will learn:
 
@@ -18,13 +18,13 @@ What you will learn:
 - Change the rendering of widgets
 - Interact with the GUI (e.g., touch or button)
 - Animate a GUI
-- GUI Qualification:
+- Qualify a GUI:
 
   - Benchmarking
   - Debugging
   - Testing
 
-Evaluation kit is optional to complete this training, it can be fully done on MICROEJ SDK Simulator.
+Using an evaluation kit is optional to complete this training, as it can be fully done on the MICROEJ SDK Simulator.
 
 Intended Audience
 =================
@@ -34,7 +34,7 @@ This training is for developers wishing to develop GUI Applications with MicroEJ
 Prerequisites
 =============
 
-- Knowledge of Java programming language.
+- Knowledge of the Java programming language.
 - Knowledge of common GUI software design patterns.
 
 Training Resources
