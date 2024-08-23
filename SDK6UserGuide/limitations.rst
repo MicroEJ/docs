@@ -20,10 +20,11 @@ The SDK 6 allows to:
 - Use the Serial to Socket Transmitter.
 - Use the Font Designer, Memory Map Analyzer, Heap Analyzer and Front Panel Designer tools.
 - Build a Kernel Application.
+- Build a Runtiime API.
 
 Therefore, it does not support all the features of the SDK 5, especially:
 
-- Build of Foundation Libraries, VEE Ports or any other component type except Applications, Add-On Libraries and Mocks.
+- Build of Foundation Libraries, VEE Ports, Packs and Offline Repositories.
 - Launch of some MicroEJ tools, such as the Kernel Metadata Generator.
 
 
