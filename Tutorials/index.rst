@@ -100,50 +100,6 @@ Basics
 
          </div>
 
-For VEE Developers
-------------------
-
-.. toctree::
-   :hidden:
-   
-   trainingVEEPortDevFromScratch
-   trainingPQT
-
-.. raw:: html
-
-         <div class="training_items">
-
-            <a class="training_link" href="trainingVEEPortDevFromScratch.html">
-            <div>
-               <div class="training_image_container">
-                  <div class="training_image_text">Course 1</div>
-                  <img src="../_static/images/training/training_createFirmwareFromScratch.jpg" alt="VEE Port Creation for a Custom Device">
-               </div>
-               <h3 class="training_title">VEE Port Creation for a Custom Device</h3>
-               <p class="training_description">In this training, you will follow the typical steps followed by
-               a Firmware developer integrating MICROEJ VEE on 
-               a target device.
-               </p>
-               <a class="training_learn_more_link" href="trainingVEEPortDevFromScratch.html">Learn more</a>
-            </div>
-            </a>
-
-            <a class="training_link" href="trainingPQT.html">
-            <div>
-               <div class="training_image_container">
-                  <div class="training_image_text">Course 2</div>
-                  <img src="../_static/images/training/training_pqt.jpg" alt="PQT">
-               </div>
-               <h3 class="training_title">Qualify & Test your VEE Port</h3>
-               <p class="training_description">In this training, you will learn how to validate the integration
-               of MICROEJ VEE on a device using PQT (Port Qualification Tools).
-               </p>
-               <a class="training_learn_more_link" href="trainingPQT.html">Learn more</a>
-            </div>
-            </a>
-
-         </div>
-
 For Application Developers
 --------------------------
 
@@ -213,8 +169,52 @@ For Application Developers
             
          </div>
 
-GUI
-===
+For VEE Developers
+------------------
+
+.. toctree::
+   :hidden:
+   
+   trainingVEEPortDevFromScratch
+   trainingPQT
+
+.. raw:: html
+
+         <div class="training_items">
+
+            <a class="training_link" href="trainingVEEPortDevFromScratch.html">
+            <div>
+               <div class="training_image_container">
+                  <div class="training_image_text">Course 1</div>
+                  <img src="../_static/images/training/training_createFirmwareFromScratch.jpg" alt="VEE Port Creation for a Custom Device">
+               </div>
+               <h3 class="training_title">VEE Port Creation for a Custom Device</h3>
+               <p class="training_description">In this training, you will follow the typical steps followed by
+               a Firmware developer integrating MICROEJ VEE on 
+               a target device.
+               </p>
+               <a class="training_learn_more_link" href="trainingVEEPortDevFromScratch.html">Learn more</a>
+            </div>
+            </a>
+
+            <a class="training_link" href="trainingPQT.html">
+            <div>
+               <div class="training_image_container">
+                  <div class="training_image_text">Course 2</div>
+                  <img src="../_static/images/training/training_pqt.jpg" alt="PQT">
+               </div>
+               <h3 class="training_title">Qualify & Test your VEE Port</h3>
+               <p class="training_description">In this training, you will learn how to validate the integration
+               of MICROEJ VEE on a device using PQT (Port Qualification Tools).
+               </p>
+               <a class="training_learn_more_link" href="trainingPQT.html">Learn more</a>
+            </div>
+            </a>
+
+         </div>
+
+Graphical User Interface
+========================
 
 .. toctree::
    :hidden:
