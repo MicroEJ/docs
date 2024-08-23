@@ -3,6 +3,32 @@
 Changelog
 ---------
 
+.. _changelog-0.18.0:
+
+[0.18.0] - 2024-08-22
+~~~~~~~~~~~~~~~~~~~~~
+
+Added
+"""""
+
+- Allow to build a VEE Port.
+- Retry tests when they fail to avoid flaky tests (mainly due to license check) to fail the whole build.
+- Support build incremental when using a published VEE Port with Full BSP Connection.
+- Add the plugin `com.microej.gradle.runtime-api` to build a Runtime API.
+- Allow to enable/disable the publication of the Ivy descriptor.
+- Allow to run dependent applications on simulator (declared with `microejApplication`).
+
+Fixed
+"""""
+
+- Fix publication to add dependencies defined with MicroEJ configurations to the ``.module`` and ``.pom`` files.
+- Comment the ``stop`` method of the generated Wrapper class to prevent potential Sonar issue.
+- Fix MicroEJ Test Engine compatibility with Gradle 8.6 and higher.
+- Allow to run a Virtual Device via its launchers on a JDK version higher than 11.
+- Fix build failure on multi-project with several applications depending on a kernel as project dependency.
+- Some projects are not configured to be built with Java 1.7 when imported in Eclipse.
+- Fix feature not found when launching a Virtual Device with installed applications.
+
 .. _changelog-0.17.0:
 
 [0.17.0] - 2024-05-30
