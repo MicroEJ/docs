@@ -256,6 +256,7 @@ This task is used by the following module natures:
 
 - :ref:`sdk6_module_natures.addon_lib`
 - :ref:`sdk6_module_natures.application`
+- :ref:`sdk6_module_natures.runtime-api`
 
 **Configuration**:
 
