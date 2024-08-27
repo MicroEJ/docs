@@ -6,15 +6,19 @@
 Migration Guide
 ===============
 
+.. _section_ui_migrationguide_pack_14.0.2:
+
 From 14.0.1 to 14.0.2
 =====================
 
-Just fetch the UI Pack 14.0.2.
+BSP without GPU
+"""""""""""""""
 
-.. _section_ui_migrationguide_pack_14.0.1_c_module_update:
+* *[VEE Port configuration project]*
 
-14.0.1 (C Module update)
-========================
+    * Set the dependency to the `C Module MicroUI 4.1.0`_.
+    * Delete the properties file ``cco_microui.properties``.
+    * Build the VEE Port.
 
 BSP with DMA2D
 """"""""""""""

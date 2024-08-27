@@ -32,7 +32,7 @@ LLAPIs
 BSP with VGLite
 """""""""""""""
 
-* Follow the migration steps of the :ref:`C Module MicroUI over VGLite <section_ui_migrationguide_pack_14.0.1_c_module_update>`.
+* Follow the migration steps of the :ref:`C Module MicroUI over VGLite <section_ui_migrationguide_pack_14.0.2>`.
 * *[VEE Port configuration project]*
 
 	* Fetch the `VG Pack 1.6.0`_ and the `C Module MicroVG over VGLite 8.0.1`_.
