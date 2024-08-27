@@ -37,14 +37,14 @@ Configuration Subproject
 
 These steps must be followed to migrate a Configuration subproject:
 
-- replace the ``module.ivy`` file by a ``build.gradle.kts`` file.
-- use the ``com.microej.gradle.veeport`` plugin in this file::
+- Replace the ``module.ivy`` file by a ``build.gradle.kts`` file.
+- Use the ``com.microej.gradle.veeport`` plugin in this file::
   
    plugins {
       id("com.microej.gradle.veeport") version "0.18.0"
    }
 
-- define the dependencies previously defined in the ``module.ivy`` file. 
+- Define the dependencies previously defined in the ``module.ivy`` file. 
   In SDK 6, each type of VEE Port component must be defined with a dedicated configuration:
   
   - Architecture: ``microejArchitecture``
@@ -74,23 +74,24 @@ These steps must be followed to migrate a Configuration subproject:
 
   must be changed to this in SDK 6::
 
-   microejArchitecture("com.microej.pack:fs:6.0.4")
+   microejPack("com.microej.pack:fs:6.0.4")
 
-- move the property related to the Runtime Capability from the file ``mjvm/mjvm.properties`` to the ``configuration/common.properties`` file,
+- Move the property related to the Runtime Capability from the file ``mjvm/mjvm.properties`` to the ``configuration.properties`` file,
   then delete the ``mjvm/mjvm.properties`` file.
 
-- move all configuration properties related to the Packs (``bsp/bsp.properties``, ``fs/fs.properties``, ...) into a single ``configuration/common.properties``.
+- Move all configuration properties related to the BSP (``bsp/bsp.properties``) into the ``configuration.properties`` file.
+  Each property name must be prefixed by ``bsp.<name>.``.
+  For example, the ``microejapp.relative.dir`` property must be moved as ``bsp.microejapp.relative.dir`` in the ``configuration.properties`` file.
+
+- Move all configuration properties related to the Packs (``fs/fs.properties``, ...) into the ``configuration.properties`` file.
   Each property name must be prefixed by ``com.microej.pack.<name>.``, where ``<module>`` is the name of the Pack.
-  For example, the ``bpp`` property defined in the ``display/display.properties`` file must be moved as ``com.microej.pack.display.bpp`` in the ``configuration/common.properties``.
+  For example, the ``bpp`` property defined in the ``display/display.properties`` file must be moved as ``com.microej.pack.display.bpp`` in the ``configuration.properties`` file.
   
-  This is also true for BSP properties.
-  For example, the ``microejapp.relative.dir`` property defined in the ``bsp/bsp.properties`` file must be moved as ``com.microej.bsp.microejapp.relative.dir`` in the ``configuration/common.properties``.
+- Delet old configuration properties files ((``bsp/bsp.properties``, ``display/display.properties``, ``fs/fs.properties``, ...) can be deleted.
 
-  Then old configuration properties files ((``bsp/bsp.properties``, ``display/display.properties``, ``fs/fs.properties``, ...) can be deleted.
+- Enable disable Pack modules if required, as described in :ref:`sdk_6_veeport_pack_enable_modules`.
 
-- enable disable Pack modules if required, as described in :ref:`sdk_6_veeport_pack_enable_modules`.
-
-- delete the ``.platform`` file located at the root of the Configuration subproject, since it is now obsolete.
+- Delete the ``.platform`` file located at the root of the Configuration subproject, since it is now obsolete.
 
 Front Panel Project
 -------------------
@@ -98,14 +99,14 @@ Front Panel Project
 The Front Panel is generally a subproject of the VEE Port multi-project.
 These steps must be followed to migrate a Front Panel subproject:
 
-- replace the ``module.ivy`` file by a ``build.gradle.kts`` file.
-- use the ``com.microej.gradle.mock-frontpanel`` plugin in this file::
+- Replace the ``module.ivy`` file by a ``build.gradle.kts`` file.
+- Use the ``com.microej.gradle.mock-frontpanel`` plugin in this file::
   
    plugins {
       id("com.microej.gradle.mock-frontpanel") version "0.18.0"
    }
 
-- define the dependencies previously defined in the ``module.ivy`` file. 
+- Define the dependencies previously defined in the ``module.ivy`` file. 
   A Front Panel generally depends on libraries, so they can be defined with the ``implementation`` configuration.
   For example to declare a dependency on the Front Panel framework library, use::
 
@@ -120,11 +121,11 @@ These steps must be followed to migrate a Front Panel subproject:
         }
     }
 
-- include the Front Panel subproject in the multi-project in the ``settings.gradle.kts`` file::
+- Include the Front Panel subproject in the multi-project in the ``settings.gradle.kts`` file::
   
    include("my-front-panel")
 
-- make the VEE Port configuration subproject depend on the Front Panel subproject by adding a project dependency in its ``build.gradle.kts`` file::
+- Make the VEE Port configuration subproject depend on the Front Panel subproject by adding a project dependency in its ``build.gradle.kts`` file::
 
    microejFrontPanel(project("my-front-panel"))
 
@@ -133,21 +134,21 @@ Mock
 
 If the VEE Port project contains Mock subprojects, they must be migrated by following these steps:
 
-- replace the ``module.ivy`` file by a ``build.gradle.kts`` file.
-- use the ``com.microej.gradle.mock`` plugin in this file::
+- Replace the ``module.ivy`` file by a ``build.gradle.kts`` file.
+- Use the ``com.microej.gradle.mock`` plugin in this file::
   
    plugins {
       id("com.microej.gradle.mock") version "0.18.0"
    }
 
-- define the dependencies previously defined in the ``module.ivy`` file. 
+- Define the dependencies previously defined in the ``module.ivy`` file. 
   A Mock generally depends on libraries, so they can be defined with the ``implementation`` configuration.
 
-- include the Mock subproject in the multi-project in the ``settings.gradle.kts`` file::
+- Include the Mock subproject in the multi-project in the ``settings.gradle.kts`` file::
   
    include("my-mock")
 
-- make the VEE Port configuration subproject depend on the Mock subproject by adding a project dependency in its ``build.gradle.kts`` file::
+- Make the VEE Port configuration subproject depend on the Mock subproject by adding a project dependency in its ``build.gradle.kts`` file::
 
    microejTool(project("my-mock"))
 
@@ -156,14 +157,14 @@ Tool subproject
 
 If the VEE Port project contains Tool subprojects, they must be migrated by following these steps:
 
-- replace the ``module.ivy`` file by a ``build.gradle.kts`` file.
-- use the ``com.microej.gradle.j2se-library`` plugin in this file::
+- Replace the ``module.ivy`` file by a ``build.gradle.kts`` file.
+- Use the ``com.microej.gradle.j2se-library`` plugin in this file::
   
    plugins {
       id("com.microej.gradle.j2se-library") version "0.18.0"
    }
 
-- define the dependencies previously defined in the ``module.ivy`` file. 
+- Define the dependencies previously defined in the ``module.ivy`` file. 
   A Tool generally depends on libraries, so they can be defined with the ``implementation`` configuration.
   Note that when the Tool is an Image Generator and depends on the Image Generator library from the UI Pack, the dependency must be declared with the ``name`` and ``extension``::
 
@@ -174,11 +175,11 @@ If the VEE Port project contains Tool subprojects, they must be migrated by foll
         }
     }
 
-- include the Tool subproject in the multi-project in the ``settings.gradle.kts`` file::
+- Include the Tool subproject in the multi-project in the ``settings.gradle.kts`` file::
   
    include("my-tool")
 
-- make the VEE Port configuration subproject depend on the Tool subproject by adding a project dependency in its ``build.gradle.kts`` file::
+- Make the VEE Port configuration subproject depend on the Tool subproject by adding a project dependency in its ``build.gradle.kts`` file::
 
    microejTool(project("my-tool"))
 
@@ -187,14 +188,14 @@ Testsuites Project
 
 These steps must be followed for each Testsuite to migrate:
 
-- replace the ``module.ivy`` file by a ``build.gradle.kts`` file.
-- use the ``com.microej.gradle.testsuite`` plugin in this file::
+- Replace the ``module.ivy`` file by a ``build.gradle.kts`` file.
+- Use the ``com.microej.gradle.testsuite`` plugin in this file::
   
    plugins {
       id("com.microej.gradle.testsuite") version "0.18.0"
    }
 
-- the tested VEE Port was defined in SDK 5 in the ``config.properties`` file, with the ``target.platform.dir`` property.
+- The tested VEE Port was defined in SDK 5 in the ``config.properties`` file, with the ``target.platform.dir`` property.
   In SDK6, it is done by declaring the VEE Port Configuration project as a project dependency::
 
    dependencies {
@@ -230,14 +231,14 @@ These steps must be followed for each Testsuite to migrate:
       }
    }
 
-   The testsuite dependencies must contain:
+  The testsuite dependencies must contain:
 
-   - the project *(1)*
-   - the JUnit libraries *(2)*
-   - the Foundation Library to test *(3)*
-   - the Testsuite related to the Foundation Library *(4)*
+  - the project *(1)*
+  - the JUnit libraries *(2)*
+  - the Foundation Library to test *(3)*
+  - the Testsuite related to the Foundation Library *(4)*
 
-- the patterns of the included and excluded test classes was defined with the ``test.run.includes.pattern`` 
+- The patterns of the included and excluded test classes was defined with the ``test.run.includes.pattern`` 
   and ``test.run.excludes.pattern`` properties in the ``config.properties`` file.
   There must be now defined directly in the testsuite configuration in the ``build.gradle.kts`` file, 
   by using the standard Gradle filter feature::
