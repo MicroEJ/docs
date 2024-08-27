@@ -208,10 +208,17 @@ Create the Test Suite Runner Project
 
 .. note:: ``{PROJECT_LOC}`` refers here to the location of your Test Suite runner project.
 
+.. _run_test_suite_on_device:
+
 Configure and Run the Test Suite
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Follow the :ref:`tutorial_run_test_suite_on_device` tutorial to configure your VEE Port and run the Test Suite on your Device.
+Follow the :ref:`run_fs_test_suite_on_esp32_wrover` tutorial to configure your VEE Port and run the Test Suite on your Device.
+
+.. toctree::
+   :hidden:
+
+   runFsTestSuiteOnESP32WROVER
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free
