@@ -24,77 +24,27 @@ VEE Port Project Creation
 
 The first step is to create a VEE Port configuration project:
 
-.. tabs::
+- Select :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...` > :guilabel:`General` > :guilabel:`Project`,
+- Enter a :guilabel:`Project name`. The name is arbitrary and can be changed later. The usual convention is ``[PLATFORM_NAME]-configuration``,
+- Click on :guilabel:`Finish` button. A new empty project is created,
+- Install the latest `Platform Configuration Additions <https://github.com/MicroEJ/VEEPortQualificationTools/blob/master/framework/platform/>`_
+  by following instructions described at https://github.com/MicroEJ/VEEPortQualificationTools/blob/master/framework/platform/README.rst.
 
-   .. group-tab:: SDK 5
+  - Files within the ``content-sdk-5`` folder must be copied to the configuration project folder.
+  - Files within the ``content-architecture-7`` must be copied to the configuration project folder only if you are using an Architecture version ``7.x``.
+    If you are using an Architecture version ``8.x``, the files are already included and **must not** be copied.
 
-      - Select :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...` > :guilabel:`General` > :guilabel:`Project`,
-      - Enter a :guilabel:`Project name`. The name is arbitrary and can be changed later. The usual convention is ``[PLATFORM_NAME]-configuration``,
-      - Click on :guilabel:`Finish` button. A new empty project is created,
-      - Install the latest `Platform Configuration Additions <https://github.com/MicroEJ/VEEPortQualificationTools/blob/master/framework/platform/>`_
-        by following instructions described at https://github.com/MicroEJ/VEEPortQualificationTools/blob/master/framework/platform/README.rst.
+  You should get a MicroEJ Platform configuration project that looks like:
 
-        - Files within the ``content-sdk-5`` folder must be copied to the configuration project folder.
-        - Files within the ``content-architecture-7`` must be copied to the configuration project folder only if you are using an Architecture version ``7.x``.
-          If you are using an Architecture version ``8.x``, the files are already included and **must not** be copied.
+  .. figure:: images/platformConfigurationSkeleton.png
+      :alt: MicroEJ Platform Configuration Project Skeleton
+      :align: center
 
-        You should get a MicroEJ Platform configuration project that looks like:
+      MicroEJ Platform Configuration Project Skeleton
 
-        .. figure:: images/platformConfigurationSkeleton.png
-            :alt: MicroEJ Platform Configuration Project Skeleton
-            :align: center
-
-            MicroEJ Platform Configuration Project Skeleton
-
-        .. note::
-            
-            The version of installed Platform Configuration Additions is indicated in the `CHANGELOG <https://github.com/MicroEJ/VEEPortQualificationTools/blob/master/framework/platform/content-sdk-5/build/CHANGELOG.md>`_ file. 
-
-   .. group-tab:: SDK 6
-
-      .. tabs::
-
-        .. tab:: Android Studio
-
-        .. tab:: IntelliJ IDEA
-
-          - Select :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...`,
-          - Select :guilabel:`Java`,
-          - Enter a :guilabel:`Name`. The name is arbitrary and can be changed later. The usual convention is to use the name of the VEE Port,
-
-          - Click on :guilabel:`Create` button. A new project is created,
-          - Delete the ``build.gradle.kts`` file and the ``src`` folder,
-
-          - Right-click on the project folder,
-          - Select :guilabel:`New` > :guilabel:`Module...`,
-          - Select :guilabel:`Java`,
-          - Enter a :guilabel:`Name`. The name is arbitrary and can be changed later. 
-            The usual convention is to use the name of the VEE Port suffixed by ``-configuration`` (for example ``my-veeport-configuration``),
-
-          - Click on :guilabel:`Create` button. A new module is created,
-          - Delete all the files and folders of this new module, except the ``build.gradle.kts`` file,
-          - Replace the whole content of the ``build.gradle.kts`` file by::
-
-                plugins {
-                    id("com.microej.gradle.veeport")
-                }
-
-                group = "org.example"
-                version = "1.0.0-RC"
-
-                dependencies {
-                    
-                }
-
-          You should get a MicroEJ Platform configuration project that looks like:
-
-
-        .. tab:: Eclipse
-
-        .. tab:: Visual Studio Code
-
-        .. tab:: Command Line Interface
-
+  .. note::
+      
+      The version of installed Platform Configuration Additions is indicated in the `CHANGELOG <https://github.com/MicroEJ/VEEPortQualificationTools/blob/master/framework/platform/content-sdk-5/build/CHANGELOG.md>`_ file. 
 
 Architecture Selection
 ======================
@@ -111,71 +61,38 @@ please contact your MicroEJ sales representative or :ref:`our support team <get_
 
 Once you know which Architecture to use, add it as a dependency of the VEE Port configuration project as described below:
 
-.. tabs::
+- Edit the :ref:`mmm_module_description` ``module.ivy`` to declare the MicroEJ Architecture dependency:
 
-   .. group-tab:: SDK 5
+  .. code-block:: xml
+    :emphasize-lines: 3,4,5
 
-    - Edit the :ref:`mmm_module_description` ``module.ivy`` to declare the MicroEJ Architecture dependency:
+    <dependencies>
 
-      .. code-block:: xml
-        :emphasize-lines: 3,4,5
+        <dependency org="com.microej.architecture.[ISA].[TOOLCHAIN]" name="[UID]" rev="[VERSION]">
+          <artifact name="[UID]" m:classifier="[USAGE]" ext="xpf"/>
+        </dependency>
+    
+    </dependencies>
 
-        <dependencies>
+  The name of the module dependency needed for your Platform can be found in the chapter :ref:`architectures_toolchains`.
+  Check the table of your corresponding Architecture and follow the link in the :guilabel:`Module` column.
 
-            <dependency org="com.microej.architecture.[ISA].[TOOLCHAIN]" name="[UID]" rev="[VERSION]">
-              <artifact name="[UID]" m:classifier="[USAGE]" ext="xpf"/>
-            </dependency>
-        
-        </dependencies>
+  For example, to declare the MicroEJ Evaluation Architecture version ``7.14.0`` for Arm® Cortex®-M4 microcontrollers compiled with GNU CC toolchain:
 
-      The name of the module dependency needed for your Platform can be found in the chapter :ref:`architectures_toolchains`.
-      Check the table of your corresponding Architecture and follow the link in the :guilabel:`Module` column.
+  .. code-block:: xml
+      :emphasize-lines: 3,4,5
 
-      For example, to declare the MicroEJ Evaluation Architecture version ``7.14.0`` for Arm® Cortex®-M4 microcontrollers compiled with GNU CC toolchain:
+      <dependencies>
 
-      .. code-block:: xml
-          :emphasize-lines: 3,4,5
+          <dependency org="com.microej.architecture.CM4.CM4hardfp_GCC48" name="flopi4G25" rev="7.14.0">
+            <artifact name="flopi4G25" m:classifier="eval" ext="xpf"/>
+          </dependency>
+      
+      </dependencies>
 
-          <dependencies>
+And the module for this Architecture is located in the :ref:`Central Repository <central_repository>` at https://repository.microej.com/modules/com/microej/architecture/CM4/CM4hardfp_GCC48/flopi4G25/7.14.0/.
 
-              <dependency org="com.microej.architecture.CM4.CM4hardfp_GCC48" name="flopi4G25" rev="7.14.0">
-                <artifact name="flopi4G25" m:classifier="eval" ext="xpf"/>
-              </dependency>
-          
-          </dependencies>
-
-    And the module for this Architecture is located in the :ref:`Central Repository <central_repository>` at https://repository.microej.com/modules/com/microej/architecture/CM4/CM4hardfp_GCC48/flopi4G25/7.14.0/.
-
-      .. note:: The Platform Configuration Additions allow to select the Architecture ``USAGE`` using the option ``com.microej.platformbuilder.architecture.usage``.  Edit the file ``module.properties`` to set the property to ``prod`` to use a Production Architecture and to ``eval`` to use an Evaluation Architecture.
-          
-
-   .. group-tab:: SDK 6
-
-    - Edit the ``build.gradle.kts`` file to declare the MicroEJ Architecture dependency in the ``dependencies`` block:
-
-      .. code-block:: java
-          :emphasize-lines: 3
-
-          dependencies {
-
-            microejArchitecture("com.microej.architecture.[ISA].[TOOLCHAIN]:[UID]:[VERSION]")
-
-          }
-
-      The ``[UID]`` of the dependency needed for your VEE Port can be found in the chapter :ref:`architectures_toolchains`.
-      Check the table of your corresponding Architecture and follow the link in the :guilabel:`Module` column.
-
-      For example, to declare the MicroEJ Evaluation Architecture version ``8.1.1`` for Arm® Cortex®-M4 microcontrollers compiled with GNU CC toolchain:
-
-
-      .. code-block:: java
-          :emphasize-lines: 3
-
-          dependencies {
-
-            microejArchitecture("com.microej.architecture.CM4.CM4hardfp_GCC48:flopi4G25:8.1.1")
-
-          }
+  .. note:: The Platform Configuration Additions allow to select the Architecture ``USAGE`` using the option ``com.microej.platformbuilder.architecture.usage``.  Edit the file ``module.properties`` to set the property to ``prod`` to use a Production Architecture and to ``eval`` to use an Evaluation Architecture.
 
 
 .. _pack_import:
@@ -190,125 +107,63 @@ Pack Import
    MicroEJ Packs are optional. You can skip this section if you intend to integrate MicroEJ runtime only with custom libraries.
 
 To add a MicroEJ Pack, add it as a dependency of the VEE Port configuration project as described below:
-
-.. tabs::
-
-   .. group-tab:: SDK 5
   
-      - Edit the :ref:`mmm_module_description` ``module.ivy`` as follows:
-  
-        .. code-block:: xml
-          :emphasize-lines: 3,6,9
+- Edit the :ref:`mmm_module_description` ``module.ivy`` as follows:
 
-            <dependencies>
-              <!-- MicroEJ Architecture Specific Pack -->
-              <dependency org="com.microej.architecture.[ISA].[TOOLCHAIN]" name="[UID]-[NAME]-pack" rev="[VERSION]"/>
+  .. code-block:: xml
+    :emphasize-lines: 3,6,9
 
-              <!-- MicroEJ Generic Pack -->
-              <dependency org="com.microej.pack.[NAME]" name="[NAME]-pack" rev="[VERSION]"/>
+      <dependencies>
+        <!-- MicroEJ Architecture Specific Pack -->
+        <dependency org="com.microej.architecture.[ISA].[TOOLCHAIN]" name="[UID]-[NAME]-pack" rev="[VERSION]"/>
 
-              <!-- Legacy MicroEJ Generic Pack -->
-              <dependency org="com.microej.pack" name="[NAME]" rev="[VERSION]"/>
+        <!-- MicroEJ Generic Pack -->
+        <dependency org="com.microej.pack.[NAME]" name="[NAME]-pack" rev="[VERSION]"/>
 
-            </dependencies>
+        <!-- Legacy MicroEJ Generic Pack -->
+        <dependency org="com.microej.pack" name="[NAME]" rev="[VERSION]"/>
 
-        For example, to declare the `MicroEJ Architecture Specific Pack UI
-        version 13.0.4`_ for MicroEJ Architecture ``flopi4G25`` on Arm®
-        Cortex®-M4 microcontrollers compiled with GNU CC toolchain:
+      </dependencies>
 
-        .. code-block:: xml
-          :emphasize-lines: 3
+  For example, to declare the `MicroEJ Architecture Specific Pack UI
+  version 13.0.4`_ for MicroEJ Architecture ``flopi4G25`` on Arm®
+  Cortex®-M4 microcontrollers compiled with GNU CC toolchain:
 
-          <dependencies>
-              <!-- MicroEJ Architecture Specific Pack -->
-              <dependency org="com.microej.architecture.CM4.CM4hardfp_GCC48" name="flopi4G25-ui-pack" rev="13.0.4"/>
+  .. code-block:: xml
+    :emphasize-lines: 3
 
-          </dependencies>
+    <dependencies>
+        <!-- MicroEJ Architecture Specific Pack -->
+        <dependency org="com.microej.architecture.CM4.CM4hardfp_GCC48" name="flopi4G25-ui-pack" rev="13.0.4"/>
 
-        To declare the `MicroEJ Generic Pack Bluetooth version 2.1.0`_:
+    </dependencies>
 
-        .. code-block:: xml
-          :emphasize-lines: 3
+  To declare the `MicroEJ Generic Pack Bluetooth version 2.1.0`_:
 
-          <dependencies>
-              <!-- MicroEJ Generic Pack  -->
-              <dependency org="com.microej.pack.bluetooth" name="bluetooth-pack" rev="2.1.0"/>
+  .. code-block:: xml
+    :emphasize-lines: 3
 
-          </dependencies>
+    <dependencies>
+        <!-- MicroEJ Generic Pack  -->
+        <dependency org="com.microej.pack.bluetooth" name="bluetooth-pack" rev="2.1.0"/>
 
-        And to declare the `Legacy MicroEJ Generic Pack Net version 9.2.3`_:
+    </dependencies>
 
-        .. code-block:: xml
-          :emphasize-lines: 3
+  And to declare the `Legacy MicroEJ Generic Pack Net version 9.2.3`_:
 
-          <dependencies>
-              <!-- Legacy MicroEJ Generic Pack -->
-              <dependency org="com.microej.pack" name="net" rev="9.2.3"/>
+  .. code-block:: xml
+    :emphasize-lines: 3
 
-          </dependencies>
+    <dependencies>
+        <!-- Legacy MicroEJ Generic Pack -->
+        <dependency org="com.microej.pack" name="net" rev="9.2.3"/>
 
-        .. warning::
-          
-          :ref:`MicroEJ Architecture Specific Packs <pack_architecture_specific>` and :ref:`Legacy MicroEJ Generic Packs <pack_generic_legacy>` provide Platform modules
-          that are **not installed** by default. See :ref:`platform_module_configuration` section for more details.
+    </dependencies>
 
-   .. group-tab:: SDK 6
-
-    - Edit the ``build.gradle.kts`` file to declare the MicroEJ Pack dependencies in the ``dependencies`` block:
-
-      .. code-block:: java
-          :emphasize-lines: 4,7,10
-
-          dependencies {
-
-            // MicroEJ Architecture Specific Pack
-            microejPack("com.microej.architecture.[ISA].[TOOLCHAIN]:[UID]-[NAME]-pack:[VERSION]")
-
-            // MicroEJ Generic Pack
-            microejPack("com.microej.pack.[NAME]:[NAME]-pack:[VERSION]")
-
-            // Legacy MicroEJ Generic Pack
-            microejPack("com.microej.pack:[NAME]:[VERSION]")
-
-          }
-
-      For example, to declare the `MicroEJ Architecture Specific Pack UI
-      version 14.0.1`_ for MicroEJ Architecture ``flopi4G25`` on Arm®
-      Cortex®-M4 microcontrollers compiled with GNU CC toolchain:
-
-          .. code-block:: java
-            :emphasize-lines: 4
-
-            dependencies {
-
-              // MicroEJ Architecture Specific Pack
-              microejPack("com.microej.architecture.CM4.CM4hardfp_GCC48:flopi4G25-ui-pack:14.0.1")
-
-            }
-
-      To declare the `MicroEJ Generic Pack Bluetooth version 2.1.0`_:
-
-          .. code-block:: java
-            :emphasize-lines: 4
-
-            dependencies {
-
-              // MicroEJ Generic Pack
-              microejPack("com.microej.pack.bluetooth:bluetooth-pack:2.1.0")
-
-            }
-
-      And to declare the `Legacy MicroEJ Generic Pack Net version 9.2.3`_:
-
-          .. code-block:: java
-            :emphasize-lines: 4
-
-            dependencies {
-
-              // Legacy MicroEJ Generic Pack
-              microejPack("com.microej.pack:net:9.2.3")
-
-            }
+  .. warning::
+    
+    :ref:`MicroEJ Architecture Specific Packs <pack_architecture_specific>` and :ref:`Legacy MicroEJ Generic Packs <pack_generic_legacy>` provide Platform modules
+    that are **not installed** by default. See :ref:`platform_module_configuration` section for more details.
 
 .. _MicroEJ Architecture Specific Pack UI version 13.0.4: https://repository.microej.com/modules/com/microej/architecture/CM4/CM4hardfp_GCC48/flopi4G25-ui-pack/13.0.4/
 .. _MicroEJ Architecture Specific Pack UI version 14.0.1: https://repository.microej.com/modules/com/microej/architecture/CM4/CM4hardfp_GCC48/flopi4G25-ui-pack/14.0.1/
@@ -320,85 +175,56 @@ To add a MicroEJ Pack, add it as a dependency of the VEE Port configuration proj
 VEE Port Build
 ==============
 
-.. tabs::
+The VEE Port can be built either from the SDK or from the :ref:`MMM CLI <mmm_cli>`.
+To build the VEE Port from the SDK, perform a regular :ref:`mmm_module_build`: 
 
-   .. group-tab:: SDK 5
+  - Right-click on the VEE Port Configuration project,
+  - Select :guilabel:`Build Module`.
 
-      The VEE Port can be built either from the SDK or from the :ref:`MMM CLI <mmm_cli>`.
-      To build the VEE Port from the SDK, perform a regular :ref:`mmm_module_build`: 
+To build the VEE Port from the MMM CLI:
 
-        - Right-click on the VEE Port Configuration project,
-        - Select :guilabel:`Build Module`.
+  - Set the ``eclipse.home`` property to the path of your SDK, using ``-Declipse.home=<path>`` in the command line or using the :ref:`mmm_cli_shared_configuration`.
+  
+    By default, the SDK's path is one of the following directories:
+  
+    - on Windows: ``C:\Program Files\MicroEJ\MicroEJ-SDK-<YY.MM>\rcp``
+    - on Linux: ``/home/<user>/MicroEJ/MicroEJ-SDK-<YY.MM>/rcp``
+    - on macOS: ``/Applications/MicroEJ/MicroEJ-SDK-<YY.MM>/rcp/MicroEJ-SDK-<YY.MM>.app/Contents/Eclipse``
+  
+  - From the VEE Port Configuration project, execute the command: ``mmm``
 
-      To build the VEE Port from the MMM CLI:
+In both cases, the build starts and the build logs are redirected to the integrated console.
+Once the build is terminated, you should get the following message:
 
-        - Set the ``eclipse.home`` property to the path of your SDK, using ``-Declipse.home=<path>`` in the command line or using the :ref:`mmm_cli_shared_configuration`.
-        
-          By default, the SDK's path is one of the following directories:
-        
-          - on Windows: ``C:\Program Files\MicroEJ\MicroEJ-SDK-<YY.MM>\rcp``
-          - on Linux: ``/home/<user>/MicroEJ/MicroEJ-SDK-<YY.MM>/rcp``
-          - on macOS: ``/Applications/MicroEJ/MicroEJ-SDK-<YY.MM>/rcp/MicroEJ-SDK-<YY.MM>.app/Contents/Eclipse``
-        
-        - From the VEE Port Configuration project, execute the command: ``mmm``
-
-      In both cases, the build starts and the build logs are redirected to the integrated console.
-      Once the build is terminated, you should get the following message:
-
-          .. code-block:: console
-            :emphasize-lines: 3,4,5,6
-            
-            module-platform:report:
-              [echo]     ============================================================================================================
-              [echo]     Platform has been built in this directory 'C:\tmp\mydevice-Platform-[TOOLCHAIN]-0.1.0'.
-              [echo]     To import this project in your MicroEJ SDK workspace (if not already available):
-              [echo]      - Select 'File' > 'Import...' > 'General' > 'Existing Projects into Workspace' > 'Next'
-              [echo]      - Check 'Select root directory' and browse 'C:\tmp\mydevice-Platform-[TOOLCHAIN]-0.1.0' > 'Finish'
-              [echo]     ============================================================================================================
-
-            BUILD SUCCESSFUL
-
-            Total time: 43 seconds
-
-      Then, import the VEE Port directory to your SDK workspace as mentioned in the report. You should get a ready-to-use VEE Port project
-      in the workspace available for the MicroEJ Application project to run on. You can also check the VEE Port availability in:
-      :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Platforms in workspace`.
-
-      .. figure:: images/platformSource.png
-        :alt: VEE Port Project
-        :align: center
-
-        VEE Port Project
+    .. code-block:: console
+      :emphasize-lines: 3,4,5,6
       
-      This step is only required the first time the VEE Port is built, or if the VEE Port properties have changed (i.e, name, version). 
-      When the same VEE Port is built again, the Platform project should be automatically refreshed after a few seconds. 
-      In case of any doubt, right-click on the VEE Port project and select :guilabel:`Refresh` to get the new content.
+      module-platform:report:
+        [echo]     ============================================================================================================
+        [echo]     Platform has been built in this directory 'C:\tmp\mydevice-Platform-[TOOLCHAIN]-0.1.0'.
+        [echo]     To import this project in your MicroEJ SDK workspace (if not already available):
+        [echo]      - Select 'File' > 'Import...' > 'General' > 'Existing Projects into Workspace' > 'Next'
+        [echo]      - Check 'Select root directory' and browse 'C:\tmp\mydevice-Platform-[TOOLCHAIN]-0.1.0' > 'Finish'
+        [echo]     ============================================================================================================
 
-   .. group-tab:: SDK 6
+      BUILD SUCCESSFUL
 
-      Building the VEE Port depends on the use case.
+      Total time: 43 seconds
 
-      **VEE Port inside a multi-project**
+Then, import the VEE Port directory to your SDK workspace as mentioned in the report. You should get a ready-to-use VEE Port project
+in the workspace available for the MicroEJ Application project to run on. You can also check the VEE Port availability in:
+:guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Platforms in workspace`.
 
-      When the VEE Port is in the same multi-project than the component which needs it (an Application for example),
-      there is no need to build it explicitly, the VEE Port project should be declared as a project dependency.
+.. figure:: images/platformSource.png
+  :alt: VEE Port Project
+  :align: center
 
-      For example if the multi-project contains an Application subproject named ``app`` and a VEE Port configuration subproject called ``my-veeport-configuration``,
-      the VEE Port must be declared as a dependency in the ``build.gradle.kts`` file of the ``app`` subproject as follows::
+  VEE Port Project
 
-        dependencies {
+This step is only required the first time the VEE Port is built, or if the VEE Port properties have changed (i.e, name, version). 
+When the same VEE Port is built again, the Platform project should be automatically refreshed after a few seconds. 
+In case of any doubt, right-click on the VEE Port project and select :guilabel:`Refresh` to get the new content.
 
-          microejVee(project(":my-veeport-configuration"))
-
-        }
-
-      The VEE Port will be automatically built under the hood when it is required by the Application.
-      For when running the Application on the Simulator (with the ``runOnSimulator`` task) or when building the Application Executable (with the ``buildExecutable``),
-      the VEE Port will be built before executing the requested task.
-
-      **Local VEE Port ouside a multi-project**
-
-      Not possible to declare it as a project dependency ? Requires to build it before with "buildVeePort" task ?
 
 .. _platform_module_configuration:
 
@@ -418,112 +244,81 @@ A module can extend a Architecture with additional features such as:
 - Simulator (e.g. :ref:`section_frontpanel`),
 - Tool (e.g. :ref:`tool_javah`).
 
-.. tabs::
+VEE Port modules provided by :ref:`MicroEJ Generic Packs <pack_generic>` are automatically installed during the :ref:`VEE Port build <platform_build>` 
+and do not require extra configuration. They are not displayed in the VEE Port Editor.
 
-   .. group-tab:: SDK 5
+VEE Port modules provided by :ref:`MicroEJ Architectures <architecture_overview>`, :ref:`MicroEJ Architecture Specific Packs <pack_architecture_specific>`
+and :ref:`Legacy MicroEJ Generic Packs <pack_generic_legacy>` are **not installed** by default.
+They must be enabled and configured using the VEE Port Editor.
 
-      VEE Port modules provided by :ref:`MicroEJ Generic Packs <pack_generic>` are automatically installed during the :ref:`VEE Port build <platform_build>` 
-      and do not require extra configuration. They are not displayed in the VEE Port Editor.
+Before opening the VEE Port Editor, the VEE Port must have been built once to let :ref:`mmm` resolve and download MicroEJ Architecture and Packs locally.
+Then import them in the SDK as follows:
 
-      VEE Port modules provided by :ref:`MicroEJ Architectures <architecture_overview>`, :ref:`MicroEJ Architecture Specific Packs <pack_architecture_specific>`
-      and :ref:`Legacy MicroEJ Generic Packs <pack_generic_legacy>` are **not installed** by default.
-      They must be enabled and configured using the VEE Port Editor.
+- Select :guilabel:`File` > :guilabel:`Import` > :guilabel:`MicroEJ` > :guilabel:`Architectures`,
+- Browse :guilabel:`myplatform-configuration/target~/dependencies` folder (contains ``.xpf`` and ``.xpfp`` files once the VEE Port is built),
+- Check the :guilabel:`I agree and accept the above terms and conditions...` box to accept the license,
+- Click on :guilabel:`Finish` button. This may take some time.
 
-      Before opening the VEE Port Editor, the VEE Port must have been built once to let :ref:`mmm` resolve and download MicroEJ Architecture and Packs locally.
-      Then import them in the SDK as follows:
+Once imported, double-click on the :guilabel:`default.platform` file to open the VEE Port Editor.
 
-      - Select :guilabel:`File` > :guilabel:`Import` > :guilabel:`MicroEJ` > :guilabel:`Architectures`,
-      - Browse :guilabel:`myplatform-configuration/target~/dependencies` folder (contains ``.xpf`` and ``.xpfp`` files once the VEE Port is built),
-      - Check the :guilabel:`I agree and accept the above terms and conditions...` box to accept the license,
-      - Click on :guilabel:`Finish` button. This may take some time.
+From the VEE Port Editor, select the :guilabel:`Content` tab to access the
+modules selection.  VEE Port modules can be selected/deselected from the :guilabel:`Modules` frame.
 
-      Once imported, double-click on the :guilabel:`default.platform` file to open the VEE Port Editor.
+VEE Port modules are organized in groups.
+When a group is selected, by default all its modules are selected.
+To view all the modules making up a group, click on the Expand All icon on the top-right of the frame. 
+This will let you select/deselect on a per-module basis. Note that individual module selection is not
+recommended and that it is only available when the module has been
+imported.
 
-      From the VEE Port Editor, select the :guilabel:`Content` tab to access the
-      modules selection.  VEE Port modules can be selected/deselected from the :guilabel:`Modules` frame.
+The description and contents of an item (group or module) are displayed
+next to the list when an item is selected.
 
-      VEE Port modules are organized in groups.
-      When a group is selected, by default all its modules are selected.
-      To view all the modules making up a group, click on the Expand All icon on the top-right of the frame. 
-      This will let you select/deselect on a per-module basis. Note that individual module selection is not
-      recommended and that it is only available when the module has been
-      imported.
+All the selected VEE Port modules will be installed in the VEE Port.
 
-      The description and contents of an item (group or module) are displayed
-      next to the list when an item is selected.
+.. figure:: images/platformConfigurationModules.png
+  :alt: VEE Port Configuration Modules Selection
+  :align: center
 
-      All the selected VEE Port modules will be installed in the VEE Port.
+  VEE Port Configuration Modules Selection
 
-      .. figure:: images/platformConfigurationModules.png
-        :alt: VEE Port Configuration Modules Selection
-        :align: center
+Each selected VEE Port module can be customized by creating a :guilabel:`[module]`
+folder (named after the module name), next to the :guilabel:`.platform` file definition. 
+It may contain:
 
-        VEE Port Configuration Modules Selection
+- A :guilabel:`[module].properties` file named after the module name.
+  These properties will be injected in the execution context prefixed
+  by the module name. Some properties might be needed for the
+  configuration of some modules. Please refer to the modules
+  documentation for more information.
+- A :guilabel:`bsp.xml` file which provides additional information about the BSP
+  implementation of Low Level APIs.
 
-      Each selected VEE Port module can be customized by creating a :guilabel:`[module]`
-      folder (named after the module name), next to the :guilabel:`.platform` file definition. 
-      It may contain:
+  This file must start with the node ``<bsp>``. It can contain several 
+  lines like this one:
+  ``<nativeName="A_LLAPI_NAME" nativeImplementation name="AN_IMPLEMENTATION_NAME"/>``
 
-      - A :guilabel:`[module].properties` file named after the module name.
-        These properties will be injected in the execution context prefixed
-        by the module name. Some properties might be needed for the
-        configuration of some modules. Please refer to the modules
-        documentation for more information.
-      - A :guilabel:`bsp.xml` file which provides additional information about the BSP
-        implementation of Low Level APIs.
+  where:
 
-        This file must start with the node ``<bsp>``. It can contain several 
-        lines like this one:
-        ``<nativeName="A_LLAPI_NAME" nativeImplementation name="AN_IMPLEMENTATION_NAME"/>``
+  -  ``A_LLAPI_NAME`` refers to a Low Level API native name. It is 
+      specific to the MicroEJ C library which provides the Low Level API.
 
-        where:
+  -  ``AN_IMPLEMENTATION_NAME`` refers to the implementation name of the
+      Low Level API. It is specific to the BSP; and more specifically, to
+      the C file which does the link between the MicroEJ C library and the
+      C driver.
 
-        -  ``A_LLAPI_NAME`` refers to a Low Level API native name. It is 
-            specific to the MicroEJ C library which provides the Low Level API.
+  These files will be converted into an internal format during the
+  MicroEJ Platform build.
 
-        -  ``AN_IMPLEMENTATION_NAME`` refers to the implementation name of the
-            Low Level API. It is specific to the BSP; and more specifically, to
-            the C file which does the link between the MicroEJ C library and the
-            C driver.
+-  Optional module specific files and folders
 
-        These files will be converted into an internal format during the
-        MicroEJ Platform build.
+Modifying one of these files requires to :ref:`build the Platform <platform_build>` again.
 
-      -  Optional module specific files and folders
+.. note::
 
-      Modifying one of these files requires to :ref:`build the Platform <platform_build>` again.
-
-      .. note::
-
-        It is possible to quickly rebuild the Platform from the Platform Editor if only the Platform module configuration has changed.
-        Click on the :guilabel:`Build Platform` link on the :guilabel:`Overview` tab of the Platform Editor.
-
-   .. group-tab:: SDK 6
-
-      VEE Port modules provided by Architecture and Packs are automatically installed during the VEE Port build, except for the 2 following modules:
-
-      - ``extensible``
-      - ``externalResources``
-
-    The modules can be enabled/disabled by setting the right properties in a properties file in the ``configuration`` folder:
-
-      - in the VEE Port configuration project, create a folder named ``configuration`` if it does not exist,
-      - in this folder, create a properties file. It can be named as you wish since all properties file in this folder are loaded.
-      - add the property ``com.microej.runtime.<module>.<feature>.enabled=true|false`` for each module that must be enabled/diabled.
-        The ``<feature>`` is optional. When no feature is defined, the whole module is enabled/disabled.
-        Here are some examples::
-
-          // Enable the "extensible" module
-          com.microej.runtime.extensible.enabled=true
-
-          // Enable the "externalResources" module
-          com.microej.runtime.externalResources.enabled=true
-
-          // Disable the "display_decoder_bmpm" feature of the "ui" module
-          com.microej.runtime.ui.display_decoder_bmpm.enabled=false
-
-          // Disable the "ssl" module
-          com.microej.runtime.ssl.enabled=false
+  It is possible to quickly rebuild the Platform from the Platform Editor if only the Platform module configuration has changed.
+  Click on the :guilabel:`Build Platform` link on the :guilabel:`Overview` tab of the Platform Editor.
 
 
 .. _platformCustomization:
@@ -547,13 +342,12 @@ Files in the dropins folder have priority. If one file has the same
 path and name as a file already installed in the VEE Port, the file from the
 dropins folder will be selected first.
 
-.. note::
-  In SDK 5, VEE Port build can also be customized by updating the :guilabel:`configuration.xml` file
-  next to the :guilabel:`.platform` file. This Ant script can extend one or
-  several of the extension points available. By default, you should not have to change 
-  the default configuration script.
+The VEE Port build can also be customized by updating the :guilabel:`configuration.xml` file
+next to the :guilabel:`.platform` file. This Ant script can extend one or
+several of the extension points available. By default, you should not have to change 
+the default configuration script.
 
-  Modifying one of these files requires to :ref:`build the Platform <platform_build>` again.
+Modifying one of these files requires to :ref:`build the Platform <platform_build>` again.
 
 
 .. _platform_publication:
@@ -561,35 +355,23 @@ dropins folder will be selected first.
 VEE Port Publication
 ====================
 
-.. tabs::
+The publication of the built VEE Port to a :ref:`module repository <module_repository>` is disabled by default.
+It can be enabled by setting the ``skip.publish`` property to ``false`` in the ``module.properties`` file of 
+the VEE Port configuration project .
 
-   .. group-tab:: SDK 5
+The publication is kept disabled by default in the project sources because developers usually use the locally built VEE Port in the workspace.
+However, the publication is required in a Continuous Integration environment. 
+This can be done by leaving the ``skip.publish`` property to ``true`` in the project sources 
+and by overwriting it in the command launched by the Continuous Integration environment, for example:
 
-      The publication of the built VEE Port to a :ref:`module repository <module_repository>` is disabled by default.
-      It can be enabled by setting the ``skip.publish`` property to ``false`` in the ``module.properties`` file of 
-      the VEE Port configuration project .
+.. code-block:: sh
 
-      The publication is kept disabled by default in the project sources because developers usually use the locally built VEE Port in the workspace.
-      However, the publication is required in a Continuous Integration environment. 
-      This can be done by leaving the ``skip.publish`` property to ``true`` in the project sources 
-      and by overwriting it in the command launched by the Continuous Integration environment, for example:
+  mmm publish shared -Dskip.publish=false
 
-      .. code-block:: sh
-
-        mmm publish shared -Dskip.publish=false
-
-      If the VEE Port is configured with :ref:`Full BSP connection <bsp_connection>`, the build script can be launched 
-      to validate that the BSP successfully compiles and links before the VEE Port is published. 
-      It can be enabled by setting the ``com.microej.platformbuilder.bsp.build.enabled`` property to ``true`` 
-      in the ``module.properties`` file of the VEE Port configuration project (defaults to ``false`` if not set).
-
-   .. group-tab:: SDK 6
-
-      The publication of a VEE Port is done, as any other Gradle project, by executing the ``publish`` task.
-
-      An important point is that publishing a VEE Port does not publish the built VEE Port, 
-      it publishes all the configuration, dropins and BSP files of the project.
-      The VEE Port is then built on the fly when it is required (when building the Executable of an Application for example).
+If the VEE Port is configured with :ref:`Full BSP connection <bsp_connection>`, the build script can be launched 
+to validate that the BSP successfully compiles and links before the VEE Port is published. 
+It can be enabled by setting the ``com.microej.platformbuilder.bsp.build.enabled`` property to ``true`` 
+in the ``module.properties`` file of the VEE Port configuration project (defaults to ``false`` if not set).
 
 BSP Connection
 ==============
