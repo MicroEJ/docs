@@ -15,8 +15,8 @@ On top of a MicroEJ Architecture can be imported MicroEJ Packs which provide add
 -  :ref:`File System <pack_fs>`,
 -  etc.
 
-Each MicroEJ Pack is optional and can be selected on demand during the
-:ref:`MicroEJ Platform configuration <platform_configuration_creation>` step.
+Each MicroEJ Pack is optional and can be selected on demand in the VEE Port configuration.
+Refer to :ref:`SDK 6 <sdk_6_veeport_pack_import>` or :ref:`SDK 5 <platform_configuration_creation>` documentation to learn how to do it.
 
 Naming Convention
 =================
@@ -83,7 +83,7 @@ Legacy Generic Pack
 ~~~~~~~~~~~~~~~~~~~
 
 Legacy MicroEJ Generic Packs files end with the ``.xpfp`` extension.
-These Packs contain one or more Platform modules. See :ref:`platform_module_configuration` for their configuration.  
+These Packs contain one or more VEE Port modules.
 They are classified using the following naming convention:
 
 ::
