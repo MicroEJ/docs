@@ -23,8 +23,6 @@ The first step is to create a VEE Port configuration project:
 
 .. tabs::
 
-    .. tab:: Android Studio
-
     .. tab:: IntelliJ IDEA
 
         - Select :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...`,
@@ -62,6 +60,9 @@ The first step is to create a VEE Port configuration project:
             dependencies {
                 
             }
+        
+        - Create an empty file named ``configuration.properties`` at the root of the project.
+          This file allows to configure all the components of the VEE Port.
 
         You should get a VEE Port configuration project that looks like:
 
@@ -69,6 +70,7 @@ The first step is to create a VEE Port configuration project:
             :alt: VEE Port Project Skeleton
             :align: center
 
+    .. tab:: Android Studio
 
     .. tab:: Eclipse
 
@@ -119,7 +121,8 @@ Runtime Capability
 ------------------
 
 Depending on the selected Architecture, several Runtime Capabilities are available: ``mono``, ``multi`` or ``tiny``.
-The Capability used for the VEE Port can be defined thanks to the ``com.microej.runtime.capability`` property in the configuration file of the VEE Port Configuration project::
+The Capability used for the VEE Port can be defined thanks to the ``com.microej.runtime.capability`` property 
+in the ``configuration.properties`` file of the VEE Port Configuration project::
 
   com.microej.runtime.capability=multi
 
@@ -215,8 +218,9 @@ They are all automatically installed during the VEE Port build, but can de disab
 This is not the case for the Generic Packs, which always contain only one module.
 Therefore, if you want to disable the module of a Generic Pack, simply remove the Pack dependency.
 
-The modules of the Architecture Specific Packs and Legacy Packs can be enabled/disabled in the configuration file of the VEE Port Configuration project 
-by adding the property ``com.microej.runtime.<module>.<feature>.enabled=true|false`` for each module that must be enabled/disabled.
+The modules of the Architecture Specific Packs and Legacy Packs can be enabled/disabled in the ``configuration.properties`` 
+file of the VEE Port Configuration project by adding the property ``com.microej.runtime.<module>.<feature>.enabled=true|false`` 
+for each module that must be enabled/disabled.
 The ``<feature>`` is optional. When no feature is defined, the whole module is enabled/disabled.
 Here are some examples::
 
@@ -231,7 +235,7 @@ Here are some examples::
 Packs Configuration
 ===================
 
-Packs can be configured in the properties file of the VEE Port Configuration project.
+Packs can be configured in the ``configuration.properties`` file of the VEE Port Configuration project.
 Each Pack provides a set of option which follows the pattern name ``com.microej.pack.<module>.<option>=<value>``.
 Here are some examples::
 
