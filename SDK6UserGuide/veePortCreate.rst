@@ -249,16 +249,16 @@ Here are some examples::
 VEE Port Usage
 ==============
 
-Depending on your use case, there are different way to use the VEE Port.
+Depending on your use case, there are different ways to use the VEE Port.
 
-VEE Port inside a multi-project
--------------------------------
+VEE Port project inside a multi-project
+---------------------------------------
 
-When the VEE Port is in the same multi-project than the component which needs it (an Application for example), 
+When the VEE Port project is in the same multi-project than the component which needs it (an Application for example), 
 the VEE Port project should be declared as a project dependency.
 
 For example if the multi-project contains an Application subproject named ``my-app`` and a VEE Port configuration subproject called ``my-veeport-configuration``,
-the VEE Port must be declared as a dependency in the ``build.gradle.kts`` file of the ``my-app`` subproject as follows::
+the VEE Port project must be declared as a dependency in the ``build.gradle.kts`` file of the ``my-app`` subproject as follows::
 
     dependencies {
 
@@ -271,10 +271,18 @@ For example when running the Application on the Simulator (with the ``runOnSimul
 or when building the Application Executable (with the ``buildExecutable``),
 the VEE Port will be built before executing the requested task.
 
-Local VEE Port ouside a multi-project
--------------------------------------
+Local VEE Port project outside a multi-project
+----------------------------------------------
 
-// TODO Not possible to declare it as a project dependency ? Requires to build it before with "buildVeePort" task ?
+When the VEE Port project is in the same repository than the the component which needs it (an Application for example), 
+the VEE Port project can be import thanks to the `Gradle Composite Build <https://docs.gradle.org/current/userguide/composite_builds.html>`_ feature.
+
+This allows to consider the VEE Port project as part of the Application project, 
+so all changes done to the VEE Port are automatically considered when building or running the Application.
+
+This is done by adding the following line in the ``settings.gradle.kts`` file of the Application project::
+
+  includeBuild("[vee-port-project-absolute-path")
 
 Published VEE Port
 ------------------
