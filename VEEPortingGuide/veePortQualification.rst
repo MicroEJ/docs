@@ -115,7 +115,7 @@ A Test Suite contains one or more tests. For each test, the Test Suite Engine wi
 Test Suite Versioning
 =====================
 
-Foundation Libraries are integrated in a VEE Port using Packs (see :ref:`pack_import`).
+Foundation Libraries are integrated in a VEE Port using :ref:`Packs <pack_overview>`.
 Use the Test Suite version compliant with the API version provided by the Foundation Library 
 to validate the Abstraction Layer implementation.
 For example, the `Test Suite FS module 3.0.3`_ should be used to validate the Abstraction Layer 
