@@ -65,13 +65,13 @@ The `EDC API Module`_ must be added to the project build file of the Application
 
 .. tabs::
 
-   .. tab:: Gradle (build.gradle.kts)
+   .. tab:: SDK 6
 
       .. code-block:: java
 
          implementation("ej.api:edc:1.3.5")
 
-   .. tab:: MMM (module.ivy)
+   .. tab:: SDK 5
 
       .. code-block:: xml
 
@@ -119,13 +119,13 @@ Project to use the `BON API Module`_:
 
 .. tabs::
 
-   .. tab:: Gradle (build.gradle.kts)
+   .. tab:: SDK 6
 
       .. code-block:: java
 
          implementation("ej.api:edc:1.3.5")
 
-   .. tab:: MMM (module.ivy)
+   .. tab:: SDK 5
 
       .. code-block:: xml
 
