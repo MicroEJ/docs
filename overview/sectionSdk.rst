@@ -1,5 +1,5 @@
 MICROEJ SDK
-===========
+-----------
 
 MICROEJ SDK offers a comprehensive toolset to build the embedded software of
 a device. The SDK covers two levels in device software development:
