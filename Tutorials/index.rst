@@ -6,21 +6,21 @@ Training
 
 Welcome to the MicroEJ training courses!
 
-This documentation provides online courses to learn the essentials of
+This documentation offers online courses to help you learn the essentials of
 Firmware development using MICROEJ SDK.
 
-From Beginners training to more advanced ones, you will get a solid
-understanding of Application development using MICROEJ SDK and
-MICROEJ VEE integration on custom devices. In addition, you will discover
-the feature-rich ecosystem provided to developers to ease developments on a daily basis.
+Whether you're a beginner or more advanced, you will gain a solid 
+understanding of Application development using MICROEJ SDK and 
+MICROEJ VEE integration on custom devices.
+Additionally, you will discover the feature-rich ecosystem provided to developers to ease developments on a daily basis.
 
-Each training announces its prerequisites. 
-For those including hands-on, it may be required to use one of those development kits:
+Each training will specify its prerequisites. 
+For courses involving hands-on activities, you may need to use one of the following development kits:
 
 - `NXP i.MX RT1170 Evaluation Kit <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__.
 - `STM32F7508-DK Evaluation Kit <https://www.st.com/en/evaluation-tools/stm32f7508-dk.html>`__.
 
-Otherwise, the hands-on can be fully completed using MICROEJ SDK Simulator.
+Alternatively, the hands-on activities can be fully completed using MICROEJ SDK Simulator.
 
 .. _training_for_beginners:
 
@@ -48,9 +48,9 @@ Basics
                   <img src="../_static/images/training/training_sdk_veeport.jpg" alt="MICROEJ SDK Basics">
                </div>
                <h3 class="training_title">MICROEJ SDK Basics</h3>
-               <p class="training_description">In this training, you will get an introduction to MicroEJ ecosystem.
-               You will create your first application project,
-               run it on Simulator and on Device using MICROEJ SDK.
+               <p class="training_description">This training session introduces you to the MicroEJ ecosystem, 
+               guiding you through the process of creating your first application project. 
+               You will run your project on both a simulator and an actual device using MICROEJ SDK.
                </p>
                <a class="training_learn_more_link" href="trainingSdkBasics.html">Learn more</a>
             </div>

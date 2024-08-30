@@ -11,7 +11,7 @@ In this training, you will follow the typical steps followed by
 a Firmware developer integrating MICROEJ VEE on 
 a target device.
 
-What you will learn:
+What you will do:
 
 - Get a running "HelloWorld" in C.
 - Install a MicroEJ Architecture that matches the target device/RTOS/toolchain.
@@ -25,13 +25,15 @@ No Evaluation kit is required to follow this training. Everything is emulated on
 Intended Audience
 =================
 
-This training is for developers wishing to familiarize themselves with the MicroEJ Development flow.
+This training is designed for developers who want to gain a first understanding of MICROEJ VEE Port flow.
 
 Prerequisites
 =============
 
-- Knowledge of C programming language.
-- Experience in embedded software development.
+To get the most out of this training, participants should have:
+
+- A basic knowledge of C programming language.
+- An experience in embedded software development.
 
 Training Resources
 ==================

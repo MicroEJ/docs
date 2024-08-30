@@ -14,13 +14,15 @@ Evaluation kit is optional to complete this training, it can be fully done on MI
 Intended Audience
 =================
 
-This training is for developers wishing to develop Applications with a network connectivity.
+This training is designed for developers who want to create Applications with network connectivity.
 
 Prerequisites
 =============
 
-- Knowledge of Java programming language.
-- Knowledge of networking concepts.
+To get the most out of this training, participants should have:
+
+- A basic knowledge of Java programming language.
+- A basic knowledge of networking concepts.
 
 Training Resources
 ==================

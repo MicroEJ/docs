@@ -17,21 +17,23 @@ What you will learn:
 
 - Reminder of Foundation Libraries architecture.
 - Test Suite role in Abstraction Layer validation.
-- Run a Test Suite on a Device
+- Running a Test Suite on a Device
 
 Intended Audience
 =================
 
-The audience for this document is for VEE Port developers 
+This training is designed for VEE Port developers
 who want to validate an Abstraction Layer implementation
 or understand how to automatically run a Test Suite on their device.
 
 Prerequisites
 =============
 
-- Good knowledge of the :ref:`overview` section.
-- Good knowledge of the :ref:`chapter-glossary`.
-- `ESP-WROVER-KIT V4.1 Evaluation Kit <https://docs.espressif.com/projects/esp-idf/en/stable/esp32/hw-reference/esp32/get-started-wrover-kit.html#get-started-esp-wrover-kit-v4-1-board-front>`_.
+To get the most out of this training, participants should have:
+
+- A good understanding of the :ref:`overview` section.
+- A basic knowledge of the :ref:`chapter-glossary`.
+- Access to the `ESP-WROVER-KIT V4.1 Evaluation Kit <https://docs.espressif.com/projects/esp-idf/en/stable/esp32/hw-reference/esp32/get-started-wrover-kit.html#get-started-esp-wrover-kit-v4-1-board-front>`_.
 
 Training Resources
 ==================

@@ -19,7 +19,7 @@ This training is for developers wishing to develop GUI Applications in MICROEJ V
 Prerequisites
 =============
 
-- Knowledge of Java programming language.
+To get the most out of this training, participants should have a good knowledge of Java programming language.
 
 Implementing GUIs Efficiently
 ------------------------------

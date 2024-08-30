@@ -13,17 +13,19 @@ It also presents debugging methods applied to two concrete uses cases (GUI appli
 Intended Audience
 =================
 
-The audience for this document is for developers who want to learn about the tools available to debug embedded applications.
+This training is designed for developers who want to learn about the tools available for debugging embedded applications.
 
-In addition, the :ref:`tutorial_discover_embedded_debugging_techniques.use_case_1` is particularly relevant for Application Developers.
-Whereas the :ref:`tutorial_discover_embedded_debugging_techniques.use_case_2` is more relevant for VEE Port Developers.
+Specifically, :ref:`tutorial_discover_embedded_debugging_techniques.use_case_1` is particularly relevant for Application Developers,
+while :ref:`tutorial_discover_embedded_debugging_techniques.use_case_2` is more applicable to VEE Port Developers.
 
 Prerequisites
 =============
 
-- Good knowledge of the :ref:`overview` section.
-- Good knowledge of the :ref:`chapter-glossary`.
-- `STM32F7508-DK Evaluation Kit <https://www.st.com/en/evaluation-tools/stm32f7508-dk.html>`__.
+To get the most out of this training, participants should have:
+
+- A good understanding of the :ref:`overview` section.
+- A basic knowledge of the :ref:`chapter-glossary`.
+- Access to the `STM32F7508-DK Evaluation Kit <https://www.st.com/en/evaluation-tools/stm32f7508-dk.html>`__.
 
 Training Resources
 ==================

@@ -13,13 +13,16 @@ in order to enhance application development on Simulator.
 Intended Audience
 =================
 
-This training is for developers wishing to familiarize themselves with the MicroEJ Development flow.
+This training is designed for developers who want to gain a first understanding of 
+extending the Simulator with mocks.
 
 Prerequisites
 =============
 
-- Good knowledge of the :ref:`overview` section.
-- Good knowledge of the :ref:`chapter-glossary`.
+To get the most out of this training, participants should have:
+
+- A good understanding of the :ref:`overview` section.
+- A basic knowledge of the :ref:`chapter-glossary`.
 
 Training Resources
 ==================

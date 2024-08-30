@@ -13,12 +13,12 @@ This training is raster-oriented.
 
 What you will learn:
 
-- Compose a GUI using widgets
-- Tune the look of widgets using style, images and fonts
-- Change the rendering of widgets
-- Interact with the GUI (e.g., touch or button)
-- Animate a GUI
-- Qualify a GUI:
+- Composing a GUI using widgets
+- Tuning the look of widgets using style, images and fonts
+- Changing the rendering of widgets
+- Interacting with the GUI (e.g., touch or button)
+- Animating a GUI
+- Qualifying a GUI:
 
   - Benchmarking
   - Debugging
@@ -29,13 +29,15 @@ Using an evaluation kit is optional to complete this training, as it can be full
 Intended Audience
 =================
 
-This training is for developers wishing to develop GUI Applications with MicroEJ.
+This training is designed for developers who want to develop GUI Applications with MicroEJ.
 
 Prerequisites
 =============
 
-- Knowledge of the Java programming language.
-- Knowledge of common GUI software design patterns.
+To get the most out of this training, participants should have:
+
+- A good knowledge of the Java programming language.
+- A basic understanding of common GUI software design patterns.
 
 Training Resources
 ==================

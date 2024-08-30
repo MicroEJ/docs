@@ -14,13 +14,15 @@ from VEE RTOS context to another RTOS task context.
 Intended Audience
 =================
 
-This training is for VEE Port Developers wishing to go into blocking native method implementation in depth. 
+This training is designed for VEE Port developers who want to explore blocking native method implementation in depth.
 
 Prerequisites
 =============
 
-- Knowledge of C programming language.
-- Knowledge of :ref:`sni` concepts.
+To get the most out of this training, participants should have:
+
+- A good knowledge of C programming language.
+- A good understanding of :ref:`sni` concepts.
 
 Training Resources
 ==================

@@ -11,12 +11,12 @@ This training explains how to analyze the memory footprint of an application and
 Intended Audience
 -----------------
 
-The audience for this document is Java engineers and Firmware integrators who are going to execute a MicroEJ Application on a memory-constrained device.
+This training is designed for Java engineers and Firmware integrators who want to execute a MicroEJ Application on a memory-constrained device.
 
 Prerequisites
 -------------
 
-- Knowledge of Java programming language.
+To get the most out of this training, participants should have a good knowledge of Java programming language.
 
 Introduction
 ------------

@@ -16,15 +16,17 @@ What you will learn:
 Intended Audience
 =================
 
-This training is for developers wishing to familiarize themselves with Applications Development in a Multi-Sandbox context.
+This training is designed for developers who want to gain a first understanding of Application development in a Multi-Sandbox context.
 
 Prerequisites
 =============
 
-- `STM32F7508-DK Evaluation Kit <https://www.st.com/en/evaluation-tools/stm32f7508-dk.html>`__.
-- Mini USB cable.
-- Micro SD card.
-- Ethernet cable.
+To get the most out of this training, participants should have access to:
+
+- The `STM32F7508-DK Evaluation Kit <https://www.st.com/en/evaluation-tools/stm32f7508-dk.html>`__.
+- A mini USB cable.
+- A micro SD card.
+- An ethernet cable.
 
 Training Resources
 ==================
@@ -32,7 +34,7 @@ Training Resources
 Unit 1: Sandboxed Application Training
 --------------------------------------
 
-This training is provided in PDF format:
+This training is provided as a PDF:
 
 - :download:`Slides: Sandboxed Application Development <https://repository.microej.com/packages/training/DEV-M0127_0001_Sandboxed_Applications_SDK5_2.1-RC20240820.pdf>` (for MICROEJ SDK 5)
 

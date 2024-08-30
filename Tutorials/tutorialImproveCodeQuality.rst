@@ -12,19 +12,19 @@ It makes up a minimum consistent set of rules which can be applied in any situat
 Intended Audience
 -----------------
 
-The audience for this document is for Application Developers developing any kind of Java code (application or library).
+This training is designed for Application developers who want to enhance the quality of their Java code.
 
 Prerequisites
 -------------
 
-- Knowledge of Java programming language.
+To get the most out of this training, participants should have a good knowledge of Java programming language.
 
 Readable Code
 -------------
 
 This section describes rules to get a readable code, in order to facilitate:
 
-- the maintenance of an existing code with multiple developers contributions (e.g. merge conflicts, reviews). 
+- the maintenance of an existing code with multiple developers contributions (e.g., merge conflicts, reviews). 
 - the landing to a new code base when the same rules are applied across different modules and components.
 
 Naming Convention

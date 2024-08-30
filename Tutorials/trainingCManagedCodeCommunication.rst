@@ -13,25 +13,27 @@ to perform C / Managed Code communication using Native Interface Mechanisms.
 What you will learn:
 
 - SNI Overview
-- Expose a C API in Java
+- Exposing a C API in Java
 - Immortal Arrays
 - Error Management
 - Blocking Functions and Asynchronous Code
-- Reference C resources from Managed Code
-- C / Managed Code Communication libraries overview: Event Queue, UI Pump, Shielded Plug
+- Referencing C resources from Managed Code
+- Overview of C / Managed Code Communication libraries: Event Queue, UI Pump, Shielded Plug
 
 Intended Audience
 =================
 
-The audience for this document is for developers who want to learn more about communication mechanisms between C and Managed Code.
+This training is designed for developers who want to learn about communication mechanisms between C and Managed Code.
 
 Prerequisites
 =============
 
-- Good knowledge of the :ref:`overview` section.
-- Good knowledge of the :ref:`chapter-glossary`.
-- Knowledge of C programming language.
-- Knowledge of Java programming language.
+To get the most out of this training, participants should have:
+
+- A good understanding of the :ref:`overview` section.
+- A basic knowledge of the :ref:`chapter-glossary`.
+- A basic knowledge of C programming language.
+- A basic knowledge of Java programming language.
 
 Training Resources
 ==================
@@ -39,13 +41,13 @@ Training Resources
 Unit 1: C / Managed Code Communication with MICROEJ VEE
 -------------------------------------------------------
 
-This training provides an in depth view of the different ways to perform
+This training provides a comprehensive overview of the various methods for 
 C / Managed Code communication:
 
 - :download:`Slides: C / Managed Code Communication with MICROEJ VEE <https://repository.microej.com/packages/training/DEV-M0127_0030-PRE-C_Managed_Code_Communication-1.4-RC20240820.pdf>`
 
-Unit 2: Implement a Blocking Java Native Method with SNI
---------------------------------------------------------
+Unit 2: Implementing a Blocking Java Native Method with SNI
+-----------------------------------------------------------
 
 This training describes a use case showing 
 how to properly implement a blocking native method:

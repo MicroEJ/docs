@@ -13,7 +13,7 @@ in a Multi-Sandbox context.
 What you will learn:
 
 - Introduction to Kernel & Features concepts
-- Run a Sandboxed Application on a Kernel
+- Running a Sandboxed Application on a Kernel
 - Sandboxing notions
 - Kernel services
 - Building Kernel modules
@@ -22,14 +22,16 @@ What you will learn:
 Intended Audience
 =================
 
-This training is for developers wishing to familiarize themselves with Kernel development.
+This training is designed for developers who want to gain a first understanding of Kernel development.
 
 Prerequisites
 =============
 
-- `STM32F7508-DK Evaluation Kit <https://www.st.com/en/evaluation-tools/stm32f7508-dk.html>`__.
-- Mini USB cable.
-- Micro SD card.
+To get the most out of this training, participants should have access to:
+
+- The `STM32F7508-DK Evaluation Kit <https://www.st.com/en/evaluation-tools/stm32f7508-dk.html>`__.
+- A mini USB cable.
+- A micro SD card.
 
 Training Resources
 ==================
