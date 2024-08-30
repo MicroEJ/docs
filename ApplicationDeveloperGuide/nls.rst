@@ -1,7 +1,7 @@
 .. _chapter.nls:
 
-Native Language Support
-=======================
+Native Language Support (NLS)
+=============================
 
 Introduction
 ------------

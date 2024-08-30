@@ -327,6 +327,20 @@ Now your Evaluation license is installed, you can relaunch your application buil
 
 The gradle task deploys the MicroEJ application in the BSP and then builds the BSP using Make.
 
+.. warning::
+
+    On Windows, the build may fail because of file path length limit exceeded with following error message:
+
+    .. code-block::
+
+       arm-none-eabi-gcc.exe: fatal error: no input Files
+
+    In this case, shorten the build directory path in ``./watch-vg/build.gradle.kts``:
+
+    .. code-block:: kotlin
+
+       buildDir = file("C:/Demo-Wearable-VG/build")
+
 The :guilabel:`Demo-Wearable-VG` application is built and ready to be flashed on i.MX RT595 Evaluation Kit once the hardware setup is completed.
 
 Flash the Application on the i.MX RT595 Evaluation Kit

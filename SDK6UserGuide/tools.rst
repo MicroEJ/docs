@@ -61,6 +61,7 @@ The following sections describe the IDE tools and their options:
    heapAnalyzer
    ../ApplicationDeveloperGuide/UI/MicroUI/fontDesigner
    localDeployTool
+   serialToSocketTransmitter
    nullAnalysis
 
 ..
