@@ -6,7 +6,6 @@ Tutorials
 .. toctree::
    :maxdepth: 1
 
-   tutorialCreateCustomPlatform
    tutorialCreateFirmwareFromScratch
    tutorialCreatePlatformBuildAndRunScripts
    tutorialSetupBuildUsingJenkinsAndArtifactory
