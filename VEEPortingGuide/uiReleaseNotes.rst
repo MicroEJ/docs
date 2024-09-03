@@ -115,8 +115,10 @@ The following table describes Foundation Libraries API versions implemented in M
 Abstraction Layer Interface
 ===========================
 
-The following sections briefly describes Abstraction Layer interface changes.
+The following sections briefly describes Abstraction Layer interface changes (the functions the BSP has to implement).
 For more details, refer to the :ref:`section_ui_migrationguide`.
+
+.. note:: In addition of these functions, some C modules must be added to the BSP, see :ref:`section_ui_releasenotes_cmodule`.
 
 Display
 """""""
