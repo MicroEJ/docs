@@ -503,9 +503,9 @@ returned as specified by [JLS].
       - ``K``
       - ``true``
    - 
-      - ``F\ i``
+      - ``Fi``
       - ``K``
-      - ``F\ j``
+      - ``Fj``
       - ``i==j``
 
         If the same resource name is declared by both the Kernel and
@@ -517,9 +517,9 @@ returned as specified by [JLS].
       - ``K``
       - ``false``
    - 
-      - ``F\ i``
-      - ``F\ i``
-      - ``F\ j``
+      - ``Fi``
+      - ``Fi``
+      - ``Fj``
       - ``i==j``
 
 
