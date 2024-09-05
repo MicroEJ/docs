@@ -775,191 +775,69 @@ and closed when the Feature is stopped.
 Communication Between Features
 ------------------------------
 
-Introduction
-~~~~~~~~~~~~
+A Feature can communicate with another Feature using :ref:`Shared Interfaces <chapter.shared.interfaces>`.
+This section explains the execution semantics and advanced configuration from the Kernel's perspective.
 
-A Feature can communicate with another Feature, through a remote method
-invocation mechanism based on pure Java interfaces.
+Method Binding
+~~~~~~~~~~~~~~
 
 A Feature can call a method owned by another Feature, provided:
 
--  Both Features own an interface in their class space with the same fully qualified name
+-  Both Features own an interface in their class space with the same fully qualified name.
 
--  Both Features have declared such interface as a shared interface
+-  Both Features have declared such interface as a Shared Interface.
 
--  The source Feature has declared a Proxy class for its shared interface
+-  The source Feature has declared a Proxy class for its Shared Interface.
 
--  The target Feature has registered to the Kernel an instance of a class implementing its shared interface
+-  The target Feature has registered to the Kernel an instance of a class implementing its Shared Interface.
 
--  The source Feature has requested from the Kernel an instance of a class implementing its interface
+-  The source Feature has requested from the Kernel an instance of a class implementing its interface.
 
--  The Kernel has bound the source interface to the target instance and returned an instance to the source Feature, implementing its shared interface
+-  The Kernel has bound the source interface to the target instance and returned an instance to the source Feature, implementing its Shared Interface.
 
--  The source Feature calls a method declared in the shared interface using this instance as receiver
+-  The source Feature calls a method declared in the Shared Interface using this instance as receiver.
 
--  A method with the exact descriptor exists in the target Feature interface
+-  A method with the exact descriptor exists in the target Feature interface.
 
--  The arguments given by the source Feature can be transferred to the target Feature
+-  The arguments given by the source Feature can be transferred to the target Feature.
 
--  The value returned by the target Feature can be transferred to the source Feature (if the method does not return ``void``)
-
-Shared Interface Declaration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To declare an interface as a shared interface, it must be registered in
-a shared interfaces file, as following:
-
-.. code-block:: xml
-  :caption: Illustration 8: Shared Interface Declaration Example
-
-  <sharedInterfaces>
-    <sharedInterface name="mypackage.MyInterface"/>
-  </sharedInterfaces>
-
+-  The value returned by the target Feature can be transferred to the source Feature (if the method does not return ``void``).
 
 Section :ref:`sharedinterfacefileformat` describes the Shared Interface file format specification.
-
-An interface declared as Shared Interface can extends Feature interfaces
-(which are not declared as Shared Interfaces) or Kernel interfaces.
-
-A Shared Interface is composed of all methods declared by itself and its
-super types. Each method must comply with the following:
-
--  types declared for parameters and optional return value must be transferable types (see section :ref:`transferabletypes`)
-
--  exceptions thrown must be owned by the Kernel
-
-Proxy Class
-~~~~~~~~~~~
-
-In addition to the Shared Interface declaration, a Proxy class must be
-implemented, with the following specification:
-
--  its fully qualified name is the shared interface fully qualified name append with ``Proxy``.
-
--  it extends `Proxy`_
-
--  it implements the Shared Interface
-
--  it provides an implementation of all interface methods
-
-As the Proxy is implemented by the Feature that will use the Shared
-Interface, it is free to implement the desired behavior and ensure its
-own robustness. Although it is not part of this specification, it is
-strongly encouraged that Proxy methods implementation comply with the
-expected behavior, even when the remote Feature returns an unexpected
-behavior (such as `DeadFeatureException`_ if the remote Feature is
-killed).
-
-Usually, the following template is applied:
-
-.. code-block:: java
-  :caption: Illustration 9: Proxy Method Implementation Template
-
-  try {
-      return invokeXXX();
-  } catch (Throwable e) {
-      // Implement a behavior that complies with the method specification.
-      // i.e. return a valid error code or throw a documented exception.
-      // Logging traces for debug can also be added here.
-  }
-
-
-The ``ej.kf.Proxy.invokeXXX()`` method invokes the target method
-corresponding to the enclosing proxy method. There is one ``invokeXXX``
-method for each returned type (``invokeBoolean``, ``invokeByte``,
-``invokeChar``, ``invokeShort``, ``invokeInt``, ``invokeLong``, ``invokeFloat``,
-``invokeDouble``, ``invokeRef``) and each Proxy method should use the right
-one that matches its return type.
 
 Object Binding
 ~~~~~~~~~~~~~~
 
-The Kernel can bind an object owned by a Feature to an object owned by
-another Feature using the method ``ej.kf.Kernel.bind()``.
+An object owned by a Feature can be bound to an object owned by
+another Feature using the method `Kernel.bind()`_.
 
--  When the target type is owned by the Kernel, the object is converted using the most accurate Kernel type converter.
+-  When the target type is owned by the Kernel, the object is converted using the most accurate :ref:`Kernel type converter <kernelconverter>`.
 
--  When the target type is owned by the Feature, it must be a shared
-   interface. In this case, a Proxy instance is returned. Object
-   identity is preserved across Features: calling
-   ``ej.kf.Kernel.bind()`` multiple times with the same parameters
-   returns the same object.
+-  When the target type is owned by the Feature, it must be a Shared Interface.
+   In this case, an instance of its :ref:`Proxy class <section.proxy.implementation>` is returned. 
 
-.. _transferabletypes:
+Object identity is maintained across Features, so the same proxy instance is returned. 
+If a Proxy is bound to the Feature that owns the reference, the original object is passed instead (Proxy unwrapping).
 
-Arguments Transfer
-~~~~~~~~~~~~~~~~~~
-
-A base type argument is directly passed without conversion (by copy).
-
-A reference argument is subject to conversion rules, according to .
-
-.. list-table:: Table 4 Shared Interface Argument Conversion Rules
-   :header-rows: 1
-   :widths: 3 2 2 8
-
-   - 
-      - Type
-      - Owner
-      - Instance Owner
-      - Transfer Rule
-   - 
-      - Any Class, Array or Interface
-      - Kernel
-      - Kernel
-      - Direct reference is passed to the target Feature.
-   - 
-      - Any Class, Array or Interface
-      - Kernel
-      - Feature
-      - Converted to the target Feature if Kernel has registered a
-        Kernel type converter, otherwise Forbidden. See section :ref:`kernelconverter`.
-   - 
-      - Array of base types
-      - Any
-      - Feature
-      - A new array is allocated in the target Feature and elements are
-        copied into.
-   - 
-      - Array of references
-      - Any
-      - Feature
-      - A new array is allocated in the target Feature and for each
-        element is applied these conversion rules. (recursively).
-   - 
-      - Shared Interface
-      - Feature
-      - Feature
-      - A Proxy to the original object is created and passed to the
-        receiving Feature.
-
-         -  If argument is already a Proxy and the target owner is the
-            same than the target Shared Interface owner, the original
-            object is passed. (unwrapping)
-         -  Otherwise a new Proxy wrapping on the original object is
-            passed.
-   - 
-      - Any Class, Array or Interface
-      - Feature
-      - Feature
-      - Forbidden.
+.. note::
+   
+   The Kernel can manually bind an object using the `Kernel.bind()`_ method.
 
 .. _kernelconverter:
 
 Kernel Type Converters
 ~~~~~~~~~~~~~~~~~~~~~~
 
-By default, Feature instances of types owned by the Kernel cannot be be
+By default, Feature instances of types owned by the Kernel cannot be
 passed across a Shared Interface method invocation.
 
 The Kernel can register a converter for each allowed type, using
-``Kernel.addConverter()``. The converter must implement ``ej.kf.Converter``
+`Kernel.addConverter()`_. The converter must implement `Converter`_
 and can implement one of the following behaviors:
 
--  by wrapper: manually allocating a Proxy reference by calling ``Kernel.newProxy()``
+-  by wrapper: manually allocating a Proxy reference by calling `Kernel.newProxy()`_.
 
--  by copy: with the help of ``Kernel.clone()``
+-  by copy: with the help of `Kernel.clone()`_.
 
 Configuration Files
 -------------------
@@ -1096,9 +974,9 @@ The 6 first fields defined by RFC 2253 (``CN``: commonName,  ``L``: localityName
 
 The certificate file must be configured as following:
 
--  placed beside the related ``[name].kf`` file
+-  placed beside the related ``[name].kf`` file.
 
--  named ``[name].cert``
+-  named ``[name].cert``.
 
 -  ``DER``-encoded and may be supplied in binary or printable (Base64)
    encoding. If the certificate is provided in Base64 encoding, it
@@ -1133,10 +1011,6 @@ the following format:
   </xs:element>
   
   </xs:schema>
-
-
-Shared interface files must appear at the root of any application
-classpath (directory or JAR file).
 
 Kernel Advanced Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1219,6 +1093,7 @@ with the expected behavior.
 .. _NullPointerException: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/NullPointerException.html
 .. _Runnable: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Runnable.html
 .. _FeatureEntryPoint: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/FeatureEntryPoint.html
+.. _Converter: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Converter.html
 .. _Proxy: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html
 .. _Class.forName(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#forName-java.lang.String-
 .. _Class.getResourceAsStream(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getResourceAsStream-java.lang.String-
@@ -1234,6 +1109,10 @@ with the expected behavior.
 .. _Feature.MAX_CRITICALITY: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Feature.html#MAX_CRITICALITY
 .. _Feature.MIN_CRITICALITY: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Feature.html#MIN_CRITICALITY
 .. _FeatureStateListener.stateChanged(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/FeatureStateListener.html#stateChanged-ej.kf.Feature-ej.kf.Feature.State-
+.. _Kernel.bind(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#bind-T-java.lang.Class-ej.kf.Feature-
+.. _Kernel.addConverter() : https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#addConverter-ej.kf.Converter-
+.. _Kernel.clone() : https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#clone-T-ej.kf.Module-
+.. _Kernel.newProxy(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#newProxy-T-ej.kf.Module-
 .. _Kernel.enter(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#enter--
 .. _Kernel.exit(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#exit--
 .. _Kernel.install(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#install-java.io.InputStream-
