@@ -250,7 +250,7 @@ Instance Field References
 
 A type owned by a Feature can refer to all instance fields of a type
 owned by the Kernel, if and only if the type has been exposed as an API
-type and the field is accessible according to [JLS] access control
+type and the field is accessible according to Java access control
 rules.
 
 Static Field References
@@ -348,10 +348,7 @@ Reflective Operations
 ``Class.forName``
 ^^^^^^^^^^^^^^^^^
 
-defines the semantic rules for ``java.lang.Class.forName(String)`` in
-addition to [JLS] specification. If it is not allowed by this
-specification, a ``java.lang.ClassNotFoundException`` is thrown as
-specified by [JLS].
+defines the extended rules for ``java.lang.Class.forName(String)`` to throw a ``java.lang.ClassNotFoundException`` when a type cannot be accessed.
 
 .. list-table:: Table 1: ``Class.forName(...)`` access rules
    :header-rows: 1
@@ -407,8 +404,7 @@ specified by [JLS].
 ``Class.newInstance``
 ^^^^^^^^^^^^^^^^^^^^^
 
-defines the semantic rules for ``java.lang.Class.newInstance(Class)`` in
-addition to [JLS] specification.
+defines the extended rules for ``java.lang.Class.newInstance(Class)``.
 
 .. list-table:: Table 2: ``Class.newInstance(...)`` access rules
    :header-rows: 1
@@ -463,10 +459,8 @@ addition to [JLS] specification.
 ``Class.getResourceAsStream``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-defines the semantic rules for
-``java.lang.Class.getResourceAsStream(String)`` in addition to [JLS]
-specification. If it is not allowed by this specification, ``null`` is
-returned as specified by [JLS].
+defines the extended rules for
+``java.lang.Class.getResourceAsStream(String)`` to return ``null`` when resource is not allowed to be accessed.
 
 .. list-table:: Table 3: ``Class.getResourceAsStream(...)`` access rules
    :header-rows: 1
