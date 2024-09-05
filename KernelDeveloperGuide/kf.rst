@@ -554,7 +554,7 @@ A Feature is in one of the following states:
 
 -  **STARTED**: Feature has been started and is running.
 
--  **STOPPED**: Feature has been stopped and all its owned threads and execution contexts are terminated. The memory and resources are not yet reclaimed. See (:ref:`§ <stopsequence>`) for the complete stop sequence.
+-  **STOPPED**: Feature has been stopped and all its owned threads and execution contexts are terminated. The memory and resources are not yet reclaimed. See section :ref:`stopsequence` for the complete stop sequence.
 
 -  **UNINSTALLED**: Feature has been unlinked from the Kernel.
 
@@ -614,11 +614,11 @@ steps are executed:
 
 -  The alive [2]_ threads owned by the Feature are promoted to ``java.lang.Thread`` objects owned by the Kernel.
 
--  Native resources (files, sockets, …) opened by the Feature [3]_ that remain opened after ``FeatureEntryPoint.stop()`` execution are closed abruptly.
+-  Native resources (files, sockets, …) opened by the Feature that remain opened after ``FeatureEntryPoint.stop()`` execution are closed abruptly.
 
 -  ``FeatureStateListener.stateChanged(...)`` is called for each registered listener.
 
--  If there are no remaining alive objects [4]_:
+-  If there are no remaining alive objects [3]_:
 
    -  Feature state is set to INSTALLED,
 
@@ -626,6 +626,19 @@ steps are executed:
 
 The method ``Feature.stop()`` can be called several times, until the
 Feature is INSTALLED.
+
+.. [1]
+   A decent global timeout stop-time is 2,000ms.
+
+.. [2]
+   An alive thread is a thread in which at least one execution context
+   is alive.
+
+.. [3]
+   If there are remaining alive Feature objects after the Kernel
+   listeners are called, the Feature stays in the ``STOPPED`` state
+   forever (the Kernel has an issue)
+
 
 Deinstallation
 ~~~~~~~~~~~~~~
@@ -687,7 +700,7 @@ form the global name space.
 
 A Kernel API type (from the global name space) always takes precedence
 over a Feature type with the same fully qualified name when a Feature is
-loaded [5]_.
+loaded. An type exposed by the Kernel cannot be overloaded by a Feature.
 
 Resource Control Manager
 ------------------------
@@ -1077,13 +1090,13 @@ file, with the following schema:
 Identification
 ~~~~~~~~~~~~~~
 
-Kernel and Features require an X509 [6]_ certificate for identification.
-The 6 first fields defined by RFC 2253 [7]_ can be read by calling
+Kernel and Features identification is based on a `X509 certificate <https://tools.ietf.org/html/rfc5280>`_.
+The 6 first fields defined by RFC 2253 (``CN``: commonName,  ``L``: localityName,  ``ST``: stateOrProvinceName,  ``O``: organizationName,  ``OU``: organizationalUnitName,  ``C``: countryName) can be read by calling
 ``ej.kf.Module.getProvider().getValue(...)``.
 
 The certificate file must be configured as following:
 
--  placed beside the related\ ``[name].kf`` file
+-  placed beside the related ``[name].kf`` file
 
 -  named ``[name].cert``
 
@@ -1200,33 +1213,6 @@ with the expected behavior.
   :height: 625px
 
   Illustration 16: Context Local Storage Example of Initialization Sequence
-
-
-.. [1]
-   A decent global timeout stop-time is 2,000ms.
-
-.. [2]
-   An alive thread is a thread in which at least one execution context
-   is alive.
-
-.. [3]
-   The Kernel must track (native) resources that the Kernel granted
-   access for the Feature. See Native resources control section.
-
-.. [4]
-   If there are remaining alive Feature objects after the Kernel
-   listeners are called, the Feature stays in the ``STOPPED`` state
-   forever (the Kernel has an issue)
-
-.. [5]
-   An exposed type from the Kernel cannot be overloaded by a Feature.
-
-.. [6]
-   https://tools.ietf.org/html/rfc5280
-
-.. [7]
-   :*CN (commonName), L (localityName), ST (stateOrProvinceName), O
-   (organizationName), OU (organizationalUnitName), C (countryName).*
 
 
 ..
