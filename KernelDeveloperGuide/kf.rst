@@ -558,13 +558,12 @@ A Feature is in one of the following states:
 
 -  **UNINSTALLED**: Feature has been unlinked from the Kernel.
 
-`Illustration 5 <illustration-5>`_ describes the Feature state diagram and the methods that changes Feature's state.
+The following illustration describes the Feature state diagram and the methods that changes Feature's state.
 
 .. _illustration-5:
 .. figure:: png/kf_spec/kf_lifecycle.png
   :align: center
-  :width: 1177px
-  :height: 655px
+  :scale: 75%
 
   Illustration 5: Feature State Diagram
 
@@ -657,8 +656,7 @@ Overview
 .. _illustration-6:
 .. figure:: png/kf_spec/classloader.png
   :align: center
-  :width: 1097px
-  :height: 776px
+  :scale: 75%
 
   Illustration 6: Kernel & Features Class Spaces Overview
 
@@ -1199,8 +1197,7 @@ and Features):
 .. _illustration-15:
 .. figure:: png/kf_spec/context_local_storage_slots.png
   :align: center
-  :width: 695px
-  :height: 660px
+  :scale: 75%
 
   Illustration 15: Context Local Storage of Static Field Example
 
@@ -1211,8 +1208,7 @@ with the expected behavior.
 .. _illustration-16:
 .. figure:: png/kf_spec/context_local_storage_sequences.png
   :align: center
-  :width: 957px
-  :height: 625px
+  :scale: 75%
 
   Illustration 16: Context Local Storage Example of Initialization Sequence
 
