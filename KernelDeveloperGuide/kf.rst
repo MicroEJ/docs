@@ -575,22 +575,22 @@ A Feature is installed by the Kernel using
 loaded is implementation dependent. The Feature data is read and linked
 to the Kernel. If the Feature cannot be linked to the Kernel, an
 `IncompatibleFeatureException`_ is thrown. Otherwise, the Feature
-is added to the list of loaded Features and its state is set to
-INSTALLED.
+is added to the list of loaded Features and its state is set to the
+``INSTALLED`` state.
 
 Start
 ~~~~~
 
 A Feature is started by the Kernel using `Feature.start()`_. The Feature
-is switched in the STARTED state. A new thread owned by the Feature is
+is switched in the ``STARTED`` state. A new thread owned by the Feature is
 created and started. Next steps are executed by the newly created
 thread:
 
--  Feature clinits are executed
+-  Feature clinits are executed.
 
--  Entrypoint is instanciated
+-  Entrypoint is instanciated.
 
--  `FeatureEntryPoint.start()`_ is called
+-  `FeatureEntryPoint.start()`_ is called.
 
 .. _stopsequence:
 
@@ -638,14 +638,13 @@ Feature is INSTALLED.
    listeners are called, the Feature stays in the ``STOPPED`` state
    forever (the Kernel has an issue)
 
-
-Deinstallation
+Uninstallation
 ~~~~~~~~~~~~~~
 
 A Feature is uninstalled by the Kernel using `Kernel.uninstall()`_. The
 Feature code is unlinked from the Kernel and reclaimed. The Feature is
-removed from the list of loaded Features and its state is set to
-UNINSTALLED. The Feature does not exist anymore in the system.
+removed from the list of loaded Features and its state is set to the
+``UNINSTALLED`` state. The Feature does not exist anymore in the system.
 
 Class Spaces
 ------------
