@@ -167,7 +167,7 @@ owned by the Kernel. Other arrays are loaded in any Feature that require
 them.
 
 The owner of a type can be retrieved by calling
-``Kernel.getOwner(Object)`` with the ``Class`` instance.
+`Kernel.getOwner()`_ with the `Class`_ instance.
 
 Object
 ~~~~~~
@@ -176,20 +176,20 @@ When an object is created, it is assigned to the owner of the execution
 context owner.
 
 The owner of an object can be retrieved by calling
-``Kernel.getOwner(Object)`` with the given object.
+`Kernel.getOwner()`_ with the given object.
 
 Execution Context
 ~~~~~~~~~~~~~~~~~
 
 When a thread is started, the first execution context is set to the
-owner of the thread object. When a method is called from Kernel mode
-(:ref:`§ <kernelmode>`) and its receiver is owned by a Feature, the
+owner of the thread object. When a method is called from :ref:`Kernel mode <kernelmode>`
+and its receiver is owned by a Feature, the
 execution context is set to the owner of the receiver. In all other
 cases, the execution context of the method called is the execution
 context of the caller.
 
 The owner of the current execution context can be retrieved by calling
-``Kernel.getContextOwner()``.
+`Kernel.getContextOwner()`_.
 
 When a method returns, the execution context owner of the caller remains
 the one it was before the call was done.
@@ -198,8 +198,8 @@ The Kernel is the first application to run, and it is triggered by the
 system when it boots. The Kernel starts in Kernel mode, creating a first
 thread owned by the Kernel.
 
-The Kernel can execute a dynamic piece of code (``java.lang.Runnable``) in
-a Feature context by calling ``Kernel.runUnderContext()``.
+The Kernel can execute a dynamic piece of code (`Runnable`_) in
+a Feature context by calling `Kernel.runUnderContext()`_.
 
 .. _kernelmode:
 
@@ -207,18 +207,18 @@ Kernel Mode
 ~~~~~~~~~~~
 
 An execution context is said to be in *Kernel mode* when the current
-execution context is owned by the Kernel. The method ``Kernel.enter()``
+execution context is owned by the Kernel. The method `Kernel.enter()`_
 sets the current execution context owner to the Kernel. The method
-``Kernel.exit()`` resets the current execution context owner to the one
-when the method ``Kernel.enter()`` was called.
+`Kernel.exit()`_ resets the current execution context owner to the one
+when the method `Kernel.enter()`_ was called.
 
 Execution Rules
 ---------------
 
-*Notes: this specification does not force all rules to be checked at
-runtime. When a rule is checked at runtime, a*
-``java.lang.IllegalAccessError`` *must be thrown at the execution point where
-the rule is broken.*
+Notes: this specification does not force all rules to be checked at
+runtime. When a rule is checked at runtime, a
+`IllegalAccessError`_ must be thrown at the execution point where
+the rule is broken.
 
 Type References
 ~~~~~~~~~~~~~~~
@@ -233,8 +233,8 @@ Feature.
 
 All the types of the KF library (package ``ej.kf.*``) are owned by the
 Kernel. A type owned by a Feature cannot access any types of this
-library except the ``ej.kf.FeatureEntryPoint`` interface and the
-``ej.kf.Proxy`` class.
+library except the `FeatureEntryPoint`_ interface and the
+`Proxy`_ class.
 
 Method References
 ~~~~~~~~~~~~~~~~~
@@ -264,8 +264,8 @@ owned by another Feature.
 
 An object owned by a Feature can be assigned to a static field of a type
 owned by the Kernel if and only if the current execution context is in
-Kernel mode (:ref:`§ <kernelmode>`), otherwise a
-``java.lang.IllegalAccessError`` is thrown at runtime.
+:ref:`Kernel mode <kernelmode>`, otherwise a
+`IllegalAccessError`_ is thrown at runtime.
 
 .. _contextlocalstorage:
 
@@ -277,7 +277,7 @@ single memory slot in the context of the owner of the type that defines
 the field.
 
 The Kernel can declare a static field as a context local storage field
-in ``kernel.intern`` file (Section :ref:`§ <ctxtlocalstoragegrammar>` for full format
+in ``kernel.intern`` file (See section :ref:`ctxtlocalstoragegrammar` for full format
 specification). A memory slot is then allocated for the Kernel and
 duplicated for each Feature. As it is a static field, it is initialized
 to ``null``.
@@ -294,7 +294,7 @@ The Kernel can declare an optional initialization method. This method is
 automatically invoked when the field is being read if its content is
 ``null``. This gives a hook to lazily initialize the static field before
 its first read access. If the initialization method returns a ``null``
-reference, a ``java.lang.NullPointerException`` is thrown.
+reference, a `NullPointerException`_ is thrown.
 
 .. code-block:: xml
   :caption: Illustration 4: Context Local Storage Declaration of a Static Field with an Initialization Method
@@ -318,7 +318,7 @@ Kernel if and only if the current execution context is in Kernel mode.
 
 Note that all possible object assignments are included (field
 assignment, array assignment and array copies using
-``System.arraycopy()``).
+`System.arraycopy()`_).
 
 Local References
 ~~~~~~~~~~~~~~~~
@@ -328,7 +328,7 @@ execution context owned by another Feature.
 
 An object owned by a Feature can be assigned into a local of an
 execution context owned by the Kernel. When leaving Kernel mode
-explicitly with ``Kernel.exit()``, all locals that refer to an object
+explicitly with `Kernel.exit()`_, all locals that refer to an object
 owned by another Feature are set to ``null``.
 
 Monitor Access
@@ -348,7 +348,7 @@ Reflective Operations
 ``Class.forName``
 ^^^^^^^^^^^^^^^^^
 
-defines the extended rules for ``java.lang.Class.forName(String)`` to throw a ``java.lang.ClassNotFoundException`` when a type cannot be accessed.
+The following table defines the extended rules for `Class.forName()`_ to throw a `ClassNotFoundException`_ when a type cannot be accessed.
 
 .. list-table:: Table 1: ``Class.forName(...)`` access rules
    :header-rows: 1
@@ -393,7 +393,7 @@ defines the extended rules for ``java.lang.Class.forName(String)`` to throw a ``
       - ``F``
       - ``F``
       - ``K``
-      - ``true`` if the type has been exposed as an API type (§), ``false`` otherwise.
+      - ``true`` if the type has been exposed as an :ref:`API type <kernel_api>`, ``false`` otherwise.
    - 
       - ``Fi``
       - ``Fi``
@@ -404,7 +404,7 @@ defines the extended rules for ``java.lang.Class.forName(String)`` to throw a ``
 ``Class.newInstance``
 ^^^^^^^^^^^^^^^^^^^^^
 
-defines the extended rules for ``java.lang.Class.newInstance(Class)``.
+The following table defines the extended rules for `Class.newInstance()`_.
 
 .. list-table:: Table 2: ``Class.newInstance(...)`` access rules
    :header-rows: 1
@@ -460,7 +460,7 @@ defines the extended rules for ``java.lang.Class.newInstance(Class)``.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 defines the extended rules for
-``java.lang.Class.getResourceAsStream(String)`` to return ``null`` when resource is not allowed to be accessed.
+`Class.getResourceAsStream()`_ to return ``null`` when resource is not allowed to be accessed.
 
 .. list-table:: Table 3: ``Class.getResourceAsStream(...)`` access rules
    :header-rows: 1
@@ -539,9 +539,9 @@ Entry point
 ~~~~~~~~~~~
 
 Each Feature must define an implementation of the
-``ej.kf.FeatureEntryPoint``. ``FeatureEntryPoint.start()`` method is called
+`FeatureEntryPoint`_. `FeatureEntryPoint.start()`_ method is called
 when the Feature is started. It is considered to be the main method of
-the Feature application. ``FeatureEntryPoint.stop()`` method is called
+the Feature application. `FeatureEntryPoint.stop()`_ method is called
 when the Feature is stopped. It gives a chance to the Feature to
 terminate properly.
 
@@ -572,17 +572,17 @@ Installation
 ~~~~~~~~~~~~
 
 A Feature is installed by the Kernel using
-``Kernel.install(InputStream)``. The content of the Feature data to be
+`Kernel.install()`_. The content of the Feature data to be
 loaded is implementation dependent. The Feature data is read and linked
 to the Kernel. If the Feature cannot be linked to the Kernel, an
-``ej.kf.IncompatibleFeatureException`` is thrown. Otherwise, the Feature
+`IncompatibleFeatureException`_ is thrown. Otherwise, the Feature
 is added to the list of loaded Features and its state is set to
 INSTALLED.
 
 Start
 ~~~~~
 
-A Feature is started by the Kernel using ``Feature.start()``. The Feature
+A Feature is started by the Kernel using `Feature.start()`_. The Feature
 is switched in the STARTED state. A new thread owned by the Feature is
 created and started. Next steps are executed by the newly created
 thread:
@@ -591,40 +591,40 @@ thread:
 
 -  Entrypoint is instanciated
 
--  ``FeatureEntryPoint.start()`` is called
+-  `FeatureEntryPoint.start()`_ is called
 
 .. _stopsequence:
 
 Stop
 ~~~~
 
-A Feature is stopped explicitly by the Kernel using ``Feature.stop()``.
+A Feature is stopped explicitly by the Kernel using `Feature.stop()`_.
 Features may be stopped implicitly by the Resource Control Manager. Next
 steps are executed:
 
--  On explicit ``Feature.stop()`` call, a new thread owned by the Feature is created and ``FeatureEntryPoint.stop()`` is executed within this new thread. Wait until this new thread is done, and timeout of a global timeout stop-time occurred [1]_.
+-  On explicit `Feature.stop()`_ call, a new thread owned by the Feature is created and `FeatureEntryPoint.stop()`_ is executed within this new thread. Wait until this new thread is done, and timeout of a global timeout stop-time occurred [1]_.
 
 -  The Feature state is set to STOPPED.
 
--  Marks all objects owned by the Feature as dead objects, which implies that a ``ej.kf.DeadFeatureException`` is thrown in threads that are running the stopped Feature code or in threads that want to call stopped Feature code, or threads that accesses to objects owned bythe stopped Feature.
+-  Marks all objects owned by the Feature as dead objects, which implies that a `DeadFeatureException`_ is thrown in threads that are running the stopped Feature code or in threads that want to call stopped Feature code, or threads that accesses to objects owned bythe stopped Feature.
 
 -  All execution contexts, from any thread, owned by the Feature are cleared.
 
 -  All objects owned by the Feature have their references (to other objects) set to ``null``.
 
--  The alive [2]_ threads owned by the Feature are promoted to ``java.lang.Thread`` objects owned by the Kernel.
+-  The alive [2]_ threads owned by the Feature are promoted to thread objects owned by the Kernel.
 
--  Native resources (files, sockets, …) opened by the Feature that remain opened after ``FeatureEntryPoint.stop()`` execution are closed abruptly.
+-  Native resources (files, sockets, …) opened by the Feature that remain opened after `FeatureEntryPoint.stop()`_ execution are closed abruptly.
 
--  ``FeatureStateListener.stateChanged(...)`` is called for each registered listener.
+-  `FeatureStateListener.stateChanged()`_ is called for each registered listener.
 
 -  If there are no remaining alive objects [3]_:
 
    -  Feature state is set to INSTALLED,
 
-   -  ``FeatureStateListener.stateChanged(...)`` is called for each registered listener.
+   -  `FeatureStateListener.stateChanged()`_ is called for each registered listener.
 
-The method ``Feature.stop()`` can be called several times, until the
+The method `Feature.stop()`_ can be called several times, until the
 Feature is INSTALLED.
 
 .. [1]
@@ -643,7 +643,7 @@ Feature is INSTALLED.
 Deinstallation
 ~~~~~~~~~~~~~~
 
-A Feature is uninstalled by the Kernel using ``Kernel.uninstall()``. The
+A Feature is uninstalled by the Kernel using `Kernel.uninstall()`_. The
 Feature code is unlinked from the Kernel and reclaimed. The Feature is
 removed from the list of loaded Features and its state is set to
 UNINSTALLED. The Feature does not exist anymore in the system.
@@ -672,6 +672,8 @@ that define these types. The Kernel or a Feature can have only one type
 for a specific fully qualified name, insuring there are not two types in
 the Kernel or in a Feature sharing the same fully qualified name.
 
+.. _kernel_api:
+
 Kernel API Types
 ~~~~~~~~~~~~~~~~
 
@@ -679,7 +681,7 @@ The Kernel can expose some of its types, methods and static fields as
 API to Features. A file describes the list of the types, the methods and
 the static fields that Features can refer to.
 
-Here is an example for exposing ``System.out.println(String)`` to a Feature:
+Here is an example for exposing `System.out.println(String)`_ to a Feature:
 
 .. code-block:: xml
   :caption: Illustration 7: Kernel API Example for exposing ``System.out.println``
@@ -709,7 +711,7 @@ CPU Control: Quotas
 ~~~~~~~~~~~~~~~~~~~
 
 A Kernel can assign an execution quota to a Feature using
-``Feature.setExecutionQuota()``. The quota is expressed in execution
+`Feature.setExecutionQuota()`_. The quota is expressed in execution
 units.
 
 Quotas account to the running current context owner.
@@ -725,8 +727,8 @@ suspended (the Feature is paused).
 RAM Control: Feature Criticality
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Each Feature has a criticality level between ``Feature.MIN_CRITICALITY``
-and ``Feature.MAX_CRITICALITY``. When an execution context cannot allocate
+Each Feature has a criticality level between `Feature.MIN_CRITICALITY`_
+and `Feature.MAX_CRITICALITY`_. When an execution context cannot allocate
 new objects because a memory limit has been reached, Features shall be
 stopped following next semantic:
 
@@ -737,7 +739,7 @@ stopped following next semantic:
 -  If no memory is available, repeat these two previous steps in
    sequence until there are no more Features to stop.
 
-If no memory is reclaimed, then an ``OutOfMemoryException`` is thrown.
+If no memory is reclaimed, then an `OutOfMemoryError`_ is thrown.
 
 Time-out Control: Watchdog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -753,7 +755,7 @@ The watchdog timeout is set according to the following rules:
    set,
 -  else use the global system watchdog timeout.
 
-The global system watchdog timeout value is set to ``Long.MAX_VALUE`` at
+The global system watchdog timeout value is set to `Long.MAX_VALUE`_ at
 system startup.
 
 When the watchdog timeout occurs the offending Feature is stopped.
@@ -837,7 +839,7 @@ implemented, with the following specification:
 
 -  its fully qualified name is the shared interface fully qualified name append with ``Proxy``.
 
--  it extends ``ej.kf.Proxy``
+-  it extends `Proxy`_
 
 -  it implements the Shared Interface
 
@@ -848,7 +850,7 @@ Interface, it is free to implement the desired behavior and ensure its
 own robustness. Although it is not part of this specification, it is
 strongly encouraged that Proxy methods implementation comply with the
 expected behavior, even when the remote Feature returns an unexpected
-behavior (such as ``ej.kf.DeadFeatureException`` if the remote Feature is
+behavior (such as `DeadFeatureException`_ if the remote Feature is
 killed).
 
 Usually, the following template is applied:
@@ -954,8 +956,8 @@ By default, Feature instances of types owned by the Kernel cannot be be
 passed across a Shared Interface method invocation.
 
 The Kernel can register a converter for each allowed type, using
-``Kernel.addConverter()``. The converter must implement ``ej.kf.Converter
-and`` can implement one of the following behaviors:
+``Kernel.addConverter()``. The converter must implement ``ej.kf.Converter``
+and can implement one of the following behaviors:
 
 -  by wrapper: manually allocating a Proxy reference by calling ``Kernel.newProxy()``
 
@@ -986,7 +988,7 @@ hereafter:
       - entryPoint
       - Mandatory for Feature only.
       - The fully qualified name of the class that implements
-        ``ej.kf.FeatureEntryPoint``
+        `FeatureEntryPoint`_
    - 
       - name
       - Optional
@@ -996,7 +998,7 @@ hereafter:
       - version
       - Mandatory
       - String version, that can retrieved using
-        ``ej.kf.Module.getVersion()``
+        `Module.getVersion()`_
 
 .. _kernelapi:
 
@@ -1004,7 +1006,7 @@ Kernel API Definition
 ~~~~~~~~~~~~~~~~~~~~~
 
 By default, when building a Kernel, no types are exposed as API for
-Features, except ``ej.kf.FeatureEntryPoint``. Kernel types, methods and
+Features, except `FeatureEntryPoint`_. Kernel types, methods and
 static fields allowed to be accessed by Features must be declared in one
 or more ``kernel.api`` files. They must appear at the root of any
 application classpath (directory or JAR file). Kernel API file is an XML
@@ -1110,7 +1112,7 @@ The certificate file must be configured as following:
 Shared Interface Declaration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A Shared Interface file is an XML file ending with the *.si* suffix with
+A Shared Interface file is an XML file ending with the ``.si`` suffix with
 the following format:
 
 .. code-block:: xml
@@ -1142,7 +1144,7 @@ Kernel Advanced Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ``The kernel.intern`` files is for Kernel advanced configurations such as
-declaring context local storage static fields (:ref:`§ <contextlocalstorage>`). It
+declaring :ref:`context local storage static fields <contextlocalstorage>`. It
 must appear at the root of any application classpath (directory or JAR
 file).
 
@@ -1214,6 +1216,39 @@ with the expected behavior.
 
   Illustration 16: Context Local Storage Example of Initialization Sequence
 
+.. _Class: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html
+.. _ClassNotFoundException: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/ClassNotFoundException.html
+.. _IllegalAccessError: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/IllegalAccessError.html
+.. _IncompatibleFeatureException`: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/IncompatibleFeatureException.html
+.. _NullPointerException: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/NullPointerException.html
+.. _Runnable: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Runnable.html
+.. _FeatureEntryPoint: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/FeatureEntryPoint.html
+.. _Proxy: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html
+.. _Class.forName(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#forName-java.lang.String-
+.. _Class.getResourceAsStream(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getResourceAsStream-java.lang.String-
+.. _Class.newInstance(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#newInstance--
+.. _DeadFeatureException: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/DeadFeatureException.html
+.. _IncompatibleFeatureException: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/IncompatibleFeatureException.html
+.. _Feature.start(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Feature.html#start--
+.. _Feature.stop(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Feature.html#stop--
+.. _Module.getVersion(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Module.html#getVersion--
+.. _Feature.setExecutionQuota(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Module.html#setExecutionQuota-int-
+.. _FeatureEntryPoint.start(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/FeatureEntryPoint.html#start--
+.. _FeatureEntryPoint.stop(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/FeatureEntryPoint.html#stop--
+.. _Feature.MAX_CRITICALITY: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Feature.html#MAX_CRITICALITY
+.. _Feature.MIN_CRITICALITY: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Feature.html#MIN_CRITICALITY
+.. _FeatureStateListener.stateChanged(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/FeatureStateListener.html#stateChanged-ej.kf.Feature-ej.kf.Feature.State-
+.. _Kernel.enter(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#enter--
+.. _Kernel.exit(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#exit--
+.. _Kernel.install(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#install-java.io.InputStream-
+.. _Kernel.uninstall(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#uninstall-ej.kf.Feature-
+.. _Kernel.getOwner(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#getOwner-java.lang.Object-
+.. _Kernel.getContextOwner(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#getContextOwner--
+.. _Kernel.runUnderContext(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#runUnderContext-ej.kf.Module-java.lang.Runnable-
+.. _Long.MAX_VALUE: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Long.html#MAX_VALUE
+.. _OutOfMemoryError: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/OutOfMemoryError.html
+.. _System.arraycopy(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#arraycopy-java.lang.Object-int-java.lang.Object-int-int-
+.. _System.out.println(String): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#out
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
