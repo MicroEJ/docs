@@ -43,7 +43,7 @@ Specification Summary
 Comments
 ~~~~~~~~
 
-Your comments about KF are welcome. Please contact :ref:`our support team <get_support>` with "KF" as subject.
+Your comments about this specification are welcome. Please contact :ref:`our support team <get_support>` with "KF" as subject.
 
 Basic Concepts
 ~~~~~~~~~~~~~~
@@ -601,42 +601,38 @@ A Feature is stopped explicitly by the Kernel using `Feature.stop()`_.
 Features may be stopped implicitly by the Resource Control Manager. Next
 steps are executed:
 
--  On explicit `Feature.stop()`_ call, a new thread owned by the Feature is created and `FeatureEntryPoint.stop()`_ is executed within this new thread. Wait until this new thread is done, and timeout of a global timeout stop-time occurred [1]_.
+-  On explicit `Feature.stop()`_ call, a new thread owned by the Feature is created and `FeatureEntryPoint.stop()`_ is executed within this new thread. 
 
--  The Feature state is set to STOPPED.
+-  Wait until this new thread is done, or until a global timeout stop-time occurred [1]_.
 
--  Marks all objects owned by the Feature as dead objects, which implies that a `DeadFeatureException`_ is thrown in threads that are running the stopped Feature code or in threads that want to call stopped Feature code, or threads that accesses to objects owned bythe stopped Feature.
+-  All execution contexts, from any thread, owned by the Feature are cleared, which implies that a `DeadFeatureException`_ is thrown in threads that are running the stopped Feature code or in threads that want to call stopped Feature code.
 
--  All execution contexts, from any thread, owned by the Feature are cleared.
-
--  All objects owned by the Feature have their references (to other objects) set to ``null``.
-
--  The alive [2]_ threads owned by the Feature are promoted to thread objects owned by the Kernel.
+-  Wait until all threads owned by the Feature are terminated.
 
 -  Native resources (files, sockets, …) opened by the Feature that remain opened after `FeatureEntryPoint.stop()`_ execution are closed abruptly.
 
+-  The Feature state is set to the ``STOPPED`` state.
+
 -  `FeatureStateListener.stateChanged()`_ is called for each registered listener.
 
--  If there are no remaining alive objects [3]_:
+-  Objects owned by the Feature are reclaimed. 
 
-   -  Feature state is set to INSTALLED,
+-  If there are no remaining alive objects [2]_:
+
+   -  Feature state is set to the ``INSTALLED`` state.
 
    -  `FeatureStateListener.stateChanged()`_ is called for each registered listener.
 
 The method `Feature.stop()`_ can be called several times, until the
-Feature is INSTALLED.
+Feature is set to the ``INSTALLED`` state.
 
 .. [1]
-   A decent global timeout stop-time is 2,000ms.
+   The default timeout stop-time is 2,000ms.
 
 .. [2]
-   An alive thread is a thread in which at least one execution context
-   is alive.
+   If there are any remaining alive Feature objects after the Kernel listeners have been called, the Feature will stay in the ``STOPPED`` state indefinitely. 
+   The Kernel has an issue. However, it can continue running and orchestrating other applications, but it cannot restart or uninstall the problematic Feature.
 
-.. [3]
-   If there are remaining alive Feature objects after the Kernel
-   listeners are called, the Feature stays in the ``STOPPED`` state
-   forever (the Kernel has an issue)
 
 Uninstallation
 ~~~~~~~~~~~~~~
