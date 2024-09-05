@@ -3,10 +3,16 @@
 Kernel & Features Specification
 ===============================
 
-Multi-Sandboxing is based on the Kernel & Features specification (KF). 
-The fundamental concepts are introduced in the :ref:`Sandboxed Application chapter <sandboxed_application_fundamental_concepts>`. 
+Introduction
+------------
 
-The following table provides links to the complete KF APIs & specification.
+Multi-Sandboxing of Applications is based on Kernel & Features semantic (KF).
+
+This document defines the Kernel & Features specification (KF profile), a Trusted Execution
+Environment (TEE) targeting virtual machines.
+
+Specification Summary
+~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table::
    :widths: 10 30
@@ -16,100 +22,28 @@ The following table provides links to the complete KF APIs & specification.
      - Link
    * - Java APIs
      - https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/package-summary.html
-   * - Specification
-     - https://repository.microej.com/packages/ESR/ESR-SPE-0020-KF-1.4-H.pdf
-   * - Module
-     - https://repository.microej.com/modules/ej/api/kf/
+   * - Latest Version
+     - 1.7.0
+   * - Module Dependency
+     - .. tabs::
 
+         .. tab:: SDK 6
 
-Preface to KF Profile, ESR020
------------------------------
+            .. code-block:: java
 
-This document defines the KF profile, a Trusted Execution
-Environment (TEE) targeting virtual machines.
+               implementation("ej.api:kf:1.7.0")
 
-Who should use this specification?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         .. tab:: SDK 5
 
-This specification is targeted at the following audiences:
+            .. code-block:: xml
 
--  Implementors of the KF specification.
+               <dependency org="ej.api" name="kf" rev="1.7.0" />
 
--  Application developers that target applications with the need of embedding third party software components that may be untrusted.
-
--  Virtual machine providers.
 
 Comments
 ~~~~~~~~
 
-Your comments about KF are welcome. Please send them by email to
-``contact@microej.com`` with KF as subject.
-
-Requirements
-~~~~~~~~~~~~
-
-The term MUST indicates that the associated item is an absolute
-requirement.
-
-The term MAY indicates that the associated item is optional.
-
-The term SHOULD indicates that the associated item is highly
-recommended, but not required.
-
-Although this specification defines minimal requirements, devices with
-more resources may also benefit from KF specification, especially when
-users are concerned with optimal resource usage.
-
-The KF specification makes no hardware requirement for devices that run
-a Java virtual machine that implements this specification. Typical
-hardware for KF ranges from low-end 32-bit (such as Cortex-M0) to 64-bit
-multi-core cpu.
-
-The KF profile specification makes minimal assumptions about the system
-software of the device. Although a Java virtual machine is required, the
-Kernel does not need to support an OS/RTOS while the virtual machine may
-be baremetal (i.e. the device boots directly in Java).
-
-Compliant KF implementations MUST include all packages, classes, and
-interfaces described in this specification, and implement the associated
-behavior.
-
-Related Literature
-~~~~~~~~~~~~~~~~~~
-
-JVM2: Tim Lindholm & Frank Yellin, The Java™ Virtual Machine
-Specification, Second Edition, 1999
-
-JLS: James Gosling, Guy Steele, Bill Joy, Gilad Bracha, The Java™
-Language Specification, Third Edition, 2005
-
-OSGI: OSGi Alliance, https://osgi.org/download/r7/osgi.core-7.0.0.pdf,
-2018
-
-Document Conventions
-~~~~~~~~~~~~~~~~~~~~
-
-In this document, references to methods of a Java class are written as
-``ClassName.methodName(args)``. This applies to both static and instance
-methods. Where the method is static this will be made clear in the
-accompanying text.
-
-Implementation Notes
-~~~~~~~~~~~~~~~~~~~~
-
-The KF specification does not include any implementation details. KF
-implementors are free to use whatever techniques they deem appropriate
-to implement the specification, with (or without) collaboration of any
-Java virtual machine provider. KF experts have taken great care not to
-mention any special virtual machines, nor any of their special features,
-in order to encourage fair competing implementations. Implementations
-are free to perform checks either at compile-time and/or at runtime.
-
-Introduction
-------------
-
-This specification defines a Trusted Execution Environment (TEE) for
-software modules called Features.
+Your comments about KF are welcome. Please contact :ref:`our support team <get_support>` with "KF" as subject.
 
 Basic Concepts
 ~~~~~~~~~~~~~~
@@ -117,7 +51,7 @@ Basic Concepts
 Kernel & Features semantic (KF) allows an application to be split into
 multiple parts:
 
--  the main application, called the Kernel
+-  the main application, called the Kernel.
 
 -  zero or more applications, called Features.
 
@@ -610,7 +544,7 @@ Feature Lifecycle
 Entry point
 ~~~~~~~~~~~
 
-Each Feature MUST define an implementation of the
+Each Feature must define an implementation of the
 ``ej.kf.FeatureEntryPoint``. ``FeatureEntryPoint.start()`` method is called
 when the Feature is started. It is considered to be the main method of
 the Feature application. ``FeatureEntryPoint.stop()`` method is called
@@ -1282,7 +1216,7 @@ with the expected behavior.
    is alive.
 
 .. [3]
-   The Kernel MUST track (native) resources that the Kernel granted
+   The Kernel must track (native) resources that the Kernel granted
    access for the Feature. See Native resources control section.
 
 .. [4]
