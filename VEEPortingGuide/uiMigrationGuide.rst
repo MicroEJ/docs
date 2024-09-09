@@ -270,7 +270,7 @@ BSP with DMA2D
 .. _section_ui_migrationguide_14.0_vglite:
 
 BSP with VGLite
-""""""""""""""""
+"""""""""""""""
 
 * *[VEE Port configuration project]*
 
@@ -342,7 +342,7 @@ BSP with DMA2D
 	* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_13.7.2_bsp_without_gpu`.
 
 BSP with VGLite
-""""""""""""""""
+"""""""""""""""
 
 * *[VEE Port configuration project]*
 
@@ -390,7 +390,7 @@ Front Panel
 .. _section_ui_migrationguide_13.6_vglite:
 
 BSP with VGLite
-""""""""""""""""
+"""""""""""""""
 
 These steps are for a VEE Port that manages its own implementation of ``LLUI_DISPLAY_impl.h`` (that did not use the old implementation which was available in this C Module):
 
@@ -521,7 +521,7 @@ BSP with DMA2D
 .. _section_ui_migrationguide_13.5_vglite:
 
 BSP with VGLite
-""""""""""""""""
+"""""""""""""""
 
 .. note::
 	The C Module is designed to target the `NXP i.MX RT500`_; however it can be locally customized for other boards (see :ref:`[Custom project]<section_cmodule_vglite_custom>`)
@@ -567,7 +567,7 @@ BSP with DMA2D
 	* Delete the properties file ``cco_display-dma2d.properties``.
 
 BSP with VGLite
-""""""""""""""""
+"""""""""""""""
 
 .. note::
 	The C Module is designed to target the `NXP i.MX RT500`_; however it can be locally customized for other boards (see :ref:`[Custom project]<section_cmodule_vglite_custom>`)
@@ -622,7 +622,7 @@ BSP with DMA2D
 	* Delete the properties file ``cco_display-dma2d.properties``.
 
 BSP with VGLite
-""""""""""""""""
+"""""""""""""""
 
 .. note::
 	The C Module is designed to target the `NXP i.MX RT500`_; however it can be locally customized for other boards (see :ref:`[Custom project]<section_cmodule_vglite_custom>`).
