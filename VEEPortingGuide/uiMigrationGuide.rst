@@ -731,6 +731,8 @@ VEE Port Configuration Project
 
 * If not already set, set the ``ea:property`` ``bsp.project.microej.dir`` in the module ivy file to configure the BSP output folder where is extracted the module.
 
+.. hint:: Update the BSP with the new MicroUI C module files as described :ref:`here<section_ui_migration_bsp_13x>`.
+
 Hardware Accelerator
 """"""""""""""""""""
 
@@ -743,6 +745,8 @@ Hardware Accelerator
 
 * For the hardware accelerator DMA2D, please consult STM32F7Discovery board updates. Add the file ``lldisplay_dma2d.c``, the global defines ``DRAWING_DMA2D_BPP=16`` (or another value) and ``STM32F4XX`` or ``STM32F7XX``
 * For the others hardware accelerators, please contact MicroEJ support.
+  
+.. hint:: Update the BSP with the new C modules files as described :ref:`here<section_ui_migration_bsp_13x>`.
 
 Front Panel
 """""""""""
@@ -984,6 +988,8 @@ Font
 * Open optional font(s) in :guilabel:`-configuration` project > :guilabel:`microui/**/*.ejf`
 * Remove all ``Dynamic`` styles (select ``None`` or ``Built-in`` for bold, italic and underline); the number of generated fonts must be ``1`` (the feature to render ``Dynamic`` styles at runtime have been removed)
 * Save the file(s)
+
+.. _section_ui_migration_bsp_13x:
 
 BSP
 """
