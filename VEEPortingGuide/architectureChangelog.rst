@@ -49,6 +49,11 @@ Core Engine
 - [Multi] - Fixed watchdog which prevents the Core Engine to stop because of a pending thread.
 
 
+Integration
+~~~~~~~~~~~
+
+- Add Architecture tools compatibility with SDKs running on JDK 17 and JDK 21.
+
 .. _changelog-8.1.1:
 
 [8.1.1] - 2024-06-17
