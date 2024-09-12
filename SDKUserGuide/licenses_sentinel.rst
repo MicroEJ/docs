@@ -10,6 +10,8 @@ There are two main steps:
 #. First, your System Administrator has to :ref:`setup the Sentinel Floating License Server  <setup_sentinel_floating_license_server>` on a host machine.
 #. Then, on your Developer workstation, proceed with the :ref:`setup of the Sentinel client for the SDK  <setup_sentinel_developer_workstation>`.
 
+.. figure:: images/sentinel_architecture.png
+
 .. note::
 	
    Floating License requires :ref:`Architecture 8.1.0 <changelog-8.1.0>` or higher (Production only).
