@@ -126,9 +126,7 @@ To use Managed C in your Application, follow these steps:
             }
         }
 
-   .. note:: 
-         
-      The Managed C function signature in the C file must match the annotated Java native method signature.
+   .. note:: The Managed C function name and signature in the C file must match the annotated Java native method.
 
 #. **Compile the C File to WebAssembly:**
 
