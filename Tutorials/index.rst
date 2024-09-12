@@ -7,23 +7,15 @@ Tutorials
    :maxdepth: 1
 
    tutorialUnderstandMicroEJFirmwareBuild
-   tutorialCreateCustomPlatform
    tutorialCreateFirmwareFromScratch
-   tutorialCreateIARImage
    tutorialCreatePlatformBuildAndRunScripts
    tutorialSetupBuildUsingJenkinsAndArtifactory
    tutorialImproveCodeQuality
    tutorialOptimizeMemoryFootprint
-   tutorialExploreDataSerializationFormats
-   tutorialInstrumentJavaCodeForLogging
-   tutorialRunATestSuiteOnDevice
    tutorialImplementABlockingNativeMethodWithSNI
    tutorialDiscoverEmbeddedDebuggingTechniques
    getStartedWithGUI/index
    tutorialValidateGUIs
-   tutorialSoftwareRobot
-   tutorialTextOverflow
-   tutorialAppendEmojisToVectorFont
 
 ..
    | Copyright 2021-2024, MicroEJ Corp. Content in this space is free 

@@ -72,7 +72,7 @@ If this kind of message appears when resolving plugins or modules dependencies:
 .. code:: console
 
    * What went wrong:
-   Plugin [id: 'com.microej.gradle.application', version: '0.16.0'] was not found in any of the following sources:
+   Plugin [id: 'com.microej.gradle.application', version: '0.18.0'] was not found in any of the following sources:
 
 or this kind:
 
@@ -290,6 +290,29 @@ Back in the Gradle task view:
   By default, all supported IDEs require the user to explicitly trigger the reload of a Gradle project when its configuration has changed.
   However you can configure your IDE to automatically reload your project. 
   Refer to the :ref:`sdk_6_howto_gradle_autoreloading` section for more information.
+
+Code Detected as Unreachable in IntelliJ
+----------------------------------------
+
+When opening MicroEJ project with IntelliJ ``2024.1``, code is displayed in grey (dead code style) after a call to a MicroEJ Foundation API.
+
+.. figure:: images/dead_code.png
+		:alt: Unreachable code is displayed in grey in IntelliJ
+		:align: center
+		:scale: 100%
+
+This happens because Foundation API dependencies do not include implementation code but only throw ``RuntimeException``. IntelliJ thus infers
+that the code that comes after is unreachable.
+
+The detection of unreachable code can be disabled by going in :guilabel:`Settings...` > :guilabel:`Editor` > :guilabel:`Inspections`
+and unchecking the option :guilabel:`Unreachable code` in :guilabel:`Java` > :guilabel:`Probable bugs`.
+
+.. figure:: images/unreachable_code_setings.png
+		:alt: Disable unreachable code detection in settings
+		:align: center
+		:scale: 70%
+
+You can also disable unreachable code detection locally by using ``@SuppressWarnings("UnreachableCode")`` on the method or on the class.
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 

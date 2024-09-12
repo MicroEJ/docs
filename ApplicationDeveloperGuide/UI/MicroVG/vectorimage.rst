@@ -14,10 +14,13 @@ Images that must be processed by the image generator tool are declared in ``*.ve
 
 Currently accepted formats are : 
 
-- ``:VGF``: vglite compatible format with coordinates encoded as float numbers (32 bits).
-- ``:VG32``: vglite compatible format with coordinates encoded as signed int numbers (32 bits).
-- ``:VG16``: vglite compatible format with coordinates encoded as signed short numbers (16 bits).
-- ``:VG8``: vglite compatible format with coordinates encoded as signed char numbers (8 bits).
+- ``:VGF``: MicroVG compatible format with coordinates encoded as float numbers (32 bits).
+- ``:VG32``: MicroVG compatible format with coordinates encoded as signed int numbers (32 bits).
+- ``:VG16``: MicroVG compatible format with coordinates encoded as signed short numbers (16 bits).
+- ``:VG8``: MicroVG compatible format with coordinates encoded as signed char numbers (8 bits).
+
+.. note:: The ouput format may be adjusted by the MicroVG engine to fit the capabilities of the vectorial GPU.
+
 
 Example:
 

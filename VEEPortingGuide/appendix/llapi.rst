@@ -435,7 +435,7 @@ The parameters define one or several rectangular regions of the content that hav
 This function should be atomic: the implementation has to start another task or a hardware device (often a DMA) to perform the flush.
 
 As soon as the Application performs a new drawing, the Graphics Engine locks the thread.
-It will automatically be unlocked when the BSP calls ``LLUI_DISPLAY_setDrawingBuffer`` at the end of the flush.
+It will automatically be unlocked when the BSP calls ``LLUI_DISPLAY_setBackBuffer`` at the end of the flush.
 
 Display Characteristics
 -----------------------

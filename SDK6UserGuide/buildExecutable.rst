@@ -22,12 +22,27 @@ Once these prerequisites are fulfilled, the Executable can be built:
          :width: 30%
          :align: center
 
+      |
+
+      .. warning::
+         Android Studio does not allow to run multiple Gradle tasks in parallel.
+         If you still want to execute several Gradle tasks simultaneously, 
+         you can launch them from a terminal with the Gradle Command Line Interface (CLI).
+
    .. tab:: Eclipse
 
       By double-clicking on the ``buildExecutable`` task in the Gradle tasks view:
 
       .. image:: images/eclipse-buildExecutable-gradle-project.png
          :width: 50%
+         :align: center
+
+   .. tab:: Visual Studio Code
+
+      By double-clicking on the ``buildExecutable`` task in the Gradle tasks view:
+
+      .. image:: images/vscode-buildExecutable-gradle-project.png
+         :width: 25%
          :align: center
 
    .. tab:: Command Line Interface

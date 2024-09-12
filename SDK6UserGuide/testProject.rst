@@ -126,6 +126,11 @@ This can be done manually or with IDE menu:
       - right-click on the ``src/test/java`` folder.
       - select :guilabel:`New` > :guilabel:`Other…` > :guilabel:`Java` > :guilabel:`JUnit` > :guilabel:`New JUnit Test Case`.
 
+   .. tab:: Visual Studio Code
+
+      - right-click on the ``src/test/java`` folder in :guilabel:`JAVA PROJECTS` view.
+      - select the :guilabel:`+` icon (:guilabel:`New…`) > :guilabel:`Class`, then enter the test class name you want to create.
+
 .. note::
 
    Gradle allows to define alternative folders for test sources but it would require additional configuration, 
@@ -164,6 +169,14 @@ which means that the tests are also executed when launching one of these tasks.
          :width: 50%
          :align: center
 
+   .. tab:: Visual Studio Code
+
+      In order to execute the testsuite from VS Code, double-click on the task in the Gradle tasks view:
+
+      .. image:: images/vscode-test-gradle-project.png
+         :width: 25%
+         :align: center
+
    .. tab:: Command Line Interface
 
       In order to execute the testsuite from the Command Line Interface, execute this command::
@@ -190,6 +203,7 @@ To generate the Code Coverage files (``.cc``) for each test, configure the test 
                   testTask.configure {
                      doFirst {
                         systemProperties["microej.testsuite.properties.s3.cc.activated"] = "true"
+                        systemProperties["microej.testsuite.properties.s3.cc.thread.period"] = "15"
                      }
                   }
                }
@@ -263,7 +277,7 @@ This requires to:
 - Have a VEE Port which implements the :ref:`BSP Connection <bsp_connection>`.
 - Have a device connected to your workstation both for programming the Executable and getting the output traces. 
   Consult your VEE Port specific documentation for setup.
-- Start the :ref:`tool_serial_to_socket` tool if the VEE Port does not redirect execution traces.
+- Start the :ref:`sdk6_tool_serial_to_socket` tool if the VEE Port does not redirect execution traces.
 
 The configuration is similar to the one used to execute a testsuite on the Simulator.
 
@@ -314,10 +328,10 @@ The properties are:
 - ``microej.testsuite.properties.microejtool.deploy.name``: name of the tool used to deploy the Executable to the board. It is required.
   It is generally set to ``deployToolBSPRun``.
 - ``microej.testsuite.properties.launch.test.trace.file``: enables the redirection of the traces in file. If the VEE Port does not have this capability, 
-  the :ref:`tool_serial_to_socket` tool must be used to redirect the traces to a socket.
-- ``microej.testsuite.properties.testsuite.trace.ip``: TCP/IP address used by the :ref:`tool_serial_to_socket` tool to redirect traces from the board.
+  the :ref:`sdk6_tool_serial_to_socket` tool must be used to redirect the traces to a socket.
+- ``microej.testsuite.properties.testsuite.trace.ip``: TCP/IP address used by the :ref:`sdk6_tool_serial_to_socket` tool to redirect traces from the board.
   This property is only required if the VEE Port does not redirect execution traces.
-- ``microej.testsuite.properties.testsuite.trace.port``: TCP/IP port used by the :ref:`tool_serial_to_socket` tool to redirect traces from the board.
+- ``microej.testsuite.properties.testsuite.trace.port``: TCP/IP port used by the :ref:`sdk6_tool_serial_to_socket` tool to redirect traces from the board.
   This property is only required if the VEE Port does not redirect execution traces.
 
 Any other property can be passed to the Test Engine by prefixing it by ``microej.testsuite.properties.``.
@@ -695,11 +709,14 @@ Inject Application Options For a Specific Test
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In order to define an Application Option for a specific test, 
-it must set in a file with the same name as the generated test case file, 
-but with the ``.properties`` extension instead of the ``.java`` extension. 
+it must be set in a file with the same name as the test case file,
+but with the ``.properties`` extension instead of the ``.java`` extension.
 The file must be put in the ``src/test/resources`` folder and within the same package than the test file.
-For example, to inject a Application Option for the test class ``com.mycompany.MyTest``, 
-it must be set in a file named ``src/test/resources/com.mycompany/MyTest.properties``.
+
+For example, to inject an Application Option for the test class ``MyTest`` located in the ``com.mycompany`` package, 
+a ``MyTest.properties`` file must be created. Its path must be: ``src/test/resources/com/mycompany/MyTest.properties``.
+
+Application Options defined in this file do not require the ``microej.testsuite.properties.`` prefix.
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 

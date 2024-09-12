@@ -26,10 +26,9 @@ This plugin adds the following tasks to your project:
 - tasks of the `Gradle Java plugin <https://docs.gradle.org/current/userguide/java_plugin.html>`__
 - :ref:`sdk6_module_natures.tasks.adp`
 - :ref:`sdk6_module_natures.tasks.loadVee`
-- :ref:`sdk6_module_natures.tasks.loadApplicationConfiguration`
 - :ref:`sdk6_module_natures.tasks.runOnSimulator`
-- :ref:`sdk6_module_natures.tasks.loadTestApplicationConfiguration`
 - :ref:`sdk6_module_natures.tasks.checkModule`
+- :ref:`sdk6_module_natures.tasks.execTool`
 
 .. graphviz:: graphAddonLibraryModule.dot
 
@@ -54,19 +53,17 @@ This plugin adds the following tasks to your project:
 - tasks of the `Gradle Java plugin <https://docs.gradle.org/current/userguide/java_plugin.html>`__
 - :ref:`sdk6_module_natures.tasks.adp`
 - :ref:`sdk6_module_natures.tasks.loadVee`
-- :ref:`sdk6_module_natures.tasks.loadApplicationConfiguration`
 - :ref:`sdk6_module_natures.tasks.runOnSimulator`
-- :ref:`sdk6_module_natures.tasks.loadTestApplicationConfiguration`
 - :ref:`sdk6_module_natures.tasks.checkModule`
-- :ref:`sdk6_module_natures.tasks.loadExecutableConfiguration`
+- :ref:`sdk6_module_natures.tasks.buildApplicationObjectFile`
 - :ref:`sdk6_module_natures.tasks.buildExecutable`
 - :ref:`sdk6_module_natures.tasks.buildWPK`
 - :ref:`sdk6_module_natures.tasks.buildVirtualDevice`
 - :ref:`sdk6_module_natures.tasks.loadKernelExecutable`
-- :ref:`sdk6_module_natures.tasks.loadFeatureConfiguration`
 - :ref:`sdk6_module_natures.tasks.buildFeature`
 - :ref:`sdk6_module_natures.tasks.runOnDevice`
 - :ref:`sdk6_module_natures.tasks.execTool`
+- :ref:`sdk6_module_natures.tasks.generateApplicationWrapper`
 - :ref:`sdk6_module_natures.tasks.compileWrapperJava`
 
 .. graphviz:: graphApplicationModule.dot
@@ -109,6 +106,29 @@ This plugin adds the following tasks to your project:
 - :ref:`sdk6_module_natures.tasks.buildMockRip`
 
 .. graphviz:: graphMockModule.dot
+
+**Configuration**:
+
+This module nature inherits from the configuration of all its tasks.
+
+.. _sdk6_module_natures.runtime-api:
+
+Runtime API
+-----------
+
+**Plugin Name**: ``com.microej.gradle.runtime-api``
+
+**Tasks**:
+
+This plugin adds the following tasks to your project:
+
+- tasks of the `Gradle Java plugin <https://docs.gradle.org/current/userguide/java_plugin.html>`__
+- :ref:`sdk6_module_natures.tasks.checkModule`
+- :ref:`sdk6_module_natures.tasks.shrinkRuntimeApi`
+- :ref:`sdk6_module_natures.tasks.compileRuntimeApi`
+- :ref:`sdk6_module_natures.tasks.builRuntimeApiJar`
+
+.. graphviz:: graphRuntimeApiModule.dot
 
 **Configuration**:
 
@@ -169,26 +189,24 @@ This task is used by the following module natures:
 - :ref:`sdk6_module_natures.addon_lib`
 - :ref:`sdk6_module_natures.application`
 
-.. _sdk6_module_natures.tasks.loadApplicationConfiguration:
+The ``loadVee`` task is used internally by the SDK and it is not intended to be executed by the user.
 
-loadApplicationConfiguration
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. _sdk6_module_natures.tasks.runOnSimulator:
 
-**Description**: Loads the configuration for the Application to execute.
+runOnSimulator
+^^^^^^^^^^^^^^
+
+**Description**: Executes the Application with the Simulator.
 
 **Inputs**:
 
-- The extracted VEE Port folder
+- The extracted VEE folder
 - The project classpath which contains the MicroEJ dependent application classes and resources
 - The Full Qualified Name of the Application main class or Feature class
 - The folder containing the application configuration (``configuration``)
 - The System properties
 - The debug mode
 - The debug port
-
-**Outputs**:
-
-- The configuration file with all the properties set to launch the application (``build/properties/target.properties``)
 
 **Module Natures**:
 
@@ -220,47 +238,6 @@ For example:
     applicationEntryPoint = "com.company.Main"
   }
 
-.. _sdk6_module_natures.tasks.runOnSimulator:
-
-runOnSimulator
-^^^^^^^^^^^^^^
-
-**Description**: Executes the Application with the Simulator.
-
-**Inputs**:
-
-- The extracted VEE Port folder
-- The configuration file with all the properties set to launch the application (``build/properties/target.properties``)
-
-**Module Natures**:
-
-This task is used by the following module natures:
-
-- :ref:`sdk6_module_natures.addon_lib`
-- :ref:`sdk6_module_natures.application`
-
-.. _sdk6_module_natures.tasks.loadTestApplicationConfiguration:
-
-loadTestApplicationConfiguration
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-**Description**: Loads the configuration for the Test Application to execute.
-
-**Inputs**:
-
-- The extracted VEE Port folder
-
-**Outputs**:
-
-- The configuration file with all the properties set to launch the test application (``build/testsuite/properties/microej-testsuite.properties``)
-
-**Module Natures**:
-
-This task is used by the following module natures:
-
-- :ref:`sdk6_module_natures.addon_lib`
-- :ref:`sdk6_module_natures.application`
-
 .. _sdk6_module_natures.tasks.checkModule:
 
 checkModule
@@ -279,6 +256,7 @@ This task is used by the following module natures:
 
 - :ref:`sdk6_module_natures.addon_lib`
 - :ref:`sdk6_module_natures.application`
+- :ref:`sdk6_module_natures.runtime-api`
 
 **Configuration**:
 
@@ -311,29 +289,32 @@ For example:
     checkers = "readme,license"
   }
 
-.. _sdk6_module_natures.tasks.loadExecutableConfiguration:
+.. _sdk6_module_natures.tasks.buildApplicationObjectFile:
 
-loadExecutableConfiguration
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+buildApplicationObjectFile
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Description**: Loads the configuration to build the Executable of an Application.
+**Description**: Build the object file of the Application.
 
 **Inputs**:
 
 - The extracted VEE Port folder
 - The project classpath which contains the MicroEJ dependent application classes and resources
-- The Full Qualified Name of the Application main class
+- The Full Qualified Name of the Application EntryPoint
 - The folder containing the application configuration (``configuration``)
 
 **Outputs**:
 
-- The configuration file with all the properties set to launch the build of the Executable (``build/properties/target.properties``)
+- The object file (.o) of the Application and the archive of the build files (``build/application/object/bsp/lib/microejapp.o``)
+- The Zip file containing the generated build files (``build/application/applicationObjectBuildFiles.zip``)
 
 **Module Natures**:
 
 This task is used by the following module natures:
 
 - :ref:`sdk6_module_natures.application`
+
+The ``buildApplicationObjectFile`` task is used internally by the SDK and it is not intended to be executed by the user.
 
 .. _sdk6_module_natures.tasks.buildExecutable:
 
@@ -345,13 +326,12 @@ buildExecutable
 **Inputs**:
 
 - The extracted VEE Port folder
-- The configuration file with all the properties set to launch the build of the Executable (``build/properties/target.properties``)
-- The project build classpath
+- The folder containing the application configuration (``configuration``)
+- The object file (.o) of the Application
 
 **Outputs**:
 
-- The directory in which the Executable file and the build files are generated (``build/executable/application``)
-- The Zip file containing the generated build files (``build/executable/buildFiles.zip``)
+- The directory in which the Executable file and the build files are generated (``build/application/executable``)
 
 **Module Natures**:
 
@@ -391,6 +371,8 @@ This task is used by the following module natures:
 buildVirtualDevice
 ^^^^^^^^^^^^^^^^^^
 
+**Description**: Builds the Virtual Device of an Application.
+
 **Inputs**:
 
 - The extracted VEE Port folder
@@ -401,8 +383,6 @@ buildVirtualDevice
 **Outputs**:
 
 - The Zip file of the Virtual Device (``build/libs/<application_name>-virtualDevice.zip``)
-
-**Description**: Build the Virtual Device of an Application.
 
 **Module Natures**:
 
@@ -431,47 +411,26 @@ This task is used by the following module natures:
 
 - :ref:`sdk6_module_natures.application`
 
-.. _sdk6_module_natures.tasks.loadFeatureConfiguration:
-
-loadFeatureConfiguration
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-**Description**: Loads the configuration to build the Feature file of an Application.
-
-**Inputs**:
-
-- The Kernel Virtual Device 
-- The folder containing the Kernel Executable file (``build/kernelExecutable``)
-- The project classpath
-- The path of the folder where the Feature file must be generated (``build/feature``)
-
-**Outputs**:
-
-- The configuration file with all the properties set to launch the build of the Feature file (``build/properties/target.properties``)
-
-**Module Natures**:
-
-This task is used by the following module natures:
-
-- :ref:`sdk6_module_natures.application`
+The ``loadKernelExecutable`` task is used internally by the SDK and it is not intended to be executed by the user.
 
 .. _sdk6_module_natures.tasks.buildFeature:
 
 buildFeature
 ^^^^^^^^^^^^
 
-**Description**: Build the Feature file of an Application.
+**Description**: Builds the Feature file of an Application.
 
 **Inputs**:
 
 - The Kernel Virtual Device 
 - The folder containing the Kernel Executable file (``build/kernelExecutable``)
 - The project classpath
+- The path of the folder where the Feature file must be generated (``build/feature/application``)
 
 **Outputs**:
 
-- The folder in which the Feature file is generated (``build/feature``)
-
+- The generated Feature file (``build/feature/application/application.fo``)
+- The Zip file containing the generated build files (``build/"libs/<application_name>-feature.zip"``)
 
 **Module Natures**:
 
@@ -482,7 +441,7 @@ This task is used by the following module natures:
 .. _sdk6_module_natures.tasks.runOnDevice:
 
 runOnDevice
-^^^^^^^^^^^^
+^^^^^^^^^^^
 
 **Description**: Runs the Executable on a Device.
 
@@ -511,7 +470,7 @@ buildMockRip
 
 **Outputs**:
 
-- the RIP file of the Mock (``build/libs/<projectName>-<projectVersion>.rip``)
+- the RIP file of the Mock (``build/libs/<project_name>-<project_version>.rip``)
 
 **Module Natures**:
 
@@ -536,18 +495,45 @@ execTool
 
 This task is used by the following module natures:
 
+- :ref:`sdk6_module_natures.addon_lib`
 - :ref:`sdk6_module_natures.application`
+
+.. _sdk6_module_natures.tasks.generateApplicationWrapper:
+
+generateApplicationWrapper
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Description**: Generates the :ref:`gradle_application_wrapper_chapter` to be able to run the Application on a VEE Port and a Kernel.
+
+**Inputs**:
+
+- The Application EntryPoint
+- The configuration directory of the project
+- The project classpath which contains the MicroEJ dependent application classes and resources
+
+**Outputs**:
+
+- The directory in which the Wrapper Java class has been generated (``build/generated/microej-app-wrapper/java``)
+- The directory in which the Wrapper resources have been generated (``build/generated/microej-app-wrapper/resources``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.application`
+
+The ``generateApplicationWrapper`` task is used internally by the SDK and it is not intended to be executed by the user.
 
 .. _sdk6_module_natures.tasks.compileWrapperJava:
 
 compileWrapperJava
 ^^^^^^^^^^^^^^^^^^
 
-**Description**: Compiles Application wrapper class to be able to run the Application on a VEE Port and a Kernel.
+**Description**: Compiles the :ref:`gradle_application_wrapper_chapter` to be able to run the Application on a VEE Port and a Kernel.
 
 **Inputs**:
 
-- The project classpath which contains the MicroEJ dependent application classes and resources
+- The directory containing the Wrapper Java class (``build/generated/microej-app-wrapper/java``)
 
 **Outputs**:
 
@@ -558,6 +544,80 @@ compileWrapperJava
 This task is used by the following module natures:
 
 - :ref:`sdk6_module_natures.application`
+
+The ``compileWrapperJava`` task is used internally by the SDK and it is not intended to be executed by the user.
+
+.. _sdk6_module_natures.tasks.shrinkRuntimeApi:
+
+shrinkRuntimeApi
+^^^^^^^^^^^^^^^^
+
+**Description**: Shrinks the Java source files according to the provided :ref:`Kernel APIs <kernel.api>`.
+
+**Inputs**:
+
+- Project Kernel API (``src/main/resources/kernel.api``)
+- Project Java sources (``src/main/java``)
+- The Kernel API files of the Runtime classpath.
+
+**Outputs**:
+
+- The directory in which shrunk Java sources are generated (``build/runtimeApi/shrunkSources``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.runtime-api`
+
+The ``shrinkRuntimeApi`` task is used internally by the SDK and it is not intended to be executed by the user.
+
+.. _sdk6_module_natures.tasks.compileRuntimeApi:
+
+compileRuntimeApi
+^^^^^^^^^^^^^^^^^
+
+**Description**: Compiles the Runtime API :ref:`Kernel APIs <kernel.api>`.
+
+**Inputs**:
+
+- The directory in which shrunk Java sources are generated (``build/runtimeApi/shrunkSources``)
+- The project classpath
+
+**Outputs**:
+
+- The directory in which shrunk Java classes are generated (``build/runtimeApi/shrunkClasses``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.runtime-api`
+
+The ``compileRuntimeApi`` task is used internally by the SDK and it is not intended to be executed by the user.
+
+.. _sdk6_module_natures.tasks.builRuntimeApiJar:
+
+buildRuntimeApiJar
+^^^^^^^^^^^^^^^^^^
+
+**Description**: Builds the Runtime API Jar file.
+
+**Inputs**:
+
+- The directory in which shrunk Java classes are generated (``build/runtimeApi/shrunkClasses``)
+
+**Outputs**:
+
+- The Jar file of the Runtime API (``build/libs/<project_name>-<project_version>-runtime-api.jar``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.runtime-api`
+
+The ``buildRuntimeApiJar`` task is used internally by the SDK and it is not intended to be executed by the user.
 
 .. _gradle_global_build_options:
 

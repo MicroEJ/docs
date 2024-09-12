@@ -30,14 +30,28 @@ The following figure shows the overall build flow:
 Create a new Runtime Environment Module
 ---------------------------------------
 
-A Runtime Environment :ref:`module project <mmm_module_skeleton>` is created with the ``runtime-api`` skeleton.
+.. tabs::
 
-.. code:: xml
+   .. tab:: SDK 6
 
-   <info organisation="com.mycompany" module="myruntimeapi" status="integration" revision="1.0.0">
-      <ea:build organisation="com.is2t.easyant.buildtypes" module="build-runtime-api" revision="4.0.+">
-      </ea:build>
-   </info>
+      A Runtime Environment :ref:`Gradle project <sdk_6_create_project>` is created with the ``com.microej.gradle.runtime-api`` plugin.
+
+      .. code:: java
+
+         plugins {
+            id("com.microej.gradle.runtime-api") version "0.18.0"
+         }   
+
+   .. tab:: SDK 5
+
+      A Runtime Environment :ref:`module project <mmm_module_skeleton>` is created with the ``runtime-api`` skeleton.
+
+      .. code:: xml
+
+         <info organisation="com.mycompany" module="myruntimeapi" status="integration" revision="1.0.0">
+            <ea:build organisation="com.is2t.easyant.buildtypes" module="build-runtime-api" revision="4.0.+">
+            </ea:build>
+         </info>
 
 Kernel APIs as Dependencies
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -46,31 +60,54 @@ The Kernel APIs can be declared as dependencies of the module.
 For example, the following dependencies declare a Runtime Environment that aggregates all classes, methods and fields
 defined by ``EDC``, ``KF``, ``BON``, ``MicroUI`` Kernel APIs modules.
 
-.. code:: xml
+.. tabs::
 
-   <dependencies>
-      <dependency org="com.microej.kernelapi" name="edc" rev="1.0.6"/>
-      <dependency org="com.microej.kernelapi" name="kf" rev="2.0.3"/>
-      <dependency org="com.microej.kernelapi" name="bon" rev="1.1.1"/>
-      <dependency org="com.microej.kernelapi" name="microui" rev="3.1.0"/>
-   </dependencies>
+   .. tab:: SDK 6
 
-The libraries modules are fetched transitively from the Kernel APIs dependencies.
-For example, the dependency ``com.microej.kernelapi#edc;1.0.6`` fetches the library `ej.api#edc;1.2.3`_.
+      .. code:: java
 
-It is also possible to force the version of the libraries to use by declaring them as direct dependencies.
-This is typically used to get a latest version of the library with improvements such as Javadoc fixes or Null Analysis annotations.
-In this example:
+         dependencies {
+            implementation("com.microej.kernelapi:edc:1.2.0")
+            implementation("ej.api:edc:1.3.4")
+            implementation("com.microej.kernelapi:kf:2.1.0")
+            implementation("ej.api:kf:1.5.1")
+            implementation("com.microej.kernelapi:bon:1.4.0")
+            implementation("ej.api:bon:1.4.0")
+            implementation("com.microej.kernelapi:microui:3.5.0")
+            implementation("ej.api:microui:3.5.0")
+         }
 
-.. code:: xml
+      .. warning::
 
-   <dependencies>
-      <dependency org="com.microej.kernelapi" name="edc" rev="1.0.6"/>
+         Unlike SDK 5 (MMM), Kernel API dependencies are not transitively fetched with SDK 6. They must therefore be explicitly added.
+
+   .. tab:: SDK 5
+
+      .. code:: xml
+
+         <dependencies>
+            <dependency org="com.microej.kernelapi" name="edc" rev="1.0.6"/>
+            <dependency org="com.microej.kernelapi" name="kf" rev="2.0.3"/>
+            <dependency org="com.microej.kernelapi" name="bon" rev="1.1.1"/>
+            <dependency org="com.microej.kernelapi" name="microui" rev="3.1.0"/>
+         </dependencies>
+
+      The libraries modules are fetched transitively from the Kernel APIs dependencies.
+      For example, the dependency ``com.microej.kernelapi#edc;1.0.6`` fetches the library `ej.api#edc;1.2.3`_.
+
+      It is also possible to force the version of the libraries to use by declaring them as direct dependencies.
+      This is typically used to get a latest version of the library with improvements such as Javadoc fixes or Null Analysis annotations.
+      In this example:
+
+      .. code:: xml
+
+         <dependencies>
+            <dependency org="com.microej.kernelapi" name="edc" rev="1.0.6"/>
       
-      <dependency org="ej.api" name="edc" rev="1.3.4"/>
-   </dependencies>
+            <dependency org="ej.api" name="edc" rev="1.3.4"/>
+         </dependencies>
 
-The Runtime Environment uses the version ``1.3.4`` of the EDC library instead of the version ``1.2.3`` fetched transitively by the dependency ``com.microej.kernelapi#edc;1.0.6``.
+      The Runtime Environment uses the version ``1.3.4`` of the EDC library instead of the version ``1.2.3`` fetched transitively by the dependency ``com.microej.kernelapi#edc;1.0.6``.
 
 .. _ej.api#edc;1.2.3: https://repository.microej.com/modules/ej/api/edc/1.2.3/
 
@@ -142,9 +179,17 @@ Here is a list of known libraries using an Add-On Processor:
 Use a Runtime Environment in an Application
 -------------------------------------------
 
-The Runtime Environment dependency must be declared in the Application project as following::
+The Runtime Environment dependency must be declared in the Application project as following:
 
-   <dependency org="com.mycompany" name="myruntimeapi" rev="1.0.0" conf="provided->runtimeapi"/>
+.. tabs::
+
+   .. tab:: SDK 6
+
+      microejRuntimeApi("com.mycompany:myruntimeapi:1.0.0")
+
+   .. tab:: SDK 5
+
+      <dependency org="com.mycompany" name="myruntimeapi" rev="1.0.0" conf="provided->runtimeapi"/>
 
 .. note::
 

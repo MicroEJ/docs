@@ -3,6 +3,73 @@
 Changelog
 ---------
 
+.. _changelog-0.18.0:
+
+[0.18.0] - 2024-08-22
+~~~~~~~~~~~~~~~~~~~~~
+
+Added
+"""""
+
+- Allow to build a VEE Port.
+- Retry tests when they fail to avoid flaky tests (mainly due to license check) to fail the whole build.
+- Support build incremental when using a published VEE Port with Full BSP Connection.
+- Add the plugin `com.microej.gradle.runtime-api` to build a Runtime API.
+- Allow to enable/disable the publication of the Ivy descriptor.
+- Allow to run dependent applications on simulator (declared with `microejApplication`).
+
+Fixed
+"""""
+
+- Fix publication to add dependencies defined with MicroEJ configurations to the ``.module`` and ``.pom`` files.
+- Comment the ``stop`` method of the generated Wrapper class to prevent potential Sonar issue.
+- Fix MicroEJ Test Engine compatibility with Gradle 8.6 and higher.
+- Allow to run a Virtual Device via its launchers on a JDK version higher than 11.
+- Fix build failure on multi-project with several applications depending on a kernel as project dependency.
+- Some projects are not configured to be built with Java 1.7 when imported in Eclipse.
+- Fix feature not found when launching a Virtual Device with installed applications.
+
+.. _changelog-0.17.0:
+
+[0.17.0] - 2024-05-30
+~~~~~~~~~~~~~~~~~~~~~
+
+Added
+"""""
+
+- Allow to add tools to a Virtual Device.
+- Allow to fetch Runtime APIs with the ``microejRuntimeApi`` configuration.
+
+Changed
+"""""""
+
+- Merge the ``loadXXXConfiguration`` tasks with their matching task.
+- Split ``buildExecutable`` in 2 tasks to support incremental build of the ``microejapp.o`` file.
+- Make FeatureEntryPoint take priority over main method when generating the Application entryPoint wrapper.
+
+Fixed
+"""""
+
+- Re-Generate the Application entrypoint wrapper if the entrypoint class is
+  modified, if the ``applicationEntryPoint`` property is changed or if the resources changed.
+- Simplify Ant classpath when executing an Ant script to avoid too long classpath and support multiple Windows drives.
+- Append Applications provided with the ``microejApplication`` configuration to a Virtual Device.
+- Make sure to always generate the Kernel certificate if it does not exist.
+- Remove deprecated APIs used to generate Application certificates.
+- Log filter in Ant scripts.
+- Print last relevant logs as exception message when Ant script execution fails.
+- Fix failing Javadoc generation when using EDC 1.3.6 and Null Analysis annotations.
+- Make the generated Wrapper Feature class call the main method of the Application with an empty array as
+  parameter instead of null.
+- Generate Application entrypoint wrapper if the entrypoint class extends a class implementing the
+  FeatureEntryPoint interface.
+- Do not embed generated KF files in Application JAR to avoid switching in KF mode when executing an Application on a
+  VEE Port.
+- Fix configurations used to fetch Kernels to avoid NPE during build when a project is provided
+  as dependency.
+- Set ADP generated folders in the sourcesets to be detected by the IDEs.
+- Make sure to copy the Assembly file in the BSP when it is generated.
+
 .. _changelog-0.16.0:
 
 [0.16.0] - 2024-03-18
@@ -45,7 +112,7 @@ Fixed
 Added
 """""
 
-- Unify ``microejVeePort`` and ``microejKernel`` configurations into `microejVee`.
+- Unify ``microejVeePort`` and ``microejKernel`` configurations into ``microejVee``.
 - Add verification of dependencies checksums during build.
 - Add the plugin ``com.microej.gradle.mock`` to build a Mock.
 - Mention the system property to accept SDK EULA in error message.

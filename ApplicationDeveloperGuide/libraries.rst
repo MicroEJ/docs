@@ -9,10 +9,10 @@ library is divided into an API and an implementation. A Foundation
 library API is composed of a name and a 2 digits version (e.g.
 ``EDC-1.3``) and follows the semantic versioning (`<http://semver.org>`_)
 specification. A Foundation Library API only contains prototypes without
-code. Foundation Library implementations are provided by MicroEJ
-Platforms. From a MicroEJ Classpath, Foundation Library APIs
+code. Foundation Library implementations are provided by VEE Ports.
+From a MicroEJ Classpath, Foundation Library APIs
 dependencies are automatically mapped to the associated implementations
-provided by the Platform or the Virtual Device on which the application
+provided by the VEE Port or the Virtual Device on which the application
 is being executed.
 
 A MicroEJ Add-On Library is a MicroEJ library that is implemented on top
@@ -39,6 +39,7 @@ To consult its libraries APIs documentation, please visit `<https://developer.mi
 
    UI/ui
    nls
+   dataSerializationLibraries
    networking
    bluetooth
    javaTime

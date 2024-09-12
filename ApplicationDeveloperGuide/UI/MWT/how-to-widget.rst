@@ -10,10 +10,12 @@ Widget subclasses have to implement two methods and may override optional method
 
 .. _Widget: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html
 
-Implementing the mandatory methods
+Implementing the Mandatory Methods
 ----------------------------------
 
-Computing the optimal size of the widget
+.. _mwt_widget_optimalsize:
+
+Computing the Optimal Size of the Widget
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The `computeContentOptimalSize()`_ method is called by the MWT framework in order to know the optimal size of the widget.
@@ -41,7 +43,7 @@ For example, the following snippet computes the optimal size of an image widget:
 .. _Widget.NO_CONSTRAINT: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#NO_CONSTRAINT
 .. _getStyle(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#getStyle--
 
-Rendering the content of the widget
+Rendering the Content of the Widget
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The `renderContent()`_ method is called by the MWT framework in order to render the content of the widget.
@@ -68,7 +70,7 @@ For example, the following snippet renders the content of an image widget:
 
 .. _renderContent(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#renderContent-ej.microui.display.GraphicsContext-int-int-
 
-Handling events
+Handling Events
 ---------------
 
 When a widget is created, it is disabled and it will not receive any event.
@@ -90,7 +92,7 @@ For example, the following snippet prints a message when the widget receives an 
 .. _setEnabled(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#setEnabled-boolean-
 .. _handleEvent(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#handleEvent-int-
 
-Consuming events
+Consuming Events
 ~~~~~~~~~~~~~~~~
 
 To indicate that an event was consumed by a widget, `handleEvent()`_ should return ``true``.
@@ -111,7 +113,7 @@ The following guidelines are recommended to decide when to consume an event and 
 
 .. _Pointer.PRESSED: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Buttons.html#PRESSED
 
-Listening to the life-cycle hooks
+Listening to the Life-cycle Hooks
 ---------------------------------
 
 `Widget`_ subclasses may override the following methods in order to allocate and free the necessary resources:
@@ -122,7 +124,7 @@ Listening to the life-cycle hooks
 - `onShown() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#onShown-->`_
 - `onHidden() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#onHidden-->`_
 
-For example, the ``onAttached()`` method may be overridden to load an image:
+The ``onAttached()`` method may be overridden to load an image:
 
 .. code-block:: Java
 
@@ -140,7 +142,18 @@ Likewise, the ``onDetached()`` method may be overridden to close the image:
 		this.image.close();
 	}
 
-For example, the ``onShown()`` method may be overridden to start an animation:
+The ``onLaidOut()`` method may be overridden to split a String into several lines based on the widget's width:
+
+.. code-block:: Java
+
+	@Override
+	protected void onLaidOut() {
+		Style style = getStyle();
+		Font font = style.getFont();
+		this.splittedText = TextHelper.wrap(getText(), font, getContentBounds().getWidth());
+	}
+
+The ``onShown()`` method may be overridden to start an animation:
 
 .. code-block:: Java
 

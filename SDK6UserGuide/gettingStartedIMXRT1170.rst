@@ -15,7 +15,7 @@ Prerequisites
 
 .. note::
   
-   This Getting Started has been tested on Windows 10 & 11.
+   This Getting Started has been tested on Windows 10 & 11. Also note that examples used in this Getting Started could depend on older tools and libraries. Most notably our dependency manager plugin (using `Gradle <https://gradle.org/>`_) could be an older version.
 
 This Getting Started is separated in two main parts.
 
@@ -27,7 +27,7 @@ The first part consists of running a demo application on the Virtual Device. All
 
 The second part consists of running the same demo application on your device. For that you will need:
 
-* i.MX RT1170 Evaluation Kit, available `here <https://www.nxp.com/design/design-center/development-boards/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVK>`__.
+* i.MX RT1170 Evaluation Kit, available `here <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__.
 * RK055HDMIPI4MA0 display panel, available `here <https://www.nxp.com/part/RK055HDMIPI4MA0>`__.
 * A GNU ARM Embedded Toolchain, Cmake and Make are needed to build the BSP. You will be guided on how to install the toolchain later.
 * LinkServer tool to flash the board. You will be guided on how to install this tool later.
@@ -407,6 +407,34 @@ Here is the modified application running in simulation:
          :alt: Virtual Device
          :align: center
          :scale: 70%
+
+Going Further
+-------------
+
+You have now successfully executed a MicroEJ application on an embedded device so what's next?
+
+If you are an application developer you can continue to explore MicroEJ's API and functionalities by running and studying our samples at GitHub:
+
+.. list-table::
+   :widths: 33 33 33
+
+   * - Foundation Libraries
+     - Eclasspath
+     - IoT
+   * - This project gathers all the basic examples of the foundation libraries. 
+     - This project gather all the examples of eclasspath. 
+     - This project gathers simple applications using net libraries. 
+   * - https://github.com/MicroEJ/Example-Foundation-Libraries
+     - https://github.com/MicroEJ/Example-Eclasspath
+     - https://github.com/MicroEJ/Example-IOT
+
+You can also learn how to build bigger and better applications by reading our :ref:`Application Developer Guide <application-developer-guide>`.
+
+If you are an embedded engineer you could look at our VEE port examples at `GitHub <https://github.com/microej?q=vee&type=all&language=&sort=>`_. And to learn how create custom VEE ports you can read our :ref:`VEE Porting Guide <vee-porting-guide>`.
+
+You can also follow the :ref:`Kernel Developer Guide <kernel-developer-guide>` for more information on our multi-applications framework or read about our powerful wearable solution called :ref:`VEE Wear <vee-wear>`.
+
+Last but not least you can choose to learn about specific topics by following one of our many :ref:`tutorials <tutorials>` ranging from how to easily debug application to setting up a Continuous Integration process and a lot of things in between.
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 

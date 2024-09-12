@@ -70,8 +70,8 @@ The VEE Port Qualification Tools provide the following components:
   - Used to validate the Low Level APIs implementations.
   - Validated during the BSP development and whenever an Abstraction
     Layer implementation is added or changed (see
-    :ref:`vee_port_testsuite` or check the tutorial
-    :ref:`tutorial_run_test_suite_on_device`).
+    :ref:`vee_port_testsuite` or check the section
+    :ref:`run_test_suite_on_device`).
 
 Please refer to the `VEE Port Qualification Tools README
 <https://github.com/MicroEJ/VEEPortQualificationTools>`__ for more
@@ -302,10 +302,17 @@ Create the Test Suite Runner Project
 
 .. note:: ``{PROJECT_LOC}`` refers here to the location of your Test Suite runner project.
 
-Configure and Run the Test Suite
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. _run_test_suite_on_device:
 
-Follow the :ref:`tutorial_run_test_suite_on_device` tutorial to configure your VEE Port and run the Test Suite on your Device.
+Run a Test Suite on Device
+==========================
+
+Follow the :ref:`run_fs_test_suite_on_esp32_wrover` guide to configure your VEE Port and run the Test Suite on your Device.
+
+.. toctree::
+   :hidden:
+
+   runFsTestSuiteOnESP32WROVER
 
 .. _test_suite_versioning:
 
@@ -436,6 +443,13 @@ NET Pack
      - `4.1.1 <https://repository.microej.com/modules/com/microej/pack/net/net-1_1-testsuite/4.1.1/>`__
      - `4.0.2 <https://repository.microej.com/modules/com/microej/pack/net/net-ssl-2_2-testsuite/4.0.2/>`__
      - `1.3.1 <https://repository.microej.com/modules/com/microej/pack/security/security-1_4-testsuite/1.3.1/>`__
+   * - 11.1.0
+     - `1.1.4 <https://repository.microej.com/modules/ej/api/net/1.1.4/>`__
+     - `2.2.3 <https://repository.microej.com/modules/ej/api/ssl/2.2.3/>`__
+     - `1.4.2 <https://repository.microej.com/modules/ej/api/security/1.4.2/>`__
+     - `4.1.1 <https://repository.microej.com/modules/com/microej/pack/net/net-1_1-testsuite/4.1.1/>`__
+     - `4.0.2 <https://repository.microej.com/modules/com/microej/pack/net/net-ssl-2_2-testsuite/4.0.2/>`__
+     - `1.7.0 <https://repository.microej.com/modules/com/microej/pack/net/security-1_7-testsuite/1.7.0/>`__
 
 .. _test_suite_versioning_event_queue:
 

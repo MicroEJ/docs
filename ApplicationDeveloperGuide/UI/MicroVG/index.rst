@@ -16,6 +16,7 @@ MicroVG Foundation Library provides vector drawing capabilities.
    vectorimage
    traces
    avdLoader
+   how-to-add-emoji-to-vector-font
 
 
 ..

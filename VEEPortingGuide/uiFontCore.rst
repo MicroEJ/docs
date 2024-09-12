@@ -22,18 +22,29 @@ Memory Management
 The Font Renderer is able to load some fonts located outside the CPU addresses' space range.
 It uses the External Resource Loader.
 
-When a font is located in such memory, the Font Renderer copies a very short part of the resource (the font file) into a RAM memory (into CPU addresses space range): the font header.
-This header stays located in RAM until the application is using the font.
-As soon as the application uses another external font, new font replaces the old one.
-Then, on application demand, the Font Renderer loads some extra information from the font into the RAM memory (the font meta data, the font pixels, etc.).
-This extra information is automatically unloaded from RAM when the Font Renderer no longer needs them.
+When a font is located in such memory, the font characters are loaded one by one from the External Memory.
 
-This extra information is stored into a RAM section called ``.bss.microui.display.externalFontsHeap``.
+The Font Renderer uses a RAM buffer (External Font Heap) to only contain the font character currently being drawn by the application. 
+It is unloaded from RAM when the Font Renderer no longer needs it.
+
+The External Font Heap is stored into a RAM section called ``.bss.microui.display.externalFontsHeap``.
 Its size is automatically calculated according to the external fonts used by the firmware.
-However it is possible to change this value by setting the application property ``ej.microui.memory.externalfontsheap.size``.
+This size can be checked when enabling the verbose mode when building the application executable:
+
+   .. figure:: images/font-external-font-heap.png
+      :alt: External Font Heap size in verbose mode
+      :align: center
+
+      External Font Heap size in verbose mode
+
+However, it is possible to change this value by setting the application property ``ej.microui.memory.externalfontsheap.size``.
 This option is very useful when building a kernel: the kernel may anticipate the section size required by the features.
 
 .. warning:: When this size is smaller than the size required by an external font, some characters may be not drawn.
+
+Also, the Font Renderer copies a very short part of the resource (the font file) in RAM (into CPU address space range): the font header.
+This header remains located in RAM as long as the application is using the font.
+As soon as the application uses another external font, the new font replaces the old one.
 
 Configuration File
 ------------------
@@ -58,7 +69,7 @@ This chapter describes the steps to setup the loading of an external resource fr
 9. The font loader looks for the font and only reads the font header.
 10. (optional) The external resource is closed if the external resource is inside the CPU addresses' space range.
 11. The application can use the font.
-12. The external resource is never closed: the font's bytes are copied in RAM on demand (drawString, etc.).
+12. The external resource is never closed: the font characters are retrieved one by one from External Memory on demand (drawString, etc.).
 
 Simulation
 ----------
