@@ -144,8 +144,9 @@ declaration will link a Java class to Managed C module. File path put as annotat
 .. note:: 
    Managed C compiled files are seen as resources and has to be available in the Java classpath.
 
-Use ``@ManagedCFunction`` annotation to link a Java method to a Managed C module function. Java method has to be declared as `static native` and only use 
-``int``, ``long``, ``float`` or ``double`` Java base type as method parameters or return types. 
+Use ``@ManagedCFunction`` annotation to link a Java method to a Managed C module function. The Java method has to be declared as `static native` and only use 
+``int``, ``long``, ``float`` or ``double`` Java base type as method parameters or return types.
+The annotated Java native method signature must match the Managed C function signature. 
 
 Here is an example:
 
@@ -191,6 +192,33 @@ You should see the following output when launching the Java application:
 
           1 + 2 = 3
 
+.. note:: 
+
+Note that it is also possible to name the Java method however you like, but in this case, you must specify the name of the Managed C function as a parameter in the ``@ManagedCFunction`` annotation.
+
+   .. code-block:: java
+      :emphasize-lines: 11,12
+
+      @ManagedCModule("my_app.wasm")
+      public class Main {
+
+         public static void main(String[] args) {
+            int a = 1;
+            int b = 2;
+            // Call and return result of the "add" Managed C function
+            System.out.println(a + " + " + b + " = "+ myManagedCAdd(a, b));
+         }
+
+         @ManagedCFunction("add")
+         public static native int myManagedCAdd(int a, int b);
+      }
+
+   .. code:: c
+      :emphasize-lines: 1
+
+      int add(int a, int b) {
+         return a + b;
+      }
 
 .. _managedc.communication.managedc_memory:
 
