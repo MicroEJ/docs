@@ -267,7 +267,7 @@ Application Project
 - Add the ``com.microej.gradle.application`` plugin in the ``build.gradle.kts`` file::
 
     plugins {
-        id("com.microej.gradle.application") version "0.18.0"
+        id("com.microej.gradle.application") version "0.19.0"
     }
 
   .. note::
@@ -291,7 +291,7 @@ Add-On Library Project
 - Add the ``com.microej.gradle.addon-library`` plugin in the build script::
 
     plugins {
-        id("com.microej.gradle.addon-library") version "0.18.0"
+        id("com.microej.gradle.addon-library") version "0.19.0"
     }
 
   .. note::
@@ -307,7 +307,7 @@ Mock
 - Add the ``com.microej.gradle.mock`` plugin in the build script::
 
     plugins {
-        id("com.microej.gradle.mock") version "0.18.0"
+        id("com.microej.gradle.mock") version "0.19.0"
     }
 
   .. note::
@@ -323,7 +323,7 @@ J2SE Library Project
 - Add the ``com.microej.gradle.j2se-library`` plugin in the build script::
 
     plugins {
-        id("com.microej.gradle.j2se-library") version "0.18.0"
+        id("com.microej.gradle.j2se-library") version "0.19.0"
     }
 
   .. note::
@@ -339,7 +339,7 @@ Runtime API Project
 - Add the ``com.microej.gradle.runtime-api`` plugin in the build script::
 
     plugins {
-        id("com.microej.gradle.runtime-api") version "0.18.0"
+        id("com.microej.gradle.runtime-api") version "0.19.0"
     }
 
   .. note::
@@ -443,13 +443,13 @@ This section explains the different ways to add a module to an existing project.
       - Add the MicroEJ plugin, depending on the module nature you want to build, for example for an Add-On Library::
       
           plugins {
-              id("com.microej.gradle.addon-library") version "0.18.0"
+              id("com.microej.gradle.addon-library") version "0.19.0"
           }
       
         or for an Application::
       
           plugins {
-              id("com.microej.gradle.application") version "0.18.0"
+              id("com.microej.gradle.application") version "0.19.0"
           }
       
         Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
