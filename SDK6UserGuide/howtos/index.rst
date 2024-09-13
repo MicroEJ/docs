@@ -15,6 +15,7 @@ How-to Guides
    resolveInIDE
    installSnapshotPlugins
    buildProject
+   buildAndDeployObjectFiles
    buildExecutableWithMultipleVeePorts
    createCustomConfigurationInIDE
    useFeatureEntryPointClass
