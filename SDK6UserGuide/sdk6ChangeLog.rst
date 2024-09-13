@@ -3,6 +3,35 @@
 Changelog
 ---------
 
+.. _changelog-0.19.0:
+
+[0.19.0] - 2024-09-13
+~~~~~~~~~~~~~~~~~~~~~
+
+Added
+"""""
+
+- Allow to define properties of a testsuite project in the `local.properties` file.
+- Display clear error message when trying to build a Feature with a Virtual Device built with a Mono-Sandbox VEE Port.
+
+Changed
+"""""""
+
+- Application options must now add ``microej.option.*`` prefix to be defined as System properties.
+- Load VEE Port MicroUI configuration files from the ``extensions/microui`` folder instead of the ``microui`` folder. 
+
+Fixed
+"""""
+
+- Project not configured to build with Java 1.7 when runtimeClasspath configuration has already been resolved.
+- Allow to produce feature files during the build in a multi-project with several feature projects.
+- Use the provided Runtime API jar if it contains KF to compile the Wrapper class instead of fetching KF to avoid
+  dependency resolution error with Offline repositories.
+- Fail with readable error message when building a Runtime API with no Kernel API declared.
+- VG Pack 1.6.0+ cannot be used for a VEE Port because it provides JAR artifacts on its default configuration (besides
+  the Pack RIP).
+- Use the Runtime API provided by the Kernel to build an augmented Virtual Device.
+
 .. _changelog-0.18.0:
 
 [0.18.0] - 2024-08-22
@@ -14,9 +43,9 @@ Added
 - Allow to build a VEE Port.
 - Retry tests when they fail to avoid flaky tests (mainly due to license check) to fail the whole build.
 - Support build incremental when using a published VEE Port with Full BSP Connection.
-- Add the plugin `com.microej.gradle.runtime-api` to build a Runtime API.
+- Add the plugin ``com.microej.gradle.runtime-api`` to build a Runtime API.
 - Allow to enable/disable the publication of the Ivy descriptor.
-- Allow to run dependent applications on simulator (declared with `microejApplication`).
+- Allow to run dependent applications on simulator (declared with ``microejApplication``).
 
 Fixed
 """""
