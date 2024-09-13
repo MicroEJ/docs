@@ -45,7 +45,7 @@ Core Engine
 ~~~~~~~~~~~
 
 - [Multi] - Increased execution quota precision
-- [Multi] - Added function `LLKERNEL_quantaConsumed(int32_t quanta)` in `LLKERNEL.h` to allow a native function to increase the execution counter.
+- [Multi] - Added function `LLKERNEL_quantaConsumed(int32_t quanta)` in `LLKERNEL.h`, allowing a native function to increment the quantum counter of the current execution context.
 - [Multi] - Fixed watchdog which prevents the Core Engine to stop because of a pending thread.
 - [Multi] - Added new functions to Low Level API ``LLMJVM_MONITOR_impl.h`` for CPU Control monitoring
 
