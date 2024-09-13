@@ -717,6 +717,11 @@ the execution counter of all Features is reset.
 Setting a Feature execution quota to zero causes the Feature to be
 suspended (the Feature is paused).
 
+If a Feature has reached its execution quota and is holding a monitor (through one of its threads), 
+and another Module (Feature or Kernel) with a disabled quota attempts (through one of its threads) to acquire the same monitor, 
+the thread holding the monitor will continue its execution until it releases the monitor.
+
+
 RAM Control: Feature Criticality
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
