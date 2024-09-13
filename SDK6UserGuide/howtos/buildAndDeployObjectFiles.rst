@@ -5,9 +5,9 @@ How To Build and Deploy Object Files without Building the Executable
 
 If you need to produce the object files of the Application, deploy them to the BSP, 
 but delegate the build of the Executable to another build system, 
-call the ``buildExecutable`` task with the Application Option ``deploy.bsp.microejscript`` set to ``false``::
+call the ``buildExecutable`` task with the :ref:`Application option <application_options>` ``deploy.bsp.microejscript`` set to ``false``::
 
-    ./gradlew buildExecutable -Ddeploy.bsp.microejscript=false
+    ./gradlew buildExecutable -Dmicroej.option.deploy.bsp.microejscript=false
 
 You should see logs similar to the following ones::
 
