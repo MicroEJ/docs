@@ -8,7 +8,7 @@ Building or running an Application or a Test Suite with the SDK requires a VEE P
 Use one of the following available options to provide it to your project. 
 
 Using a Module Dependency
-~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------
 
 When your VEE Port is published in an artifact repository, 
 you can define the VEE Port by declaring a module dependency in the ``build.gradle.kts`` file, with the ``microejVee`` configuration:
@@ -37,8 +37,27 @@ you can define the VEE Port by declaring a module dependency in the ``build.grad
       Refer to `the Gradle documentation <https://docs.gradle.org/current/dsl/org.gradle.api.artifacts.dsl.DependencyHandler.html>`__ 
       to learn all the options to select dependencies.
 
-Using a Local VEE Port Directory
+Selecting the Architecture Usage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When the selected VEE Port is fetched from a repository, the Architecture Usage can be defined in the project.
+This is done by setting the ``architectureUsage`` property in the ``microej`` block in the ``build.gradke.kts`` file::
+
+   microej {
+      architectureUsage = "prod"
+   }
+
+Set the property to ``prod`` to use a Production Architecture and to ``eval`` to use an Evaluation Architecture.
+If not set, the ``eval`` value is used.
+
+.. warning::
+
+   This property allows to select the Architecture Usage only when the VEE Port is fetched from a repository.
+   When the VEE Port is a local archive of folder, the Architecture Usage has been defined when the VEE Port
+   has been built and can no longer be changed.
+
+Using a Local VEE Port Directory
+--------------------------------
 
 When your VEE Port has been built locally and is therefore available in a local directory, 
 you can use it by declaring a file dependency in the ``build.gradle.kts`` file, with the ``microejVee`` configuration::
@@ -54,7 +73,7 @@ you can use it by declaring a file dependency in the ``build.gradle.kts`` file, 
    The Windows paths must have been converted manually replacing ``\`` by ``/`` or by ``\\``.
 
 Using a Local VEE Port Archive
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------
 
 When your VEE Port is available locally as an archive file (``.zip`` or ``.vde``),
 you can use it by declaring a file dependency in the ``build.gradle.kts`` file, with the ``microejVee`` configuration::
