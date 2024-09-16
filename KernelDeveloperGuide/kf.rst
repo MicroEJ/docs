@@ -707,7 +707,7 @@ A Kernel can assign an execution quota to a Feature using
 `Feature.setExecutionQuota()`_. The quota is expressed in execution
 units.
 
-Quotas account to the running current context owner.
+Quotas account to the context of the current thread's owner.
 
 When a Feature has reached its execution quota, its execution is
 suspended until all other Features have reached their execution quota.
@@ -716,6 +716,11 @@ the execution counter of all Features is reset.
 
 Setting a Feature execution quota to zero causes the Feature to be
 suspended (the Feature is paused).
+
+If a Feature has reached its execution quota and is holding a monitor (through one of its threads), 
+and another Module (Feature or Kernel) with a disabled quota attempts to acquire the same monitor (through one of its threads), 
+the thread holding the monitor will continue its execution until it releases the monitor.
+
 
 RAM Control: Feature Criticality
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
