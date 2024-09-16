@@ -54,6 +54,11 @@ Core Engine
    -  ``void LLMJVM_MONITOR_IMPL_on_quantum_counters_reset()``: called by the Core Engine when all the quantum counters are reset to zero.
    -  ``void LLMJVM_MONITOR_IMPL_on_thread_added_to_context(int32_t thread_id, int32_t context_id)``: called by the Core Engine when a thread is added to an execution context.
 
+Foundation Libraries
+~~~~~~~~~~~~~~~~~~~~
+
+- [Multi] - Fixed, in ``KF``, wrong assertion thrown when starting a Kernel on the Simulator with a pre-installed Application, occurring only when :ref:`assertions were enabled on Simulator <enable_assertions_sim>`.
+
 Integration
 ~~~~~~~~~~~
 
