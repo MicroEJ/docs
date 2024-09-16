@@ -67,7 +67,7 @@ For instance, in command line::
 
     -Dmicroej.option.soar.generate.classnames=false
 
-of in ``gradle.properties`` file::
+or in ``gradle.properties`` file::
 
    systemProp.microej.option.soar.generate.classnames=false
 
