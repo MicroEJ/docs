@@ -45,6 +45,9 @@ Notice that some options may not be supported by your VEE Port, in the following
 Defining an Option with SDK 6
 =============================
 
+Using a Properties File
+-----------------------
+
 With the SDK 6, the Applications options can be defined in a properties file located in the ``configuration`` folder of the project.
 Usually, the options are defined in a file named ``common.properties``, 
 but all properties files located in this folder are loaded, no matter what their name is.
@@ -53,6 +56,25 @@ To set an option in a properties file, open the file in a text editor and add a 
 for example::
    
    soar.generate.classnames=false
+
+
+Using System Properties
+-----------------------
+
+Application options can be defined by System properties using the ``microej.option.*`` prefix.
+System properties can either be defined in command line using ``-D`` argument, or in ``gradle.properties`` file using ``systemProp.*`` prefix.
+For instance, in command line::
+
+    -Dmicroej.option.soar.generate.classnames=false
+
+or in ``gradle.properties`` file::
+
+   systemProp.microej.option.soar.generate.classnames=false
+
+See the :ref:`sdk_6_howto_gradle_system_property` for more information about System properties.
+
+.. note::
+   When Application options are also defined in properties from the ``configuration`` folder of the project, they will be overridden by System properties.
 
 .. _define_option:
 

@@ -85,13 +85,13 @@ the verbose mode can be enabled by using the ``--info`` Gradle option::
 Debug on Simulator
 ------------------
 
-The SDK allows to run an Application with the Simulator in debug mode by setting the System property ``debug.mode`` to ``true`` 
+The SDK allows to run an Application with the Simulator in debug mode by setting the project property ``debug.mode`` to ``true`` 
 when executing the runOnSimulator task::
 
    ./gradlew runOnSimulator -P"debug.mode"=true
 
 The debug mode is activated on the port ``12000`` by default. 
-The port can be changed by using the System Property ``debug.port``::
+The port can be changed by using the project Property ``debug.port``::
 
    ./gradlew runOnSimulator -P"debug.mode"=true -P"debug.port"=8000
 
@@ -193,7 +193,7 @@ To generate the Code Coverage files (``.cc``), invoke the ``:runOnSimulator`` ta
 
 ::
 
-   gradle :runOnSimulator -D"s3.cc.thread.period=15" -D"s3.cc.activated=true"
+   gradle :runOnSimulator -D"microej.option.s3.cc.thread.period=15" -D"microej.option.s3.cc.activated=true"
 
 *Option Name*: ``s3.cc.thread.period``
 
