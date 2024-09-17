@@ -847,7 +847,11 @@ match the ``LLBLUETOOTH_IMPL_*`` pattern.
 Header Files
 ------------
 
-One header file is provided:
+Two header files are provided:
+
+-  LLBLUETOOTH_defines.h
+
+   Defines constants and types which are used by the functions to implement.
 
 -  LLBLUETOOTH_impl.h
 

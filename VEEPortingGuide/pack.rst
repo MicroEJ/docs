@@ -5,13 +5,14 @@ MicroEJ Packs
 =============
 
 Overview
-============
+========
 
 On top of a MicroEJ Architecture can be imported MicroEJ Packs which provide additional features such as:
 
 -  :ref:`Serial Communications <pack_ecom_comm>`,
 -  :ref:`Graphical User Interface <pack_gui>`,
 -  :ref:`Networking <pack_net>`,
+-  :ref:`Bluetooth <pack_bluetooth>`,
 -  :ref:`File System <pack_fs>`,
 -  etc.
 
