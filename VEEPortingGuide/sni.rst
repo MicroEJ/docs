@@ -73,10 +73,15 @@ their respective memory.
 
    :ref:`[SNI] <runtime_sni>` Processing
 
-Example
-=======
+First Example
+=============
 
-.. code:: java
+This first example shows how to declare and implement a Java native
+method using SNI. First the method has to be declared ``native`` in Java:
+this states that the method is written in another language. 
+
+.. code-block:: java
+   :emphasize-lines: 24
 
    package example;
 
@@ -84,7 +89,7 @@ Example
 
    /**
     * Abstract class providing a native method to access sensor value.
-    * This method will be executed out of virtual machine.
+    * This method will be executed out of the Core Engine.
     */
    public abstract class Sensor {
 
@@ -111,23 +116,26 @@ Example
        }
    }
 
-.. code:: c
+Then, the implementation of the method is written in C language.
 
-   // File providing an implementation of native method using a C function
-               #include <sni.h>
-               #include <potentiometer.h>
-               
-               #define SENSOR_ERROR (-1)
-               #define POTENTIOMETER_ID (3)
-               
-               jint Java_example_Sensor_getSensorValue(jint sensor_id){
-               
-                   if (sensor_id == POTENTIOMETER_ID)
-                   {
-                       return get_potentiometer_value();
-                   }
-                   return SENSOR_ERROR;
-               }
+.. code-block:: c
+   :emphasize-lines: 8
+
+      // File providing an implementation of native method using a C function
+      #include <sni.h>
+      #include <potentiometer.h>
+      
+      #define SENSOR_ERROR (-1)
+      #define POTENTIOMETER_ID (3)
+      
+      jint Java_example_Sensor_getSensorValue(jint sensor_id){
+      
+          if (sensor_id == POTENTIOMETER_ID)
+          {
+              return get_potentiometer_value();
+          }
+          return SENSOR_ERROR;
+      }
 
 
 Synchronization
