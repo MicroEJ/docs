@@ -35,7 +35,7 @@ Before all, install the MicroUI C Module:
 
 1. Find the correct version of the C module according to the UI Pack version; see :ref:`section_ui_releasenotes_cmodule`.
 2. Unzip it in the BSP project.
-3. Add the mandatory files to the list of the BSP project's compiled files: ``LLDW_PAINTER_impl.c``, ``LLUI_PAINTER_impl.c``, ``ui_drawing_stub.c``, ``ui_drawing.c`` and ``ui_image_drawing.c``.
+3. Add the mandatory files to the list of the BSP project's compiled files: ``ui_image_drawing``, ``ui_drawing``, ``ui_rect_util``, ``LLUI_PAINTER_impl``, ``ui_display_brs_single``, ``LLDW_PAINTER_impl``, ``ui_display_brs``, ``ui_drawing_stub``, ``ui_display_brs_legacy`` and ``ui_display_brs_predraw.c``.
 4. Add the optional files in the BSP project (if their associated feature is used/needed): 
  
    - ``LLUI_DISPLAY_HEAP_impl.c``: to use another image heap allocator,
