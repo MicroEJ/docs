@@ -215,7 +215,7 @@ You should see the following output when launching the Java application:
          public static native int myManagedCAdd(int a, int b);
       }
 
-   .. code:: c
+   .. code-block:: c
       :emphasize-lines: 1
 
       int add(int a, int b) {
