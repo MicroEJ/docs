@@ -468,11 +468,11 @@ According to the chosen format, some color data can be lost or cropped.
 
    ::
 
-      u32 convertARGB8888toLCDPixel(u32 c){
+      u32 convertARGB8888toLCDPixel(u32 c) {
           return c;
       }
 
-      u32 convertLCDPixeltoARGB8888(u32 c){
+      u32 convertLCDPixeltoARGB8888(u32 c) {
           return c;
       }
 
@@ -481,11 +481,11 @@ According to the chosen format, some color data can be lost or cropped.
 
    ::
 
-      u32 convertARGB8888toLCDPixel(u32 c){
+      u32 convertARGB8888toLCDPixel(u32 c) {
           return c & 0xffffff;
       }
 
-      u32 convertLCDPixeltoARGB8888(u32 c){
+      u32 convertLCDPixeltoARGB8888(u32 c) {
           return 0
                   | 0xff000000
                   | c
@@ -497,7 +497,7 @@ According to the chosen format, some color data can be lost or cropped.
 
    ::
 
-      u32 convertARGB8888toLCDPixel(u32 c){
+      u32 convertARGB8888toLCDPixel(u32 c) {
           return 0
                   | ((c & 0xf80000) >> 8)
                   | ((c & 0x00fc00) >> 5)
@@ -505,7 +505,7 @@ According to the chosen format, some color data can be lost or cropped.
                   ;
       }
 
-      u32 convertLCDPixeltoARGB8888(u32 c){
+      u32 convertLCDPixeltoARGB8888(u32 c) {
           return 0
                   | 0xff000000
                   | ((c & 0xf800) << 8)
@@ -519,7 +519,7 @@ According to the chosen format, some color data can be lost or cropped.
 
    ::
 
-      u32 convertARGB8888toLCDPixel(u32 c){
+      u32 convertARGB8888toLCDPixel(u32 c) {
           return 0
                   | (((c & 0xff000000) == 0xff000000) ? 0x8000 : 0)
                   | ((c & 0xf80000) >> 9)
@@ -528,7 +528,7 @@ According to the chosen format, some color data can be lost or cropped.
                   ;
       }
 
-      u32 convertLCDPixeltoARGB8888(u32 c){
+      u32 convertLCDPixeltoARGB8888(u32 c) {
           return 0
                   | ((c & 0x8000) == 0x8000 ? 0xff000000 : 0x00000000)
                   | ((c & 0x7c00) << 9)
@@ -542,7 +542,7 @@ According to the chosen format, some color data can be lost or cropped.
 
    ::
 
-      u32 convertARGB8888toLCDPixel(u32 c){
+      u32 convertARGB8888toLCDPixel(u32 c) {
           return 0
                   | ((c & 0xf0000000) >> 16)
                   | ((c & 0x00f00000) >> 12)
@@ -551,7 +551,7 @@ According to the chosen format, some color data can be lost or cropped.
                   ;
       }
 
-      u32 convertLCDPixeltoARGB8888(u32 c){
+      u32 convertLCDPixeltoARGB8888(u32 c) {
           return 0
                   | ((c & 0xf000) << 16)
                   | ((c & 0xf000) << 12)
@@ -568,11 +568,11 @@ According to the chosen format, some color data can be lost or cropped.
 
    ::
 
-      u32 convertARGB8888toLCDPixel(u32 c){
+      u32 convertARGB8888toLCDPixel(u32 c) {
           return (toGrayscale(c) & 0xff) / 0x11;
       }
 
-      u32 convertLCDPixeltoARGB8888(u32 c){
+      u32 convertLCDPixeltoARGB8888(u32 c) {
           return 0xff000000 | (c * 0x111111);
       }
 
@@ -580,11 +580,11 @@ According to the chosen format, some color data can be lost or cropped.
 
    ::
 
-      u32 convertARGB8888toLCDPixel(u32 c){
+      u32 convertARGB8888toLCDPixel(u32 c) {
           return (toGrayscale(c) & 0xff) / 0x55;
       }
 
-      u32 convertLCDPixeltoARGB8888(u32 c){
+      u32 convertLCDPixeltoARGB8888(u32 c) {
           return 0xff000000 | (c * 0x555555);
       }
 
@@ -592,11 +592,11 @@ According to the chosen format, some color data can be lost or cropped.
 
    ::
 
-      u32 convertARGB8888toLCDPixel(u32 c){
+      u32 convertARGB8888toLCDPixel(u32 c) {
           return (toGrayscale(c) & 0xff) / 0xff;
       }
 
-      u32 convertLCDPixeltoARGB8888(u32 c){
+      u32 convertLCDPixeltoARGB8888(u32 c) {
           return 0xff000000 | (c * 0xffffff);
       }
 
@@ -690,13 +690,11 @@ and blue[5]):
 
    .. code-block:: c
 
-      uint32_t LLUI_DISPLAY_IMPL_convertARGBColorToDisplayColor(uint32_t color)
-      {
+      uint32_t LLUI_DISPLAY_IMPL_convertARGBColorToDisplayColor(uint32_t color) {
          return ((color & 0xf80000) >> 19) | ((color & 0x00fc00) >> 5) | ((color & 0x0000f8) << 8);
       }
       
-      uint32_t LLUI_DISPLAY_IMPL_convertDisplayColorToARGBColor(uint32_t color)
-      {
+      uint32_t LLUI_DISPLAY_IMPL_convertDisplayColorToARGBColor(uint32_t color) {
         return ((color & 0x001f) << 19) | ((color & 0x7e00) << 5) | ((color & 0xf800) >> 8) | 0xff000000;
       }
 
@@ -731,7 +729,7 @@ This blending *creates* some  intermediate colors which the display driver manag
 
 Most of the time, the intermediate colors do not match with the palette.
 The default color is so returned, and the rendering becomes wrong.
-To prevent this use case, the Graphics Engine offers a specific Abstraction Layer API ``LLUI_DISPLAY_IMPL_prepareBlendingOfIndexedColors(void* foreground, void* background)``.
+To prevent this use case, the Graphics Engine offers a specific Abstraction Layer API ``LLUI_DISPLAY_IMPL_prepareBlendingOfIndexedColors(void *foreground, void *background)``.
 
 This API is only used when a blending is required and when the background color is enabled.
 The Graphics Engine calls the API just before the blending and gives as a parameter the pointers on both ARGB colors.The display driver should replace the ARGB colors with the CLUT indexes.
@@ -1121,44 +1119,35 @@ The following example shows an implementation with FreeRTOS.
 
 .. code:: c
  
-   void LLUI_DISPLAY_IMPL_initialize(LLUI_DISPLAY_SInitData* init_data)
-   {
-      // create the Graphics Engine's binary semaphores
-      g_sem_copyLaunch = xSemaphoreCreateBinary();
-      g_sem_taskTest = xSemaphoreCreateBinary();
-
+   void LLUI_DISPLAY_IMPL_initialize(LLUI_DISPLAY_SInitData *init_data) {
       // fill the LLUI_DISPLAY_SInitData structure
       init_data->binary_semaphore_0 = (void*)xSemaphoreCreateBinary();
       init_data->binary_semaphore_1 = (void*)xSemaphoreCreateBinary();
       init_data->lcd_width = LCD_DRIVER_get_width();
       init_data->lcd_height = LCD_DRIVER_get_height();
+      /* init_data->back_buffer_address = [...]; see next chapters */ 
    }
 
-   void LLUI_DISPLAY_IMPL_binarySemaphoreTake(void* sem)
-   {
+   void LLUI_DISPLAY_IMPL_binarySemaphoreTake(void *sem) {
       xSemaphoreTake((xSemaphoreHandle)sem, portMAX_DELAY);
    }
 
-   void LLUI_DISPLAY_IMPL_binarySemaphoreGive(void* sem, bool under_isr)
-   {
-      if (under_isr)
-      {
+   void LLUI_DISPLAY_IMPL_binarySemaphoreGive(void *sem, bool under_isr) {
+      if (under_isr) {
          portBASE_TYPE xHigherPriorityTaskWoken = pdFALSE;
          xSemaphoreGiveFromISR((xSemaphoreHandle)sem, &xHigherPriorityTaskWoken);
-         if(xHigherPriorityTaskWoken != pdFALSE )
-         {
+         if(xHigherPriorityTaskWoken != pdFALSE ) {
             // Force a context switch here.
             portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
          }
       }
-      else
-      {
+      else {
          xSemaphoreGive((xSemaphoreHandle)sem);
       }
    }
 
-Direct Policy
--------------
+Direct Buffer (parallel)
+------------------------
 
 :ref:`This policy<section_display_direct>` considers the application and the LCD driver share the same buffer.
 In other words, all drawings made by the application are immediately shown on the display.
@@ -1166,8 +1155,7 @@ This particular case is the easiest to write because the ``flush()`` stays empty
 
 .. code:: c
 
-   void LLUI_DISPLAY_IMPL_initialize(LLUI_DISPLAY_SInitData* init_data)
-   {
+   void LLUI_DISPLAY_IMPL_initialize(LLUI_DISPLAY_SInitData *init_data) {
       // [...]
 
       // use same buffer between the LCD driver and the Graphics Engine
@@ -1175,14 +1163,59 @@ This particular case is the easiest to write because the ``flush()`` stays empty
       init_data->back_buffer_address = lcd_buffer;
    }
 
-   void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t flush_identifier, const ui_rect_t areas[], size_t length)
-   {
+   void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext *gc, uint8_t flush_identifier, const ui_rect_t areas[], size_t length) {
       // nothing to flush to the LCD, just have to unlock the Graphics Engine by giving the same buffer address
       LLUI_DISPLAY_setBackBuffer(flush_identifier, LLUI_DISPLAY_getBufferAddress(&gc->image), false);
    }
 
-Serial Display
---------------
+Swap Double Buffer (parallel)
+-----------------------------
+
+:ref:`This buffer policy<section_display_swap_double_parallel>`  requires two buffers in RAM.
+The first buffer is used by the application (buffer A), and the LCD controller uses the second buffer to update the display panel (buffer B).
+The LCD controller is reconfigured to use buffer A when the Graphics Engine is calling the ``flush()`` function.
+
+Before executing the next application drawing after a flush, the Graphics Engine automatically waits for the end of the flush buffer process: buffer B (currently used by the LDC controller) is updated at the end of the swap.
+The LCD driver is responsible for unlocking the Graphics Engine by calling the function ``LLUI_DISPLAY_setBackBuffer()`` at the end of the swap.
+
+.. code:: c
+
+   static uint8_t *buffer_A;
+   static uint8_t *buffer_B;
+   static uint8_t _flush_identifier;
+
+   void LLUI_DISPLAY_IMPL_initialize(LLUI_DISPLAY_SInitData *init_data) {
+      // [...]
+
+      // use two distinct buffers between the LCD driver and the Graphics Engine
+      LCD_DRIVER_initialize(buffer_B);
+      init_data->back_buffer_address = buffer_A;
+   }
+
+   void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext *gc, uint8_t flush_identifier, const ui_rect_t areas[], size_t length) {
+      // store the identifier of the flush used to unlock the Graphics Engine later
+      _flush_identifier = flush_identifier;
+
+      // change the LCDC address (executed at the next LCD refresh loop)
+      LCDC_set_address(LLUI_DISPLAY_getBufferAddress(&gc->image));
+   }
+
+   // only called when reloading a new LCDC address
+   void LCDC_RELOAD_IRQHandler(void) {
+      LCDC_DRIVER_clear_interrupt();
+
+      // end of the swap, unlock the Graphics Engine, update the back buffer address
+      uint8_t *new_back_buffer = (LCDC_get_address() == buffer_A) ? buffer_B : buffer_A;
+      LLUI_DISPLAY_setBackBuffer(_flush_identifier, new_back_buffer, true); // true: called under interrupt
+   }
+   
+Swap Triple Buffer (parallel)
+-----------------------------
+
+The behavior of this policy is very similar to the double buffer policy (see above): it consists to alternate three buffers instead of two.
+
+Single Buffer (serial)
+----------------------
 
 A display connected to the CPU through a serial bus (DSI, SPI, etc.) requires the :ref:`single buffer <section_display_single_serial>` policy: the application uses a buffer to perform its drawings, and the buffer's content has to be transmitted to the display when the Graphics Engine is calling the ``flush()`` function.
 
@@ -1204,8 +1237,7 @@ In that case, the serial driver must configure an interrupt to be notified about
 
    static uint8_t _flush_identifier;
 
-   void LLUI_DISPLAY_IMPL_initialize(LLUI_DISPLAY_SInitData* init_data)
-   {
+   void LLUI_DISPLAY_IMPL_initialize(LLUI_DISPLAY_SInitData *init_data) {
       // [...]
 
       LCD_DRIVER_initialize();
@@ -1215,26 +1247,24 @@ In that case, the serial driver must configure an interrupt to be notified about
       SERIAL_DRIVER_initialize();
    }
 
-   void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t flush_identifier, const ui_rect_t areas[], size_t length)
-   {
+   void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext *gc, uint8_t flush_identifier, const ui_rect_t areas[], size_t length) {
       // store the identifier of the flush used to unlock the Graphics Engine later
       _flush_identifier = flush_identifier;
 
       // configure the serial device to transmit n bytes
       // srcAddr == back_buffer
-      SERIAL_DRIVER_prepare_sent(srcAddr, LCD_WIDTH * LCD_HEIGHT * LCD_BPP / 8);
+      SERIAL_DRIVER_prepare_transmit(srcAddr, LCD_WIDTH * LCD_HEIGHT * LCD_BPP / 8);
 
       // configure the "end of transmission" interrupt
-      SERIAL_DRIVER_enable_interrupt(END_OF_COPY);
+      SERIAL_DRIVER_enable_interrupt(END_OF_TRANSMIT);
 
       // start the transmission
       SERIAL_DRIVER_start();
    }
 
-   void SERIAL_DEVICE_IRQHandler(void)
-   {
+   void SERIAL_DEVICE_IRQHandler(void) {
       SERIAL_DRIVER_clear_interrupt();
-      SERIAL_DRIVER_disable_interrupt(END_OF_COPY);
+      SERIAL_DRIVER_disable_interrupt(END_OF_TRANSMIT);
 
       // end of transmission, unlock the Graphics Engine without changing the back buffer address
       LLUI_DISPLAY_setBackBuffer(_flush_identifier, back_buffer, true); // true: called under interrupt
@@ -1248,15 +1278,13 @@ A dedicated OS task is required to perform this transmission.
 
 .. code:: c
 
-   static void* _copy_task_semaphore;
+   static void *_transmit_task_semaphore;
    static uint8_t _flush_identifier;
 
-   static void _task_flush(void *p_arg)
-   {
-      while(1)
-      {
+   static void _task_flush(void *p_arg) {
+      while(1) {
          // wait until the Graphics Engine gives the order to flush
-         LLUI_DISPLAY_IMPL_binarySemaphoreTake(_copy_task_semaphore);
+         LLUI_DISPLAY_IMPL_binarySemaphoreTake(_transmit_task_semaphore);
 
          // transmit data
          SERIAL_DRIVER_transmit_data(back_buffer, LCD_WIDTH * LCD_HEIGHT * LCD_BPP / 8);
@@ -1266,29 +1294,27 @@ A dedicated OS task is required to perform this transmission.
       }
    }
 
-   void LLUI_DISPLAY_IMPL_initialize(LLUI_DISPLAY_SInitData* init_data)
-   {
+   void LLUI_DISPLAY_IMPL_initialize(LLUI_DISPLAY_SInitData *init_data) {
       // [...]
 
       LCD_DRIVER_initialize();
       init_data->back_buffer_address = back_buffer;
 
       // create a "flush" task and a dedicated semaphore
-      _copy_task_semaphore = (void*)xSemaphoreCreateBinary();
+      _transmit_task_semaphore = (void*)xSemaphoreCreateBinary();
       xTaskCreate(_task_flush, "FlushTask", 1024, NULL, 12, NULL);
    }
 
-   void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t flush_identifier, const ui_rect_t areas[], size_t length)
-   {
+   void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext *gc, uint8_t flush_identifier, const ui_rect_t areas[], size_t length) {
       // store the identifier of the flush used to unlock the Graphics Engine later
       _flush_identifier = flush_identifier;
 
       // unlock the flush task
-      LLUI_DISPLAY_IMPL_binarySemaphoreGive(_copy_task_semaphore, false);
+      LLUI_DISPLAY_IMPL_binarySemaphoreGive(_transmit_task_semaphore, false);
    }
 
-Parallel Display: Copy Policy (Tearing Disabled)
-------------------------------------------------
+Single Buffer (parallel) and Tearing Disabled
+---------------------------------------------
 
 .. note:: This policy should synchronize the copy buffer process with the LCD tearing signal. However,  this notion is sometimes not available. This chapter describes the copy buffer process without using the tearing signal (see :ref:`next chapter<section_lluidisplay_parallel_tearing>`).
 
@@ -1314,8 +1340,7 @@ In that case, the DMA driver must configure an interrupt to be notified about th
 
    static uint8_t _flush_identifier;
 
-   void LLUI_DISPLAY_IMPL_initialize(LLUI_DISPLAY_SInitData* init_data)
-   {
+   void LLUI_DISPLAY_IMPL_initialize(LLUI_DISPLAY_SInitData *init_data) {
       // [...]
 
       // use two distinct buffers between the LCD driver and the Graphics Engine
@@ -1326,8 +1351,7 @@ In that case, the DMA driver must configure an interrupt to be notified about th
       DMA_DRIVER_initialize();
    }
 
-   void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t flush_identifier, const ui_rect_t areas[], size_t length)
-   {
+   void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext *gc, uint8_t flush_identifier, const ui_rect_t areas[], size_t length) {
       // store the identifier of the flush used to unlock the Graphics Engine later
       _flush_identifier = flush_identifier;
       
@@ -1342,8 +1366,7 @@ In that case, the DMA driver must configure an interrupt to be notified about th
       DMA_DRIVER_start();
    }
 
-   void DMA_IRQHandler(void)
-   {
+   void DMA_IRQHandler(void) {
       DMA_DRIVER_clear_interrupt();
       DMA_DRIVER_disable_interrupt(END_OF_COPY);
 
@@ -1359,23 +1382,20 @@ A dedicated OS task is required to perform this copy.
 
 .. code:: c
 
-   static void* _copy_task_semaphore;
+   static void *_copy_task_semaphore;
    static uint8_t _flush_identifier;
 
-   static void _task_flush(void *p_arg)
-   {
-      while(1)
-      {
+   static void _task_flush(void *p_arg) {
+      while(1) {
          int32_t size = LCD_WIDTH * LCD_HEIGHT * LCD_BPP / 8;
-         uint8_t* dest = frame_buffer;
-         uint8_t* src = back_buffer;
+         uint8_t *dest = frame_buffer;
+         uint8_t *src = back_buffer;
 
          // wait until the Graphics Engine gives the order to copy
          LLUI_DISPLAY_IMPL_binarySemaphoreTake(_copy_task_semaphore);
 
          // copy data
-         while(size)
-         {
+         while(size) {
             int32_t s = min(DMA_MAX_SIZE, size);
             DMA_DRIVER_copy_data(dest, src, s); // dest / src / size
             dest += s;
@@ -1388,8 +1408,7 @@ A dedicated OS task is required to perform this copy.
       }
    }
 
-   void LLUI_DISPLAY_IMPL_initialize(LLUI_DISPLAY_SInitData* init_data)
-   {
+   void LLUI_DISPLAY_IMPL_initialize(LLUI_DISPLAY_SInitData *init_data) {
       // [...]
 
       // use two distinct buffers between the LCD driver and the Graphics Engine
@@ -1401,8 +1420,7 @@ A dedicated OS task is required to perform this copy.
       xTaskCreate(_task_flush, "FlushTask", 1024, NULL, 12, NULL);
    }
 
-   void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t flush_identifier, const ui_rect_t areas[], size_t length)
-   {
+   void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext *gc, uint8_t flush_identifier, const ui_rect_t areas[], size_t length) {
       // store the identifier of the flush used to unlock the Graphics Engine later
       _flush_identifier = flush_identifier;
 
@@ -1412,8 +1430,8 @@ A dedicated OS task is required to perform this copy.
 
 .. _section_lluidisplay_parallel_tearing:
 
-Parallel Display: Copy Policy (Tearing Enabled)
------------------------------------------------
+Single Buffer (parallel) and Tearing Enabled
+---------------------------------------------
 
 :ref:`This buffer policy<section_display_single_parallel>` is the same as the previous chapter, but it uses the LCD tearing signal to synchronize the LCD refresh rate with the copy buffer process.
 The copy buffer process should not start during the call of ``flush()`` but should wait for the next tearing signal to start the copy.
@@ -1427,8 +1445,7 @@ There are two use cases:
    static uint8_t _start_DMA;
    static uint8_t _flush_identifier;
 
-   void LLUI_DISPLAY_IMPL_initialize(LLUI_DISPLAY_SInitData* init_data)
-   {
+   void LLUI_DISPLAY_IMPL_initialize(LLUI_DISPLAY_SInitData *init_data) {
       // [...]
 
       // use two distinct buffers between the LCD driver and the Graphics Engine
@@ -1443,8 +1460,7 @@ There are two use cases:
       DMA_DRIVER_initialize();
    }
 
-   void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t flush_identifier, const ui_rect_t areas[], size_t length)
-   {
+   void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext *gc, uint8_t flush_identifier, const ui_rect_t areas[], size_t length) {
       // store the identifier of the flush used to unlock the Graphics Engine later
       _flush_identifier = flush_identifier;
 
@@ -1459,12 +1475,10 @@ There are two use cases:
       _start_DMA = 1;
    }
 
-   void TE_IRQHandler(void)
-   {
+   void TE_IRQHandler(void) {
       TE_clear_interrupt();
 
-      if (_start_DMA)
-      {
+      if (_start_DMA) {
          _start_DMA = 0;
 
          // start the copy
@@ -1472,8 +1486,7 @@ There are two use cases:
       }
    }
 
-   void DMA_IRQHandler(void)
-   {
+   void DMA_IRQHandler(void) {
       DMA_DRIVER_clear_interrupt();
       DMA_DRIVER_disable_interrupt(END_OF_COPY);
 
@@ -1485,24 +1498,21 @@ There are two use cases:
 
 .. code:: c
 
-   static void* _copy_task_semaphore;
+   static void *_copy_task_semaphore;
    static uint8_t _start_copy;
    static uint8_t _flush_identifier;
 
-   static void _task_flush(void *p_arg)
-   {
-      while(1)
-      {
+   static void _task_flush(void *p_arg) {
+      while(1) {
          // wait until the Graphics Engine gives the order to copy
          LLUI_DISPLAY_IMPL_binarySemaphoreTake(_copy_task_semaphore);
 
          int32_t size = LCD_WIDTH * LCD_HEIGHT * LCD_BPP / 8;
-         uint8_t* dest = frame_buffer;
-         uint8_t* src = back_buffer;
+         uint8_t *dest = frame_buffer;
+         uint8_t *src = back_buffer;
 
          // copy data
-         while(size)
-         {
+         while(size) {
             int32_t s = min(DMA_MAX_SIZE, size);
             DMA_DRIVER_copy_data(dest, src, s); // dest / src / size
             dest += s;
@@ -1515,8 +1525,7 @@ There are two use cases:
       }
    }
 
-   void LLUI_DISPLAY_IMPL_initialize(LLUI_DISPLAY_SInitData* init_data)
-   {
+   void LLUI_DISPLAY_IMPL_initialize(LLUI_DISPLAY_SInitData *init_data) {
       // [...]
 
       // use two distinct buffers between the LCD driver and the Graphics Engine
@@ -1532,8 +1541,7 @@ There are two use cases:
       TE_enable_interrupt();
    }
 
-   void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t flush_identifier, const ui_rect_t areas[], size_t length)
-   {
+   void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext *gc, uint8_t flush_identifier, const ui_rect_t areas[], size_t length) {
       // store the identifier of the flush used to unlock the Graphics Engine later
       _flush_identifier = flush_identifier;
 
@@ -1541,12 +1549,10 @@ There are two use cases:
       _start_copy = 1;
    }
 
-   void TE_IRQHandler(void)
-   {
+   void TE_IRQHandler(void) {
       TE_clear_interrupt();
 
-      if (_start_copy)
-      {
+      if (_start_copy) {
          _start_copy = 0;
 
          // unlock the copy task
@@ -1554,48 +1560,111 @@ There are two use cases:
       }
    }  
 
-Parallel Display: Swap Policy
------------------------------
+Transmit and Swap Buffer
+------------------------
 
-:ref:`This buffer policy<section_display_swap_double_parallel>`  requires two buffers in RAM.
-The first buffer is used by the application (buffer A), and the LCD controller uses the second buffer to update the display panel (buffer B).
-The LCD controller is reconfigured to use buffer A when the Graphics Engine is calling the ``flush()`` function.
+:ref:`This buffer policy<section_display_transmitswap>` is a mix between the buffer policies :ref:`Single <section_display_single_serial>` and :ref:`Swap Double <section_display_swap_double_parallel>`.
+It requires two back buffers: the application uses a buffer to perform its drawings and the second buffer is used to transmit the data to the display frame buffer when the Graphics Engine is calling the ``flush()`` function.
+At the end of the transmission, the application buffer becomes the transmission buffer and vice-versa.
 
-Before executing the next application drawing after a flush, the Graphics Engine automatically waits for the end of the flush buffer process: buffer B (currently used by the LDC controller) is updated at the end of the swap.
-The LCD driver is responsible for unlocking the Graphics Engine by calling the function ``LLUI_DISPLAY_setBackBuffer()`` at the end of the swap.
+The subtility consists to reuse the transmission buffer as application buffer at the end of the transmission if, and only if, the application has not drawing something yet in the application buffer.
+This prevents to manage the restoration of the past: the application reuses the same buffer before last flush.
+
+
+This policy requires a dedicated OS task that will manage the transmission and the unlocking of the Graphics Engine  by calling the function ``LLUI_DISPLAY_setBackBuffer()``. 
+The specification of the ``flush()`` function is to be **not** blocker (atomic).
+Its aim is to unlock the *flush* task.
+The ``flush()`` function has to return as soon as possible.
+
+As soon as a transmission is started, the second buffer is freed.
+The Graphics Engine does not need to wait for the end of the serial data transmission: the application can draw immediately in the new back buffer.
+Note that the second flush has to wait the end of the first flush (the end of the transmission) before configuring and launching a new transmission.
+
+The serial data transmission is performed in hardware or in software.
+In hardware, the serial driver must configure an interrupt to be notified about the end of the transmission.
+In software, the *transmission* step is synchronous and blocker.
+
+
+.. note:: This pseudo implementation considers a display with a *serial* connection but the reasoning is similar with a *parallel* connection.
 
 .. code:: c
 
-   static uint8_t* buffer_A;
-   static uint8_t* buffer_B;
+   static uint8_t _flush_identifier;
+   static uint8_t _buffer_index;
+   static void *_transmit_task_semaphore;
    static uint8_t _flush_identifier;
 
-   void LLUI_DISPLAY_IMPL_initialize(LLUI_DISPLAY_SInitData* init_data)
-   {
+   static void _task_flush(void *p_arg) {
+      while(1) {
+         // wait until the Graphics Engine gives the order to flush
+         LLUI_DISPLAY_IMPL_binarySemaphoreTake(_transmit_task_semaphore);
+
+         // save the flush configuration: can be modified by the next call to flush() as soon as LLUI_DISPLAY_setBackBuffer() will wake up the Graphics Engine
+         uint8_t flush_identifier = _flush_identifier;
+
+         // retrieve the transmit buffer: the current back buffer
+         uint8_t *transmit_buffer = back_buffers[_buffer_index];
+
+         // swap both buffers (_buffer_index now points on the new back buffer)
+         _buffer_index = (_buffer_index + 1) & ~1;
+
+         // the new back buffer can be used for next drawings
+         if (LLUI_DISPLAY_setBackBuffer(flush_identifier, back_buffers[_buffer_index], false)) {
+
+            // here: the Graphics Engine is unlocked, the application can draw in the new back buffer 
+            // **and** can call flush() again
+
+            // configure and start the serial device to transmit n bytes (synchronous or asynchronous 
+            // transmission)
+            SERIAL_DRIVER_transmit_data(transmit_buffer, LCD_WIDTH * LCD_HEIGHT * LCD_BPP / 8);
+
+            // wait for the end of the transmission (blocking call or use an interrupt)
+            SERIAL_DRIVER_transmit_wait();
+
+            // here: the back buffer has been sent to the LCD, the buffer can be used again for the 
+            // next drawings in case of no new drawing has been already performed in the current back
+            // buffer
+
+            // reuse the old back buffer if no drawing has been already performed
+            if (LLUI_DISPLAY_setBackBuffer(flush_identifier, transmit_buffer, false)) {
+               // the new back buffer is set: cancel the previous swap to synchronize the driver with 
+               // the Graphics Engine
+               _buffer_index = (_buffer_index + 1) & ~1;
+            }
+            // else: too late to set this old transmit buffer back buffer; nothing to do
+         }
+         else {
+            // end of flush not expected; the Graphics Engine keeps using previous back buffer;
+            // have to cancel the buffers swap
+            _buffer_index = (_buffer_index + 1) & ~1;
+         }
+      }
+   }
+
+
+   void LLUI_DISPLAY_IMPL_initialize(LLUI_DISPLAY_SInitData *init_data) {
       // [...]
 
-      // use two distinct buffers between the LCD driver and the Graphics Engine
-      LCD_DRIVER_initialize(buffer_B);
-      init_data->back_buffer_address = buffer_A;
+      LCD_DRIVER_initialize();
+
+      // buffer 0 is the first back buffer; buffer 1 is not used
+      _buffer_index = 0;
+      init_data->back_buffer_address = back_buffers[_buffer_index];
+
+      // initialize the serial driver & device: GPIO, etc.
+      SERIAL_DRIVER_initialize();
+
+      // create a "flush" task and a dedicated semaphore
+      _transmit_task_semaphore = (void*)xSemaphoreCreateBinary();
+      xTaskCreate(_task_flush, "FlushTask", 1024, NULL, 12, NULL);
    }
 
-   void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t flush_identifier, const ui_rect_t areas[], size_t length)
-   {
+   void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext *gc, uint8_t flush_identifier, const ui_rect_t areas[], size_t length) {
       // store the identifier of the flush used to unlock the Graphics Engine later
-      _flush_identifier = flush_identifier;
-
-      // change the LCDC address (executed at the next LCD refresh loop)
-      LCDC_set_address(LLUI_DISPLAY_getBufferAddress(&gc->image));
-   }
-
-   // only called when reloading a new LCDC address
-   void LCDC_RELOAD_IRQHandler(void)
-   {
-      LCDC_DRIVER_clear_interrupt();
-
-      // end of the swap, unlock the Graphics Engine, update the back buffer address
-      uint8_t* new_back_buffer = (LCDC_get_address() == buffer_A) ? buffer_B : buffer_A;
-      LLUI_DISPLAY_setBackBuffer(_flush_identifier, new_back_buffer, true); // true: called under interrupt
+      _flush_identifier = flush_identifier;     
+  
+      // unlock the flush task
+      LLUI_DISPLAY_IMPL_binarySemaphoreGive(_transmit_task_semaphore, false);
    }
 
 .. _section_display_implementation:
