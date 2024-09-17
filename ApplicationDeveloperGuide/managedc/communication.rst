@@ -195,7 +195,8 @@ You should see the following output when launching the Java application:
 .. note:: 
 
    You can give the Java method a different name than the C function.
-   In that case, you must provide the name of the corresponding C function as a parameter in the ``@ManagedCFunction`` annotation..
+   In that case, you must provide the name of the corresponding C function as a parameter in the ``@ManagedCFunction`` annotation.
+   This is especially useful if you want to write a Java method in camel case while mapping it to a C function written in snake case.
 
    .. code-block:: java
       :emphasize-lines: 11,12
