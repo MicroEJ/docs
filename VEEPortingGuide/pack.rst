@@ -13,6 +13,7 @@ On top of a MicroEJ Architecture can be imported MicroEJ Packs which provide add
 -  :ref:`Graphical User Interface <pack_gui>`,
 -  :ref:`Networking <pack_net>`,
 -  :ref:`Bluetooth <pack_bluetooth>`,
+-  :ref:`Audio <pack_audio>`,
 -  :ref:`File System <pack_fs>`,
 -  etc.
 

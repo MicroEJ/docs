@@ -858,6 +858,35 @@ Two header files are provided:
    Defines the set of functions that the BSP must implement to manage and configure
    and Bluetooth module.
 
+.. _LLAUDIO-API-SECTION:
+
+LLAUDIO: Audio
+==============
+
+Naming Convention
+-----------------
+
+The Low Level Audio API (LLAUDIO), relies on functions that need to
+be implemented by engineers in a driver. The names of these functions
+match the ``LLAUDIO_*_IMPL_*`` pattern.
+
+Header Files
+------------
+
+Three header files is provided:
+
+-  LLAUDIO_defines.h
+
+   Defines constants and types which are used by the functions to implement.
+
+-  LLAUDIO_RECORD_impl.h
+
+   Defines the set of functions that the BSP must implement for audio recording.
+
+-  LLAUDIO_TRACK_impl.h
+
+   Defines the set of functions that the BSP must implement for audio playback.
+
 .. _LLEVENT-API-SECTION:
 
 LLEVENT: Event Queue

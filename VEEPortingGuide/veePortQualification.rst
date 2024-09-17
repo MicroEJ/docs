@@ -454,6 +454,19 @@ NET Pack
      - `4.0.2 <https://repository.microej.com/modules/com/microej/pack/net/net-ssl-2_2-testsuite/4.0.2/>`__
      - `1.7.0 <https://repository.microej.com/modules/com/microej/pack/net/security-1_7-testsuite/1.7.0/>`__
 
+Audio Pack
+----------
+
+.. list-table:: Audio API Implementation and Validation
+   :widths: 20 10 10
+
+   * - Audio Pack
+     - Audio API
+     - Java Test Suite
+   * - [1.0.0-1.1.0[
+     - `1.0.0 <https://repository.microej.com/modules/ej/api/audio/1.0.0/>`__
+     - `1.0.0 <https://repository.microej.com/modules/com/microej/pack/audio/audio-testsuite/1.0.0/>`__
+
 .. _test_suite_versioning_event_queue:
 
 EVENT QUEUE Pack
