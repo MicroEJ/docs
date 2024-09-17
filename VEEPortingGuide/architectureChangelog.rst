@@ -63,6 +63,7 @@ Integration
 ~~~~~~~~~~~
 
 - Add Architecture tools compatibility with SDKs running on JDK 17 and JDK 21.
+- Fix message to correctly display the BSP location, ensuring compatibility with both SDK 5 and SDK 6.
 
 .. _changelog-8.1.1:
 
