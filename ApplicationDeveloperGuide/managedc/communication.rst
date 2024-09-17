@@ -194,7 +194,8 @@ You should see the following output when launching the Java application:
 
 .. note:: 
 
-Note that it is also possible to name the Java method however you like, but in this case, you must specify the name of the Managed C function as a parameter in the ``@ManagedCFunction`` annotation.
+   You can give the Java method a different name than the C function.
+   In that case, you must provide the name of the corresponding C function as a parameter in the ``@ManagedCFunction`` annotation..
 
    .. code-block:: java
       :emphasize-lines: 11,12
