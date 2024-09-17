@@ -98,6 +98,12 @@ According to the LCD constraints (see :ref:`ui_port_conf`), some additional LLAP
 - ``LLUI_DISPLAY_IMPL_isColor``: the default implementation always returns ``true`` when the BPP is higher than 8; only useful as information for the application.
 - ``LLUI_DISPLAY_IMPL_getNumberOfColors``: the default implementation returns always ``1 << BPP``; only useful as information for the application.
 
+Display: Buffer Configuration
+=============================
+
+This configuration consists in declaring the available number of buffers where MicroUI can draw (back buffer) and the strategy to apply to update these buffers after a flush.
+Read and update the configuration file ``ui_display_brs_configuration.h``; more details in the chapter :ref:`section_display`.
+
 Display: Optional Features
 ==========================
 
