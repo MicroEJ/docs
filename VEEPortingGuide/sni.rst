@@ -58,20 +58,6 @@ Comments
 
 Your comments about this specification are welcome. Please contact :ref:`our support team <get_support>` with "SNI" as subject.
 
-Functional Description
-======================
-
-The following illustration shows both Java and C code
-accesses to shared objects in the immortal space, while also accessing
-their respective memory.
-
-.. _fig_sni-flow:
-.. figure:: images/sni_flow.*
-   :alt: SNI Processing
-   :scale: 75%
-   :align: center
-
-   :ref:`[SNI] <runtime_sni>` Processing
 
 First Example
 =============
@@ -137,7 +123,21 @@ Then, the implementation of the method is written in C language.
           return SENSOR_ERROR;
       }
 
+Java And Native Separation
+==========================
 
+The following illustration shows both Java and C code
+accesses to shared objects in the immortal space, while also accessing
+their respective memory.
+
+.. _fig_sni-flow:
+.. figure:: images/sni_flow.*
+   :alt: SNI Processing
+   :scale: 75%
+   :align: center
+
+   :ref:`[SNI] <runtime_sni>` Processing
+   
 Synchronization
 ===============
 
