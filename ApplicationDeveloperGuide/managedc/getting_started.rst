@@ -62,6 +62,7 @@ To use Managed C in your Application, follow these steps:
             
             @Target(ElementType.METHOD)
             public @interface ManagedCFunction {
+               String value() default "";
             }
 
 
@@ -125,7 +126,7 @@ To use Managed C in your Application, follow these steps:
             }
         }
 
-   .. note:: The Managed C function name and signature in the C file match the Java annotated native method.
+   .. note:: The Managed C function name and signature in the C file must match the annotated Java native method.
 
 #. **Compile the C File to WebAssembly:**
 
