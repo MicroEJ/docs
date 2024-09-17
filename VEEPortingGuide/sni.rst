@@ -1,14 +1,14 @@
-.. _sni:
+.. _sni_specification:
 
 =============================
 Simple Native Interface (SNI)
 =============================
 
 
-Principle
-=========
+Introduction
+============
 
-:ref:`[SNI] specification <runtime_sni>` defines how to cross the barrier between the Java world and the
+The Simple Native Interface specification (SNI) defines how to cross the barrier between the Java world and the
 native world:
 
 -  Call a C function from Java.
@@ -19,6 +19,44 @@ native world:
 
 -  Manipulate (read & write) shared memory both in Java and C: the
    immortal space.
+
+SNI does not allow you to:
+
+-  Access or create a Java object in a C function (except byte arrays).
+-  Access Java static variables in a C function.
+-  Call Java methods from a C function.
+
+Specification Summary
+~~~~~~~~~~~~~~~~~~~~~
+
+.. list-table::
+   :widths: 10 30
+
+   * - Java APIs
+     - https://repository.microej.com/javadoc/microej_5.x/apis/ej/sni/package-summary.html
+   * - Latest Version
+     - 1.4
+   * - Module Dependency
+     - .. tabs::
+
+         .. tab:: SDK 6
+
+            .. code-block:: java
+
+               implementation("ej.api:sni:1.4.3")
+
+         .. tab:: SDK 5
+
+            .. code-block:: xml
+
+               <dependency org="ej.api" name="sni" rev="1.4.3" />
+   * - Module Location
+     - https://repository.microej.com/modules/ej/api/sni/
+
+Comments
+~~~~~~~~
+
+Your comments about this specification are welcome. Please contact :ref:`our support team <get_support>` with "SNI" as subject.
 
 Functional Description
 ======================

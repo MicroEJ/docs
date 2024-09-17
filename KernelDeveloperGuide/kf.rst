@@ -16,14 +16,11 @@ Specification Summary
 
 .. list-table::
    :widths: 10 30
-   :header-rows: 1
-
-   * - Documentation
-     - Link
+ 
    * - Java APIs
      - https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/package-summary.html
    * - Latest Version
-     - 1.7.0
+     - 1.7
    * - Module Dependency
      - .. tabs::
 
@@ -38,6 +35,8 @@ Specification Summary
             .. code-block:: xml
 
                <dependency org="ej.api" name="kf" rev="1.7.0" />
+   * - Module Location
+     - https://repository.microej.com/modules/ej/api/kf/
 
 
 Comments
