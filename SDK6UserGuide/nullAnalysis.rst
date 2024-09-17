@@ -62,8 +62,6 @@ MicroEJ recommends to annotate the Java code as follows:
 .. _@NonNullByDefault: https://repository.microej.com/javadoc/microej_5.x/apis/ej/annotation/NonNullByDefault.html
 .. _@Nullable: https://repository.microej.com/javadoc/microej_5.x/apis/ej/annotation/Nullable.html
 .. _@NonNull: https://repository.microej.com/javadoc/microej_5.x/apis/ej/annotation/NonNull.html
-.. _EDC-1.3.6: https://repository.microej.com/modules/ej/api/edc/1.3.6/
-.. _EDC 1.3.6 Changelog: https://repository.microej.com/modules/ej/api/edc/1.3.6/CHANGELOG-1.3.6.md
 
 IDE Configuration 
 -----------------
