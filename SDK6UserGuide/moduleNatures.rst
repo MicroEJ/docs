@@ -64,6 +64,7 @@ This plugin adds the following tasks to your project:
 - :ref:`sdk6_module_natures.tasks.execTool`
 - :ref:`sdk6_module_natures.tasks.generateApplicationWrapper`
 - :ref:`sdk6_module_natures.tasks.compileWrapperJava`
+- :ref:`sdk6_module_natures.tasks.buildFeatureFromWPK`
 
 .. graphviz:: graphApplicationModule.dot
 
@@ -424,12 +425,12 @@ buildFeature
 - The Kernel Virtual Device 
 - The folder containing the Kernel Executable file (``build/kernelExecutable``)
 - The project classpath
-- The path of the folder where the Feature file must be generated (``build/feature/application``)
+- The path of the folder where the Feature file must be generated (``build/application/feature``)
 
 **Outputs**:
 
-- The generated Feature file (``build/feature/application/application.fo``)
-- The Zip file containing the generated build files (``build/libs/<application_name>-feature.zip``)
+- The generated Feature file (``build/application/feature/application.fo``)
+- The Zip file containing the generated build files (``build/libs/<application_name>-buildFiles.zip``)
 
 **Module Natures**:
 
@@ -617,6 +618,31 @@ This task is used by the following module natures:
 - :ref:`sdk6_module_natures.runtime-api`
 
 The ``buildRuntimeApiJar`` task is used internally by the SDK and it is not intended to be executed by the user.
+
+.. _sdk6_module_natures.tasks.buildFeatureFromWPK:
+
+buildFeatureFromWPK
+^^^^^^^^^^^^^^^^^^^
+
+**Description**: Builds the Feature binary file from a dependent Application.
+
+**Inputs**:
+
+- The Kernel Virtual Device 
+- The folder containing the Kernel Executable file (``build/kernelExecutable``)
+- The WPK of the dependent Application
+- The path of the folder where the Feature file must be generated (``build/application/wpkFeature``)
+
+**Outputs**:
+
+- The generated Feature file (``build/application/wpkFeature/application.fo``)
+- The Zip file containing the generated build files (``build/libs/wpkFeature-buildFiles.zip``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.application`
 
 .. _gradle_global_build_options:
 
