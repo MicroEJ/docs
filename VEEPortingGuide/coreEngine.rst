@@ -10,8 +10,8 @@ It executes at runtime the Application code.
 
 .. note::
 
-   In the following explanations the term "task" refers to the tasks scheduled by the underlying OS; and the term
-   "thread" refers to the MicroEJ threads scheduled by the Core Engine.
+   In the following explanations, the term `task` refers to native tasks scheduled by the underlying OS or RTOS, 
+   while `thread` refers to MicroEJ threads scheduled by the Core Engine.
 
 Block Diagram
 =============
