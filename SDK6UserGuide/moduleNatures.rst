@@ -26,7 +26,6 @@ This plugin adds the following tasks to your project:
 - tasks of the `Gradle Java plugin <https://docs.gradle.org/current/userguide/java_plugin.html>`__
 - :ref:`sdk6_module_natures.tasks.adp`
 - :ref:`sdk6_module_natures.tasks.loadVee`
-- :ref:`sdk6_module_natures.tasks.runOnSimulator`
 - :ref:`sdk6_module_natures.tasks.checkModule`
 - :ref:`sdk6_module_natures.tasks.execTool`
 
@@ -212,7 +211,6 @@ runOnSimulator
 
 This task is used by the following module natures:
 
-- :ref:`sdk6_module_natures.addon_lib`
 - :ref:`sdk6_module_natures.application`
 
 **Configuration**:
@@ -256,6 +254,7 @@ This task is used by the following module natures:
 
 - :ref:`sdk6_module_natures.addon_lib`
 - :ref:`sdk6_module_natures.application`
+- :ref:`sdk6_module_natures.mock`
 - :ref:`sdk6_module_natures.runtime-api`
 
 **Configuration**:
@@ -430,7 +429,7 @@ buildFeature
 **Outputs**:
 
 - The generated Feature file (``build/feature/application/application.fo``)
-- The Zip file containing the generated build files (``build/"libs/<application_name>-feature.zip"``)
+- The Zip file containing the generated build files (``build/libs/<application_name>-feature.zip``)
 
 **Module Natures**:
 
@@ -448,7 +447,7 @@ runOnDevice
 **Inputs**:
 
 - The extracted VEE Port folder
-- The folder containing the Executable file (``build/executable/application``)
+- The folder containing the Executable file (``build/application/executable``)
 - The configuration file with all the properties set to launch the build of the Executable (``build/properties/target.properties``)
 
 **Module Natures**:

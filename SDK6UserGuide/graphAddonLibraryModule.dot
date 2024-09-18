@@ -13,7 +13,6 @@ digraph mygraph {
     "adp" [fillcolor = "#f76241"]
     "checkModule" [fillcolor = "#f76241"]
     "loadVee" [fillcolor = "#f76241"]
-    "runOnSimulator" [fillcolor = "#f76241"]
     "execTool" [fillcolor = "#f76241"]
     "build" -> "check"
     "check" -> "test"
@@ -33,8 +32,6 @@ digraph mygraph {
     "assemble" -> "jar"
     "uploadArchives" -> "jar"
     "jar" -> "classes"
-    "runOnSimulator" -> "classes"
-    "runOnSimulator" -> "loadVee"
     "checkModule" -> "assemble"
     "check" -> "checkModule"
     "execTool" -> "loadVee"
