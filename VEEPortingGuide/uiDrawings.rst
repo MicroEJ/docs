@@ -303,7 +303,7 @@ Note the bottom-right coordinates might be smaller than the top-left (in x and/o
 The clip may be disabled (when the current drawing fits the clip); this allows to reduce runtime.
 See ``LLUI_DISPLAY_isClipEnabled()``.
 
-.. note:: Several clip functions are available in ``LLUI_DISPLAY.h`` to check if a drawing fits the clip.
+.. hint:: Several clip functions are available in ``LLUI_DISPLAY.h`` to check if a drawing fits the clip.
 
 Finally, after the drawing, the drawing function has to return the drawing status.
 Most of the time, the GPU performs *asynchronous* drawings: the drawing is started but not completed.
@@ -564,7 +564,7 @@ The AWT graphics 2D can be retrieved from this buffered image.
 
 The MicroUI color (``gc.getRenderingColor()``) is converted to an AWT color.
 
-The method behavior is exactly the same as the embedded side; see:ref:`section_drawings_cco_custom`.
+The method behavior is exactly the same as the embedded side; see :ref:`section_drawings_cco_custom`.
 
 This newly created drawer must now replace the default display drawer.
 There are two possible ways to register it:
