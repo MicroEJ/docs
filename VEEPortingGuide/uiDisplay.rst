@@ -1136,7 +1136,7 @@ The following example shows an implementation with FreeRTOS.
       if (under_isr) {
          portBASE_TYPE xHigherPriorityTaskWoken = pdFALSE;
          xSemaphoreGiveFromISR((xSemaphoreHandle)sem, &xHigherPriorityTaskWoken);
-         if(xHigherPriorityTaskWoken != pdFALSE ) {
+         if (xHigherPriorityTaskWoken != pdFALSE) {
             // Force a context switch here.
             portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
          }
@@ -1171,11 +1171,11 @@ This particular case is the easiest to write because the ``flush()`` stays empty
 Swap Double Buffer (parallel)
 -----------------------------
 
-:ref:`This buffer policy<section_display_swap_double_parallel>`  requires two buffers in RAM.
+:ref:`This buffer policy<section_display_swap_double_parallel>` requires two buffers in RAM.
 The first buffer is used by the application (buffer A), and the LCD controller uses the second buffer to update the display panel (buffer B).
-The LCD controller is reconfigured to use buffer A when the Graphics Engine is calling the ``flush()`` function.
+The LCD controller is reconfigured to use the buffer A when the Graphics Engine calls the ``flush()`` function.
 
-Before executing the next application drawing after a flush, the Graphics Engine automatically waits for the end of the flush buffer process: buffer B (currently used by the LDC controller) is updated at the end of the swap.
+Before executing the next application drawing after a flush, the Graphics Engine automatically waits for the end of the flush buffer processing: buffer B (which currently used by the LDC controller) is updated at the end of the swap.
 The LCD driver is responsible for unlocking the Graphics Engine by calling the function ``LLUI_DISPLAY_setBackBuffer()`` at the end of the swap.
 
 .. code:: c
@@ -1212,7 +1212,7 @@ The LCD driver is responsible for unlocking the Graphics Engine by calling the f
 Swap Triple Buffer (parallel)
 -----------------------------
 
-The behavior of this policy is very similar to the double buffer policy (see above): it consists to alternate three buffers instead of two.
+The behavior of this policy is very similar to that of the double buffer policy (see above): it consists in alternating between three buffers instead of two.
 
 Single Buffer (serial)
 ----------------------
@@ -1567,12 +1567,12 @@ Transmit and Swap Buffer
 It requires two back buffers: the application uses a buffer to perform its drawings and the second buffer is used to transmit the data to the display frame buffer when the Graphics Engine is calling the ``flush()`` function.
 At the end of the transmission, the application buffer becomes the transmission buffer and vice-versa.
 
-The subtility consists to reuse the transmission buffer as application buffer at the end of the transmission if, and only if, the application has not drawing something yet in the application buffer.
-This prevents to manage the restoration of the past: the application reuses the same buffer before last flush.
+The subtlety consists in reusing the transmission buffer as the application buffer at the end of the transmission if, and only if, the application has not drawn anything yet in the current application buffer.
+This avoids handling the restoration of the past: the application reuses the same buffer as before the last flush.
 
 
 This policy requires a dedicated OS task that will manage the transmission and the unlocking of the Graphics Engine  by calling the function ``LLUI_DISPLAY_setBackBuffer()``. 
-The specification of the ``flush()`` function is to be **not** blocker (atomic).
+The specification of the ``flush()`` function is to be **non-blocking**.
 Its aim is to unlock the *flush* task.
 The ``flush()`` function has to return as soon as possible.
 
@@ -1582,7 +1582,7 @@ Note that the second flush has to wait the end of the first flush (the end of th
 
 The serial data transmission is performed in hardware or in software.
 In hardware, the serial driver must configure an interrupt to be notified about the end of the transmission.
-In software, the *transmission* step is synchronous and blocker.
+In software, the *transmission* step is synchronous and blocking.
 
 
 .. note:: This pseudo implementation considers a display with a *serial* connection but the reasoning is similar with a *parallel* connection.
@@ -1599,16 +1599,16 @@ In software, the *transmission* step is synchronous and blocker.
          // wait until the Graphics Engine gives the order to flush
          LLUI_DISPLAY_IMPL_binarySemaphoreTake(_transmit_task_semaphore);
 
-         // save the flush configuration: can be modified by the next call to flush() as soon as LLUI_DISPLAY_setBackBuffer() will wake up the Graphics Engine
+         // save the flush configuration: can be modified by the next call to flush() as soon as LLUI_DISPLAY_setBackBuffer() wakes up the Graphics Engine
          uint8_t flush_identifier = _flush_identifier;
 
          // retrieve the transmit buffer: the current back buffer
          uint8_t *transmit_buffer = back_buffers[_buffer_index];
 
-         // swap both buffers (_buffer_index now points on the new back buffer)
+         // swap both buffers (_buffer_index now points to the new back buffer)
          _buffer_index = (_buffer_index + 1) & ~1;
 
-         // the new back buffer can be used for next drawings
+         // the new back buffer can be used for the next drawings
          if (LLUI_DISPLAY_setBackBuffer(flush_identifier, back_buffers[_buffer_index], false)) {
 
             // here: the Graphics Engine is unlocked, the application can draw in the new back buffer 
@@ -1622,7 +1622,7 @@ In software, the *transmission* step is synchronous and blocker.
             SERIAL_DRIVER_transmit_wait();
 
             // here: the back buffer has been sent to the LCD, the buffer can be used again for the 
-            // next drawings in case of no new drawing has been already performed in the current back
+            // next drawings only if no new drawing has been already performed in the current back
             // buffer
 
             // reuse the old back buffer if no drawing has been already performed
@@ -1631,11 +1631,11 @@ In software, the *transmission* step is synchronous and blocker.
                // the Graphics Engine
                _buffer_index = (_buffer_index + 1) & ~1;
             }
-            // else: too late to set this old transmit buffer back buffer; nothing to do
+            // else: too late to reuse this old transmission back buffer; nothing to do
          }
          else {
-            // end of flush not expected; the Graphics Engine keeps using previous back buffer;
-            // have to cancel the buffers swap
+            // unexpected end of flush; the Graphics Engine keeps using the previous back buffer;
+            // we have to cancel the buffer swap
             _buffer_index = (_buffer_index + 1) & ~1;
          }
       }
@@ -1660,7 +1660,7 @@ In software, the *transmission* step is synchronous and blocker.
    }
 
    void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext *gc, uint8_t flush_identifier, const ui_rect_t areas[], size_t length) {
-      // store the identifier of the flush used to unlock the Graphics Engine later
+      // store the flush identifier to unlock the Graphics Engine later
       _flush_identifier = flush_identifier;     
   
       // unlock the flush task
