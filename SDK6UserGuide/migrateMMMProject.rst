@@ -80,6 +80,10 @@ The mapping between MMM build types and Gradle plugins is:
      - ``com.microej.gradle.application``
    * - ``build-std-javalib``
      - ``com.microej.gradle.j2se-library``
+   * - ``build-microej-mock``
+     - ``com.microej.gradle.mock``
+   * - ``build-runtime-api``
+     - ``com.microej.gradle.runtime-api``
 
 Module Information
 ~~~~~~~~~~~~~~~~~~

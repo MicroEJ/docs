@@ -43,7 +43,7 @@ Once these prerequisites are fulfilled, the Feature file can be built:
 
           $ ./gradlew buildFeature
 
-The Feature file is generated in the ``build/binary`` folder of the project.
+The Feature file is generated in the ``build/feature/application`` folder of the project.
 
 .. _sdk_6_trigger_feature_build:
 
