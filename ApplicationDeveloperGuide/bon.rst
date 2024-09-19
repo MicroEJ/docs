@@ -1,14 +1,14 @@
 Preface to B-ON Profile, ESR001
 ===============================
 
-This document defines the B-ON profile, targeting Java virtual machines.
+This document defines the BON profile, targeting Java virtual machines.
 
 Who should use this specification?
 ----------------------------------
 
 This specification is targeted at the following audiences:
 
--  Implementors of the B-ON specification.
+-  Implementors of the BON specification.
 -  Application developers that target embedded Java applications for
    resource-constrained devices.
 -  Java virtual machine providers.
@@ -17,8 +17,8 @@ This specification is targeted at the following audiences:
 Comments
 --------
 
-Your comments about B-ON are welcome. Please send them by email to
-``contact@microej.com``, with B-ON as subject.
+Your comments about BON are welcome. Please send them by email to
+``contact@microej.com``, with BON as subject.
 
 Requirements
 ------------
@@ -28,20 +28,20 @@ requirement, whereas MAY indicates that the item is optional. SHOULD
 indicates a highly recommended requirement.
 
 Although this specification defines minimal requirements, devices with
-more resources may also benefit from B-ON specification, especially when
+more resources may also benefit from BON specification, especially when
 users are concerned with optimal resource usage.
 
-The B-ON specification makes no hardware requirement for devices that
+The BON specification makes no hardware requirement for devices that
 run a Java virtual machine that implements this specification. Typical
-hardware for B-ON ranges from 8-bit to 64-bit multi-core cpu.
+hardware for BON ranges from 8-bit to 64-bit multi-core cpu.
 
-The B-ON profile specification makes minimal assumptions about the
+The BON profile specification makes minimal assumptions about the
 system software of the device. Although a Java virtual machine is
 required, the kernel does not need to support an OS/RTOS while the
 virtual machine may be baremetal (i.e. the device boots directly in
 Java).
 
-Compliant B-ON 1.2 implementations MUST include all packages, classes, and
+Compliant BON 1.2 implementations MUST include all packages, classes, and
 interfaces described in this specification, and implement the associated
 behavior.
 
@@ -63,10 +63,10 @@ accompanying text.
 Implementation Notes
 --------------------
 
-The B-ON specification does not include any implementation details. B-ON
+The BON specification does not include any implementation details. BON
 implementors are free to use whatever techniques they deem appropriate
 to implement the specification, with (or without) collaboration of any
-Java virtual machine provider. B-ON experts have taken great care not to
+Java virtual machine provider. BON experts have taken great care not to
 mention any special Java virtual machines, nor any of their special
 features, in order to encourage fair competing implementations.
 
@@ -87,7 +87,7 @@ shutdown or reboots.
 
 .. _literalString:
 
-Why B-ON?
+Why BON?
 ---------
 
 Many languages let software engineers define the memory management of
@@ -133,7 +133,7 @@ flash, …) than volatile memory (ram). For really cost sensitive devices,
 the ratio may drop to 8 (ram is what costs the most), while for rather
 more expensive ones it may reach 2.
 
-B-ON defines a suitable and flexible way to fully control both memory
+BON defines a suitable and flexible way to fully control both memory
 usage and start-up sequences on devices with limited memory resources.
 It does so within the boundaries of the Java semantic. More precisely,
 it allows:
@@ -144,10 +144,10 @@ it allows:
    made in ram to be manipulated.
 -  Defining immortal read-write objects that are always alive.
 
-B-ON serves as a very robust foundation for implementing Java software,
+BON serves as a very robust foundation for implementing Java software,
 in particular embedded Java Software.
 
-B-ON also add a small set of useful utilities:
+BON also add a small set of useful utilities:
 
 -  A Timer facilities that allows to schedule small activities
    repeatedly (or not). Such activities are Runnable objects that are
@@ -161,12 +161,12 @@ B-ON also add a small set of useful utilities:
 Basic Concepts
 --------------
 
-B-ON experts agreed to limit the set of APIs specified to only those
+BON experts agreed to limit the set of APIs specified to only those
 required to achieve a high level of portability and successful
 deployments. Their main concern was to stay within the boundaries of the
 Java semantics [JLS].
 
-B-ON defines two phases for the execution stream:
+BON defines two phases for the execution stream:
 
 -  The initialization phase: the initialization sequence executes all
    the static initializer methods (known as the ``<clinit>`` methods).
@@ -256,16 +256,16 @@ lifetime of the device.
 Object Natures
 ==============
 
-The B-ON specification defines three natures for objects: persistent
+The BON specification defines three natures for objects: persistent
 immutable objects (:ref:`immutable`), immortal objects
 (:ref:`immortal`), and reclaimable objects (:ref:`reclaimable`).
 Immutable [2]_ objects are also referred to as read-only objects,
 whereas reclaimable objects are regular objects.
 
 Although objects get a liveness nature, this is fully transparent at the
-Java semantic level. A semantically correct software assuming B-ON will
+Java semantic level. A semantically correct software assuming BON will
 behave exactly the same on a Java virtual machine that does not
-implement the three B-ON object natures [3]_.
+implement the three BON object natures [3]_.
 
 .. _immutable:
 
@@ -280,8 +280,8 @@ and have a monitor that a thread may enter into.
 There is no way for an immutable object to directly refer to a
 non-immutable object. References from immutable objects always refer to
 other immutable objects. Writing into an immutable object (field write
-access) results in an unspecified behavior. The B-ON experts group
-strongly encourages implementations of the B-ON specification to raise
+access) results in an unspecified behavior. The BON experts group
+strongly encourages implementations of the BON specification to raise
 an uncatchable exception when there is an attempt to write into an
 immutable object, although a no-op operation may be sufficient [4]_.
 
@@ -334,7 +334,7 @@ that is, any kind of field may be listed, even private ones. Final
 fields must be initialized.
 
 There is no particular order for the creation of the immutable objects.
-The B-ON experts recommend the use of tools for the creation of large
+The BON experts recommend the use of tools for the creation of large
 graphs of immutable objects.
 
 XML Grammar
@@ -616,7 +616,7 @@ Some systems may define persistent memory where new immutable objects
 can be stored. Such objects remain “live” through device reboots. The
 number of available persistent memory is system dependent and is
 described within the datasheet of the Java virtual machine that
-implements the B-ON specification. ``Immutables.totalMemory()`` returns
+implements the BON specification. ``Immutables.totalMemory()`` returns
 this persistent immutable memory size, whereas ``Immutables.freeMemory()``
 returns the left remaining persistent memory size.
 
@@ -718,7 +718,7 @@ underlying system using handles. Those handles represent underlying data
 that needs to be closed/freed/acknowledged/… when the object that holds
 the handle dies.
 
-The B-ON profile defines a sound and easy way to get notified when an
+The BON profile defines a sound and easy way to get notified when an
 object is dead through the use of ``EnqueuedWeakReference`` objects:
 ``EnqueuedWeakReference`` is a subclass of ``WeakReference``. When such
 objects get their weak reference set to ``null`` by the system, they are
@@ -747,7 +747,7 @@ a table (the key indexes the value within the table for fast searches).
 It prevents both key and value from being discarded by the garbage
 collector.
 
-B-ON defines the ``ej.bon.WeakHashtable`` class as a subclass of
+BON defines the ``ej.bon.WeakHashtable`` class as a subclass of
 ``java.util.Hashtable``. ``WeakHashtable`` allows to relax such hard
 constraint on the key, which becomes a weak reference within the table.
 If no other regular reference refers the key, the key can be removed
@@ -756,7 +756,7 @@ automatically by the system, which removes the associated value too.
 Runtime Phases
 ==============
 
-B-ON defines two phases of execution:
+BON defines two phases of execution:
 
 -  ``initialization phase``: this is the very first Java code that
    executes. Its purpose is to let the device “boot”, that is, to
@@ -786,7 +786,7 @@ method once the system enters the mission phase.
   :width: 686px
   :height: 263px
 
-  Illustration 2: B-ON phases and thread activation.
+  Illustration 2: BON phases and thread activation.
 
 If other threads are created while the class initializations execute
 (``<clinit>`` methods), those threads will be on hold (i.e. waiting) until
@@ -826,7 +826,7 @@ Dependencies of classes upon themselves define a graph of dependencies.
 This graph may depict cycles. The graph is linearized in an order which
 depends only on the graph itself.
 
-Although B-ON experts encourage implementors of this specification to
+Although BON experts encourage implementors of this specification to
 explain the order of the ``<clinit>`` sequence to engineers in some useful
 way, this is not mandatory.
 
@@ -892,7 +892,7 @@ Class.forName
 If the system is capable of dynamic code downloading,
 ``Util.dynamicCodeAllowed()`` returns ``true``, and this specification
 defines a consistent
-and sound way for downloading code that matches the overall semantic of B-ON:
+and sound way for downloading code that matches the overall semantic of BON:
 
 -  All referenced classes from the class given in
    ``Class.forName(String)`` have to be
@@ -913,15 +913,15 @@ and sound way for downloading code that matches the overall semantic of B-ON:
    ``ej.bon.immortalAfterInit`` is set, objects
    created during this initialization phase do not become immortal.
 
-B-ON Properties 
+BON Properties 
 ----------------
 
-The B-ON specification defines a set of optional properties:
+The BON specification defines a set of optional properties:
 
 -  ``"ej.bon.version"``: the version holds three positive integers
    separated by ``'.'`` (e.g.: ``1.2.0``).
--  ``"ej.bon.vendor"``: the name of the B-ON library provider.
--  ``"ej.bon.vendor.url"``: the web site of the B-ON library provider.
+-  ``"ej.bon.vendor"``: the name of the BON library provider.
+-  ``"ej.bon.vendor.url"``: the web site of the BON library provider.
 -  ``"ej.bon.immortalAfterInit"``: if set to ``true``, turn as immortal all
    remaining live objects at the end of the initialization phase (see :ref:`turningIntoImmortal`).
 
@@ -972,7 +972,7 @@ The application time is the user time: it depends on its localization.
 ``java.lang.System.currentTimeMillis`` returns the application time
 expressed in milliseconds since midnight, January 1, 1970 UTC.
 
-B-ON introduces a platform time that is independent from any user
+BON introduces a platform time that is independent from any user
 considerations: it materializes the running time since the very last
 start of the device. This time cannot be changed.
 
@@ -1007,7 +1007,7 @@ significant byte first.
 
   Illustration 5: Representation of the 32-bit quantity 0x0000100A using both BigEndian and in LittleEndian layout.
 
-B-ON introduces methods to read and write into array of byte (byte[])
+BON introduces methods to read and write into array of byte (byte[])
 according to the platform endianness, or according to a specific
 provided endianness. The ``ej.bon.ByteArray`` class provides such APIs:
 
