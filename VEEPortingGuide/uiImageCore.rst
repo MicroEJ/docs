@@ -155,8 +155,8 @@ The two graphs illustrate the drawing of an image with or without taking advanta
 
             // --- MULTIPLE IMAGES FLOW ELEMENTS -- //
 
-            UII_h [label="[ui_image_drawing.h]\nUI_IMAGE_DRAWING_drawImage();"]
-            UII_c [label="[ui_image_drawing.c]\nUI_IMAGE_DRAWING_drawImage();"]
+            UII_h [label="[ui_image_drawing.h]\nUI_IMAGE_DRAWING_draw();"]
+            UII_c [label="[ui_image_drawing.c]\nUI_IMAGE_DRAWING_draw();"]
             UII_cond [label="standard image?"]
 
             // --- FLOW -- //
@@ -406,8 +406,8 @@ The following graph illustrates the drawing of an image:
 
       // --- MULTIPLE IMAGES FLOW ELEMENTS -- //
 
-      UII_h [label="[ui_image_drawing.h]\nUI_IMAGE_DRAWING_drawImage();"]
-      UII_c [label="[ui_image_drawing.c]\nUI_IMAGE_DRAWING_drawImage();"]
+      UII_h [label="[ui_image_drawing.h]\nUI_IMAGE_DRAWING_draw();"]
+      UII_c [label="[ui_image_drawing.c]\nUI_IMAGE_DRAWING_draw();"]
       UII_cond [label="standard image?"]
       UIIx_c [label="[ui_image_drawing.c]\ntable[x] = UI_IMAGE_DRAWING_draw_customX()"]
       UIIx_weak_c [label="[ui_image_drawing.c]\nweak UI_IMAGE_DRAWING_draw_customX();"]
