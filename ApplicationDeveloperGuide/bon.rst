@@ -655,7 +655,7 @@ all the values in the hash table that are not already immutable objects.
 All references within those objects to non-immutable objects or to
 objects that are outside the hash table are set to ``null``. References to
 immutable objects remain, literal strings [11]_ are considered as
-immutable (see :ref:`literalString`). Keys that refer to ``null`` are
+immutable (see :ref:`immutable`). Keys that refer to ``null`` are
 ignored.
 
 The ``Immutables.put(String, Object)`` method allows to store a single
