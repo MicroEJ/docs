@@ -95,12 +95,12 @@ This is the most frequent use case, the only one available with MicroUI before v
 
 .. hint:: To select this implementation (to disable the custom format support), the define ``LLUI_IMAGE_CUSTOM_FORMATS`` must be unset.
 
-The image drawing is similar to ``UI_DRAWING_GPU_drawLine`` (see :ref:`section_drawings_cco`), but, theoretically, it should let the image drawer manages the image instead of calling the software drawer directly.
+The image drawing is similar to ``UI_DRAWING_GPU_drawLine`` (see :ref:`section_drawings_cco`), but, theoretically, it should let the image drawer manage the image instead of calling the software drawer directly.
 However the MicroUI C Module (and the extended MicroUI modules that manage a GPU) takes advantage of the define ``LLUI_IMAGE_CUSTOM_FORMATS``: as it is not set, the C Modules bypass the indirection to the image drawer and by consequence, the implementation of the weak function only consists in calling the Graphics Engine's software algorithm. 
-This tip reduces the footprint and the runtime.
+This tip reduces the footprint and the CPU usage.
 
-An implementation of a third-party GPU can optionaly takes advantage of the define ``LLUI_IMAGE_CUSTOM_FORMATS``.
-The two graphs illustrate the drawing of an image with or without taking advantage of the define ``LLUI_IMAGE_CUSTOM_FORMATS`` (respectively *default* and *optimized* implementation).
+An implementation of a third-party GPU can optionally takes advantage of the define ``LLUI_IMAGE_CUSTOM_FORMATS``.
+The following graphs illustrate the drawing of an image with or without taking advantage of the define ``LLUI_IMAGE_CUSTOM_FORMATS`` (respectively *default* and *optimized* implementation).
 
 
 .. tabs::
