@@ -1,10 +1,65 @@
 .. _section.ui.Fonts:
 
+=====
 Fonts
 =====
 
 Overview
---------
+========
+
+The font system consists of two distinct parts: the built-in part (also known as the *internal font*) and, since MicroUI 3.6, the extended part.
+The extended part allows the VEE Port to provide one or more additional font systems with their own characteristics.
+However, once created, all fonts can be used by the application using the `Font`_. 
+In most cases, the application doesn't know the type of font and should use all fonts (built-in or extended) in the same way.
+This makes for portable code (as far as rendering is concerned), as only the code that creates the font at runtime is specific.
+
+.. note:: The application may need to manipulate certain specific characteristics of an extended font for rendering (text layout, opacity, etc.), in which case it can use the extended font API.
+
+Internal Font
+=============
+
+Principle
+---------
+
+The internal font format is a simple and small bitmap format (EJF), accessible in the application by calling `ej.microui.display.Font.getFont()`_.
+
+This built-in font engine:
+
+* does not require any additional support in the VEE Port to be used as-is,
+* has the same rendering whatever the VEE Port capacties,
+* has a very small footprint,
+* is fast,
+* doesn't need runtime memory allocation,
+* provides some offline tools to generate the font files (EJF),
+* allows to tune the footprint of the font files (pixel opacity levels and ranges),
+* can be extended to provide additional features (such as a complex layout manager).
+
+Its limitations are described in the following chapters.
+
+Height
+------
+
+Each font file (EJF) is encoded for a given font height.
+To use the same font (``.ttf`` file) with several heights, several EJF files are required.
+By consequence, an application that uses a lot of font heights may be penalized (ROM footprint).
+
+Languages
+---------
+
+The language support is limited to the Unicode basic multilingual languages, whose characters are encoded on 16-bit, i.e. Unicodes from 0x0000 to 0xFFFF (`Surrogates`_ characters are allowed).
+It allows to render left-to-right or right-to-left writing systems: Latin (English, etc.), Arabic, Chinese, etc. are some supported languages.
+However, the rendering is always performed left-to-right, even if the string is written right-to-left.
+There is no built-in support for 
+
+* top-to-bottom writing systems,
+* diacritics, contextual letters, specific characters order, etc.
+
+The array of characters to render must only contain some renderable characters (no escape character) and the very first character in the characters array is always the character on the left.
+
+.. hint:: Use the offline tool :ref:`Native Language Support <nls_converter>` to automatically convert the translation messages in a characters array compatible with the built-in font engine.
+
+Process
+-------
 
 Fonts are graphical resources that can be accessed with a call to `ej.microui.display.Font.getFont()`_.
 Fonts are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.fonts.list`` files (**or** in ``*.fontsext.list`` for an external resource, see :ref:`section_external_fonts`).
@@ -49,8 +104,6 @@ Example:
 
 Font files conventionally end with the ``.ejf`` suffix and are
 created using the Font Designer (see :ref:`section.tool.fontdesigner`).
-
-.. _ej.microui.display.Font.getFont(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#getFont-java.lang.String-
 
 .. _fonts_list_grammar:
 
@@ -614,6 +667,24 @@ The Font Generator obeys several rules when choosing whether a font should be co
 Cached fonts are stored in ``.cache/fonts``, which is located in the :ref:`application output folder <application_output_folder>`.
 You may delete this directory to force the generation of all fonts in your application.
 A font that was previously generated but is no longer listed in the ``*.fonts.list`` files when the application is launched will be deleted from the cache directory.
+
+Extended Font
+=============
+
+The VEE Port can provide one of several subclasses of MicroUI `Font`_.
+The way to open these extended fonts is specific to each subclass.
+However, each subclass should implement the default MicroUI Painter API to draw and transform the strings.
+This makes for portable code (as far as rendering is concerned).
+
+* To have more information how an extended font is added to a VEE Port, see :ref:`section_font_custom`.
+* To have more information how an extended font is added to the application classpath, how open it at rutime, its characteristics, its extended Painter API, etc., refer to the extended font documentation.
+
+.. note:: The  MicroVG's `VectorFont`_ is an extended font.
+
+.. _Surrogates: https://en.wikipedia.org/wiki/Universal_Character_Set_characters#Surrogates
+.. _ej.microui.display.Font.getFont(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#getFont-java.lang.String-
+.. _Font: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#
+.. _VectorFont: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html#
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
