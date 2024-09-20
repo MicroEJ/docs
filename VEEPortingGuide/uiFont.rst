@@ -10,6 +10,7 @@ Fonts
     uiFontFormat
     uiFontGenerator
     uiFontCore
+    uiFontCustom
     uiFontRenderer
 
 ..

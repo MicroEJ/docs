@@ -8,8 +8,8 @@ Font Generator
 Principle
 =========
 
-The Font Generator module is an off-board tool that generates fonts ready to be displayed without the need for additional runtime memory.
-It outputs a raw file for each converted font.
+The Font Generator module is an off-board tool dedicated to the :ref:`internal font format <section_font_internal_format>`.
+It generates binary files ready to be displayed without the need for additional runtime memory.
 
 Functional Description
 ======================
@@ -27,11 +27,9 @@ Process overview:
 
 2. The Font Generator outputs a raw file for each font to convert.
 
-3. The raw files are embedded as (hidden) resources within the MicroEJ
-   Application. The raw file's data is linked into the FLASH memory.
+3. The raw files are embedded as (hidden) resources within the application. The raw file's data is linked into the FLASH memory.
 
-4. When the application draws text on the display (or on an
-   image), the font data comes directly from the FLASH memory (the font
+4. When the application draws text on the display, the font data comes directly from the FLASH memory (the font
    data is not copied to the RAM memory first).
 
 
@@ -152,7 +150,7 @@ External Resources
 ==================
 
 The Font Generator manages two configuration files when the External Resources Loader is enabled.
-The first configuration file lists the fonts which will be stored as internal resources with the MicroEJ Application.
+The first configuration file lists the fonts which will be stored as internal resources with the application.
 The second file lists the fonts the Font Generator must convert and store in the External Resource Loader output directory.
 It is the BSP's responsibility to load the converted fonts into an external memory.
 
@@ -165,8 +163,8 @@ Installation
 The Font Generator module is an additional tool for MicroUI library.
 When the MicroUI module is installed, install this module in order to be able to embed some additional fonts with the application.
 
-If the module is not installed, the platform user will not be able to embed a new font with his/her application.
-He/she will be only able to use the system fonts specified during the MicroUI initialization step (see :ref:`section_static_init`).
+If the module is not installed, the application will not be able to embed a new font.
+The application will be only able to use the system fonts specified during the MicroUI initialization step (see :ref:`section_static_init`).
 
 In the VEE Port configuration file, check :guilabel:`UI` > :guilabel:`Font Generator` to
 install the Font Generator module.
