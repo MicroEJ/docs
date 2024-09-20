@@ -1,4 +1,4 @@
-.. _section_image_core:
+.. _section_image_renderer:
 
 ==============
 Image Renderer
@@ -65,7 +65,7 @@ Each custom image format (``0`` to ``7``) has its own image drawer.
 
 Each drawing of a custom image is redirected to the associated image drawer.
 
-.. note:: A custom image drawer can call the UI Shapes Drawing API to draw its elements in the destination.
+.. hint:: A custom image drawer can call the UI Shapes Drawing API to draw its elements in the destination.
 
 The implementation is not the same between the Embedded side and the Simulation.
 However, the concepts are the same and are described in dedicated chapters.
@@ -93,7 +93,7 @@ The default implementation can only draw images with a :ref:`standard format <se
 In other words, the application cannot draw a custom image.
 This is the most frequent use case, the only one available with MicroUI before version 3.2.
 
-.. hint:: To select this implementation (to disable the custom format support), the define ``LLUI_IMAGE_CUSTOM_FORMATS`` must be unset.
+.. attention:: To select this implementation (to disable the custom format support), the define ``LLUI_IMAGE_CUSTOM_FORMATS`` must be unset.
 
 The image drawing is similar to ``UI_DRAWING_GPU_drawLine`` (see :ref:`section_drawings_cco`), but, theoretically, it should let the image drawer manage the image instead of calling the software drawer directly.
 However the MicroUI C Module (and the extended MicroUI modules that manage a GPU) takes advantage of the define ``LLUI_IMAGE_CUSTOM_FORMATS``: as it is not set, the C Modules bypass the indirection to the image drawer and by consequence, the implementation of the weak function only consists in calling the Graphics Engine's software algorithm. 
@@ -327,7 +327,7 @@ Custom Format Support
 In addition to the :ref:`standard formats <section_image_standard_raw>`, this implementation allows drawing images with a :ref:`custom format <section_image_custom_raw>`.
 This advanced use case is available only with MicroUI 3.2 or higher.
 
-.. hint:: To select this implementation, the define ``LLUI_IMAGE_CUSTOM_FORMATS`` must be set (no specific value).
+.. attention:: To select this implementation, the define ``LLUI_IMAGE_CUSTOM_FORMATS`` must be set (no specific value).
 
 The MicroUI C module uses some tables to redirect the image management to the expected extension.
 There is one table per Image Abstraction Layer API (draw, copy, region, rotate, scale, flip) to embed only necessary algorithms (a table and its functions are only embedded in the final binary file if and only if the MicroUI drawing method is called).
@@ -486,7 +486,7 @@ The drawer is retrieved thanks to its format (function ``_get_table_index()``):
 
 * the format is standard but the destination is not the *display* format: index ``0`` is returned,
 * the format is standard and the destination is the *display* format: index ``1`` is returned,
-* the format is custom: index ``2`` to ``9`` is returned,
+* the format is custom: index ``2`` to ``9`` is returned.
 
 **UI_IMAGE_DRAWING_draw_custom0** (available in MicroUI C Module)
 
@@ -523,8 +523,8 @@ The simulation behavior is similar to the :ref:`section_renderer_cco` for the Em
 
 The :ref:`Front Panel<section_ui_releasenotes_frontpanel>` defines support of the drawers based on Java service loader.
 
-Standard Formats Only (Default Implementation)
-----------------------------------------------
+Standard Formats Only (Default)
+-------------------------------
 
 The default implementation can draw images with a standard format.
 
