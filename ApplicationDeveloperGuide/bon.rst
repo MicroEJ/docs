@@ -1,93 +1,58 @@
-Preface to B-ON Profile, ESR001
-===============================
+.. _bon_specification:
 
-This document defines the BON profile, targeting Java virtual machines.
-
-Who should use this specification?
-----------------------------------
-
-This specification is targeted at the following audiences:
-
--  Implementors of the BON specification.
--  Application developers that target embedded Java applications for
-   resource-constrained devices.
--  Java virtual machine providers.
--  Hard Real Time Java application developers.
-
-Comments
---------
-
-Your comments about BON are welcome. Please send them by email to
-``contact@microej.com``, with BON as subject.
-
-Requirements
-------------
-
-The term MUST indicates that the associated definition is an absolute
-requirement, whereas MAY indicates that the item is optional. SHOULD
-indicates a highly recommended requirement.
-
-Although this specification defines minimal requirements, devices with
-more resources may also benefit from BON specification, especially when
-users are concerned with optimal resource usage.
-
-The BON specification makes no hardware requirement for devices that
-run a Java virtual machine that implements this specification. Typical
-hardware for BON ranges from 8-bit to 64-bit multi-core cpu.
-
-The BON profile specification makes minimal assumptions about the
-system software of the device. Although a Java virtual machine is
-required, the kernel does not need to support an OS/RTOS while the
-virtual machine may be baremetal (i.e. the device boots directly in
-Java).
-
-Compliant BON 1.2 implementations MUST include all packages, classes, and
-interfaces described in this specification, and implement the associated
-behavior.
-
-Related Literature
-------------------
-
-JVM2: Tim Lindholm & Frank Yellin, The Java™ Virtual Machine Specification, Second Edition, 1999
-
-JLS: James Gosling, Guy Steele, Bill Joy, Gilad Bracha, The Java™ Language Specification, Third Edition, 2005
-
-Document Conventions
---------------------
-
-In this document, references to methods of a Java class are written as
-``ClassName.methodName(args)``. This applies to both static and instance
-methods. Where the method is static this will be made clear in the
-accompanying text.
-
-Implementation Notes
---------------------
-
-The BON specification does not include any implementation details. BON
-implementors are free to use whatever techniques they deem appropriate
-to implement the specification, with (or without) collaboration of any
-Java virtual machine provider. BON experts have taken great care not to
-mention any special Java virtual machines, nor any of their special
-features, in order to encourage fair competing implementations.
+Beyond Profile (BON)
+====================
 
 Introduction
-============
+------------
 
-The goal of this specification is to define an enhanced and simple
+This document defines the BON profile, aimed to define an enhanced and simple
 architecture to enable an open, third-party, application development
 environment for controlling both its startup sequence and its memory
 resource in the best possible way.
 
 Although this specification spans a potentially wide set of devices, it
-focus on devices that have non-volatile memories and volatile ones
+focus on embedded devices that have non-volatile memories and volatile ones
 (eeprom, flash, ram, …). At the application level, it focuses on
 applications that have some sort of initialization phase before entering
 into a mission phase that then exists forever until the device gets
 shutdown or reboots.
 
-.. _literalString:
+Specification Summary
+~~~~~~~~~~~~~~~~~~~~~
 
-Why BON?
+.. list-table::
+   :widths: 10 30
+ 
+   * - Java APIs
+     - https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/package-summary.html
+   * - Latest Version
+     - 1.4
+   * - Module Dependency
+     - .. tabs::
+
+         .. tab:: SDK 6
+
+            .. code-block:: java
+
+               implementation("ej.api:bon:1.4.3")
+
+         .. tab:: SDK 5
+
+            .. code-block:: xml
+
+               <dependency org="ej.api" name="bon" rev="1.4.3" />
+   * - Module Location
+     - https://repository.microej.com/modules/ej/api/bon/
+
+
+Comments
+~~~~~~~~
+
+Your comments about this specification are welcome. Please contact :ref:`our support team <get_support>` with "KF" as subject.
+
+
+Why BON ?
 ---------
 
 Many languages let software engineers define the memory management of
