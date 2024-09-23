@@ -10,7 +10,7 @@ Overview
 The font system consists of two distinct parts: the built-in part (also known as the *internal font*) and, since MicroUI 3.6, the extended part.
 The extended part allows the VEE Port to provide one or more additional font systems with their own characteristics.
 However, once created, all fonts can be used by the application using the `Font`_. 
-In most cases, the application doesn't know the type of font and should use all fonts (built-in or extended) in the same way.
+In most cases, the application does not know the type of font and should use all fonts (built-in or extended) in the same way.
 This makes for portable code (as far as rendering is concerned), as only the code that creates the font at runtime is specific.
 
 .. note:: The application may need to manipulate certain specific characteristics of an extended font for rendering (text layout, opacity, etc.), in which case it can use the extended font API.
@@ -27,9 +27,9 @@ The built-in font engine used to render this format:
 
 * Does not require any additional support in the VEE Port to be used as-is.
 * Has the same rendering whatever the VEE Port capabilities.
-* Has a very small footprint.
+* Has a very small memory footprint.
 * Is fast.
-* Doesn't need runtime memory allocation.
+* Does not need runtime memory allocation.
 * Provides some offline tools to generate the font files (EJF).
 * Allows to tune the footprint of the font files (pixel opacity levels and ranges).
 * Can be extended to provide additional features (such as a complex layout manager).
@@ -41,22 +41,22 @@ Height
 
 Each font file (EJF) is encoded for a given font height.
 To use the same font face (``.ttf`` file) with several heights, several EJF files are required.
-By consequence, an application that uses a lot of font heights may be penalized (ROM footprint).
+Consequently, an application that uses a lot of font heights may be penalized (ROM footprint).
 
 Languages
 ---------
 
-The language support is limited to the Unicode basic multilingual languages, whose characters are encoded on 16-bit, i.e. Unicodes from 0x0000 to 0xFFFF (`Surrogates`_ characters are allowed).
+The language support is limited to the Unicode basic multilingual alphabets, whose characters are encoded on 16 bits, i.e. Unicodes characters ranging from 0x0000 to 0xFFFF (`Surrogates`_ characters are allowed).
 It allows to render left-to-right or right-to-left writing systems: Latin (English, etc.), Arabic, Chinese, etc. are some supported languages.
 However, the rendering is always performed left-to-right, even if the string is written right-to-left.
-There is no built-in support for 
+There is no built-in support for:
 
-* top-to-bottom writing systems,
-* diacritics, contextual letters, specific characters order, etc.
+* Top-to-bottom writing systems.
+* Diacritics, contextual letters, specific character ordering, etc.
 
-The array of characters to render must only contain some renderable characters (no escape character) and the very first character in the characters array is always the character on the left.
+The array of characters to render must only contain renderable characters (no escape character) and the very first character in the array is always the character on the left.
 
-.. hint:: Use the offline tool :ref:`Native Language Support <nls_converter>` to automatically convert the translation messages in a characters array compatible with the built-in font engine.
+.. hint:: Use the offline tool :ref:`Native Language Support <nls_converter>` to automatically convert the translation messages in a character array compatible with the built-in font engine.
 
 Usage
 -----
@@ -672,15 +672,15 @@ A font that was previously generated but is no longer listed in the ``*.fonts.li
 Extended Font
 =============
 
-A VEE Port can provide one of several subclasses of MicroUI `Font`_.
+A VEE Port can provide one of multiple subclasses of MicroUI `Font`_.
 The way to open these extended fonts is specific to each subclass.
 However, each subclass should implement the default MicroUI Painter API to draw and transform the strings.
 This makes for portable code (as far as rendering is concerned).
 
-* To have more information about how an extended font is added to a VEE Port, see :ref:`section_font_custom`.
-* To have more information about how an extended font is added to the application classpath, how to open it at rutime, its characteristics, its extended Painter API, etc., refer to the extended font documentation.
+* For more information about the way an extended font is added to a VEE Port, see :ref:`section_font_custom`.
+* For more information about the way an extended font is added to the application classpath, opened at rutime, its characteristics, its extended Painter API, etc., refer to the extended font documentation.
 
-.. note:: The  MicroVG's `VectorFont`_ offers a way to retrieve an extended font.
+.. note:: MicroVG's `VectorFont`_ offers a way to retrieve an extended font.
 
 .. _Surrogates: https://en.wikipedia.org/wiki/Universal_Character_Set_characters#Surrogates
 .. _Font.getFont(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#getFont-java.lang.String-
