@@ -113,7 +113,7 @@ The following IDEs are supported:
 
 - `Android Studio <https://developer.android.com/studio>`__ - Minimum supported version is ``Hedgehog - 2023.1.1``.
 - `IntelliJ IDEA <https://www.jetbrains.com/idea/>`__ (Community or Ultimate edition) - Minimum supported version is ``2021.2``.
-- `Eclipse IDE for Java Developers <https://www.eclipse.org/downloads/packages/>`__ - Minimum supported version is ``2022-03``.
+- `Eclipse IDE for Java Developers <https://www.eclipse.org/downloads/packages/>`__ - Versions from ``2022-03`` to ``2024-06`` are supported.
 - `Visual Studio Code <https://code.visualstudio.com/download>`__ - Minimum supported version is ``1.89.0``.
 
 Follow their respective documentation to install one of them.
