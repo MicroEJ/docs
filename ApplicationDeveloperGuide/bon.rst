@@ -6,8 +6,7 @@ Beyond Profile (BON)
 Introduction
 ------------
 
-This document defines the BON profile, that define a suitable and flexible approach to fully control both memory usage 
-and startup sequences on devices with limited memory resources, while remaining within the boundaries of Java semantics.
+This document defines the BON profile specification.
 
 Although this specification spans a potentially wide set of devices, it
 focus on embedded devices that have non-volatile memories and volatile ones
@@ -15,6 +14,33 @@ focus on embedded devices that have non-volatile memories and volatile ones
 applications that have some sort of initialization phase before entering
 into a mission phase that then exists forever until the device gets
 shutdown or reboots.
+
+BON defines a suitable and flexible approach to fully control both memory usage 
+and startup sequences on devices with limited memory resources, while remaining within the boundaries of Java semantics. 
+
+More precisely, it allows:
+
+-  Controlling the initialization sequence in a deterministic way.
+-  Defining persistent immutable read-only objects (that may be placed
+   into non-volatile memory areas), and do not require copies to be
+   made in ram to be manipulated.
+-  Defining immortal read-write objects that are always alive.
+
+BON serves as a very robust foundation for implementing Java software,
+in particular embedded Java Software.
+
+BON also adds a set of useful utilities:
+
+-  A Timer facilities that allows to schedule small activities
+   repeatedly (or not). Such activities are Runnable objects that are
+   automatically scheduled by the timer.
+-  Platform time which cannot be changed: the time from the very last
+   boot of the device.
+-  Read-write `ByteArray`_ support according to the underlying processor
+   endianness.
+-  `ResourceBuffer`_ support for random read access in a :ref:`resource <section.classpath.elements.raw_resources>`.
+-  A set of useful math operators.
+-  Accessing compile-time :ref:`constants <section.classpath.elements.constants>`.
 
 Specification Summary
 ~~~~~~~~~~~~~~~~~~~~~
@@ -72,33 +98,6 @@ is four, meaning that there is 4 times more read-only memory (eeprom,
 flash, …) than volatile memory (ram). For really cost sensitive devices,
 the ratio may drop to 8 (ram is what costs the most), while for rather
 more expensive ones it may reach 2.
-
-BON defines a suitable and flexible way to fully control both memory
-usage and start-up sequences on devices with limited memory resources.
-It does so within the boundaries of the Java semantic. More precisely,
-it allows:
-
--  Controlling the initialization sequence in a deterministic way.
--  Defining persistent immutable read-only objects (that may be placed
-   into non-volatile memory areas), and do not require copies to be
-   made in ram to be manipulated.
--  Defining immortal read-write objects that are always alive.
-
-BON serves as a very robust foundation for implementing Java software,
-in particular embedded Java Software.
-
-BON also adds a set of useful utilities:
-
--  A Timer facilities that allows to schedule small activities
-   repeatedly (or not). Such activities are Runnable objects that are
-   automatically scheduled by the timer.
--  Platform time which cannot be changed: the time from the very last
-   boot of the device.
--  Read-write `ByteArray`_ support according to the underlying processor
-   endianness.
--  `ResourceBuffer`_ support for random read access in a :ref:`resource <section.classpath.elements.raw_resources>`.
--  A set of useful math operators.
--  Accessing compile-time :ref:`constants <section.classpath.elements.constants>`.
 
 Basic Concepts
 --------------
@@ -188,7 +187,6 @@ lifetime of the device.
             }
         }
     }
-
 
 Object Natures
 --------------
