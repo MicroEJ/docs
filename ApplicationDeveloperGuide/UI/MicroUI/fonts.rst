@@ -7,9 +7,9 @@ Fonts
 Overview
 ========
 
-The font system consists of two distinct parts: the built-in part (also known as the *internal font*) and, since MicroUI 3.6, the extended part.
+The font system consists in two distinct parts: the built-in part (also known as the *internal font*) and, since MicroUI 3.6, the extended part.
 The extended part allows the VEE Port to provide one or more additional font systems with their own characteristics.
-However, once created, all fonts can be used by the application using the `Font`_. 
+However, once created, all fonts can be used by the application using the `Font`_ class. 
 In most cases, the application does not know the type of font and should use all fonts (built-in or extended) in the same way.
 This makes for portable code (as far as rendering is concerned), as only the code that creates the font at runtime is specific.
 
