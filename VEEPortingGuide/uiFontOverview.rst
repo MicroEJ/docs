@@ -16,7 +16,7 @@ The notion of MicroUI Font encompasses two distinct kinds of fonts:
 Functional Description
 ======================
 
-Using the Font Engine consists in the pregenerating the font (if required), loading the font at runtime and rendering text.
+Using the Font Engine consists in pregenerating the font (if required), loading the font at runtime and rendering text.
 The first two steps (generation and loading) are specific to the font kind (internal or custom), whereas the way to render a MicroUI Font (from the MicroUI API to the MicroUI Abstraction Layer API) is shared. 
 This allows the application to use the same MicroUI APIs with any kind of font.
 

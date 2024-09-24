@@ -18,9 +18,9 @@ All MicroUI string drawings are redirected to a set of Abstraction Layer APIs.
 All Abstraction Layer APIs are implemented by weak functions, which call software algorithms.
 The BSP can override this default behavior:
 
-* to use an advanced complex layout manager,
-* to use a custom drawer,
-* to handle :ref:`Custom Fonts <section_font_custom>`.
+* To use an advanced complex layout manager.
+* To use a custom drawer.
+* To handle :ref:`Custom Fonts <section_font_custom>`.
 
 Font Formats
 ============
@@ -43,9 +43,9 @@ Custom Font Format
 The VEE Port must extend the Font Renderer to support the drawing of strings with a :ref:`section_font_custom`.
 This extension can consist in:
 
-* decoding the font at runtime to draw it,
-* using an advanced complex layout manager,
-* using a command interpreter to perform some :ref:`shape drawings <section_drawings>`,
+* Decoding the font at runtime to draw it.
+* Using an advanced complex layout manager.
+* Using a command interpreter to perform some :ref:`shape drawings <section_drawings>`.
 * etc.
 
 To draw strings with custom fonts, the Font Renderer introduces the notion of *custom font drawer*.
@@ -79,16 +79,16 @@ When custom drawers are not used (when the VEE Port does not need to support *cu
 Internal Font Format Only (Default)
 -----------------------------------
 
-The default implementation can only draw string with :ref:`internal fonts <section_font_internal_format>`.
+The default implementation can only draw strings with :ref:`internal fonts <section_font_internal_format>`.
 In other words, the application cannot draw with a custom font.
 This is the most frequent use case, the only one available with MicroUI before version 3.6.
 
 .. attention:: To select this implementation (to disable the custom font support), the define ``LLUI_FONT_CUSTOM_FORMATS`` must be unset.
 
-The font drawing is similar to ``UI_DRAWING_GPU_drawLine`` (see :ref:`section_drawings_cco`), except that the drawing consists in decoding the string first (to optionally applying a complex layout manager), and then calling the Graphics Engine's software algorithms to draw the string.
+The font drawing is similar to ``UI_DRAWING_GPU_drawLine`` (see :ref:`section_drawings_cco`), except that the drawing consists in decoding the string first (to optionally apply a complex layout manager), and then calling the Graphics Engine's software algorithms to draw the string.
 
 Theoretically, the weak drawer should let the font drawer handle the font instead of calling the software drawer directly.
-However the MicroUI C Module take advantage of the define ``LLUI_FONT_CUSTOM_FORMATS``: as it is not set, the C Module bypasses the indirection to the font drawer, and as a consequence the implementation of the weak function only consists in calling the Graphics Engine's software algorithm (basic string layouter, see :ref:`section_font_languages` and software drawings). 
+However the MicroUI C Module takes advantage of the define ``LLUI_FONT_CUSTOM_FORMATS``: as it is not set, the C Module bypasses the indirection to the font drawer, and as a consequence the implementation of the weak function only consists in calling the Graphics Engine's software algorithm (basic string layouter, see :ref:`section_font_languages` and software drawings). 
 This tip reduces the footprint and the CPU usage.
 
 An implementation of a third-party complex layouter can optionally take advantage of the define ``LLUI_FONT_CUSTOM_FORMATS``.
@@ -330,7 +330,7 @@ The implementation of ``UI_DRAWING_drawString`` can have two behaviors:
   1. It only manages the characters layouting; the drawing is performed by another C file. 
   2. It manages the layouting **and** the drawing; in that case, the implementation has to check if it supports the font.
 
-The following diagram illustrates the drawing of an string:
+The following diagram illustrates the drawing of a string:
 
 
 .. graphviz:: :align: center
@@ -459,9 +459,9 @@ The define ``LLUI_FONT_CUSTOM_FORMATS`` is set so the implementation of the weak
 The implementation in the MicroUI C module redirects the drawing to the expected drawer.
 The drawer is retrieved using the font format (function ``_get_table_index()``):
 
-* the format is internal but the destination is not the *display* format: index ``0`` is returned,
-* the format is internal and the destination is the *display* format: index ``1`` is returned,
-* the format is custom: an index from ``2`` to ``9`` is returned.
+* The format is internal but the destination is not the *display* format: index ``0`` is returned.
+* The format is internal and the destination is the *display* format: index ``1`` is returned.
+* The format is custom: an index from ``2`` to ``9`` is returned.
 
 **UI_FONT_DRAWING_drawString_custom0** (available in MicroUI C Module)
 
