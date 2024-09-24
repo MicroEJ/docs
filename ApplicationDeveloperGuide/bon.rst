@@ -30,7 +30,7 @@ Your comments about this specification are welcome. Please contact :ref:`our sup
 
 
 Why BON ?
----------
+~~~~~~~~~
 
 Many languages let software engineers define the memory management of
 their applications. One reason is that most embedded devices have scarce
@@ -196,7 +196,7 @@ lifetime of the device.
 
 
 Object Natures
-==============
+--------------
 
 The BON specification defines three natures for objects: persistent
 immutable objects (:ref:`immutable`), immortal objects
@@ -212,7 +212,7 @@ implement the three BON object natures [3]_.
 .. _immutable:
 
 Persistent Immutable Objects
-----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Immutable objects are read-only objects. They are instances of any
 concrete class. Although they are immutable, they obey all the Java
@@ -248,7 +248,7 @@ come with their own immutable object descriptions. Therefore more than
 one immutable description may be given to the Java virtual machine.
 
 Object ID and Immutable Object Querying
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++++++++++++++++++++++++++++++++++++++++
 
 Immutable objects are semantically organized into one global pool, just
 like the Java interned ``java.lang.String`` objects.
@@ -261,7 +261,7 @@ global pool of immutable objects, thanks to the method
 used to qualify an immutable object.
 
 Immutable Objects Descriptions and Creation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++++++++++++++++++++++++++++++++++++++++++++
 
 Descriptions are based on the structure of objects, that is, they embed
 structural information such as fully qualified class names and field
@@ -280,7 +280,7 @@ The BON experts recommend the use of tools for the creation of large
 graphs of immutable objects.
 
 XML Grammar
-~~~~~~~~~~~
++++++++++++
 
 Immutable objects are described according to the following XML syntax
 (Annex :ref:`DTD` gives the DTD).
@@ -501,7 +501,7 @@ IDs define one global name space [7]_: an ID only refers to only one
 object. It is an error to have objects sharing ID.
 
 Immutable XML Description Examples
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+++++++++++++++++++++++++++++++++++
 
 .. code-block:: xml
 
@@ -552,7 +552,7 @@ Immutable XML Description Examples
 .. _runtimeimmutables:
 
 Turning Objects Into Immutable Objects
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+++++++++++++++++++++++++++++++++++++++
 
 Some systems may define persistent memory where new immutable objects
 can be stored. Such objects remain “live” through device reboots. The
@@ -608,10 +608,10 @@ All operations on ``Immutables`` must be thread safe.
 .. _immortal:
 
 Immortal Objects 
-----------------
+~~~~~~~~~~~~~~~~
 
 Non Garbageable Objects
-~~~~~~~~~~~~~~~~~~~~~~~
++++++++++++++++++++++++
 
 Immortal objects are regular objects that are not managed by the Java
 virtual machine garbage collector. Immortal objects do not move around
@@ -621,7 +621,7 @@ forever.
 .. _turningIntoImmortal:
 
 Turning Objects Into Immortal Objects
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++++++++++++++++++++++++++++++++++++++
 
 Reclaimable objects may be turned into immortal objects using the
 ``Immortals.setImmortal(Object)`` method. Only the object passed as
@@ -650,10 +650,10 @@ objects become immortal, and accessible for the mission phase.
 .. _reclaimable:
 
 Reclaimable Objects
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 Death Notification
-~~~~~~~~~~~~~~~~~~
+++++++++++++++++++
 
 Most objects are reclaimable objects. Sometimes, they interact with the
 underlying system using handles. Those handles represent underlying data
@@ -667,7 +667,7 @@ objects get their weak reference set to ``null`` by the system, they are
 added to a ``ReferenceQueue`` they were assigned to at their creation.
 
 Death Notification Actions
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+++++++++++++++++++++++++++
 
 Once an object has expired, it cannot be brought to life again. It is
 the responsibility of the application to make provisions for all actions
@@ -682,7 +682,7 @@ second one blocks while the queue is empty.
 The application is responsible of the execution of such hook.
 
 Weak objects association
-~~~~~~~~~~~~~~~~~~~~~~~~
+++++++++++++++++++++++++
 
 ``java.util.Hashtable`` allows to associate a ``value`` with a ``key`` within
 a table (the key indexes the value within the table for fast searches).
@@ -696,7 +696,7 @@ If no other regular reference refers the key, the key can be removed
 automatically by the system, which removes the associated value too.
 
 Runtime Phases
-==============
+--------------
 
 BON defines two phases of execution:
 
@@ -709,14 +709,14 @@ BON defines two phases of execution:
    they are switched off.
 
 Initialization Phase
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
 ``ej.bon.Util.isInInitialization()`` allows the phase to be tested.
 
 .. _mono:
 
 Mono-threaded Phase
-~~~~~~~~~~~~~~~~~~~
++++++++++++++++++++
 
 During the initialization phase, there is only one Java thread running:
 the main thread which will eventually execute the ``main(String[])``
@@ -742,7 +742,7 @@ initialization phase.
 .. _bon-startup:
 
 Deterministic Initialization Order 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+++++++++++++++++++++++++++++++++++
 
 If a class needs to be initialized, it defines a ``<clinit>`` method [12]_
 [JVM2].
@@ -779,17 +779,17 @@ The ``main(String[])`` method of the main class [JVM2] is an entry point
 in the dependencies graph.
 
 Mission Phase
--------------
+~~~~~~~~~~~~~
 
 Thread Activations
-~~~~~~~~~~~~~~~~~~
+++++++++++++++++++
 
 At the beginning of the mission phase, all threads that have been
 started during the initialization phase activated.
 ``ej.bon.Util.isInMission()`` allows the phase to be tested.
 
 Thread Control
-~~~~~~~~~~~~~~
+++++++++++++++
 
 In mission phase, one thread may send an exception within the context of
 another thread, using the
@@ -829,7 +829,7 @@ thread is interrupted: a ``java.lang.InterruptedException`` is thrown) and
 the exception is thrown as soon as possible.
 
 Class.forName 
-~~~~~~~~~~~~~~
++++++++++++++
 
 If the system is capable of dynamic code downloading,
 ``Util.dynamicCodeAllowed()`` returns ``true``, and this specification
@@ -856,7 +856,7 @@ and sound way for downloading code that matches the overall semantic of BON:
    created during this initialization phase do not become immortal.
 
 BON Properties 
-----------------
+~~~~~~~~~~~~~~
 
 The BON specification defines a set of optional properties:
 
@@ -868,10 +868,10 @@ The BON specification defines a set of optional properties:
    remaining live objects at the end of the initialization phase (see :ref:`turningIntoImmortal`).
 
 Utilities
-=========
+---------
 
 Timer & TimerTask
------------------
+~~~~~~~~~~~~~~~~~
 
 An ``ej.bon.Timer`` defines a single Java thread in charge of scheduling
 ``Runnable`` objects from the ``ej.bon.TimerTask`` class. All ``TimerTask``
@@ -908,7 +908,7 @@ The main APIs are:
    the end of the previous execution.
 
 Platform time
--------------
+~~~~~~~~~~~~~
 
 The application time is the user time: it depends on its localization.
 ``java.lang.System.currentTimeMillis`` returns the application time
@@ -931,7 +931,7 @@ application time and platform time:
    ``java.lang.System.currentTimeMillis``.
 
 Byte Array Accesses
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 The addresses space is 8-bit oriented even if there are platforms that
 manipulate quantities that are larger than an 8-bit: 32-bit processors
@@ -941,7 +941,6 @@ endianness. ``BigEndian`` describes an ordering with the most significant
 byte first, whereas ``LittleEndian`` describes an ordering with the least
 significant byte first.
 
-.. _illustration-5:
 .. figure:: images/bon_spec/illust5.png
   :align: center
   :width: 447px
@@ -964,7 +963,7 @@ provided endianness. The ``ej.bon.ByteArray`` class provides such APIs:
 Similar methods are provided for ``short``, ``char``, ``long`` types.
 
 Math
-----
+~~~~
 
 The ``ej.bon.XMath`` complements the math operations provided by
 ``java.lang.Math``. The new operations are: ``limit``, ``asin``, ``acos``,
@@ -973,7 +972,7 @@ The ``ej.bon.XMath`` complements the math operations provided by
 .. _DTD:
 
 Annex A: Immutables DTD
-=======================
+-----------------------
 
 .. code-block:: dtd
 
