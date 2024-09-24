@@ -8,12 +8,12 @@ Principle
 =========
 
 A custom font is a class that extends the class MicroUI `Font`_.
-It is associated to a native implementation that manages, at least, the drawings of strings.
+It is associated to a native implementation that handles, at least, the drawing of strings.
 
 .. warning:: Calling the Graphics Engine's software algorithms to draw a string with a custom font corrupts the MicroUI execution (flickering, memory corruption, unknown behavior, etc.).
 
-Note that a MicroUI Font has got a fixed height and baseline (in pixels).
-In case of the custom font is dynamic (dynamic height) XXX_TODO @seon
+Note that a MicroUI Font has a fixed height and a fixed baseline (in pixels).
+If the custom font is dynamic (dynamic height) XXX_TODO @seon
 
 XXX_TODO show hierarchy ?
 
@@ -22,34 +22,34 @@ Requirements
 
 This class and its native implementation are responsible:
 
-* to provide one or several entry points to load a font (typically MyFont.getFont(*path_to_font*)),
+* for providing one or several entry points to load a font (typically MyFont.getFont(*path_to_font*)),
 * of the format of the input data (a file, a stream, a byte array, etc.),
-* of the loading (if required) of the font on the native side,
-* of the memory management (the custom font may require to allocate some memory on the native side),
-* of the closure (mainly if some native data is associated to this font).
+* for loading (if required) the font on the native side,
+* for managing memory (the custom font may require to allocate some memory on the native side),
+* for closing the font (mainly if some native data is associated to this font).
 
-.. note:: In case of the input data is a file, the file can be listed in the :ref:`resources.list <section.classpath.elements.raw_resources>` file.
+.. note:: In case the input data is a file, the file can be listed in the :ref:`resources.list <section.classpath.elements.raw_resources>` file.
 
 MicroUI Drawings
 ================
 
 MicroUI provides several APIs to draw a string.
 The native implementation of the custom font should implement the associated :ref:`Abstract Layer API <section_drawings>`.
-This is not mandatory but advised: the main objective is to anonymize the use of the custom font in the application.
-The application should be able to manipulate any fonts (internal fonts or custom fonts) without using specific font's API.
+This is not mandatory but advised: the main objective is to abstract away the use of custom fonts for the application.
+The application should be able to manipulate any font (internal fonts or custom fonts) without using a different API for each font type.
 
 Renderable String
 =================
 
 This class should manage the MicroUI `RenderableString`_.
-A renderable string is an immutable string associated to a font.
-The objective of a renderable string is to be drawn faster than a simple string, because the data of the font for the renderable string never change.
-No need to retrieve some information at drawing time.
+A renderable string is an immutable string associated with a font.
+The objective of a renderable string is to be drawn faster than a standard string.
+Because the font data for the renderable string never changes, some information can be cached, avoiding retrieving it at drawing time.
 
-By consequence, the custom font should keep some data that allows to quickly retrieve the data to draw.
-The data format is custom font dependent. 
+As a consequence, the custom font should keep some data that allows one to quickly retrieve the data to draw.
+The data format is custom-font-dependent.
 In the MicroUI library, the renderable string data is represented by a byte array (see `RenderableString.getSNIContext()`_ XXX_TODO link).
-On native side, this data should be cast in a structure readable by the font drawer.
+On the native side, this data should be cast to a structure readable by the font drawer.
 
 .. note:: If there is no support for the renderable strings in the custom font, the drawings are automatically redirected to the simple drawString algorithms. By consequence, there is no advantage for the application to use the RenderableString API.
 

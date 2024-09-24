@@ -8,8 +8,8 @@ Principle
 =========
 
 The Font Renderer is a module of the MicroUI runtime that reads and draws the strings with a font.
-It calls Abstraction Layer APIs to draw and transform the strings, the MicroUI `RenderableString`_ and single characters (rotation, scaling).
-In addition, the Graphics Engine provides some software algorithms to perform the rendering of the strings with the :ref:`internal font <section_font_internal_format>`.
+It calls Abstraction Layer APIs to draw and transform the strings, the MicroUI `RenderableString`_ and single characters (with an optional transformation like a rotation or a scaling).
+In addition, the Graphics Engine provides some software algorithms to perform the rendering of the strings with the :ref:`internal font format <section_font_internal_format>`.
 
 Functional Description
 ======================
@@ -20,7 +20,7 @@ The BSP can override this default behavior:
 
 * to use an advanced complex layout manager,
 * to use a custom drawer,
-* to manage :ref:`section_font_custom`.
+* to handle :ref:`Custom Fonts <section_font_custom>`.
 
 Font Formats
 ============
@@ -28,7 +28,7 @@ Font Formats
 Internal Font Format
 --------------------
 
-The  Graphics Engine's software algorithms are by default able to draw the :ref:`internal font <section_font_internal_format>`.
+The  Graphics Engine's software algorithms are by default able to draw an :ref:`internal font <section_font_internal_format>`.
 No extra support in the VEE Port is required to draw strings with this kind of font.
 
 The string drawing resembles a :ref:`shape drawing <section_drawings>`.
@@ -40,7 +40,7 @@ This allows to enrich the :ref:`language support <section_font_languages>`  by u
 Custom Font Format
 ------------------
 
-The VEE Port must extend the Font Renderer to support the drawing of strings with the :ref:`section_font_custom`.
+The VEE Port must extend the Font Renderer to support the drawing of strings with a :ref:`section_font_custom`.
 This extension can consist in:
 
 * decoding the font at runtime to draw it,
@@ -48,7 +48,7 @@ This extension can consist in:
 * using a command interpreter to perform some :ref:`shape drawings <section_drawings>`,
 * etc.
 
-To draw the strings with custom fonts, the Font Renderer introduces the notion of *custom font drawer*.
+To draw strings with custom fonts, the Font Renderer introduces the notion of *custom font drawer*.
 This drawer is an engine that has the responsibility to draw the string with the font.
 Each custom font format (``0`` to ``7``) has its own font drawer.
 
@@ -68,7 +68,7 @@ MicroUI C Module
 Principle
 ---------
 
-As described above, a :ref:`font drawer <section_font_drawer_custom_format>` allows drawing the strings with a font whose format is *custom*.
+As described above, a :ref:`font drawer <section_font_drawer_custom_format>` allows drawing strings with a font which format is *custom*.
 The :ref:`MicroUI C module<section_ui_releasenotes_cmodule>` is designed to manage the notion of drawers: it does not *support* the custom formats but allows adding some additional drawers.
 
 This support uses several weak functions and tables to redirect the string drawings.
@@ -79,7 +79,7 @@ When this support is not used (when the VEE Port does not need to support *custo
 Internal Font Format Only (Default)
 -----------------------------------
 
-The default implementation can only draw string with the :ref:`internal fonts  <section_font_internal_format>`.
+The default implementation can only draw string with :ref:`internal fonts <section_font_internal_format>`.
 In other words, the application cannot draw with a custom font.
 This is the most frequent use case, the only one available with MicroUI before version 3.6.
 
@@ -461,7 +461,7 @@ The drawer is retrieved thanks to the font format (function ``_get_table_index()
 
 * the format is internal but the destination is not the *display* format: index ``0`` is returned,
 * the format is internal and the destination is the *display* format: index ``1`` is returned,
-* the format is custom: index ``2`` to ``9`` is returned.
+* the format is custom: an index from ``2`` to ``9`` is returned.
 
 **UI_FONT_DRAWING_drawString_custom0** (available in MicroUI C Module)
 
@@ -502,7 +502,7 @@ The :ref:`Front Panel<section_ui_releasenotes_frontpanel>` defines support of th
 Internal Font Format Only (Default)
 -----------------------------------
 
-The default implementation can draw draw string with the internal fonts.
+The default implementation can only draw strings with internal fonts.
 
 .. note:: Contrary to the :ref:`section_renderer_cco`, the simulation does not (and doesn't need to) provide an option to disable the use of custom font. 
 
