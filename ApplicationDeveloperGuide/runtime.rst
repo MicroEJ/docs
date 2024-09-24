@@ -39,46 +39,9 @@ This module is always required in the build path of an Application project;
 and all others libraries depend on it. This library provides a set of options.
 Refer to the chapter :ref:`application_options` which lists all available options.
 
-It defines all default API packages:
+**Specification Summary:**
 
--  `java.io <https://repository.microej.com/javadoc/microej_5.x/apis/java/io/package-frame.html>`_
--  `java.lang <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/package-frame.html>`_
--  `java.lang.annotation <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/annotation/package-frame.html>`_
--  `java.lang.ref <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/ref/package-frame.html>`_
--  `java.lang.reflect <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/reflect/package-frame.html>`_
--  `java.util <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/package-frame.html>`_
-
-.. list-table::
-   :widths: 10 30
-
-   * - **Documentation**
-     - **Link**
-   * - Java APIs
-     - https://repository.microej.com/javadoc/microej_5.x/libraries/edc-1.3-api/
-   * - Module
-     - https://repository.microej.com/modules/ej/api/edc/
-
-
-**Use**
-
-The `EDC API Module`_ must be added to the project build file of the Application Project:
-
-.. tabs::
-
-   .. tab:: SDK 6
-
-      .. code-block:: java
-
-         implementation("ej.api:edc:1.3.5")
-
-   .. tab:: SDK 5
-
-      .. code-block:: xml
-
-         <dependency org="ej.api" name="edc" rev="1.3.5"/>
-
-
-.. _EDC API Module: https://repository.microej.com/modules/ej/api/edc/
+.. include:: edc_spec_summary.rst
 
 .. _runtime_bon:
 
@@ -100,39 +63,11 @@ allows:
 
 - Defining and accessing compile-time constants.
 
-.. list-table::
-   :widths: 10 30
+Read the :ref:`bon_specification` section for more details.
 
-   * - **Documentation**
-     - **Link**
-   * - Java APIs
-     - https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/package-summary.html
-   * - Specification
-     - https://repository.microej.com/packages/ESR/ESR-SPE-0001-BON-1.2-G.pdf
-   * - Module
-     - https://repository.microej.com/modules/ej/api/bon/
- 
-**Use**
+**Specification Summary:**
 
-Add the following dependency to the project build file of the Application 
-Project to use the `BON API Module`_:
-
-.. tabs::
-
-   .. tab:: SDK 6
-
-      .. code-block:: java
-
-         implementation("ej.api:edc:1.3.5")
-
-   .. tab:: SDK 5
-
-      .. code-block:: xml
-
-         <dependency org="ej.api" name="edc" rev="1.3.5"/>
-
-
-.. _BON API Module: https://repository.microej.com/modules/ej/api/bon/
+.. include:: bon_spec_summary.rst
 
 .. _runtime_sni:
 
@@ -148,7 +83,11 @@ SNI allows you to:
 
 SNI also provides some Java APIs to manipulate some data arrays between Java and the native (C) world.
 
-Please refer to :ref:`sni_specification` section for more details.
+Read the :ref:`sni_specification` section for more details.
+
+**Specification Summary:**
+
+.. include:: sni_spec_summary.rst
 
 .. _runtime_kf:
 
@@ -157,8 +96,12 @@ Kernel & Features (KF)
 
 The Kernel & Features semantic (KF) extends the runtime for managing Multi-Sandboxed Applications.
 
-Please refer to the :ref:`kf_specification` for more details, the :ref:`Multi-Sandbox capability <multisandbox>` of the Core Engine
+Read the :ref:`kf_specification` for more details, the :ref:`Multi-Sandbox capability <multisandbox>` of the Core Engine
 and more generally the :ref:`kernel-developer-guide` chapter.
+
+**Specification Summary:**
+
+.. include:: kf_spec_summary.rst
 
 .. _runtime_gt: 
 
