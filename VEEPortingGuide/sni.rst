@@ -186,6 +186,8 @@ Java And Native Separation
 The following illustration shows both Java and C code
 accesses to shared objects in the immortal space, while also accessing
 their respective memory.
+In C code, non-immortal arrays can only be accessed within the local scope of a 
+native function.
 
 .. _fig_sni-flow:
 .. figure:: images/sni_flow.*
