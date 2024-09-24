@@ -89,16 +89,18 @@ it allows:
 BON serves as a very robust foundation for implementing Java software,
 in particular embedded Java Software.
 
-BON also add a small set of useful utilities:
+BON also adds a set of useful utilities:
 
 -  A Timer facilities that allows to schedule small activities
    repeatedly (or not). Such activities are Runnable objects that are
    automatically scheduled by the timer.
 -  Platform time which cannot be changed: the time from the very last
    boot of the device.
--  Read-write ``ByteArray`` support according to the underlying processor
+-  Read-write `ByteArray`_ support according to the underlying processor
    endianness.
+-  `ResourceBuffer`_ support for random read access in a :ref:`resource <section.classpath.elements.raw_resources>`.
 -  A set of useful math operators.
+-  Accessing compile-time :ref:`constants <section.classpath.elements.constants>`.
 
 Basic Concepts
 --------------
@@ -1101,6 +1103,8 @@ Annex A: Immutables DTD
    initialization of both static fields and static initializers of
    classes.
 
+.. _ByteArray: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/ByteArray.html
+.. _ResourceBuffer: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/ResourceBuffer.html
 
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 

@@ -61,7 +61,7 @@ allows:
 
 -  Defining immortal, read-write objects that are always alive.
 
-- Defining and accessing compile-time constants.
+-  Accessing compile-time :ref:`constants <section.classpath.elements.constants>`.
 
 Read the :ref:`bon_specification` section for more details.
 
