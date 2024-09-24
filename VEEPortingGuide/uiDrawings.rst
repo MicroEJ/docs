@@ -85,7 +85,7 @@ The :ref:`MicroUI C module<section_ui_releasenotes_cmodule>` is designed to simp
 * flash footprint is reduced (no extra table to manage several destination formats and several sources),
 * functions indirections are limited (the software drawing algorithm is called as faster as possible).
 
-The following graph illustrates the steps to perform a shape drawing (not an image):
+The following diagram illustrates the steps to perform a shape drawing (not an image):
 
 .. graphviz:: :align: center
 
@@ -154,14 +154,14 @@ This pointer must be cast in a ``SNI_callback``.
 
    #define UI_DRAWING_DEFAULT_drawLine UI_DRAWING_drawLine
 
-The function name is set thanks to a ``define``.
+The function name is set with preprocessor macros.
 This name redirection is useful when the VEE Port features multiple destination formats (not the use-case here).
 
 **UI_DRAWING_DEFAULT_drawLine** (available in MicroUI C Module)
 
 .. code-block:: c
 
-   // Use the preprocessor 'weak'
+   // Use the compiler's 'weak' attribute
    __weak DRAWING_Status UI_DRAWING_DEFAULT_drawLine(MICROUI_GraphicsContext* gc, jint startX, jint startY, jint endX, jint endY) {
       // Default behavior: call the Graphics Engine's software algorithm
       return UI_DRAWING_SOFT_drawLine(gc, startX, startY, endX, endY);
@@ -189,7 +189,7 @@ The :ref:`MicroUI C module<section_ui_releasenotes_cmodule>` is designed to simp
 * flash footprint is reduced (no extra table to manage several destination formats and several sources),
 * functions indirections are limited (the drawing algorithm is called as faster as possible).
 
-The following graph illustrates the steps to perform a shape drawing (not an image):
+The following diagram illustrates the steps to perform a shape drawing (not an image):
 
 
 .. graphviz:: :align: center
@@ -258,7 +258,7 @@ Take the same example as the default implementation (draw a line): the BSP just 
 
    #define UI_DRAWING_GPU_drawLine UI_DRAWING_drawLine
 
-The function name should be set thanks to a ``define``.
+The function name should be set with preprocessor macros.
 This name redirection is useful when the VEE Port features multiple destination formats (not the use-case here).
 
 **UI_DRAWING_GPU_drawLine** (to write in the BSP)
@@ -365,7 +365,7 @@ The :ref:`UI Pack extension <section_ui_simulation>` is designed to simplify the
 * Simply add the dependency to the UI Pack extension in the VEE Port Front Panel project.
 * Function indirections are limited (the software drawing algorithm is called as fast as possible).
 
-The following graph illustrates the steps to perform a shape drawing (not an image):
+The following diagram illustrates the steps to perform a shape drawing (not an image):
 
 .. graphviz:: :align: center
 
@@ -471,7 +471,7 @@ The :ref:`UI Pack extension <section_ui_simulation>` is designed to simplify the
    * Function indirections are limited (the drawing algorithm is called as fast as possible).
 * Register this drawer in place of the default display drawer.
 
-The following graph illustrates the steps to perform a shape drawing (not an image):
+The following diagram illustrates the steps to perform a shape drawing (not an image):
 
 .. graphviz:: :align: center
 
