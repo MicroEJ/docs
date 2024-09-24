@@ -72,7 +72,7 @@ As described above, a :ref:`font drawer <section_font_drawer_custom_format>` all
 The :ref:`MicroUI C module<section_ui_releasenotes_cmodule>` is designed to manage the notion of drawers: it does not *support* the custom formats but allows adding some additional drawers.
 
 This support uses several weak functions and tables to redirect the string drawings.
-When this support is not used (when the VEE Port does not need to support *custom* fonts), this support can be removed to reduce the footprint (by removing the indirection tables) and improve the performances (by reducing the number of runtime function calls).
+When custom drawers are not used (when the VEE Port does not need to support *custom* fonts), this redirection can be removed to reduce the memory footprint (by removing the indirection tables) and improve the performances (by reducing the number of runtime function calls).
 
 .. _section_font_drawer_internal:
 
@@ -85,14 +85,14 @@ This is the most frequent use case, the only one available with MicroUI before v
 
 .. attention:: To select this implementation (to disable the custom font support), the define ``LLUI_FONT_CUSTOM_FORMATS`` must be unset.
 
-The font drawing is similar to ``UI_DRAWING_GPU_drawLine`` (see :ref:`section_drawings_cco`), except that the drawing consists in first, decoding the string (to optionally applying a complex layout manager) and then, calling the  Graphics Engine's software algorithms to draw the string.
+The font drawing is similar to ``UI_DRAWING_GPU_drawLine`` (see :ref:`section_drawings_cco`), except that the drawing consists in decoding the string first (to optionally applying a complex layout manager), and then calling the Graphics Engine's software algorithms to draw the string.
 
-Theoretically, the weak drawer should let the font drawer manages the font instead of calling the software drawer directly.
-However the MicroUI C Module take advantage of the define ``LLUI_FONT_CUSTOM_FORMATS``: as it is not set, the C Module bypasses the indirection to the font drawer and by consequence, the implementation of the weak function only consists in calling the Graphics Engine's software algorithm (basic string layouter, see :ref:`section_font_languages` and software drawings). 
+Theoretically, the weak drawer should let the font drawer handle the font instead of calling the software drawer directly.
+However the MicroUI C Module take advantage of the define ``LLUI_FONT_CUSTOM_FORMATS``: as it is not set, the C Module bypasses the indirection to the font drawer, and as a consequence the implementation of the weak function only consists in calling the Graphics Engine's software algorithm (basic string layouter, see :ref:`section_font_languages` and software drawings). 
 This tip reduces the footprint and the CPU usage.
 
-An implementation of a third-party complex layouter can optionally takes advantage of the define ``LLUI_FONT_CUSTOM_FORMATS``.
-The following graphs illustrate the drawing of a string with or without taking advantage of the define ``LLUI_FONT_CUSTOM_FORMATS`` (respectively *default* and *optimized* implementation).
+An implementation of a third-party complex layouter can optionally take advantage of the define ``LLUI_FONT_CUSTOM_FORMATS``.
+The following diagrams illustrate the drawing of a string with or without taking advantage of the define ``LLUI_FONT_CUSTOM_FORMATS`` (respectively *default* and *optimized* implementation).
 
 .. tabs::
 
@@ -227,8 +227,8 @@ Similar to ``LLUI_PAINTER_IMPL_drawLine``, see :ref:`section_drawings_cco`.
    // To write in the BSP (optional)
    #define UI_DRAWING_LAYOUT_drawString UI_DRAWING_drawString
 
-The function names are set thanks to some ``define``.
-These name redirections are helpful when the VEE Port features more than one destination format (not the use-case here).
+The function names are set with preprocessor macros.
+These name redirections are helpful when the VEE Port features more than one destination format (which is not the case here).
 
 
 **UI_DRAWING_LAYOUT_drawString** (to write in the BSP)
@@ -277,7 +277,7 @@ Similar to ``UI_DRAWING_GPU_drawLine`` (see :ref:`section_drawings_cco`), but le
 
 .. code-block:: c
 
-   // Use the preprocessor 'weak'
+   // Use the compiler's 'weak' attribute
    __weak DRAWING_Status UI_DRAWING_DEFAULT_drawString(MICROUI_GraphicsContext *gc, jchar *chars, jint length, MICROUI_Font *font, jint x, jint y) {
    #if !defined(LLUI_FONT_CUSTOM_FORMATS)
       return UI_DRAWING_SOFT_drawString(gc, chars, length, font, x, y);
@@ -300,7 +300,7 @@ This advanced use case is available only with MicroUI 3.6 or higher.
 .. attention:: To select this implementation, the define ``LLUI_FONT_CUSTOM_FORMATS`` must be set (no specific value).
 
 The MicroUI C module uses some tables to redirect the font management to the expected extension.
-There is one table per Font Abstraction Layer API (draw, rotate, scale) to embed only necessary algorithms (a table and its functions are only embedded in the final binary file if and only if the MicroUI drawing method is called).
+There is one table per Font Abstraction Layer API (draw, rotate, scale) to embed only the necessary algorithms (a table and its functions are only embedded in the final binary file if and only if the MicroUI drawing method is called).
 
 Each table contains ten elements:
 
@@ -330,7 +330,7 @@ The implementation of ``UI_DRAWING_drawString`` can have two behaviors:
   1. It only manages the characters layouting; the drawing is performed by another C file. 
   2. It manages the layouting **and** the drawing; in that case, the implementation has to check if it supports the font.
 
-The following graph illustrates the drawing of an string:
+The following diagram illustrates the drawing of an string:
 
 
 .. graphviz:: :align: center
@@ -424,7 +424,7 @@ Take the same example as the *Internal Font Formats Only* implementation (draw a
 
 .. code-block:: c
 
-   // Use the preprocessor 'weak'
+   // Use the compiler's 'weak' attribute
    __weak DRAWING_Status UI_DRAWING_DEFAULT_drawString(MICROUI_GraphicsContext *gc, jchar *chars, jint length, MICROUI_Font *font, jint x, jint y) {
    #if !defined(LLUI_FONT_CUSTOM_FORMATS)
       return UI_DRAWING_SOFT_drawString(gc, chars, length, font, x, y);
@@ -433,7 +433,7 @@ Take the same example as the *Internal Font Formats Only* implementation (draw a
    #endif
    }
 
-The define ``LLUI_FONT_CUSTOM_FORMATS`` is set so the implementation of the weak function redirects the string drawing to the font drawers manager (``ui_font_drawing.h``).
+The define ``LLUI_FONT_CUSTOM_FORMATS`` is set so the implementation of the weak function redirects the string drawing to the font drawer manager (``ui_font_drawing.h``).
 
 **UI_FONT_DRAWING_draw** (available in MicroUI C Module)
 
@@ -457,7 +457,7 @@ The define ``LLUI_FONT_CUSTOM_FORMATS`` is set so the implementation of the weak
    }
 
 The implementation in the MicroUI C module redirects the drawing to the expected drawer.
-The drawer is retrieved thanks to the font format (function ``_get_table_index()``):
+The drawer is retrieved using the font format (function ``_get_table_index()``):
 
 * the format is internal but the destination is not the *display* format: index ``0`` is returned,
 * the format is internal and the destination is the *display* format: index ``1`` is returned,
@@ -467,7 +467,7 @@ The drawer is retrieved thanks to the font format (function ``_get_table_index()
 
 .. code-block:: c
 
-   // Use the preprocessor 'weak'
+   // Use the compiler's 'weak' attribute
    __weak DRAWING_Status UI_FONT_DRAWING_drawString_custom0(MICROUI_GraphicsContext *gc, jchar *chars, jint length, MICROUI_Font *font, jint x, jint y){
       return UI_DRAWING_STUB_drawString(gc, chars, length, font, x, y);
    }
@@ -497,7 +497,7 @@ Principle
 
 The simulation behavior is similar to the :ref:`section_renderer_cco` for the Embedded side.
 
-The :ref:`Front Panel<section_ui_releasenotes_frontpanel>` defines support of the drawers based on Java service loader.
+The :ref:`Front Panel<section_ui_releasenotes_frontpanel>` defines support for the drawers based on the Java service loader.
 
 Internal Font Format Only (Default)
 -----------------------------------
@@ -582,10 +582,10 @@ It is possible to draw fonts with a custom format by implementing the ``UIFontDr
 This advanced use case is available only with MicroUI 3.6 or higher.
 
 The ``UIFontDrawing`` interface contains one method for each font drawing primitive (draw, getWidth, RenderableString, rotate, scale).
-Only the necessary methods can be implemented.
+Only the necessary methods have to be implemented.
 Each non-implemented method will result in calling the stub implementation.
 
-The method ``handledFormat()`` must be implemented and returns the managed format.
+The method ``handledFormat()`` must be implemented and returns the font format handled by the drawer.
 
 Once created, the ``UIFontDrawing`` implementation must be registered as a service.
 
@@ -690,8 +690,7 @@ Let's implement the font drawer for the `CUSTOM_0` format.
    }
 
 Now, this drawer needs to be registered as a service.
-This can be achieved by creating a file in the resources of the Front Panel project named ``META-INF/services/ej.microui.display.UIFontDrawing``.
-And its content containing the fully qualified name of the previously created font drawer.
+This can be achieved by creating a file in the resources of the Front Panel project named ``META-INF/services/ej.microui.display.UIFontDrawing`` and containing the fully qualified name of the previously created font drawer.
 
 .. code-block::
 
