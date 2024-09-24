@@ -195,53 +195,89 @@ This chapter explains the different ways to create a new project.
       or :ref:`how to run it on the Simulator <sdk_6_run_on_simulator>` in the case of an Application.
 
    .. tab:: Visual Studio Code
+ 
+      The creation of a project with Visual Studio Code is done as follows:
+      
+      - Select :guilabel:`View` > :guilabel:`Command Palette...`.
+      - Run the ``Git: Clone`` command in the Command Palette.
+      
+      .. figure:: images/vscode-command-palette.png
+        :alt: Command Palette in VS Code
+        :align: center
+        :scale: 70%
+      
+        Command Palette in VS Code
+      
+      - Depending on the type of your project, fill the URI of the corresponding Github template repository in the Search Bar. 
+        The available templates are:
+      
+         - `Application Project Template <https://github.com/MicroEJ/Tool-Project-Template-Application>`__
+         - `Add-On Library Project Template <https://github.com/MicroEJ/Tool-Project-Template-Add-On-Library>`__
+         - `Mock Project Template <https://github.com/MicroEJ/Tool-Project-Template-Mock>`__
+      
+      - Click on :guilabel:`Clone from URL`.
+      
+      .. figure:: images/vscode-search-bar.png
+        :alt: Search Bar in VS Code
+        :align: center
+        :scale: 70%
+      
+        Search Bar in VS Code
+      
+      - In the upcoming popup, choose a folder and click on the ``Select as Repository Destination`` button.
+      - When the Gradle project is loaded, select :guilabel:`Terminal` > :guilabel:`New Terminal`.
+      - In the integrated terminal, run the following command at the root of the project to remove the Git Repository:
 
-      MicroEJ does not provide wizards in VS Code to create new MicroEJ projects. Refer to the Command Line Interface tab to see how to create a project from Gradle.
+      .. tabs::
+
+         .. tab:: Windows
+
+            .. code-block:: java
+
+              rm -r -Force .git*
+
+
+         .. tab:: Linux/macOS
+
+            .. code-block:: java
+
+              rm -rf .git*
+              
+      - Rename the project and change its group and version in the ``build.gradle.kts`` build script.
 
    .. tab:: Command Line Interface
 
-      The creation of a project can be done via the command line interface via the Gradle ``init`` task.
-      This task guides you through multiple steps to configure and select the project template to use.
-      Refer to `the official documentation <https://docs.gradle.org/current/userguide/build_init_plugin.html>`__ for the full list of templates and options.
+      The creation of a project via Command Line Interface is done as follows:
       
-      In order to create a MicroEJ project, the best way is to use the ``application`` template:
+      - Depending on the type of your project, retrieve the URI of the corresponding Github template repository. 
+        The available templates are:
       
-      - In a new empty directory, execute the command ``gradle init``.
-      - Select the ``application`` project type.
-      - Select the ``Java`` implementation language.
-      - For the step ``Generate multiple subprojects for application?``, select ``no``.
-      - Select build script DSL ``Kotlin``.
+         - `Application Project Template <https://github.com/MicroEJ/Tool-Project-Template-Application>`__
+         - `Add-On Library Project Template <https://github.com/MicroEJ/Tool-Project-Template-Add-On-Library>`__
+         - `Mock Project Template <https://github.com/MicroEJ/Tool-Project-Template-Mock>`__
       
-      .. note::
-        The SDK uses Kotlin as the default Gradle build script DSL. 
-        The use of the Groovy build script DSL is still possible but not officially supported.
+      - Clone the repository::
+
+         git clone <template-repository>
       
-      - For the test framework, select ``JUnit 4``.
-      - Choose the name of the project (defaults to the name of the parent directory).
-      - Choose the package name for the source files.
-      - For the target version of Java, select ``7``.
-      - Decide if you want to use Gradle new APIs and behavior in your build script.
-        If you are new to Gradle, choose ``no``.
-      
-      .. note::
-        These steps are the ones proposed when creating a project with Gradle ``8.2.1``. 
-        Depending on the Gradle version used, the steps to create a project can be slightly different.
-      
-      The created project is a multi-project build containing a root project and a single subproject (named ``app``).
-      The ``app`` subproject is a standard Java Application project (Gradle ``java`` plugin),
-      so it must be updated to be a MicroEJ project:
-      
-      - Open the project in your favorite editor.
-      - Open the ``app/build.gradle.kts`` file.
-      - Erase its whole content.
-      - :ref:`Configure the project <sdk_6_create_project_configure_project>` depending on the module nature you want to build.
-      - Declare the dependencies required by your project in the ``dependencies`` block. For example::
-      
-            dependencies {
-                implementation("ej.api:edc:1.3.5")
-            }
-      
-      - Delete the test class in the folder ``app/src/test/java``.
+      - Remove the Git Repository from the project:
+
+      .. tabs::
+
+         .. tab:: Windows
+
+            .. code-block:: java
+
+              rm -r -Force .git*
+
+
+         .. tab:: Linux/macOS
+
+            .. code-block:: java
+
+              rm -rf .git*
+
+      - Rename the project and change its group and version in the ``build.gradle.kts`` build script.
 
 .. _sdk_6_create_project_configure_project:
 
