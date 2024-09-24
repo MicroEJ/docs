@@ -506,7 +506,7 @@ The default implementation can only draw strings with internal fonts.
 
 .. note:: Contrary to the :ref:`section_renderer_cco`, the simulation does not (and doesn't need to) provide an option to disable the use of custom font. 
 
-The following graph illustrates the drawing of a string:
+The following diagram illustrates the drawing of a string:
 
 .. graphviz:: :align: center
 
@@ -589,7 +589,7 @@ The method ``handledFormat()`` must be implemented and returns the font format h
 
 Once created, the ``UIFontDrawing`` implementation must be registered as a service.
 
-The following graph illustrates the drawing of a string: 
+The following diagram illustrates the drawing of a string: 
 
 .. graphviz:: :align: center
 
