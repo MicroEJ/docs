@@ -26,7 +26,7 @@ Specification Summary
 Comments
 ~~~~~~~~
 
-Your comments about this specification are welcome. Please contact :ref:`our support team <get_support>` with "KF" as subject.
+Your comments about this specification are welcome. Please contact :ref:`our support team <get_support>` with "BON" as subject.
 
 
 Why BON ?
