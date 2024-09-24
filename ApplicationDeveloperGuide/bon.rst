@@ -6,10 +6,8 @@ Beyond Profile (BON)
 Introduction
 ------------
 
-This document defines the BON profile, aimed to define an enhanced and simple
-architecture to enable an open, third-party, application development
-environment for controlling both its startup sequence and its memory
-resource in the best possible way.
+This document defines the BON profile, that define a suitable and flexible approach to fully control both memory usage 
+and startup sequences on devices with limited memory resources, while remaining within the boundaries of Java semantics.
 
 Although this specification spans a potentially wide set of devices, it
 focus on embedded devices that have non-volatile memories and volatile ones
@@ -104,11 +102,6 @@ BON also adds a set of useful utilities:
 
 Basic Concepts
 --------------
-
-BON experts agreed to limit the set of APIs specified to only those
-required to achieve a high level of portability and successful
-deployments. Their main concern was to stay within the boundaries of the
-Java semantics [JLS].
 
 BON defines two phases for the execution stream:
 

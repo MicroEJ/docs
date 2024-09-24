@@ -48,10 +48,10 @@ Refer to the chapter :ref:`application_options` which lists all available option
 Beyond Profile (BON)
 ~~~~~~~~~~~~~~~~~~~~~
 
-This profile defines a suitable and flexible way to fully control both memory
-usage and start-up sequences on devices with limited memory resources.
-It does so within the boundaries of Java semantics. More precisely, it
-allows:
+This profile defines define a suitable and flexible approach to fully control both memory usage 
+and startup sequences on devices with limited memory resources, while remaining within the boundaries of Java semantics.
+
+More precisely, it allows:
 
 -  Controlling the initialization sequence in a deterministic way.
 
