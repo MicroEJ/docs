@@ -6,12 +6,17 @@ MicroEJ
    .. image:: images/header_docs.png
       :alt: Docs
 
-Welcome to MicroEJ developer documentation.
+Welcome to the MicroEJ developer documentation.
+
+MicroEJ (pronounced “micro-EDGE”) turns any electronic product or ‘things’ into smart things, MicroEJ tools and libraries enable you to easily create efficient and feature complete applications for embedded devices.
+MicroEJ leverages a runtime environment called VEE (`Virtual Execution Environment <VEEPortingGuide/index.html>`_) to simplify and secure embedded development. 
+
 Browse the following chapters to familiarize yourself and understand the principles of development with MicroEJ Technology.
 
 - The `Glossary <glossary.html>`_ chapter describes MicroEJ terminology.
 - The `Overview <overview/index.html>`_ chapter introduces MicroEJ products and technology.
-- The `SDK User Guide <SDKUserGuide/index.html>`_ chapter presents MICROEJ SDK (Software Development Kit).
+- The `SDK 5 User Guide <SDKUserGuide/index.html>`_ chapter presents MICROEJ SDK 5 (Software Development Kit). Use SDK 5 for legacy development.
+- The `SDK 6 User Guide <SDK6UserGuide/index.html>`_ chapter presents MICROEJ SDK 6 (Software Development Kit). Use SDK 6 for new projects.
 - The `Application Developer Guide <ApplicationDeveloperGuide/index.html>`_ presents how to develop a Java or JavaScript application on MICROEJ VEE (Virtual Execution Environment).
 - The `VEE Porting Guide <VEEPortingGuide/index.html>`_ teaches you how to integrate MICROEJ VEE into a C Board Support Package as well as simulation configurations.
 - The `Kernel Developer Guide <KernelDeveloperGuide/index.html>`_ introduces you to advanced concepts, such as partial updates and dynamic app life cycle workflows.
