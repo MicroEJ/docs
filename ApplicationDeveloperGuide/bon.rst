@@ -99,21 +99,6 @@ flash, …) than volatile memory (ram). For really cost sensitive devices,
 the ratio may drop to 8 (ram is what costs the most), while for rather
 more expensive ones it may reach 2.
 
-Basic Concepts
---------------
-
-BON defines two phases for the execution stream:
-
--  The initialization phase: the initialization sequence executes all
-   the static initializer methods (known as the ``<clinit>`` methods).
--  The mission phase: the ``main(String[])`` method of the main class is
-   called. The application runs until the device is switched off.
-
-There is a kind of objects, named immutable objects, that are alive at
-system startup. They are read-only objects that most probably reside in
-non-volatile memory. All together they form a pre-existing world that
-exists on its own, just like the hardware does.
-
 First Example
 -------------
 
@@ -191,11 +176,13 @@ lifetime of the device.
 Object Natures
 --------------
 
-The BON specification defines three natures for objects: persistent
-immutable objects (:ref:`immutable`), immortal objects
-(:ref:`immortal`), and reclaimable objects (:ref:`reclaimable`).
-Immutable [2]_ objects are also referred to as read-only objects,
-whereas reclaimable objects are regular objects.
+The BON specification defines three natures for objects: 
+
+- :ref:`Immutable objects <immutable>` : persistent objects that are alive at system startup.
+  Immutable [2]_ objects are also referred to as read-only objects, since they most probably reside in non-volatile memory. 
+  All together they form a pre-existing world that exists on its own, just like the hardware does.
+- :ref:`Immortal objects <immortal>`: objects that do not move around in memory: they remain physically located in one memory location forever.
+- :ref:`Reclaimable objects <reclaimable>`: the regular objects managed by the Garbage Collector. The Application can get notified when such object is dead.
 
 Although objects get a liveness nature, this is fully transparent at the
 Java semantic level. A semantically correct software assuming BON will
@@ -693,13 +680,14 @@ Runtime Phases
 
 BON defines two phases of execution:
 
--  ``initialization phase``: this is the very first Java code that
+-  The initialization phase: this is the very first Java code that
    executes. Its purpose is to let the device “boot”, that is, to
    initialize all necessary resources, like allocating buffers for
    drivers, performing default sanity checks, scanning hardware, etc.
--  ``mission phase``: once initialized, the device switches to the endless
-   mission phase. The device and its software application run until
-   they are switched off.
+   The initialization sequence executes all the static initializer methods (known as the ``<clinit>`` methods).
+-  The mission phase: once initialized, the device switches to the endless
+   mission phase. The ``main(String[])`` method of the main class is
+   called and the application runs until the device is switched off.
 
 Initialization Phase
 ~~~~~~~~~~~~~~~~~~~~
