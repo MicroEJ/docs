@@ -486,7 +486,7 @@ The drawer is retrieved thanks to its format (function ``_get_table_index()``):
 
 * the format is standard but the destination is not the *display* format: index ``0`` is returned,
 * the format is standard and the destination is the *display* format: index ``1`` is returned,
-* the format is custom: index ``2`` to ``9`` is returned.
+* the format is custom: an index from ``2`` to ``9`` is returned.
 
 **UI_IMAGE_DRAWING_draw_custom0** (available in MicroUI C Module)
 
