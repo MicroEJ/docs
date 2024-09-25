@@ -34,16 +34,18 @@ The first step is to create a VEE Port configuration project:
             :align: center
 
         - Click on :guilabel:`Create` button. A new project is created,
-        - Delete the ``build.gradle.kts`` file and the ``src`` folder,
+        - Delete the ``build.gradle.kts`` file and the ``src`` folder
+
+        This project will contain the VEE Port modules, and optionally the BSP.
 
         - Right-click on the project folder,
         - Select :guilabel:`New` > :guilabel:`Module...`,
         - Select :guilabel:`Java`,
         - Enter a :guilabel:`Name`. The name is arbitrary and can be changed later. 
-          The usual convention is to use the name of the VEE Port suffixed by ``-configuration`` (for example ``my-veeport-configuration``),
+          The usual convention is to use the name ``vee-port``,
 
         .. figure:: images/intellij-create-veeport-configuration-module.png
-            :alt: VEE Port Configuration Module Creation
+            :alt: VEE Port Module Creation
             :align: center
 
         - Click on :guilabel:`Create` button. A new module is created,
@@ -51,7 +53,7 @@ The first step is to create a VEE Port configuration project:
         - Replace the whole content of the ``build.gradle.kts`` file by::
 
             plugins {
-                id("com.microej.gradle.veeport")
+                id("com.microej.gradle.veeport") version "0.19.0"
             }
 
             group = "org.example"
@@ -61,7 +63,7 @@ The first step is to create a VEE Port configuration project:
                 
             }
         
-        - Create an empty file named ``configuration.properties`` at the root of the project.
+        - Create an empty file named ``configuration.properties`` at the root of the module.
           This file allows to configure all the components of the VEE Port.
 
         You should get a VEE Port configuration project that looks like:
@@ -91,7 +93,7 @@ Please refer to the chapter :ref:`architectures_toolchains` for the details of A
 If the requested MicroEJ Architecture is not available for evaluation or to get a MicroEJ Production Architecture,
 please contact your MicroEJ sales representative or :ref:`our support team <get_support>`.
 
-Once you know which Architecture to use, add it as a dependency of the VEE Port configuration project in the ``build.gradle.kts`` file:
+Once you know which Architecture to use, add it as a dependency of the VEE Port project in the ``vee-port/build.gradle.kts`` file:
 
 .. code-block:: java
     :emphasize-lines: 3
@@ -122,7 +124,7 @@ Runtime Capability
 
 Depending on the selected Architecture, several Runtime Capabilities are available: ``mono``, ``multi`` or ``tiny``.
 The Capability used for the VEE Port can be defined thanks to the ``com.microej.runtime.capability`` property 
-in the ``configuration.properties`` file of the VEE Port Configuration project::
+in the ``vee-port/configuration.properties`` file of the VEE Port Configuration project::
 
   com.microej.runtime.capability=multi
 
@@ -218,7 +220,7 @@ They are all automatically installed during the VEE Port build, but can de disab
 This is not the case for the Generic Packs, which always contain only one module.
 Therefore, if you want to disable the module of a Generic Pack, simply remove the Pack dependency.
 
-The modules of the Architecture Specific Packs and Legacy Packs can be enabled/disabled in the ``configuration.properties`` 
+The modules of the Architecture Specific Packs and Legacy Packs can be enabled/disabled in the ``vee-port/configuration.properties`` 
 file of the VEE Port Configuration project by adding the property ``com.microej.runtime.<module>.<feature>.enabled=true|false`` 
 for each module that must be enabled/disabled.
 The ``<feature>`` is optional. When no feature is defined, the whole module is enabled/disabled.
@@ -235,7 +237,7 @@ Here are some examples::
 Packs Configuration
 ===================
 
-Packs can be configured in the ``configuration.properties`` file of the VEE Port Configuration project.
+Packs can be configured in the ``vee-port/configuration.properties`` file of the VEE Port Configuration project.
 Each Pack provides a set of option which follows the pattern name ``com.microej.pack.<module>.<option>=<value>``.
 Here are some examples::
 
@@ -261,12 +263,12 @@ VEE Port project inside a multi-project
 When the VEE Port project is in the same multi-project than the component which needs it (an Application for example), 
 the VEE Port project should be declared as a project dependency.
 
-For example if the multi-project contains an Application subproject named ``my-app`` and a VEE Port configuration subproject called ``my-veeport-configuration``,
+For example if the multi-project contains an Application subproject named ``my-app`` and a VEE Port subproject called ``vee-port``,
 the VEE Port project must be declared as a dependency in the ``build.gradle.kts`` file of the ``my-app`` subproject as follows::
 
     dependencies {
 
-        microejVee(project(":my-veeport-configuration"))
+        microejVee(project(":vee-port"))
 
     }
 
@@ -286,7 +288,7 @@ so all changes done to the VEE Port are automatically considered when building o
 
 This is done by adding the following line in the ``settings.gradle.kts`` file of the Application project::
 
-  includeBuild("[vee-port-project-absolute-path")
+  includeBuild("[vee-port-project-absolute-path]")
 
 Published VEE Port
 ------------------
@@ -309,7 +311,7 @@ For example to use the VEE Port of the :ref:`sdk_6_getting_started_imx93`::
 VEE Port Customization
 ======================
 
-The VEE Port Configuration project can contain an optional ``dropins`` folder.
+The VEE Port Configuration project can contain an optional ``vee-port/dropins`` folder.
 The full content of this folder will be copied in the VEE Port during the build. 
 Files in the dropins folder have the highest priority. 
 If one file has the same path and name as a file already installed in the VEE Port, 
@@ -320,7 +322,7 @@ The dropins folder organization should respect the VEE Port files and folders or
 For instance, the tools are located in the sub-folder ``tools``. 
 In order to see how the VEE Port files and folders are organized, 
 launch a VEE Port build without the dropins folder by executing the Gradle task ``buildVeePort``. 
-The built VEE Port is located in the folder ``build/vee``.
+The built VEE Port is located in the folder ``vee-port/build/vee``.
 Then fill the dropins folder with additional features and build again the VEE Port to get a customized VEE Port.
 
 
@@ -331,7 +333,7 @@ VEE Port Publication
 
 Publishing a VEE Port in a repository allows to make it easily available to any project.
 
-To be able to publish a VEE Port, you have to make sure that the ``group`` and `` version`` property are defined in the ``build.gradle.kts`` file::
+To be able to publish a VEE Port, you have to make sure that the ``group`` and `` version`` property are defined in the ``vee-port/build.gradle.kts`` file::
 
   group = "com.mycompany"
   version = "1.0.0"
@@ -343,7 +345,7 @@ Once these properties are defined, the publication of a VEE Port is done, as any
 by executing the ``publish`` task.
 
 An important point to notice is that publishing a VEE Port does not publish the built VEE Port, 
-it publishes all the configuration, dropins and BSP files of the project.
+it publishes all the configuration and dropins of the project, as well as the BSP when it is configured in Full Connection mode.
 The VEE Port is then built on the fly when it is required (when building the Executable of an Application for example).
 
 BSP Connection
@@ -364,8 +366,8 @@ To define a link-time option, first choose an option name with only alphanumeric
 
 Proceed with the following steps by replacing ``[my_option]`` with your option name everywhere:
 
-- Create a folder inside your :ref:`sdk_6_veeport_customization` part (e.g: ``[platform]-configuration/dropins/scripts/init-[my_option]``)
-- Create an init script file and put it inside (e.g: ``[platform]-configuration/dropins/scripts/init-[my_option]/init-[my_option].xml`` file). 
+- Create a folder inside your :ref:`sdk_6_veeport_customization` part (e.g: ``vee-port/dropins/scripts/init-[my_option]``)
+- Create an init script file and put it inside (e.g: ``vee-port/dropins/scripts/init-[my_option]/init-[my_option].xml`` file). 
   Here is the init script file template content: 
 
   .. code-block:: xml

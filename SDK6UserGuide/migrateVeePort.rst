@@ -4,48 +4,84 @@ Migrate a VEE Port Project
 ==========================
 
 This page explains how to migrate an VEE Port project created with the SDK 5 or lower to the SDK 6.
-It focuses on the elements specific to a VEE Port project, 
-so make sure to first follow :ref:`the documentation explaining the migration of the elements common to any project <sdk_6_migrate_sdk5_project>`.
 
 Project structure
 -----------------
 
 Even if it is not mandatory, a VEE Port project is most of the time structured as a multi-project.
 Indeed, it generally contains other subprojects than the configuration module, for example a Front Panel or an Image Generator subproject.
+It can also contains the BSP.
+
 Whereas it was not necessarily structured as a meta-build in SDK 5, it is recommended to structure it as a multi-project in SDK 6.
 
+This brings to the following recommended structure for the VEE Port multi-project::
+
+   |- my-board-vee-port/
+   |    |- bsp/
+   |    |- demo-application/ (optional)
+   |    |    |- src/main/java/
+   |    |- vee-port/
+   |    |    |- extensions/
+   |    |    |    |- my-front-panel/ (optional)
+   |    |    |    |- my-image-generator/ (optional)
+   |    |    |    |- microui/ (optional)
+   |    |    |    |- ...
+   |    |    |- validation/
+   |    |    |    |- core/ (optional)
+   |    |    |    |- fs/ (optional)
+   |    |    |    |- ...
+   |    |    |- dropins/ (optional)
+   |    |    |- configuration.properties
+   |    |    |- build.gradle.kts
+   |- settings.gradle.kts
+
+This migration guide will go in details in each changes, but as a quick overview, 
+here are the main changes compared to SDK 5:
+
+- All root modules have been moved under a ``vee-port`` folder, except for the BSP folder.
+- The configuration module (``*-configuration``) is now the ``vee-port`` module, which includes configuration properties, 
+  ``dropins`` folder, as well as the other modules required by the VEE Port.
+- All configuration properties file have been gathered in the ``vee-port/configuration.properties`` (except for ``microui``).
+- The specific components required by the VEE Port are now in the ``vee-port/extensions`` folder, 
+  such as Front Panel or Image Generator modules.
+- The MicroUI extension has been moved in the ``vee-port/extensions/microui`` folder.
+
+Settings build file
+-------------------
+
 A multi-project requires a ``settings.gradle.kts`` file located in the root folder.
-This brings to the following structure for the first level elements of the VEE Port multi-project::
+Its main purposes are to optionaly define a name for the multi-project and to define its subprojects.
+Create this file and add this line with the name of your choice::
 
-   |- my-vee-port/
-   |    |- my-vee-port-configuration/
-   |    |- my-front-panel/ (optional)
-   |    |- my-image-generator/ (optional)
-   |    |- settings.gradle.kts
-
-The ``settings.gradle.kts`` file can define a name for the VEE Port project (defaults to the root folder name) and must include all the subprojects::
-
-   rootProject.name = "my-vee-port"
-
-   include("my-vee-port-configuration")
-   include("my-front-panel")
-   include("my-image-generator")
-
+   rootProject.name = "my-board-vee-port"
 
 Configuration Subproject
 ------------------------
 
-These steps must be followed to migrate a Configuration subproject:
+The Configuration (``*-configuration``) subproject is still there, but it is recommended to name it ``vee-port``.
+Follow these steps to migrate it:
 
+- Rename the folder to ``vee-port``.
 - Replace the ``module.ivy`` file by a ``build.gradle.kts`` file.
 - Use the ``com.microej.gradle.veeport`` plugin in this file::
   
    plugins {
-      id("com.microej.gradle.veeport") version "0.18.0"
+      id("com.microej.gradle.veeport") version "0.19.0"
    }
 
+- Still in the ``build.gradle.kts`` file, define the ``group`` and ``version`` property, 
+  which respectively replace the ``organisation`` and ``revision`` of the ``module.ivy`` file. For example::
+
+   group = "com.mycompany"
+   version = "0.1.0"
+
+.. note::
+
+   Refer to :ref:`sdk6_manage_versioning` section for more information on the way to define the module version.
+
 - Define the dependencies previously defined in the ``module.ivy`` file. 
-  In SDK 6, each type of VEE Port component must be defined with a dedicated configuration:
+  In SDK 6, dependencies are defined in a ``dependencies`` block in the ``build.gradle.kts`` file,
+  and each type of VEE Port component must be defined with a dedicated configuration:
   
   - Architecture: ``microejArchitecture``
   - Pack: ``microejPack``
@@ -55,13 +91,17 @@ These steps must be followed to migrate a Configuration subproject:
 
   For example the Architecture defined like this in SDK 5::
 
-   <dependency group="com.microej.architecture.CM7.CM7hardfp_GCC48" name ="flopi7G26" rev="8.1.1">
-      <artifact name="flopi7G26" m:classifier="eval" ext="xpf" />
-   </dependency>
+   <dependencies>
+      <dependency group="com.microej.architecture.CM7.CM7hardfp_GCC48" name ="flopi7G26" rev="8.1.1">
+         <artifact name="flopi7G26" m:classifier="eval" ext="xpf" />
+      </dependency>
+   </dependencies>
 
-  must be changed to this in SDK 6::
+  must be changed to this in ``build.gradle.kts`` file::
 
-   microejArchitecture("com.microej.architecture.CM7.CM7hardfp_GCC48:flopi7G26:8.1.1")
+   dependencies {
+      microejArchitecture("com.microej.architecture.CM7.CM7hardfp_GCC48:flopi7G26:8.1.1")
+   }
 
   .. note::
 
@@ -76,18 +116,22 @@ These steps must be followed to migrate a Configuration subproject:
 
    microejPack("com.microej.pack:fs:6.0.4")
 
-- Move the property related to the Runtime Capability from the file ``mjvm/mjvm.properties`` to the ``configuration.properties`` file,
+- Create a ``configuration.properties`` file at the root of the ``vee-port`` folder.
+
+- Move the property related to the Runtime Capability from the file ``mjvm/mjvm.properties`` to the ``vee-port/configuration.properties`` file,
   then delete the ``mjvm/mjvm.properties`` file.
 
-- Move all configuration properties related to the BSP (``bsp/bsp.properties``) into the ``configuration.properties`` file.
+- Move all configuration properties related to the BSP (``bsp/bsp.properties``) into the ``vee-port/configuration.properties`` file.
   Each property name must be prefixed by ``bsp.<name>.``.
-  For example, the ``microejapp.relative.dir`` property must be moved as ``bsp.microejapp.relative.dir`` in the ``configuration.properties`` file.
+  For example, the ``microejapp.relative.dir`` property must be moved as ``bsp.microejapp.relative.dir`` in the ``vee-port/configuration.properties`` file.
 
-- Move all configuration properties related to the Packs (``fs/fs.properties``, ...) into the ``configuration.properties`` file.
+- Move the ``microui`` folder (if it exists) into the ``vee-port/extensions`` folder.
+
+- Move the configuration properties related to all the other Packs (``fs/fs.properties``, ...) into the ``vee-portconfiguration.properties`` file.
   Each property name must be prefixed by ``com.microej.pack.<name>.``, where ``<module>`` is the name of the Pack.
-  For example, the ``bpp`` property defined in the ``display/display.properties`` file must be moved as ``com.microej.pack.display.bpp`` in the ``configuration.properties`` file.
+  For example, the ``bpp`` property defined in the ``display/display.properties`` file must be moved as ``com.microej.pack.display.bpp`` in the ``vee-portconfiguration.properties`` file.
   
-- Delet old configuration properties files ((``bsp/bsp.properties``, ``display/display.properties``, ``fs/fs.properties``, ...) can be deleted.
+- Delete old configuration properties files ((``bsp/bsp.properties``, ``display/display.properties``, ``fs/fs.properties``, ...) can be deleted.
 
 - Enable disable Pack modules if required, as described in :ref:`sdk_6_veeport_pack_enable_modules`.
 
@@ -99,11 +143,12 @@ Front Panel Project
 The Front Panel is generally a subproject of the VEE Port multi-project.
 These steps must be followed to migrate a Front Panel subproject:
 
+- Move the Front Panel folder into the ``vee-port/extensions`` folder.
 - Replace the ``module.ivy`` file by a ``build.gradle.kts`` file.
 - Use the ``com.microej.gradle.mock-frontpanel`` plugin in this file::
   
    plugins {
-      id("com.microej.gradle.mock-frontpanel") version "0.18.0"
+      id("com.microej.gradle.mock-frontpanel") version "0.19.0"
    }
 
 - Define the dependencies previously defined in the ``module.ivy`` file. 
@@ -123,22 +168,24 @@ These steps must be followed to migrate a Front Panel subproject:
 
 - Include the Front Panel subproject in the multi-project in the ``settings.gradle.kts`` file::
   
-   include("my-front-panel")
+   include("vee-port:front-panel")
+   project(":vee-port:front-panel").projectDir = file("vee-port/extensions/front-panel")
 
-- Make the VEE Port configuration subproject depend on the Front Panel subproject by adding a project dependency in its ``build.gradle.kts`` file::
+- Make the VEE Port configuration subproject depend on the Front Panel subproject by adding a project dependency in the ``vee-port/build.gradle.kts`` file::
 
-   microejFrontPanel(project("my-front-panel"))
+   microejFrontPanel(project(":vee-port:front-panel"))
 
 Mock
 ----
 
 If the VEE Port project contains Mock subprojects, they must be migrated by following these steps:
 
+- Move the Mock folder into the ``vee-port/extensions`` folder.
 - Replace the ``module.ivy`` file by a ``build.gradle.kts`` file.
 - Use the ``com.microej.gradle.mock`` plugin in this file::
   
    plugins {
-      id("com.microej.gradle.mock") version "0.18.0"
+      id("com.microej.gradle.mock") version "0.19.0"
    }
 
 - Define the dependencies previously defined in the ``module.ivy`` file. 
@@ -146,22 +193,24 @@ If the VEE Port project contains Mock subprojects, they must be migrated by foll
 
 - Include the Mock subproject in the multi-project in the ``settings.gradle.kts`` file::
   
-   include("my-mock")
+   include("vee-port:mock")
+   project(":vee-port:mock").projectDir = file("vee-port/extensions/mock")
 
-- Make the VEE Port configuration subproject depend on the Mock subproject by adding a project dependency in its ``build.gradle.kts`` file::
+- Make the VEE Port configuration subproject depend on the Mock subproject by adding a project dependency in the ``vee-port/build.gradle.kts`` file::
 
-   microejTool(project("my-mock"))
+   microejTool(project(":vee-port:mock"))
 
 Tool subproject
 ---------------
 
-If the VEE Port project contains Tool subprojects, they must be migrated by following these steps:
+If the VEE Port project contains Tool subprojects (such as an Image Generator), they must be migrated by following these steps:
 
+- Move the Tool folder into the ``vee-port/extensions`` folder.
 - Replace the ``module.ivy`` file by a ``build.gradle.kts`` file.
 - Use the ``com.microej.gradle.j2se-library`` plugin in this file::
   
    plugins {
-      id("com.microej.gradle.j2se-library") version "0.18.0"
+      id("com.microej.gradle.j2se-library") version "0.19.0"
    }
 
 - Define the dependencies previously defined in the ``module.ivy`` file. 
@@ -177,29 +226,34 @@ If the VEE Port project contains Tool subprojects, they must be migrated by foll
 
 - Include the Tool subproject in the multi-project in the ``settings.gradle.kts`` file::
   
-   include("my-tool")
+   include("vee-port:image-generator")
+   project(":vee-port:image-generator").projectDir = file("vee-port/extensions/image-generator")
 
-- Make the VEE Port configuration subproject depend on the Tool subproject by adding a project dependency in its ``build.gradle.kts`` file::
+- Make the VEE Port subproject depend on the Tool subproject by adding a project dependency in the ``vee-port/build.gradle.kts`` file::
 
-   microejTool(project("my-tool"))
+   microejTool(project(":vee-port:image-generator"))
 
 Testsuites Project
 ------------------
 
-These steps must be followed for each Testsuite to migrate:
+These steps must be followed to migrate the Testsuites:
+
+- Move the Testsuite folder into the ``vee-port/validation`` folder.
+
+Then for each Testsuite:
 
 - Replace the ``module.ivy`` file by a ``build.gradle.kts`` file.
 - Use the ``com.microej.gradle.testsuite`` plugin in this file::
   
    plugins {
-      id("com.microej.gradle.testsuite") version "0.18.0"
+      id("com.microej.gradle.testsuite") version "0.19.0"
    }
 
 - The tested VEE Port was defined in SDK 5 in the ``config.properties`` file, with the ``target.platform.dir`` property.
   In SDK6, it is done by declaring the VEE Port Configuration project as a project dependency::
 
    dependencies {
-      microejVee(project(":my-vee-port"))
+      microejVee(project(":vee-port"))
    }
 
   and including the testsuite project in the ``settings.gradle.kts`` file of the multi-project::
@@ -273,6 +327,33 @@ These steps must be followed for each Testsuite to migrate:
 
   Once done, you can delete the ``test.run.includes.pattern`` and ``test.run.excludes.pattern`` properties 
   in the ``config.properties`` file.
+
+BSP
+---
+
+It is recommended to keep the BSP folder at the root of the multi-project.
+The paths to the BSP can be updated in the VEE Port configuration (``vee-port/configuration.properties``) if necessary.
+Refer to the :ref:`bsp_connection` documentation for more details.
+
+Wrap up
+-------
+
+At the end of the migration, you should have a structure similar to the one presented at the beginning of this page.
+The ``settings.gradle.kts`` should look like::
+
+   // Define the VEE Port mulit-project name
+   rootProject.name = "my-board-vee-port"
+
+   // Include the subprojects
+   include("vee-port", "vee-port:front-panel", "vee-port:mock", "vee-port:image-generator", "demo-application")
+   include("vee-port:validation:java-testsuite-runner-core")
+   include("vee-port:validation:java-testsuite-runner-fs")
+
+   // Define the paths of the subprojects
+   project(":vee-port:front-panel").projectDir = file("vee-port/extensions/front-panel")
+   project(":vee-port:image-generator").projectDir = file("vee-port/extensions/image-generator")
+   project(":vee-port:validation:java-testsuite-runner-core").projectDir = file("vee-port/validation/core/java-testsuite-runner-core")
+   project(":vee-port:validation:java-testsuite-runner-fs").projectDir = file("vee-port/validation/fs/java-testsuite-runner-fs")
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
