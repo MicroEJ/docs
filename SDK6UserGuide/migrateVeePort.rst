@@ -153,7 +153,7 @@ These steps must be followed to migrate a Front Panel subproject:
 - Use the ``com.microej.gradle.mock-frontpanel`` plugin in this file::
   
    plugins {
-      id("com.microej.gradle.mock-frontpanel") version "0.19.0"
+      id("com.microej.gradle.mock-frontpanel")
    }
 
 - Define the dependencies previously defined in the ``module.ivy`` file. 
@@ -190,7 +190,7 @@ If the VEE Port project contains Mock subprojects, they must be migrated by foll
 - Use the ``com.microej.gradle.mock`` plugin in this file::
   
    plugins {
-      id("com.microej.gradle.mock") version "0.19.0"
+      id("com.microej.gradle.mock")
    }
 
 - Define the dependencies previously defined in the ``module.ivy`` file. 
@@ -215,7 +215,7 @@ If the VEE Port project contains Tool subprojects (such as an Image Generator), 
 - Use the ``com.microej.gradle.j2se-library`` plugin in this file::
   
    plugins {
-      id("com.microej.gradle.j2se-library") version "0.19.0"
+      id("com.microej.gradle.j2se-library")
    }
 
 - Define the dependencies previously defined in the ``module.ivy`` file. 
@@ -251,7 +251,7 @@ Then for each Testsuite:
 - Use the ``com.microej.gradle.testsuite`` plugin in this file::
   
    plugins {
-      id("com.microej.gradle.testsuite") version "0.19.0"
+      id("com.microej.gradle.testsuite")
    }
 
 - The tested VEE Port was defined in SDK 5 in the ``config.properties`` file, with the ``target.platform.dir`` property.
