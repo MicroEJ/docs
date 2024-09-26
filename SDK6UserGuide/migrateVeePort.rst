@@ -338,6 +338,13 @@ BSP
 
 It is recommended to keep the BSP folder at the root of the multi-project.
 The paths to the BSP can be updated in the VEE Port configuration (``vee-port/configuration.properties``) if necessary.
+
+The ``${project.parent.dir}`` variable can be used to refer to the project root folder.
+For example with the recommended structure described at the beginning of this page (the ``bsp`` is at the root of the project), 
+add this line in the ``vee-port/configuration.properties`` file::
+
+   bsp.root.dir=${project.parent.dir}/bsp
+
 Refer to the :ref:`bsp_connection` documentation for more details.
 
 Wrap up
