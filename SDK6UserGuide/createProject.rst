@@ -357,7 +357,7 @@ This section explains the different ways to add a module to an existing project.
 .. warning::
    If you want to add a MicroEJ module to a non MicroEJ project, for example an Android project, 
    you must :ref:`configure the repositories <sdk_6_configure_repositories>` before creating the module.
-   If the repositories used by your project are `centralized <https://docs.gradle.org/current/userguide/declaring_repositories.html#sub:centralized-repository-declaration>`__ 
+   If the repositories used by your project are `centralized <https://docs.gradle.org/current/userguide/declaring_repositories_adv.html#sub:centralized-repository-declaration>`__ 
    in the :guilabel:`settings.gradle.kts` file of the project, the MicroEJ repositories defined in 
    :download:`this file <resources/microej.init.gradle.kts>` must be added to your :guilabel:`settings.gradle.kts` file.
 
