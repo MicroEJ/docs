@@ -789,13 +789,6 @@ provided endianness. The ``ej.bon.ByteArray`` class provides such APIs:
 
 Similar methods are provided for ``short``, ``char``, ``long`` types.
 
-Math
-~~~~
-
-The ``ej.bon.XMath`` complements the math operations provided by
-``java.lang.Math``. The new operations are: ``limit``, ``asin``, ``acos``,
-``atan``, ``log``, ``exp``, ``pow``.
-
 .. _DTD:
 
 Annex A: Immutables DTD
