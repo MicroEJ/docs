@@ -87,7 +87,7 @@ The Java virtual machine specification defines
   pools [1]_. 
 - the way applications get initialized,
   even though it is quite a loose process where lazy initialization is
- permitted. Intuitively, classes must be initialized before any instance
+ permitted. Intuitively, classes are initialized before any instance
   creation or access to its static variables (see :ref:`bon-startup`).
 
 One of the newer trends in software involves designing simple solutions
@@ -580,7 +580,7 @@ ignored.
 The ``Immutables.put(String, Object)`` method allows to store a single
 object.
 
-All operations on ``Immutables`` must be thread safe.
+All operations on ``Immutables`` are thread safe.
 
 .. _immortal:
 
@@ -803,7 +803,7 @@ and sound way for downloading code that matches the overall semantic of BON:
 -  All referenced classes from the class given in
    ``Class.forName(String)`` have to be
    determined at once. They form the downloaded classes.
--  Initialization of all downloaded classes MUST be ordered as
+-  Initialization of all downloaded classes are ordered as
    specified in :ref:`bon-startup`. All
    methods of the downloaded classes that are accessible from
    outside the downloaded classes
