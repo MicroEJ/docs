@@ -137,6 +137,14 @@ Follow these steps to migrate it:
 
 - Delete the ``.platform`` file located at the root of the Configuration subproject, since it is now obsolete.
 
+- Delete all the other files related to SDK 5:
+
+   - ``module.ant``
+   - ``override.module.ant``
+   - ``module.properties``
+   - ``configuration.xml``
+   - ``build`` folder
+
 - The ``dropins`` folder was used as a destination folder for some generated files in SDK 5, so it may contain more than the committed files.
   So make sure to clean it to keep only committed files. This can be done with git with the following command in the ``dropins`` folder::
 
@@ -204,6 +212,11 @@ If the VEE Port project contains Mock subprojects, they must be migrated by foll
 - Make the VEE Port configuration subproject depend on the Mock subproject by adding a project dependency in the ``vee-port/build.gradle.kts`` file::
 
    microejTool(project(":vee-port:mock"))
+
+- Delete all the files related to SDK 5:
+
+   - ``module.ant``
+   - ``content/scripts/init-*`` folder
 
 Tool subproject
 ---------------
@@ -332,6 +345,11 @@ Then for each Testsuite:
 
   Once done, you can delete the ``test.run.includes.pattern`` and ``test.run.excludes.pattern`` properties 
   in the ``config.properties`` file.
+
+- Delete all the files related to SDK 5:
+
+   - ``module.ant``
+   - ``override.module.ant``
 
 BSP
 ---
