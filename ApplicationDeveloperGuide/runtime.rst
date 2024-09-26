@@ -136,6 +136,33 @@ is done transparently while the Application keep running.
 
 See also :ref:`Garbage Collector options <options_gc>` for more details.
 
+Death Notification
+~~~~~~~~~~~~~~~~~~
+
+Most objects are reclaimable objects. Sometimes, they interact with the
+native or system resources using handles. Those handles represent underlying data
+that needs to be closed/freed/acknowledged/… when the object that holds
+the handle dies.
+
+The Application can get notified when an object is dead through the use of `WeakReference`_ objects. 
+When such objects get their weak reference set to ``null`` by the system, they are
+added to the `ReferenceQueue`_ they were assigned to at their creation.
+
+Death Notification Actions
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Once an object has expired, it cannot be brought to life again. It is
+the responsibility of the application to make provisions for all actions
+that have to be taken on an object death. Such provisions are
+materialized by subclasses of the `WeakReference`_ class.
+
+`ReferenceQueue.poll()`_ and `ReferenceQueue.remove()`_ methods allow the
+execution of a hook at the death of the object referenced by the weak
+reference. The first one returns ``null`` when queue is empty whereas the
+second one blocks while the queue is empty.
+
+The Application is responsible of the execution of such hook.
+
 .. _java_limitations:
 
 Limitations
@@ -225,6 +252,13 @@ The following code prints the formatted Architecture characteristics on standard
       System.out.println("- Core Engine Capability:       " + capabilityStr + "-Sandbox");
       System.out.println("- Instruction Set Architecture: " + isaStr);
       System.out.println("- Compilation Toolchain:        " + toolchainName + " (" + toolchainFullName + ")");
+
+
+
+.. _WeakReference: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/ref/WeakReference.html
+.. _ReferenceQueue: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/ref/ReferenceQueue.html
+.. _ReferenceQueue.poll(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/ref/ReferenceQueue.html#poll--
+.. _ReferenceQueue.remove(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/ref/ReferenceQueue.html#remove--
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 

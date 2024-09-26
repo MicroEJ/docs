@@ -172,13 +172,13 @@ lifetime of the device.
 Object Natures
 --------------
 
-The BON specification defines three natures for objects: 
+The BON specification extends the Java semantic by defining three natures for objects: 
 
 - :ref:`Immutable objects <immutable>` : persistent objects that are alive at system startup.
   Immutable [2]_ objects are also referred to as read-only objects, since they most probably reside in non-volatile memory. 
   All together they form a pre-existing world that exists on its own, just like the hardware does.
 - :ref:`Immortal objects <immortal>`: objects that do not move around in memory: they remain physically located in one memory location forever.
-- :ref:`Reclaimable objects <reclaimable>`: the regular objects managed by the Garbage Collector. The Application can get notified when such object is dead.
+- Reclaimable objects: the regular objects managed by the Garbage Collector. 
 
 Although objects get a liveness nature, this is fully transparent for the
 application developer this is completely transparent to the application developer, 
@@ -546,60 +546,6 @@ The system provides the possibility to create objects directly as
 immortal objects using the method ``Immortals.run(Runnable)``: while the
 ``run()`` method of the ``Runnable`` executes, all created objects are
 allocated as immortal objects.
-
-The system may define a property ``ej.bon.immortalAfterInit``. If the
-property exists and if set to ``true``, a global memory collection is
-triggered at the end of the initialization phase, reclaiming all dead
-objects that were created to get the system initialized. All remaining
-objects become immortal, and accessible for the mission phase.
-
-.. _reclaimable:
-
-Reclaimable Objects
-~~~~~~~~~~~~~~~~~~~
-
-Death Notification
-++++++++++++++++++
-
-Most objects are reclaimable objects. Sometimes, they interact with the
-underlying system using handles. Those handles represent underlying data
-that needs to be closed/freed/acknowledged/… when the object that holds
-the handle dies.
-
-The BON profile defines a sound and easy way to get notified when an
-object is dead through the use of ``EnqueuedWeakReference`` objects:
-``EnqueuedWeakReference`` is a subclass of ``WeakReference``. When such
-objects get their weak reference set to ``null`` by the system, they are
-added to a ``ReferenceQueue`` they were assigned to at their creation.
-
-Death Notification Actions
-++++++++++++++++++++++++++
-
-Once an object has expired, it cannot be brought to life again. It is
-the responsibility of the application to make provisions for all actions
-that have to be taken on an object death. Such provisions are
-materialized by subclasses of the ``EnqueueWeakReference`` class.
-
-``ReferenceQueue.poll()`` and ``ReferenceQueue.remove()`` allow the
-execution of a hook at the death of the object referenced by the weak
-reference. The first one returns ``null`` when queue is empty whereas the
-second one blocks while the queue is empty.
-
-The application is responsible of the execution of such hook.
-
-Weak objects association
-++++++++++++++++++++++++
-
-``java.util.Hashtable`` allows to associate a ``value`` with a ``key`` within
-a table (the key indexes the value within the table for fast searches).
-It prevents both key and value from being discarded by the garbage
-collector.
-
-BON defines the ``ej.bon.WeakHashtable`` class as a subclass of
-``java.util.Hashtable``. ``WeakHashtable`` allows to relax such hard
-constraint on the key, which becomes a weak reference within the table.
-If no other regular reference refers the key, the key can be removed
-automatically by the system, which removes the associated value too.
 
 Runtime Phases
 --------------
