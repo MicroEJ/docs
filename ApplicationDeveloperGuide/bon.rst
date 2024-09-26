@@ -77,27 +77,24 @@ approaches, each one at the extremity of the possibility spectrum:
    collectors. A huge number of different garbage collection policies
    are available and each have their own benefits and drawbacks.
 
-The Java virtual machine specification [JVM2] defines a heap where Java
-objects reside. This heap is automatically managed by a garbage
-collector. Every Java virtual machine is free to implement the memory
-management that best fits the application domain it is designed for.
+The Java virtual machine specification defines 
 
-[JVM2] defines a semantically immortal set of objects: a pool of
-``java.lang.String``, which are references in classfile constant
-pools [1]_. [JVM2] also defines the way applications get initialized,
-even though it is quite a loose process where lazy initialization is
-permitted. Intuitively, classes must be initialized before any instance
-creation or access to its static variables (see :ref:`bon-startup`).
+- a heap where Java objects reside. This heap is automatically managed by a garbage
+  collector. Every Java virtual machine is free to implement the memory
+  management that best fits the application domain it is designed for.
+- a semantically immortal set of objects: a pool of
+  ``java.lang.String``, which are references in classfile constant
+  pools [1]_. 
+- the way applications get initialized,
+  even though it is quite a loose process where lazy initialization is
+ permitted. Intuitively, classes must be initialized before any instance
+  creation or access to its static variables (see :ref:`bon-startup`).
 
 One of the newer trends in software involves designing simple solutions
 that are easy to understand and most importantly easy to manipulate and
 control. Developers must be able to minimize development time, often
-dealing with small memory budgets for their application. On typical
-microcontrollers, the ratio between read-only memory and volatile memory
-is four, meaning that there is 4 times more read-only memory (eeprom,
-flash, …) than volatile memory (ram). For really cost sensitive devices,
-the ratio may drop to 8 (ram is what costs the most), while for rather
-more expensive ones it may reach 2.
+dealing with small memory budgets for their application. On microcontrollers, 
+there is much more read-only memory than volatile memory.
 
 First Example
 -------------
@@ -251,7 +248,7 @@ field-name, value.
 
 Fields that are not described get initialized with the default Java
 value (``0`` for numeric types, ``null`` for objects, ``false`` for booleans,
-``0.0`` for floating-point numbers [JLS]). No visibility rule applies,
+``0.0`` for floating-point numbers). No visibility rule applies,
 that is, any kind of field may be listed, even private ones. Final
 fields must be initialized.
 
@@ -725,39 +722,25 @@ initialization phase.
 Deterministic Initialization Order 
 ++++++++++++++++++++++++++++++++++
 
-If a class needs to be initialized, it defines a ``<clinit>`` method [12]_
-[JVM2].
+If a class needs to be initialized, it defines a ``<clinit>`` method [12]_.
 
 During the initialization phase, all classes which are involved within
 the application are initialized. It implies calling all ``<clinit>``
 methods, in sequence.
 
-Although the precise order of the sequence of calls is not known, it
-MUST be defined once for all, before any code execution. This order does
-not rely on runtime behavior, but only on the application code. The
-constraint is: if the application code does not change, the order
-remains the same.
-
-The order must be compatible with the Java semantic [JLS]. Intuitively,
+The order is statically computed from the application code entry points and does not rely on runtime behavior.
+If the application code does not change, the order remains the same.
+The order is also compatible with the Java semantic. Intuitively,
 a class may depend on other classes. Those classes should be initialized
 first. We list a few of these dependencies: object creation, superclass,
-methods receiver, arguments and fields types, … Refer to [JVM2] for a
-complete description of the initialization process and its implications
-on the order of the ``<clinit>`` sequence.
+methods receiver, arguments and fields types, ….
 
 Dependencies of classes upon themselves define a graph of dependencies.
 This graph may depict cycles. The graph is linearized in an order which
 depends only on the graph itself.
 
-Although BON experts encourage implementors of this specification to
-explain the order of the ``<clinit>`` sequence to engineers in some useful
-way, this is not mandatory.
-
-The classes dependencies MUST include all the classes of pre-configured
-immutable objects.
-
-The ``main(String[])`` method of the main class [JVM2] is an entry point
-in the dependencies graph.
+The classes dependencies also includes all the classes of pre-configured
+:ref:`immutable objects <immutable>`  objects.
 
 Mission Phase
 ~~~~~~~~~~~~~
