@@ -29,7 +29,6 @@ BON also adds a set of useful utilities:
 -  Read-write `ByteArray`_ support according to the underlying processor
    endianness.
 -  `ResourceBuffer`_ support for random read access in a :ref:`resource <section.classpath.elements.raw_resources>`.
--  A set of useful math operators.
 -  Accessing compile-time :ref:`constants <section.classpath.elements.constants>`.
 
 Specification Summary
