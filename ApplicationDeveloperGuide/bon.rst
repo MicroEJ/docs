@@ -239,8 +239,7 @@ field-name, value.
 Fields that are not described get initialized with the default Java
 value (``0`` for numeric types, ``null`` for objects, ``false`` for booleans,
 ``0.0`` for floating-point numbers). No visibility rule applies,
-that is, any kind of field may be listed, even private ones. Final
-fields must be initialized.
+that is, any kind of field may be listed, even private ones. 
 
 There is no particular order for the creation of the immutable objects.
 The BON experts recommend the use of tools for the creation of large
