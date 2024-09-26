@@ -82,7 +82,7 @@ The BON specification extends the Java specification that already defines:
 - a heap where Java objects reside. This heap is automatically managed by a garbage
   collector. 
 - a semantically immutable set of objects: a pool of
-  ``java.lang.String``, which are references in classfile constant
+  `String`_, which are references in classfile constant
   pools [1]_. 
 - the way applications get initialized,
   even though it is quite a loose process where lazy initialization is
@@ -107,12 +107,15 @@ lifetime of the device.
 .. code-block:: java
 
     package example;
+
+    import ej.bon.*
+
     public class Filter {
         public static final int BufferSize = 4096;// 16k (an int is 32-bit)
         public static int[][] Buffers;
         public static int[] ValidValues;
         static {
-            ValidValues =(int[])ej.bon.Immutables.get("filter");
+            ValidValues =(int[])Immutables.get("filter");
         }
 
         static {
@@ -217,12 +220,12 @@ Object ID and Immutable Object Querying
 +++++++++++++++++++++++++++++++++++++++
 
 Immutable objects are semantically organized into one global pool, just
-like the Java interned ``java.lang.String`` objects.
+like the Java interned `String`_ objects.
 
-An immutable object may be attached to a ``java.lang.String`` key, known
+An immutable object may be attached to a `String`_ key, known
 as its ID. This ID allows an immutable object to be retrieved out of the
 global pool of immutable objects, thanks to the method
-``Immutables.get(String)``. The ID of an object is globally unique in the system.
+`Immutables.get(String)`_. The ID of an object is globally unique in the system.
 
 Immutable Objects Descriptions and Creation
 +++++++++++++++++++++++++++++++++++++++++++
@@ -262,11 +265,11 @@ Immutable objects are described according to the following XML syntax
    -  attributes:
   
       -  ``id``: the ID string that allows the object to be retrieved
-         through the use of ``Immutables.get(String)``
+         through the use of `Immutables.get(String)`_
       -  ``type``: the name of the class of the object. An alias may be
          used instead of the fully-qualified class name.
       -  ``private``: a boolean that indicates whether the object will be
-         accessible using the ``Immutables.get(String)`` method. If
+         accessible using the `Immutables.get(String)`_ method. If
          false, the objects can only be referenced within the XML
          immutable objects descriptions.
 
@@ -277,7 +280,7 @@ Immutable objects are described according to the following XML syntax
    -  attributes:
 
       -  ``id``: the ID string that allows the object to be retrieved
-         through the use of ``Immutables.get(String)``.
+         through the use of `Immutables.get(String)`_.
       -  ``object``: the existing object ID or alias ID.
       -  ``private`` : a boolean that indicates whether the object will be
          accessible using the Immutables.get(String) method. If
@@ -291,10 +294,10 @@ Immutable objects are described according to the following XML syntax
    -  attributes:
   
       -  ``id``: the ID that allows the object to be retrieved through the
-         use of ``Immutables.get(String)``
+         use of `Immutables.get(String)`_
       -  ``value``: the string literal
       -  ``private`` : a boolean that indicates whether the object will be
-         accessible using the ``Immutables.get(String)`` method. If
+         accessible using the `Immutables.get(String)`_ method. If
          false, the objects can only be referenced within the XML
          immutable objects descriptions.
 
@@ -306,10 +309,10 @@ Immutable objects are described according to the following XML syntax
    -  attributes:
   
       -  ``id``: the ID that allows the object to be retrieved through the
-         use of ``Immutables.get(String)``
+         use of `Immutables.get(String)`_
       -  ``type``: the class fully qualified name like ``java.lang.Object``.
       -  ``private`` : a boolean that indicates whether the object will be
-         accessible using the ``Immutables.get(String)`` method. If
+         accessible using the `Immutables.get(String)`_ method. If
          false, the objects can only be referenced within the XML
          immutable objects descriptions.
 
@@ -351,14 +354,14 @@ Immutable objects are described according to the following XML syntax
    -  attributes:
 
       -  ``id``: the ID that allows the object to be retrieved through the
-         use of ``Immutables.get(String)``
+         use of `Immutables.get(String)`_
       -  ``type``: the array type. An alias may be used instead of the
          fully qualified class name. Dimensions are given using the
          Java notation ``[]``.
       -  ``length``: this attribute is optional. It represents the number
          of elements the array has.
       -  ``private`` : a boolean that indicates whether the object will be
-         accessible using the ``Immutables.get(String)`` method. If
+         accessible using the `Immutables.get(String)`_ method. If
          false, the objects can only be referenced within the XML
          immutable objects descriptions.
 
@@ -388,9 +391,9 @@ Immutable objects are described according to the following XML syntax
    -  attributes:
 
       -  ``id``: the ID that allows the null object to be retrieved through
-         the use of ``Immutables.get(String)``
+         the use of `Immutables.get(String)`_
       -  ``private`` : a boolean that indicates whether the object will be
-         accessible using the ``Immutables.get(String)`` method. If false,
+         accessible using the `Immutables.get(String)`_ method. If false,
          the objects can only be referenced within the XML immutable
          objects descriptions.
 
@@ -530,21 +533,21 @@ Turning Objects Into Immortal Objects
 +++++++++++++++++++++++++++++++++++++
 
 Reclaimable objects may be turned into immortal objects using the
-``Immortals.setImmortal(Object)`` method. Only the object passed as
+`Immortals.setImmortal(Object)`_ method. Only the object passed as
 argument is turned into an immortal object, i.e. none of the objects it
 refers to through its fields become immortal. This is in contrast with
-``Immortals.deepImmortal(Object)`` that turns the object passed as the
+`Immortals.deepImmortal(Object)`_ that turns the object passed as the
 argument and all objects referred to from the argument into immortal
 objects. Note that weakly reachable objects are not turned into immortal
-objects; in other words the ``WeakReference`` semantic is not affected by
+objects; in other words the `WeakReference`_ semantic is not affected by
 this operation.
 
 The total amount of free immortal memory still available is
-``Immortals.freeMemory()``. It is system dependent.
+`Immortals.freeMemory()`_. It is system dependent.
 
 The system provides the possibility to create objects directly as
-immortal objects using the method ``Immortals.run(Runnable)``: while the
-``run()`` method of the ``Runnable`` executes, all created objects are
+immortal objects using the method `Immortals.run(Runnable)`_: while the
+`Runnable.run()`_ method executes, all created objects are
 allocated as immortal objects.
 
 Runtime Phases
@@ -564,7 +567,7 @@ BON defines two phases of execution:
 Initialization Phase
 ~~~~~~~~~~~~~~~~~~~~
 
-``ej.bon.Util.isInInitialization()`` allows the phase to be tested.
+The method `Util.isInInitialization()`_ allows the phase to be tested.
 
 .. _mono:
 
@@ -625,14 +628,14 @@ Thread Activations
 
 At the beginning of the mission phase, all threads that have been
 started during the initialization phase activated.
-``ej.bon.Util.isInMission()`` allows the phase to be tested.
+``Util.isInMission()`` allows the phase to be tested.
 
 Thread Control
 ++++++++++++++
 
 In mission phase, one thread may send an exception within the context of
 another thread, using the
-``ej.bon.Util.throwExceptionInThread(RuntimeException,Thread)`` method.
+``Util.throwExceptionInThread(RuntimeException,Thread)`` method.
 
 .. _illustration-3:
 .. figure:: images/bon_spec/illust3.png
@@ -658,7 +661,7 @@ as fast as possible.
 
   Illustration 4: Exception thrown when thread has exited all critical sections.|
 
-The ``ej.bon.Util.throwHardExceptionInThread(RuntimeException,Thread)``
+The ``Util.throwHardExceptionInThread(RuntimeException,Thread)``
 just throw the exception, as if it was sent from inside the thread. It
 does not wait for the critical sections to finish.
 
@@ -691,7 +694,7 @@ and sound way for downloading code that matches the overall semantic of BON:
    executed in that thread. As in :ref:`mono`, all thread
    activations (i.e. ``Thread.start()``) are disabled until this initialization
    thread is done. Note that even if the property
-   ``ej.bon.immortalAfterInit`` is set, objects
+   ``immortalAfterInit`` is set, objects
    created during this initialization phase do not become immortal.
 
 Utilities
@@ -700,36 +703,36 @@ Utilities
 Timer & TimerTask
 ~~~~~~~~~~~~~~~~~
 
-An ``ej.bon.Timer`` defines a single Java thread in charge of scheduling
-``Runnable`` objects from the ``ej.bon.TimerTask`` class. All ``TimerTask``
-are executed sequentially, according to their schedule. A ``Timer`` does
-its best effort to schedule the ``TimerTask`` appropriately, which depends
-on the ``TimerTask`` durations and schedules (there is no real-time
+An `Timer`_ defines a single Java thread in charge of scheduling
+`Runnable`_ objects from the `TimerTask`_ class. All `TimerTask`_
+are executed sequentially, according to their schedule. A `Timer`_ does
+its best effort to schedule the `TimerTask`_ appropriately, which depends
+on the `TimerTask`_ durations and schedules (there is no real-time
 guaranties).
 
-A ``TimerTask`` may be scheduled repeatedly. In that case, the delay for
+A `TimerTask`_ may be scheduled repeatedly. In that case, the delay for
 the next schedule may depends on the end of the previous ending of the
-``TimerTask``, and not on some absolute time: if the previously execution
-of the ``TimerTask`` is delayed for some reason, the next executions are
+`TimerTask`_, and not on some absolute time: if the previously execution
+of the `TimerTask`_ is delayed for some reason, the next executions are
 delayed too by the same amount of time. It is also possible to schedule
-repeatedly a ``TimerTask`` at fixed rate, which allows executions to be
+repeatedly a `TimerTask`_ at fixed rate, which allows executions to be
 independent .
 
-In case a ``TimerTask`` execution terminates unexpectedly, the other tasks
-are not impacted: the ``TimerTask`` is assumed to have terminated its
+In case a `TimerTask`_ execution terminates unexpectedly, the other tasks
+are not impacted: the `TimerTask`_ is assumed to have terminated its
 execution regularly, and is not rescheduled event if it was scheduled
 repeatedly.
 
 The main APIs are:
 
--  ``schedule(TimerTask, long)`` and ``schedule(TimerTask, Date)`` methods
+-  `Timer.schedule(TimerTask, long)`_ and `Timer.schedule(TimerTask, Date)`_ methods
    allow to schedule one execution after the specified delay.
--  ``schedule(TimerTask task, long, long)`` and ``schedule(TimerTask, Date,
-   long)`` methods allow to schedule repeatedly executions, the first
+-  `Timer.schedule(TimerTask task, long, long)`_ and `Timer.schedule(TimerTask, Date,
+   long)`_ methods allow to schedule repeatedly executions, the first
    one after the specified delay. The waiting time between two
    executions is relative to the end of the previous execution.
--  ``scheduleAtFixedRate(TimerTask task, long, long)`` and
-   ``scheduleAtFixedRate(TimerTask, Date, long)`` methods allow to
+-  `Timer.scheduleAtFixedRate(TimerTask task, long, long)`_ and
+   `Timer.scheduleAtFixedRate(TimerTask, Date, long)`_ methods allow to
    schedule repeatedly executions, the first one after the specified
    delay. The waiting time between two executions is independent of
    the end of the previous execution.
@@ -738,24 +741,24 @@ Platform time
 ~~~~~~~~~~~~~
 
 The application time is the user time: it depends on its localization.
-``java.lang.System.currentTimeMillis`` returns the application time
+`System.currentTimeMillis()`_ returns the application time
 expressed in milliseconds since midnight, January 1, 1970 UTC.
 
 BON introduces a platform time that is independent from any user
 considerations: it materializes the running time since the very last
 start of the device. This time cannot be changed.
 
-The ``ej.bon.Util`` class defines several methods to handle both
+The `Util`_ class defines several methods to handle both
 application time and platform time: 
 
--  ``platformTimeNanos`` and ``platformTimeMillis`` method return the
+-  `Util.platformTimeNanos()`_ and `Util.platformTimeMillis()`_ method return the
    platform time, a ``long``, expressed in nanoseconds and in
    milliseconds.
--  ``setCurrentTimeMillis(long)`` and ``setCurrentTimeMillis(Date)``
+-  `Util.setCurrentTimeMillis(long)`_ and `Util.setCurrentTimeMillis(Date)`_
    methods allow to change the application time in order to match a
    user localization. This has no effect on the platform time.
-   ``ej.bon.Util.currentTimeMillis()`` method is a synonym of
-   ``java.lang.System.currentTimeMillis``.
+   `Util.currentTimeMillis()`_ method is a synonym of
+   `System.currentTimeMillis()`_.
 
 Byte Array Accesses
 ~~~~~~~~~~~~~~~~~~~
@@ -777,15 +780,15 @@ significant byte first.
 
 BON introduces methods to read and write into array of byte (byte[])
 according to the platform endianness, or according to a specific
-provided endianness. The ``ej.bon.ByteArray`` class provides such APIs:
+provided endianness. The `ByteArray`_ class provides such APIs:
 
--  ``getPlatformEndianness()`` returns the underlying system-dependent
+-  `ByteArray.getPlatformEndianness()`_ returns the underlying system-dependent
    endianness, which mostly depends on the target processor(s).
--  ``readInt(byte[], int)`` and ``writeInt(byte[], int, int)`` reads and
+-  `ByteArray.readInt(byte[], int)`_ and `ByteArray.writeInt(byte[], int, int)`_ reads and
    writes an ``int`` using the platform specific endianness.
--  ``readInt(byte[], int, int)`` and ``writeInt(byte[], int, int, int)``
+-  `ByteArray.readInt(byte[], int, int)`_ and `ByteArray.writeInt(byte[], int, int, int)`_
    reads and writes an ``int`` using the specified endianness as last
-   argument, which may be either ``LITTLE_ENDIAN`` or ``BIG_ENDIAN``.
+   argument, which may be either `LITTLE_ENDIAN`_ or `BIG_ENDIAN`_.
 
 Similar methods are provided for ``short``, ``char``, ``long`` types.
 
@@ -904,8 +907,42 @@ Annex A: Immutables DTD
    initialization of both static fields and static initializers of
    classes.
 
+.. _String: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/String.html
 .. _ByteArray: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/ByteArray.html
 .. _ResourceBuffer: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/ResourceBuffer.html
+.. _Runnable: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Runnable.html
+.. _Timer: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Timer.html
+.. _TimerTask: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/TimerTask.html
+.. _Util: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Util.html
+.. _WeakReference: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/ref/WeakReference.html
+.. _Runnable.run(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Runnable.html#run--
+.. _Immutables.get(String): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Immutables.html#get-java.lang.String-
+.. _Immortals.deepImmortal(Object): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Immortals.html#deepImmortal-T-
+.. _Immortals.freeMemory(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Immortals.html#freeMemory--
+.. _Immortals.run(Runnable): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Immortals.html#run-java.lang.Runnable-
+.. _Immortals.setImmortal(Object): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Immortals.html#setImmortal-T-
+.. _Util.isInInitialization(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Util.html#isInInitialization--
+.. _Timer.schedule(TimerTask, long): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Timer.html#schedule-ej.bon.TimerTask-long-
+.. _Timer.schedule(TimerTask, Date): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Timer.html#schedule-ej.bon.TimerTask-java.util.Date-
+.. _Timer.schedule(TimerTask task, long, long): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Timer.html#schedule-ej.bon.TimerTask-long-long-
+.. _Timer.schedule(TimerTask, Date, long): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Timer.html#schedule-ej.bon.TimerTask-java.util.Date-long-
+.. _Timer.scheduleAtFixedRate(TimerTask task, long, long): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Timer.html#scheduleAtFixedRate-ej.bon.TimerTask-long-long-
+.. _Timer.scheduleAtFixedRate(TimerTask, Date, long): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Timer.html#scheduleAtFixedRate-ej.bon.TimerTask-java.util.Date-long-
+.. _System.currentTimeMillis(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#currentTimeMillis--
+.. _Util.currentTimeMillis(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Util.html#currentTimeMillis--
+.. _Util.platformTimeMillis(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Util.html#platformTimeMillis--
+.. _Util.platformTimeNanos(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Util.html#platformTimeNanos--
+.. _Util.setcurrentTimeMillis(long): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Util.html#setCurrentTimeMillis-long-
+.. _Util.setcurrentTimeMillis(Date): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Util.html#setCurrentTimeMillis-java.util.Date-
+
+.. _ByteArray.getPlatformEndianness(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/ByteArray.html#getPlatformEndianness--
+.. _ByteArray.readInt(byte[], int): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/ByteArray.html#readInt-byte:A-int-
+.. _ByteArray.writeInt(byte[], int, int): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/ByteArray.html#writeInt-byte:A-int-int-
+.. _ByteArray.readInt(byte[], int, int): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/ByteArray.html#readInt-byte:A-int-
+.. _ByteArray.writeInt(byte[], int, int, int): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/ByteArray.html#writeInt-byte:A-int-int-int-
+
+.. _LITTLE_ENDIAN: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/ByteArray.html#LITTLE_ENDIAN
+.. _BIG_ENDIAN: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/ByteArray.html#BIG_ENDIAN
 
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 
