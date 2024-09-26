@@ -6,18 +6,11 @@ Beyond Profile (BON)
 Introduction
 ------------
 
-This document defines the BON profile specification.
+This document defines the Beyond Profile Specification (BON), 
+which is designed specifically for devices with limited memory resources. 
+It introduces new concepts tailored to these constrained environments, while still adhering to the boundaries of Java semantics, hence the term "Beyond."
 
-Although this specification spans a potentially wide set of devices, it
-focus on embedded devices that have non-volatile memories and volatile ones
-(eeprom, flash, ram, …). At the application level, it focuses on
-applications that have some sort of initialization phase before entering
-into a mission phase that then exists forever until the device gets
-shutdown or reboots.
-
-BON defines a suitable and flexible approach to fully control both memory usage 
-and startup sequences on devices with limited memory resources, while remaining within the boundaries of Java semantics. 
-
+BON mainly defines a suitable and flexible approach to fully control both memory usage and startup sequences.
 More precisely, it allows:
 
 -  Controlling the initialization sequence in a deterministic way.
@@ -25,9 +18,6 @@ More precisely, it allows:
    into non-volatile memory areas), and do not require copies to be
    made in ram to be manipulated.
 -  Defining immortal read-write objects that are always alive.
-
-BON serves as a very robust foundation for implementing Java software,
-in particular embedded Java Software.
 
 BON also adds a set of useful utilities:
 
@@ -77,15 +67,11 @@ approaches, each one at the extremity of the possibility spectrum:
    collectors. A huge number of different garbage collection policies
    are available and each have their own benefits and drawbacks.
 
-The BON specification extends the Java specification that already defines:
+The BON specification builds upon the existing Java specification, which already defines:
 
-- a heap where Java objects reside. This heap is automatically managed by a garbage
-  collector. 
-- a semantically immutable set of objects: a pool of
-  `String`_, which are references in classfile constant
-  pools [1]_. 
-- the way applications get initialized,
-  even though it is quite a loose process where lazy initialization is
+- a heap where Java objects are stored. This heap is automatically managed by a garbage collector. 
+- a semantically immutable set of objects, the pool of intern `String`_,
+- how applications are initialized, even though it is quite a loose process where lazy initialization is
   permitted. Intuitively, classes are initialized before any instance
   creation or access to its static variables (see :ref:`bon-startup`).
 
