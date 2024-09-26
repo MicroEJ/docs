@@ -280,8 +280,8 @@ the VEE Port will be built before executing the requested task.
 Local VEE Port project outside a multi-project
 ----------------------------------------------
 
-When the VEE Port project is in the same repository than the the component which needs it (an Application for example), 
-the VEE Port project can be import thanks to the `Gradle Composite Build <https://docs.gradle.org/current/userguide/composite_builds.html>`_ feature.
+When the component which needs the VEE Port (an Application for example), is not is the same multi-project than the VEE Port, 
+the VEE Port project can be imported thanks to the `Gradle Composite Build <https://docs.gradle.org/current/userguide/composite_builds.html>`_ feature.
 
 This allows to consider the VEE Port project as part of the Application project, 
 so all changes done to the VEE Port are automatically considered when building or running the Application.
@@ -289,6 +289,25 @@ so all changes done to the VEE Port are automatically considered when building o
 This is done by adding the following line in the ``settings.gradle.kts`` file of the Application project::
 
   includeBuild("[vee-port-project-absolute-path]")
+
+Then declaring the VEE Port as a dependency in the ``build.gradle.kts`` file of the Application project::
+
+    dependencies {
+
+        microejVee("com.mycompany:vee-port:1.0.0")
+
+    }
+
+The dependency must use the module notation (``"group:name:version"``), where the group and name match with the ones declared in the VEE Port project.
+The group is defined in the ``build.gradle.kts`` file of the ``vee-port`` project by the ``group`` property.
+The name is defined in the ``settings.gradle.kts`` file when the ``vee-port`` project is included. 
+For example, if the ``vee-port`` subproject is included with::
+
+  include("my-custom-vee-port")
+  project(":my-custom-vee-port").projectDir = file("vee-port")
+
+its name is ``my-custom-vee-port``.
+Otherwise the name of the subproject folder is used, so ``vee-port`` in the recommended structure. 
 
 Published VEE Port
 ------------------
