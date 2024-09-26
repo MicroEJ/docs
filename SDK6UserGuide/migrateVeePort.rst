@@ -137,6 +137,11 @@ Follow these steps to migrate it:
 
 - Delete the ``.platform`` file located at the root of the Configuration subproject, since it is now obsolete.
 
+- The ``dropins`` folder was used as a destination folder for some generated files in SDK 5, so it may contain more than the committed files.
+  So make sure to clean it to keep only committed files. This can be done with git with the following command in the ``dropins`` folder::
+
+   git clean -xdf
+
 Front Panel Project
 -------------------
 
