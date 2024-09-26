@@ -202,20 +202,11 @@ strongly encourages implementations of the BON specification to raise
 an uncatchable exception when there is an attempt to write into an
 immutable object, although a no-op operation may be sufficient [4]_.
 
-Immutable objects may be created in two ways:
+Immutable objects are declared at build time by specifying objects in an
+XML configuration file, as described in the sections immediately below.
 
--  At run-time, if the implementation allows this, as described in
-   section :ref:`runtimeimmutables`,
--  At system/application configuration time by specifying objects in an
-   XML configuration file, as described in the sections immediately below.
-
-In the second case the way the immutable object's descriptions are given
-to the Java virtual machine at startup is implementation-dependent. Most
-implementations will assume the immutable objects to be at some
-particular location in (read-only) memory: the implementation-dependent
-way to give the immutable objects at startup would therefore be trivial
-(nothing to do, but know the memory address). Note that immutable
-objects do not need to be copied in (scarce) ram memory to be
+The immutable objects will be linked to a particular location in (read-only) memory. 
+Note that immutable objects do not need to be copied in (scarce) ram memory to be
 manipulated [5]_.
 
 Software is made up of several parts, often called libraries, that may
@@ -231,9 +222,7 @@ like the Java interned ``java.lang.String`` objects.
 An immutable object may be attached to a ``java.lang.String`` key, known
 as its ID. This ID allows an immutable object to be retrieved out of the
 global pool of immutable objects, thanks to the method
-``Immutables.get(String)``. The ID of an object is globally unique: the ID
-``"ANONYMOUS"`` is a reserved ID (see :ref:`runtimeimmutables`) and cannot be
-used to qualify an immutable object.
+``Immutables.get(String)``. The ID of an object is globally unique in the system.
 
 Immutable Objects Descriptions and Creation
 +++++++++++++++++++++++++++++++++++++++++++
@@ -523,62 +512,6 @@ Immutable XML Description Examples
         <importObject id="corp2.immut"/>
 
     </immutables>
-
-.. _runtimeimmutables:
-
-Turning Objects Into Immutable Objects
-++++++++++++++++++++++++++++++++++++++
-
-Some systems may define persistent memory where new immutable objects
-can be stored. Such objects remain “live” through device reboots. The
-number of available persistent memory is system dependent and is
-described within the datasheet of the Java virtual machine that
-implements the BON specification. ``Immutables.totalMemory()`` returns
-this persistent immutable memory size, whereas ``Immutables.freeMemory()``
-returns the left remaining persistent memory size.
-
-If an object is persistently added with an ID that was already in use by
-a previously defined immutable object, the new added object takes
-precedence over the object that was referred to by that ID: the next
-call to ``Immutables.get(ID)`` returns the last added object with that
-ID [8]_.
-
-Objects are (runtime) added to the persistent memory as a graph, defined
-by the values held in an hash table.
-
--  The keys of the hash table represent the IDs of the objects: these
-   keys must be of the ``java.lang.String`` [9]_ class. Objects that
-   are not in the hash table do not take part in the immutable
-   storage action.
--  The special ID ``"ANONYMOUS"`` allows objects held by an array (from
-   the type ``java.lang.Object[]``) to be added into the hash table.
-   They are considered as being part of the hash table, but
-   anonymously. The key ``"ANONYMOUS"`` is not added to the set of all
-   available IDs [10]_.
-
-
-.. _illustration-1:
-.. figure:: images/bon_spec/illust1.png
-  :align: center
-  :width: 515px
-  :height: 203px
-
-  Illustration 1: Example of hash table passed to ``Immutables.putAll(Hashtable)``.
-
-
-The hash table is added using the
-``Immutables.putAll(Hashtable)`` method. It persistently writes copies of
-all the values in the hash table that are not already immutable objects.
-All references within those objects to non-immutable objects or to
-objects that are outside the hash table are set to ``null``. References to
-immutable objects remain, literal strings [11]_ are considered as
-immutable (see :ref:`immutable`). Keys that refer to ``null`` are
-ignored.
-
-The ``Immutables.put(String, Object)`` method allows to store a single
-object.
-
-All operations on ``Immutables`` are thread safe.
 
 .. _immortal:
 
@@ -1022,9 +955,6 @@ Annex A: Immutables DTD
 .. [2]
    Persistent immutable objects are named immutable objects throughout
    the specification.
-
-.. [3]
-   Writing into an immutable object is considered as a semantic error.
 
 .. [4]
    The write access to read-only memory is often a no-op operation that
