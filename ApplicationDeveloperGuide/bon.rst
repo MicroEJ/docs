@@ -77,17 +77,16 @@ approaches, each one at the extremity of the possibility spectrum:
    collectors. A huge number of different garbage collection policies
    are available and each have their own benefits and drawbacks.
 
-The Java virtual machine specification defines 
+The BON specification extends the Java specification that already defines:
 
 - a heap where Java objects reside. This heap is automatically managed by a garbage
-  collector. Every Java virtual machine is free to implement the memory
-  management that best fits the application domain it is designed for.
-- a semantically immortal set of objects: a pool of
+  collector. 
+- a semantically immutable set of objects: a pool of
   ``java.lang.String``, which are references in classfile constant
   pools [1]_. 
 - the way applications get initialized,
   even though it is quite a loose process where lazy initialization is
- permitted. Intuitively, classes are initialized before any instance
+  permitted. Intuitively, classes are initialized before any instance
   creation or access to its static variables (see :ref:`bon-startup`).
 
 One of the newer trends in software involves designing simple solutions
@@ -181,10 +180,9 @@ The BON specification defines three natures for objects:
 - :ref:`Immortal objects <immortal>`: objects that do not move around in memory: they remain physically located in one memory location forever.
 - :ref:`Reclaimable objects <reclaimable>`: the regular objects managed by the Garbage Collector. The Application can get notified when such object is dead.
 
-Although objects get a liveness nature, this is fully transparent at the
-Java semantic level. A semantically correct software assuming BON will
-behave exactly the same on a Java virtual machine that does not
-implement the three BON object natures [3]_.
+Although objects get a liveness nature, this is fully transparent for the
+application developer this is completely transparent to the application developer, 
+except for the restriction that writing to an immutable object is not allowed.
 
 .. _immutable:
 
@@ -222,7 +220,7 @@ manipulated [5]_.
 
 Software is made up of several parts, often called libraries, that may
 come with their own immutable object descriptions. Therefore more than
-one immutable description may be given to the Java virtual machine.
+one immutable description may be declared in the classpath.
 
 Object ID and Immutable Object Querying
 +++++++++++++++++++++++++++++++++++++++
@@ -590,10 +588,8 @@ Immortal Objects
 Non Garbageable Objects
 +++++++++++++++++++++++
 
-Immortal objects are regular objects that are not managed by the Java
-virtual machine garbage collector. Immortal objects do not move around
-in memory: they remain physically located in one memory location
-forever.
+Immortal objects are regular objects that are not managed by the garbage collector.
+Immortal objects do not move around in memory: they remain physically located in one memory location forever.
 
 .. _turningIntoImmortal:
 
