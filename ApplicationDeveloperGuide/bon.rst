@@ -694,18 +694,6 @@ and sound way for downloading code that matches the overall semantic of BON:
    ``ej.bon.immortalAfterInit`` is set, objects
    created during this initialization phase do not become immortal.
 
-BON Properties 
-~~~~~~~~~~~~~~
-
-The BON specification defines a set of optional properties:
-
--  ``"ej.bon.version"``: the version holds three positive integers
-   separated by ``'.'`` (e.g.: ``1.2.0``).
--  ``"ej.bon.vendor"``: the name of the BON library provider.
--  ``"ej.bon.vendor.url"``: the web site of the BON library provider.
--  ``"ej.bon.immortalAfterInit"``: if set to ``true``, turn as immortal all
-   remaining live objects at the end of the initialization phase (see :ref:`turningIntoImmortal`).
-
 Utilities
 ---------
 
