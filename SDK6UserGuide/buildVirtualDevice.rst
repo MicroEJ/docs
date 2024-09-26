@@ -72,11 +72,25 @@ When building a Virtual Device for a Kernel, Applications can be pre-installed i
 These Applications can be loaded and started when the Kernel starts for example.
 
 To install an Application in a Virtual Device for a Kernel, 
-you must declare the Application as a dependency of the project in the build file, with the ``microejApplication`` configuration::
+you must declare the Application as a dependency of the project:
+
+- When the Application is published in an artifact repository, you can use it by declaring a Module dependency::
 
    dependencies {
       microejApplication("com.mycompany:myapp:1.0.0")
-   }
+   }  
+
+- When the Application is a subproject of a multi-project, you can use it by declaring a Project dependency in the ``build.gradle.kts`` file, with the ``microejApplication`` configuration::
+
+   dependencies {
+      microejApplication(project(":myApplication"))
+   }  
+
+- You can also use the Application WPK file directly by declaring a File dependency in the ``build.gradle.kts`` file, with the ``microejApplication`` configuration::
+
+   dependencies {
+      microejApplication(files("C:\\path\\to\\my\\application.wpk"))
+   }     
 
 .. warning::
    - Only modules with the :ref:`Application Module Nature <sdk6_module_natures.application>` can be declared this 
