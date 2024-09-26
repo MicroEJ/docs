@@ -590,10 +590,6 @@ If other threads are created while the class initializations execute
 the system enters the mission phase, even if those threads have received
 the ``start()`` message and have a higher priority than the main thread.
 
-If the property ``ej.bon.immortalAfterInit`` is set, all live objects
-become immortal (see :ref:`turningIntoImmortal`) at the end of the
-initialization phase.
-
 .. _bon-startup:
 
 Deterministic Initialization Order 
