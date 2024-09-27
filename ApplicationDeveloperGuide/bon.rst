@@ -552,7 +552,7 @@ BON defines two phases of execution:
    mission phase. The ``main(String[])`` method of the main class is
    called and the application runs until the device is switched off.
 
-`Util.isInInitialization()`_ and `Util.isInMission()`_ methods allows the phase to be tested.
+`Util.isInInitialization()`_ and `Util.isInMission()`_ methods allow the phase to be tested.
 
 .. _mono:
 
@@ -642,7 +642,7 @@ The main APIs are:
    delay. The waiting time between two executions is independent of
    the end of the previous execution.
 
-Platform time
+Platform Time
 ~~~~~~~~~~~~~
 
 The application time is the user time: it depends on its localization.
