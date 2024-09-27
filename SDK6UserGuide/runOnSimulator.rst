@@ -223,6 +223,37 @@ The ``.heap`` files are generated in ``build/output/application/heapDump/``.
 
 Use the :ref:`Heap Viewer<heapviewer>` to visualize the ``.heap`` files.
 
+.. _sdk_6_run_several_applications_on_simulator:
+
+Run several Applications on Simulator
+-------------------------------------
+
+When a Multi-Sandbox Kernel is provided, it is possible to execute your Application on the Simulator along with additional Applications.
+To run an additional Application on the Simulator, the Application must be declared as a dependency of the project:
+
+- When the Application is published in an artifact repository, you can use it by declaring a Module dependency::
+
+   dependencies {
+      microejApplication("com.mycompany:myapp:1.0.0")
+   }  
+
+- When the Application is a subproject of a multi-project, you can use it by declaring a Project dependency in the ``build.gradle.kts`` file, with the ``microejApplication`` configuration::
+
+   dependencies {
+      microejApplication(project(":myApplication"))
+   }  
+
+- You can also use the Application WPK file directly by declaring a File dependency in the ``build.gradle.kts`` file, with the ``microejApplication`` configuration::
+
+   dependencies {
+      microejApplication(files("C:\\path\\to\\my\\application.wpk"))
+   }     
+
+.. warning::
+   - Only modules with the :ref:`Application Module Nature <sdk6_module_natures.application>` can be declared this 
+     way (modules built with the ``com.microej.gradle.application`` plugin).
+     Declaring a module with another Module Nature would make the build fail.
+
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
