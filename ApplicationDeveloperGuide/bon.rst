@@ -566,13 +566,11 @@ During the initialization phase, there is only one Java thread running:
 the main thread which will eventually execute the ``main(String[])``
 method once the system enters the mission phase.
 
-.. _illustration-2:
-.. figure:: images/bon_spec/illust2.png
+.. figure:: images/bon_spec/init_phases.png
   :align: center
-  :width: 686px
-  :height: 263px
+  :scale: 75%
 
-  Illustration 2: BON phases and thread activation.
+  BON phases and threads activation.
 
 If other threads are created while the class initializations execute
 (``<clinit>`` methods), those threads will be on hold (i.e. waiting) until
@@ -681,12 +679,11 @@ endianness. ``BigEndian`` describes an ordering with the most significant
 byte first, whereas ``LittleEndian`` describes an ordering with the least
 significant byte first.
 
-.. figure:: images/bon_spec/illust5.png
+.. figure:: images/bon_spec/endianness.png
   :align: center
-  :width: 447px
-  :height: 70px
+  :scale: 75%
 
-  Illustration 5: Representation of the 32-bit quantity 0x0000100A using both BigEndian and in LittleEndian layout.
+  Representation of the 32-bit quantity 0x0000100A using both BigEndian and in LittleEndian layout.
 
 BON introduces methods to read and write into array of byte (byte[])
 according to the platform endianness, or according to a specific
