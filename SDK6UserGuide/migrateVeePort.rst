@@ -33,7 +33,7 @@ This brings to the following recommended structure for the VEE Port multi-projec
    |    |    |- dropins/ (optional)
    |    |    |- configuration.properties
    |    |    |- build.gradle.kts
-   |- settings.gradle.kts
+   |    |- settings.gradle.kts
 
 This migration guide will go in details in each changes, but as a quick overview, 
 here are the main changes compared to SDK 5:
