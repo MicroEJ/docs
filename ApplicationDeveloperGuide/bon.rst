@@ -1,7 +1,7 @@
 .. _bon_specification:
 
-Beyond Profile (BON)
-====================
+Beyond Profile Specification (BON)
+==================================
 
 Introduction
 ------------

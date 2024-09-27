@@ -63,7 +63,7 @@ More precisely, it allows:
 
 -  Accessing compile-time :ref:`constants <section.classpath.elements.constants>`.
 
-Read the :ref:`bon_specification` section for more details.
+Read the :ref:`Beyond Profile specification <bon_specification>` for more details.
 
 **Specification Summary:**
 
@@ -83,7 +83,7 @@ SNI allows you to:
 
 SNI also provides some Java APIs to manipulate some data arrays between Java and the native (C) world.
 
-Read the :ref:`sni_specification` section for more details.
+Read the :ref:`Simple Native Interface specification <sni_specification>` for more details.
 
 **Specification Summary:**
 
@@ -96,12 +96,22 @@ Kernel & Features (KF)
 
 The Kernel & Features semantic (KF) extends the runtime for managing Multi-Sandboxed Applications.
 
-Read the :ref:`kf_specification` for more details, the :ref:`Multi-Sandbox capability <multisandbox>` of the Core Engine
+Read the :ref:`Kernel & Features specification <kf_specification>` for more details, the :ref:`Multi-Sandbox capability <multisandbox>` of the Core Engine
 and more generally the :ref:`kernel-developer-guide` chapter.
 
 **Specification Summary:**
 
 .. include:: kf_spec_summary.rst
+
+Specifications
+~~~~~~~~~~~~~~
+
+.. toctree::
+   :maxdepth: 1
+   
+   bon
+   ../VEEPortingGuide/sni
+   ../KernelDeveloperGuide/kf
 
 .. _runtime_gt: 
 
@@ -252,8 +262,6 @@ The following code prints the formatted Architecture characteristics on standard
       System.out.println("- Core Engine Capability:       " + capabilityStr + "-Sandbox");
       System.out.println("- Instruction Set Architecture: " + isaStr);
       System.out.println("- Compilation Toolchain:        " + toolchainName + " (" + toolchainFullName + ")");
-
-
 
 .. _WeakReference: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/ref/WeakReference.html
 .. _ReferenceQueue: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/ref/ReferenceQueue.html

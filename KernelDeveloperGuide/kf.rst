@@ -1,7 +1,7 @@
 .. _kf_specification:
 
-Kernel & Features Specification
-===============================
+Kernel & Features Specification (KF)
+====================================
 
 Introduction
 ------------

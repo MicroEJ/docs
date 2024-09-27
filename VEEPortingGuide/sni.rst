@@ -1,8 +1,8 @@
 .. _sni_specification:
 
-=============================
-Simple Native Interface (SNI)
-=============================
+===========================================
+Simple Native Interface Specification (SNI)
+===========================================
 
 
 Introduction
