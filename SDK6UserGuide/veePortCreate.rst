@@ -23,63 +23,192 @@ The first step is to create a VEE Port configuration project:
 
 .. tabs::
 
-    .. tab:: IntelliJ IDEA
-
-        - Select :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...`,
-        - Select :guilabel:`Java`,
-        - Enter a :guilabel:`Name`. The name is arbitrary and can be changed later. The usual convention is to use the name of the VEE Port,
-
-        .. figure:: images/intellij-create-veeport-project.png
-            :alt: VEE Port Project Creation
-            :align: center
-
-        - Click on :guilabel:`Create` button. A new project is created,
-        - Delete the ``build.gradle.kts`` file and the ``src`` folder
-
-        This project will contain the VEE Port modules, and optionally the BSP.
-
-        - Right-click on the project folder,
-        - Select :guilabel:`New` > :guilabel:`Module...`,
-        - Select :guilabel:`Java`,
-        - Enter a :guilabel:`Name`. The name is arbitrary and can be changed later. 
-          The usual convention is to use the name ``vee-port``,
-
-        .. figure:: images/intellij-create-veeport-configuration-module.png
-            :alt: VEE Port Module Creation
-            :align: center
-
-        - Click on :guilabel:`Create` button. A new module is created,
-        - Delete all the files and folders of this new module, except the ``build.gradle.kts`` file,
-        - Replace the whole content of the ``build.gradle.kts`` file by::
-
-            plugins {
-                id("com.microej.gradle.veeport") version "0.19.0"
-            }
-
-            group = "org.example"
-            version = "1.0.0-RC"
-
-            dependencies {
-                
-            }
-        
-        - Create an empty file named ``configuration.properties`` at the root of the module.
-          This file allows to configure all the components of the VEE Port.
-
-        You should get a VEE Port configuration project that looks like:
-
-        .. figure:: images/intellij-create-veeport-project-structure.png
-            :alt: VEE Port Project Skeleton
-            :align: center
-
     .. tab:: Android Studio
+       
+        - Click :guilabel:`File` > :guilabel:`New` > :guilabel:`Project from Version Control...`.
+        - Select :guilabel:`Repository URL`.
+        - Select :guilabel:`Git` as Version control.
+        - Fill the URL of the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort>`__ Github Repository.
+        - Fill the Directory in which the Project Template must be cloned.
+        - Click on :guilabel:`Clone` button.
+
+        .. figure:: images/android-studio-version-control-window.png
+            :alt: Version Control Window in Android Studio
+            :align: center
+            :scale: 70%
+
+            Version Control Window in Android Studio
+      
+        - When the Gradle project is loaded, select :guilabel:`View` > :guilabel:`Tool Windows` > :guilabel:`Terminal`.
+        - In the integrated terminal, run the following command at the root of the project to remove the Git Repository:
+
+          .. tabs::
+
+             .. tab:: Windows
+
+                .. code-block:: java
+
+                  rm -r -Force .git*
+
+
+             .. tab:: Linux/macOS
+
+                .. code-block:: java
+
+                  rm -rf .git*
+              
+        - Rename the project and change its group and version in the ``build.gradle.kts`` build script.
+
+    .. tab:: IntelliJ IDEA
+       
+        - Click :guilabel:`File` > :guilabel:`New` > :guilabel:`Project from Version Control...`.
+        - Select :guilabel:`Repository URL`.
+        - Select :guilabel:`Git` as Version control.
+        - Fill the URL of the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort>`__ Github Repository.
+        - Fill the Directory in which the Project Template must be cloned.
+        - Click on :guilabel:`Clone` button.
+
+        .. figure:: images/intellij-version-control-window.png
+            :alt: Version Control Window in IntelliJ IDEA
+            :align: center
+            :scale: 70%
+
+            Version Control Window in IntelliJ IDEA
+      
+        - When the Gradle project is loaded, select :guilabel:`View` > :guilabel:`Tool Windows` > :guilabel:`Terminal`.
+        - In the integrated terminal, run the following command at the root of the project to remove the Git Repository:
+
+          .. tabs::
+
+             .. tab:: Windows
+
+                .. code-block:: java
+
+                  rm -r -Force .git*
+
+
+             .. tab:: Linux/macOS
+
+                .. code-block:: java
+
+                  rm -rf .git*
+              
+        - Rename the project and change its group and version in the ``build.gradle.kts`` build script.
+
 
     .. tab:: Eclipse
+            
+        - Open a new terminal.    
+        - Clone the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort>`__ Github Repository::
+
+             git clone git@github.com:MicroEJ/Tool-Project-Template-VEEPort.git
+      
+        - Remove the Git Repository from the project:
+
+          .. tabs::
+
+             .. tab:: Windows
+
+                .. code-block:: java
+
+                  rm -r -Force .git*
+
+
+             .. tab:: Linux/macOS
+
+                .. code-block:: java
+
+                  rm -rf .git*
+
+        - Rename the project and change its group and version in the ``build.gradle.kts`` build script.
+        - In Eclipse, click on :guilabel:`File` > :guilabel:`Import...`.
+        - Select the project type :guilabel:`Gradle` > :guilabel:`Existing Gradle Project` and click on the :guilabel:`Next` button.
+
+        .. figure:: images/eclipse-import-gradle-project-01.png
+            :alt: Project Type Selection in Eclipse
+            :align: center
+            :scale: 70%
+
+            Project Type Selection in Eclipse
+
+        - Select the root directory of the project.
+
+        .. figure:: images/eclipse-import-gradle-project-02.png
+            :alt: Project root folder in Eclipse
+            :align: center
+            :scale: 70%
+
+            Project root folder in Eclipse
+
+        - Click on the :guilabel:`Next` button and finally on the :guilabel:`Finish` button.
 
     .. tab:: Visual Studio Code
+       
+        - Select :guilabel:`View` > :guilabel:`Command Palette...`.
+        - Run the ``Git: Clone`` command in the Command Palette.
+
+        .. figure:: images/vscode-command-palette.png
+            :alt: Command Palette in VS Code
+            :align: center
+            :scale: 70%
+
+            Command Palette in VS Code
+      
+        - Fill the URI of the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort>`__ Github Repository in the Search Bar.
+        - Click on :guilabel:`Clone from URL`.
+
+        .. figure:: images/vscode-search-bar-vee-port-template.png
+            :alt: Search Bar in VS Code
+            :align: center
+            :scale: 70%
+
+            Search Bar in VS Code
+      
+        - In the upcoming popup, choose a folder and click on the ``Select as Repository Destination`` button.
+        - When the Gradle project is loaded, select :guilabel:`Terminal` > :guilabel:`New Terminal`.
+        - In the integrated terminal, run the following command at the root of the project to remove the Git Repository:
+
+          .. tabs::
+
+             .. tab:: Windows
+
+                .. code-block:: java
+
+                  rm -r -Force .git*
+
+
+             .. tab:: Linux/macOS
+
+                .. code-block:: java
+
+                  rm -rf .git*
+              
+        - Rename the project and change its group and version in the ``build.gradle.kts`` build script.
 
     .. tab:: Command Line Interface
+            
+        - Clone the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort>`__ Github Repository::
 
+             git clone git@github.com:MicroEJ/Tool-Project-Template-VEEPort.git
+      
+        - Remove the Git Repository from the project:
+
+          .. tabs::
+
+             .. tab:: Windows
+
+                .. code-block:: java
+
+                  rm -r -Force .git*
+
+
+             .. tab:: Linux/macOS
+
+                .. code-block:: java
+
+                  rm -rf .git*
+
+        - Rename the project and change its group and version in the ``build.gradle.kts`` build script.
 
 Architecture Selection
 ======================
