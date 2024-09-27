@@ -552,15 +552,12 @@ BON defines two phases of execution:
    mission phase. The ``main(String[])`` method of the main class is
    called and the application runs until the device is switched off.
 
-Initialization Phase
-~~~~~~~~~~~~~~~~~~~~
-
 `Util.isInInitialization()`_ and `Util.isInMission()`_ methods allows the phase to be tested.
 
 .. _mono:
 
 Mono-threaded Phase
-+++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~
 
 During the initialization phase, there is only one Java thread running:
 the main thread which will eventually execute the ``main(String[])``
@@ -580,7 +577,7 @@ the ``start()`` message and have a higher priority than the main thread.
 .. _bon-startup:
 
 Deterministic Initialization Order 
-++++++++++++++++++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If a class needs to be initialized, it defines a ``<clinit>`` method.
 These methods are not visible per se at the Java source level.
