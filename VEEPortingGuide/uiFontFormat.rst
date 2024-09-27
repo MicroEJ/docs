@@ -94,46 +94,6 @@ To manage the complex layouts, use either of these solutions:
 * Use the offline tool :ref:`Native Language Support <nls_converter>` to automatically convert the translation messages in a characters array compatible with the Graphics Engine's software algorithms.
 * Implement a complex layouter in the Abstract Layer API (see :ref:`section_font_renderer`) to convert the application's strings in a character array which format is compatible with the Graphics Engine's software algorithms and call the Graphics Engine's software algorithms to draw them.
 
-Arabic Support
---------------
-
-The Graphics Engine's software algorithm partially manage the ARABIC font specificities: the diacritics and contextual letters.
-It uses simple rules in order to combine several characters.
-
-To render an Arabic text, the  Graphics Engine's software algorithms require several points:
-
--  To determinate if a character has to overlap the previous character,
-   the  Graphics Engine's software algorithms use a specific range of ARABIC characters: from
-   ``0xfe70`` to ``0xfefc``. All other characters (ARABIC or not)
-   outside this range are considered *classic* and no overlap is
-   performed. Note that several ARABIC characters are available outside
-   this range, but the same characters (same representation) are
-   available inside this range.
-
--  The application strings must use the UTF-16 encoding. Furthermore, in
-   order to force the use of characters in the range ``0xfe70`` to
-   ``0xfefc``, the string must be filled with the following syntax:
-   '``\ufee2\ufedc\ufe91\u0020\ufe8e\ufe92\ufea3\ufeae\ufee3``'; where
-   ``\uxxxx`` is the UTF-16 character encoding.
-
--  The application string and its rendering are always performed from
-   left to right. However the string contents are managed by the
-   application itself, and so can be filled from right to left. To write
-   the text: 
-
-   .. image:: images/arabic.png
-      :width: 120px
-
-   the string characters must be :
-   '``\ufee2\ufedc\ufe91\u0020\ufe8e\ufe92\ufea3\ufeae\ufee3``'. The
-   Font Renderer will first render the character '``\ufee2``', then
-   '``\ufedc``,' and so on.
-
--  Each character in the font (in the ``ejf`` file) must have a
-   rendering compatible with the character position. The character will
-   be rendered by the Font Renderer as-is. No support is performed by the
-   Graphics Engine's software algorithms to obtain a *linear* text.
-
 .. _Surrogates: https://en.wikipedia.org/wiki/Universal_Character_Set_characters#Surrogates
 
 ..
