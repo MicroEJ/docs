@@ -106,9 +106,9 @@ All the Core Engine capabilities may not be available on all
 architectures. Refer to section :ref:`appendix_matrixcapabilities`
 for more details.
 
-To select the Core Engine capability, create the property file ``mjvm/mjvm.properties``
-in the Platform configuration project and define the property ``com.microej.runtime.capability`` 
-with one of the following values:
+To select the Core Engine capability, define the property ``com.microej.runtime.capability``
+in the ``configuration.properties`` file (SDK 6) or in the ``mjvm/mjvm.properties`` file (SDK 5) 
+of the VEE Port project, with one of the following values:
 
 - ``mono`` for Mono-Sandbox (default value)
 
