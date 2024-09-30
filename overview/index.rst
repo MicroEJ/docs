@@ -39,13 +39,13 @@ For more information about our Supported Processor Architectures, visit the `Sup
 MICROEJ SDK
 -----------
 
-MICROEJ SDK offers a comprehensive toolset to build the embedded software of
+MICROEJ SDK offers a comprehensive toolset to build the software for embedded devices. 
 a device. The SDK covers two levels in device software development:
 
 -  Device Firmware development
 -  Application development
 
-The firmware will generally be produced by the device OEM, it includes
+The firmware will generally be produced by the device's OEM, it includes
 all device drivers and a specific set of MicroEJ functionalities useful
 for application developers targeting this device.
 
