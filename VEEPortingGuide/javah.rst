@@ -39,8 +39,19 @@ No dependency.
 Installation
 ============
 
-This is an additional tool. In the platform configuration file, check
-:guilabel:`Java to C Interface` > :guilabel:`MicroEJ Java H` to install the tool.
+.. tabs::
+
+   .. tab:: SDK 6
+
+      In the VEE Port configuration file, add the following properties::
+
+         com.microej.runtime.extensible.enabled=true
+         com.microej.runtime.extensible.MicroEJavah.enabled=true
+
+   .. tab:: SDK 5  
+
+      This is an additional tool. In the VEE Port configuration file, check
+      :guilabel:`Java to C Interface` > :guilabel:`MicroEJ Java H` to install the tool.
 
 
 Use
