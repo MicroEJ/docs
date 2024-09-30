@@ -52,7 +52,7 @@ New Development Flow
 With the SDK 5, the development flow consisted in 3 main steps:
 
 - Make a change in the VEE Port project.
-- Build the VEE Port configuration project (``*-configuration``), which resulted in generated a built VEE Port in the sibling folder.
+- Build the VEE Port configuration project (``*-configuration``), which generates a built VEE Port in the sibling folder.
 - Run or build an Application (after defining the path to the VEE Port in the ``module.ivy`` file) on this VEE Port.
 
 While this development flow is still possible with the SDK 6, 
