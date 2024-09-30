@@ -23,7 +23,7 @@ MicroEJ VEE provides a fully configurable set of services that can be expanded, 
 
 - a secure multi-application framework,
 - a GUI framework (includes widgets),
-- a network connection with security (SSL/TLS, HTTPS, REST, MQTT, ...),
+- a network framework with security (SSL/TLS, HTTPS, REST, MQTT, ...),
 - a storage framework (file system)
 - a Java Cryptography Architecture (JCA) implementation.
 
