@@ -216,7 +216,8 @@ On Architecture ``8.x``, you will get the following dedicated error message:
 
 .. code-block::
 
-    Unsupported access to the Class instance of a primitive type (found 'boolean.class' in method 'com.mycompany.MyClass.myMethod()void')
+    SOAR-L ERROR :
+    [M79] - Unsupported access to the Class instance of a primitive type (found 'boolean.class' in method 'com.mycompany.MyClass.myMethod()void')
 
 On Architecture ``7.x`` you will get the following default error message:
 
