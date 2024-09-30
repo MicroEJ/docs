@@ -192,9 +192,10 @@ The installation process is different in SDK 5 and SDK 6:
 
    .. tab:: SDK 6
 
-      In the VEE Port configuration file, add the following property::
+      In the VEE Port configuration file, add the following properties::
 
-         com.microej.runtime.shieldedplug.enabled=true
+         com.microej.runtime.extensible.enabled=true
+         com.microej.runtime.extensible.shieldedplug.enabled=true
 
    .. tab:: SDK 5      
 
@@ -207,12 +208,21 @@ The installation process is different in SDK 5 and SDK 6:
 Use
 ===
 
-The `Shielded Plug API Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the 
-Application project.
+The `Shielded Plug API Module`_ must be added to the project build file:
 
-::
+.. tabs::
 
-   <dependency org="ej.api" name="sp" rev="2.0.2"/>
+   .. tab:: SDK 6 (build.gradle.kts)
+
+      .. code-block:: kotlin
+
+         implementation("ej.api:sp:2.0.2")
+
+   .. tab:: SDK 5 (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="ej.api" name="sp" rev="2.0.2"/>
 
 This library provides a set of options. Refer to the chapter
 :ref:`application_options` which lists all available options.
