@@ -252,7 +252,7 @@ Kernel Types Converter
 The Shared Interface mechanism allows to transfer an object instance of
 a Kernel type from one Feature to an other (see :ref:`section.transferable.types` section). 
 
-To do that, the Kernel must register a new Kernel type converter.
+To do that, the Kernel must :ref:`register a new Kernel type converter <kernelconverter>`.
 See the `Converter`_ class and `Kernel.addConverter()`_ method for more details.
 
 The table below shows some converters defined in the `com.microej.library.util#kf-util`_ library.

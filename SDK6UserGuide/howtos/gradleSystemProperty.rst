@@ -31,6 +31,9 @@ The ``providers.systemProperty("myPropertyName")`` API returns a ``org.gradle.ap
 - defining a default value if the System Property does not exist: ``providers.systemProperty("myPropertyName").getOrElse("myDefaultValue")``
 - returning ``null`` if the value does not exist: ``providers.systemProperty("myPropertyName").getOrNull()``.
 
+.. warning::
+   If the property to pass is an :ref:`Application option <application_options>`, it must be prefixed by ``microej.option.*``.
+
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 

@@ -23,23 +23,42 @@ The Image Renderer manages only the MicroEJ formats (:ref:`section_image_standar
 
 The following table lists all the formats and their usage.
 
-+-----------+---------+---------+----------------------------+
-| Format    | Input   | Output  | BufferedImage              |
-+===========+=========+=========+============================+
-| Display   | no      | yes     | yes                        |
-+-----------+---------+---------+----------------------------+
-| Standard  | no      | yes     | yes [#note_bufferedimage]_ |
-+-----------+---------+---------+----------------------------+
-| Grayscale | no      | yes     | yes [#note_bufferedimage]_ |
-+-----------+---------+---------+----------------------------+
-| RLE       | no      | yes     | no                         |
-+-----------+---------+---------+----------------------------+
-| Custom    | no      | not yet | yes [#note_bufferedimage]_ |
-+-----------+---------+---------+----------------------------+
-| Binary    | no      | yes     | no                         |
-+-----------+---------+---------+----------------------------+
-| Original  | yes     | no      | no                         |
-+-----------+---------+---------+----------------------------+
+.. list-table:: Image Formats
+   :widths: 40 20 20 20
+   :header-rows: 1
+
+   * - Format
+     - Input
+     - Output
+     - BufferedImage
+   * - :ref:`section_image_display_raw`
+     - no
+     - yes
+     - yes
+   * - :ref:`section_image_standard_raw`
+     - no
+     - yes
+     - yes [#note_bufferedimage]_
+   * - :ref:`section_image_grayscale_raw`
+     - no
+     - yes
+     - yes [#note_bufferedimage]_
+   * - :ref:`section_image_rle_raw`
+     - no
+     - yes
+     - no
+   * - :ref:`section_image_custom_raw`
+     - no
+     - not yet
+     - yes [#note_bufferedimage]_
+   * - :ref:`section_image_binary_raw`
+     - no
+     - yes
+     - no
+   * - :ref:`section_image_asis`
+     - yes
+     - no
+     - no
 
 .. [#note_bufferedimage] Need some support in the VEE Port to support formats different than the display one (see :ref:`section_buffered_image`).
 
@@ -240,6 +259,8 @@ The pixel order follows this rule:
 
          pixel_offset = (pixel_Y * image_width + pixel_X) * bpp / 8;
 
+.. _section_image_rle_raw:
+
 MicroEJ Format: RLE Compressed
 ==============================
 
@@ -316,7 +337,7 @@ The following table lists the original formats that can be decoded at run-time a
    | Web Picture (WebP)                      | yes [#note_webp]_ | yes [#note_webp]_           | yes [#note_webpruntime]_   |
    +-----------------------------------------+-------------------+-----------------------------+----------------------------+
 
-.. [#note_disabledformat] The formats are disabled by default; see:ref:`fp_ui_decoder`.
+.. [#note_disabledformat] The formats are disabled by default; see :ref:`fp_ui_decoder`.
 .. [#note_png] The PNG format is supported when the module ``PNG`` is selected in the VEE Port configuration file (see :ref:`image_runtime_decoder`).
 .. [#note_bmp] The Monochrome BMP is supported when the module ``BMPM`` is selected in the VEE Port configuration file (see :ref:`image_runtime_decoder`); the `colored` BMP format is only supported by the Front Panel (disabled by default, see :ref:`fp_ui_decoder`).
 .. [#note_webp] Install the tool ``com.microej.tool#imageio-webp-1.0.1`` from the :ref:`developer_repository` in the VEE Port to support the WEBP format (see :ref:`section_image_generator_imageio` and :ref:`fp_ui_decoder`).

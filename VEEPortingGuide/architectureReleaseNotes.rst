@@ -25,7 +25,7 @@ The following table describes Foundation Libraries API versions implemented in M
      - Device
      - ECOM-COMM
    * - [8.0.0-8.1.1]
-     - `1.3 <https://repository.microej.com/modules/ej/api/edc/1.3.6/>`__
+     - `1.3 <https://repository.microej.com/modules/ej/api/edc/1.3.7/>`__
      - `1.4 <https://repository.microej.com/modules/ej/api/bon/1.4.3/>`__
      - `1.7 <https://repository.microej.com/modules/ej/api/kf/1.7.0/>`__
      - `1.4 <https://repository.microej.com/modules/ej/api/sni/1.4.3/>`__
@@ -34,7 +34,7 @@ The following table describes Foundation Libraries API versions implemented in M
      - N/A [1]_
      - N/A [2]_
    * - [7.17.0-7.20.1]
-     - `1.3 <https://repository.microej.com/modules/ej/api/edc/1.3.6/>`__
+     - `1.3 <https://repository.microej.com/modules/ej/api/edc/1.3.7/>`__
      - `1.4 <https://repository.microej.com/modules/ej/api/bon/1.4.3/>`__
      - `1.6 <https://repository.microej.com/modules/ej/api/kf/1.6.1/>`__
      - `1.4 <https://repository.microej.com/modules/ej/api/sni/1.4.3/>`__
@@ -43,7 +43,7 @@ The following table describes Foundation Libraries API versions implemented in M
      - `1.0 <https://repository.microej.com/modules/ej/api/device/1.0.2/>`__
      - `1.1 <https://repository.microej.com/modules/ej/api/ecom-comm/1.1.4/>`__
    * - [7.13.0-7.16.0]
-     - `1.3 <https://repository.microej.com/modules/ej/api/edc/1.3.6/>`__
+     - `1.3 <https://repository.microej.com/modules/ej/api/edc/1.3.7/>`__
      - `1.4 <https://repository.microej.com/modules/ej/api/bon/1.4.3/>`__
      - `1.5 <https://repository.microej.com/modules/ej/api/kf/1.5.1/>`__
      - `1.4 <https://repository.microej.com/modules/ej/api/sni/1.4.3/>`__
@@ -52,7 +52,7 @@ The following table describes Foundation Libraries API versions implemented in M
      - `1.0 <https://repository.microej.com/modules/ej/api/device/1.0.2/>`__
      - `1.1 <https://repository.microej.com/modules/ej/api/ecom-comm/1.1.4/>`__
    * - [7.11.0-7.12.0]
-     - `1.3 <https://repository.microej.com/modules/ej/api/edc/1.3.6/>`__
+     - `1.3 <https://repository.microej.com/modules/ej/api/edc/1.3.7/>`__
      - `1.4 <https://repository.microej.com/modules/ej/api/bon/1.4.3/>`__
      - `1.5 <https://repository.microej.com/modules/ej/api/kf/1.5.1/>`__
      - `1.3 <https://repository.microej.com/modules/ej/api/sni/1.3.1/>`__

@@ -18,7 +18,7 @@ The following graph describes the dependency configurations. Use this legend to 
 
     - Green background : Dependencies can be declared against this configuration
     - Gray background : This configuration is for consumption by tasks only
-    - Blue background : A task or plugin
+    - Blue background : A task
 
 .. graphviz:: graphConfigurations.dot
 
@@ -28,6 +28,7 @@ The MicroEJ Gradle plugins also define dependency configurations for internal us
     - ``addonProcessorClasspath`` , used by the :ref:`sdk6_module_natures.tasks.adp` task
     - ``jdtCompilerClasspath``, used by the :ref:`sdk6_module_natures.addon_lib` and :ref:`sdk6_module_natures.application` plugins
     - ``wrapperClasspath``, used by the ``compileJava`` task
+    - ``microejRuntimeApiFullRuntimeClasspath``, used by the :ref:`sdk6_module_natures.tasks.buildVirtualDevice`, :ref:`sdk6_module_natures.tasks.buildApplicationObjectFile` and :ref:`sdk6_module_natures.tasks.buildExecutable` tasks
 
 Publication Variants
 --------------------
@@ -61,6 +62,19 @@ microejVirtualDevice
 This variant is used to publish the Virtual Device of an Application, 
 that can be fetched by declaring a dependency with the ``microejVee`` configuration.
 The ``LibraryElement`` attribute of the variant is set to ``microej-vee-port``.
+
+microejMockRip
+~~~~~~~~~~~~~~
+
+This variant is used to publish a Mock.
+The ``LibraryElement`` attribute of the variant is set to ``microej-rip``.
+
+runtimeApi
+~~~~~~~~~~
+
+This variant is used to publish a Runtime API, 
+that can be fetched by declaring a dependency with the ``microejRuntimeApi`` configuration.
+The ``LibraryElement`` attribute of the variant is set to ``microej-runtime-api``.
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
