@@ -211,9 +211,9 @@ This chapter explains the different ways to create a new project.
       - Depending on the type of your project, fill the URI of the corresponding Github template repository in the Search Bar. 
         The available templates are:
       
-         - `Application Project Template <https://github.com/MicroEJ/Tool-Project-Template-Application>`__
-         - `Add-On Library Project Template <https://github.com/MicroEJ/Tool-Project-Template-Add-On-Library>`__
-         - `Mock Project Template <https://github.com/MicroEJ/Tool-Project-Template-Mock>`__
+         - `Application Project Template <https://github.com/MicroEJ/Tool-Project-Template-Application/tree/1.0.0>`__
+         - `Add-On Library Project Template <https://github.com/MicroEJ/Tool-Project-Template-Add-On-Library/tree/1.0.0>`__
+         - `Mock Project Template <https://github.com/MicroEJ/Tool-Project-Template-Mock/tree/1.0.0>`__
       
       - Click on :guilabel:`Clone from URL`.
       
@@ -252,9 +252,9 @@ This chapter explains the different ways to create a new project.
       - Depending on the type of your project, retrieve the URI of the corresponding Github template repository. 
         The available templates are:
       
-         - `Application Project Template <https://github.com/MicroEJ/Tool-Project-Template-Application>`__
-         - `Add-On Library Project Template <https://github.com/MicroEJ/Tool-Project-Template-Add-On-Library>`__
-         - `Mock Project Template <https://github.com/MicroEJ/Tool-Project-Template-Mock>`__
+         - `Application Project Template <https://github.com/MicroEJ/Tool-Project-Template-Application/tree/1.0.0>`__
+         - `Add-On Library Project Template <https://github.com/MicroEJ/Tool-Project-Template-Add-On-Library/tree/1.0.0>`__
+         - `Mock Project Template <https://github.com/MicroEJ/Tool-Project-Template-Mock/tree/1.0.0>`__
       
       - Clone the repository::
 
