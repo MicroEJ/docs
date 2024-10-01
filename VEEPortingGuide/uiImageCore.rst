@@ -95,79 +95,142 @@ This is the most frequent use case, the only one available with MicroUI before v
 
 .. hint:: To select this implementation (to disable the custom format support), the define ``LLUI_IMAGE_CUSTOM_FORMATS`` must be unset.
 
-The following graph illustrates the drawing of an image:
+The image drawing is similar to ``UI_DRAWING_GPU_drawLine`` (see :ref:`section_drawings_cco`), but, theoretically, it should let the image drawer manage the image instead of calling the software drawer directly.
+However the MicroUI C Module (and the extended MicroUI modules that manage a GPU) takes advantage of the define ``LLUI_IMAGE_CUSTOM_FORMATS``: as it is not set, the C Modules bypass the indirection to the image drawer and by consequence, the implementation of the weak function only consists in calling the Graphics Engine's software algorithm. 
+This tip reduces the footprint and the CPU usage.
 
-.. graphviz:: :align: center
+An implementation of a third-party GPU can optionally takes advantage of the define ``LLUI_IMAGE_CUSTOM_FORMATS``.
+The following graphs illustrate the drawing of an image with or without taking advantage of the define ``LLUI_IMAGE_CUSTOM_FORMATS`` (respectively *default* and *optimized* implementation).
 
-   digraph {
-      ratio="auto"
-      splines="true";
-      bgcolor="transparent"
-      node [style="filled,rounded" fontname="courier new" fontsize="10"]
 
-      { //in/out
-         node [shape="ellipse" color="#e5e9eb" fontcolor="black"] mui UID_soft_c UID_gpu_hard stub
-      }
-      { // h
-         node [shape="box" color="#00aec7" fontcolor="white"] LLUI_h UID_h UID_soft_h UID_stub_h UII_h
-      }
-      { // c
-         node [shape="box" color="#ee502e" fontcolor="white"] LLUI_c UID_stub_c UII_c UID_gpu_c UID_gpu_driver
-      }
-      { // weak
-         node [shape="box" style="dashed,rounded" color="#ee502e"] UID_weak_c
-      }
-      { // choice
-         node [shape="diamond" color="#e5e9eb"] UID_cond UID_gpu_cond UII_cond
-      }
+.. tabs::
 
-      // --- SIMPLE FLOW ELEMENTS -- //
+   .. tab:: Default Implementation
 
-      mui [label="[MicroUI]\nPainter.drawXXX();"] 
-      LLUI_h [label="[LLUI_PAINTER_impl.h]\nLLUI_PAINTER_IMPL_drawXXX();"]
-      LLUI_c [label="[LLUI_PAINTER_impl.c]\nLLUI_PAINTER_IMPL_drawXXX();"]
-      UID_h [label="[ui_drawing.h]\nUI_DRAWING_drawXXX();"]
-      UID_weak_c [label="[ui_drawing.c]\nweak UI_DRAWING_drawXXX();"]
-      UID_soft_h [label="[ui_drawing_soft.h]\nUI_DRAWING_SOFT_drawXXX();"]
-      UID_soft_c [label="[Graphics Engine]"]
+      .. graphviz:: :align: center
 
-      // --- GPU FLOW ELEMENTS -- //
+         digraph {
+            ratio="auto"
+            splines="true";
+            bgcolor="transparent"
+            node [style="filled,rounded" fontname="courier new" fontsize="10"]
 
-      UID_cond [label="algo implemented?"]
-      UID_gpu_c [label="[ui_drawing_gpu.c]\nUI_DRAWING_drawXXX();"]
-      UID_gpu_cond [label="GPU compatible?"]
-      UID_gpu_driver [label="[GPU driver]"]
-      UID_gpu_hard [label="[GPU]"]
+            { //in/out
+               node [shape="ellipse" color="#e5e9eb" fontcolor="black"] mui UID_soft_c UID_gpu_hard stub
+            }
+            { // h
+               node [shape="box" color="#00aec7" fontcolor="white"] LLUI_h UID_h UID_soft_h UID_stub_h UII_h
+            }
+            { // c
+               node [shape="box" color="#ee502e" fontcolor="white"] LLUI_c UID_stub_c UII_c UID_gpu_c UID_gpu_driver
+            }
+            { // weak
+               node [shape="box" style="dashed,rounded" color="#ee502e"] UID_weak_c
+            }
+            { // choice
+               node [shape="diamond" color="#e5e9eb"] UID_cond UID_gpu_cond UII_cond
+            }
 
-      UID_stub_h [label="[ui_drawing_stub.h]\nUI_DRAWING_STUB_drawXXX();"]
-      UID_stub_c [label="[ui_drawing_stub.c]\nUI_DRAWING_STUB_drawXXX();"]
-      stub [label="-"]
+            // --- SIMPLE FLOW ELEMENTS -- //
 
-      // --- MULTIPLE IMAGES FLOW ELEMENTS -- //
+            mui [label="[MicroUI]\nPainter.drawImage();"] 
+            LLUI_h [label="[LLUI_PAINTER_impl.h]\nLLUI_PAINTER_IMPL_drawImage();"]
+            LLUI_c [label="[LLUI_PAINTER_impl.c]\nLLUI_PAINTER_IMPL_drawImage();"]
+            UID_h [label="[ui_drawing.h]\nUI_DRAWING_drawImage();"]
+            UID_weak_c [label="[ui_drawing.c]\nweak UI_DRAWING_drawImage();"]
+            UID_soft_h [label="[ui_drawing_soft.h]\nUI_DRAWING_SOFT_drawImage();"]
+            UID_soft_c [label="[Graphics Engine]"]
 
-      UII_h [label="[ui_image_drawing.h]\nUI_IMAGE_DRAWING_drawXXX();"]
-      UII_c [label="[ui_image_drawing.c]\nUI_IMAGE_DRAWING_drawXXX();"]
-      UII_cond [label="standard image?"]
+            // --- GPU FLOW ELEMENTS -- //
 
-      // --- FLOW -- //
+            UID_cond [label="algo implemented?"]
+            UID_gpu_c [label="[ui_drawing_gpu.c]\nUI_DRAWING_drawImage();"]
+            UID_gpu_cond [label="GPU compatible?"]
+            UID_gpu_driver [label="[GPU driver]"]
+            UID_gpu_hard [label="[GPU]"]
 
-      mui->LLUI_h->LLUI_c->UID_h->UID_cond
-      UID_cond->UID_weak_c [label="no" fontname="courier new" fontsize="10"]
-      UID_weak_c->UII_h->UII_c->UII_cond
-      UID_cond->UID_gpu_c [label="yes" fontname="courier new" fontsize="10"]
-      UID_gpu_c->UID_gpu_cond
-      UID_gpu_cond->UII_h [label="no" fontname="courier new" fontsize="10"]
-      UID_gpu_cond->UID_gpu_driver [label="yes" fontname="courier new" fontsize="10"]
-      UID_gpu_driver->UID_gpu_hard
-      UII_cond->UID_soft_h [label="yes" fontname="courier new" fontsize="10"]
-      UII_cond->UID_stub_h [label="no" fontname="courier new" fontsize="10"]
-      UID_soft_h->UID_soft_c
-      UID_stub_h->UID_stub_c->stub
-   }
+            UID_stub_h [label="[ui_drawing_stub.h]\nUI_DRAWING_STUB_drawImage();"]
+            UID_stub_c [label="[ui_drawing_stub.c]\nUI_DRAWING_STUB_drawImage();"]
+            stub [label="-"]
 
-.. force a new line
+            // --- MULTIPLE IMAGES FLOW ELEMENTS -- //
 
-|
+            UII_h [label="[ui_image_drawing.h]\nUI_IMAGE_DRAWING_draw();"]
+            UII_c [label="[ui_image_drawing.c]\nUI_IMAGE_DRAWING_draw();"]
+            UII_cond [label="standard image?"]
+
+            // --- FLOW -- //
+
+            mui->LLUI_h->LLUI_c->UID_h->UID_cond
+            UID_cond->UID_weak_c [label="no" fontname="courier new" fontsize="10"]
+            UID_weak_c->UID_soft_h [label="built-in optim" fontname="courier new" fontsize="10"]
+            UID_cond->UID_gpu_c [label="yes" fontname="courier new" fontsize="10"]
+            UID_gpu_c->UID_gpu_cond
+            UID_gpu_cond->UII_h->UII_c->UII_cond [label="no" fontname="courier new" fontsize="10"]
+            UID_gpu_cond->UID_gpu_driver [label="yes" fontname="courier new" fontsize="10"]
+            UID_gpu_driver->UID_gpu_hard
+            UII_cond->UID_soft_h [label="yes" fontname="courier new" fontsize="10"]
+            UII_cond->UID_stub_h [label="no" fontname="courier new" fontsize="10"]
+            UID_soft_h->UID_soft_c
+            UID_stub_h->UID_stub_c->stub
+         }
+
+   .. tab:: Optimized Implementation
+
+      .. graphviz:: :align: center
+
+         digraph {
+            ratio="auto"
+            splines="true";
+            bgcolor="transparent"
+            node [style="filled,rounded" fontname="courier new" fontsize="10"]
+
+            { //in/out
+               node [shape="ellipse" color="#e5e9eb" fontcolor="black"] mui UID_soft_c UID_gpu_hard
+            }
+            { // h
+               node [shape="box" color="#00aec7" fontcolor="white"] LLUI_h UID_h UID_soft_h
+            }
+            { // c
+               node [shape="box" color="#ee502e" fontcolor="white"] LLUI_c UID_gpu_c UID_gpu_driver
+            }
+            { // weak
+               node [shape="box" style="dashed,rounded" color="#ee502e"] UID_weak_c
+            }
+            { // choice
+               node [shape="diamond" color="#e5e9eb"] UID_cond UID_gpu_cond
+            }
+
+            // --- SIMPLE FLOW ELEMENTS -- //
+
+            mui [label="[MicroUI]\nPainter.drawImage();"] 
+            LLUI_h [label="[LLUI_PAINTER_impl.h]\nLLUI_PAINTER_IMPL_drawImage();"]
+            LLUI_c [label="[LLUI_PAINTER_impl.c]\nLLUI_PAINTER_IMPL_drawImage();"]
+            UID_h [label="[ui_drawing.h]\nUI_DRAWING_drawImage();"]
+            UID_weak_c [label="[ui_drawing.c]\nweak UI_DRAWING_drawImage();"]
+            UID_soft_h [label="[ui_drawing_soft.h]\nUI_DRAWING_SOFT_drawImage();"]
+            UID_soft_c [label="[Graphics Engine]"]
+
+            // --- GPU FLOW ELEMENTS -- //
+
+            UID_cond [label="algo implemented?"]
+            UID_gpu_c [label="[ui_drawing_gpu.c]\nUI_DRAWING_drawImage();"]
+            UID_gpu_cond [label="GPU compatible?"]
+            UID_gpu_driver [label="[GPU driver]"]
+            UID_gpu_hard [label="[GPU]"]
+
+            // --- FLOW -- //
+
+            mui->LLUI_h->LLUI_c->UID_h->UID_cond
+            UID_cond->UID_weak_c [label="no" fontname="courier new" fontsize="10"]
+            UID_weak_c->UID_soft_h [label="built-in optim" fontname="courier new" fontsize="10"]
+            UID_cond->UID_gpu_c [label="yes" fontname="courier new" fontsize="10"]
+            UID_gpu_c->UID_gpu_cond
+            UID_gpu_cond->UID_soft_h [label="no" fontname="courier new" fontsize="10"]
+            UID_gpu_cond->UID_gpu_driver [label="yes" fontname="courier new" fontsize="10"]
+            UID_gpu_driver->UID_gpu_hard
+            UID_soft_h->UID_soft_c
+         }
 
 **LLUI_PAINTER_IMPL_drawImage** (available in MicroUI C Module)
 
@@ -188,26 +251,58 @@ These name redirections are helpful when the VEE Port features more than one des
 
 **UI_DRAWING_GPU_drawImage** (to write in the BSP)
 
-Similar to ``UI_DRAWING_GPU_drawLine`` (see :ref:`section_drawings_cco`), but lets the image drawer manage the image instead of calling the software drawer directly.
+Similar to ``UI_DRAWING_GPU_drawLine`` (see :ref:`section_drawings_cco`), but lets the image drawer manage the image instead of calling the software drawer directly (*Default Implementation*) or takes advantage of the define ``LLUI_IMAGE_CUSTOM_FORMATS`` (*Optimized Implementation*):
 
-.. code-block:: c
 
-   // Unlike the MicroUI C Module, this function is not "weak".
-   DRAWING_Status UI_DRAWING_GPU_drawImage(MICROUI_GraphicsContext* gc, MICROUI_Image* img, jint regionX, jint regionY, jint width, jint height, jint x, jint y, jint alpha) {
-      
-      DRAWING_Status status;
+.. tabs::
 
-      if (is_gpu_compatible(xxx)) {
-         
-         // See chapter "Drawings"
-         // [...]
-      }
-      else {
-         // Let the image drawer manages the image (available in the C module)
-         status = UI_IMAGE_DRAWING_draw(gc, img, regionX, regionY, width, height, x, y, alpha);
-      }
-      return status;
-   }
+   .. tab:: Default Implementation
+
+      .. code-block:: c
+
+         // Unlike the MicroUI C Module, this function is not "weak".
+         DRAWING_Status UI_DRAWING_GPU_drawImage(MICROUI_GraphicsContext* gc, MICROUI_Image* img, jint regionX, jint regionY, jint width, jint height, jint x, jint y, jint alpha) {
+            
+            DRAWING_Status status;
+
+            if (is_gpu_compatible(xxx)) {
+               
+               // See chapter "Drawings"
+               // [...]
+            }
+            else {
+               // Let the image drawer manages the image (available in the C module)
+               status = UI_IMAGE_DRAWING_draw(gc, img, regionX, regionY, width, height, x, y, alpha);
+            }
+            return status;
+         }
+
+   .. tab:: Optimized Implementation
+
+      .. code-block:: c
+
+         // Unlike the MicroUI C Module, this function is not "weak".
+         DRAWING_Status UI_DRAWING_GPU_drawImage(MICROUI_GraphicsContext* gc, MICROUI_Image* img, jint regionX, jint regionY, jint width, jint height, jint x, jint y, jint alpha) {
+            
+            DRAWING_Status status;
+
+            if (is_gpu_compatible(xxx)) {
+               
+               // See chapter "Drawings"
+               // [...]
+            }
+            else {
+         #if !defined(UI_FEATURE_IMAGE_CUSTOM_FORMATS)
+               status = UI_DRAWING_SOFT_drawImage(gc, img, regionX, regionY, width, height, x, y, alpha);
+         #else
+               // Let the image drawer manages the image (available in the C module)
+               status = UI_IMAGE_DRAWING_draw(gc, img, regionX, regionY, width, height, x, y, alpha);
+         #endif
+            }
+            return status;
+         }
+
+
 
 **UI_DRAWING_DEFAULT_drawImage** (available in MicroUI C Module)
 
@@ -289,30 +384,30 @@ The following graph illustrates the drawing of an image:
 
       // --- SIMPLE FLOW ELEMENTS -- //
 
-      mui [label="[MicroUI]\nPainter.drawXXX();"] 
-      LLUI_h [label="[LLUI_PAINTER_impl.h]\nLLUI_PAINTER_IMPL_drawXXX();"]
-      LLUI_c [label="[LLUI_PAINTER_impl.c]\nLLUI_PAINTER_IMPL_drawXXX();"]
-      UID_h [label="[ui_drawing.h]\nUI_DRAWING_drawXXX();"]
-      UID_weak_c [label="[ui_drawing.c]\nweak UI_DRAWING_drawXXX();"]
-      UID_soft_h [label="[ui_drawing_soft.h]\nUI_DRAWING_SOFT_drawXXX();"]
+      mui [label="[MicroUI]\nPainter.drawImage();"] 
+      LLUI_h [label="[LLUI_PAINTER_impl.h]\nLLUI_PAINTER_IMPL_drawImage();"]
+      LLUI_c [label="[LLUI_PAINTER_impl.c]\nLLUI_PAINTER_IMPL_drawImage();"]
+      UID_h [label="[ui_drawing.h]\nUI_DRAWING_drawImage();"]
+      UID_weak_c [label="[ui_drawing.c]\nweak UI_DRAWING_drawImage();"]
+      UID_soft_h [label="[ui_drawing_soft.h]\nUI_DRAWING_SOFT_drawImage();"]
       UID_soft_c [label="[Graphics Engine]"]
 
       // --- GPU FLOW ELEMENTS -- //
 
       UID_cond [label="algo implemented?"]
-      UID_gpu_c [label="[ui_drawing_gpu.c]\nUI_DRAWING_drawXXX();"]
+      UID_gpu_c [label="[ui_drawing_gpu.c]\nUI_DRAWING_drawImage();"]
       UID_gpu_cond [label="GPU compatible?"]
       UID_gpu_driver [label="[GPU driver]"]
       UID_gpu_hard [label="[GPU]"]
 
-      UID_stub_h [label="[ui_drawing_stub.h]\nUI_DRAWING_STUB_drawXXX();"]
-      UID_stub_c [label="[ui_drawing_stub.c]\nUI_DRAWING_STUB_drawXXX();"]
+      UID_stub_h [label="[ui_drawing_stub.h]\nUI_DRAWING_STUB_drawImage();"]
+      UID_stub_c [label="[ui_drawing_stub.c]\nUI_DRAWING_STUB_drawImage();"]
       stub [label="-"]
 
       // --- MULTIPLE IMAGES FLOW ELEMENTS -- //
 
-      UII_h [label="[ui_image_drawing.h]\nUI_IMAGE_DRAWING_drawXXX();"]
-      UII_c [label="[ui_image_drawing.c]\nUI_IMAGE_DRAWING_drawXXX();"]
+      UII_h [label="[ui_image_drawing.h]\nUI_IMAGE_DRAWING_draw();"]
+      UII_c [label="[ui_image_drawing.c]\nUI_IMAGE_DRAWING_draw();"]
       UII_cond [label="standard image?"]
       UIIx_c [label="[ui_image_drawing.c]\ntable[x] = UI_IMAGE_DRAWING_draw_customX()"]
       UIIx_weak_c [label="[ui_image_drawing.c]\nweak UI_IMAGE_DRAWING_draw_customX();"]
@@ -433,6 +528,8 @@ Standard Formats Only (Default Implementation)
 
 The default implementation can draw images with a standard format.
 
+.. note:: Contrary to the :ref:`section_renderer_cco`, the simulation does not (and doesn't need to) provide an option to disable the use of custom image. 
+
 The following graph illustrates the drawing of an image:
 
 .. graphviz:: :align: center
@@ -461,17 +558,17 @@ The following graph illustrates the drawing of an image:
 
       // --- SIMPLE FLOW ELEMENTS -- //
 
-      mui [label="[MicroUI]\nPainter.drawXXX();"] 
-      LLUI_c [label="[FrontPanel]\nLLUIPainter.drawXXX();"]
-      UID_h [label="[FrontPanel]\ngetUIDrawer().drawXXX();"]
-      UID_weak_c [label="[FrontPanel]\nDisplayDrawer.drawXXX();"]
-      UID_soft_h [label="[FrontPanel]\ngetUIDrawerSoftware()\n.drawXXX();"]
+      mui [label="[MicroUI]\nPainter.drawImage();"] 
+      LLUI_c [label="[FrontPanel]\nLLUIPainter.drawImage();"]
+      UID_h [label="[FrontPanel]\ngetUIDrawer().drawImage();"]
+      UID_weak_c [label="[FrontPanel]\nDisplayDrawer.drawImage();"]
+      UID_soft_h [label="[FrontPanel]\ngetUIDrawerSoftware()\n.drawImage();"]
       UID_soft_c [label="[Graphics Engine]"]
 
       // --- GPU FLOW ELEMENTS -- //
 
       UID_cond [label="method overridden?"]
-      UID_gpu_c [label="[VEE Port FP]\nDisplayDrawerExtension\n.drawXXX();"]
+      UID_gpu_c [label="[VEE Port FP]\nDisplayDrawerExtension\n.drawImage();"]
       UID_gpu_cond [label="can draw algo?"]
       UID_gpu_hard [label="[Third-party lib]"]
 
@@ -480,7 +577,7 @@ The following graph illustrates the drawing of an image:
 
       // --- MULTIPLE IMAGES FLOW ELEMENTS -- //
 
-      UII_h [label="[FrontPanel]\ngetUIImageDrawer()\n.drawXXX();"]
+      UII_h [label="[FrontPanel]\ngetUIImageDrawer()\n.drawImage();"]
       UII_cond [label="standard image?"]
 
       // --- FLOW -- //
@@ -548,17 +645,17 @@ The following graph illustrates the drawing of an image:
 
       // --- SIMPLE FLOW ELEMENTS -- //
 
-      mui [label="[MicroUI]\nPainter.drawXXX();"] 
-      LLUI_c [label="[FrontPanel]\nLLUIPainter.drawXXX();"]
-      UID_h [label="[FrontPanel]\ngetUIDrawer().drawXXX();"]
-      UID_weak_c [label="[FrontPanel]\nDisplayDrawer.drawXXX();"]
-      UID_soft_h [label="[FrontPanel]\ngetUIDrawerSoftware()\n.drawXXX();"]
+      mui [label="[MicroUI]\nPainter.drawImage();"] 
+      LLUI_c [label="[FrontPanel]\nLLUIPainter.drawImage();"]
+      UID_h [label="[FrontPanel]\ngetUIDrawer().drawImage();"]
+      UID_weak_c [label="[FrontPanel]\nDisplayDrawer.drawImage();"]
+      UID_soft_h [label="[FrontPanel]\ngetUIDrawerSoftware()\n.drawImage();"]
       UID_soft_c [label="[Graphics Engine]"]
 
       // --- GPU FLOW ELEMENTS -- //
 
       UID_cond [label="method overridden?"]
-      UID_gpu_c [label="[VEE Port FP]\nDisplayDrawerExtension\n.drawXXX();"]
+      UID_gpu_c [label="[VEE Port FP]\nDisplayDrawerExtension\n.drawImage();"]
       UID_gpu_cond [label="can draw algo?"]
       UID_gpu_hard [label="[Third-party lib]"]
 
@@ -567,13 +664,13 @@ The following graph illustrates the drawing of an image:
 
       // --- MULTIPLE IMAGES FLOW ELEMENTS -- //
 
-      UII_h [label="[FrontPanel]\ngetUIImageDrawer()\n.drawXXX();"]
+      UII_h [label="[FrontPanel]\ngetUIImageDrawer()\n.drawImage();"]
       UII_cond [label="standard image?"]
       UIIx_cond [label="available image drawer\nand method implemented?"]
       UIIx_impl_c [label="[VEE Port Fp]\nCustomImageDrawing.draw()"]
       UIIx_impl_d [label="[custom drawing]"]
 
-      UID_h2 [label="[FrontPanel]\ngetUIDrawer().drawXXX();\n@see Simple Flow (chapter Drawings)"]
+      UID_h2 [label="[FrontPanel]\ngetUIDrawer().drawImage();\n@see Simple Flow (chapter Drawings)"]
 
       // --- FLOW -- //
 

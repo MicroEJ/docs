@@ -113,12 +113,10 @@ The following IDEs are supported:
 
 - `Android Studio <https://developer.android.com/studio>`__ - Minimum supported version is ``Hedgehog - 2023.1.1``.
 - `IntelliJ IDEA <https://www.jetbrains.com/idea/>`__ (Community or Ultimate edition) - Minimum supported version is ``2021.2``.
-- `Eclipse IDE for Java Developers <https://www.eclipse.org/downloads/packages/>`__ - Minimum supported version is ``2022-03``.
+- `Eclipse IDE for Java Developers <https://www.eclipse.org/downloads/packages/>`__ - Versions from ``2022-03`` to ``2024-06`` are supported.
 - `Visual Studio Code <https://code.visualstudio.com/download>`__ - Minimum supported version is ``1.89.0``.
 
 Follow their respective documentation to install one of them.
-
-These 3 IDEs come with the Gradle plugin installed by default.
 
 
 .. _sdk_6_install_ide_plugin:
@@ -230,20 +228,44 @@ Once your favorite IDE is installed, plugins must be installed to develop MicroE
 
    .. tab:: Visual Studio Code
 
-      MicroEJ does not provide a dedicated plugin for VS Code, but Microsoft provides a plugin that brings a useful collection of plugins for Java
-      called `Extension Pack for Java <https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack>`__. To install this plugin:
+      MicroEJ does not provide a dedicated extension for VS Code, but Microsoft provides a extension that brings a useful collection of extensions for Java
+      called `Extension Pack for Java <https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack>`__. To install this extension:
 
       - In Visual Studio Code, open the :guilabel:`Extensions` tab (Ctrl+Shift+X)
       - In the search field, type ``extension pack for Java``:
 
       .. figure:: images/vscode_java_extensions.png
-            :alt: VS Code Java Plugins Installation
+            :alt: VS Code Java Extensions Installation
             :align: center
             :scale: 70%
          
-            VS Code Java Plugins Installation
+            VS Code Java Extensions Installation
 
       - Click on the :guilabel:`Install` button of the extension
+
+      This extension is compatible with MicroEJ development, but requires a specific version to be fully functional.
+      Follow these steps to setup Visual Studio Code:
+
+      - Go to the ``Installed`` extensions.
+      - Right-click on the ``Language Support for Java(TM) by Red Hat`` extension.
+      - Click on ``Install Specific Version ...``.
+
+         .. figure:: images/vs-code-install-specific-version.png
+            :alt: Visual Studio Code - Install specific extension version
+            :align: center
+            :scale: 70%
+
+      - Select version ``1.32.0``.
+      - Once installed, click on the ``Restart Extensions`` button.
+      - Click on the Java status in the bottom bar.
+
+         .. figure:: images/vs-code-java-status.png
+            :alt: Visual Studio Code - Java status
+            :align: center
+            :scale: 70%
+
+      - Select the ``Clean Workspace Cache ...`` action in the upcoming menu.
+      - In the upcoming popup in the bottom-right corner, click on the ``Reload and delete`` button.
 
       .. warning::
          Unlike other supported IDEs (Android Studio/IntelliJ IDEA/Eclipse), there is no MicroEJ plugin which removes

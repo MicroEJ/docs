@@ -88,13 +88,13 @@ the following error is raised:
   Execution failed for task ':dependencies'.
   > The version of the dependency "ej.api:edc" is not correct: "x1.3.5". It must start with digits, followed by a dot.
 
-It is possible to disable this check by setting the ``versionsCheckEnabled`` 
+It is possible to disable this check by setting the ``dependenciesVersionsCheckEnabled`` 
 property of the ``microej`` configuration block to ``false`` in the project build file:
 
 .. code-block:: java
 
   microej {
-    versionsCheckEnabled = false
+    dependenciesVersionsCheckEnabled = false
   }
 
 
