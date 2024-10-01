@@ -13,15 +13,15 @@ MicroEJ leverages a runtime environment called VEE (`Virtual Execution Environme
 
 Browse the following chapters to familiarize yourself and understand the principles of development with MicroEJ Technology.
 
-- The :ref:`<chapter-glossary>` chapter describes MicroEJ terminology.
-- The :ref:`<overview>` chapter introduces MicroEJ products and technology.
-- The :ref:`<sdk_user_guide>` chapter presents MICROEJ SDK 5 (Software Development Kit). Use SDK 5 for legacy development.
-- The :ref:`<sdk_user_guide>` chapter presents MICROEJ SDK 6 (Software Development Kit). Use SDK 6 for new projects.
-- The :ref:`<application-developer-guide>` presents how to develop a Java or JavaScript application on MICROEJ VEE (Virtual Execution Environment).
-- The :ref:`<vee-porting-guide>` teaches you how to integrate MICROEJ VEE into a C Board Support Package as well as simulation configurations.
-- The :ref:`<kernel-developer-guide>` introduces you to advanced concepts, such as partial updates and dynamic app life cycle workflows.
-- The :ref:`<vee-wear>` addresses the development of smartwatch applications using VEE Wear, specifically designed for low-power MCU and MPU.
-- The :ref:`<tutorials>` chapter covers a variety of topics related to developing with the MicroEJ ecosystem.
+- The :ref:`chapter-glossary` chapter describes MicroEJ terminology.
+- The :ref:`overview` chapter introduces MicroEJ products and technology.
+- The :ref:`sdk_user_guide` chapter presents MICROEJ SDK 5 (Software Development Kit). Use SDK 5 for legacy development.
+- The :ref:`sdk_6_user_guide` chapter presents MICROEJ SDK 6 (Software Development Kit). Use SDK 6 for new projects.
+- The :ref:`application-developer-guide` presents how to develop a Java or JavaScript application on MICROEJ VEE (Virtual Execution Environment).
+- The :ref:`vee-porting-guide` teaches you how to integrate MICROEJ VEE into a C Board Support Package as well as simulation configurations.
+- The :ref:`kernel-developer-guide` introduces you to advanced concepts, such as partial updates and dynamic app life cycle workflows.
+- The :ref:`vee-wear` addresses the development of smartwatch applications using VEE Wear, specifically designed for low-power MCU and MPU.
+- The :ref:`tutorials` chapter covers a variety of topics related to developing with the MicroEJ ecosystem.
 
 .. toctree::
    :maxdepth: 2
