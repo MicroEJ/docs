@@ -192,7 +192,8 @@ or issues with a stored Feature, such as corruption or incompatibility.
    |         | the one returned when the Feature has been installed.          |
    +---------+----------------------------------------------------------------+
    | 60      | The ``LLKERNEL_IMPL_getFeatureHandle()`` function returned     |
-   |         | ``0``. The Feature cannot be allocated in memory.              |
+   |         | ``0``. The handle for an installed Feature could not be        |
+   |         | retrieved as expected.                                         | 
    +---------+----------------------------------------------------------------+
    
 .. _java.lang.IllegalAccessError: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/IllegalAccessError.html
