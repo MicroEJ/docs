@@ -184,10 +184,7 @@ and have a monitor that a thread may enter into.
 There is no way for an immutable object to directly refer to a
 non-immutable object. References from immutable objects always refer to
 other immutable objects. Writing into an immutable object (field write
-access) results in an unspecified behavior. The BON experts group
-strongly encourages implementations of the BON specification to raise
-an uncatchable exception when there is an attempt to write into an
-immutable object, although a no-op operation may be sufficient.
+access) results in an unspecified behavior. 
 
 Immutable objects are declared at build time by specifying objects in an
 XML configuration file, as described in the sections immediately below.
@@ -227,8 +224,6 @@ value (``0`` for numeric types, ``null`` for objects, ``false`` for booleans,
 that is, any kind of field may be listed, even private ones. 
 
 There is no particular order for the creation of the immutable objects.
-The BON experts recommend the use of tools for the creation of large
-graphs of immutable objects.
 
 XML Grammar
 +++++++++++
