@@ -586,8 +586,8 @@ The order is statically computed from the application code entry points and does
 If the application code does not change, the order remains the same.
 The order is also compatible with the Java semantic. Intuitively,
 a class may depend on other classes. Those classes should be initialized
-first. We list a few of these dependencies: object creation, superclass,
-methods receiver, arguments and fields types, ….
+first. Here are some of the main dependencies: object creation, superclass,
+method receiver, argument types, field types, etc.
 
 Dependencies of classes upon themselves define a graph of dependencies.
 This graph may depict cycles. The graph is linearized in an order which
