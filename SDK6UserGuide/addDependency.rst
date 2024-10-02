@@ -67,7 +67,9 @@ The version declared in the dependencies of a build file are explicit:
    or a snapshot version (e.g., ``1.0.0-RCxxx``) otherwise. 
    This is not the case anymore in the SDK 6.
 
-Version check
+.. _sdk_6_dependency_version_check:
+
+Version Check
 ^^^^^^^^^^^^^
 
 In order to reduce the risk of mistakes, a check is done during the resolution process on the declared dependencies versions.
