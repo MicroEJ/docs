@@ -28,7 +28,7 @@ BON also adds a set of useful utilities:
 -  Read-write `ByteArray`_ support according to the underlying processor
    endianness.
 -  `ResourceBuffer`_ support for random read access in a :ref:`resource <section.classpath.elements.raw_resources>`.
--  Accessing compile-time :ref:`constants <section.classpath.elements.constants>`.
+- Compile-time :ref:`constants <section.classpath.elements.constants>`.
 
 Specification Summary
 ~~~~~~~~~~~~~~~~~~~~~
@@ -55,7 +55,7 @@ In order to cope with these two contradictory issues, there are two main
 approaches, each one at the extremity of the possibility spectrum:
 
 -  Pre-allocate all of what is needed for the program to run, either
-   statically (at compile time) or dynamically once and for all at
+   statically (at compile-time) or dynamically once and for all at
    system startup. While running, no extra allocation is done. This
    approach is often used for Hard Real-Time systems when the memory
    consumption cannot be defined at compile-time through formal
@@ -65,7 +65,7 @@ approaches, each one at the extremity of the possibility spectrum:
    collectors. A huge number of different garbage collection policies
    are available and each have their own benefits and drawbacks.
 
-The BON specification builds upon the existing Java specification, which already defines:
+The BON specification extends the existing Java specification, which already defines:
 
 - a heap where Java objects are stored. This heap is automatically managed by a garbage collector. 
 - a semantically immutable set of objects, the pool of intern `String`_,
@@ -161,7 +161,7 @@ Object Natures
 
 The BON specification extends the Java semantic by defining three natures for objects: 
 
-- :ref:`Immutable objects <immutable>` : persistent objects that are alive at system startup.
+- :ref:`Immutable objects <immutable>`: persistent objects that are alive at system startup.
   Immutable objects are also referred to as read-only objects, since they most probably reside in non-volatile memory. 
   All together they form a pre-existing world that exists on its own, just like the hardware does.
 - :ref:`Immortal objects <immortal>`: objects that do not move around in memory: they remain physically located in one memory location forever.
@@ -177,7 +177,7 @@ Persistent Immutable Objects
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Immutable objects are read-only objects. They are instances of any
-concrete class. Although they are immutable, they obey all the Java
+concrete class. Although they are immutable, they adhere to all the Java
 object's semantics. In particular, they hold a hash code, have a class
 and have a monitor that a thread may enter into.
 
@@ -219,7 +219,7 @@ structural information such as fully qualified class names and field
 names. Fields  that need to get initialized with some value
 (base-type or another immutable object) are described using a pair:
 field-name, value. 
-Only instance fields of objects are involved, i.e. not static fields.
+Only instance fields of objects are involved, i.e., not static fields.
 
 Fields that are not described get initialized with the default Java
 value (``0`` for numeric types, ``null`` for objects, ``false`` for booleans,
@@ -234,7 +234,7 @@ XML Grammar
 +++++++++++
 
 Immutable objects are described according to the following XML syntax
-(Annex :ref:`DTD` gives the DTD).
+(:ref:`DTD`).
 
 -  ``<immutables>``: the root element of one immutable objects description.
 
@@ -249,7 +249,7 @@ Immutable objects are described according to the following XML syntax
    -  attributes:
   
       -  ``id``: the ID string that allows the object to be retrieved
-         through the use of `Immutables.get(String)`_
+         through the use of `Immutables.get(String)`_.
       -  ``type``: the name of the class of the object. An alias may be
          used instead of the fully-qualified class name.
       -  ``private``: a boolean that indicates whether the object will be
@@ -521,7 +521,7 @@ Turning Objects Into Immortal Objects
 
 Reclaimable objects may be turned into immortal objects using the
 `Immortals.setImmortal(Object)`_ method. Only the object passed as
-argument is turned into an immortal object, i.e. none of the objects it
+argument is turned into an immortal object, i.e., none of the objects it
 refers to through its fields become immortal. This is in contrast with
 `Immortals.deepImmortal(Object)`_ that turns the object passed as the
 argument and all objects referred to from the argument into immortal
@@ -569,7 +569,7 @@ method once the system enters the mission phase.
   BON phases and threads activation.
 
 If other threads are created while the class initializations execute
-(``<clinit>`` methods), those threads will be on hold (i.e. waiting) until
+(``<clinit>`` methods), those threads will be on hold (i.e., waiting) until
 the system enters the mission phase, even if those threads have received
 the ``start()`` message and have a higher priority than the main thread.
 
@@ -607,7 +607,7 @@ Utilities
 Timer & TimerTask
 ~~~~~~~~~~~~~~~~~
 
-An `Timer`_ defines a single Java thread in charge of scheduling
+A `Timer`_ defines a single Java thread in charge of scheduling
 `Runnable`_ objects from the `TimerTask`_ class. All `TimerTask`_
 are executed sequentially, according to their schedule. A `Timer`_ does
 its best effort to schedule the `TimerTask`_ appropriately, which depends
@@ -615,14 +615,14 @@ on the `TimerTask`_ durations and schedules (there is no real-time
 guaranties).
 
 A `TimerTask`_ may be scheduled repeatedly. In that case, the delay for
-the next schedule may depends on the end of the previous ending of the
+the next schedule may depend on the end of the previous ending of the
 `TimerTask`_, and not on some absolute time: if the previously execution
 of the `TimerTask`_ is delayed for some reason, the next executions are
 delayed too by the same amount of time. It is also possible to schedule
 repeatedly a `TimerTask`_ at fixed rate, which allows executions to be
-independent .
+independent.
 
-In case a `TimerTask`_ execution terminates unexpectedly, the other tasks
+If a `TimerTask`_ execution terminates unexpectedly, the other tasks
 are not impacted: the `TimerTask`_ is assumed to have terminated its
 execution regularly, and is not rescheduled event if it was scheduled
 repeatedly.
@@ -681,7 +681,7 @@ significant byte first.
 
   Representation of the 32-bit quantity 0x0000100A using both BigEndian and in LittleEndian layout.
 
-BON introduces methods to read and write into array of byte (byte[])
+BON introduces methods to read and write into array of byte (``byte[]``)
 according to the platform endianness, or according to a specific
 provided endianness. The `ByteArray`_ class provides such APIs:
 
@@ -693,7 +693,7 @@ provided endianness. The `ByteArray`_ class provides such APIs:
    reads and writes an ``int`` using the specified endianness as last
    argument, which may be either `LITTLE_ENDIAN`_ or `BIG_ENDIAN`_.
 
-Similar methods are provided for ``short``, ``char``, ``long`` types.
+Similar methods are provided for ``short``, ``char``, and ``long`` types.
 
 .. _DTD:
 
