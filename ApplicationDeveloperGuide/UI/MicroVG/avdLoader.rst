@@ -89,12 +89,12 @@ If the input Vector Drawable does not comply with this format, the library will 
    See :ref:`this section <section.avdloader.convert>` for more information.
 
 
-Why is the Supported Format a Subset of Android Vector Drawable?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Format Limitations
+~~~~~~~~~~~~~~~~~~
 
 The library only supports a subset of the `Vector Drawable specification <https://developer.android.com/reference/android/graphics/drawable/VectorDrawable>`_.
 
-This is because the AVD Loader is designed to load AVDs at runtime on embedded devices.
+The AVD Loader is designed to load AVDs at runtime on embedded devices.
 It minimizes Java heap usage and CPU time for XML parsing, Path creation, and adds little code to the final executable.
 The format is intentionally limited to reduce processing time and complexity while ensuring good performance, knowing that the :ref:`pre-processing step <section.avdloader.convert>` can convert any AVD into the compatible format. 
 
@@ -157,8 +157,8 @@ Advanced
 
 .. _section.avdloader.convert:
 
-Make a Vector Drawable compatible with the library
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Make a AVD Compatible with the Library
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To ensure that a Vector Drawable can be loaded by the AVD Loader library at runtime, the image generator tool can generate a compatible version of the drawable.
 
@@ -179,8 +179,8 @@ The processing does the following:
 * Pre-process the resource-consuming operations (e.g., transformations, stroking)
 
 
-Convert a SVG into a compatible Vector Drawable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Make a SVG Compatible with the Library
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 It is possible to convert a SVG into a compatible Vector Drawable using the platform tooling. Use the following command:
 
