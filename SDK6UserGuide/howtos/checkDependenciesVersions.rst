@@ -4,7 +4,8 @@ How To Check Dependencies Updates
 =================================
 
 To check if Gradle dependencies are up-to-date, you can use the `Gradle Versions Plugin <https://github.com/ben-manes/gradle-versions-plugin>`__.
-This Gradle plugin lists all the dependencies declared in the ``build.grate.kts`` file, and tells whether they are up-to-date or if a new version is available.
+This Gradle plugin lists all the dependencies declared in the ``build.gradle.kts`` file, and tells whether they are up-to-date or if a new version is available.
+
 
 Configure the Project
 ---------------------
