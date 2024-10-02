@@ -529,11 +529,11 @@ This graph gathers both :ref:`draw in a custom image <section_buffered_image_c_d
 
     // --- SIMPLE FLOW ELEMENTS -- //
 
-    mui [label="[MicroUI]\nPainter.drawXXX();"] 
-    LLUI_h [label="[LLUI_PAINTER_impl.h]\nLLUI_PAINTER_IMPL_drawXXX();"]
-    LLUI_c [label="[LLUI_PAINTER_impl.c]\nLLUI_PAINTER_IMPL_drawXXX();"]
-    UID_h [label="[ui_drawing.h]\nUI_DRAWING_drawXXX();"]
-    UID_soft_h [label="[ui_drawing_soft.h]\nUI_DRAWING_SOFT_drawXXX();"]
+    mui [label="[MicroUI]\nPainter.drawImage();"] 
+    LLUI_h [label="[LLUI_PAINTER_impl.h]\nLLUI_PAINTER_IMPL_drawImage();"]
+    LLUI_c [label="[LLUI_PAINTER_impl.c]\nLLUI_PAINTER_IMPL_drawImage();"]
+    UID_h [label="[ui_drawing.h]\nUI_DRAWING_drawImage();"]
+    UID_soft_h [label="[ui_drawing_soft.h]\nUI_DRAWING_SOFT_drawImage();"]
     UID_soft_c [label="[Graphics Engine]"]
 
     // --- GPU FLOW ELEMENTS -- //
@@ -545,26 +545,26 @@ This graph gathers both :ref:`draw in a custom image <section_buffered_image_c_d
 
     // --- MULTIPLE GC FLOW ELEMENTS -- //
 
-    UID_c [label="[ui_drawing.c]\nUI_DRAWING_drawXXX();"]
+    UID_c [label="[ui_drawing.c]\nUI_DRAWING_drawImage();"]
     UID_table [label="GC format?"]
-    UID_c0 [label="[ui_drawing.c]\ntable[0] = UI_DRAWING_drawXXX_0()"]
-    UID_c1 [label="[ui_drawing.c]\ntable[1] = UI_DRAWING_drawXXX_1()"]
-    UID_weak_0_c [label="[ui_drawing.c]\nweak UI_DRAWING_drawXXX_0();"]
-    UID_gpu_0_c [label="[ui_drawing_gpu.c]\nUI_DRAWING_drawXXX_0();"]
+    UID_c0 [label="[ui_drawing.c]\ntable[0] = UI_DRAWING_drawImage_0()"]
+    UID_c1 [label="[ui_drawing.c]\ntable[1] = UI_DRAWING_drawImage_1()"]
+    UID_weak_0_c [label="[ui_drawing.c]\nweak UI_DRAWING_drawImage_0();"]
+    UID_gpu_0_c [label="[ui_drawing_gpu.c]\nUI_DRAWING_drawImage_0();"]
     UID_cond_1 [label="implemented?"]
-    UID_weak_1_c [label="[ui_drawing.c]\nweak UI_DRAWING_drawXXX_1();"]
-    UID_1_c [label="[ui_drawing_yyy.c]\nUI_DRAWING_drawXXX_1();"]
+    UID_weak_1_c [label="[ui_drawing.c]\nweak UI_DRAWING_drawImage_1();"]
+    UID_1_c [label="[ui_drawing_yyy.c]\nUI_DRAWING_drawImage_1();"]
     UID_1_d [label="[custom drawing]"]
     UID_1_i [label="image compatible?"]
 
-    UID_stub_h [label="[ui_drawing_stub.h]\nUI_DRAWING_STUB_drawXXX();"]
-    UID_stub_c [label="[ui_drawing_stub.c]\nUI_DRAWING_STUB_drawXXX();"]
+    UID_stub_h [label="[ui_drawing_stub.h]\nUI_DRAWING_STUB_drawImage();"]
+    UID_stub_c [label="[ui_drawing_stub.c]\nUI_DRAWING_STUB_drawImage();"]
     stub [label="-"]
 
     // --- MULTIPLE IMAGES FLOW ELEMENTS -- //
 
-    UII_h [label="[ui_image_drawing.h]\nUI_IMAGE_DRAWING_drawXXX();"]
-    UII_c [label="[ui_image_drawing.c]\nUI_IMAGE_DRAWING_drawXXX();"]
+    UII_h [label="[ui_image_drawing.h]\nUI_IMAGE_DRAWING_draw();"]
+    UII_c [label="[ui_image_drawing.c]\nUI_IMAGE_DRAWING_draw();"]
     UII_cond [label="standard image?"]
     UII_gc [label="GC format?"]
     UIIx_c [label="[ui_image_drawing.c]\ntable[x] = UI_IMAGE_DRAWING_draw_customX()"]
@@ -960,10 +960,10 @@ This graph gathers both graphs :ref:`draw in a custom image <section_buffered_im
 
     // --- SIMPLE FLOW ELEMENTS -- //
 
-    mui [label="[MicroUI]\nPainter.drawXXX();"] 
-    LLUI_c [label="[FrontPanel]\nLLUIPainter.drawXXX();"]
-    UID_h [label="[FrontPanel]\ngetUIDrawer().drawXXX();"]
-    UID_soft_h [label="[FrontPanel]\ngetUIDrawerSoftware()\n.drawXXX();"]
+    mui [label="[MicroUI]\nPainter.drawImage();"] 
+    LLUI_c [label="[FrontPanel]\nLLUIPainter.drawImage();"]
+    UID_h [label="[FrontPanel]\ngetUIDrawer().drawImage();"]
+    UID_soft_h [label="[FrontPanel]\ngetUIDrawerSoftware()\n.drawImage();"]
     UID_soft_c [label="[Graphics Engine]"]
 
     // --- GPU FLOW ELEMENTS -- //
@@ -975,8 +975,8 @@ This graph gathers both graphs :ref:`draw in a custom image <section_buffered_im
     // --- MULTIPLE GC FLOW ELEMENTS -- //
 
     UID_table [label="GC format?"]
-    UID_c0 [label="[FrontPanel]\nDisplayDrawer.drawXXX()"]
-    UID_gpu_0_c [label="[VEE Port FP]\nDisplayDrawerExtension\n.drawXXX();"]
+    UID_c0 [label="[FrontPanel]\nDisplayDrawer.drawImage()"]
+    UID_gpu_0_c [label="[VEE Port FP]\nDisplayDrawerExtension\n.drawImage();"]
     UID_cond_1 [label="available drawer and\nmethod implemented?"]
 
     UID_1_d [label="[custom drawing]"]
@@ -987,7 +987,7 @@ This graph gathers both graphs :ref:`draw in a custom image <section_buffered_im
 
     // --- MULTIPLE IMAGES FLOW ELEMENTS -- //
 
-    UII_h [label="[FrontPanel]\ngetUIImageDrawer()\n.drawXXX();"]
+    UII_h [label="[FrontPanel]\ngetUIImageDrawer()\n.drawImage();"]
     UII_cond [label="standard image?"]
     UII_gc [label="GC format?"]
     UIIx_cond [label="available image drawer\nand method implemented?"]
@@ -995,7 +995,7 @@ This graph gathers both graphs :ref:`draw in a custom image <section_buffered_im
     UIIx_gc [label="gc compatible?"]
     UIIx_shape [label="can draw shapes?"]
 
-    UID_h2 [label="[FrontPanel]\ngetUIDrawer().drawXXX();\n@see Multiple Output Formats;"]
+    UID_h2 [label="[FrontPanel]\ngetUIDrawer().drawImage();\n@see Multiple Output Formats;"]
 
     // --- FLOW -- //
 

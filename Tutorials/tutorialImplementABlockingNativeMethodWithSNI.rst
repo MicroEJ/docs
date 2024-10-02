@@ -6,7 +6,7 @@ Implement a Blocking Java Native Method with SNI
 
 This tutorial describes the good practices to follow when implementing a blocking native method in C.
 A native method is a method declared in Java with the ``native`` keyword and implemented in C using the
-:ref:`Simple Native Interface (SNI) <sni>`.
+:ref:`Simple Native Interface (SNI) <sni_specification>`.
 
 Intended Audience
 =================
@@ -18,7 +18,7 @@ Prerequisites
 
 The following document assumes the reader already has a setup ready to run a MicroEJ Standalone Application on a target device.
 
-The following document also assumes the reader is familiar with the :ref:`Simple Native Interface (SNI) <sni>` mechanism.
+The following document also assumes the reader is familiar with the :ref:`Simple Native Interface (SNI) <sni_specification>` mechanism.
 If not, the `CallingCFromJava <https://github.com/MicroEJ/Example-Standalone-Java-C-Interface/tree/master/CallingCFromJava/>`_ 
 GitHub example shows the minimum steps required to create a Java program that makes a call to a C function via SNI.
 

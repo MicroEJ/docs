@@ -24,6 +24,7 @@ The following schema shows the overall architecture and modules:
 
    MicroUI/index
    MicroVG/index
+   Motion/index
    MWT/index
    Widgets/index
    Simulation/index

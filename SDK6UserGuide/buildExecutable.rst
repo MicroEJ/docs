@@ -51,7 +51,7 @@ Once these prerequisites are fulfilled, the Executable can be built:
 
           $ ./gradlew buildExecutable
 
-In case of :ref:`Full BSP Connection <bsp_connection>`, the Executable file is generated in the ``build/output/application`` folder of the project.
+In case of :ref:`Full BSP Connection <bsp_connection>`, the Executable file is generated in the ``build/application/executable`` folder of the project.
 
 .. _sdk_6_trigger_executable_build:
 

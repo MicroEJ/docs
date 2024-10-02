@@ -26,7 +26,6 @@ This plugin adds the following tasks to your project:
 - tasks of the `Gradle Java plugin <https://docs.gradle.org/current/userguide/java_plugin.html>`__
 - :ref:`sdk6_module_natures.tasks.adp`
 - :ref:`sdk6_module_natures.tasks.loadVee`
-- :ref:`sdk6_module_natures.tasks.runOnSimulator`
 - :ref:`sdk6_module_natures.tasks.checkModule`
 - :ref:`sdk6_module_natures.tasks.execTool`
 
@@ -111,6 +110,29 @@ This plugin adds the following tasks to your project:
 
 This module nature inherits from the configuration of all its tasks.
 
+.. _sdk6_module_natures.runtime-api:
+
+Runtime API
+-----------
+
+**Plugin Name**: ``com.microej.gradle.runtime-api``
+
+**Tasks**:
+
+This plugin adds the following tasks to your project:
+
+- tasks of the `Gradle Java plugin <https://docs.gradle.org/current/userguide/java_plugin.html>`__
+- :ref:`sdk6_module_natures.tasks.checkModule`
+- :ref:`sdk6_module_natures.tasks.shrinkRuntimeApi`
+- :ref:`sdk6_module_natures.tasks.compileRuntimeApi`
+- :ref:`sdk6_module_natures.tasks.builRuntimeApiJar`
+
+.. graphviz:: graphRuntimeApiModule.dot
+
+**Configuration**:
+
+This module nature inherits from the configuration of all its tasks.
+
 .. _sdk6_module_natures.tasks:
 
 Tasks
@@ -189,7 +211,6 @@ runOnSimulator
 
 This task is used by the following module natures:
 
-- :ref:`sdk6_module_natures.addon_lib`
 - :ref:`sdk6_module_natures.application`
 
 **Configuration**:
@@ -233,6 +254,8 @@ This task is used by the following module natures:
 
 - :ref:`sdk6_module_natures.addon_lib`
 - :ref:`sdk6_module_natures.application`
+- :ref:`sdk6_module_natures.mock`
+- :ref:`sdk6_module_natures.runtime-api`
 
 **Configuration**:
 
@@ -406,7 +429,7 @@ buildFeature
 **Outputs**:
 
 - The generated Feature file (``build/feature/application/application.fo``)
-- The Zip file containing the generated build files (``build/"libs/<application_name>-feature.zip"``)
+- The Zip file containing the generated build files (``build/libs/<application_name>-feature.zip``)
 
 **Module Natures**:
 
@@ -424,7 +447,7 @@ runOnDevice
 **Inputs**:
 
 - The extracted VEE Port folder
-- The folder containing the Executable file (``build/executable/application``)
+- The folder containing the Executable file (``build/application/executable``)
 - The configuration file with all the properties set to launch the build of the Executable (``build/properties/target.properties``)
 
 **Module Natures**:
@@ -522,6 +545,78 @@ This task is used by the following module natures:
 - :ref:`sdk6_module_natures.application`
 
 The ``compileWrapperJava`` task is used internally by the SDK and it is not intended to be executed by the user.
+
+.. _sdk6_module_natures.tasks.shrinkRuntimeApi:
+
+shrinkRuntimeApi
+^^^^^^^^^^^^^^^^
+
+**Description**: Shrinks the Java source files according to the provided :ref:`Kernel APIs <kernel.api>`.
+
+**Inputs**:
+
+- Project Kernel API (``src/main/resources/kernel.api``)
+- Project Java sources (``src/main/java``)
+- The Kernel API files of the Runtime classpath.
+
+**Outputs**:
+
+- The directory in which shrunk Java sources are generated (``build/runtimeApi/shrunkSources``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.runtime-api`
+
+The ``shrinkRuntimeApi`` task is used internally by the SDK and it is not intended to be executed by the user.
+
+.. _sdk6_module_natures.tasks.compileRuntimeApi:
+
+compileRuntimeApi
+^^^^^^^^^^^^^^^^^
+
+**Description**: Compiles the Runtime API :ref:`Kernel APIs <kernel.api>`.
+
+**Inputs**:
+
+- The directory in which shrunk Java sources are generated (``build/runtimeApi/shrunkSources``)
+- The project classpath
+
+**Outputs**:
+
+- The directory in which shrunk Java classes are generated (``build/runtimeApi/shrunkClasses``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.runtime-api`
+
+The ``compileRuntimeApi`` task is used internally by the SDK and it is not intended to be executed by the user.
+
+.. _sdk6_module_natures.tasks.builRuntimeApiJar:
+
+buildRuntimeApiJar
+^^^^^^^^^^^^^^^^^^
+
+**Description**: Builds the Runtime API Jar file.
+
+**Inputs**:
+
+- The directory in which shrunk Java classes are generated (``build/runtimeApi/shrunkClasses``)
+
+**Outputs**:
+
+- The Jar file of the Runtime API (``build/libs/<project_name>-<project_version>-runtime-api.jar``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.runtime-api`
+
+The ``buildRuntimeApiJar`` task is used internally by the SDK and it is not intended to be executed by the user.
 
 .. _gradle_global_build_options:
 

@@ -18,8 +18,8 @@ digraph mygraph {
     "microejVeeClasspath" [fillcolor = "#b0d6d3"]
     "microejKernelExecutableClasspath" [fillcolor = "#b0d6d3"]
     "virtualDeviceToolClasspath" [fillcolor = "#b0d6d3"]
-    "microejRuntimeApiClasspath" [fillcolor = "#b0d6d3"]
-    "microejRuntimeApiKernelClasspath" [fillcolor = "#b0d6d3"]
+    "microejRuntimeApiCompileClasspath" [fillcolor = "#b0d6d3"]
+    "microejRuntimeApiRuntimeClasspath" [fillcolor = "#b0d6d3"]
 
     "loadVee" -> "microejVeeClasspath" [ label="uses" ]
     "microejVeeClasspath" -> "microejVee"
@@ -29,10 +29,12 @@ digraph mygraph {
     "buildVirtualDevice" -> "virtualDeviceToolClasspath" [ label="uses" ]
     "microejApplicationClasspath" -> "microejApplication"
     "virtualDeviceToolClasspath" -> "microejTool"
-    "microejRuntimeApiClasspath" -> "microejRuntimeApi"
-    "microejRuntimeApiKernelClasspath" -> "microejRuntimeApi"
-    "com.microej.gradle.application" -> "microejRuntimeApiClasspath" [ label="uses" ]
-    "buildWPK" -> "microejRuntimeApiKernelClasspath" [ label="uses" ]
-    "buildApplicationObjectFile" -> "microejRuntimeApiKernelClasspath" [ label="uses" ]
-    "buildFeature" -> "microejRuntimeApiKernelClasspath" [ label="uses" ]
+    "microejRuntimeApiCompileClasspath" -> "microejRuntimeApi"
+    "microejRuntimeApiRuntimeClasspath" -> "microejRuntimeApi"
+    "compileJava" -> "microejRuntimeApiCompileClasspath" [ label="uses" ]
+    "compileTestJava" -> "microejRuntimeApiCompileClasspath" [ label="uses" ]
+    "javadoc" -> "microejRuntimeApiCompileClasspath" [ label="uses" ]
+    "buildVirtualDevice" -> "microejRuntimeApiRuntimeClasspath" [ label="uses" ]
+    "buildApplicationObjectFile" -> "microejRuntimeApiRuntimeClasspath" [ label="uses" ]
+    "buildExecutable" -> "microejRuntimeApiRuntimeClasspath" [ label="uses" ]
 }

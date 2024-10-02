@@ -94,6 +94,9 @@ interface. For example:
        void foo();
    }
 
+A Shared Interface includes all methods it declares, along with those inherited from its super types. 
+It can extend any interface, including Feature interfaces (which may or may not be declared as Shared Interfaces) and Kernel interfaces.
+
 Some restrictions apply to Shared Interfaces compared to standard Java
 interfaces:
 
@@ -103,8 +106,16 @@ interfaces:
 Implement the Proxy Class
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A proxy class is implemented and executed on the client side, each
-method of the implemented interface must be defined according to the
+A proxy class is implemented and executed on the client side.
+
+with the following specification:
+
+-  its fully qualified name is the shared interface fully qualified name append with ``Proxy``.
+-  it extends the `Proxy`_ class.
+-  it implements the Shared Interface
+-  it provides an implementation of all interface methods
+
+Each method of the implemented interface must be defined according to the
 following pattern:
 
 .. code:: java
@@ -117,7 +128,10 @@ following pattern:
            try {
                invoke(); // perform remote invocation
            } catch (Throwable e) {
-               e.printStackTrace(); // handle errors
+               // Handle any errors thrown during the remote call, including dead Feature.               
+               // Implement a behavior that complies with the method specification.
+               // i.e. return a valid error code or throw a documented exception.
+               // Logging traces for debug can also be added here.
            }
        }
    }
@@ -250,7 +264,8 @@ to be transferred.
       - Any Class, Array or Interface
       - Kernel
       - Application
-      - Kernel specific or forbidden
+      - Kernel specific. Converted to a target Feature object if the Kernel has registered a
+        :ref:`Kernel type converter <kernelconverter>`, otherwise Forbidden.
 
    - 
 
@@ -264,14 +279,14 @@ to be transferred.
       - Arrays of references
       - Any
       - Application
-      - Clone and transfer rules applied again on each element
+      - Clone and transfer rules applied again on each element (recursively)
 
    - 
 
       - Shared Interface
       - Application
       - Application
-      - Passing by indirect reference (Proxy creation)
+      - Passing by indirect reference (Proxy creation). 
 
    - 
 
@@ -282,23 +297,16 @@ to be transferred.
 
 Objects created by an Application which type is owned by the Kernel
 can be transferred to another Application provided this has been
-authorized by the Kernel. The list of Kernel types that can be
-transferred is Kernel specific, so you have to consult your Kernel
-specification. When an argument transfer is forbidden, the call is
+authorized by the Kernel. When an argument transfer is forbidden, the call is
 abruptly stopped and an `java.lang.IllegalAccessError`_ is thrown by the
 :ref:`Core Engine <core_engine>`.
 
 .. _java.lang.IllegalAccessError: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/IllegalAccessError.html
 
-.. note::
+The list of Kernel types that can be transferred is Kernel specific, so you have to consult your Kernel specification.
+The table below lists some well-known types that your Kernel likely can allow to be transferred through a Shared Interface, along with their behaviors. [#1]_.
 
-   For these types to be transferable, a dedicated :ref:`Kernel Type Converter <kernel_type_converter>` must have been registered in
-   the Kernel.
-
-The table below lists typical Kernel types allowed to be transferred through a Shared Interface
-call on `Evaluation Kernels <https://repository.microej.com/old_index.php?resource=FIRM>` distributed by MicroEJ Corp.
-
-.. list-table:: MicroEJ Evaluation Kernels Rules for Transferable Types
+.. list-table:: Transfer Rules for well-known Kernel Types
    :header-rows: 1
 
    -  - Type
@@ -329,6 +337,8 @@ call on `Evaluation Kernels <https://repository.microej.com/old_index.php?resour
       - Clone by copy with recursive element conversion
    -  - `java.util.Map<K,V> <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/Map.html>`_
       - Clone by copy with recursive keys and values conversion
+
+.. [#1] For these types to be transferable, a dedicated :ref:`Kernel Type Converter <kernel_type_converter>` must have been registered in the Kernel.
 
 .. _section.proxy.implementation:
 
@@ -377,11 +387,16 @@ and are named ``invokeXXX()`` where ``XXX`` is the kind of return type.
 .. _invokeDouble(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html#invokeDouble--
 .. _invokeFloat(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html#invokeFloat--
 
+
 As this class is part of the Application, the developer has
 the full control on the Proxy implementation and is free to insert
 additional code such as logging calls and errors for example. It is also
 possible to have different proxy implementations for the same Shared
 Interface in different applications.
+
+
+
+.. _Proxy: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 

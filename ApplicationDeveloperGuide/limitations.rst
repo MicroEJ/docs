@@ -79,6 +79,12 @@ Please consult :ref:`architecture_changelog` for limitations changes on former v
    * - Number of Java heap Garbage Collection
      - 3000 [4]_
      - unlimited
+   * - Number of Shielded Plug databases
+     - unlimited
+     - unlimited
+   * - Number of blocks per Shielded Plug database
+     - 32767
+     - 32767
 
 
 .. [1]

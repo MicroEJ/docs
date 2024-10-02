@@ -442,7 +442,7 @@ VM Dump
 """""""
 
 The ``LLMJVM_dump()`` function declared in ``LLMJVM.h`` may be called to print information on alive threads such as their current and maximum stack block usage.
-This function may be called from the application by exposing it in a :ref:`native function <sni>`. See :ref:`vm_dump` section for usage.
+This function may be called from the application by exposing it in a :ref:`native function <sni_specification>`. See :ref:`vm_dump` section for usage.
 
 More specifically, the ``Peak java threads count`` value printed in the dump can be used to configure the maximum number of threads.
 The ``max_java_stack`` and ``current_java_stack`` values printed for each thread can be used to configure the number of stack blocks.

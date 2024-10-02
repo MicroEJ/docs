@@ -85,13 +85,13 @@ the verbose mode can be enabled by using the ``--info`` Gradle option::
 Debug on Simulator
 ------------------
 
-The SDK allows to run an Application with the Simulator in debug mode by setting the System property ``debug.mode`` to ``true`` 
+The SDK allows to run an Application with the Simulator in debug mode by setting the project property ``debug.mode`` to ``true`` 
 when executing the runOnSimulator task::
 
    ./gradlew runOnSimulator -P"debug.mode"=true
 
 The debug mode is activated on the port ``12000`` by default. 
-The port can be changed by using the System Property ``debug.port``::
+The port can be changed by using the project Property ``debug.port``::
 
    ./gradlew runOnSimulator -P"debug.mode"=true -P"debug.port"=8000
 
@@ -193,7 +193,7 @@ To generate the Code Coverage files (``.cc``), invoke the ``:runOnSimulator`` ta
 
 ::
 
-   gradle :runOnSimulator -D"s3.cc.thread.period=15" -D"s3.cc.activated=true"
+   gradle :runOnSimulator -D"microej.option.s3.cc.thread.period=15" -D"microej.option.s3.cc.activated=true"
 
 *Option Name*: ``s3.cc.thread.period``
 
@@ -222,6 +222,37 @@ Set to ``true`` to enable a dump of the heap each time the ``System.gc()`` metho
 The ``.heap`` files are generated in ``build/output/application/heapDump/``.
 
 Use the :ref:`Heap Viewer<heapviewer>` to visualize the ``.heap`` files.
+
+.. _sdk_6_run_several_applications_on_simulator:
+
+Run several Applications on Simulator
+-------------------------------------
+
+When a Multi-Sandbox Kernel is provided, it is possible to execute your Application on the Simulator along with additional Applications.
+To run an additional Application on the Simulator, the Application must be declared as a dependency of the project:
+
+- When the Application is published in an artifact repository, you can use it by declaring a Module dependency::
+
+   dependencies {
+      microejApplication("com.mycompany:myapp:1.0.0")
+   }  
+
+- When the Application is a subproject of a multi-project, you can use it by declaring a Project dependency in the ``build.gradle.kts`` file, with the ``microejApplication`` configuration::
+
+   dependencies {
+      microejApplication(project(":myApplication"))
+   }  
+
+- You can also use the Application WPK file directly by declaring a File dependency in the ``build.gradle.kts`` file, with the ``microejApplication`` configuration::
+
+   dependencies {
+      microejApplication(files("C:\\path\\to\\my\\application.wpk"))
+   }     
+
+.. warning::
+   - Only modules with the :ref:`Application Module Nature <sdk6_module_natures.application>` can be declared this 
+     way (modules built with the ``com.microej.gradle.application`` plugin).
+     Declaring a module with another Module Nature would make the build fail.
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 

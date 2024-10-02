@@ -4,6 +4,7 @@
 .. |VGPACKVERSION| replace:: 1.6.0
 .. |VGAPIVERSION| replace:: 1.6.0
 
+.. _C Module MicroUI 4.1.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/4.1.0/
 .. _C Module MicroUI 4.0.1: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/4.0.1/
 .. _C Module MicroUI 4.0.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/4.0.0/
 .. _C Module MicroUI 3.1.1: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/3.1.1/
@@ -51,7 +52,7 @@
 
 .. _VG Pack 1.6.0: https://repository.microej.com/modules/com/microej/pack/vg/vg-pack/1.6.0/
 
-.. _C Module MicroVG over VGLite 8.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-vglite/8.0.0/
+.. _C Module MicroVG over VGLite 8.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-vglite/8.0.1/
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free

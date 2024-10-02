@@ -65,13 +65,13 @@ The `EDC API Module`_ must be added to the project build file of the Application
 
 .. tabs::
 
-   .. tab:: Gradle (build.gradle.kts)
+   .. tab:: SDK 6
 
       .. code-block:: java
 
          implementation("ej.api:edc:1.3.5")
 
-   .. tab:: MMM (module.ivy)
+   .. tab:: SDK 5
 
       .. code-block:: xml
 
@@ -119,13 +119,13 @@ Project to use the `BON API Module`_:
 
 .. tabs::
 
-   .. tab:: Gradle (build.gradle.kts)
+   .. tab:: SDK 6
 
       .. code-block:: java
 
          implementation("ej.api:edc:1.3.5")
 
-   .. tab:: MMM (module.ivy)
+   .. tab:: SDK 5
 
       .. code-block:: xml
 
@@ -146,27 +146,9 @@ SNI allows you to:
 -  Call a C function from a Java method.
 -  Access an Immortal array in a C function (see the :ref:`runtime_bon` to learn about immortal objects).
 
-SNI does not allow you to:
-
--  Access or create a Java object in a C function (except byte arrays).
--  Access Java static variables in a C function.
--  Call Java methods from a C function.
-
 SNI also provides some Java APIs to manipulate some data arrays between Java and the native (C) world.
 
-.. list-table::
-   :widths: 10 30
-
-   * - **Documentation**
-     - **Link**
-   * - Java APIs
-     - https://repository.microej.com/javadoc/microej_5.x/apis/ej/sni/package-summary.html
-   * - Specification
-     - https://repository.microej.com/packages/ESR/ESR-SPE-0012-SNI_GT-1.2-I.pdf
-   * - Module
-     - https://repository.microej.com/modules/ej/api/sni/
-
-Please refer to :ref:`sni` section for more details.
+Please refer to :ref:`sni_specification` section for more details.
 
 .. _runtime_kf:
 
@@ -234,7 +216,8 @@ On Architecture ``8.x``, you will get the following dedicated error message:
 
 .. code-block::
 
-    Unsupported access to the Class instance of a primitive type (found 'boolean.class' in method 'com.mycompany.MyClass.myMethod()void')
+    SOAR-L ERROR :
+    [M79] - Unsupported access to the Class instance of a primitive type (found 'boolean.class' in method 'com.mycompany.MyClass.myMethod()void')
 
 On Architecture ``7.x`` you will get the following default error message:
 

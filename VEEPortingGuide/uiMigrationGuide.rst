@@ -6,15 +6,19 @@
 Migration Guide
 ===============
 
+.. _section_ui_migrationguide_pack_14.0.2:
+
 From 14.0.1 to 14.0.2
 =====================
 
-Just fetch the UI Pack 14.0.2.
+BSP without GPU
+"""""""""""""""
 
-.. _section_ui_migrationguide_pack_14.0.1_c_module_update:
+* *[VEE Port configuration project]*
 
-14.0.1 (C Module update)
-========================
+    * Set the dependency to the `C Module MicroUI 4.1.0`_.
+    * Delete the properties file ``cco_microui.properties``.
+    * Build the VEE Port.
 
 BSP with DMA2D
 """"""""""""""
@@ -266,7 +270,7 @@ BSP with DMA2D
 .. _section_ui_migrationguide_14.0_vglite:
 
 BSP with VGLite
-""""""""""""""""
+"""""""""""""""
 
 * *[VEE Port configuration project]*
 
@@ -338,7 +342,7 @@ BSP with DMA2D
 	* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_13.7.2_bsp_without_gpu`.
 
 BSP with VGLite
-""""""""""""""""
+"""""""""""""""
 
 * *[VEE Port configuration project]*
 
@@ -386,7 +390,7 @@ Front Panel
 .. _section_ui_migrationguide_13.6_vglite:
 
 BSP with VGLite
-""""""""""""""""
+"""""""""""""""
 
 These steps are for a VEE Port that manages its own implementation of ``LLUI_DISPLAY_impl.h`` (that did not use the old implementation which was available in this C Module):
 
@@ -517,7 +521,7 @@ BSP with DMA2D
 .. _section_ui_migrationguide_13.5_vglite:
 
 BSP with VGLite
-""""""""""""""""
+"""""""""""""""
 
 .. note::
 	The C Module is designed to target the `NXP i.MX RT500`_; however it can be locally customized for other boards (see :ref:`[Custom project]<section_cmodule_vglite_custom>`)
@@ -563,7 +567,7 @@ BSP with DMA2D
 	* Delete the properties file ``cco_display-dma2d.properties``.
 
 BSP with VGLite
-""""""""""""""""
+"""""""""""""""
 
 .. note::
 	The C Module is designed to target the `NXP i.MX RT500`_; however it can be locally customized for other boards (see :ref:`[Custom project]<section_cmodule_vglite_custom>`)
@@ -618,7 +622,7 @@ BSP with DMA2D
 	* Delete the properties file ``cco_display-dma2d.properties``.
 
 BSP with VGLite
-""""""""""""""""
+"""""""""""""""
 
 .. note::
 	The C Module is designed to target the `NXP i.MX RT500`_; however it can be locally customized for other boards (see :ref:`[Custom project]<section_cmodule_vglite_custom>`).
@@ -727,6 +731,8 @@ VEE Port Configuration Project
 
 * If not already set, set the ``ea:property`` ``bsp.project.microej.dir`` in the module ivy file to configure the BSP output folder where is extracted the module.
 
+.. hint:: Update the BSP with the new MicroUI C module files as described :ref:`here<section_ui_migration_bsp_13x>`.
+
 Hardware Accelerator
 """"""""""""""""""""
 
@@ -739,6 +745,8 @@ Hardware Accelerator
 
 * For the hardware accelerator DMA2D, please consult STM32F7Discovery board updates. Add the file ``lldisplay_dma2d.c``, the global defines ``DRAWING_DMA2D_BPP=16`` (or another value) and ``STM32F4XX`` or ``STM32F7XX``
 * For the others hardware accelerators, please contact MicroEJ support.
+  
+.. hint:: Update the BSP with the new C modules files as described :ref:`here<section_ui_migration_bsp_13x>`.
 
 Front Panel
 """""""""""
@@ -980,6 +988,8 @@ Font
 * Open optional font(s) in :guilabel:`-configuration` project > :guilabel:`microui/**/*.ejf`
 * Remove all ``Dynamic`` styles (select ``None`` or ``Built-in`` for bold, italic and underline); the number of generated fonts must be ``1`` (the feature to render ``Dynamic`` styles at runtime have been removed)
 * Save the file(s)
+
+.. _section_ui_migration_bsp_13x:
 
 BSP
 """
