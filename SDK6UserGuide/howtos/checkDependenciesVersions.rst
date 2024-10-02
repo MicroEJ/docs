@@ -32,7 +32,8 @@ Some dependencies are automatically included by the MicroEJ Gradle plugin to com
 These dependencies are not relevant for  the report. To remove them, you can add the following snippet to the build file::
 
     tasks.withType<DependencyUpdatesTask> {
-        configurations.jdtCompilerClasspath {
+        configurations.all {
+
             exclude(group = "org.eclipse.jdt")
         }
     }
