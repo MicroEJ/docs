@@ -38,10 +38,10 @@ To get the most out of this training, participants should have:
 Training Resources
 ==================
 
-Unit 1: Port Qualification Tool Overview
-----------------------------------------
+Unit 1: Introduction to Port Qualification Tool
+-----------------------------------------------
 
-- :download:`Slides: PQT Overview <https://repository.microej.com/packages/training/DEV-M0018PQT_0002-PRE-Platform_Qualification_Tools_Overview-1.0.pdf>`
+Read the Introduction section of the :ref:`veeport_qualification` documentation.
 
 Unit 2: Run a Test Suite on a Device
 ------------------------------------

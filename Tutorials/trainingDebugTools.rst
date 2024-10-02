@@ -15,9 +15,6 @@ Intended Audience
 
 This training is designed for developers who want to learn about the tools available for debugging embedded applications.
 
-Specifically, :ref:`tutorial_discover_embedded_debugging_techniques.use_case_1` is particularly relevant for Application Developers,
-while :ref:`tutorial_discover_embedded_debugging_techniques.use_case_2` is more applicable to VEE Port Developers.
-
 Prerequisites
 =============
 
@@ -40,17 +37,6 @@ Unit 2: MicroEJ Debug Tools Overview
 
 - :download:`Slides: MicroEJ Debug Tools Overview <https://repository.microej.com/packages/training/debugging_with_microej_sdk/DEV-M0127-PRE-MicroEJ-Debug-Tools-SDK5-STM32F7508-2.2-RC20240820.pdf>` (for MICROEJ SDK 5)
 - :download:`Resources <https://repository.microej.com/packages/training/debugging_with_microej_sdk/debugging_with_microej_sdk_e4cb0a54.zip>` (for MICROEJ SDK 5)
-
-Unit 3: Concrete Debug Use Cases
---------------------------------
-
-- :ref:`tutorial_discover_embedded_debugging_techniques.use_case_1`
-- :ref:`tutorial_discover_embedded_debugging_techniques.use_case_2`
-
-.. toctree::
-   :hidden:
-
-   tutorialDiscoverEmbeddedDebuggingTechniques
 
 ..
    | Copyright 2021-2024, MicroEJ Corp. Content in this space is free 

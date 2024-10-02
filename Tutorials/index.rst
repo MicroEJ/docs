@@ -177,6 +177,7 @@ For VEE Developers
    
    trainingVEEPortDevFromScratch
    trainingPQT
+   trainingDebugHardfault
 
 .. raw:: html
 
@@ -211,6 +212,21 @@ For VEE Developers
             </div>
             </a>
 
+            <a class="training_link" href="trainingDebugHardfault.html">
+            <div>
+               <div class="training_image_container">
+                  <div class="training_image_text">Course 3</div>
+                  <img src="../_static/images/training/trainingDebugHardfault.jpg" alt="PQT">
+               </div>
+               <h3 class="training_title">Debug a HardFault</h3>
+               <p class="training_description">In this training, you will get 
+               insights on how to debug a hardfault.
+
+               </p>
+               <a class="training_learn_more_link" href="trainingDebugHardfault.html">Learn more</a>
+            </div>
+            </a>
+
          </div>
 
 Graphical User Interface
@@ -220,7 +236,7 @@ Graphical User Interface
    :hidden:
 
    trainingGuiRaster
-
+   trainingDebugGUIFreeze
 
 
 .. raw:: html
@@ -238,6 +254,20 @@ Graphical User Interface
                MicroEJ Graphical Framework.
                </p>
                <a class="training_learn_more_link" href="trainingGuiRaster.html">Learn more</a>
+            </div>
+            </a>
+
+            <a class="training_link" href="trainingDebugGUIFreeze.html">
+            <div>
+               <div class="training_image_container">
+                  <div class="training_image_text">Course 2</div>
+                  <img src="../_static/images/training/trainingDebugGUIFreeze.jpg" alt="Debugging a GUI Application Freeze">
+               </div>
+               <h3 class="training_title">Debug a GUI Application Freeze</h3>
+               <p class="training_description">In this training, you will get insights on 
+               how to instrument a frozen GUI application.
+               </p>
+               <a class="training_learn_more_link" href="trainingDebugGUIFreeze.html">Learn more</a>
             </div>
             </a>
 

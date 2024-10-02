@@ -22,7 +22,7 @@ Prerequisites
 To get the most out of this training, participants should have:
 
 - A good knowledge of C programming language.
-- A good understanding of :ref:`sni` concepts.
+- A good understanding of :ref:`sni_specification` concepts.
 
 Training Resources
 ==================
