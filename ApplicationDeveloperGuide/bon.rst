@@ -21,8 +21,8 @@ More precisely, it allows:
 
 BON also adds a set of useful utilities:
 
--  A Timer facilities that allows to schedule small activities
-   repeatedly (or not). Such activities are Runnable objects that are
+-  Timers that allow to schedule one-time or cyclic activities.
+   Such activities are Runnable objects that are
    automatically scheduled by the timer.
 -  A platform time from a monotonic clock.
 -  Read-write `ByteArray`_ support according to the underlying processor
