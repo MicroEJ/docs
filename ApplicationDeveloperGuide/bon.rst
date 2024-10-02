@@ -24,8 +24,7 @@ BON also adds a set of useful utilities:
 -  A Timer facilities that allows to schedule small activities
    repeatedly (or not). Such activities are Runnable objects that are
    automatically scheduled by the timer.
--  Platform time which cannot be changed: the time from the very last
-   boot of the device.
+-  A platform time from a monotonic clock.
 -  Read-write `ByteArray`_ support according to the underlying processor
    endianness.
 -  `ResourceBuffer`_ support for random read access in a :ref:`resource <section.classpath.elements.raw_resources>`.
