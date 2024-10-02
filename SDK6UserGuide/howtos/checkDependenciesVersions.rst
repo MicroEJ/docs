@@ -34,7 +34,6 @@ These dependencies are not relevant for  the report. To remove them, you can add
 
     tasks.withType<DependencyUpdatesTask> {
         configurations.all {
-
             exclude(group = "org.eclipse.jdt")
         }
     }
