@@ -643,9 +643,10 @@ The application time is the user time: it depends on its localization.
 `System.currentTimeMillis()`_ returns the application time
 expressed in milliseconds since midnight, January 1, 1970 UTC.
 
-BON introduces a platform time that is independent from any user
-considerations: it materializes the running time since the very last
-start of the device. This time cannot be changed.
+BON introduces a platform time that is monotonic. 
+It always moves forward and is not impacted by application time modifications 
+(e.g., Synchronization of time with an NTP server, TimeZone, or Daylight Savings Time updates).
+It can be implemented by returning the running time since the start of the device.
 
 The `Util`_ class defines several methods to handle both
 application time and platform time: 
