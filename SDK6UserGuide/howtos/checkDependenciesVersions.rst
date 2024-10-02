@@ -100,12 +100,6 @@ Here is an example of report::
     - com.is2t.tools:application-repository:2.2.0
     - com.microej.veeport.st.stm32f7508-dk:M5QNX_eval:2.2.0
     - ej.library.eclasspath:stringtokenizer:1.2.0
-    - org.apache.ant:ant:1.9.15
-    - org.apache.ant:ant-launcher:1.9.15
-    - org.eclipse.jdt:org.eclipse.jdt.compiler.apt:1.3.1000
-    - org.eclipse.jdt:org.eclipse.jdt.core:3.22.0
-    - org.junit.platform:junit-platform-launcher:1.8.2
-    - org.openjdk.nashorn:nashorn-core:15.4
 
     The following dependencies exceed the version found at the milestone revision level:
     - ej.library.ui:widget [5.2.0 <- 4.2.0]
@@ -124,18 +118,6 @@ Here is an example of report::
     Gradle release-candidate updates:
     - Gradle: [8.3 -> 8.10.2]
 
-.. note::
-
-    The example uses MicroEJ Application plugin ``0.15.0`` which does not provide the ``dependenciesVersionsCheckEnabled`` option.
-    Moreover, this plugin version fetches extra dependencies at rutime that can be filtered::
-        
-        tasks.withType<DependencyUpdatesTask> {
-	        configurations.all {
-		        exclude(group = "org.eclipse.jdt")
-		        exclude(group = "org.openjdk.nashorn")
-		        exclude(group = "org.apache.ant")
-	        }
-        }
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
