@@ -543,9 +543,9 @@ It is also possible to add the Wrapper to an existing project by executing the `
   gradle wrapper
 
 The Gradle version used by the project can then be updated in the ``gradle/wrapper/gradle-wrapper.properties`` file. 
-The SDK requires Gradle ``8.0.2`` or higher::
+The SDK requires Gradle ``8.6`` or higher::
 
-  distributionUrl=https\://services.gradle.org/distributions/gradle-8.0.2-bin.zip
+  distributionUrl=https\://services.gradle.org/distributions/gradle-8.6-bin.zip
 
 To use the Wrapper during a build, use ``gradlew`` or ``./gradlew`` depending on your OS instead of ``gradle`` in the command line:
 
