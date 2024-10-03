@@ -39,56 +39,19 @@ This module is always required in the build path of an Application project;
 and all others libraries depend on it. This library provides a set of options.
 Refer to the chapter :ref:`application_options` which lists all available options.
 
-It defines all default API packages:
+**Specification Summary:**
 
--  `java.io <https://repository.microej.com/javadoc/microej_5.x/apis/java/io/package-frame.html>`_
--  `java.lang <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/package-frame.html>`_
--  `java.lang.annotation <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/annotation/package-frame.html>`_
--  `java.lang.ref <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/ref/package-frame.html>`_
--  `java.lang.reflect <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/reflect/package-frame.html>`_
--  `java.util <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/package-frame.html>`_
-
-.. list-table::
-   :widths: 10 30
-
-   * - **Documentation**
-     - **Link**
-   * - Java APIs
-     - https://repository.microej.com/javadoc/microej_5.x/libraries/edc-1.3-api/
-   * - Module
-     - https://repository.microej.com/modules/ej/api/edc/
-
-
-**Use**
-
-The `EDC API Module`_ must be added to the project build file of the Application Project:
-
-.. tabs::
-
-   .. tab:: SDK 6
-
-      .. code-block:: java
-
-         implementation("ej.api:edc:1.3.5")
-
-   .. tab:: SDK 5
-
-      .. code-block:: xml
-
-         <dependency org="ej.api" name="edc" rev="1.3.5"/>
-
-
-.. _EDC API Module: https://repository.microej.com/modules/ej/api/edc/
+.. include:: edc_spec_summary.rst
 
 .. _runtime_bon:
 
 Beyond Profile (BON)
 ~~~~~~~~~~~~~~~~~~~~~
 
-This profile defines a suitable and flexible way to fully control both memory
-usage and start-up sequences on devices with limited memory resources.
-It does so within the boundaries of Java semantics. More precisely, it
-allows:
+This profile defines a suitable and flexible approach to fully control both memory usage 
+and startup sequences on devices with limited memory resources, while remaining within the boundaries of Java semantics.
+
+More precisely, it allows:
 
 -  Controlling the initialization sequence in a deterministic way.
 
@@ -98,41 +61,13 @@ allows:
 
 -  Defining immortal, read-write objects that are always alive.
 
-- Defining and accessing compile-time constants.
+-  Accessing compile-time :ref:`constants <section.classpath.elements.constants>`.
 
-.. list-table::
-   :widths: 10 30
+Read the :ref:`Beyond Profile specification <bon_specification>` for more details.
 
-   * - **Documentation**
-     - **Link**
-   * - Java APIs
-     - https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/package-summary.html
-   * - Specification
-     - https://repository.microej.com/packages/ESR/ESR-SPE-0001-BON-1.2-G.pdf
-   * - Module
-     - https://repository.microej.com/modules/ej/api/bon/
- 
-**Use**
+**Specification Summary:**
 
-Add the following dependency to the project build file of the Application 
-Project to use the `BON API Module`_:
-
-.. tabs::
-
-   .. tab:: SDK 6
-
-      .. code-block:: java
-
-         implementation("ej.api:edc:1.3.5")
-
-   .. tab:: SDK 5
-
-      .. code-block:: xml
-
-         <dependency org="ej.api" name="edc" rev="1.3.5"/>
-
-
-.. _BON API Module: https://repository.microej.com/modules/ej/api/bon/
+.. include:: bon_spec_summary.rst
 
 .. _runtime_sni:
 
@@ -148,7 +83,11 @@ SNI allows you to:
 
 SNI also provides some Java APIs to manipulate some data arrays between Java and the native (C) world.
 
-Please refer to :ref:`sni_specification` section for more details.
+Read the :ref:`Simple Native Interface specification <sni_specification>` for more details.
+
+**Specification Summary:**
+
+.. include:: sni_spec_summary.rst
 
 .. _runtime_kf:
 
@@ -157,8 +96,22 @@ Kernel & Features (KF)
 
 The Kernel & Features semantic (KF) extends the runtime for managing Multi-Sandboxed Applications.
 
-Please refer to the :ref:`kf_specification` for more details, the :ref:`Multi-Sandbox capability <multisandbox>` of the Core Engine
+Read the :ref:`Kernel & Features specification <kf_specification>` for more details, the :ref:`Multi-Sandbox capability <multisandbox>` of the Core Engine
 and more generally the :ref:`kernel-developer-guide` chapter.
+
+**Specification Summary:**
+
+.. include:: kf_spec_summary.rst
+
+Specifications
+~~~~~~~~~~~~~~
+
+.. toctree::
+   :maxdepth: 1
+   
+   bon
+   ../VEEPortingGuide/sni
+   ../KernelDeveloperGuide/kf
 
 .. _runtime_gt: 
 
@@ -192,6 +145,33 @@ objects, and defragments the memory in order to optimize RAM usage. This
 is done transparently while the Application keep running.
 
 See also :ref:`Garbage Collector options <options_gc>` for more details.
+
+Death Notification
+~~~~~~~~~~~~~~~~~~
+
+Most objects are reclaimable objects. Sometimes, they interact with the
+native or system resources using handles. Those handles represent underlying data
+that needs to be closed/freed/acknowledged/… when the object that holds
+the handle dies.
+
+The Application can get notified when an object is dead through the use of `WeakReference`_ objects. 
+When such objects get their weak reference set to ``null`` by the system, they are
+added to the `ReferenceQueue`_ they were assigned to at their creation.
+
+Death Notification Actions
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Once an object has expired, it cannot be brought to life again. It is
+the responsibility of the application to make provisions for all actions
+that have to be taken on an object death. Such provisions are
+materialized by subclasses of the `WeakReference`_ class.
+
+`ReferenceQueue.poll()`_ and `ReferenceQueue.remove()`_ methods allow the
+execution of a hook at the death of the object referenced by the weak
+reference. The first one returns ``null`` when queue is empty whereas the
+second one blocks while the queue is empty.
+
+The Application is responsible of the execution of such hook.
 
 .. _java_limitations:
 
@@ -282,6 +262,11 @@ The following code prints the formatted Architecture characteristics on standard
       System.out.println("- Core Engine Capability:       " + capabilityStr + "-Sandbox");
       System.out.println("- Instruction Set Architecture: " + isaStr);
       System.out.println("- Compilation Toolchain:        " + toolchainName + " (" + toolchainFullName + ")");
+
+.. _WeakReference: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/ref/WeakReference.html
+.. _ReferenceQueue: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/ref/ReferenceQueue.html
+.. _ReferenceQueue.poll(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/ref/ReferenceQueue.html#poll--
+.. _ReferenceQueue.remove(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/ref/ReferenceQueue.html#remove--
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 

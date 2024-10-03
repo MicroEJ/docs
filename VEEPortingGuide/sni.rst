@@ -1,8 +1,8 @@
 .. _sni_specification:
 
-=============================
-Simple Native Interface (SNI)
-=============================
+===========================================
+Simple Native Interface Specification (SNI)
+===========================================
 
 
 Introduction
@@ -28,29 +28,7 @@ native world:
 Specification Summary
 ---------------------
 
-.. list-table::
-   :widths: 10 30
-
-   * - Java APIs
-     - https://repository.microej.com/javadoc/microej_5.x/apis/ej/sni/package-summary.html
-   * - Latest Version
-     - 1.4
-   * - Module Dependency
-     - .. tabs::
-
-         .. tab:: SDK 6
-
-            .. code-block:: java
-
-               implementation("ej.api:sni:1.4.3")
-
-         .. tab:: SDK 5
-
-            .. code-block:: xml
-
-               <dependency org="ej.api" name="sni" rev="1.4.3" />
-   * - Module Location
-     - https://repository.microej.com/modules/ej/api/sni/
+.. include:: ../ApplicationDeveloperGuide/sni_spec_summary.rst
 
 Comments
 --------
@@ -205,7 +183,7 @@ C Function Call From Java world
 
 The SNI specification allows the invocation of methods from Java to C: these
 methods must be declared ``static`` ``native`` methods, and the parameters must be
-base types or immortal array of base types (see :ref:`[B-ON] <runtime_bon>`). These native
+base types or immortal array of base types (see :ref:`[BON] <runtime_bon>`). These native
 methods are used in Java as standard Java methods.
 
 Example:
@@ -415,7 +393,7 @@ native functions:
    #. they must have only one dimension. No multi dimension array are
       allowed (``int[][]`` is forbidden for example).
 
-   #. they must be immortal arrays (see :ref:`[B-ON] <runtime_bon>`). Use the method
+   #. they must be immortal arrays (see :ref:`[BON] <runtime_bon>`). Use the method
       `Immortals.setImmortal()`_ to transform an array into an
       immortal array.
 -  Only base types are allowed as return type
