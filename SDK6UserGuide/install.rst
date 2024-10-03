@@ -59,7 +59,7 @@ Install Gradle
 --------------
 
 Once a JDK is correctly configured, the next step is to install Gradle by following `the official documentation <https://gradle.org/install/>`__.
-The SDK is only compatible with the Gradle ``8.0.2`` and higher, so make sure to install a right version.
+The SDK is only compatible with the Gradle ``8.6`` and higher, so make sure to install a right version.
 Once done, you can verify your installation by opening a terminal and run the command ``gradle -v``.
 It should display, amongst other information, the Gradle and the JVM versions:
 
@@ -67,19 +67,28 @@ It should display, amongst other information, the Gradle and the JVM versions:
 
    $ gradle -v
    
-  ------------------------------------------------------------
-  Gradle 8.0.2
-  ------------------------------------------------------------
+   Welcome to Gradle 8.6!
 
-  Build time:   2023-03-03 16:41:37 UTC
-  Revision:     7d6581558e226a580d91d399f7dfb9e3095c2b1d
+   Here are the highlights of this release:
+   - Configurable encryption key for configuration cache
+   - Build init improvements
+   - Build authoring improvements
 
-  Kotlin:       1.8.10
-  Groovy:       3.0.13
-  Ant:          Apache Ant(TM) version 1.10.11 compiled on July 10 2021
-  JVM:          11.0.18 (Eclipse Adoptium 11.0.18+10)
-  OS:           Windows 10 10.0 amd64
+   For more details see https://docs.gradle.org/8.6/release-notes.html
 
+
+   ------------------------------------------------------------
+   Gradle 8.6
+   ------------------------------------------------------------
+
+   Build time:   2024-02-02 16:47:16 UTC
+   Revision:     d55c486870a0dc6f6278f53d21381396d0741c6e
+
+   Kotlin:       1.9.20
+   Groovy:       3.0.17
+   Ant:          Apache Ant(TM) version 1.10.13 compiled on January 4 2023
+   JVM:          11.0.19 (Eclipse Adoptium 11.0.19+7)
+   OS:           Windows 11 10.0 amd64
 
 .. _sdk_6_configure_repositories:
 
