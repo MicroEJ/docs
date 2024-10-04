@@ -6,6 +6,85 @@
 Migration Guide
 ===============
 
+.. _section_ui_migrationguide_pack_14.1.0:
+
+From 14.0.2 to 14.1.0
+=====================
+
+.. _section_ui_migrationguide_pack_14.1.0_bsp_without_gpu:
+
+BSP without GPU
+"""""""""""""""
+
+* *[VEE Port configuration project]*
+
+    * Set the dependency to the `C Module MicroUI 14.1.0`_.
+
+* *[BSP project]*
+
+    * Delete the properties file ``cco_microui.properties``.
+    * Build the VEE Port.
+    * Configure ``ui/inc/ui_configuration.h``, based on your previous settings in ``ui/inc/microui_event_decoder_conf.h`` and ``ui/inc/ui_display_brs_configuration.h``.
+
+        * Notice that the name (prefix) of the options changed, see :ref:`section_ui_changelog`.
+        * If the BSP uses the MicroUI C Module's image heap allocator instead of using the Graphics Engine's image heap allocator, set the preprocessor value ``UI_FEATURE_ALLOCATOR=UI_FEATURE_ALLOCATOR_BESTFIT``.
+        * Comment the line that starts with ``#error (...)``.
+  
+    * Delete configuration files ``ui/inc/microui_event_decoder_conf.h`` and ``ui/inc/ui_display_brs_configuration.h``.  
+    * Add the source file in ``ui/src/ui_font_drawing.c`` to the project.
+    * Update ``c`` and ``h`` files and BSP configuration (if any) to use the new preprocessor values: 
+
+        * ``UI_FEATURE_EVENT_DECODER`` replaces ``MICROUIEVENTDECODER_ENABLED``
+        * ``UI_DEBUG_PRINT`` replaces ``LLUI_DEBUG_TRACE``
+        * ``UI_FEATURE_EVENT_DECODER`` replaces ``MICROUIEVENTDECODER_ENABLED``
+        * ``UI_EVENTDECODER_EVENTGEN_COMMAND`` replaces ``MICROUIEVENTDECODER_EVENTGEN_COMMAND``
+        * ``UI_EVENTDECODER_EVENTGEN_BUTTONS`` replaces ``MICROUIEVENTDECODER_EVENTGEN_BUTTONS``
+        * ``UI_EVENTDECODER_EVENTGEN_TOUCH`` replaces ``MICROUIEVENTDECODER_EVENTGEN_TOUCH``
+        * ``UI_FEATURE_BRS`` replaces ``UI_DISPLAY_BRS``
+        * ``UI_FEATURE_BRS_LEGACY`` replaces ``UI_DISPLAY_BRS_LEGACY``
+        * ``UI_FEATURE_BRS_SINGLE`` replaces ``UI_DISPLAY_BRS_SINGLE``
+        * ``UI_FEATURE_BRS_PREDRAW`` replaces ``UI_DISPLAY_BRS_PREDRAW``
+        * ``UI_FEATURE_BRS_DRAWING_BUFFER_COUNT`` replaces ``UI_DISPLAY_BRS_DRAWING_BUFFER_COUNT``
+        * ``UI_FEATURE_BRS_FLUSH_SINGLE_RECTANGLE`` replaces ``UI_DISPLAY_BRS_FLUSH_SINGLE_RECTANGLE``
+        * ``UI_GC_SUPPORTED_FORMATS`` replaces ``LLUI_GC_SUPPORTED_FORMATS``
+        * ``UI_FEATURE_IMAGE_CUSTOM_FORMATS`` replaces ``LLUI_IMAGE_CUSTOM_FORMATS``
+
+BSP with DMA2D
+""""""""""""""
+
+* *[VEE Port configuration project]*
+
+    * Set the dependency to the `C Module MicroUI over DMA2D to version 7.0.0`_.
+
+* *[BSP project]*
+
+    * Delete the properties files ``cco_microui.properties`` and ``cco_display-dma2d.properties``.
+    * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.1.0_bsp_without_gpu`.
+
+BSP with VGLite
+"""""""""""""""
+
+* *[VEE Port configuration project]*
+
+    * Set the dependency to the `C Module MicroUI over VGLite to version 10.0.0`_.
+
+* *[BSP project]*
+    
+    * Delete the properties files ``cco_microui.properties`` and ``cco_microui-vglite.properties``.
+    * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.1.0_bsp_without_gpu`.
+
+BSP with NemaGFX
+""""""""""""""""
+
+* *[VEE Port configuration project]*
+
+    * Set the dependency to the `C Module MicroUI over NemaGFX to version 4.0.0`_.
+
+* *[BSP project]*
+
+    * Delete the properties files ``cco_microui.properties`` and ``cco_microui-nemagfx.properties``.
+    * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.1.0_bsp_without_gpu`.
+  
 .. _section_ui_migrationguide_pack_14.0.2:
 
 From 14.0.1 to 14.0.2
