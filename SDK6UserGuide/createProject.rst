@@ -69,7 +69,7 @@ This chapter explains the different ways to create a new project.
          Project View in Android Studio
 
       .. note::
-         The newly created Gradle project uses Gradle Wrapper with Gradle version ``8.2``.
+         If you do not use the last version of Android Studio, make sure that Gradle Wrapper uses at least Gradle version ``8.6``.
          Refer to the :ref:`sdk_6_create_project_gradle_wrapper` section for more information.
 
       The project created by the wizard is a multi-project with a single subproject (named ``app``).
@@ -125,7 +125,7 @@ This chapter explains the different ways to create a new project.
          Project Creation in IntelliJ IDEA
 
       .. note::
-         The Gradle project created by the wizard uses Gradle Wrapper with Gradle version ``8.5``.
+         The Gradle project created by the wizard uses Gradle Wrapper with Gradle version ``8.10.2``.
          Refer to the :ref:`sdk_6_create_project_gradle_wrapper` section for more information.
 
       .. note::
@@ -182,7 +182,7 @@ This chapter explains the different ways to create a new project.
         Application Creation in Eclipse
       
       .. note::
-         The Gradle project created by the wizard uses Gradle Wrapper with Gradle version ``8.5``.
+         The Gradle project created by the wizard uses Gradle Wrapper with Gradle version ``8.10.2``.
          Refer to the :ref:`sdk_6_create_project_gradle_wrapper` section for more information.
 
       .. warning::
