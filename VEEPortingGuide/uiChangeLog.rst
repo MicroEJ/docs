@@ -6,6 +6,177 @@
 Changelog
 =========
 
+[Unreleased]
+============
+
+MicroUI
+"""""""
+
+**Added**
+
+- Add some SystemView logs to trace the new MicroUI 3.6 APIs.
+
+**Changed**
+
+- Implements MicroUI API 3.6 (new ``Font`` management).
+
+Drawing
+"""""""
+
+**Fixed**
+
+- Fix the invalid ``StringIndexOutOfBoundsException`` when drawing the last character of a string using ``TransformPainter.drawScaledSubstringBilinear()``. 
+
+FrontPanel
+""""""""""
+
+**Added**
+
+- Add the classes, interfaces, enumeration, registration methods and utility methods to implement the drawing of the strings and manage the custom fonts.
+- Add ``LLUIDisplay.getByteOrder()`` to retrieve the embedded VEE Port's memory endianness.
+- Add the API ``LLUIDisplay.isImageClosed()`` to replace the deprecated API ``LLUIDisplay.isClosed()``.
+
+**Changed**
+
+- Make deprecated the API ``LLUIDisplay.isClosed()``: use ``LLUIDisplay.isImageClosed()`` instead.
+
+LLAPIs
+""""""
+
+**Added**
+
+- Add the LLAPI (implemented by the MicroUI C Module):
+
+	- ``LLUI_PAINTER_IMPL_drawString()``
+	- ``LLUI_PAINTER_IMPL_stringWidth()``
+	- ``LLUI_PAINTER_IMPL_initializeRenderableStringSNIContext()``
+	- ``LLUI_PAINTER_IMPL_drawRenderableString()``
+	- ``LLDW_PAINTER_IMPL_drawScaledStringBilinear()``
+	- ``LLDW_PAINTER_IMPL_drawScaledRenderableStringBilinear()``
+	- ``LLDW_PAINTER_IMPL_drawCharWithRotationBilinear()``
+	- ``LLDW_PAINTER_IMPL_drawCharWithRotationNearestNeighbor()``
+	
+- Add the software drawing APIs (implemented by the Graphics Engine):
+
+	- ``UI_DRAWING_SOFT_drawString()``
+	- ``UI_DRAWING_SOFT_drawRenderableString()``
+	- ``UI_DRAWING_SOFT_stringWidth()``
+	- ``UI_DRAWING_SOFT_initializeRenderableStringSNIContext()``
+	- ``UI_DRAWING_SOFT_drawChar()``
+	- ``DW_DRAWING_SOFT_drawScaledStringBilinear()``
+	- ``DW_DRAWING_SOFT_drawScaledRenderableStringBilinear()``
+	- ``DW_DRAWING_SOFT_drawCharWithRotationBilinear()``
+	- ``DW_DRAWING_SOFT_drawCharWithRotationNearestNeighbor()``
+
+- Add the enumeration ``MICROUI_FontFormat`` that lists the MicroUI custom font formats.
+- Add the structure ``MICROUI_Font`` that represents a MicroUI Font (``Font.getSNIContext()``).
+- Add the structure ``MICROUI_RenderableString`` that represents a MicroUI RenderableString (``RenderableString.getSNIContext()``).
+- Add the API ``LLUI_DISPLAY_isImageClosed()`` to replace the deprecated API ``LLUI_DISPLAY_isClosed()``.
+
+**Changed**
+
+- Make deprecated the API ``LLUI_DISPLAY_isClosed()``: use ``LLUI_DISPLAY_isImageClosed()`` instead.
+
+C Module MicroUI
+""""""""""""""""
+
+**Added**
+
+- Add ``ui_configuration.h`` that provides macros to configure some low level APIs.
+- Add ``ui_font_drawing.h`` that provides functions to manage custom fonts.
+- Add the option ``UI_FEATURE_FONT_CUSTOM_FORMATS`` to enable the management of custom fonts. 
+- Add the option ``UI_FEATURE_ALLOCATOR`` to replace the Graphics Engine's image heap allocator by a bestfit allocator.
+- Add the implementation of the following LLAPI ( + their redirections, default implementations and logs):
+
+	- ``LLUI_PAINTER_IMPL_drawString()``
+	- ``LLUI_PAINTER_IMPL_stringWidth()``
+	- ``LLUI_PAINTER_IMPL_initializeRenderableStringSNIContext()``
+	- ``LLUI_PAINTER_IMPL_drawRenderableString()``
+	- ``LLDW_PAINTER_IMPL_drawScaledStringBilinear()``
+	- ``LLDW_PAINTER_IMPL_drawScaledRenderableStringBilinear()``
+	- ``LLDW_PAINTER_IMPL_drawCharWithRotationBilinear()``
+	- ``LLDW_PAINTER_IMPL_drawCharWithRotationNearestNeighbor()``
+	
+- Add the management of custom fonts (``ui_font_drawing.c``).
+
+**Changed**
+
+- Gather all C Module configurations in one file: ``ui_configuration.h``.
+- Harmonize the naming convention of all existing options: prefix ``UI_``. 
+- Replace the UI event decoder options:
+
+	- ``LLUI_DEBUG_TRACE`` by ``UI_DEBUG_PRINT``
+	- ``MICROUIEVENTDECODER_ENABLED`` by ``UI_FEATURE_EVENT_DECODER``
+	- ``MICROUIEVENTDECODER_EVENTGEN_COMMAND`` by ``UI_EVENTDECODER_EVENTGEN_COMMAND``
+	- ``MICROUIEVENTDECODER_EVENTGEN_BUTTONS`` by ``UI_EVENTDECODER_EVENTGEN_BUTTONS``
+	- ``MICROUIEVENTDECODER_EVENTGEN_TOUCH`` by ``UI_EVENTDECODER_EVENTGEN_TOUCH``
+
+- Replace the UI display BRS options:
+
+	- ``UI_DISPLAY_BRS`` by ``UI_FEATURE_BRS``
+	- ``UI_DISPLAY_BRS_LEGACY`` by ``UI_FEATURE_BRS_LEGACY``
+	- ``UI_DISPLAY_BRS_SINGLE`` by ``UI_FEATURE_BRS_SINGLE``
+	- ``UI_DISPLAY_BRS_PREDRAW`` by ``UI_FEATURE_BRS_PREDRAW``
+	- ``UI_DISPLAY_BRS_DRAWING_BUFFER_COUNT`` by ``UI_FEATURE_BRS_DRAWING_BUFFER_COUNT``
+	- ``UI_DISPLAY_BRS_FLUSH_SINGLE_RECTANGLE`` by ``UI_FEATURE_BRS_FLUSH_SINGLE_RECTANGLE``
+
+- Move the option ``UI_RECT_COLLECTION_MAX_LENGTH`` to ``ui_configuration.h``.
+- Replace the option ``LLUI_GC_SUPPORTED_FORMATS`` by ``UI_GC_SUPPORTED_FORMATS``.
+- Replace the option ``LLUI_IMAGE_CUSTOM_FORMATS`` by ``UI_FEATURE_IMAGE_CUSTOM_FORMATS``.
+
+**Removed**
+
+- Remove ``microui_event_decoder_conf.h``: import ``ui_configuration.h`` instead.
+- Remove ``ui_dislay_brs_configuration.h``: import ``ui_configuration.h`` instead.
+
+C Module DMA2D
+""""""""""""""
+
+**Changed**
+
+- Make this C Module compatible with the MicroUI C Module 14.1.0.
+
+C Module VGLite
+""""""""""""""""
+
+**Changed**
+
+- Make this C Module compatible with the MicroUI C Module 14.1.0.
+
+C Module NemaGFX
+""""""""""""""""
+
+**Changed**
+
+- Make this C Module compatible with the MicroUI C Module 14.1.0.
+
+14.0.3 - 2024-10-01
+===================
+
+MicroUI
+"""""""
+
+**Fixed**
+
+* Fix the ``IllegalArgumentException`` being caught and not logged in ``Displayable.handleEvent()``.
+* Fix unexpected exception when killing a feature while MicroUI is not yet started.
+* Fix the permissions: ``getName()`` and ``getActions()`` returned ``null``.
+* Fix the log when calling ``Image.getImage()``.
+
+FrontPanel
+""""""""""
+
+**Fixed**
+
+* A VEE port's buffered image provider can be ignored (which prevents opening buffered images in a format other than the display format).
+
+LLAPIs
+""""""
+
+**Changed**
+
+* Check the ``LLUI_DISPLAY_SInitData`` values set by the BSP (``LLUI_DISPLAY_IMPL_initialize()``) before initializing the Graphics Engine.
+
 14.0.2 (2024-07-26)
 ===================
 
