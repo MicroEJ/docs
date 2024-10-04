@@ -333,6 +333,10 @@ These operations must adhere to additional rules to maintain isolation semantics
 - Code Owner: The :ref:`owner of the class <kf_type_owner>` that contains the method from which the operation is called.
 - Type, Class, or Resource Owner: The owner of the target element being accessed by the operation.
 
+.. note::
+
+   ``N/A`` indicates that it is not possible to be in Kernel mode within code owned by a Feature.
+
 ``Class.forName``
 ^^^^^^^^^^^^^^^^^
 
