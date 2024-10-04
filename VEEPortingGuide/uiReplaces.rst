@@ -1,13 +1,16 @@
 
 .. |UIPACKVERSION| replace:: 14.1.0
-
-.. |VGPACKVERSION| replace:: 1.6.0
-.. |VGAPIVERSION| replace:: 1.6.0
+.. |VGPACKVERSION| replace:: 1.7.0
 
 .. XXX_TODO link
 
 .. _MicroUI API 3.6.0: https://repository.microej.com/modules/ej/api/microui/3.5.0/
 .. _MicroUI API 3.5.0: https://repository.microej.com/modules/ej/api/microui/3.5.0/
+
+.. XXX_TODO link
+
+.. _MicroVG API 1.5: https://repository.microej.com/modules/ej/api/microvg/1.4.0/
+.. _MicroVG API 1.4: https://repository.microej.com/modules/ej/api/microvg/1.4.0/
 
 .. XXX_TODO link
 
@@ -72,7 +75,14 @@
 .. _VG Pack 1.7.0: https://repository.microej.com/modules/com/microej/pack/vg/vg-pack/1.6.0/
 .. _VG Pack 1.6.0: https://repository.microej.com/modules/com/microej/pack/vg/vg-pack/1.6.0/
 
+.. XXX_TODO link
+
+.. _C Module MicroVG over VGLite 9.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-vglite/8.0.1/
 .. _C Module MicroVG over VGLite 8.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-vglite/8.0.1/
+
+.. XXX_TODO link
+
+.. _C Module MicroVG over NemaVG 2.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-nemavg/1.0.1/
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free
