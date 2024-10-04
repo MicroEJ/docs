@@ -12,13 +12,11 @@ Changelog
 MicroUI
 """""""
 
+* Implement `MicroUI API 3.6.0`_ (new ``Font`` management).
+
 **Added**
 
 - Add some SystemView logs to trace the new MicroUI 3.6 APIs.
-
-**Changed**
-
-- Implements MicroUI API 3.6 (new ``Font`` management).
 
 Drawing
 """""""
@@ -201,7 +199,7 @@ Front Panel
 MicroUI
 """""""
 
-* Implement `MicroUI API 3.5.0`_.
+* Implement `MicroUI API 3.6.0`_.
 
 **Fixed**
 
@@ -294,8 +292,6 @@ MicroUI
   * Fix custom LCD format on VEE Port with ASLR mode (example: X86 with -pie option).
   * Remove some absolute symbols.
   * Replace sections ``.text`` by ``.rodata``.
-
-.. _MicroUI API 3.5.0: https://repository.microej.com/modules/ej/api/microui/3.5.0/
 
 Front Panel
 """""""""""
