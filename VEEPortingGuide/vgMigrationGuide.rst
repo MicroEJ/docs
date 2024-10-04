@@ -6,6 +6,30 @@
 Migration Guide
 ===============
 
+From 1.6.0 to 1.7.0
+===================
+
+VEE Port Configuration project
+""""""""""""""""""""""""""""""
+
+* Update the UI Pack to version 14.1.0 or higher.
+
+BSP with VGLite
+"""""""""""""""
+
+* Follow the migration steps of :ref:`BSP with VGLite <section_ui_migrationguide_14.1_vglite>` for the new UI Pack.
+* *[VEE Port configuration project]*
+
+	* Fetch the `VG Pack 1.7.0`_ and the `C Module MicroVG over VGLite 9.0.0`_.
+
+BSP with NemaVG
+"""""""""""""""
+
+* Follow the migration steps of :ref:`BSP with NemaGFX <section_ui_migrationguide_14.1_nemagfx>` for the new UI Pack.
+* *[VEE Port configuration project]*
+
+	* Fetch the `VG Pack 1.7.0`_ and the `C Module MicroVG over NemaVG 2.0.0`_.
+
 From 1.5.x to 1.6.0
 ===================
 
@@ -32,7 +56,7 @@ LLAPIs
 BSP with VGLite
 """""""""""""""
 
-* Follow the migration steps of the :ref:`C Module MicroUI over VGLite <section_ui_migrationguide_pack_14.0.2>`.
+* Follow the migration steps of :ref:`BSP with VGLite <section_ui_migrationguide_pack_14.0.2>` for the new UI Pack.
 * *[VEE Port configuration project]*
 
 	* Fetch the `VG Pack 1.6.0`_ and the `C Module MicroVG over VGLite 8.0.1`_.
@@ -88,7 +112,7 @@ VEE Port Configuration Project
 BSP with VGLite
 """"""""""""""""
 
-* Follow the migration steps of :ref:`C Module MicroUI-VGLite 8.0.0 <section_ui_migrationguide_14.0_vglite>`.
+* Follow the migration steps of :ref:`BSP with VGLite <section_ui_migrationguide_14.0_vglite>` for the new UI Pack.
 * *[VEE Port configuration project]*
 
 	* Fetch VG Pack 1.5.1, C Modules MicroVG 5.0.0 and MicroVG-VGLite 7.0.1.
@@ -103,7 +127,7 @@ From 1.3.x to 1.4.2
 BSP with VGLite
 """"""""""""""""
 
-* Follow the migration steps of :ref:`C Module MicroUI-VGLite 7.1.0 <section_ui_migrationguide_13.6_vglite>`.
+* Follow the migration steps of :ref:`BSP with VGLite <section_ui_migrationguide_13.6_vglite>` for the new UI Pack.
 * *[VEE Port configuration project]*
 
 	* Fetch VG Pack 1.4.2, C Modules MicroVG 4.0.0 and MicroVG-VGLite 6.1.1.
@@ -126,7 +150,7 @@ VEE Port Configuration Project
 BSP with VGLite
 """"""""""""""""
 
-* Follow the migration steps of :ref:`C Module MicroUI-VGLite 6.0.1 <section_ui_migrationguide_13.5_vglite>`.
+* Follow the migration steps :ref:`BSP with VGLite <section_ui_migrationguide_13.5_vglite>` for the new UI Pack.
 * *[VEE Port configuration project]*
 
 	* Fetch VG Pack 1.3.0, C Modules MicroVG 3.0.0 and MicroVG-VGLite 5.0.1.

@@ -1,8 +1,25 @@
+.. include:: uiReplaces.rst
+
 .. _section_vg_changelog:
 
 =========
 Changelog
 =========
+
+[1.7.0] - [Unreleased]
+======================
+
+UI Pack
+"""""""
+
+**Changed**
+
+* Compatible with UI Pack 14.1.0 (Font extensibility).
+
+MicroVG Implementation
+""""""""""""""""""""""
+
+* Implement `MicroVG API 1.5`_.
 
 [1.6.0] - 2024-07-19
 ====================
@@ -205,8 +222,6 @@ MicroVG
 **Changed**
 
 * Compatible with `MicroVG API 1.4`_.
-
-.. _MicroVG API 1.4: https://repository.microej.com/modules/ej/api/microvg/1.4.0/
 
 **Fixed**
 

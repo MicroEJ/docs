@@ -61,6 +61,8 @@ BSP with DMA2D
     * Delete the properties files ``cco_microui.properties`` and ``cco_display-dma2d.properties``.
     * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.1.0_bsp_without_gpu`.
 
+.. _section_ui_migrationguide_14.1_vglite:
+
 BSP with VGLite
 """""""""""""""
 
@@ -72,6 +74,8 @@ BSP with VGLite
     
     * Delete the properties files ``cco_microui.properties`` and ``cco_microui-vglite.properties``.
     * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.1.0_bsp_without_gpu`.
+
+.. _section_ui_migrationguide_14.1_nemagfx:
 
 BSP with NemaGFX
 """"""""""""""""
