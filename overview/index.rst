@@ -22,7 +22,7 @@ MICROEJ VEE
 -----------
 
 
-MicroEJ VEE provides a fully configurable set of services that can be expanded, including:
+MicroEJ VEE provides a fully configurable set of services that can be expanded, including but not limited to:
 
 - a secure multi-application framework,
 - a GUI framework (includes widgets),
@@ -75,10 +75,8 @@ Using the SDK, an application developer will be able to:
 -  Deploy the application locally on a hardware device equipped with
    the Firmware;
 
--  Package and publish the application on a MicroEJ Forge Instance,
-   enabling remote end users to install it on their devices. For more
-   information about MicroEJ Forge, please consult
-   `<https://www.microej.com/product/forge>`_.
+-  Package and publish the application on an application store,
+   enabling remote end users to install it on their devices.
 
 The following diagram outlines the SDK content. Please refer to the :ref:`sdk_6_user_guide` chapter for more details on the SDK and its usage.
 
