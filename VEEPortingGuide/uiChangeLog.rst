@@ -23,14 +23,14 @@ Drawing
 
 **Fixed**
 
-- Fix the invalid ``StringIndexOutOfBoundsException`` when drawing the last character of a string using ``TransformPainter.drawScaledSubstringBilinear()``. 
+- Fix the invalid ``StringIndexOutOfBoundsException`` when drawing the last character of a string using ``TransformPainter.drawScaledSubstringBilinear()``.
 
 FrontPanel
 """"""""""
 
 **Added**
 
-- Add the classes, interfaces, enumeration, registration methods and utility methods to implement the drawing of the strings and manage the custom fonts.
+- Add the classes, interfaces, enumeration, registration and utility methods to implement the drawing of strings and the handling of custom fonts.
 - Add ``LLUIDisplay.getByteOrder()`` to retrieve the embedded VEE Port's memory endianness.
 - Add the API ``LLUIDisplay.isImageClosed()`` to replace the deprecated API ``LLUIDisplay.isClosed()``.
 
@@ -81,10 +81,10 @@ C Module MicroUI
 **Added**
 
 - Add ``ui_configuration.h`` that provides macros to configure some low level APIs.
-- Add ``ui_font_drawing.h`` that provides functions to manage custom fonts.
+- Add ``ui_font_drawing.h`` that provides functions to handle custom fonts.
 - Add the option ``UI_FEATURE_FONT_CUSTOM_FORMATS`` to enable the management of custom fonts. 
 - Add the option ``UI_FEATURE_ALLOCATOR`` to replace the Graphics Engine's image heap allocator by a bestfit allocator.
-- Add the implementation of the following LLAPI ( plus their redirections, default implementations and logs):
+- Add the implementation of the following LLAPI (plus their redirections, default implementations and logs):
 
 	- ``LLUI_PAINTER_IMPL_drawString()``
 	- ``LLUI_PAINTER_IMPL_stringWidth()``
@@ -95,7 +95,7 @@ C Module MicroUI
 	- ``LLDW_PAINTER_IMPL_drawCharWithRotationBilinear()``
 	- ``LLDW_PAINTER_IMPL_drawCharWithRotationNearestNeighbor()``
 	
-- Add the management of custom fonts (``ui_font_drawing.c``).
+- Add the handling of custom fonts (``ui_font_drawing.c``).
 
 **Changed**
 
@@ -199,7 +199,7 @@ Front Panel
 MicroUI
 """""""
 
-* Implement `MicroUI API 3.6.0`_.
+* Implement `MicroUI API 3.5.0`_.
 
 **Fixed**
 
