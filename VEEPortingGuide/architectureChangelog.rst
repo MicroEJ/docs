@@ -44,8 +44,12 @@ specific configuration:
 Tools
 ~~~~~
 
--  Updated License Manager (Evaluation) to debug installed license from command line (see :ref:`sdk6_evaluation_license_check`).
+- Updated License Manager (Evaluation) to debug installed license from command line (see :ref:`sdk6_evaluation_license_check`).
 
+Simulator
+~~~~~~~~~
+
+- Fixed invalid mentions of ``SNI.closeOnGC()`` instead of ``NativeResource.closeOnGC()`` in the HILEngine Javadoc.
 
 .. _changelog-8.2.0:
 
