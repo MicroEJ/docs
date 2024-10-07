@@ -80,6 +80,7 @@ The following diagram outlines the SDK content. Please refer to the :ref:`sdk_6_
 
    SDK Ecosystem Overview
 
+.. _executableBuildWorkflow:
 
 Executable Build Workflow
 -------------------------
