@@ -12,8 +12,7 @@ MicroEJ (pronounced “micro-EDGE”) is a software vendor of cost-driven soluti
 The MicroEJ solution is made up of two products:
 
 - MICROEJ VEE (Virtual Execution Environment) is an application container for resource-constrained embedded devices running on microcontrollers or microprocessors. 
-It allows devices to run multiple and mixed managed code (Java, JavaScript, ...) and C software applications.
-
+  It allows devices to run multiple and mixed managed code (Java, JavaScript, ...) and C software applications.
 - MICROEJ SDK allows developers to develop applications in Managed Code and deploy them to resource-constrained devices, such as microcontrollers.
 
 .. _vee:
@@ -22,7 +21,7 @@ MICROEJ VEE
 -----------
 
 
-MicroEJ VEE provides a fully configurable set of services that can be expanded, including but not limited to:
+MICROEJ VEE provides a fully configurable set of services that can be expanded, including but not limited to:
 
 - a secure multi-application framework,
 - a GUI framework (includes widgets),
@@ -42,15 +41,28 @@ For more information about our Supported Processor Architectures, visit the `Sup
 MICROEJ SDK
 -----------
 
-MICROEJ SDK offers a comprehensive toolset to build the software for embedded devices. 
-a device. The SDK covers two levels in device software development:
+MICROEJ SDK offers a comprehensive toolset to build the software for embedded devices.
 
--  Device Firmware development
--  Application development
+The SDK covers two levels in device software development:
 
-The firmware is produced by the device's OEM, it includes
-all device drivers and a specific set of functionalities useful
-for application developers targeting this device.
+-  Device integration and porting (adapting MICROEJ VEE to run on the target device)
+-  Application development.
+
+Using the SDK, an application developer is able to:
+
+-  Develop and test applications on the Simulator.
+-  Deploy the application locally on the device.
+-  Package and publish the application on a repository or an application store,
+   enabling remote end users to install it on their devices.
+
+The SDK produces two versions of the application build:
+
+- An Executable binary to be deployed on the device. It includes MICROEJ VEE, 
+  all device drivers and a specific set of functionalities useful
+  for application developers targeting this device.
+
+- A Virtual Device which is used as a device simulator by
+  application developers, acting as a bridge to other stakeholders, including marketing teams, translators, and project managers.
 
 .. figure:: images/toolchain.png
    :alt: SDK Workflow Overview
@@ -59,33 +71,14 @@ for application developers targeting this device.
 
    SDK Workflow Overview
 
-Using the SDK, a firmware developer produces two
-versions of the binary, each one able to run applications:
-
--  An Executable binary to be flashed on OEM devices;
-
--  A Virtual Device which is used as a device simulator by
-   application developers.
-
-Using the SDK, an application developer is able to:
-
--  Import Virtual Devices matching his target hardware in order to
-   develop and test applications on the Simulator;
-
--  Deploy the application locally on a hardware device equipped with
-   the Firmware;
-
--  Package and publish the application on an application store,
-   enabling remote end users to install it on their devices.
-
 The following diagram outlines the SDK content. Please refer to the :ref:`sdk_6_user_guide` chapter for more details on the SDK and its usage.
 
 .. figure:: images/sdk_overview.png
-   :alt: SDK Components Overview
+   :alt: SDK Ecosystem Overview
    :align: center
    :scale: 80%
 
-   SDK Components Overview
+   SDK Ecosystem Overview
 
 
 Executable Build Workflow
@@ -98,8 +91,6 @@ carefully respected in order to build an Executable.
 .. image:: images/qa_resources-v3.PNG
     :scale: 70
     :align: center
-
-For more information about the build process of an Executable, refer to the :ref:`executableBuildWorkflow` documentation. 
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
