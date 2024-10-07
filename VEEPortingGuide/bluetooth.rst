@@ -4,14 +4,12 @@
 Bluetooth
 =========
 
-
 Principle
 =========
 
 The Bluetooth Foundation Library defines a low-level Bluetooth framework for embedded
 devices. It allows you to manage abstract Bluetooth connections without
 worrying about the native underlying Bluetooth kind.
-
 
 Functional Description
 ======================
@@ -21,12 +19,6 @@ Adapter/Connection/Service/Characteristic/Descriptor/etc abstraction.
 The Bluetooth implementation made for each MicroEJ
 Platform is responsible for surfacing the native Bluetooth specific
 behavior.
-
-
-Overview
-========
-
-The Bluetooth Foundation Library provides a way to manage and configure Bluetooth module.
 
 Dependencies
 ============
@@ -47,9 +39,7 @@ the following dependency to the :ref:`module.ivy <mmm_module_description>` file:
 
 ::
 
-	<dependency org="com.microej.pack.bluetooth" name="bluetooth-pack" rev="2.2.1" />
-
-The Platform project must be rebuilt (:ref:`platform_build`).
+	<dependency org="com.microej.pack.bluetooth" name="bluetooth-pack" rev="2.4.1" />
 
 Use
 ===

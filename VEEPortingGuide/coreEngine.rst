@@ -566,23 +566,23 @@ Requirements:
 Check Internal Structure Integrity
 ----------------------------------
 
-The internal Core Engine function called ``LLMJVM_checkIntegrity`` checks the internal structure integrity of the MicroJvm virtual machine and returns its checksum.
+The internal Core Engine function called ``LLMJVM_checkIntegrity`` checks the internal structure integrity of the Core Engine and returns its checksum.
 
 - If an integrity error is detected, the ``LLMJVM_on_CheckIntegrity_error`` hook is called and this method returns ``0``.
 - If no integrity error is detected, a non-zero checksum is returned.
 
-This function must only be called from the MicroJvm virtual machine thread context and only from a native function or callback.
+This function must only be called from the Core Engine thread context and only from a native function or callback.
 Calling this function multiple times in a native function must always produce the same checksum.
-If the checksums returned are different, a corruption must have occurred.
+If the returned checksums are different, a corruption must have occurred.
 
-Please note that returning a non-zero checksum does not mean the MicroJvm virtual machine data has not been corrupted,
-as it is not possible for the MicroJvm virtual machine to detect the complete memory integrity.
+Please note that returning a non-zero checksum does not mean the Core Engine data has not been corrupted,
+as it is not possible for the Core Engine to detect the complete memory integrity.
 
-MicroJvm virtual machine internal structures allowed to be modified by a native function are not taken into account for the checksum computation.
-The internal structures allowed are:
+The internal structures of the Core Engine that can be altered legitimately by a native function do not impact the checksum calculation. 
+The following internal structures may be modified without affecting the checksum:
 
 - basetype fields in Java objects or content of Java arrays of base type,
-- internal structures modified by a ``LLMJVM`` function call (e.g. set a pending Java exception, suspend or resume the Java thread, register a resource, ...).
+- internal structures modified by a ``LLMJVM`` function call (e.g., set a pending Java exception, suspend or resume the Java thread, register a resource, ...).
 
 This function affects performance and should only be used for debug purpose.
 A typical use of this API is to verify that a native implementation does not corrupt the internal structures:
@@ -594,7 +594,7 @@ A typical use of this API is to verify that a native implementation does not cor
    		myNativeFunctionDo();
         int32_t crcAfter = LLMJVM_checkIntegrity();
         if(crcBefore != crcAfter){
-        	// Corrupted MicroJVM virtual machine internal structures
+        	// Corrupted Core Engine internal structures
         	while(1);
         }
    }

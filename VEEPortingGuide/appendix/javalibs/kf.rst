@@ -86,24 +86,23 @@ error code composed of two parts: ``[source][errorKind]``.
 .. _table_kf-errorcodes-source:
 .. table:: Error codes: source
 
-   +---------+------------------------------------------------------------+
-   | Ch      | Description                                                |
-   | aracter |                                                            |
-   +=========+============================================================+
-   | A       | Error thrown when accessing an array                       |
-   +---------+------------------------------------------------------------+
-   | I       | Error thrown when calling a method                         |
-   +---------+------------------------------------------------------------+
-   | F       | Error thrown when accessing an instance field              |
-   +---------+------------------------------------------------------------+
-   | M       | Error thrown when entering a synchronized block or method  |
-   +---------+------------------------------------------------------------+
-   | P       | Error thrown when passing a parameter to a method call     |
-   +---------+------------------------------------------------------------+
-   | R       | Error thrown when returning from a method call             |
-   +---------+------------------------------------------------------------+
-   | S       | Error thrown when accessing a static field                 |
-   +---------+------------------------------------------------------------+
+   +-----------+------------------------------------------------------------+
+   | Character | Description                                                |
+   +===========+============================================================+
+   | A         | Error thrown when accessing an array                       |
+   +-----------+------------------------------------------------------------+
+   | I         | Error thrown when calling a method                         |
+   +-----------+------------------------------------------------------------+
+   | F         | Error thrown when accessing an instance field              |
+   +-----------+------------------------------------------------------------+
+   | M         | Error thrown when entering a synchronized block or method  |
+   +-----------+------------------------------------------------------------+
+   | P         | Error thrown when passing a parameter to a method call     |
+   +-----------+------------------------------------------------------------+
+   | R         | Error thrown when returning from a method call             |
+   +-----------+------------------------------------------------------------+
+   | S         | Error thrown when accessing a static field                 |
+   +-----------+------------------------------------------------------------+
 
 .. _table_kf-errorcodes-kind:
 .. table:: Error codes: kind
@@ -128,7 +127,80 @@ error code composed of two parts: ``[source][errorKind]``.
    |         | monitor                                                    |
    +---------+------------------------------------------------------------+
 
+
+.. _kf-loader-error-codes:
+
+Feature Installation and Loading Error Codes
+--------------------------------------------
+
+When an error occurs during the installation of a Feature via the `Kernel.install(InputStream)`_ method,
+or during the loading of installed Features at bootstrap, 
+the system may throw an `ej.kf.InvalidFormatException`_. 
+
+This exception carries a specific error code, which can be retrieved by calling the `getMessage()`_ method 
+on the `InvalidFormatException`_ instance.
+The returned message will follow the format: ``code=<id>``, where ``id`` corresponds the specific error encountered.
+
+Error codes ranging from ``150`` to ``180``, thrown during Feature installation, typically indicate an invalid or corrupted Feature file. 
+This corruption may occur during the file transfer process.
+
+Other possible causes for this exception include errors returned by the LLKERNEL abstraction layer, 
+or issues with a stored Feature, such as corruption or incompatibility.
+
+.. _table_kf-install-errorcodes-llkernel:
+.. table:: Feature Installation Error Codes Related to LLKERNEL Implementation
+
+   +---------+----------------------------------------------------------------+
+   | Id      | Description                                                    |
+   +=========+================================================================+
+   | 51      | The ``LLKERNEL_impl_copyToROM()`` function returned an error.  |
+   +---------+----------------------------------------------------------------+
+   | 52      | The maximum number of installed Features is reached.           |
+   +---------+----------------------------------------------------------------+
+   | 54      | The address returned by the last call to                       |
+   |         | ``LLKERNEL_impl_getFeatureAddressRAM()`` or                    |
+   |         | ``LLKERNEL_impl_getFeatureAddressROM()`` does not match the    |
+   |         | alignment constraint.                                          |
+   +---------+----------------------------------------------------------------+
+   | 55      | The address returned by the last call to                       |
+   |         | ``LLKERNEL_impl_getFeatureAddressROM()`` overlaps with a       |
+   |         | previously returned address.                                   |
+   +---------+----------------------------------------------------------------+
+   | 56      | The address returned by the last call to                       |
+   |         | ``LLKERNEL_impl_getFeatureAddressRAM()`` overlaps with a       |
+   |         | previously returned address.                                   |
+   +---------+----------------------------------------------------------------+
+   | 58      | The ``.fo`` file cannot be installed on this Kernel because it | 
+   |         | contains a code chunk section with a size greater than this    |
+   |         | Kernel code chunk size.                                        |
+   +---------+----------------------------------------------------------------+
+   | 59      | The ``LLKERNEL_IMPL_allocateFeature()`` function returned      |
+   |         | ``0``. The Feature cannot be allocated in memory.              | 
+   +---------+----------------------------------------------------------------+
+
+.. _table_kf-load-errorcodes-llkernel:
+.. table:: Installed Feature Loading Error Codes
+
+   +---------+----------------------------------------------------------------+
+   | Id      | Description                                                    |
+   +=========+================================================================+
+   | 53      | The installed Feature content has been corrupted               |
+   |         | (CRC check error).                                             |
+   +---------+----------------------------------------------------------------+
+   | 57      | The address returned by the last call to                       |
+   |         | ``LLKERNEL_impl_getFeatureAddressRAM()`` is not the same than  |
+   |         | the one returned when the Feature has been installed.          |
+   +---------+----------------------------------------------------------------+
+   | 60      | The ``LLKERNEL_IMPL_getFeatureHandle()`` function returned     |
+   |         | ``0``. The handle for an installed Feature could not be        |
+   |         | retrieved as expected.                                         | 
+   +---------+----------------------------------------------------------------+
+   
 .. _java.lang.IllegalAccessError: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/IllegalAccessError.html
+.. _Kernel.install(InputStream): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#install-java.io.InputStream-
+.. _ej.kf.InvalidFormatException: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/InvalidFormatException.html
+.. _InvalidFormatException: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/InvalidFormatException.html
+.. _getMessage(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Throwable.html#getMessage--
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 

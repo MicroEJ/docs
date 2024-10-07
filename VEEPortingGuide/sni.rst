@@ -1,8 +1,8 @@
 .. _sni_specification:
 
-=============================
-Simple Native Interface (SNI)
-=============================
+===========================================
+Simple Native Interface Specification (SNI)
+===========================================
 
 
 Introduction
@@ -28,29 +28,7 @@ native world:
 Specification Summary
 ---------------------
 
-.. list-table::
-   :widths: 10 30
-
-   * - Java APIs
-     - https://repository.microej.com/javadoc/microej_5.x/apis/ej/sni/package-summary.html
-   * - Latest Version
-     - 1.4
-   * - Module Dependency
-     - .. tabs::
-
-         .. tab:: SDK 6
-
-            .. code-block:: java
-
-               implementation("ej.api:sni:1.4.3")
-
-         .. tab:: SDK 5
-
-            .. code-block:: xml
-
-               <dependency org="ej.api" name="sni" rev="1.4.3" />
-   * - Module Location
-     - https://repository.microej.com/modules/ej/api/sni/
+.. include:: ../ApplicationDeveloperGuide/sni_spec_summary.rst
 
 Comments
 --------
@@ -205,7 +183,7 @@ C Function Call From Java world
 
 The SNI specification allows the invocation of methods from Java to C: these
 methods must be declared ``static`` ``native`` methods, and the parameters must be
-base types or immortal array of base types (see :ref:`[B-ON] <runtime_bon>`). These native
+base types or immortal array of base types (see :ref:`[BON] <runtime_bon>`). These native
 methods are used in Java as standard Java methods.
 
 Example:
@@ -238,7 +216,7 @@ Java Types And C Types
 ----------------------
 
 Base Types
-----------
+^^^^^^^^^^
 
 Types may have different representations depending on the language. The
 file ``sni.h`` defines the C types that represent exactly the Java types.
@@ -291,15 +269,11 @@ file ``sni.h`` defines the C types that represent exactly the Java types.
 
 
 Java Array
-----------
+^^^^^^^^^^
 
 The Java arrays (of base types) are represented in C functions as C
 arrays: the array is a pointer on the first element of the array, all
 the elements in line within the memory.
-
-Note that in C, strings are represented with C ``char`` [1]_ array with a
-``'\0'`` as last character. In Java, strings are ``jchar`` array, not
-terminated by ``'\0'``.
 
 SNI allows to get a Java array length in a C function.
 
@@ -307,8 +281,62 @@ SNI allows to get a Java array length in a C function.
 
    int32_t SNI_getArrayLength(void* array);
 
-.. [1]
-   sizeof(char) is 1 whereas sizeof(jchar) is 2
+Strings
+^^^^^^^
+
+Strings are typically represented quite differently between C & Java.
+In C, strings are represented with C ``char`` (8-bit) array with a
+``'\0'`` as last character. In Java, strings are ``jchar`` (16-bit) array, not
+terminated by ``'\0'``.
+
+To help with the conversion, the `SNI Java API <https://repository.microej.com/javadoc/microej_5.x/apis/ej/sni/SNI.html>`_
+provides utility methods to convert between the two representations.
+
+Example:
+
+.. code-block:: java
+
+   package example;
+   public class Foo {
+
+       private static final int MAX_STRING_SIZE = 42; // including the '\0' character
+
+       public void pushString(String str) {
+           pushString(SNI.toCString(str));
+       }
+
+       public String pullString() {
+           byte[] buffer = new byte[MAX_STRING_SIZE];
+           pullString(buffer);
+           return SNI.toJavaString(buffer);
+       }
+
+       private static native void pushString(byte[] str);
+       private static native void pullString(byte[] buffer);
+
+   }
+
+.. code-block:: c
+
+   #include <sni.h>
+   #include <string.h>
+
+   #define MAX_STRING_SIZE 42
+
+   static char gStr[MAX_STRING_SIZE];
+
+   void Java_example_Foo_pushString(jbyte *str) {
+       strncpy(gStr, (char*) str, MAX_STRING_SIZE);
+   }
+
+   void Java_example_Foo_pullString(jbyte *buffer) {
+       strncpy((char*) buffer, gStr, MAX_STRING_SIZE);
+   }
+
+.. note::
+
+   The string conversions use the :ref:`default platform encoding <section.encoding>`.
+   To use a different encoding, refer to the `String API <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/String.html>`__.
 
 Naming Convention
 -----------------
@@ -415,7 +443,7 @@ native functions:
    #. they must have only one dimension. No multi dimension array are
       allowed (``int[][]`` is forbidden for example).
 
-   #. they must be immortal arrays (see :ref:`[B-ON] <runtime_bon>`). Use the method
+   #. they must be immortal arrays (see :ref:`[BON] <runtime_bon>`). Use the method
       `Immortals.setImmortal()`_ to transform an array into an
       immortal array.
 -  Only base types are allowed as return type
