@@ -100,11 +100,6 @@ carefully respected in order to build an Executable.
 
 For more information about the build process of an Executable, refer to the :ref:`executableBuildWorkflow` documentation. 
 
-.. toctree::
-   :hidden:
-  
-   executableBuildWorkflow
-
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
