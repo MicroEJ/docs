@@ -48,8 +48,8 @@ a device. The SDK covers two levels in device software development:
 -  Device Firmware development
 -  Application development
 
-The firmware will generally be produced by the device's OEM, it includes
-all device drivers and a specific set of MicroEJ functionalities useful
+The firmware is produced by the device's OEM, it includes
+all device drivers and a specific set of functionalities useful
 for application developers targeting this device.
 
 .. figure:: images/toolchain.png
@@ -59,15 +59,15 @@ for application developers targeting this device.
 
    SDK Workflow Overview
 
-Using the SDK, a firmware developer will produce two
-versions of the MicroEJ binary, each one able to run applications:
+Using the SDK, a firmware developer produces two
+versions of the binary, each one able to run applications:
 
 -  An Executable binary to be flashed on OEM devices;
 
--  A Virtual Device which will be used as a device simulator by
+-  A Virtual Device which is used as a device simulator by
    application developers.
 
-Using the SDK, an application developer will be able to:
+Using the SDK, an application developer is able to:
 
 -  Import Virtual Devices matching his target hardware in order to
    develop and test applications on the Simulator;
