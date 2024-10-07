@@ -303,8 +303,7 @@ Installation
 
    .. tab:: SDK 6
 
-      - :ref:`Create a J2SE Library project <sdk_6_create_project_configure_project>`,
-      - In the ``build.gradle.kts`` file, change the ``com.microej.gradle.j2se-library`` plugin to ``com.microej.gradle.mock``.
+      - :ref:`Create a Mock project <sdk_6_create_project_configure_project>`,
       - Build and publish the Mock by executing the Gradle ``publish`` task.
 
       Once the module is built, the mock can be installed in a VEE Port in one of the two ways:
