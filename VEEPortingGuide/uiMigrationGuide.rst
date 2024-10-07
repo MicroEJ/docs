@@ -30,7 +30,7 @@ BSP without GPU
         * If the BSP uses the MicroUI C Module's image heap allocator instead of using the Graphics Engine's image heap allocator, set the preprocessor value ``UI_FEATURE_ALLOCATOR=UI_FEATURE_ALLOCATOR_BESTFIT``.
         * Comment the line that starts with ``#error (...)``.
   
-    * Delete configuration files ``ui/inc/microui_event_decoder_conf.h`` and ``ui/inc/ui_display_brs_configuration.h``.  
+    * Delete configuration files ``ui/inc/microui_event_decoder_conf.h`` and ``ui/inc/ui_display_brs_configuration.h``.
     * Add the source file in ``ui/src/ui_font_drawing.c`` to the project.
     * Update ``c`` and ``h`` files and BSP configuration (if any) to use the new preprocessor values: 
 
