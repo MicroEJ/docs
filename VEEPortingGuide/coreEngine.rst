@@ -577,7 +577,7 @@ The internal Core Engine function called ``LLMJVM_checkIntegrity`` checks the in
 - If no integrity error is detected, a non-zero checksum is returned.
 
 This function must only be called from the Core Engine thread context and only from a native function or callback.
-Calling this function multiple times in a native function must always produce the same checksum.
+Calling this function multiple times in a native function should always produce the same checksum.
 If the returned checksums are different, a corruption must have occurred.
 
 Please note that returning a non-zero checksum does not mean the Core Engine data has not been corrupted,
@@ -589,20 +589,28 @@ The following internal structures may be modified without affecting the checksum
 - basetype fields in Java objects or content of Java arrays of base type,
 - internal structures modified by a ``LLMJVM`` function call (e.g., set a pending Java exception, suspend or resume the Java thread, register a resource, ...).
 
-This function affects performance and should only be used for debug purpose.
+This function affects the performances and should only be used for debug purpose.
 A typical use of this API is to verify that a native implementation does not corrupt the internal structures:
 
-.. code-block:: java
+.. code-block:: c
 
-   void Java_com_mycompany_MyClass_myNativeFunction(void) {
-   		int32_t crcBefore = LLMJVM_checkIntegrity();
-   		myNativeFunctionDo();
+    #include <stdio.h>
+    #include "LLMJVM.h"
+    
+    void Java_com_mycompany_MyClass_myNativeFunction(void) {
+        int32_t crcBefore = LLMJVM_checkIntegrity();
+        myNativeFunctionDo();
         int32_t crcAfter = LLMJVM_checkIntegrity();
         if(crcBefore != crcAfter){
-        	// Corrupted Core Engine internal structures
-        	while(1);
+            // Corrupted Core Engine internal structures
+            while(1);
         }
-   }
+    }
+    
+    // Hook called by the Core Engine when an integrity error is detected
+    void LLMJVM_on_CheckIntegrity_error(uint32_t errorCode, void* errorAddress) {
+        printf("Integrity error detected at address %p (error code: %d)\n", errorAddress, errorCode);
+    }
 
 
 Generic Output
