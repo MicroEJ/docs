@@ -145,7 +145,7 @@ This section contains instructions that will allow you to verify that your Evalu
 
 .. note::
    
-   The command line tool requires :ref:`Architecture 8.2.0 <changelog-8.2.0>` or higher. 
+   The command line tool requires :ref:`Architecture 8.3.0 <changelog-8.3.0>` or higher. 
 
 To get more details on installed Evaluation licenses, proceed with the following steps:
 
