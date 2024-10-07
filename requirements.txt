@@ -1,5 +1,5 @@
 Sphinx==5.1.1
-sphinx_rtd_theme==0.4.3
+sphinx_rtd_theme==2.1.0rc2
 sphinx-copybutton==0.3.1
 docutils==0.18.1
 sphinx-tabs==3.4.1
