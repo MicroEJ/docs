@@ -36,7 +36,7 @@ FrontPanel
 
 **Changed**
 
-- Make deprecated the API ``LLUIDisplay.isClosed()``: use ``LLUIDisplay.isImageClosed()`` instead.
+- Deprecate the API ``LLUIDisplay.isClosed()``: use ``LLUIDisplay.isImageClosed()`` instead.
 
 LLAPIs
 """"""
@@ -73,7 +73,7 @@ LLAPIs
 
 **Changed**
 
-- Make deprecated the API ``LLUI_DISPLAY_isClosed()``: use ``LLUI_DISPLAY_isImageClosed()`` instead.
+- Deprecate the API ``LLUI_DISPLAY_isClosed()``: use ``LLUI_DISPLAY_isImageClosed()`` instead.
 
 C Module MicroUI
 """"""""""""""""
@@ -84,7 +84,7 @@ C Module MicroUI
 - Add ``ui_font_drawing.h`` that provides functions to manage custom fonts.
 - Add the option ``UI_FEATURE_FONT_CUSTOM_FORMATS`` to enable the management of custom fonts. 
 - Add the option ``UI_FEATURE_ALLOCATOR`` to replace the Graphics Engine's image heap allocator by a bestfit allocator.
-- Add the implementation of the following LLAPI ( + their redirections, default implementations and logs):
+- Add the implementation of the following LLAPI ( plus their redirections, default implementations and logs):
 
 	- ``LLUI_PAINTER_IMPL_drawString()``
 	- ``LLUI_PAINTER_IMPL_stringWidth()``
