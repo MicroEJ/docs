@@ -9,15 +9,18 @@ What is MicroEJ?
 
 MicroEJ (pronounced “micro-EDGE”) is a software vendor of cost-driven solutions for embedded and IoT devices.
 
-MICROEJ SDK allows developers to develop applications in Managed Code and deploy them to resource-constrained devices, such as microcontrollers.
+The MicroEJ solution is made up of two products:
+
+- MICROEJ VEE (Virtual Execution Environment) is an application container for resource-constrained embedded devices running on microcontrollers or microprocessors. 
+It allows devices to run multiple and mixed managed code (Java, JavaScript, ...) and C software applications.
+
+- MICROEJ SDK allows developers to develop applications in Managed Code and deploy them to resource-constrained devices, such as microcontrollers.
 
 .. _vee:
 
 MICROEJ VEE
 -----------
 
-MicroEJ VEE (Virtual Execution Environment) is an application container for resource-constrained embedded devices running on microcontrollers or microprocessors. 
-It allows devices to run multiple and mixed managed code (Java, JavaScript, ...) and C software applications.
 
 MicroEJ VEE provides a fully configurable set of services that can be expanded, including:
 
