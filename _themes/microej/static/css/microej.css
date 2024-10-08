@@ -884,7 +884,7 @@ footer hr {
   color: #ee502e;
 }
 
-.rst-content dl:not(.docutils) dt {
+.rst-content dl:not(.docutils, .glossary) ~ dt {
   background: #a4eaf55e;
   color: #ee502e;
   border-top: solid 3px #00aec7;
