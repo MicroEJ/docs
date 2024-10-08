@@ -26,7 +26,7 @@ MICROEJ VEE provides a fully configurable set of services that can be expanded, 
 - a secure multi-application framework,
 - a GUI framework (includes widgets),
 - a network framework with security (SSL/TLS, HTTPS, REST, MQTT, ...),
-- a storage framework (file system)
+- a storage framework (file system),
 - a Java Cryptography Architecture (JCA) implementation.
 
 .. figure:: images/vee.png
@@ -45,7 +45,7 @@ MICROEJ SDK offers a comprehensive toolset to build the software for embedded de
 
 The SDK covers two levels in device software development:
 
--  Device integration and porting (adapting MICROEJ VEE to run on the target device)
+-  Device integration and porting (adapting MICROEJ VEE to run on the target device).
 -  Application development.
 
 Using the SDK, an application developer is able to:
