@@ -379,21 +379,24 @@ FS Pack
 
 .. _test_suite_versioning_bluetooth:
 
-BLUETOOTH Pack
+Bluetooth Pack
 --------------
 
-.. list-table:: BLUETOOTH API Implementation and Validation
+.. list-table:: Bluetooth API Implementation and Validation
    :widths: 20 10 10
 
-   * - BLUETOOTH Pack
-     - BLUETOOTH API
+   * - Bluetooth Pack
+     - Bluetooth API
      - Java Test Suite
-   * - 2.1.0
-     - `2.1.0 <https://repository.microej.com/modules/ej/api/bluetooth/2.1.0/>`__
-     - `2.0.0 <https://repository.microej.com/modules/com/microej/pack/bluetooth/bluetooth-testsuite/2.0.0/>`__
-   * - 2.0.1
+   * - [2.3.0-2.5.0[
+     - `2.2.2 <https://repository.microej.com/modules/ej/api/bluetooth/2.2.2/>`__
+     - `2.1.0 <https://repository.microej.com/modules/com/microej/pack/bluetooth/bluetooth-testsuite/2.1.0/>`__
+   * - [2.1.0-2.3.0[
+     - `2.1.1 <https://repository.microej.com/modules/ej/api/bluetooth/2.1.1/>`__
+     - `2.0.1 <https://repository.microej.com/modules/com/microej/pack/bluetooth/bluetooth-testsuite/2.0.1/>`__
+   * - [2.0.0-2.1.0[
      - `2.0.0 <https://repository.microej.com/modules/ej/api/bluetooth/2.0.0/>`__
-     - `2.0.0 <https://repository.microej.com/modules/com/microej/pack/bluetooth/bluetooth-testsuite/2.0.0/>`__
+     - `2.0.1 <https://repository.microej.com/modules/com/microej/pack/bluetooth/bluetooth-testsuite/2.0.1/>`__
 
 NET Pack
 --------
@@ -450,6 +453,19 @@ NET Pack
      - `4.1.1 <https://repository.microej.com/modules/com/microej/pack/net/net-1_1-testsuite/4.1.1/>`__
      - `4.0.2 <https://repository.microej.com/modules/com/microej/pack/net/net-ssl-2_2-testsuite/4.0.2/>`__
      - `1.7.0 <https://repository.microej.com/modules/com/microej/pack/net/security-1_7-testsuite/1.7.0/>`__
+
+Audio Pack
+----------
+
+.. list-table:: Audio API Implementation and Validation
+   :widths: 20 10 10
+
+   * - Audio Pack
+     - Audio API
+     - Java Test Suite
+   * - [1.0.0-1.1.0[
+     - `1.0.0 <https://repository.microej.com/modules/ej/api/audio/1.0.0/>`__
+     - `1.0.0 <https://repository.microej.com/modules/com/microej/pack/audio/audio-testsuite/1.0.0/>`__
 
 .. _test_suite_versioning_event_queue:
 

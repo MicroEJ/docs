@@ -20,6 +20,7 @@ How-to Guides
    createCustomConfigurationInIDE
    useFeatureEntryPointClass
    disableIvyDescriptorPublication
+   checkDependenciesVersions
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 

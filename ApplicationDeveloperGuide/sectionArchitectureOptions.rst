@@ -25,6 +25,8 @@ declared required types are embedded.
 Group: Assertions
 -----------------
 
+.. _enable_assertions_sim:
+
 Option(checkbox): Execute assertions on Simulator
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
