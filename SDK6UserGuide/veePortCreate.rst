@@ -361,6 +361,9 @@ Here are some examples::
     # Disable the whole "ssl" module of the Pack Net
     com.microej.runtime.ssl.enabled=false
 
+For a complete list of the properties allowing to enable/disable modules, 
+refer to the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/blob/master/vee-port/configuration.properties>`_.
+
 .. _sdk_6_veeport_pack_configuration:
 
 Packs Configuration
