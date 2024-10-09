@@ -51,14 +51,14 @@ New Development Flow
 
 With the SDK 5, the development flow consisted in 3 main steps:
 
-- Make a change in the VEE Port project.
+- Make a change in one the VEE Port projects (for example ``*-configuration`` or ``*-fp``).
 - Build the VEE Port configuration project (``*-configuration``), which generates a built VEE Port in the sibling folder.
 - Run or build an Application (after defining the path to the VEE Port in the ``module.ivy`` file) on this VEE Port.
 
 While this development flow is still possible with the SDK 6, 
 the recommended approach is to make the Application depend directly on the VEE Port project (the way to do it is detailed in the following sections).
 This allows to automatically build the updated projects (VEE Port Configuration, Front Panel, Mock, ...) when running or building the Application.
-There is no need to build the VEE Port anymore before testing it, Gradle does it for you.
+There is no need to build the VEE Port anymore before using it, Gradle does it for you.
 It automatically detects that the VEE Port has changes and triggers the tasks to build the updated components, and only the updated components.
 Therefore, the development flow in SDK 6 is now:
 
