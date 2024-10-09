@@ -28,10 +28,10 @@ To create a new Kernel project:
 Configure a VEE Port
 --------------------
 
-Before building the Kernel, you need to build a VEE Port with Multi-Sandbox capability.
+Before building the Kernel, you need to have a VEE Port with Multi-Sandbox capability.
 To enable the Multi-Sandbox capability in your VEE Port configuration, follow the instructions from the :ref:`multisandbox` section.
 
-Once the VEE Port is built, configure the target VEE Port in your Kernel project:
+Once the VEE Port is available, configure the target VEE Port in your Kernel project:
 
 - To configure a VEE Port with SDK 6, see :ref:`sdk_6_select_veeport`.
 - To configure a VEE Port with SDK 5, see :ref:`platform_selection`.
