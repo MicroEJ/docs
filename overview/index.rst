@@ -1,7 +1,7 @@
 .. _overview:
 
-Introduction
-============
+Overview
+========
 
 
 What is MicroEJ?
