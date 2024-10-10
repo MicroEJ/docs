@@ -110,12 +110,11 @@ Then declaring the VEE Port as a dependency in the ``build.gradle.kts`` file of 
 The dependency must use the module notation (``"group:name:version"``), where the group and name match with the ones declared in the VEE Port project.
 The group is defined in the ``build.gradle.kts`` file of the ``vee-port`` project by the ``group`` property.
 The name is defined in the ``settings.gradle.kts`` file when the ``vee-port`` project is included. 
-For example, if the ``vee-port`` subproject is included with::
+For example, the name of the VEE Port is ``my-custom-vee-port`` if the ``vee-port`` subproject is included with::
 
   include("my-custom-vee-port")
   project(":my-custom-vee-port").projectDir = file("vee-port")
 
-its name is ``my-custom-vee-port``.
 Otherwise the name of the subproject folder is used, so ``vee-port`` in the recommended structure. 
 
 
