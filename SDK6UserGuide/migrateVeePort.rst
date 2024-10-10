@@ -230,7 +230,7 @@ If the VEE Port project contains Mock subprojects, they must be migrated by foll
 
 - Make the VEE Port configuration subproject depend on the Mock subproject by adding a project dependency in the ``vee-port/build.gradle.kts`` file::
 
-   microejTool(project(":vee-port:mock"))
+   microejMock(project(":vee-port:mock"))
 
 - Delete all the files related to SDK 5:
 
