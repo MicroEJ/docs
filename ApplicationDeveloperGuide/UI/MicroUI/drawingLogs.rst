@@ -125,10 +125,10 @@ They are defined and documented in the class ``GraphicsContext``.
      - The system ran out of memory.
    * - ``DRAWING_LOG_CLIP_MODIFIED``
      - ``1 << 3``
-     - An undefined character was drawn.
+     - The VEE port modified clip values in the graphics context.
    * - ``DRAWING_LOG_MISSING_CHARACTER``
      - ``1 << 4``
-     - The VEE port modified clip values in the graphics context.
+     - An undefined character was drawn.
    * - ``DRAWING_LOG_LIBRARY_INCIDENT``
      - ``1 << 29``
      - An incident occurred in an underlying library.

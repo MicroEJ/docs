@@ -1072,7 +1072,7 @@ The functions are listed in ``LLUI_DISPLAY_impl.h``.
 
 * ``LLUI_DISPLAY_IMPL_binarySemaphoreTake`` and ``LLUI_DISPLAY_IMPL_binarySemaphoreGive``: Two distinct functions have to be implemented to *take* and *give* a binary semaphore.
 
-* ``LLUI_DISPLAY_IMPL_flush``: According the display buffer policy (see :ref:`section_display_policies`), the ``flush`` function has to be implemented. This function must not block and not perform the flush directly. Another OS task or dedicated hardware must be configured to perform the flush.
+* ``LLUI_DISPLAY_IMPL_flush``: According to the display buffer policy (see :ref:`section_display_policies`), the ``flush`` function has to be implemented. This function must not block and not perform the flush directly. Another OS task or dedicated hardware must be configured to perform the flush.
 
 .. _MicroUI.start(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/MicroUI.html#start--
 
