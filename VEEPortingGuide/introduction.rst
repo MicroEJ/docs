@@ -2,8 +2,8 @@
 Introduction
 ============
 
-A MicroEJ Architecture is a software package that includes the MicroEJ Runtime port to a specific target Instruction Set Architecture (ISA) and C compiler.
-It contains a set of libraries, tools and C header files. MicroEJ Architectures are provided by MICROEJ SDK.
+A :ref:`MicroEJ Architecture <architecture_overview>` is a software package that includes the MicroEJ Runtime port to a specific target Instruction Set Architecture (ISA) and C compiler.
+It contains a set of libraries, tools and C header files.
 
 A VEE Port is a MicroEJ Architecture port for a custom device.
 
@@ -85,7 +85,7 @@ A VEE Port Example is already available for the same MCU/RTOS/C Compiler
 ------------------------------------------------------------------------
 
 This is the fastest way: `VEE Port Examples`_ are usually provided for a silicon vendor evaluation board.
-Import this VEE Port in MICROEJ SDK.
+Use this VEE Port project and adapt it to your needs.
 
 As the MCU, RTOS and compiler are the same, only the device-specific code needs to be changed (external RAM, external oscillator, communication interfaces).
 
@@ -94,7 +94,9 @@ VEE Port Configuration
 
 * Modify the ``xxx-configuration`` project to match the device features and its associated configuration (e.g. GUI, Networking, ...).
 
-Refer to :ref:`VEE Port configuration <platform_module_configuration>` to learn more about it.
+Refer to VEE Port configuration documentation for :ref:`SDK 6 <sdk_6_veeport_pack_configuration>` 
+or :ref:`SDK 5 <platform_module_configuration>` to learn more about it.
+
 
 More details on available modules can be found in the :ref:`vee-porting-guide`.
 
@@ -103,12 +105,12 @@ BSP
 
 Required actions:
 
-* modify the BSP C project to match the device specification:
+* Modify the BSP C project to match the device specification:
 
-  * edit the scatter file/link options
-  * edit the compilation options
+  * Edit the scatter file/link options.
+  * Edit the compilation options.
 
-* create/review/change the platform Low Level C drivers. 
+* Create/review/change the platform Low Level C drivers. 
   They must match the device components and the MCU IO pin assignment:
   
   .. note::
@@ -119,34 +121,33 @@ Required actions:
 Simulator
 :::::::::
 
-In the SDK:
-
-* modify the existing Simulator Front Panel ``xxx-fp`` project
+* Modify the existing Simulator Front Panel ``xxx-fp`` project.
 
 A VEE Port Example is not available for the same MCU/RTOS/C Compiler
 --------------------------------------------------------------------
 
 Look for an available `VEE Port Example <VEE Port Examples>`_ that will match in order of priority:
 
-* same MCU part number.
-* same RTOS.
-* same C compiler.
+* same MCU part number
+* same RTOS
+* same C compiler
 
 At this point, consider either to modify the closest VEE Port:
 
-* In the SDK: modify the VEE Port configuration.
-* in the C IDE: start from an empty project that match with the MCU.
+* Modify the VEE Port configuration.
+* in the C IDE, start from an empty project that matches with the MCU.
 
 Or to start from scratch a new VEE Port:
 
-* In the SDK: create the VEE Port and refer to the selected VEE Port as a model for implementation
-  (refer to the :ref:`VEE Port Creation <new_platform_creation>` documentation).
-* in the C IDE: start from an empty project and implement the drivers of each of the LL drivers API. 
+* Create the VEE Port project and refer to the selected VEE Port as a model for implementation
+  (refer to the VEE Port Creation documentation for :ref:`SDK 6 <sdk_6_veeport_create>` 
+  or :ref:`SDK 5 <new_platform_creation>`).
+* In the C IDE, start from an empty project and implement the drivers of each of the LL drivers API. 
   
   Make sure to link with:
 
-  * the ``microejruntime.a`` that runs the Core Engine for a specific MCU Architecture
-  * the ``microejapp.o`` that contains the compiled Java application
+  * The ``microejruntime.a`` that runs the Core Engine for a specific MCU Architecture.
+  * The ``microejapp.o`` that contains the compiled Java application.
 
 MCU
 :::
