@@ -387,75 +387,18 @@ Here are some examples::
 VEE Port Usage
 ==============
 
-Depending on your use case, there are different ways to use the VEE Port.
+Depending on your use case, there are different ways to use the VEE Port from an Application or a Library.
+All of them are described in the :ref:`sdk_6_select_veeport` page.
 
-VEE Port project inside a multi-project
----------------------------------------
+In a nutshell,
 
-When the VEE Port project is in the same multi-project than the component which needs it (an Application for example), 
-the VEE Port project should be declared as a project dependency.
-
-For example if the multi-project contains an Application subproject named ``my-app`` and a VEE Port subproject called ``vee-port``,
-the VEE Port project must be declared as a dependency in the ``build.gradle.kts`` file of the ``my-app`` subproject as follows::
-
-    dependencies {
-
-        microejVee(project(":vee-port"))
-
-    }
-
-The VEE Port will be automatically built when it is required by the Application.
-For example when running the Application on the Simulator (with the ``runOnSimulator`` task) 
-or when building the Application Executable (with the ``buildExecutable``),
-the VEE Port will be built before executing the requested task.
-
-Local VEE Port project outside a multi-project
-----------------------------------------------
-
-When the component which needs the VEE Port (an Application for example), is not is the same multi-project than the VEE Port, 
-the VEE Port project can be imported thanks to the `Gradle Composite Build <https://docs.gradle.org/current/userguide/composite_builds.html>`_ feature.
-
-This allows to consider the VEE Port project as part of the Application project, 
-so all changes done to the VEE Port are automatically considered when building or running the Application.
-
-This is done by adding the following line in the ``settings.gradle.kts`` file of the Application project::
-
-  includeBuild("[vee-port-project-absolute-path]")
-
-Then declaring the VEE Port as a dependency in the ``build.gradle.kts`` file of the Application project::
-
-    dependencies {
-
-        microejVee("com.mycompany:vee-port:1.0.0")
-
-    }
-
-The dependency must use the module notation (``"group:name:version"``), where the group and name match with the ones declared in the VEE Port project.
-The group is defined in the ``build.gradle.kts`` file of the ``vee-port`` project by the ``group`` property.
-The name is defined in the ``settings.gradle.kts`` file when the ``vee-port`` project is included. 
-For example, if the ``vee-port`` subproject is included with::
-
-  include("my-custom-vee-port")
-  project(":my-custom-vee-port").projectDir = file("vee-port")
-
-its name is ``my-custom-vee-port``.
-Otherwise the name of the subproject folder is used, so ``vee-port`` in the recommended structure. 
-
-Published VEE Port
-------------------
-
-When the VEE Port is intended to be used by developers not having the VEE Port project locally,
-it must be published in a remote repository.
-Refer to the :ref:`sdk_6_veeport_publication` section to learn how to publish a VEE Port.
-
-Once published, the VEE Port can be used in a component, such as an Application, by declaring it in the dependencies.
-For example to use the VEE Port of the :ref:`sdk_6_getting_started_imx93`::
-
-  dependencies {
-
-    microejVee("com.microej.veeport.imx93:VEEPort_eval:1.0.2")
-
-  }
+- When the VEE Port is intended to be used by developers not having the VEE Port project locally,
+  it must be published in a remote repository and :ref:`fetched in dependencies <sdk_6_select_veeport_module>` by the developers.
+  Refer to the :ref:`sdk_6_veeport_publication` section to learn how to publish a VEE Port.
+- When the VEE Port project is available locally on the developers' machine, it can be integrated in the build flow
+  of the Application or the Library. Depending on your project structure, 
+  refer to :ref:`sdk_6_select_veeport_in_multiproject` or :ref:`sdk_6_select_veeport_outside_multi-project` section. 
+  
 
 .. _sdk_6_veeport_customization:
 
