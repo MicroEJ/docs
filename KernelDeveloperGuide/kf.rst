@@ -132,6 +132,8 @@ Ownership Rules
 At runtime, each type, object and thread execution context has an owner.
 This section defines ownership transmission and propagation rules.
 
+.. _kf_type_owner:
+
 Type
 ~~~~
 
@@ -154,6 +156,8 @@ context owner.
 
 The owner of an object can be retrieved by calling
 `Kernel.getOwner()`_ with the given object.
+
+.. _kf_execution_context:
 
 Execution Context
 ~~~~~~~~~~~~~~~~~
@@ -322,6 +326,17 @@ A class owned by a Feature cannot declare a ``native`` method.
 Reflective Operations
 ~~~~~~~~~~~~~~~~~~~~~
 
+Reflective operations enable dynamic access to Java elements. 
+These operations must adhere to additional rules to maintain isolation semantics, based on the following parameters:
+
+- Context Owner: The current :ref:`execution context <kf_execution_context>` at the time the operation is invoked.
+- Code Owner: The :ref:`owner of the class <kf_type_owner>` that contains the method from which the operation is called.
+- Type, Class, or Resource Owner: The owner of the target element being accessed by the operation.
+
+.. note::
+
+   ``N/A`` indicates that it is not possible to be in Kernel mode within code owned by a Feature.
+
 ``Class.forName``
 ^^^^^^^^^^^^^^^^^
 
@@ -382,6 +397,7 @@ The following table defines the extended rules for `Class.forName()`_ to throw a
 ^^^^^^^^^^^^^^^^^^^^^
 
 The following table defines the extended rules for `Class.newInstance()`_.
+The last column indicates the owner of the newly created instance, if applicable.
 
 .. list-table:: Table 2: ``Class.newInstance(...)`` access rules
    :header-rows: 1
@@ -390,7 +406,7 @@ The following table defines the extended rules for `Class.newInstance()`_.
       - Context Owner
       - Code Owner
       - Class Owner
-      - New instance owner
+      - New Instance Owner
    - 
       - ``K``
       - ``K``
@@ -436,7 +452,7 @@ The following table defines the extended rules for `Class.newInstance()`_.
 ``Class.getResourceAsStream``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-defines the extended rules for
+The following table defines the extended rules for
 `Class.getResourceAsStream()`_ to return ``null`` when resource is not allowed to be accessed.
 
 .. list-table:: Table 3: ``Class.getResourceAsStream(...)`` access rules

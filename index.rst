@@ -9,7 +9,7 @@ MicroEJ
 Welcome to the MicroEJ developer documentation.
 
 MicroEJ (pronounced “micro-EDGE”) turns any electronic product or ‘things’ into smart things, MicroEJ tools and libraries enable you to easily create efficient and feature complete applications for embedded devices.
-MicroEJ leverages a runtime environment called VEE (`Virtual Execution Environment <VEEPortingGuide/index.html>`_) to simplify and secure embedded development. 
+MicroEJ leverages a runtime environment called VEE (`Virtual Execution Environment <overview/vee.html>`_) to simplify and secure embedded development. 
 
 Browse the following chapters to familiarize yourself and understand the principles of development with MicroEJ Technology.
 

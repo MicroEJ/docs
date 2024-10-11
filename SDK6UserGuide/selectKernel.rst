@@ -24,7 +24,7 @@ When your Kernel is a subproject of a multi-project,
 you can define the Kernel by declaring a project dependency in the ``build.gradle.kts`` file, with the ``microejVee`` configuration::
    
    dependencies {
-      microejVee(projec(":mykernel"))
+      microejVee(project(":mykernel"))
    }
   
 Using a Local Kernel
