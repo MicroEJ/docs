@@ -43,33 +43,49 @@ Dependencies
 Installation
 ============
 
-The Net Pack bundles several libraries: Net, SSL & Security.
+NET is an additional module. 
+To enable it, the Net :ref:`Pack <pack_overview>` (which bundles several libraries: Net, SSL & Security) must be installed in your VEE Port:
 
-Refer to the chapter :ref:`pack_import` to integrate a specific version of the Net Pack:
+.. tabs::
 
-.. code-block:: xml
-   :emphasize-lines: 2
+   .. tab:: SDK 6 (build.gradle.kts)
 
-   <dependencies>
-       <dependency org="com.microej.pack.net" name="net-pack" rev="11.0.2"/>
-   </dependencies>
+      .. code-block:: kotlin
 
-Then, using the VEE Port Editor (see :ref:`platform_module_configuration`), enable the Net library (API, Impl & Mock):
+         microejPack("com.microej.pack.net:net-pack:11.0.2")
 
-.. figure:: images/net-ssl_modules.*
-   :alt: Net Pack Modules
+   .. tab:: SDK 5 (module.ivy)
 
-   Net Pack Modules
+      .. code-block:: xml
+
+         <dependency org="com.microej.pack.net" name="net-pack" rev="11.0.2"/>
+
+
+      Then, using the VEE Port Editor (see :ref:`platform_module_configuration`), enable the Net library (API, Impl & Mock):
+
+      .. figure:: images/net-ssl_modules.*
+         :alt: Net Pack Modules
+
+         Net Pack Modules
 
 Use
 ===
 
-The `Net API Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
-Application project to use the Net library.
+The `Net API Module`_ must be added to the Application project build file to use the NET library:
 
-::
+.. tabs::
 
-   <dependency org="ej.api" name="net" rev="1.1.4"/>
+   .. tab:: SDK 6 (build.gradle.kts)
+
+      .. code-block:: kotlin
+
+         implementation("ej.api:net:1.1.4")
+
+   .. tab:: SDK 5 (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="ej.api" name="net" rev="1.1.4"/>
 
 This library provides a set of options. Refer to the chapter
 :ref:`application_options` which lists all available options.
