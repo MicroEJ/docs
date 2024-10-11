@@ -83,7 +83,7 @@ The mapping between MMM build types and Gradle plugins is:
    * - ``build-microej-mock``
      - ``com.microej.gradle.mock``
    * - ``build-runtime-api``
-     - ``com.microej.gradle.runtime-api``
+     - ``com.microej.gradle.runtime-environment``
 
 Module Information
 ~~~~~~~~~~~~~~~~~~

@@ -142,12 +142,12 @@ A Kernel API or a Runtime Environment module must be added as dependency of the 
 
          Unlike SDK 5 (MMM), Kernel API dependencies are not transitively fetched with SDK 6. They must therefore be explicitly added.
 
-      - A Runtime Environment module is added as a dependency with the configuration ``microejRuntimeApi``.   
+      - A Runtime Environment module is added as a dependency with the configuration ``microejRuntimeEnvironment``.   
 
       .. code:: java
 
          dependencies {
-            microejRuntimeApi("com.mycompany:myruntimeapi:1.0.0")
+            microejRuntimeEnvironment("com.mycompany:myruntimeapi:1.0.0")
          }
 
    .. tab:: SDK 5

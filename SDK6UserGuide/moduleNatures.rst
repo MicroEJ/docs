@@ -111,12 +111,12 @@ This plugin adds the following tasks to your project:
 
 This module nature inherits from the configuration of all its tasks.
 
-.. _sdk6_module_natures.runtime-api:
+.. _sdk6_module_natures.runtime-environment:
 
-Runtime API
------------
+Runtime Environment
+-------------------
 
-**Plugin Name**: ``com.microej.gradle.runtime-api``
+**Plugin Name**: ``com.microej.gradle.runtime-environment``
 
 **Tasks**:
 
@@ -124,11 +124,11 @@ This plugin adds the following tasks to your project:
 
 - tasks of the `Gradle Java plugin <https://docs.gradle.org/current/userguide/java_plugin.html>`__
 - :ref:`sdk6_module_natures.tasks.checkModule`
-- :ref:`sdk6_module_natures.tasks.shrinkRuntimeApi`
-- :ref:`sdk6_module_natures.tasks.compileRuntimeApi`
-- :ref:`sdk6_module_natures.tasks.builRuntimeApiJar`
+- :ref:`sdk6_module_natures.tasks.shrinkRuntimeEnvironment`
+- :ref:`sdk6_module_natures.tasks.compileRuntimeEnvironment`
+- :ref:`sdk6_module_natures.tasks.builRuntimeEnvironmentJar`
 
-.. graphviz:: graphRuntimeApiModule.dot
+.. graphviz:: graphRuntimeEnvironmentModule.dot
 
 **Configuration**:
 
@@ -256,7 +256,7 @@ This task is used by the following module natures:
 - :ref:`sdk6_module_natures.addon_lib`
 - :ref:`sdk6_module_natures.application`
 - :ref:`sdk6_module_natures.mock`
-- :ref:`sdk6_module_natures.runtime-api`
+- :ref:`sdk6_module_natures.runtime-environment`
 
 **Configuration**:
 
@@ -547,10 +547,10 @@ This task is used by the following module natures:
 
 The ``compileWrapperJava`` task is used internally by the SDK and it is not intended to be executed by the user.
 
-.. _sdk6_module_natures.tasks.shrinkRuntimeApi:
+.. _sdk6_module_natures.tasks.shrinkRuntimeEnvironment:
 
-shrinkRuntimeApi
-^^^^^^^^^^^^^^^^
+shrinkRuntimeEnvironment
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Description**: Shrinks the Java source files according to the provided :ref:`Kernel APIs <kernel.api>`.
 
@@ -562,62 +562,62 @@ shrinkRuntimeApi
 
 **Outputs**:
 
-- The directory in which shrunk Java sources are generated (``build/runtimeApi/shrunkSources``)
+- The directory in which shrunk Java sources are generated (``build/runtimeEnvironment/shrunkSources``)
 
 **Module Natures**:
 
 This task is used by the following module natures:
 
-- :ref:`sdk6_module_natures.runtime-api`
+- :ref:`sdk6_module_natures.runtime-environment`
 
-The ``shrinkRuntimeApi`` task is used internally by the SDK and it is not intended to be executed by the user.
+The ``shrinkRuntimeEnvironment`` task is used internally by the SDK and it is not intended to be executed by the user.
 
-.. _sdk6_module_natures.tasks.compileRuntimeApi:
+.. _sdk6_module_natures.tasks.compileRuntimeEnvironment:
 
-compileRuntimeApi
-^^^^^^^^^^^^^^^^^
+compileRuntimeEnvironment
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Description**: Compiles the Runtime API :ref:`Kernel APIs <kernel.api>`.
+**Description**: Compiles the Runtime Environment :ref:`Kernel APIs <kernel.api>`.
 
 **Inputs**:
 
-- The directory in which shrunk Java sources are generated (``build/runtimeApi/shrunkSources``)
+- The directory in which shrunk Java sources are generated (``build/runtimeEnvironment/shrunkSources``)
 - The project classpath
 
 **Outputs**:
 
-- The directory in which shrunk Java classes are generated (``build/runtimeApi/shrunkClasses``)
+- The directory in which shrunk Java classes are generated (``build/runtimeEnvironment/shrunkClasses``)
 
 **Module Natures**:
 
 This task is used by the following module natures:
 
-- :ref:`sdk6_module_natures.runtime-api`
+- :ref:`sdk6_module_natures.runtime-environment`
 
-The ``compileRuntimeApi`` task is used internally by the SDK and it is not intended to be executed by the user.
+The ``compileRuntimeEnvironment`` task is used internally by the SDK and it is not intended to be executed by the user.
 
-.. _sdk6_module_natures.tasks.builRuntimeApiJar:
+.. _sdk6_module_natures.tasks.builRuntimeEnvironmentJar:
 
-buildRuntimeApiJar
-^^^^^^^^^^^^^^^^^^
+buildRuntimeEnvironmentJar
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Description**: Builds the Runtime API Jar file.
+**Description**: Builds the Runtime Environment Jar file.
 
 **Inputs**:
 
-- The directory in which shrunk Java classes are generated (``build/runtimeApi/shrunkClasses``)
+- The directory in which shrunk Java classes are generated (``build/runtimeEnvironment/shrunkClasses``)
 
 **Outputs**:
 
-- The Jar file of the Runtime API (``build/libs/<project_name>-<project_version>-runtime-api.jar``)
+- The Jar file of the Runtime Environment (``build/libs/<project_name>-<project_version>-runtime-environment.jar``)
 
 **Module Natures**:
 
 This task is used by the following module natures:
 
-- :ref:`sdk6_module_natures.runtime-api`
+- :ref:`sdk6_module_natures.runtime-environment`
 
-The ``buildRuntimeApiJar`` task is used internally by the SDK and it is not intended to be executed by the user.
+The ``buildRuntimeEnvironmentJar`` task is used internally by the SDK and it is not intended to be executed by the user.
 
 .. _sdk6_module_natures.tasks.buildFeatureFromWPK:
 

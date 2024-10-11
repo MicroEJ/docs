@@ -113,7 +113,7 @@ This can be done by declaring :ref:`Kernel APIs <kernel.api>` as a dependency in
       implementation("com.microej.kernelapi:edc:1.2.0")
    }
 
-.. _sdk_6_buildVirtualDevice_add_runtime_api:
+.. _sdk_6_buildVirtualDevice_add_runtime_environment:
 
 Add a Runtime Environment in a Virtual Device
 ---------------------------------------------
@@ -122,7 +122,7 @@ When building a Virtual Device for a Kernel, the set of classes, methods and sta
 by all applications can be defined by declaring a :ref:`runtime_environment` as a dependency in the build file::
 
    dependencies {
-      microejRuntimeApi("com.mycompany:myruntimeapi:1.0.0")
+      microejRuntimeEnvironment("com.mycompany:myruntime-environment:1.0.0")
    }
 
 The transitive dependencies of the Runtime Environment are then embedded in the Virtual Device.
