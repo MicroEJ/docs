@@ -11,9 +11,9 @@ digraph mygraph {
     ]
     edge [fontname="Helvetica,Arial,sans-serif"]
     "checkModule" [fillcolor = "#f76241"]
-    "buildRuntimeApiJar" [fillcolor = "#f76241"]
-    "compileRuntimeApi" [fillcolor = "#f76241"]
-    "shrinkRuntimeApi" [fillcolor = "#f76241"]
+    "buildRuntimeEnvironmentJar" [fillcolor = "#f76241"]
+    "compileRuntimeEnvironment" [fillcolor = "#f76241"]
+    "shrinkRuntimeEnvironment" [fillcolor = "#f76241"]
     "build" -> "check"
     "check" -> "test"
     "test" -> "classes"
@@ -30,12 +30,12 @@ digraph mygraph {
     "uploadArchives" -> "jar"
     "jar" -> "classes"
     "checkModule" -> "assemble"
-    "javadoc" -> "shrinkRuntimeApi"
-    "sourcesJar" -> "shrinkRuntimeApi"
-    "compileRuntimeApi" -> "shrinkRuntimeApi"
-    "jar" -> "compileRuntimeApi"
-    "buildRuntimeApiJar" -> "compileRuntimeApi"
-    "build" -> "buildRuntimeApiJar"
+    "javadoc" -> "shrinkRuntimeEnvironment"
+    "sourcesJar" -> "shrinkRuntimeEnvironment"
+    "compileRuntimeEnvironment" -> "shrinkRuntimeEnvironment"
+    "jar" -> "compileRuntimeEnvironment"
+    "buildRuntimeEnvironmentJar" -> "compileRuntimeEnvironment"
+    "build" -> "buildRuntimeEnvironmentJar"
 
     subgraph cluster_legend {
         label="Legend";

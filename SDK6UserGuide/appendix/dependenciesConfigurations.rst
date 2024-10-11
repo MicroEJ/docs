@@ -28,7 +28,7 @@ The MicroEJ Gradle plugins also define dependency configurations for internal us
     - ``addonProcessorClasspath`` , used by the :ref:`sdk6_module_natures.tasks.adp` task
     - ``jdtCompilerClasspath``, used by the :ref:`sdk6_module_natures.addon_lib` and :ref:`sdk6_module_natures.application` plugins
     - ``wrapperClasspath``, used by the ``compileJava`` task
-    - ``microejRuntimeApiFullRuntimeClasspath``, used by the :ref:`sdk6_module_natures.tasks.buildVirtualDevice`, :ref:`sdk6_module_natures.tasks.buildApplicationObjectFile` and :ref:`sdk6_module_natures.tasks.buildExecutable` tasks
+    - ``microejRuntimeEnvironmentFullRuntimeClasspath``, used by the :ref:`sdk6_module_natures.tasks.buildVirtualDevice`, :ref:`sdk6_module_natures.tasks.buildApplicationObjectFile` and :ref:`sdk6_module_natures.tasks.buildExecutable` tasks
 
 Publication Variants
 --------------------
@@ -69,12 +69,12 @@ microejMockRip
 This variant is used to publish a Mock.
 The ``LibraryElement`` attribute of the variant is set to ``microej-rip``.
 
-runtimeApi
-~~~~~~~~~~
+runtimeEnvironment
+~~~~~~~~~~~~~~~~~~
 
-This variant is used to publish a Runtime API, 
-that can be fetched by declaring a dependency with the ``microejRuntimeApi`` configuration.
-The ``LibraryElement`` attribute of the variant is set to ``microej-runtime-api``.
+This variant is used to publish a Runtime Environment, 
+that can be fetched by declaring a dependency with the ``microejRuntimeEnvironment`` configuration.
+The ``LibraryElement`` attribute of the variant is set to ``microej-runtime-environment``.
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
