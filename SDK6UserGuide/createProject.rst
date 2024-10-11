@@ -292,7 +292,7 @@ Refer to the module type you want to build to configure your project:
 - :ref:`Add-On Library <sdk_6_create_project_configure_addon_library>`
 - :ref:`Mock <sdk_6_create_project_configure_mock>`
 - :ref:`J2SE Library <sdk_6_create_project_configure_j2se_library>`
-- :ref:`Runtime API <sdk_6_create_project_configure_runtime_api>`
+- :ref:`Runtime Environment <sdk_6_create_project_configure_runtime_environment>`
 
 
 .. _sdk_6_create_project_configure_application:
@@ -367,15 +367,15 @@ J2SE Library Project
 
 Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
 
-.. _sdk_6_create_project_configure_runtime_api:
+.. _sdk_6_create_project_configure_runtime_environment:
 
-Runtime API Project
-~~~~~~~~~~~~~~~~~~~~
+Runtime Environment Project
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Add the ``com.microej.gradle.runtime-api`` plugin in the build script::
+- Add the ``com.microej.gradle.runtime-environment`` plugin in the build script::
 
     plugins {
-        id("com.microej.gradle.runtime-api") version "0.19.0"
+        id("com.microej.gradle.runtime-environment") version "0.19.0"
     }
 
   .. note::

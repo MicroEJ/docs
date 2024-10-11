@@ -194,13 +194,13 @@ The Runtime Environment dependency must be declared in the Application project a
 
       .. code:: java
 
-         microejRuntimeApi("com.mycompany:myruntimeapi:1.0.0")
+         microejRuntimeEnvironment("com.mycompany:myruntime-environment:1.0.0")
 
    .. tab:: SDK 5
 
       .. code-block:: xml
 
-         <dependency org="com.mycompany" name="myruntimeapi" rev="1.0.0" conf="provided->runtimeapi"/>
+         <dependency org="com.mycompany" name="myruntime-environment" rev="1.0.0" conf="provided->runtimeapi"/>
 
 .. note::
 
