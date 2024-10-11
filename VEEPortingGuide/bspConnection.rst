@@ -7,7 +7,7 @@ BSP Connection
 Principle
 ---------
 
-Using a MicroEJ VEE Port, the user can compile a Application on that VEE Port. 
+Using a MicroEJ VEE Port, the user can compile an Application on that VEE Port. 
 The result of this compilation is a ``microejapp.o`` file.
 
 This file has to be linked with the VEE Port runtime file (``microejruntime.a``) 
@@ -111,7 +111,7 @@ BSP connection options can be specified as VEE Port options or as Application op
 
 The following table describes the VEE Port options, which can be set in the VEE Port configuration project,
 
-  - in SDK 6, in the configuration properties file, prefixed by ``com.microej.pack.bsp.``.
+  - in SDK 6, in the ``configuration.properties`` file, prefixed by ``bsp.``.
   - in SDK 5, in the  ``bsp/bsp.properties`` file.
 
 .. list-table:: VEE Port Options for BSP Connection
@@ -198,41 +198,92 @@ For each :ref:`VEE Port BSP connection case <bsp_connection_cases>`, here is a s
       deploy.dir.microejscript=[absolute_path]
 
 - Partial BSP connection, Executable built outside the SDK
-  :: 
 
-    VEE Port Options:
-      microejapp.relative.dir=[relative_path]
-      microejlib.relative.dir=[relative_path]
-      microejinc.relative.dir=[relative_path]
+.. tabs::
 
-    Application Options:
-      deploy.bsp.root.dir=[absolute_path]
+   .. tab:: SDK 6
+      :: 
+
+        VEE Port Options:
+          bsp.microejapp.relative.dir=[relative_path]
+          bsp.microejlib.relative.dir=[relative_path]
+          bsp.microejinc.relative.dir=[relative_path]
+
+        Application Options:
+          deploy.bsp.root.dir=[absolute_path]
+
+   .. tab:: SDK 5
+      :: 
+
+        VEE Port Options:
+          microejapp.relative.dir=[relative_path]
+          microejlib.relative.dir=[relative_path]
+          microejinc.relative.dir=[relative_path]
+
+        Application Options:
+          deploy.bsp.root.dir=[absolute_path]
 
 - Partial BSP connection, Executable built using the SDK
-  :: 
 
-    VEE Port Options:
-      microejapp.relative.dir=[relative_path]
-      microejlib.relative.dir=[relative_path]
-      microejinc.relative.dir=[relative_path]
-      microejscript.relative.dir=[relative_path]   
+.. tabs::
 
-    Application Options:
-      deploy.bsp.root.dir=[absolute_path]
-      deploy.bsp.microejscript=true
+   .. tab:: SDK 6
+      :: 
+
+        VEE Port Options:
+          bsp.microejapp.relative.dir=[relative_path]
+          bsp.microejlib.relative.dir=[relative_path]
+          bsp.microejinc.relative.dir=[relative_path]
+          bsp.microejscript.relative.dir=[relative_path]   
+
+        Application Options:
+          deploy.bsp.root.dir=[absolute_path]
+          deploy.bsp.microejscript=true
+
+   .. tab:: SDK 5
+      :: 
+
+        VEE Port Options:
+          microejapp.relative.dir=[relative_path]
+          microejlib.relative.dir=[relative_path]
+          microejinc.relative.dir=[relative_path]
+          microejscript.relative.dir=[relative_path]   
+
+        Application Options:
+          deploy.bsp.root.dir=[absolute_path]
+          deploy.bsp.microejscript=true
+
 
 - Full BSP connection, Executable built using the SDK
-  :: 
 
-    VEE Port Options:
-      microejapp.relative.dir=[relative_path]
-      microejlib.relative.dir=[relative_path]
-      microejinc.relative.dir=[relative_path]
-      microejscript.relative.dir=[relative_path]
-      root.dir=[absolute_path]
+.. tabs::
 
-    Application Options:
-      deploy.bsp.microejscript=true
+   .. tab:: SDK 6
+      :: 
+
+        VEE Port Options:
+          bsp.microejapp.relative.dir=[relative_path]
+          bsp.microejlib.relative.dir=[relative_path]
+          bsp.microejinc.relative.dir=[relative_path]
+          bsp.microejscript.relative.dir=[relative_path]
+          bsp.root.dir=[absolute_path]
+
+        Application Options:
+          deploy.bsp.microejscript=true
+
+   .. tab:: SDK 5
+      :: 
+
+        VEE Port Options:
+          microejapp.relative.dir=[relative_path]
+          microejlib.relative.dir=[relative_path]
+          microejinc.relative.dir=[relative_path]
+          microejscript.relative.dir=[relative_path]
+          root.dir=[absolute_path]
+
+        Application Options:
+          deploy.bsp.microejscript=true
+
 
 .. _bsp_connection_build_script:
 
@@ -256,7 +307,8 @@ The build script must comply with the following specification:
 Many build script templates are available for most commonly used C toolchains in the 
 `VEE Port Qualification Tools repository <https://github.com/MicroEJ/VEEPortQualificationTools/tree/master/framework/platform/scripts>`_.
 
-The build script can also be launched before the VEE Port publication, see :ref:`platform_publication` for more details.
+The build script can also be launched before the VEE Port publication, 
+see the VEE Port Publication documentation for :ref:`SDK 6 <sdk_6_veeport_publication>` or :ref:`SDK 5 <platform_publication>` for more details.
 
 .. note::
 
@@ -291,7 +343,7 @@ The run script must comply with the following specification:
 
 The run script can optionally redirect execution traces. If it does not implement execution traces redirection,
 the testsuite must be configured with the following :ref:`application_options` in order to take its input from a TCP/IP socket server, 
-such as :ref:`tool_serial_to_socket`.
+such as Serial to Socket Transmitter (see documentation for :ref:`SDK 6 <sdk6_tool_serial_to_socket>` or :ref:`SDK 5 <tool_serial_to_socket>`).
 
 .. code-block:: properties
 

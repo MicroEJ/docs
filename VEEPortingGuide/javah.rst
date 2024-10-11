@@ -43,10 +43,10 @@ Installation
 
    .. tab:: SDK 6
 
-      In the VEE Port configuration file, add the following properties::
+      In SDK 6, the MicroEJ Java H tool is enabled by default.
+      It can be disabled in the VEE Port configuration file, by adding the following property::
 
-         com.microej.runtime.extensible.enabled=true
-         com.microej.runtime.extensible.MicroEJavah.enabled=true
+         com.microej.runtime.extensible.MicroEJavah.enabled=false
 
    .. tab:: SDK 5  
 

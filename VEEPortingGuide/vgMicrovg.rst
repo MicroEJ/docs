@@ -34,22 +34,44 @@ Refer to the :ref:`MicroUI implementation <section_microui_native_calls>` to hav
 Installation
 ============
 
-The `MicroVG library`_ is an additional module. 
-In the VEE Port configuration's :ref:`module description file <mmm_module_description>`, add the VG Pack dependency:
+The `MicroVG`_ :ref:`Pack <pack_overview>` module must be installed in your VEE Port:
 
-.. code-block:: XML
+.. tabs::
 
-   <dependency org="com.microej.pack.vg" name="vg-pack" rev="[VG Pack version]" conf="default->default"/>
+   .. tab:: SDK 6 (build.gradle.kts)
 
+      .. code-block:: kotlin
+
+         microejPack("com.microej.pack.vg:vg-pack:[VG Pack version]")
+
+   .. tab:: SDK 5 (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="com.microej.pack.vg" name="vg-pack" rev="[VG Pack version]" conf="default->default"/>
 
 .. note:: The latest current Pack version is |VGPACKVERSION|.
 
 The VG Pack will be automatically available after a VEE Port rebuild.
 
+.. _MicroVG:
 .. _MicroVG library: https://repository.microej.com/modules/com/microej/pack/vg/vg-pack/
 
-The properties file ``microvg/microvg.properties`` is required to configure the VG Pack.
-More specifically, it allows to configure the :ref:`section_vg_image_generator` and the front panel to fit a specific GPU.
+When installed, the MicroVG Pack module must be configured.
+
+.. tabs::
+
+   .. tab:: SDK 6
+
+     In SDK 6, the configuration is done in the properties file ``configuration.properties`` of the VEE Port project.
+	  All the properties names listed below must be prefixed by ``com.microej.runtime.microvg.``.
+	  For example the ``implementation`` properties is defined by the ``com.microej.runtime.microvg.implementation`` property.
+
+   .. tab:: SDK 5
+
+	  In SDK 5, the configuration is done in the properties file ``microvg/microvg.properties``.
+
+This configuration allows to configure the :ref:`section_vg_image_generator` and the front panel to fit a specific GPU.
 This properties file must contain a property named ``implementation``.
 Two values are currently available: 
 
@@ -58,9 +80,19 @@ Two values are currently available:
 
 Example:
 
-.. code-block:: XML
+.. tabs::
 
-   implementation=nema
+   .. tab:: SDK 6
+
+      .. code-block:: XML
+
+         com.microej.runtime.microvg.implementation=nema
+
+   .. tab:: SDK 5
+
+      .. code-block:: XML
+
+         implementation=nema
 
 A custom extension can be used to target another GPU. 
 The name of the property ``implementation`` is used to identify the :ref:`section_vg_image_generator_extension` and the :ref:`Front Panel Extension<section_vg_frontpanel_extension>`.

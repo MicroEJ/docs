@@ -24,13 +24,22 @@ Dependencies
 Installation
 ============
 
-The Audio :ref:`Pack <pack_overview>` module must be installed in the VEE Port.
+Audio is an additional module. 
+To enable it, the Audio :ref:`Pack <pack_overview>` module must be installed in your VEE Port:
 
-In the VEE Port configuration project, add the following dependency to the :ref:`module.ivy <mmm_module_description>` file:
+.. tabs::
 
-::
+   .. tab:: SDK 6 (build.gradle.kts)
 
-	<dependency org="com.microej.pack.audio" name="audio-pack" rev="1.0.0"/>
+      .. code-block:: kotlin
+
+         microejPack("com.microej.pack.audio:audio-pack:1.0.0")
+
+   .. tab:: SDK 5 (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="com.microej.pack.audio" name="audio-pack" rev="1.0.0"/>
 
 Use
 ===

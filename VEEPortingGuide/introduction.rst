@@ -30,8 +30,6 @@ Semantics of implemented Foundation Libraries are described in
 their respective chapters as well as the required Abstraction Layers APIs for porting them 
 to different targets. 
 
-.. _VEE Port Examples: https://github.com/microej?q=vee&type=all&language=&sort=
-
 VEE Port Build Process
 ======================
 
@@ -92,9 +90,9 @@ As the MCU, RTOS and compiler are the same, only the device-specific code needs 
 VEE Port Configuration
 ::::::::::::::::::::::
 
-* Modify the ``xxx-configuration`` project to match the device features and its associated configuration (e.g. GUI, Networking, ...).
+* Modify the VEE Port project to match the device features and its associated configuration (e.g. GUI, Networking, ...).
 
-Refer to VEE Port configuration documentation for :ref:`SDK 6 <sdk_6_veeport_pack_configuration>` 
+Refer to VEE Port configuration documentation for :ref:`SDK 6 <sdk_6_veeport_pack_import>` 
 or :ref:`SDK 5 <platform_module_configuration>` to learn more about it.
 
 
@@ -121,12 +119,12 @@ Required actions:
 Simulator
 :::::::::
 
-* Modify the existing Simulator Front Panel ``xxx-fp`` project.
+* Modify the existing Simulator Front Panel project.
 
 A VEE Port Example is not available for the same MCU/RTOS/C Compiler
 --------------------------------------------------------------------
 
-Look for an available `VEE Port Example <VEE Port Examples>`_ that will match in order of priority:
+Look for an available `VEE Port Example`_ that will match in order of priority:
 
 * same MCU part number
 * same RTOS
@@ -179,6 +177,9 @@ Further Assistance Needed
 -------------------------
 
 Please note that porting MicroEJ to a new device is also something that is part of our engineering services. Consider contacting `our sales team <https://www.microej.com/contact/#form_1>`_ to request a quote.
+
+.. _VEE Port Example:
+.. _VEE Port Examples: https://github.com/microej?q=vee&type=all&language=&sort=
 
 ..
    | Copyright 2021-2024, MicroEJ Corp. Content in this space is free 

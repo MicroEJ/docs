@@ -28,7 +28,7 @@ MicroEJ Packs are distributed in two packages:
 - MicroEJ Architecture Specific Pack under the `com/microej/architecture/*`_ organization.
 - MicroEJ Generic Pack under the `com/microej/pack/*`_ organization.
 
-See :ref:`pack_import` for usage.
+See the Pack Import documentation for :ref:`SDK 6 <sdk_6_veeport_pack_import>` or :ref:`SDK 5 <pack_import>` for usage.
 
 .. _com/microej/architecture/*: https://repository.microej.com/modules/com/microej/architecture
 .. _com/microej/pack/*: https://repository.microej.com/modules/com/microej/pack/
