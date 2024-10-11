@@ -29,7 +29,7 @@ See the example below:
 
 .. note::
 
-   Before :ref:`Architecture 8.1.0 <changelog-8.1.0>`, enabling the Tiny-Sandbox capability
+   In SDK 5, before :ref:`Architecture 8.1.0 <changelog-8.1.0>`, enabling the Tiny-Sandbox capability
    was done by setting the property ``mjvm.standalone.configuration`` in the ``configuration.xml`` file as follows:
 
    .. code-block::

@@ -48,61 +48,109 @@ The Front Panel Project
 Creating a Front Panel Project
 ------------------------------
 
-A Front Panel project is created using the New Front Panel Project
-wizard. Select:
+.. tabs::
 
-:guilabel:`New` > :guilabel:`Project...` > :guilabel:`MicroEJ` > :guilabel:`Front Panel Project`
+   .. tab:: SDK 6
 
-The wizard will appear:
+      A Front Panel project template is available as part of the `VEE Port project template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort>`_.
+      Clone this template to create a Front Panel project.
 
-.. figure:: images/newfp.png
-   :alt: New Front Panel Project Wizard
-   :align: center
-   :width: 700px
-   :height: 500px
+   .. tab:: SDK 5
 
-   New Front Panel Project Wizard
+      A Front Panel project is created using the New Front Panel Project
+      wizard. Select:
 
-Enter the name for the new project.
+      :guilabel:`New` > :guilabel:`Project...` > :guilabel:`MicroEJ` > :guilabel:`Front Panel Project`
+
+      The wizard will appear:
+
+      .. figure:: images/newfp.png
+         :alt: New Front Panel Project Wizard
+         :align: center
+         :width: 700px
+         :height: 500px
+
+         New Front Panel Project Wizard
+
+      Enter the name for the new project.
 
 Project Contents
 ----------------
 
-.. figure:: images/project-content.png
-   :alt: Project Contents
-   :align: center
+.. tabs::
 
-   Project Contents
+   .. tab:: SDK 6
 
-A Front Panel project has the following structure and contents:
+      A Front Panel project has the following structure and contents:
 
-* The ``src/main/java`` folder is provided for the definition of Front Panel ``Widgets``. It is initially empty. The creation of these classes will be explained later.
-* The ``src/main/resources`` folder holds the file or files that define the contents and layout of the Front Panel, with a ``.fp`` extension (the fp file or files), plus images used to create the Front Panel. A newly created project will have a single fp file with the same name as the project, as shown above. The contents of fp files are detailed later in this  document.
-* The ``JRE System Library`` is referenced, because a Front Panel  project needs to support the writing of Java for the ``Listeners`` (and ``DisplayExtensions``).
-* The ``Modules Dependencies`` contains the libraries for the Front Panel simulation, the widgets it supports and the types needed to implement ``Listeners`` (and ``DisplayExtensions``).
-* The ``lib`` contains a local copy of ``Modules Dependencies``. 
+      * The ``src/main/java`` folder is provided for the definition of Front Panel ``Widgets``. It is initially empty. The creation of these classes will be explained later.
+      * The ``src/main/resources`` folder holds the file or files that define the contents and layout of the Front Panel, with a ``.fp`` extension (the fp file or files), plus images used to create the Front Panel. A newly created project will have a single fp file with the same name as the project, as shown above. The contents of fp files are detailed later in this  document.
+      * The ``build.gradle.kts`` file is the project build descriptor.
+
+   .. tab:: SDK 5
+
+      .. figure:: images/project-content.png
+         :alt: Project Contents
+         :align: center
+
+         Project Contents
+
+      A Front Panel project has the following structure and contents:
+
+      * The ``src/main/java`` folder is provided for the definition of Front Panel ``Widgets``. It is initially empty. The creation of these classes will be explained later.
+      * The ``src/main/resources`` folder holds the file or files that define the contents and layout of the Front Panel, with a ``.fp`` extension (the fp file or files), plus images used to create the Front Panel. A newly created project will have a single fp file with the same name as the project, as shown above. The contents of fp files are detailed later in this  document.
+      * The ``JRE System Library`` is referenced, because a Front Panel  project needs to support the writing of Java for the ``Listeners`` (and ``DisplayExtensions``).
+      * The ``Modules Dependencies`` contains the libraries for the Front Panel simulation, the widgets it supports and the types needed to implement ``Listeners`` (and ``DisplayExtensions``).
+      * The ``lib`` contains a local copy of ``Modules Dependencies``. 
 
 .. _section_frontpanel_dependencies:
 
 Module Dependencies
 ===================
 
-The Front Panel project is a regular MicroEJ Module project. Its ``module.ivy`` file should look like this example:
+.. tabs::
 
-.. code-block:: xml
-   
-   <ivy-module version="2.0" xmlns:ea="http://www.easyant.org" xmlns:ej="https://developer.microej.com" ej:version="2.0.0">
-      <info organisation="com.mycompany" module="examplePanel" status="integration" revision="1.0.0"/>
+   .. tab:: SDK 6
 
-      <configurations defaultconfmapping="default->default;provided->provided">
-         <conf name="default" visibility="public" description="Runtime dependencies to other artifacts"/>
-         <conf name="provided" visibility="public" description="Compile-time dependencies to APIs provided by the platform"/>
-      </configurations>
-      
-      <dependencies>
-    	   <dependency org="ej.tool.frontpanel" name="framework" rev="1.1.1"/>
-      </dependencies>
-   </ivy-module>
+      The Front Panel project is a regular Gradle project. Its ``build.gradle.kts`` file should look like this example:
+
+      .. code-block:: kotlin
+         
+         plugins {
+            id("com.microej.gradle.mock-frontpanel")
+         }
+
+         group = "com.mycompany"
+         version = "0.1.0-RC"
+
+         dependencies {
+            implementation("ej.tool.frontpanel:framework:1.1.0")
+            implementation("com.microej.pack.ui:ui-pack:14.0.1") {
+               artifact {
+                     name = "frontpanel"
+                     extension = "jar"
+               }
+            }
+         }
+
+   .. tab:: SDK 5
+
+      The Front Panel project is a regular MicroEJ Module project. Its ``module.ivy`` file should look like this example:
+
+      .. code-block:: xml
+         
+         <ivy-module version="2.0" xmlns:ea="http://www.easyant.org" xmlns:ej="https://developer.microej.com" ej:version="2.0.0">
+            <info organisation="com.mycompany" module="examplePanel" status="integration" revision="1.0.0"/>
+
+            <configurations defaultconfmapping="default->default;provided->provided">
+               <conf name="default" visibility="public" description="Runtime dependencies to other artifacts"/>
+               <conf name="provided" visibility="public" description="Compile-time dependencies to APIs provided by the platform"/>
+            </configurations>
+            
+            <dependencies>
+               <dependency org="ej.tool.frontpanel" name="framework" rev="1.1.1"/>
+            </dependencies>
+         </ivy-module>
 
 The `Front Panel Framework`_ contains the Front Panel core classes, mainly the ability to create your own Front Panel :ref:`section_frontpanel_widget` to simulate user interactions.
 
@@ -160,7 +208,8 @@ The file and tags specifications are available in chapter
 Editing Front Panel Files
 -------------------------
 
-To edit a ``.fp`` file, open it using the Eclipse XML editor (right-click on
+The ``.fp`` file is a standard XML file, so it can be edited with any XML Editor.
+For example in Eclipse, you can open it using the Eclipse XML editor (right-click on
 the ``.fp`` file, select :guilabel:`Open With` > :guilabel:`XML Editor`). This editor features
 syntax highlighting and checking, and content-assist based on the schema
 (XSD file) referenced in the fp file. This schema is a hidden file
@@ -169,9 +218,13 @@ the contents of the fp file each time it is saved and highlights
 problems in the Eclipse Problems view, and with markers on the fp file
 itself.
 
-A preview of the Front Panel can be obtained by opening the Front Panel
-Preview
-(:guilabel:`Window` > :guilabel:`Show View` > :guilabel:`Other...` > :guilabel:`MicroEJ` > :guilabel:`Front Panel Preview`).
+A preview of the Front Panel can be obtained by opening the Front Panel Preview.
+This tool is available in Eclipse only:
+
+- in SDK 5, it is installed by default.
+- in SDK 6, it must be installed by following the instructions on the :ref:`sdk6_microejtools` page.
+
+Once installed, open it in :guilabel:`Window` > :guilabel:`Show View` > :guilabel:`Other...` > :guilabel:`MicroEJ` > :guilabel:`Front Panel Preview`.
 
 The preview is updated each time the ``.fp`` file is saved.
 

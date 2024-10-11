@@ -529,7 +529,7 @@ This is an example of a dump:
       --------------------------------------------------------------------------------
       ================================================================================
 
-See :ref:`stack_trace_reader` for additional info related to working with VM dumps.
+See Stack Trace Reader documentation for :ref:`SDK 6 <sdk6.section.stacktrace.reader.tool>` or :ref:`SDK 5 <stack_trace_reader>` for additional info related to working with VM dumps.
 
 .. _vm_dump_fault_handler:
 
