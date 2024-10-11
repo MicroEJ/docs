@@ -98,20 +98,40 @@ No dependency.
 Installation
 ============
 
-ECOM Foundation Library is an additional library. In the platform
-configuration file, check :guilabel:`Serial Communication` > :guilabel:`ECOM` to install
-the library.
+ECOM Foundation Library is an additional library. 
 
+.. tabs::
+
+   .. tab:: SDK 6
+
+      In the VEE Port build file, add a dependency to the ?? pack::
+
+         microejPack("com.microej.pack.??:??:??")
+
+   .. tab:: SDK 5      
+
+      In the VEE Port configuration file, check :guilabel:`Serial Communication` > :guilabel:`ECOM` to install the library and
+      its relative tools.
 
 Use
 ===
 
-The `ECOM API Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
-Application project to use the ECOM library.
+The `ECOM API Module`_ must be added to the Application project build file to use the ECOM library:
 
-::
+.. tabs::
 
-   <dependency org="ej.api" name="ecom" rev="1.1.4"/>
+   .. tab:: SDK 6 (build.gradle.kts)
+
+      .. code-block:: kotlin
+
+         implementation("ej.api:ecom:1.1.4")
+
+   .. tab:: SDK 5 (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="ej.api" name="ecom" rev="1.1.4"/>
+
 
 This Foundation Library is always required when developing a MicroEJ Application which
 communicates with some external devices. It is automatically embedded as
