@@ -47,20 +47,27 @@ The Feature ``.fo`` file can be deployed to the Device using `Kernel.install()`_
 Feature Build Off Board
 -----------------------
 
-A Sandboxed Application can be built to a Feature (``.fo`` file) 
-using a :ref:`MicroEJ Application Launch <concepts-microejlaunches>` configured as follows:
+A Sandboxed Application can be built to a Feature (``.fo`` file) as follows:
 
--  Set the :guilabel:`Settings` field in the :guilabel:`Execution` tab to :guilabel:`Build Dynamic Feature`.
--  Set the :guilabel:`Kernel` field in the :guilabel:`Configuration` tab to a Multi-Sandboxed Firmware (``.out`` ELF executable file).
+.. tabs::
 
+   .. tab:: SDK 6
 
-.. figure:: png/build_flow_zoom_workspace_feature_only.png
-   :alt: Feature Build Flow using MicroEJ Launch
-   :align: center
-   :scale: 80%
+      - Refer to the :ref:`sdk_6_build_feature` page to build the Feature.
 
-   Feature Build Flow using MicroEJ Launch
+   .. tab:: SDK 5
 
+      Use a :ref:`MicroEJ Application Launch <concepts-microejlaunches>` configured as follows:
+      
+      -  Set the :guilabel:`Settings` field in the :guilabel:`Execution` tab to :guilabel:`Build Dynamic Feature`.
+      -  Set the :guilabel:`Kernel` field in the :guilabel:`Configuration` tab to a Multi-Sandboxed Firmware (``.out`` ELF executable file).
+
+      .. figure:: png/build_flow_zoom_workspace_feature_only.png
+         :alt: Feature Build Flow using MicroEJ Launch
+         :align: center
+         :scale: 80%
+
+         Feature Build Flow using MicroEJ Launch
 
 .. _build_feature_on_device:
 
@@ -105,13 +112,25 @@ Then the ``.fo`` file can be dynamically installed using `Kernel.install()`_.
 Implement the Kernel 
 ~~~~~~~~~~~~~~~~~~~~
 
-SOAR Optimizer can be integrated on any Standalone Application providing the following :ref:`module dependencies <mmm_module_dependencies>`:
+SOAR Optimizer can be integrated on any Standalone Application providing the following dependencies:
 
-.. code-block:: xml
-   
-   <dependency org="ej.api" name="edc" rev="1.3.3" />
-   <dependency org="com.microej.api" name="soar" rev="1.0.0" />
-   <dependency org="ej.library.eclasspath" name="collections" rev="1.4.0" />
+.. tabs::
+
+   .. tab:: SDK 6
+
+      .. code:: java
+
+         implementation("ej.api:edc:1.3.3")
+         implementation("com.microej.api:soar:1.0.0")
+         implementation("ej.library.eclasspath:collections:1.4.0")
+
+   .. tab:: SDK 5
+
+      .. code-block:: xml
+
+         <dependency org="ej.api" name="edc" rev="1.3.3" />
+         <dependency org="com.microej.api" name="soar" rev="1.0.0" />
+         <dependency org="ej.library.eclasspath" name="collections" rev="1.4.0" />
 
 The following code template illustrates the usage of the ``SOAR`` Foundation Library:
 

@@ -22,6 +22,7 @@ VEE Porting Guide
    vg
    net
    bluetooth
+   audio
    packEventQueue
    fs
    hal

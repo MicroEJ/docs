@@ -21,6 +21,7 @@ How-to Guides
    useFeatureEntryPointClass
    disableIvyDescriptorPublication
    checkDependenciesVersions
+   createCustomExecToolTask
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 

@@ -7,8 +7,12 @@ Runtime Environment
 Principle
 ---------
 
-A Runtime Environment is a :ref:`module nature <module_natures>` for defining the set of APIs available to an Application developer on a Kernel.
+A Runtime Environment is a module nature for defining the set of APIs available to an Application developer on a Kernel.
 It is built by aggregating a set of :ref:`Kernel APIs <kernel.api>`.
+
+Depending on the SDK that you are using, 
+refer to the :ref:`SDK 6 module nature <sdk6_module_natures>` page or to the :ref:`SDK 5 module nature <module_natures>` page for 
+more information about Runtime Environment module nature. 
 
 Building a Runtime Environment is one of the 2 solutions to define the APIs of a Kernel, as described in the section :ref:`define_apis`.
 Having the set of APIs named and versioned in a Runtime Environment allows to maintain, share and document it outside of a specific Kernel implementation.
@@ -120,6 +124,9 @@ The file must be named ``kernel.api`` and stored in the ``src/main/resources`` f
 Add Add-On Processors
 ~~~~~~~~~~~~~~~~~~~~~
 
+.. note::
+   This feature is available for SDK 5 only.
+
 When the Runtime Environment includes an Add-On Library which uses an Add-On Processor, this Add-On Processor must be declared as a direct dependency in the Runtime Environment.
 
 The Add-On Processor dependency line can be retrieved as follows: 
@@ -185,11 +192,15 @@ The Runtime Environment dependency must be declared in the Application project a
 
    .. tab:: SDK 6
 
-      microejRuntimeApi("com.mycompany:myruntimeapi:1.0.0")
+      .. code:: java
+
+         microejRuntimeApi("com.mycompany:myruntimeapi:1.0.0")
 
    .. tab:: SDK 5
 
-      <dependency org="com.mycompany" name="myruntimeapi" rev="1.0.0" conf="provided->runtimeapi"/>
+      .. code-block:: xml
+
+         <dependency org="com.mycompany" name="myruntimeapi" rev="1.0.0" conf="provided->runtimeapi"/>
 
 .. note::
 
@@ -199,6 +210,9 @@ The Runtime Environment dependency must be declared in the Application project a
 
 Extend a Runtime Environment
 ----------------------------
+
+.. note::
+   This feature is available for SDK 5 only.
 
 In a Kernel, Foundation and Add-On libraries can be extended by adding new methods to their existing classes.
 For example, it allows to add new methods to the class `java.lang.String`_ of the module `ej.api#edc`_.

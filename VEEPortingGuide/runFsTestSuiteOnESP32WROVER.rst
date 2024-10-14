@@ -20,9 +20,7 @@ Prerequisites
 
 This guide assumes the following:
 
-- Good knowledge of the :ref:`chapter-glossary`.
-
-- Tutorial :ref:`tutorialUnderstandMicroEJFirmwareBuild` has been followed.
+- Good knowledge of the :ref:`chapter-glossary` and :ref:`executableBuildWorkflow`.
 
 - MICROEJ SDK distribution 20.07 or more (see :ref:`get_sdk_version`).
 

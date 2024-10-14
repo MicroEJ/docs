@@ -257,15 +257,17 @@ Once your favorite IDE is installed, plugins must be installed to develop MicroE
 
       - Select version ``1.32.0``.
       - Once installed, click on the ``Restart Extensions`` button.
-      - Click on the Java status in the bottom bar.
+      - If you already opened a Java project in your IDE:
+      
+         - Click on the Java status in the bottom bar.
 
-         .. figure:: images/vs-code-java-status.png
-            :alt: Visual Studio Code - Java status
-            :align: center
-            :scale: 70%
+            .. figure:: images/vs-code-java-status.png
+               :alt: Visual Studio Code - Java status
+               :align: center
+               :scale: 70%
 
-      - Select the ``Clean Workspace Cache ...`` action in the upcoming menu.
-      - In the upcoming popup in the bottom-right corner, click on the ``Reload and delete`` button.
+         - Select the ``Clean Workspace Cache ...`` action in the upcoming menu.
+         - In the upcoming popup in the bottom-right corner, click on the ``Reload and delete`` button.
 
       .. warning::
          Unlike other supported IDEs (Android Studio/IntelliJ IDEA/Eclipse), there is no MicroEJ plugin which removes
