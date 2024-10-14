@@ -27,8 +27,6 @@ Alternatively, the hands-on activities can be fully completed using MICROEJ SDK 
 For Beginners
 =============
 
-Basics
-------
 .. toctree::
    :hidden:
 
@@ -101,7 +99,7 @@ Basics
          </div>
 
 For Application Developers
---------------------------
+==========================
 
 .. toctree::
    :hidden:
@@ -170,7 +168,7 @@ For Application Developers
          </div>
 
 For VEE Developers
-------------------
+==================
 
 .. toctree::
    :hidden:
@@ -178,6 +176,7 @@ For VEE Developers
    trainingVEEPortDevFromScratch
    trainingPQT
    trainingDebugHardfault
+   trainingAsyncWorker
 
 .. raw:: html
 
@@ -224,6 +223,21 @@ For VEE Developers
 
                </p>
                <a class="training_learn_more_link" href="trainingDebugHardfault.html">Learn more</a>
+            </div>
+            </a>
+
+            <a class="training_link" href="trainingAsyncWorker.html">
+            <div>
+               <div class="training_image_container">
+                  <div class="training_image_text">Course 4</div>
+                  <img src="../_static/images/training/training_async_worker.jpg" alt="Async Worker">
+               </div>
+               <h3 class="training_title">Delegate Blocking Operations using Async Worker</h3>
+               <p class="training_description">In this training, you will get an introduction to
+               the Async Worker component that helps to delegate blocking operations 
+               from VEE RTOS context to another RTOS task context.
+               </p>
+               <a class="training_learn_more_link" href="trainingAsyncWorker.html">Learn more</a>
             </div>
             </a>
 
@@ -383,35 +397,6 @@ For DevOps
                Jenkins, JFrog Artifactory and a Git platform.
                </p>
                <a class="training_learn_more_link" href="tutorialSetupBuildUsingJenkinsAndArtifactory.html">Learn more</a>
-            </div>
-            </a>
-
-         </div>
-
-Advanced
-========
-
-.. toctree::
-   :hidden:
-
-   trainingAsyncWorker
-
-.. raw:: html
-
-         <div class="training_items">
-
-            <a class="training_link" href="trainingAsyncWorker.html">
-            <div>
-               <div class="training_image_container">
-                  <div class="training_image_text">Course 1</div>
-                  <img src="../_static/images/training/training_async_worker.jpg" alt="Async Worker">
-               </div>
-               <h3 class="training_title">Delegate Blocking Operations using Async Worker</h3>
-               <p class="training_description">In this training, you will get an introduction to
-               the Async Worker component that helps to delegate blocking operations 
-               from VEE RTOS context to another RTOS task context.
-               </p>
-               <a class="training_learn_more_link" href="trainingAsyncWorker.html">Learn more</a>
             </div>
             </a>
 

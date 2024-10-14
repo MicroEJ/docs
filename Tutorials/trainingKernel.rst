@@ -49,9 +49,16 @@ for developing a Sandboxed Application and deploying it easily on your Device.
 Additionally, this project serves as a starting point for Kernel developers to learn and demonstrate 
 most of the Multi-Sandboxing capabilities of the MicroEJ technology.
 
-- `Kernel GREEN on GitHub <https://github.com/MicroEJ/Kernel-GREEN>`_ (for MICROEJ SDK 5)
+.. tabs::
 
-Kernel GREEN for MICROEJ SDK 6 is coming soon!
+   .. tab:: MICROEJ SDK 5
+
+      - `Kernel GREEN on GitHub <https://github.com/MicroEJ/Kernel-GREEN>`_ (for MICROEJ SDK 5)
+
+   .. tab:: MICROEJ SDK 6
+
+      Kernel GREEN for MICROEJ SDK 6 is coming soon!
+
 
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 
