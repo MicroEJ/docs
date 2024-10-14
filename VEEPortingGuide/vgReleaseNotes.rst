@@ -114,7 +114,7 @@ The following table describes the version compatibility between the MicroEJ VG P
 
 **Think Silicon NemaGFX**
 
-The :ref:`NemaGFX C module <section_ui_c_module_microui_nemagfx>` targets the CPU that provides the NemaGFX accelerator.
+The :ref:`NemaVG C module <section_vg_c_module_microvg_nema>` targets the CPU that provides the NemaVG accelerator.
 
 The following table describes the version compatibility between the MicroEJ VG Packs and the C modules:
 
