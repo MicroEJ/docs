@@ -97,7 +97,7 @@ The FreeType library compatible with MicroEJ is packaged in a C module on the :r
 
 .. _com.microej.clibrary.thirdparty#freetype: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/thirdparty/freetype/
 
-This C module provides a fork of FreeType 2.11.0.
+This C module provides a fork of FreeType 2.13.3.
 
 Memory Heap Configuration
 -------------------------
