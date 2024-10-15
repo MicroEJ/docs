@@ -15,7 +15,7 @@ The generic C modules are available on the :ref:`central_repository` and the spe
 The following picture illustrates the available C modules and their relations for an implementation that uses:
 
 * FreeType library for the font renderer and the font layouter in simple layout mode.
-* Harfbuzz library for the font layouter in complex layout mode.
+* HarfBuzz library for the font layouter in complex layout mode.
 * *GPU* library symbolizes the library for the drawing of vector paths over a GPU.
 
 The following chapters explain the aim and relations of each C module.
@@ -76,7 +76,7 @@ Dependencies
 This generic C module requires some specific modules:
 
 * Path and Gradient require a C module specific to a VEE Port (to a GPU format).
-* Font requires the FreeType library and optionally the Harfbuzz library to manage the :ref:`complex layout <section_vg_font_complex>`.
+* Font requires the FreeType library and optionally the HarfBuzz library to manage the :ref:`complex layout <section_vg_font_complex>`.
 
 Usage
 -----
@@ -138,22 +138,24 @@ Principle
    * Any resource associated with the font is released.
    * At this point, any attempt to use the font will result in an exception.
 
-Library: Harfbuzz
+.. _section_vg_c_module_harfbuzz:
+
+Library: HarfBuzz
 =================
 
-The library Harfbuzz compatible with MicroEJ is packaged in a C module on the :ref:`developer_repository`: `com.microej.clibrary.thirdparty#harfbuzz`_.
+The library HarfBuzz compatible with MicroEJ is packaged in a C module on the :ref:`developer_repository`: `com.microej.clibrary.thirdparty#harfbuzz`_.
 
 .. _com.microej.clibrary.thirdparty#harfbuzz: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/thirdparty/harfbuzz/
 
-This C module provides a fork of Harfbuzz 4.2.1.
+This C module provides HarfBuzz 10.0.1 with build scripts patched and additional source files.
 
-The Harfbuzz library requires a memory Heap for Harfbuzz internal objects allocated when a font file is loaded.
+The HarfBuzz library requires a memory Heap for HarfBuzz internal objects allocated when a font file is loaded.
 The size of this heap depends on the number of fonts loaded in parallel and on the fonts themselves.
 This size is defined by ``VG_FEATURE_HARFBUZZ_HEAP_SIZE_HEAP`` in ``vg_configuration.h``.
 
-All fonts do not require the same heap size. The ``MICROVG_MONITOR_HEAP`` define in ``vg_helper.h`` and ``MEJ_LOG_MICROVG`` and ``MEJ_LOG_INFO_LEVEL`` defines in ``mej_log.h`` can be used to monitor the Harfbuzz heap evolution.
+All fonts do not require the same heap size. The ``MICROVG_MONITOR_HEAP`` define in ``vg_helper.h`` and ``MEJ_LOG_MICROVG`` and ``MEJ_LOG_INFO_LEVEL`` defines in ``mej_log.h`` can be used to monitor the HarfBuzz heap evolution.
 
-FreeType and Harfbuzz libraries are not sharing the same heap, but this could easilly be done by updating ``ft_system.c`` and ``hb-alloc.c`` files.
+FreeType and HarfBuzz libraries are not sharing the same heap, but this could easilly be done by updating ``ft_system.c`` and ``hb-alloc.c`` files.
 
 .. _section_vg_c_module_microvg_vglite:
 
