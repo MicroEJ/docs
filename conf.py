@@ -34,7 +34,6 @@ sphinx_tabs_disable_tab_closing = True
 
 templates_path = ['_templates']
 html_theme_path = ['_themes']
-html_static_path = ['_static']
 master_doc = 'index'
 sphinx_tabs_valid_builders = ['linkcheck']
 
@@ -60,7 +59,7 @@ html_theme_options = {
     'collapse_navigation': False,
 }
 html_show_sphinx = False
-html_static_path = ['_themes/microej/static']
+html_static_path = ['_themes/microej/static', '_static']
 
 # # remove headers permalinks
 # html_add_permalinks = ''
