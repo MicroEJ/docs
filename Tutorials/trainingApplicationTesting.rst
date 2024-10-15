@@ -28,9 +28,13 @@ To get the most out of this training, participants should have a basic knowledge
 Training Resources
 ==================
 
+.. |application_testing_sdk6_slides| raw:: html
+
+   <a href="https://repository.microej.com/packages/training/DEV-M0127-PRE-Test-Java-Code-SDK6-3.0-RC20240820.pdf" target="_blank">Slides: Testing Java Code</a>
+
 This training is provided as a PDF:
 
-- :download:`Slides: Testing Java Code with MICROEJ SDK <https://repository.microej.com/packages/training/DEV-M0127-PRE-Test-Java-Code-SDK6-3.0-RC20240820.pdf>`
+- |application_testing_sdk6_slides| (for MICROEJ SDK 6)
 
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 

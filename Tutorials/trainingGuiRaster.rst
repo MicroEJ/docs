@@ -53,7 +53,16 @@ Unit 1: Basic GUI Features Overview
 
 This guide provides an overview of the features available in MicroEJ GUI libraries:
 
-- :ref:`tutorial_get_started_with_gui` (for MICROEJ SDK 5)
+.. tabs::
+
+   .. tab:: MICROEJ SDK 5
+      
+      - :ref:`tutorial_get_started_with_gui`
+
+   .. tab:: MICROEJ SDK 6
+
+      - Coming soon!
+
 
 Unit 2: Coding Challenges
 -------------------------

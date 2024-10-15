@@ -48,7 +48,16 @@ Unit 2: Run a Test Suite on a Device
 
 Step-by-step hands-on to run a VEE Port Test Suite on a device using the Port Qualification Tools:
 
-- :ref:`run_fs_test_suite_on_esp32_wrover` (for MICROEJ SDK 5)
+.. tabs::
+
+   .. tab:: MICROEJ SDK 5
+      
+      - :ref:`run_fs_test_suite_on_esp32_wrover`
+
+   .. tab:: MICROEJ SDK 6
+
+      - Coming soon!
+
 
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 

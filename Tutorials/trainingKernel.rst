@@ -53,7 +53,7 @@ most of the Multi-Sandboxing capabilities of the MicroEJ technology.
 
    .. tab:: MICROEJ SDK 5
 
-      - `Kernel GREEN on GitHub <https://github.com/MicroEJ/Kernel-GREEN>`_ (for MICROEJ SDK 5)
+      - `Kernel GREEN on GitHub <https://github.com/MicroEJ/Kernel-GREEN>`_
 
    .. tab:: MICROEJ SDK 6
 

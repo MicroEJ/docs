@@ -49,7 +49,16 @@ Unit 1: Create a MicroEJ Firmware From Scratch
 
 Step by step hands-on that explains how to create a VEE Port for a custom device:
 
-- :ref:`tutorial_create_firmware_from_scratch` (for MICROEJ SDK 5)
+.. tabs::
+
+   .. tab:: MICROEJ SDK 5
+      
+      - :ref:`tutorial_create_firmware_from_scratch`
+
+   .. tab:: MICROEJ SDK 6
+
+      - Coming soon!
+
 
 Unit 2: Create VEE Port Build and Run Scripts
 ---------------------------------------------
@@ -57,8 +66,15 @@ Unit 2: Create VEE Port Build and Run Scripts
 Continuation of Unit 1, create VEE Port Build and Run scripts
 to ease Application development and VEE Port validation:
 
-- :ref:`tutorial_create_platform_build_and_run_scripts` (for MICROEJ SDK 5)
+.. tabs::
 
+   .. tab:: MICROEJ SDK 5
+      
+      - :ref:`tutorial_create_platform_build_and_run_scripts`
+
+   .. tab:: MICROEJ SDK 6
+
+      - Coming soon!
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 

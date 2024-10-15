@@ -30,7 +30,11 @@ Training Resources
 Unit 1: Async Worker Overview
 -----------------------------
 
-- :download:`Slides: Async Worker Overview <https://repository.microej.com/packages/training/DEV-M0127-PRE-MicroEJ_Async_Worker_1.0.pdf>`
+.. |async_worker_slides| raw:: html
+
+   <a href="https://repository.microej.com/packages/training/DEV-M0127-PRE-MicroEJ_Async_Worker_1.0.pdf" target="_blank">Slides: Async Worker Overview</a>
+
+- |async_worker_slides|
 
 Unit 2: Implementation Guide
 ----------------------------

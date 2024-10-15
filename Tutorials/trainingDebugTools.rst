@@ -35,8 +35,20 @@ Unit 1: Master logging within your Application
 Unit 2: MicroEJ Debug Tools Overview
 ------------------------------------
 
-- :download:`Slides: MicroEJ Debug Tools Overview <https://repository.microej.com/packages/training/debugging_with_microej_sdk/DEV-M0127-PRE-MicroEJ-Debug-Tools-SDK5-STM32F7508-2.2-RC20240820.pdf>` (for MICROEJ SDK 5)
-- :download:`Resources <https://repository.microej.com/packages/training/debugging_with_microej_sdk/debugging_with_microej_sdk_e4cb0a54.zip>` (for MICROEJ SDK 5)
+.. |debug_tools_sdk5_slides| raw:: html
+
+   <a href="https://repository.microej.com/packages/training/debugging_with_microej_sdk/DEV-M0127-PRE-MicroEJ-Debug-Tools-SDK5-STM32F7508-2.2-RC20240820.pdf" target="_blank">Slides: MicroEJ Debug Tools Overview</a>
+
+.. tabs::
+
+   .. tab:: MICROEJ SDK 5
+
+      - |debug_tools_sdk5_slides|
+      - :download:`Resources <https://repository.microej.com/packages/training/debugging_with_microej_sdk/debugging_with_microej_sdk_e4cb0a54.zip>`
+
+   .. tab:: MICROEJ SDK 6
+
+      - Coming soon!
 
 ..
    | Copyright 2021-2024, MicroEJ Corp. Content in this space is free 

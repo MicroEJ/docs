@@ -34,9 +34,22 @@ Training Resources
 Unit 1: Sandboxed Application Training
 --------------------------------------
 
+.. |sandboxed_apps_development_sdk5_slides| raw:: html
+
+   <a href="https://repository.microej.com/packages/training/DEV-M0127_0001_Sandboxed_Applications_SDK5_2.1-RC20240820.pdf" target="_blank">Slides: Sandboxed Application Development</a>
+
 This training is provided as a PDF:
 
-- :download:`Slides: Sandboxed Application Development <https://repository.microej.com/packages/training/DEV-M0127_0001_Sandboxed_Applications_SDK5_2.1-RC20240820.pdf>` (for MICROEJ SDK 5)
+
+.. tabs::
+
+   .. tab:: MICROEJ SDK 5
+
+      - |sandboxed_apps_development_sdk5_slides|
+   
+   .. tab:: MICROEJ SDK 6
+      
+      Coming soon!
 
 Unit 2: Run Demo Sandboxed Application
 --------------------------------------
@@ -44,7 +57,16 @@ Unit 2: Run Demo Sandboxed Application
 Run the Demo Sandboxed Application on an Evaluation Kit.
 This demo showcases the communication between Sandboxed Applications using the Shared Interfaces API:
 
-- `Demo Sandboxed Application <https://github.com/MicroEJ/Demo-Sandboxed-Applications/tree/1.0.0>`__ (for MICROEJ SDK 5).
+.. tabs::
+
+   .. tab:: MICROEJ SDK 5
+
+      - `Demo Sandboxed Application <https://github.com/MicroEJ/Demo-Sandboxed-Applications/tree/1.0.0>`__   
+      
+   .. tab:: MICROEJ SDK 6
+      
+      Coming soon!
+
 
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 
