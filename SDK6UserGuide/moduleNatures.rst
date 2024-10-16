@@ -69,12 +69,12 @@ This plugin adds the following tasks to your project:
 .. graphviz:: graphApplicationModule.dot
 
 
-.. _sdk6_module_natures.j2se_lib:
+.. _sdk6_module_natures.jse_lib:
 
-J2SE Library
-------------
+Java SE Library
+---------------
 
-**Plugin Name**: ``com.microej.gradle.j2se-library``
+**Plugin Name**: ``com.microej.gradle.jse-library``
 
 **Tasks**:
 
@@ -83,7 +83,7 @@ This plugin adds the following tasks to your project:
 - tasks of the `Gradle Java plugin <https://docs.gradle.org/current/userguide/java_plugin.html>`__
 - :ref:`sdk6_module_natures.tasks.checkModule`
 
-.. graphviz:: graphJ2seLibraryModule.dot
+.. graphviz:: graphJavaSeLibraryModule.dot
 
 **Configuration**:
 

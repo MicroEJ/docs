@@ -559,7 +559,7 @@ Let's use the same example as the previous section (draw line function): the Fro
 The Front Panel framework is running over AWT.
 The method ``gc.getImage()`` returns a ``ej.fp.Image``.
 It is the representation of a MicroUI Image in the Front Panel framework.
-The method ``gc.getImage().getRAWImage()`` returns the implementation of the Front Panel image on the J2SE framework: an `AWT BufferedImage`_. 
+The method ``gc.getImage().getRAWImage()`` returns the implementation of the Front Panel image on the Java SE framework: an `AWT BufferedImage`_. 
 The AWT graphics 2D can be retrieved from this buffered image.
 
 The MicroUI color (``gc.getRenderingColor()``) is converted to an AWT color.
