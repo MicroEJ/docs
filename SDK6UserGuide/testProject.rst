@@ -10,7 +10,7 @@ There are different types of tests:
 
 - Test on the Simulator
 - Test on a device
-- Test on a J2SE VM
+- Test on a Java SE VM
 
 Each type of test is detailed in the next sections.
 
@@ -345,16 +345,16 @@ For example, to set the the Immortal heap size:
    )
 
 
-.. _sdk_6_testsuite_on_j2se:
+.. _sdk_6_testsuite_on_jse:
 
-Test on J2SE VM
----------------
+Test on Java SE VM
+------------------
 
-The SDK allows to run tests on a J2SE VM.
+The SDK allows to run tests on a Java SE VM.
 This can be useful, for example, when the usage of mock libraries like ``Mockito`` is 
 needed (this kind of library is not supported by the MicroEJ VM).
 
-There is nothing specific related to MicroEJ to run tests on a J2SE VM.
+There is nothing specific related to MicroEJ to run tests on a Java SE VM.
 Follow the `Gradle documentation <https://docs.gradle.org/current/userguide/jvm_test_suite_plugin.html>`__ to setup such tests.
 As an example, here is a typical configuration to execute the tests located in the ``src/test/java`` folder:
 
@@ -553,10 +553,10 @@ Then you use the test filtering capabilities to configure which package to run i
       }
    }
 
-Mixing tests on the Simulator and on a J2SE VM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Mixing tests on the Simulator and on a Java SE VM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Defining tests on the Simulator and on a J2SE VM is only a matter of aggregating the configuration of each testsuite:
+Defining tests on the Simulator and on a Java SE VM is only a matter of aggregating the configuration of each testsuite:
 
 .. code-block::
 
@@ -567,7 +567,7 @@ Defining tests on the Simulator and on a J2SE VM is only a matter of aggregating
             ...
          }
 
-         val testOnJ2SE by registering(JvmTestSuite::class) {
+         val testOnJavaSE by registering(JvmTestSuite::class) {
             useJUnitJupiter()
 
             dependencies {
@@ -582,7 +582,7 @@ Defining tests on the Simulator and on a J2SE VM is only a matter of aggregating
 As explained in the previous section, it is recommended to use the built-in ``test`` testsuite for the tests on the Simulator
 since it avoids adding confguration to change the tests sources folder. 
 With this configuration, tests on the Simulator are located in the ``src/test/java`` folder, 
-and tests on a J2SE VM are located in the ``src/testOnJ2SE/java`` folder.
+and tests on a Java SE VM are located in the ``src/testOnJavaSe/java`` folder.
 
 .. _sdk_6_testsuite_engine_options:
 
