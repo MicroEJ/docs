@@ -124,10 +124,6 @@ Cloud Agent Libraries
       -  - `AWS IoT Core README <https://repository.microej.com/modules/ej/library/iot/aws-iot/2.0.0/README-2.0.0.md>`_
          - `AWS IoT Core Example <https://github.com/MicroEJ/AWS>`_
 
-   *  -  ``Google Cloud Platform Iot Core``
-      -  Google Cloud Platform Iot Core client.
-      -  `gcp-iotcore <https://forge.microej.com/artifactory/microej-developer-repository-release/googlecloud/iotcore/>`_
-      -  - `Google Cloud Platform Getting Started <https://developer.microej.com/features/iot-connectivity/get-started-google-cloud-iot-core-connectivity/>`_
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free
    for read and redistribute. Except if otherwise stated, modification
