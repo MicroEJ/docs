@@ -58,7 +58,6 @@ Step-by-step hands-on to run a VEE Port Test Suite on a device using the Port Qu
 
       - Coming soon!
 
-
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 

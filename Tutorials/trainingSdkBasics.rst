@@ -54,20 +54,15 @@ This training is provided as a PDF, along with a downloadable ``.zip`` package o
 
 .. tabs::
 
-   .. tab:: MICROEJ SDK 6
-      - |microej_sdk_basics_nxp_rt1170_sdk6_slides|
-      - :download:`Resources <https://repository.microej.com/packages/training/microej_sdk_basics/gpio-foundation-library-example-sdk6_14562492.zip>`
-
    .. tab:: MICROEJ SDK 5
 
       - |microej_sdk_basics_nxp_rt1170_sdk5_slides|
       - |microej_sdk_basics_stm32f7508_sdk5_slides|
       - :download:`Resources <https://repository.microej.com/packages/training/microej_sdk_basics/gpio-foundation-library-example-sdk5_14562492.zip>`
 
-
-
-
-
+   .. tab:: MICROEJ SDK 6
+      
+      - Coming soon!
 
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 

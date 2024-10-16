@@ -30,7 +30,7 @@ Training Resources
 
 .. |application_testing_sdk6_slides| raw:: html
 
-   <a href="https://repository.microej.com/packages/training/DEV-M0127-PRE-Test-Java-Code-SDK6-3.0-RC20240820.pdf" target="_blank">Slides: Testing Java Code</a>
+   <a href="https://repository.microej.com/packages/training/DEV-M0127-PRE-Test-Java-Code-SDK6-3.0-20241016.pdf" target="_blank">Slides: Testing Java Code</a>
 
 This training is provided as a PDF:
 

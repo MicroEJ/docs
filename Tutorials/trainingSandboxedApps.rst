@@ -67,7 +67,6 @@ This demo showcases the communication between Sandboxed Applications using the S
       
       Coming soon!
 
-
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
