@@ -53,7 +53,8 @@ Installation
 ============
 
 Multi-Sandbox is an option disabled by default. 
-To enable the Multi-Sandbox capability of the Core Engine, set the property ``com.microej.runtime.capability`` to ``multi`` in ``mjvm/mjvm.properties`` file.
+To enable the Multi-Sandbox capability of the Core Engine, set the property ``com.microej.runtime.capability`` to ``multi`` 
+in the ``configuration.properties`` file (SDK 6) or in the ``mjvm/mjvm.properties`` file (SDK 5) of the VEE Port project.
 See the example below:
 
 .. code-block::
@@ -63,19 +64,29 @@ See the example below:
 
 .. note::
 
-   Before :ref:`Architecture 8.1.0 <changelog-8.1.0>`, to enable the Multi-Sandbox capability of the Core Engine,
+   In SDK 5, before :ref:`Architecture 8.1.0 <changelog-8.1.0>`, to enable the Multi-Sandbox capability of the Core Engine,
    select the :guilabel:`Multi Applications` module in the platform configuration file.
 
 
 Use
 ===
 
-The `KF API Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the 
+The `KF API Module`_ must be added to the build file of the 
 Application project to use :ref:`[KF] <kf_specification>` library.
 
-::
+.. tabs::
 
-   <dependency org="ej.api" name="kf" rev="1.4.4"/>
+   .. tab:: SDK 6 (build.gradle.kts)
+
+      .. code-block:: java
+
+         implementation("ej.api:kf:1.7.0")
+
+   .. tab:: SDK 5 (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="ej.api" name="kf" rev="1.7.0" />
 
 This library provides a set of options. Refer to the chapter
 :ref:`application_options` which lists all available options.
