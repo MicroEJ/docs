@@ -6,7 +6,7 @@ General Architecture
 
 The Shielded Plug Mock simulates a Shielded Plug :ref:`[SP] <sp>` on desktop
 computer. This mock can be accessed from the MicroEJ Simulator, the
-hardware platform or a Java J2SE application.
+hardware platform or a Java SE application.
 
 .. figure:: images/hil5.*
    :alt: Shielded Plug Mock General Architecture
@@ -18,7 +18,7 @@ hardware platform or a Java J2SE application.
 Configuration
 -------------
 
-The mock socket port can be customized for J2SE clients, even though
+The mock socket port can be customized for Java SE clients, even though
 several Shielded Plug mocks with the same socket port cannot run at the
 same time. The default socket port is 10082.
 
