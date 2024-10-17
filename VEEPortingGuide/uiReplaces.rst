@@ -1,5 +1,5 @@
 
-.. |UIPACKVERSION| replace:: 14.1.0
+.. |UIPACKVERSION| replace:: 14.1.1
 .. |VGPACKVERSION| replace:: 1.7.0
 
 .. XXX_TODO link
@@ -14,7 +14,7 @@
 
 .. XXX_TODO link
 
-.. _C Module MicroUI 14.1.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/4.1.0/
+.. _C Module MicroUI 14.1.1: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/4.1.0/
 .. _C Module MicroUI 4.1.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/4.1.0/
 .. _C Module MicroUI 4.0.1: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/4.0.1/
 .. _C Module MicroUI 4.0.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/4.0.0/

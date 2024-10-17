@@ -14,7 +14,7 @@ UI Pack
 
 **Changed**
 
-* Compatible with UI Pack 14.1.0 (Font extensibility).
+* Compatible with UI Pack 14.1.1 (Font extensibility).
 
 MicroVG Implementation
 """"""""""""""""""""""

@@ -6,19 +6,19 @@
 Migration Guide
 ===============
 
-.. _section_ui_migrationguide_pack_14.1.0:
+.. _section_ui_migrationguide_pack_14.1.1:
 
-From 14.0.2 to 14.1.0
+From 14.0.2 to 14.1.1
 =====================
 
-.. _section_ui_migrationguide_pack_14.1.0_bsp_without_gpu:
+.. _section_ui_migrationguide_pack_14.1.1_bsp_without_gpu:
 
 BSP without GPU
 """""""""""""""
 
 * *[VEE Port configuration project]*
 
-    * Set the dependency to the `C Module MicroUI 14.1.0`_.
+    * Set the dependency to the `C Module MicroUI 14.1.1`_.
 
 * *[BSP project]*
 
@@ -59,7 +59,7 @@ BSP with DMA2D
 * *[BSP project]*
 
     * Delete the properties files ``cco_microui.properties`` and ``cco_display-dma2d.properties``.
-    * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.1.0_bsp_without_gpu`.
+    * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.1.1_bsp_without_gpu`.
 
 .. _section_ui_migrationguide_14.1_vglite:
 
@@ -73,7 +73,7 @@ BSP with VGLite
 * *[BSP project]*
     
     * Delete the properties files ``cco_microui.properties`` and ``cco_microui-vglite.properties``.
-    * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.1.0_bsp_without_gpu`.
+    * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.1.1_bsp_without_gpu`.
 
 .. _section_ui_migrationguide_14.1_nemagfx:
 
@@ -87,7 +87,7 @@ BSP with NemaGFX
 * *[BSP project]*
 
     * Delete the properties files ``cco_microui.properties`` and ``cco_microui-nemagfx.properties``.
-    * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.1.0_bsp_without_gpu`.
+    * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.1.1_bsp_without_gpu`.
   
 .. _section_ui_migrationguide_pack_14.0.2:
 

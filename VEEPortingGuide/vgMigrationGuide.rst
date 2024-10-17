@@ -12,7 +12,7 @@ From 1.6.0 to 1.7.0
 VEE Port Configuration project
 """"""""""""""""""""""""""""""
 
-* Update the UI Pack to version 14.1.0 or higher.
+* Update the UI Pack to version 14.1.1 or higher.
 
 BSP with VGLite
 """""""""""""""

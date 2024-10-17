@@ -6,8 +6,8 @@
 Changelog
 =========
 
-[Unreleased]
-============
+14.1.1 (2024-10-17)
+===================
 
 MicroUI
 """""""
@@ -132,21 +132,21 @@ C Module DMA2D
 
 **Changed**
 
-- Make this C Module compatible with the MicroUI C Module 14.1.0.
+- Make this C Module compatible with the MicroUI C Module 14.1.1.
 
 C Module VGLite
 """"""""""""""""
 
 **Changed**
 
-- Make this C Module compatible with the MicroUI C Module 14.1.0.
+- Make this C Module compatible with the MicroUI C Module 14.1.1.
 
 C Module NemaGFX
 """"""""""""""""
 
 **Changed**
 
-- Make this C Module compatible with the MicroUI C Module 14.1.0.
+- Make this C Module compatible with the MicroUI C Module 14.1.1.
 
 14.0.3 - 2024-10-01
 ===================
