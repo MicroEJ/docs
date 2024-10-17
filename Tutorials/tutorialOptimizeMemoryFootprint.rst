@@ -3,12 +3,20 @@
 Optimize the Memory Footprint of an Application
 ===============================================
 
-This tutorial explains how to analyze the memory footprint of an application and provides a set of common rules aimed at optimizing both ROM and RAM footprint.
+Description
+-----------
+
+This training explains how to analyze the memory footprint of an application and provides a set of common rules aimed at optimizing both ROM and RAM footprint.
 
 Intended Audience
 -----------------
 
-The audience for this document is Java engineers and Firmware integrators who are going to execute a MicroEJ Application on a memory-constrained device.
+This training is designed for Java engineers and Firmware integrators who want to execute a MicroEJ Application on a memory-constrained device.
+
+Prerequisites
+-------------
+
+To get the most out of this training, participants should have a good knowledge of Java programming language.
 
 Introduction
 ------------
@@ -80,7 +88,7 @@ See :ref:`Core Engine Link <core_engine_link>` documentation for more informatio
 How to Reduce the Image Size of an Application
 ----------------------------------------------
 
-Generic coding rules can be found in the following tutorial: :ref:`improve_code_quality`.
+Generic coding rules can be found in the following training: :ref:`improve_code_quality`.
 
 This section provides additional coding rules and good practices to reduce the image size (ROM) of an application.
 
@@ -341,7 +349,7 @@ It is not necessary to embed these class names. The :ref:`stack_trace_reader` ca
 How to Reduce the Runtime Size of an Application
 ------------------------------------------------
 
-You can find generic coding rules in the following tutorial: :ref:`improve_code_quality`.
+You can find generic coding rules in the following training: :ref:`improve_code_quality`.
 
 This section provides additional coding rules and good practices in order to reduce the runtime size (RAM) of an application.
 

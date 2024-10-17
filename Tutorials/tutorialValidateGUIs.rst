@@ -1,11 +1,25 @@
 .. _tutorials_debug_gui_performances:
 
+====================
 How to Validate GUIs
 ====================
+
+Description
+===========
 
 This document explains how to validate Graphical User Interfaces. 
 It describes common pitfalls that can affect GUI performances, provides tools that allow to detect performance issues and how to solve them, 
 and finally offers ways to test GUIs automatically.
+
+Intended Audience
+=================
+
+This training is for developers wishing to develop GUI Applications in MICROEJ VEE.
+
+Prerequisites
+=============
+
+To get the most out of this training, participants should have a good knowledge of Java programming language.
 
 Implementing GUIs Efficiently
 ------------------------------
@@ -40,7 +54,7 @@ To avoid those pitfalls:
 - Uses memory debugging tools:
 
   - :ref:`Optimize Memory Footprint<tutorial_optimize_memory_footprint>` tutorial.
-  - :ref:`Memory inspection tools<tutorial_discover_embedded_debugging_techniques.tools.memory_inspection>`.
+  - :ref:`Memory inspection tools<training_debug_tools>`.
   - :ref:`Heap Analyzer<heapdumper>`.
 
 Format of UI Resources

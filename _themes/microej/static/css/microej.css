@@ -1740,3 +1740,71 @@ padding-bottom: 7px;
   color: #4b5357;
   font-family: 'Source Sans Pro';
 }
+
+.training_items {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.training_items > div {
+  display:flex;
+  flex-direction:column;
+  align-content:flex-start;
+  width: 270px;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+  transition: box-shadow 0.3s ease;
+  transition: 0.3s;
+}
+
+.training_items > div:hover {
+  box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.2);
+  transform: translateY(-10px);
+}
+
+/* @media (max-width: 1300px) {
+  .training_items {
+    flex-direction: column;
+  }
+} */
+
+.training_learn_more_link {
+  align-self:left;
+}
+
+.training_link {
+  display: block;
+}
+
+.training_title {
+  font-size: 20px;
+}
+
+.training_description {
+  font-size: 16px;
+}
+
+
+.training_image_container {
+  position: relative;
+}
+
+.training_image_text{
+  position: absolute;
+  background: #CBD3D7;
+  border-radius: 10px;
+  color: #222;
+  font-weight: 700;
+  padding: 6px 16px;
+  opacity: 0.7;
+}
+
+.training_image_container > img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: contain;
+  height: 150px !important; /* Fit training_image_container height */
+}

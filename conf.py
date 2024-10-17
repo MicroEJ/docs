@@ -59,7 +59,7 @@ html_theme_options = {
     'collapse_navigation': False,
 }
 html_show_sphinx = False
-html_static_path = ['_themes/microej/static']
+html_static_path = ['_themes/microej/static', '_static']
 
 # # remove headers permalinks
 # html_add_permalinks = ''

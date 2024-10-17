@@ -1,6 +1,9 @@
 Data Serialization
 ==================
 
+Description
+-----------
+
 This documentation highlights some data serialization formats that are provided on MicroEJ Central Repository and their usage through basic code samples.
 
 .. _data_serialization_xml:

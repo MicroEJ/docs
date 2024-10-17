@@ -1,22 +1,30 @@
 .. _improve_code_quality:
 
-Improve the Quality of Java Code
-================================
+Best Java Code Practices
+========================
 
-This tutorial describes some rules and tools aimed at improving the quality of a Java code to simplify its maintenance.
+Description
+-----------
+
+This training describes some rules and tools aimed at improving the quality of a Java code to simplify its maintenance.
 It makes up a minimum consistent set of rules which can be applied in any situation, especially on embedded systems where performance and low memory footprint matter.
 
 Intended Audience
 -----------------
 
-The audience for this document is engineers who are developing any kind of Java code (application or library).
+This training is designed for Application developers who want to enhance the quality of their Java code.
+
+Prerequisites
+-------------
+
+To get the most out of this training, participants should have a good knowledge of Java programming language.
 
 Readable Code
 -------------
 
 This section describes rules to get a readable code, in order to facilitate:
 
-- the maintenance of an existing code with multiple developers contributions (e.g. merge conflicts, reviews). 
+- the maintenance of an existing code with multiple developers contributions (e.g., merge conflicts, reviews). 
 - the landing to a new code base when the same rules are applied across different modules and components.
 
 Naming Convention
@@ -368,7 +376,7 @@ This section points to tools aimed at helping to improve code quality.
 Unit Testing
 ^^^^^^^^^^^^
 
-Here is a list of rules when writing tests (see :ref:`application_testsuite`):
+Here is a list of rules when writing tests (see :ref:`training_application_testing`):
 
 - Prefer black-box tests (with a maximum coverage).
 - Here is the test packages naming convention:

@@ -4,6 +4,9 @@
 Setup an Automated Build using Jenkins and Artifactory
 ======================================================
 
+Description
+-----------
+
 Such environment setup facilitates continuous integration (CI) and continuous delivery (CD), which improves productivity across your development ecosystem,
 by automatically:
 
@@ -26,6 +29,18 @@ wishing to understand how MicroEJ works with headless module builds.
 
 For those who are only interested in command line module build, consider using the :ref:`MMM Command Line Interface <mmm_cli>`.
 
+Prerequisites
+-------------
+
+*  `MICROEJ SDK 5 <https://docs.microej.com/en/latest/SDKUserGuide/>`_ ``5.8.1`` or higher.
+*  `Docker and Docker Compose V2 <https://docs.docker.com/>`_ on Linux, Windows or Mac
+*  Git ``2.x`` installed, with Git executable in path. We recommend installing Git Bash if your operating system is Windows (`<https://gitforwindows.org/>`_).
+
+This tutorial was tested with Jenkins ``2.426.1``, Artifactory ``7.71.5`` and Gitea ``1.21.1``.
+
+.. note::
+    For SDK versions before 5.4.0, please refer to this `MicroEJ Documentation Archive <https://docs.microej.com/_/downloads/en/20201009/pdf/>`_.
+
 Introduction
 ------------
 
@@ -40,19 +55,6 @@ The overall build and deployment flow of a module can be summarized as follows:
 .. image:: images/tuto_microej_cli_flow.PNG
     :align: center
 
-
-
-Prerequisites
--------------
-
-*  `MICROEJ SDK 5 <https://docs.microej.com/en/latest/SDKUserGuide/>`_ ``5.8.1`` or higher.
-*  `Docker and Docker Compose V2 <https://docs.docker.com/>`_ on Linux, Windows or Mac
-*  Git ``2.x`` installed, with Git executable in path. We recommend installing Git Bash if your operating system is Windows (`<https://gitforwindows.org/>`_).
-
-This tutorial was tested with Jenkins ``2.426.1``, Artifactory ``7.71.5`` and Gitea ``1.21.1``.
-
-.. note::
-    For SDK versions before 5.4.0, please refer to this `MicroEJ Documentation Archive <https://docs.microej.com/_/downloads/en/20201009/pdf/>`_.
 
 Overview
 --------
