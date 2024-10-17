@@ -18,7 +18,7 @@ Standard Versions
 +-----------------+--------------------+---------------------------------------------------------+
 | UI Pack Range   | Architecture Range | Comment                                                 |
 +=================+====================+=========================================================+
-| [13.5.0-14.1.0] | [7.16.0-9.0.0[     | Compatibility with Architecture 8                       |
+| [13.5.0-14.1.1] | [7.16.0-9.0.0[     | Compatibility with Architecture 8                       |
 +-----------------+--------------------+---------------------------------------------------------+
 | [13.0.0-13.4.1] | [7.16.0-8.0.0[     | SNI 1.3                                                 |
 +-----------------+--------------------+---------------------------------------------------------+
@@ -62,7 +62,7 @@ The following table describes Foundation Libraries API versions implemented in M
    * - UI Pack Range
      - MicroUI
      - Drawing
-   * - 14.1.0
+   * - 14.1.1
      - `3.6.0 <https://repository.microej.com/modules/ej/api/microui/3.5.0/>`_
      - `1.0.4 <https://repository.microej.com/modules/ej/api/drawing/1.0.4/>`_
    * - [14.0.0-14.0.2]
@@ -131,7 +131,7 @@ Display
 +-----------------+------------------------------------------------------------------+
 | UI Pack Range   | Changes                                                          |
 +=================+==================================================================+
-| [14.0.0-14.1.0] | Signature of ``LLUI_DISPLAY_IMPL_flush()`` changed.              |
+| [14.0.0-14.1.1] | Signature of ``LLUI_DISPLAY_IMPL_flush()`` changed.              |
 +-----------------+------------------------------------------------------------------+
 | [13.0.0-13.7.2] | *UI3* format: implement ``LLUI_DISPLAY_impl.h``:                 |
 |                 |                                                                  |
@@ -164,7 +164,7 @@ Input
 +-----------------+------------------------------------------------------------------+
 | UI Pack Range   | Changes                                                          |
 +=================+==================================================================+
-| [13.0.0-14.1.0] | *UI3* format: implement ``LLUI_INPUT_impl.h``:                   |
+| [13.0.0-14.1.1] | *UI3* format: implement ``LLUI_INPUT_impl.h``:                   |
 |                 |                                                                  |
 |                 | * ``void LLUI_INPUT_IMPL_initialize([...]);``                    |
 |                 | * ``jint LLUI_INPUT_IMPL_getInitialStateValue([...]);``          |
@@ -185,7 +185,7 @@ LED
 +-----------------+------------------------------------------------------------------+
 | UI Pack Range   | Changes                                                          |
 +=================+==================================================================+
-| [13.0.0-14.1.0] | *UI3* format: implement ``LLUI_LED_impl.h``:                     |
+| [13.0.0-14.1.1] | *UI3* format: implement ``LLUI_LED_impl.h``:                     |
 |                 |                                                                  |
 |                 | * ``jint LLUI_LED_IMPL_initialize([...]);``                      |
 |                 | * ``jint LLUI_LED_IMPL_getIntensity([...]);``                    |
@@ -212,7 +212,7 @@ The Front Panel project must fetch the widgets compatible with the MicroEJ UI Pa
 +-----------------+--------------------------------------------+-----------------+
 | UI Pack Range   | Module                                     | Version         |
 +=================+============================================+=================+
-| [13.0.0-14.1.0] | `com.microej.pack.ui.ui-pack(frontpanel)`_ | [13.0.0-14.1.0] |
+| [13.0.0-14.1.1] | `com.microej.pack.ui.ui-pack(frontpanel)`_ | [13.0.0-14.1.1] |
 +-----------------+--------------------------------------------+-----------------+
 | [12.0.0-12.1.5] | `ej.tool.frontpanel.widget-microui`_       | 1.0.0           |
 +-----------------+--------------------------------------------+-----------------+
@@ -228,7 +228,7 @@ When the Front Panel project does not require/use the latest Front Panel UI API,
 +---------------------+-----------------------------+--------------+
 | Widget Module Range | UI Pack Compatibility Range | Repository   |
 +=====================+=============================+==============+
-| [4.0.0-4.0.2]       | [14.0.0-14.1.0]             | `Developer`_ |
+| [4.0.0-4.0.2]       | [14.0.0-14.1.1]             | `Developer`_ |
 +---------------------+-----------------------------+--------------+
 | 3.0.0               | [13.5.1-10-13.7.2]          | `Developer`_ |
 +---------------------+-----------------------------+--------------+
@@ -259,7 +259,7 @@ The module version is the MicroEJ Generic UI Pack version, that is always aligne
 +-----------------+-------------------------------------------------+-------------------+
 | UI Pack Range   | Module                                          | Version           |
 +=================+=================================================+===================+
-| [13.0.0-14.1.0] | `com.microej.pack.ui.ui-pack(imagegenerator)`_  | [13.0.0-14.1.0]   |
+| [13.0.0-14.1.1] | `com.microej.pack.ui.ui-pack(imagegenerator)`_  | [13.0.0-14.1.1]   |
 +-----------------+-------------------------------------------------+-------------------+
 
 .. note:: Before MicroEJ UI Pack ``13.0.0``, the Image Generator extension project must depend on classpath variable ``IMAGE-GENERATOR-x.x``.
@@ -276,14 +276,14 @@ MicroUI C Module
 
 The MicroUI C module `com.microej.clibrary.llimpl(microui)`_ is available on MicroEJ Central Repository, see :ref:`section_ui_cco`.
 
-.. note:: Since version 14.1.0 of UI Pack, UI Pack and MicroUI C Module have the same version.
+.. note:: Since version 14.1.1 of UI Pack, UI Pack and MicroUI C Module have the same version.
 
 The following table describes the compatibility versions between the MicroEJ UI Packs and the C modules:
 
 +------------------+--------------------------+------------------------------------------+
 | UI Pack          | MicroUI C Module         | Comment                                  |
 +==================+==========================+==========================================+
-| 14.1.0 and above | Identical to the UI Pack |                                          |
+| 14.1.1 and above | Identical to the UI Pack |                                          |
 +------------------+--------------------------+------------------------------------------+
 | [14.0.0-14.0.2]  | [4.0.0-4.1.0]            | Buffer refresh strategies                |
 +------------------+--------------------------+------------------------------------------+
@@ -321,7 +321,7 @@ The following table describes the version compatibility between the MicroEJ UI P
 +-----------------+---------------+------------------+------------------------------------------+
 | UI Pack         | Chrom-ART     | MicroUI C Module | Comment                                  |
 +=================+===============+==================+==========================================+
-| 14.1.0          | 7.0.0         | 14.1.0           | Font extensibility                       |
+| 14.1.1          | 7.0.0         | 14.1.1           | Font extensibility                       |
 +-----------------+---------------+------------------+------------------------------------------+
 | [14.0.1-14.0.2] | [5.0.1-6.0.0] | [4.0.1-4.1.0]    | C modules harmonization                  |
 +-----------------+---------------+------------------+------------------------------------------+
@@ -350,7 +350,7 @@ The following table describes the version compatibility between the MicroEJ UI P
 +-----------------+---------------+------------------+------------------------------------------+
 | UI Pack         | VGLite        | MicroUI C Module | Comment                                  |
 +=================+===============+==================+==========================================+
-| 14.1.0          | 10.0.0        | 14.1.0           | Font extensibility                       |
+| 14.1.1          | 10.0.0        | 14.1.1           | Font extensibility                       |
 +-----------------+---------------+------------------+------------------------------------------+
 | [14.0.1-14.0.2] | 9.0.0         | 4.1.0            | VG Pack extensibility                    |
 +-----------------+---------------+------------------+------------------------------------------+
@@ -390,7 +390,7 @@ The following table describes the version compatibility between the MicroEJ UI P
 +-----------------+---------+------------------+------------------------------+
 | UI Pack         | NemaGFX | MicroUI C Module | Comment                      |
 +=================+=========+==================+==============================+
-| 14.1.0          | 4.0.0   | 14.1.0           | Font extensibility           |
+| 14.1.1          | 4.0.0   | 14.1.1           | Font extensibility           |
 +-----------------+---------+------------------+------------------------------+
 | [14.0.1-14.0.2] | 3.0.0   | 4.1.0            | VG Pack extensibility        |
 +-----------------+---------+------------------+------------------------------+
