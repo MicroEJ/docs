@@ -309,7 +309,7 @@ If you are an embedded engineer you could look at our VEE port examples at `GitH
 
 You can also follow the :ref:`Kernel Developer Guide <kernel-developer-guide>` for more information on our multi-applications framework or read about our powerful wearable solution called :ref:`VEE Wear <vee-wear>`.
 
-Last but not least you can choose to learn about specific topics by following one of our many :ref:`tutorials <tutorials>` ranging from how to easily debug application to setting up a Continuous Integration process and a lot of things in between.
+Last but not least you can choose to learn about specific topics by following one of our many :ref:`training <training>` ranging from how to easily debug application to setting up a Continuous Integration process and a lot of things in between.
 
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 
