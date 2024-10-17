@@ -38,6 +38,24 @@ FrontPanel
 
 - Deprecate the API ``LLUIDisplay.isClosed()``: use ``LLUIDisplay.isImageClosed()`` instead.
 
+ImageGenerator
+""""""""""""""
+
+**Changed**
+
+- Speed-up the generation when the cache is used.
+
+FontGenerator
+"""""""""""""
+
+**Changed**
+
+- Speed-up the generation when the cache is used. 
+
+**Fixed**
+
+- Fix the management of the kernel's fonts on the simulator (mode Multi-Sandbox).
+
 LLAPIs
 """"""
 
@@ -403,6 +421,13 @@ MicroUI
 **Fixed**
 
 * Fix the drawing of thick faded circle arcs.
+
+FontGenerator
+"""""""""""""
+
+**Fixed**
+
+- Fix the management of the feature's fonts on the simulator (mode Multi-Sandbox).
 
 C Module NemaGFX
 """"""""""""""""
