@@ -6,6 +6,16 @@
 Changelog
 =========
 
+13.7.3 ([Unreleased])
+===================
+
+FontGenerator
+"""""""""""""
+
+**Fixed**
+
+- Fix the management of the kernel's fonts on the simulator (mode Multi-Sandbox).
+
 14.1.1 (2024-10-17)
 ===================
 
