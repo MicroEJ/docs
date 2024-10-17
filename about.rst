@@ -24,7 +24,7 @@ security, and real-time processing of data (Edge Computing).
 
 Browse this documentation to discover MicroEJ technology, learn about
 application and platform development, and begin your coding journey
-thanks to a comprehensive range of dedicated training.   
+thanks to a comprehensive range of dedicated training courses.   
 
 For more information about MicroEJ, go to: `<https://www.microej.com/>`_.
 
