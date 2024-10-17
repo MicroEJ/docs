@@ -36,7 +36,7 @@ Prerequisites
 *  `Docker and Docker Compose V2 <https://docs.docker.com/>`_ on Linux, Windows or Mac
 *  Git ``2.x`` installed, with Git executable in path. We recommend installing Git Bash if your operating system is Windows (`<https://gitforwindows.org/>`_).
 
-This tutorial was tested with Jenkins ``2.426.1``, Artifactory ``7.71.5`` and Gitea ``1.21.1``.
+This training was tested with Jenkins ``2.426.1``, Artifactory ``7.71.5`` and Gitea ``1.21.1``.
 
 .. note::
     For SDK versions before 5.4.0, please refer to this `MicroEJ Documentation Archive <https://docs.microej.com/_/downloads/en/20201009/pdf/>`_.
@@ -68,7 +68,7 @@ The steps to follow are:
 #. Create a new Jenkins job for the Hello World module
 #. Build the module
 
-In order to simplify the steps, this tutorial will be performed locally on a single machine.
+In order to simplify the steps, this training will be performed locally on a single machine.
 
 Artifactory will host MicroEJ modules in 3 repositories:
 
@@ -105,7 +105,7 @@ Get a Module Repository
 A Module Repository is a portable ZIP file that bundles a set of modules for extending the MicroEJ development environment.
 Please consult the :ref:`Module Repository <module_repository>` section for more information.
 
-This tutorial uses the MicroEJ Central Repository, which is the Module Repository used by MICROEJ SDK to fetch dependencies when starting an empty workspace. 
+This training uses the MicroEJ Central Repository, which is the Module Repository used by MICROEJ SDK to fetch dependencies when starting an empty workspace. 
 It bundles Foundation Library APIs and numerous Add-On Libraries.
 
 Next step is to download a local copy of this repository:
@@ -266,7 +266,7 @@ Upload to your Git repository
     .. literalinclude:: resources/ivysettings-artifactory.xml
         :language: xml
 
-This file configures the MicroEJ Module Manager to import and publish modules from the Artifactory repositories described in this tutorial. Please refer to the :ref:`mmm_settings_file` section for more details.
+This file configures the MicroEJ Module Manager to import and publish modules from the Artifactory repositories described in this training. Please refer to the :ref:`mmm_settings_file` section for more details.
 
     .. note::
        At this point, the content of the directory ``com.example.hello-world`` should look like the following:
@@ -333,7 +333,7 @@ At the end of the build, the module is published to ``http://localhost:8082/arti
 
 Congratulations!
 
-At this point of the tutorial:
+At this point of the training:
 
 * Artifactory is hosting your module builds and MicroEJ modules. 
 * Jenkins automates the build process using :ref:`MicroEJ Module Manager <mmm>`.

@@ -69,7 +69,7 @@ Setting Up
 Using with Animator
 -------------------
 
-- Using the code made in the previous Animation tutorial, doing the modifications below, it is now possible to see the progress bar animated:
+- Using the code made in the previous Animation training, doing the modifications below, it is now possible to see the progress bar animated:
 
   .. code:: java
 

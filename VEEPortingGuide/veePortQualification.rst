@@ -55,7 +55,7 @@ The VEE Port Qualification Tools provide the following components:
     - Configure the BSP connection to call the build and run scripts.
 
   - Added when creating a VEE Port (see :ref:`new_platform_creation`
-    or check the tutorial :ref:`tutorial_create_firmware_from_scratch`).
+    or check the training :ref:`tutorial_create_firmware_from_scratch`).
 
 - Build and Run Scripts examples:
 
@@ -63,7 +63,7 @@ The VEE Port Qualification Tools provide the following components:
     invoking a third-party toolchain for the BSP.
   - Added when integrating the BSP to the VEE Port (see
     :ref:`bsp_connection_build_script` and
-    :ref:`bsp_connection_run_script` or check the tutorial :ref:`tutorial_create_platform_build_and_run_scripts`).
+    :ref:`bsp_connection_run_script` or check the training :ref:`tutorial_create_platform_build_and_run_scripts`).
 
 - C and Java Test Suites:
 

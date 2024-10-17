@@ -21,7 +21,7 @@ Browse the following chapters to familiarize yourself and understand the princip
 - The :ref:`vee-porting-guide` teaches you how to integrate MICROEJ VEE into a C Board Support Package as well as simulation configurations.
 - The :ref:`kernel-developer-guide` introduces you to advanced concepts, such as partial updates and dynamic app life cycle workflows.
 - The :ref:`vee-wear` addresses the development of smartwatch applications using VEE Wear, specifically designed for low-power MCU and MPU.
-- The :ref:`tutorials` chapter covers a variety of topics related to developing with the MicroEJ ecosystem.
+- The :ref:`trainings` chapter offers online courses to help you learn the essentials of Firmware development using MICROEJ SDK.
 
 .. toctree::
    :maxdepth: 2
@@ -35,7 +35,7 @@ Browse the following chapters to familiarize yourself and understand the princip
    VEEPortingGuide/index
    KernelDeveloperGuide/index
    VEEWearUserGuide/index
-   Tutorials/index
+   Trainings/index
    support
    about
 

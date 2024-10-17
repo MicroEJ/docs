@@ -4,7 +4,7 @@
 Implement a Blocking Java Native Method with SNI
 ================================================
 
-This tutorial describes the good practices to follow when implementing a blocking native method in C.
+This training describes the good practices to follow when implementing a blocking native method in C.
 A native method is a method declared in Java with the ``native`` keyword and implemented in C using the
 :ref:`Simple Native Interface (SNI) <sni_specification>`.
 
@@ -31,7 +31,7 @@ With such an architecture, the MicroEJ Core Engine cannot preempt a Java thread 
 Therefore a blocking native method will prevent the execution of other Java threads.
 To mitigate the contention, a native method must explicitly yield its current use of the processor.
 
-This tutorial will explain how to use SNI to implement a blocking Java native method without blocking the
+This training will explain how to use SNI to implement a blocking Java native method without blocking the
 execution of other Java threads.
 
 Requirements

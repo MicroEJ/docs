@@ -3,22 +3,22 @@
 Create a MicroEJ Firmware From Scratch
 ======================================
 
-This tutorial explains how to create a MicroEJ Firmware from scratch.
+This training explains how to create a MicroEJ Firmware from scratch.
 It goes trough the typical steps followed by a Firmware developer
 integrating MicroEJ with a C Board Support Package (BSP) for a target
 device.
 
-In this tutorial, the target device is a a Luminary Micro Stellaris.
+In this training, the target device is a a Luminary Micro Stellaris.
 Though this device is no longer available on the market, it has two
 advantages:
 
 - The QEMU PC System emulator can emulate the device.
 - FreeRTOS provides an official Demo BSP.
 
-Consequently, no board is required to follow this tutorial. Everything
+Consequently, no board is required to follow this training. Everything
 is emulated on the developer's PC.
 
-The tutorial should take 1 hour to complete (excluding the
+The training should take 1 hour to complete (excluding the
 installation time of MicroEJ SDK and Windows Subsystem Linux (WSL)).
 
 Intended Audience
@@ -27,7 +27,7 @@ Intended Audience
 The audience for this document is Firmware engineers who want to
 understand how MicroEJ is integrated to a C Board Support Package.
 
-In addition, this tutorial should be of interest to all developers
+In addition, this training should be of interest to all developers
 wishing to familiarize themselves with the low level components of a
 MicroEJ Firmware such as: :ref:`MicroEJ
 Architecture<architecture_overview>`, :ref:`MicroEJ
@@ -52,25 +52,25 @@ The following steps are usually followed when starting a new project:
 #. Develop the :ref:`MicroEJ Application
    <simulator_execution>`.
 
-This tutorial describes step by step how to go from the FreeRTOS BSP
+This training describes step by step how to go from the FreeRTOS BSP
 to a MicroEJ Application that runs on the MicroEJ Platform and prints
 the classic ``"Hello, World!"``.
 
-In this tutorial:
+In this training:
 
 * The target device is a Luminary Micro Stellaris which is emulated by
   QEMU (`QEMU Stellaris boards
   <https://www.qemu.org/docs/master/system/arm/stellaris.html>`_).
 * The RTOS is FreeRTOS and the toolchain is GNU CC fo ARM.
 
-All modifications to FreeRTOS BSP made for this tutorial are available
+All modifications to FreeRTOS BSP made for this training are available
 at https://github.com/MicroEJ/FreeRTOS/tree/tuto-microej-firmware-from-scratch.
 
 .. note::
 
   The implementation of the Low Level API and their validation with
   the `Platform Qualification Tools (PQT)`_ will be
-  the topic of another tutorial.
+  the topic of another training.
 
 Prerequisites
 -------------
@@ -109,7 +109,7 @@ The steps to follow are:
 #. Create the HelloWorld MicroEJ Application
 #. Implement the minimum Low Level API to run the application
 
-This tutorial goes through trials and errors every Firmware developers
+This training goes through trials and errors every Firmware developers
 may encounter. It provides a solution after each error rather than
 providing the full solution in one go.
 
@@ -124,7 +124,7 @@ In WSL:
 #. Install qemu-system-arm and GNU CC toolchain for ARM: ``sudo
    apt-get install -y qemu-system-arm gcc-arm-none-eabi
    build-essential subversion``
-#. The rest of this tutorial will use the folder
+#. The rest of this training will use the folder
    ``src/tuto-from-scratch/`` in the Windows home folder.
 #. Create the folder: ``mkdir -p
    /mnt/c/Users/${USER}/src/tuto-from-scratch`` (the ``-p`` option
@@ -485,13 +485,13 @@ The `Platform Configuration Additions
 <https://github.com/MicroEJ/VEEPortQualificationTools/tree/2.6.0/framework/platform>`_
 provide a flexible way to configure the :ref:`BSP connection
 <bsp_connection>` between the MicroEJ Platform and MicroEJ Application
-to the BSP. In this tutorial, the Partial BSP connection is used. That
+to the BSP. In this training, the Partial BSP connection is used. That
 is, the MicroEJ SDK will output all MicroEJ files (C headers, MicroEJ
 Application ``microejapp.o``, MicroEJ Runtime ``microejruntime.a``,
 ...) in a location known by the BSP. The BSP is configured to compile
 and link with those files.
 
-For this tutorial, that means that the final binary is produced by
+For this training, that means that the final binary is produced by
 invoking ``make`` in the FreeRTOS BSP.
 
 #. Install the Platform Configuration Additions by copying all the
@@ -727,9 +727,9 @@ between MicroEJ and the FreeRTOS BSP:
 Minimal Low Level APIs
 ~~~~~~~~~~~~~~~~~~~~~~
 
-The purpose of this tutorial is to demonstrate how to develop a
+The purpose of this training is to demonstrate how to develop a
 minimal MicroEJ Architecture, it is not to develop a complete MicroEJ
-Architecture. Therefore this tutorial implements only the required
+Architecture. Therefore this training implements only the required
 functions and provides stub implementation for unused features. For
 example, the following implementation does not support scheduling.
 
@@ -955,9 +955,9 @@ link time.
 The RAM requirements of the BSP (with printf), FreeRTOS, the MicroEJ
 Application and MicroEJ Runtime do not fit in the 8k of SRAM. It is
 possible to link within 8k of RAM by customizing a :ref:`MicroEJ Tiny-Sandbox <tinysandbox>` on a baremetal device (without a RTOS) but
-this is not the purpose of this tutorial.
+this is not the purpose of this training.
 
-Instead, this tutorial will switch to another device, the Luminary
+Instead, this training will switch to another device, the Luminary
 Micro Stellaris LM3S6965EVB. This device is almost identical as the
 LM3S811EVB but it has 256k of flash memory and 64k of SRAM. Updating
 the values in the linker script ``standalone.ld`` is sufficient to
@@ -978,7 +978,7 @@ The BSP path defined by the property ``deploy.bsp.root.dir`` in the
 MicroEJ Application must be updated as well.
 
 
-The rest of the tutorial assumes that everything is done in the
+The rest of the training assumes that everything is done in the
 ``CORTEX_LM3S6965_GCC`` folder.
 
 Then update the linker script ``standlone.ld``:
@@ -1036,7 +1036,7 @@ archive files loaded previously (see ``man ld`` for a description of
 the ``start-group`` option). To solve this issue, either invert the
 declaration of ``LIBS`` (put ``microejapp.o`` first) or guard the
 libraries declaration with ``--start-group`` and ``--end-group`` in
-``makedefs``. This tutorial uses the later.
+``makedefs``. This training uses the later.
 
 .. code-block:: diff
   :caption: https://github.com/MicroEJ/FreeRTOS/commit/4b23ea2e77112f053368718d299ff8db826ddde1
@@ -1146,7 +1146,7 @@ Rebuild with ``make``. The following error occurs:
   /build/newlib-jo3xW1/newlib-2.4.0.20160527/build/arm-none-eabi/thumb/newlib/libc/reent/../../../../../../newlib/libc/reent/sbrkr.c:58: undefined reference to `_sbrk'
   make: *** [makedefs:196: gcc/RTOSDemo.axf] Error 1
 
-Instead of implementing a stub ``_sbrk`` function, this tutorial uses
+Instead of implementing a stub ``_sbrk`` function, this training uses
 the ``libnosys.a`` which provides stub implementation for various
 functions.
 
@@ -1197,7 +1197,7 @@ Rebuild with ``make``. The following error occurs:
 The ``_sbrk`` implementation needs the ``end`` symbol to be defined.
 Looking at the `implementation <https://chromium.googlesource.com/native_client/nacl-newlib/+/99fc6c167467b41466ec90e8260e9c49cbe3d13c/libgloss/libnosys/sbrk.c>`_,
 the ``end`` symbol corresponds to the beginning of the C heap. This
-tutorial uses the end of the ``.bss`` segment as the beginning of the
+training uses the end of the ``.bss`` segment as the beginning of the
 C heap.
 
 .. code-block:: diff
@@ -1272,7 +1272,7 @@ To make this more obvious:
 
 Congratulations!
 
-At this point of the tutorial:
+At this point of the training:
 
 * The MicroEJ Platform is connected to the BSP (BSP partial
   connection).
@@ -1291,7 +1291,7 @@ The next steps recommended are:
   functions in ``LLMJVM_impl.h``).
 * Validate the implementation with the `PQT Core
   <https://github.com/MicroEJ/VEEPortQualificationTools/tree/master/tests/core>`_.
-* Follow the :ref:`tutorial_create_platform_build_and_run_scripts` tutorial to get this MicroEJ Platform fully automated for build and execution. 
+* Follow the :ref:`tutorial_create_platform_build_and_run_scripts` training to get this MicroEJ Platform fully automated for build and execution. 
 
 ..
    | Copyright 2020-2024, MicroEJ Corp. Content in this space is free 
