@@ -342,7 +342,7 @@ onto the device.
 The `Platform Qualification Tools`_ provides examples of Build Script
 and Run Script for various C TOOLCHAIN `here
 <https://github.com/MicroEJ/VEEPortQualificationTools/tree/master/framework/platform/scripts>`__. 
-:ref:`This tutorial <tutorial_create_platform_build_and_run_scripts>` also describes the steps to create 
+:ref:`This training <tutorial_create_platform_build_and_run_scripts>` also describes the steps to create 
 and use these scripts.
 
 On the STM32F746G-DISCO, the C TOOLCHAIN used is Keil uVision.

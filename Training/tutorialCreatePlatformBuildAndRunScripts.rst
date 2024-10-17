@@ -3,7 +3,7 @@
 Create MicroEJ Platform Build and Run Scripts
 =============================================
 
-This tutorial describes all the steps to create :ref:`MicroEJ Platform <platform_import>` build and run scripts and shows how to use them.
+This training describes all the steps to create :ref:`MicroEJ Platform <platform_import>` build and run scripts and shows how to use them.
 
 Intended Audience
 -----------------
@@ -18,7 +18,7 @@ The audience for this document is Platform engineers who want to
 Prerequisites
 -------------
 
-This tutorial is a direct continuation of :ref:`tutorial_create_firmware_from_scratch` tutorial. It should have been completed before starting this one.
+This training is a direct continuation of :ref:`tutorial_create_firmware_from_scratch` training. It should have been completed before starting this one.
 
 Introduction
 ------------
@@ -35,14 +35,14 @@ See :ref:`bsp_connection_build_script` and :ref:`bsp_connection_run_script` sect
 Overview
 --------
 
-In the previous :ref:`tutorial_create_firmware_from_scratch` tutorial, the final binary is produced by invoking ``make`` in the FreeRTOS BSP. The command to type is dependant of the toolchain used. The Firmware is then executed in QEMU but could have been instead flashed to a device with another specific command. This tutorial explain how to write `build` and `run` scripts for these two tasks. 
+In the previous :ref:`tutorial_create_firmware_from_scratch` training, the final binary is produced by invoking ``make`` in the FreeRTOS BSP. The command to type is dependant of the toolchain used. The Firmware is then executed in QEMU but could have been instead flashed to a device with another specific command. This training explain how to write `build` and `run` scripts for these two tasks. 
 
 The next sections will
 
-- describe step-by-step how to create the build and run scripts both for unix-like systems (Bash scripts) and Windows systems (batch files). These scripts automate Firmware build and execution in QEMU as presented in :ref:`tutorial_create_firmware_from_scratch` tutorial.
+- describe step-by-step how to create the build and run scripts both for unix-like systems (Bash scripts) and Windows systems (batch files). These scripts automate Firmware build and execution in QEMU as presented in :ref:`tutorial_create_firmware_from_scratch` training.
 - show a practical usage of these scripts in a MicroEJ development flow. This will allow to configure a MicroEJ Standalone Application to build the Firmware in MicroEJ SDK.
 
-Finally, this tutorial describes how to convert the MicroEJ Platform from partial BSP connection to full BSP connection.
+Finally, this training describes how to convert the MicroEJ Platform from partial BSP connection to full BSP connection.
 
 Create Build and Run Scripts
 ----------------------------
@@ -52,7 +52,7 @@ This section describes how to write build and run scripts.
 There are two scripts:
 
 #. ``build.[sh|bat]`` which calls the C toolchain to build and link the Firmware file. It also ensures that the output file is called ``application.out`` and is located in the directory from where the script was called.
-#. ``run.[sh|bat]`` which deploys and runs ``application.out`` on the device. In this tutorial, it will only run the Firmware with QEMU instead of flashing it on real hardware.
+#. ``run.[sh|bat]`` which deploys and runs ``application.out`` on the device. In this training, it will only run the Firmware with QEMU instead of flashing it on real hardware.
 
 Each of these scripts come in two flavors: ``.sh`` for unix-like systems, and ``.bat`` for Windows systems.
 
@@ -331,7 +331,7 @@ In this section, we configure the BSP root directory in the Platform.
 Such configuration is called `full BSP connection`: the MicroEJ Platform includes the BSP, and any MicroEJ Standalone Application can be built against this MicroEJ Platform without extra configuration.
 
 When launching the ``HelloWorld`` application from MicroEJ SDK, the launcher knows how to find the BSP because we have configured its path in ``HelloWorld/build/emb.properties`` file which is imported in the launcher
-(this file has been configured in :ref:`tutorial_create_firmware_from_scratch` tutorial).
+(this file has been configured in :ref:`tutorial_create_firmware_from_scratch` training).
 
 1. Cut ``deploy.bsp.root.dir`` property value from ``HelloWorld/build/emb.properties`` file
 2. Paste the value in ``bsp/bsp.properties`` as follow:
@@ -381,7 +381,7 @@ Going Further
 - More about build and run scripts in :ref:`bsp_connection_build_script` and :ref:`bsp_connection_run_script` sections
 - Some build scripts examples from `Platform Qualification Tools`_
 - Follow the :ref:`run_test_suite_on_device` documentation to learn how to run an automated testsuite
-- Perform the :ref:`tutorial_setup_automated_build_using_jenkins_and_artifactory` tutorial to learn how to automate the build of a MicroEJ Platform module
+- Perform the :ref:`tutorial_setup_automated_build_using_jenkins_and_artifactory` training to learn how to automate the build of a MicroEJ Platform module
 
 .. _Platform Qualification Tools: https://github.com/MicroEJ/VEEPortQualificationTools/tree/master/framework/platform/scripts
 
