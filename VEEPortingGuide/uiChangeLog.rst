@@ -6,7 +6,7 @@
 Changelog
 =========
 
-13.7.3 ([Unreleased])
+13.7.3 (2024-10-18)
 ===================
 
 FontGenerator
