@@ -144,7 +144,7 @@ Filtered Image
 MicroVG `VectorImage.filterImage()`_ API allows to transform an image using a 4x5 color matrix.
 The result of the image transformation is stored in the MicroUI :ref:`images_heap`.
 MicroVG ports for dedicated GPU (Low Level implementation) are responsible of the deallocation of this generated image.
-An implementation is available for :ref:`MicroVG Over VGLite<section_vg_c_module_microvg_vglite>`.
+Implementations are available for :ref:`MicroVG Over VGLite<section_vg_c_module_microvg_vglite>` and :ref:`MicroVG Over NemaVG<section_vg_c_module_microvg_nema>`.
 
 .. _section_vg_image_external:
 
