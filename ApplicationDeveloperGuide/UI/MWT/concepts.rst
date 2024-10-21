@@ -190,6 +190,8 @@ Once a widget has consumed an event, it will be the only one to receive the next
    :alt: Pointer Event Dispatcher Flow
    :align: center
 
+By default, the reactive area of a widget is the boundaries of its content, plus its padding, plus its border (does not include the margin).
+
 A widget can redefine its reactive area by subclassing the `contains(int x, int y)`_ method. It is useful when a widget does not fill fully its bounds.
 
 .. Add an example such as a circular slider or an analog watchface.
