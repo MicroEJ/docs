@@ -30,6 +30,28 @@ BSP with NemaVG
 
 	* Fetch the `VG Pack 1.7.0`_ and the `C Module MicroVG over NemaVG 2.0.0`_.
 
+FreeType
+""""""""
+
+Optionally, update the :ref:`C Module FreeType <section_vg_c_module_freetype>` to use FreeType version 2.13.3:
+
+* Delete the directory ``thirdparty/freetype``.
+* Remove ``thirdparty/freetype/inc`` and ``thirdparty/freetype/inc/ftvector`` from your include path.
+* Add ``thirdparty/freetype/include``, `thirdparty/freetype/src`` and `freetype_support/src`` to your include path.
+* Remove ``thirdparty/freetype/lib/freetype.a`` from your build path.
+* Build FreeType and add the library and support files following the instructions in XXX_TODO link to README.md.
+
+HarfBuzz
+""""""""
+
+Optionally, update the :ref:`C Module HarfBuzz <section_vg_c_module_harfbuzz>` to use HafBuzz version 10.0.1:
+
+* Delete the directory ``thirdparty/harfbuzz``.
+* Remove ``thirdparty/harfbuzz/inc`` from your include path.
+* Add ``thirdparty/harfbuzz/src`` to your include path.
+* Remove ``thirdparty/harfbuzz/lib/harfbuzz.a`` and `thirdparty/harfbuzz/src/hb-alloc.c`` from your build path.
+* Build HarfBuzz and add the library and support files following the instructions in XXX_TODO link to README.md.
+
 From 1.5.x to 1.6.0
 ===================
 
