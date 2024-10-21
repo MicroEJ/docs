@@ -65,11 +65,6 @@ Process overview:
 Custom Font
 -----------
 
-.. 
-   XXX_TODO
-   ttf
-      | custom loader
-
 The font engine for custom fonts is specific to the font itself, see :ref:`section_font_custom`.
 
 Dependencies
