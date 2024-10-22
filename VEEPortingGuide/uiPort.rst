@@ -16,7 +16,7 @@ It is recommended to follow the steps in this order:
 4. Extend the implementation by connecting a GPU.
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
 
     uiPortConfiguration
     uiPortSimulation

@@ -9,7 +9,7 @@ Easing functions help to mimic the movement of real objects, which allows for th
 The library can also be useful for other purposes such as defining non-linear gradients for example.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    usage
    concepts
