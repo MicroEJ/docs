@@ -104,7 +104,7 @@ document.addEventListener("readthedocs-addons-data-ready", function(event) {
   });
 
   // Trigger the Read the Docs Addons Search modal when clicking on "SEARCH" in the top menu
-  document.querySelector("#headermicroej_LI_18").addEventListener("onclick", () => {
+  document.querySelector("#headermicroej_LI_18").addEventListener("click", () => {
     const event = new CustomEvent("readthedocs-search-show");
     document.dispatchEvent(event);
   });
