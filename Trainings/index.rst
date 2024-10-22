@@ -1,8 +1,8 @@
-.. _tutorials:
+.. _trainings:
 
-========
-Training
-========
+================
+Training Courses
+================
 
 Welcome to the MicroEJ training courses!
 
