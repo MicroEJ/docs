@@ -653,6 +653,16 @@ code,
   padding-bottom: 10px;
 }
 
+.wy-menu-vertical li.toctree-l1 > ul,
+.wy-menu-vertical li.toctree-l1 > ul > li {
+  display: list-item;
+}
+
+.wy-menu-vertical li.toctree-l2 > a,
+.wy-menu-vertical li.toctree-l2.current > a {
+  padding-left: 35px;
+}
+
 .wy-menu-vertical li.toctree-l1.current > a:hover {
   background-color: #d6d6d6;
 }
