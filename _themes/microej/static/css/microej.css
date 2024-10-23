@@ -395,9 +395,11 @@ footer .btn {
 }
 
 /* remove next/previous buttons */
+/*
 footer .btn {
   display: none;
 }
+*/
 
 footer .btn:hover {
   color:#fff !important;
