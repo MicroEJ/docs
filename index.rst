@@ -26,7 +26,7 @@ Browse the following chapters to familiarize yourself and understand the princip
 .. toctree::
    :maxdepth: 2
    :hidden:
-
+   
    Glossary <glossary>
    overview/index
    SDKUserGuide/index
@@ -38,6 +38,156 @@ Browse the following chapters to familiarize yourself and understand the princip
    Trainings/index
    support
    about
+
+.. toctree::
+   :caption: SDK 5 User Guide
+   :maxdepth: 2
+   :hidden:
+
+   SDKUserGuide/install
+   SDKUserGuide/licenses
+   SDKUserGuide/standaloneApplication
+   SDKUserGuide/sandboxedApplication
+   SDKUserGuide/mmmRepository
+   SDKUserGuide/platformSelection
+   SDKUserGuide/moduleNatures
+   SDKUserGuide/debug
+   SDKUserGuide/tools
+   SDKUserGuide/ide
+   SDKUserGuide/version
+   SDKUserGuide/mmm
+   SDKUserGuide/testsuite
+   SDKUserGuide/howtos/index
+   SDKUserGuide/sdkReleaseNotes
+   SDKUserGuide/sdkChangeLog
+   SDKUserGuide/sdkMigrationNotes
+
+.. toctree::
+   :caption: SDK 6 User Guide
+   :maxdepth: 2
+   :hidden:
+
+   SDK6UserGuide/gettingStarted
+   SDK6UserGuide/install
+   SDK6UserGuide/licenses
+   SDK6UserGuide/limitations
+   SDK6UserGuide/createProject
+   SDK6UserGuide/importProject
+   SDK6UserGuide/selectVeePort
+   SDK6UserGuide/runOnSimulator
+   SDK6UserGuide/buildExecutable
+   SDK6UserGuide/runOnDevice
+   SDK6UserGuide/selectKernel
+   SDK6UserGuide/buildFeature
+   SDK6UserGuide/buildVirtualDevice
+   SDK6UserGuide/addDependency
+   SDK6UserGuide/testProject
+   SDK6UserGuide/publishProject
+   SDK6UserGuide/tools
+   SDK6UserGuide/manageVersion
+   SDK6UserGuide/manageResolutionConflicts
+   SDK6UserGuide/migrateMMMProject
+   SDK6UserGuide/moduleNatures
+   SDK6UserGuide/troubleshooting
+   SDK6UserGuide/tutorials/index
+   SDK6UserGuide/howtos/index
+   SDK6UserGuide/appendix/index
+   SDK6UserGuide/sdk6ChangeLog
+   SDK6UserGuide/sdk6MigrationNotes
+
+.. toctree::
+   :caption: Application Developer Guide
+   :maxdepth: 2
+   :hidden:
+
+   ApplicationDeveloperGuide/introduction
+   ApplicationDeveloperGuide/runtime
+   ApplicationDeveloperGuide/soar
+   ApplicationDeveloperGuide/buildOutputFiles
+   ApplicationDeveloperGuide/virtualDevice
+   ApplicationDeveloperGuide/classpath
+   ApplicationDeveloperGuide/applicationResources
+   ApplicationDeveloperGuide/standaloneApplication
+   ApplicationDeveloperGuide/sandboxedApplication
+   ApplicationDeveloperGuide/characterEncoding
+   ApplicationDeveloperGuide/limitations
+   ApplicationDeveloperGuide/github
+   ApplicationDeveloperGuide/modulesRepositories
+   ApplicationDeveloperGuide/libraries
+   ApplicationDeveloperGuide/tools
+
+.. toctree::
+   :caption: VEE Porting Guide
+   :maxdepth: 2
+   :hidden:
+
+   VEEPortingGuide/introduction
+   VEEPortingGuide/architecture
+   VEEPortingGuide/pack
+   VEEPortingGuide/platformCreation
+   VEEPortingGuide/veePortQualification
+   VEEPortingGuide/coreEngine
+   VEEPortingGuide/advanceTrace
+   VEEPortingGuide/multiSandbox
+   VEEPortingGuide/tinySandbox
+   VEEPortingGuide/native
+   VEEPortingGuide/externalResourceLoader
+   VEEPortingGuide/serialCommunications
+   VEEPortingGuide/ui
+   VEEPortingGuide/vg
+   VEEPortingGuide/net
+   VEEPortingGuide/bluetooth
+   VEEPortingGuide/audio
+   VEEPortingGuide/packEventQueue
+   VEEPortingGuide/fs
+   VEEPortingGuide/hal
+   VEEPortingGuide/device
+   VEEPortingGuide/security
+   VEEPortingGuide/watchdog-timer
+   VEEPortingGuide/systemView
+   VEEPortingGuide/simulation
+   VEEPortingGuide/appendix/index
+
+.. toctree::
+   :caption: Kernel Developer Guide
+   :maxdepth: 2
+   :hidden:
+
+   KernelDeveloperGuide/overview
+   KernelDeveloperGuide/kf
+   KernelDeveloperGuide/gettingStarted
+   KernelDeveloperGuide/kernelCreation
+   KernelDeveloperGuide/kernelAPI
+   KernelDeveloperGuide/runtimeEnvironment
+   KernelDeveloperGuide/kernelUID
+   KernelDeveloperGuide/sandboxedAppLifecycle
+   KernelDeveloperGuide/applicationSecurityPolicy
+   KernelDeveloperGuide/featuresCommunication
+   KernelDeveloperGuide/kfEnabledLibraries
+   KernelDeveloperGuide/kfTestsuite
+   KernelDeveloperGuide/kernelLink
+   KernelDeveloperGuide/applicationLink
+
+.. toctree::
+   :caption: VEE Wear User Guide
+   :maxdepth: 2
+   :hidden:
+
+   VEEWearUserGuide/android/index
+   VEEWearUserGuide/ick
+   VEEWearUserGuide/offloading
+   VEEWearUserGuide/veescript
+
+.. toctree::
+   :caption: Training Courses
+   :maxdepth: 2
+   :hidden:
+
+   Trainings/trainingSdkBasics
+   Trainings/trainingDebugTools
+   Trainings/trainingCManagedCodeCommunication
+   Trainings/trainingMock
+
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
