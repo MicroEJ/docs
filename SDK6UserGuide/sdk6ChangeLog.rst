@@ -3,6 +3,47 @@
 Changelog
 ---------
 
+.. _changelog-0.20.0:
+
+[0.20.0] - 2024-10-23
+~~~~~~~~~~~~~~~~~~~~~
+
+Added
+"""""
+
+- Allow to build a Feature from a WPK and a Kernel.
+- Allow to filter the BSP files included in a published VEE Port.
+- Check that the MicroEJ Runtime Library is not in the BSP before publishing a VEE Port.
+- Support the import of a VEE Port as an included build.
+
+Changed
+"""""""
+
+- Fail with clear error message when trying to build an Executable and provided Runtime API conflicts
+  with other dependency.
+- Hide ``checkModule`` internal task.
+- Use the original BSP when depending on a local VEE Port project in BSP Full Connection mode.
+- Set Java source to 1.8 to be compatible with new IDEs versions, but keep 1.7 as the target version.
+- Upgrade Gradle minimal supported version to ``8.6``.
+- Enable MicroEJ Java H module by default when building a VEE Port.
+- Deploy Application object files in BSP only if their content changed.
+- Prevent flaky tests from causing build failure.
+- Use "Runtime Environment" term instead of "Runtime API".
+- Use ``Java SE`` term instead of ``J2SE``.
+- Use version 2.2.0 of the microej-licenses library to check with the new SDK EULA 3.1-C.
+- Do not produce Virtual Device by default during Application build.
+
+Fixed
+"""""
+
+- Wrong path used for custom test properties files.
+- Fix VEE Port build failure when using Architecture with deployment hook for Keil.
+- Use the generated kernel.kf file when running an Application on a Multi-Sandbox VEE Port with the simulator.
+- Generate again the kernel.kf file when the project version has changed.
+- Failure when calling the local deploy tool because of missing generated KF file in the classpath.
+- Setting ``com.microej.runtime.capability=multi`` does generate a Multi-Sandbox VEE Port when using an Architecture 8.1
+  or higher.
+
 .. _changelog-0.19.0:
 
 [0.19.0] - 2024-09-13
