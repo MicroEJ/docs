@@ -48,7 +48,7 @@ As an example, here is how to create a task which calls the :ref:`sdk6_localDepl
     import com.microej.gradle.tasks.LoadVeeTask
 
     plugins {
-        id("com.microej.gradle.application") version "0.19.0"
+        id("com.microej.gradle.application") version "0.20.0"
     }
 
     group="com.mycompany"
