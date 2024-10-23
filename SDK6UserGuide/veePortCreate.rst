@@ -427,7 +427,7 @@ VEE Port Publication
 
 Publishing a VEE Port in a repository allows to make it easily available to any project.
 
-To be able to publish a VEE Port, you have to make sure that the ``group`` and `` version`` property are defined in the ``vee-port/build.gradle.kts`` file::
+To be able to publish a VEE Port, you have to make sure that the ``group`` and ``version`` property are defined in the ``vee-port/build.gradle.kts`` file::
 
   group = "com.mycompany"
   version = "1.0.0"
@@ -441,6 +441,25 @@ by executing the ``publish`` task.
 An important point to notice is that publishing a VEE Port does not publish the built VEE Port, 
 it publishes all the configuration and dropins of the project, as well as the BSP when it is configured in Full Connection mode.
 The VEE Port is then built on the fly when it is required (when building the Executable of an Application for example).
+
+BSP Publication Filtering
+-------------------------
+
+If the VEE Port is configured in Full BSP Connection, the BSP is included in the VEE Port when it is published.
+Since the BSP can be big and all the files are not necessary to build an Executable, 
+the SDK provides configuration properties to filter the BSP files in publish:
+
+- ``bsp.publication.includes.pattern``: comma-separated list of Ant-style files and folders patterns to include in the published VEE Port.
+  By default all the files and folders are included.
+- ``bsp.publication.excludes.pattern``: comma-separated list of Ant-style files and folders patterns to exclude from the published VEE Port.
+  By default no files or folders are excluded.
+
+Here is an example which excludes 3 folders::
+
+  bsp.publication.includes.pattern=**/*
+  bsp.publication.excludes.pattern=**/VEE_PORT_EVAL/,**/WIN32/,**/Utilities/Media/
+
+Refer to the Javadoc of the `Gradle PatternFilterable class <https://docs.gradle.org/current/javadoc/org/gradle/api/tasks/util/PatternFilterable.html>`__ to have more details on the Ant-style patterns.
 
 BSP Connection
 ==============
