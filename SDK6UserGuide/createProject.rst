@@ -93,7 +93,7 @@ This chapter explains the different ways to create a new project.
       
       .. warning::
        When reloading your Gradle project, the build can fail if the SDK EULA has not been accepted.
-       In that case, you must set the ``ACCEPT_MICROEJ_SDK_EULA_V3_1B`` environment variable to ``YES`` and
+       In that case, you must set the ``ACCEPT_MICROEJ_SDK_EULA_V3_1C`` environment variable to ``YES`` and
        restart Android Studio. For more information about SDK EULA, refer to the :ref:`sdk_6_licenses` chapter.
 
       When the Gradle project has been reloaded, it should compile successfully, without any error.
@@ -146,7 +146,7 @@ This chapter explains the different ways to create a new project.
       
       .. warning::
        When reloading your Gradle project, the build can fail if the SDK EULA has not been accepted.
-       In that case, you must set the ``ACCEPT_MICROEJ_SDK_EULA_V3_1B`` environment variable to ``YES`` and
+       In that case, you must set the ``ACCEPT_MICROEJ_SDK_EULA_V3_1C`` environment variable to ``YES`` and
        restart IntelliJ IDEA. For more information about SDK EULA, refer to the :ref:`sdk_6_licenses` chapter.
 
       When the Gradle project is loaded, it should compile successfully, without any error.
@@ -187,7 +187,7 @@ This chapter explains the different ways to create a new project.
 
       .. warning::
        When reloading your Gradle project, the build can fail if the SDK EULA has not been accepted.
-       In that case, you must set the ``ACCEPT_MICROEJ_SDK_EULA_V3_1B`` environment variable to ``YES`` and
+       In that case, you must set the ``ACCEPT_MICROEJ_SDK_EULA_V3_1C`` environment variable to ``YES`` and
        restart Eclipse. For more information about SDK EULA, refer to the :ref:`sdk_6_licenses` chapter.
 
       When the Gradle project is loaded, it should compile successfully, without any error.
