@@ -37,6 +37,14 @@ Once these prerequisites are fulfilled, the Feature file can be built:
          :width: 50%
          :align: center
 
+   .. tab:: Visual Studio Code
+
+      By double-clicking on the ``buildFeature`` task in the Gradle tasks view:
+
+      .. image:: images/vscode-buildFeature-gradle-project.png
+         :width: 25%
+         :align: center
+
    .. tab:: Command Line Interface
 
       From the command line interface::
@@ -115,6 +123,14 @@ Once these prerequisites are fulfilled, the Feature file can be built:
 
       .. image:: images/eclipse-buildFeatureFromWPK-gradle-project.png
          :width: 50%
+         :align: center
+
+   .. tab:: Visual Studio Code
+
+      By double-clicking on the ``buildFeatureFromWPK`` task in the Gradle tasks view:
+
+      .. image:: images/vscode-buildFeatureFromWPK-gradle-project.png
+         :width: 25%
          :align: center
 
    .. tab:: Command Line Interface

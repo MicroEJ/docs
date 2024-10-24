@@ -48,8 +48,8 @@ This chapter explains the different ways to create a new project.
       - Click on :guilabel:`Next` button.
       - Fill the group of the artifact to publish in the :guilabel:`Group` field.
       - Fill the version of the artifact to publish in the :guilabel:`Version` field.
-      - Select the module type among :guilabel:`Application`, :guilabel:`Mock` and :guilabel:`Addon-Library` in the drop-down list.
-      - If you selected :guilabel:`Application` module type, you can check :guilabel:`This is a kernel application` checkbox if your Application is a Kernel.
+      - Select the project type in the drop-down list.
+      - If you selected :guilabel:`Application` project type, you can check :guilabel:`This is a kernel application` checkbox if your Application is a Kernel.
       - Click on :guilabel:`Finish` button.
       
       .. figure:: images/android-studio-create-project-03.png
@@ -73,7 +73,7 @@ This chapter explains the different ways to create a new project.
          Refer to the :ref:`sdk_6_create_project_gradle_wrapper` section for more information.
 
       The project created by the wizard is a multi-project with a single subproject (named ``app``).
-      This subproject is either an Application or an Add-On Library, depending on the module type that has been chosen.
+      The type of this subproject is the type that has previously been chosen.
 
       .. note::
          By default, Android Studio automatically saves any file change, 
@@ -108,8 +108,8 @@ This chapter explains the different ways to create a new project.
       - Select :guilabel:`MicroEJ` in :guilabel:`Generators` list on the left panel.
       - Fill the name of the project in the :guilabel:`Name` field.
       - Select the location of the project in the :guilabel:`Location` field.
-      - Select the module type among :guilabel:`Application`, :guilabel:`Mock` and :guilabel:`Addon-Library` buttons.
-      - If you selected :guilabel:`Application` module type, you can check :guilabel:`This is a kernel application` checkbox if your Application is a Kernel.
+      - Select the project type. If there is no button for your project type, click on :guilabel:`Other` button and select it in the drop-down list.
+      - If you selected :guilabel:`Application` project type, you can check :guilabel:`This is a kernel application` checkbox if your Application is a Kernel.
       - Fill the version of the artifact to publish in the :guilabel:`Version` field.
       - Fill the group of the artifact to publish in the :guilabel:`Group` field.
       - Fill the name of the artifact to publish in the :guilabel:`Artifact` field.
@@ -158,7 +158,7 @@ This chapter explains the different ways to create a new project.
       The creation of a project with Eclipse is done as follows:
       
       - Click on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...`.
-      - Select the project type :guilabel:`MicroEJ` > :guilabel:`MicroEJ Application Project`, :guilabel:`MicroEJ Mock` or :guilabel:`MicroEJ Add-onLibrary Project` and click on the :guilabel:`Next` button.
+      - Select :guilabel:`MicroEJ` > :guilabel:`<Type> project` depending on your project type and click on the :guilabel:`Next` button.
       
       .. figure:: images/eclipse-create-microej-project-01.png
         :alt: Project Type Selection in Eclipse
@@ -211,9 +211,11 @@ This chapter explains the different ways to create a new project.
       - Depending on the type of your project, fill the URI of the corresponding Github template repository in the Search Bar. 
         The available templates are:
       
-         - `Application Project Template <https://github.com/MicroEJ/Tool-Project-Template-Application/tree/1.0.0>`__
-         - `Add-On Library Project Template <https://github.com/MicroEJ/Tool-Project-Template-Add-On-Library/tree/1.0.0>`__
-         - `Mock Project Template <https://github.com/MicroEJ/Tool-Project-Template-Mock/tree/1.0.0>`__
+         - `Application Project Template <https://github.com/MicroEJ/Tool-Project-Template-Application/tree/1.1.0>`__
+         - `Add-On Library Project Template <https://github.com/MicroEJ/Tool-Project-Template-Add-On-Library/tree/1.1.0>`__
+         - `Mock Project Template <https://github.com/MicroEJ/Tool-Project-Template-Mock/tree/1.1.0>`__
+         - `Runtime Environment Template <https://github.com/MicroEJ/Tool-Project-Template-Runtime-Environment/tree/1.0.0>`__
+         - `Java SE Library Template <https://github.com/MicroEJ/Tool-Project-Template-JavaSE-Library/tree/1.0.0>`__
       
       - Click on :guilabel:`Clone from URL`.
       
@@ -252,9 +254,11 @@ This chapter explains the different ways to create a new project.
       - Depending on the type of your project, retrieve the URI of the corresponding Github template repository. 
         The available templates are:
       
-         - `Application Project Template <https://github.com/MicroEJ/Tool-Project-Template-Application/tree/1.0.0>`__
-         - `Add-On Library Project Template <https://github.com/MicroEJ/Tool-Project-Template-Add-On-Library/tree/1.0.0>`__
-         - `Mock Project Template <https://github.com/MicroEJ/Tool-Project-Template-Mock/tree/1.0.0>`__
+         - `Application Project Template <https://github.com/MicroEJ/Tool-Project-Template-Application/tree/1.1.0>`__
+         - `Add-On Library Project Template <https://github.com/MicroEJ/Tool-Project-Template-Add-On-Library/tree/1.1.0>`__
+         - `Mock Project Template <https://github.com/MicroEJ/Tool-Project-Template-Mock/tree/1.1.0>`__
+         - `Runtime Environment Template <https://github.com/MicroEJ/Tool-Project-Template-Runtime-Environment/tree/1.0.0>`__
+         - `Java SE Library Template <https://github.com/MicroEJ/Tool-Project-Template-JavaSE-Library/tree/1.0.0>`__
       
       - Clone the repository::
 
@@ -408,7 +412,7 @@ This section explains the different ways to add a module to an existing project.
       - Fill the name of the module in the :guilabel:`Name` field.
       - Fill the group of the artifact to publish in the :guilabel:`Group` field.
       - Fill the version of the artifact to publish in the :guilabel:`Version` field.
-      - Select the module type among :guilabel:`Application` and :guilabel:`Addon-Library` buttons.
+      - Select the module type in the drop-down list.
       - If you selected :guilabel:`Application` module type, you can check :guilabel:`This is a kernel application` checkbox if your Application is a Kernel.
       - Click on :guilabel:`Finish` button.
 
@@ -427,7 +431,7 @@ This section explains the different ways to add a module to an existing project.
       - Select :guilabel:`MicroEJ` in :guilabel:`Generators` list on the left panel.
       - Fill the name of the module in the :guilabel:`Name` field.
       - Select the location of the module in the :guilabel:`Location` field.
-      - Select the module type among :guilabel:`Application` and :guilabel:`Addon-Library` buttons.
+      - Select the module type. If there is no button for your module type, click on :guilabel:`Other` button and select it in the drop-down list.
       - If you selected :guilabel:`Application` module type, you can check :guilabel:`This is a kernel application` checkbox if your Application is a Kernel.
       - Fill the version of the artifact to publish in the :guilabel:`Version` field.
       - Fill the group of the artifact to publish in the :guilabel:`Group` field.
@@ -476,24 +480,11 @@ This section explains the different ways to add a module to an existing project.
       - Right-click on your newly created folder and click on :guilabel:`New` > :guilabel:`File`.
       - Enter ``build.gradle.kts`` in the :guilabel:`File name` field.
       - Click on :guilabel:`Finish` button and open the ``build.gradle.kts`` file.
-      - Add the MicroEJ plugin, depending on the module nature you want to build, for example for an Add-On Library::
-      
-          plugins {
-              id("com.microej.gradle.addon-library") version "0.20.0"
-          }
-      
-        or for an Application::
-      
-          plugins {
-              id("com.microej.gradle.application") version "0.20.0"
-          }
-      
-        Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
-      
+      - :ref:`Configure your module <sdk_6_create_project_configure_project>` depending on its type.
       - Declare the dependencies required by your project in the ``dependencies`` block. For example::
       
           dependencies {
-              implementation("ej.api:edc:1.3.5")
+              implementation("ej.api:edc:1.3.7")
           }
             
       - Open the ``settings.gradle.kts`` file of your project and add the following content::
@@ -526,6 +517,28 @@ This section explains the different ways to add a module to an existing project.
       
          Source Folder Creation in Eclipse
 
+      - Follow the same steps to create the ``src/main/resources``, ``src/test/java`` and ``src/test/resources`` folders.
+
+   .. tab:: Visual Studio Code
+
+      The creation of a module with Visual Studio Code is done as follows:
+      
+      - If the :guilabel:`Explorer` view is not already opened, open it by selecting :guilabel:`View` > :guilabel:`Open View...` > :guilabel:`Explorer`.
+      - Right-click in the :guilabel:`Explorer` view and click on :guilabel:`New Folder...`.
+      - Fill the name of the module and press :guilabel:`Enter`.
+      - Create a new ``build.gradle.kts`` file by right-clicking on your newly created folder and clicking on :guilabel:`New File...`.
+      - :ref:`Configure your module <sdk_6_create_project_configure_project>` depending on its type.
+      - Declare the dependencies required by your module in the ``dependencies`` block. For example::
+      
+          dependencies {
+              implementation("ej.api:edc:1.3.7")
+          }
+            
+      - Open the ``settings.gradle.kts`` file of your project and add the following content::
+      
+          include("<module_name>")
+      
+      - Create the ``src/main/java`` folder by right-clicking on the newly created module and clicking on :guilabel:`New Folder...`.
       - Follow the same steps to create the ``src/main/resources``, ``src/test/java`` and ``src/test/resources`` folders.
 
 .. _sdk_6_create_project_gradle_wrapper:
