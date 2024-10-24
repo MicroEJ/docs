@@ -81,18 +81,62 @@ the following dependencies to :ref:`module.ivy <mmm_module_description>` file:
 
 The Platform project must be rebuilt (:ref:`platform_build`).
 
+
+
+The Watchdog Timer :ref:`Pack <pack_overview>` module must be installed in your VEE Port:
+
+.. tabs::
+
+   .. tab:: SDK 6 (build.gradle.kts)
+
+      .. code-block:: kotlin
+
+         microejPack("com.microej.pack.watchdog-timer:watchdog-timer-pack:2.0.1")
+
+   .. tab:: SDK 5 (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="com.microej.pack.watchdog-timer" name="watchdog-timer-pack" rev="2.0.1" />
+
+As well as the C Component module:
+
+.. tabs::
+
+   .. tab:: SDK 6 (build.gradle.kts)
+
+      Install the `Watchdog Timer C Component module <https://repository.microej.com/modules/com/microej/clibrary/llimpl/watchdog-timer-generic/3.0.1/>`_` in your VEE Port.
+
+   .. tab:: SDK 5 (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="com.microej.clibrary.llimpl" name="watchdog-timer-generic" rev="3.0.1"/>
+
+	  Then the VEE Port project must be rebuilt (:ref:`platform_build`).
+
+
 Then, you have to implement functions that match the ``LLWATCHDOG_TIMER_IMPL_*_action`` pattern
 which is required by the Watchdog C implementation.
 
 Use in an Application
 =====================
 
-The `WatchdogTimer API Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the
-Application project in order to allow access to the Watchdog library.
+The `WatchdogTimer API Module`_ must be added to the project build file to use the Watchdog library:
 
-::
+.. tabs::
 
-	<dependency org="ej.api" name="watchdog-timer" rev="2.0.0"/>
+   .. tab:: SDK 6 (build.gradle.kts)
+
+      .. code-block:: kotlin
+
+         implementation("ej.api:watchdog-timer:2.0.0")
+
+   .. tab:: SDK 5 (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="ej.api" name="watchdog-timer" rev="2.0.0"/>
 
 .. _WatchdogTimer API Module: https://repository.microej.com/modules/ej/api/watchdog-timer/
 
@@ -103,9 +147,20 @@ Here is an example that summarizes all features in a simple use case.
 The checkpoint is performed in a TimerTask scheduled to run every 5 seconds.
 To use TimerTask in your Java application, add the following `BON API`_ dependency:
 
-::
+.. tabs::
 
-	<dependency org="ej.api" name="bon" rev="1.4.0" />
+   .. tab:: SDK 6 (build.gradle.kts)
+
+      .. code-block:: kotlin
+
+         implementation("ej.api:bon:1.4.0")
+
+   .. tab:: SDK 5 (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="ej.api" name="bon" rev="1.4.0" />
+
 
 Then, you can use this example code:
 

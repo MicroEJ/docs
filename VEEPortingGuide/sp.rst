@@ -185,10 +185,21 @@ Dependencies
 Installation
 ============
 
-The ``[SP]`` library and its relative tools are an optional feature of the
-platform. In the platform configuration file, check
-:guilabel:`Java to C Interface` > :guilabel:`Shielded Plug` to install the library and
-its relative tools.
+The ``[SP]`` library and its relative tools are an optional feature of the VEE Port. 
+The installation process is different in SDK 5 and SDK 6:
+
+.. tabs::
+
+   .. tab:: SDK 6
+
+      In the VEE Port configuration file, add the following property::
+
+         com.microej.runtime.shieldedplug.enabled=true
+
+   .. tab:: SDK 5      
+
+      In the VEE Port configuration file, check :guilabel:`Java to C Interface` > :guilabel:`Shielded Plug` to install the library and
+      its relative tools.
 
 
 .. _sp-api-mmm:
@@ -196,12 +207,21 @@ its relative tools.
 Use
 ===
 
-The `Shielded Plug API Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the 
-Application project.
+The `Shielded Plug API Module`_ must be added to the project build file:
 
-::
+.. tabs::
 
-   <dependency org="ej.api" name="sp" rev="2.0.2"/>
+   .. tab:: SDK 6 (build.gradle.kts)
+
+      .. code-block:: kotlin
+
+         implementation("ej.api:sp:2.0.4")
+
+   .. tab:: SDK 5 (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="ej.api" name="sp" rev="2.0.4"/>
 
 This library provides a set of options. Refer to the chapter
 :ref:`application_options` which lists all available options.

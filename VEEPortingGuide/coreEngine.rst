@@ -106,9 +106,9 @@ All the Core Engine capabilities may not be available on all
 architectures. Refer to section :ref:`appendix_matrixcapabilities`
 for more details.
 
-To select the Core Engine capability, create the property file ``mjvm/mjvm.properties``
-in the Platform configuration project and define the property ``com.microej.runtime.capability`` 
-with one of the following values:
+To select the Core Engine capability, define the property ``com.microej.runtime.capability``
+in the ``configuration.properties`` file (SDK 6) or in the ``mjvm/mjvm.properties`` file (SDK 5) 
+of the VEE Port project, with one of the following values:
 
 - ``mono`` for Mono-Sandbox (default value)
 
@@ -529,7 +529,7 @@ This is an example of a dump:
       --------------------------------------------------------------------------------
       ================================================================================
 
-See :ref:`stack_trace_reader` for additional info related to working with VM dumps.
+See Stack Trace Reader documentation for :ref:`SDK 6 <sdk6.section.stacktrace.reader.tool>` or :ref:`SDK 5 <stack_trace_reader>` for additional info related to working with VM dumps.
 
 .. _vm_dump_fault_handler:
 
