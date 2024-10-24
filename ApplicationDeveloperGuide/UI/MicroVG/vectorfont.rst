@@ -393,7 +393,7 @@ The management of this kind of font may be different than the *internal* images 
 For more details about the external font management, refers to the VEE Port Guide chapter :ref:`section_vg_font_external`.
 
 
-.. _VectorFont: https://repository.microej.com/javadoc/microej_5.x/apis/
+.. _VectorFont: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html
 .. _ej.microvg.VectorFont.loadFont(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html#loadFont-java.lang.String-
 
 ..
