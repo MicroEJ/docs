@@ -8,7 +8,7 @@ These simple widgets may not provide every desired feature, but they can easily 
 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    usage
    widgets-list

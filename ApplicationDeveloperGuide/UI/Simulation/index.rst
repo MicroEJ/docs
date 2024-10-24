@@ -9,7 +9,7 @@ It then provides an interactive window for the Application simulation.
 The following sections present the options of the Front Panel and some tooling and tips to help debugging and optimizing an application.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    front-panel-options
    flush-visualizer

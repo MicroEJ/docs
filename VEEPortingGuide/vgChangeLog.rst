@@ -1,8 +1,43 @@
+.. include:: uiReplaces.rst
+
 .. _section_vg_changelog:
 
 =========
 Changelog
 =========
+
+[1.7.0] - 2024-10-09
+====================
+
+UI Pack
+"""""""
+
+**Changed**
+
+* Compatible with UI Pack 14.1.1 (Font extensibility).
+
+MicroVG Implementation
+""""""""""""""""""""""
+
+* Implement `MicroVG API 1.5`_.
+
+C Module FreeType
+"""""""""""""""""
+
+**Changed**
+
+* Upgrade FreeType from the version 2.11.0 (2021-07-18) to the version 2.13.3 (2024-08-11).
+* Separate the original FreeType files from MicroEJ's files.
+* Use the original FreeType directory layout.
+* Add a patch file to override FreeType's memory management without modifying the original file.
+
+C Module HarfBuzz
+"""""""""""""""""
+
+**Changed**
+
+* Upgrade HarfBuzz from the version 4.2.1 (2022-04-24) to the version 10.0.1 (2024-09-24).
+* Separate the original HarfBuzz files from MicroEJ's files.
 
 [1.6.0] - 2024-07-19
 ====================
@@ -205,8 +240,6 @@ MicroVG
 **Changed**
 
 * Compatible with `MicroVG API 1.4`_.
-
-.. _MicroVG API 1.4: https://repository.microej.com/modules/ej/api/microvg/1.4.0/
 
 **Fixed**
 

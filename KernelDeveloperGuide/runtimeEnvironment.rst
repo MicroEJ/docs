@@ -77,8 +77,8 @@ defined by ``EDC``, ``KF``, ``BON``, ``MicroUI`` Kernel APIs modules.
             implementation("ej.api:kf:1.5.1")
             implementation("com.microej.kernelapi:bon:1.4.0")
             implementation("ej.api:bon:1.4.0")
-            implementation("com.microej.kernelapi:microui:3.5.0")
-            implementation("ej.api:microui:3.5.0")
+            implementation("com.microej.kernelapi:microui:3.6.0")
+            implementation("ej.api:microui:3.6.0")
          }
 
       .. warning::
