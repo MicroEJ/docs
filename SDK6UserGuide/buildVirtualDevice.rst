@@ -140,17 +140,18 @@ add the following dependency to the build file of the project::
       microejTool("com.microej.tool.kernel:localdeploy-extension:1.0.0")
    }
 
-.. _sdk_6_skip_virtual_device_build:
+.. _sdk_6_trigger_virtual_device_build:
 
-Skip Virtual Device Build by Default
-------------------------------------
+Trigger Virtual Device Build by Default
+---------------------------------------
 
-The Virtual Device of an Application is part of the artifacts that are automatically :ref:`built and published <sdk_6_publish_project>`.
-If you don't want to build and publish the Virtual Device, the ``produceVirtualDeviceDuringBuild(false)`` method 
-can be added in the ``microej`` configuration block of the Gradle build file of the project::
+The Virtual Device of an Application is not built and published by default (when launching a ``./gradlew build`` or 
+a ``./gradlew publish`` for example).
+This default behavior can be changed by adding the ``produceVirtualDeviceDuringBuild()`` method 
+in the ``microej`` configuration block of the Gradle build file of the project::
 
    microej {
-     produceVirtualDeviceDuringBuild(false)
+     produceVirtualDeviceDuringBuild()
    }
 
 ..
