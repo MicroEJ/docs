@@ -7,7 +7,7 @@ BSP Connection
 Principle
 ---------
 
-Using a MicroEJ VEE Port, the user can compile an Application on that VEE Port. 
+Using a VEE Port, the user can compile an Application on that VEE Port. 
 The result of this compilation is a ``microejapp.o`` file.
 
 This file has to be linked with the VEE Port runtime file (``microejruntime.a``) 
@@ -33,13 +33,13 @@ and the ``build.bat`` or ``build.sh`` file is executed to produce the Executable
    BSP connection configuration is only required in the following cases:
 
    - Use the SDK to produce the Executable of a Mono-Sandbox Application (recommended).
-   - Use the SDK to run a :ref:`MicroEJ Test Suite <vee_port_testsuite>` on device.
+   - Use the SDK to run a :ref:`VEE Port Test Suite <vee_port_testsuite>` on device.
    - Build a the Executable of a Multi-Sandbox Application.
 
 .. _bsp_connection_cases:
 
 MicroEJ provides a flexible way to configure the BSP connection to target any kind of projects, teams organizations and company build flows.
-To achieve this, the BSP connection can be configured either at VEE Port level or at MicroEJ Application level (or a mix of both). 
+To achieve this, the BSP connection can be configured either at VEE Port level or at Application level (or a mix of both). 
 
 The 3 most common integration cases are:
 
@@ -47,7 +47,7 @@ The 3 most common integration cases are:
 
   The VEE Port does not know the BSP at all.
 
-  BSP connection can be configured when building the MicroEJ Application (absolute locations).
+  BSP connection can be configured when building the Application (absolute locations).
 
   .. figure:: images/bsp-connection-cases-none.png
      :alt: VEE Port with no BSP connection
@@ -66,7 +66,7 @@ The 3 most common integration cases are:
   The VEE Port knows how the BSP is structured.
 
   BSP connection is configured when building the VEE Port (relative locations within the BSP), 
-  and the BSP root location is configured when building the MicroEJ Application (absolute directory).
+  and the BSP root location is configured when building the Application (absolute directory).
 
   .. figure:: images/bsp-connection-cases-partial.png
      :alt: VEE Port with partial BSP connection
@@ -77,7 +77,7 @@ The 3 most common integration cases are:
 
   This case is recommended when:
   
-  - the VEE Port is used to build one MicroEJ Application on top of one BSP. 
+  - the VEE Port is used to build one Application on top of one BSP. 
   - the Application and BSP are slightly coupled, thus making a change in the BSP just requires to build the Executable again.
 
 - Case 3: Full BSP connection
@@ -86,7 +86,7 @@ The 3 most common integration cases are:
 
   BSP connection is configured when building the VEE Port (relative locations within the BSP), 
   as well as the BSP root location (absolute directory).
-  No BSP connection configuration is required when building the MicroEJ Application.
+  No BSP connection configuration is required when building the Application.
 
   .. figure:: images/bsp-connection-cases-full.png
      :alt: VEE Port with full BSP connection
@@ -97,10 +97,10 @@ The 3 most common integration cases are:
 
   This case is recommended when:
 
-  - the VEE Port is used to build various MicroEJ Applications.
-  - the VEE Port is validated using MicroEJ test suites. 
+  - the VEE Port is used to build various Applications.
+  - the VEE Port is validated using Test suites. 
   - the VEE Port and BSP are delivered as a single standalone module (same versioning), perhaps
-    subcontracted to a team or a company outside the application project(s).
+    subcontracted to a team or a company outside the Application project(s).
 
 .. _bsp_connection_options:
 
@@ -109,10 +109,18 @@ Options
 
 BSP connection options can be specified as VEE Port options or as Application options or a mix of both.
 
-The following table describes the VEE Port options, which can be set in the VEE Port configuration project,
+The following table describes the VEE Port options.
 
-  - in SDK 6, in the ``configuration.properties`` file, prefixed by ``bsp.``.
-  - in SDK 5, in the  ``bsp/bsp.properties`` file.
+.. tabs::
+
+   .. group-tab:: SDK 6
+      
+      In SDK 6, the options can be sset in the ``configuration.properties`` file of the VEE Port project , prefixed by ``bsp.``.
+
+   .. group-tab:: SDK 5
+      
+      In SDK 5, the options can be sset in the  ``bsp/bsp.properties`` file of the VEE Port configuration project.
+
 
 .. list-table:: VEE Port Options for BSP Connection
    :widths: 1 5 3 
@@ -122,7 +130,7 @@ The following table describes the VEE Port options, which can be set in the VEE 
      - Description
      - Example
    * - ``microejapp.relative.dir``
-     - The path relative to BSP ``root.dir`` where to deploy the MicroEJ Application file (``microejapp.o``).
+     - The path relative to BSP ``root.dir`` where to deploy the Application file (``microejapp.o``).
      - ``MicroEJ/lib``
    * - ``microejlib.relative.dir``
      - The path relative to BSP ``root.dir`` where to deploy the VEE Port runtime file (``microejruntime.a``).
@@ -139,16 +147,16 @@ The following table describes the VEE Port options, which can be set in the VEE 
 
 .. _bsp_connection_application_options:
 
-The following table describes the Application options, which can be set as regular :ref:`MicroEJ Application Options <application_options>`.
+The following table describes the Application options, which can be set as regular :ref:`Application Options <application_options>`.
 
-.. list-table:: MicroEJ Application Options for BSP Connection
+.. list-table:: Application Options for BSP Connection
    :widths: 1 5
    :header-rows: 1
 
    * - Option Name   
      - Description
    * - ``deploy.bsp.microejapp``
-     - Deploy the MicroEJ Application file (``microejapp.o``) to the location defined by the VEE Port (defaults to ``true`` when VEE Port option ``microejapp.relative.dir`` is set).
+     - Deploy the Application file (``microejapp.o``) to the location defined by the VEE Port (defaults to ``true`` when VEE Port option ``microejapp.relative.dir`` is set).
    * - ``deploy.bsp.microejlib``
      - Deploy the VEE Port runtime file (``microejruntime.a``) to the location defined by the VEE Port (defaults to ``true`` when VEE Port option ``microejlib.relative.dir`` is set).
    * - ``deploy.bsp.microejinc``
@@ -158,7 +166,7 @@ The following table describes the Application options, which can be set as regul
    * - ``deploy.bsp.root.dir``
      - The 3rd-party BSP project absolute directory. This option is required if at least one the 4 options described above is set to ``true`` and the VEE Port does not include the BSP.
    * - ``deploy.dir.microejapp``
-     - Absolute path to the directory where to deploy the MicroEJ Application file (``microejapp.o``). An empty value means no deployment.
+     - Absolute path to the directory where to deploy the Application file (``microejapp.o``). An empty value means no deployment.
    * - ``deploy.dir.microejlib``
      - Absolute path to the directory where to deploy the VEE Port runtime file (``microejruntime.a``) to this absolute directory. An empty value means no deployment.
    * - ``deploy.dir.microejinc``
@@ -201,7 +209,7 @@ For each :ref:`VEE Port BSP connection case <bsp_connection_cases>`, here is a s
 
 .. tabs::
 
-   .. tab:: SDK 6
+   .. group-tab:: SDK 6
       :: 
 
         VEE Port Options:
@@ -212,7 +220,7 @@ For each :ref:`VEE Port BSP connection case <bsp_connection_cases>`, here is a s
         Application Options:
           deploy.bsp.root.dir=[absolute_path]
 
-   .. tab:: SDK 5
+   .. group-tab:: SDK 5
       :: 
 
         VEE Port Options:
@@ -227,7 +235,7 @@ For each :ref:`VEE Port BSP connection case <bsp_connection_cases>`, here is a s
 
 .. tabs::
 
-   .. tab:: SDK 6
+   .. group-tab:: SDK 6
       :: 
 
         VEE Port Options:
@@ -240,7 +248,7 @@ For each :ref:`VEE Port BSP connection case <bsp_connection_cases>`, here is a s
           deploy.bsp.root.dir=[absolute_path]
           deploy.bsp.microejscript=true
 
-   .. tab:: SDK 5
+   .. group-tab:: SDK 5
       :: 
 
         VEE Port Options:
@@ -258,7 +266,7 @@ For each :ref:`VEE Port BSP connection case <bsp_connection_cases>`, here is a s
 
 .. tabs::
 
-   .. tab:: SDK 6
+   .. group-tab:: SDK 6
       :: 
 
         VEE Port Options:
@@ -271,7 +279,7 @@ For each :ref:`VEE Port BSP connection case <bsp_connection_cases>`, here is a s
         Application Options:
           deploy.bsp.microejscript=true
 
-   .. tab:: SDK 5
+   .. group-tab:: SDK 5
       :: 
 
         VEE Port Options:
@@ -326,7 +334,7 @@ see the VEE Port Publication documentation for :ref:`SDK 6 <sdk_6_veeport_public
 Run Script File
 ---------------
 
-This script is required only for VEE Ports intended to run a :ref:`MicroEJ Testsuite <vee_port_testsuite>` on device.
+This script is required only for VEE Ports intended to run a :ref:`VEE Port Testsuite <vee_port_testsuite>` on device.
 
 The BSP run script is used to invoke a third-party tool to upload and start the Executable on device.
 
