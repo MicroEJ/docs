@@ -5,7 +5,7 @@ Migrate a VEE Port Project
 
 This page explains how to migrate an VEE Port project created with the SDK 5 or lower to the SDK 6.
 
-Project structure
+Project Structure
 -----------------
 
 Even if it is not mandatory, a VEE Port project is most of the time structured as a multi-project.
@@ -65,7 +65,7 @@ Therefore, the development flow in SDK 6 is now:
 - Make a change in the VEE Port project.
 - Run or build an Application on this VEE Port.
 
-Settings build file
+Settings Build File
 -------------------
 
 A multi-project requires a ``settings.gradle.kts`` file located in the root folder.
@@ -237,7 +237,7 @@ If the VEE Port project contains Mock subprojects, they must be migrated by foll
    - ``module.ant``
    - ``content/scripts/init-*`` folder
 
-Tool subproject
+Tool Subproject
 ---------------
 
 If the VEE Port project contains Tool subprojects (such as an Image Generator), they must be migrated by following these steps:

@@ -115,11 +115,11 @@ The following table describes the VEE Port options.
 
    .. group-tab:: SDK 6
       
-      In SDK 6, the options can be sset in the ``configuration.properties`` file of the VEE Port project , prefixed by ``bsp.``.
+      In SDK 6, the options must be set in the ``configuration.properties`` file of the VEE Port project , prefixed by ``bsp.``.
 
    .. group-tab:: SDK 5
       
-      In SDK 5, the options can be sset in the  ``bsp/bsp.properties`` file of the VEE Port configuration project.
+      In SDK 5, the options must be set in the  ``bsp/bsp.properties`` file of the VEE Port configuration project.
 
 
 .. list-table:: VEE Port Options for BSP Connection
