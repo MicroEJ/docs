@@ -1,7 +1,7 @@
 .. _new_platform_creation:
 
 =================
-VEE Port Creation
+Create a VEE Port
 =================
 
 This section describes the steps to create a new VEE Port with the SDK, 
