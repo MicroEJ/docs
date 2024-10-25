@@ -4,7 +4,7 @@
 Create a VEE Port
 =================
 
-This section describes the steps to create a new VEE Port with the SDK 6, 
+This section describes the steps to create a new VEE Port with the SDK, 
 and options to connect it to an external Board Support Package (BSP) as well as a third-party C toolchain. 
 
 
