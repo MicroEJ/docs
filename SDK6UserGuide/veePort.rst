@@ -6,8 +6,8 @@ VEE Port
    :hidden:
    :maxdepth: 1
 
-   veePortCreate
-   veePortTest
+   createVeePort
+   testVeePort
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 

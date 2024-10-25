@@ -59,7 +59,7 @@ The SDK is licensed under the :ref:`SDK End User License Agreement (EULA) <sdk_e
    standaloneApplication
    sandboxedApplication
    mmmRepository
-   platformSelection
+   selectVeePort
    moduleNatures
    debug
    tools
