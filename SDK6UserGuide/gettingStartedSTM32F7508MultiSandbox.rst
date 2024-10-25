@@ -49,11 +49,11 @@ Environment Setup
 To follow this Getting Started, you need to: 
 
 * Install MICROEJ SDK 6.
-* `Download the Virtual Device <https://repository.microej.com/packages/green/2.0.0/vd/STM32F7508-DK/GREEN-STM32F7508-DK-2.0.0.zip>`__ ``GREEN-STM32F7508-DK-2.0.0.zip``.
-  * Unzip ``GREEN-STM32F7508-DK-2.0.0.zip``.
-* `Download the Multi-Sandbox Firmware <https://repository.microej.com/packages/green/2.0.0/firmwares/STM32F7508-DK/GREEN-STM32F7508-DK-2.0.0.out>`__ ``GREEN-STM32F7508-DK-2.0.0.out``.
+* `Download the Virtual Device <https://repository.microej.com/packages/green/1.2.0/vd/STM32F7508-DK/GREEN-STM32F7508-DK-1.2.0.vde>`__ ``GREEN-STM32F7508-DK-1.2.0.zip``.
+  * Unzip ``GREEN-STM32F7508-DK-1.2.0.zip``.
+* `Download the Multi-Sandbox Firmware <https://repository.microej.com/packages/green/1.2.0/firmwares/STM32F7508-DK/GREEN-STM32F7508-DK-1.2.0.out>`__ ``GREEN-STM32F7508-DK-1.2.0.out``.
 
-If you want more informations about this Multi-Sandbox Firmware, the Javadoc and the Release notes are available in this `directory <https://repository.microej.com/packages/green/2.0.0/>`__.
+If you want more informations about this Multi-Sandbox Firmware, the Javadoc and the Release notes are available in this `directory <https://repository.microej.com/packages/green/1.2.0/>`__.
 
 
 Hardware Setup
@@ -107,7 +107,7 @@ Set up STM32CubeProgrammer:
 Deploy the Multi-Sandbox Firmware:
 
 - Go to ``Erasing & Programming`` tab in the menu of STM32CubeProgrammer.
-- Point ``File path`` to your Multi-Sandbox Firmware (``GREEN-STM32F7508-DK-2.0.0.out`` file).
+- Point ``File path`` to your Multi-Sandbox Firmware (``GREEN-STM32F7508-DK-1.2.0.out`` file).
 - Click on ``Start Program...``. Wait for the programming to finish.
 
 .. note::
@@ -220,7 +220,7 @@ The Multi-Sandbox Firmware and Virtual Device need to be provided to the :guilab
    dependencies {
       ...
       //Uncomment the microejVee dependency to set the VEE Port or Kernel to use
-      microejVee(files("C:\\[YOUR_PATH]\\GREEN-STM32F7508-DK-2.0.0\\virtualDevice", "C:\\[YOUR_PATH]\\GREEN-STM32F7508-DK-2.0.0.out"))
+      microejVee(files("C:\\[YOUR_PATH]\\GREEN-STM32F7508-DK-1.2.0\\virtualDevice", "C:\\[YOUR_PATH]\\GREEN-STM32F7508-DK-1.2.0.out"))
    }
 
 In order to execute the :guilabel:`MyApplication` application on the Virtual Device, the SDK provides the Gradle :guilabel:`runOnSimulator` task. 
