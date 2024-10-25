@@ -20,7 +20,7 @@ The SDK 6 allows to:
 - Use the Serial to Socket Transmitter.
 - Use the Font Designer, Memory Map Analyzer, Heap Analyzer and Front Panel Designer tools.
 - Build a Kernel Application.
-- Build a Runtiime API.
+- Build a Runtime Environment.
 
 Therefore, it does not support all the features of the SDK 5, especially:
 
