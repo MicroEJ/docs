@@ -54,12 +54,21 @@ Installation
 
 Multi-Sandbox is an option disabled by default. 
 To enable the Multi-Sandbox capability of the Core Engine, set the property ``com.microej.runtime.capability`` to ``multi`` 
-in the ``configuration.properties`` file (SDK 6) or in the ``mjvm/mjvm.properties`` file (SDK 5) of the VEE Port project.
-See the example below:
+in the VEE Port project:
 
-.. code-block::
+.. tabs::
 
-  com.microej.runtime.capability=multi
+   .. group-tab:: SDK 6
+
+      In the ``configuration.properties`` file::
+
+         com.microej.runtime.capability=multi
+
+   .. group-tab:: SDK 5
+
+      In the ``mjvm/mjvm.properties`` file of the VEE Port Configuration module::
+
+         com.microej.runtime.capability=multi
 
 
 .. note::
@@ -76,13 +85,17 @@ Application project to use :ref:`[KF] <kf_specification>` library.
 
 .. tabs::
 
-   .. tab:: SDK 6 (build.gradle.kts)
+   .. group-tab:: SDK 6
+
+      In the ``build.gradle.kts`` file:
 
       .. code-block:: java
 
          implementation("ej.api:kf:1.7.0")
 
-   .. tab:: SDK 5 (module.ivy)
+   .. group-tab:: SDK 5
+
+      In the ``module.ivy`` file:
 
       .. code-block:: xml
 
@@ -353,12 +366,21 @@ In a Multi-Sandbox environment, RAM Control automatically stops less critical Fe
 See the `RAM Control: Feature Criticality` section of the :ref:`kf_specification` for more details.
 
 By default, RAM Control is disabled in the Core Engine. 
-To enable it, set the property ``com.microej.runtime.kf.ramcontrol.enabled`` to ``true`` when building the VEE Port. 
-This can be done by defining this property in the file ``mjvm/mjvm.properties`` of your VEE Port configuration project:
+To enable it, set the property ``com.microej.runtime.kf.ramcontrol.enabled`` to ``true`` in the VEE Port configuration:
 
-.. code-block::
+.. tabs::
 
-  com.microej.runtime.kf.ramcontrol.enabled=true
+   .. group-tab:: SDK 6
+
+      In the ``configuration.properties`` file::
+
+         com.microej.runtime.mjvm.com.microej.runtime.kf.ramcontrol.enabled=true
+
+   .. group-tab:: SDK 5
+
+      In the ``mjvm/mjvm.properties`` file of the VEE Port Configuration module::
+
+         com.microej.runtime.kf.ramcontrol.enabled=true
 
 When RAM Control is enabled, all Foundation Libraries must declare their native resources using SNI (see ``sni.h`` header file).
 This is necessary for the automatic release of native resources when the Core Engine abruptly stops a Feature to recover heap memory.
