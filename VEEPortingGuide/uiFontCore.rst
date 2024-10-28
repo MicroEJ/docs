@@ -88,13 +88,8 @@ However, there are some runtime limitations:
 
 * The ``Dynamic`` styles are ignored.
 * The font is drawn without any dynamic algorithm.
-* The font style (the style returned by `Font.isBold()`_ and `Font.isItalic()`_) is the ``Dynamic`` style.
+* The font style (the style returned by ``Font.isBold()`` and ``Font.isItalic()``) is the ``Dynamic`` style.
 * For instance, when a font holds the style `bold` as dynamic style and the style `italic` as built-in style, the font is considered as `bold` + `italic`; even if the style `bold` is not rendered.
-
-.. _Font.isBold(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#isBold--
-.. _Font.isItalic(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#isItalic--
-
-
 
 Installation
 ============
