@@ -109,4 +109,10 @@ document.addEventListener("readthedocs-addons-data-ready", function(event) {
     document.dispatchEvent(event);
   });
 
+  // 
+  document.querySelector("div.wy-menu.wy-menu-vertical a:hover").addEventListener("click", () => {
+    console.log("test expand");
+    ariaExpanded = "false";
+  });
+
 });
