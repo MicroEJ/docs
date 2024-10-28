@@ -65,13 +65,19 @@ In case you cannot get hands on your desired starter kit, please contact us, we 
 Multi-Sandbox Evaluation
 ------------------------
 
+This Getting Started serves as a starting point for evaluating
+the Multi-Sandboxing capabilities of the MicroEJ technology.
+
+MicroEJ provides ready to use Multi-Sandbox firmwares with basic services
+for developing Sandboxed Applications and deploying them easily on your Device.
+
 .. list-table::
    :widths: 50 50
    :header-rows: 0
 
    * - |logo_st|
      - |image_stm32f7508|
-       :ref:`STM32F7508-DK Evaluation Kit <sdk_6_getting_started_stm32f7508_multisandbox>`
+       :ref:`Multi-Sandbox on STM32F7508-DK Evaluation Kit <sdk_6_getting_started_stm32f7508_multisandbox>`
 
 .. toctree::
    :hidden:
