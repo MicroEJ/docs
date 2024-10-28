@@ -245,6 +245,29 @@ Here is the list of the compressed formats:
    image2:RLE1 # Deprecated
    image3:A8_RLE
 
+.. _section_image_alpha:
+
+Alpha Format
+~~~~~~~~~~~~
+
+As described above, the formats ``A8``, ``A4``, ``A2``, ``A1`` and ``A8_RLE`` (also called *Picto*) only handle the opacity information.
+The source image can be transparent or not, colored or grayscaled.
+The alpha format provides two options to interpret the source image's pixels:
+
+* ``grayscale``: The source image is first `grayscaled`_ and then drawn over a white background.
+  The black pixels are encoded as fully opaque pixels, the white pixels as fully transparent pixels and gray pixels as transparent pixels (the blacker the pixel, the more opaque the encoded opacity).
+* ``alpha``: Only the opacity component is encoded (the R-G-B components are ignored).
+* *no option*: same as ``grayscale`` (backward compatibility).
+
+::
+
+   image1:A8:grayscale
+   image2:A8_RLE:alpha
+   image3:A4
+
+.. note:: The MicroUI ResourceImage OutputFormat A8 encodes in the same way as the option ``alpha``.
+
+.. _`grayscaled`: https://en.wikipedia.org/wiki/Grayscale
 
 .. _section_image_expected_result:
 
@@ -281,18 +304,46 @@ The following table summarizes the usage of the different formats and the actual
    | A8           | .. image:: images/picto.png        | .. image:: images/a8.png            |
    |              +------------------------------------+-------------------------------------+
    |              | With 0x0000ff as color             | .. image:: images/a8_c.png          |
+   |              |                                    |                                     |
+   |              | and option ``grayscale``           |                                     |
+   |              +------------------------------------+-------------------------------------+
+   |              | With 0x0000ff as color             | .. image:: images/a8_c_a.png        |
+   |              |                                    |                                     |
+   |              | and option ``alpha``               |                                     |
+   +              +------------------------------------+-------------------------------------+
+   |              | .. image:: images/a8_a.png         | .. image:: images/a8_a.png          |
+   |              +------------------------------------+-------------------------------------+
+   |              | With 0x0000ff as color             | .. image:: images/a8_w.png          |
+   |              |                                    |                                     |
+   |              | and option ``grayscale``           |                                     |
+   |              +------------------------------------+-------------------------------------+
+   |              | With 0x0000ff as color             | .. image:: images/a8_c.png          |
+   |              |                                    |                                     |
+   |              | and option ``alpha``               |                                     |
    +--------------+------------------------------------+-------------------------------------+
    | A4           | .. image:: images/picto.png        | .. image:: images/a4.png            |
-   |              +------------------------------------+-------------------------------------+
-   |              | With 0x0000ff as color             | .. image:: images/a4_c.png          |
+   |              |                                    |                                     |
+   |              | option ``grayscale``               |                                     |
+   |              +------------------------------------+                                     |
+   |              | .. image:: images/a8_a.png         |                                     |
+   |              |                                    |                                     |
+   |              | option ``alpha``                   |                                     |
    +--------------+------------------------------------+-------------------------------------+
    | A2           | .. image:: images/picto.png        | .. image:: images/a2.png            |
-   |              +------------------------------------+-------------------------------------+
-   |              | With 0x0000ff as color             | .. image:: images/a2_c.png          |
+   |              |                                    |                                     |
+   |              | option ``grayscale``               |                                     |
+   |              +------------------------------------+                                     |
+   |              | .. image:: images/a8_a.png         |                                     |
+   |              |                                    |                                     |
+   |              | option ``alpha``                   |                                     |
    +--------------+------------------------------------+-------------------------------------+
    | A1           | .. image:: images/picto.png        | .. image:: images/a1.png            |
-   |              +------------------------------------+-------------------------------------+
-   |              | With 0x0000ff as color             | .. image:: images/a1_c.png          |
+   |              |                                    |                                     |
+   |              | option ``grayscale``               |                                     |
+   |              +------------------------------------+                                     |
+   |              | .. image:: images/a8_a.png         |                                     |
+   |              |                                    |                                     |
+   |              | option ``alpha``                   |                                     |
    +--------------+------------------------------------+-------------------------------------+
    | C4           | .. image:: images/grayscale.png    | .. image:: images/c4.png            |
    +--------------+------------------------------------+-------------------------------------+
@@ -309,6 +360,12 @@ The following table summarizes the usage of the different formats and the actual
    | ARGB1565_RLE | .. image:: images/transparent.png  | .. image:: images/argb1555.png      |
    +--------------+------------------------------------+-------------------------------------+
    | A8_RLE       | .. image:: images/picto.png        | .. image:: images/a8.png            |
+   |              |                                    |                                     |
+   |              | option ``grayscale``               |                                     |
+   |              +------------------------------------+                                     |
+   |              | .. image:: images/a8_a.png         |                                     |
+   |              |                                    |                                     |
+   |              | option ``alpha``                   |                                     |
    +--------------+------------------------------------+-------------------------------------+
 
 Usage Advice
