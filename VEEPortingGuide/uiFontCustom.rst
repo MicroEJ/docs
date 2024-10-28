@@ -47,7 +47,7 @@ Because the font data for the renderable string never changes, some information 
 
 As a consequence, the custom font should keep some data that allows one to quickly retrieve the data to draw.
 The data format is custom-font-dependent.
-In the MicroUI library, the renderable string data is represented by a byte array (see `RenderableString.getSNIContext()`_ XXX_TODO link).
+In the MicroUI library, the renderable string data is represented by a byte array (see `RenderableString.getSNIContext()`_).
 On the native side, this data should be cast to a structure readable by the font drawer.
 
 .. note:: If there is no support for the renderable strings in the custom font, the drawings are automatically redirected to the simple drawString algorithms.
@@ -69,7 +69,7 @@ The native implementation of the renderings (the implementation of the MicroUI A
 .. _Font: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#
 .. _Painter.drawString(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Painter.html#drawString-ej.microui.display.GraphicsContext-java.lang.String-ej.microui.display.Font-int-int-
 .. _RenderableString: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/RenderableString.html#
-.. _RenderableString.getSNIContext(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/RenderableString.html#
+.. _RenderableString.getSNIContext(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/RenderableString.html#getSNIContext--
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 

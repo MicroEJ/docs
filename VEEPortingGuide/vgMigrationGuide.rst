@@ -39,7 +39,9 @@ Optionally, update the :ref:`C Module FreeType <section_vg_c_module_freetype>` t
 * Remove ``thirdparty/freetype/inc`` and ``thirdparty/freetype/inc/ftvector`` from your include path.
 * Add ``thirdparty/freetype/include``, `thirdparty/freetype/src`` and `freetype_support/src`` to your include path.
 * Remove ``thirdparty/freetype/lib/freetype.a`` from your build path.
-* Build FreeType and add the library and support files following the instructions in XXX_TODO link to README.md.
+* Build FreeType and add the library and support files following the `C Module FreeType's instructions`_.
+
+.. _C Module FreeType's instructions: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/thirdparty/freetype/4.0.0/README-4.0.0.md
 
 HarfBuzz
 """"""""
@@ -50,7 +52,9 @@ Optionally, update the :ref:`C Module HarfBuzz <section_vg_c_module_harfbuzz>` t
 * Remove ``thirdparty/harfbuzz/inc`` from your include path.
 * Add ``thirdparty/harfbuzz/src`` to your include path.
 * Remove ``thirdparty/harfbuzz/lib/harfbuzz.a`` and `thirdparty/harfbuzz/src/hb-alloc.c`` from your build path.
-* Build HarfBuzz and add the library and support files following the instructions in XXX_TODO link to README.md.
+* Build HarfBuzz and add the library and support files following `C Module HarfBuzz's instructions`_.
+
+.. _C Module HarfBuzz's instructions: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/thirdparty/harfbuzz/3.0.0/README-3.0.0.md
 
 From 1.5.x to 1.6.0
 ===================

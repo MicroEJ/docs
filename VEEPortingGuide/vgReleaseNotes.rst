@@ -33,8 +33,6 @@ Foundation Libraries
 
 The following table describes Foundation Libraries API versions implemented in MicroEJ VG Packs.
 
-.. XXX_TODO link
-
 .. list-table:: MicroVG API Implementation
    :widths: 20 10
    :header-rows: 1
@@ -42,7 +40,7 @@ The following table describes Foundation Libraries API versions implemented in M
    * - VG Pack Range
      - MicroVG
    * - 1.7.0
-     - `1.5.0 <https://repository.microej.com/modules/ej/api/microvg/1.4.0/>`_
+     - `1.5.0 <https://repository.microej.com/modules/ej/api/microvg/1.5.0/>`_
    * - [1.4.0-1.6.0]
      - `1.4.0 <https://repository.microej.com/modules/ej/api/microvg/1.4.0/>`_
    * - 1.3.0

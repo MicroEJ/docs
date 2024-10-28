@@ -53,8 +53,6 @@ Foundation Libraries
 
 The following table describes Foundation Libraries API versions implemented in MicroEJ UI Packs.
 
-.. XXX_TODO link
-
 .. list-table:: MicroUI API Implementation
    :widths: 20 10 10
    :header-rows: 1
@@ -63,7 +61,7 @@ The following table describes Foundation Libraries API versions implemented in M
      - MicroUI
      - Drawing
    * - 14.1.1
-     - `3.6.0 <https://repository.microej.com/modules/ej/api/microui/3.5.0/>`_
+     - `3.6.0 <https://repository.microej.com/modules/ej/api/microui/3.6.0/>`_
      - `1.0.4 <https://repository.microej.com/modules/ej/api/drawing/1.0.4/>`_
    * - [14.0.0-14.0.2]
      - `3.5.0 <https://repository.microej.com/modules/ej/api/microui/3.5.0/>`_
