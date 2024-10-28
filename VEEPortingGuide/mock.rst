@@ -304,12 +304,19 @@ Installation
    .. tab:: SDK 6
 
       - :ref:`Create a Mock project <sdk_6_create_project_configure_project>`,
-      - Build and publish the Mock by executing the Gradle ``publish`` task.
+      - add the Mock as a dependency of your VEE Port project:
 
-      Once the module is built, the mock can be installed in a VEE Port in one of the two ways:
+         - either as a project dependency if both projects are in the same multi-project:
 
-      - by adding the mock module as a regular VEE Port :ref:`module dependency <mmm_module_dependencies>` (if your VEE Port configuration project contains a ``module.ivy`` file), 
-      - or by manually copying the JAR file ``[mock_project]/build/libs/[mock_name]-[mock_version].jar`` to the :ref:`VEE Port configuration <platform_configuration_creation>` mock dropins folder ``dropins/mocks/dropins/``.
+            .. code-block:: kotlin
+               
+               microejMock(project(":myMockProject"))
+
+         - or as a module dependency:
+
+            .. code-block:: kotlin
+               
+               microejMock("com.mycompany:my-mock:1.0.0")
 
    .. tab:: SDK 5
 
@@ -341,16 +348,29 @@ Mock.
 JavaFX
 =======
 
-`JavaFX <https://openjfx.io/>`_ is an open-source library for creating modern Java user interfaces that is highly portable. It can be used to quickly create graphical Mocks for your VEE Port.
+`JavaFX <https://openjfx.io/>`_ is an open-source library for creating modern Java user interfaces that is highly portable. 
+It can be used to quickly create graphical Mocks for your VEE Port.
 
-- If your SDK is running on JDK 8, the Oracle JDK contains JavaFX, so this version allows you to use it right now in your project.
+The installation instructions depends on the SDK version:
 
-- If your SDK is running on JDK 11, JavaFX must be added as an additional dependency to your Mock and VEE Port project. 
-   For that, MicroEJ Corp. provides a ready-to-use packaged module for all supported OS versions.
+.. tabs::
 
-.. code-block:: xml
+   .. tab:: SDK 6
 
-   <dependency org="com.microej.tool" name="javafx" rev="1.2.0" />
+      .. code-block:: kotlin
+
+        microejMock("com.microej.tool:javafx:1.2.0")
+
+   .. tab:: SDK 5
+
+      - If your SDK is running on JDK 8, the Oracle JDK contains JavaFX, so this version allows you to use it right now in your project.
+
+      - If your SDK is running on JDK 11, JavaFX must be added as an additional dependency to your Mock and VEE Port project. 
+        For that, MicroEJ Corp. provides a ready-to-use packaged module for all supported OS versions.
+
+      .. code-block:: xml
+
+         <dependency org="com.microej.tool" name="javafx" rev="1.2.0" />
 
 The Module serves two purposes, depending on whether it is added to a Mock or a VEE Port project:
 
@@ -543,19 +563,20 @@ Installation
 
    .. tab:: SDK 6
 
-      - Add the Mock Framework dependency to your Mock project:
+      - Add the JavaFX dependency to your VEE Port project (see :ref:`mock_javafx` for more details):
+
+         .. code-block:: kotlin
+
+            microejMock("com.microej.tool:javafx:1.2.0")
+
+      - Add the Mock Framework and JavaFX libraries to your Mock project dependencies:
 
          .. code-block:: kotlin
 
             implementation("com.microej.library.mock:mock-framework:1.0.1")
-
-      - Add the JavaFX dependency to your Mock project which is required to compile the mock:
-
-         .. code-block:: kotlin
-
             compileOnly(group="com.microej.tool", name="javafx", version="1.2.0", configuration="provided")
 
-      - Add the Mock Framework and JavaFX annotation processors dependencies to your Mock project:
+      - Add the Mock Framework and JavaFX annotation processors libraries to your Mock project dependencies:
 
          .. code-block:: kotlin
 

@@ -32,14 +32,22 @@ Dependencies
 Installation
 ============
 
-The Bluetooth :ref:`Pack <pack_overview>` module must be installed in your VEE Port.
+Bluetooth is an additional module. 
+To enable it, the Bluetooth :ref:`Pack <pack_overview>` module must be installed in your VEE Port:
 
-In the Platform configuration project, (``-configuration`` suffix), add
-the following dependency to the :ref:`module.ivy <mmm_module_description>` file:
+.. tabs::
 
-::
+   .. tab:: SDK 6 (build.gradle.kts)
 
-	<dependency org="com.microej.pack.bluetooth" name="bluetooth-pack" rev="2.4.1" />
+      .. code-block:: kotlin
+
+         microejPack("com.microej.pack.bluetooth:bluetooth-pack:2.4.1")
+
+   .. tab:: SDK 5 (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="com.microej.pack.bluetooth" name="bluetooth-pack" rev="2.4.1" />
 
 Use
 ===

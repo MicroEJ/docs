@@ -1687,18 +1687,39 @@ Installation
 ============
 
 The Display module is a sub-part of the MicroUI library.
-When the MicroUI module is installed, the Display module must be installed in order to connect the physical display with the VEE Port.
-If not installed, the *stub* module will be used.
 
-In the VEE Port configuration file, check :guilabel:`UI` > :guilabel:`Display` to install the Display module.
-When checked, the properties file ``display/display.properties`` is required during VEE Port creation to configure the module.
+.. tabs::
+
+   .. tab:: SDK 6
+
+      When the MicroUI Pack module is installed, the Display module is automatically enabled.
+
+   .. tab:: SDK 5
+
+      When the MicroUI module is installed, the Display module must be installed in order to connect the physical display with the VEE Port.
+      If not installed, the *stub* module will be used.
+
+      In the VEE Port configuration file, check :guilabel:`UI` > :guilabel:`Display` to install the Display module.
+
+When enabled, the Display module must be configured.
 This configuration step is used to choose the kind of implementation (see :ref:`section_display_implementation`).
+
+.. tabs::
+
+   .. tab:: SDK 6
+
+     In SDK 6, the configuration is done in the properties file ``configuration.properties`` of the VEE Port project.
+	  All the properties names listed below must be prefixed by ``com.microej.runtime.display.``.
+	  For example the ``bpp`` properties is defined by the ``com.microej.runtime.display.bpp`` property.
+
+   .. tab:: SDK 5
+
+	  In SDK 5, the configuration is done in the properties file ``display/display.properties``.
 
 The properties file must / can contain the following properties:
 
--  ``bpp`` [mandatory]: Defines the number of bits per pixel the
-   display device is using to render a pixel. The expected value is one
-   among these lists:
+- ``bpp`` [mandatory]: Defines the number of bits per pixel the display device is using to render a pixel. 
+  The expected value is one among these lists:
 
    Standard formats:
 
