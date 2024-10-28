@@ -12,6 +12,15 @@ Changelog
 ImageGenerator
 """"""""""""""
 
+**Added**
+
+- Add the options ``grayscale`` and ``alpha`` for the output formats ``A8``, ``A4``, ``A2``, ``A1`` and ``A8_RLE``.
+
+  - ``grayscale`` means black pixels are encoded as fully opaque pixels and white pixels as fully transparent pixels.
+  - ``alpha`` only encodes the opacity element like the MicroUI ``OutputFormat#A8``. 
+  - No option means ``grayscale`` (backward compatible).
+  - An invalid option prevents the encoding of the image.
+
 **Changed**
 
 - Make cache faster.
