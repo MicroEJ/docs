@@ -1,10 +1,10 @@
 .. _sdk_6_getting_started_stm32f7508_multisandbox:
 
-Multi-Sandbox STM32F7508-DK Discovery kit
-=========================================
+Run Sandboxed Applications on STM32F7508-DK
+===========================================
 
 This Getting Started will show you how to run Sandboxed Applications
-on-top of a pre-built Multi-Sandbox Firmware for the STM32F7508-DK Discovery kit.
+on-top of a pre-built Multi-Sandbox Executable for the STM32F7508-DK Discovery kit.
 
 During this Getting Started, you will learn to:
 
@@ -31,7 +31,7 @@ For this Getting Started, all you need is:
 * STM32F7508-DK Discovery kit, available `here <https://www.st.com/en/evaluation-tools/stm32f7508-dk.html>`__.
 * A microSD card formatted as FAT32.
 * An RS232 Terminal (e.g. `Termite <https://www.compuphase.com/software_termite.htm>`__).
-* `STM32CubeProgrammer <https://www.st.com/en/development-tools/stm32cubeprog.html>`__ installed to flash a firmware on your board.
+* `STM32CubeProgrammer <https://www.st.com/en/development-tools/stm32cubeprog.html>`__ installed to flash a Executable on your board.
 
 .. _sdk_6_getting_started_stm32f7508dk_multisandbox_environment_setup:
 
@@ -42,14 +42,14 @@ To follow this Getting Started, you need to:
 
 * Follow :ref:`MICROEJ SDK 6 installation Guide <sdk_6_install>`.
   Android Studio Koala is used on this Getting Started but feel free to use your favorite IDE.
-* `Download the Multi-Sandbox Firmware: <https://repository.microej.com/packages/green/1.2.0/firmwares/STM32F7508-DK/GREEN-STM32F7508-DK-1.2.0.out>`__ ``GREEN-STM32F7508-DK-1.2.0.out``.
+* `Download the Multi-Sandbox Executable: <https://repository.microej.com/packages/green/1.2.0/firmwares/STM32F7508-DK/GREEN-STM32F7508-DK-1.2.0.out>`__ ``GREEN-STM32F7508-DK-1.2.0.out``.
 * `Download the Virtual Device: <https://repository.microej.com/packages/green/1.2.0/vd/STM32F7508-DK/GREEN-STM32F7508-DK-1.2.0.vde>`__ ``GREEN-STM32F7508-DK-1.2.0.zip``.
 * Unzip ``GREEN-STM32F7508-DK-1.2.0.zip``.
 
-If you want more informations about this Multi-Sandbox Firmware, the Javadoc and the Release notes are available in this `directory <https://repository.microej.com/packages/green/1.2.0/>`__.
+If you want more informations about this Multi-Sandbox Executable, the Javadoc and the Release notes are available in this `directory <https://repository.microej.com/packages/green/1.2.0/>`__.
 
 Hardware Setup
-""""""""""""""
+~~~~~~~~~~~~~~
 
 Set up your STM32F7508-DK Discovery kit:
 
@@ -79,20 +79,22 @@ The COM port uses the following parameters:
 
 You can have a look at your application logs with an RS232 Terminal (e.g. `Termite <https://www.compuphase.com/software_termite.htm>`__).
 
-Flash the Multi-Sandbox Firmware on your STM32F7508-DK Discovery kit
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Flash the Multi-Sandbox Executable on your STM32F7508-DK Discovery kit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Multi-Sandbox firmware used in this documentation is built from the
+The Multi-Sandbox Executable used in this documentation is built from the
 `Kernel GREEN <https://github.com/MicroEJ/Kernel-GREEN>`__ sources.
+Refer to the :ref:`sdk6_getting_started_kernel_green`
+Getting Started to build your own Multi-Sandbox Executable.
 
-Flash the Multi-Sandbox Firmware using STM32CubeProgrammer:
+Flash the Multi-Sandbox Executable using STM32CubeProgrammer:
 
 - Open STM32CubeProgrammer.
 - Go to ``External loaders`` tab in the menu.
 - Select ``STM32F7508-DISCO`` board in the Available external loaders list.
 - Click on ``Connect`` green button and wait until your board is connected.
 - Go to ``Erasing & Programming`` tab in the menu of STM32CubeProgrammer.
-- Point ``File path`` to your Multi-Sandbox Firmware (``GREEN-STM32F7508-DK-1.2.0.out`` file).
+- Point ``File path`` to your Multi-Sandbox Executable (``GREEN-STM32F7508-DK-1.2.0.out`` file).
 - Click on ``Start Program...``. Wait for the programming to finish.
 
 .. note::
@@ -114,18 +116,20 @@ Set up the logs output:
       :align: center
       :scale: 60%
 
-Congratulations! The Multi-Sandbox Firmware is running on the STM32F7508-DK Discovery kit and is ready to be used.
+Congratulations! The Multi-Sandbox Executable is running on the STM32F7508-DK Discovery kit and is ready to be used.
+
+.. _sdk_6_getting_started_stm32f7508_multisandbox_run_application:
 
 Run a Sandboxed Application on the Virtual Device
 -------------------------------------------------
 
 Accept the MICROEJ SDK EULA
-"""""""""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You may have to accept the SDK EULA if you didn't already do, please have a look at :ref:`sdk_6_eula_acceptation`.
 
 Create the Sandboxed Application Project
-""""""""""""""""""""""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Create a new Sandboxed Application project as follows in Android Studio:
 
@@ -176,15 +180,20 @@ Create a new Sandboxed Application project as follows in Android Studio:
    If you do not use the last version of Android Studio, make sure that Gradle Wrapper uses at least Gradle version ``8.6``.
    Refer to the :ref:`sdk_6_create_project_gradle_wrapper` section for more information.
 
+.. _sdk_6_getting_started_stm32f7508_multisandbox_run_virtual_device:
 
 Run the Sandboxed Application on the Virtual Device
-"""""""""""""""""""""""""""""""""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Multi-Sandbox Firmware and Virtual Device path need to be provided to the 
+The Multi-Sandbox Executable and Virtual Device path need to be provided to the 
 :guilabel:`MyApplication` project:
 
+.. note::
+   If you have built your own Multi-Sandbox Executable and Virtual Device, refer to the
+   procedure described in :ref:`sdk_6_getting_started_stm32f7508_kernel_green_run_application`.
+
 - Open the ``app/build.gradle.kts`` file of the :guilabel:`MyApplication` project,
-- Declare the dependency to the Multi-Sandbox Firmware and Virtual Device as follows:
+- Declare the dependency to the Multi-Sandbox Executable and Virtual Device as follows:
   
    .. code-block:: kotlin
 
@@ -234,7 +243,7 @@ Otherwise, learn how to :ref:`sdk_6_getting_started_stm32f7508dk_run_demo_sandbo
 Run the Sandboxed Application on the STM32F7508-DK Discovery kit
 ----------------------------------------------------------------
 
-The Multi-Sandbox Firmware embeds a server that listens for Sandboxed Applications deployment commands.
+The Multi-Sandbox Executable embeds a server that listens for Sandboxed Applications deployment commands.
 
 The :guilabel:`MyApplication` project can be deployed on the STM32F7508-DK Discovery kit using the ``Local Deploy tool``.
 This tool will deploy the application on the STM32F7508-DK Discovery kit through your local network.
@@ -326,7 +335,7 @@ Configure the Local Deploy tool in :guilabel:`MyApplication` project:
 Well done !
 -----------
 
-Now you know how to run a Sandboxed Application on a Multi-Sandbox Firmware!
+Now you know how to run a Sandboxed Application on a Multi-Sandbox Executable!
 
 The next step is about :ref:`Running the Demo-Sandboxed-Applications <sdk_6_getting_started_stm32f7508dk_run_demo_sandboxed_applications>`.
 This demo showcases the communication between Sandboxed Applications using the Shared Interfaces.
@@ -347,7 +356,7 @@ The following projects are provided:
 - :guilabel:`sharedinterface`: shared library between apps that defines the shared interface for inter-app communication.
 
 Import the Project
-""""""""""""""""""
+~~~~~~~~~~~~~~~~~~
 
 Import the project into your IDE:
 
@@ -366,12 +375,12 @@ The Gradle project should now be imported in Android Studio, your workspace cont
       :scale: 70%
 
 Run the Demo-Sandboxed-Applications on the Virtual Device
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Provide the Multi-Sandbox Firmware and Virtual Device path to the project:
+Provide the Multi-Sandbox Executable and Virtual Device path to the project:
 
 * Open the ``gradle.properties`` file located at the root of the :guilabel:`Demo-Sandboxed-Applications` project,
-* Declare the dependency to the Multi-Sandbox Firmware and Virtual Device as follows:
+* Declare the dependency to the Multi-Sandbox Executable and Virtual Device as follows:
 
    .. code-block:: properties
 
@@ -402,7 +411,7 @@ The Virtual Device starts and executes the Demo-Sandboxed-Applications:
         </div>
 
 Run the Demo on the STM32F7508-DK Discovery kit
-"""""""""""""""""""""""""""""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The :guilabel:`Demo-Sandboxed-Applications` applications can be deployed on the STM32F7508-DK Discovery kit using the ``Local Deploy tool``.
 Each application needs to be deployed individually.
@@ -430,7 +439,7 @@ The applications are running on the STM32F7508-DK Discovery kit   :
         </div>
 
 Subscribe to the MQTT Topic to Get the Power Values
-"""""""""""""""""""""""""""""""""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 By default, the :guilabel:`app-mqtt-publisher` publishes the power values
 to a public MQTT Broker: ``test.mosquitto.org``.
@@ -458,9 +467,9 @@ Every time a power value is published, it can be seen in the MQTT client console
 
 
 Managing Applications Lifecycle
-"""""""""""""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Multi-Sandbox Firmware provides a web server
+The Multi-Sandbox Executable provides a web server
 to interact with the applications. Either through a Web UI or an HTTP API.
 This server listens on port ``4001`` by default.
 
