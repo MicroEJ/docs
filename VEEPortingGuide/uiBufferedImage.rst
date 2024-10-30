@@ -142,7 +142,7 @@ Custom Format
 A MicroUI BufferedImage can have a *custom* format once the Multiple Formats Implementation is selected.
 However, third-party support is required to render this kind of image.
 
-.. hint:: In addition to the ``#define LLUI_GC_SUPPORTED_FORMATS``, the ``#define LLUI_IMAGE_CUSTOM_FORMATS`` must be set. This is the same ``define`` used to render custom RAW images: see :ref:`section_buffered_image_drawer_custom`.
+.. hint:: In addition to the ``#define LLUI_GC_SUPPORTED_FORMATS``, the ``#define LLUI_IMAGE_CUSTOM_FORMATS`` must be set. This is the same preprocessor macro used to render custom RAW images: see :ref:`section_buffered_image_drawer_custom`.
 
 .. _section_buffered_image_c_creation:
 
@@ -295,7 +295,7 @@ To draw into a buffered image with a format different than the display format, t
 
 For the images whose format is not the display format (index ``1`` and ``2``), the C module provides weak implementations that do nothing.
 
-The following graph illustrates the drawing of a shape (not an image, see :ref:`section_buffered_image_c_drawit`):
+The following diagram illustrates the drawing of a shape (not an image, see :ref:`section_buffered_image_c_drawit`):
 
 .. graphviz:: :align: center
     
@@ -410,7 +410,7 @@ The drawer is identified by the index stored in the ``MICROUI_GraphicsContext`` 
    #define UI_DRAWING_DEFAULT_drawLine UI_DRAWING_drawLine_0
 
 The index ``0`` is reserved for drawing into the image whose format is the display format (see above).
-The function name is set thanks to a ``define`` to reuse the same code between Single and Multiple Formats Implementations.
+The function name is set thanks to a preprocessor macro to reuse the same code between Single and Multiple Formats Implementations.
 
 The behavior after this function is similar to :ref:`section_drawings_cco_custom`.
 
@@ -418,7 +418,7 @@ The behavior after this function is similar to :ref:`section_drawings_cco_custom
 
 .. code-block:: c
   
-   // use the preprocessor 'weak'
+   // use the compiler's 'weak' attribute
   __weak DRAWING_Status UI_DRAWING_drawLine_1(MICROUI_GraphicsContext* gc, jint startX, jint startY, jint endX, jint endY){
       // Default behavior: call the stub implementation
     return UI_DRAWING_STUB_drawLine(gc, startX, startY, endX, endY);
@@ -500,8 +500,8 @@ Draw the Image: Multiple Formats Implementation
 Unlike the Single Format Implementation, the destination may be another format than the display format.
 Consequently, the drawer must check the image format **and** the destination format.
 
-The following graph illustrates the drawing of an image (draw, rotate, or scale) in another image or display back buffer (to draw a shape, see :ref:`section_buffered_image_c_drawinto`).
-This graph gathers both :ref:`draw in a custom image <section_buffered_image_c_drawinto>` and :ref:`render a custom image <section_buffered_image_drawer_custom>`.
+The following diagram illustrates the drawing of an image (draw, rotate, or scale) in another image or display back buffer (to draw a shape, see :ref:`section_buffered_image_c_drawinto`).
+This diagram gathers both :ref:`draw in a custom image <section_buffered_image_c_drawinto>` and :ref:`render a custom image <section_buffered_image_drawer_custom>`.
 
 .. graphviz:: :align: center
 
@@ -627,7 +627,7 @@ This graph gathers both :ref:`draw in a custom image <section_buffered_image_c_d
 
 |
 
-The following description considers that both previous graphs (:ref:`draw in a custom image <section_buffered_image_c_drawinto>` and :ref:`render a custom image <section_buffered_image_drawer_custom>`) have been read and understood.
+The following description considers that both previous diagrams (:ref:`draw in a custom image <section_buffered_image_c_drawinto>` and :ref:`render a custom image <section_buffered_image_drawer_custom>`) have been read and understood.
 It only describes the *final* use-case: draw a custom image in an unknown destination (unknown destination format):
 
 **UI_IMAGE_DRAWING_draw_custom4** (to write in the BSP)
@@ -766,7 +766,7 @@ Once created, the ``BufferedImageProvider`` implementation must be registered as
 Draw into the Image: Non-Display Format
 ---------------------------------------
 
-The following graph illustrates the drawing of a shape (not an image, see :ref:`section_buffered_image_fp_drawit`):
+The following diagram illustrates the drawing of a shape (not an image, see :ref:`section_buffered_image_fp_drawit`):
 
 .. graphviz:: :align: center
 
@@ -931,8 +931,8 @@ It is also possible to declare it programmatically (see where a drawer is regist
 Draw the Image: Multiple Formats Implementation
 -----------------------------------------------
 
-The following graph illustrates the drawing of an image (draw, rotate, or scale) in another image or display back buffer (to draw a shape, see :ref:`section_buffered_image_fp_drawinto`).
-This graph gathers both graphs :ref:`draw in a custom image <section_buffered_image_fp_drawinto>` and :ref:`render a custom image <section_buffered_image_drawer_custom_fp>`.
+The following diagram illustrates the drawing of an image (draw, rotate, or scale) in another image or display back buffer (to draw a shape, see :ref:`section_buffered_image_fp_drawinto`).
+This diagram gathers both diagrams :ref:`draw in a custom image <section_buffered_image_fp_drawinto>` and :ref:`render a custom image <section_buffered_image_drawer_custom_fp>`.
 
 .. graphviz:: :align: center
 
