@@ -35,7 +35,7 @@ For this Getting Started, all you need is:
 * An Internet connection to access Github repositories & :ref:`Module Repositories <module_repositories>`.
 * MICROEJ SDK 6 (installed during :ref:`Environment Setup <sdk_6_getting_started_stm32f7508dk_multisandbox_environment_setup>`).
 * STM32F7508-DK Discovery kit, available `here <https://www.st.com/en/evaluation-tools/stm32f7508-dk.html>`__.
-* A microSD card formatted as FAT32.
+* A FAT32-formatted microSD card.
 * An RS232 Terminal (e.g. `Termite <https://www.compuphase.com/software_termite.htm>`__).
 * `STM32CubeProgrammer <https://www.st.com/en/development-tools/stm32cubeprog.html>`__ installed to flash a Executable on your board.
 
@@ -61,12 +61,14 @@ Hardware Setup
 
 Set up your STM32F7508-DK Discovery kit:
 
-- Insert a microSD card (formatted as FAT32) in the board connector,
+- Insert a microSD card (FAT32-formatted) in the board connector,
 - Connect the Ethernet connector to the internet,
-- Connect the USB connector of the board to your computer with a mini-USB cable by following the
-  `Board Configuration <https://github.com/MicroEJ/VEEPort-STMicroelectronics-STM32F7508-DK/blob/2.3.1/stm32f7508_freertos-bsp/projects/microej/README.rst>`__ instructions.
+- Check the jumpers configuration on JP1, you only want the :guilabel:`5V link` jumper to be bridged,
+- Connect the mini-USB cable to CN14 to power the board, see
+  `Board Configuration <https://github.com/MicroEJ/VEEPort-STMicroelectronics-STM32F7508-DK/blob/2.3.1/stm32f7508_freertos-bsp/projects/microej/README.rst>`__
+  for more information.
 
-The USB connection is used as a serial link, as a ST-Link probe and as a power input for the board.
+The USB connection is used as a serial link, a ST-Link probe, and a power input for the board all at once.
 
 The COM port uses the following parameters:
 
@@ -87,7 +89,7 @@ The COM port uses the following parameters:
 
 You can have a look at your application logs with an RS232 Terminal (e.g. `Termite <https://www.compuphase.com/software_termite.htm>`__).
 
-Congratulations, you have finished the setup of your environment.
+Congratulations! You have finished the setup of your environment.
 You are now ready to discover how to build and flash the Kernel GREEN.
 
 Set up the Kernel GREEN on your IDE
@@ -119,7 +121,7 @@ Configure the Project
 Select a VEE Port
 ^^^^^^^^^^^^^^^^^
 
-As for Applications, a Kernel project needs to depend on a VEE Port in order to be built.
+As Applications need to depend on a VEE Port in order to be built, so does a Kernel project.
 Refer to the ``Prerequisites`` section of the
 `Kernel GREEN README <https://github.com/MicroEJ/Kernel-GREEN/blob/master/README.md>`__
 to learn more about the VEE Port requirements.
@@ -154,12 +156,12 @@ for more information about the Kernel configuration.
 Accept the MICROEJ SDK EULA
 ---------------------------
 
-You may have to accept the SDK EULA if you didn't already do, please have a look at :ref:`sdk_6_eula_acceptation`.
+You may have to accept the SDK EULA if you haven't already done it, please have a look at :ref:`sdk_6_eula_acceptation`.
 
 Run the Kernel GREEN on STM32F7508-DK Discovery kit
 ----------------------------------------------------
 
-Make sure to have complemeted all the :ref:`sdk_6_getting_started_stm32f7508dk_kernel_green_environment_setup`
+Make sure to have completed all the :ref:`sdk_6_getting_started_stm32f7508dk_kernel_green_environment_setup`
 steps before going further. 
 
 To deploy :guilabel:`Kernel-GREEN` on your board, you will have to:
@@ -172,7 +174,7 @@ Build the Executable for the STM32F7508-DK Discovery kit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In order to build the Executable of the :guilabel:`Kernel-GREEN`,
-the SDK provides the Gradle :guilabel:`buildExecutable` task.
+the SDK provides the :guilabel:`buildExecutable` Gradle task.
 
 .. note::
   
@@ -192,7 +194,7 @@ the SDK provides the Gradle :guilabel:`buildExecutable` task.
 
 Request your Evaluation License:
 
-* Request your Evaluation license by following the :ref:`evaluation_license_request_activation_key` instructions. You will be asked to fill the machine UID you just copied before.
+* Request your Evaluation license by following the :ref:`evaluation_license_request_activation_key` instructions. You will be asked to fill the machine UID field with the UID you copied before.
 
 * When you have received your activation key by email, drop it in the license directory by following the :ref:`evaluation_license_install_license_key` instructions (drop the license key zip file to the ``~/.microej/licenses/`` directory).
 
@@ -200,7 +202,7 @@ Now your Evaluation license is installed, you can relaunch your Kernel build by 
 
 The gradle task deploys the Kernel in the BSP and then builds the BSP using Make.
 
-The :guilabel:`Kernel-GREEN` is built and ready to be flashed on STM32F7508-DK Discovery kit once the hardware setup is completed.
+The :guilabel:`Kernel-GREEN` is built and ready to be flashed on a STM32F7508-DK Discovery kit once the hardware setup is completed.
 
 Flash the Kernel GREEN on the STM32F7508-DK Discovery kit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

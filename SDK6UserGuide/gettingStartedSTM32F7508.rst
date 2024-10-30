@@ -78,7 +78,7 @@ The Gradle project should now be imported in Android Studio, your workspace cont
 Accept the MICROEJ SDK EULA
 ---------------------------
 
-You may have to accept the SDK EULA if you didn't already do, please have a look at :ref:`sdk_6_eula_acceptation`.
+You may have to accept the SDK EULA if you haven't already done it, please have a look at :ref:`sdk_6_eula_acceptation`.
 
 .. _sdk_6_getting_started_stm32f7508dk_run_virtual_device:
 
@@ -152,7 +152,7 @@ Hardware Setup
 * Check the jumpers configuration on JP1, you only want the :guilabel:`5V link` jumper to be bridged.
 * Connect the micro-USB cable to CN14 to power the board.
 
-The USB connection is used as a serial link, as a ST-Link probe and as a power input for the board.
+The USB connection is used as a serial link, a ST-Link probe, and a power input for the board all at once.
 
 The COM port uses the following parameters:
 
@@ -173,12 +173,12 @@ The COM port uses the following parameters:
 
 You can have a look at your application logs with an RS232 Terminal (e.g. `Termite <https://www.compuphase.com/software_termite.htm>`__).
 
-Congratulations, you have finished the setup of your environment. You are now ready to discover how to build and flash a MicroEJ application.
+Congratulations! You have finished the setup of your environment. You are now ready to discover how to build and flash a MicroEJ application.
 
 Build the Executable for the STM32F7508-DK Evaluation Kit
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In order to build the Executable of the :guilabel:`microui.mvc` Application, the SDK provides the Gradle :guilabel:`buildExecutable` task.
+In order to build the Executable of the :guilabel:`microui.mvc` Application, the SDK provides the :guilabel:`buildExecutable` Gradle task.
 
 .. note::
   
@@ -198,7 +198,7 @@ In order to build the Executable of the :guilabel:`microui.mvc` Application, the
 
 Request your Evaluation License:
 
-* Request your Evaluation license by following the :ref:`evaluation_license_request_activation_key` instructions. You will be asked to fill the machine UID you just copied before.
+* Request your Evaluation license by following the :ref:`evaluation_license_request_activation_key` instructions. You will be asked to fill the machine UID field with the UID you copied before.
 
 * When you have received your activation key by email, drop it in the license directory by following the :ref:`evaluation_license_install_license_key` instructions (drop the license key zip file to the ``~/.microej/licenses/`` directory).
 
