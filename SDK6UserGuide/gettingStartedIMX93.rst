@@ -339,7 +339,7 @@ Congratulations! You have finished the setup of your environment. You are now re
 Build the Executable for i.MX93 Evaluation Kit
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To build the Executable of the :guilabel:`Example-Java-Widget` Application, the SDK provides the Gradle :guilabel:`buildExecutable` task.
+To build the Executable of the :guilabel:`Example-Java-Widget` Application, the SDK provides the :guilabel:`buildExecutable` Gradle task.
 
 .. note::
   

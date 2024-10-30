@@ -15,6 +15,12 @@ During this Getting Started, you will learn to:
 
 In case you are not familiar with MicroEJ, please visit `Discover MicroEJ <https://developer.microej.com/discover-microej/>`__ to understand the principles of our technology.
 
+The below schematic summarizes the Multi-Sandbox features that will be demonstrated in this Getting Started:  
+
+   .. figure:: images/gettingStarted/multiSandbox/STM32F7508DK/multiSandboxGettingStartedOverview.png
+      :alt: Logs Output on Termite Serial Terminal
+      :align: center
+
 Prerequisites
 -------------
 
@@ -29,7 +35,7 @@ For this Getting Started, all you need is:
 * An Internet connection to access Github repositories & :ref:`Module Repositories <module_repositories>`.
 * MICROEJ SDK 6 (installed during :ref:`Environment Setup <sdk_6_getting_started_stm32f7508dk_multisandbox_environment_setup>`).
 * STM32F7508-DK Discovery kit, available `here <https://www.st.com/en/evaluation-tools/stm32f7508-dk.html>`__.
-* A microSD card formatted as FAT32.
+* A FAT32-formatted microSD card.
 * An RS232 Terminal (e.g. `Termite <https://www.compuphase.com/software_termite.htm>`__).
 * `STM32CubeProgrammer <https://www.st.com/en/development-tools/stm32cubeprog.html>`__ installed to flash a Executable on your board.
 
@@ -43,7 +49,7 @@ To follow this Getting Started, you need to:
 * Follow :ref:`MICROEJ SDK 6 installation Guide <sdk_6_install>`,
   Android Studio Koala is used on this Getting Started but feel free to use your favorite IDE,
 * `Download the Multi-Sandbox Executable: <https://repository.microej.com/packages/green/1.2.0/firmwares/STM32F7508-DK/GREEN-STM32F7508-DK-1.2.0.out>`__ ``GREEN-STM32F7508-DK-1.2.0.out``,
-* `Download the Virtual Device: <https://repository.microej.com/packages/green/1.2.0/vd/STM32F7508-DK/GREEN-STM32F7508-DK-1.2.0.vde>`__ ``GREEN-STM32F7508-DK-1.2.0.zip``.
+* `Download the Virtual Device: <https://repository.microej.com/packages/green/1.2.0/vd/STM32F7508-DK/GREEN-STM32F7508-DK-1.2.0.vde>`__ ``GREEN-STM32F7508-DK-1.2.0.zip``,
 * Unzip ``GREEN-STM32F7508-DK-1.2.0.zip``.
 
 If you want more informations about this Multi-Sandbox Executable, the Javadoc and the Release notes are available in this `directory <https://repository.microej.com/packages/green/1.2.0/>`__.
@@ -53,12 +59,14 @@ Hardware Setup
 
 Set up your STM32F7508-DK Discovery kit:
 
-- Insert a microSD card (formatted as FAT32) in the board connector,
+- Insert a microSD card (FAT32-formatted) in the board connector,
 - Connect the Ethernet connector to the internet,
-- Connect the USB connector of the board to your computer with a mini-USB cable by following the
-  `Board Configuration <https://github.com/MicroEJ/VEEPort-STMicroelectronics-STM32F7508-DK/blob/2.3.1/stm32f7508_freertos-bsp/projects/microej/README.rst>`__ instructions.
+- Check the jumpers configuration on JP1, you only want the :guilabel:`5V link` jumper to be bridged,
+- Connect the mini-USB cable to CN14 to power the board, see
+  `Board Configuration <https://github.com/MicroEJ/VEEPort-STMicroelectronics-STM32F7508-DK/blob/2.3.1/stm32f7508_freertos-bsp/projects/microej/README.rst>`__
+  for more information.
 
-The USB connection is used as a serial link, as a ST-Link probe and as a power input for the board.
+The USB connection is used as a serial link, a ST-Link probe, and a power input for the board all at once.
 
 The COM port uses the following parameters:
 
@@ -126,7 +134,7 @@ Run a Sandboxed Application on the Virtual Device
 Accept the MICROEJ SDK EULA
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You may have to accept the SDK EULA if you didn't already do, please have a look at :ref:`sdk_6_eula_acceptation`.
+You may have to accept the SDK EULA if you haven't already done it, please have a look at :ref:`sdk_6_eula_acceptation`.
 
 Create the Sandboxed Application Project
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
