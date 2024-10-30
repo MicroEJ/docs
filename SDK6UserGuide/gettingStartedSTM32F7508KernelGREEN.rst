@@ -137,7 +137,7 @@ Update the Kernel project to use this VEE Port:
       
       val defaultVeePortGroup: String = "com.microej.veeport.st.stm32f7508-dk"
       val defaultVeePortModule: String = "R0OUY_eval"
-      val defaultVeePortVersion: String = "2.2.0"
+      val defaultVeePortVersion: String = "2.3.0"
 
 Kernel Configuration
 ^^^^^^^^^^^^^^^^^^^^
@@ -237,6 +237,7 @@ Well done !
 Now you know how to build and run a Multi-Sandbox Executable!
 
 If you want to learn how to run a Sandboxed Application on your Multi-Sandbox Executable, you can continue this Getting Started.
+
 .. _sdk_6_getting_started_stm32f7508_kernel_green_run_application:
 
 Run a Sandboxed Application on your Multi-Sandbox Executable and Virtual Device
