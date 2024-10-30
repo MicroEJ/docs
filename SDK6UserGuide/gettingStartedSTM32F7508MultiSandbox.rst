@@ -40,9 +40,9 @@ Environment Setup
 
 To follow this Getting Started, you need to: 
 
-* Follow :ref:`MICROEJ SDK 6 installation Guide <sdk_6_install>`.
-  Android Studio Koala is used on this Getting Started but feel free to use your favorite IDE.
-* `Download the Multi-Sandbox Executable: <https://repository.microej.com/packages/green/1.2.0/firmwares/STM32F7508-DK/GREEN-STM32F7508-DK-1.2.0.out>`__ ``GREEN-STM32F7508-DK-1.2.0.out``.
+* Follow :ref:`MICROEJ SDK 6 installation Guide <sdk_6_install>`,
+  Android Studio Koala is used on this Getting Started but feel free to use your favorite IDE,
+* `Download the Multi-Sandbox Executable: <https://repository.microej.com/packages/green/1.2.0/firmwares/STM32F7508-DK/GREEN-STM32F7508-DK-1.2.0.out>`__ ``GREEN-STM32F7508-DK-1.2.0.out``,
 * `Download the Virtual Device: <https://repository.microej.com/packages/green/1.2.0/vd/STM32F7508-DK/GREEN-STM32F7508-DK-1.2.0.vde>`__ ``GREEN-STM32F7508-DK-1.2.0.zip``.
 * Unzip ``GREEN-STM32F7508-DK-1.2.0.zip``.
 
@@ -53,8 +53,8 @@ Hardware Setup
 
 Set up your STM32F7508-DK Discovery kit:
 
-- Insert a microSD card (formatted as FAT32) in the board connector.
-- Connect the Ethernet connector to the internet.
+- Insert a microSD card (formatted as FAT32) in the board connector,
+- Connect the Ethernet connector to the internet,
 - Connect the USB connector of the board to your computer with a mini-USB cable by following the
   `Board Configuration <https://github.com/MicroEJ/VEEPort-STMicroelectronics-STM32F7508-DK/blob/2.3.1/stm32f7508_freertos-bsp/projects/microej/README.rst>`__ instructions.
 
@@ -89,13 +89,13 @@ Getting Started to build your own Multi-Sandbox Executable.
 
 Flash the Multi-Sandbox Executable using STM32CubeProgrammer:
 
-- Open STM32CubeProgrammer.
-- Go to ``External loaders`` tab in the menu.
-- Select ``STM32F7508-DISCO`` board in the Available external loaders list.
-- Click on ``Connect`` green button and wait until your board is connected.
-- Go to ``Erasing & Programming`` tab in the menu of STM32CubeProgrammer.
-- Point ``File path`` to your Multi-Sandbox Executable (``GREEN-STM32F7508-DK-1.2.0.out`` file).
-- Click on ``Start Program...``. Wait for the programming to finish.
+- Open STM32CubeProgrammer,
+- Go to ``External loaders`` tab in the menu,
+- Select ``STM32F7508-DISCO`` board in the Available external loaders list,
+- Click on ``Connect`` green button and wait until your board is connected,
+- Go to ``Erasing & Programming`` tab in the menu of STM32CubeProgrammer,
+- Point ``File path`` to your Multi-Sandbox Executable (``GREEN-STM32F7508-DK-1.2.0.out`` file),
+- Click on ``Start Programming``. Wait for the programming to finish.
 
 .. note::
    
@@ -104,11 +104,11 @@ Flash the Multi-Sandbox Executable using STM32CubeProgrammer:
 Set up the logs output:
 
 - Get the COM port where your board is connected 
-  (if you are using Windows, you can open your Device Manager from the Windows menu).
+  (if you are using Windows, you can open your Device Manager from the Windows menu),
 - Set up a serial terminal (e.g. Termite) to see output logs from the board.
   Set it with the COM port retrieved previously and by following `Logs Output <https://github.com/MicroEJ/VEEPort-STMicroelectronics-STM32F7508-DK/blob/2.3.1/README.rst>`__
-  instructions.
-- Press the reset button of the board (Black button).
+  instructions,
+- Press the reset button of the board (Black button),
 - Get the IP address of your board. You will find it in the logs output:
   
    .. figure:: images/gettingStarted/multiSandbox/STM32F7508DK/getting-started-stm32f7508dk-termite-green-fw-output.png
@@ -133,20 +133,20 @@ Create the Sandboxed Application Project
 
 Create a new Sandboxed Application project as follows in Android Studio:
 
-- Click on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...`.
-- Select :guilabel:`Generic` > :guilabel:`New MicroEJ project`.
+- Click on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...`,
+- Select :guilabel:`Generic` > :guilabel:`New MicroEJ project`:
 
    .. figure:: images/android-studio-create-project-01.png
       :alt: Project Creation in Android Studio
       :align: center
       :scale: 70%
 
-- Click on the :guilabel:`Next` button.
-- Fill the name of the project in the :guilabel:`Name` field.
-- Fill the package name of the project in the :guilabel:`Package name` field.
-- Select the location of the project in the :guilabel:`Save location` field.
-- Keep the default Android SDK in the :guilabel:`Minimum SDK` field.
-- Select :guilabel:`Kotlin` for the :guilabel:`Build configuration language` field.
+- Click on the :guilabel:`Next` button,
+- Fill the name of the project in the :guilabel:`Name` field,
+- Fill the package name of the project in the :guilabel:`Package name` field,
+- Select the location of the project in the :guilabel:`Save location` field,
+- Keep the default Android SDK in the :guilabel:`Minimum SDK` field,
+- Select :guilabel:`Kotlin` for the :guilabel:`Build configuration language` field:
 
 .. note::
    Groovy build script DSL is not officially supported by the SDK, so the project created by the Wizard uses Kotlin regardless
@@ -157,12 +157,12 @@ Create a new Sandboxed Application project as follows in Android Studio:
       :align: center
       :scale: 70%
 
-- Click on :guilabel:`Next` button.
-- Fill the group of the artifact to publish in the :guilabel:`Group` field.
-- Fill the version of the artifact to publish in the :guilabel:`Version` field.
-- Select the project type in the drop-down list.
-- Select the :guilabel:`Application` project type.
-- Click on :guilabel:`Finish` button.
+- Click on :guilabel:`Next` button,
+- Fill the group of the artifact to publish in the :guilabel:`Group` field,
+- Fill the version of the artifact to publish in the :guilabel:`Version` field,
+- Select the project type in the drop-down list,
+- Select the :guilabel:`Application` project type,
+- Click on :guilabel:`Finish` button:
 
    .. figure:: images/android-studio-create-project-03.png
       :alt: Project Creation in Android Studio
@@ -207,9 +207,9 @@ In order to execute the :guilabel:`MyApplication` project on the Virtual Device,
 
 .. note::
   
-   If you are using another IDE than Android Studio, please have a look at :ref:`sdk_6_run_on_simulator` section.
+   If you are using an IDE other than Android Studio, please have a look at :ref:`sdk_6_run_on_simulator` section.
 
-* Double-click on the :guilabel:`runOnSimulator` task in the Gradle tasks view. It may take few seconds to start.
+* Double-click on the :guilabel:`runOnSimulator` task in the Gradle tasks view. It may take few seconds to start:
 
    .. figure:: images/gettingStarted/STM32F7508DK/getting-started-runOnSimulator.png
       :alt: runOnSimulator task
@@ -229,7 +229,7 @@ The ``Hello World!`` message can be seen in the console:
    :align: center
    :scale: 70%
 
-Well done !
+Well Done!
 -----------
 
 Now you know how to run a Sandboxed Application on a Virtual Device.
@@ -283,23 +283,24 @@ Configure the Local Deploy tool in :guilabel:`MyApplication` project:
                   .getByName(SourceSet.MAIN_SOURCE_SET_NAME).output.classesDirs)
 
          classpathFromConfiguration.from(project.getConfigurations().getByName("runtimeClasspath"))
+         applicationEntryPoint.set(microej.applicationEntryPoint)
 
          // These inputs concern the localDeploymentSocket tool only
          toolName = "localDeploymentSocket"
          inputs.file(loadKernelExecutableTask.get().loadedKernelExecutableFile)
          toolProperties.putAll(mapOf(
-                  "application.main.class" to microej.applicationEntryPoint,
-                  "board.server.host" to ipAddress,
-                  "board.server.port" to port,
-                  "board.timeout" to boardTimeout,
-                  "use.storage" to useStorage
+            "board.server.host" to ipAddress,
+            "board.server.port" to port,
+            "board.timeout" to boardTimeout,
+            "use.storage" to useStorage
          ))
          doFirst {
             toolProperties["kernel.filename"] = loadKernelExecutableTask.get().loadedKernelExecutableFile.get().asFile.absolutePath
+            toolProperties["application.main.class"] = applicationEntryPoint.get()
          }
       }
 
-- Update the ``ipAddress`` variable with your board IP address.
+- Update the ``ipAddress`` variable with your board IP address,
 - Reload the Gradle project:
 
    .. figure:: images/gettingStarted/multiSandbox/getting-started-reload-gradle-project.png
@@ -332,7 +333,7 @@ Configure the Local Deploy tool in :guilabel:`MyApplication` project:
    :align: center
    :scale: 70%
 
-Well done !
+Well Done!
 -----------
 
 Now you know how to run a Sandboxed Application on a Multi-Sandbox Executable!
@@ -355,6 +356,16 @@ The following projects are provided:
 - :guilabel:`app-mqtt-publisher`: application responsible for publishing the power values provided by :guilabel:`app-power-provider` to an MQTT topic.
 - :guilabel:`sharedinterface`: shared library between apps that defines the shared interface for inter-app communication.
 
+.. warning::
+   If you are using your own Multi-Sandbox Executable to run this demo, make sure to configure the
+   :ref:`images_heap` size of your Kernel project to the size of your screen.
+   The forumula to compute the required size is ``SCREEN_WIDTH x SCREEN_HEIGHT x BPP / 2``.
+   
+   Example with a 480x272 screen in RGB565 format (16BPP).
+   Images Heap size should be:
+
+      - 480x272x16/2 = 261120 bytes
+
 Import the Project
 ~~~~~~~~~~~~~~~~~~
 
@@ -362,9 +373,9 @@ Import the project into your IDE:
 
 .. note::
   
-   If you are using another IDE than Android Studio, please have a look at :ref:`sdk_6_import_project` section.
+   If you are using an IDE other than Android Studio, please have a look at :ref:`sdk_6_import_project` section.
 
-* If you are in the Welcome Screen, click on the :guilabel:`Open` button. Otherwise click either on :guilabel:`File` > :guilabel:`Open...`.
+* If you are in the Welcome Screen, click on the :guilabel:`Open` button. Otherwise click either on :guilabel:`File` > :guilabel:`Open...`,
 * Select the :guilabel:`Demo-Sandboxed-Applications` directory located where you downloaded it and click on the :guilabel:`OK` button.
 
 The Gradle project should now be imported in Android Studio, your workspace contains the following project in the :guilabel:`Projects` view: 
@@ -493,7 +504,7 @@ Going Further
 
 You have now successfully executed Sandboxed Applications on an embedded device so what's next?
 
-If you are an application developer you can continue to explore MicroEJ's API and functionalities by running and studying our samples at GitHub:
+If you are an application developer you can continue to explore MicroEJ's APIs and functionalities by running and studying our samples at GitHub:
 
 .. list-table::
    :widths: 33 33 33
@@ -512,7 +523,7 @@ You can also learn how to build bigger and better applications by reading our :r
 
 If you are an embedded engineer you could look at our VEE port examples at `GitHub <https://github.com/microej?q=vee&type=all&language=&sort=>`_. And to learn how create custom VEE ports you can read our :ref:`VEE Porting Guide <vee-porting-guide>`.
 
-You can also follow the :ref:`Kernel Developer Guide <kernel-developer-guide>` for more information on our multi-applications framework or read about our powerful wearable solution called :ref:`VEE Wear <vee-wear>`.
+You can also follow the :ref:`Kernel Developer Guide <kernel-developer-guide>` for more information on our multi-application framework or read about our powerful wearable solution called :ref:`VEE Wear <vee-wear>`.
 
 Last but not least you can choose to learn about specific topics by following one of our many :ref:`trainings` ranging from how to easily debug application to setting up a Continuous Integration process and a lot of things in between.
 

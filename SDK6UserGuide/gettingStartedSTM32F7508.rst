@@ -56,7 +56,7 @@ The first step is to import the Application into your IDE:
 
 .. note::
   
-   If you are using another IDE than Android Studio, please have a look at :ref:`sdk_6_import_project` section.
+   If you are using an IDE other than Android Studio, please have a look at :ref:`sdk_6_import_project` section.
 
 * If you are in the Welcome Screen, click on the :guilabel:`Open` button. Otherwise click either on :guilabel:`File` > :guilabel:`Open...`.
 * Select the ``Example-Foundation-Libraries`` directory located where you downloaded it and click on the :guilabel:`OK` button.
@@ -89,7 +89,7 @@ We will be using the :guilabel:`microui.mvc` Application as the sample to test t
 
 .. note::
   
-   If you are using another IDE than Android Studio, please have a look at :ref:`sdk_6_run_on_simulator` section.
+   If you are using an IDE other than Android Studio, please have a look at :ref:`sdk_6_run_on_simulator` section.
 
 * Double-click on the :guilabel:`runOnSimulator` task in the Gradle tasks view. It may take few seconds.
 
@@ -110,7 +110,7 @@ The Virtual Device starts and executes the :guilabel:`microui.mvc` application.
    :align: center
    :scale: 70%
 
-Well done !
+Well Done!
 -----------
 
 Now you know how to run an application on a Virtual Device.
@@ -182,7 +182,7 @@ In order to build the Executable of the :guilabel:`microui.mvc` Application, the
 
 .. note::
   
-   If you are using another IDE than Android Studio, please have a look at :ref:`sdk_6_build_executable` section.
+   If you are using an IDE other than Android Studio, please have a look at :ref:`sdk_6_build_executable` section.
    Come back on this page if you need to activate an Evaluation License.
 
 * Double-click on the :guilabel:`buildExecutable` task in the Gradle tasks view.
@@ -202,7 +202,7 @@ Request your Evaluation License:
 
 * When you have received your activation key by email, drop it in the license directory by following the :ref:`evaluation_license_install_license_key` instructions (drop the license key zip file to the ``~/.microej/licenses/`` directory).
 
-Now your Evaluation license is installed, you can relaunch your application build by double-clicking on the :guilabel:`buildExecutable` task in the Gradle tasks view. It may takes some time.
+Now your Evaluation license is installed, you can relaunch your application build by double-clicking on the :guilabel:`buildExecutable` task in the Gradle tasks view. It may take some time.
 
 The gradle task deploys the Application in the BSP and then builds the BSP using Make.
 
@@ -215,9 +215,9 @@ In order to flash the :guilabel:`microui.mvc` Application on the STM32F7508-DK E
 
 .. note::
   
-   If you are using another IDE than Android Studio, please have a look at :ref:`sdk_6_run_on_device` section.
+   If you are using an IDE other than Android Studio, please have a look at :ref:`sdk_6_run_on_device` section.
 
-* Double-click on the :guilabel:`runOnDevice` task in the Gradle tasks view. It may takes some time.
+* Double-click on the :guilabel:`runOnDevice` task in the Gradle tasks view. It may take some time.
 
       .. figure:: images/gettingStarted/STM32F7508DK/getting-started-runOnDevice.png
          :alt: runOnDevice task
@@ -288,7 +288,7 @@ Going Further
 
 You have now successfully executed a MicroEJ application on an embedded device so what's next?
 
-If you are an application developer you can continue to explore MicroEJ's API and functionalities by running and studying our samples at GitHub:
+If you are an application developer you can continue to explore MicroEJ's APIs and functionalities by running and studying our samples at GitHub:
 
 .. list-table::
    :widths: 33 33 33
@@ -307,7 +307,7 @@ You can also learn how to build bigger and better applications by reading our :r
 
 If you are an embedded engineer you could look at our VEE port examples at `GitHub <https://github.com/microej?q=vee&type=all&language=&sort=>`_. And to learn how create custom VEE ports you can read our :ref:`VEE Porting Guide <vee-porting-guide>`.
 
-You can also follow the :ref:`Kernel Developer Guide <kernel-developer-guide>` for more information on our multi-applications framework or read about our powerful wearable solution called :ref:`VEE Wear <vee-wear>`.
+You can also follow the :ref:`Kernel Developer Guide <kernel-developer-guide>` for more information on our multi-application framework or read about our powerful wearable solution called :ref:`VEE Wear <vee-wear>`.
 
 Last but not least you can choose to learn about specific topics by following one of our many :ref:`trainings` ranging from how to easily debug application to setting up a Continuous Integration process and a lot of things in between.
 
