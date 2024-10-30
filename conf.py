@@ -57,6 +57,7 @@ html_favicon = '_themes/microej/static/favicon-16x16.png'
 html_theme_options = {
     'logo_only': True,
     'collapse_navigation': False,
+    'sticky_navigation': False
 }
 html_show_sphinx = False
 html_static_path = ['_themes/microej/static', '_static']

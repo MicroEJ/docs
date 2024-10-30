@@ -4,7 +4,7 @@ Manage Versioning
 =================
 
 The SDK 5 used a specific notation for the snapshot versions. 
-Instead of using the ``-SNAPSHOT`` prefix (e.g.,``1.0.0-SNAPSHOT``), 
+Instead of using the ``-SNAPSHOT`` prefix (e.g., ``1.0.0-SNAPSHOT``), 
 it used the ``-RCxxx`` prefix, where ``xxx`` is the timestamp (e.g., ``1.0.0-RC202212021535``).
 
 In order to be able to transition from SDK 5 to SDK 6 smoothly, it is recommended to continue to publish snapshot versions with the ``-RCxxx`` prefix.
