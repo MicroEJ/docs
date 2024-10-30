@@ -6,7 +6,7 @@ Build your own Multi-Sandbox Executable on STM32F7508-DK
 This Getting Started is a step-by-step guide explaining
 how to build a Multi-Sandbox Executable for the STM32F7508-DK Discovery kit.
 
-This Executable will be built from the 
+This Executable will be built from 
 `Kernel GREEN <https://github.com/MicroEJ/Kernel-GREEN>`__ sources.
 
 The Multi-Sandbox Executable built in this Getting Started can then be used to
@@ -14,7 +14,7 @@ complete the :ref:`sdk_6_getting_started_stm32f7508_multisandbox` Getting Starte
 
 During this Getting Started, you will learn how to:
 
-* Get the Kernel GREEN sources,
+* Get the Kernel GREEN,
 * Configure it,
 * Build the project and get the artifacts: Virtual Device, Executable, Javadoc, ...
 * Run a Sandboxed Application project on this Multi-Sandbox Executable.
@@ -44,12 +44,12 @@ For this Getting Started, all you need is:
 Environment Setup
 -----------------
 
-To follow this Getting Started, you need to: 
+To follow this Getting Started, you need to:
 
-* Follow :ref:`MICROEJ SDK 6 installation Guide <sdk_6_install>`.
-  Android Studio Koala is used on this Getting Started but feel free to use your favorite IDE.
-* Install the STM32CubeIDE **version 1.9.0** for STM32F7508-DK, available `here <https://www.st.com/en/development-tools/stm32cubeide.html>`__.
-* Install the STM32CubeProgrammer utility program, available `here <https://www.st.com/en/development-tools/stm32cubeprog.html>`__.
+* Follow :ref:`MICROEJ SDK 6 installation Guide <sdk_6_install>`
+  Android Studio Koala is used on this Getting Started but feel free to use your favorite IDE,
+* Install the STM32CubeIDE **version 1.9.0** for STM32F7508-DK, available `here <https://www.st.com/en/development-tools/stm32cubeide.html>`__,
+* Install the STM32CubeProgrammer utility program, available `here <https://www.st.com/en/development-tools/stm32cubeprog.html>`__,
 * Download or clone the `Kernel GREEN <https://github.com/MicroEJ/Kernel-GREEN>`__ sources.
 
 Be aware that we need the **1.9.0 version** of the STM32CubeIDE, 
@@ -61,8 +61,8 @@ Hardware Setup
 
 Set up your STM32F7508-DK Discovery kit:
 
-- Insert a microSD card (formatted as FAT32) in the board connector.
-- Connect the Ethernet connector to the internet.
+- Insert a microSD card (formatted as FAT32) in the board connector,
+- Connect the Ethernet connector to the internet,
 - Connect the USB connector of the board to your computer with a mini-USB cable by following the
   `Board Configuration <https://github.com/MicroEJ/VEEPort-STMicroelectronics-STM32F7508-DK/blob/2.3.1/stm32f7508_freertos-bsp/projects/microej/README.rst>`__ instructions.
 
@@ -100,9 +100,9 @@ The first step is to import the :guilabel:`Kernel-GREEN` into your IDE:
 
 .. note::
   
-   If you are using another IDE than Android Studio, please have a look at :ref:`sdk_6_import_project` section.
+   If you are using an IDE other than Android Studio, please have a look at :ref:`sdk_6_import_project` section.
 
-* If you are in the Welcome Screen, click on the :guilabel:`Open` button. Otherwise click either on :guilabel:`File` > :guilabel:`Open...`.
+* If you are in the Welcome Screen, click on the :guilabel:`Open` button. Otherwise click either on :guilabel:`File` > :guilabel:`Open...`,
 * Select the :guilabel:`Kernel-GREEN` directory located where you downloaded it and click on the :guilabel:`OK` button.
 
 The Gradle project should now be imported in Android Studio,
@@ -164,8 +164,8 @@ steps before going further.
 
 To deploy :guilabel:`Kernel-GREEN` on your board, you will have to:
 
-* Request a 30 days :ref:`Evaluation License <sdk_eula>` and install an activation key.
-* Build the Executable.
+* Request a 30 days :ref:`Evaluation License <sdk_eula>` and install an activation key,
+* Build the Executable,
 * Flash the board.
 
 Build the Executable for the STM32F7508-DK Discovery kit
@@ -176,7 +176,7 @@ the SDK provides the Gradle :guilabel:`buildExecutable` task.
 
 .. note::
   
-   If you are using another IDE than Android Studio, please have a look at :ref:`sdk_6_build_executable` section.
+   If you are using an IDE other than Android Studio, please have a look at :ref:`sdk_6_build_executable` section.
    Come back on this page if you need to activate an Evaluation License.
 
 * Double-click on the :guilabel:`buildExecutable` task in the Gradle tasks view.
@@ -196,7 +196,7 @@ Request your Evaluation License:
 
 * When you have received your activation key by email, drop it in the license directory by following the :ref:`evaluation_license_install_license_key` instructions (drop the license key zip file to the ``~/.microej/licenses/`` directory).
 
-Now your Evaluation license is installed, you can relaunch your Kernel build by double-clicking on the :guilabel:`buildExecutable` task in the Gradle tasks view. It may takes some time.
+Now your Evaluation license is installed, you can relaunch your Kernel build by double-clicking on the :guilabel:`buildExecutable` task in the Gradle tasks view. It may take some time.
 
 The gradle task deploys the Kernel in the BSP and then builds the BSP using Make.
 
@@ -210,9 +210,9 @@ the application provides the Gradle :guilabel:`runOnDevice` task.
 
 .. note::
   
-   If you are using another IDE than Android Studio, please have a look at :ref:`sdk_6_run_on_device` section.
+   If you are using an IDE other than Android Studio, please have a look at :ref:`sdk_6_run_on_device` section.
 
-* Double-click on the :guilabel:`runOnDevice` task in the Gradle tasks view. It may takes some time.
+* Double-click on the :guilabel:`runOnDevice` task in the Gradle tasks view. It may take some time:
 
    .. figure:: images/gettingStarted/STM32F7508DK/getting-started-runOnDevice.png
       :alt: runOnDevice task
@@ -231,7 +231,7 @@ Once the Executable is flashed, you should see the :guilabel:`Kernel-GREEN` trac
    :align: center
    :scale: 70%
 
-Well done !
+Well Done!
 -----------
 
 Now you know how to build and run a Multi-Sandbox Executable!
@@ -293,7 +293,7 @@ Going Further
 
 You have now successfully executed Sandboxed Applications on an embedded device so what's next?
 
-If you are an application developer you can continue to explore MicroEJ's API and functionalities by running and studying our samples at GitHub:
+If you are an application developer you can continue to explore MicroEJ's APIs and functionalities by running and studying our samples at GitHub:
 
 .. list-table::
    :widths: 33 33 33
@@ -312,7 +312,7 @@ You can also learn how to build bigger and better applications by reading our :r
 
 If you are an embedded engineer you could look at our VEE port examples at `GitHub <https://github.com/microej?q=vee&type=all&language=&sort=>`_. And to learn how create custom VEE ports you can read our :ref:`VEE Porting Guide <vee-porting-guide>`.
 
-You can also follow the :ref:`Kernel Developer Guide <kernel-developer-guide>` for more information on our multi-applications framework or read about our powerful wearable solution called :ref:`VEE Wear <vee-wear>`.
+You can also follow the :ref:`Kernel Developer Guide <kernel-developer-guide>` for more information on our multi-application framework or read about our powerful wearable solution called :ref:`VEE Wear <vee-wear>`.
 
 Last but not least you can choose to learn about specific topics by following one of our many :ref:`trainings` ranging from how to easily debug application to setting up a Continuous Integration process and a lot of things in between.
 

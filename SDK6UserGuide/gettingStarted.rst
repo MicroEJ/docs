@@ -74,7 +74,7 @@ Run Sandboxed Applications on a ready-to-use Multi-Sandbox Executable
 MicroEJ provides ready-to-use Multi-Sandbox Executables with basic services
 for developing Sandboxed Applications and deploying them easily on your Device.
 
-This Getting Started explains how to deploy this Multi-Sandbox Executables on a board
+This Getting Started explains how to deploy these Multi-Sandbox Executables on a board
 and run Sandboxed Applications on it.
 
 .. list-table::
@@ -92,10 +92,10 @@ Build your own Multi-Sandbox Executable
 
 This Getting Started is a step-by-step guide explaining how to build a Multi-Sandbox Executable.
 
-This Executable will be built from the `Kernel GREEN <https://github.com/MicroEJ/Kernel-GREEN>`__ sources.
+This Executable will be built from `Kernel GREEN <https://github.com/MicroEJ/Kernel-GREEN>`__ sources.
 
 Kernel GREEN provides a turnkey Kernel code providing basic services 
-for developing a Sandboxed Application and deploying them easily on your Device.
+to develop a Sandboxed Application and deploy it easily on your Device.
 
 .. list-table::
    :widths: 50 50
