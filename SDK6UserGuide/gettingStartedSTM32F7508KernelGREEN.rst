@@ -16,7 +16,7 @@ During this Getting Started, you will learn how to:
 
 * Get the Kernel GREEN,
 * Configure it,
-* Build the project and get the artifacts: Virtual Device, Executable, Javadoc, ...
+* Build the project and get the modules: Virtual Device, Executable, Javadoc, ...
 * Run a Sandboxed Application project on this Multi-Sandbox Executable.
 
 In case you are not familiar with MicroEJ, please visit `Discover MicroEJ <https://developer.microej.com/discover-microej/>`__ to understand the principles of our technology.
@@ -145,9 +145,9 @@ Kernel Configuration
 ^^^^^^^^^^^^^^^^^^^^
 
 The ``configuration/common.properties`` file provides a default configuration
-for the Kernel (runtime heap size, maximum number of threads, images heap size, ..).
+for the Kernel (runtime heap size, maximum number of threads, images heap size, etc.).
 
-This configuration will also impact the Sandboxed Applications running on top of the Kernel
+This configuration will also impact Sandboxed Applications running on top of the Kernel
 (e.g. max number of threads per application). 
 
 Check the `Kernel GREEN README <https://github.com/MicroEJ/Kernel-GREEN/blob/master/README.md>`__
