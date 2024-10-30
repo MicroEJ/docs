@@ -48,9 +48,9 @@ To follow this Getting Started, you need to:
 
 * Follow :ref:`MICROEJ SDK 6 installation Guide <sdk_6_install>`,
   Android Studio Koala is used on this Getting Started but feel free to use your favorite IDE,
-* `Download the Multi-Sandbox Executable: <https://repository.microej.com/packages/green/1.2.0/firmwares/STM32F7508-DK/GREEN-STM32F7508-DK-1.2.0.out>`__ ``GREEN-STM32F7508-DK-1.2.0.out``,
-* `Download the Virtual Device: <https://repository.microej.com/packages/green/1.2.0/vd/STM32F7508-DK/GREEN-STM32F7508-DK-1.2.0.vde>`__ ``GREEN-STM32F7508-DK-1.2.0.zip``,
-* Unzip ``GREEN-STM32F7508-DK-1.2.0.zip``.
+* `Download the Multi-Sandbox Executable: <https://repository.microej.com/packages/green/1.2.0/firmwares/STM32F7508-DK/GREEN-STM32F7508-DK-1.2.0.out>`__ ``GREEN-STM32F7508-DK-2.1.0.out``,
+* `Download the Virtual Device: <https://repository.microej.com/packages/green/1.2.0/vd/STM32F7508-DK/GREEN-STM32F7508-DK-1.2.0.vde>`__ ``GREEN-STM32F7508-DK-virtualDevice-2.1.0.zip``,
+* Unzip ``GREEN-STM32F7508-DK-virtualDevice-2.1.0.zip``.
 
 If you want more informations about this Multi-Sandbox Executable, the Javadoc and the Release notes are available in this `directory <https://repository.microej.com/packages/green/1.2.0/>`__.
 
@@ -102,7 +102,7 @@ Flash the Multi-Sandbox Executable using STM32CubeProgrammer:
 - Select ``STM32F7508-DISCO`` board in the Available external loaders list,
 - Click on ``Connect`` green button and wait until your board is connected,
 - Go to ``Erasing & Programming`` tab in the menu of STM32CubeProgrammer,
-- Point ``File path`` to your Multi-Sandbox Executable (``GREEN-STM32F7508-DK-1.2.0.out`` file),
+- Point ``File path`` to your Multi-Sandbox Executable (``GREEN-STM32F7508-DK-2.1.0.out`` file),
 - Click on ``Start Programming``. Wait for the programming to finish.
 
 .. note::
@@ -208,7 +208,7 @@ The Multi-Sandbox Executable and Virtual Device path need to be provided to the
       dependencies {
          ...
          //Uncomment the microejVee dependency to set the VEE Port or Kernel to use
-         microejVee(files("C:\\[YOUR_PATH]\\GREEN-STM32F7508-DK-1.2.0\\virtualDevice", "C:\\[YOUR_PATH]\\GREEN-STM32F7508-DK-1.2.0.out"))
+         microejVee(files("C:\\[YOUR_PATH]\\GREEN-STM32F7508-DK-virtualDevice-2.1.0\\virtualDevice", "C:\\[YOUR_PATH]\\GREEN-STM32F7508-DK-2.1.0.out"))
       }
 
 In order to execute the :guilabel:`MyApplication` project on the Virtual Device, the SDK provides the Gradle :guilabel:`runOnSimulator` task. 
@@ -403,8 +403,8 @@ Provide the Multi-Sandbox Executable and Virtual Device path to the project:
 
    .. code-block:: properties
 
-      kernelVirtualDevicePath=C:\\[YOUR_PATH]\\GREEN-STM32F7508-DK-1.2.0\\virtualDevice
-      kernelExecutablePath=C:\\[YOUR_PATH]\\GREEN-STM32F7508-DK-1.2.0.out
+      kernelVirtualDevicePath=C:\\[YOUR_PATH]\\GREEN-STM32F7508-DK-virtualDevice-2.1.0\\virtualDevice
+      kernelExecutablePath=C:\\[YOUR_PATH]\\GREEN-STM32F7508-DK-2.1.0.out
 
 In order to execute the applications on the Virtual Device, use the Gradle :guilabel:`runOnSimulator`
 task:
