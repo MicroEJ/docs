@@ -43,6 +43,14 @@ Each font file (EJF) is encoded for a given font height.
 To use the same font face (``.ttf`` file) with several heights, several EJF files are required.
 Consequently, an application that uses a lot of font heights may be penalized (ROM footprint).
 
+Color
+-----
+
+The font encoding is similar to the :ref:`section_image_alpha`.
+These formats only embed the pixel's opacity information.
+The color to draw the strings is the current color of the graphics context.
+No color is embedded, consequently, the colored characters as emojis are not supported.
+
 Languages
 ---------
 
