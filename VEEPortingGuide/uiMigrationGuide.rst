@@ -6,6 +6,11 @@
 Migration Guide
 ===============
 
+.. _section_ui_migrationguide_pack_14.2.0:
+
+From 14.1.1 to 14.2.0
+=====================
+
 .. _section_ui_migrationguide_pack_14.1.1:
 
 From 14.0.2 to 14.1.1
