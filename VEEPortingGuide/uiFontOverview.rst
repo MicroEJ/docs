@@ -8,7 +8,7 @@ Principle
 
 The notion of MicroUI Font encompasses two distinct kinds of fonts:
 
-1. The internal font format: a simple and small bitmap format (EJF), accessible in the application by calling `Font.getFont(String)`_.
+1. The internal font format: a simple and small bitmap format, accessible in the application by calling `Font.getFont(String)`_.
 2. The *custom* (or *extended*) font format: available in MicroUI extended libraries (such as MicroVG's `VectorFont`_), accessible in the application through subclasses of MicroUI `Font`_.
 
 .. _section_font_core_process:
