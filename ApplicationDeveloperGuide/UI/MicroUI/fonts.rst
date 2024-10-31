@@ -87,7 +87,7 @@ Fonts are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.fonts.list
       }
   }
 
-The file format is a standard Java properties file, each line representing a ``/`` separated resource path relative to the Classpath root referring to a Font file (usually with a ``.ejf`` file extension).
+The file format is a standard Java properties file, each line representing a ``/`` separated resource path relative to the Classpath root referring to a Font file (``fnt`` or ``.ejf`` extension).
 The resource may be followed by optional parameters which define :
 
 -  some ranges of characters to embed in the final raw file;
@@ -101,18 +101,50 @@ Example:
 
    # The following font is embedded with all characters
    # without transparency
-   com/mycompany/MyFont1.ejf
+   com/mycompany/MyFont1.fnt
 
    # The following font is embedded with only the latin 
    # unicode range without transparency 
-   com/mycompany/MyFont2.ejf:latin
+   com/mycompany/MyFont2.fnt:latin
 
    # The following font is embedded with all characters
    # with 2 levels of transparency
    com/mycompany/MyFont2.ejf::2
 
-Font files conventionally end with the ``.ejf`` suffix and are
-created using the Font Designer (see :ref:`section.tool.fontdesigner`).
+FNT Font File
+-------------
+
+Font files which end with the suffix ``.fnt`` are the standard Windows 3.0 font format.
+
+The third-party tool `bmfont`_ is advised to create ``.fnt`` from ``.ttf``.
+The options to export the font must follow these rules:
+
+.. figure:: images/bmfont_export.*
+   :alt: BMFont Export Options
+   :align: center   
+
+   BMFont Export Options
+
+ 
+It will generate a ``.fnt`` accompanied by its images (one or more):
+
+::
+
+   myfont.fnt
+   myfont_0.png
+   myfont_1.png
+
+.. hint:: Open the ``.fnt`` with a text editor to retrieve the image: ``page id=0 file="myfont_0.png"``.
+
+.. _bmfont : http://www.angelcode.com/products/bmfont/
+
+EJF Font File
+-------------
+
+Font files which end with the ``.ejf`` suffix are created using the Font Designer (see :ref:`section.tool.fontdesigner`).
+
+
+Font files conventionally end with the suffix ``.fnt`` (standard Windows 3.0 font format) or ``.ejf`` (created using the :ref:`section.tool.fontdesigner`).
 
 .. _fonts_list_grammar:
 
