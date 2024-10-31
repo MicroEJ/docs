@@ -41,9 +41,10 @@ However RAW files can have 1, 2, 4 or 8 bits-per-pixel (respectively 2, 4, 16 or
 The required pixel depth is defined in the configuration file (see next chapter).
 The Font Generator compresses the input pixels to the required depth.
 
-The following tables illustrates the conversion "grayscale to transparency level".
-The grayscale value '0x00' is black whereas value '0xff' is white.
-The transparency level '0x0' is fully transparent whereas level '0x1' (bpp == 1), '0x3' (bpp == 2) or '0xf' (bpp == 4) is fully opaque.
+The following tables illustrates the conversion "grayscale to transparency level" (the blacker the pixel, the more opaque the encoded opacity):
+
+* The grayscale value ``0x00`` is black whereas value ``0xff`` is white.
+* The transparency level ``0x0`` is fully transparent whereas level ``0x1`` (bpp == 1), ``0x3`` (bpp == 2) or ``0xf`` (bpp == 4) is fully opaque.
 
 .. table:: Font 1-BPP RAW Conversion
 
