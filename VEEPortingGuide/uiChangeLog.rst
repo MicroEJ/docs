@@ -9,6 +9,24 @@ Changelog
 14.2.0 (Unreleased)
 ===================
 
+ImageGenerator
+""""""""""""""
+
+**Changed**
+
+- Make cache faster.
+
+FontGenerator
+"""""""""""""
+
+**Changed**
+
+- Make cache faster.
+
+**Fixed**
+
+- Fix the compute of fonts heap usage when using cache.
+
 13.7.3 (2024-10-18)
 ===================
 
