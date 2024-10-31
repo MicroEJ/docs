@@ -62,7 +62,7 @@ This chapter describes the steps to setup the loading of an external resource fr
 
 1. Add the font to the application project resources (typically in the source folder ``src/main/resources`` and in the package ``fonts``).
 2. Create / open the configuration file (e.g. ``application.fontsext.list``).
-3. Add the relative path of the font and, at least, its output format (e.g. ``/fonts/myFont.ejf::4``, see :ref:`section.ui.Fonts`).
+3. Add the relative path of the font and, at least, its output format (e.g. ``/fonts/myFont.fnt::4``, see :ref:`section.ui.Fonts`).
 4. Build the application: the Font Generator converts the font in RAW format in the external resources folder (``[application_output_folder]/externalResources``).
 5. Deploy the external resources to the external memory (SDCard, flash, etc.) of the device.
 6. (optional) Configure the :ref:`section_externalresourceloader` to load from this source.
