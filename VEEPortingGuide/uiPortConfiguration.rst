@@ -135,7 +135,7 @@ Module Font Generator
 .. note:: This chapter only applies when the device has a display.
 
 This module allows for embedding the MicroEJ bitmap fonts of the application.
-The application's fonts (EJF files) are decoded and stored in a binary format compatible with the Graphics Engine.
+The application's fonts are decoded and stored in a binary format compatible with the Graphics Engine.
 Refer to the chapter :ref:`section_fontgen` to have more information.
 
 This module is optional: when not selected, the application cannot embed fonts compatible with the Graphics Engine.

@@ -21,7 +21,7 @@ Internal Font
 Principle
 ---------
 
-The internal font format is a simple and small bitmap format (EJF).
+The internal font format is a simple and small bitmap format.
 
 The built-in font engine used to render this format:
 
@@ -30,7 +30,7 @@ The built-in font engine used to render this format:
 * Has a very small memory footprint.
 * Is fast.
 * Does not need runtime memory allocation.
-* Provides some offline tools to generate the font files (EJF).
+* Provides some offline tools to generate the font files.
 * Allows to tune the footprint of the font files (pixel opacity levels and ranges).
 * Can be extended to provide additional features (such as a complex layout manager).
 
@@ -39,8 +39,8 @@ Its limitations are described in the following chapters.
 Height
 ------
 
-Each font file (EJF) is encoded for a given font height.
-To use the same font face (``.ttf`` file) with several heights, several EJF files are required.
+Each font file is encoded for a given font height.
+To use the same font face (``.ttf`` file) with several heights, several font files are required.
 Consequently, an application that uses a lot of font heights may be penalized (ROM footprint).
 
 Color
@@ -544,7 +544,7 @@ Transparency
 ------------
 
 The second parameter is for specifying the font transparency level
-(``1``, ``2``, ``4`` or ``8``). If unspecified, the encoded transparency level is ``1`` (does not depend on transparency level encoded in EJF file).
+(``1``, ``2``, ``4`` or ``8``). If unspecified, the encoded transparency level is ``1`` (does not depend on transparency level encoded in font file).
 
 Examples:
 
