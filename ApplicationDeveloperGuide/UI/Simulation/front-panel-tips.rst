@@ -42,7 +42,7 @@ Zoom on pixelated view for checking custom drawings
 ---------------------------------------------------
 
 Assuming a pixel accurate simulated display (see :ref:`Window scaling<fp-tips-windows-scaling>`), use a screen magnifier tool to zoom on portions of the GUI.
-It is especially useful to check custom drawings as well as MicroUI Fonts (EJF) & Images.
+It is especially useful to check custom drawings as well as Fonts & Images.
 Also, make sure the tool does not apply a filter to smooth when scaling.
 
 .. tabs::
