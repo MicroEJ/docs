@@ -14,9 +14,9 @@ It generates binary files ready to be displayed without the need for additional 
 Functional Description
 ======================
 
-.. figure:: images/static-font-gen2.*
+.. figure:: images/static-font-gen3.*
    :alt: Font Generator Principle
-   :width: 450px
+   :scale: 70%
    :align: center
 
    Font Generator Principle
@@ -36,7 +36,7 @@ Process overview:
 Pixel Transparency
 ==================
 
-As mentioned above, each pixel of each character in an ``.ejf`` file has one of 256 different gray-scale values.
+As mentioned above, each pixel of each character in an ``.fnt`` or ``.ejf`` file has one of 256 different gray-scale values.
 However RAW files can have 1, 2, 4 or 8 bits-per-pixel (respectively 2, 4, 16 or 256 gray-scale values).
 The required pixel depth is defined in the configuration file (see next chapter).
 The Font Generator compresses the input pixels to the required depth.

@@ -28,6 +28,10 @@ ImageGenerator
 FontGenerator
 """""""""""""
 
+**Added**
+
+- Add the support of the ``.fnt`` files.
+
 **Changed**
 
 - Make cache faster.

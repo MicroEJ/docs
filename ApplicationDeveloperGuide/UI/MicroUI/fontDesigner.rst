@@ -15,7 +15,7 @@ It stores fonts in a VEE Port independent format.
 Functional Description
 ======================
 
-.. figure:: images/designer_font-process2.*
+.. figure:: images/designer_font-process3.png
    :alt: Font Generation
    :scale: 70%
    :align: center
