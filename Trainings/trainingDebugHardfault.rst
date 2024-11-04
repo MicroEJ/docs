@@ -36,7 +36,7 @@ The following sections explain:
 Useful Resources
 ----------------
 
-* IAR System: Debugging a HardFault on Cortex-M https://www.iar.com/knowledge/support/technical-notes/debugger/debugging-a-hardfault-on-cortex-m/
+* IAR System: Debugging a HardFault on Cortex-M https://mypages.iar.com/s/article/Debugging-a-HardFault-on-Cortex-M
 * ESP-IDF Programming Guide: Fatal Errors https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/fatal-errors.html
 * Using Cortex-M3/M4/M7 Fault Exceptions MDK Tutorial http://www.keil.com/appnotes/files/apnt209.pdf
 
@@ -100,7 +100,7 @@ If applicable, configure the MPU should to protect the application.
 
 * Check the RTOS documentation if it supports MPU. 
 
-  For example, FreeRTOS includes FreeRTOS-MPU https://www.freertos.org/FreeRTOS-MPU-memory-protection-unit.html.
+  For example, FreeRTOS includes FreeRTOS-MPU https://www.freertos.org/Security/04-FreeRTOS-MPU-memory-protection-unit.
 
 * Configure the MPU to configure the access to the JVM heap and stack to prevent any other native threads from altering this area.
   Refer to :ref:`this section<core_engine_link>` for the list of section names defined by the MicroEJ Core Engine.
