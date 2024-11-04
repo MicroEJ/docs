@@ -31,7 +31,7 @@ The second part consists in running the same demo application on your device. Fo
 
 * An HDMI display with touchscreen connected with an `IMX-MIPI-HDMI adapter <https://www.nxp.com/part/IMX-MIPI-HDMI>`__.
 
-   * This getting started has been tested with a `MageDok T080A <https://magedok.com/products/8-inch-1280-720-resolution-touch-monitor-t080a>`_.
+   * This getting started has been tested with a `MageDok T080A <https://store.magedok.com/collections/portable-monitors/products/8-inch-1280-720-resolution-touch-monitor-t080a>`_.
 
 * A prebuild Yocto Linux image, with all necessary linux packages preinstalled.
 
