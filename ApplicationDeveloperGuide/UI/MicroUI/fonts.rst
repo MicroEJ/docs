@@ -66,6 +66,38 @@ The array of characters to render must only contain renderable characters (no es
 
 .. hint:: Use the offline tool :ref:`Native Language Support <nls_converter>` to automatically convert the translation messages in a character array compatible with the built-in font engine.
 
+FNT Font File
+-------------
+
+Font files which end with the suffix ``.fnt`` are the standard Windows 3.0 font format.
+
+The third-party tool `bmfont`_ is advised to create ``.fnt`` from ``.ttf``.
+The options to export the font must follow these rules:
+
+.. figure:: images/bmfont_export.*
+   :alt: BMFont Export Options
+   :align: center   
+
+   BMFont Export Options
+
+ 
+It will generate a ``.fnt`` accompanied by its images (one or more):
+
+::
+
+   myfont.fnt
+   myfont_0.png
+   myfont_1.png
+
+.. hint:: Open the ``.fnt`` with a text editor to retrieve the image: ``page id=0 file="myfont_0.png"``.
+
+.. _bmfont : http://www.angelcode.com/products/bmfont/
+
+EJF Font File
+-------------
+
+Font files which end with the ``.ejf`` suffix are created using the Font Designer (see :ref:`section.tool.fontdesigner`).
+
 Usage
 -----
 
@@ -110,41 +142,6 @@ Example:
    # The following font is embedded with all characters
    # with 2 levels of transparency
    com/mycompany/MyFont2.ejf::2
-
-FNT Font File
--------------
-
-Font files which end with the suffix ``.fnt`` are the standard Windows 3.0 font format.
-
-The third-party tool `bmfont`_ is advised to create ``.fnt`` from ``.ttf``.
-The options to export the font must follow these rules:
-
-.. figure:: images/bmfont_export.*
-   :alt: BMFont Export Options
-   :align: center   
-
-   BMFont Export Options
-
- 
-It will generate a ``.fnt`` accompanied by its images (one or more):
-
-::
-
-   myfont.fnt
-   myfont_0.png
-   myfont_1.png
-
-.. hint:: Open the ``.fnt`` with a text editor to retrieve the image: ``page id=0 file="myfont_0.png"``.
-
-.. _bmfont : http://www.angelcode.com/products/bmfont/
-
-EJF Font File
--------------
-
-Font files which end with the ``.ejf`` suffix are created using the Font Designer (see :ref:`section.tool.fontdesigner`).
-
-
-Font files conventionally end with the suffix ``.fnt`` (standard Windows 3.0 font format) or ``.ejf`` (created using the :ref:`section.tool.fontdesigner`).
 
 .. _fonts_list_grammar:
 
@@ -576,7 +573,7 @@ Transparency
 ------------
 
 The second parameter is for specifying the font transparency level
-(``1``, ``2``, ``4`` or ``8``). If unspecified, the encoded transparency level is ``1`` (does not depend on transparency level encoded in font file).
+(``1``, ``2``, ``4`` or ``8``). If unspecified, the encoded transparency level is ``1`` (does not depend on the transparency level encoded in font file).
 
 Examples:
 
