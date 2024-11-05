@@ -10,8 +10,6 @@ Principle
 The Font Designer module is a graphical tool (Eclipse plugin) that runs within the MicroEJ IDE used to build and edit ``.ejf`` fonts. 
 It stores fonts in a VEE Port independent format.
 
-.. XXX_TODO mention is as deprecated ?
-
 Functional Description
 ======================
 

@@ -48,7 +48,7 @@ Available APIs and Features
 * Supported Resources
 
   * Images
-  * Fonts (EJF, FNT, TTF, OTF)
+  * Fonts (FNT, EJF, TTF, OTF)
   * Android Vector Drawables (AVD)
   * SVG
   * NLS (including Android XML and PO formats)
