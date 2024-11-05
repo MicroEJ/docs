@@ -1,3 +1,5 @@
+.. include:: ../../../VEEPortingGuide/uiReplaces.rst
+
 .. _microui_traces:
 
 Debug Traces
@@ -37,6 +39,8 @@ Trace identifiers
 -----------------
 
 The following tables describe some events data.
+
+.. warning:: These tables are only compatible with the latest pack available (|UIPACKVERSION|).
 
 .. table:: MicroUI Traces
 
@@ -204,23 +208,15 @@ The following tables describe some events data.
    +-------------+--------------------------------------------+
    | 0x13 (19)   | Draw image                                 |
    +-------------+--------------------------------------------+
+   | 0x14 (20)   | Draw string                                |
+   +-------------+--------------------------------------------+
+   | 0x15 (21)   | Get string width                           |
+   +-------------+--------------------------------------------+
    | 0x32 (50)   | Draw polygon                               |
    +-------------+--------------------------------------------+
    | 0x33 (51)   | Fill polygon                               |
    +-------------+--------------------------------------------+
    | 0x34 (52)   | Get ARGB image data                        |
-   +-------------+--------------------------------------------+
-   | 0x35 (53)   | Draw string                                |
-   +-------------+--------------------------------------------+
-   | 0x36 (54)   | Draw deformed string                       |
-   +-------------+--------------------------------------------+
-   | 0x37 (55)   | Draw deformed image                        |
-   +-------------+--------------------------------------------+
-   | 0x38 (56)   | Draw character with rotation (bilinear)    |
-   +-------------+--------------------------------------------+
-   | 0x39 (57)   | Draw character with rotation (simple)      |
-   +-------------+--------------------------------------------+
-   | 0x3a (58)   | Get string width                           |
    +-------------+--------------------------------------------+
    | 0x3b (59)   | Get pixel                                  |
    +-------------+--------------------------------------------+
@@ -252,6 +248,12 @@ The following tables describe some events data.
    +-------------+--------------------------------------------+
    | 0xcc (204)  | Draw image with scalling (bilinear)        |
    +-------------+--------------------------------------------+
+   | 0xcd (205)  | Draw string with scaling (bilinear)        |
+   +-------------+--------------------------------------------+
+   | 0xce (206)  | Draw character with rotation (bilinear)    |
+   +-------------+--------------------------------------------+
+   | 0xcf (207)  | Draw character with rotation (simple)      |
+   +-------------+--------------------------------------------+
 
 .. table:: Drawing Status
 
@@ -275,6 +277,8 @@ The traces are :ref:`systemview` compatible.
    MicroUI Traces displayed in SystemView
 
 The following text can be copied in a file called ``SYSVIEW_MicroUI.txt`` and copied in SystemView installation folder (e.g. ``SEGGER/SystemView_V252a/Description/``).
+
+.. warning:: These traces are only compatible with the latest pack available (|UIPACKVERSION|).
 
 .. code-block::
 
@@ -327,16 +331,12 @@ The following text can be copied in a file called ``SYSVIEW_MicroUI.txt`` and co
    NamedType GEDraw 17=FILL_CIRCLE
    NamedType GEDraw 18=DRAW_ARGB
    NamedType GEDraw 19=DRAW_IMAGE
+   NamedType GEDraw 20=DRAW_STRING
+   NamedType GEDraw 21=STRING_WIDTH
 
    NamedType GEDraw 50=DRAW_POLYGON
    NamedType GEDraw 51=FILL_POLYGON
    NamedType GEDraw 52=GET_IMAGEARGB
-   NamedType GEDraw 53=DRAW_STRING
-   NamedType GEDraw 54=DRAW_DEFORMED_STRING
-   NamedType GEDraw 55=DRAW_IMAGE_DEFORMED
-   NamedType GEDraw 56=DRAW_CHAR_ROTATION_BILINEAR
-   NamedType GEDraw 57=DRAW_CHAR_ROTATION_SIMPLE
-   NamedType GEDraw 58=STRING_WIDTH
    NamedType GEDraw 59=GET_PIXEL
 
    NamedType GEDraw 100=DRAW_THICKFADEDPOINT
@@ -354,6 +354,9 @@ The following text can be copied in a file called ``SYSVIEW_MicroUI.txt`` and co
    NamedType GEDraw 202=DRAW_ROTATEDIMAGEBILINEAR
    NamedType GEDraw 203=DRAW_SCALEDIMAGENEARESTNEIGHBOR
    NamedType GEDraw 204=DRAW_SCALEDIMAGEBILINEAR
+   NamedType GEDraw 205=DRAW_SCALEDCHARSBILINEAR
+   NamedType GEDraw 206=DRAW_CHARWITHROTATIONBILINEAR
+   NamedType GEDraw 207=DRAW_CHARWITHROTATIONNEARESTNEIGHBOR
 
    NamedType GEDrawAsync 0=done
    NamedType GEDrawAsync 1=started
@@ -398,6 +401,7 @@ The following text can be copied in a file called ``SYSVIEW_MicroUI.txt`` and co
    56       BRS_ClearList      (BRS) Clear the list of regions
 
 
+.. hint:: Retrieve a compatible file with the VEE Port's UI Pack in the UI Pack (open it with as a zip): in the VEE Port configuration project, open ``[veeport-configuration]\target~\dependencies\[architecture]-ui-pack.xpfp\build\fragments\microui\content\lib\SYSVIEW_MicroUI.txt``.
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
