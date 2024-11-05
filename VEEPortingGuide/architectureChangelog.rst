@@ -40,6 +40,10 @@ specific configuration:
 [8.3.0] - RC
 ------------
 
+Foundation Libraries
+~~~~~~~~~~~~~~~~~~~~
+
+- Fixed EDC implementation of `java.util.WeakHashMap.put()`_ which could lead to a memory leak when new elements are added but never accessed.
 
 Tools
 ~~~~~
