@@ -76,9 +76,9 @@ To decode the trace, execute the ``execTool`` task as followed:
 .. code:: console
 
     ./gradlew execTool --name=stackTraceDecrypter \
-      --toolProperty="proxy.connection.connection.type=console" \
-      --toolProperty="application.file=../../application/executable/application.out" \
-      --toolProperty="additional.application.files=" \
+      --toolProperty=proxy.connection.connection.type="console" \
+      --toolProperty=application.file="../../application/executable/application.out" \
+      --toolProperty=additional.application.files="" \
       --console plain
 
 Paste the previous trace dump into the console.
