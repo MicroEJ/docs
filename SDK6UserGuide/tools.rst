@@ -8,7 +8,7 @@ These tools are either command line tools or Eclipse IDE plugins.
 
 **Command line tools**
 
-Command line tools can be executed using the gradle task ``execTool``.
+Command line tools can be executed using the Gradle task ``execTool``.
 
 The format of the task is as follow:
 
