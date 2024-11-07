@@ -126,7 +126,7 @@ The Gradle project should now be imported into IntelliJ IDEA. Your workspace con
 Select the VEE Port
 ^^^^^^^^^^^^^^^^^^^
 
-In the gradle build file ``build.gradle.kts``, replace the VEE dependency ``microejVEE`` with the i.MX93, like this:
+In the Gradle build file ``build.gradle.kts``, replace the VEE dependency ``microejVEE`` with the i.MX93, like this:
 
 .. code-block::
 
@@ -383,7 +383,7 @@ Request your Evaluation License:
 
 Now your Evaluation license is installed, you can relaunch your application build by double-clicking on the :guilabel:`buildExecutable` task in the Gradle tasks view. It may take some time.
 
-The gradle task deploys the Application in the BSP and then builds the BSP using Make.
+The Gradle task deploys the Application in the BSP and then builds the BSP using Make.
 
 The :guilabel:`Example-Java-Widget` application is built and ready to be flashed on i.MX93 Evaluation Kit once the hardware setup is completed.
 
