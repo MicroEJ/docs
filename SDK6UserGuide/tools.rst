@@ -14,7 +14,7 @@ The format of the task is as follow:
 
 ::
 
-   ./gradlew execTool --name=TOOL_NAME --toolProperty="PROPERTY=VALUE" --toolProperty="PROPERTY=VALUE" ...
+   ./gradlew execTool --name=TOOL_NAME --toolProperty=PROPERTY="VALUE" --toolProperty=PROPERTY="VALUE" ...
 
 The parameter required ``--name`` is used to describe the name of the tool to execute.
 The optional parameters ``--toolProperty`` are used to configure the tool's options.
