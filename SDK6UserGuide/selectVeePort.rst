@@ -7,6 +7,14 @@ Building or running an Application or a Test Suite with the SDK requires a VEE P
 
 Use one of the following available options to provide it to your project. 
 
+.. note::
+
+   Declaring a VEE Port in project dependencies only applies to the current project. 
+   This configuration is not fetched transitively by consumer projects.
+   Especially when configuring the VEE Port to test a library project, 
+   application projects depending on this library will not "see" this test VEE Port, 
+   they must configure a VEE Port on their own and are free to use a different one.
+   
 .. _sdk_6_select_veeport_module:
 
 Using a Module Dependency
