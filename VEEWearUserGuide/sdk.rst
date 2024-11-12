@@ -3,7 +3,7 @@
 VEE Wear SDK
 ============
 
-The VEE Wear SDK allows developers to build a VEE Wear Kernel binary and develop VEE Wear Apps.
+The VEE Wear SDK allows developers to build a VEE Wear Kernel executable and develop VEE Wear Apps.
 
 The SDK contains the following components:
 
@@ -128,20 +128,6 @@ To create an App project, follow these steps:
 - Open the ``build.gradle.kts`` file.
 - Add a dependency to the VEE Wear Framework library: add ``implementation("com.microej.library.wear:wear-framework:0.9.1")`` in the ``dependencies`` block.
 
-Building an App
-~~~~~~~~~~~~~~~
-
-To be able to build your App, you must add a dependency to the :ref:`VEE Wear Kernel <vee_wear_kernel>` by following these steps:
-
-- Open the ``build.gradle.kts`` file.
-- Define the path to the VEE Wear SDK on your machine: add ``val veeWearSdk = "/path/to/VEE-Wear-SDK"``
-- Add a dependency to the VEE Wear Kernel: add 	``microejVee(files("$veeWearSdk/Virtual-Device", "$veeWearSdk/kernel.out"))`` in the ``dependencies`` block.
-
-Once the project is configured, the App can be built like any MicroEJ Application:
-
-- To test an App on simulator, launch the ``runOnSimulator`` Gradle task.
-- To build an App, launch the ``buildFeature`` Gradle task. You can then install the App by deploying the ``build/feature/application/application.fo`` binary to the watch over USB or Bluetooth.
-
 Implementing the Entry Point
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -199,6 +185,26 @@ To implement a Complication Data Source, implement the `ComplicationDataSource`_
 - `renderIcon() <https://repository.microej.com/javadoc/wear-framework/0.9.1/com/microej/wear/framework/components/ComplicationDataSource.html#renderIcon(ej.microui.display.GraphicsContext,int,int,int,int)>`__ should render the icon in the given region.
 
 Once the Complication Data Source is implemented, make sure it is registered in the Kernel by calling `ComponentService.registerComplicationDataSource()`_. This method is usually called in the entry point of the App.
+
+Building an App
+~~~~~~~~~~~~~~~
+
+Selecting the Kernel
+^^^^^^^^^^^^^^^^^^^^
+
+To be able to build your App, you must add a dependency to the :ref:`VEE Wear Kernel <vee_wear_kernel>` by following these steps:
+
+- Open the ``build.gradle.kts`` file.
+- Define the path to the VEE Wear SDK on your machine: add ``val veeWearSdk = "/path/to/VEE-Wear-SDK"``
+- Add a dependency to the VEE Wear Kernel: add 	``microejVee(files("$veeWearSdk/Virtual-Device", "$veeWearSdk/kernel.out"))`` in the ``dependencies`` block.
+
+Building the App
+^^^^^^^^^^^^^^^^
+
+Once the project is configured, the App can be built like any MicroEJ Application:
+
+- To test an App on simulator, launch the ``runOnSimulator`` Gradle task.
+- To build an App, launch the ``buildFeature`` Gradle task. You can then install the App by deploying the ``build/feature/application/application.fo`` file to the watch over USB or Bluetooth.
 
 .. _Timer: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Timer.html
 .. _FeatureEntryPoint: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/FeatureEntryPoint.html
