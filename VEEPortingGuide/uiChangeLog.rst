@@ -6,8 +6,10 @@
 Changelog
 =========
 
-14.2.0 (Unreleased)
-===================
+.. _section_ui_changelog_14_2_0:
+
+[14.2.0] - Unreleased
+=====================
 
 ImageGenerator
 """"""""""""""
@@ -40,8 +42,10 @@ FontGenerator
 
 - Fix the compute of fonts heap usage when using cache.
 
-13.7.3 (2024-10-18)
-===================
+.. _section_ui_changelog_13_7_3:
+
+[13.7.3] - 2024-10-18
+=====================
 
 FontGenerator
 """""""""""""
@@ -50,8 +54,10 @@ FontGenerator
 
 - Fix the management of the kernel's fonts on the simulator (mode Multi-Sandbox).
 
-14.1.1 (2024-10-17)
-===================
+.. _section_ui_changelog_14_1_1:
+
+[14.1.1] - 2024-10-17
+=====================
 
 MicroUI
 """""""
@@ -210,8 +216,10 @@ C Module NemaGFX
 
 - Make this C Module compatible with the MicroUI C Module 14.1.1.
 
-14.0.3 - 2024-10-01
-===================
+.. _section_ui_changelog_14_0_3:
+
+[14.0.3] - 2024-10-01
+=====================
 
 MicroUI
 """""""
@@ -237,8 +245,10 @@ LLAPIs
 
 * Check the ``LLUI_DISPLAY_SInitData`` values set by the BSP (``LLUI_DISPLAY_IMPL_initialize()``) before initializing the Graphics Engine.
 
-14.0.2 (2024-07-26)
-===================
+.. _section_ui_changelog_14_0_2:
+
+[14.0.2] - 2024-07-26
+=====================
 
 MicroUI
 """""""
@@ -255,8 +265,10 @@ Front Panel
 
 * Fix the infinite waiting on a display event when killing a feature.
 
-14.0.1 (2024-04-09)
-===================
+.. _section_ui_changelog_14_0_1:
+
+[14.0.1] - 2024-04-09
+=====================
 
 MicroUI
 """""""
@@ -327,8 +339,10 @@ C Module NemaGFX
 
 * Homogenize the notions of back and front buffers.
 
-14.0.0 (2024-02-14)
-===================
+.. _section_ui_changelog_14_0_0:
+
+[14.0.0] - 2024-02-14
+=====================
 
 MicroUI
 """""""
@@ -456,8 +470,10 @@ C Module NemaGFX
 
 * Fix ``nema_draw_line()`` ``y1`` argument.
 
-13.7.2 (2023-12-21)
-===================
+.. _section_ui_changelog_13_7_2:
+
+[13.7.2] - 2023-12-21
+=====================
 
 MicroUI
 """""""
@@ -487,8 +503,10 @@ C Module NemaGFX
 
 * Fix the drawing status when a thick line is out-of-clip (results in an infinite loop).
 
-13.7.0 (2023-10-23)
-===================
+.. _section_ui_changelog_13_7_0:
+
+[13.7.0] - 2023-10-23
+=====================
 
 MicroUI
 """""""
@@ -578,7 +596,9 @@ C Module NemaGFX
 
 * Add the compatibility with UI Pack 13.7.
 
-[13.6.2] (2023-09-20)
+.. _section_ui_changelog_13_6_2:
+
+[13.6.2] - 2023-09-20
 =====================
 
 Image Generator
@@ -611,7 +631,9 @@ C Module VGLite
 * Fix the GPU deactivation when a drawing is not performed for any reason.
 * VGLite ``3.0.15_rev4``: Fix the bounding box of the ``vg_lite_blit()`` given to the MicroEJ Graphics Engine when the define ``VG_BLIT_WORKAROUND`` is set (the function ``vg_lite_blit()`` is not used by default).
 
-[13.6.1] (2023-07-26)
+.. _section_ui_changelog_13_6_1:
+
+[13.6.1] - 2023-07-26
 =====================
 
 MicroUI
@@ -621,7 +643,9 @@ MicroUI
 
 * Fix creating a BufferedImage when traces are enabled.
 
-[13.6.0] (2023-07-17)
+.. _section_ui_changelog_13_6_0:
+
+[13.6.0] - 2023-07-17
 =====================
 
 MicroUI
@@ -678,7 +702,9 @@ C Module NemaGFX
 * New C Module: `C Module NemaGFX 1.0.0`_.
 * Compatible with UI Pack 13.5.x and 13.6.0.
 
-[13.5.1] (2023-06-08)
+.. _section_ui_changelog_13_5_1:
+
+[13.5.1] - 2023-06-08
 =====================
 
 MicroUI
@@ -706,7 +732,9 @@ C Module VGLite
 
 * Fix performing drawings when the clip is disabled.
 
-[13.5.0] (2023-05-03)
+.. _section_ui_changelog_13_5_0:
+
+[13.5.0] - 2023-05-03
 =====================
 
 MicroUI
@@ -827,7 +855,9 @@ C Module VGLite
 
 * Remove the notion of ``vg_drawer`` and the define ``VGLITE_USE_MULTIPLE_DRAWERS`` (replaced by multiple Graphics Context output formats).
 
-[13.4.1] (2023-02-06)
+.. _section_ui_changelog_13_4_1:
+
+[13.4.1] - 2023-02-06
 =====================
 	
 Drawing
@@ -858,6 +888,8 @@ C Module VGLite
 * New version: `C Module VGLite 5.0.1`_.
 * Compatible with VGLite library ``3.0.15_rev4``.
 * Several additions, changes and fixes are available. Refer to the `C Module VGLite 5.0.1`_ changelog for more information.
+
+.. _section_ui_changelog_13_4_0:
 
 [13.4.0] - 2022-12-13
 =====================
@@ -928,6 +960,8 @@ C Module VGLite
 * Compatible with VGLite library ``3.0.15_rev4``.
 * Several additions, changes and fixes are available. Refer to the `C Module VGLite 4.0.0`_ changelog for more information.
 
+.. _section_ui_changelog_13_3_1:
+
 [13.3.1] - 2022-09-09
 =====================
  
@@ -948,6 +982,8 @@ Image Generator
 * Fix the external resource generation: they were no longer generated (UI pack 13.3.0 regression).
 * Fix the duplicate generation (as internal and external resources) of the custom ``.list`` file images (consider only custom ``.list`` file images as external resources when the prefix of the list file extension starts with ``extern``).
 * Fix the internal limit error when converting images with BPP lower than 8 bits (for platforms that define a rule for the image stride through an Image Generator Extension project).
+
+.. _section_ui_changelog_13_3_0:
 
 [13.3.0] - 2022-09-02
 =====================
@@ -1042,6 +1078,8 @@ C Module VGLite
 * New version: `C Module VGLite 3.0.0`_.
 * Compatible with VGLite library ``3.0.11_rev3``.
 * Several additions, changes and fixes are available. Refer to the `C Module VGLite 3.0.0`_ changelog for more information.
+
+.. _section_ui_changelog_13_2_0:
 
 [13.2.0] - 2022-05-05
 =====================
@@ -1146,6 +1184,8 @@ BSP
 
 * Fix the IAR Embedded Workbench warnings during debug session.
 
+.. _section_ui_changelog_13_1_0:
+
 [13.1.0] - 2021-08-03
 =====================
 
@@ -1232,6 +1272,8 @@ C Module MicroUI
 * Fix comments in ``LLUI_PAINTER_impl.c`` and ``LLDW_PAINTER_impl.c``.
 * Ignore a drawing when at least one scaling factor is equal to zero.
 
+.. _section_ui_changelog_13_0_7:
+
 [13.0.7] - 2021-07-30
 =====================
 
@@ -1254,6 +1296,8 @@ Misc
 
 * Fix MMM dependencies: do not fetch the MicroEJ Architecture.
 
+.. _section_ui_changelog_13_0_6:
+
 [13.0.6] - 2021-03-29
 =====================
 
@@ -1263,6 +1307,8 @@ LLAPIs
 **Fixed**
 
 * Size of the typedef ``MICROUI_Image``: do not depend on the size of the enumeration ``MICROUI_ImageFormat`` (``LLUI_PAINTER_impl.h``).
+
+.. _section_ui_changelog_13_0_5:
 
 [13.0.5] - 2021-03-08
 =====================
@@ -1292,6 +1338,8 @@ Front Panel
 **Fixed**
 
 * Front Panel memory management: reduce simulation time.
+
+.. _section_ui_changelog_13_0_4:
 
 [13.0.4] - 2021-01-15
 =====================
@@ -1342,6 +1390,8 @@ Image Generator
 
 .. _com.microej.pack.ui#ui-pack(imageGenerator)#13.0.4: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.0.4/
 
+.. _section_ui_changelog_13_0_3:
+
 [13.0.3] - 2020-12-03
 =====================
  
@@ -1377,6 +1427,8 @@ C Module DMA2D
 
 * New version: `C Module DMA2D 1.0.6`_.
 
+.. _section_ui_changelog_13_0_2:
+
 [13.0.2] - 2020-10-02
 =====================
 
@@ -1395,6 +1447,8 @@ C Module DMA2D
 
 * De-init the DMA2D before re-initializing it, to reset the context at HAL level.
 * Manipulate the drawing limits after being sure the DMA2D job is finished.
+
+.. _section_ui_changelog_13_0_1:
 
 [13.0.1] - 2020-09-22
 =====================
@@ -1468,6 +1522,8 @@ C Module DMA2D
 **Fixed**
 
 * Fix file names.
+
+.. _section_ui_changelog_13_0_0:
 
 [13.0.0] - 2020-07-30
 =====================
@@ -1595,6 +1651,8 @@ C Modules
 
 .. _UI Pack 13.0.0: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.0.0/
 
+.. _section_ui_changelog_12_1_5:
+
 [12.1.5] - 2020-10-02
 =====================
 
@@ -1603,6 +1661,8 @@ C Modules
 **Fixed**
 
 * [ESP32] - Potential ``PSRAM`` access faults by rebuilding using esp-idf v3.3.0 toolchain - ``simikou2``.
+
+.. _section_ui_changelog_12_1_4:
 
 [12.1.4] - 2020-03-10
 =====================
@@ -1614,6 +1674,8 @@ MicroUI Implementation
 
 * Obsolete references on Java heap are used (since MicroEJ UI Pack 12.0.0).
 
+.. _section_ui_changelog_12_1_3:
+
 [12.1.3] - 2020-02-24
 =====================
 
@@ -1623,6 +1685,8 @@ MicroUI Implementation
 **Fixed**
 
 * Caps are not used when drawing an anti-aliased line.
+
+.. _section_ui_changelog_12_1_2:
 
 [12.1.2] - 2019-12-09
 =====================
@@ -1635,6 +1699,8 @@ MicroUI Implementation
 * Fix Graphics Engine empty clip (empty clip had got a size of 1 pixel).
 * Clip not respected when clip is set "just after or before" graphics context drawable area: first (or last) line (or column) of graphics context was rendered.
 
+.. _section_ui_changelog_12_1_1:
+
 [12.1.1] - 2019-10-29
 =====================
 
@@ -1644,6 +1710,8 @@ MicroUI Implementation
 **Fixed**
 
 * Fix Graphics Engine clip (cannot be outside graphics context).
+
+.. _section_ui_changelog_(maint) 8_0_0:
 
 [(maint) 8.0.0] - 2019-10-18
 ============================
@@ -1663,6 +1731,8 @@ MicroUI Implementation
 **Fixed**
 
 * Pending flush cannot be added after an ``OutOfEventException``.
+
+.. _section_ui_changelog_12_1_0:
 
 [12.1.0] - 2019-10-16
 =====================
@@ -1691,6 +1761,8 @@ MicroUI Implementation
 
 .. _Display.isColor(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#isColor--
 
+.. _section_ui_changelog_12_0_2:
+
 [12.0.2] - 2019-09-23
 =====================
 
@@ -1706,6 +1778,8 @@ MicroUI Implementation
 **Fixed**
 
 * Remove useless exception in SystemInputPump.
+
+.. _section_ui_changelog_12_0_1:
 
 [12.0.1] - 2019-07-25
 =====================
@@ -1724,6 +1798,8 @@ Front Panel
 
 * Increase native implementation execution time.
   
+.. _section_ui_changelog_12_0_0:
+
 [12.0.0] - 2019-06-24
 =====================
 
@@ -1787,6 +1863,8 @@ Front Panel Plugin
 
 * Front Panel version 5: Move Front Panel from MicroEJ UI Pack to Architecture *(not backward compatible)*; Architecture contains now Front Panel version 6.
 
+.. _section_ui_changelog_11_2_0:
+
 [11.2.0] - 2019-02-01
 =====================
 
@@ -1808,6 +1886,8 @@ Tools
 
 * Remove Font Designer from pack (useless).
 
+.. _section_ui_changelog_11_1_2:
+
 [11.1.2] - 2018-08-10
 =====================
 
@@ -1818,10 +1898,14 @@ MicroUI Implementation
 
 * Fix drawing bug in thick circle arcs.
 
+.. _section_ui_changelog_11_1_1:
+
 [11.1.1] - 2018-08-02
 =====================
 
 * Internal release.
+
+.. _section_ui_changelog_11_1_0:
 
 [11.1.0] - 2018-07-27
 =====================
@@ -1849,6 +1933,8 @@ MicroUI Implementation
 * ``Fillrect`` throws a hardfault on 8bpp platform.
 * Rendering of a LUT image is wrong when using software algorithm.
 
+.. _section_ui_changelog_11_0_1:
+
 [11.0.1] - 2018-06-05
 =====================
 
@@ -1864,6 +1950,8 @@ MicroUI Implementation
 * LRGB888 image format is always fully opaque.
 * Number of colors returned when it is a custom display may be wrong.
 
+.. _section_ui_changelog_10_0_2:
+
 [10.0.2] - 2018-02-15
 =====================
 
@@ -1878,6 +1966,8 @@ MicroUI Implementation
 * LRGB888 image format is always fully opaque.
 * Render a dynamic image on custom display is too slow.
 * Image rendering may be invalid on custom display.
+
+.. _section_ui_changelog_11_0_0:
 
 [11.0.0] - 2018-02-02
 =====================
@@ -1898,6 +1988,8 @@ MicroUI Implementation
 
 * SNI Callback feature in the VM to remove the SNI retry pattern *(not backward compatible)*.
 
+.. _section_ui_changelog_10_0_1:
+
 [10.0.1] - 2018-01-03
 =====================
 
@@ -1907,6 +1999,8 @@ MicroUI Implementation
 **Fixed**
 
 * Hard fault when using custom display stack.
+
+.. _section_ui_changelog_10_0_0:
 
 [10.0.0] - 2017-12-22
 =====================
@@ -1944,6 +2038,8 @@ Misc
 
 * Option in platform builder to images heap size.
 
+.. _section_ui_changelog_9_4_1:
+
 [9.4.1] - 2017-11-24
 ====================
 
@@ -1953,6 +2049,8 @@ Image Generator
 **Fixed**
 
 * Missing some files in Image Generator module.
+
+.. _section_ui_changelog_9_4_0:
 
 [9.4.0] - 2017-11-23
 ====================
@@ -1975,6 +2073,8 @@ MicroUI Implementation
 * Memory leak when an ``OutOfEventException`` is thrown.
 * A null Java object is not checked when using a font.
   
+.. _section_ui_changelog_9_3_1:
+
 [9.3.1] - 2017-09-28
 ====================
   
@@ -1987,6 +2087,8 @@ MicroUI Implementation
 * Exception when loading a font from an application.
 * ``LLEXT`` link error with Architecture 6.13+ and UI 9+.
   
+.. _section_ui_changelog_9_3_0:
+
 [9.3.0] - 2017-08-24
 ====================
   
@@ -2005,6 +2107,8 @@ Front Panel
 * Do not create an AWT window for each image.
 * Error when trying to play with an unknown led.
   
+.. _section_ui_changelog_9_2_1:
+
 [9.2.1] - 2017-08-14
 ====================
 
@@ -2019,6 +2123,8 @@ Front Panel
 **Fixed**
 
 * Mock startup is too long.
+
+.. _section_ui_changelog_9_2_0:
 
 [9.2.0] - 2017-07-21
 ====================
@@ -2081,6 +2187,8 @@ Misc
 
 * RI build: reduce Front Panel dependency.
 
+.. _section_ui_changelog_9_0_2:
+
 [9.0.2] - 2017-04-21
 ====================
 
@@ -2099,6 +2207,8 @@ Image Generator
 **Fixed**
 
 * An Ax image may be fully opaque.
+
+.. _section_ui_changelog_9_1_2:
 
 [9.1.2] - 2017-03-16
 ====================
@@ -2144,6 +2254,8 @@ Image Generator
 * Use the application classpath.
 * An Ax image may be fully opaque.
     
+.. _section_ui_changelog_9_0_1:
+
 [9.0.1] - 2017-03-13
 ====================
 
@@ -2175,6 +2287,8 @@ Front Panel Plugin
 * Respect initial background color set by user on preview.
 * Preview does not respect the real size of display.
 
+.. _section_ui_changelog_9_1_1:
+
 [9.1.1] - 2017-02-14
 ====================
 
@@ -2187,6 +2301,8 @@ Misc
 
 * RI build: Several custom event generators in same ``microui.xml`` file are not embedded.
   
+.. _section_ui_changelog_9_1_0:
+
 [9.1.0] - 2017-02-13
 ====================
 
@@ -2238,6 +2354,8 @@ Front Panel Plugin
 * Manage display mask on preview.
 * Respect initial background color set by user on preview.
 * Preview does not respect the real size of display.
+
+.. _section_ui_changelog_9_0_0:
 
 [9.0.0] - 2017-02-02
 ====================
@@ -2299,6 +2417,8 @@ Misc
 
 * Remove obsolete documentations from Front Panel And Font Designer plugins.
 
+.. _section_ui_changelog_8_1_0:
+
 [8.1.0] - 2016-12-24
 ====================
 
@@ -2325,6 +2445,8 @@ Front Panel
 **Added**
 
 * Can add an additional screen on simulator.
+
+.. _section_ui_changelog_8_0_0:
 
 [8.0.0] - 2016-11-17
 ====================
@@ -2377,6 +2499,8 @@ Front Panel
 
 * Cannot set initial value of StateEventGenerator.
 
+.. _section_ui_changelog_7_4_7:
+
 [7.4.7] - 2016-06-14
 ====================
 
@@ -2396,6 +2520,8 @@ Front Panel
 
 * Cannot convert an image.
 
+.. _section_ui_changelog_7_4_2:
+
 [7.4.2] - 2016-05-25
 ====================
 
@@ -2406,6 +2532,8 @@ MicroUI Implementation
 
 * invalid image drawing for *column* display.
   
+.. _section_ui_changelog_7_4_1:
+
 [7.4.1] - 2016-05-10
 ====================
 
@@ -2416,6 +2544,8 @@ MicroUI Implementation
 
 * Restore stack 1, 2 and 4 BPP.
   
+.. _section_ui_changelog_7_4_0:
+
 [7.4.0] - 2016-04-29
 ====================
 
@@ -2433,6 +2563,8 @@ Front Panel
 
 * Restore stack 1, 2 and 4 BPP.
   
+.. _section_ui_changelog_7_3_0:
+
 [7.3.0] - 2016-04-25
 ====================
 
@@ -2443,6 +2575,8 @@ MicroUI Implementation
 
 * Stack 8BPP with LUT support.
  
+.. _section_ui_changelog_7_2_1:
+
 [7.2.1] - 2016-04-18
 ====================
 
@@ -2453,6 +2587,8 @@ Misc
 
 * Remove ``java`` keyword in workbench extension.
   
+.. _section_ui_changelog_7_2_0:
+
 [7.2.0] - 2016-04-05
 ====================
 
@@ -2463,6 +2599,8 @@ Tools
 
 * Preprocess ``*.xxx.list`` files.
   
+.. _section_ui_changelog_7_1_0:
+
 [7.1.0] - 2016-03-02
 ====================
 
@@ -2473,6 +2611,8 @@ MicroUI Implementation
 
 * Manage several images RAW formats.
   
+.. _section_ui_changelog_7_0_0:
+
 [7.0.0] - 2016-01-20
 ====================
 
@@ -2483,6 +2623,8 @@ Misc
 
 * Remove ``@jpf.property.header@`` prefix to Application options *(not backward compatible)*.
   
+.. _section_ui_changelog_6_0_1:
+
 [6.0.1] - 2015-12-17
 ====================
 
@@ -2492,6 +2634,8 @@ MicroUI Implementation
 **Fixed**
 
 * A negative clip throws an exception on simulator.
+
+.. _section_ui_changelog_6_0_0:
 
 [6.0.0] - 2015-11-12
 ====================
