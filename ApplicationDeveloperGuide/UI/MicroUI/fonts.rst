@@ -70,8 +70,42 @@ FNT Font File
 -------------
 
 Font files which end with the suffix ``.fnt`` are the standard Windows 3.0 font format.
+A third-party tool is required to generate a ``.fnt`` from ``.ttf``.
+To be compatible with the MicroEJ Font Engine, the following settings are mandatory:
 
-The third-party tool `bmfont`_ is advised to create ``.fnt`` from ``.ttf``.
+* The output file format must be a ``.txt`` (not XML or binary).
+* Images must be PNG files.
+* Font and images must be located in the same folder.
+* The images files name must end with the file number (0-based): ``xxx0.png``, ``xxx1.png``, etc.
+* The foreground color must be black and the background color white or transparent.
+
+.. hint:: Open the ``.fnt`` with a text editor to retrieve the image: ``page id=0 file="myfont_0.png"``.
+
+fontbm
+~~~~~~
+
+`fontbm`_ is a free cross-platform (Linux / MacOS / Windows) command line bitmap font generator.
+It is based on FreeType2 and generates exactly the same font on any operating systems.
+
+The next command line generates a ``.fnt`` from the font file ``SourceSansPro-Regular.ttf`` with a size of 24 pixels:
+
+.. code-block:: bash
+
+   ./fontbm --font-file SourceSansPro-Regular.ttf --output myfont --color 0,0,0 --font-size 24
+
+It generates a ``.fnt`` accompanied by its images (one or more):
+
+::
+
+   myfont.fnt
+   myfont_0.png
+   myfont_1.png
+
+bmfont
+~~~~~~
+
+`bmfont`_ is a free Windows UI and command line bitmap font generator, based on FreeType2.
+
 The options to export the font must follow these rules:
 
 .. figure:: images/bmfont_export.*
@@ -80,8 +114,7 @@ The options to export the font must follow these rules:
 
    BMFont Export Options
 
-
-It will generate a ``.fnt`` accompanied by its images (one or more):
+It generates a ``.fnt`` accompanied by its images (one or more):
 
 ::
 
@@ -89,8 +122,8 @@ It will generate a ``.fnt`` accompanied by its images (one or more):
    myfont_0.png
    myfont_1.png
 
-.. hint:: Open the ``.fnt`` with a text editor to retrieve the image: ``page id=0 file="myfont_0.png"``.
 
+.. _fontbm : https://github.com/vladimirgamalyan/fontbm/
 .. _bmfont : http://www.angelcode.com/products/bmfont/
 
 EJF Font File
