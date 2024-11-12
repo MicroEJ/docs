@@ -64,7 +64,9 @@ The Kernel provides the following APIs to the Apps:
 VEE Wear Framework Library
 --------------------------
 
-The VEE Wear Framework library provides interfaces to services that are implemented by the Kernel:
+The VEE Wear Framework library allows VEE Wear Apps to communicate with the Kernel and with other Apps.
+
+The library provides interfaces to services that are implemented by the Kernel:
 
 .. list-table::
    :header-rows: 1
