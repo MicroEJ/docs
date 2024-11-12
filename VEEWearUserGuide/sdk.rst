@@ -7,13 +7,57 @@ The VEE Wear SDK allows developers to build a VEE Wear Kernel executable and dev
 
 The SDK contains the following components:
 
-- the VEE Wear Framework library
 - the sources of the VEE Wear Kernel
 - the sources of common VEE Wear Apps (health, settings, etc.)
+- the VEE Wear Framework library
 
 .. note::
 
 	The sources are available on demand. You can contact :ref:`MicroEJ Support <get_support>` to evaluate VEE Wear.
+
+.. _vee_wear_kernel:
+
+VEE Wear Kernel
+---------------
+
+The VEE Wear Kernel is the core Application running on the wearable device. It manages the lifecycle of VEE Wear Apps.
+
+The Kernel must be built from its sources (:ref:`available on demand <get_support>`) with the VEE Port corresponding to the target device.
+The build of the Kernel generates an ELF file and a Virtual Device which must be provided to app developers so that they can build their Apps.
+
+The VEE Wear Kernel Application requires the following amount of memory:
+
+- RAM: around 400KB (mainly for Java heap and buffered images)
+- ROM: from 250KB to 1MB for each App (mainly for its images)
+
+The Kernel provides the following APIs to the Apps:
+
+.. list-table::
+   :widths: 20 10
+   :header-rows: 1
+
+   * - Library
+     - Version
+   * - EDC
+     - `1.3 <https://repository.microej.com/javadoc/microej_5.x/libraries/edc-1.3-api/>`__
+   * - BON
+     - `1.4 <https://repository.microej.com/javadoc/microej_5.x/libraries/bon-1.4-api/>`__
+   * - Trace
+     - `1.1 <https://repository.microej.com/javadoc/microej_5.x/libraries/trace-1.1-api/>`__
+   * - FS
+     - `2.1 <https://repository.microej.com/javadoc/microej_5.x/libraries/fs-2.1-api/>`__
+   * - MicroUI
+     - `3.1 <https://repository.microej.com/javadoc/microej_5.x/libraries/microui-3.1-api/>`__
+   * - Drawing
+     - `1.0 <https://repository.microej.com/javadoc/microej_5.x/libraries/drawing-1.0-api/>`__
+   * - MicroVG
+     - `1.2 <https://repository.microej.com/javadoc/microej_5.x/libraries/microvg-1.2-api/>`__
+   * - Audio
+     - `1.0 <https://repository.microej.com/javadoc/microej_5.x/libraries/audio-1.0-api/>`__
+   * - Bluetooth
+     - `2.2 <https://repository.microej.com/javadoc/microej_5.x/libraries/bluetooth-2.2-api/>`__
+   * - VEE Wear Framework
+     - `0.9 <https://repository.microej.com/javadoc/wear-framework/0.9.1/>`__
 
 .. _vee_wear_framework:
 
@@ -67,50 +111,6 @@ To use the VEE Wear Framework, add the following line to the project build file:
 .. code-block:: kotlin
 
 	implementation("com.microej.library.wear:wear-framework:0.9.1")
-
-.. _vee_wear_kernel:
-
-VEE Wear Kernel
----------------
-
-The VEE Wear Kernel is the core Application running on the wearable device. It manages the lifecycle of VEE Wear Apps.
-
-The Kernel must be built from its sources (:ref:`available on demand <get_support>`) with the VEE Port corresponding to the target device.
-The build of the Kernel generates an ELF file and a Virtual Device which must be provided to app developers so that they can build their Apps.
-
-The VEE Wear Kernel Application requires the following amount of memory:
-
-- RAM: around 400KB (mainly for Java heap and buffered images)
-- ROM: from 250KB to 1MB for each App (mainly for its images)
-
-The Kernel provides the following APIs to the Apps:
-
-.. list-table::
-   :widths: 20 10
-   :header-rows: 1
-
-   * - Library
-     - Version
-   * - EDC
-     - `1.3 <https://repository.microej.com/javadoc/microej_5.x/libraries/edc-1.3-api/>`__
-   * - BON
-     - `1.4 <https://repository.microej.com/javadoc/microej_5.x/libraries/bon-1.4-api/>`__
-   * - Trace
-     - `1.1 <https://repository.microej.com/javadoc/microej_5.x/libraries/trace-1.1-api/>`__
-   * - FS
-     - `2.1 <https://repository.microej.com/javadoc/microej_5.x/libraries/fs-2.1-api/>`__
-   * - MicroUI
-     - `3.1 <https://repository.microej.com/javadoc/microej_5.x/libraries/microui-3.1-api/>`__
-   * - Drawing
-     - `1.0 <https://repository.microej.com/javadoc/microej_5.x/libraries/drawing-1.0-api/>`__
-   * - MicroVG
-     - `1.2 <https://repository.microej.com/javadoc/microej_5.x/libraries/microvg-1.2-api/>`__
-   * - Audio
-     - `1.0 <https://repository.microej.com/javadoc/microej_5.x/libraries/audio-1.0-api/>`__
-   * - Bluetooth
-     - `2.2 <https://repository.microej.com/javadoc/microej_5.x/libraries/bluetooth-2.2-api/>`__
-   * - VEE Wear Framework
-     - `0.9 <https://repository.microej.com/javadoc/wear-framework/0.9.1/>`__
 
 VEE Wear Apps
 -------------
