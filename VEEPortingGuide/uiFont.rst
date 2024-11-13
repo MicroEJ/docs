@@ -4,12 +4,13 @@ Fonts
 =====
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
 
     uiFontOverview
     uiFontFormat
     uiFontGenerator
     uiFontCore
+    uiFontCustom
     uiFontRenderer
 
 ..

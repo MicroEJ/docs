@@ -43,7 +43,7 @@ Create a new Runtime Environment Module
       .. code:: java
 
          plugins {
-            id("com.microej.gradle.runtime-api") version "0.19.0"
+            id("com.microej.gradle.runtime-api") version "0.20.0"
          }   
 
    .. tab:: SDK 5
@@ -77,8 +77,8 @@ defined by ``EDC``, ``KF``, ``BON``, ``MicroUI`` Kernel APIs modules.
             implementation("ej.api:kf:1.5.1")
             implementation("com.microej.kernelapi:bon:1.4.0")
             implementation("ej.api:bon:1.4.0")
-            implementation("com.microej.kernelapi:microui:3.5.0")
-            implementation("ej.api:microui:3.5.0")
+            implementation("com.microej.kernelapi:microui:3.6.0")
+            implementation("ej.api:microui:3.6.0")
          }
 
       .. warning::
@@ -194,13 +194,13 @@ The Runtime Environment dependency must be declared in the Application project a
 
       .. code:: java
 
-         microejRuntimeApi("com.mycompany:myruntimeapi:1.0.0")
+         microejRuntimeEnvironment("com.mycompany:myruntime-environment:1.0.0")
 
    .. tab:: SDK 5
 
       .. code-block:: xml
 
-         <dependency org="com.mycompany" name="myruntimeapi" rev="1.0.0" conf="provided->runtimeapi"/>
+         <dependency org="com.mycompany" name="myruntime-environment" rev="1.0.0" conf="provided->runtimeapi"/>
 
 .. note::
 

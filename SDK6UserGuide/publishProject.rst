@@ -50,7 +50,6 @@ The following artifacts are automatically published:
 - The Gradle module descriptor file.
 - The Ivy descriptor file (to allow SDK 5 project to fetch it).
 - The WPK file, if the project is an Application.
-- The Virtual Device, if the project is an Application.
 
 .. note::
 

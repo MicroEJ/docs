@@ -6,7 +6,7 @@ MicroVG
 MicroVG Foundation Library provides vector drawing capabilities.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    usage
    path

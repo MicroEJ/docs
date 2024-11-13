@@ -21,12 +21,12 @@ Use
 .. code:: console
 
     ./gradlew execTool --name=localDeploymentSocket \
-      --toolProperty="application.main.class=com.mycompany.MyFeature" \
-      --toolProperty="kernel.filename=[path_to_application.out]" \
-      --toolProperty="board.server.host=10.0.0.171" \
-      --toolProperty="board.server.port=4000" \
-      --toolProperty="board.timeout=120000" \
-      --toolProperty="use.storage=true"
+      --toolProperty=application.main.class="com.mycompany.MyFeature" \
+      --toolProperty=kernel.filename="[path_to_application.out]" \
+      --toolProperty=board.server.host="10.0.0.171" \
+      --toolProperty=board.server.port="4000" \
+      --toolProperty=board.timeout="120000" \
+      --toolProperty=use.storage="true"
 
 Options
 =======

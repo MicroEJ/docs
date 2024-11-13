@@ -7,8 +7,18 @@ Building or running an Application or a Test Suite with the SDK requires a VEE P
 
 Use one of the following available options to provide it to your project. 
 
+.. note::
+
+   Declaring a VEE Port in project dependencies only applies to the current project. 
+   This configuration is not fetched transitively by consumer projects.
+   Especially when configuring the VEE Port to test a library project, 
+   application projects depending on this library will not "see" this test VEE Port, 
+   they must configure a VEE Port on their own and are free to use a different one.
+   
+.. _sdk_6_select_veeport_module:
+
 Using a Module Dependency
-~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------
 
 When your VEE Port is published in an artifact repository, 
 you can define the VEE Port by declaring a module dependency in the ``build.gradle.kts`` file, with the ``microejVee`` configuration:
@@ -18,7 +28,10 @@ you can define the VEE Port by declaring a module dependency in the ``build.grad
       dependencies {
          microejVee("com.mycompany:myveeport:1.0.0")
       }
-   
+
+This is generally the case for developers focused on Application and Library development.
+They don't have (and don't need) the VEE Port project locally, they only need to use it.
+
    .. note::
 
       For dependencies stored in an Ivy repository, Gradle fetches them with the configuration ``default``.
@@ -37,15 +50,100 @@ you can define the VEE Port by declaring a module dependency in the ``build.grad
       Refer to `the Gradle documentation <https://docs.gradle.org/current/dsl/org.gradle.api.artifacts.dsl.DependencyHandler.html>`__ 
       to learn all the options to select dependencies.
 
-Using a Local VEE Port Directory
+Selecting the Architecture Usage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When your VEE Port has been built locally and is therefore available in a local directory, 
+When the selected VEE Port is fetched from a repository, the Architecture Usage can be defined in the project.
+This is done by setting the ``architectureUsage`` property in the ``microej`` block in the ``build.gradke.kts`` file::
+
+   microej {
+      architectureUsage = "prod"
+   }
+
+Set the property to ``prod`` to use a Production Architecture and to ``eval`` to use an Evaluation Architecture.
+If not set, the ``eval`` value is used.
+
+.. warning::
+
+   This property allows to select the Architecture Usage only when the VEE Port is fetched from a repository.
+   When the VEE Port is a local archive of folder, the Architecture Usage has been defined when the VEE Port
+   has been built and can no longer be changed.
+
+
+.. _sdk_6_select_veeport_in_multiproject:
+
+VEE Port project inside a multi-project
+---------------------------------------
+
+When the VEE Port project is in the same multi-project than the component which needs it (an Application for example), 
+the VEE Port project should be declared as a project dependency.
+
+For example if the multi-project contains an Application subproject named ``my-app`` and a VEE Port subproject called ``vee-port``,
+the VEE Port project must be declared as a dependency in the ``build.gradle.kts`` file of the ``my-app`` subproject as follows::
+
+    dependencies {
+
+        microejVee(project(":vee-port"))
+
+    }
+
+The VEE Port will be automatically built when it is required by the Application.
+For example when running the Application on the Simulator (with the ``runOnSimulator`` task) 
+or when building the Application Executable (with the ``buildExecutable``),
+the VEE Port will be built before executing the requested task.
+
+.. _sdk_6_select_veeport_outside_multi-project:
+
+Local VEE Port project outside a multi-project
+----------------------------------------------
+
+When the Application or the Library which needs the VEE Port is not is the same multi-project than the VEE Port, 
+the VEE Port project can be imported thanks to the `Gradle Composite Build <https://docs.gradle.org/current/userguide/composite_builds.html>`_ feature.
+
+This allows to consider the VEE Port project as part of the Application project, 
+so all changes done to the VEE Port are automatically considered when building or running the Application.
+
+This is done by adding the following line in the ``settings.gradle.kts`` file of the Application project::
+
+  includeBuild("[vee-port-project-absolute-path]")
+
+Then declaring the VEE Port as a dependency in the ``build.gradle.kts`` file of the Application project::
+
+    dependencies {
+
+        microejVee("com.mycompany:vee-port:1.0.0")
+
+    }
+
+The dependency must use the module notation (``"group:name:version"``), where the group and name match with the ones declared in the VEE Port project.
+The group is defined in the ``build.gradle.kts`` file of the ``vee-port`` project by the ``group`` property.
+The name is defined in the ``settings.gradle.kts`` file when the ``vee-port`` project is included. 
+For example, the name of the VEE Port is ``my-custom-vee-port`` if the ``vee-port`` subproject is included with::
+
+  include("my-custom-vee-port")
+  project(":my-custom-vee-port").projectDir = file("vee-port")
+
+Otherwise the name of the subproject folder is used, so ``vee-port`` in the recommended structure. 
+
+
+.. _sdk_6_select_veeport_local_directory:
+
+Using a Local VEE Port Directory
+--------------------------------
+
+When your VEE Port is available in a local directory, 
 you can use it by declaring a file dependency in the ``build.gradle.kts`` file, with the ``microejVee`` configuration::
 
    dependencies {
       microejVee(files("C:\\path\\to\\my\\veePort\\source"))
    }
+
+This is generally the case when the VEE Port has been built locally
+
+- in SDK 6, by executing the ``buildVeePort`` Gradle task on the VEE Port project. 
+  In this case, the VEE Port directory is located at ``build/veePort/source`` in the project.
+- in SDK 5, by executing a ``Build Module`` on the VEE Port configuration project. 
+  In this case, the VEE Port is a sibling folder of the VEE Port configuration project, named after the VEE Port name.
 
 .. note::
 
@@ -53,8 +151,10 @@ you can use it by declaring a file dependency in the ``build.gradle.kts`` file, 
    the OS path	must use the UNIX path convention (path separator is ``/``). 
    The Windows paths must have been converted manually replacing ``\`` by ``/`` or by ``\\``.
 
+.. _sdk_6_select_veeport_local_archive:
+
 Using a Local VEE Port Archive
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------
 
 When your VEE Port is available locally as an archive file (``.zip`` or ``.vde``),
 you can use it by declaring a file dependency in the ``build.gradle.kts`` file, with the ``microejVee`` configuration::
@@ -62,6 +162,13 @@ you can use it by declaring a file dependency in the ``build.gradle.kts`` file, 
    dependencies {
       microejVee(files("C:\\path\\to\\my\\veePort\\file.zip"))
    }
+
+This is generally the case when 
+
+- the VEE Port has been built locally in SDK 6, by executing the ``buildVeePort`` Gradle task on the VEE Port project. 
+  In this case, the VEE Port archive is located at ``build/veePort.zip`` in the project.
+- the VEE Port has been built and published in SDK 5. 
+  In this case, the VEE Port archive is available in an artifact repository and can be downloaded manually to be used in your Application or Library project.
 
 .. note::
 

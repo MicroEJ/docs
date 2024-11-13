@@ -18,7 +18,8 @@ Installation
 ============
 
 Tiny-Sandbox is an option disabled by default. 
-To enable the Tiny-Sandbox capability of the Core Engine, set the property ``com.microej.runtime.capability`` to ``tiny`` in ``mjvm/mjvm.properties`` file.
+To enable the Tiny-Sandbox capability of the Core Engine, set the property ``com.microej.runtime.capability`` to ``tiny`` 
+in the ``configuration.properties`` file (SDK 6) or in the ``mjvm/mjvm.properties`` file (SDK 5) of the VEE Port project.
 See the example below:
 
 .. code-block::
@@ -28,7 +29,7 @@ See the example below:
 
 .. note::
 
-   Before :ref:`Architecture 8.1.0 <changelog-8.1.0>`, enabling the Tiny-Sandbox capability
+   In SDK 5, before :ref:`Architecture 8.1.0 <changelog-8.1.0>`, enabling the Tiny-Sandbox capability
    was done by setting the property ``mjvm.standalone.configuration`` in the ``configuration.xml`` file as follows:
 
    .. code-block::

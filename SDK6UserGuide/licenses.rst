@@ -8,7 +8,7 @@ Licenses
 SDK EULA
 --------
 
-MICROEJ SDK is licensed under the `SDK End User License Agreement (EULA) <https://repository.microej.com/licenses/sdk/LAW-0011-LCS-MicroEJ_SDK-EULA-v3.1B.txt>`_. The following figure shows a detailed view of the elements.
+MICROEJ SDK is licensed under the `SDK End User License Agreement (EULA) <https://repository.microej.com/licenses/sdk/LAW-0011-LCS-MicroEJ_SDK-EULA-v3.1C.txt>`_. The following figure shows a detailed view of the elements.
 
 .. figure:: images/sdk_6_content.png
    :alt: SDK Detailed View
@@ -63,29 +63,29 @@ If the license is not accepted, the following message is displayed when executin
 
   > The MICROEJ SDK End-User License Agreement (EULA) must be accepted before it can start.
     The license terms for this product can be downloaded from
-    https://repository.microej.com/licenses/sdk/LAW-0011-LCS-MicroEJ_SDK-EULA-v3.1B.txt
-    You can accept the EULA by specifying the -Daccept-microej-sdk-eula-v3-1b=YES command line option,
-    or setting the system property systemProp.accept-microej-sdk-eula-v3-1b=YES in a gradle.properties file,
-    or setting the ACCEPT_MICROEJ_SDK_EULA_V3_1B=YES environment variable.
+    https://repository.microej.com/licenses/sdk/LAW-0011-LCS-MicroEJ_SDK-EULA-v3.1C.txt
+    You can accept the EULA by specifying the -Daccept-microej-sdk-eula-v3-1c=YES command line option,
+    or setting the system property systemProp.accept-microej-sdk-eula-v3-1c=YES in a gradle.properties file,
+    or setting the ACCEPT_MICROEJ_SDK_EULA_V3_1C=YES environment variable.
 
 As mentioned in the message, there are several ways to accept the EULA:
 
-- define the ``accept-microej-sdk-eula-v3-1b`` system property in the command line:
+- define the ``accept-microej-sdk-eula-v3-1c`` system property in the command line:
 
    .. code:: console
       
-      ./gradlew build -Daccept-microej-sdk-eula-v3-1b=YES
+      ./gradlew build -Daccept-microej-sdk-eula-v3-1c=YES
 
-- define the ``accept-microej-sdk-eula-v3-1b`` system property in a ``gradle.properties`` file with the ``systemProp.`` prefix:
+- define the ``accept-microej-sdk-eula-v3-1c`` system property in a ``gradle.properties`` file with the ``systemProp.`` prefix:
 
    .. code:: properties
 
-      systemProp.accept-microej-sdk-eula-v3-1b=YES
+      systemProp.accept-microej-sdk-eula-v3-1c=YES
 
   This can be in the ``gradle.properties`` of your Gradle User Home folder (located by default at ``$USER_HOME/.gradle/gradle.properties``),
   or in the ``gradle.properties`` file at the root of your project for example.
 
-- set the ``ACCEPT_MICROEJ_SDK_EULA_V3_1B`` environment variable to ``YES``.
+- set the ``ACCEPT_MICROEJ_SDK_EULA_V3_1C`` environment variable to ``YES``.
 
 .. _sdk6_evaluation_license:
 

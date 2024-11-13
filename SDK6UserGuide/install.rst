@@ -53,34 +53,6 @@ If you don't have a JDK installed,
 you can download and install one from `Adoptium <https://adoptium.net/temurin/releases/>`__ or `Oracle <https://www.oracle.com/java/technologies/downloads/>`__.
 
 
-.. _sdk_6_install_gradle:
-
-Install Gradle
---------------
-
-Once a JDK is correctly configured, the next step is to install Gradle by following `the official documentation <https://gradle.org/install/>`__.
-The SDK is only compatible with the Gradle ``8.0.2`` and higher, so make sure to install a right version.
-Once done, you can verify your installation by opening a terminal and run the command ``gradle -v``.
-It should display, amongst other information, the Gradle and the JVM versions:
-
-.. code:: console
-
-   $ gradle -v
-   
-  ------------------------------------------------------------
-  Gradle 8.0.2
-  ------------------------------------------------------------
-
-  Build time:   2023-03-03 16:41:37 UTC
-  Revision:     7d6581558e226a580d91d399f7dfb9e3095c2b1d
-
-  Kotlin:       1.8.10
-  Groovy:       3.0.13
-  Ant:          Apache Ant(TM) version 1.10.11 compiled on July 10 2021
-  JVM:          11.0.18 (Eclipse Adoptium 11.0.18+10)
-  OS:           Windows 10 10.0 amd64
-
-
 .. _sdk_6_configure_repositories:
 
 Configure Repositories
@@ -95,7 +67,7 @@ To get started, you can declare them globally to make them available in all your
 - Download and copy :download:`this file <resources/microej.init.gradle.kts>` in the previously created folder.
 
 At this stage, you can already build a project from the command line, 
-for example, by executing the command ``gradle build`` at the root of the project.
+for example, by executing the command ``./gradlew build`` at the root of the project.
 But let's continue the installation process to have a complete development environment.
 
 .. note::

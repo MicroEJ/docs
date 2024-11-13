@@ -13,13 +13,13 @@ digraph mygraph {
     "microejVee" [fillcolor = "#41f753"]
     "microejApplication" [fillcolor = "#41f753"]
     "microejTool" [fillcolor = "#41f753"]
-    "microejRuntimeApi" [fillcolor = "#41f753"]
+    "microejRuntimeEnvironment" [fillcolor = "#41f753"]
     "microejApplicationClasspath" [fillcolor = "#b0d6d3"]
     "microejVeeClasspath" [fillcolor = "#b0d6d3"]
     "microejKernelExecutableClasspath" [fillcolor = "#b0d6d3"]
     "virtualDeviceToolClasspath" [fillcolor = "#b0d6d3"]
-    "microejRuntimeApiCompileClasspath" [fillcolor = "#b0d6d3"]
-    "microejRuntimeApiRuntimeClasspath" [fillcolor = "#b0d6d3"]
+    "microejRuntimeEnvironmentCompileClasspath" [fillcolor = "#b0d6d3"]
+    "microejRuntimeEnvironmentRuntimeClasspath" [fillcolor = "#b0d6d3"]
 
     "loadVee" -> "microejVeeClasspath" [ label="uses" ]
     "microejVeeClasspath" -> "microejVee"
@@ -29,12 +29,12 @@ digraph mygraph {
     "buildVirtualDevice" -> "virtualDeviceToolClasspath" [ label="uses" ]
     "microejApplicationClasspath" -> "microejApplication"
     "virtualDeviceToolClasspath" -> "microejTool"
-    "microejRuntimeApiCompileClasspath" -> "microejRuntimeApi"
-    "microejRuntimeApiRuntimeClasspath" -> "microejRuntimeApi"
-    "compileJava" -> "microejRuntimeApiCompileClasspath" [ label="uses" ]
-    "compileTestJava" -> "microejRuntimeApiCompileClasspath" [ label="uses" ]
-    "javadoc" -> "microejRuntimeApiCompileClasspath" [ label="uses" ]
-    "buildVirtualDevice" -> "microejRuntimeApiRuntimeClasspath" [ label="uses" ]
-    "buildApplicationObjectFile" -> "microejRuntimeApiRuntimeClasspath" [ label="uses" ]
-    "buildExecutable" -> "microejRuntimeApiRuntimeClasspath" [ label="uses" ]
+    "microejRuntimeEnvironmentCompileClasspath" -> "microejRuntimeEnvironment"
+    "microejRuntimeEnvironmentRuntimeClasspath" -> "microejRuntimeEnvironment"
+    "compileJava" -> "microejRuntimeEnvironmentCompileClasspath" [ label="uses" ]
+    "compileTestJava" -> "microejRuntimeEnvironmentCompileClasspath" [ label="uses" ]
+    "javadoc" -> "microejRuntimeEnvironmentCompileClasspath" [ label="uses" ]
+    "buildVirtualDevice" -> "microejRuntimeEnvironmentRuntimeClasspath" [ label="uses" ]
+    "buildApplicationObjectFile" -> "microejRuntimeEnvironmentRuntimeClasspath" [ label="uses" ]
+    "buildExecutable" -> "microejRuntimeEnvironmentRuntimeClasspath" [ label="uses" ]
 }

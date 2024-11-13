@@ -72,7 +72,7 @@ If this kind of message appears when resolving plugins or modules dependencies:
 .. code:: console
 
    * What went wrong:
-   Plugin [id: 'com.microej.gradle.application', version: '0.19.0'] was not found in any of the following sources:
+   Plugin [id: 'com.microej.gradle.application', version: '0.20.0'] was not found in any of the following sources:
 
 or this kind:
 
@@ -313,6 +313,39 @@ and unchecking the option :guilabel:`Unreachable code` in :guilabel:`Java` > :gu
 		:scale: 70%
 
 You can also disable unreachable code detection locally by using ``@SuppressWarnings("UnreachableCode")`` on the method or on the class.
+
+Resolution Conflict with Testsuite Dependencies 
+-----------------------------------------------
+
+When a project and its testsuite depend on different versions of the same dependency, 
+the build of the project can fail with the following message::
+
+	Execution failed for task ':adp'.
+	> Conflict(s) with a direct dependency for the following module(s):
+	- ej.api:kf : the resolved version is 1.7.0 whereas the direct dependency version is 1.4.4
+
+To fix this issue, you must update the dependency of your testsuite to use the same version as the project dependency::
+
+	dependencies {
+		implementation("ej.api:edc:1.3.7")
+		implementation("ej.api:kf:1.7.0")
+	}
+
+	testing {
+		suites {
+			val test by getting(JvmTestSuite::class) {
+				microej.useMicroejTestEngine(this)
+
+				dependencies {
+					implementation(project())
+					implementation("ej.api:edc:1.3.7")
+					implementation("ej.api:kf:1.7.0")
+					implementation("ej.library.test:junit:1.7.1")
+					implementation("org.junit.platform:junit-platform-launcher:1.8.2")
+				}
+			}
+		}
+	}
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 

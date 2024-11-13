@@ -28,10 +28,10 @@ To create a new Kernel project:
 Configure a VEE Port
 --------------------
 
-Before building the Kernel, you need to build a VEE Port with Multi-Sandbox capability.
+Before building the Kernel, you need to have a VEE Port with Multi-Sandbox capability.
 To enable the Multi-Sandbox capability in your VEE Port configuration, follow the instructions from the :ref:`multisandbox` section.
 
-Once the VEE Port is built, configure the target VEE Port in your Kernel project:
+Once the VEE Port is available, configure the target VEE Port in your Kernel project:
 
 - To configure a VEE Port with SDK 6, see :ref:`sdk_6_select_veeport`.
 - To configure a VEE Port with SDK 5, see :ref:`platform_selection`.
@@ -142,12 +142,12 @@ A Kernel API or a Runtime Environment module must be added as dependency of the 
 
          Unlike SDK 5 (MMM), Kernel API dependencies are not transitively fetched with SDK 6. They must therefore be explicitly added.
 
-      - A Runtime Environment module is added as a dependency with the configuration ``microejRuntimeApi``.   
+      - A Runtime Environment module is added as a dependency with the configuration ``microejRuntimeEnvironment``.   
 
       .. code:: java
 
          dependencies {
-            microejRuntimeApi("com.mycompany:myruntimeapi:1.0.0")
+            microejRuntimeEnvironment("com.mycompany:myruntimeapi:1.0.0")
          }
 
    .. tab:: SDK 5
