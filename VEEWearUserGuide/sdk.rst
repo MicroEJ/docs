@@ -178,7 +178,12 @@ Once the Wathface is implemented, make sure it is registered in the Kernel by ca
 Implementing a Complication Data Source
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A Complication Data Source provides data which can be displayed on a watchface complication. Complication Data Sources can provide a text, an icon and a progress value. Watchfaces will display complications differently depending on which informations the data source provides.
+A Complication Data Source provides data which can be displayed on a watchface complication.
+Complication Data Sources can provide a text, an icon and a progress value.
+Watchfaces can render complications the way they want using the data provided by the source.
+
+.. image:: images/vee-wear-source.png
+	:scale: 55%
 
 To implement a Complication Data Source, implement the `ComplicationDataSource`_ interface and its methods:
 
@@ -206,7 +211,7 @@ Building the App
 Once the project is configured, the App can be built like any MicroEJ Application:
 
 - To test an App on simulator, launch the ``runOnSimulator`` Gradle task.
-- To build an App, launch the ``buildFeature`` Gradle task. You can then install the App by deploying the ``build/feature/application/application.fo`` file to the watch over USB or Bluetooth.
+- To build an App, launch the ``buildFeature`` Gradle task. You can then install the App by deploying the ``build/feature/application/application.fo`` Feature file to the watch over USB or Bluetooth.
 
 .. _Timer: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Timer.html
 .. _FeatureEntryPoint: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/FeatureEntryPoint.html
