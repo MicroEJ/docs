@@ -436,7 +436,7 @@ To restart the application, call again the ``SNI_startVM`` function (see the fol
 
 .. note::
 
-   Please note that `SNI_createVM`` and ``SNI_destroyVM`` should only be called once. 
+   Please note that ``SNI_createVM`` and ``SNI_destroyVM`` should only be called once. 
    When restarting the Core Engine, don't call ``SNI_createVM`` or ``SNI_destroyVM`` before calling ``SNI_startVM`` again.
 
 .. _vm_dump:
