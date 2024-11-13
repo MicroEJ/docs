@@ -494,7 +494,7 @@ Integration
 Simulator
 ~~~~~~~~~
 
--  Added class file major version check (<=51). Classes must be compiled for Java 7 or lower. Set the options property ``S3.DisableClassFileVersionCheck`` to ``false`` to disable this verification.
+-  Added class file major version check (<=51). Classes must be compiled for Java 7 or lower.
 -  Added native method signature in the stack trace of the `UnsatisfiedLinkError`_ thrown when a native method is missing.
 -  Fixed HIL engine method ``NativeInterface.getResourceContent()`` that generates a runtime error in the Simulator.
 -  Fixed error "Internal limits reached ... S3 internal heap is full" when repeatedly loading a resource that is available in the classpath but not referenced in a ``.resources.list`` file.
