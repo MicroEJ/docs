@@ -432,7 +432,12 @@ To restart the application, call again the ``SNI_startVM`` function (see the fol
 
    Please note that while the Core Engine supports restart, :ref:`MicroUI <section_microui>` does not. 
    Attempting to restart the Application on a VEE Port with UI support may result in undefined behavior.
-     
+
+
+.. note::
+
+   Please note that `SNI_createVM`` and ``SNI_destroyVM`` should only be called once. 
+   When restarting the Core Engine, don't call ``SNI_createVM`` or ``SNI_destroyVM`` before calling ``SNI_startVM`` again.
 
 .. _vm_dump:
 
