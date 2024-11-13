@@ -20,6 +20,7 @@ resources such as:
 
 -  Documentation (HOWTOs, Reference Manuals, APIs javadoc...).
 
+Application developer trainings are provided at https://docs.microej.com/en/latest/Trainings/index.html#for-application-developers.
 
 MicroEJ Applications are developed as standard Java applications on
 Eclipse JDT, using Foundation Libraries. The SDK allows you to
