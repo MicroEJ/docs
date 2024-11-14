@@ -1711,7 +1711,7 @@ MicroUI Implementation
 
 * Fix Graphics Engine clip (cannot be outside graphics context).
 
-.. _section_ui_changelog_(maint) 8_0_0:
+.. _section_ui_changelog_(maint)_8_0_0:
 
 [(maint) 8.0.0] - 2019-10-18
 ============================
