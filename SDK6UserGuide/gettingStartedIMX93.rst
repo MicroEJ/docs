@@ -209,12 +209,11 @@ The Executable is built using a Yocto SDK. It contains the following:
 * All the necessary headers (libc, but also the headers of the kernel and the libraries installed in the firmware rootfs).
 * An environment setup script (to set $CC, $LD, $SDKSYSROOT variables).
 
-A prebuilt version of the Yocto SDK is available here: `Yocto SDK Installer for iMX93 <https://repository.microej.com/packages/yocto/i.MX93EVK/2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh>`_
-
 To install the Yocto SDK, use the following commands in WSL or Linux:
 
 .. code-block::
 
+   $ curl -O https://repository.microej.com/packages/yocto/i.MX93EVK/2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh
    $ chmod +x oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro.0.sh
    $ ./oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro.0.sh
    MicroEJ: 32-bit userspace + 64-bit kernel SDK installer version nodistro.0
