@@ -209,14 +209,13 @@ The Executable is built using a Yocto SDK. It contains the following:
 * All the necessary headers (libc, but also the headers of the kernel and the libraries installed in the firmware rootfs).
 * An environment setup script (to set $CC, $LD, $SDKSYSROOT variables).
 
-A prebuilt version of the Yocto SDK is available here: `Yocto SDK Installer for iMX93 <https://repository.microej.com/packages/yocto/i.MX93EVK/2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh>`_
-
 To install the Yocto SDK, use the following commands in WSL or Linux:
 
 .. code-block::
 
-   $ chmod +x oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro.0.sh
-   $ ./oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro.0.sh
+   $ curl -O https://repository.microej.com/packages/yocto/i.MX93EVK/2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh
+   $ chmod +x 2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh
+   $ ./2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh
    MicroEJ: 32-bit userspace + 64-bit kernel SDK installer version nodistro.0
    ==========================================================================
    Enter target directory for SDK (default: /usr/local/oecore-x86_64): 
@@ -412,6 +411,31 @@ To run the :guilabel:`Example-Java-Widget` Application on i.MX93 Evaluation Kit,
          :alt: runOnDevice task
          :align: center
          :scale: 70%
+
+.. warning::
+
+   The application deployment script (``run.sh``) is not compatible with OpenSSH 9.0+ (typically Ubuntu 24.04).
+   The ``runOnDevice`` task should fail with:
+
+     .. code-block::
+
+        sh: /usr/lib/openssh/sftp-server: No such file or directory
+        scp: Connection closed
+
+   This is because the Yocto distribution uses Dropbear, and from this OpenSSH version the ``-O`` must be added
+   to ``scp`` commands in order to use the legacy SCP protocol.
+   To work around this issue:
+
+   * Copy the folder ``./build/vee`` to the root directory of the project (``./vee``).
+   * Change the dependency in ``build.gradle.kts`` to ``microejVee(files("vee"))``.
+   * And fix the ``./vee/bsp/projects/microej/scripts/run.sh`` script (line 70):
+
+     .. code-block:: diff
+
+        - $SSH_PASSWORD_OPTION scp -oStrictHostKeyChecking=no ${APPLICATION_FILE} $SSH_USER@$SSH_HOSTNAME:$SSH_REMOTE_APPLICATION
+        + $SSH_PASSWORD_OPTION scp -O -oStrictHostKeyChecking=no ${APPLICATION_FILE} $SSH_USER@$SSH_HOSTNAME:$SSH_REMOTE_APPLICATION
+
+   * Then, run the ``runOnDevice`` task again.
 
 Once the application is running, you should see the :guilabel:`Example-Java-Widget` on your board.      
 
