@@ -214,8 +214,8 @@ To install the Yocto SDK, use the following commands in WSL or Linux:
 .. code-block::
 
    $ curl -O https://repository.microej.com/packages/yocto/i.MX93EVK/2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh
-   $ chmod +x oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro.0.sh
-   $ ./oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro.0.sh
+   $ chmod +x 2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh
+   $ ./2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh
    MicroEJ: 32-bit userspace + 64-bit kernel SDK installer version nodistro.0
    ==========================================================================
    Enter target directory for SDK (default: /usr/local/oecore-x86_64): 
