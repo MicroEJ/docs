@@ -317,11 +317,13 @@ The configuration is similar to the one used to execute a testsuite on the Simul
                               // Enable the build of the Executable
                               "microej.testsuite.properties.deploy.bsp.microejscript" to "true",
                               "microej.testsuite.properties.microejtool.deploy.name" to "deployToolBSPRun",
-                              // Tell the testsuite engine that the VEE Port Run script redirects execution traces
-                              "microej.testsuite.properties.launch.test.trace.file" to "true",
+                              
                               // Configure the TCP/IP address and port if the VEE Port Run script does not redirect execution traces
                               "microej.testsuite.properties.testsuite.trace.ip" to "localhost",
-                              "microej.testsuite.properties.testsuite.trace.port" to "5555"
+                              "microej.testsuite.properties.testsuite.trace.port" to "5555",
+                              // Tell the testsuite engine that the VEE Port Run script redirects execution traces.
+                              // Uncomment this line and comment the 2 lines above if the VEE Port supports it.
+                              //"microej.testsuite.properties.launch.test.trace.file" to "true"
                            )
                      }
                   }
