@@ -7,7 +7,7 @@ Font Designer
 Principle
 =========
 
-The Font Designer module is a graphical tool (Eclipse plugin) that runs within the MicroEJ IDE used to build and edit ``.ejf`` fonts. 
+The Font Designer module is a graphical tool (Eclipse plugin) that runs within the MicroEJ IDE used to build and edit ``.ejf`` fonts.
 It stores fonts in a VEE Port independent format.
 
 Functional Description
@@ -120,7 +120,7 @@ character size in pixels.
 Styles
 ------
 
-Font Designer allows creating a font file that holds several combinations of built-in styles (styles hardcoded in pixels map) and runtime styles (styles rendered dynamically at runtime). However, since MicroUI 3, a MicroUI font holds only one style: ``PLAIN``, ``BOLD``, ``ITALIC`` or ``BOLD + ITALIC``. 
+Font Designer allows creating a font file that holds several combinations of built-in styles (styles hardcoded in pixels map) and runtime styles (styles rendered dynamically at runtime). However, since MicroUI 3, a MicroUI font holds only one style: ``PLAIN``, ``BOLD``, ``ITALIC`` or ``BOLD + ITALIC``.
 
 Font Designer features three drop-downs, one for each of ``BOLD``, ``ITALIC``, and ``UNDERLINED``. Each drop-down has three options: ``None``, ``Built-in`` and ``Dynamic``. The font options must be adjusted to be compatible with MicroUI 3:
 
@@ -255,10 +255,10 @@ the pixels drawn when the left mouse button is clicked in the grid.
 Character Pixmap
 ----------------
 
-This view allows to preview and edit the character's pixels.
-The blacker the pixel, the more opaque the encoded opacity.
+This view allows to previewing and editing the character's pixels.
+The closer the pixel's color is to black, the more opaque the encoded opacity will be.
 
-Left or right clic on a pixel to draw or erase it.
+Left or right click on a pixel to draw or erase it.
 
 Preview
 =======
@@ -312,7 +312,7 @@ No dependency.
 Installation
 ============
 
-The Font Designer module is already installed in the MicroEJ SDK5. 
+The Font Designer module is already installed in the MicroEJ SDK5.
 
 Use
 ===
@@ -321,8 +321,8 @@ Create a new ``ejf`` font file or open an existing one in order to open
 the Font Designer plugin.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
-   for read and redistribute. Except if otherwise stated, modification 
+   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free
+   for read and redistribute. Except if otherwise stated, modification
    is subject to MicroEJ Corp prior approval.
-   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and
    copyrights are the property of their respective owners.

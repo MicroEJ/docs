@@ -9,7 +9,7 @@ Overview
 
 The font system consists in two distinct parts: the built-in part (also known as the *internal font*) and, since MicroUI 3.6, the extended part.
 The extended part allows the VEE Port to provide one or more additional font systems with their own characteristics.
-However, once created, all fonts can be used by the application using the `Font`_ class. 
+However, once created, all fonts can be used by the application using the `Font`_ class.
 In most cases, the application does not know the type of font and should use all fonts (built-in or extended) in the same way.
 This makes for portable code (as far as rendering is concerned), as only the code that creates the font at runtime is specific.
 
@@ -48,8 +48,8 @@ Color
 
 The font encoding is similar to the :ref:`section_image_alpha`.
 These formats only embed the pixel's opacity information.
-The color to draw the strings is the current color of the graphics context.
-No color is embedded, consequently, the colored characters as emojis are not supported.
+The strings will be drawn using the current color of the graphics context.
+No color is embedded, consequently, colored characters as emojis are not supported.
 
 Languages
 ---------
@@ -76,11 +76,11 @@ The options to export the font must follow these rules:
 
 .. figure:: images/bmfont_export.*
    :alt: BMFont Export Options
-   :align: center   
+   :align: center
 
    BMFont Export Options
 
- 
+
 It will generate a ``.fnt`` accompanied by its images (one or more):
 
 ::
@@ -108,7 +108,7 @@ Fonts are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.fonts.list
 .. graphviz::
 
   digraph D {
-  
+
       internalFont [shape=diamond, label="internal?"]
       fontsList [shape=box, label="*.fonts.list"]
       fontsExt [shape=box, label="*.fontsext.list"]
@@ -135,8 +135,8 @@ Example:
    # without transparency
    com/mycompany/MyFont1.fnt
 
-   # The following font is embedded with only the latin 
-   # unicode range without transparency 
+   # The following font is embedded with only the latin
+   # unicode range without transparency
    com/mycompany/MyFont2.fnt:latin
 
    # The following font is embedded with all characters
@@ -177,7 +177,7 @@ Font Range
 
 The first parameter is for specifying the font ranges to embed.
 Selecting only a specific set of characters to embed reduces the memory
-footprint. If unspecified, all characters of the font are embedded. 
+footprint. If unspecified, all characters of the font are embedded.
 
 Several ranges can be specified, separated by ``;``. There
 are two ways to specify a character range: the custom range and the
@@ -573,7 +573,7 @@ Transparency
 ------------
 
 The second parameter is for specifying the font transparency level
-(``1``, ``2``, ``4`` or ``8``). If unspecified, the encoded transparency level is ``1`` (does not depend on the transparency level encoded in font file).
+(``1``, ``2``, ``4`` or ``8``). If unspecified, the encoded transparency level is ``1`` (does not depend on the transparency level encoded in the font file).
 
 Examples:
 
@@ -676,7 +676,7 @@ Default Character
 
 The application may request the rendering of a string where some characters are not available in the selected font.
 In that case, a default character is drawn instead: it is the first available character in the font.
-For example, the first available character for a font where the range matches the ASCII printable characters (``0x21-0x7E``) would be the exclamation mark (``0x21``). 
+For example, the first available character for a font where the range matches the ASCII printable characters (``0x21-0x7E``) would be the exclamation mark (``0x21``).
 
 The characters of a font are referenced by their Unicode value.
 For a given :ref:`font range <fonts_range>`, the default character is the first character of the first range.
@@ -725,8 +725,8 @@ This makes for portable code (as far as rendering is concerned).
 .. _VectorFont: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html#
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
-   for read and redistribute. Except if otherwise stated, modification 
+   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free
+   for read and redistribute. Except if otherwise stated, modification
    is subject to MicroEJ Corp prior approval.
-   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and
    copyrights are the property of their respective owners.
