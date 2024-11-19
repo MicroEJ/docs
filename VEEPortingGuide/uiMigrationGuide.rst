@@ -11,6 +11,18 @@ Migration Guide
 From 14.1.1 to 14.2.0
 =====================
 
+All BSP
+"""""""
+
+* *[VEE Port configuration project]*
+
+    * Set the dependency to the `C Module MicroUI 14.2.0`_.
+
+* *[BSP project]*
+
+    * Delete the properties file ``cco_microui.properties``.
+    * Build the VEE Port.
+
 .. _section_ui_migrationguide_pack_14.1.1:
 
 From 14.0.2 to 14.1.1
@@ -34,10 +46,10 @@ BSP without GPU
         * Notice that the name (prefix) of the options changed, see :ref:`section_ui_changelog`.
         * If the BSP uses the MicroUI C Module's image heap allocator instead of using the Graphics Engine's image heap allocator, set the preprocessor value ``UI_FEATURE_ALLOCATOR=UI_FEATURE_ALLOCATOR_BESTFIT``.
         * Comment the line that starts with ``#error (...)``.
-  
+
     * Delete configuration files ``ui/inc/microui_event_decoder_conf.h`` and ``ui/inc/ui_display_brs_configuration.h``.
     * Add the source file in ``ui/src/ui_font_drawing.c`` to the project.
-    * Update ``c`` and ``h`` files and BSP configuration (if any) to use the new preprocessor values: 
+    * Update ``c`` and ``h`` files and BSP configuration (if any) to use the new preprocessor values:
 
         * ``UI_FEATURE_EVENT_DECODER`` replaces ``MICROUIEVENTDECODER_ENABLED``
         * ``UI_DEBUG_PRINT`` replaces ``LLUI_DEBUG_TRACE``
@@ -76,7 +88,7 @@ BSP with VGLite
     * Set the dependency to the `C Module MicroUI over VGLite to version 10.0.0`_.
 
 * *[BSP project]*
-    
+
     * Delete the properties files ``cco_microui.properties`` and ``cco_microui-vglite.properties``.
     * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.1.1_bsp_without_gpu`.
 
@@ -93,7 +105,7 @@ BSP with NemaGFX
 
     * Delete the properties files ``cco_microui.properties`` and ``cco_microui-nemagfx.properties``.
     * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.1.1_bsp_without_gpu`.
-  
+
 .. _section_ui_migrationguide_pack_14.0.2:
 
 From 14.0.1 to 14.0.2
@@ -833,7 +845,7 @@ Hardware Accelerator
 
 * For the hardware accelerator DMA2D, please consult STM32F7Discovery board updates. Add the file ``lldisplay_dma2d.c``, the global defines ``DRAWING_DMA2D_BPP=16`` (or another value) and ``STM32F4XX`` or ``STM32F7XX``
 * For the others hardware accelerators, please contact MicroEJ support.
-  
+
 .. hint:: Update the BSP with the new C modules files as described :ref:`here<section_ui_migration_bsp_13x>`.
 
 Front Panel
