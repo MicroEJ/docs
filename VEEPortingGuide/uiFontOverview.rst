@@ -17,7 +17,7 @@ Functional Description
 ======================
 
 Using the Font Engine consists in pregenerating the font (if required), loading the font at runtime and rendering text.
-The first two steps (generation and loading) are specific to the font kind (internal or custom), whereas the way to render a MicroUI Font (from the MicroUI API to the MicroUI Abstraction Layer API) is shared. 
+The first two steps (generation and loading) are specific to the font kind (internal or custom), whereas the way to render a MicroUI Font (from the MicroUI API to the MicroUI Abstraction Layer API) is shared.
 This allows the application to use the same MicroUI APIs with any kind of font.
 
 Internal Font
@@ -39,8 +39,8 @@ The internal Font Engine is composed of:
 
 The three modules are complementary:
 
-- For the standard FNT fonts, the *Font Designer* is useless and the fonts are integrated as resources by the Font Generator and loaded by the Font Loader at runtime.
-- For the EJF fonts, the fonts must be created and edited with the Font Designer before being integrated as resources by the Font Generator and loaded by the Font Loader at runtime.
+- For standard FNT fonts, the *Font Designer* is useless and the fonts are integrated as resources by the Font Generator and loaded by the Font Loader at runtime.
+- For EJF fonts, the fonts must be created and edited with the Font Designer before being integrated as resources by the Font Generator and loaded by the Font Loader at runtime.
 
 Process overview:
 
@@ -81,8 +81,8 @@ Dependencies
 .. _VectorFont: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html#
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
-   for read and redistribute. Except if otherwise stated, modification 
+   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free
+   for read and redistribute. Except if otherwise stated, modification
    is subject to MicroEJ Corp prior approval.
-   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and
    copyrights are the property of their respective owners.
