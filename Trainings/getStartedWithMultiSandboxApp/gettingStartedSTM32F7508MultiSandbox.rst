@@ -17,7 +17,7 @@ In case you are not familiar with MicroEJ, please visit `Discover MicroEJ <https
 
 The below schematic summarizes the Multi-Sandbox features that will be demonstrated in this Getting Started:  
 
-   .. figure:: images/gettingStarted/multiSandbox/STM32F7508DK/multiSandboxGettingStartedOverview.png
+   .. figure:: images/multiSandboxGettingStartedOverview.png
       :alt: Logs Output on Termite Serial Terminal
       :align: center
 

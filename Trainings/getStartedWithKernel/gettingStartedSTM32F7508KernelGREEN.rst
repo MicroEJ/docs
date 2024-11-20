@@ -110,7 +110,7 @@ The first step is to import the :guilabel:`Kernel-GREEN` into your IDE:
 The Gradle project should now be imported in Android Studio,
 your workspace contains the following project in the :guilabel:`Projects` view: 
 
-   .. figure:: images/gettingStarted/multiSandbox/getting-started-import-kernel-green.png
+   .. figure:: images/getting-started-import-kernel-green.png
       :alt: Import demo application
       :align: center
       :scale: 70%
@@ -185,7 +185,7 @@ the SDK provides the :guilabel:`buildExecutable` Gradle task.
 * The build stops with a failure.
 * Go to the top project in the console view and scroll up to get the following error message:
 
-   .. figure:: images/gettingStarted/STM32F7508DK/getting-started-console-output-license-uid.png
+   .. figure:: images/getting-started-console-output-license-uid.png
       :alt: Console Output License UID
       :align: center
       :scale: 70%
@@ -216,19 +216,19 @@ the application provides the Gradle :guilabel:`runOnDevice` task.
 
 * Double-click on the :guilabel:`runOnDevice` task in the Gradle tasks view. It may take some time:
 
-   .. figure:: images/gettingStarted/STM32F7508DK/getting-started-runOnDevice.png
+   .. figure:: images/getting-started-runOnDevice.png
       :alt: runOnDevice task
       :align: center
       :scale: 70%
 
 Once the Executable is flashed, you should see the :guilabel:`Kernel-GREEN` traces in your console:
 
-   .. figure:: images/gettingStarted/multiSandbox/STM32F7508DK/getting-started-stm32f7508dk-termite-green-fw-output.png
+   .. figure:: images/getting-started-stm32f7508dk-termite-green-fw-output.png
       :alt: Logs Output on Termite Serial Terminal
       :align: center
       :scale: 60%
 
-.. figure:: images/gettingStarted/well-done-mascot.png
+.. figure:: images/well-done-mascot.png
    :alt: Well Done
    :align: center
    :scale: 70%
@@ -266,14 +266,14 @@ Multi-Sandbox Executable and Virtual Device.
 
    - Reload the Gradle project:
 
-      .. figure:: images/gettingStarted/multiSandbox/getting-started-reload-gradle-project.png
+      .. figure:: images/getting-started-reload-gradle-project.png
          :alt: Virtual Device
          :align: center
          :scale: 70%
 
    - The :guilabel:`Kernel-GREEN` project should now appear in the Gradle tasks view:
 
-      .. figure:: images/gettingStarted/multiSandbox/getting-started-gradle-tasks-kernel-green.png
+      .. figure:: images/getting-started-gradle-tasks-kernel-green.png
          :alt: Kernel GREEN and MyApplication Gradle tasks
          :align: center
          :scale: 90%

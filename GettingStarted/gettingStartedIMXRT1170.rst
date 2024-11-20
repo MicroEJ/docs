@@ -113,7 +113,7 @@ The first step is to import the :guilabel:`Demo-SmartThermostat` Application int
 
 The Gradle project should now be imported in IntelliJ IDEA, your workspace contains the following projects: 
 
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-workspace-view.png
+      .. figure:: images/iMXRT1170/getting-started-workspace-view.png
          :alt: Workspace view
          :align: center
          :scale: 70%
@@ -157,7 +157,7 @@ The Virtual Device starts and executes the :guilabel:`Demo-SmartThermostat` appl
    If you want to know more about the use of the :guilabel:`Demo-SmartThermostat`, please have a look at its `README.md <https://github.com/MicroEJ/Demo-SmartThermostat/blob/1.0.0/smart-thermostat/README.md>`__ file.
 
 
-.. figure:: images/gettingStarted/well-done-mascot.png
+.. figure:: images/well-done-mascot.png
    :alt: Well Done
    :align: center
    :scale: 70%
