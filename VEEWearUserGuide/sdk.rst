@@ -7,23 +7,25 @@ The VEE Wear SDK allows developers to build a VEE Wear Kernel executable and dev
 
 The SDK contains the following components:
 
-- the sources of the VEE Wear Kernel
-- the sources of common VEE Wear Apps (health, settings, etc.)
+- the source code of the VEE Wear Kernel
+- the source code of common VEE Wear Apps (health, settings, etc.)
 - the VEE Wear Framework library
 
 .. note::
 
-	The sources are available on demand. You can contact :ref:`MicroEJ Support <get_support>` to evaluate VEE Wear.
+	The source code is available on demand. You can contact :ref:`MicroEJ Support <get_support>` to evaluate VEE Wear.
 
 .. _vee_wear_kernel:
 
 VEE Wear Kernel
 ---------------
 
-The VEE Wear Kernel is the core Application running on the wearable device. It manages the lifecycle of VEE Wear Apps.
+The VEE Wear Kernel is the core Application running on the wearable device.
+It manages the lifecycle of VEE Wear Apps.
 
-The Kernel must be built from its sources (:ref:`available on demand <get_support>`) with the VEE Port corresponding to the target device.
-The build of the Kernel generates an ELF file and a Virtual Device which must be provided to app developers so that they can build their Apps.
+The Kernel is board agnostic and can be fully customized to any hardware.
+It must be built from its source code (:ref:`available on demand <get_support>`) with the VEE Port corresponding to the target hardware.
+The build generates an executable file and a Virtual Device which must be provided to app developers so that they can build their Apps.
 
 The VEE Wear Kernel Application requires the following amount of memory:
 
