@@ -7,6 +7,14 @@ Building or running an Application or a Test Suite with the SDK requires a VEE P
 
 Use one of the following available options to provide it to your project. 
 
+.. note::
+
+   Declaring a VEE Port in project dependencies only applies to the current project. 
+   This configuration is not fetched transitively by consumer projects.
+   Especially when configuring the VEE Port to test a library project, 
+   application projects depending on this library will not "see" this test VEE Port, 
+   they must configure a VEE Port on their own and are free to use a different one.
+   
 .. _sdk_6_select_veeport_module:
 
 Using a Module Dependency
@@ -20,6 +28,8 @@ you can define the VEE Port by declaring a module dependency in the ``build.grad
       dependencies {
          microejVee("com.mycompany:myveeport:1.0.0")
       }
+
+and by :ref:`setting the Architecture Usage <sdk_6_architecture_usage_selection>` of the VEE Port.
 
 This is generally the case for developers focused on Application and Library development.
 They don't have (and don't need) the VEE Port project locally, they only need to use it.
@@ -42,26 +52,6 @@ They don't have (and don't need) the VEE Port project locally, they only need to
       Refer to `the Gradle documentation <https://docs.gradle.org/current/dsl/org.gradle.api.artifacts.dsl.DependencyHandler.html>`__ 
       to learn all the options to select dependencies.
 
-Selecting the Architecture Usage
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-When the selected VEE Port is fetched from a repository, the Architecture Usage can be defined in the project.
-This is done by setting the ``architectureUsage`` property in the ``microej`` block in the ``build.gradke.kts`` file::
-
-   microej {
-      architectureUsage = "prod"
-   }
-
-Set the property to ``prod`` to use a Production Architecture and to ``eval`` to use an Evaluation Architecture.
-If not set, the ``eval`` value is used.
-
-.. warning::
-
-   This property allows to select the Architecture Usage only when the VEE Port is fetched from a repository.
-   When the VEE Port is a local archive of folder, the Architecture Usage has been defined when the VEE Port
-   has been built and can no longer be changed.
-
-
 .. _sdk_6_select_veeport_in_multiproject:
 
 VEE Port project inside a multi-project
@@ -78,6 +68,8 @@ the VEE Port project must be declared as a dependency in the ``build.gradle.kts`
         microejVee(project(":vee-port"))
 
     }
+
+and the :ref:`Architecture Usage <sdk_6_architecture_usage_selection>` of the VEE Port must be set.
 
 The VEE Port will be automatically built when it is required by the Application.
 For example when running the Application on the Simulator (with the ``runOnSimulator`` task) 
@@ -166,6 +158,27 @@ This is generally the case when
 
    The legacy ``JPF`` format of a VEE Port is not supported anymore in the SDK 6. 
    If you want to use a VEE Port ``.jpf`` file, you have to use :ref:`the SDK 5 <sdk_user_guide>`.
+
+.. _sdk_6_architecture_usage_selection:
+
+Architecture Usage Selection
+----------------------------
+
+When the selected VEE Port is :ref:`fetched from a repository <sdk_6_select_veeport_module>` or is a :ref:`subproject of a multi-project <sdk_6_select_veeport_in_multiproject>`, 
+the Architecture Usage can be defined in the project which needs it (an Application for example).
+This is done by setting the ``architectureUsage`` property in the ``microej`` block in the ``build.gradke.kts`` file::
+
+   microej {
+      architectureUsage = "prod"
+   }
+
+Set the property to ``prod`` to use a Production Architecture and to ``eval`` to use an Evaluation Architecture.
+If not set, the ``eval`` value is used.
+
+.. warning::
+
+   When the VEE Port is a local archive or folder (``microejVee(files(...))``), the Architecture Usage is defined when the VEE Port is built and can no longer be changed.
+   When the VEE Port is built in SDK 6 (with the ``buildVeePort`` task), the Architecture Usage is defined by setting the ``architectureUsage`` property in the ``build.gradke.kts`` file of the VEE Port project.
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 

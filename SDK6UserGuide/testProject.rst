@@ -57,6 +57,13 @@ Executing tests on the Simulator allows to check the behavior of the code in an 
 but without requiring the board.
 This solution is therefore less constraining and more portable than testing on the board.
 
+The target VEE Port must be declared in the projects dependencies, as explained in :ref:`sdk_6_select_veeport`.
+
+Declaring a VEE Port in project dependencies only applies to the current project. 
+This configuration is not fetched transitively by consumer projects.
+Especially when configuring the VEE Port to test a library project, 
+application projects depending on this library will not "see" this test VEE Port, 
+they must configure a VEE Port on their own and are free to use a different one.
 
 Configure the Testsuite
 ~~~~~~~~~~~~~~~~~~~~~~~

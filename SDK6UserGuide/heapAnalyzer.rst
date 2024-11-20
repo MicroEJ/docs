@@ -202,10 +202,10 @@ run the ``execTool`` Gradle task with the tool name ``heapDumperPlatform``:
 .. code:: console
 
     ./gradlew execTool --name=heapDumperPlatform \
-      --toolProperty="output.name=application.heap" \
-      --toolProperty="application.filename=../../executable/application/application.out" \
-      --toolProperty="heap.filename=/path/to/memory.hex" \
-      --toolProperty="additional.application.filenames=" \
+      --toolProperty=output.name="application.heap" \
+      --toolProperty=application.filename="../../executable/application/application.out" \
+      --toolProperty=heap.filename="/path/to/memory.hex" \
+      --toolProperty=additional.application.filenames="" \
       --console plain
 
 If you are in a Multi-Sandbox context, you have to include the ``.fodbg`` files and additional hex files:
@@ -213,11 +213,11 @@ If you are in a Multi-Sandbox context, you have to include the ``.fodbg`` files 
 .. code:: console
 
     ./gradlew execTool --name=heapDumperPlatform \
-      --toolProperty="output.name=application.heap" \
-      --toolProperty="application.filename=../../executable/application/application.out" \
-      --toolProperty="heap.filename=/path/to/memory.hex" \
-      --toolProperty="additional.application.filenames=/path/to/app1.fodbg;/path/to/app2.fodbg..." \
-      --toolProperty="additional.memory.filenames=/path/to/additonal1.hex;/path/to/additional2.hex..." \
+      --toolProperty=output.name="application.heap" \
+      --toolProperty=application.filename="../../executable/application/application.out" \
+      --toolProperty=heap.filename="/path/to/memory.hex" \
+      --toolProperty=additional.application.filenames="/path/to/app1.fodbg;/path/to/app2.fodbg..." \
+      --toolProperty=additional.memory.filenames="/path/to/additonal1.hex;/path/to/additional2.hex..." \
       --console plain
 
 You can find the list of available options below:

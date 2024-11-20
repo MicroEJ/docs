@@ -193,7 +193,7 @@ To generate the Code Coverage files (``.cc``), invoke the ``:runOnSimulator`` ta
 
 ::
 
-   gradle :runOnSimulator -D"microej.option.s3.cc.thread.period=15" -D"microej.option.s3.cc.activated=true"
+   ./gradlew :runOnSimulator -D"microej.option.s3.cc.thread.period=15" -D"microej.option.s3.cc.activated=true"
 
 *Option Name*: ``s3.cc.thread.period``
 

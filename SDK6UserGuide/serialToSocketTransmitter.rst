@@ -22,9 +22,9 @@ execute the ``execTool`` task as followed:
 .. code:: console
 
     ./gradlew execTool --name=serialToSocketTransmitter \
-      --toolProperty="serail.to.socket.comm.port=COM8" \
-      --toolProperty="serail.to.socket.comm.baudrate=115200" \
-      --toolProperty="serail.to.socket.server.port=5555" \
+      --toolProperty=serail.to.socket.comm.port="COM8" \
+      --toolProperty=serail.to.socket.comm.baudrate="115200" \
+      --toolProperty=serail.to.socket.server.port="5555" \
       --console plain
 
 
