@@ -104,6 +104,7 @@ For Application Developers
 .. toctree::
    :hidden:
    
+   sdk_6_getting_started_stm32f7508_multisandbox
    tutorialImproveCodeQuality
    tutorialOptimizeMemoryFootprint
    trainingApplicationTesting
@@ -309,6 +310,7 @@ Multi-Sandbox
 .. toctree::
    :hidden:
    
+   sdk_6_getting_started_stm32f7508_kernel_green
    trainingKernel
    trainingSandboxedApps
 
