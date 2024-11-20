@@ -310,7 +310,7 @@ Multi-Sandbox
 .. toctree::
    :hidden:
    
-   gettingStartedSTM32F7508MultiSandbox/gettingStartedSTM32F7508KernelGREEN
+   getStartedWithKernel/gettingStartedSTM32F7508KernelGREEN
    trainingKernel
    trainingSandboxedApps
 
