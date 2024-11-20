@@ -112,10 +112,25 @@ For Application Developers
 
          <div class="training_items">
 
-            <a class="training_link" href="tutorialImproveCodeQuality.html">
+
+            <a class="training_link" href="getStartedWithMultiSandboxApp/gettingStartedSTM32F7508MultiSandbox.html">
             <div>
                <div class="training_image_container">
                   <div class="training_image_text">Course 1</div>
+                  <img src="../_static/images/training/training_java_code_practices.jpg" alt="Multi-Sandbox Applications">
+               </div>
+               <h3 class="training_title">Get Started with Multi-Sandbox Applications</h3>
+               <p class="training_description">In this training, you will get an introduction on how to setup an environment
+               and execute your first Multi-Sandbox Application on a Kernel executable.
+               </p>
+               <a class="training_learn_more_link" href="getStartedWithMultiSandboxApp/gettingStartedSTM32F7508MultiSandbox.html">Learn more</a>
+            </div>
+            </a>
+
+            <a class="training_link" href="tutorialImproveCodeQuality.html">
+            <div>
+               <div class="training_image_container">
+                  <div class="training_image_text">Course 2</div>
                   <img src="../_static/images/training/training_java_code_practices.jpg" alt="Best Java Code Practices">
                </div>
                <h3 class="training_title">Best Java Code Practices</h3>
@@ -129,7 +144,7 @@ For Application Developers
             <a class="training_link" href="trainingApplicationTesting.html">
             <div>
                <div class="training_image_container">
-                  <div class="training_image_text">Course 2</div>
+                  <div class="training_image_text">Course 3</div>
                   <img src="../_static/images/training/training_junit.jpg" alt="JUnit">
                </div>
                <h3 class="training_title">Application Testing</h3>
@@ -143,7 +158,7 @@ For Application Developers
             <a class="training_link" href="tutorialOptimizeMemoryFootprint.html">
             <div>
                <div class="training_image_container">
-                  <div class="training_image_text">Course 3</div>
+                  <div class="training_image_text">Course 4</div>
                   <img src="../_static/images/training/training_optimize_footprint.jpg" alt="Optimize the Memory Footprint of an Application">
                </div>
                <h3 class="training_title">Optimize the Memory Footprint of an Application</h3>
@@ -156,7 +171,7 @@ For Application Developers
 
             <div>
                <div class="training_image_container">
-                  <div class="training_image_text">Course 4</div>
+                  <div class="training_image_text">Course 5</div>
                   <img src="../_static/images/training/training_microej_java.jpg" alt="MicroEJ Java Specificities">
                </div>
                <h3 class="training_title">MicroEJ Java Specificities</h3>
@@ -301,10 +316,24 @@ Multi-Sandbox
 
          <div class="training_items">
 
-            <a class="training_link" href="trainingKernel.html">
+            <a class="training_link" href="getStartedWithKernel/gettingStartedSTM32F7508KernelGREEN.html">
             <div>
                <div class="training_image_container">
                   <div class="training_image_text">Course 1</div>
+                  <img src="../_static/images/training/training_kernel.jpg" alt="Kernel">
+               </div>
+               <h3 class="training_title">Get Started with Kernel</h3>
+               <p class="training_description">In this training, you will get an introduction on how to setup an environment
+               and create your first GREEN Kernel executable.
+               </p>
+               <a class="training_learn_more_link" href="getStartedWithKernel/gettingStartedSTM32F7508KernelGREEN.html">Learn more</a>
+            </div>
+            </a>
+
+            <a class="training_link" href="trainingKernel.html">
+            <div>
+               <div class="training_image_container">
+                  <div class="training_image_text">Course 2</div>
                   <img src="../_static/images/training/training_kernel.jpg" alt="GUI Application Development">
                </div>
                <h3 class="training_title">Kernel Development</h3>
@@ -318,7 +347,7 @@ Multi-Sandbox
             <a class="training_link" href="trainingSandboxedApps.html">
             <div>
                <div class="training_image_container">
-                  <div class="training_image_text">Course 2</div>
+                  <div class="training_image_text">Course 3</div>
                   <img src="../_static/images/training/training_sandboxed_apps.jpg" alt="GUI Validation">
                </div>
                <h3 class="training_title">Sandboxed Applications Development</h3>
