@@ -24,7 +24,6 @@ You can create a new ``ExecToolTask`` in the build file of your project as follo
         resourcesDirectories.from(mainSourceSet.output.resourcesDir, layout.buildDirectory.dir("generated/microej-app-wrapper/resources"))
         classesDirectories.from(mainSourceSet.output.classesDirs, layout.buildDirectory.dir("generated/microej-app-wrapper/classes"))
         classpathFromConfiguration.from(project.configurations.getByName("runtimeClasspath"))
-        applicationEntryPoint.set(microej.applicationEntryPoint)
 
         toolName = "microej_tool_name"
         toolProperties.putAll(mapOf(
@@ -78,12 +77,12 @@ As an example, here is how to create a task which calls the :ref:`sdk6_localDepl
         resourcesDirectories.from(mainSourceSet.output.resourcesDir, buildDirectory.dir("generated/microej-app-wrapper/resources"))
         classesDirectories.from(mainSourceSet.output.classesDirs, buildDirectory.dir("generated/microej-app-wrapper/classes"))
         classpathFromConfiguration.from(project.configurations.getByName("runtimeClasspath"))
-        applicationEntryPoint.set(microej.applicationEntryPoint)
 
         // These inputs are specific to the Local Deployment Socket.
         toolName = "localDeploymentSocket"
         inputs.file(loadKernelExecutable.flatMap { it.loadedKernelExecutableFile })
         toolProperties.putAll(mapOf(
+            "application.main.class" to microej.applicationEntryPoint,
             "board.server.host" to "10.0.0.171",
             "board.server.port" to "4000",
             "board.timeout" to "120000",
@@ -93,7 +92,6 @@ As an example, here is how to create a task which calls the :ref:`sdk6_localDepl
         doFirst {
             // Use the Executable of the Kernel provided as dependency to build the Feature file.
             toolProperties["kernel.filename"] = loadKernelExecutable.get().loadedKernelExecutableFile.get().asFile.absolutePath
-            toolProperties["application.main.class"] = applicationEntryPoint.get()
         }
     }
 
