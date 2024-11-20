@@ -44,9 +44,6 @@ If your are facing any issues, check the :ref:`Troubleshooting <blemock-troubles
 Controller Setup
 ~~~~~~~~~~~~~~~~
 
-Unzip ``Executable-Bluetooth-Mock-Controller-ESP32-S3-1.0.0.zip``. 
-Inside it you will find the firmware file: ``Executable-Bluetooth-Mock-Controller-ESP32-S3-1.0.0.bin``. 
-
 To set up the controller, follow these steps:
 
 - Plug-in the ESP32-S3-DevKitC-1 board to your computer,
@@ -54,7 +51,7 @@ To set up the controller, follow these steps:
 - In the flash tool:
 
   - select the chip "ESP32-S3"
-  - browse for the firmware file
+  - browse the firmware file (``Executable-Bluetooth-Mock-Controller-ESP32-S3-1.0.0.bin``)
   - set the offset to 0x000000
   - set the SPI speed to 80 Mhz
   - set the SPI mode to DIO
@@ -166,7 +163,7 @@ with the controller. Please check that the device is connected to the network
 network.
 
 .. _developer.microej.com: https://developer.microej.com/getting-started-sdk-esp32-wrover-5.html
-.. _firmware: https://repository.microej.com/packages/ble-mock/Executable-Bluetooth-Mock-Controller-ESP32-S3-1.0.0.zip
+.. _firmware: https://repository.microej.com/packages/ble-mock/Executable-Bluetooth-Mock-Controller-ESP32-S3-1.0.0.bin
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
