@@ -92,7 +92,7 @@ Flash the Multi-Sandbox Executable on your STM32F7508-DK Discovery kit
 
 The Multi-Sandbox Executable used in this documentation is built from the
 `Kernel GREEN <https://github.com/MicroEJ/Kernel-GREEN>`__ sources.
-Refer to the :ref:`sdk6_getting_started_kernel_green`
+Refer to the :ref:`sdk_6_getting_started_stm32f7508_kernel_green`
 Getting Started to build your own Multi-Sandbox Executable.
 
 Flash the Multi-Sandbox Executable using STM32CubeProgrammer:
