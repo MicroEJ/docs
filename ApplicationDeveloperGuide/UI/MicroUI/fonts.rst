@@ -69,7 +69,8 @@ The array of characters to render must only contain renderable characters (no es
 FNT Font File
 -------------
 
-Font files which end with the suffix ``.fnt`` are the `BMFont`_ fonts (without the support of the kerning).
+Font files which end with the suffix ``.fnt`` are bitmap fonts specified by `AngelCode <http://www.angelcode.com/products/bmfont/>`_ (without the support of the kerning).
+
 A third-party tool is required to generate a ``.fnt`` from ``.ttf``.
 To be compatible with the MicroEJ Font Engine, the following settings are mandatory:
 
@@ -85,7 +86,7 @@ fontbm
 ~~~~~~
 
 `fontbm`_ is a free cross-platform (Linux / MacOS / Windows) command line bitmap font generator.
-It is based on FreeType2 and generates exactly the same font on any operating systems.
+It is based on FreeType2 and generates exactly the same font on any operating system.
 
 The next command line generates a ``.fnt`` from the font file ``SourceSansPro-Regular.ttf`` with a size of 24 pixels:
 
@@ -125,7 +126,6 @@ It generates a ``.fnt`` accompanied by its images (one or more):
 
 .. _fontbm : https://github.com/vladimirgamalyan/fontbm/
 .. _bmfont : http://www.angelcode.com/products/bmfont/
-.. _BMfont : http://www.angelcode.com/products/bmfont/
 
 EJF Font File
 -------------
