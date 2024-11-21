@@ -11,9 +11,9 @@ VEE Energy includes all critical features from the MicroEJ runtime, ensuring:
 - Extensive data handling capabilities with Edge AI and signal processing
 - Support for industry-standard protocols like DLMS/COSEM  
 
-**MicroEJ Multi-app kernel**
+**MicroEJ Multi-Sandboxing**
 
-The MicroEJ Multi-App Kernel enables secure execution of multiple isolated applications on a single device, allowing dynamic app deployment and updates without compromising system stability. By leveraging lightweight virtualization, it optimizes resource usage on constrained hardware while ensuring robust security and scalability. 
+MicroEJ Multi-Sandboxing enables secure execution of multiple isolated applications on a single device, allowing dynamic app deployment and updates without compromising system stability. By leveraging lightweight virtualization, it optimizes resource usage on constrained hardware while ensuring robust security and scalability. 
 
 - Resource Security Manager: Enhances system reliability by ensuring that a faulty app does not compromise the entire system's performance.
 - App Management and Analytics: Allows for local management and analysis of applications, providing valuable insights and control.
