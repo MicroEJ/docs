@@ -30,7 +30,9 @@ VEE Energy integrates support for extensive connectivity and communication proto
 
 - Standard IoT and connectivity stacks part of the :ref:`VEE networking add-on libraries <networkingAddonLibraries>`.
 - Energy specific stacks like DLMS, DNP3, OCCP, Modbus, IEC61850 with partners like Kalkitech.
-- Support for Smart Home protocols like MATTER to bridge energy with smart home and HVAC.
+- Support for Smart Home protocols like Matter to bridge energy with smart home and HVAC.
+
+For more information about VEE Energy, please contact your `MicroEJ sales representative <https://www.microej.com/contact/#form_1>`_.
 
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 
