@@ -69,7 +69,7 @@ The array of characters to render must only contain renderable characters (no es
 FNT Font File
 -------------
 
-Font files which end with the suffix ``.fnt`` are the standard Windows 3.0 font format.
+Font files which end with the suffix ``.fnt`` are the `BMFont`_ fonts (without the support of the kerning).
 A third-party tool is required to generate a ``.fnt`` from ``.ttf``.
 To be compatible with the MicroEJ Font Engine, the following settings are mandatory:
 
@@ -125,6 +125,7 @@ It generates a ``.fnt`` accompanied by its images (one or more):
 
 .. _fontbm : https://github.com/vladimirgamalyan/fontbm/
 .. _bmfont : http://www.angelcode.com/products/bmfont/
+.. _BMfont : http://www.angelcode.com/products/bmfont/
 
 EJF Font File
 -------------
