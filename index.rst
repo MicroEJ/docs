@@ -35,6 +35,7 @@ Browse the following chapters to familiarize yourself and understand the princip
    VEEPortingGuide/index
    KernelDeveloperGuide/index
    VEEWearUserGuide/index
+   VEEEnergyUserGuide/index
    Trainings/index
    support
    about
