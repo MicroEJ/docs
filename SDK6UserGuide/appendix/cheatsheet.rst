@@ -1,13 +1,9 @@
-Appendices
-==========
+.. _sdk6_cheat_sheet:
 
-.. toctree::
-    :maxdepth: 2
+Cheat Sheet
+===========
 
-    virtualDevice
-    dependenciesConfigurations
-    applicationWrapper
-    cheatsheet
+:download:`Download the Cheat Sheet for SDK 6 <./MicroEJ-SDK6-Cheat-Sheet.pdf>`
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
