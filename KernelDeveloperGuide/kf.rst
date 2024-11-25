@@ -710,7 +710,7 @@ Setting a Feature execution quota to zero causes the Feature to be
 suspended (the Feature is paused).
 
 If a Feature has reached its execution quota and is holding a monitor (through one of its threads), 
-and another Module (Feature or Kernel) with a disabled quota attempts to acquire the same monitor (through one of its threads), 
+and another Module (Feature or Kernel) with no execution quota set attempts to acquire the same monitor (through one of its threads), 
 the thread holding the monitor will continue its execution until it releases the monitor.
 
 
