@@ -14,9 +14,9 @@ It generates binary files ready to be displayed without the need for additional 
 Functional Description
 ======================
 
-.. figure:: images/static-font-gen2.*
+.. figure:: images/static-font-gen3.*
    :alt: Font Generator Principle
-   :width: 450px
+   :scale: 70%
    :align: center
 
    Font Generator Principle
@@ -36,14 +36,15 @@ Process overview:
 Pixel Transparency
 ==================
 
-As mentioned above, each pixel of each character in an ``.ejf`` file has one of 256 different gray-scale values.
+As mentioned above, each pixel of each character in an ``.fnt`` or ``.ejf`` file has one of 256 different gray-scale values.
 However RAW files can have 1, 2, 4 or 8 bits-per-pixel (respectively 2, 4, 16 or 256 gray-scale values).
 The required pixel depth is defined in the configuration file (see next chapter).
 The Font Generator compresses the input pixels to the required depth.
 
-The following tables illustrates the conversion "grayscale to transparency level".
-The grayscale value '0x00' is black whereas value '0xff' is white.
-The transparency level '0x0' is fully transparent whereas level '0x1' (bpp == 1), '0x3' (bpp == 2) or '0xf' (bpp == 4) is fully opaque.
+The following tables illustrate the conversion "grayscale to transparency level" (the blacker the pixel, the more opaque the encoded opacity):
+
+* The grayscale value ``0x00`` is black whereas the value ``0xff`` is white.
+* The transparency level ``0x0`` is fully transparent whereas the levels ``0x1`` (bpp == 1), ``0x3`` (bpp == 2) and ``0xf`` (bpp == 4) are fully opaque.
 
 .. table:: Font 1-BPP RAW Conversion
 
@@ -182,8 +183,8 @@ Refer to the chapter :ref:`application_options` (:guilabel:`Libraries` >
 configuration file.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
-   for read and redistribute. Except if otherwise stated, modification 
+   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free
+   for read and redistribute. Except if otherwise stated, modification
    is subject to MicroEJ Corp prior approval.
-   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and
    copyrights are the property of their respective owners.

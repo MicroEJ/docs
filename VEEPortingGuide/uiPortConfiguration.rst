@@ -36,7 +36,7 @@ As an example, the module dependency to add for a Cortex-M4 and GCC toolchain wo
          :emphasize-lines: 3
 
          dependencies {
-            microejPack("com.microej.architecture.CM4.CM4hardfp_GCC48:flopi4G25-ui-pack:14.1.1")
+            microejPack("com.microej.architecture.CM4.CM4hardfp_GCC48:flopi4G25-ui-pack:14.2.0")
          }
 
    .. tab:: SDK 5 (module.ivy)
@@ -46,7 +46,7 @@ As an example, the module dependency to add for a Cortex-M4 and GCC toolchain wo
 
          <dependencies>
             <!-- MicroEJ Architecture Specific Pack -->
-            <dependency org="com.microej.architecture.CM4.CM4hardfp_GCC48" name="flopi4G25-ui-pack" rev="14.1.1"/>
+            <dependency org="com.microej.architecture.CM4.CM4hardfp_GCC48" name="flopi4G25-ui-pack" rev="14.2.0"/>
          </dependencies>
 
 UI Pack Modules
@@ -135,7 +135,7 @@ Module Font Generator
 .. note:: This chapter only applies when the device has a display.
 
 This module allows for embedding the MicroEJ bitmap fonts of the application.
-The application's fonts (EJF files) are decoded and stored in a binary format compatible with the Graphics Engine.
+The application's fonts are decoded and stored in a binary format compatible with the Graphics Engine.
 Refer to the chapter :ref:`section_fontgen` to have more information.
 
 This module is optional: when not selected, the application cannot embed fonts compatible with the Graphics Engine.

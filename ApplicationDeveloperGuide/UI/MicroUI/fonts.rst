@@ -9,7 +9,7 @@ Overview
 
 The font system consists in two distinct parts: the built-in part (also known as the *internal font*) and, since MicroUI 3.6, the extended part.
 The extended part allows the VEE Port to provide one or more additional font systems with their own characteristics.
-However, once created, all fonts can be used by the application using the `Font`_ class. 
+However, once created, all fonts can be used by the application using the `Font`_ class.
 In most cases, the application does not know the type of font and should use all fonts (built-in or extended) in the same way.
 This makes for portable code (as far as rendering is concerned), as only the code that creates the font at runtime is specific.
 
@@ -21,7 +21,7 @@ Internal Font
 Principle
 ---------
 
-The internal font format is a simple and small bitmap format (EJF).
+The internal font format is a simple and small bitmap format.
 
 The built-in font engine used to render this format:
 
@@ -30,7 +30,7 @@ The built-in font engine used to render this format:
 * Has a very small memory footprint.
 * Is fast.
 * Does not need runtime memory allocation.
-* Provides some offline tools to generate the font files (EJF).
+* Provides some offline tools to generate the font files.
 * Allows to tune the footprint of the font files (pixel opacity levels and ranges).
 * Can be extended to provide additional features (such as a complex layout manager).
 
@@ -39,9 +39,17 @@ Its limitations are described in the following chapters.
 Height
 ------
 
-Each font file (EJF) is encoded for a given font height.
-To use the same font face (``.ttf`` file) with several heights, several EJF files are required.
+Each font file is encoded for a given font height.
+To use the same font face (``.ttf`` file) with several heights, several font files are required.
 Consequently, an application that uses a lot of font heights may be penalized (ROM footprint).
+
+Color
+-----
+
+The font encoding is similar to the :ref:`section_image_alpha`.
+These formats only embed the pixel's opacity information.
+The strings will be drawn using the current color of the graphics context.
+No color is embedded, consequently, colored characters as emojis are not supported.
 
 Languages
 ---------
@@ -58,6 +66,72 @@ The array of characters to render must only contain renderable characters (no es
 
 .. hint:: Use the offline tool :ref:`Native Language Support <nls_converter>` to automatically convert the translation messages in a character array compatible with the built-in font engine.
 
+FNT Font File
+-------------
+
+Font files which end with the suffix ``.fnt`` are bitmap fonts specified by `AngelCode <http://www.angelcode.com/products/bmfont/>`_ (without the support of the kerning).
+
+A third-party tool is required to generate a ``.fnt`` from ``.ttf``.
+To be compatible with the MicroEJ Font Engine, the following settings are mandatory:
+
+* The output file format must be a ``.txt`` (not XML or binary).
+* Images must be PNG files.
+* Font and images must be located in the same folder.
+* The images files name must end with the file number (0-based): ``xxx0.png``, ``xxx1.png``, etc.
+* The foreground color must be black and the background color white or transparent.
+
+.. hint:: Open the ``.fnt`` with a text editor to retrieve the image: ``page id=0 file="myfont_0.png"``.
+
+fontbm
+~~~~~~
+
+`fontbm`_ is a free cross-platform (Linux / MacOS / Windows) command line bitmap font generator.
+It is based on FreeType2 and generates exactly the same font on any operating system.
+
+The next command line generates a ``.fnt`` from the font file ``SourceSansPro-Regular.ttf`` with a size of 24 pixels:
+
+.. code-block:: bash
+
+   ./fontbm --font-file SourceSansPro-Regular.ttf --output myfont --color 0,0,0 --font-size 24
+
+It generates a ``.fnt`` accompanied by its images (one or more):
+
+::
+
+   myfont.fnt
+   myfont_0.png
+   myfont_1.png
+
+bmfont
+~~~~~~
+
+`bmfont`_ is a free Windows UI and command line bitmap font generator, based on FreeType2.
+
+The options to export the font must follow these rules:
+
+.. figure:: images/bmfont_export.*
+   :alt: BMFont Export Options
+   :align: center
+
+   BMFont Export Options
+
+It generates a ``.fnt`` accompanied by its images (one or more):
+
+::
+
+   myfont.fnt
+   myfont_0.png
+   myfont_1.png
+
+
+.. _fontbm : https://github.com/vladimirgamalyan/fontbm/
+.. _bmfont : http://www.angelcode.com/products/bmfont/
+
+EJF Font File
+-------------
+
+Font files which end with the ``.ejf`` suffix are created using the Font Designer (see :ref:`section.tool.fontdesigner`).
+
 Usage
 -----
 
@@ -68,7 +142,7 @@ Fonts are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.fonts.list
 .. graphviz::
 
   digraph D {
-  
+
       internalFont [shape=diamond, label="internal?"]
       fontsList [shape=box, label="*.fonts.list"]
       fontsExt [shape=box, label="*.fontsext.list"]
@@ -79,7 +153,7 @@ Fonts are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.fonts.list
       }
   }
 
-The file format is a standard Java properties file, each line representing a ``/`` separated resource path relative to the Classpath root referring to a Font file (usually with a ``.ejf`` file extension).
+The file format is a standard Java properties file, each line representing a ``/`` separated resource path relative to the Classpath root referring to a Font file (``fnt`` or ``.ejf`` extension).
 The resource may be followed by optional parameters which define :
 
 -  some ranges of characters to embed in the final raw file;
@@ -93,18 +167,15 @@ Example:
 
    # The following font is embedded with all characters
    # without transparency
-   com/mycompany/MyFont1.ejf
+   com/mycompany/MyFont1.fnt
 
-   # The following font is embedded with only the latin 
-   # unicode range without transparency 
-   com/mycompany/MyFont2.ejf:latin
+   # The following font is embedded with only the latin
+   # unicode range without transparency
+   com/mycompany/MyFont2.fnt:latin
 
    # The following font is embedded with all characters
    # with 2 levels of transparency
    com/mycompany/MyFont2.ejf::2
-
-Font files conventionally end with the ``.ejf`` suffix and are
-created using the Font Designer (see :ref:`section.tool.fontdesigner`).
 
 .. _fonts_list_grammar:
 
@@ -140,7 +211,7 @@ Font Range
 
 The first parameter is for specifying the font ranges to embed.
 Selecting only a specific set of characters to embed reduces the memory
-footprint. If unspecified, all characters of the font are embedded. 
+footprint. If unspecified, all characters of the font are embedded.
 
 Several ranges can be specified, separated by ``;``. There
 are two ways to specify a character range: the custom range and the
@@ -536,7 +607,7 @@ Transparency
 ------------
 
 The second parameter is for specifying the font transparency level
-(``1``, ``2``, ``4`` or ``8``). If unspecified, the encoded transparency level is ``1`` (does not depend on transparency level encoded in EJF file).
+(``1``, ``2``, ``4`` or ``8``). If unspecified, the encoded transparency level is ``1`` (does not depend on the transparency level encoded in the font file).
 
 Examples:
 
@@ -639,7 +710,7 @@ Default Character
 
 The application may request the rendering of a string where some characters are not available in the selected font.
 In that case, a default character is drawn instead: it is the first available character in the font.
-For example, the first available character for a font where the range matches the ASCII printable characters (``0x21-0x7E``) would be the exclamation mark (``0x21``). 
+For example, the first available character for a font where the range matches the ASCII printable characters (``0x21-0x7E``) would be the exclamation mark (``0x21``).
 
 The characters of a font are referenced by their Unicode value.
 For a given :ref:`font range <fonts_range>`, the default character is the first character of the first range.
@@ -688,8 +759,8 @@ This makes for portable code (as far as rendering is concerned).
 .. _VectorFont: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html#
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
-   for read and redistribute. Except if otherwise stated, modification 
+   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free
+   for read and redistribute. Except if otherwise stated, modification
    is subject to MicroEJ Corp prior approval.
-   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and
    copyrights are the property of their respective owners.

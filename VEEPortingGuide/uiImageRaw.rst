@@ -106,6 +106,12 @@ A padding between the header and the pixel array is added to force to start the 
 .. figure:: images/uiFormat01.*
    :width: 50.0%
 
+The pixel order follows this rule:
+
+   ::
+
+         pixel_offset = (pixel_Y * image_width + pixel_X) * bpp / 8;
+
 Here are the conversions of 32-bit to each format:
 
 -  ARGB8888: 32-bit format, 8 bits for transparency, 8 per color.
@@ -157,38 +163,77 @@ Here are the conversions of 32-bit to each format:
                   ;
       }
 
--  A8: 8-bit format, only transparency is encoded.
-   ::
+-  A8: 8-bit format, only the source image's transparency is encoded (option ``alpha``), or the source image is pre-processed (option ``grayscale``); see :ref:`section_image_alpha`.
 
-      u32 convertARGB8888toRAWFormat(u32 c){
-          return 0xff - (toGrayscale(c) & 0xff);
-      }
+.. tabs::
 
--  A4: 4-bit format, only transparency is encoded.
-   ::
+   .. tab:: Option ``alpha``
+      ::
 
-      u32 convertARGB8888toRAWFormat(u32 c){
-          return (0xff - (toGrayscale(c) & 0xff)) / 0x11;
-      }
+         u32 convertARGB8888toRAWFormat(u32 c){
+            return (c >> 24) & 0xff;
+         }
 
--  A2: 2-bit format, only transparency is encoded.
-   ::
+   .. tab:: Option ``grayscale`` 
+      ::
 
-      u32 convertARGB8888toRAWFormat(u32 c){
-          return (0xff - (toGrayscale(c) & 0xff)) / 0x55;
-      }
+         u32 convertARGB8888toRAWFormat(u32 c){
+            return 0xff - (toGrayscale(c) & 0xff);
+         }
 
--  A1: 1-bit format, only transparency is encoded.
-   ::
+-  A4: 4-bit format, only the source image's transparency is encoded (option ``alpha``), or the source image is pre-processed (option ``grayscale``); see :ref:`section_image_alpha`.
 
-      u32 convertARGB8888toRAWFormat(u32 c){
-          return (0xff - (toGrayscale(c) & 0xff)) / 0xff;
-      }
+.. tabs::
 
-The pixel order follows this rule:
-   ::
+   .. tab:: Option ``alpha``
+      ::
 
-         pixel_offset = (pixel_Y * image_width + pixel_X) * bpp / 8;
+         u32 convertARGB8888toRAWFormat(u32 c){
+            return (c >> 28) & 0xf;
+         }
+
+   .. tab:: Option ``grayscale`` 
+      ::
+
+         u32 convertARGB8888toRAWFormat(u32 c){
+            return (0xff - (toGrayscale(c) & 0xff)) / 0x11;
+         }
+
+-  A2: 2-bit format, only the source image's transparency is encoded (option ``alpha``), or the source image is pre-processed (option ``grayscale``); see :ref:`section_image_alpha`.
+
+.. tabs::
+
+   .. tab:: Option ``alpha``
+      ::
+
+         u32 convertARGB8888toRAWFormat(u32 c){
+            return (c >> 30) & 0x3;
+         }
+
+   .. tab:: Option ``grayscale`` 
+      ::
+
+         u32 convertARGB8888toRAWFormat(u32 c){
+            return (0xff - (toGrayscale(c) & 0xff)) / 0x55;
+         }
+
+-  A1: 1-bit format, only the source image's transparency is encoded (option ``alpha``), or the source image is pre-processed (option ``grayscale``); see :ref:`section_image_alpha`.
+
+.. tabs::
+
+   .. tab:: Option ``alpha``
+      ::
+
+         u32 convertARGB8888toRAWFormat(u32 c){
+            return (c >> 31) & 0x1;
+         }
+
+   .. tab:: Option ``grayscale`` 
+      ::
+
+         u32 convertARGB8888toRAWFormat(u32 c){
+            return (0xff - (toGrayscale(c) & 0xff)) / 0xff;
+         }
 
 .. _section_image_grayscale_raw:
 
