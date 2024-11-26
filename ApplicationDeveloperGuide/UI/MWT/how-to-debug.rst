@@ -185,9 +185,27 @@ Here is an example of a ``xxx.constants.list`` file with the result in an applic
 
 .. note:: Available since MWT 3.5.0 & Widget 5.0.0.
 
+Monitoring the hierarchy of a widget
+------------------------------------
+
+The ``HierarchyInspector`` allows to visit the hierarchy of a widget and to print or collect information about the widgets along the way.
+See the `visitHierarchy()`_ method for more information.
+
+It also proposes some utilities using this capability:
+
+* `countMaxDepth()`_ counts and returns the maximum depth of the hierachy.
+* `countInstances()`_ counts and returns the number of widgets and containers in the hierachy.
+* `countNumberOfWidgets()`_ counts and returns the number of widgets in the hierachy.
+* `countNumberOfContainers()`_ counts and returns the number of containers in the hierachy.
+
+.. _visitHierarchy(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/debug/HierarchyInspector.html#visitHierarchy-ej.mwt.Widget-ej.widget.debug.WidgetVisitor-
+.. _countInstances(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/debug/HierarchyInspector.html#countInstances-ej.mwt.Widget-java.lang.Class-
+.. _countMaxDepth(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/debug/HierarchyInspector.html#countMaxDepth-ej.mwt.Widget-
+.. _countNumberOfWidgets(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/debug/HierarchyInspector.html#countNumberOfWidgets-ej.mwt.Widget-
+.. _countNumberOfContainers(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/debug/HierarchyInspector.html#countNumberOfContainers-ej.mwt.Widget-
+
 Detecting Text Overflow
 -----------------------
-
 
 Widgets that display a text may experience text overflow when the strings are too long to fit into the available area.
 It can be the case, for example, in applications that support multiple languages because widgets have to deal with texts of different lengths.
