@@ -403,6 +403,16 @@ The following table describes the version compatibility between the MicroEJ UI P
 | [13.5.1-13.6.2] | 1.0.0   |                          |                              |
 +-----------------+---------+--------------------------+------------------------------+
 
+The following table describes the version compatibility between the C module and the NemaGFX libraries (officially supported):
+
++----------------+-------------------------+
+| C Module Range | NemaGFX Libraries Range |
++================+=========================+
+| 4.0.0          | [1.4.8-1.4.11]          |
++----------------+-------------------------+
+| [1.0.0-3.0.0]  | 1.4.8                   |
++----------------+-------------------------+
+
 ..
    | Copyright 2021-2024, MicroEJ Corp. Content in this space is free
    for read and redistribute. Except if otherwise stated, modification

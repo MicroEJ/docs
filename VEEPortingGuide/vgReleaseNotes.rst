@@ -110,7 +110,7 @@ The following table describes the version compatibility between the MicroEJ VG P
 | 1.1.1         | [13.3.0-13.4.1] | 3.0.2         | 3.0.0     | 2.0.0            | 2.0.0            | 2.0.2         | 1.0.2         |                            |
 +---------------+-----------------+---------------+-----------+------------------+------------------+---------------+---------------+----------------------------+
 
-**Think Silicon NemaGFX**
+**Think Silicon NemaVG**
 
 The :ref:`NemaVG C module <section_vg_c_module_microvg_nema>` targets the CPU that provides the NemaVG accelerator.
 
@@ -123,6 +123,16 @@ The following table describes the version compatibility between the MicroEJ VG P
 +---------------+-----------------+-----------+---------+------------------+------------------+---------------+---------------+----------------------------+
 | 1.6.0         | [14.0.1-14.0.2] | 1.0.1     | 3.0.0   | 6.0.1            | 4.1.0            | [3.0.0-4.0.0] | [2.0.0-3.0.0] |                            |
 +---------------+-----------------+-----------+---------+------------------+------------------+---------------+---------------+----------------------------+
+
+The following table describes the version compatibility between the C module and the NemaVG libraries (officially supported):
+
++----------------+------------------------+
+| C Module Range | NemaVG Libraries Range |
++================+========================+
+| 4.0.0          | [1.1.6-1.1.7]          |
++----------------+------------------------+
+| 3.0.0          | 1.1.6                  |
++----------------+------------------------+
 
 **FreeType**
 
