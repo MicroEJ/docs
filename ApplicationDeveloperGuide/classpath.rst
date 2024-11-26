@@ -287,10 +287,6 @@ For example, to define the property ``myProp`` with the value
 Constants
 ---------
 
-.. note::
-   This feature require :ref:`[BON] <runtime_bon>` version ``1.4`` 
-   which is available in MicroEJ Runtime starting from MicroEJ Architecture version ``7.11.0``.
-
 Constants are key/value string pairs that can be accessed with a
 call to `ej.bon.Constants.get[Type](String)`_, where ``Type`` if one of:
 
@@ -313,6 +309,18 @@ standard Java properties file. Example:
 
    # The following property is embedded as a constant
    com.mycompany.myconstantkey=com.mycompany.myconstantvalue
+
+Starting from :ref:`Architecture 8.3.0 <changelog-8.3.0>`, it is also possible to define a constant using the following :ref:`Application Option <application_options>`:
+
+.. code-block::
+   :caption: Example of declaration of a BON constant Application Option
+
+   microej.constant.myconstantkey=com.mycompany.myconstantvalue
+
+.. note::
+   
+   A Constant defined as an Application Option takes precedence over a constant defined in the classpath.
+
 
 
 Constants are resolved at binary level without having to recompile the sources. 
