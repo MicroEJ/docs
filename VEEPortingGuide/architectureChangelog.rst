@@ -66,6 +66,11 @@ SOAR
 
 .. _Kernel.clone(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#clone-T-ej.kf.Module-
 
+Integration
+~~~~~~~~~~~
+
+-  Added the declaration of :ref:`section.classpath.elements.constants` as :ref:`Application Options <application_options>`.
+
 .. _changelog-8.2.0:
 
 [8.2.0] - 2024-09-19
