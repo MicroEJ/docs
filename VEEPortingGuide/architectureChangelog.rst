@@ -61,6 +61,7 @@ SOAR
 ~~~~
 
 - Added a check to verify compatibility with the expected MicroEJ classfile version (``1.7``).
+- Fixed precedence of a :ref:`System Property <system_properties>` declared as an :ref:`Application Option <application_options>` to take priority over one defined in the classpath.
 
 .. _Kernel.clone(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#clone-T-ej.kf.Module-
 
