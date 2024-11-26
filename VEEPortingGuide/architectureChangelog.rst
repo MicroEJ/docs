@@ -53,8 +53,14 @@ Tools
 Simulator
 ~~~~~~~~~
 
+- Added a check to verify compatibility with the expected MicroEJ classfile version (``1.7``).
 - Fixed invalid mentions of ``SNI.closeOnGC()`` instead of ``NativeResource.closeOnGC()`` in the HILEngine Javadoc.
 - Fixed potential crash when calling `Kernel.clone()`_ in a project that does not define a ``kernel.kf`` file.
+
+SOAR
+~~~~
+
+- Added a check to verify compatibility with the expected MicroEJ classfile version (``1.7``).
 
 .. _Kernel.clone(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#clone-T-ej.kf.Module-
 
