@@ -288,7 +288,7 @@ Starting from :ref:`Architecture 8.3.0 <changelog-8.3.0>`, it is possible to def
 
    microej.mock.property.mymockoption=mymockvalue
 
-Then the option is retrieved as a System Property:
+Then the option can be retrieved as a System Property in the mock:
 
 .. code-block:: java
 
