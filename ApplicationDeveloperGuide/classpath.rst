@@ -308,14 +308,14 @@ standard Java properties file. Example:
    :caption: Example of Contents of a BON constants File
 
    # The following property is embedded as a constant
-   com.mycompany.myconstantkey=com.mycompany.myconstantvalue
+   myconstantkey=myconstantvalue
 
 Starting from :ref:`Architecture 8.3.0 <changelog-8.3.0>`, it is also possible to define a constant using the following :ref:`Application Option <application_options>`:
 
 .. code-block::
    :caption: Example of declaration of a BON constant Application Option
 
-   microej.constant.myconstantkey=com.mycompany.myconstantvalue
+   microej.constant.myconstantkey=myconstantvalue
 
 .. note::
    
@@ -330,7 +330,7 @@ At link time, constants are directly inlined at the place of
 
 The String key parameter must be resolved as an inlined String:
 
-- either a String literal ``"com.mycompany.myconstantkey"``
+- either a String literal ``"myconstantkey"``
 - or a ``static final String`` field resolved as a String constant
 
 The String value is converted to the desired type using conversion rules described by the :ref:`[BON] <runtime_bon>` API.
@@ -346,7 +346,7 @@ without having to recompile the sources.
 .. code-block:: java
    :caption: Example of ``if`` code removal using a BON boolean constant
 
-   if (Constants.getBoolean("com.mycompany.myconstantkey")) {
+   if (Constants.getBoolean("myconstantkey")) {
           System.out.println("this code and the constant string will be fully removed when the constant is resolved to 'false'")
    }
 
@@ -355,7 +355,7 @@ The following piece of code will not remove the code:
 
 .. code-block:: java
    
-   static final boolean MY_CONSTANT = Constants.getBoolean("com.mycompany.myconstantkey");
+   static final boolean MY_CONSTANT = Constants.getBoolean("myconstantkey");
 
    ...
 
