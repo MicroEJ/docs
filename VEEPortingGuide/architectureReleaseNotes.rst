@@ -24,7 +24,7 @@ The following table describes Foundation Libraries API versions implemented in M
      - Trace
      - Device
      - ECOM-COMM
-   * - [8.0.0-8.2.0]
+   * - [8.0.0-8.3.0]
      - `1.3 <https://repository.microej.com/modules/ej/api/edc/1.3.7/>`__
      - `1.4 <https://repository.microej.com/modules/ej/api/bon/1.4.3/>`__
      - `1.7 <https://repository.microej.com/modules/ej/api/kf/1.7.0/>`__
