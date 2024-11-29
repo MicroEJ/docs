@@ -185,24 +185,28 @@ Here is an example of a ``xxx.constants.list`` file with the result in an applic
 
 .. note:: Available since MWT 3.5.0 & Widget 5.0.0.
 
-Monitoring the hierarchy of a widget
-------------------------------------
+.. _mwt_how_to_debug_source_rule:
 
-The ``HierarchyInspector`` allows to visit the hierarchy of a widget and to print or collect information about the widgets along the way.
-See the `visitHierarchy()`_ method for more information.
+Finding which Rule Originates the Attributes of a Widget's Style
+----------------------------------------------------------------
 
-It also proposes some utilities using this capability:
+The method `CascadingStylesheet.getStyleSources()`_ is able to retrieve the selectors used to create a Style (that has been originated from a CascadingStylesheet).
+It requires to set the constant ``ej.mwt.debug.cascadingstyle.enabled`` to ``true``.
 
-* `countMaxDepth()`_ counts and returns the maximum depth of the hierachy.
-* `countInstances()`_ counts and returns the number of widgets and containers in the hierachy.
-* `countNumberOfWidgets()`_ counts and returns the number of widgets in the hierachy.
-* `countNumberOfContainers()`_ counts and returns the number of containers in the hierachy.
+The result of this method is an array containing 16 selectors: one for each parameter of the style.
+The indices for each style entry are available as constants in the ``CascadingStylesheet`` class.
+For each entry, the selector belongs to the rule selected to fill the matching parameter (thus set by `getSelectorStyle()`_).
+A ``null`` entry means that the parameter is from the default style (thus set by `getDefaultStyle()`_).
 
-.. _visitHierarchy(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/debug/HierarchyInspector.html#visitHierarchy-ej.mwt.Widget-ej.widget.debug.WidgetVisitor-
-.. _countInstances(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/debug/HierarchyInspector.html#countInstances-ej.mwt.Widget-java.lang.Class-
-.. _countMaxDepth(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/debug/HierarchyInspector.html#countMaxDepth-ej.mwt.Widget-
-.. _countNumberOfWidgets(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/debug/HierarchyInspector.html#countNumberOfWidgets-ej.mwt.Widget-
-.. _countNumberOfContainers(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/debug/HierarchyInspector.html#countNumberOfContainers-ej.mwt.Widget-
+This feature is used in the :ref:`HierarchyInspector <widget_library_debug_utilities_hierarchy>` of the Widget library.
+
+.. warning:: Beware that enabling that feature may downgrade the performances (more time to compute a style and more Java heap used).
+
+.. note:: Available since MWT 3.6.0.
+
+.. _CascadingStylesheet.getStyleSources(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/stylesheet/cascading/CascadingStylesheet.html#getStyleSources-ej.mwt.style.Style-
+.. _getDefaultStyle(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/stylesheet/cascading/CascadingStylesheet.html#getDefaultStyle--
+.. _getSelectorStyle(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/stylesheet/cascading/CascadingStylesheet.html#getSelectorStyle-ej.mwt.stylesheet.selector.Selector-
 
 Detecting Text Overflow
 -----------------------
