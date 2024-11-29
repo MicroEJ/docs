@@ -288,6 +288,8 @@ Graphical User Interface
          </div>
 
 
+.. _trainings_multi-sandbox:
+
 Multi-Sandbox
 =============
 

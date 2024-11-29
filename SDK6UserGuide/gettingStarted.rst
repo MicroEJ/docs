@@ -62,54 +62,11 @@ In case you cannot get hands on your desired starter kit, please contact us, we 
    gettingStartedSTM32F7508
    
 
-Multi-Sandbox Evaluation
-------------------------
-
-This Getting Started serves as a starting point for evaluating
-the Multi-Sandboxing capabilities of the MicroEJ technology.
-
-Run Sandboxed Applications on a ready-to-use Multi-Sandbox Executable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-MicroEJ provides ready-to-use Multi-Sandbox Executables with basic services
-for developing Sandboxed Applications and deploying them easily on your Device.
-
-This Getting Started explains how to deploy these Multi-Sandbox Executables on a board
-and run Sandboxed Applications on it.
-
-.. list-table::
-   :widths: 50 50
-   :header-rows: 0
-
-   * - |logo_st|
-     - |image_stm32f7508|
-       :ref:`Run Sandboxed Applications on STM32F7508-DK <sdk_6_getting_started_stm32f7508_multisandbox>`
-
-.. _sdk6_getting_started_kernel_green:
-
-Build your own Multi-Sandbox Executable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-This Getting Started is a step-by-step guide explaining how to build a Multi-Sandbox Executable.
-
-This Executable will be built from `Kernel GREEN <https://github.com/MicroEJ/Kernel-GREEN>`__ sources.
-
-Kernel GREEN provides a turnkey Kernel code providing basic services 
-to develop a Sandboxed Application and deploy it easily on your Device.
-
-.. list-table::
-   :widths: 50 50
-   :header-rows: 0
-
-   * - |logo_st|
-     - |image_stm32f7508|
-       :ref:`Build your own Multi-Sandbox Executable on STM32F7508-DK <sdk_6_getting_started_stm32f7508_kernel_green>`
-
 .. toctree::
    :hidden:
 
-   gettingStartedSTM32F7508MultiSandbox
-   gettingStartedSTM32F7508KernelGREEN
+   gettingStartedIMXRT1170MultiSandbox
+   gettingStartedIMXRT1170KernelGREEN
 
 VEE Port Examples
 -----------------

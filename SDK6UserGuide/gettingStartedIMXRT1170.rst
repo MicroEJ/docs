@@ -184,6 +184,8 @@ To deploy :guilabel:`Demo-SmartThermostat` application on your board, you will h
 * Build the Executable.
 * Flash the board.
 
+.. _sdk_6_getting_started_rt1170_run_on_device_environment_setup:
+
 Environment Setup
 ^^^^^^^^^^^^^^^^^
 
@@ -241,6 +243,8 @@ Under :guilabel:`Download` section, you can select the Setup program for the com
 
 By default, it will automatically add Make to your path.
 If not, you can manually add ``GnuWin32\bin`` folder to your path.
+
+.. _sdk_6_getting_started_rt1170_run_on_device_flashing_tool:
 
 Install the Flashing Tool
 """""""""""""""""""""""""
