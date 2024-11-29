@@ -76,7 +76,7 @@ The first step is to import the :guilabel:`Demo-SmartThermostat` Application int
 * If you are in the Welcome Screen, click on the :guilabel:`Open` button. Otherwise click either on :guilabel:`File` > :guilabel:`Open...` or on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project From Existing Sources...`.
 * Select the ``Demo-SmartThermostat`` directory located where you downloaded it and click on the :guilabel:`OK` button.
 
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-import-demo-application.png
+      .. figure:: images/iMXRT1170/getting-started-import-demo-application.png
          :alt: Import demo application
          :align: center
          :scale: 70%
@@ -113,7 +113,7 @@ The first step is to import the :guilabel:`Demo-SmartThermostat` Application int
 
 The Gradle project should now be imported in IntelliJ IDEA, your workspace contains the following projects: 
 
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-workspace-view.png
+      .. figure:: images/iMXRT1170/getting-started-workspace-view.png
          :alt: Workspace view
          :align: center
          :scale: 70%
@@ -138,14 +138,14 @@ In order to execute the :guilabel:`Demo-SmartThermostat` Application on the Virt
 
 * Double-click on the :guilabel:`runOnSimulator` task in the Gradle tasks view. It may takes few seconds.
 
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-runOnSimulator.png
+      .. figure:: images/iMXRT1170/getting-started-runOnSimulator.png
          :alt: runOnSimulator task
          :align: center
          :scale: 70%
 
 The Virtual Device starts and executes the :guilabel:`Demo-SmartThermostat` application.
 
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-virtual-device.png
+      .. figure:: images/iMXRT1170/getting-started-virtual-device.png
          :alt: Virtual Device
          :align: center
          :scale: 70%
@@ -157,7 +157,7 @@ The Virtual Device starts and executes the :guilabel:`Demo-SmartThermostat` appl
    If you want to know more about the use of the :guilabel:`Demo-SmartThermostat`, please have a look at its `README.md <https://github.com/MicroEJ/Demo-SmartThermostat/blob/1.0.0/smart-thermostat/README.md>`__ file.
 
 
-.. figure:: images/gettingStarted/well-done-mascot.png
+.. figure:: images/well-done-mascot.png
    :alt: Well Done
    :align: center
    :scale: 70%
@@ -213,7 +213,7 @@ The toolchain is the `GNU ARM Embedded Toolchain <https://developer.arm.com/down
 
 At the end of the installation, it will ask you to complete the Setup of the wizard, choose the following options: 
 
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-arm-gcc-installation.png
+      .. figure:: images/iMXRT1170/getting-started-arm-gcc-installation.png
          :alt: Import demo application
          :align: center
          :scale: 70%
@@ -267,7 +267,7 @@ Once installed, ``LinkServer_xxx/binaries`` folder must be set on your Path. To 
 Hardware Setup
 """"""""""""""
 
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-hardware-setup.png
+      .. figure:: images/iMXRT1170/getting-started-hardware-setup.png
          :alt: Hardware Setup
          :align: center
          :scale: 70%
@@ -318,7 +318,7 @@ In order to build the Executable of the :guilabel:`Demo-SmartThermostat` Applica
 * The build stops with a failure.
 * Go to the top project in the console view and scroll up to get the following error message:
 
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-console-output-license-uid.png
+      .. figure:: images/iMXRT1170/getting-started-console-output-license-uid.png
          :alt: Console Output License UID
          :align: center
          :scale: 70%
@@ -348,7 +348,7 @@ In order to flash the :guilabel:`Demo-SmartThermostat` Application on i.MX RT117
 
 * Double-click on the :guilabel:`runOnDevice` task in the Gradle tasks view. It may take some time.
 
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-runOnDevice.png
+      .. figure:: images/iMXRT1170/getting-started-runOnDevice.png
          :alt: runOnDevice task
          :align: center
          :scale: 70%
@@ -378,8 +378,8 @@ Once the firmware is flashed, you should see the :guilabel:`Demo-SmartThermostat
       </table>
    </div>
 
-.. |image3| image:: images/gettingStarted/iMXRT1170/getting-started-rt1170-hardware-demo-running.jpg
-.. |image4| image:: images/gettingStarted/iMXRT1170/getting-started-rt1170-termite-application-output.png
+.. |image3| image:: images/iMXRT1170/getting-started-rt1170-hardware-demo-running.jpg
+.. |image4| image:: images/iMXRT1170/getting-started-rt1170-termite-application-output.png
 
 .. _sdk_6_getting_started_rt1170_modify_java_application:
 
@@ -407,7 +407,7 @@ by
 
 Here is the modified application running in simulation: 
 
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-virtual-device-modified.png
+      .. figure:: images/iMXRT1170/getting-started-virtual-device-modified.png
          :alt: Virtual Device
          :align: center
          :scale: 70%

@@ -61,14 +61,14 @@ The first step is to import the Application into your IDE:
 * If you are in the Welcome Screen, click on the :guilabel:`Open` button. Otherwise click either on :guilabel:`File` > :guilabel:`Open...`.
 * Select the ``Example-Foundation-Libraries`` directory located where you downloaded it and click on the :guilabel:`OK` button.
 
-      .. figure:: images/gettingStarted/STM32F7508DK/getting-started-import-mvc-application.png
+      .. figure:: images/STM32F7508DK/getting-started-import-mvc-application.png
          :alt: Import demo application
          :align: center
          :scale: 70%
 
 The Gradle project should now be imported in Android Studio, your workspace contains the following project in the :guilabel:`Projects` view: 
 
-      .. figure:: images/gettingStarted/STM32F7508DK/getting-started-workspace-view.png
+      .. figure:: images/STM32F7508DK/getting-started-workspace-view.png
          :alt: Workspace view
          :align: center
          :scale: 70%
@@ -93,19 +93,19 @@ We will be using the :guilabel:`microui.mvc` Application as the sample to test t
 
 * Double-click on the :guilabel:`runOnSimulator` task in the Gradle tasks view. It may take few seconds.
 
-      .. figure:: images/gettingStarted/STM32F7508DK/getting-started-runOnSimulator.png
+      .. figure:: images/STM32F7508DK/getting-started-runOnSimulator.png
          :alt: runOnSimulator task
          :align: center
          :scale: 70%
 
 The Virtual Device starts and executes the :guilabel:`microui.mvc` application.
 
-      .. figure:: images/gettingStarted/STM32F7508DK/getting-started-virtual-device.png
+      .. figure:: images/STM32F7508DK/getting-started-virtual-device.png
          :alt: Virtual Device
          :align: center
          :scale: 70%
 
-.. figure:: images/gettingStarted/well-done-mascot.png
+.. figure:: images/well-done-mascot.png
    :alt: Well Done
    :align: center
    :scale: 70%
@@ -189,7 +189,7 @@ In order to build the Executable of the :guilabel:`microui.mvc` Application, the
 * The build stops with a failure.
 * Go to the top project in the console view and scroll up to get the following error message:
 
-      .. figure:: images/gettingStarted/STM32F7508DK/getting-started-console-output-license-uid.png
+      .. figure:: images/STM32F7508DK/getting-started-console-output-license-uid.png
          :alt: Console Output License UID
          :align: center
          :scale: 70%
@@ -219,7 +219,7 @@ In order to flash the :guilabel:`microui.mvc` Application on the STM32F7508-DK E
 
 * Double-click on the :guilabel:`runOnDevice` task in the Gradle tasks view. It may take some time.
 
-      .. figure:: images/gettingStarted/STM32F7508DK/getting-started-runOnDevice.png
+      .. figure:: images/STM32F7508DK/getting-started-runOnDevice.png
          :alt: runOnDevice task
          :align: center
          :scale: 70%
@@ -249,8 +249,8 @@ Once the firmware is flashed, you should see the :guilabel:`microui.mvc` running
       </table>
    </div>
 
-.. |image3| image:: images/gettingStarted/STM32F7508DK/getting-started-stm32f7508dk-hardware-demo-running.png
-.. |image4| image:: images/gettingStarted/STM32F7508DK/getting-started-stm32f7508dk-termite-application-output.png
+.. |image3| image:: images/STM32F7508DK/getting-started-stm32f7508dk-hardware-demo-running.png
+.. |image4| image:: images/STM32F7508DK/getting-started-stm32f7508dk-termite-application-output.png
 
 .. _sdk_6_getting_started_stm32f7508dk_modify_java_application:
 
@@ -278,7 +278,7 @@ by
 
 Here is the modified application running in simulation: 
 
-      .. figure:: images/gettingStarted/STM32F7508DK/getting-started-virtual-device-modified.png
+      .. figure:: images/STM32F7508DK/getting-started-virtual-device-modified.png
          :alt: Virtual Device
          :align: center
          :scale: 70%
