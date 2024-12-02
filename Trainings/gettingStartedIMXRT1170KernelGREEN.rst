@@ -1,16 +1,16 @@
-.. _sdk_6_getting_started_stm32f7508_kernel_green:
+.. _training_kernel_green_imxrt1170:
 
-Build your own Multi-Sandbox Executable on STM32F7508-DK
-========================================================
+Get Started with Kernel
+=======================
 
 This Getting Started is a step-by-step guide explaining
-how to build a Multi-Sandbox Executable for the STM32F7508-DK Discovery kit.
+how to build a Multi-Sandbox Executable for the NXP i.MXRT1170 Evaluation Kit.
 
-This Executable will be built from 
+This Executable will be built from the
 `Kernel GREEN <https://github.com/MicroEJ/Kernel-GREEN>`__ sources.
 
 The Multi-Sandbox Executable built in this Getting Started can then be used to
-complete the :ref:`sdk_6_getting_started_stm32f7508_multisandbox` Getting Started.
+complete the :ref:`training_multisandbox_applications_imxrt1170` Getting Started.
 
 During this Getting Started, you will learn how to:
 
@@ -33,64 +33,44 @@ Prerequisites
 For this Getting Started, all you need is:
 
 * An Internet connection to access Github repositories & :ref:`Module Repositories <module_repositories>`.
-* MICROEJ SDK 6 (installed during :ref:`Environment Setup <sdk_6_getting_started_stm32f7508dk_multisandbox_environment_setup>`).
-* STM32F7508-DK Discovery kit, available `here <https://www.st.com/en/evaluation-tools/stm32f7508-dk.html>`__.
+* MICROEJ SDK 6.
+* NXP i.MXRT1170 EVKB, available `here <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__.
+* RK055HDMIPI4MA0 display panel, available `here <https://www.nxp.com/part/RK055HDMIPI4MA0>`__.
 * A FAT32-formatted microSD card.
 * An RS232 Terminal (e.g. `Termite <https://www.compuphase.com/software_termite.htm>`__).
-* `STM32CubeProgrammer <https://www.st.com/en/development-tools/stm32cubeprog.html>`__ installed to flash a Executable on your board.
+* LinkServer tool to flash the board. You will be guided on how to install this tool later.
 
-.. _sdk_6_getting_started_stm32f7508dk_kernel_green_environment_setup:
+.. _training_kernel_green_imxrt1170_environment_setup:
 
 Environment Setup
 -----------------
 
-To follow this Getting Started, you need to:
+To follow this Getting Started, you need to: 
 
-* Follow :ref:`MICROEJ SDK 6 installation Guide <sdk_6_install>`
-  Android Studio Koala is used on this Getting Started but feel free to use your favorite IDE,
-* Install the STM32CubeIDE **version 1.9.0** for STM32F7508-DK, available `here <https://www.st.com/en/development-tools/stm32cubeide.html>`__,
-* Install the STM32CubeProgrammer utility program, available `here <https://www.st.com/en/development-tools/stm32cubeprog.html>`__,
-* Download or clone the `Kernel GREEN <https://github.com/MicroEJ/Kernel-GREEN>`__ sources.
+Install MICROEJ SDK 6
+~~~~~~~~~~~~~~~~~~~~~
 
-Be aware that we need the **1.9.0 version** of the STM32CubeIDE, 
-also please install the IDE and programmer to the default installation folders,
-it will simplify future steps.
+Follow :ref:`MICROEJ SDK 6 installation Guide <sdk_6_install>`,
+Android Studio is used on this Getting Started but feel free to use your favorite IDE,
 
-Hardware Setup
-~~~~~~~~~~~~~~
+Accept the MICROEJ SDK EULA
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Set up your STM32F7508-DK Discovery kit:
+You may have to accept the SDK EULA if you haven't already done it, please have a look at :ref:`sdk_6_eula_acceptation`.
 
-- Insert a microSD card (FAT32-formatted) in the board connector,
-- Connect the Ethernet connector to the internet,
-- Check the jumpers configuration on JP1, you only want the :guilabel:`5V link` jumper to be bridged,
-- Connect the mini-USB cable to CN14 to power the board, see
-  `Board Configuration <https://github.com/MicroEJ/VEEPort-STMicroelectronics-STM32F7508-DK/blob/2.3.1/stm32f7508_freertos-bsp/projects/microej/README.rst>`__
-  for more information.
+Setup the NXP i.MXRT1170 EVKB
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The USB connection is used as a serial link, a ST-Link probe, and a power input for the board all at once.
+Follow this :ref:`Environment Setup <sdk_6_getting_started_rt1170_run_on_device_environment_setup>`
+guide to get a development environment up and running for NXP i.MXRT1170 EVKB.
 
-The COM port uses the following parameters:
+Additionally, make sure to:
 
-.. list-table::
-   :header-rows: 1
-   :widths: 10 10 10 10 10
-
-   * - Baudrate
-     - Data bits
-     - Parity bits
-     - Stop bits
-     - Flow control
-   * - 115200
-     - 8
-     - None
-     - 1
-     - None
-
-You can have a look at your application logs with an RS232 Terminal (e.g. `Termite <https://www.compuphase.com/software_termite.htm>`__).
+* Connect the 1G Ethernet connector to the internet,
+* Insert a micro-SD card (FAT32-formatted) in the board connector.
 
 Congratulations! You have finished the setup of your environment.
-You are now ready to discover how to build and flash the Kernel GREEN.
+You are now ready to discover how to build and flash the :guilabel:`Kernel-GREEN`.
 
 Set up the Kernel GREEN on your IDE
 -----------------------------------
@@ -110,7 +90,7 @@ The first step is to import the :guilabel:`Kernel-GREEN` into your IDE:
 The Gradle project should now be imported in Android Studio,
 your workspace contains the following project in the :guilabel:`Projects` view: 
 
-   .. figure:: images/getting-started-import-kernel-green.png
+   .. figure:: images/multiSandbox/getting-started-import-kernel-green.png
       :alt: Import demo application
       :align: center
       :scale: 70%
@@ -126,20 +106,8 @@ Refer to the ``Prerequisites`` section of the
 `Kernel GREEN README <https://github.com/MicroEJ/Kernel-GREEN/blob/master/README.md>`__
 to learn more about the VEE Port requirements.
 
-By default, the Kernel GREEN project uses the `NXP i.MXRT1170 VEE Port <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk>`__.
-
-A pre-built version of the `STM32F7508-DK VEE Port with Multi-Sandbox capability <https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/veeport/st/stm32f7508-dk/R0OUY_eval/2.2.0>`__
-is available on the Developer Repository.
-Update the Kernel project to use this VEE Port:
-
-* Open the ``build.gradle.kts`` file located at the root of the project,
-* Edit the following variables as follows:
-  
-   .. code-block:: kotlin
-      
-      val defaultVeePortGroup: String = "com.microej.veeport.st.stm32f7508-dk"
-      val defaultVeePortModule: String = "R0OUY_eval"
-      val defaultVeePortVersion: String = "2.3.0"
+By default, the :guilabel:`Kernel-GREEN` project already uses the
+`NXP i.MXRT1170 VEE Port <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk>`__.
 
 Kernel Configuration
 ^^^^^^^^^^^^^^^^^^^^
@@ -153,16 +121,11 @@ This configuration will also impact Sandboxed Applications running on top of the
 Check the `Kernel GREEN README <https://github.com/MicroEJ/Kernel-GREEN/blob/master/README.md>`__
 for more information about the Kernel configuration.
 
-Accept the MICROEJ SDK EULA
----------------------------
+Run the Kernel GREEN on NXP i.MXRT1170 Evaluation Kit
+-----------------------------------------------------
 
-You may have to accept the SDK EULA if you haven't already done it, please have a look at :ref:`sdk_6_eula_acceptation`.
-
-Run the Kernel GREEN on STM32F7508-DK Discovery kit
-----------------------------------------------------
-
-Make sure to have completed all the :ref:`sdk_6_getting_started_stm32f7508dk_kernel_green_environment_setup`
-steps before going further. 
+Make sure to have completed all the :ref:`training_kernel_green_imxrt1170_environment_setup`
+steps before going further.
 
 To deploy :guilabel:`Kernel-GREEN` on your board, you will have to:
 
@@ -170,8 +133,8 @@ To deploy :guilabel:`Kernel-GREEN` on your board, you will have to:
 * Build the Executable,
 * Flash the board.
 
-Build the Executable for the STM32F7508-DK Discovery kit
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Build the Executable for the NXP i.MXRT1170 Evaluation Kit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In order to build the Executable of the :guilabel:`Kernel-GREEN`,
 the SDK provides the :guilabel:`buildExecutable` Gradle task.
@@ -185,7 +148,7 @@ the SDK provides the :guilabel:`buildExecutable` Gradle task.
 * The build stops with a failure.
 * Go to the top project in the console view and scroll up to get the following error message:
 
-   .. figure:: images/getting-started-console-output-license-uid.png
+   .. figure:: images/console-output-license-uid.png
       :alt: Console Output License UID
       :align: center
       :scale: 70%
@@ -202,12 +165,12 @@ Now your Evaluation license is installed, you can relaunch your Kernel build by 
 
 The gradle task deploys the Kernel in the BSP and then builds the BSP using Make.
 
-The :guilabel:`Kernel-GREEN` is built and ready to be flashed on a STM32F7508-DK Discovery kit once the hardware setup is completed.
+The :guilabel:`Kernel-GREEN` is built and ready to be flashed on a NXP i.MXRT1170 Evaluation Kit once the hardware setup is completed.
 
-Flash the Kernel GREEN on the STM32F7508-DK Discovery kit
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Flash the Kernel GREEN on the NXP i.MXRT1170 Evaluation Kit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In order to flash the :guilabel:`Kernel-GREEN` on the STM32F7508-DK Discovery kit,
+In order to flash the :guilabel:`Kernel-GREEN` on the NXP i.MXRT1170 Evaluation Kit,
 the application provides the Gradle :guilabel:`runOnDevice` task.
 
 .. note::
@@ -216,14 +179,14 @@ the application provides the Gradle :guilabel:`runOnDevice` task.
 
 * Double-click on the :guilabel:`runOnDevice` task in the Gradle tasks view. It may take some time:
 
-   .. figure:: images/getting-started-runOnDevice.png
+   .. figure:: images/multiSandbox/getting-started-runOnDevice.png
       :alt: runOnDevice task
       :align: center
       :scale: 70%
 
 Once the Executable is flashed, you should see the :guilabel:`Kernel-GREEN` traces in your console:
 
-   .. figure:: images/getting-started-stm32f7508dk-termite-green-fw-output.png
+   .. figure:: images/multiSandbox/iMXRT1170/getting-started-imxrt1170-termite-green-fw-output.png
       :alt: Logs Output on Termite Serial Terminal
       :align: center
       :scale: 60%
@@ -245,14 +208,14 @@ If you want to learn how to run a Sandboxed Application on your Multi-Sandbox Ex
 Run a Sandboxed Application on your Multi-Sandbox Executable and Virtual Device
 -------------------------------------------------------------------------------
 
-Follow the :ref:`sdk_6_getting_started_stm32f7508_multisandbox_run_application`
+Follow the :ref:`training_multisandbox_applications_imxrt1170_create_app`
 Getting Started to create and run a Sandboxed Application project on your 
 Multi-Sandbox Executable and Virtual Device.
 
 .. note::
 
    When it comes to selecting the Multi-Sandbox Executable and Virtual Device
-   (section :ref:`sdk_6_getting_started_stm32f7508_multisandbox_run_virtual_device`),
+   (section :ref:`training_multisandbox_applications_imxrt1170_run_virtual_device`),
    follow this procedure:
 
    - Open the ``settings.gradle.kts`` files located at the root of your :guilabel:`MyApplication` project,
@@ -266,14 +229,14 @@ Multi-Sandbox Executable and Virtual Device.
 
    - Reload the Gradle project:
 
-      .. figure:: images/getting-started-reload-gradle-project.png
+      .. figure:: images/multiSandbox/getting-started-reload-gradle-project.png
          :alt: Virtual Device
          :align: center
          :scale: 70%
 
    - The :guilabel:`Kernel-GREEN` project should now appear in the Gradle tasks view:
 
-      .. figure:: images/getting-started-gradle-tasks-kernel-green.png
+      .. figure:: images/multiSandbox/getting-started-gradle-tasks-kernel-green.png
          :alt: Kernel GREEN and MyApplication Gradle tasks
          :align: center
          :scale: 90%
@@ -286,14 +249,21 @@ Multi-Sandbox Executable and Virtual Device.
          dependencies {
             ...
             //Uncomment the microejVee dependency to set the VEE Port or Kernel to use
-            microejVee("com.microej.kernel:GREEN:2.0.0")
+            microejVee("com.microej.kernel:GREEN:2.1.0")
          }
-   - Come back to the :ref:`sdk_6_getting_started_stm32f7508_multisandbox_run_virtual_device` Getting Started.
+   
+   
+      .. note::
+            
+            Make sure that the version corresponds to the version defined in your
+            `Kernel-GREEN build.gradle.kts <https://github.com/MicroEJ/Kernel-GREEN/blob/master/build.gradle.kts>`_ file.
+
+   - Come back to the :ref:`training_multisandbox_applications_imxrt1170_run_virtual_device` Getting Started.
 
 Going Further
 -------------
 
-You have now successfully executed Sandboxed Applications on an embedded device so what's next?
+You have now successfully executed a Sandboxed Application on an embedded device so what's next?
 
 If you are an application developer you can continue to explore MicroEJ's APIs and functionalities by running and studying our samples at GitHub:
 

@@ -1,75 +1,89 @@
 .. _training_multisandbox_applications_imxrt1170:
 
-Run Sandboxed Applications on NXP i.MXRT1170
-============================================
+===========================================
+Get Started with Multi-Sandbox Applications
+===========================================
 
-This Getting Started will show you how to run Sandboxed Applications
+Description
+===========
+
+This training will show you how to run Sandboxed Applications
 on-top of a pre-built Multi-Sandbox Executable for the NXP i.MXRT1170 Evaluation Kit.
 
-During this Getting Started, you will learn how
+During this training, you will learn how
 to run Sandboxed Application in Simulation using
 the Virtual Device and on NXP i.MXRT1170:
 
-* :ref:`training_multisandbox_applications_imxrt1170_run_demo_sandboxed_apps`.
-* :ref:`Create Sandboxed Application Project and Run it <training_multisandbox_applications_imxrt1170_create_app>`.
+1. :ref:`training_multisandbox_applications_imxrt1170_run_demo_sandboxed_apps`.
+2. :ref:`Create Sandboxed Application and run it <training_multisandbox_applications_imxrt1170_create_app>`.
 
 In case you are not familiar with MicroEJ, please visit `Discover MicroEJ <https://developer.microej.com/discover-microej/>`__ to understand the principles of our technology.
 
-The below schematic summarizes the Multi-Sandbox features that will be demonstrated in this Getting Started:  
+The below schematic summarizes the Multi-Sandbox features that will be demonstrated in this training: 
 
-   .. figure:: images/gettingStarted/multiSandbox/iMXRT1170/multiSandboxGettingStartedOverview.png
+   .. figure:: images/multiSandbox/iMXRT1170/multiSandboxGettingStartedOverview.png
       :alt: Logs Output on Termite Serial Terminal
       :align: center
 
+
+Intended Audience
+=================
+
+This training is designed for application developers looking to gain a first understanding 
+of the Multi-Sandbox development flow.
+
 Prerequisites
--------------
+=============
 
-.. note::
-  
-   This Getting Started has been tested on Windows 10. 
-   Also note that examples used in this Getting Started could depend on older tools and libraries. 
-   Most notably our dependency manager plugin (using `Gradle <https://gradle.org/>`__) could be an older version.
+To get the most out of this training, participants should have:
 
-For this Getting Started, all you need is:
-
-* An Internet connection to access Github repositories & :ref:`Module Repositories <module_repositories>`.
-* MICROEJ SDK 6.
-* NXP i.MXRT1170 EVKB, available `here <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__.
-* RK055HDMIPI4MA0 display panel, available `here <https://www.nxp.com/part/RK055HDMIPI4MA0>`__.
-* A FAT32-formatted microSD card.
-* An RS232 Terminal (e.g. `Termite <https://www.compuphase.com/software_termite.htm>`__).
-* LinkServer tool to flash the board. You will be guided on how to install this tool later.
+- A good understanding of the :ref:`overview` section.
+- A basic knowledge of the :ref:`chapter-glossary`.
+- Access to the `NXP i.MX RT1170 Evaluation Kit EVKB <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__.
+- Access to the `RK055HDMIPI4MA0 display panel <https://www.nxp.com/part/RK055HDMIPI4MA0>`__.
 
 Environment Setup
 -----------------
 
-To follow this Getting Started, you need to: 
+To follow this training, you need:
+
+* A FAT32-formatted microSD card.
+* An RS232 Terminal (e.g. `Termite <https://www.compuphase.com/software_termite.htm>`__).
+
+Also, follow the steps described in the sections below to complete your environment setup. 
+
+.. note::
+  
+   This training has been tested on Windows 10. 
+   Also note that examples used in this training could depend on older tools and libraries. 
+   Most notably our dependency manager plugin (using `Gradle <https://gradle.org/>`__) could be an older version.
 
 Install MICROEJ SDK 6
 ~~~~~~~~~~~~~~~~~~~~~
 
 Follow :ref:`MICROEJ SDK 6 installation Guide <sdk_6_install>`,
-Android Studio is used on this Getting Started but feel free to use your favorite IDE,
+Android Studio is used on this training but feel free to use your favorite IDE,
 
 Accept the MICROEJ SDK EULA
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You may have to accept the SDK EULA if you haven't already done it, please have a look at :ref:`sdk_6_eula_acceptation`.
+You may have to accept the SDK EULA if you haven't already done it, 
+please have a look at :ref:`sdk_6_eula_acceptation`.
 
 Setup the NXP i.MXRT1170 EVKB
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Set up the NXP i.MX RT1170 EVKB:
 
-* Check that the dip switches (SW1) are set to OFF, OFF, ON and OFF,
-* Ensure jumper J5 is removed,
+* Check that the dip switches (``SW1``) are set to ``OFF``, ``OFF``, ``ON`` and ``OFF``,
+* Ensure jumper ``J5`` is removed,
 * Insert a micro-SD card (FAT32-formatted) in the board connector,
 * Connect the display panel ``RK055HDMIPI4MA0``.
-* Connect the micro-USB cable to J86 to power the board,
-* Connect the 1G Ethernet connector to the internet,
-* Connect a 5 V power supply to J43.
+* Connect the micro-USB cable to ``J86`` to power the board,
+* Connect the ``1GB`` Ethernet connector to the internet,
+* Connect a 5 V power supply to ``J43``.
 
-   .. figure:: images/gettingStarted/multiSandbox/iMXRT1170/hardware_setup_imxrt1170.png
+   .. figure:: images/multiSandbox/iMXRT1170/hardware_setup_imxrt1170.png
       :alt: NXP i.MX RT1170 EVKB Hardware Setup
       :align: center
 
@@ -102,12 +116,12 @@ You can have a look at your application logs with an RS232 Terminal (e.g. `Termi
 Flash the Multi-Sandbox Executable on your NXP i.MXRT1170 Evaluation Kit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-`Download the Multi-Sandbox Executable: <https://repository.microej.com/packages/green/2.0.0/firmware/NXP-MIMXRT1170_GCC/NXP-MIMXRT1170_GCC_GREEN-2.0.0.out>`__ ``NXP-MIMXRT1170_GCC_GREEN-2.0.0.out``.
+Download the Multi-Sandbox Executable: `NXP-MIMXRT1170_GCC_GREEN-2.0.0.out <https://repository.microej.com/packages/green/2.0.0/firmware/NXP-MIMXRT1170_GCC/NXP-MIMXRT1170_GCC_GREEN-2.0.0.out>`__.
 
 The Multi-Sandbox Executable used in this documentation is built from the
 `Kernel GREEN <https://github.com/MicroEJ/Kernel-GREEN>`__ sources.
 Refer to the :ref:`training_kernel_green_imxrt1170`
-Getting Started to build your own Multi-Sandbox Executable.
+training to build your own Multi-Sandbox Executable.
 
 If you want more information about this Multi-Sandbox Executable,
 the Javadoc and the Release notes are available in this
@@ -137,12 +151,15 @@ Set up the logs output:
 - Press the reset button of the board (Black button),
 - Get the IP address of your board. You will find it in the logs output:
   
-   .. figure:: images/gettingStarted/multiSandbox/iMXRT1170/getting-started-imxrt1170-termite-green-fw-output.png
+   .. figure:: images/multiSandbox/iMXRT1170/getting-started-imxrt1170-termite-green-fw-output.png
       :alt: Logs Output on Termite Serial Terminal
       :align: center
       :scale: 60%
 
 Congratulations! The Multi-Sandbox Executable is running on the NXP i.MXRT1170 Evaluation Kit and is ready to be used.
+
+Training Course
+===============
 
 .. _training_multisandbox_applications_imxrt1170_run_demo_sandboxed_apps:
 
@@ -183,7 +200,7 @@ Import the project into your IDE:
 
 The Gradle project should now be imported in Android Studio, your workspace contains the following project in the :guilabel:`Projects` view: 
 
-   .. figure:: images/gettingStarted/multiSandbox/getting-started-demo-sandboxed-applications-project.png
+   .. figure:: images/multiSandbox/getting-started-demo-sandboxed-applications-project.png
       :alt: Workspace view
       :align: center
       :scale: 70%
@@ -196,7 +213,7 @@ task:
 
 * Double-click on the :guilabel:`runOnSimulator` task of one the applications (:guilabel:`app-gui`, :guilabel:`app-power-provider`, :guilabel:`app-mqtt-publisher`):
 
-   .. figure:: images/gettingStarted/multiSandbox/getting-started-runOnSimulator-demo-sandboxed-applications.png
+   .. figure:: images/multiSandbox/getting-started-runOnSimulator-demo-sandboxed-applications.png
       :alt: runOnSimulator task
       :align: center
 
@@ -217,10 +234,10 @@ The Virtual Device starts and executes the Demo-Sandboxed-Applications:
 Run the Demo on the NXP i.MXRT1170 Evaluation Kit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The :guilabel:`Demo-Sandboxed-Applications` applications can be deployed on the NXP i.MXRT1170 Evaluation Kit using the ``localDeploy tool``.
+The :guilabel:`Demo-Sandboxed-Applications` applications can be deployed on the NXP i.MXRT1170 Evaluation Kit using the ``localDeploy`` tool.
 Each application needs to be deployed individually.
 
-Configure the Local Deploy tool in the project:
+Configure the ``localDeploy`` tool in the project:
 
 * Open the ``gradle.properties`` file located at the root of the :guilabel:`Demo-Sandboxed-Applications` project,
 * Get the IP address of your board and add it to the ``ipAddress`` field.
@@ -251,12 +268,12 @@ to a public MQTT Broker: ``test.mosquitto.org``.
 The MQTT topic is randomly generated at each application startup.
 It can be seen in the console logs:
 
-   .. figure:: images/gettingStarted/multiSandbox/getting-started-demo-sandboxed-applications-mqtt-topic.png
+   .. figure:: images/multiSandbox/getting-started-demo-sandboxed-applications-mqtt-topic.png
       :alt: MQTT topic
       :align: center
       :scale: 70%
 
-Use a MQTT client to subscribe to the topic, example with Docker:
+Use a MQTT client to subscribe to the topic, example using Docker:
 
 .. code-block::
 
@@ -264,7 +281,7 @@ Use a MQTT client to subscribe to the topic, example with Docker:
 
 Every time a power value is published, it can be seen in the MQTT client console:
 
-   .. figure:: images/gettingStarted/multiSandbox/getting-started-demo-sandboxed-applications-mqtt-subscribe.png
+   .. figure:: images/multiSandbox/getting-started-demo-sandboxed-applications-mqtt-subscribe.png
       :alt: MQTT topic
       :align: center
       :scale: 70%
@@ -279,7 +296,7 @@ This server listens on port ``4001`` by default.
 
 The Server URL can be seen in the console logs:
 
-   .. figure:: images/gettingStarted/multiSandbox/getting-started-hokapp-ip.png
+   .. figure:: images/multiSandbox/getting-started-hokapp-ip.png
       :alt: MQTT topic
       :align: center
       :scale: 70%
@@ -287,10 +304,24 @@ The Server URL can be seen in the console logs:
 Open the URL in a web browser, the installed applications can be seen. 
 They can be ``Started / Stopped / Uninstalled``:
 
-   .. figure:: images/gettingStarted/multiSandbox/getting-started-hokapp-webui.png
+   .. figure:: images/multiSandbox/getting-started-hokapp-webui.png
       :alt: Hokapp WebUI
       :align: center
       :scale: 70%
+
+
+.. figure:: images/well-done-mascot.png
+   :alt: Well Done
+   :align: center
+   :scale: 70%
+
+Well Done!
+-----------
+
+Now you know how to run Sandboxed Applications on a Multi-Sandbox Executable!
+
+The next step is about creating a Sandboxed Application project from scratch and
+running it on Virtual Device and on NXP i.MXRT1170.
 
 .. _training_multisandbox_applications_imxrt1170_create_app:
 
@@ -300,12 +331,16 @@ Create and Run a Sandboxed Application
 Create the Sandboxed Application Project
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. note::
+  
+   If you are using an IDE other than Android Studio, please have a look at :ref:`sdk_6_create_project` section.
+
 Create a new Sandboxed Application project as follows in Android Studio:
 
 - Click on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...`,
 - Select :guilabel:`Generic` > :guilabel:`New MicroEJ project`:
 
-   .. figure:: images/android-studio-create-project-01.png
+   .. figure:: images/androidStudio/android-studio-create-project-01.png
       :alt: Project Creation in Android Studio
       :align: center
       :scale: 70%
@@ -321,7 +356,7 @@ Create a new Sandboxed Application project as follows in Android Studio:
    Groovy build script DSL is not officially supported by the SDK, so the project created by the Wizard uses Kotlin regardless
    of the language selected by the user.
       
-   .. figure:: images/android-studio-create-project-02.png
+   .. figure:: images/androidStudio/android-studio-create-project-02.png
       :alt: Project Creation in Android Studio
       :align: center
       :scale: 70%
@@ -333,14 +368,14 @@ Create a new Sandboxed Application project as follows in Android Studio:
 - Select the :guilabel:`Application` project type,
 - Click on :guilabel:`Finish` button:
 
-   .. figure:: images/android-studio-create-project-03.png
+   .. figure:: images/androidStudio/android-studio-create-project-03.png
       :alt: Project Creation in Android Studio
       :align: center
       :scale: 70%
 
 - Change the view from :guilabel:`Android` to :guilabel:`Project` in the selectbox at the top of the project's files tree:
 
-   .. figure:: images/android-studio-create-project-04.png
+   .. figure:: images/androidStudio/android-studio-create-project-04.png
       :alt: Project View in Android Studio
       :align: center
       :scale: 70%
@@ -380,7 +415,7 @@ In order to execute the :guilabel:`MyApplication` project on the Virtual Device,
 
 * Double-click on the :guilabel:`runOnSimulator` task in the Gradle tasks view. It may take few seconds to start:
 
-   .. figure:: images/gettingStarted/multiSandbox/getting-started-runOnSimulator.png
+   .. figure:: images/multiSandbox/getting-started-runOnSimulator.png
       :alt: runOnSimulator task
       :align: center
       :scale: 70%
@@ -388,30 +423,20 @@ In order to execute the :guilabel:`MyApplication` project on the Virtual Device,
 The Virtual Device starts and executes the :guilabel:`MyApplication` project.
 The ``Hello World!`` message can be seen in the console:
 
-   .. figure:: images/gettingStarted/multiSandbox/iMXRT1170/getting-started-imxrt1170-myapplication-sim.png
+   .. figure:: images/multiSandbox/iMXRT1170/getting-started-imxrt1170-myapplication-sim.png
       :alt: Virtual Device
       :align: center
       :scale: 70%
-
-.. figure:: images/gettingStarted/well-done-mascot.png
-   :alt: Well Done
-   :align: center
-   :scale: 70%
-
-Well Done!
------------
-
-Now you know how to run a Sandboxed Application on a Virtual Device!
 
 Run the Sandboxed Application on the NXP i.MXRT1170 Evaluation Kit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Multi-Sandbox Executable embeds a server that listens for Sandboxed Applications deployment commands.
 
-The :guilabel:`MyApplication` project can be deployed on the NXP i.MXRT1170 Evaluation Kit using the ``Local Deploy tool``.
+The :guilabel:`MyApplication` project can be deployed on the NXP i.MXRT1170 Evaluation Kit using the ``localDeploy`` tool.
 This tool will deploy the application on the NXP i.MXRT1170 Evaluation Kit through your local network.
 
-Configure the Local Deploy tool in :guilabel:`MyApplication` project:
+Configure the ``localDeploy`` tool in :guilabel:`MyApplication` project:
 
 - Open the ``app/build.gradle.kts`` file of the :guilabel:`MyApplication` project,
 - Paste the following code at the beginning of the file:
@@ -430,14 +455,15 @@ Configure the Local Deploy tool in :guilabel:`MyApplication` project:
 
    .. code-block:: kotlin
 
-      // Adjust the following two variables to your board IP
-      val boardIP = "<BOARD IP ADDRESS>"
-      val boardPort = 4001 // default
 
       val buildFeatureTask = tasks.withType(BuildFeatureTask::class).named("buildFeature")
       tasks.register("localDeploy") {
       dependsOn("buildFeature")
       group = "microej"
+
+      // Adjust the following two variables to your board IP and Port
+      val boardIP = "<BOARD IP ADDRESS>"
+      val boardPort = 4001 // default
 
       doLast {
          // Locate app file and metadata
@@ -507,14 +533,14 @@ Configure the Local Deploy tool in :guilabel:`MyApplication` project:
 - Update the ``boardIP`` variable with your board IP address,
 - Reload the Gradle project:
 
-   .. figure:: images/gettingStarted/multiSandbox/getting-started-reload-gradle-project.png
+   .. figure:: images/multiSandbox/getting-started-reload-gradle-project.png
       :alt: Virtual Device
       :align: center
       :scale: 70%
 
 - A :guilabel:`localDeploy` task is now visible in the :guilabel:`microej` tasks list:
 
-   .. figure:: images/gettingStarted/multiSandbox/getting-started-localDeploy-task.png
+   .. figure:: images/multiSandbox/getting-started-localDeploy-task.png
       :alt: Virtual Device
       :align: center
       :scale: 70%
@@ -523,7 +549,7 @@ Configure the Local Deploy tool in :guilabel:`MyApplication` project:
 - :guilabel:`MyApplication` is successfully deployed and the ``Hello World!`` is displayed
   in the serial terminal: 
 
-   .. figure:: images/gettingStarted/multiSandbox/iMXRT1170/getting-started-imxrt1170-termite-myapplication-output.png
+   .. figure:: images/multiSandbox/iMXRT1170/getting-started-imxrt1170-termite-myapplication-output.png
       :alt: Virtual Device
       :align: center
       :scale: 70%
@@ -532,7 +558,7 @@ Configure the Local Deploy tool in :guilabel:`MyApplication` project:
    If you update your application, just run the :guilabel:`localDeploy` task again to test the
    updated application on your board!
 
-.. figure:: images/gettingStarted/well-done-mascot.png
+.. figure:: images/well-done-mascot.png
    :alt: Well Done
    :align: center
    :scale: 70%
@@ -540,7 +566,8 @@ Configure the Local Deploy tool in :guilabel:`MyApplication` project:
 Well Done!
 -----------
 
-Now you know how to run a Sandboxed Application on a Multi-Sandbox Executable!
+Now you know how to create a Sandboxed Application project from scratch and
+run it on your device!
 
 Going Further
 -------------

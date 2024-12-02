@@ -104,7 +104,7 @@ For Application Developers
 .. toctree::
    :hidden:
    
-   getStartedWithMultiSandboxApp/gettingStartedSTM32F7508MultiSandbox
+   gettingStartedIMXRT1170MultiSandbox
    tutorialImproveCodeQuality
    tutorialOptimizeMemoryFootprint
    trainingApplicationTesting
@@ -114,17 +114,17 @@ For Application Developers
          <div class="training_items">
 
 
-            <a class="training_link" href="getStartedWithMultiSandboxApp/gettingStartedSTM32F7508MultiSandbox.html">
+            <a class="training_link" href="gettingStartedIMXRT1170MultiSandbox.html">
             <div>
                <div class="training_image_container">
                   <div class="training_image_text">Course 1</div>
                   <img src="../_static/images/training/training_java_code_practices.jpg" alt="Multi-Sandbox Applications">
                </div>
                <h3 class="training_title">Get Started with Multi-Sandbox Applications</h3>
-               <p class="training_description">In this training, you will get an introduction on how to setup an environment
-               and execute your first Multi-Sandbox Application on a Kernel executable.
+               <p class="training_description">In this training, you will get an introduction
+               on how to execute a Multi-Sandbox Application on a Multi-Sandbox Executable.
                </p>
-               <a class="training_learn_more_link" href="getStartedWithMultiSandboxApp/gettingStartedSTM32F7508MultiSandbox.html">Learn more</a>
+               <a class="training_learn_more_link" href="gettingStartedIMXRT1170MultiSandbox.html">Learn more</a>
             </div>
             </a>
 
@@ -312,7 +312,7 @@ Multi-Sandbox
 .. toctree::
    :hidden:
    
-   getStartedWithKernel/gettingStartedSTM32F7508KernelGREEN
+   gettingStartedIMXRT1170KernelGREEN
    trainingKernel
    trainingSandboxedApps
 
@@ -320,7 +320,7 @@ Multi-Sandbox
 
          <div class="training_items">
 
-            <a class="training_link" href="getStartedWithKernel/gettingStartedSTM32F7508KernelGREEN.html">
+            <a class="training_link" href="gettingStartedIMXRT1170KernelGREEN.html">
             <div>
                <div class="training_image_container">
                   <div class="training_image_text">Course 1</div>
@@ -330,7 +330,7 @@ Multi-Sandbox
                <p class="training_description">In this training, you will get an introduction on how to setup an environment
                and create your first GREEN Kernel executable.
                </p>
-               <a class="training_learn_more_link" href="getStartedWithKernel/gettingStartedSTM32F7508KernelGREEN.html">Learn more</a>
+               <a class="training_learn_more_link" href="gettingStartedIMXRT1170KernelGREEN.html">Learn more</a>
             </div>
             </a>
 
