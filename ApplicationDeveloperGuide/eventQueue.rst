@@ -371,9 +371,20 @@ To simulate event that are normally sent through the C API, use the Event Queue 
 
 The Event Queue Mock API dependency must be added to the project build file of your MicroEJ Mock project.
 
-.. code-block:: xml
 
-   <dependency org="com.microej.pack.event" name="event-pack" rev="2.0.0" conf="provided->mockAPI"/>
+.. tabs::
+
+   .. tab:: Gradle (build.gradle.kts)
+
+      .. code-block:: kotlin
+
+         implementation(group="com.microej.pack.event", name="event-pack", version="2.0.0", configuration="mockAPI")
+
+   .. tab:: MMM (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="com.microej.pack.event" name="event-pack" rev="2.0.0" conf="provided->mockAPI"/>
 
 It provides two methods: 
 
