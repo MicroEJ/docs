@@ -250,6 +250,7 @@ Graphical User Interface
    :hidden:
 
    trainingGuiRaster
+   trainingDisplayFormats
    trainingDebugGUIFreeze
 
 
@@ -271,10 +272,24 @@ Graphical User Interface
             </div>
             </a>
 
-            <a class="training_link" href="trainingDebugGUIFreeze.html">
+            <a class="training_link" href="trainingDisplayFormats.html">
             <div>
                <div class="training_image_container">
                   <div class="training_image_text">Course 2</div>
+                  <img src="../_static/images/training/trainingDisplayFormats.jpg" alt="Display Formats Considerations">
+               </div>
+               <h3 class="training_title">Display Formats Considerations</h3>
+               <p class="training_description">In this training, you will get an overview of the considerations
+               to take into account when choosing a display format (e.g. RGB565, monochrome, CLUT, ...).
+               </p>
+               <a class="training_learn_more_link" href="trainingDisplayFormats.html">Learn more</a>
+            </div>
+            </a>
+
+            <a class="training_link" href="trainingDebugGUIFreeze.html">
+            <div>
+               <div class="training_image_container">
+                  <div class="training_image_text">Course 3</div>
                   <img src="../_static/images/training/trainingDebugGUIFreeze.jpg" alt="Debugging a GUI Application Freeze">
                </div>
                <h3 class="training_title">Debug a GUI Application Freeze</h3>
