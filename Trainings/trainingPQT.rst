@@ -33,7 +33,7 @@ To get the most out of this training, participants should have:
 
 - A good understanding of the :ref:`overview` section.
 - A basic knowledge of the :ref:`chapter-glossary`.
-- Access to the `ESP-WROVER-KIT V4.1 Evaluation Kit <https://docs.espressif.com/projects/esp-idf/en/stable/esp32/hw-reference/esp32/get-started-wrover-kit.html#get-started-esp-wrover-kit-v4-1-board-front>`_.
+- Access to the `ESP-WROVER-KIT V4.1 Evaluation Kit <https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp-wrover-kit/user_guide.html>`_.
 
 Training Resources
 ==================

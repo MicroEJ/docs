@@ -552,7 +552,8 @@ The Wrapper is a script that ensures that the required version of Gradle is down
 
 When creating a project following one of the project creation systems described in the :ref:`sdk_6_create_project` section, 
 the Wrapper files are automatically generated in the ``gradle/wrapper`` folder of the project.
-It is also possible to add the Wrapper to an existing project by executing the ``wrapper`` task::
+It is also possible to add the Wrapper to an existing project. 
+This requires to `install the Gradle distribution <https://gradle.org/install/>`__, then to execute the ``wrapper`` task with::
 
   gradle wrapper
 

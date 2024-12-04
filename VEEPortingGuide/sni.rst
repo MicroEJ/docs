@@ -183,8 +183,8 @@ C Function Call From Java world
 
 The SNI specification allows the invocation of methods from Java to C: these
 methods must be declared ``static`` ``native`` methods, and the parameters must be
-base types or immortal array of base types (see :ref:`[BON] <runtime_bon>`). These native
-methods are used in Java as standard Java methods.
+base types or array of base types. 
+These native methods are used in Java as standard Java methods.
 
 Example:
 
@@ -435,25 +435,14 @@ Parameters Constraints
 There are strong constraints on arguments given by Java methods to
 native functions:
 
--  Only base types, array of base types are allowed in the parameters.
+-  Only base types and array of base types are allowed in the parameters.
    No other objects can be passed: the native functions cannot access
    Java objects field nor methods.
--  When base type arrays are passed in parameters,
+-  When base type arrays are passed in parameters, they must have only one dimension. 
+   No multi dimension array are allowed (``int[][]`` is forbidden for example).
+-  Only base types are allowed as return type.
 
-   #. they must have only one dimension. No multi dimension array are
-      allowed (``int[][]`` is forbidden for example).
-
-   #. they must be immortal arrays (see :ref:`[BON] <runtime_bon>`). Use the method
-      `Immortals.setImmortal()`_ to transform an array into an
-      immortal array.
--  Only base types are allowed as return type
-
-This constraints are checked at link-time to ensure that they are
-respected, except for the immortal arrays constraint (at link-time,
-compiler cannot figure out if an array reference is immortal or not). If
-an array used in an argument is not immortal, a
-`IllegalArgumentException`_ is thrown at runtime when the
-native method is called.
+This constraints are checked at link-time to ensure that they are respected.
 
 Startup
 =======

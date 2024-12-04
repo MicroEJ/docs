@@ -447,7 +447,7 @@ BSP Publication Filtering
 
 If the VEE Port is configured in Full BSP Connection, the BSP is included in the VEE Port when it is published.
 Since the BSP can be big and all the files are not necessary to build an Executable, 
-the SDK provides configuration properties to filter the BSP files in publish:
+the SDK allows to define properties in the ``configuration.properties`` of the VEE Port project to filter the BSP files in publish:
 
 - ``bsp.publication.includes.pattern``: comma-separated list of Ant-style files and folders patterns to include in the published VEE Port.
   By default all the files and folders are included.

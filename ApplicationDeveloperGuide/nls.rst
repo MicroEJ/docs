@@ -1034,7 +1034,7 @@ To enable the NLS External Loader in the Virtual Device, add the following depen
 
       .. code-block:: java
 
-         implementation("com.microej.tool:nls-po-external-loader:3.0.0")
+         microejTool("com.microej.tool:nls-po-external-loader:3.0.0")
 
    .. tab:: MMM (module.ivy)
 
@@ -1121,7 +1121,7 @@ A new dependency must be added to Firmware project dependencies to enable this i
 
       .. code-block:: java
 
-         implementation("com.microej.tool:nls-po-crowdin:1.0.0")
+         microejTool("com.microej.tool:nls-po-crowdin:1.0.0")
 
    .. tab:: MMM (module.ivy)
 

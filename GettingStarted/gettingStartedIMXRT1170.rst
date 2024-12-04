@@ -337,7 +337,7 @@ Request your Evaluation License:
 
 Now your Evaluation license is installed, you can relaunch your application build by double-clicking on the :guilabel:`buildExecutable` task in the Gradle tasks view. It may take some time.
 
-The gradle task deploys the Application in the BSP and then builds the BSP using Make.
+The Gradle task deploys the Application in the BSP and then builds the BSP using Make.
 
 The :guilabel:`Demo-SmartThermostat` application is built and ready to be flashed on i.MX RT1170 Evaluation Kit once the hardware setup is completed.
 

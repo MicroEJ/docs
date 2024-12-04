@@ -23,7 +23,7 @@ Immutable images are declared in :ref:`Classpath<chapter.microej.classpath>` ``*
 .. graphviz::
 
   digraph D {
-  
+
       internalImage [shape=diamond, label="internal?"]
       imagesList [shape=box, label="*.images.list"]
       imagesExt [shape=box, label="*.imagesext.list"]
@@ -100,7 +100,7 @@ Refer to the platform specification to retrieve the list of runtime decoders.
 ::
 
    image1
-   
+
 .. _section_image_display_output:
 
 Display Output Format
@@ -245,6 +245,29 @@ Here is the list of the compressed formats:
    image2:RLE1 # Deprecated
    image3:A8_RLE
 
+.. _section_image_alpha:
+
+Alpha Format
+~~~~~~~~~~~~
+
+As described above, the formats ``A8``, ``A4``, ``A2``, ``A1`` and ``A8_RLE`` (also called *Picto*) only handle the opacity information.
+The source image can be transparent or not, colored or grayscaled.
+The alpha format provides two options to interpret the source image's pixels:
+
+* ``grayscale``: The source image is first `grayscaled`_ and then drawn over a white background.
+  The black pixels are encoded as fully opaque pixels, the white pixels as fully transparent pixels and gray pixels as transparent pixels (the closer the pixel is to black, the more opaque the encoded opacity is).
+* ``alpha``: Only the opacity component is encoded (the R-G-B components are ignored).
+* *no option*: same as ``grayscale`` (backward compatibility).
+
+::
+
+   image1:A8:grayscale
+   image2:A8_RLE:alpha
+   image3:A4
+
+.. note:: The MicroUI ResourceImage OutputFormat A8 encodes in the same way as the option ``alpha``.
+
+.. _`grayscaled`: https://en.wikipedia.org/wiki/Grayscale
 
 .. _section_image_expected_result:
 
@@ -281,18 +304,46 @@ The following table summarizes the usage of the different formats and the actual
    | A8           | .. image:: images/picto.png        | .. image:: images/a8.png            |
    |              +------------------------------------+-------------------------------------+
    |              | With 0x0000ff as color             | .. image:: images/a8_c.png          |
+   |              |                                    |                                     |
+   |              | and option ``grayscale``           |                                     |
+   |              +------------------------------------+-------------------------------------+
+   |              | With 0x0000ff as color             | .. image:: images/a8_c_a.png        |
+   |              |                                    |                                     |
+   |              | and option ``alpha``               |                                     |
+   +              +------------------------------------+-------------------------------------+
+   |              | .. image:: images/a8_a.png         | .. image:: images/a8_a.png          |
+   |              +------------------------------------+-------------------------------------+
+   |              | With 0x0000ff as color             | .. image:: images/a8_w.png          |
+   |              |                                    |                                     |
+   |              | and option ``grayscale``           |                                     |
+   |              +------------------------------------+-------------------------------------+
+   |              | With 0x0000ff as color             | .. image:: images/a8_c.png          |
+   |              |                                    |                                     |
+   |              | and option ``alpha``               |                                     |
    +--------------+------------------------------------+-------------------------------------+
    | A4           | .. image:: images/picto.png        | .. image:: images/a4.png            |
-   |              +------------------------------------+-------------------------------------+
-   |              | With 0x0000ff as color             | .. image:: images/a4_c.png          |
+   |              |                                    |                                     |
+   |              | option ``grayscale``               |                                     |
+   |              +------------------------------------+                                     |
+   |              | .. image:: images/a8_a.png         |                                     |
+   |              |                                    |                                     |
+   |              | option ``alpha``                   |                                     |
    +--------------+------------------------------------+-------------------------------------+
    | A2           | .. image:: images/picto.png        | .. image:: images/a2.png            |
-   |              +------------------------------------+-------------------------------------+
-   |              | With 0x0000ff as color             | .. image:: images/a2_c.png          |
+   |              |                                    |                                     |
+   |              | option ``grayscale``               |                                     |
+   |              +------------------------------------+                                     |
+   |              | .. image:: images/a8_a.png         |                                     |
+   |              |                                    |                                     |
+   |              | option ``alpha``                   |                                     |
    +--------------+------------------------------------+-------------------------------------+
    | A1           | .. image:: images/picto.png        | .. image:: images/a1.png            |
-   |              +------------------------------------+-------------------------------------+
-   |              | With 0x0000ff as color             | .. image:: images/a1_c.png          |
+   |              |                                    |                                     |
+   |              | option ``grayscale``               |                                     |
+   |              +------------------------------------+                                     |
+   |              | .. image:: images/a8_a.png         |                                     |
+   |              |                                    |                                     |
+   |              | option ``alpha``                   |                                     |
    +--------------+------------------------------------+-------------------------------------+
    | C4           | .. image:: images/grayscale.png    | .. image:: images/c4.png            |
    +--------------+------------------------------------+-------------------------------------+
@@ -309,6 +360,12 @@ The following table summarizes the usage of the different formats and the actual
    | ARGB1565_RLE | .. image:: images/transparent.png  | .. image:: images/argb1555.png      |
    +--------------+------------------------------------+-------------------------------------+
    | A8_RLE       | .. image:: images/picto.png        | .. image:: images/a8.png            |
+   |              |                                    |                                     |
+   |              | option ``grayscale``               |                                     |
+   |              +------------------------------------+                                     |
+   |              | .. image:: images/a8_a.png         |                                     |
+   |              |                                    |                                     |
+   |              | option ``alpha``                   |                                     |
    +--------------+------------------------------------+-------------------------------------+
 
 Usage Advice
@@ -431,7 +488,7 @@ These errors can occur while preprocessing images.
    |        |         | unexpected internal error (invalid memory           |
    |        |         | alignment).                                         |
    +--------+---------+-----------------------------------------------------+
-   | 16     | Error   | The input image format and / or the ouput format are| 
+   | 16     | Error   | The input image format and / or the ouput format are|
    |        |         | not managed by the image generator.                 |
    +--------+---------+-----------------------------------------------------+
    | 17     | Error   | The image has been already loaded with another      |
@@ -448,7 +505,7 @@ Overview
 ~~~~~~~~
 
 Unlike immutable images, mutable images are graphical resources that can be created and modified at runtime. The application can draw into such images using the Painter classes with the image's `Graphics Context`_ as the destination.
-Mutable images can be created with a call to constructor `ej.microui.display.BufferedImage()`_. 
+Mutable images can be created with a call to constructor `ej.microui.display.BufferedImage()`_.
 
 .. code:: java
 
@@ -468,10 +525,10 @@ Display Format
 ~~~~~~~~~~~~~~
 
 By default, the output format of a `BufferedImage`_ matches the display's pixel organization (layout, depth, etc.).
-The algorithms used to draw in such an image are the same as those used on the display (for footprint purposes). 
+The algorithms used to draw in such an image are the same as those used on the display (for footprint purposes).
 The algorithm cannot draw transparent pixels since the display back buffer is opaque.
 
-In addition, `GraphicsContext.setColor()`_ does not consider the alpha channel and only accepts RGB values. 
+In addition, `GraphicsContext.setColor()`_ does not consider the alpha channel and only accepts RGB values.
 The given color value is interpreted as a 24-bit RGB color, where the high-order byte is ignored, and the remaining bytes contain the red, green, and blue channels, respectively.
 
 .. _BufferedImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html
@@ -509,14 +566,14 @@ The size of the images heap can be configured with the ``ej.microui.memory.image
 
 .. warning:: A `ResourceImage`_  allocated on the images heap must be closed manually by the application (`ResourceImage.close()`_); otherwise, a memory leak will occur on the images heap.
 
-For more details about the images heap implementation, refers to :ref:`this chapter<section_image_loader_memory>` in the VEE Port Guide. 
+For more details about the images heap implementation, refers to :ref:`this chapter<section_image_loader_memory>` in the VEE Port Guide.
 
 .. _ResourceImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html
 .. _ResourceImage.close(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#close--
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
-   for read and redistribute. Except if otherwise stated, modification 
+   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free
+   for read and redistribute. Except if otherwise stated, modification
    is subject to MicroEJ Corp prior approval.
-   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and
    copyrights are the property of their respective owners.
