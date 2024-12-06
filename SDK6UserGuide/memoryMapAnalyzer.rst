@@ -22,7 +22,7 @@ Use
 ===
 
 When the Executable file of an Application has been produced, 
-the Memory Map file is available at ``build/executable/application/SOAR.map``.
+the Memory Map file is available at ``build/application/object/soar/<main-class-full-name>.map``.
 
 .. figure:: images/memory-map-file.png
    :alt: Retrieve Map File
