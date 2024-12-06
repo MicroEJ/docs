@@ -11,14 +11,14 @@ Prerequisites
 
 The following elements must be available on your workstation:
 
-- A pre-built VEE Port using an Architecture v8.2.0 or higher.
-- `WASI SDK 20 or higher <https://github.com/WebAssembly/wasi-sdk/releases>`__, for compiling your C code to WebAssembly.
+- A pre-built VEE Port using an Architecture v8.3.0 or higher.
+- `WASI SDK 20 or higher <https://github.com/Wasm/wasi-sdk/releases>`__, for compiling your C code to Wasm.
 - :ref:`MMM CLI (Command Line Interface) <mmm_build_kit>`, for building the demo module from command line.
 
 Steps
 -----
 
-To use Managed C in your Application, follow these steps:
+To use a Wasm Module in your Application, follow these steps:
 
 #. **Create a Standalone Application Project:**
 
@@ -32,13 +32,13 @@ To use Managed C in your Application, follow these steps:
       
       The project property values can be adjusted according to your needs. For more details, refer to the :ref:`MMM CLI init command documentation <mmm_cli.commands.init>`.
 
-#. **Add the Annotations for Accessing Managed C in Java:**
+#. **Add the Annotations for Accessing Wasm Module in Java:**
 
-   Create a file named ``ManagedCModule.java`` in the directory ``src/main/java/com/microej/managedc``  with the following content:
+   Create a file named ``WasmModule.java`` in the directory ``src/main/java/com/microej/wasm``  with the following content:
 
          .. code-block:: java
 
-            package com.microej.managedc;
+            package com.microej.wasm;
             
             import java.lang.annotation.ElementType;
             import java.lang.annotation.Retention;
@@ -47,52 +47,52 @@ To use Managed C in your Application, follow these steps:
             
             @Retention(RetentionPolicy.CLASS)
             @Target(ElementType.TYPE)
-            public @interface ManagedCModule {
+            public @interface WasmModule {
                String value();
             }
 
-   Create a file named ``ManagedCFunction.java`` in the directory ``src/main/java/com/microej/managedc`` with the following content:
+   Create a file named ``WasmFunction.java`` in the directory ``src/main/java/com/microej/wasm`` with the following content:
    
          .. code-block:: java
 
-            package com.microej.managedc;
+            package com.microej.wasm;
             
             import java.lang.annotation.ElementType;
             import java.lang.annotation.Target;
             
             @Target(ElementType.METHOD)
-            public @interface ManagedCFunction {
+            public @interface WasmFunction {
                String value() default "";
             }
 
 
-#. **Configure your Java class to call a Managed C Function:**
+#. **Configure your Java class to call a Wasm Function:**
 
-   Add the ``ManagedCModule`` annotation to the ``Main`` class with the Wasm module name:   
+   Add the ``WasmModule`` annotation to the ``Main`` class with the Wasm module name:   
 
          .. code-block:: java      
             :emphasize-lines: 1,3
 
-            import com.microej.managedc.*
+            import com.microej.wasm.*
 
-            @ManagedCModule("factorial.wasm")
+            @WasmModule("factorial")
             public class Main {
                ...
             }
 
-   Define a native Java method with the ``ManagedCFunction`` annotation in your main application class: 
+   Define a native Java method with the ``WasmFunction`` annotation in your main application class: 
 
          .. code-block:: java      
             :emphasize-lines: 8,9
 
-            import com.microej.managedc.*    
+            import com.microej.wasm.*    
 
-            @ManagedCModule("factorial.wasm")
+            @WasmModule("factorial")
             public class Main {
 
                ...
 
-               @ManagedCFunction
+               @WasmFunction
                public static native int factorial(int n);
             }
 
@@ -101,14 +101,14 @@ To use Managed C in your Application, follow these steps:
       .. code-block:: java
          :emphasize-lines: 5
          
-         @ManagedCModule("factorial.wasm")
+         @WasmModule("factorial")
          public class Main {
             
             public static void main(String[] args) {
                System.out.println("factorial(10) = " + factorial(10));
             }
             
-            @ManagedCFunction
+            @WasmFunction
             public static native int factorial(int n);
          }
 
@@ -126,11 +126,11 @@ To use Managed C in your Application, follow these steps:
             }
         }
 
-   .. note:: The Managed C function name and signature in the C file must match the annotated Java native method.
+   .. note:: The Wasm function name and signature in the C file must match the annotated Java native method.
 
-#. **Compile the C File to WebAssembly:**
+#. **Compile the C File to Wasm:**
 
-   In a terminal, navigate to the module directory containing the ``module.ivy`` file and run the following command to compile the C code to WebAssembly:
+   In a terminal, navigate to the module directory containing the ``module.ivy`` file and run the following command to compile the C code to Wasm:
 
    .. code:: console
    
@@ -138,8 +138,8 @@ To use Managed C in your Application, follow these steps:
 
    .. note:: 
          
-         The generated file name ``factorial.wasm`` matches the module name of the annotated Java class.
-         It is generated to the ``src/main/resources`` directory as a convenience to make it part of the Application classpath.
+         The generated file name ``factorial.wasm`` matches the module name of the annotated Java class without the extension.
+         It is generated to the ``src/main/resources`` directory to make it part of the Application classpath.
 
 #. **Build the Application:**
 
@@ -173,8 +173,8 @@ To use Managed C in your Application, follow these steps:
 
 For further details, refer to the following sub-sections:
 
-- :ref:`Limitations <managedc.limitations>`: An overview of the constraints and limitations associated with Managed C.
-- :ref:`Troubleshooting <managedc.troubleshooting>`: Assistance for resolving common issues when working with Managed C.
+- :ref:`Limitations <managedc.limitations>`: An overview of the constraints and limitations associated with Wasm.
+- :ref:`Troubleshooting <managedc.troubleshooting>`: Assistance for resolving common issues when working with Wasm.
 
 ..
    | Copyright 2023-2024, MicroEJ Corp. Content in this space is free 

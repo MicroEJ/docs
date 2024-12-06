@@ -16,9 +16,10 @@ MicroEJ provides the capability to develop parts of an application in C, known a
 |
 
 .. note::
-   This feature requires Architecture version ``8.2.0`` or higher, and is currently not supported in simulation.
+   This feature requires Architecture version ``8.3.0`` or higher, and is currently not supported in simulation.
 
-Managed C code is enabled through `WebAssembly 1.0 <https://www.w3.org/TR/wasm-core-1/>`_, with :ref:`certain limitations <managedc.limitations>`. 
+Managed C code is enabled through `WebAssembly 1.0 <https://www.w3.org/TR/wasm-core-1/>`_, also known as Wasm with :ref:`certain limitations <managedc.limitations>`. 
+Therefore MicroEJ permits a part of an application to be written in any language which can be conmpiled to Wasm.
 
 You can start exploring this functionality by following the instructions provided in the :ref:`Getting Started <managedc.getting_started>` page.
 
@@ -32,7 +33,7 @@ You can start exploring this functionality by following the instructions provide
    limitations
    troubleshooting
 ..
-   | Copyright 2023, MicroEJ Corp. Content in this space is free 
+   | Copyright 2023-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
