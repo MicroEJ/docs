@@ -6,60 +6,69 @@ Bluetooth Mock
 Overview
 --------
 
-To run a MicroEJ Application that uses the :ref:`Bluetooth API Library <bluetooth_api>` 
-on MicroEJ Simulator, a Bluetooth Mock Controller must be set up first:
+To run a MicroEJ Application that uses the `Bluetooth API Library <https://repository.microej.com/modules/ej/api/bluetooth/>`_ on MicroEJ Simulator, a Bluetooth Controller is required:
 
 .. image:: images/blemock-controller.png
    :align: center
 
-The Bluetooth Mock Controller is a hardware mock of the Bluetooth library. It
-means the Simulator uses a real Bluetooth device to scan other devices,
-advertise, discover services, connect, pair, etc... This design enables
-testing of apps in a real-world environment.
+The Bluetooth Controller is a dedicated device that communicates with the Simulator to perform the Bluetooth operations of the Application.
+This means that the Simulator delegates the Bluetooth operations (scanning, advertising, discovering services, connecting, etc.) to a real Bluetooth device.
+This allows testing a Bluetooth application on any development environment.
 
-The Bluetooth Mock Controller implementation is provided for the `ESP32-S3-DevKitC-1
-board reference <https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/hw-reference/esp32s3/user-guide-devkitc-1.html>`_.
-Other implementations or sources can be provided on request.
-
-.. _ej.api.bluetooth: https://repository.microej.com/modules/ej/api/bluetooth/
+The Bluetooth Controller firmware is provided for the inexpensive `ESP32-S3-DevKitC-1-N8R8 board <https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-devkitc-1/user_guide.html>`_.
 
 Requirements
 ------------
 
-- A ESP32-S3-DevKitC-1 board.
-- A Bluetooth Mock Controller firmware_ (this executable only works with versions ``[2.0.0;2.3.0[`` of the Bluetooth Pack).
-- An `Espressif tool <https://www.espressif.com/en/support/download/other-tools>`_ to flash the firmware.
+- An ESP32-S3-DevKitC-1-N8R8 board.
+- A Bluetooth Controller firmware (see section below).
+- The `Espressif Flash Download Tools <https://www.espressif.com/en/support/download/other-tools>`_.
+
+Controller Firmwares
+--------------------
+
+There are multiple versions of the Controller firmware, each compatible with a specific range of Bluetooth Pack versions.
+
+The following table indicates the firmware to use depending on the Bluetooth Pack version integrated in the VEE Port:
+
+.. list-table::
+   :widths: 10 10
+   :header-rows: 1
+
+   * - Bluetooth Pack Versions
+     - Controller Firmware
+   * - [2.0.0-2.3.0[
+     - `1.0.0 <https://repository.microej.com/packages/ble-mock/Executable-Bluetooth-Mock-Controller-ESP32-S3-1.0.0.bin>`__
+   * - [2.3.0-2.6.0[
+     - `1.1.1 <https://repository.microej.com/packages/ble-mock/Executable-Bluetooth-Mock-Controller-ESP32-S3-1.1.1.bin>`__
+   * - [2.6.0-3.0.0[
+     - `2.0.0 <https://repository.microej.com/packages/ble-mock/Executable-Bluetooth-Mock-Controller-ESP32-S3-2.0.0.bin>`__
 
 Usage
 -----
 
 To simulate a Bluetooth application, follow these three steps:
 
-- Set up the controller
-- Set up the network configuration
+- Install the controller firmware
+- Configure the Wi-Fi network
 - Run the application on the Simulator
 
 If your are facing any issues, check the :ref:`Troubleshooting <blemock-troubleshooting>` section.
 
-Controller Setup
-~~~~~~~~~~~~~~~~
+Controller Firmware Installation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Unzip ``Executable-Bluetooth-Mock-Controller-ESP32-S3-1.0.0.zip``. 
-Inside it you will find the firmware file: ``Executable-Bluetooth-Mock-Controller-ESP32-S3-1.0.0.bin``. 
+To install the controller firmware on the ESP32-S3 board, follow these steps:
 
-To set up the controller, follow these steps:
-
-- Plug-in the ESP32-S3-DevKitC-1 board to your computer,
+- Plug in the ESP32-S3 board to your computer,
 - Find the associated COM port,
-- In the flash tool:
+- In the flash download tool:
 
-  - select the chip "ESP32-S3"
-  - browse for the firmware file
-  - set the offset to 0x000000
-  - set the SPI speed to 80 Mhz
-  - set the SPI mode to DIO
-  - set the COM port
-  - set the baudrate to 460 800
+  - select the ``ESP32-S3`` chip type
+  - browse the firmware file (``Executable-Bluetooth-Mock-Controller-ESP32-S3-x.y.z.bin``)
+  - set the target address to ``0``
+  - set the SPI speed to ``80MHz`` and the SPI mode to ``DIO``
+  - select the appopriate COM port and set the baudrate to ``460800``
   - start the flash download
 
 With the flash download tool from Espressif, you should end with something similar to this :
@@ -71,10 +80,10 @@ With the flash download tool from Espressif, you should end with something simil
 
    Bluetooth Controller Flash Download Tool Configuration
 
-Network Setup
-~~~~~~~~~~~~~
+Wi-Fi Setup
+~~~~~~~~~~~
 
-To configure the network:
+To configure the Wi-Fi network used by the controller:
 
 #. Connect your computer to the Wi-Fi network "BLE-Mock-Controller-[hexa device id]" mounted by the controller.
 #. Open a browser and connect to ``http://192.168.4.1/`` to access the Wi-Fi setup
@@ -85,17 +94,16 @@ To configure the network:
 
 #. Select the desired network and provide the required information if asked.
    If an error occurs during the connection, retry this step.
-#. In case the device is successfully connected to the desired network, the
+#. In case the ESP32-S3 board is successfully connected to the desired network, the
    web page should looks like this:
 
    .. image:: images/blemock-wifi-setup-last-screen.png
       :align: center
 
-   Additionally, the serial output of the device shows connection status.
+   Additionally, the serial output of the ESP32-S3 board shows connection status.
 #. Connect your computer back to this network: your computer and the
    controller must be in the same network.
-#. Reboot the ESP32-S3-DevKitC-1 board. 
-
+#. Reboot the ESP32-S3 board. 
 
 Simulation
 ~~~~~~~~~~
@@ -112,7 +120,7 @@ The IP address of the controller is available in the logs :
 
 Before running your Bluetooth application on the Simulator, in the
 :ref:`Run configuration <concepts-microejlaunches>` panel, set the simulation mode
-to "Controller (over net)" and configure the Bluetooth Mock settings.
+to "Controller (over net)" and configure the connection options.
 
 .. figure:: images/blemock-configuration.png
    :alt: Bluetooth Mock Configuration
@@ -121,9 +129,7 @@ to "Controller (over net)" and configure the Bluetooth Mock settings.
 
    Bluetooth Mock Configuration
 
-Launching the application on the Simulator will restore the controller to its
-initial state (the Bluetooth adapter is disabled).
-
+Launching the application on the Simulator restores the controller to its initial state.
 
 .. _blemock-troubleshooting:
 
@@ -151,8 +157,7 @@ change them, erase the flash and reflash the firmware.
 "Invalid parameter type: 0x47 expected 0x53" error
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Reboot the ESP32-S3-DevKitC-1 board. The controller restarts and connects to the Wi-Fi.
-
+Reboot the ESP32-S3 board. The controller restarts and connects to the Wi-Fi.
 
 Simulation Errors
 ~~~~~~~~~~~~~~~~~
@@ -161,12 +166,9 @@ Error during the simulation: mock could not connect to controller
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This error means the mock process (Simulator) could not initialize the connection
-with the controller. Please check that the device is connected to the network
+with the controller. Please check that the ESP32-S3 board is connected to the network
 (see logs in the serial port output) and that your computer is in the same
 network.
-
-.. _developer.microej.com: https://developer.microej.com/getting-started-sdk-esp32-wrover-5.html
-.. _firmware: https://repository.microej.com/packages/ble-mock/Executable-Bluetooth-Mock-Controller-ESP32-S3-1.0.0.zip
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 

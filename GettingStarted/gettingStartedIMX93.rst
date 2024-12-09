@@ -31,7 +31,7 @@ The second part consists in running the same demo application on your device. Fo
 
 * An HDMI display with touchscreen connected with an `IMX-MIPI-HDMI adapter <https://www.nxp.com/part/IMX-MIPI-HDMI>`__.
 
-   * This getting started has been tested with a `MageDok T080A <https://magedok.com/products/8-inch-1280-720-resolution-touch-monitor-t080a>`_.
+   * This getting started has been tested with a `MageDok T080A <https://store.magedok.com/collections/portable-monitors/products/8-inch-1280-720-resolution-touch-monitor-t080a>`_.
 
 * A prebuild Yocto Linux image, with all necessary linux packages preinstalled.
 
@@ -126,7 +126,7 @@ The Gradle project should now be imported into IntelliJ IDEA. Your workspace con
 Select the VEE Port
 ^^^^^^^^^^^^^^^^^^^
 
-In the gradle build file ``build.gradle.kts``, replace the VEE dependency ``microejVEE`` with the i.MX93, like this:
+In the Gradle build file ``build.gradle.kts``, replace the VEE dependency ``microejVEE`` with the i.MX93, like this:
 
 .. code-block::
 
@@ -209,14 +209,13 @@ The Executable is built using a Yocto SDK. It contains the following:
 * All the necessary headers (libc, but also the headers of the kernel and the libraries installed in the firmware rootfs).
 * An environment setup script (to set $CC, $LD, $SDKSYSROOT variables).
 
-A prebuilt version of the Yocto SDK is available here: `Yocto SDK Installer for iMX93 <https://repository.microej.com/packages/yocto/i.MX93EVK/2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh>`_
-
 To install the Yocto SDK, use the following commands in WSL or Linux:
 
 .. code-block::
 
-   $ chmod +x oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro.0.sh
-   $ ./oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro.0.sh
+   $ curl -O https://repository.microej.com/packages/yocto/i.MX93EVK/2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh
+   $ chmod +x 2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh
+   $ ./2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh
    MicroEJ: 32-bit userspace + 64-bit kernel SDK installer version nodistro.0
    ==========================================================================
    Enter target directory for SDK (default: /usr/local/oecore-x86_64): 
@@ -383,7 +382,7 @@ Request your Evaluation License:
 
 Now your Evaluation license is installed, you can relaunch your application build by double-clicking on the :guilabel:`buildExecutable` task in the Gradle tasks view. It may take some time.
 
-The gradle task deploys the Application in the BSP and then builds the BSP using Make.
+The Gradle task deploys the Application in the BSP and then builds the BSP using Make.
 
 The :guilabel:`Example-Java-Widget` application is built and ready to be flashed on i.MX93 Evaluation Kit once the hardware setup is completed.
 
@@ -412,6 +411,31 @@ To run the :guilabel:`Example-Java-Widget` Application on i.MX93 Evaluation Kit,
          :alt: runOnDevice task
          :align: center
          :scale: 70%
+
+.. warning::
+
+   The application deployment script (``run.sh``) is not compatible with OpenSSH 9.0+ (typically Ubuntu 24.04).
+   The ``runOnDevice`` task should fail with:
+
+     .. code-block::
+
+        sh: /usr/lib/openssh/sftp-server: No such file or directory
+        scp: Connection closed
+
+   This is because the Yocto distribution uses Dropbear, and from this OpenSSH version the ``-O`` must be added
+   to ``scp`` commands in order to use the legacy SCP protocol.
+   To work around this issue:
+
+   * Copy the folder ``./build/vee`` to the root directory of the project (``./vee``).
+   * Change the dependency in ``build.gradle.kts`` to ``microejVee(files("vee"))``.
+   * And fix the ``./vee/bsp/projects/microej/scripts/run.sh`` script (line 70):
+
+     .. code-block:: diff
+
+        - $SSH_PASSWORD_OPTION scp -oStrictHostKeyChecking=no ${APPLICATION_FILE} $SSH_USER@$SSH_HOSTNAME:$SSH_REMOTE_APPLICATION
+        + $SSH_PASSWORD_OPTION scp -O -oStrictHostKeyChecking=no ${APPLICATION_FILE} $SSH_USER@$SSH_HOSTNAME:$SSH_REMOTE_APPLICATION
+
+   * Then, run the ``runOnDevice`` task again.
 
 Once the application is running, you should see the :guilabel:`Example-Java-Widget` on your board.      
 

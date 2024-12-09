@@ -57,6 +57,13 @@ Executing tests on the Simulator allows to check the behavior of the code in an 
 but without requiring the board.
 This solution is therefore less constraining and more portable than testing on the board.
 
+The target VEE Port must be declared in the projects dependencies, as explained in :ref:`sdk_6_select_veeport`.
+
+Declaring a VEE Port in project dependencies only applies to the current project. 
+This configuration is not fetched transitively by consumer projects.
+Especially when configuring the VEE Port to test a library project, 
+application projects depending on this library will not "see" this test VEE Port, 
+they must configure a VEE Port on their own and are free to use a different one.
 
 Configure the Testsuite
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -310,11 +317,13 @@ The configuration is similar to the one used to execute a testsuite on the Simul
                               // Enable the build of the Executable
                               "microej.testsuite.properties.deploy.bsp.microejscript" to "true",
                               "microej.testsuite.properties.microejtool.deploy.name" to "deployToolBSPRun",
-                              // Tell the testsuite engine that the VEE Port Run script redirects execution traces
-                              "microej.testsuite.properties.launch.test.trace.file" to "true",
+                              
                               // Configure the TCP/IP address and port if the VEE Port Run script does not redirect execution traces
                               "microej.testsuite.properties.testsuite.trace.ip" to "localhost",
-                              "microej.testsuite.properties.testsuite.trace.port" to "5555"
+                              "microej.testsuite.properties.testsuite.trace.port" to "5555",
+                              // Tell the testsuite engine that the VEE Port Run script redirects execution traces.
+                              // Uncomment this line and comment the 2 lines above if the VEE Port supports it.
+                              //"microej.testsuite.properties.launch.test.trace.file" to "true"
                            )
                      }
                   }

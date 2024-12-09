@@ -31,6 +31,7 @@ The second part consists of running the same demo application on your device. Fo
 * RK055HDMIPI4MA0 display panel, available `here <https://www.nxp.com/part/RK055HDMIPI4MA0>`__.
 * A GNU ARM Embedded Toolchain, Cmake and Make are needed to build the BSP. You will be guided on how to install the toolchain later.
 * LinkServer tool to flash the board. You will be guided on how to install this tool later.
+* The ::guilabel:`west` command line tool from the Zephyr project. You will be guided on how to install this tool later.
 
 .. _sdk_6_getting_started_imxrt1170_environment_setup:
 
@@ -40,7 +41,7 @@ Environment Setup
 To follow this Getting Started, you need to: 
 
 * Install MICROEJ SDK 6.
-* Get the Demo-SmartThermostat from Github.
+* Get the VEE port from Github.
 
 Install MICROEJ SDK 6
 ^^^^^^^^^^^^^^^^^^^^^
@@ -48,16 +49,24 @@ Install MICROEJ SDK 6
 Install MICROEJ SDK 6 by following :ref:`sdk_6_install` instructions. 
 IntelliJ IDEA is used on this Getting Started but feel free to use your favorite IDE.
 
-Get Demo-SmartThermostat
+Install West
+^^^^^^^^^^^^
+
+Install the ::guilabel:`west` command line tool
+
+Get the VEE Port Project
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-For this Getting Started, the :guilabel:`Demo-SmartThermostat` Application will be use. You can download it using the following command::
+For this Getting Started, the :guilabel:`app` Application will be use. You can download it using the following command::
    
-   git clone -b 1.0.0 https://github.com/MicroEJ/Demo-SmartThermostat.git
+   mkdir nxpvee-mimxrt1170-prj
+   cd nxpvee-mimxrt1170-prj
+   west init -m https://github.com/nxp-mcuxpresso/nxp-vee-imxrt1170-evk .
+   west update
 
 .. note::
   
-   If you don’t have Git installed, you can download the source code directly from our `GitHub repository <https://github.com/MicroEJ/Demo-SmartThermostat/tree/1.0.0>`__. 
+   If you don’t have Git installed, you can download the source code directly from our `GitHub repository <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk/releases/tag/NXPVEE-MIMXRT1170-EVK-2.2.0>`__. 
    Then you can click on ::guilabel:`Code > Download ZIP`.
 
 Set up the Application on your IDE
@@ -66,12 +75,11 @@ Set up the Application on your IDE
 Import the Project
 ^^^^^^^^^^^^^^^^^^
 
-The first step is to import the :guilabel:`Demo-SmartThermostat` Application into your IDE: 
+The first step is to import the :guilabel:`VEE Port` into your IDE: 
 
 .. note::
   
    If you are using another IDE than IntelliJ IDEA, please have a look at :ref:`sdk_6_import_project` section.
-
 
 * If you are in the Welcome Screen, click on the :guilabel:`Open` button. Otherwise click either on :guilabel:`File` > :guilabel:`Open...` or on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project From Existing Sources...`.
 * Select the ``Demo-SmartThermostat`` directory located where you downloaded it and click on the :guilabel:`OK` button.
@@ -333,7 +341,7 @@ Request your Evaluation License:
 
 Now your Evaluation license is installed, you can relaunch your application build by double-clicking on the :guilabel:`buildExecutable` task in the Gradle tasks view. It may take some time.
 
-The gradle task deploys the Application in the BSP and then builds the BSP using Make.
+The Gradle task deploys the Application in the BSP and then builds the BSP using Make.
 
 The :guilabel:`Demo-SmartThermostat` application is built and ready to be flashed on i.MX RT1170 Evaluation Kit once the hardware setup is completed.
 

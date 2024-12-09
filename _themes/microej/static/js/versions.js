@@ -58,18 +58,6 @@ document.addEventListener("readthedocs-addons-data-ready", function(event) {
           ${ renderVersions(config) }
           ${ renderDownloads(config) }
           <dl>
-            <dt>On Read the Docs</dt>
-            <dd>
-              <a href="${ config.projects.current.urls.home }">Project Home</a>
-            </dd>
-            <dd>
-              <a href="${ config.projects.current.urls.builds }">Builds</a>
-            </dd>
-            <dd>
-              <a href="${ config.projects.current.urls.downloads }">Downloads</a>
-            </dd>
-          </dl>
-          <dl>
             <dt>Search</dt>
             <dd>
               <form id="flyout-search-form">

@@ -79,7 +79,7 @@ SNI provides a simple mechanism for implementing native Java methods in the C la
 SNI allows you to:
 
 -  Call a C function from a Java method.
--  Access an Immortal array in a C function (see the :ref:`runtime_bon` to learn about immortal objects).
+-  Share memory between C and Java using Immortal arrays (see the :ref:`runtime_bon` to learn about immortal objects).
 
 SNI also provides some Java APIs to manipulate some data arrays between Java and the native (C) world.
 

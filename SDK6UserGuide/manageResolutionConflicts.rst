@@ -25,7 +25,7 @@ The MicroEJ Gradle plugin adds the 2 following rules:
 
 |
 
-- The resolution fails when a direct dependency is resolved with a higher minor version than the one declared.
+- The resolution fails when a transitive dependency is resolved with a higher minor version than the one declared.
   For example, this dependency graph makes the build fails because the ``moduleA`` dependency is resolved in version ``1.1.0`` (the highest one), 
   which is higher than the direct declared version (``1.0.0``):
 
