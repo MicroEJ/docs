@@ -3,15 +3,29 @@
 VEE Wear User Guide
 ===================
 
-VEE Wear is a specialized application framework tailor-made for next-gen smartwatches. 
-Engineered with a highly optimized memory footprint, VEE Wear ensures efficient performance on low-power MCUs and MPUs while offering robust features comparable to larger operating systems.
+VEE Wear is a comprehensive wearable software solution.
+It aggregates multiple libraries, applications and tools dedicated to the development of wearable software.
 
-VEE Wear includes all graphical features from MicroEJ runtime, including:
+|
 
-* A thread-safe 2D graphics engine
-* A widget framework
-* Vector drawing support
-* And more. Refer to the :ref:`Graphical User Interface <pack_gui>` section for more info
+**VEE Wear SDK**
+
+The :ref:`VEE Wear SDK <vee_wear_sdk>` provides a turnkey, customizable wearable firmware.
+
+This SDK contains the following components:
+
+- a Multi-Sandboxed wearable Kernel
+- common wearable apps (Settings, :ref:`Facer <facer_engine>`, Health, Stopwatch, etc.)
+- a wearable API to develop custom wearable apps
+
+|
+
+.. _facer_engine:
+
+**Low Power Facer Engine**
+
+VEE Wear supports the `Facer <https://www.facer.io/>`_ Engine, expanding Facer's extensive watch face catalog of 500,000 faces across all smartwatches, including low-power RTOS watches, enriching the user experience for all users. 
+For further information about the MicroEJ and Facer partnership, please contact your `MicroEJ sales representative <https://www.microej.com/contact/#form_1>`_.
 
 |
 
@@ -46,19 +60,13 @@ VEE Wear incorporates an :ref:`offloading framework <offloading>` designed to op
 By alternating the execution of applications between low-consumption MCUs and powerful MPUs, this setup guarantees maximum power efficiency, thereby conserving battery life. 
 The offloading framework encompasses an inter-processor communication framework and efficient low-power profile management.
 
-|
-
-**Low Power Facer Engine**
-
-VEE Wear supports the `Facer <https://www.facer.io/>`_ Engine, expanding Facer's extensive watch face catalog of 500,000 faces across all smartwatches, including low-power RTOS watches, enriching the user experience for all users. 
-For further information about the MicroEJ and Facer partnership, please contact your `MicroEJ sales representative <https://www.microej.com/contact/#form_1>`_.
-
 
 
 .. toctree::
    :hidden:
    :maxdepth: 0
 
+   sdk
    android/index
    ick
    offloading
