@@ -38,12 +38,11 @@ entry point that the system starts with) then this application is called
 the Kernel.
 
 A Feature is an application “extension” managed by the Kernel. A Feature
-is fully controlled by the Kernel: it can be installed (dynamically or
-statically pre-installed), started, stopped and uninstalled at any time
-independent of the system state (particularly, a Feature never depends
-on another Feature to be stopped). A Feature is optional, potentially
-not-trusted, maybe unreliable and can be executed without jeopardizing
-the safety of the Kernel execution and other Features.
+is fully controlled by the Kernel: it can be installed, started, stopped
+and uninstalled at any time independent of the system state (particularly,
+a Feature never depends on another Feature to be stopped). A Feature is
+optional, potentially not-trusted, maybe unreliable and can be executed
+without jeopardizing the safety of the Kernel execution and other Features.
 
 Resources accesses (RAM, hardware peripherals, CPU time, …) are under
 control of the Kernel.

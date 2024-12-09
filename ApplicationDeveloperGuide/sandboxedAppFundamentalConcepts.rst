@@ -16,7 +16,7 @@ Some fundamental points:
 
 - The Kernel is mandatory. It is assumed to be reliable, trusted and cannot be modified.
 - A Feature is an application "extension" managed by the Kernel.
-- A Feature is fully controlled by the Kernel: it can be installed (dynamically or statically pre-installed), started, stopped and
+- A Feature is fully controlled by the Kernel: it can be installed, started, stopped and
   uninstalled at any time independent of the system state (particularly, a Feature never depends on
   another Feature to be stopped).
 - A Feature is optional, potentially not-trusted, maybe unreliable and
