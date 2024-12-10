@@ -5,7 +5,7 @@ Limitations
 
 The Core Engine supports the `WebAssembly Core Specification 1.0 <https://www.w3.org/TR/wasm-core-1/>`_ with the following limitations.
 
-Wasm Instructions partially supported
+Partially Supported Wasm Instructions 
 -------------------------------------
 
 * memory_grow: Executing the ``memory_grow`` instruction will not result in an error, but it will not expand the Wasm linear either.
