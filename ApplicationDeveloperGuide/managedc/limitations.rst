@@ -8,9 +8,9 @@ The Core Engine supports the `WebAssembly Core Specification 1.0 <https://www.w3
 Partially Supported Wasm Instructions 
 -------------------------------------
 
-* memory_grow: Executing the ``memory_grow`` instruction will not result in an error, but it will not expand the Wasm linear either.
-Therefore, applications should not try to increase the Wasm linear memory. 
-Use the following linker options to set both the initial and maximum linear memory size to the same value: ``-Wl,--initial-memory=<value>`` and  ``-Wl,--max-memory=<value>`` 
+- ``memory.grow``: Executing the ``memory.grow`` instruction will not result in an error, but it will not expand the Wasm linear either.
+  Therefore, applications should not try to increase the Wasm linear memory. 
+  Use the following linker options to set both the initial and maximum linear memory size to the same value: ``-Wl,--initial-memory=<value>`` and  ``-Wl,--max-memory=<value>`` 
 
 
 Simulation
