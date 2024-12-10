@@ -3,7 +3,7 @@
 Limitations
 ===========
 
-The MicroEJ engine supports the version 1.0 of the `Wasm specification <https://www.w3.org/TR/wasm-core-1/>`_ with the following limitations.
+The Core Engine supports the `WebAssembly Core Specification 1.0 <https://www.w3.org/TR/wasm-core-1/>`_ with the following limitations.
 
 Wasm Instructions partially supported
 -------------------------------------
