@@ -389,15 +389,12 @@ Create a new Sandboxed Application project as follows in Android Studio:
 Run the Sandboxed Application on the Virtual Device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Multi-Sandbox Executable and Virtual Device path need to be provided to the 
-:guilabel:`MyApplication` project:
+MicroEJ provides `ready to use kernels on the Developer Repository <https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/kernel>`__.
 
-.. note::
-   If you are building your own Kernel, refer to the
-   procedure described in :ref:`sdk_6_getting_started_stm32f7508_kernel_green_run_application`.
+The :guilabel:`MyApplication` project needs to be configured to use a kernel:
 
 - Open the ``app/build.gradle.kts`` file of the :guilabel:`MyApplication` project,
-- Declare the dependency to the NXP i.MXRT1170 GREEN Kernel as follows:
+- Declare the dependency to the NXP i.MXRT1170 kernel as follows:
   
    .. code-block:: kotlin
 
@@ -406,6 +403,11 @@ The Multi-Sandbox Executable and Virtual Device path need to be provided to the
          //Uncomment the microejVee dependency to set the VEE Port or Kernel to use
          microejVee("com.microej.kernel:NXP-MIMXRT1170_GCC_GREEN:2.1.0")
       }
+
+
+.. note::
+   To use your own Kernel, refer to the
+   procedure described in :ref:`sdk_6_getting_started_stm32f7508_kernel_green_run_application`.
 
 In order to execute the :guilabel:`MyApplication` project on the Virtual Device, the SDK provides the Gradle :guilabel:`runOnSimulator` task. 
 
@@ -449,45 +451,44 @@ Configure the ``localDeploy`` tool in :guilabel:`MyApplication` project:
       import java.net.URL
       import java.net.URLConnection
       import java.net.URLEncoder
-      import java.util.*
 
 - Paste the following code at the end of the file:
 
    .. code-block:: kotlin
 
-
       val buildFeatureTask = tasks.withType(BuildFeatureTask::class).named("buildFeature")
       tasks.register("localDeploy") {
-      dependsOn("buildFeature")
-      group = "microej"
+         dependsOn("buildFeature")
+         group = "microej"
 
-      // Adjust the following two variables to your board IP and Port
-      val boardIP = "<BOARD IP ADDRESS>"
-      val boardPort = 4001 // default
+         // Adjust the following two variables to your board IP and Port
+         val boardIP = "<board_ip>"
+         val boardPort = 4001 // default
 
-      doLast {
-         // Locate app file and metadata
-         val applicationFOPath = buildFeatureTask.get().featureFile.get().asFile.absolutePath
+         doLast {
+            // Locate app file and metadata
+            val applicationFOPath = buildFeatureTask.get().featureFile.get().asFile.absolutePath
 
-         println("Deploying to board at $boardIP:$boardPort")
-         // Construct install HTTP request
-         val url = URL("http://$boardIP:$boardPort/api/app/install?${buildUrlParams()}")
-         val connection = url.openConnection() as HttpURLConnection
-         val boundary = "Boundary-" + System.currentTimeMillis()
-         setupConnection(connection, boundary)
-         connection.outputStream.use { outputStream ->
-            writeFileField(outputStream, boundary, "binary", File(applicationFOPath))
-            outputStream.write("--$boundary--\r\n".toByteArray())
+            println("Deploying to board at $boardIP:$boardPort")
+            // Construct install HTTP request
+            val url = URL("http://$boardIP:$boardPort/api/app/install?${buildUrlParams()}")
+            val connection = url.openConnection() as HttpURLConnection
+            val boundary = "Boundary-" + System.currentTimeMillis()
+            setupConnection(connection, boundary)
+            connection.outputStream.use { outputStream ->
+                  writeFileField(outputStream, boundary, "binary", File(applicationFOPath))
+                  outputStream.write("--$boundary--\r\n".toByteArray())
+            }
+
+            handleResponse(connection)
          }
-
-         handleResponse(connection)
-      }
       }
 
       // Helper to build URL parameters
       fun buildUrlParams() = mapOf(
-      "force" to "false",
-      "start" to "false"
+         "force" to "true",
+         "start" to "true",
+         "name" to microej.applicationEntryPoint.get().substringAfterLast(".")
       ).entries.joinToString("&") { "${it.key.encode()}=${it.value.encode()}" }
 
       // Extension function to encode URL parameters
@@ -495,39 +496,39 @@ Configure the ``localDeploy`` tool in :guilabel:`MyApplication` project:
 
       // Set up the connection
       fun setupConnection(connection: HttpURLConnection, boundary: String) {
-      connection.apply {
-         requestMethod = "POST"
-         setRequestProperty("Content-Type", "multipart/form-data; boundary=$boundary")
-         doOutput = true
-      }
+         connection.apply {
+            requestMethod = "POST"
+            setRequestProperty("Content-Type", "multipart/form-data; boundary=$boundary")
+            doOutput = true
+         }
       }
 
       // Helper to write file field
       fun writeFileField(outputStream: OutputStream, boundary: String, name: String, file: File) {
-      outputStream.write("--$boundary\r\nContent-Disposition: form-data; name=\"$name\"; filename=\"${file.name}\"\r\n".toByteArray())
-      outputStream.write("Content-Type: ${URLConnection.guessContentTypeFromName(file.name)}\r\n\r\n".toByteArray())
-      file.inputStream().use { it.copyTo(outputStream) }
-      outputStream.write("\r\n".toByteArray())
+         outputStream.write("--$boundary\r\nContent-Disposition: form-data; name=\"$name\"; filename=\"${file.name}\"\r\n".toByteArray())
+         outputStream.write("Content-Type: ${URLConnection.guessContentTypeFromName(file.name)}\r\n\r\n".toByteArray())
+         file.inputStream().use { it.copyTo(outputStream) }
+         outputStream.write("\r\n".toByteArray())
       }
 
       // Handle response from server
       fun handleResponse(connection: HttpURLConnection) {
-      connection.run {
-         try {
-            if (responseCode in 200..299) {
-            println("Deployment Successful! Response Code: $responseCode")
-            println("Server Response: ${inputStream.bufferedReader().use { it.readText() }}")
-            } else {
-            System.err.println("Deployment Failed. Response Code: $responseCode")
-            System.err.println("Error Details: ${errorStream.bufferedReader().use { it.readText() }}")
+         connection.run {
+            try {
+                  if (responseCode in 200..299) {
+                     println("Deployment Successful! Response Code: $responseCode")
+                     println("Server Response: ${inputStream.bufferedReader().use { it.readText() }}")
+                  } else {
+                     System.err.println("Deployment Failed. Response Code: $responseCode")
+                     System.err.println("Error Details: ${errorStream.bufferedReader().use { it.readText() }}")
+                  }
+            } catch (e: Exception) {
+                  System.err.println("An error occurred while handling the server response: ${e.message}")
+                  e.printStackTrace()
+            } finally {
+                  disconnect()
             }
-         } catch (e: Exception) {
-            System.err.println("An error occurred while handling the server response: ${e.message}")
-            e.printStackTrace()
-         } finally {
-            disconnect()
          }
-      }
       }
 
 - Update the ``boardIP`` variable with your board IP address,
