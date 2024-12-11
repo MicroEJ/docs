@@ -541,7 +541,7 @@ Configure the ``localDeploy`` tool in :guilabel:`MyApplication` project:
 
 - A :guilabel:`localDeploy` task is now visible in the :guilabel:`microej` tasks list:
 
-   .. figure:: images/multiSandbox/getting-started-localDeploy-task.png
+   .. figure:: images/multiSandbox/getting-started-localDeploy-task.jpg
       :alt: Virtual Device
       :align: center
       :scale: 70%
