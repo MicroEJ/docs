@@ -539,13 +539,7 @@ Configure the ``localDeploy`` tool in :guilabel:`MyApplication` project:
       :align: center
       :scale: 70%
 
-- A :guilabel:`localDeploy` task is now visible in the :guilabel:`microej` tasks list:
-
-   .. figure:: images/multiSandbox/getting-started-localDeploy-task.png
-      :alt: Virtual Device
-      :align: center
-      :scale: 70%
-
+- A :guilabel:`localDeploy` task is now visible in the :guilabel:`microej` tasks list,
 - Double-click on the :guilabel:`localDeploy` task to deploy :guilabel:`MyApplication` on the board.
 - :guilabel:`MyApplication` is successfully deployed and the ``Hello World!`` is displayed
   in the serial terminal: 
