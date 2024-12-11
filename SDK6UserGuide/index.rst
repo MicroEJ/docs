@@ -43,7 +43,6 @@ The SDK is licensed under the :ref:`SDK End User License Agreement (EULA) <sdk6_
    :hidden:
    :maxdepth: 1
 
-   gettingStarted
    install
    licenses
    limitations

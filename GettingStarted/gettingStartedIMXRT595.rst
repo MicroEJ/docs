@@ -1,12 +1,12 @@
-.. _sdk_6_getting_started_imxrt1170:
+.. _sdk_6_getting_started_imxrt595:
 
-i.MX RT1170 Evaluation Kit
-==========================
+i.MX RT595 Evaluation Kit
+=========================
 
-During this Getting Started, you will learn to:
+During this Getting Started, you will learn to run:
 
-* run an Application on the i.MX RT1170 Evaluation Kit Virtual Device,
-* run the same Application on your i.MX RT1170 Evaluation Kit.
+* run an Application on the i.MX RT595 Evaluation Kit Virtual Device,
+* run the same Application on your i.MX RT595 Evaluation Kit.
 
 In case you are not familiar with MicroEJ, please visit `Discover MicroEJ <https://developer.microej.com/discover-microej/>`__ to understand the principles of our technology.
 
@@ -21,18 +21,17 @@ This Getting Started is separated in two main parts.
 
 The first part consists of running a demo application on the Virtual Device. All you need is:
 
-
 * An Internet connection to access Github repositories & :ref:`Module Repositories <module_repositories>`.
-* MICROEJ SDK 6 (installed during :ref:`Environment Setup <sdk_6_getting_started_imxrt1170_environment_setup>`).
+* MICROEJ SDK 6 (installed during :ref:`Environment Setup <sdk_6_getting_started_imxrt595_environment_setup>`).
 
 The second part consists of running the same demo application on your device. For that you will need:
 
-* i.MX RT1170 Evaluation Kit, available `here <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__.
-* RK055HDMIPI4MA0 display panel, available `here <https://www.nxp.com/part/RK055HDMIPI4MA0>`__.
+* i.MX RT595 Evaluation Kit, available `here <https://www.nxp.com/design/development-boards/i-mx-evaluation-and-development-boards/i-mx-rt595-evaluation-kit:MIMXRT595-EVK>`__.
+* G1120B0MIPI display panel, available `here <https://www.nxp.com/part/G1120B0MIPI>`__,
 * A GNU ARM Embedded Toolchain, Cmake and Make are needed to build the BSP. You will be guided on how to install the toolchain later.
 * LinkServer tool to flash the board. You will be guided on how to install this tool later.
 
-.. _sdk_6_getting_started_imxrt1170_environment_setup:
+.. _sdk_6_getting_started_imxrt595_environment_setup:
 
 Environment Setup
 -----------------
@@ -40,7 +39,7 @@ Environment Setup
 To follow this Getting Started, you need to: 
 
 * Install MICROEJ SDK 6.
-* Get the Demo-SmartThermostat from Github.
+* Get the Demo-Wearable-VG from Github.
 
 Install MICROEJ SDK 6
 ^^^^^^^^^^^^^^^^^^^^^
@@ -48,16 +47,16 @@ Install MICROEJ SDK 6
 Install MICROEJ SDK 6 by following :ref:`sdk_6_install` instructions. 
 IntelliJ IDEA is used on this Getting Started but feel free to use your favorite IDE.
 
-Get Demo-SmartThermostat
-^^^^^^^^^^^^^^^^^^^^^^^^
+Get Demo-Wearable-VG
+^^^^^^^^^^^^^^^^^^^^
 
-For this Getting Started, the :guilabel:`Demo-SmartThermostat` Application will be use. You can download it using the following command::
+For this Getting Started, the :guilabel:`Demo-Wearable-VG` Application will be use. You can download it using the following command::
    
-   git clone -b 1.0.0 https://github.com/MicroEJ/Demo-SmartThermostat.git
+   git clone -b 2.0.0 https://github.com/MicroEJ/Demo-Wearable-VG.git
 
 .. note::
   
-   If you don’t have Git installed, you can download the source code directly from our `GitHub repository <https://github.com/MicroEJ/Demo-SmartThermostat/tree/1.0.0>`__. 
+   If you don’t have Git installed, you can download the source code directly from our `GitHub repository <https://github.com/MicroEJ/Demo-Wearable-VG/tree/2.0.0>`__. 
    Then you can click on ::guilabel:`Code > Download ZIP`.
 
 Set up the Application on your IDE
@@ -66,7 +65,7 @@ Set up the Application on your IDE
 Import the Project
 ^^^^^^^^^^^^^^^^^^
 
-The first step is to import the :guilabel:`Demo-SmartThermostat` Application into your IDE: 
+The first step is to import the :guilabel:`Demo-Wearable-VG` Application into your IDE: 
 
 .. note::
   
@@ -74,9 +73,9 @@ The first step is to import the :guilabel:`Demo-SmartThermostat` Application int
 
 
 * If you are in the Welcome Screen, click on the :guilabel:`Open` button. Otherwise click either on :guilabel:`File` > :guilabel:`Open...` or on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project From Existing Sources...`.
-* Select the ``Demo-SmartThermostat`` directory located where you downloaded it and click on the :guilabel:`OK` button.
+* Select the ``Demo-Wearable-VG`` directory located where you downloaded it and click on the :guilabel:`OK` button.
 
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-import-demo-application.png
+      .. figure:: images/iMXRT595/getting-started-import-demo-application.png
          :alt: Import demo application
          :align: center
          :scale: 70%
@@ -113,24 +112,24 @@ The first step is to import the :guilabel:`Demo-SmartThermostat` Application int
 
 The Gradle project should now be imported in IntelliJ IDEA, your workspace contains the following projects: 
 
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-workspace-view.png
+      .. figure:: images/iMXRT595/getting-started-workspace-view.png
          :alt: Workspace view
          :align: center
          :scale: 70%
 
-.. _sdk_6_getting_started_rt1170_eula:
+.. _sdk_6_getting_started_rt595_eula:
 
 Accept the MICROEJ SDK EULA
 ---------------------------
 
-You may have to accept the SDK EULA if you didn't already do, please have a look at :ref:`sdk_6_eula_acceptation`.
+You may have to accept the SDK EULA if you haven't already done it, please have a look at :ref:`sdk_6_eula_acceptation`.
 
-.. _sdk_6_getting_started_rt1170_run_virtual_device:
+.. _sdk_6_getting_started_rt595_run_virtual_device:
 
 Run an Application on the Virtual Device
 ----------------------------------------
 
-In order to execute the :guilabel:`Demo-SmartThermostat` Application on the Virtual Device, the SDK provides the Gradle :guilabel:`runOnSimulator` task. 
+In order to execute the :guilabel:`Demo-Wearable-VG` Application on the Virtual Device, the SDK provides the Gradle :guilabel:`runOnSimulator` task. 
 
 .. note::
   
@@ -138,46 +137,43 @@ In order to execute the :guilabel:`Demo-SmartThermostat` Application on the Virt
 
 * Double-click on the :guilabel:`runOnSimulator` task in the Gradle tasks view. It may takes few seconds.
 
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-runOnSimulator.png
+      .. figure:: images/iMXRT595/getting-started-runOnSimulator.png
          :alt: runOnSimulator task
          :align: center
          :scale: 70%
 
-The Virtual Device starts and executes the :guilabel:`Demo-SmartThermostat` application.
+The Virtual Device starts and executes the :guilabel:`Demo-Wearable-VG` application.
 
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-virtual-device.png
+      .. figure:: images/iMXRT595/getting-started-virtual-device.png
          :alt: Virtual Device
          :align: center
          :scale: 70%
 
 .. note::
   
-   The Front Panel may be too big for your screen, that is because of the RK055HDMIPI4MA0 display resolution. You can scroll down to see the bottom of the display.
+   If you want to know more about the use of the :guilabel:`Demo-Wearable-VG`, please have a look at its `README.md <https://github.com/MicroEJ/Demo-Wearable-VG/blob/2.0.0/watch-vg/README.md>`__ file.
 
-   If you want to know more about the use of the :guilabel:`Demo-SmartThermostat`, please have a look at its `README.md <https://github.com/MicroEJ/Demo-SmartThermostat/blob/1.0.0/smart-thermostat/README.md>`__ file.
-
-
-.. figure:: images/gettingStarted/well-done-mascot.png
+.. figure:: images/well-done-mascot.png
    :alt: Well Done
    :align: center
    :scale: 70%
 
-Well done !
+Well Done!
 -----------
 
 Now you know how to run an application on a Virtual Device.
 
-If you want to learn how to run an application on your i.MX RT1170 Evaluation Kit, you can continue this Getting Started: :ref:`Run an Application on i.MX RT1170 Evaluation Kit <sdk_6_getting_started_rt1170_run_on_device>`.
+If you want to learn how to run an application on your i.MX RT595 Evaluation Kit, you can continue this Getting Started: :ref:`Run an Application on i.MX RT595 Evaluation Kit <sdk_6_getting_started_rt595_run_on_device>`.
 
-Otherwise, learn how to :ref:`Modify the Java Application <sdk_6_getting_started_rt1170_modify_java_application>`.
+Otherwise, learn how to :ref:`Modify the Java Application <sdk_6_getting_started_rt595_modify_java_application>`.
 
 
-.. _sdk_6_getting_started_rt1170_run_on_device:
+.. _sdk_6_getting_started_rt595_run_on_device:
 
-Run an Application on i.MX RT1170 Evaluation Kit
-------------------------------------------------
+Run an Application on i.MX RT595 Evaluation Kit
+-----------------------------------------------
 
-To deploy :guilabel:`Demo-SmartThermostat` application on your board, you will have to:
+To deploy :guilabel:`Demo-Wearable-VG` application on your board, you will have to:
 
 * Setup your Environment (Toolchain, flashing-tool, hardware setup).
 * Request a 30 days :ref:`Evaluation License <sdk_eula>` and install an activation key.
@@ -211,7 +207,7 @@ The toolchain is the `GNU ARM Embedded Toolchain <https://developer.arm.com/down
 
 At the end of the installation, it will ask you to complete the Setup of the wizard, choose the following options: 
 
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-arm-gcc-installation.png
+      .. figure:: images/iMXRT595/getting-started-arm-gcc-installation.png
          :alt: Import demo application
          :align: center
          :scale: 70%
@@ -263,21 +259,21 @@ Once installed, ``LinkServer_xxx/binaries`` folder must be set on your Path. To 
 Hardware Setup
 """"""""""""""
 
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-hardware-setup.png
+      .. figure:: images/iMXRT595/getting-started-hardware-setup.png
          :alt: Hardware Setup
          :align: center
          :scale: 70%
 
-Setup the i.MX RT1170 Evaluation Kit
+Setup the i.MX RT595 Evaluation Kit:
 
-* Check that the dip switches (SW1) are set to OFF, OFF, ON and OFF.
-* Ensure jumpers J6 and J7 are closed.
-* Connect the micro-USB cable to J11 to power the board.
-* You can connect 5 V power supply to J43 if you need to use the display
+* Check that the dip switches (SW7) are set to OFF, OFF and ON (ISP0, ISP1, ISP2).
+* Ensure jumpers JP18 and JP19 are closed.
+* Remove jumper JP4.
+* Connect the micro-USB cable to J40 to power the board.
 
-The USB connection is used as a serial console for the SoC, as a CMSIS-DAP debugger and as a power input for the board.
+The USB connection is used as a serial console for the SoC, as a CMSIS-DAP debugger, and as a power input for the board.
 
-The VEE Port uses the virtual UART from the i.MX RT1170 Evaluation Kit USB port. A COM port is automatically mounted when the board is plugged into a computer using a USB cable. All board logs are available through this COM port.
+A COM port is automatically mounted when the board is plugged into a computer using a USB cable. All board logs are available through this COM port.
 
 The COM port uses the following parameters:
 
@@ -298,12 +294,12 @@ The COM port uses the following parameters:
 
 You can have a look at your application logs with an RS232 Terminal (e.g. `Termite <https://www.compuphase.com/software_termite.htm>`__).
 
-Congratulations, you have finished the setup of your environment. You are now ready to discover how to build and flash a MicroEJ application.
+Congratulations! You have finished the setup of your environment. You are now ready to discover how to build and flash a MicroEJ application.
 
-Build the Executable for i.MX RT1170 Evaluation Kit
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Build the Executable for i.MX RT595 Evaluation Kit
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In order to build the Executable of the :guilabel:`Demo-SmartThermostat` Application, the SDK provides the Gradle :guilabel:`buildExecutable` task.
+In order to build the Executable of the :guilabel:`Demo-Wearable-VG` Application, the SDK provides the :guilabel:`buildExecutable` Gradle task.
 
 .. note::
   
@@ -314,7 +310,7 @@ In order to build the Executable of the :guilabel:`Demo-SmartThermostat` Applica
 * The build stops with a failure.
 * Go to the top project in the console view and scroll up to get the following error message:
 
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-console-output-license-uid.png
+      .. figure:: images/iMXRT595/getting-started-console-output-license-uid.png
          :alt: Console Output License UID
          :align: center
          :scale: 70%
@@ -323,49 +319,63 @@ In order to build the Executable of the :guilabel:`Demo-SmartThermostat` Applica
 
 Request your Evaluation License:
 
-* Request your Evaluation license by following the :ref:`evaluation_license_request_activation_key` instructions. You will be asked to fill the machine UID you just copied before.
+* Request your Evaluation license by following the :ref:`evaluation_license_request_activation_key` instructions. You will be asked to fill the machine UID field with the UID you copied before.
 
 * When you have received your activation key by email, drop it in the license directory by following the :ref:`evaluation_license_install_license_key` instructions (drop the license key zip file to the ``~/.microej/licenses/`` directory).
 
-Now your Evaluation license is installed, you can relaunch your application build by double-clicking on the :guilabel:`buildExecutable` task in the Gradle tasks view. It may takes some time.
+Now your Evaluation license is installed, you can relaunch your application build by double-clicking on the :guilabel:`buildExecutable` task in the Gradle tasks view. It may take some time.
 
-The Gradle task deploys the Application in the BSP and then builds the BSP using Make.
+The Gradle task deploys the MicroEJ application in the BSP and then builds the BSP using Make.
 
-The :guilabel:`Demo-SmartThermostat` application is built and ready to be flashed on i.MX RT1170 Evaluation Kit once the hardware setup is completed.
+.. warning::
 
-Flash the Application on the i.MX RT1170 Evaluation Kit
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    On Windows, the build may fail because of file path length limit exceeded with following error message:
 
-In order to flash the :guilabel:`Demo-SmartThermostat` Application on i.MX RT1170 Evaluation Kit, the application provides the Gradle :guilabel:`runOnDevice` task.
+    .. code-block::
+
+       arm-none-eabi-gcc.exe: fatal error: no input Files
+
+    In this case, shorten the build directory path in ``./watch-vg/build.gradle.kts``:
+
+    .. code-block:: kotlin
+
+       buildDir = file("C:/Demo-Wearable-VG/build")
+
+The :guilabel:`Demo-Wearable-VG` application is built and ready to be flashed on i.MX RT595 Evaluation Kit once the hardware setup is completed.
+
+Flash the Application on the i.MX RT595 Evaluation Kit
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In order to flash the :guilabel:`Demo-Wearable-VG` Application on i.MX RT595 Evaluation Kit, the application provides the Gradle :guilabel:`runOnDevice` task.
 
 .. note::
   
    If you are using another IDE than IntelliJ IDEA, please have a look at :ref:`sdk_6_run_on_device` section.
 
-* Double-click on the :guilabel:`runOnDevice` task in the Gradle tasks view. It may takes some time.
+* Double-click on the :guilabel:`runOnDevice` task in the Gradle tasks view. It may take some time.
 
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-runOnDevice.png
+      .. figure:: images/iMXRT595/getting-started-runOnDevice.png
          :alt: runOnDevice task
          :align: center
          :scale: 70%
 
-Once the firmware is flashed, you should see the :guilabel:`Demo-SmartThermostat` running on your board.      
+Once the firmware is flashed, you should see the :guilabel:`Demo-Wearable-VG` running on your board.      
 
 .. raw:: html
 
    <div style="display:block;margin-bottom:24px;">
       <table>
          <tr>
-            <td style="width:50%;text-align:center;vertical-align:middle;" alt="Application running on i.MXRT1170 Evaluation Kit">
-               <img src="../_images/getting-started-rt1170-hardware-demo-running.jpg">
+            <td style="width:50%;text-align:center;vertical-align:middle;" alt="Application running on i.MXRT595 Evaluation Kit">
+               <img src="../_images/getting-started-rt595-hardware-demo-running.png">
             </td>
             <td style="width:50%;text-align:center;vertical-align:middle;" alt="Termite Application Output">
-               <img src="../_images/getting-started-rt1170-termite-application-output.png">
+               <img src="../_images/getting-started-rt595-termite-application-output.png">
             </td>
          </tr>
          <tr>
             <td style="width:50%;text-align:center;font-size:18px;font-style:italic;">
-               Fig 1. Application running on i.MXRT1170 Evaluation Kit
+               Fig 1. Application running on i.MXRT595 Evaluation Kit
             </td>
             <td style="width:50%;text-align:center;font-size:18px;font-style:italic;">
                Fig 2. Application logs on Termite
@@ -374,36 +384,37 @@ Once the firmware is flashed, you should see the :guilabel:`Demo-SmartThermostat
       </table>
    </div>
 
-.. |image3| image:: images/gettingStarted/iMXRT1170/getting-started-rt1170-hardware-demo-running.jpg
-.. |image4| image:: images/gettingStarted/iMXRT1170/getting-started-rt1170-termite-application-output.png
+.. |image3| image:: images/iMXRT595/getting-started-rt595-hardware-demo-running.png
+.. |image4| image:: images/iMXRT595/getting-started-rt595-termite-application-output.png
 
-.. _sdk_6_getting_started_rt1170_modify_java_application:
+
+.. _sdk_6_getting_started_rt595_modify_java_application:
 
 Modify the Java Application
 ---------------------------
 
 With MicroEJ, it is easy to modify and test your Java application on the Virtual Device.
 
-For example, we could modify the color of the background that is shown on the inside part of the Home Screen.
+For example, we could modify the color of the date on the Flower Watchface that is shown at the startup of the application.
 
-* Open :guilabel:`ThermoColors.java` file located in the :guilabel:`src/main/java/com/microej/demo/smart_thermostat/style` folder.
-* Background color is set line 31, replace the following line:
+* Open :guilabel:`FlowerWatchface.java` file located in the :guilabel:`watchface-flower/src/main/java/com/microej/demo/watch/watchface/flower` folder.
+* On the :guilabel:`renderDate` method, replace the following line:
 
 .. code:: 
 
-   public static final int BG_INSIDE = 0xB6B1AB;
+   g.setColor(style.getColor());
 
 by
 
 .. code:: 
 
-   public static final int BG_INSIDE = Colors.RED;
+   g.setColor(Colors.GREEN);
 
-* Follow :ref:`sdk_6_getting_started_rt1170_run_virtual_device` instructions to launch the modified application on the Virtual Device.
+* Follow :ref:`sdk_6_getting_started_rt595_run_virtual_device` instructions to launch the modified application on the Virtual Device.
 
 Here is the modified application running in simulation: 
 
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-virtual-device-modified.png
+      .. figure:: images/iMXRT595/getting-started-virtual-device-modified.png
          :alt: Virtual Device
          :align: center
          :scale: 70%
@@ -413,7 +424,7 @@ Going Further
 
 You have now successfully executed a MicroEJ application on an embedded device so what's next?
 
-If you are an application developer you can continue to explore MicroEJ's API and functionalities by running and studying our samples at GitHub:
+If you are an application developer you can continue to explore MicroEJ's APIs and functionalities by running and studying our samples at GitHub:
 
 .. list-table::
    :widths: 33 33 33
@@ -432,7 +443,7 @@ You can also learn how to build bigger and better applications by reading our :r
 
 If you are an embedded engineer you could look at our VEE port examples at `GitHub <https://github.com/microej?q=vee&type=all&language=&sort=>`_. And to learn how create custom VEE ports you can read our :ref:`VEE Porting Guide <vee-porting-guide>`.
 
-You can also follow the :ref:`Kernel Developer Guide <kernel-developer-guide>` for more information on our multi-applications framework or read about our powerful wearable solution called :ref:`VEE Wear <vee-wear>`.
+You can also follow the :ref:`Kernel Developer Guide <kernel-developer-guide>` for more information on our multi-application framework or read about our powerful wearable solution called :ref:`VEE Wear <vee-wear>`.
 
 Last but not least you can choose to learn about specific topics by following one of our many :ref:`trainings` ranging from how to easily debug application to setting up a Continuous Integration process and a lot of things in between.
 
