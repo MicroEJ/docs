@@ -60,17 +60,17 @@ Here is an example:
         :emphasize-lines: 17
 
         package com.mycompany;
-        import com.microej.managedc.WasmFunction;
-        import com.microej.managedc.WasmMemory;
-        import com.microej.managedc.WasmModule;
+        import ej.wasm.WasmFunction;
+        import ej.wasm.WasmMemory;
+        import ej.wasm.WasmModule;
         import ej.wasi.Wasi;
         import java.io.IOException;
 
         @WasmModule("my_app")
         public class MyApp {
 
-        @WasmMemory
-        private static byte[] Memory;
+            @WasmMemory
+            private static byte[] Memory;
 
             public static void main(String[] args) throws IOException {
             
@@ -86,7 +86,7 @@ Here is an example:
 
         }
 
-In this example, the implementation of The POSIX-compliant C functions ``clock_gettime(...)`` and ``printf(...)`` relies on the WASI functions `clock_time_get(...)` and `fd_write(...)` which are provided the the WASI Add-on Library.
+In this example, the implementation of The POSIX-compliant C functions ``clock_gettime(...)`` and ``printf(...)`` relies on the WASI functions ``clock_time_get(...)`` and ``fd_write(...)`` which are provided by the WASI Add-on Library.
 
 .. note:: 
 
