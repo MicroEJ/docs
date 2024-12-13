@@ -7,7 +7,7 @@ Troubleshooting
 SOAR-L ERROR "Unknown module ..."
 -----------------------------------------------------------------
 
-When using the ``@ManagedCModule`` annotation on a Java class, ensure there's a corresponding WebAssembly file in the classpath. 
+When using the ``@WasmModule`` annotation on a Java class, ensure there's a corresponding WebAssembly file in the classpath. 
 
 An error in SOAR-L might occur if the WebAssembly file is missing. 
 
@@ -17,7 +17,7 @@ Failure to do so may result in the following error:
 
     soar2-r/do:
       [soar2-r] 1 : SOAR-L ERROR :
-      [soar2-r] [M403] - Unknown module 'my_module.wasm' (module is referenced by the annotation '@ManagedCModule' on the type 'com.mycompany.MyWebAssemblyModule').
+      [soar2-r] [M403] - Unknown module 'my_module.wasm' (module is referenced by the annotation '@WasmModule' on the type 'com.mycompany.MyWebAssemblyModule').
       [soar2-r]
 
 -----------------------------------------------------------------
@@ -53,7 +53,7 @@ Failure to do so may result in the following error:
 SOAR-L ERROR "Cannot find an exported function '...'"
 -----------------------------------------------------------------
 
-When using the ``@ManagedCFunction`` annotation on a Java method, ensure there's a corresponding WebAssembly function with the right signature in the associated WebAssembly module.
+When using the ``@WasmFunction`` annotation on a Java method, ensure there's a corresponding WebAssembly function with the right signature in the associated WebAssembly module.
 An error in SOAR-L might occur if no function matching the annotated Java method signature is found.
 
 Failure to do so may result in the following error:
@@ -68,7 +68,7 @@ Failure to do so may result in the following error:
 SOAR-L ERROR "'...' is not a byte array"
 -----------------------------------------------------------------
 
-When using the ``@ManagedCMemory`` annotation on a Java static field, ensure that corresponding type is a Java byte array (`byte[]`).
+When using the ``@WasmMemory`` annotation on a Java static field, ensure that corresponding type is a Java byte array (`byte[]`).
 
 Failure to do so may result in the following error:
 
