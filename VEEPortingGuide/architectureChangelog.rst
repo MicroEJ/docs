@@ -43,7 +43,8 @@ specific configuration:
 Foundation Libraries
 ~~~~~~~~~~~~~~~~~~~~
 
-- Fixed EDC implementation of `java.util.WeakHashMap.put()`_ which could lead to a memory leak when new elements are added but never accessed.
+- Fixed, in ``EDC``, implementation of `java.util.WeakHashMap.put()`_ which could lead to a memory leak when new elements are added but never accessed.
+- Fixed, in ``EDC``, :ref:`option_enable_security_manager` was not disabled by default.
 
 Tools
 ~~~~~
