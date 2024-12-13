@@ -69,7 +69,8 @@ SOAR
 Integration
 ~~~~~~~~~~~
 
--  Added the declaration of :ref:`section.classpath.elements.constants` as :ref:`Application Options <application_options>`.
+- Added the declaration of :ref:`section.classpath.elements.constants` as :ref:`Application Options <application_options>`.
+- Fixed :ref:`section_frontpanel_multiple_fp_files` option was not taken into account on VEE Ports that do not depend on UI Pack.
 
 .. _changelog-8.2.0:
 
