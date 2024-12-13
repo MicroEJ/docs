@@ -8,9 +8,9 @@ It aggregates multiple libraries, applications and tools dedicated to the develo
 
 |
 
-**VEE Wear SDK**
+**VEE Wear Framework**
 
-The :ref:`VEE Wear SDK <vee_wear_sdk>` provides a turnkey, customizable wearable firmware.
+The :ref:`VEE Wear Framework <vee_wear_framework>` provides a turnkey, customizable wearable firmware.
 
 This SDK contains the following components:
 
