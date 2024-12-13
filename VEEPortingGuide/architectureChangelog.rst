@@ -44,7 +44,7 @@ Foundation Libraries
 ~~~~~~~~~~~~~~~~~~~~
 
 - Fixed, in ``EDC``, implementation of `java.util.WeakHashMap.put()`_ which could lead to a memory leak when new elements are added but never accessed.
-- Fixed, in ``EDC``, :ref:`option_enable_security_manager` was not disabled by default.
+- Fixed, in ``EDC``, :ref:`Enable SecurityManager checks option <option_enable_security_manager>` was not disabled by default.
 
 Tools
 ~~~~~
@@ -71,7 +71,8 @@ Integration
 ~~~~~~~~~~~
 
 - Added the declaration of :ref:`section.classpath.elements.constants` as :ref:`Application Options <application_options>`.
-- Fixed :ref:`section_frontpanel_multiple_fp_files` option was not taken into account on VEE Ports that do not depend on UI Pack.
+- Fixed :ref:`Front Panel File option <section_frontpanel_multiple_fp_files>` option was not taken into account on VEE Ports that do not depend on UI Pack.
+- Removed warning messages related to missing :ref:`GC mark stack size option <option_gc_stack_size>` when building on Device.
 
 .. _changelog-8.2.0:
 
