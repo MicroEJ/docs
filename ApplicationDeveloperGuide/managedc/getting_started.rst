@@ -34,11 +34,11 @@ To use Managed C in your Application, follow these steps:
 
 #. **Add the Annotations for Accessing Managed C in Java:**
 
-   Create a file named ``ManagedCModule.java`` in the directory ``src/main/java/com/microej/managedc``  with the following content:
+   Create a file named ``WasmModule.java`` in the directory ``src/main/java/ej/wasm``  with the following content:
 
          .. code-block:: java
 
-            package com.microej.managedc;
+            package ej.wasm;
             
             import java.lang.annotation.ElementType;
             import java.lang.annotation.Retention;
@@ -47,52 +47,52 @@ To use Managed C in your Application, follow these steps:
             
             @Retention(RetentionPolicy.CLASS)
             @Target(ElementType.TYPE)
-            public @interface ManagedCModule {
+            public @interface WasmModule {
                String value();
             }
 
-   Create a file named ``ManagedCFunction.java`` in the directory ``src/main/java/com/microej/managedc`` with the following content:
+   Create a file named ``WasmFunction.java`` in the directory ``src/main/java/ej/wasm`` with the following content:
    
          .. code-block:: java
 
-            package com.microej.managedc;
+            package ej.wasm;
             
             import java.lang.annotation.ElementType;
             import java.lang.annotation.Target;
             
             @Target(ElementType.METHOD)
-            public @interface ManagedCFunction {
+            public @interface WasmFunction {
                String value() default "";
             }
 
 
 #. **Configure your Java class to call a Managed C Function:**
 
-   Add the ``ManagedCModule`` annotation to the ``Main`` class with the Wasm module name:   
+   Add the ``WasmModule`` annotation to the ``Main`` class with the Wasm module name:   
 
          .. code-block:: java      
             :emphasize-lines: 1,3
 
-            import com.microej.managedc.*
+            import ej.wasm.*;
 
-            @ManagedCModule("factorial.wasm")
+            @WasmModule("factorial.wasm")
             public class Main {
                ...
             }
 
-   Define a native Java method with the ``ManagedCFunction`` annotation in your main application class: 
+   Define a native Java method with the ``WasmFunction`` annotation in your main application class: 
 
          .. code-block:: java      
             :emphasize-lines: 8,9
 
-            import com.microej.managedc.*    
+            import ej.wasm.*;   
 
-            @ManagedCModule("factorial.wasm")
+            @WasmModule("factorial.wasm")
             public class Main {
 
                ...
 
-               @ManagedCFunction
+               @WasmFunction
                public static native int factorial(int n);
             }
 
@@ -101,14 +101,14 @@ To use Managed C in your Application, follow these steps:
       .. code-block:: java
          :emphasize-lines: 5
          
-         @ManagedCModule("factorial.wasm")
+         @WasmModule("factorial.wasm")
          public class Main {
             
             public static void main(String[] args) {
                System.out.println("factorial(10) = " + factorial(10));
             }
             
-            @ManagedCFunction
+            @WasmFunction
             public static native int factorial(int n);
          }
 
