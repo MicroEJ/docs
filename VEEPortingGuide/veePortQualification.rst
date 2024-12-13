@@ -35,9 +35,21 @@ The following figure depicts an example for the FS Pack:
    VEE Port Qualification Example for FS Pack
 
 MicroEJ provides a set of tools and pre-defined projects aimed at
-simplifying the steps for validating VEE Ports in the form of the
-`VEE Port Qualification Tools (PQT)
-<https://github.com/MicroEJ/VEEPortQualificationTools>`__.
+simplifying the steps for validating VEE Ports in the form of the 
+VEE Port Qualification Tools (PQT):
+
+.. tabs::
+
+   .. group-tab:: SDK 6
+      
+      In SDK 6, it is located at:
+
+      - the ``validation`` folder of the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/master/vee-port/validation>`__ for the Java Testsuites.
+      - the `AbstractionLayer Tests repository <https://gitlab.cross/M0124_BSP-Framework/M0124_AbstractionLayer-Tests>`__ for the C tests.
+
+   .. group-tab:: SDK 5
+      
+      In SDK 5, it is located at the `VEE Port Qualification Tools (PQT) repository <https://github.com/MicroEJ/VEEPortQualificationTools>`__.
 
 .. _pqt_overview:
 
@@ -73,8 +85,9 @@ The VEE Port Qualification Tools provide the following components:
   - Added when creating a VEE Port (see :ref:`new_platform_creation`
     or check the training :ref:`tutorial_create_firmware_from_scratch`).
 
-Please refer to the `VEE Port Qualification Tools README
-<https://github.com/MicroEJ/VEEPortQualificationTools>`__ for more
+Please refer to the VEE Port Qualification Tools README in `SDK 5
+<https://github.com/MicroEJ/VEEPortQualificationTools>`__ or in `SDK 6
+<https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/master/vee-port/validation>`__ for more
 details and the location of the components.
 
 .. _vee_port_testsuite:
