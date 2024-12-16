@@ -12,7 +12,7 @@ It aggregates multiple libraries, applications and tools dedicated to the develo
 
 The :ref:`VEE Wear Framework <vee_wear_framework>` provides a turnkey, customizable wearable firmware.
 
-This SDK contains the following components:
+This framework contains the following components:
 
 - a Multi-Sandboxed wearable Kernel
 - common wearable apps (Settings, :ref:`Facer <facer_engine>`, Health, Stopwatch, etc.)
@@ -66,7 +66,7 @@ The offloading framework encompasses an inter-processor communication framework 
    :hidden:
    :maxdepth: 0
 
-   sdk
+   framework
    android/index
    ick
    offloading

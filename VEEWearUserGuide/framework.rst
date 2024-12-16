@@ -204,8 +204,8 @@ Selecting the Kernel
 To be able to build your App, you must add a dependency to the :ref:`VEE Wear Kernel <vee_wear_kernel>` by following these steps:
 
 - Open the ``build.gradle.kts`` file.
-- Define the path to the VEE Wear Framework on your machine: add ``val veeWearSdk = "/path/to/VEE-Wear-Framework"``
-- Add a dependency to the VEE Wear Kernel: add 	``microejVee(files("$veeWearSdk/Virtual-Device", "$veeWearSdk/kernel.out"))`` in the ``dependencies`` block.
+- Define the path to the VEE Wear Framework on your machine: add ``val veeWearFramework = "/path/to/VEE-Wear-Framework"``
+- Add a dependency to the VEE Wear Kernel: add 	``microejVee(files("$veeWearFramework/Virtual-Device", "$veeWearFramework/kernel.out"))`` in the ``dependencies`` block.
 
 Building the App
 ^^^^^^^^^^^^^^^^
