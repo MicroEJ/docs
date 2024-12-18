@@ -73,6 +73,7 @@ Integration
 - Updated Architecture End User License Agreement to version ``SDK 3.1-c``.
 - Added the declaration of :ref:`section.classpath.elements.constants` as :ref:`Application Options <application_options>`.
 - Fixed :ref:`Front Panel File option <section_frontpanel_multiple_fp_files>` option was not taken into account on VEE Ports that do not depend on UI Pack.
+- Fixed an issue where Sentinel licenses were not displayed in the License Manager in some cases.
 - Removed warning messages related to missing :ref:`GC mark stack size option <option_gc_stack_size>` when building on Device.
 
 .. _changelog-8.2.0:
