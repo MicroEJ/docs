@@ -255,11 +255,12 @@ Open the SDK and run a :ref:`Remote Java Application Launch <debug_on_device>` t
 
     Now, use this single ``all.hex`` file as value to the Debugger Proxy option ``-Ddebugger.out.hex.path``
 
-Update the state of the 'debugged' application
-----------------------------------------------
+Update the State of the Debugged Application
+--------------------------------------------
 
-While the VEE Debugger Proxy is running, and you want to debug your application using a new memory dump, you don't need to stop and restart the VEE Debugger Proxy. 
-Simply overwrite the old memory dump files with the new ones, then relaunch the :ref:`Remote Java Application Launch <debug_on_device>`.
+While the VEE Debugger Proxy is active, you can debug a new application state without restarting it. 
+Simply replace the old memory dump files with the new ones, and the VEE Debugger Proxy will automatically reload the state. 
+After that, relaunch the :ref:`Remote Java Application Launch <debug_on_device>`.
 
 
 VEE Debugger Proxy Options Summary
