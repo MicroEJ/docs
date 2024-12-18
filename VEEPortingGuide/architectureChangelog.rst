@@ -58,6 +58,7 @@ Simulator
 - Added a check to verify compatibility with the expected MicroEJ classfile version (``1.7``).
 - Fixed invalid mentions of ``SNI.closeOnGC()`` instead of ``NativeResource.closeOnGC()`` in the HILEngine Javadoc.
 - Fixed potential crash when calling `Kernel.clone()`_ in a project that does not define a ``kernel.kf`` file.
+- Fixed potential crash when booting a GUI Application on a Multi-Sandbox VEE Port.
 
 SOAR
 ~~~~
