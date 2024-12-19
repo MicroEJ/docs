@@ -3,8 +3,7 @@
 MicroEJ Launch
 ==============
 
-The MicroEJ launch configuration sets up the 
-:ref:`MicroEJ Applications <concepts-microejapplications>` environment (main class, target, and Application options), and then
+The MicroEJ launch configuration sets up the Applications environment (main class, target, and Application options), and then
 launches a script for execution.
 
 Execution is done either on the Simulator or on the Device. In this latter case, it may depend on
