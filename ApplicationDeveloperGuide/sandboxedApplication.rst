@@ -3,6 +3,10 @@
 Sandboxed Application
 =====================
 
+.. figure:: images/sandboxed.png
+   :align: center
+   :scale: 75%
+
 .. toctree::
    :maxdepth: 2
    :hidden:
@@ -10,8 +14,7 @@ Sandboxed Application
    sandboxedAppFundamentalConcepts
    sandboxedAppSharedInterface
 
-A Sandboxed Application is an Application that can run over a Multi-Sandbox Executable.
-Sandboxed Applications can be linked statically to the Multi-Sandbox Executable or installed dynamically on the device.
+A Sandboxed Application is an Application that is partially linked, then deployed and executed over a Multi-Sandbox Executable.
 
 Typical use cases for a Sandboxed Application are:
 

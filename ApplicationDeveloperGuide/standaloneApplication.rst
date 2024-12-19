@@ -3,6 +3,10 @@
 Standalone Application
 ######################
 
+.. figure:: images/standalone.png
+   :align: center
+   :scale: 75%
+
 Introduction
 ============
 

@@ -98,6 +98,8 @@ For Beginners
 
          </div>
 
+.. _training_for_application_developers:
+
 For Application Developers
 ==========================
 
