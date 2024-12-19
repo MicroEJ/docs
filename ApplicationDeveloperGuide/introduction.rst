@@ -24,19 +24,20 @@ resources such as:
 MicroEJ Applications are developed using standard Integrated Development Environments with :ref:`MICROEJ SDK <sdk_6_user_guide>`. The SDK allows you to
 run / debug / deploy Applications on a VEE Port.
 
-Two kinds of applications can be developed on MicroEJ: MicroEJ
-Standalone Applications and MicroEJ Sanboxed Applications.
+Two kinds of applications can be developed: Standalone Applications and Sandboxed Applications.
 
-A MicroEJ Standalone Application is a MicroEJ Application that is
-directly linked to the C code to produce a MicroEJ Firmware. Such
-application must define a main entry point, i.e. a class containing a
-``public static void main(String[])`` method.
+A :ref:`Standalone Application <standalone_application>` is the main Application that is
+directly linked to the C code to produce an Executable. 
 
-A MicroEJ Sandboxed Application is a MicroEJ Application that can run
-over a Multi-Sandbox Executable. It can be linked either statically or
-dynamically. If it is statically linked, it is then called a System
-Application as it is part of the initial image and cannot be removed.
+.. figure:: images/standalone.png
+   :align: center
+   :scale: 75%
 
+A :ref:`Sandboxed Application <sandboxed_application>` is an Application that is partially linked, then deployed and executed over a Multi-Sandbox Executable.
+
+.. figure:: images/sandboxed.png
+   :align: center
+   :scale: 75%
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
