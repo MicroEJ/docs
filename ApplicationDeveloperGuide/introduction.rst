@@ -21,8 +21,7 @@ resources such as:
 
 - :ref:`Training Courses for Application Developers <training_for_application_developers>`.
 
-MicroEJ Applications are developed as standard Java applications on
-Eclipse JDT, using Foundation Libraries. The SDK allows you to
+MicroEJ Applications are developed using standard Integrated Development Environments with :ref:`MICROEJ SDK <sdk_6_user_guide>`. The SDK allows you to
 run / debug / deploy Applications on a VEE Port.
 
 Two kinds of applications can be developed on MicroEJ: MicroEJ
