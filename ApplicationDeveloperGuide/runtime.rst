@@ -1,12 +1,12 @@
 MicroEJ Runtime
 ===============
 
-.. _mjvm_javalanguage:
+.. _java:
 
 Language
 --------
 
-MicroEJ allows to develop Applications in the `Java® Language Specification version 7 <https://docs.oracle.com/javase/specs/jls/se7/jls7.pdf>`_ with :ref:`some limitations <java_limitations>`, and supports code extensions written in :ref:`JavaScript <javascript>`, and in :ref:`C <managedc>`.
+MicroEJ allows to develop Applications in Java and in C. It also supports code extensions written in :ref:`JavaScript <javascript>`.
 
 .. figure:: images/runtime.png
    :alt: MicroEJ Runtime Overview
@@ -15,16 +15,27 @@ MicroEJ allows to develop Applications in the `Java® Language Specification ver
 
    MicroEJ Runtime Overview 
 
-Basically, Java source code is compiled by the Java compiler [1]_ into the binary format specified in the JVM specification [2]_. 
+.. _java:
+
+Java Language
+~~~~~~~~~~~~~
+
+MicroEJ supports the `Java® Language Specification version 7 <https://docs.oracle.com/javase/specs/jls/se7/jls7.pdf>`_ with :ref:`some limitations <java_limitations>`.
+
+
+Basically, the Java source code is compiled by the Java compiler [1]_ into the binary format specified in the JVM specification [2]_: the Java bytecode. 
 This binary code is linked by a tool named :ref:`SOAR <soar>` before execution: ``.class`` files and some other application-related files (see :ref:`Classpath <chapter.microej.classpath>` chapter) are linked to produce the final binary file that the :ref:`Core Engine <core_engine>` will execute.
 
-.. note:: When opened in the SDK 5, make sure that the Compiler Compliance Level of your project is set to 1.7 to ensure the bytecode produced by the Java compiler is compatible with MicroEJ. The Compliance Level can be changed from the menu: :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`Java` > :guilabel:`Compiler`.
-
 .. [1]
-   The JDT compiler from the Eclipse IDE.
+   MICROEJ SDK uses the JDT compiler coming from the Eclipse IDE.
 
 .. [2]
    Tim Lindholm & Frank Yellin, The Java™ Virtual Machine Specification, Second Edition, 1999
+
+.. _c:
+
+C Language
+----------
 
 
 
