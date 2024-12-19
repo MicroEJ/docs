@@ -309,7 +309,7 @@ Configure boot
 ++++++++++++++
 
 By default, the i.MX93 evaluation kit will boot from the eMMC.
-To change the boot mode to micro SD, set the DIP switch ``BMODE`` to ``0010``.
+To change the boot mode to micro SD, set the DIP switch ``BMODE`` to ``0100``, i.e. SW1301-2 set to ``1``.
 
 Insert the flashed SD card and boot the device. After a few seconds, the display will show the IMX93 Getting Started Welcome page.
 If no display is attached, information such as device IP address and documentation link will also be printed in the logs.
