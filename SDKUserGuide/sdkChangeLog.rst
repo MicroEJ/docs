@@ -1175,7 +1175,7 @@ General
    minimum required version of SDK (``sdk.min.version``
    property)
 -  Updated ``New Standalone Application Project`` wizard to
-   generate a single-app firmware skeleton
+   generate a Mono-Sandbox Executable skeleton
 -  Updated Virtual Device Builder to manage Sandboxed
    Applications (compatible with Architectures Products ``*_7.10.0`` or
    newer)
@@ -1216,7 +1216,7 @@ Build Types
    (``architecture.properties``)
 -  Updated Virtual Device Builder to generate with ``.vde``
    extension
--  Updated Multi-app Firmware Builder to embed (Sim/Emb)
+-  Updated Multi-Sandbox Executable Builder to embed (Sim/Emb)
    specific modules (Add-On libraries and pre-installed Applications)
 -  Fixed ``build-microej-ri`` v1.2.1 missing dependencies
    (embedded in SDK 4.1.5)
