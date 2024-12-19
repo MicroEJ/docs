@@ -8,18 +8,18 @@ The following sections of this document shall prove useful as a
 reference when developing applications for MicroEJ. They cover concepts
 essential to MicroEJ Applications design.
 
-In addition to these sections, by going to
-`<https://developer.microej.com/>`_, you can access a number of helpful
+In addition to these sections, you can access a number of helpful
 resources such as:
 
--  Libraries from the MicroEJ Central Repository
-   (`<https://developer.microej.com/central-repository/>`_);
+- Developer resources at `<https://developer.microej.com/>`_.
 
--  Application Examples as source code from MicroEJ Github Repositories
-   (`<https://github.com/MicroEJ>`_);
+- Libraries from the `MicroEJ Central Repository <https://developer.microej.com/central-repository/>`__.
 
--  Documentation (HOWTOs, Reference Manuals, APIs javadoc...).
+- Application Examples as source code from `MicroEJ Github Repositories <https://github.com/MicroEJ>`__.
 
+- `APIs Javadoc <https://repository.microej.com/javadoc/microej_5.x/apis/>`__.
+
+- :ref:`Training Courses for Application Developers <training_for_application_developers>`.
 
 MicroEJ Applications are developed as standard Java applications on
 Eclipse JDT, using Foundation Libraries. The SDK allows you to
