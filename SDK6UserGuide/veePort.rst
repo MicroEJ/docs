@@ -3,7 +3,6 @@ VEE Port
 ========
 
 .. toctree::
-   :hidden:
    :maxdepth: 1
 
    createVeePort
