@@ -6,6 +6,12 @@ SOAR
 This chapter describes SOAR capabilities and optimizations from the Application developer's point of view.
 To get more details on its internal structure, please refer to :ref:`soar_build_phases` section.
 
+.. figure:: images/soar.png
+   :alt: SOAR Build Flow
+   :align: center
+   :scale: 80%
+
+   SOAR Build Flow
 
 Java Symbols Encoding
 ---------------------
