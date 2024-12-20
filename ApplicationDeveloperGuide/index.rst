@@ -54,6 +54,7 @@ A :ref:`Sandboxed Application <sandboxed_application>` is an Application that is
    limitations
    github
    modulesRepositories
+   managedc/index
    libraries
    tools
 
