@@ -1,3 +1,5 @@
+.. _microej_runtime:
+
 MicroEJ Runtime
 ===============
 
