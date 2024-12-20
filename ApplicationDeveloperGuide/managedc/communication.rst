@@ -178,7 +178,7 @@ Here is an example:
          }
 
          @WasmFunction
-         public static native int add(int a, int b);
+         public static native synchronized int add(int a, int b);
 
       }
 
@@ -212,7 +212,7 @@ You should see the following output when launching the Java application:
          }
 
          @WasmFunction("add")
-         public static native int myManagedCAdd(int a, int b);
+         public static native synchronized int myManagedCAdd(int a, int b);
       }
 
    .. code-block:: c
@@ -237,6 +237,21 @@ Managed C module memory is zero-initialiazed (once) when the :ref:`soar_clinit` 
 
 .. note:: 
    A SOAR error will occurred if ``@WasmMemory`` is not strictly followed by a Java static byte array declaration (see :ref:`managedc.troubleshooting`).
+
+To use the annotation ``@WasmMemory``, create the file ``WasmMemory.java`` in ``src/main/java/com/microej/wasm`` with the following content:
+
+.. code:: java
+
+   package com.microej.wasm;
+
+   import java.lang.annotation.ElementType;
+   import java.lang.annotation.Target;
+
+   @Target(ElementType.FIELD)
+   public @interface WasmMemory {
+      String value() default "";
+   }
+
 
 Here is a Java example:
 
@@ -265,11 +280,12 @@ Here is a full C/Java example manipulating Managed C module memory in Java:
 
    .. code:: c
 
+      typedef unsigned char uint8_t;
       /* Extern function implemented in Java -----*/
-      extern void printManagedCMemoryValues(int* ptr);
+      extern void printWasmMemoryValues(uint8_t* ptr, int size);
 
       /* Global variable -------------------------*/
-      int array[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+      uint8_t array[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
       /* Managed C function called by Java -------*/
       void app_main() {
@@ -301,20 +317,20 @@ Here is a full C/Java example manipulating Managed C module memory in Java:
          * Managed C entry point
          */
          @WasmFunction
-         public static native void app_main();
+         public static native synchronized void app_main();
 
          /**
          * Method call from Managed C which print Managed C Memory values.
          * @param ptr index on the Managed C memory
          * @param length memory length to print
          */
-         public static void printManagedCMemoryValues(int ptr, int length) {
-            System.out.println("Managed C Memory values from " + ptr + " to " + (ptr + length) + ":");
-            for (int i = 0; i < length - 1; i++) {
-               System.out.print(Memory[ptr + i] + ", ");
-            }
-            System.out.println(Memory[ptr + (length - 1)]);
-         }
+          public static void printWasmMemoryValues(int ptr, int length) {
+              System.out.println("Wasm Memory values from " + ptr + " to " + (ptr + length) + ":");
+              for (int i = 0; i < length - 1; i++) {
+                  System.out.print(Memory[ptr + i] + ", ");
+              }
+              System.out.println(Memory[ptr + (length - 1)]);
+          }
 
       }
 
