@@ -484,10 +484,10 @@ Therefore:
 
             sources {
                java {
-                  setSrcDirs(listOf("src/test/java"))
+                  setSrcDirs(listOf(sourceSets.getByName(SourceSet.TEST_SOURCE_SET_NAME).java))
                }
                resources {
-                  setSrcDirs(listOf("src/test/resources"))
+                  setSrcDirs(listOf(sourceSets.getByName(SourceSet.TEST_SOURCE_SET_NAME).resources))
                }
             }
 
