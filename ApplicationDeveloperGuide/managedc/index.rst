@@ -1,24 +1,21 @@
-.. _managedc:
+.. _c_language:
 
 ============
  Managed C
 ============
 
-MicroEJ provides the capability to develop parts of an application in C, known as Managed C. Essentially, a MicroEJ Application boots in Java and then run a mix of Java and Managed C code, etc.
+MicroEJ provides the capability to develop parts of an application in C, known as Managed C. Essentially, a MicroEJ Application boots in Java and then run a mix of Java and Managed C code.
 
-.. figure:: images/managed-code.png
-   :alt: MicroEJ Managed C Overview
+.. figure:: ../images/runtime.png
    :scale: 75%
    :align: center
 
-   MicroEJ Managed C Overview
-
-|
+   MicroEJ Runtime Overview
 
 .. note::
-   This feature requires Architecture version ``8.2.0`` or higher, and is currently not supported in simulation.
+   This feature requires Architecture version ``8.3.0`` or higher, and is currently not supported in simulation.
 
-Managed C code is enabled through `WebAssembly 1.0 <https://www.w3.org/TR/wasm-core-1/>`_, with :ref:`certain limitations <managedc.limitations>`. 
+Managed C code is enabled through the support of `WebAssembly 1.0 <https://www.w3.org/TR/wasm-core-1/>`_, with :ref:`certain limitations <managedc.limitations>`. 
 
 You can start exploring this functionality by following the instructions provided in the :ref:`Getting Started <managedc.getting_started>` page.
 
