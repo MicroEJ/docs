@@ -365,7 +365,7 @@ This section describes how to create and configure a MicroEJ Platform
 compatible with the FreeRTOS BSP and GCC toolchain.
 
 * A MicroEJ Architecture is a software package that includes the
-  :ref:`MicroEJ Runtime<mjvm_javalanguage>` port to a specific target
+  :ref:`MicroEJ Runtime <microej_runtime>` port to a specific target
   Instruction Set Architecture (ISA) and C compiler. It contains a set
   of libraries, tools and C header files. The MicroEJ Architectures
   are provided by MicroEJ SDK.
