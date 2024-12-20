@@ -1,12 +1,9 @@
 MicroEJ Runtime
 ===============
 
-.. _mjvm_javalanguage:
+MicroEJ allows to run code written in :ref:`Java <java_language>` as primary language and in :ref:`C <c_language>`. It also supports code extensions written in :ref:`JavaScript <javascript>`.
 
-Language
---------
-
-MicroEJ allows to develop Applications in the `Java® Language Specification version 7 <https://docs.oracle.com/javase/specs/jls/se7/jls7.pdf>`_ with :ref:`some limitations <java_limitations>`, and supports code extensions written in :ref:`JavaScript <javascript>`, and in :ref:`C <managedc>`.
+Such code is oftenly called `Managed Code`_ as it is executed by a runtime, the :ref:`Core Engine <core_engine>` (also called `MEJ32`).
 
 .. figure:: images/runtime.png
    :alt: MicroEJ Runtime Overview
@@ -15,18 +12,72 @@ MicroEJ allows to develop Applications in the `Java® Language Specification ver
 
    MicroEJ Runtime Overview 
 
-Basically, Java source code is compiled by the Java compiler [1]_ into the binary format specified in the JVM specification [2]_. 
-This binary code is linked by a tool named :ref:`SOAR <soar>` before execution: ``.class`` files and some other application-related files (see :ref:`Classpath <chapter.microej.classpath>` chapter) are linked to produce the final binary file that the :ref:`Core Engine <core_engine>` will execute.
+Build Flow
+----------
 
-.. note:: When opened in the SDK 5, make sure that the Compiler Compliance Level of your project is set to 1.7 to ensure the bytecode produced by the Java compiler is compatible with MicroEJ. The Compliance Level can be changed from the menu: :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`Java` > :guilabel:`Compiler`.
+Basically, the source code is first compiled by a compiler to produce an architecture independent `binary-code <https://en.wikipedia.org/wiki/Binary_code>`_.
+
+- The Java source code is compiled by a Java compiler [1]_ into Java bytecode, the binary format specified in the `Java Virtual Machine specification <https://docs.oracle.com/javase/specs/jvms/se7/html/>`_. 
+- The C source code is compiled by a C compiler [2]_ into `WebAssembly <https://webassembly.org/>`_, also called `Wasm`.
+
+Finally, the binary code is loaded and linked by a tool named the :ref:`SOAR <soar>`. 
+The SOAR loads both Java bytecode ``.class`` files and WebAssembly ``.wasm`` files as long as other application-related :ref:`files and resources <chapter.microej.classpath>` and links it all to produce the final binary file that the :ref:`Core Engine <core_engine>` will execute.
+
+
+.. figure:: images/build-flow.png
+   :alt: MicroEJ Build Flow
+   :scale: 75%
+   :align: center
+
+   MicroEJ Build Flow
 
 .. [1]
-   The JDT compiler from the Eclipse IDE.
+   MICROEJ SDK internally embeds the `Eclipse JDT compiler <https://eclipse.dev/jdt/core/>`_.
 
 .. [2]
-   Tim Lindholm & Frank Yellin, The Java™ Virtual Machine Specification, Second Edition, 1999
+   MICROEJ SDK is configured by default to connect the C compiler packaged with the `WASI SDK <https://github.com/WebAssembly/wasi-sdk/>`_.
 
+.. _Managed Code: https://developer.microej.com/managed-code/
 
+.. _java_language:
+
+Java Language
+-------------
+
+MicroEJ's primary language is the `Java language <https://en.wikipedia.org/wiki/Java_(programming_language)>`_.
+
+MicroEJ supports the `Java® Language Specification version 7 <https://docs.oracle.com/javase/specs/jls/se7/jls7.pdf>`_ with :ref:`some limitations <java_limitations>`.
+
+.. _java_limitations:
+
+Limitations
+~~~~~~~~~~~
+
+**Primitive Types**
+
+Getting a Class instance of a primitive type is not supported:
+
+- ``boolean.class``,
+- ``byte.class``,
+- ``char.class``,
+- ``short.class``,
+- ``int.class``,
+- ``long.class``,
+- ``float.class``,
+- ``double.class``.
+
+On Architecture ``8.x``, you will get the following dedicated error message:
+
+.. code-block::
+
+    SOAR-L ERROR :
+    [M79] - Unsupported access to the Class instance of a primitive type (found 'boolean.class' in method 'com.mycompany.MyClass.myMethod()void')
+
+On Architecture ``7.x`` you will get the following default error message:
+
+.. code-block::
+
+    No such field TYPE at com/mycompany/MyClass.myMethod()V.
 
 .. _runtime_core_libraries:
 
@@ -181,39 +232,6 @@ reference. The first one returns ``null`` when queue is empty whereas the
 second one blocks while the queue is empty.
 
 The Application is responsible of the execution of such hook.
-
-.. _java_limitations:
-
-Limitations
------------
-
-Primitive Types
-~~~~~~~~~~~~~~~
-
-Getting a Class instance of a primitive type is not supported:
-
-- ``boolean.class``,
-- ``byte.class``,
-- ``char.class``,
-- ``short.class``,
-- ``int.class``,
-- ``long.class``,
-- ``float.class``,
-- ``double.class``.
-
-On Architecture ``8.x``, you will get the following dedicated error message:
-
-.. code-block::
-
-    SOAR-L ERROR :
-    [M79] - Unsupported access to the Class instance of a primitive type (found 'boolean.class' in method 'com.mycompany.MyClass.myMethod()void')
-
-On Architecture ``7.x`` you will get the following default error message:
-
-.. code-block::
-
-    No such field TYPE at com/mycompany/MyClass.myMethod()V.
-
 
 .. _architecture_characteristics:
 
