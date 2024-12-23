@@ -54,7 +54,6 @@ To avoid those pitfalls:
 - Uses memory debugging tools:
 
   - :ref:`Optimize Memory Footprint<tutorial_optimize_memory_footprint>` training.
-  - :ref:`Memory inspection tools<training_debug_tools>`.
   - :ref:`Heap Analyzer<heapdumper>`.
 
 Format of UI Resources

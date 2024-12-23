@@ -18,7 +18,6 @@ Each training will specify its prerequisites.
 For courses involving hands-on activities, you may need to use one of the following development kits:
 
 - `NXP i.MX RT1170 Evaluation Kit <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__.
-- `STM32F7508-DK Evaluation Kit <https://www.st.com/en/evaluation-tools/stm32f7508-dk.html>`__.
 
 Alternatively, the hands-on activities can be fully completed using MICROEJ SDK Simulator.
 
@@ -31,7 +30,6 @@ For Beginners
    :hidden:
 
    trainingSdkBasics
-   trainingDebugTools
    trainingCManagedCodeCommunication
    trainingMock
 
@@ -53,7 +51,7 @@ For Beginners
                <a class="training_learn_more_link" href="trainingSdkBasics.html">Learn more</a>
             </div>
             </a>
-
+            <!--
             <a class="training_link" href="trainingDebugTools.html">
             <div>
                <div class="training_image_container">
@@ -67,11 +65,11 @@ For Beginners
                <a class="training_learn_more_link" href="trainingDebugTools.html">Learn more</a>
             </div>
             </a>
-            
+            -->
             <a class="training_link" href="trainingCManagedCodeCommunication.html">
             <div>
                <div class="training_image_container">
-                  <div class="training_image_text">Course 3</div>
+                  <div class="training_image_text">Course 2</div>
                   <img src="../_static/images/training/training_managed_code_c_communication.jpg" alt="C / Managed Code Communication">
                </div>
                <h3 class="training_title">C / Managed Code Communication</h3>
@@ -85,7 +83,7 @@ For Beginners
             <a class="training_link" href="trainingMock.html">
             <div>
                <div class="training_image_container">
-                  <div class="training_image_text">Course 4</div>
+                  <div class="training_image_text">Course 3</div>
                   <img src="../_static/images/training/training_mock.jpg" alt="MicroEJ Java Specificities">
                </div>   
                <h3 class="training_title">Simulate Hardware Behavior using Mocks</h3>
@@ -297,7 +295,6 @@ Multi-Sandbox
    :hidden:
    
    trainingKernel
-   trainingSandboxedApps
 
 .. raw:: html
 
@@ -317,6 +314,7 @@ Multi-Sandbox
             </div>
             </a>
             
+            <!--
             <a class="training_link" href="trainingSandboxedApps.html">
             <div>
                <div class="training_image_container">
@@ -330,6 +328,7 @@ Multi-Sandbox
                <a class="training_learn_more_link" href="trainingSandboxedApps.html">Learn more</a>
             </div>
             </a>
+            -->
 
          </div>
 
