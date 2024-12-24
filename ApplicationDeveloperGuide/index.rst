@@ -19,6 +19,7 @@ Application Developer Guide
    limitations
    github
    modulesRepositories
+   managedc/index
    libraries
    tools
 
