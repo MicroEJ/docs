@@ -90,7 +90,7 @@ Here is an example showing how to write Java and C source code when C macro para
 
 .. note:: 
 
-   Java annotation ``@WasmModule("my_app.wasm")`` should be put some where, in this class or in another class.
+   Java annotation ``@WasmModule("my_app")`` should be put some where, in this class or in another class.
 
 Here is an example showing how to write Java and C source code when the C macro parameter ``class`` is an empty string:
 
@@ -100,7 +100,7 @@ Here is an example showing how to write Java and C source code when the C macro 
 
       package com.mycompany;
 
-      @WasmModule("my_app.wasm")
+      @WasmModule("my_app")
       public class MyApp {
 
          public static void delay(int ms) {
@@ -144,7 +144,7 @@ declaration will link a Java class to Managed C module. File path put as annotat
 .. note:: 
    Managed C compiled files are seen as resources and has to be available in the Java classpath.
 
-Use ``@WasmFunction`` annotation to link a Java method to a Managed C module function. The Java method has to be declared as `static native` and only use 
+Use ``@WasmFunction`` annotation to link a Java method to a Managed C module function. The Java method has to be declared as `static native synchronized` and only use 
 ``int``, ``long``, ``float`` or ``double`` Java base type as method parameters or return types.
 The annotated Java native method signature must match the Managed C function signature. 
 
@@ -167,7 +167,7 @@ Here is an example:
       import ej.wasm.WasmFunction;
       import ej.wasm.WasmModule;
 
-      @WasmModule("my_app.wasm")
+      @WasmModule("my_app")
       public class MyApp {
 
          public static void main(String[] args) {
@@ -201,7 +201,7 @@ You should see the following output when launching the Java application:
    .. code-block:: java
       :emphasize-lines: 11,12
 
-      @WasmModule("my_app.wasm")
+      @WasmModule("my_app")
       public class Main {
 
          public static void main(String[] args) {
@@ -262,7 +262,7 @@ Here is a Java example:
    import ej.wasm.WasmFunction;
    import ej.wasm.WasmMemory;
 
-   @WasmModule("my_app.wasm")
+   @WasmModule("my_app")
    public class MyApp {
 
       ...
@@ -302,7 +302,7 @@ Here is a full C/Java example manipulating Managed C module memory in Java:
       import ej.wasm.WasmMemory;
       import ej.wasm.WasmModule;
 
-      @WasmModule("my_app.wasm")
+      @WasmModule("my_app")
       public class MyApp {
 
          public static void main(String[] args) {
