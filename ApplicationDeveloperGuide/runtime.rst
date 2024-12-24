@@ -23,7 +23,8 @@ Basically, the source code is first compiled by a compiler to produce an archite
 - The C source code is compiled by a C compiler [2]_ into `WebAssembly <https://webassembly.org/>`_, also called `Wasm`.
 
 Finally, the binary code is loaded and linked by a tool named the :ref:`SOAR <soar>`. 
-The SOAR loads both Java bytecode ``.class`` files and WebAssembly ``.wasm`` files as long as other application-related :ref:`files and resources <chapter.microej.classpath>` and links it all to produce the final binary file that the :ref:`Core Engine <core_engine>` will execute.
+The SOAR loads both Java bytecode (``.class`` files), WebAssembly (``.wasm`` files), and other application-related :ref:`files and resources <chapter.microej.classpath>`.
+It links these components to produce the final binary file executed by the :ref:`Core Engine <core_engine>`.
 
 
 .. figure:: images/build-flow.png
