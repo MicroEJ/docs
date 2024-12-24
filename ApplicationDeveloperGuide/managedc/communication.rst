@@ -242,7 +242,7 @@ To use the annotation ``@WasmMemory``, create the file ``WasmMemory.java`` in ``
 
 .. code:: java
 
-   package com.microej.wasm;
+   package ej.wasm;
 
    import java.lang.annotation.ElementType;
    import java.lang.annotation.Target;
