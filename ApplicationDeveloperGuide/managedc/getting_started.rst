@@ -79,7 +79,7 @@ To use Managed C in your Application, follow these steps:
 
             import ej.wasm.*;
 
-            @WasmModule("factorial.wasm")
+            @WasmModule("factorial")
             public class Main {
                ...
             }
@@ -91,7 +91,7 @@ To use Managed C in your Application, follow these steps:
 
             import ej.wasm.*;   
 
-            @WasmModule("factorial.wasm")
+            @WasmModule("factorial")
             public class Main {
 
                ...
@@ -105,7 +105,7 @@ To use Managed C in your Application, follow these steps:
       .. code-block:: java
          :emphasize-lines: 5
          
-         @WasmModule("factorial.wasm")
+         @WasmModule("factorial")
          public class Main {
             
             public static void main(String[] args) {
