@@ -46,7 +46,7 @@ This linked WebAssembly module can now be mapped to a :ref:`@WasmModule <managed
 C++ code
 --------
 
-Wasi SDK also includes a C++ compiler `clang++`, which you can use to compile and link C++ code.
+WASI SDK also includes a C++ compiler `clang++`, which you can use to compile and link C++ code.
 
 .. code:: console
 
