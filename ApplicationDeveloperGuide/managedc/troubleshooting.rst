@@ -35,7 +35,7 @@ If your WebAssembly file uses an unsupported instruction, you might encounter a 
       [soar2-r] [M401] - Unsupported WebAssembly instruction: '0xc0' (i32.lt_s) in function 'my_function' in module '/path/to/mymodule.wasm'.
 
 -----------------------------------------------------------------
-SOAR-L ERROR "Cannot resolved this import '...'"
+SOAR-L ERROR "Import function '...' cannot be resolved in ..."
 -----------------------------------------------------------------
 
 Java methods called from C source code has to follow the right Java method signature convention. An error in 
@@ -46,11 +46,11 @@ Failure to do so may result in the following error:
 .. code:: console
 
     soar2-r/do:
-      [soar2-r] 1 : SOAR-L ERROR :
-      [soar2-r] [M81] - ManagedC error Cannot resolved this import com.mycompany.MyApp.delay(int)void
+      [soar2-r] 4 : SOAR-L ERROR :
+      [soar2-r] [M405] - Import function 'delay' cannot be resolved in module '/path/to/mymodule.wasm' (the method 'com.mycompany.MyApp.delay(int)void' does not exist).
 
 -----------------------------------------------------------------
-SOAR-L ERROR "Cannot find an exported function '...'"
+SOAR-L ERROR "Cannot find an exported function '...' mapped ..."
 -----------------------------------------------------------------
 
 When using the ``@WasmFunction`` annotation on a Java method, ensure there's a corresponding WebAssembly function with the right signature in the associated WebAssembly module.
@@ -62,7 +62,7 @@ Failure to do so may result in the following error:
 
     soar2-r/do:
       [soar2-r] 1 : SOAR-L ERROR :
-      [soar2-r] [M81] - ManagedC error cannot find an exported function for com.mycompany.MyApp.factorial(int)int method
+      [soar2-r] [M407] - Cannot find the exported function 'factorial' mapped to the 'com.mycompany.MyApp.factorial(int)int' method.
 
 -----------------------------------------------------------------
 SOAR-L ERROR "'...' is not a byte array"
@@ -76,7 +76,7 @@ Failure to do so may result in the following error:
 
     soar2-r/do:
       [soar2-r] 1 : SOAR-L ERROR :
-      [soar2-r] [M81] - ManagedC error 'com/mycompany/MyApp.Memory' is not a byte array
+      [soar2-r] [M81] - WASM: 'com/mycompany/MyApp.Memory' is not a byte array
 
 -----------------------------------------------------------------
 S3 ERROR "Inconsistent Mock implementation:  ...."
