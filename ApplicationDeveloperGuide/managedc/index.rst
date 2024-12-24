@@ -27,7 +27,7 @@ You can start exploring this functionality by following the instructions provide
    compilation
    communication
    wasi
-   limitations
+   instructions
    troubleshooting
 ..
    | Copyright 2023-2024, MicroEJ Corp. Content in this space is free 
