@@ -144,7 +144,7 @@ declaration will link a Java class to Managed C module. File path put as annotat
 .. note:: 
    Managed C compiled files are seen as resources and has to be available in the Java classpath.
 
-Use ``@WasmFunction`` annotation to link a Java method to a Managed C module function. The Java method has to be declared as `static native` and only use 
+Use ``@WasmFunction`` annotation to link a Java method to a Managed C module function. The Java method has to be declared as `static native synchronized` and only use 
 ``int``, ``long``, ``float`` or ``double`` Java base type as method parameters or return types.
 The annotated Java native method signature must match the Managed C function signature. 
 
