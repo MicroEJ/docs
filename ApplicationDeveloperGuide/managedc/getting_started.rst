@@ -113,7 +113,7 @@ To use Managed C in your Application, follow these steps:
             }
             
             @WasmFunction
-            public static native int factorial(int n);
+            public static native synchronized int factorial(int n);
          }
 
 #. **Create the C File:**
