@@ -177,7 +177,6 @@ To use Managed C in your Application, follow these steps:
 
 For further details, refer to the following sub-sections:
 
-- :ref:`Limitations <managedc.limitations>`: An overview of the constraints and limitations associated with Managed C.
 - :ref:`Troubleshooting <managedc.troubleshooting>`: Assistance for resolving common issues when working with Managed C.
 
 ..
