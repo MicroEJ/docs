@@ -1,16 +1,16 @@
 .. _managedc.communication:
 
-Communication Between Java and Managed C
-========================================
+Communication Between Java and Wasm
+===================================
 
-The Core Engine allows to communicate between Java and Managed C. Java static methods can be used from Managed C code and vice-versa.
+The Core Engine allows to communicate between Java and Wasm. Java static methods can be used from Wasm code and vice-versa.
 
 .. _managedc.communication.java_to_managedc:
 
-Calling Java from Managed C
----------------------------
+Calling Java from Wasm
+----------------------
 
-The Core Engine allows to expose Java static methods to Managed C. Functions has to be declared as ``extern`` in the Managed C 
+The Core Engine allows to expose Java static methods to Wasm. Functions has to be declared as ``extern`` in the Wasm 
 source code. Here is a C source code example:
 
 .. code:: c
@@ -18,7 +18,7 @@ source code. Here is a C source code example:
    /* Extern functions implemented in Java -----*/
    extern void delay(int ms);
 
-Link between Managed C function declaration and Java static methods can be done explicitly using the following C macro definition:
+Link between Wasm function declaration and Java static methods can be done explicitly using the following C macro definition:
 
 .. code:: c
 
@@ -38,14 +38,14 @@ Link between Managed C function declaration and Java static methods can be done 
 
 .. note:: 
 
-   Java static methods called by Managed C can only use Java base types ``int``, ``long``, ``float``, ``double`` as parameters and return types. Here is a matching table:
+   Java static methods called by Wasm can only use Java base types ``int``, ``long``, ``float``, ``double`` as parameters and return types. Here is a matching table:
    
    .. tabularcolumns:: |p{2.5cm}|p{4cm}|p{2.7cm}|p{2.5cm}|p{2.7cm}|
 
-   .. table:: Managed C Types / Java Type matching
+   .. table:: Wasm Types / Java Type matching
 
       +------------------------+-----------------+ 
-      | Managed C Type         | Java Type       |
+      | Wasm Type              | Java Type       |
       +========================+=================+
       | int (32 bit)           | int (32 bit)    |
       +------------------------+-----------------+
@@ -56,7 +56,7 @@ Link between Managed C function declaration and Java static methods can be done 
       | double (64 bit)        | double (64 bit) |
       +------------------------+-----------------+
 
-   A SOAR error will be triggered in case of Managed C function parameter(s) and return types do not matched excatly the same Java method parameter(s) and return types.  
+   A SOAR error will be triggered in case of Wasm function parameter(s) and return types do not matched excatly the same Java method parameter(s) and return types.  
 
 Here is an example showing how to write Java and C source code when C macro parameters ``class`` and ``method`` are specified:
 
@@ -90,7 +90,7 @@ Here is an example showing how to write Java and C source code when C macro para
 
 .. note:: 
 
-   Java annotation ``@WasmModule("my_app.wasm")`` should be put some where, in this class or in another class.
+   Java annotation ``@ManagedCModule("my_app.wasm")`` should be put some where, in this class or in another class.
 
 Here is an example showing how to write Java and C source code when the C macro parameter ``class`` is an empty string:
 
@@ -100,7 +100,7 @@ Here is an example showing how to write Java and C source code when the C macro 
 
       package com.mycompany;
 
-      @WasmModule("my_app.wasm")
+      @ManagedCModule("my_app")
       public class MyApp {
 
          public static void delay(int ms) {
@@ -124,29 +124,29 @@ Here is an example showing how to write Java and C source code when the C macro 
       extern void delay(int ms) __IMPORT("" ,"delay");
 
 
-Link between Managed C function declaration and Java static methods can also be done implicitly using ``-Wl,--allow-undefined`` 
+Link between Wasm function declaration and Java static methods can also be done implicitly using ``-Wl,--allow-undefined`` 
 C compiler option (see :ref:`managedc.compilation.command_line_options` ). No need to declare and use ``__IMPORT(class, method)`` C macro 
-in that case.  Java static method is searched in the Java class which refers to the current Managed C module
+in that case.  Java static method is searched in the Java class which refers to the current Wasm module
 containing the Java static method. A SOAR error will be triggered if no Java method found.
 
 .. _managedc.communication.managedc_to_java:
 
-Calling Managed C from Java
----------------------------
+Calling Wasm from Java
+----------------------
 
 The Core Engine allows to expose C functions to Java. C functions has to be declared as global function (intern C function 
 using ``static`` C keyword will not be exposed). 
 
-On Java side, use ``@WasmModule`` annotation with Managed C compiled file path passed as parameter on the Java class. This 
+On Java side, use ``@ManagedCModule`` annotation with Managed C compiled file path passed as parameter on the Java class. This 
 declaration will link a Java class to Managed C module. File path put as annotation parameter has to follow 
 `Java resources naming convention <https://docs.oracle.com/javase/7/docs/technotes/guides/lang/resources.html#res_name_context>`__ .
 
 .. note:: 
-   Managed C compiled files are seen as resources and has to be available in the Java classpath.
+   Wasm compiled files are seen as resources and has to be available in the Java classpath.
 
-Use ``@WasmFunction`` annotation to link a Java method to a Managed C module function. The Java method has to be declared as `static native` and only use 
+Use ``@ManagedCFunction`` annotation to link a Java method to a Managed C module function. The Java method has to be declared as `static native` and only use 
 ``int``, ``long``, ``float`` or ``double`` Java base type as method parameters or return types.
-The annotated Java native method signature must match the Managed C function signature. 
+The annotated Java native method signature must match the Wasm function signature. 
 
 Here is an example:
 
@@ -164,16 +164,16 @@ Here is an example:
 
       package com.mycompany;
 
-      import ej.wasm.WasmFunction;
-      import ej.wasm.WasmModule;
+      import com.microej.managedc.ManagedCFunction;
+      import com.microej.managedc.ManagedCModule;
 
-      @WasmModule("my_app.wasm")
+      @ManagedCModule("my_app")
       public class MyApp {
 
          public static void main(String[] args) {
             int a = 1;
             int b = 2;
-            // Call and return result of the "add" Managed C function
+            // Call and return result of the "add" Wasm function
             System.out.println(a + " + " + b + " = "+ add(a, b));
          }
 
@@ -184,7 +184,7 @@ Here is an example:
 
 .. note:: 
 
-   A SOAR error will be triggered if no Java method or Managed C function is found (see :ref:`managedc.troubleshooting`).
+   A SOAR error will be triggered if no Java method or Wasm function is found (see :ref:`managedc.troubleshooting`).
 
 You should see the following output when launching the Java application:
 
@@ -201,17 +201,17 @@ You should see the following output when launching the Java application:
    .. code-block:: java
       :emphasize-lines: 11,12
 
-      @WasmModule("my_app.wasm")
+      @ManagedCModule("my_app")
       public class Main {
 
          public static void main(String[] args) {
             int a = 1;
             int b = 2;
-            // Call and return result of the "add" Managed C function
-            System.out.println(a + " + " + b + " = "+ myManagedCAdd(a, b));
+            // Call and return result of the "add" Wasm function
+            System.out.println(a + " + " + b + " = "+ myWasmAdd(a, b));
          }
 
-         @WasmFunction("add")
+         @ManagedCFunction("add")
          public static native int myManagedCAdd(int a, int b);
       }
 
@@ -224,16 +224,16 @@ You should see the following output when launching the Java application:
 
 .. _managedc.communication.managedc_memory:
 
-Manipulate Managed C Memory from Java
--------------------------------------
+Manipulate Wasm Memory from Java
+--------------------------------
 
 The Core Engine allows to expose Managed C memory to Java. A Managed C module contains 
 at most one memory. This Managed C module memory is automatically generated by the C compiler 
 according to C source code and C compiler options. On Java side, Managed C module memory can be seen by
-using ``@WasmMemory`` annotation on a Java static byte array field declaration (mapping automatically 
+using ``@ManagedCMemory`` annotation on a Java static byte array field declaration (mapping automatically 
 done by the :ref:`soar`).
 
-Managed C module memory is zero-initialiazed (once) when the :ref:`soar_clinit` of the Java class annotated with ``@WasmMemory`` is executed.
+Managed C module memory is zero-initialiazed (once) when the :ref:`soar_clinit` of the Java class annotated with ``@ManagedCMemory`` is executed.
 
 .. note:: 
    A SOAR error will occurred if ``@WasmMemory`` is not strictly followed by a Java static byte array declaration (see :ref:`managedc.troubleshooting`).
@@ -242,13 +242,13 @@ Here is a Java example:
 
 .. code:: java
 
-   package com.mycompany;
-   
-   import ej.wasm.WasmFunction;
-   import ej.wasm.WasmMemory;
+   package com.microej.managedc;
 
-   @WasmModule("my_app.wasm")
-   public class MyApp {
+   import com.microej.managedc.ManagedCFunction;
+   import com.microej.managedc.ManagedCMemory;
+
+   @ManagedCModule("my_app")
+   public class ManagedCUtil {
 
       ...
 
@@ -259,21 +259,21 @@ Here is a Java example:
    }
 
 
-Here is a full C/Java example manipulating Managed C module memory in Java:
+Here is a full C/Java example manipulating Wasm module memory in Java:
 
 - C source code (``my_app.c``):
 
    .. code:: c
 
       /* Extern function implemented in Java -----*/
-      extern void printManagedCMemoryValues(int* ptr);
+      extern void printWasmMemoryValues(int* ptr);
 
       /* Global variable -------------------------*/
       int array[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
-      /* Managed C function called by Java -------*/
+      /* Wasm function called by Java -------*/
       void app_main() {
-         printManagedCMemoryValues(&array[0], sizeof(array));
+         printWasmMemoryValues(&array[0], sizeof(array));
       }
 
 - Java source code (``MyApp.java``):
@@ -282,15 +282,15 @@ Here is a full C/Java example manipulating Managed C module memory in Java:
 
       package com.mycompany;
 
-      import ej.wasm.WasmFunction;
-      import ej.wasm.WasmMemory;
-      import ej.wasm.WasmModule;
+      import com.microej.managedc.ManagedCFunction;
+      import com.microej.managedc.ManagedCMemory;
+      import com.microej.managedc.ManagedCModule;
 
-      @WasmModule("my_app.wasm")
+      @ManagedCModule("my_app")
       public class MyApp {
 
          public static void main(String[] args) {
-            // Call Managed C entry point
+            // Call Wasm entry point
             app_main();
          }
 
@@ -298,18 +298,18 @@ Here is a full C/Java example manipulating Managed C module memory in Java:
          private static byte[] Memory;
 
          /**
-         * Managed C entry point
+         * Wasm entry point
          */
          @WasmFunction
          public static native void app_main();
 
          /**
-         * Method call from Managed C which print Managed C Memory values.
-         * @param ptr index on the Managed C memory
+         * Method call from Wasm which print Wasm Memory values.
+         * @param ptr index on the Wasm memory
          * @param length memory length to print
          */
-         public static void printManagedCMemoryValues(int ptr, int length) {
-            System.out.println("Managed C Memory values from " + ptr + " to " + (ptr + length) + ":");
+         public static void printWasmMemoryValues(int ptr, int length) {
+            System.out.println("Wasm Memory values from " + ptr + " to " + (ptr + length) + ":");
             for (int i = 0; i < length - 1; i++) {
                System.out.print(Memory[ptr + i] + ", ");
             }
@@ -322,16 +322,16 @@ You should see the following output when launching the Java application:
 
    .. code:: console
 
-      Managed C Memory values from 1024 to 1034:
+      Wasm Memory values from 1024 to 1034:
       1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 
 Multi-Sandboxed Context
 -----------------------
 
-Managed C modules and functions can be called in a Multi-Sandboxed context. Use of ``static native`` Java declaration is allowed in that case.
+Wasm modules and functions can be called in a Multi-Sandboxed context. Use of ``static native`` Java declaration is allowed in that case.
 
 ..
-   | Copyright 2023, MicroEJ Corp. Content in this space is free 
+   | Copyright 2023-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

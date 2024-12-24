@@ -12,6 +12,7 @@ formats:
 
 sphinx:
   fail_on_warning: true
+  configuration: conf.py
 
 build:
   os: "ubuntu-20.04"

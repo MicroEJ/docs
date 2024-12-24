@@ -280,6 +280,9 @@ This task provides the following properties that can be defined in the ``microej
      - Comma-separated list of the names of the checkers to exclude. 
        Only one property of ``checkers`` and ``skippedCheckers`` can be defined.
      - ``""``
+   * - ``checkersRootDir``
+     - Path of the directory to use as root directory for the checkers.
+     - Project directory.
 
 For example:
 
