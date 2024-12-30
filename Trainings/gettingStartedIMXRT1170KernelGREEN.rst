@@ -32,13 +32,9 @@ Prerequisites
 
 For this Getting Started, all you need is:
 
-* An Internet connection to access Github repositories & :ref:`Module Repositories <module_repositories>`.
-* MICROEJ SDK 6.
 * NXP i.MXRT1170 EVKB, available `here <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__.
 * RK055HDMIPI4MA0 display panel, available `here <https://www.nxp.com/part/RK055HDMIPI4MA0>`__.
 * A FAT32-formatted microSD card.
-* An RS232 Terminal (e.g. `Termite <https://www.compuphase.com/software_termite.htm>`__).
-* LinkServer tool to flash the board. You will be guided on how to install this tool later.
 
 .. _training_kernel_green_imxrt1170_environment_setup:
 
@@ -66,8 +62,8 @@ guide to get a development environment up and running for NXP i.MXRT1170 EVKB.
 
 Additionally, make sure to:
 
-* Connect the 1G Ethernet connector to the internet,
-* Insert a micro-SD card (FAT32-formatted) in the board connector.
+* Insert a micro-SD card (FAT32-formatted) in the board connector,
+* Connect the ``1GB`` Ethernet connector to the internet.
 
 Congratulations! You have finished the setup of your environment.
 You are now ready to discover how to build and flash the :guilabel:`Kernel-GREEN`.
@@ -77,6 +73,8 @@ Set up the Kernel GREEN on your IDE
 
 Import the Project
 ~~~~~~~~~~~~~~~~~~
+
+Clone or download the `Kernel GREEN <https://github.com/MicroEJ/Kernel-GREEN>`__ sources,
 
 The first step is to import the :guilabel:`Kernel-GREEN` into your IDE: 
 

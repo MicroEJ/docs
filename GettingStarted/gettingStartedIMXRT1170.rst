@@ -258,6 +258,8 @@ Add the Flashing Tool Environment variable
 * Select :guilabel:`Path` variable under the :guilabel:`User variables` section and edit it.
 * Click on :guilabel:`New` and point to the ``LinkServer_{version}`` folder located where you installed LinkServer (e.g. ``C:\nxp\LinkServer_1.2.45``).
 
+.. _sdk_6_getting_started_rt1170_hardware_setup:
+
 Hardware Setup
 """"""""""""""
 

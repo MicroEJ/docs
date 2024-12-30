@@ -41,6 +41,7 @@ To get the most out of this training, participants should have:
 - A basic knowledge of the :ref:`chapter-glossary`.
 - Access to the `NXP i.MX RT1170 Evaluation Kit EVKB <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__.
 - Access to the `RK055HDMIPI4MA0 display panel <https://www.nxp.com/part/RK055HDMIPI4MA0>`__.
+- A FAT32-formatted microSD card.
 
 Environment Setup
 -----------------
@@ -70,65 +71,33 @@ Accept the MICROEJ SDK EULA
 You may have to accept the SDK EULA if you haven't already done it, 
 please have a look at :ref:`sdk_6_eula_acceptation`.
 
-Setup the NXP i.MXRT1170 EVKB
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Hardware Setup for NXP i.MXRT1170 EVKB
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Set up the NXP i.MX RT1170 EVKB:
+Refer for the NXP i.MXRT1170 EVKB :ref:`sdk_6_getting_started_rt1170_hardware_setup` guide.
 
-* Check that the dip switches (``SW1``) are set to ``OFF``, ``OFF``, ``ON`` and ``OFF``,
-* Ensure jumper ``J5`` is removed,
+Additionally, make sure to:
+
 * Insert a micro-SD card (FAT32-formatted) in the board connector,
-* Connect the display panel ``RK055HDMIPI4MA0``.
-* Connect the micro-USB cable to ``J86`` to power the board,
-* Connect the ``1GB`` Ethernet connector to the internet,
-* Connect a 5 V power supply to ``J43``.
-
-   .. figure:: images/multiSandbox/iMXRT1170/hardware_setup_imxrt1170.png
-      :alt: NXP i.MX RT1170 EVKB Hardware Setup
-      :align: center
-
-      NXP i.MX RT1170 EVKB Hardware Setup
-
-The USB connection is used as a serial console for the SoC, as a CMSIS-DAP debugger and as a power input for the board.
-
-The VEE Port uses the virtual UART from the i.MX RT1170 Evaluation Kit USB port.
-A COM port is automatically mounted when the board is plugged into a computer using a USB cable. All board logs are available through this COM port.
-
-The COM port uses the following parameters:
-
-.. list-table::
-   :header-rows: 1
-   :widths: 10 10 10 10 10
-
-   * - Baudrate
-     - Data bits
-     - Parity bits
-     - Stop bits
-     - Flow control
-   * - 115200
-     - 8
-     - None
-     - 1
-     - None
-
-You can have a look at your application logs with an RS232 Terminal (e.g. `Termite <https://www.compuphase.com/software_termite.htm>`__).
+* Connect the ``1GB`` Ethernet connector to the internet.
 
 Flash the Multi-Sandbox Executable on your NXP i.MXRT1170 Evaluation Kit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Download the Multi-Sandbox Executable: `NXP-MIMXRT1170_GCC_GREEN-2.0.0.out <https://repository.microej.com/packages/green/2.0.0/firmware/NXP-MIMXRT1170_GCC/NXP-MIMXRT1170_GCC_GREEN-2.0.0.out>`__.
 
-The Multi-Sandbox Executable used in this documentation is built from the
-`Kernel GREEN <https://github.com/MicroEJ/Kernel-GREEN>`__ sources.
-Refer to the :ref:`training_kernel_green_imxrt1170`
-training to build your own Multi-Sandbox Executable.
+.. note::
+   
+   The Multi-Sandbox Executable used in this documentation is built from the
+   `Kernel GREEN <https://github.com/MicroEJ/Kernel-GREEN>`__ sources.
+   Refer to the :ref:`training_kernel_green_imxrt1170`
+   training to build your own Multi-Sandbox Executable.
 
-If you want more information about this Multi-Sandbox Executable,
-the Javadoc and the Release notes are available in this
-`directory <https://repository.microej.com/packages/green/1.2.0/>`__.
+   If you want more information about this Multi-Sandbox Executable,
+   the Javadoc and the Release notes are available in this
+   `directory <https://repository.microej.com/packages/green/1.2.0/>`__.
 
 Flash the Multi-Sandbox Executable using ``LinkServer``:
-
 
 - Download and install `LinkServer for Microcontroller <https://www.nxp.com/design/design-center/software/development-software/mcuxpresso-software-and-tools-/linkserver-for-microcontrollers:LINKERSERVER>`_ (minimum version 1.6.133).
 - Once installed, the ``LinkServer`` installation folder must be set on your Path. To do so:
@@ -150,7 +119,7 @@ Set up the logs output:
   instructions,
 - Press the reset button of the board (Black button),
 - Get the IP address of your board. You will find it in the logs output:
-  
+
    .. figure:: images/multiSandbox/iMXRT1170/getting-started-imxrt1170-termite-green-fw-output.png
       :alt: Logs Output on Termite Serial Terminal
       :align: center
@@ -446,11 +415,12 @@ Configure the ``localDeploy`` tool in :guilabel:`MyApplication` project:
    .. code-block:: kotlin
 
       import com.microej.gradle.tasks.BuildFeatureTask
-      import java.io.OutputStream
-      import java.net.HttpURLConnection
-      import java.net.URL
-      import java.net.URLConnection
-      import java.net.URLEncoder
+      import okhttp3.MediaType.Companion.toMediaType
+      import okhttp3.MultipartBody
+      import okhttp3.OkHttpClient
+      import okhttp3.Request
+      import okhttp3.RequestBody.Companion.asRequestBody
+      import java.util.*
 
 - Paste the following code at the end of the file:
 
@@ -458,78 +428,59 @@ Configure the ``localDeploy`` tool in :guilabel:`MyApplication` project:
 
       val buildFeatureTask = tasks.withType(BuildFeatureTask::class).named("buildFeature")
       tasks.register("localDeploy") {
-         dependsOn("buildFeature")
-         group = "microej"
+      dependsOn("buildFeature")
+      group = "microej"
 
-         // Adjust the following two variables to your board IP and Port
-         val boardIP = "<board_ip>"
-         val boardPort = 4001 // default
+      // Adjust the following variables to your needs
+      val boardIP = "<Board IP Address>" // board ip address
+      val boardPort = 4001 // AppConnect port
+      val force = true // overwrote existing app with same name
+      val start = false // start app after install
+      // Note: if your metadata (feature.kf) is part of '/src/main/resources', modify this path accordingly
+      val featureKFFilePath = "generated/microej-app-wrapper/feature-resources/feature.kf"
 
-         doLast {
-            // Locate app file and metadata
-            val applicationFOPath = buildFeatureTask.get().featureFile.get().asFile.absolutePath
+      doLast {
+         val applicationFOFile = buildFeatureTask.get().featureFile.get().asFile
+         val properties = Properties()
+         project.layout.buildDirectory.file(featureKFFilePath).get().asFile.inputStream().use(properties::load)
+         val appName = properties.getProperty("name") ?: error("App name not found in $featureKFFilePath")
+         val appVersion = properties.getProperty("version") ?: error("App version not found in $featureKFFilePath")
 
-            println("Deploying to board at $boardIP:$boardPort")
-            // Construct install HTTP request
-            val url = URL("http://$boardIP:$boardPort/api/app/install?${buildUrlParams()}")
-            val connection = url.openConnection() as HttpURLConnection
-            val boundary = "Boundary-" + System.currentTimeMillis()
-            setupConnection(connection, boundary)
-            connection.outputStream.use { outputStream ->
-                  writeFileField(outputStream, boundary, "binary", File(applicationFOPath))
-                  outputStream.write("--$boundary--\r\n".toByteArray())
-            }
-
-            handleResponse(connection)
-         }
-      }
-
-      // Helper to build URL parameters
-      fun buildUrlParams() = mapOf(
-         "force" to "true",
-         "start" to "true",
-         "name" to microej.applicationEntryPoint.get().substringAfterLast(".")
-      ).entries.joinToString("&") { "${it.key.encode()}=${it.value.encode()}" }
-
-      // Extension function to encode URL parameters
-      fun String.encode(): String = URLEncoder.encode(this, "UTF-8")
-
-      // Set up the connection
-      fun setupConnection(connection: HttpURLConnection, boundary: String) {
-         connection.apply {
-            requestMethod = "POST"
-            setRequestProperty("Content-Type", "multipart/form-data; boundary=$boundary")
-            doOutput = true
-         }
-      }
-
-      // Helper to write file field
-      fun writeFileField(outputStream: OutputStream, boundary: String, name: String, file: File) {
-         outputStream.write("--$boundary\r\nContent-Disposition: form-data; name=\"$name\"; filename=\"${file.name}\"\r\n".toByteArray())
-         outputStream.write("Content-Type: ${URLConnection.guessContentTypeFromName(file.name)}\r\n\r\n".toByteArray())
-         file.inputStream().use { it.copyTo(outputStream) }
-         outputStream.write("\r\n".toByteArray())
-      }
-
-      // Handle response from server
-      fun handleResponse(connection: HttpURLConnection) {
-         connection.run {
-            try {
-                  if (responseCode in 200..299) {
-                     println("Deployment Successful! Response Code: $responseCode")
-                     println("Server Response: ${inputStream.bufferedReader().use { it.readText() }}")
-                  } else {
-                     System.err.println("Deployment Failed. Response Code: $responseCode")
-                     System.err.println("Error Details: ${errorStream.bufferedReader().use { it.readText() }}")
-                  }
-            } catch (e: Exception) {
-                  System.err.println("An error occurred while handling the server response: ${e.message}")
-                  e.printStackTrace()
-            } finally {
-                  disconnect()
+         println("Deploying app $appName $appVersion to board at $boardIP:$boardPort")
+         val url = "http://$boardIP:$boardPort/api/app/install?force=$force&start=$start&name=$appName"
+         val client = OkHttpClient()
+         val multipartBody = MultipartBody.Builder().setType(MultipartBody.FORM) //
+            .addFormDataPart(
+            "binary",
+            applicationFOFile.name,
+            applicationFOFile.asRequestBody("application/octet-stream".toMediaType())
+            )//
+            .build()
+         val request = Request.Builder().url(url).post(multipartBody).build()
+         client.newCall(request).execute().use { response ->
+            if (response.isSuccessful) {
+            println("Deployment Successful! Response Code: ${response.code}")
+            println("App info: ${response.body?.string()}")
+            } else {
+            System.err.println("Deployment Failed. Response Code: ${response.code}")
+            System.err.println("Cause: ${response.body?.string()}")
             }
          }
       }
+      }
+
+      buildscript {
+      repositories {
+         maven {
+            name = "mavenCentral"
+            url = uri("https://repo.maven.apache.org/maven2/")
+         }
+      }
+      dependencies {
+         classpath("com.squareup.okhttp3:okhttp:4.12.0")
+      }
+      }
+
 
 - Update the ``boardIP`` variable with your board IP address,
 - Reload the Gradle project:
