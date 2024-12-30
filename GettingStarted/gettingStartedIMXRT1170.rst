@@ -27,7 +27,7 @@ The first part consists of running a demo application on the Virtual Device. All
 
 The second part consists of running the same demo application on your device. For that you will need:
 
-* i.MX RT1170 Evaluation Kit, available `here <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__.
+* i.MX RT1170 EVKB Evaluation Kit, available `here <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__.
 * RK055HDMIPI4MA0 display panel, available `here <https://www.nxp.com/part/RK055HDMIPI4MA0>`__.
 * A GNU ARM Embedded Toolchain, Cmake and Make are needed to build the BSP. You will be guided on how to install the toolchain later.
 * LinkServer tool to flash the board. You will be guided on how to install this tool later.
@@ -199,49 +199,40 @@ Environment Setup
 
 This chapter takes approximately one hour and will take you through the steps to set up your board and build the BSP.
 
-Install the C Toolchain
-"""""""""""""""""""""""
+MCUXPresso SDK Setup
+""""""""""""""""""""
 
-The C toolchain must be installed, it is composed of the GNU ARM Embedded Toolchain, CMake and Make.
+Install MCUXPresso SDK
+++++++++++++++++++++++
 
-.. note::
-  
-   This Getting Started has been tested with the following configuration:
+* Download and install `MCUXpresso Installer <https://github.com/nxp-mcuxpresso/vscode-for-mcux/wiki/Dependency-Installation>`__,
+* Once installed, open it,
+* Select :guilabel:`MCUXpresso SDK Developer` and :guilabel:`LinkSever` and click Install:
 
-   - GNU ARM Embedded Toolchain version ``10.3 2021.10``.
-   - CMake version ``3.26.5``.
-   - Make version ``3.81``.
+  .. figure:: images/iMXRT1170/getting-started-mcuxpresso-setup-1.png
+     :alt: MCUXPresso setup
+     :align: center
+     :scale: 70%
+* Once done, a green tick appears next to the installed packages:
 
-   Later versions may or may not work, and may need modification to the Getting Started steps.
+  .. figure:: images/iMXRT1170/getting-started-mcuxpresso-setup-2.png
+     :alt: MCUXPresso setup
+     :align: center
+     :scale: 70%
 
-Install GNU ARM Embedded Toolchain 
-++++++++++++++++++++++++++++++++++
+Add GNU ARM Embedded Toolchain Environment variable
++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-The toolchain is the `GNU ARM Embedded Toolchain <https://developer.arm.com/downloads/-/gnu-rm>`__. 
+MCUXpresso Installer installs a GNU ARM Embedded Toolchain in the ``$user/.mcuxpressotools`` folder.
 
-At the end of the installation, it will ask you to complete the Setup of the wizard, choose the following options: 
-
-      .. figure:: images/iMXRT1170/getting-started-arm-gcc-installation.png
-         :alt: Import demo application
-         :align: center
-         :scale: 70%
-
-Once installed, ``ARMGCC_DIR`` must be set as an environment variable and point to the toolchain directory. To do so: 
+``ARMGCC_DIR`` must be set as an environment variable and point to the toolchain directory. To do so: 
 
 * Open the :guilabel:`Edit the system environment variables` application on Windows.
 * Click on the :guilabel:`Environment Variables...` button.
 * Click on the :guilabel:`New...` button under the :guilabel:`User variables` section.
 * Set :guilabel:`Variable Name` to ``ARMGCC_DIR``.
-* Set :guilabel:`Variable Value` to the toolchain directory (e.g. ``C:\Program Files (x86)\GNU Arm Embedded Toolchain\10 2021.10``).
+* Set :guilabel:`Variable Value` to the toolchain directory (e.g. ``C:\Users\MicroEJ\.mcuxpressotools\arm-gnu-toolchain-13.2.Rel1-mingw-w64-i686-arm-none-eabi``).
 * Click on the :guilabel:`Ok` button until it closes :guilabel:`Edit the system environment variables` application.
-
-Install CMake
-+++++++++++++
-
-`CMake <https://cmake.org/download/>`__ is the application used by the build system to generate the firmware.
-
-During the installation, it will ask you if you wish to add CMake to your system Path, add it at least to the current user system path.
-If you missed it, you can manually add ``CMake/bin`` folder to your path.
 
 Install Make
 ++++++++++++
@@ -252,41 +243,38 @@ Under :guilabel:`Download` section, you can select the Setup program for the com
 By default, it will automatically add Make to your path.
 If not, you can manually add ``GnuWin32\bin`` folder to your path.
 
-.. _sdk_6_getting_started_rt1170_run_on_device_flashing_tool:
+Check that the tool has been properly installed: 
 
-Install the Flashing Tool
-"""""""""""""""""""""""""
+.. figure:: images/iMXRT1170/getting-started-make-setup.png
+   :alt: Make setup
+   :align: center
+   :scale: 70%
 
-.. note::
-  
-   This Getting Started has been tested with LinkServer version ``1.2.45``. 
-
-   Later versions may or may not work, and may need modification to the Getting Started steps.
-
-`LinkServer <https://www.nxp.com/design/software/development-software/mcuxpresso-software-and-tools-/linkserver-for-microcontrollers:LINKERSERVER>`__ is needed to flash the board.
-
-Once installed, ``LinkServer_xxx/binaries`` folder must be set on your Path. To do so: 
+Add the Flashing Tool Environment variable
+++++++++++++++++++++++++++++++++++++++++++
 
 * Open the :guilabel:`Edit the system environment variables` application on Windows.
 * Click on the :guilabel:`Environment Variables...` button.
 * Select :guilabel:`Path` variable under the :guilabel:`User variables` section and edit it.
-* Click on :guilabel:`New` and point to the ``binaries`` folder located where you installed LinkServer (e.g. ``nxp/LinkServer_1.2.45/binaries``).
+* Click on :guilabel:`New` and point to the ``LinkServer_{version}`` folder located where you installed LinkServer (e.g. ``C:\nxp\LinkServer_1.2.45``).
 
 Hardware Setup
 """"""""""""""
 
-      .. figure:: images/iMXRT1170/getting-started-hardware-setup.png
-         :alt: Hardware Setup
-         :align: center
-         :scale: 70%
+Set up the NXP i.MX RT1170 EVKB:
 
-Setup the i.MX RT1170 Evaluation Kit
+* Check that the dip switches (``SW1``) are set to ``OFF``, ``OFF``, ``ON`` and ``OFF``,
+* Ensure jumper ``J5`` is removed,
+* Connect the display panel ``RK055HDMIPI4MA0``,
+* Connect the micro-USB cable to ``J86`` to power the board,
+* Connect a 5 V power supply to ``J43``.
 
-* Check that the dip switches (SW1) are set to OFF, OFF, ON and OFF.
-* Ensure jumpers J6 and J7 are closed.
-* Connect the micro-USB cable to J11 to power the board.
-* You can connect 5 V power supply to J43 if you need to use the display
+  .. figure:: images/iMXRT1170/getting-started-hardware-setup.png
+     :alt: NXP i.MX RT1170 EVKB Hardware Setup
+     :align: center
 
+     NXP i.MX RT1170 EVKB Hardware Setup
+     
 The USB connection is used as a serial console for the SoC, as a CMSIS-DAP debugger and as a power input for the board.
 
 The VEE Port uses the virtual UART from the i.MX RT1170 Evaluation Kit USB port. A COM port is automatically mounted when the board is plugged into a computer using a USB cable. All board logs are available through this COM port.
