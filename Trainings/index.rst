@@ -252,7 +252,7 @@ Graphical User Interface
    :hidden:
 
    trainingGuiRaster
-   trainingDisplayFormats
+   trainingGrayscaleDisplayConsiderations
    trainingDebugGUIFreeze
 
 
@@ -274,24 +274,10 @@ Graphical User Interface
             </div>
             </a>
 
-            <a class="training_link" href="trainingDisplayFormats.html">
-            <div>
-               <div class="training_image_container">
-                  <div class="training_image_text">Course 2</div>
-                  <img src="../_static/images/training/trainingDisplayFormats.jpg" alt="Display Formats Considerations">
-               </div>
-               <h3 class="training_title">Display Formats Considerations</h3>
-               <p class="training_description">In this training, you will get an overview of the considerations
-               to take into account when choosing a display format (e.g. RGB565, monochrome, CLUT, ...).
-               </p>
-               <a class="training_learn_more_link" href="trainingDisplayFormats.html">Learn more</a>
-            </div>
-            </a>
-
             <a class="training_link" href="trainingDebugGUIFreeze.html">
             <div>
                <div class="training_image_container">
-                  <div class="training_image_text">Course 3</div>
+                  <div class="training_image_text">Course 2</div>
                   <img src="../_static/images/training/trainingDebugGUIFreeze.jpg" alt="Debugging a GUI Application Freeze">
                </div>
                <h3 class="training_title">Debug a GUI Application Freeze</h3>
@@ -299,6 +285,20 @@ Graphical User Interface
                how to instrument a frozen GUI application.
                </p>
                <a class="training_learn_more_link" href="trainingDebugGUIFreeze.html">Learn more</a>
+            </div>
+            </a>
+
+            <a class="training_link" href="trainingGrayscaleDisplayConsiderations.html">
+            <div>
+               <div class="training_image_container">
+                  <div class="training_image_text">Course 3</div>
+                  <img src="../_static/images/training/trainingGrayscaleDisplayConsiderations.jpg" alt="Grayscale Display Considerations">
+               </div>
+               <h3 class="training_title">Grayscale Display Considerations</h3>
+               <p class="training_description">In this training, you will get an overview of the considerations
+               to take into account when developing a GUI application using a grayscale display.
+               </p>
+               <a class="training_learn_more_link" href="trainingGrayscaleDisplayConsiderations.html">Learn more</a>
             </div>
             </a>
 
@@ -420,7 +420,7 @@ For DevOps
          </div>
 
 ..
-   | Copyright 2021-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2021-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
