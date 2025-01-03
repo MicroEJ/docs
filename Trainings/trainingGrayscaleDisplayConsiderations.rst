@@ -23,7 +23,7 @@ Prerequisites
 To get the most out of this training, participants should have:
 
 - A basic understanding of display technologies, color representation and depth,
-- A basic understanding of MicroEJ GUI stack.
+- A basic understanding of MicroEJ Graphics Engine.
 
 .. _training_monochrome_format_considerations:
 
@@ -42,7 +42,7 @@ The MicroUI stack supports the following grayscale formats by default:
 See :ref:`Pixel Structure <display_pixel_structure_standard>` documentation for more information.
 
 The below sections present the key considerations when choosing a grayscale display,
-using the widely-adopted ``RGB565`` colored format as a reference point.
+using the widely adopted ``RGB565`` colored format as a reference point.
 
 Application Considerations
 --------------------------
@@ -54,8 +54,8 @@ It is possible to test a "colored" application on a grayscale display.
 The straightforward way is to :ref:`update the display format of the VEE Port <section_display_installation>`
 to simulate the application using a grayscale format.
 
-It is recommended to test with ``C4`` format first to get a grayscale rendering.
-Then, adapt the application resources to render properly in ``C1`` or ``C2``.
+It is recommended that the ``C4`` format be tested first to obtain a grayscale rendering.
+Then, the application resources should be adapted to render properly in ``C1`` or ``C2``.
 
 Example when switching from ``RGB565`` to ``C4`` format:
 
@@ -72,16 +72,16 @@ Example when switching from ``RGB565`` to ``C4`` format:
     Conversion functions are used at runtime to convert the application colors to the proper display format
     (see :ref:`Pixel Structure <display_pixel_structure_standard>`)
         
-    * Example: if a red rectangle is drawn, 
-      the color will converted using the color conversion algorithm
-      corresponding to the display format.
+    For example: if a red rectangle is drawn, 
+    the color will be converted using the color conversion algorithm
+    corresponding to the display format.
 
 **Anti-Aliasing**
 
 The anti-aliasing is managed like on colored displays.
 
-To save CPU time, it is recommended to convert the Fonts and Images
-to the display format to avoid useless blending at runtime
+It is recommended that the fonts and images be converted to the display format.
+It allows you to anticipate a wrong blending if your resource has too many bit-per-pixels compared to the display.
 (e.g. if the display format is ``C2``, embed your Fonts in ``1BPP`` or ``2BPP`` format instead of ``4BPP``).
 
 **Detect Display Format at Runtime**
@@ -91,7 +91,7 @@ class can be used to detect the display format on the application side (``isColo
 
 **Raster Fonts Considerations**
 
-Anti-aliased raster fonts (``*.ejf``) may have a bad rendering when it comes to 
+Anti-aliased raster fonts (``*.fnt``, ``*.ejf``) may have a bad rendering when it comes to 
 displaying them in ``C1`` format (1BPP):
 
 * ``4BPP`` font format:
@@ -105,18 +105,17 @@ displaying them in ``C1`` format (1BPP):
   .. image:: images/training_display_format_1_bpp_font.png
      :alt: 1BPP Font Format
 
-It is recommended to re-generate the Font files to have a good rendering in ``C1`` format.
+It is recommended that the font files be re-generated to have a good rendering in ``C1`` format.
 
 Refer to :ref:`section.ui.Fonts` documentation to learn more about Fonts configuration.
 
 Footprint Considerations
 ------------------------
 
-The below document compares the footprint between
-``RGB565`` (16BPP) and ``C1`` format (1BPP, monochrome).
+The document below compares the footprint of ``RGB565`` (``16BPP``) and ``C1`` format (``1BPP``, monochrome).
 
 .. warning:: 
-    For ``C1`` format, be aware that memory alignment constraints can potentially increase the results
+    For the ``C1`` format, memory alignment constraints can potentially increase the results
     presented below.
 
 .. tabs::
@@ -127,7 +126,7 @@ The below document compares the footprint between
         
         The application resources are the main item to consider in terms of footprint reduction.
 
-        For images, make sure to :ref:`set the images format <section_image_grayscale_raw>`
+        For images, make sure to :ref:`set the image format <section_image_grayscale_raw>`
         according to your display format.
 
         Example with 3 images:
@@ -148,7 +147,7 @@ The below document compares the footprint between
         * Image B footprint embedded in ``A1`` format (32x32x(**1**/8)) + header  ~ 0.12 kB
         * Image C footprint embedded in ``AC11`` format (32x32x(**2**/8)) + header  ~ 0.25kB
 
-        For Fonts, make sure to :ref:`set the fonts format <fonts_list_grammar>` 
+        For Fonts, make sure to :ref:`set the font format <fonts_list_grammar>` 
         according to your display format.
 
         Example with the `SourceSansPro_15px-600.ejf <https://github.com/MicroEJ/Example-Java-Widget/blob/7.6.0/com.microej.demo.widget/src/main/resources/fonts/SourceSansPro_15px-600.ejf>`__
@@ -170,17 +169,16 @@ The below document compares the footprint between
 
         **Graphics Engine**
 
-        Some algorithms of the Graphics Engine can be removed if not used by the application
-        (e.g. color conversion algorithms).
+        Some Graphics Engine algorithms (e.g., color conversion algorithms) can be removed if the application does not use them.
         Check the :ref:`display_pixel_conversion` linker file configuration for more information.
 
         Example with ``C1`` display format:
 
-        * If there are no images embedded in ``ARGB8888`` format in the application, the color conversion algorithm from ``ARGB8888`` to ``C1`` can be removed.
+        * If the application does not contain images embedded in ``ARGB8888`` format, the color conversion algorithm from ``ARGB8888`` to ``C1`` can be removed.
 
         .. note::
-            Note that the Graphics Engine is already footprint optimized. 
-            Removing those algorithms will not reduce significantly its ROM footprint.
+            Note that the Graphics Engine is already footprint-optimized. 
+            Removing those algorithms will not significantly reduce its ROM footprint.
 
        .. tab:: RAM Footprint
 
@@ -203,7 +201,7 @@ The below document compares the footprint between
         **Images Heap**
 
         If the application uses the :ref:`images_heap`,
-        its size can be reduced as its now storing images with a lighter format.
+        its size can be reduced as it now stores images in a lighter format.
 
         Example of Images Heap sized to store a 100x100 image:
 
