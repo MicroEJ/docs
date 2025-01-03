@@ -33,7 +33,7 @@ Training
 First and foremost, grayscale displays can represent a range of
 shades between black and white. 
 
-The MicroUI stack supports the following grayscale formats by default:
+The Graphics Engine supports the following grayscale formats by default:
 
 - ``C4``: the pixel uses 4 bits-per-pixel (4BPP),
 - ``C2``: the pixel uses 2 bits-per-pixel (2BPP),
