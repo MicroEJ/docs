@@ -81,7 +81,8 @@ The creation of a KF is done as follows:
 .. tabs::
 
    .. tab:: SDK 6
-      
+
+      - In the ``src/test/resources/projects`` directory, create a new directory ``newTest`` for the KF test.
       - In the ``src/test/java`` folder, create a new Interface with the following content:
 
       .. code-block:: java
@@ -93,13 +94,11 @@ The creation of a KF is done as follows:
             @Test 
             void newTest();
          }   
-
-      - Within the ``src/test/resources/projects`` directory, create a new directory for the KF test with the same name as the method defined in the Interface.
       
       .. note::
          The name of a KF test is free. For each KF test, a method with the same name and annotated with ``@Test`` must be defined in the Java Interface.
 
-      - Within the KF test, create the sub-projects:
+      - Within the ``newTest`` directory, create the sub-projects:
   
         - Create a new ``kernel`` directory and :ref:`create a Kernel <multisandbox_firmware_creation>`. The Kernel must depend on your Library project:
 
