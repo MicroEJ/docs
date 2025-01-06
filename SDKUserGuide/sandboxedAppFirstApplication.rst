@@ -104,9 +104,20 @@ See :ref:`mmm` for more information.
 
 The dependencies must contain at least a module containing the ``ej.kf.FeatureEntryPoint`` class, for example the KF library:
 
-.. code:: xml
+.. tabs::
 
-    <dependency org="ej.api" name="kf" rev="1.6.1" />
+   .. tab:: SDK 6
+
+      .. code-block:: java
+
+         implementation("ej.api:kf:1.7.0")
+
+   .. tab:: SDK 5
+
+      .. code-block:: xml
+
+         <dependency org="ej.api" name="kf" rev="1.7.0" />
+  
 
 
 ..

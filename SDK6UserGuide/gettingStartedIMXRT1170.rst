@@ -329,7 +329,7 @@ Request your Evaluation License:
 
 Now your Evaluation license is installed, you can relaunch your application build by double-clicking on the :guilabel:`buildExecutable` task in the Gradle tasks view. It may takes some time.
 
-The gradle task deploys the Application in the BSP and then builds the BSP using Make.
+The Gradle task deploys the Application in the BSP and then builds the BSP using Make.
 
 The :guilabel:`Demo-SmartThermostat` application is built and ready to be flashed on i.MX RT1170 Evaluation Kit once the hardware setup is completed.
 
@@ -434,7 +434,7 @@ If you are an embedded engineer you could look at our VEE port examples at `GitH
 
 You can also follow the :ref:`Kernel Developer Guide <kernel-developer-guide>` for more information on our multi-applications framework or read about our powerful wearable solution called :ref:`VEE Wear <vee-wear>`.
 
-Last but not least you can choose to learn about specific topics by following one of our many :ref:`tutorials <tutorials>` ranging from how to easily debug application to setting up a Continuous Integration process and a lot of things in between.
+Last but not least you can choose to learn about specific topics by following one of our many :ref:`trainings` ranging from how to easily debug application to setting up a Continuous Integration process and a lot of things in between.
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 

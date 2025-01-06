@@ -23,7 +23,7 @@ System Requirements
    - macOS aarch64 with M1 chip
 
 - **Java Runtime Environment**
-    - JDK 11 or 17 - Eclipse Temurin or Oracle Distributions
+    - JDK 11 or higher LTS version (``11``, ``17`` or ``21``) - Eclipse Temurin or Oracle Distributions
 
 
 .. _sdk_6_check_jdk:
@@ -50,35 +50,7 @@ To check, run ``java -version`` in a terminal::
    OpenJDK 64-Bit Server VM Temurin-11.0.15+10 (build 11.0.15+10, mixed mode)
 
 If you don't have a JDK installed, 
-you can download and install one from `Adoptium <https://adoptium.net/temurin/releases/>`__ or `Oracle <https://www.oracle.com/fr/java/technologies/downloads/>`__.
-
-
-.. _sdk_6_install_gradle:
-
-Install Gradle
---------------
-
-Once a JDK is correctly configured, the next step is to install Gradle by following `the official documentation <https://gradle.org/install/>`__.
-The SDK is only compatible with the Gradle ``8.0.2`` and higher, so make sure to install a right version.
-Once done, you can verify your installation by opening a terminal and run the command ``gradle -v``.
-It should display, amongst other information, the Gradle and the JVM versions:
-
-.. code:: console
-
-   $ gradle -v
-   
-  ------------------------------------------------------------
-  Gradle 8.0.2
-  ------------------------------------------------------------
-
-  Build time:   2023-03-03 16:41:37 UTC
-  Revision:     7d6581558e226a580d91d399f7dfb9e3095c2b1d
-
-  Kotlin:       1.8.10
-  Groovy:       3.0.13
-  Ant:          Apache Ant(TM) version 1.10.11 compiled on July 10 2021
-  JVM:          11.0.18 (Eclipse Adoptium 11.0.18+10)
-  OS:           Windows 10 10.0 amd64
+you can download and install one from `Adoptium <https://adoptium.net/temurin/releases/>`__ or `Oracle <https://www.oracle.com/java/technologies/downloads/>`__.
 
 
 .. _sdk_6_configure_repositories:
@@ -95,7 +67,7 @@ To get started, you can declare them globally to make them available in all your
 - Download and copy :download:`this file <resources/microej.init.gradle.kts>` in the previously created folder.
 
 At this stage, you can already build a project from the command line, 
-for example, by executing the command ``gradle build`` at the root of the project.
+for example, by executing the command ``./gradlew build`` at the root of the project.
 But let's continue the installation process to have a complete development environment.
 
 .. note::
@@ -103,22 +75,34 @@ But let's continue the installation process to have a complete development envir
    This configuration makes MicroEJ Central and Developer repositories available to every project.
    If you have several repositories configuration specific to certain projects, you can refer to :ref:`multiple repository configuration how-to <sdk_6_multi_repo>`
 
+SDK EULA Acceptation
+--------------------
+
+The use of MICROEJ SDK 6 requires to accept the :ref:`sdk6_eula`.
+
+The acceptance can be done at the project level or system-wide. For a system-wide acceptance, we recommend to define
+the ``accept-microej-sdk-eula-v3-1c`` system property in a ``gradle.properties`` file in your Gradle User Home folder ``$USER_HOME/.gradle/gradle.properties``:
+
+   .. code:: properties
+
+      systemProp.accept-microej-sdk-eula-v3-1c=YES
+
+Refer to :ref:`sdk_6_eula_acceptation` section of :ref:`sdk_6_licenses` to get more information about SDK EULA, and alternative configurations.
+
 .. _sdk_6_install_ide:
 
 Install the IDE
 ---------------
 
 Using an IDE is highly recommended for developing MicroEJ projects, making the development more comfortable and increasing productivity.
-The three following IDEs are supported: 
+The following IDEs are supported: 
 
 - `Android Studio <https://developer.android.com/studio>`__ - Minimum supported version is ``Hedgehog - 2023.1.1``.
 - `IntelliJ IDEA <https://www.jetbrains.com/idea/>`__ (Community or Ultimate edition) - Minimum supported version is ``2021.2``.
-- `Eclipse IDE for Java Developers <https://www.eclipse.org/downloads/packages/>`__ - Minimum supported version is ``2022-03``.
+- `Eclipse IDE for Java Developers <https://www.eclipse.org/downloads/packages/>`__ - Versions from ``2022-03`` to ``2024-06`` are supported.
 - `Visual Studio Code <https://code.visualstudio.com/download>`__ - Minimum supported version is ``1.89.0``.
 
 Follow their respective documentation to install one of them.
-
-These 3 IDEs come with the Gradle plugin installed by default.
 
 
 .. _sdk_6_install_ide_plugin:
@@ -230,20 +214,46 @@ Once your favorite IDE is installed, plugins must be installed to develop MicroE
 
    .. tab:: Visual Studio Code
 
-      MicroEJ does not provide a dedicated plugin for VS Code, but Microsoft provides a plugin that brings a useful collection of plugins for Java
-      called `Extension Pack for Java <https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack>`__. To install this plugin:
+      MicroEJ does not provide a dedicated extension for VS Code, but Microsoft provides a extension that brings a useful collection of extensions for Java
+      called `Extension Pack for Java <https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack>`__. To install this extension:
 
       - In Visual Studio Code, open the :guilabel:`Extensions` tab (Ctrl+Shift+X)
       - In the search field, type ``extension pack for Java``:
 
       .. figure:: images/vscode_java_extensions.png
-            :alt: VS Code Java Plugins Installation
+            :alt: VS Code Java Extensions Installation
             :align: center
             :scale: 70%
          
-            VS Code Java Plugins Installation
+            VS Code Java Extensions Installation
 
       - Click on the :guilabel:`Install` button of the extension
+
+      This extension is compatible with MicroEJ development, but requires a specific version to be fully functional.
+      Follow these steps to setup Visual Studio Code:
+
+      - Go to the ``Installed`` extensions.
+      - Right-click on the ``Language Support for Java(TM) by Red Hat`` extension.
+      - Click on ``Install Specific Version ...``.
+
+         .. figure:: images/vs-code-install-specific-version.png
+            :alt: Visual Studio Code - Install specific extension version
+            :align: center
+            :scale: 70%
+
+      - Select version ``1.32.0``.
+      - Once installed, click on the ``Restart Extensions`` button.
+      - If you already opened a Java project in your IDE:
+      
+         - Click on the Java status in the bottom bar.
+
+            .. figure:: images/vs-code-java-status.png
+               :alt: Visual Studio Code - Java status
+               :align: center
+               :scale: 70%
+
+         - Select the ``Clean Workspace Cache ...`` action in the upcoming menu.
+         - In the upcoming popup in the bottom-right corner, click on the ``Reload and delete`` button.
 
       .. warning::
          Unlike other supported IDEs (Android Studio/IntelliJ IDEA/Eclipse), there is no MicroEJ plugin which removes

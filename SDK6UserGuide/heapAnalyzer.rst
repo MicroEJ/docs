@@ -165,6 +165,32 @@ If you are in a Multi-Sandbox context, the following sections must be dumped add
   - either dump the entire memory where microej runtime and code sections are linked,
   - or generate the :ref:`VEE memory dump script <generate_vee_memory_dump_script>` which will dump all the required sections instead.
 
+    .. note::
+
+       In a Mono-Sandbox context, use ``1_java_heap.hex``.
+
+       In a Multi-Sandbox context, merge (at least) ``1_java_heap.hex`` and ``9_installed_features.hex`` with:
+
+         .. tabs::
+
+            .. tab:: Command Prompt
+
+               .. code-block:: bat
+
+                  copy /b 1_java_heap.hex + 9_installed_features.hex memory.hex
+
+            .. tab:: PowerShell
+
+               .. code-block:: powershell
+
+                  Get-Content 1_java_heap.hex, 9_installed_features.hex | Set-Content memory.hex
+
+            .. tab:: Bash
+
+               .. code-block:: bash
+
+                  cat 1_java_heap.hex 9_installed_features.hex > memory.hex
+
 .. _sdk6_heapdumper_extract_heap:
 
 Extract the Heap dump from the ``.hex`` file
@@ -176,10 +202,10 @@ run the ``execTool`` Gradle task with the tool name ``heapDumperPlatform``:
 .. code:: console
 
     ./gradlew execTool --name=heapDumperPlatform \
-      --toolProperty="output.name=application.heap" \
-      --toolProperty="application.filename=../../executable/application/application.out" \
-      --toolProperty="heap.filename=/path/to/memory.hex" \
-      --toolProperty="additional.application.filenames=" \
+      --toolProperty=output.name="application.heap" \
+      --toolProperty=application.filename="../../executable/application/application.out" \
+      --toolProperty=heap.filename="/path/to/memory.hex" \
+      --toolProperty=additional.application.filenames="" \
       --console plain
 
 If you are in a Multi-Sandbox context, you have to include the ``.fodbg`` files and additional hex files:
@@ -187,11 +213,11 @@ If you are in a Multi-Sandbox context, you have to include the ``.fodbg`` files 
 .. code:: console
 
     ./gradlew execTool --name=heapDumperPlatform \
-      --toolProperty="output.name=application.heap" \
-      --toolProperty="application.filename=../../executable/application/application.out" \
-      --toolProperty="heap.filename=/path/to/memory.hex" \
-      --toolProperty="additional.application.filenames=/path/to/app1.fodbg;/path/to/app2.fodbg..." \
-      --toolProperty="additional.memory.filenames=/path/to/additonal1.hex;/path/to/additional2.hex..." \
+      --toolProperty=output.name="application.heap" \
+      --toolProperty=application.filename="../../executable/application/application.out" \
+      --toolProperty=heap.filename="/path/to/memory.hex" \
+      --toolProperty=additional.application.filenames="/path/to/app1.fodbg;/path/to/app2.fodbg..." \
+      --toolProperty=additional.memory.filenames="/path/to/additonal1.hex;/path/to/additional2.hex..." \
       --console plain
 
 You can find the list of available options below:

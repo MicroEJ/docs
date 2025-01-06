@@ -9,6 +9,48 @@ Migration Notes
    For multi-projects, run the ``clean`` command on the root project.
 
 ---------------------
+From 0.19.0 to 0.20.0
+---------------------
+
+This section applies if MicroEJ SDK 6 ``0.20.0`` is used on a project that was created using MicroEJ SDK 6 ``0.19.0`` 
+or lower.
+
+Minimum Gradle version
+~~~~~~~~~~~~~~~~~~~~~~
+
+The minimum required version of Gradle is now ``8.6.``.
+`Upgrade the Gradle Wrapper version <https://docs.gradle.org/current/userguide/gradle_wrapper.html#sec:upgrading_wrapper>`__ of your project.
+
+New SDK EULA
+~~~~~~~~~~~~
+
+A new SDK EULA must be approved before using the SDK (version ``3.1-C``).
+Refer to :ref:`sdk_6_eula_acceptation` page to learn how to approve it.
+
+Plugins and Configurations renaming
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The following plugins and configurations have been renamed:
+
+- plugin ``com.microej.gradle.j2se-library`` to ``com.microej.gradle.jse-library``.
+- plugin ``com.microej.gradle.runtime-api`` to ``com.microej.gradle.runtime-environment``.
+- configuration ``microejRuntimeApi`` to ``microejRuntimeEnvironment``.
+
+The previous plugins and configurations are still supported but are deprecated and will be removed in the next major version.
+It is recommended to update your project now.
+
+Virtual Device Build
+~~~~~~~~~~~~~~~~~~~~
+
+The Virtual Device of an Application is not built by default anymore when calling the ``build`` task.
+You can call the ``buildVirtualDevice`` task to build it, 
+or add the following code in your ``build.gradle.kts`` file to continue to build it when calling the ``build`` task::
+
+   microej {
+      produceVirtualDeviceDuringBuild()
+   }
+
+---------------------
 From 0.15.0 to 0.16.0
 ---------------------
 

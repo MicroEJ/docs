@@ -16,13 +16,30 @@ Project Extension
 =================
 
 The Front Panel project must depend on the UI Pack.
-Add the following dependency to the Front Panel ivy file:
+Add the following dependency to the project build file:
 
-.. code-block:: xml
+.. tabs::
 
-   <dependency org="com.microej.pack.ui" name="ui-pack" rev="[UI Pack version]">
-      <artifact name="frontpanel" type="jar"/>
-   </dependency>
+   .. tab:: SDK 6 (build.gradle.kts)
+
+      .. code-block:: kotlin
+
+         implementation("ej.tool.frontpanel:framework:1.1.0")
+         implementation("com.microej.pack.ui:ui-pack:[UI Pack version]") {
+            artifact {
+                  name = "frontpanel"
+                  extension = "jar"
+            }
+         }
+
+   .. tab:: SDK 5 (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="com.microej.pack.ui" name="ui-pack" rev="[UI Pack version]">
+            <artifact name="frontpanel" type="jar"/>
+         </dependency>
+
 
 See :ref:`section_ui_simulation` for more information about the Front Panel project dependencies.
 

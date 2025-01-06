@@ -18,7 +18,7 @@ Standard Versions
 +-----------------+--------------------+---------------------------------------------------------+
 | UI Pack Range   | Architecture Range | Comment                                                 |
 +=================+====================+=========================================================+
-| [13.5.0-14.0.1] | [7.16.0-9.0.0[     | Compatibility with Architecture 8                       |
+| [13.5.0-14.2.0] | [7.16.0-9.0.0[     | Compatibility with Architecture 8                       |
 +-----------------+--------------------+---------------------------------------------------------+
 | [13.0.0-13.4.1] | [7.16.0-8.0.0[     | SNI 1.3                                                 |
 +-----------------+--------------------+---------------------------------------------------------+
@@ -60,7 +60,10 @@ The following table describes Foundation Libraries API versions implemented in M
    * - UI Pack Range
      - MicroUI
      - Drawing
-   * - [14.0.0-14.0.1]
+   * - [14.1.1-14.2.0]
+     - `3.6.0 <https://repository.microej.com/modules/ej/api/microui/3.6.0/>`_
+     - `1.0.4 <https://repository.microej.com/modules/ej/api/drawing/1.0.4/>`_
+   * - [14.0.0-14.0.2]
      - `3.5.0 <https://repository.microej.com/modules/ej/api/microui/3.5.0/>`_
      - `1.0.4 <https://repository.microej.com/modules/ej/api/drawing/1.0.4/>`_
    * - [13.7.0-13.7.2]
@@ -92,31 +95,33 @@ The following table describes Foundation Libraries API versions implemented in M
      - `1.0.0 <https://repository.microej.com/modules/ej/api/drawing/1.0.0/>`_
    * - [12.1.0-12.1.5]
      - `2.4.0 <https://repository.microej.com/modules/ej/api/microui/2.4.0/>`_
-     - 
+     -
    * - [11.1.0-11.2.0]
      - `2.3.0 <https://repository.microej.com/modules/ej/api/microui/2.3.0/>`_
-     - 
+     -
    * - [9.2.0-11.0.1]
      - `2.2.0 <https://repository.microej.com/modules/ej/api/microui/2.2.0/>`_
-     - 
+     -
    * - [9.1.1-9.1.2]
      - 2.1.3
-     - 
-   * - 9.1.0 
+     -
+   * - 9.1.0
      - 2.1.2
-     - 
+     -
    * - [9.0.0-9.0.2]
      - `2.0.6 <https://repository.microej.com/modules/ej/api/microui/2.0.6/>`_
-     - 
+     -
    * - [6.0.0-8.1.0]
      - 2.0.0
-     - 
+     -
 
 Abstraction Layer Interface
 ===========================
 
-The following sections briefly describes Abstraction Layer interface changes.
+The following sections briefly describe Abstraction Layer interface changes (the functions the BSP has to implement).
 For more details, refer to the :ref:`section_ui_migrationguide`.
+
+.. note:: In addition of these functions, some C modules must be added to the BSP, see :ref:`section_ui_releasenotes_cmodule`.
 
 Display
 """""""
@@ -124,7 +129,7 @@ Display
 +-----------------+------------------------------------------------------------------+
 | UI Pack Range   | Changes                                                          |
 +=================+==================================================================+
-| [14.0.0-14.0.1] | Signature of ``LLUI_DISPLAY_IMPL_flush()`` changed.              |
+| [14.0.0-14.2.0] | Signature of ``LLUI_DISPLAY_IMPL_flush()`` changed.              |
 +-----------------+------------------------------------------------------------------+
 | [13.0.0-13.7.2] | *UI3* format: implement ``LLUI_DISPLAY_impl.h``:                 |
 |                 |                                                                  |
@@ -133,7 +138,7 @@ Display
 |                 | * ``void LLUI_DISPLAY_IMPL_binarySemaphoreGive([...]);``         |
 |                 | * ``uint8_t* LLUI_DISPLAY_IMPL_flush([...]);``                   |
 +-----------------+------------------------------------------------------------------+
-| [10.0.0-12.1.5] | Remove:                                                          | 
+| [10.0.0-12.1.5] | Remove:                                                          |
 |                 |                                                                  |
 |                 | * ``int32_t LLDISPLAY_IMPL_getWorkingBufferStartAddress([...]);``|
 |                 | * ``int32_t LLDISPLAY_IMPL_getWorkingBufferEndAddress([...]);``  |
@@ -142,7 +147,7 @@ Display
 |                 |                                                                  |
 |                 | * ``LLDISPLAY_SWITCH_impl.h``                                    |
 |                 | * ``LLDISPLAY_COPY_impl.h``                                      |
-|                 | * ``LLDISPLAY_DIRECT_impl.h``                                    | 
+|                 | * ``LLDISPLAY_DIRECT_impl.h``                                    |
 +-----------------+------------------------------------------------------------------+
 | [6.0.0-7.4.7]   | *UI2* format: implement one of header file:                      |
 |                 |                                                                  |
@@ -157,7 +162,7 @@ Input
 +-----------------+------------------------------------------------------------------+
 | UI Pack Range   | Changes                                                          |
 +=================+==================================================================+
-| [13.0.0-14.0.1] | *UI3* format: implement ``LLUI_INPUT_impl.h``:                   |
+| [13.0.0-14.2.0] | *UI3* format: implement ``LLUI_INPUT_impl.h``:                   |
 |                 |                                                                  |
 |                 | * ``void LLUI_INPUT_IMPL_initialize([...]);``                    |
 |                 | * ``jint LLUI_INPUT_IMPL_getInitialStateValue([...]);``          |
@@ -178,7 +183,7 @@ LED
 +-----------------+------------------------------------------------------------------+
 | UI Pack Range   | Changes                                                          |
 +=================+==================================================================+
-| [13.0.0-13.7.2] | *UI3* format: implement ``LLUI_LED_impl.h``:                     |
+| [13.0.0-14.2.0] | *UI3* format: implement ``LLUI_LED_impl.h``:                     |
 |                 |                                                                  |
 |                 | * ``jint LLUI_LED_IMPL_initialize([...]);``                      |
 |                 | * ``jint LLUI_LED_IMPL_getIntensity([...]);``                    |
@@ -202,18 +207,18 @@ The Front Panel project must fetch the widgets compatible with the MicroEJ UI Pa
 * For the UI Packs ``12.x.x``, the Front Panel project must fetch the module `ej.tool.frontpanel.widget-microui`_.
 * Since MicroEJ UI Pack ``13.0.0``, the Front Panel project must depend on the module `com.microej.pack.ui.ui-pack(frontpanel)`_ (the module version is the MicroEJ Generic UI Pack version, that is always aligned with the MicroEJ UI Packs specific for MCUs).
 
-+-----------------+--------------------------------------------+-----------------+
-| UI Pack Range   | Module                                     | Version         |
-+=================+============================================+=================+
-| [13.0.0-14.0.1] | `com.microej.pack.ui.ui-pack(frontpanel)`_ | [13.0.0-14.0.1] |
-+-----------------+--------------------------------------------+-----------------+
-| [12.0.0-12.1.5] | `ej.tool.frontpanel.widget-microui`_       | 1.0.0           |
-+-----------------+--------------------------------------------+-----------------+
-| [6.0.0-11.2.0]  | n/a                                        | n/a             |
-+-----------------+--------------------------------------------+-----------------+
++------------------+--------------------------------------------+--------------------------+
+| UI Pack Range    | Module                                     | Version                  |
++==================+============================================+==========================+
+| 13.0.0 and above | `com.microej.pack.ui.ui-pack(frontpanel)`_ | Identical to the UI Pack |
++------------------+--------------------------------------------+--------------------------+
+| [12.0.0-12.1.5]  | `ej.tool.frontpanel.widget-microui`_       | 1.0.0                    |
++------------------+--------------------------------------------+--------------------------+
+| [6.0.0-11.2.0]   | n/a                                        | n/a                      |
++------------------+--------------------------------------------+--------------------------+
 
 The widget module `ej.tool.frontpanel.widget`_ provides some widgets compatible with the Graphics Engine.
-This module fetches by transitivity the module `com.microej.pack.ui.ui-pack(frontpanel)`_. 
+This module fetches by transitivity the module `com.microej.pack.ui.ui-pack(frontpanel)`_.
 When the Front Panel project does not require/use the latest Front Panel UI API, it can only fetch the widget module.
 
 .. note:: This module has been moved from the MicroEJ `Central`_ Repository to the MicroEJ `Developer`_ Repository.
@@ -221,7 +226,7 @@ When the Front Panel project does not require/use the latest Front Panel UI API,
 +---------------------+-----------------------------+--------------+
 | Widget Module Range | UI Pack Compatibility Range | Repository   |
 +=====================+=============================+==============+
-| [4.0.0-4.0.1]       | [14.0.0-14.0.1]             | `Developer`_ |
+| [4.0.0-4.0.2]       | [14.0.0-14.2.0]             | `Developer`_ |
 +---------------------+-----------------------------+--------------+
 | 3.0.0               | [13.5.1-10-13.7.2]          | `Developer`_ |
 +---------------------+-----------------------------+--------------+
@@ -249,16 +254,16 @@ Image Generator API
 Since MicroEJ UI Pack ``13.0.0``, the Image Generator extension project must depend on module `com.microej.pack.ui.ui-pack(imagegenerator)`_.
 The module version is the MicroEJ Generic UI Pack version, that is always aligned with the MicroEJ UI Packs specific for MCUs.
 
-+-----------------+-------------------------------------------------+-------------------+
-| UI Pack Range   | Module                                          | Version           |
-+=================+=================================================+===================+
-| [13.0.0-14.0.1] | `com.microej.pack.ui.ui-pack(imagegenerator)`_  | [13.0.0-14.0.1]   |
-+-----------------+-------------------------------------------------+-------------------+
++------------------+-------------------------------------------------+--------------------------+
+| UI Pack Range    | Module                                          | Version                  |
++==================+=================================================+==========================+
+| 13.0.0 and above | `com.microej.pack.ui.ui-pack(imagegenerator)`_  | Identical to the UI Pack |
++------------------+-------------------------------------------------+--------------------------+
 
 .. note:: Before MicroEJ UI Pack ``13.0.0``, the Image Generator extension project must depend on classpath variable ``IMAGE-GENERATOR-x.x``.
 
 .. _com.microej.pack.ui.ui-pack(imagegenerator): https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/
- 
+
 .. _section_ui_releasenotes_cmodule:
 
 C Modules
@@ -268,23 +273,28 @@ MicroUI C Module
 """"""""""""""""
 
 The MicroUI C module `com.microej.clibrary.llimpl(microui)`_ is available on MicroEJ Central Repository, see :ref:`section_ui_cco`.
+
+.. note:: Since version 14.1.1 of UI Pack, UI Pack and MicroUI C Module have the same version.
+
 The following table describes the compatibility versions between the MicroEJ UI Packs and the C modules:
 
-+-----------------+------------------+------------------------------------------+
-| UI Pack         | MicroUI C Module | Comment                                  |
-+=================+==================+==========================================+
-| [14.0.0-14.0.1] | [4.0.0-4.1.0]    | Buffer refresh strategies                |
-+-----------------+------------------+------------------------------------------+
-| [13.7.0-13.7.2] | [3.1.0-3.1.1]    | Free image resources                     |
-+-----------------+------------------+------------------------------------------+
-| [13.5.0-13.6.2] | 3.0.0            | Multiple Graphics Context output formats |
-+-----------------+------------------+------------------------------------------+
-| [13.3.0-13.4.1] | [2.0.0-2.0.1]    | Copy and draw image                      |
-+-----------------+------------------+------------------------------------------+
-| [13.1.0-13.2.0] | [1.1.0-1.1.1]    | Image heap, events queue, drawing limits |
-+-----------------+------------------+------------------------------------------+
-| [13.0.0-13.0.7] | 1.0.3            |                                          |
-+-----------------+------------------+------------------------------------------+
++------------------+--------------------------+------------------------------------------+
+| UI Pack          | MicroUI C Module         | Comment                                  |
++==================+==========================+==========================================+
+| 14.1.1 and above | Identical to the UI Pack |                                          |
++------------------+--------------------------+------------------------------------------+
+| [14.0.0-14.0.2]  | [4.0.0-4.1.0]            | Buffer refresh strategies                |
++------------------+--------------------------+------------------------------------------+
+| [13.7.0-13.7.2]  | [3.1.0-3.1.1]            | Free image resources                     |
++------------------+--------------------------+------------------------------------------+
+| [13.5.0-13.6.2]  | 3.0.0                    | Multiple Graphics Context output formats |
++------------------+--------------------------+------------------------------------------+
+| [13.3.0-13.4.1]  | [2.0.0-2.0.1]            | Copy and draw image                      |
++------------------+--------------------------+------------------------------------------+
+| [13.1.0-13.2.0]  | [1.1.0-1.1.1]            | Image heap, events queue, drawing limits |
++------------------+--------------------------+------------------------------------------+
+| [13.0.0-13.0.7]  | 1.0.3                    |                                          |
++------------------+--------------------------+------------------------------------------+
 
 .. _com.microej.clibrary.llimpl(microui): https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/
 
@@ -306,23 +316,25 @@ The :ref:`DMA2D C module <section_ui_c_module_microui_dma2d>` targets the STM32 
 
 The following table describes the version compatibility between the MicroEJ UI Packs and the C modules:
 
-+-----------------+---------------+------------------+------------------------------------------+
-| UI Pack         | Chrom-ART     | MicroUI C Module | Comment                                  |
-+=================+===============+==================+==========================================+
-| 14.0.1          | [5.0.1-6.0.0] | [4.0.1-4.1.0]    | C modules harmonization                  |
-+-----------------+---------------+------------------+------------------------------------------+
-| 14.0.0          | 5.0.0         | 4.0.0            | Buffer refresh strategies                |
-+-----------------+---------------+------------------+------------------------------------------+
-| [13.7.0-13.7.2] | 4.1.0         | [3.1.0-3.1.1]    | Free image resources                     |
-+-----------------+---------------+------------------+------------------------------------------+
-| [13.5.1-13.6.2] | 4.0.0         | 3.0.0            | Multiple Graphics Context output formats |
-+-----------------+---------------+------------------+------------------------------------------+
-| [13.3.0-13.4.1] | [3.0.0-3.0.2] | [2.0.0-2.0.1]    | Copy and draw image                      |
-+-----------------+---------------+------------------+------------------------------------------+
-| [13.1.0-13.2.0] | [2.0.0-2.1.0] | [1.1.0-1.1.1]    | Drawing limits                           |
-+-----------------+---------------+------------------+------------------------------------------+
-| [13.0.0-13.0.7] | [1.0.6-1.0.8] | 1.0.3            |                                          |
-+-----------------+---------------+------------------+------------------------------------------+
++-----------------+---------------+--------------------------+------------------------------------------+
+| UI Pack         | Chrom-ART     | MicroUI C Module         | Comment                                  |
++=================+===============+==========================+==========================================+
+| [14.1.1-14.2.0] | 7.0.0         | Identical to the UI Pack | Font extensibility                       |
++-----------------+---------------+--------------------------+------------------------------------------+
+| [14.0.1-14.0.2] | [5.0.1-6.0.0] | [4.0.1-4.1.0]            | C modules harmonization                  |
++-----------------+---------------+--------------------------+------------------------------------------+
+| 14.0.0          | 5.0.0         | 4.0.0                    | Buffer refresh strategies                |
++-----------------+---------------+--------------------------+------------------------------------------+
+| [13.7.0-13.7.2] | 4.1.0         | [3.1.0-3.1.1]            | Free image resources                     |
++-----------------+---------------+--------------------------+------------------------------------------+
+| [13.5.1-13.6.2] | 4.0.0         | 3.0.0                    | Multiple Graphics Context output formats |
++-----------------+---------------+--------------------------+------------------------------------------+
+| [13.3.0-13.4.1] | [3.0.0-3.0.2] | [2.0.0-2.0.1]            | Copy and draw image                      |
++-----------------+---------------+--------------------------+------------------------------------------+
+| [13.1.0-13.2.0] | [2.0.0-2.1.0] | [1.1.0-1.1.1]            | Drawing limits                           |
++-----------------+---------------+--------------------------+------------------------------------------+
+| [13.0.0-13.0.7] | [1.0.6-1.0.8] | 1.0.3                    |                                          |
++-----------------+---------------+--------------------------+------------------------------------------+
 
 .. _DMA2D_Central: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/
 .. _DMA2D_Developer: https://forge.microej.com/ui/native/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-dma2d/
@@ -333,28 +345,30 @@ The :ref:`VGLite C module <section_ui_c_module_microui_vglite>` targets the NXP 
 
 The following table describes the version compatibility between the MicroEJ UI Packs and the C modules:
 
-+-----------------+---------------+------------------+------------------------------------------+
-| UI Pack         | VGLite        | MicroUI C Module | Comment                                  |
-+=================+===============+==================+==========================================+
-| 14.0.1          | 9.0.0         | 4.1.0            | VG Pack extensibility                    |
-+-----------------+---------------+------------------+------------------------------------------+
-| 14.0.1          | 8.0.1         | 4.0.1            | C modules harmonization                  |
-+-----------------+---------------+------------------+------------------------------------------+
-| 14.0.0          | 8.0.0         | 4.0.0            | Buffer refresh strategies                |
-+-----------------+---------------+------------------+------------------------------------------+
-| [13.7.0-13.7.2] | 7.2.0         | [3.1.0-3.1.1]    | Free image resources                     |
-+-----------------+---------------+------------------+------------------------------------------+
-| [13.5.1-13.6.2] | [6.0.0-7.1.0] | 3.0.0            | Multiple Graphics Context output formats |
-+-----------------+---------------+------------------+------------------------------------------+
-| [13.3.0-13.4.1] | [3.0.0-5.0.1] | [2.0.0-2.0.1]    |                                          |
-+-----------------+---------------+------------------+------------------------------------------+
++-----------------+---------------+--------------------------+------------------------------------------+
+| UI Pack         | VGLite        | MicroUI C Module         | Comment                                  |
++=================+===============+==========================+==========================================+
+| [14.1.1-14.2.0] | 10.0.0        | Identical to the UI Pack | Font extensibility                       |
++-----------------+---------------+--------------------------+------------------------------------------+
+| [14.0.1-14.0.2] | 9.0.0         | 4.1.0                    | VG Pack extensibility                    |
++-----------------+---------------+--------------------------+------------------------------------------+
+| [14.0.1-14.0.2] | 8.0.1         | 4.0.1                    | C modules harmonization                  |
++-----------------+---------------+--------------------------+------------------------------------------+
+| 14.0.0          | 8.0.0         | 4.0.0                    | Buffer refresh strategies                |
++-----------------+---------------+--------------------------+------------------------------------------+
+| [13.7.0-13.7.2] | 7.2.0         | [3.1.0-3.1.1]            | Free image resources                     |
++-----------------+---------------+--------------------------+------------------------------------------+
+| [13.5.1-13.6.2] | [6.0.0-7.1.0] | 3.0.0                    | Multiple Graphics Context output formats |
++-----------------+---------------+--------------------------+------------------------------------------+
+| [13.3.0-13.4.1] | [3.0.0-5.0.1] | [2.0.0-2.0.1]            |                                          |
++-----------------+---------------+--------------------------+------------------------------------------+
 
 The following table describes the version compatibility between the C module and the VGLite libraries (officially supported):
 
 +----------------+-----------------------------+
 | C Module Range | VGLite Libraries Range      |
 +================+=============================+
-| [8.0.0-9.0.0]  | 3.0.15_rev7                 |
+| [8.0.0-10.0.0] | 3.0.15_rev7                 |
 +----------------+-----------------------------+
 | [7.1.0-7.2.0]  | 3.0.15_rev4 and 3.0.15_rev7 |
 +----------------+-----------------------------+
@@ -371,25 +385,37 @@ The :ref:`NemaGFX C module <section_ui_c_module_microui_nemagfx>` targets the CP
 
 The following table describes the version compatibility between the MicroEJ UI Packs and the C modules:
 
-+-----------------+---------+------------------+------------------------------+
-| UI Pack         | NemaGFX | MicroUI C Module | Comment                      |
-+=================+=========+==================+==============================+
-| 14.0.1          | 3.0.0   | 4.1.0            | VG Pack extensibility        |
-+-----------------+---------+------------------+------------------------------+
-| 14.0.1          | 2.0.1   | 4.0.1            | C modules harmonization      |
-+-----------------+---------+------------------+------------------------------+
-| 14.0.0          | 2.0.0   | 4.0.0            | Buffer refresh strategies    |
-+-----------------+---------+------------------+------------------------------+
-| 13.7.2          | 1.2.0   | [3.1.0-3.1.1]    | Update of configuration file |
-+-----------------+---------+------------------+------------------------------+
-| 13.7.0          | 1.1.0   | [3.1.0-3.1.1]    | Free image resources         |
-+-----------------+---------+------------------+------------------------------+
-| [13.5.1-13.6.2] | 1.0.0   |                  |                              |
-+-----------------+---------+------------------+------------------------------+
++-----------------+---------+--------------------------+------------------------------+
+| UI Pack         | NemaGFX | MicroUI C Module         | Comment                      |
++=================+=========+==========================+==============================+
+| [14.1.1-14.2.0] | 4.0.0   | Identical to the UI Pack | Font extensibility           |
++-----------------+---------+--------------------------+------------------------------+
+| [14.0.1-14.0.2] | 3.0.0   | 4.1.0                    | VG Pack extensibility        |
++-----------------+---------+--------------------------+------------------------------+
+| [14.0.1-14.0.2] | 2.0.1   | 4.0.1                    | C modules harmonization      |
++-----------------+---------+--------------------------+------------------------------+
+| 14.0.0          | 2.0.0   | 4.0.0                    | Buffer refresh strategies    |
++-----------------+---------+--------------------------+------------------------------+
+| 13.7.2          | 1.2.0   | [3.1.0-3.1.1]            | Update of configuration file |
++-----------------+---------+--------------------------+------------------------------+
+| 13.7.0          | 1.1.0   | [3.1.0-3.1.1]            | Free image resources         |
++-----------------+---------+--------------------------+------------------------------+
+| [13.5.1-13.6.2] | 1.0.0   |                          |                              |
++-----------------+---------+--------------------------+------------------------------+
+
+The following table describes the version compatibility between the C module and the NemaGFX libraries (officially supported):
+
++----------------+-------------------------+
+| C Module Range | NemaGFX Libraries Range |
++================+=========================+
+| 4.0.0          | [1.4.8-1.4.11]          |
++----------------+-------------------------+
+| [1.0.0-3.0.0]  | 1.4.8                   |
++----------------+-------------------------+
 
 ..
-   | Copyright 2021-2024, MicroEJ Corp. Content in this space is free 
-   for read and redistribute. Except if otherwise stated, modification 
+   | Copyright 2021-2024, MicroEJ Corp. Content in this space is free
+   for read and redistribute. Except if otherwise stated, modification
    is subject to MicroEJ Corp prior approval.
-   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and
    copyrights are the property of their respective owners.

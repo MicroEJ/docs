@@ -37,9 +37,13 @@ Confirm it by measuring the time spent drawing vs. the time spent elsewhere betw
 Installation
 ------------
 
-Set the option ``ej.fp.display.flushVisualizer`` to ``true`` to enable the flush vizualizer.
+The Flush Visualizer option is available for the ``Display`` widget in
+`frontpanel widget module <https://forge.microej.com/artifactory/microej-developer-repository-release/ej/tool/frontpanel/widget/>`__
+version 4.+ for UI Pack 14.0.0 or later.
 
-This option is available for the ``Display`` widget in `frontpanel widget module <https://forge.microej.com/artifactory/microej-developer-repository-release/ej/tool/frontpanel/widget/>`__ version 4.+ for UI Pack 14.0.0 or later.
+Set the option ``ej.fp.display.flushVisualizer`` to ``true`` to enable the flush visualizer.
+
+Refer to the :ref:`application_options` documentation to set the option.
 
 Usage
 -----
@@ -49,6 +53,9 @@ Usage
 
 .. image:: images/MicroUIFlushVisualizerApplicationOutputFolder.png
 
+.. note::
+
+  Since MICROEJ SDK 6, the application output folder is located under the ``build/output/`` folder.
 
 Limitations
 -----------

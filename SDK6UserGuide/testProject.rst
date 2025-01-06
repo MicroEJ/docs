@@ -10,7 +10,7 @@ There are different types of tests:
 
 - Test on the Simulator
 - Test on a device
-- Test on a J2SE VM
+- Test on a Java SE VM
 
 Each type of test is detailed in the next sections.
 
@@ -57,6 +57,13 @@ Executing tests on the Simulator allows to check the behavior of the code in an 
 but without requiring the board.
 This solution is therefore less constraining and more portable than testing on the board.
 
+The target VEE Port must be declared in the projects dependencies, as explained in :ref:`sdk_6_select_veeport`.
+
+Declaring a VEE Port in project dependencies only applies to the current project. 
+This configuration is not fetched transitively by consumer projects.
+Especially when configuring the VEE Port to test a library project, 
+application projects depending on this library will not "see" this test VEE Port, 
+they must configure a VEE Port on their own and are free to use a different one.
 
 Configure the Testsuite
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -277,7 +284,7 @@ This requires to:
 - Have a VEE Port which implements the :ref:`BSP Connection <bsp_connection>`.
 - Have a device connected to your workstation both for programming the Executable and getting the output traces. 
   Consult your VEE Port specific documentation for setup.
-- Start the :ref:`tool_serial_to_socket` tool if the VEE Port does not redirect execution traces.
+- Start the :ref:`sdk6_tool_serial_to_socket` tool if the VEE Port does not redirect execution traces.
 
 The configuration is similar to the one used to execute a testsuite on the Simulator.
 
@@ -310,11 +317,13 @@ The configuration is similar to the one used to execute a testsuite on the Simul
                               // Enable the build of the Executable
                               "microej.testsuite.properties.deploy.bsp.microejscript" to "true",
                               "microej.testsuite.properties.microejtool.deploy.name" to "deployToolBSPRun",
-                              // Tell the testsuite engine that the VEE Port Run script redirects execution traces
-                              "microej.testsuite.properties.launch.test.trace.file" to "true",
+                              
                               // Configure the TCP/IP address and port if the VEE Port Run script does not redirect execution traces
                               "microej.testsuite.properties.testsuite.trace.ip" to "localhost",
-                              "microej.testsuite.properties.testsuite.trace.port" to "5555"
+                              "microej.testsuite.properties.testsuite.trace.port" to "5555",
+                              // Tell the testsuite engine that the VEE Port Run script redirects execution traces.
+                              // Uncomment this line and comment the 2 lines above if the VEE Port supports it.
+                              //"microej.testsuite.properties.launch.test.trace.file" to "true"
                            )
                      }
                   }
@@ -328,10 +337,10 @@ The properties are:
 - ``microej.testsuite.properties.microejtool.deploy.name``: name of the tool used to deploy the Executable to the board. It is required.
   It is generally set to ``deployToolBSPRun``.
 - ``microej.testsuite.properties.launch.test.trace.file``: enables the redirection of the traces in file. If the VEE Port does not have this capability, 
-  the :ref:`tool_serial_to_socket` tool must be used to redirect the traces to a socket.
-- ``microej.testsuite.properties.testsuite.trace.ip``: TCP/IP address used by the :ref:`tool_serial_to_socket` tool to redirect traces from the board.
+  the :ref:`sdk6_tool_serial_to_socket` tool must be used to redirect the traces to a socket.
+- ``microej.testsuite.properties.testsuite.trace.ip``: TCP/IP address used by the :ref:`sdk6_tool_serial_to_socket` tool to redirect traces from the board.
   This property is only required if the VEE Port does not redirect execution traces.
-- ``microej.testsuite.properties.testsuite.trace.port``: TCP/IP port used by the :ref:`tool_serial_to_socket` tool to redirect traces from the board.
+- ``microej.testsuite.properties.testsuite.trace.port``: TCP/IP port used by the :ref:`sdk6_tool_serial_to_socket` tool to redirect traces from the board.
   This property is only required if the VEE Port does not redirect execution traces.
 
 Any other property can be passed to the Test Engine by prefixing it by ``microej.testsuite.properties.``.
@@ -345,16 +354,16 @@ For example, to set the the Immortal heap size:
    )
 
 
-.. _sdk_6_testsuite_on_j2se:
+.. _sdk_6_testsuite_on_jse:
 
-Test on J2SE VM
----------------
+Test on Java SE VM
+------------------
 
-The SDK allows to run tests on a J2SE VM.
+The SDK allows to run tests on a Java SE VM.
 This can be useful, for example, when the usage of mock libraries like ``Mockito`` is 
 needed (this kind of library is not supported by the MicroEJ VM).
 
-There is nothing specific related to MicroEJ to run tests on a J2SE VM.
+There is nothing specific related to MicroEJ to run tests on a Java SE VM.
 Follow the `Gradle documentation <https://docs.gradle.org/current/userguide/jvm_test_suite_plugin.html>`__ to setup such tests.
 As an example, here is a typical configuration to execute the tests located in the ``src/test/java`` folder:
 
@@ -475,10 +484,10 @@ Therefore:
 
             sources {
                java {
-                  setSrcDirs(listOf("src/test/java"))
+                  setSrcDirs(listOf(sourceSets.getByName(SourceSet.TEST_SOURCE_SET_NAME).java))
                }
                resources {
-                  setSrcDirs(listOf("src/test/resources"))
+                  setSrcDirs(listOf(sourceSets.getByName(SourceSet.TEST_SOURCE_SET_NAME).resources))
                }
             }
 
@@ -553,10 +562,10 @@ Then you use the test filtering capabilities to configure which package to run i
       }
    }
 
-Mixing tests on the Simulator and on a J2SE VM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Mixing tests on the Simulator and on a Java SE VM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Defining tests on the Simulator and on a J2SE VM is only a matter of aggregating the configuration of each testsuite:
+Defining tests on the Simulator and on a Java SE VM is only a matter of aggregating the configuration of each testsuite:
 
 .. code-block::
 
@@ -567,7 +576,7 @@ Defining tests on the Simulator and on a J2SE VM is only a matter of aggregating
             ...
          }
 
-         val testOnJ2SE by registering(JvmTestSuite::class) {
+         val testOnJavaSE by registering(JvmTestSuite::class) {
             useJUnitJupiter()
 
             dependencies {
@@ -582,7 +591,7 @@ Defining tests on the Simulator and on a J2SE VM is only a matter of aggregating
 As explained in the previous section, it is recommended to use the built-in ``test`` testsuite for the tests on the Simulator
 since it avoids adding confguration to change the tests sources folder. 
 With this configuration, tests on the Simulator are located in the ``src/test/java`` folder, 
-and tests on a J2SE VM are located in the ``src/testOnJ2SE/java`` folder.
+and tests on a Java SE VM are located in the ``src/testOnJavaSe/java`` folder.
 
 .. _sdk_6_testsuite_engine_options:
 
@@ -709,11 +718,14 @@ Inject Application Options For a Specific Test
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In order to define an Application Option for a specific test, 
-it must set in a file with the same name as the generated test case file, 
-but with the ``.properties`` extension instead of the ``.java`` extension. 
+it must be set in a file with the same name as the test case file,
+but with the ``.properties`` extension instead of the ``.java`` extension.
 The file must be put in the ``src/test/resources`` folder and within the same package than the test file.
-For example, to inject a Application Option for the test class ``com.mycompany.MyTest``, 
-it must be set in a file named ``src/test/resources/com.mycompany/MyTest.properties``.
+
+For example, to inject an Application Option for the test class ``MyTest`` located in the ``com.mycompany`` package, 
+a ``MyTest.properties`` file must be created. Its path must be: ``src/test/resources/com/mycompany/MyTest.properties``.
+
+Application Options defined in this file do not require the ``microej.testsuite.properties.`` prefix.
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 

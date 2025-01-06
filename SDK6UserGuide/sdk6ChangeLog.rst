@@ -3,6 +3,131 @@
 Changelog
 ---------
 
+.. _changelog-1.0.0:
+
+[1.0.0] - 2024-12-18
+~~~~~~~~~~~~~~~~~~~~~
+
+Added
+"""""
+
+- Allow to define the Artifact Checker root directory.
+
+Changed
+"""""""
+
+- Improve Gradle version error message to explain how to solve the issue.
+- Improve SDK EULA acceptation error message.
+- Reorganize Virtual Device structure to reduce the number of files at the root folder.
+
+Fixed
+"""""
+
+- Fix compilation error during VEE Port build when fetching JDT Core library from Maven Central.
+- Exclude ``.gitkeep`` files from Java sources.
+- Fix Application Wrapper class generation when Main class has no package.
+- Do not force custom tool tasks to set an Application Entry Point.
+- Include local JAR dependencies in classpaths.
+- Fix error when building a WPK with a jar in a local repository.
+- Support Addon Libraries in Runtime Environments.
+- Wrong classpath when running an Application or a testsuite on device.
+
+.. _changelog-0.20.0:
+
+[0.20.0] - 2024-10-23
+~~~~~~~~~~~~~~~~~~~~~
+
+Added
+"""""
+
+- Allow to build a Feature from a WPK and a Kernel.
+- Allow to filter the BSP files included in a published VEE Port.
+- Check that the MicroEJ Runtime Library is not in the BSP before publishing a VEE Port.
+- Support the import of a VEE Port as an included build.
+
+Changed
+"""""""
+
+- Fail with clear error message when trying to build an Executable and provided Runtime API conflicts
+  with other dependency.
+- Hide ``checkModule`` internal task.
+- Use the original BSP when depending on a local VEE Port project in BSP Full Connection mode.
+- Set Java source to 1.8 to be compatible with new IDEs versions, but keep 1.7 as the target version.
+- Upgrade Gradle minimal supported version to ``8.6``.
+- Enable MicroEJ Java H module by default when building a VEE Port.
+- Deploy Application object files in BSP only if their content changed.
+- Prevent flaky tests from causing build failure.
+- Use "Runtime Environment" term instead of "Runtime API".
+- Use ``Java SE`` term instead of ``J2SE``.
+- Use version 2.2.0 of the microej-licenses library to check with the new SDK EULA 3.1-C.
+- Do not produce Virtual Device by default during Application build.
+
+Fixed
+"""""
+
+- Wrong path used for custom test properties files.
+- Fix VEE Port build failure when using Architecture with deployment hook for Keil.
+- Use the generated kernel.kf file when running an Application on a Multi-Sandbox VEE Port with the simulator.
+- Generate again the kernel.kf file when the project version has changed.
+- Failure when calling the local deploy tool because of missing generated KF file in the classpath.
+- Setting ``com.microej.runtime.capability=multi`` does generate a Multi-Sandbox VEE Port when using an Architecture 8.1
+  or higher.
+
+.. _changelog-0.19.0:
+
+[0.19.0] - 2024-09-13
+~~~~~~~~~~~~~~~~~~~~~
+
+Added
+"""""
+
+- Allow to define properties of a testsuite project in the `local.properties` file.
+- Display clear error message when trying to build a Feature with a Virtual Device built with a Mono-Sandbox VEE Port.
+
+Changed
+"""""""
+
+- Application options must now add ``microej.option.*`` prefix to be defined as System properties.
+- Load VEE Port MicroUI configuration files from the ``extensions/microui`` folder instead of the ``microui`` folder. 
+
+Fixed
+"""""
+
+- Project not configured to build with Java 1.7 when runtimeClasspath configuration has already been resolved.
+- Allow to produce feature files during the build in a multi-project with several feature projects.
+- Use the provided Runtime API jar if it contains KF to compile the Wrapper class instead of fetching KF to avoid
+  dependency resolution error with Offline repositories.
+- Fail with readable error message when building a Runtime API with no Kernel API declared.
+- VG Pack 1.6.0+ cannot be used for a VEE Port because it provides JAR artifacts on its default configuration (besides
+  the Pack RIP).
+- Use the Runtime API provided by the Kernel to build an augmented Virtual Device.
+
+.. _changelog-0.18.0:
+
+[0.18.0] - 2024-08-22
+~~~~~~~~~~~~~~~~~~~~~
+
+Added
+"""""
+
+- Allow to build a VEE Port.
+- Retry tests when they fail to avoid flaky tests (mainly due to license check) to fail the whole build.
+- Support build incremental when using a published VEE Port with Full BSP Connection.
+- Add the plugin ``com.microej.gradle.runtime-api`` to build a Runtime API.
+- Allow to enable/disable the publication of the Ivy descriptor.
+- Allow to run dependent applications on simulator (declared with ``microejApplication``).
+
+Fixed
+"""""
+
+- Fix publication to add dependencies defined with MicroEJ configurations to the ``.module`` and ``.pom`` files.
+- Comment the ``stop`` method of the generated Wrapper class to prevent potential Sonar issue.
+- Fix MicroEJ Test Engine compatibility with Gradle 8.6 and higher.
+- Allow to run a Virtual Device via its launchers on a JDK version higher than 11.
+- Fix build failure on multi-project with several applications depending on a kernel as project dependency.
+- Some projects are not configured to be built with Java 1.7 when imported in Eclipse.
+- Fix feature not found when launching a Virtual Device with installed applications.
+
 .. _changelog-0.17.0:
 
 [0.17.0] - 2024-05-30

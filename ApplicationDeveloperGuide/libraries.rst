@@ -42,6 +42,7 @@ To consult its libraries APIs documentation, please visit `<https://developer.mi
    dataSerializationLibraries
    networking
    bluetooth
+   audio
    javaTime
    eventQueue
    js/index

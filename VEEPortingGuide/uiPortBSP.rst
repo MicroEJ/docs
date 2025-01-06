@@ -35,7 +35,7 @@ Before all, install the MicroUI C Module:
 
 1. Find the correct version of the C module according to the UI Pack version; see :ref:`section_ui_releasenotes_cmodule`.
 2. Unzip it in the BSP project.
-3. Add the mandatory files to the list of the BSP project's compiled files: ``LLDW_PAINTER_impl.c``, ``LLUI_PAINTER_impl.c``, ``ui_drawing_stub.c``, ``ui_drawing.c`` and ``ui_image_drawing.c``.
+3. Add the mandatory files to the list of the BSP project's compiled files: ``ui_image_drawing.c``, ``ui_drawing.c``, ``ui_rect_util.c``, ``LLUI_PAINTER_impl.c``, ``ui_display_brs_single.c``, ``LLDW_PAINTER_impl.c``, ``ui_display_brs.c``, ``ui_drawing_stub.c``, ``ui_display_brs_legacy.c`` and ``ui_display_brs_predraw.c``.
 4. Add the optional files in the BSP project (if their associated feature is used/needed): 
  
    - ``LLUI_DISPLAY_HEAP_impl.c``: to use another image heap allocator,
@@ -97,6 +97,12 @@ According to the LCD constraints (see :ref:`ui_port_conf`), some additional LLAP
 - ``LLUI_DISPLAY_IMPL_isDoubleBuffered``: the default implementation returns always ``true``; only useful as information for the application.
 - ``LLUI_DISPLAY_IMPL_isColor``: the default implementation always returns ``true`` when the BPP is higher than 8; only useful as information for the application.
 - ``LLUI_DISPLAY_IMPL_getNumberOfColors``: the default implementation returns always ``1 << BPP``; only useful as information for the application.
+
+Display: Buffer Configuration
+=============================
+
+This configuration consists in declaring the available number of buffers where MicroUI can draw (back buffer) and the strategy to apply to update these buffers after a flush.
+Read and update the configuration file ``ui_display_brs_configuration.h``; more details in the chapter :ref:`section_display`.
 
 Display: Optional Features
 ==========================

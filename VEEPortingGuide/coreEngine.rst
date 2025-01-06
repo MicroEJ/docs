@@ -8,6 +8,11 @@ Core Engine
 The Core Engine is the core component of the Architecture.
 It executes at runtime the Application code.
 
+.. note::
+
+   In the following explanations, the term `task` refers to native tasks scheduled by the underlying OS or RTOS, 
+   while `thread` refers to MicroEJ threads scheduled by the Core Engine.
+
 Block Diagram
 =============
 
@@ -50,11 +55,25 @@ Architecture
 The Core Engine and its components have been compiled for one
 specific CPU architecture and for use with a specific C compiler.
 
-The Core Engine implements a :ref:`green thread architecture <runtime_gt>`. It runs in a single RTOS task. 
+The Core Engine implements a :ref:`green thread architecture <runtime_gt>`. It runs in a single task. 
 
-In the following explanations the term "RTOS
-task" refers to the tasks scheduled by the underlying OS; and the term
-"MicroEJ thread" refers to the Java threads scheduled by the Core Engine.
+Green threads are threads that are internally managed by the Core Engine
+instead of being natively managed by the underlying
+OS/RTOS scheduler. 
+The Core Engine defines a multi-threaded environment without relying on
+any native OS capabilities.
+
+Therefore, the whole Java world runs in one single task, within
+which the Core Engine re-creates a layer of (green) threads.
+One immediate advantage is that the Java-world CPU consumption is fully
+controlled by the task it is running in, allowing embedded
+engineers to easily arbitrate between the different parts of their
+application. In particular in an open-to-third-parties framework, the
+maximum CPU time given to the Java world is fully under control at no
+risk, whatever the number and/or the activities of the Java threads.
+
+The next illustration shows 4 tasks, with the last one running the Core Engine with 2 threads. 
+When the last task is scheduled by the underlying OS, the Core Engine executes and schedules the threads.
 
 .. figure:: images/mjvm_gt.png
    :alt: A Green Threads Architecture Example
@@ -64,7 +83,7 @@ task" refers to the tasks scheduled by the underlying OS; and the term
 
 The activity of the Core Engine is defined by the Application. When
 the Application is blocked (i.e., when all the MicroEJ threads
-sleep), the RTOS task running the Core Engine sleeps.
+sleep), the task running the Core Engine sleeps.
 
 .. _core_engine_capabilities:
 
@@ -87,9 +106,9 @@ All the Core Engine capabilities may not be available on all
 architectures. Refer to section :ref:`appendix_matrixcapabilities`
 for more details.
 
-To select the Core Engine capability, create the property file ``mjvm/mjvm.properties``
-in the Platform configuration project and define the property ``com.microej.runtime.capability`` 
-with one of the following values:
+To select the Core Engine capability, define the property ``com.microej.runtime.capability``
+in the ``configuration.properties`` file (SDK 6) or in the ``mjvm/mjvm.properties`` file (SDK 5) 
+of the VEE Port project, with one of the following values:
 
 - ``mono`` for Mono-Sandbox (default value)
 
@@ -107,7 +126,7 @@ Implementation
 
 The Core Engine implements the :ref:`[SNI] specification <runtime_sni>`. 
 It is created and initialized with the C function ``SNI_createVM``.
-Then it is started and executed in the current RTOS task by calling ``SNI_startVM``.
+Then it is started and executed in the current task by calling ``SNI_startVM``.
 The function ``SNI_startVM`` returns when the Application exits or if
 an error occurs (see section :ref:`core_engine_error_codes`).
 The function ``SNI_destroyVM`` handles the Core Engine termination 
@@ -126,7 +145,7 @@ Initialization
 --------------
 
 The Low Level Core Engine API deals with two objects: the
-structure that represents the Core Engine, and the RTOS task that runs the
+structure that represents the Core Engine, and the task that runs the
 Core Engine. Two callbacks allow engineers to interact with the
 initialization of both objects:
 
@@ -134,7 +153,7 @@ initialization of both objects:
    the Core Engine is initialized.
 
 -  ``LLMJVM_IMPL_vmTaskStarted``: Called when the Core Engine starts its
-   execution. This function is called within the RTOS task of the
+   execution. This function is called within the task of the
    Core Engine.
 
 Scheduling
@@ -179,9 +198,9 @@ Idle Mode
 ---------
 
 When the Core Engine has no activity to execute, it calls the
-``LLMJVM_IMPL_idleVM`` function, which is assumed to put the Core Engine RTOS task
+``LLMJVM_IMPL_idleVM`` function, which is assumed to put the Core Engine task
 into a sleep state. ``LLMJVM_IMPL_wakeupVM`` is called
-to wake up the Core Engine RTOS task. When the Core Engine RTOS task really starts to
+to wake up the Core Engine task. When the Core Engine task really starts to
 execute again, it calls the ``LLMJVM_IMPL_ackWakeup`` function to
 acknowledge the restart of its activity.
 
@@ -316,7 +335,7 @@ Example
 
 The following example shows how to create and launch the Core
 Engine from the C world. This function (``microej_main``) should be called
-from a dedicated RTOS task.
+from a dedicated task.
 
 .. code:: c
 
@@ -413,7 +432,12 @@ To restart the application, call again the ``SNI_startVM`` function (see the fol
 
    Please note that while the Core Engine supports restart, :ref:`MicroUI <section_microui>` does not. 
    Attempting to restart the Application on a VEE Port with UI support may result in undefined behavior.
-     
+
+
+.. note::
+
+   Please note that ``SNI_createVM`` and ``SNI_destroyVM`` should only be called once. 
+   When restarting the Core Engine, don't call ``SNI_createVM`` or ``SNI_destroyVM`` before calling ``SNI_startVM`` again.
 
 .. _vm_dump:
 
@@ -510,7 +534,7 @@ This is an example of a dump:
       --------------------------------------------------------------------------------
       ================================================================================
 
-See :ref:`stack_trace_reader` for additional info related to working with VM dumps.
+See Stack Trace Reader documentation for :ref:`SDK 6 <sdk6.section.stacktrace.reader.tool>` or :ref:`SDK 5 <stack_trace_reader>` for additional info related to working with VM dumps.
 
 .. _vm_dump_fault_handler:
 
@@ -547,38 +571,46 @@ Requirements:
 Check Internal Structure Integrity
 ----------------------------------
 
-The internal Core Engine function called ``LLMJVM_checkIntegrity`` checks the internal structure integrity of the MicroJvm virtual machine and returns its checksum.
+The internal Core Engine function called ``LLMJVM_checkIntegrity`` checks the internal structure integrity of the Core Engine and returns its checksum.
 
 - If an integrity error is detected, the ``LLMJVM_on_CheckIntegrity_error`` hook is called and this method returns ``0``.
 - If no integrity error is detected, a non-zero checksum is returned.
 
-This function must only be called from the MicroJvm virtual machine thread context and only from a native function or callback.
-Calling this function multiple times in a native function must always produce the same checksum.
-If the checksums returned are different, a corruption must have occurred.
+This function must only be called from the Core Engine thread context and only from a native function or callback.
+Calling this function multiple times in a native function should always produce the same checksum.
+If the returned checksums are different, a corruption must have occurred.
 
-Please note that returning a non-zero checksum does not mean the MicroJvm virtual machine data has not been corrupted,
-as it is not possible for the MicroJvm virtual machine to detect the complete memory integrity.
+Please note that returning a non-zero checksum does not mean the Core Engine data has not been corrupted,
+as it is not possible for the Core Engine to detect the complete memory integrity.
 
-MicroJvm virtual machine internal structures allowed to be modified by a native function are not taken into account for the checksum computation.
-The internal structures allowed are:
+The internal structures of the Core Engine that can be altered legitimately by a native function do not impact the checksum calculation. 
+The following internal structures may be modified without affecting the checksum:
 
 - basetype fields in Java objects or content of Java arrays of base type,
-- internal structures modified by a ``LLMJVM`` function call (e.g. set a pending Java exception, suspend or resume the Java thread, register a resource, ...).
+- internal structures modified by a ``LLMJVM`` function call (e.g., set a pending Java exception, suspend or resume the Java thread, register a resource, ...).
 
-This function affects performance and should only be used for debug purpose.
+This function affects the performances and should only be used for debug purpose.
 A typical use of this API is to verify that a native implementation does not corrupt the internal structures:
 
-.. code-block:: java
+.. code-block:: c
 
-   void Java_com_mycompany_MyClass_myNativeFunction(void) {
-   		int32_t crcBefore = LLMJVM_checkIntegrity();
-   		myNativeFunctionDo();
+    #include <stdio.h>
+    #include "LLMJVM.h"
+    
+    void Java_com_mycompany_MyClass_myNativeFunction(void) {
+        int32_t crcBefore = LLMJVM_checkIntegrity();
+        myNativeFunctionDo();
         int32_t crcAfter = LLMJVM_checkIntegrity();
         if(crcBefore != crcAfter){
-        	// Corrupted MicroJVM virtual machine internal structures
-        	while(1);
+            // Corrupted Core Engine internal structures
+            while(1);
         }
-   }
+    }
+    
+    // Hook called by the Core Engine when an integrity error is detected
+    void LLMJVM_on_CheckIntegrity_error(uint32_t errorCode, void* errorAddress) {
+        printf("Integrity error detected at address %p (error code: %d)\n", errorAddress, errorCode);
+    }
 
 
 Generic Output

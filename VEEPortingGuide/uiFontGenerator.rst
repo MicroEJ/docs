@@ -8,15 +8,15 @@ Font Generator
 Principle
 =========
 
-The Font Generator module is an off-board tool that generates fonts ready to be displayed without the need for additional runtime memory.
-It outputs a raw file for each converted font.
+The Font Generator module is an off-board tool dedicated to the :ref:`internal font format <section_font_internal_format>`.
+It generates binary files ready to be displayed without the need for additional runtime memory.
 
 Functional Description
 ======================
 
-.. figure:: images/static-font-gen2.*
+.. figure:: images/static-font-gen3.*
    :alt: Font Generator Principle
-   :width: 450px
+   :scale: 70%
    :align: center
 
    Font Generator Principle
@@ -27,25 +27,24 @@ Process overview:
 
 2. The Font Generator outputs a raw file for each font to convert.
 
-3. The raw files are embedded as (hidden) resources within the MicroEJ
-   Application. The raw file's data is linked into the FLASH memory.
+3. The raw files are embedded as (hidden) resources within the application. The raw file's data is linked into the FLASH memory.
 
-4. When the application draws text on the display (or on an
-   image), the font data comes directly from the FLASH memory (the font
+4. When the application draws text on the display, the font data comes directly from the FLASH memory (the font
    data is not copied to the RAM memory first).
 
 
 Pixel Transparency
 ==================
 
-As mentioned above, each pixel of each character in an ``.ejf`` file has one of 256 different gray-scale values.
+As mentioned above, each pixel of each character in an ``.fnt`` or ``.ejf`` file has one of 256 different gray-scale values.
 However RAW files can have 1, 2, 4 or 8 bits-per-pixel (respectively 2, 4, 16 or 256 gray-scale values).
 The required pixel depth is defined in the configuration file (see next chapter).
 The Font Generator compresses the input pixels to the required depth.
 
-The following tables illustrates the conversion "grayscale to transparency level".
-The grayscale value '0x00' is black whereas value '0xff' is white.
-The transparency level '0x0' is fully transparent whereas level '0x1' (bpp == 1), '0x3' (bpp == 2) or '0xf' (bpp == 4) is fully opaque.
+The following tables illustrate the conversion "grayscale to transparency level" (the blacker the pixel, the more opaque the encoded opacity):
+
+* The grayscale value ``0x00`` is black whereas the value ``0xff`` is white.
+* The transparency level ``0x0`` is fully transparent whereas the levels ``0x1`` (bpp == 1), ``0x3`` (bpp == 2) and ``0xf`` (bpp == 4) are fully opaque.
 
 .. table:: Font 1-BPP RAW Conversion
 
@@ -152,7 +151,7 @@ External Resources
 ==================
 
 The Font Generator manages two configuration files when the External Resources Loader is enabled.
-The first configuration file lists the fonts which will be stored as internal resources with the MicroEJ Application.
+The first configuration file lists the fonts which will be stored as internal resources within the application.
 The second file lists the fonts the Font Generator must convert and store in the External Resource Loader output directory.
 It is the BSP's responsibility to load the converted fonts into an external memory.
 
@@ -165,8 +164,8 @@ Installation
 The Font Generator module is an additional tool for MicroUI library.
 When the MicroUI module is installed, install this module in order to be able to embed some additional fonts with the application.
 
-If the module is not installed, the platform user will not be able to embed a new font with his/her application.
-He/she will be only able to use the system fonts specified during the MicroUI initialization step (see :ref:`section_static_init`).
+If the module is not installed, the application will not be able to embed a new font.
+The application will be only able to use the system fonts specified during the MicroUI initialization step (see :ref:`section_static_init`).
 
 In the VEE Port configuration file, check :guilabel:`UI` > :guilabel:`Font Generator` to
 install the Font Generator module.
@@ -184,8 +183,8 @@ Refer to the chapter :ref:`application_options` (:guilabel:`Libraries` >
 configuration file.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
-   for read and redistribute. Except if otherwise stated, modification 
+   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free
+   for read and redistribute. Except if otherwise stated, modification
    is subject to MicroEJ Corp prior approval.
-   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and
    copyrights are the property of their respective owners.

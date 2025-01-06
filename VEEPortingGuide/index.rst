@@ -9,7 +9,7 @@ VEE Porting Guide
    introduction
    architecture
    pack
-   platformCreation
+   bspConnection
    veePortQualification
    coreEngine
    advanceTrace
@@ -22,6 +22,7 @@ VEE Porting Guide
    vg
    net
    bluetooth
+   audio
    packEventQueue
    fs
    hal

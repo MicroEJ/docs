@@ -142,7 +142,7 @@ Custom Format
 A MicroUI BufferedImage can have a *custom* format once the Multiple Formats Implementation is selected.
 However, third-party support is required to render this kind of image.
 
-.. hint:: In addition to the ``#define LLUI_GC_SUPPORTED_FORMATS``, the ``#define LLUI_IMAGE_CUSTOM_FORMATS`` must be set. This is the same ``define`` used to render custom RAW images: see :ref:`section_buffered_image_drawer_custom`.
+.. hint:: In addition to the ``#define LLUI_GC_SUPPORTED_FORMATS``, the ``#define LLUI_IMAGE_CUSTOM_FORMATS`` must be set. This is the same preprocessor macro used to render custom RAW images: see :ref:`section_buffered_image_drawer_custom`.
 
 .. _section_buffered_image_c_creation:
 
@@ -295,7 +295,7 @@ To draw into a buffered image with a format different than the display format, t
 
 For the images whose format is not the display format (index ``1`` and ``2``), the C module provides weak implementations that do nothing.
 
-The following graph illustrates the drawing of a shape (not an image, see :ref:`section_buffered_image_c_drawit`):
+The following diagram illustrates the drawing of a shape (not an image, see :ref:`section_buffered_image_c_drawit`):
 
 .. graphviz:: :align: center
     
@@ -410,7 +410,7 @@ The drawer is identified by the index stored in the ``MICROUI_GraphicsContext`` 
    #define UI_DRAWING_DEFAULT_drawLine UI_DRAWING_drawLine_0
 
 The index ``0`` is reserved for drawing into the image whose format is the display format (see above).
-The function name is set thanks to a ``define`` to reuse the same code between Single and Multiple Formats Implementations.
+The function name is set thanks to a preprocessor macro to reuse the same code between Single and Multiple Formats Implementations.
 
 The behavior after this function is similar to :ref:`section_drawings_cco_custom`.
 
@@ -418,7 +418,7 @@ The behavior after this function is similar to :ref:`section_drawings_cco_custom
 
 .. code-block:: c
   
-   // use the preprocessor 'weak'
+   // use the compiler's 'weak' attribute
   __weak DRAWING_Status UI_DRAWING_drawLine_1(MICROUI_GraphicsContext* gc, jint startX, jint startY, jint endX, jint endY){
       // Default behavior: call the stub implementation
     return UI_DRAWING_STUB_drawLine(gc, startX, startY, endX, endY);
@@ -500,8 +500,8 @@ Draw the Image: Multiple Formats Implementation
 Unlike the Single Format Implementation, the destination may be another format than the display format.
 Consequently, the drawer must check the image format **and** the destination format.
 
-The following graph illustrates the drawing of an image (draw, rotate, or scale) in another image or display back buffer (to draw a shape, see :ref:`section_buffered_image_c_drawinto`).
-This graph gathers both :ref:`draw in a custom image <section_buffered_image_c_drawinto>` and :ref:`render a custom image <section_buffered_image_drawer_custom>`.
+The following diagram illustrates the drawing of an image (draw, rotate, or scale) in another image or display back buffer (to draw a shape, see :ref:`section_buffered_image_c_drawinto`).
+This diagram gathers both :ref:`draw in a custom image <section_buffered_image_c_drawinto>` and :ref:`render a custom image <section_buffered_image_drawer_custom>`.
 
 .. graphviz:: :align: center
 
@@ -529,11 +529,11 @@ This graph gathers both :ref:`draw in a custom image <section_buffered_image_c_d
 
     // --- SIMPLE FLOW ELEMENTS -- //
 
-    mui [label="[MicroUI]\nPainter.drawXXX();"] 
-    LLUI_h [label="[LLUI_PAINTER_impl.h]\nLLUI_PAINTER_IMPL_drawXXX();"]
-    LLUI_c [label="[LLUI_PAINTER_impl.c]\nLLUI_PAINTER_IMPL_drawXXX();"]
-    UID_h [label="[ui_drawing.h]\nUI_DRAWING_drawXXX();"]
-    UID_soft_h [label="[ui_drawing_soft.h]\nUI_DRAWING_SOFT_drawXXX();"]
+    mui [label="[MicroUI]\nPainter.drawImage();"] 
+    LLUI_h [label="[LLUI_PAINTER_impl.h]\nLLUI_PAINTER_IMPL_drawImage();"]
+    LLUI_c [label="[LLUI_PAINTER_impl.c]\nLLUI_PAINTER_IMPL_drawImage();"]
+    UID_h [label="[ui_drawing.h]\nUI_DRAWING_drawImage();"]
+    UID_soft_h [label="[ui_drawing_soft.h]\nUI_DRAWING_SOFT_drawImage();"]
     UID_soft_c [label="[Graphics Engine]"]
 
     // --- GPU FLOW ELEMENTS -- //
@@ -545,26 +545,26 @@ This graph gathers both :ref:`draw in a custom image <section_buffered_image_c_d
 
     // --- MULTIPLE GC FLOW ELEMENTS -- //
 
-    UID_c [label="[ui_drawing.c]\nUI_DRAWING_drawXXX();"]
+    UID_c [label="[ui_drawing.c]\nUI_DRAWING_drawImage();"]
     UID_table [label="GC format?"]
-    UID_c0 [label="[ui_drawing.c]\ntable[0] = UI_DRAWING_drawXXX_0()"]
-    UID_c1 [label="[ui_drawing.c]\ntable[1] = UI_DRAWING_drawXXX_1()"]
-    UID_weak_0_c [label="[ui_drawing.c]\nweak UI_DRAWING_drawXXX_0();"]
-    UID_gpu_0_c [label="[ui_drawing_gpu.c]\nUI_DRAWING_drawXXX_0();"]
+    UID_c0 [label="[ui_drawing.c]\ntable[0] = UI_DRAWING_drawImage_0()"]
+    UID_c1 [label="[ui_drawing.c]\ntable[1] = UI_DRAWING_drawImage_1()"]
+    UID_weak_0_c [label="[ui_drawing.c]\nweak UI_DRAWING_drawImage_0();"]
+    UID_gpu_0_c [label="[ui_drawing_gpu.c]\nUI_DRAWING_drawImage_0();"]
     UID_cond_1 [label="implemented?"]
-    UID_weak_1_c [label="[ui_drawing.c]\nweak UI_DRAWING_drawXXX_1();"]
-    UID_1_c [label="[ui_drawing_yyy.c]\nUI_DRAWING_drawXXX_1();"]
+    UID_weak_1_c [label="[ui_drawing.c]\nweak UI_DRAWING_drawImage_1();"]
+    UID_1_c [label="[ui_drawing_yyy.c]\nUI_DRAWING_drawImage_1();"]
     UID_1_d [label="[custom drawing]"]
     UID_1_i [label="image compatible?"]
 
-    UID_stub_h [label="[ui_drawing_stub.h]\nUI_DRAWING_STUB_drawXXX();"]
-    UID_stub_c [label="[ui_drawing_stub.c]\nUI_DRAWING_STUB_drawXXX();"]
+    UID_stub_h [label="[ui_drawing_stub.h]\nUI_DRAWING_STUB_drawImage();"]
+    UID_stub_c [label="[ui_drawing_stub.c]\nUI_DRAWING_STUB_drawImage();"]
     stub [label="-"]
 
     // --- MULTIPLE IMAGES FLOW ELEMENTS -- //
 
-    UII_h [label="[ui_image_drawing.h]\nUI_IMAGE_DRAWING_drawXXX();"]
-    UII_c [label="[ui_image_drawing.c]\nUI_IMAGE_DRAWING_drawXXX();"]
+    UII_h [label="[ui_image_drawing.h]\nUI_IMAGE_DRAWING_draw();"]
+    UII_c [label="[ui_image_drawing.c]\nUI_IMAGE_DRAWING_draw();"]
     UII_cond [label="standard image?"]
     UII_gc [label="GC format?"]
     UIIx_c [label="[ui_image_drawing.c]\ntable[x] = UI_IMAGE_DRAWING_draw_customX()"]
@@ -627,7 +627,7 @@ This graph gathers both :ref:`draw in a custom image <section_buffered_image_c_d
 
 |
 
-The following description considers that both previous graphs (:ref:`draw in a custom image <section_buffered_image_c_drawinto>` and :ref:`render a custom image <section_buffered_image_drawer_custom>`) have been read and understood.
+The following description considers that both previous diagrams (:ref:`draw in a custom image <section_buffered_image_c_drawinto>` and :ref:`render a custom image <section_buffered_image_drawer_custom>`) have been read and understood.
 It only describes the *final* use-case: draw a custom image in an unknown destination (unknown destination format):
 
 **UI_IMAGE_DRAWING_draw_custom4** (to write in the BSP)
@@ -766,7 +766,7 @@ Once created, the ``BufferedImageProvider`` implementation must be registered as
 Draw into the Image: Non-Display Format
 ---------------------------------------
 
-The following graph illustrates the drawing of a shape (not an image, see :ref:`section_buffered_image_fp_drawit`):
+The following diagram illustrates the drawing of a shape (not an image, see :ref:`section_buffered_image_fp_drawit`):
 
 .. graphviz:: :align: center
 
@@ -931,8 +931,8 @@ It is also possible to declare it programmatically (see where a drawer is regist
 Draw the Image: Multiple Formats Implementation
 -----------------------------------------------
 
-The following graph illustrates the drawing of an image (draw, rotate, or scale) in another image or display back buffer (to draw a shape, see :ref:`section_buffered_image_fp_drawinto`).
-This graph gathers both graphs :ref:`draw in a custom image <section_buffered_image_fp_drawinto>` and :ref:`render a custom image <section_buffered_image_drawer_custom_fp>`.
+The following diagram illustrates the drawing of an image (draw, rotate, or scale) in another image or display back buffer (to draw a shape, see :ref:`section_buffered_image_fp_drawinto`).
+This diagram gathers both diagrams :ref:`draw in a custom image <section_buffered_image_fp_drawinto>` and :ref:`render a custom image <section_buffered_image_drawer_custom_fp>`.
 
 .. graphviz:: :align: center
 
@@ -960,10 +960,10 @@ This graph gathers both graphs :ref:`draw in a custom image <section_buffered_im
 
     // --- SIMPLE FLOW ELEMENTS -- //
 
-    mui [label="[MicroUI]\nPainter.drawXXX();"] 
-    LLUI_c [label="[FrontPanel]\nLLUIPainter.drawXXX();"]
-    UID_h [label="[FrontPanel]\ngetUIDrawer().drawXXX();"]
-    UID_soft_h [label="[FrontPanel]\ngetUIDrawerSoftware()\n.drawXXX();"]
+    mui [label="[MicroUI]\nPainter.drawImage();"] 
+    LLUI_c [label="[FrontPanel]\nLLUIPainter.drawImage();"]
+    UID_h [label="[FrontPanel]\ngetUIDrawer().drawImage();"]
+    UID_soft_h [label="[FrontPanel]\ngetUIDrawerSoftware()\n.drawImage();"]
     UID_soft_c [label="[Graphics Engine]"]
 
     // --- GPU FLOW ELEMENTS -- //
@@ -975,8 +975,8 @@ This graph gathers both graphs :ref:`draw in a custom image <section_buffered_im
     // --- MULTIPLE GC FLOW ELEMENTS -- //
 
     UID_table [label="GC format?"]
-    UID_c0 [label="[FrontPanel]\nDisplayDrawer.drawXXX()"]
-    UID_gpu_0_c [label="[VEE Port FP]\nDisplayDrawerExtension\n.drawXXX();"]
+    UID_c0 [label="[FrontPanel]\nDisplayDrawer.drawImage()"]
+    UID_gpu_0_c [label="[VEE Port FP]\nDisplayDrawerExtension\n.drawImage();"]
     UID_cond_1 [label="available drawer and\nmethod implemented?"]
 
     UID_1_d [label="[custom drawing]"]
@@ -987,7 +987,7 @@ This graph gathers both graphs :ref:`draw in a custom image <section_buffered_im
 
     // --- MULTIPLE IMAGES FLOW ELEMENTS -- //
 
-    UII_h [label="[FrontPanel]\ngetUIImageDrawer()\n.drawXXX();"]
+    UII_h [label="[FrontPanel]\ngetUIImageDrawer()\n.drawImage();"]
     UII_cond [label="standard image?"]
     UII_gc [label="GC format?"]
     UIIx_cond [label="available image drawer\nand method implemented?"]
@@ -995,7 +995,7 @@ This graph gathers both graphs :ref:`draw in a custom image <section_buffered_im
     UIIx_gc [label="gc compatible?"]
     UIIx_shape [label="can draw shapes?"]
 
-    UID_h2 [label="[FrontPanel]\ngetUIDrawer().drawXXX();\n@see Multiple Output Formats;"]
+    UID_h2 [label="[FrontPanel]\ngetUIDrawer().drawImage();\n@see Multiple Output Formats;"]
 
     // --- FLOW -- //
 

@@ -8,13 +8,13 @@ These tools are either command line tools or Eclipse IDE plugins.
 
 **Command line tools**
 
-Command line tools can be executed using the gradle task ``execTool``.
+Command line tools can be executed using the Gradle task ``execTool``.
 
 The format of the task is as follow:
 
 ::
 
-   ./gradlew execTool --name=TOOL_NAME --toolProperty="PROPERTY=VALUE" --toolProperty="PROPERTY=VALUE" ...
+   ./gradlew execTool --name=TOOL_NAME --toolProperty=PROPERTY="VALUE" --toolProperty=PROPERTY="VALUE" ...
 
 The parameter required ``--name`` is used to describe the name of the tool to execute.
 The optional parameters ``--toolProperty`` are used to configure the tool's options.
@@ -61,6 +61,7 @@ The following sections describe the IDE tools and their options:
    heapAnalyzer
    ../ApplicationDeveloperGuide/UI/MicroUI/fontDesigner
    localDeployTool
+   serialToSocketTransmitter
    nullAnalysis
 
 ..

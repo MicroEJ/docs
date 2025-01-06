@@ -26,7 +26,6 @@ This plugin adds the following tasks to your project:
 - tasks of the `Gradle Java plugin <https://docs.gradle.org/current/userguide/java_plugin.html>`__
 - :ref:`sdk6_module_natures.tasks.adp`
 - :ref:`sdk6_module_natures.tasks.loadVee`
-- :ref:`sdk6_module_natures.tasks.runOnSimulator`
 - :ref:`sdk6_module_natures.tasks.checkModule`
 - :ref:`sdk6_module_natures.tasks.execTool`
 
@@ -65,16 +64,17 @@ This plugin adds the following tasks to your project:
 - :ref:`sdk6_module_natures.tasks.execTool`
 - :ref:`sdk6_module_natures.tasks.generateApplicationWrapper`
 - :ref:`sdk6_module_natures.tasks.compileWrapperJava`
+- :ref:`sdk6_module_natures.tasks.buildFeatureFromWPK`
 
 .. graphviz:: graphApplicationModule.dot
 
 
-.. _sdk6_module_natures.j2se_lib:
+.. _sdk6_module_natures.jse_lib:
 
-J2SE Library
-------------
+Java SE Library
+---------------
 
-**Plugin Name**: ``com.microej.gradle.j2se-library``
+**Plugin Name**: ``com.microej.gradle.jse-library``
 
 **Tasks**:
 
@@ -83,7 +83,7 @@ This plugin adds the following tasks to your project:
 - tasks of the `Gradle Java plugin <https://docs.gradle.org/current/userguide/java_plugin.html>`__
 - :ref:`sdk6_module_natures.tasks.checkModule`
 
-.. graphviz:: graphJ2seLibraryModule.dot
+.. graphviz:: graphJavaSeLibraryModule.dot
 
 **Configuration**:
 
@@ -106,6 +106,29 @@ This plugin adds the following tasks to your project:
 - :ref:`sdk6_module_natures.tasks.buildMockRip`
 
 .. graphviz:: graphMockModule.dot
+
+**Configuration**:
+
+This module nature inherits from the configuration of all its tasks.
+
+.. _sdk6_module_natures.runtime-environment:
+
+Runtime Environment
+-------------------
+
+**Plugin Name**: ``com.microej.gradle.runtime-environment``
+
+**Tasks**:
+
+This plugin adds the following tasks to your project:
+
+- tasks of the `Gradle Java plugin <https://docs.gradle.org/current/userguide/java_plugin.html>`__
+- :ref:`sdk6_module_natures.tasks.checkModule`
+- :ref:`sdk6_module_natures.tasks.shrinkRuntimeEnvironment`
+- :ref:`sdk6_module_natures.tasks.compileRuntimeEnvironment`
+- :ref:`sdk6_module_natures.tasks.builRuntimeEnvironmentJar`
+
+.. graphviz:: graphRuntimeEnvironmentModule.dot
 
 **Configuration**:
 
@@ -189,7 +212,6 @@ runOnSimulator
 
 This task is used by the following module natures:
 
-- :ref:`sdk6_module_natures.addon_lib`
 - :ref:`sdk6_module_natures.application`
 
 **Configuration**:
@@ -233,6 +255,8 @@ This task is used by the following module natures:
 
 - :ref:`sdk6_module_natures.addon_lib`
 - :ref:`sdk6_module_natures.application`
+- :ref:`sdk6_module_natures.mock`
+- :ref:`sdk6_module_natures.runtime-environment`
 
 **Configuration**:
 
@@ -256,6 +280,9 @@ This task provides the following properties that can be defined in the ``microej
      - Comma-separated list of the names of the checkers to exclude. 
        Only one property of ``checkers`` and ``skippedCheckers`` can be defined.
      - ``""``
+   * - ``checkersRootDir``
+     - Path of the directory to use as root directory for the checkers.
+     - Project directory.
 
 For example:
 
@@ -401,12 +428,12 @@ buildFeature
 - The Kernel Virtual Device 
 - The folder containing the Kernel Executable file (``build/kernelExecutable``)
 - The project classpath
-- The path of the folder where the Feature file must be generated (``build/feature/application``)
+- The path of the folder where the Feature file must be generated (``build/application/feature``)
 
 **Outputs**:
 
-- The generated Feature file (``build/feature/application/application.fo``)
-- The Zip file containing the generated build files (``build/"libs/<application_name>-feature.zip"``)
+- The generated Feature file (``build/application/feature/application.fo``)
+- The Zip file containing the generated build files (``build/libs/<application_name>-buildFiles.zip``)
 
 **Module Natures**:
 
@@ -424,7 +451,7 @@ runOnDevice
 **Inputs**:
 
 - The extracted VEE Port folder
-- The folder containing the Executable file (``build/executable/application``)
+- The folder containing the Executable file (``build/application/executable``)
 - The configuration file with all the properties set to launch the build of the Executable (``build/properties/target.properties``)
 
 **Module Natures**:
@@ -522,6 +549,103 @@ This task is used by the following module natures:
 - :ref:`sdk6_module_natures.application`
 
 The ``compileWrapperJava`` task is used internally by the SDK and it is not intended to be executed by the user.
+
+.. _sdk6_module_natures.tasks.shrinkRuntimeEnvironment:
+
+shrinkRuntimeEnvironment
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Description**: Shrinks the Java source files according to the provided :ref:`Kernel APIs <kernel.api>`.
+
+**Inputs**:
+
+- Project Kernel API (``src/main/resources/kernel.api``)
+- Project Java sources (``src/main/java``)
+- The Kernel API files of the Runtime classpath.
+
+**Outputs**:
+
+- The directory in which shrunk Java sources are generated (``build/runtimeEnvironment/shrunkSources``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.runtime-environment`
+
+The ``shrinkRuntimeEnvironment`` task is used internally by the SDK and it is not intended to be executed by the user.
+
+.. _sdk6_module_natures.tasks.compileRuntimeEnvironment:
+
+compileRuntimeEnvironment
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Description**: Compiles the Runtime Environment :ref:`Kernel APIs <kernel.api>`.
+
+**Inputs**:
+
+- The directory in which shrunk Java sources are generated (``build/runtimeEnvironment/shrunkSources``)
+- The project classpath
+
+**Outputs**:
+
+- The directory in which shrunk Java classes are generated (``build/runtimeEnvironment/shrunkClasses``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.runtime-environment`
+
+The ``compileRuntimeEnvironment`` task is used internally by the SDK and it is not intended to be executed by the user.
+
+.. _sdk6_module_natures.tasks.builRuntimeEnvironmentJar:
+
+buildRuntimeEnvironmentJar
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Description**: Builds the Runtime Environment Jar file.
+
+**Inputs**:
+
+- The directory in which shrunk Java classes are generated (``build/runtimeEnvironment/shrunkClasses``)
+
+**Outputs**:
+
+- The Jar file of the Runtime Environment (``build/libs/<project_name>-<project_version>-runtime-environment.jar``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.runtime-environment`
+
+The ``buildRuntimeEnvironmentJar`` task is used internally by the SDK and it is not intended to be executed by the user.
+
+.. _sdk6_module_natures.tasks.buildFeatureFromWPK:
+
+buildFeatureFromWPK
+^^^^^^^^^^^^^^^^^^^
+
+**Description**: Builds the Feature binary file from a dependent Application.
+
+**Inputs**:
+
+- The Kernel Virtual Device 
+- The folder containing the Kernel Executable file (``build/kernelExecutable``)
+- The WPK of the dependent Application
+- The path of the folder where the Feature file must be generated (``build/application/wpkFeature``)
+
+**Outputs**:
+
+- The generated Feature file (``build/application/wpkFeature/application.fo``)
+- The Zip file containing the generated build files (``build/libs/wpkFeature-buildFiles.zip``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.application`
 
 .. _gradle_global_build_options:
 

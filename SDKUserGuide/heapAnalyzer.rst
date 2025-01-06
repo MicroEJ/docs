@@ -86,39 +86,126 @@ MicroEJ environment.
     +-----------------------+---------------+-------------------------------+
 
 Heap Dumper
------------
+------------
 
-When the Heap Dumper option is activated, the garbage collector process
-ends by performing a dump file that represents a snapshot of the heap at
-this moment. To generate such dump files, you must explicitly call
-the ``System.gc()`` method in your code.
+The Heap Dumper generates ``.heap`` files. There are two implementations:
 
-The heap dump file contains the list of all instances of both class and
-array types that exist in the heap. For each instance, it records:
+1. **Integrated with the Simulator**: Dumps ``.heap`` files directly from the Java heap.
+2. **Heap Dumper Tool**: Generates ``.heap`` files from ``.hex`` files, which must be retrieved from the device using tools like GDB.
 
--  the time at which the instance was created
+Heap dumps should be performed after a call to `System.gc()`_ to exclude discardable objects.
 
--  the thread that created it
+Simulator
+~~~~~~~~~
 
--  the method that created it
+To generate a Heap dump of an application running on the Simulator:
 
-For instances of class types, it also records:
+1. Set the ``s3.inspect.heap`` application property to ``true``.
+2. Update your application code to call the `System.gc()`_ method where you need a Heap dump.
+3. Run the application on the Simulator.
 
--  the class
+When the `System.gc()`_ method is called:
 
--  the values in the instance’s non-static fields
+- If called from the application, the ``.heap`` file is generated in the ``build/output/<fqnMainClass>/heapDump/`` folder of the project, where ``<fqnMainClass>`` is the Fully Qualified Name of the application's main class, e.g., ``com.mycompany.Main``.
+- If called from a test class, the ``.heap`` file is generated in the ``build/testsuite/output/<buildDate>/bin/<fqnMainClass>/heapDump/`` folder of the project, where ``<fqnMainClass>`` is the Fully Qualified Name of the generated main class and ``<buildDate>`` is the test execution date, e.g., ``build/testsuite/output/20240625-1605-24/bin/com.mycompany._AllTests_MyTest/heapDump/``.
 
-For instances of array types, it also records:
+Device
+~~~~~~
 
--  the type of the contents of the array
+To generate a Heap dump of an application running on a device:
 
--  the contents of the array
+1. Update your application code to call the `System.gc()`_ method where you need a Heap dump.
+2. Build the executable and deploy it on the device.
+3. Start a debug session.
+4. Add a breakpoint to the ``LLMJVM_on_Runtime_gc_done`` Core Engine hook. This function is called by the Core Engine when the `System.gc()`_ method is done. Alternatively, for out of memory errors, add a breakpoint to the ``LLMJVM_on_OutOfMemoryError_thrown`` Core Engine hook.
+5. Resume execution until the breakpoint is reached. You are now ready to dump the memory. 
 
-For each referenced class type, it records the values in the static
-fields of the class.
+.. note::
+
+   Core Engine hooks may be inlined by the third-party linker. If the symbol is not accessible to the debugger, declare them in your VEE Port:
+
+   .. code:: c
+
+      void LLMJVM_on_Runtime_gc_done(){
+         //No need to add code to the function
+      }
+
+      void LLMJVM_on_OutOfMemoryError_thrown(){
+         //No need to add code to the function
+      }
+
+Retrieve the ``.hex`` file from the device
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you are in a Mono-Sandbox context, you only need to dump the Core Engine heap section. Example GDB commands:
+
+.. code-block:: console
+      
+      b LLMJVM_on_Runtime_gc_done
+      b LLMJVM_on_OutOfMemoryError_thrown
+      continue
+      dump ihex memory heap.hex &_java_heap_start &_java_heap_end
+
+You now have the ``.hex`` file and need to extract the Heap dump.
+
+In a Multi-Sandbox context, additionally dump the following sections:
+
+- Installed features table:
+  
+  .. code-block:: console
+   
+      dump ihex memory &java_features_dynamic_start &java_features_dynamic_end
+
+- Installed features sections specific to your VEE Port, depending on the `LLKERNEL implementation <LLKF-API-SECTION>`:
+  
+  .. code-block:: console
+   
+      dump ihex memory <installed_features_start_address> <installed_features_end_address>
+
+To simplify the dump commands, consider:
+
+- Dumping the entire memory where MicroEJ runtime and code sections are linked.
+- Generating the :ref:`VEE memory dump script <generate_vee_memory_dump_script>` to dump all required sections.
+
+Convert ``.hex`` dump to ``.heap`` dump
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To convert the Heap dump from ``.hex`` to ``.heap``, use the Heap Dumper tool.
+
+The Heap Dumper should be available in your VEE Port and can be configured and executed from the SDK Run Configurations.
+
+From the SDK top menu, go to ``Run`` > ``Run Configurations...``
+
+1. Right-click on ``MicroEJ Tool`` and select ``New Configuration``.
+
+2. Configure the ``Execution`` tab:
+
+   1. Set the tool name, e.g., ``Convert Hex to Heap``.
+   2. Select the platform in the ``Target`` > ``Platform`` field.
+   3. Select the ``Heap Dumper`` tool from the ``Execution`` > ``Settings`` list.
+   4. Set the ``Output folder`` path, where the ``.heap`` file will be generated.
+   
+   .. figure:: images/heapdumper_options/tool_heapdumper_execution_tab.png
+      :scale: 50%
+      :align: center
 
 
-.. include:: heapdumper_use.rst
+
+3. Switch to the ``Configuration`` tab and configure it:
+
+   1. Set the path to the firmware executable ELF file.
+   2. Add the full path of application files with debug information (``.fodbg`` files).
+   3. Set the full path of the heap memory dump, in Intel Hex format.
+   4. Add the full path of additional memory files in Intel Hex format (installed feature areas, dynamic features table, etc.).
+   5. Set the heap file output name, e.g., ``application.heap``.
+
+   .. figure:: images/heapdumper_options/tool_heapdumper_config_tab.png
+      :scale: 50%
+      :align: center
+
+4. Finally, click ``Apply`` and ``Run``.
+
+Now you can open the generated ``.heap`` file in the Heap Viewer.
 
 .. _heapviewer:
 
@@ -397,6 +484,8 @@ and new heap dumps, and highlights any differences between the values.
 
    Instance Fields Comparison view
 
+
+.. _System.gc(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#gc--
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 

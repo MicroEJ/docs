@@ -7,6 +7,7 @@ Appendices
     virtualDevice
     dependenciesConfigurations
     applicationWrapper
+    cheatsheet
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 

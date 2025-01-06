@@ -65,6 +65,22 @@ where ``RUN_SCRIPT_PATH`` is the absolute path to the ``run.[sh|bat]`` script of
 
 The Application Executable is now deployed on the Device.
 
+Deploying the Executable without building it
+--------------------------------------------
+
+When executing the ``runOnDevice`` task, the Executable is always rebuilt, 
+even if nothing has changed in the project.
+This ensures that the Executable is always up-to-date, no matter if the BSP has changed or not.
+
+If you want to deploy the Executable on the device without building it (so simply 
+deploying the Executable file already available in the project ``build`` folder), 
+you can exclude the ``buildExecutable`` task::
+
+   $ ./gradlew runOnDevice -x buildExecutable
+
+You can execute such a command in IDEs by creating custom configurations, 
+as explained in :ref:`sdk_6_howto_create_custom_configuration_in_ide`.
+
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 

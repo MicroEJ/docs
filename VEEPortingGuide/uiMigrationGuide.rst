@@ -6,10 +6,119 @@
 Migration Guide
 ===============
 
-.. _section_ui_migrationguide_pack_14.0.1_c_module_update:
+.. _section_ui_migrationguide_pack_14.2.0:
 
-14.0.1 (C Module update)
-========================
+From 14.1.1 to 14.2.0
+=====================
+
+All BSP
+"""""""
+
+* *[VEE Port configuration project]*
+
+    * Set the dependency to the `C Module MicroUI 14.2.0`_.
+
+* *[BSP project]*
+
+    * Delete the properties file ``cco_microui.properties``.
+    * Build the VEE Port.
+
+.. _section_ui_migrationguide_pack_14.1.1:
+
+From 14.0.2 to 14.1.1
+=====================
+
+.. _section_ui_migrationguide_pack_14.1.1_bsp_without_gpu:
+
+BSP without GPU
+"""""""""""""""
+
+* *[VEE Port configuration project]*
+
+    * Set the dependency to the `C Module MicroUI 14.1.1`_.
+
+* *[BSP project]*
+
+    * Delete the properties file ``cco_microui.properties``.
+    * Build the VEE Port.
+    * Configure ``ui/inc/ui_configuration.h``, based on your previous settings in ``ui/inc/microui_event_decoder_conf.h`` and ``ui/inc/ui_display_brs_configuration.h``.
+
+        * Notice that the name (prefix) of the options changed, see :ref:`section_ui_changelog`.
+        * If the BSP uses the MicroUI C Module's image heap allocator instead of using the Graphics Engine's image heap allocator, set the preprocessor value ``UI_FEATURE_ALLOCATOR=UI_FEATURE_ALLOCATOR_BESTFIT``.
+        * Comment the line that starts with ``#error (...)``.
+
+    * Delete configuration files ``ui/inc/microui_event_decoder_conf.h`` and ``ui/inc/ui_display_brs_configuration.h``.
+    * Add the source file in ``ui/src/ui_font_drawing.c`` to the project.
+    * Update ``c`` and ``h`` files and BSP configuration (if any) to use the new preprocessor values:
+
+        * ``UI_FEATURE_EVENT_DECODER`` replaces ``MICROUIEVENTDECODER_ENABLED``
+        * ``UI_DEBUG_PRINT`` replaces ``LLUI_DEBUG_TRACE``
+        * ``UI_FEATURE_EVENT_DECODER`` replaces ``MICROUIEVENTDECODER_ENABLED``
+        * ``UI_EVENTDECODER_EVENTGEN_COMMAND`` replaces ``MICROUIEVENTDECODER_EVENTGEN_COMMAND``
+        * ``UI_EVENTDECODER_EVENTGEN_BUTTONS`` replaces ``MICROUIEVENTDECODER_EVENTGEN_BUTTONS``
+        * ``UI_EVENTDECODER_EVENTGEN_TOUCH`` replaces ``MICROUIEVENTDECODER_EVENTGEN_TOUCH``
+        * ``UI_FEATURE_BRS`` replaces ``UI_DISPLAY_BRS``
+        * ``UI_FEATURE_BRS_LEGACY`` replaces ``UI_DISPLAY_BRS_LEGACY``
+        * ``UI_FEATURE_BRS_SINGLE`` replaces ``UI_DISPLAY_BRS_SINGLE``
+        * ``UI_FEATURE_BRS_PREDRAW`` replaces ``UI_DISPLAY_BRS_PREDRAW``
+        * ``UI_FEATURE_BRS_DRAWING_BUFFER_COUNT`` replaces ``UI_DISPLAY_BRS_DRAWING_BUFFER_COUNT``
+        * ``UI_FEATURE_BRS_FLUSH_SINGLE_RECTANGLE`` replaces ``UI_DISPLAY_BRS_FLUSH_SINGLE_RECTANGLE``
+        * ``UI_GC_SUPPORTED_FORMATS`` replaces ``LLUI_GC_SUPPORTED_FORMATS``
+        * ``UI_FEATURE_IMAGE_CUSTOM_FORMATS`` replaces ``LLUI_IMAGE_CUSTOM_FORMATS``
+
+BSP with DMA2D
+""""""""""""""
+
+* *[VEE Port configuration project]*
+
+    * Set the dependency to the `C Module MicroUI over DMA2D to version 7.0.0`_.
+
+* *[BSP project]*
+
+    * Delete the properties files ``cco_microui.properties`` and ``cco_display-dma2d.properties``.
+    * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.1.1_bsp_without_gpu`.
+
+.. _section_ui_migrationguide_14.1_vglite:
+
+BSP with VGLite
+"""""""""""""""
+
+* *[VEE Port configuration project]*
+
+    * Set the dependency to the `C Module MicroUI over VGLite to version 10.0.0`_.
+
+* *[BSP project]*
+
+    * Delete the properties files ``cco_microui.properties`` and ``cco_microui-vglite.properties``.
+    * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.1.1_bsp_without_gpu`.
+
+.. _section_ui_migrationguide_14.1_nemagfx:
+
+BSP with NemaGFX
+""""""""""""""""
+
+* *[VEE Port configuration project]*
+
+    * Set the dependency to the `C Module MicroUI over NemaGFX to version 4.0.0`_.
+
+* *[BSP project]*
+
+    * Delete the properties files ``cco_microui.properties`` and ``cco_microui-nemagfx.properties``.
+    * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.1.1_bsp_without_gpu`.
+
+.. _section_ui_migrationguide_pack_14.0.2:
+
+From 14.0.1 to 14.0.2
+=====================
+
+BSP without GPU
+"""""""""""""""
+
+* *[VEE Port configuration project]*
+
+    * Set the dependency to the `C Module MicroUI 4.1.0`_.
+    * Delete the properties file ``cco_microui.properties``.
+    * Build the VEE Port.
 
 BSP with DMA2D
 """"""""""""""
@@ -261,7 +370,7 @@ BSP with DMA2D
 .. _section_ui_migrationguide_14.0_vglite:
 
 BSP with VGLite
-""""""""""""""""
+"""""""""""""""
 
 * *[VEE Port configuration project]*
 
@@ -333,7 +442,7 @@ BSP with DMA2D
 	* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_13.7.2_bsp_without_gpu`.
 
 BSP with VGLite
-""""""""""""""""
+"""""""""""""""
 
 * *[VEE Port configuration project]*
 
@@ -381,7 +490,7 @@ Front Panel
 .. _section_ui_migrationguide_13.6_vglite:
 
 BSP with VGLite
-""""""""""""""""
+"""""""""""""""
 
 These steps are for a VEE Port that manages its own implementation of ``LLUI_DISPLAY_impl.h`` (that did not use the old implementation which was available in this C Module):
 
@@ -512,7 +621,7 @@ BSP with DMA2D
 .. _section_ui_migrationguide_13.5_vglite:
 
 BSP with VGLite
-""""""""""""""""
+"""""""""""""""
 
 .. note::
 	The C Module is designed to target the `NXP i.MX RT500`_; however it can be locally customized for other boards (see :ref:`[Custom project]<section_cmodule_vglite_custom>`)
@@ -558,7 +667,7 @@ BSP with DMA2D
 	* Delete the properties file ``cco_display-dma2d.properties``.
 
 BSP with VGLite
-""""""""""""""""
+"""""""""""""""
 
 .. note::
 	The C Module is designed to target the `NXP i.MX RT500`_; however it can be locally customized for other boards (see :ref:`[Custom project]<section_cmodule_vglite_custom>`)
@@ -613,7 +722,7 @@ BSP with DMA2D
 	* Delete the properties file ``cco_display-dma2d.properties``.
 
 BSP with VGLite
-""""""""""""""""
+"""""""""""""""
 
 .. note::
 	The C Module is designed to target the `NXP i.MX RT500`_; however it can be locally customized for other boards (see :ref:`[Custom project]<section_cmodule_vglite_custom>`).
@@ -722,6 +831,8 @@ VEE Port Configuration Project
 
 * If not already set, set the ``ea:property`` ``bsp.project.microej.dir`` in the module ivy file to configure the BSP output folder where is extracted the module.
 
+.. hint:: Update the BSP with the new MicroUI C module files as described :ref:`here<section_ui_migration_bsp_13x>`.
+
 Hardware Accelerator
 """"""""""""""""""""
 
@@ -734,6 +845,8 @@ Hardware Accelerator
 
 * For the hardware accelerator DMA2D, please consult STM32F7Discovery board updates. Add the file ``lldisplay_dma2d.c``, the global defines ``DRAWING_DMA2D_BPP=16`` (or another value) and ``STM32F4XX`` or ``STM32F7XX``
 * For the others hardware accelerators, please contact MicroEJ support.
+
+.. hint:: Update the BSP with the new C modules files as described :ref:`here<section_ui_migration_bsp_13x>`.
 
 Front Panel
 """""""""""
@@ -975,6 +1088,8 @@ Font
 * Open optional font(s) in :guilabel:`-configuration` project > :guilabel:`microui/**/*.ejf`
 * Remove all ``Dynamic`` styles (select ``None`` or ``Built-in`` for bold, italic and underline); the number of generated fonts must be ``1`` (the feature to render ``Dynamic`` styles at runtime have been removed)
 * Save the file(s)
+
+.. _section_ui_migration_bsp_13x:
 
 BSP
 """

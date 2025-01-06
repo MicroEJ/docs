@@ -665,8 +665,8 @@ This plugin defines the following build options:
 
 .. _module_natures.plugins.unittests:
 
-J2SE Unit Tests
-^^^^^^^^^^^^^^^
+Java SE Unit Tests
+^^^^^^^^^^^^^^^^^^
 
 .. warning::
    

@@ -20,10 +20,11 @@ The following schema shows the overall architecture and modules:
    * If you are using the former Graphical User Interface version ``2`` provided by MicroEJ UI Pack version up to ``12.1.x``, please refer to this `MicroEJ Documentation Archive <https://docs.microej.com/_/downloads/en/20201009/pdf/>`__. 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    MicroUI/index
    MicroVG/index
+   Motion/index
    MWT/index
    Widgets/index
    Simulation/index
