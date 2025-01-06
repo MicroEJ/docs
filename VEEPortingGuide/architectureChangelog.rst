@@ -37,8 +37,8 @@ specific configuration:
 
 .. _changelog-8.3.0:
 
-[8.3.0] - RC
-------------
+[8.3.0] - 2024-12-24
+--------------------
 
 Foundation Libraries
 ~~~~~~~~~~~~~~~~~~~~
