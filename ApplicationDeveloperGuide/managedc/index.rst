@@ -4,7 +4,7 @@
  Managed C
 ============
 
-MicroEJ provides the capability to develop parts of an application in C, known as Managed C. Essentially, a MicroEJ Application boots in Java and then run a mix of Java and Managed C code.
+MicroEJ provides the capability to develop parts of an application in C, known as Managed C. Essentially, a MicroEJ Application boots in Java and then runs a mix of Java and Managed C code.
 
 .. figure:: ../images/runtime.png
    :scale: 75%
