@@ -30,7 +30,7 @@ The different ways to add a modules repository are:
   The repositories defined here are fetched **after** the ones defined in the Gradle init script.
 
   For a multi-project, the repositories must be declared in a ``build.gradle.kts`` file located in the root folder, 
-  inside a ``subprojects`` block, to make them available in all the subprojects:
+  inside a ``subprojects`` block (or ``allprojects`` depending on your needs), to make them available in all the subprojects:
 
   .. code-block:: kotlin
 
