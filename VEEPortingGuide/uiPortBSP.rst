@@ -145,7 +145,10 @@ Test Suite
 The Port Qualification Toolkit (PQT) provides a UI test suite to validate the UI Port (see :ref:`vee_port_testsuite` to have more information).
 This test suite **must** be executed to validate the UI Port and after each modification on this UI Port (for instance, after changes to improve performances).
 
-The UI Port test suite is available here: https://github.com/MicroEJ/VEEPortQualificationTools/tree/master/tests/ui/ui3.
+The UI Port test suite is available here: 
+
+- SDK 5: https://github.com/MicroEJ/VEEPortQualificationTools/tree/master/tests/ui/ui3
+- SDK 6: https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/master/vee-port/validation/ui
 
 The test suite is constituted of two blocks:
 

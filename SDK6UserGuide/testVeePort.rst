@@ -7,9 +7,9 @@ Test a VEE Port
 The SDK provides the capability to test a VEE Port.
 While you can create your own tests, 
 MicroEJ provides a set of tools and pre-defined projects aimed at simplifying the steps for validating VEE Ports 
-in the form of the :ref:`VEE Port Qualification Tools (PQT) <veeport_qualification>`.
+in the form of the ``VEE Port Qualification Tools (PQT)``.
 
-Please refer to the `VEE Port Qualification Tools README <https://github.com/MicroEJ/VEEPortQualificationTools>`__ 
+Please refer to the `VEE Port Project Template README <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/master/vee-port/validation>`__ 
 to learn how to setup and run this Qualification process.
 
 Configure a Testsuite

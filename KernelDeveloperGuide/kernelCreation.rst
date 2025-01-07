@@ -170,8 +170,7 @@ A complete section about how to setup a security policy is available in the :ref
 Add Pre-installed Applications
 ------------------------------
 
-Your device may come with pre-installed applications, also known as applications that are already available when the Kernel starts.
-These applications are installed during the manufacturing process, such as in ROM alongside the Kernel executable.
+On a device, when a Kernel starts, it will load all the installed applications from persistent memory (ROM) [#note_about_feature_persistency]_.
 
 To mimic this behavior on a Virtual Device, add an Application as dependency of the Kernel project:
 
@@ -184,7 +183,7 @@ To mimic this behavior on a Virtual Device, add an Application as dependency of 
       .. code:: java
 
          dependencies {
-            microejApplication("com.mycompany:myapp:0.1.0")
+             microejApplication("com.mycompany:myapp:0.1.0")
          }
 
    .. tab:: SDK 5
@@ -195,9 +194,11 @@ To mimic this behavior on a Virtual Device, add an Application as dependency of 
 
          <dependency org="com.mycompany" name="myapp" rev="0.1.0" conf="systemapp-vd->application"/>
 
-The provided Application is installed in the Virtual Device only, refer to the :ref:`application_link` page to install Applications on the Kernel.
+The provided Application is installed in the Virtual Device only, refer to the :ref:`application_link` page to install Applications on the target device.
 
 .. _Kernel.install(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#install-java.io.InputStream-
+
+.. [#note_about_feature_persistency] Assuming your VEE Port implements the :ref:`Feature Persistency <feature_persistency>` functionality.
 
 Kernel Application Configuration with SDK 5
 -------------------------------------------

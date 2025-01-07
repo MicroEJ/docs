@@ -75,6 +75,20 @@ But let's continue the installation process to have a complete development envir
    This configuration makes MicroEJ Central and Developer repositories available to every project.
    If you have several repositories configuration specific to certain projects, you can refer to :ref:`multiple repository configuration how-to <sdk_6_multi_repo>`
 
+SDK EULA Acceptation
+--------------------
+
+The use of MICROEJ SDK 6 requires to accept the :ref:`sdk6_eula`.
+
+The acceptance can be done at the project level or system-wide. For a system-wide acceptance, we recommend to define
+the ``accept-microej-sdk-eula-v3-1c`` system property in a ``gradle.properties`` file in your Gradle User Home folder ``$USER_HOME/.gradle/gradle.properties``:
+
+   .. code:: properties
+
+      systemProp.accept-microej-sdk-eula-v3-1c=YES
+
+Refer to :ref:`sdk_6_eula_acceptation` section of :ref:`sdk_6_licenses` to get more information about SDK EULA, and alternative configurations.
+
 .. _sdk_6_install_ide:
 
 Install the IDE

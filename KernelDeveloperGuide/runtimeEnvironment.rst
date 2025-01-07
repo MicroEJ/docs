@@ -38,12 +38,12 @@ Create a new Runtime Environment Module
 
    .. tab:: SDK 6
 
-      A Runtime Environment :ref:`Gradle project <sdk_6_create_project>` is created with the ``com.microej.gradle.runtime-api`` plugin.
+      A Runtime Environment :ref:`Gradle project <sdk_6_create_project>` is created with the ``com.microej.gradle.runtime-environment`` plugin.
 
       .. code:: java
 
          plugins {
-            id("com.microej.gradle.runtime-api") version "0.20.0"
+            id("com.microej.gradle.runtime-environment") version "1.0.0"
          }   
 
    .. tab:: SDK 5
@@ -62,7 +62,7 @@ Kernel APIs as Dependencies
 
 The Kernel APIs can be declared as dependencies of the module.
 For example, the following dependencies declare a Runtime Environment that aggregates all classes, methods and fields
-defined by ``EDC``, ``KF``, ``BON``, ``MicroUI`` Kernel APIs modules.
+defined by ``EDC``, ``KF``, ``BON``, ``MicroUI`` and ``BasicTool`` Kernel APIs modules.
 
 .. tabs::
 
@@ -72,18 +72,32 @@ defined by ``EDC``, ``KF``, ``BON``, ``MicroUI`` Kernel APIs modules.
 
          dependencies {
             implementation("com.microej.kernelapi:edc:1.2.0")
-            implementation("ej.api:edc:1.3.4")
+            api("ej.api:edc:1.3.4")
             implementation("com.microej.kernelapi:kf:2.1.0")
-            implementation("ej.api:kf:1.5.1")
+            api("ej.api:kf:1.5.1")
             implementation("com.microej.kernelapi:bon:1.4.0")
-            implementation("ej.api:bon:1.4.0")
+            api("ej.api:bon:1.4.0")
             implementation("com.microej.kernelapi:microui:3.6.0")
-            implementation("ej.api:microui:3.6.0")
+            api("ej.api:microui:3.6.0")
+            implementation("com.microej.kernelapi:basictool:1.4.0")
+            api("ej.library.runtime:basictool:1.7.0")
          }
 
       .. warning::
 
-         Unlike SDK 5 (MMM), Kernel API dependencies are not transitively fetched with SDK 6. They must therefore be explicitly added.
+         - Unlike SDK 5 (MMM), Kernel API dependencies are not transitively fetched with SDK 6. 
+           Therefore, they must be explicitly added.
+         - The Libraries dependencies must be declared with `api` (as shown in the example above) to be consumable by the Kernel.
+         - Versions of EDC higher than ``1.3.5`` are not compatible with the creation of a Runtime Environment.
+           To make sure to use version ``1.3.5`` of EDC, use this snippet in your ``build.gradle.kts`` file:
+
+               .. code:: java
+
+                  configurations {
+                     "runtimeClasspath" {
+                        resolutionStrategy.force("ej.api:edc:1.3.5")
+                     }
+                  }
 
    .. tab:: SDK 5
 
@@ -94,6 +108,7 @@ defined by ``EDC``, ``KF``, ``BON``, ``MicroUI`` Kernel APIs modules.
             <dependency org="com.microej.kernelapi" name="kf" rev="2.0.3"/>
             <dependency org="com.microej.kernelapi" name="bon" rev="1.1.1"/>
             <dependency org="com.microej.kernelapi" name="microui" rev="3.1.0"/>
+            <dependency org="com.microej.kernelapi" name="basictool" rev="1.7.0"/>
          </dependencies>
 
       The libraries modules are fetched transitively from the Kernel APIs dependencies.
@@ -192,9 +207,17 @@ The Runtime Environment dependency must be declared in the Application project a
 
    .. tab:: SDK 6
 
+      For an Application:
+
       .. code:: java
 
          microejRuntimeEnvironment("com.mycompany:myruntime-environment:1.0.0")
+
+      For a Kernel Application:
+
+      .. code:: java
+
+         implementation("com.mycompany:myruntime-environment:1.0.0")      
 
    .. tab:: SDK 5
 

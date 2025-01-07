@@ -3,6 +3,35 @@
 Changelog
 ---------
 
+.. _changelog-1.0.0:
+
+[1.0.0] - 2024-12-18
+~~~~~~~~~~~~~~~~~~~~~
+
+Added
+"""""
+
+- Allow to define the Artifact Checker root directory.
+
+Changed
+"""""""
+
+- Improve Gradle version error message to explain how to solve the issue.
+- Improve SDK EULA acceptation error message.
+- Reorganize Virtual Device structure to reduce the number of files at the root folder.
+
+Fixed
+"""""
+
+- Fix compilation error during VEE Port build when fetching JDT Core library from Maven Central.
+- Exclude ``.gitkeep`` files from Java sources.
+- Fix Application Wrapper class generation when Main class has no package.
+- Do not force custom tool tasks to set an Application Entry Point.
+- Include local JAR dependencies in classpaths.
+- Fix error when building a WPK with a jar in a local repository.
+- Support Addon Libraries in Runtime Environments.
+- Wrong classpath when running an Application or a testsuite on device.
+
 .. _changelog-0.20.0:
 
 [0.20.0] - 2024-10-23

@@ -244,13 +244,13 @@ The `FS API Module`_ must be added to the project build file to use the FS libra
 
       .. code-block:: kotlin
 
-         implementation("ej.api:fs:2.0.6")
+         implementation("ej.api:fs:2.1.1")
 
    .. tab:: SDK 5 (module.ivy)
 
       .. code-block:: xml
 
-         <dependency org="ej.api" name="fs" rev="2.0.6"/>
+         <dependency org="ej.api" name="fs" rev="2.1.1"/>
 
 .. _FS API Module: https://repository.microej.com/modules/ej/api/fs/
 
