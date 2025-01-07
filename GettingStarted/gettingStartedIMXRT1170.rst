@@ -27,10 +27,11 @@ The first part consists of running a demo application on the Virtual Device. All
 
 The second part consists of running the same demo application on your device. For that you will need:
 
-* i.MX RT1170 Evaluation Kit, available `here <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__.
+* i.MX RT1170 EVKB Evaluation Kit, available `here <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__.
 * RK055HDMIPI4MA0 display panel, available `here <https://www.nxp.com/part/RK055HDMIPI4MA0>`__.
 * A GNU ARM Embedded Toolchain, Cmake and Make are needed to build the BSP. You will be guided on how to install the toolchain later.
 * LinkServer tool to flash the board. You will be guided on how to install this tool later.
+* The ::guilabel:`west` command line tool from the Zephyr project. You will be guided on how to install this tool later.
 
 .. _sdk_6_getting_started_imxrt1170_environment_setup:
 
@@ -40,7 +41,7 @@ Environment Setup
 To follow this Getting Started, you need to: 
 
 * Install MICROEJ SDK 6.
-* Get the Demo-SmartThermostat from Github.
+* Get the VEE port from Github.
 
 Install MICROEJ SDK 6
 ^^^^^^^^^^^^^^^^^^^^^
@@ -48,16 +49,24 @@ Install MICROEJ SDK 6
 Install MICROEJ SDK 6 by following :ref:`sdk_6_install` instructions. 
 IntelliJ IDEA is used on this Getting Started but feel free to use your favorite IDE.
 
-Get Demo-SmartThermostat
+Install West
+^^^^^^^^^^^^
+
+Install the ::guilabel:`west` command line tool
+
+Get the VEE Port Project
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-For this Getting Started, the :guilabel:`Demo-SmartThermostat` Application will be use. You can download it using the following command::
+For this Getting Started, the :guilabel:`app` Application will be use. You can download it using the following command::
    
-   git clone -b 1.0.0 https://github.com/MicroEJ/Demo-SmartThermostat.git
+   mkdir nxpvee-mimxrt1170-prj
+   cd nxpvee-mimxrt1170-prj
+   west init -m https://github.com/nxp-mcuxpresso/nxp-vee-imxrt1170-evk .
+   west update
 
 .. note::
   
-   If you don’t have Git installed, you can download the source code directly from our `GitHub repository <https://github.com/MicroEJ/Demo-SmartThermostat/tree/1.0.0>`__. 
+   If you don’t have Git installed, you can download the source code directly from our `GitHub repository <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk/releases/tag/NXPVEE-MIMXRT1170-EVK-2.2.0>`__. 
    Then you can click on ::guilabel:`Code > Download ZIP`.
 
 Set up the Application on your IDE
@@ -66,17 +75,16 @@ Set up the Application on your IDE
 Import the Project
 ^^^^^^^^^^^^^^^^^^
 
-The first step is to import the :guilabel:`Demo-SmartThermostat` Application into your IDE: 
+The first step is to import the :guilabel:`VEE Port` into your IDE: 
 
 .. note::
   
    If you are using another IDE than IntelliJ IDEA, please have a look at :ref:`sdk_6_import_project` section.
 
-
 * If you are in the Welcome Screen, click on the :guilabel:`Open` button. Otherwise click either on :guilabel:`File` > :guilabel:`Open...` or on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project From Existing Sources...`.
 * Select the ``Demo-SmartThermostat`` directory located where you downloaded it and click on the :guilabel:`OK` button.
 
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-import-demo-application.png
+      .. figure:: images/iMXRT1170/getting-started-import-demo-application.png
          :alt: Import demo application
          :align: center
          :scale: 70%
@@ -113,7 +121,7 @@ The first step is to import the :guilabel:`Demo-SmartThermostat` Application int
 
 The Gradle project should now be imported in IntelliJ IDEA, your workspace contains the following projects: 
 
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-workspace-view.png
+      .. figure:: images/iMXRT1170/getting-started-workspace-view.png
          :alt: Workspace view
          :align: center
          :scale: 70%
@@ -123,7 +131,7 @@ The Gradle project should now be imported in IntelliJ IDEA, your workspace conta
 Accept the MICROEJ SDK EULA
 ---------------------------
 
-You may have to accept the SDK EULA if you didn't already do, please have a look at :ref:`sdk_6_eula_acceptation`.
+You may have to accept the SDK EULA if you haven't already done it, please have a look at :ref:`sdk_6_eula_acceptation`.
 
 .. _sdk_6_getting_started_rt1170_run_virtual_device:
 
@@ -138,14 +146,14 @@ In order to execute the :guilabel:`Demo-SmartThermostat` Application on the Virt
 
 * Double-click on the :guilabel:`runOnSimulator` task in the Gradle tasks view. It may takes few seconds.
 
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-runOnSimulator.png
+      .. figure:: images/iMXRT1170/getting-started-runOnSimulator.png
          :alt: runOnSimulator task
          :align: center
          :scale: 70%
 
 The Virtual Device starts and executes the :guilabel:`Demo-SmartThermostat` application.
 
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-virtual-device.png
+      .. figure:: images/iMXRT1170/getting-started-virtual-device.png
          :alt: Virtual Device
          :align: center
          :scale: 70%
@@ -157,12 +165,12 @@ The Virtual Device starts and executes the :guilabel:`Demo-SmartThermostat` appl
    If you want to know more about the use of the :guilabel:`Demo-SmartThermostat`, please have a look at its `README.md <https://github.com/MicroEJ/Demo-SmartThermostat/blob/1.0.0/smart-thermostat/README.md>`__ file.
 
 
-.. figure:: images/gettingStarted/well-done-mascot.png
+.. figure:: images/well-done-mascot.png
    :alt: Well Done
    :align: center
    :scale: 70%
 
-Well done !
+Well Done!
 -----------
 
 Now you know how to run an application on a Virtual Device.
@@ -184,54 +192,47 @@ To deploy :guilabel:`Demo-SmartThermostat` application on your board, you will h
 * Build the Executable.
 * Flash the board.
 
+.. _sdk_6_getting_started_rt1170_run_on_device_environment_setup:
+
 Environment Setup
 ^^^^^^^^^^^^^^^^^
 
 This chapter takes approximately one hour and will take you through the steps to set up your board and build the BSP.
 
-Install the C Toolchain
-"""""""""""""""""""""""
+MCUXPresso SDK Setup
+""""""""""""""""""""
 
-The C toolchain must be installed, it is composed of the GNU ARM Embedded Toolchain, CMake and Make.
+Install MCUXPresso SDK
+++++++++++++++++++++++
 
-.. note::
-  
-   This Getting Started has been tested with the following configuration:
+* Download and install `MCUXpresso Installer <https://github.com/nxp-mcuxpresso/vscode-for-mcux/wiki/Dependency-Installation>`__,
+* Once installed, open it,
+* Select :guilabel:`MCUXpresso SDK Developer` and :guilabel:`LinkSever` and click Install:
 
-   - GNU ARM Embedded Toolchain version ``10.3 2021.10``.
-   - CMake version ``3.26.5``.
-   - Make version ``3.81``.
+  .. figure:: images/iMXRT1170/getting-started-mcuxpresso-setup-1.png
+     :alt: MCUXPresso setup
+     :align: center
+     :scale: 70%
+* Once done, a green tick appears next to the installed packages:
 
-   Later versions may or may not work, and may need modification to the Getting Started steps.
+  .. figure:: images/iMXRT1170/getting-started-mcuxpresso-setup-2.png
+     :alt: MCUXPresso setup
+     :align: center
+     :scale: 70%
 
-Install GNU ARM Embedded Toolchain 
-++++++++++++++++++++++++++++++++++
+Add GNU ARM Embedded Toolchain Environment variable
++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-The toolchain is the `GNU ARM Embedded Toolchain <https://developer.arm.com/downloads/-/gnu-rm>`__. 
+MCUXpresso Installer installs a GNU ARM Embedded Toolchain in the ``$user/.mcuxpressotools`` folder.
 
-At the end of the installation, it will ask you to complete the Setup of the wizard, choose the following options: 
-
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-arm-gcc-installation.png
-         :alt: Import demo application
-         :align: center
-         :scale: 70%
-
-Once installed, ``ARMGCC_DIR`` must be set as an environment variable and point to the toolchain directory. To do so: 
+``ARMGCC_DIR`` must be set as an environment variable and point to the toolchain directory. To do so: 
 
 * Open the :guilabel:`Edit the system environment variables` application on Windows.
 * Click on the :guilabel:`Environment Variables...` button.
 * Click on the :guilabel:`New...` button under the :guilabel:`User variables` section.
 * Set :guilabel:`Variable Name` to ``ARMGCC_DIR``.
-* Set :guilabel:`Variable Value` to the toolchain directory (e.g. ``C:\Program Files (x86)\GNU Arm Embedded Toolchain\10 2021.10``).
+* Set :guilabel:`Variable Value` to the toolchain directory (e.g. ``C:\Users\MicroEJ\.mcuxpressotools\arm-gnu-toolchain-13.2.Rel1-mingw-w64-i686-arm-none-eabi``).
 * Click on the :guilabel:`Ok` button until it closes :guilabel:`Edit the system environment variables` application.
-
-Install CMake
-+++++++++++++
-
-`CMake <https://cmake.org/download/>`__ is the application used by the build system to generate the firmware.
-
-During the installation, it will ask you if you wish to add CMake to your system Path, add it at least to the current user system path.
-If you missed it, you can manually add ``CMake/bin`` folder to your path.
 
 Install Make
 ++++++++++++
@@ -242,39 +243,40 @@ Under :guilabel:`Download` section, you can select the Setup program for the com
 By default, it will automatically add Make to your path.
 If not, you can manually add ``GnuWin32\bin`` folder to your path.
 
-Install the Flashing Tool
-"""""""""""""""""""""""""
+Check that the tool has been properly installed: 
 
-.. note::
-  
-   This Getting Started has been tested with LinkServer version ``1.2.45``. 
+.. figure:: images/iMXRT1170/getting-started-make-setup.png
+   :alt: Make setup
+   :align: center
+   :scale: 70%
 
-   Later versions may or may not work, and may need modification to the Getting Started steps.
-
-`LinkServer <https://www.nxp.com/design/software/development-software/mcuxpresso-software-and-tools-/linkserver-for-microcontrollers:LINKERSERVER>`__ is needed to flash the board.
-
-Once installed, ``LinkServer_xxx/binaries`` folder must be set on your Path. To do so: 
+Add the Flashing Tool Environment variable
+++++++++++++++++++++++++++++++++++++++++++
 
 * Open the :guilabel:`Edit the system environment variables` application on Windows.
 * Click on the :guilabel:`Environment Variables...` button.
 * Select :guilabel:`Path` variable under the :guilabel:`User variables` section and edit it.
-* Click on :guilabel:`New` and point to the ``binaries`` folder located where you installed LinkServer (e.g. ``nxp/LinkServer_1.2.45/binaries``).
+* Click on :guilabel:`New` and point to the ``LinkServer_{version}`` folder located where you installed LinkServer (e.g. ``C:\nxp\LinkServer_1.2.45``).
+
+.. _sdk_6_getting_started_rt1170_hardware_setup:
 
 Hardware Setup
 """"""""""""""
 
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-hardware-setup.png
-         :alt: Hardware Setup
-         :align: center
-         :scale: 70%
+Set up the NXP i.MX RT1170 EVKB:
 
-Setup the i.MX RT1170 Evaluation Kit
+* Check that the dip switches (``SW1``) are set to ``OFF``, ``OFF``, ``ON`` and ``OFF``,
+* Ensure jumper ``J5`` is removed,
+* Connect the display panel ``RK055HDMIPI4MA0``,
+* Connect the micro-USB cable to ``J86`` to power the board,
+* Connect a 5 V power supply to ``J43``.
 
-* Check that the dip switches (SW1) are set to OFF, OFF, ON and OFF.
-* Ensure jumpers J6 and J7 are closed.
-* Connect the micro-USB cable to J11 to power the board.
-* You can connect 5 V power supply to J43 if you need to use the display
+  .. figure:: images/iMXRT1170/getting-started-hardware-setup.png
+     :alt: NXP i.MX RT1170 EVKB Hardware Setup
+     :align: center
 
+     NXP i.MX RT1170 EVKB Hardware Setup
+     
 The USB connection is used as a serial console for the SoC, as a CMSIS-DAP debugger and as a power input for the board.
 
 The VEE Port uses the virtual UART from the i.MX RT1170 Evaluation Kit USB port. A COM port is automatically mounted when the board is plugged into a computer using a USB cable. All board logs are available through this COM port.
@@ -298,12 +300,12 @@ The COM port uses the following parameters:
 
 You can have a look at your application logs with an RS232 Terminal (e.g. `Termite <https://www.compuphase.com/software_termite.htm>`__).
 
-Congratulations, you have finished the setup of your environment. You are now ready to discover how to build and flash a MicroEJ application.
+Congratulations! You have finished the setup of your environment. You are now ready to discover how to build and flash a MicroEJ application.
 
 Build the Executable for i.MX RT1170 Evaluation Kit
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In order to build the Executable of the :guilabel:`Demo-SmartThermostat` Application, the SDK provides the Gradle :guilabel:`buildExecutable` task.
+In order to build the Executable of the :guilabel:`Demo-SmartThermostat` Application, the SDK provides the :guilabel:`buildExecutable` Gradle task.
 
 .. note::
   
@@ -314,7 +316,7 @@ In order to build the Executable of the :guilabel:`Demo-SmartThermostat` Applica
 * The build stops with a failure.
 * Go to the top project in the console view and scroll up to get the following error message:
 
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-console-output-license-uid.png
+      .. figure:: images/iMXRT1170/getting-started-console-output-license-uid.png
          :alt: Console Output License UID
          :align: center
          :scale: 70%
@@ -323,11 +325,11 @@ In order to build the Executable of the :guilabel:`Demo-SmartThermostat` Applica
 
 Request your Evaluation License:
 
-* Request your Evaluation license by following the :ref:`evaluation_license_request_activation_key` instructions. You will be asked to fill the machine UID you just copied before.
+* Request your Evaluation license by following the :ref:`evaluation_license_request_activation_key` instructions. You will be asked to fill the machine UID field with the UID you copied before.
 
 * When you have received your activation key by email, drop it in the license directory by following the :ref:`evaluation_license_install_license_key` instructions (drop the license key zip file to the ``~/.microej/licenses/`` directory).
 
-Now your Evaluation license is installed, you can relaunch your application build by double-clicking on the :guilabel:`buildExecutable` task in the Gradle tasks view. It may takes some time.
+Now your Evaluation license is installed, you can relaunch your application build by double-clicking on the :guilabel:`buildExecutable` task in the Gradle tasks view. It may take some time.
 
 The Gradle task deploys the Application in the BSP and then builds the BSP using Make.
 
@@ -342,9 +344,9 @@ In order to flash the :guilabel:`Demo-SmartThermostat` Application on i.MX RT117
   
    If you are using another IDE than IntelliJ IDEA, please have a look at :ref:`sdk_6_run_on_device` section.
 
-* Double-click on the :guilabel:`runOnDevice` task in the Gradle tasks view. It may takes some time.
+* Double-click on the :guilabel:`runOnDevice` task in the Gradle tasks view. It may take some time.
 
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-runOnDevice.png
+      .. figure:: images/iMXRT1170/getting-started-runOnDevice.png
          :alt: runOnDevice task
          :align: center
          :scale: 70%
@@ -374,8 +376,8 @@ Once the firmware is flashed, you should see the :guilabel:`Demo-SmartThermostat
       </table>
    </div>
 
-.. |image3| image:: images/gettingStarted/iMXRT1170/getting-started-rt1170-hardware-demo-running.jpg
-.. |image4| image:: images/gettingStarted/iMXRT1170/getting-started-rt1170-termite-application-output.png
+.. |image3| image:: images/iMXRT1170/getting-started-rt1170-hardware-demo-running.jpg
+.. |image4| image:: images/iMXRT1170/getting-started-rt1170-termite-application-output.png
 
 .. _sdk_6_getting_started_rt1170_modify_java_application:
 
@@ -403,7 +405,7 @@ by
 
 Here is the modified application running in simulation: 
 
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-virtual-device-modified.png
+      .. figure:: images/iMXRT1170/getting-started-virtual-device-modified.png
          :alt: Virtual Device
          :align: center
          :scale: 70%
@@ -413,7 +415,7 @@ Going Further
 
 You have now successfully executed a MicroEJ application on an embedded device so what's next?
 
-If you are an application developer you can continue to explore MicroEJ's API and functionalities by running and studying our samples at GitHub:
+If you are an application developer you can continue to explore MicroEJ's APIs and functionalities by running and studying our samples at GitHub:
 
 .. list-table::
    :widths: 33 33 33
@@ -432,7 +434,7 @@ You can also learn how to build bigger and better applications by reading our :r
 
 If you are an embedded engineer you could look at our VEE port examples at `GitHub <https://github.com/microej?q=vee&type=all&language=&sort=>`_. And to learn how create custom VEE ports you can read our :ref:`VEE Porting Guide <vee-porting-guide>`.
 
-You can also follow the :ref:`Kernel Developer Guide <kernel-developer-guide>` for more information on our multi-applications framework or read about our powerful wearable solution called :ref:`VEE Wear <vee-wear>`.
+You can also follow the :ref:`Kernel Developer Guide <kernel-developer-guide>` for more information on our multi-application framework or read about our powerful wearable solution called :ref:`VEE Wear <vee-wear>`.
 
 Last but not least you can choose to learn about specific topics by following one of our many :ref:`trainings` ranging from how to easily debug application to setting up a Continuous Integration process and a lot of things in between.
 
