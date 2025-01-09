@@ -202,7 +202,7 @@ See this `documentation <https://docs.sentinel.thalesgroup.com/ldk/LDKdocs/SPNL/
 If you are in such situation, please can contact `our support team <https://www.microej.com/contact/#form_2>`_.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
