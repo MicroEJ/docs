@@ -38,6 +38,10 @@ Link between Managed C function declaration and Java static methods can be done 
 
 .. note:: 
 
+   The Java static method can be implemented either in Java (Managed code) or in an Un-Managed Code (like C) usually called (:ref:`SNI <sni_specification>`) method.
+
+.. note:: 
+
    Java static methods called by Managed C can only use Java base types ``int``, ``long``, ``float``, ``double`` as parameters and return types. Here is a matching table:
    
    .. tabularcolumns:: |p{2.5cm}|p{4cm}|p{2.7cm}|p{2.5cm}|p{2.7cm}|
@@ -56,7 +60,8 @@ Link between Managed C function declaration and Java static methods can be done 
       | double (64 bit)        | double (64 bit) |
       +------------------------+-----------------+
 
-   A SOAR error will be triggered in case of Managed C function parameter(s) and return types do not matched excatly the same Java method parameter(s) and return types.  
+   A SOAR error will be triggered in case of Managed C function parameter(s) and return types do not matched excatly the same Java method parameter(s) and return types.
+
 
 Here is an example showing how to write Java and C source code when C macro parameters ``class`` and ``method`` are specified:
 

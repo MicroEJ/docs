@@ -26,6 +26,7 @@ You can start exploring this functionality by following the instructions provide
    getting_started
    compilation
    communication
+   memory
    wasi
    instructions
    troubleshooting

@@ -178,6 +178,8 @@ To use Managed C in your Application, follow these steps:
 For further details, refer to the following sub-sections:
 
 - :ref:`Troubleshooting <managedc.troubleshooting>`: Assistance for resolving common issues when working with Managed C.
+- :ref:`Communication <managedc.communication>`: How to to communicate between Java and Managed C.
+- :ref:`Linear memory <managedc.linear.memory>`: An overview of the Wasm Linear memory.
 
 ..
    | Copyright 2023-2024, MicroEJ Corp. Content in this space is free 
