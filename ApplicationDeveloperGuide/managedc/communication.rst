@@ -368,6 +368,40 @@ This is especially useful if you want to write a Managed C function in snake cas
       __attribute__((__import_name__("javaPrint")))
       extern void c_print(int c);
 
+The Managed C function can be implemented using an Unmanaged C function by adding the ``native`` keyword to the bound Java static method.
+
+- Java source code (``MyApp.java``):
+   
+   .. code-block:: java
+
+      package com.mycompany;
+
+      @WasmModule("my_app_managed")
+      public class MyApp {
+
+         // Implemented in unmanaged (SNI) 
+         public static native void javaPrint(int c);
+      }  
+
+- Managed C source code (``my_app_managed.c``):
+   
+   .. code-block:: c 
+
+      __attribute__((__import_name__("javaPrint")))
+      extern void c_print(int c);
+
+- Unmanaged C source code (``my_app_native.c``):
+   
+   .. code-block:: c
+      
+      #include "sni.h"
+      #include "stdio.h"
+
+      void Java_com_mycompany_javaPrint(jint c){
+         putchar(c);
+      }
+
+
 The `export_name <https://clang.llvm.org/docs/AttributeReference.html#export-name>`__ attribute is used for the same reason, when the Managed C function implements the code.
 
 - Java source code (``MyApp.java``):
