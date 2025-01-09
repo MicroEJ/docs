@@ -43,13 +43,13 @@ Now that the Offline Repository of the Gradle plugins has been retrieved, you ca
   fun RepositoryHandler.offlineMicroEjSdk() {
     val sdk6Uri = uri("C:\\sdk6-repository")
 
-    /* Offline MicroEJ SDK 6 repository for Maven/Gradle modules */
+    /* Offline SDK 6 repository for Maven/Gradle modules */
     maven {
       name = "offlineSDKRepositoryMaven"
       url = sdk6Uri
     }
    
-    /* Offline MicroEJ SDK 6 repository for Ivy modules */
+    /* Offline SDK 6 repository for Ivy modules */
     ivy {
       name = "offlineSDKRepositoryMaven"
       url = sdk6Uri

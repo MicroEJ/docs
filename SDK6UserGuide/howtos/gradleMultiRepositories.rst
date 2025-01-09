@@ -23,7 +23,7 @@ If you want to make MicroEJ repositories available only to some projects, here i
    //    }
    }
 
-- Add the following property to a ``gradle.properties`` file at the root of your MicroEJ SDK 6 projects::
+- Add the following property to a ``gradle.properties`` file at the root of your SDK 6 projects::
 
    systemProp.gradle.repository=microejCentral
 
