@@ -36,7 +36,7 @@ In the terminal, navigate to the ``src/main/c`` directory and execute the follow
 
 .. code:: console
 
-    [path_to_wasi_sdk]/bin/clang -Wl,--no-entry -Wl,--export-all -Wl,--allow-undefined -nostdlib -o my_app.wasm my_app.o
+    [path_to_wasi_sdk]/bin/clang -Wl,--export-all -o my_app.wasm my_app.o
 
 .. note::
     
@@ -55,7 +55,7 @@ WASI SDK also includes a C++ compiler `clang++`, which you can use to compile an
     # compile
     [path_to_wasi_sdk]/bin/clang++ -mcpu=mvp -O3 -o my_app.o -c my_app.cc
     # link
-    [path_to_wasi_sdk]/bin/clang++ -Wl,--no-entry -Wl,--export-all -Wl,--allow-undefined -o my_app.wasm my_app.o
+    [path_to_wasi_sdk]/bin/clang++ -Wl,--export-all -o my_app.wasm my_app.o
 
 
 .. _managedc.link.command_line_options:
@@ -78,6 +78,15 @@ Here are some useful link options:
 * ``-Wl,--allow-undefined``: Allow undefined symbols.
 * ``-Wl,--global-base=n``: Sets the global base to 'n'.
 * ``-z stack-size=n``: Adjusts the stack size to 'n'.
+
+
+Build Without The Standard Library
+----------------------------------
+
+The ``-nostdlib`` flag is a linker option used to exclude the standard library when building a program. 
+It prevents the compiler and linker from automatically linking in standard system libraries (like libc in C or C++), as well as the startup code that initializes the runtime environment (e.g., _start);
+This is useful for compiling code to Wasm where you want to exclude unnecessary system dependencies.
+
 
 ..
    | Copyright 2023-2024, MicroEJ Corp. Content in this space is free 
