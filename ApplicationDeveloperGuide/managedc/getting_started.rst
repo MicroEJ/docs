@@ -22,19 +22,32 @@ To use Managed C in your Application, follow these steps:
 
 #. **Create a Standalone Application Project:**
 
+
    In a terminal, run the following command:
 
-   .. code:: console
+.. tabs::
 
-        mmm init -Dskeleton.org=com.is2t.easyant.skeletons -Dskeleton.module=firmware-singleapp -Dskeleton.rev=2.+ -Dproject.org=com.mycompany -Dproject.module=myproject -Dproject.rev=1.0.0 -Dskeleton.target.dir=myproject
+   .. tab:: SDK 5
 
-   .. note::
+      .. code:: console
 
-      The project property values can be adjusted according to your needs. For more details, refer to the :ref:`MMM CLI init command documentation <mmm_cli.commands.init>`.
+            mmm init -Dskeleton.org=com.is2t.easyant.skeletons -Dskeleton.module=firmware-singleapp -Dskeleton.rev=2.+ -Dproject.org=com.mycompany -Dproject.module=myproject -Dproject.rev=1.0.0 -Dskeleton.target.dir=myproject
 
-   .. note::
+      .. note::
 
-      If you're using PowerShell, prepend the token --% before passing the arguments to prevent PowerShell from parsing them. For example: ``mmm init --% -D...``.
+         The project property values can be adjusted according to your needs. For more details, refer to the :ref:`MMM CLI init command documentation <mmm_cli.commands.init>`.
+
+      .. note::
+
+         If you're using PowerShell, prepend the token \--% before passing the arguments to prevent PowerShell from parsing them. For example: ``mmm init --% -D...``.
+   
+   .. tab:: SDK 6
+
+      .. code:: bash
+
+            git clone git@github.com:MicroEJ/Tool-Project-Template-Application.git
+            cd Tool-Project-Template-Application
+            rm -rf .git*
 
 #. **Add the Annotations for Accessing Wasm Module in Java:**
 
@@ -149,14 +162,27 @@ To use Managed C in your Application, follow these steps:
 
    In a terminal, navigate to the directory containing the ``module.ivy`` file and run the following command to build the Application:
 
-   .. code:: console
+.. tabs::
 
-        mmm build -Dplatform-loader.target.platform.dir=<prebuilt_veeport_path>/source
-        
-   .. note::
+   .. tab:: SDK 5
+            
+      .. code:: console
+
+            mmm build -Dplatform-loader.target.platform.dir=<prebuilt_veeport_path>/source
+            
+      .. note::
+         
+            Replace ``<prebuilt_veeport_path>`` by the location of the root directory of your prebuilt VEE Port (see :ref:`managedc_getting_started_prerequisites`).       
+
+   .. tab:: SDk 6
+
+      In the file ``build.gradle.kts`` add your veeport path in ``microejVee(files("/path/to/veeport"))``.
       
-         Replace ``<prebuilt_veeport_path>`` by the location of the root directory of your prebuilt VEE Port (see :ref:`managedc_getting_started_prerequisites`).       
+      Then run:
 
+      .. code:: bash
+
+         ./gradlew build
 
    You should see the following message at the end of the build:
 
@@ -180,7 +206,7 @@ For further details, refer to the following sub-sections:
 - :ref:`Troubleshooting <managedc.troubleshooting>`: Assistance for resolving common issues when working with Managed C.
 
 ..
-   | Copyright 2023-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2023-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
