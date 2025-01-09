@@ -234,6 +234,8 @@ For further details, refer to the following sub-sections:
 - :ref:`managedc.binding`: Specifies the mechanism to seamlessly link your Java and Managed C code together. 
 - :ref:`wasm.wasi`: Discover WASI, the WebAssembly System Interface implemented by MicroEJ.
 - :ref:`Troubleshooting <managedc.troubleshooting>`: Assistance for resolving common issues when working with Managed C.
+- :ref:`Communication <managedc.communication>`: How to to communicate between Java and Managed C.
+- :ref:`Linear memory <managedc.linear.memory>`: An overview of the Wasm Linear memory.
 
 ..
    | Copyright 2023-2025, MicroEJ Corp. Content in this space is free 
