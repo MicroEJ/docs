@@ -116,7 +116,7 @@ Install the Sentinel LDK Run-time Environment (RTE)
 `Sentinel LDK Run-time Environment <https://docs.sentinel.thalesgroup.com/ldk/rte.htm>`__ enables your protected software to run by communicating with Sentinel protection keys. 
 It must be installed by each developer to :ref:`setup its workstation <setup_sentinel_developer_workstation>` and also by your System Administrator to :ref:`setup the Sentinel Floating License Server <setup_sentinel_floating_license_server>`.
 
-First, download `Sentinel_RTE_Installation-1.0.0.zip <https://repository.microej.com/packages/sentinel/Sentinel_RTE_Installation-1.0.0.zip>`__ file. It contains installer for Windows, macOS and Linux.
+First, download `Sentinel_RTE_Installation-1.1.0.zip <https://repository.microej.com/packages/sentinel/Sentinel_RTE_Installation-1.1.0.zip>`__ file. It contains installer for Windows, macOS and Linux.
 
 Installation for Windows 
 """"""""""""""""""""""""
@@ -130,7 +130,7 @@ Installation for Windows
 Installation for Linux 
 """"""""""""""""""""""
 
-Get ``aksusbd_37102-9.14.1.tar.gz`` file and extract it. The installation packages are in the directory ``pkg``, as root enter the following command:
+Get ``aksusbd_37102-10.12.1.tar.gz`` file and extract it. The installation packages are in the directory ``pkg``, as root enter the following command:
 
 - For RedHat, SUSE, or CentOS 64-bit Intel systems: ``rpm -i aksusbd-9.14-1.x86_64.rpm``
 - For Ubuntu or Debian 64-bit Intel systems: ``dpkg -i aksusbd_9.14-1_amd64.deb``
