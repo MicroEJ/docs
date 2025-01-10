@@ -11,9 +11,17 @@ Prerequisites
 
 The following elements must be available on your workstation:
 
-- A pre-built VEE Port using an Architecture v8.3.0 or higher.
-- `WASI SDK 20 or higher <https://github.com/WebAssembly/wasi-sdk/releases>`__, for compiling your C code to WebAssembly.
-- :ref:`MMM CLI (Command Line Interface) <mmm_build_kit>`, for building the demo module from command line.
+.. tabs:: 
+
+      .. tab:: SDK6
+
+         - A pre-built VEE Port using an Architecture v8.3.0 or higher.
+         - `WASI SDK 20 or higher <https://github.com/WebAssembly/wasi-sdk/releases>`__, for compiling your C code to WebAssembly.
+
+      .. tab:: SDK 5
+         - A pre-built VEE Port using an Architecture v8.3.0 or higher.
+         - `WASI SDK 20 or higher <https://github.com/WebAssembly/wasi-sdk/releases>`__, for compiling your C code to WebAssembly.
+         - :ref:`MMM CLI (Command Line Interface) <mmm_build_kit>`, for building the demo module from command line.         
 
 Steps
 -----
@@ -184,8 +192,7 @@ To use Managed C in your Application, follow these steps:
       .. note::
          
             Replace ``<prebuilt_veeport_path>`` by the location of the root directory of your prebuilt VEE Port (see :ref:`managedc_getting_started_prerequisites`).       
-
-
+\
 
    You should see the following message at the end of the build:
 
