@@ -362,7 +362,7 @@ The ``<BUSID>`` can be obtainted with the following powershell command:
 
   .. code-block:: console
 
-      usbipd wsl list
+      usbipd list
 
 .. note::
       You'll need to follow these steps each time you system is rebooted or the dongle is plugged/unplugged.
