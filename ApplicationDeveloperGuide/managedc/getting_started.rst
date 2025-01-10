@@ -27,6 +27,14 @@ To use Managed C in your Application, follow these steps:
 
 .. tabs::
 
+   .. tab:: SDK 6
+
+      .. code:: bash
+
+            git clone git@github.com:MicroEJ/Tool-Project-Template-Application.git
+            cd Tool-Project-Template-Application
+            rm -rf .git*
+
    .. tab:: SDK 5
 
       .. code:: console
@@ -41,13 +49,6 @@ To use Managed C in your Application, follow these steps:
 
          If you're using PowerShell, prepend the token \--% before passing the arguments to prevent PowerShell from parsing them. For example: ``mmm init --% -D...``.
    
-   .. tab:: SDK 6
-
-      .. code:: bash
-
-            git clone git@github.com:MicroEJ/Tool-Project-Template-Application.git
-            cd Tool-Project-Template-Application
-            rm -rf .git*
 
 #. **Add the Annotations for Accessing Wasm Module in Java:**
 
@@ -163,6 +164,16 @@ To use Managed C in your Application, follow these steps:
    In a terminal, navigate to the directory containing the ``module.ivy`` file and run the following command to build the Application:
 
 .. tabs::
+   
+   .. tab:: SDk 6
+
+      In the file ``build.gradle.kts`` add your veeport path in ``microejVee(files("/path/to/veeport"))``.
+      
+      Then run:
+      
+      .. code:: bash
+
+         ./gradlew build
 
    .. tab:: SDK 5
             
@@ -174,15 +185,7 @@ To use Managed C in your Application, follow these steps:
          
             Replace ``<prebuilt_veeport_path>`` by the location of the root directory of your prebuilt VEE Port (see :ref:`managedc_getting_started_prerequisites`).       
 
-   .. tab:: SDk 6
 
-      In the file ``build.gradle.kts`` add your veeport path in ``microejVee(files("/path/to/veeport"))``.
-      
-      Then run:
-
-      .. code:: bash
-
-         ./gradlew build
 
    You should see the following message at the end of the build:
 
