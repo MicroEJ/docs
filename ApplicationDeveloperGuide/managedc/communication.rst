@@ -67,6 +67,7 @@ Link between Managed C function declaration and Java static methods can be done 
 * ``class``: 
 
   * Java `fully qualified name <https://docs.oracle.com/javase/specs/jls/se11/html/jls-6.html#jls-6.7>`__ of the class containing the Java static method (e.g: ``com.mycompany.MyApp``).
+  * The ``module name`` used in ``@WasmModule`` annotation to annotate the class containing the Java static method.
   * An empty string (``""``) or ``"env"``. In that case, Java static method is searched in the current annotated ``@WasmModule`` Java class.
 
 * ``method``: Java static method name.
@@ -97,76 +98,124 @@ Link between Managed C function declaration and Java static methods can be done 
 
    A SOAR error will be triggered in case of Managed C function parameter(s) and return types do not matched excatly the same Java method parameter(s) and return types.  
 
-Here is an example showing how to write Java and C source code when C macro parameters ``class`` and ``method`` are specified:
+Here are examples showing how to write Java and C source code based on the way the ``class`` is referenced:
 
-- Java source code (``MyApp.java``):
+.. tabs::
 
-   .. code:: java
+   .. tab:: class referenced by its ``fully qualified name``
 
-      package com.mycompany;
+      - Java source code (``MyApp.java``):
 
-      public class MyApp {
+         .. code-block:: java
 
-         public static void delay(int ms) {
-            try {
-               Thread.sleep(ms);
-            } catch (InterruptedException e) {
-               e.printStackTrace();
+            package com.mycompany;
+
+            public class MyApp {
+
+               public static void delay(int ms) {
+                  try {
+                     Thread.sleep(ms);
+                  } catch (InterruptedException e) {
+                     e.printStackTrace();
+                  }
+               }
             }
-         }
 
-      }
 
-- C source code (``my_app.c``):
+      - C source code (``my_app.c``):
 
-   .. code:: c
+         .. code:: c
 
-      #define __IMPORT(class, method) \
-      __attribute__((__import_module__(class), __import_name__(method)))
+            #define __IMPORT(class, method) \
+            __attribute__((__import_module__(class), __import_name__(method)))
 
-      /* Extern functions implemented in Java -----*/
-      extern void delay(int ms) __IMPORT("com.mycompany.MyApp" ,"delay");
+            /* Extern functions implemented in Java (class referenced by its fully qualified name: "com.mycompany.MyApp") -----*/
+            extern void delay(int ms) __IMPORT("com.mycompany.MyApp" ,"delay");
 
-.. note:: 
-
-   Java annotation ``@WasmModule("my_app")`` should be put some where, in this class or in another class.
-
-Here is an example showing how to write Java and C source code when the C macro parameter ``class`` is an empty string:
-
-- Java source code (``MyApp.java``): same as previous example
-
-   .. code:: java
-
-      package com.mycompany;
-
-      @WasmModule("my_app")
-      public class MyApp {
-
-         public static void delay(int ms) {
-            try {
-               Thread.sleep(ms);
-            } catch (InterruptedException e) {
-               e.printStackTrace();
+            int main(){
+               ...
+               delay(1000); //call function implemented in Java
+               ...
             }
-         }
-
-      }
-
-- C source code (``my_app.c``):
-
-   .. code:: c
-
-      #define __IMPORT(class, method) \
-      __attribute__((__import_module__(class), __import_name__(method)))
-
-      /* Extern functions implemented in Java -----*/
-      extern void delay(int ms) __IMPORT("" ,"delay");
 
 
-Link between Managed C function declaration and Java static methods can also be done implicitly using ``-Wl,--allow-undefined`` 
-C compiler option (see :ref:`managedc.compilation.command_line_options` ). No need to declare and use ``__IMPORT(class, method)`` C macro 
-in that case.  Java static method is searched in the Java class which refers to the current Managed C module
-containing the Java static method. A SOAR error will be triggered if no Java method found.
+   .. tab:: class referenced by its ``module name``
+
+      - Java source code (``MyApp.java``):
+
+         .. code:: java
+
+            package com.mycompany;
+
+            @WasmModule("my_app")
+            public class MyApp {
+
+               public static void delay(int ms) {
+                  try {
+                     Thread.sleep(ms);
+                  } catch (InterruptedException e) {
+                     e.printStackTrace();
+                  }
+               }
+            }
+
+      - C source code (``my_app.c``):
+
+         .. code:: c
+
+            #define __IMPORT(class, method) \
+            __attribute__((__import_module__(class), __import_name__(method)))
+
+            /* Extern functions implemented in Java (class referenced by its annotation value: "my_app")-----*/
+            extern void delay(int ms) __IMPORT("my_app" ,"delay");
+
+            int main(){
+               ...
+               delay(1000); //call function implemented in Java
+               ...
+            }
+
+   .. tab:: class is empty ``""`` or set to ``env``
+
+      - Java source code (``MyApp.java``):
+
+         .. code:: java
+
+            package com.mycompany;
+
+            @WasmModule("my_app")
+            public class MyApp {
+
+               public static void delay(int ms) {
+                  try {
+                     Thread.sleep(ms);
+                  } catch (InterruptedException e) {
+                     e.printStackTrace();
+                  }
+               }
+            }
+
+      - C source code (``my_app.c``):
+
+         .. code:: c
+
+            #define __IMPORT(class, method) \
+            __attribute__((__import_module__(class), __import_name__(method)))
+
+            /* Extern functions implemented in Java (class not specified, its is empty. This is the same as when it is set to "env") -----*/
+            extern void delay(int ms) __IMPORT("" ,"delay");
+
+            int main(){
+               ...
+               delay(1000); //call function implemented in Java
+               ...
+            }
+
+      .. note::
+         Link between Managed C function declaration and Java static methods can also be done implicitly using ``-Wl,--allow-undefined`` 
+         C compiler option (see :ref:`managedc.compilation.command_line_options` ). No need to declare and use ``__IMPORT(class, method)`` C macro 
+         in that case.  The Java static method is searched in the Java class which refers to the current Managed C module.
+         A SOAR error will be triggered if no Java method found.
 
 .. _managedc.communication.managedc_to_java:
 
