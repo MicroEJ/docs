@@ -260,14 +260,14 @@ To get more details on connected USB dongle(s), run the debug tool as following:
 
          java -Djava.library.path=resources/os/[OS_NAME] -jar licenseManager/licenseManagerProduct.jar
 
-   .. tab:: Architecture <= 8.0.0 
+   .. tab:: Architecture <= 8.1.0 
 
       .. code:: console
 
          java -Djava.library.path=resources/os/[OS_NAME] -jar licenseManager/licenseManagerUsbDongle.jar
 
 
-   with ``OS_NAME`` set to ``Windows64`` for Windows OS, ``Linux64`` for Linux OS, ``Mac`` for macOS x86_64 (Intel chip) or ``MacA64`` for macOS aarch64 (M1 chip).
+with ``OS_NAME`` set to ``Windows64`` for Windows OS, ``Linux64`` for Linux OS, ``Mac`` for macOS x86_64 (Intel chip) or ``MacA64`` for macOS aarch64 (M1 chip).
 
 If your USB dongle has been properly activated, you should get the following output:
    
