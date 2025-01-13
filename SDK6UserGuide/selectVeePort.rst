@@ -165,8 +165,9 @@ Architecture Usage Selection
 ----------------------------
 
 When the selected VEE Port is :ref:`fetched from a repository <sdk_6_select_veeport_module>` or is a :ref:`subproject of a multi-project <sdk_6_select_veeport_in_multiproject>`, 
-the Architecture Usage can be defined in the project which needs it (an Application for example).
-This is done by setting the ``architectureUsage`` property in the ``microej`` block in the ``build.gradke.kts`` file::
+the default Architecture Usage is ``eval`` (no matter what is configured in the VEE Port project).
+It is possible to change the Architecture Usage in the project which needs it (an Application for example) 
+by setting the ``architectureUsage`` property in the ``microej`` block in the ``build.gradke.kts`` file::
 
    microej {
       architectureUsage = "prod"
@@ -178,7 +179,7 @@ If not set, the ``eval`` value is used.
 .. warning::
 
    When the VEE Port is a local archive or folder (``microejVee(files(...))``), the Architecture Usage is defined when the VEE Port is built and can no longer be changed.
-   When the VEE Port is built in SDK 6 (with the ``buildVeePort`` task), the Architecture Usage is defined by setting the ``architectureUsage`` property in the ``build.gradke.kts`` file of the VEE Port project.
+   In SDK 6 (with the ``buildVeePort`` task), the Architecture Usage is defined by setting the ``architectureUsage`` property in the ``build.gradke.kts`` file of the VEE Port project.
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 

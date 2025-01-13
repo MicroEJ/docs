@@ -12,7 +12,7 @@ Migration Notes
 From 0.19.0 to 0.20.0
 ---------------------
 
-This section applies if MicroEJ SDK 6 ``0.20.0`` is used on a project that was created using MicroEJ SDK 6 ``0.19.0`` 
+This section applies if SDK 6 ``0.20.0`` is used on a project that was created using SDK 6 ``0.19.0`` 
 or lower.
 
 Minimum Gradle version
@@ -54,7 +54,7 @@ or add the following code in your ``build.gradle.kts`` file to continue to build
 From 0.15.0 to 0.16.0
 ---------------------
 
-This section applies if MicroEJ SDK 6 ``0.16.0`` is used on a project that was created using MicroEJ SDK 6 ``0.15.0`` 
+This section applies if SDK 6 ``0.16.0`` is used on a project that was created using SDK 6 ``0.15.0`` 
 or lower.
 
 Unification of Application EntryPoint
@@ -106,7 +106,7 @@ and set the property ``applicationEntryPoint`` to the Full Qualified Name of the
 From 0.14.0 to 0.15.0
 ---------------------
 
-This section applies if MicroEJ SDK 6 ``0.15.0`` is used on a project that was created using MicroEJ SDK 6 ``0.14.0`` 
+This section applies if SDK 6 ``0.15.0`` is used on a project that was created using SDK 6 ``0.14.0`` 
 or lower.
 
 Unification of VEE dependency declaration
