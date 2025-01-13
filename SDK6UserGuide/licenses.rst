@@ -307,11 +307,21 @@ To get more details on connected USB dongle(s), run the debug tool as following:
 #. Change directory to a Production VEE Port.
 #. Execute the command:
    
-   .. code:: console
+.. tabs::
 
-      java -Djava.library.path=resources/os/[OS_NAME] -jar licenseManager/licenseManagerUsbDongle.jar
+   .. tab:: Atchitecture v8.1.0 or higher
+   
+      .. code:: console
 
-   with ``OS_NAME`` set to ``Windows64`` for Windows OS, ``Linux64`` for Linux OS, ``Mac`` for macOS x86_64 (Intel chip) or ``MacA64`` for macOS aarch64 (M1 chip).
+            java -Djava.library.path=resources/os/[OS_NAME] -jar licenseManager/licenseManagerProduct.jar
+
+   .. tab:: Architecture v8.0.0 or lower 
+
+      .. code:: console
+
+            java -Djava.library.path=resources/os/[OS_NAME] -jar licenseManager/licenseManagerUsbDongle.jar
+
+with ``OS_NAME`` set to ``Windows64`` for Windows OS, ``Linux64`` for Linux OS, ``Mac`` for macOS x86_64 (Intel chip) or ``MacA64`` for macOS aarch64 (M1 chip).
 
 If your USB dongle has been properly activated, you should get the following output:
    
@@ -392,7 +402,7 @@ To use a USB dongle with WSL, you first need to install `usbipd` following the s
 
 First, check that WSL2 is installed on your system. If not, install it or update it following `Microsoft Documentation <https://learn.microsoft.com/fr-fr/windows/wsl/install>`__
 
-Then, you need install usbipd-win on Windows from `usbipd-win Github repository <https://github.com/dorssel/usbipd-win/releases>`__.
+Then, you need install usbipd-win v4.0.0 or higher on Windows from `usbipd-win Github repository <https://github.com/dorssel/usbipd-win/releases>`__.
 
 And then, install usbipd and update hardware database inside you WSL installation:
 
@@ -411,15 +421,16 @@ You then need to unplug and plug your dongle again before attaching the dongle t
 
   .. code-block:: console
 
-      usbipd.exe wsl attach --busid <BUSID>
+      usbipd.exe attach --wsl --busid <BUSID>
 
 The ``<BUSID>`` can be obtainted with the following powershell command:
 
   .. code-block:: console
 
-      usbipd wsl list
+      usbipd list
 
 .. note::
+
       You'll need to follow these steps each time you system is rebooted or the dongle is plugged/unplugged.
 
 .. _sdk6_production_license_troubleshooting:
@@ -471,13 +482,13 @@ Check that your dongle is attached to WSL from Powershell:
 
   .. code-block:: console
 
-      usbipd wsl list
+      usbipd list
 
 You should have a  line saying ``Attached - Ubuntu``:
 
   .. code-block:: console
 
-      PS C:\Users\sdkuser> usbipd.exe wsl list
+      PS C:\Users\sdkuser> usbipd.exe list
       BUSID  VID:PID    DEVICE                                                        STATE
       2-1    096e:0006  USB Input Device                                              Attached - Ubuntu
       2-6    0c45:6a10  Integrated Webcam                                             Not attached
