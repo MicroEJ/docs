@@ -254,13 +254,13 @@ To get more details on connected USB dongle(s), run the debug tool as following:
    
 .. tabs::
 
-   .. tab:: Atchitecture >= 8.1.0
+   .. tab:: Atchitecture v8.1.0 or higher
    
       .. code:: console
 
             java -Djava.library.path=resources/os/[OS_NAME] -jar licenseManager/licenseManagerProduct.jar
 
-   .. tab:: Architecture <= 8.1.0 
+   .. tab:: Old Architecture 
 
       .. code:: console
 
@@ -376,6 +376,7 @@ The ``<BUSID>`` can be obtainted with the following powershell command:
       usbipd list
 
 .. note::
+
       You'll need to follow these steps each time you system is rebooted or the dongle is plugged/unplugged.
 
 .. _sdk6_production_license_troubleshooting:

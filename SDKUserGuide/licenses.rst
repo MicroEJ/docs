@@ -332,13 +332,13 @@ To get more details on connected USB dongle(s), run the debug tool as following:
    
 .. tabs::
 
-   .. tab:: Atchitecture >= 8.1.0
+   .. tab:: Architecture v8.1.0 or higher
    
       .. code:: console
 
             java -Djava.library.path=resources/os/[OS_NAME] -jar licenseManager/licenseManagerProduct.jar
 
-   .. tab:: Architecture <= 8.1.0 
+   .. tab:: Old Architecture 
 
       .. code:: console
 
