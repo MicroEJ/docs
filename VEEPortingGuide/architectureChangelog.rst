@@ -35,6 +35,47 @@ specific configuration:
    -  ``QNX70``: BlackBerry QNX 7.0
 
 
+.. _changelog-8.3.0:
+
+[8.3.0] - 2024-12-24
+--------------------
+
+Foundation Libraries
+~~~~~~~~~~~~~~~~~~~~
+
+- Fixed, in ``EDC``, implementation of `java.util.WeakHashMap.put()`_ which could lead to a memory leak when new elements are added but never accessed.
+- Fixed, in ``EDC``, :ref:`Enable SecurityManager checks option <option_enable_security_manager>` was not disabled by default.
+
+Tools
+~~~~~
+
+- Updated License Manager (Evaluation) to debug installed license from command line (see :ref:`sdk6_evaluation_license_check`).
+
+Simulator
+~~~~~~~~~
+
+- Added the capability to define :ref:`Mock Options <mock_option>`.
+- Added a check to verify compatibility with the expected MicroEJ classfile version (``1.7``).
+- Fixed invalid mentions of ``SNI.closeOnGC()`` instead of ``NativeResource.closeOnGC()`` in the HILEngine Javadoc.
+- Fixed potential crash when calling `Kernel.clone()`_ in a project that does not define a ``kernel.kf`` file.
+- Fixed potential crash when booting a GUI Application on a Multi-Sandbox VEE Port.
+
+SOAR
+~~~~
+
+- Added a check to verify compatibility with the expected MicroEJ classfile version (``1.7``).
+- Fixed precedence of a :ref:`System Property <system_properties>` declared as an :ref:`Application Option <application_options>` to take priority over one defined in the classpath.
+
+.. _Kernel.clone(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#clone-T-ej.kf.Module-
+
+Integration
+~~~~~~~~~~~
+
+- Updated Architecture End User License Agreement to version ``SDK 3.1-c``.
+- Added the declaration of :ref:`section.classpath.elements.constants` as :ref:`Application Options <application_options>`.
+- Fixed :ref:`Front Panel File option <section_frontpanel_multiple_fp_files>` option was not taken into account on VEE Ports that do not depend on UI Pack.
+- Fixed an issue where Sentinel licenses were not displayed in the License Manager in some cases.
+- Removed warning messages related to missing :ref:`GC mark stack size option <option_gc_stack_size>` when building on Device.
 
 .. _changelog-8.2.0:
 
@@ -472,7 +513,7 @@ Integration
 Simulator
 ~~~~~~~~~
 
--  Added class file major version check (<=51). Classes must be compiled for Java 7 or lower. Set the options property ``S3.DisableClassFileVersionCheck`` to ``false`` to disable this verification.
+-  Added class file major version check (<=51). Classes must be compiled for Java 7 or lower.
 -  Added native method signature in the stack trace of the `UnsatisfiedLinkError`_ thrown when a native method is missing.
 -  Fixed HIL engine method ``NativeInterface.getResourceContent()`` that generates a runtime error in the Simulator.
 -  Fixed error "Internal limits reached ... S3 internal heap is full" when repeatedly loading a resource that is available in the classpath but not referenced in a ``.resources.list`` file.
@@ -1414,7 +1455,7 @@ Tools
 ~~~~~
 
 -  Updated License Manager (Production) to debug dongle recognition
-   issues from command line (see :ref:`production_license_check_cli`).
+   issues from command line (see :ref:`sdk6_production_license_check`).
 -  Updated License Manager (Production) to support dongle recognition
    on macOS ``10.14`` (Mojave)
 -  Fixed ELF To Map to produce correct sizes from an executable

@@ -36,7 +36,7 @@ Simulator.
 Example
 =======
 
-.. code:: java
+.. code-block:: java
 
    package example;
 
@@ -94,7 +94,7 @@ To create a new MicroEJ mock project:
 The following code is the required ``Sensor`` class of the created Mock
 project:
 
-.. code:: java
+.. code-block:: java
 
    package example;
 
@@ -206,7 +206,7 @@ This behavior is implemented in a Mock using the following methods on a ``lock``
 
 - ``NativeInterface.notifySuspendEnd()``: Notifies the Simulator that the current native is no more suspended. Lower priority threads in the Simulator will not be scheduled anymore.
 
-.. code:: java
+.. code-block:: java
 
    public static byte[] data = new byte[BUFFER_SIZE];
    public static int dataLength = 0;
@@ -255,26 +255,45 @@ using a path as a String.
 The MicroEJ Simulator interface allows the retrieval of any resource
 from the original Java world, using the ``getResourceContent`` method.
 
-::
+.. code-block:: java
 
    public static void bar(byte[] path, int offset, int length) {
-         NativeInterface ni = HIL.getInstance();
-         ni.refreshContent(path, offset, length);
-         String pathStr = new String(path, offset, length);
-         byte[] data = ni.getResourceContent(pathStr);
-         ...
+      NativeInterface ni = HIL.getInstance();
+      ni.refreshContent(path, offset, length);
+      String pathStr = new String(path, offset, length);
+      byte[] data = ni.getResourceContent(pathStr);
+      ...
    }
 
 Synchronous Terminations
 ------------------------
 
 To terminate the whole simulation (MicroEJ Simulator and HIL), use the
-stop() method.
+``stop()`` method.
 
-::
+.. code-block:: java
 
    public static void windowClosed() {
          HIL.getInstance().stop();
+   }
+
+.. _mock_option:
+
+Define a Mock Option
+--------------------
+
+Starting from :ref:`Architecture 8.3.0 <changelog-8.3.0>`, it is possible to define a mock option using the following :ref:`Application Option <application_options>`:
+
+.. code-block::
+
+   microej.mock.property.mymockoption=mymockvalue
+
+Then the option can be retrieved as a System Property in the mock:
+
+.. code-block:: java
+
+   public static void myNativeImplementation() {
+         String myOption = System.getProperty("mymockoption"); // returns "mymockvalue"
    }
 
 
