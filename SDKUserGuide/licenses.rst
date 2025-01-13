@@ -338,7 +338,7 @@ To get more details on connected USB dongle(s), run the debug tool as following:
 
             java -Djava.library.path=resources/os/[OS_NAME] -jar licenseManager/licenseManagerProduct.jar
 
-   .. tab:: Old Architecture 
+   .. tab:: Architecture v8.0.0 or lower
 
       .. code:: console
 
