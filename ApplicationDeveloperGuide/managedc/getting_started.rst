@@ -157,7 +157,7 @@ To use Managed C in your Application, follow these steps:
 
 #. **Compile the C File to WebAssembly:**
 
-   In a terminal, navigate to the module directory containing the ``module.ivy`` file and run the following command to compile the C code to WebAssembly:
+   In a terminal, navigate to your application base directory and run the following command to compile the C code to WebAssembly:
 
    .. code:: console
    
@@ -170,7 +170,7 @@ To use Managed C in your Application, follow these steps:
 
 #. **Build the Application:**
 
-   In a terminal, navigate to the directory containing the ``module.ivy`` file and run the following command to build the Application:
+   In a terminal, navigate to your application base directory and run the following command to build the Application:
 
 .. tabs::
    
