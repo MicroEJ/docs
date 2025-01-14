@@ -1,15 +1,13 @@
 .. _wasm.wasi:
 
-WASI
-=======
+WASI Library
+============
 
 WebAssembly System Interface (WASI) provides a modular and secure system interface designed to enable WASM module to interact with the underlying operating system in a platform-independent manner.
 
-We provide a ``WASI Add-on Library`` which implements a subset of `WASI 0.1 APIs specification <https://github.com/WebAssembly/WASI/blob/main/legacy/preview1/docs.md>`_.
+MicroEJ provides its own WASI Library which implements a subset of `WASI 0.1 APIs specification <https://github.com/WebAssembly/WASI/blob/main/legacy/preview1/docs.md>`_.
 
-All the implemented functions are exported under the module name ``wasi_snapshot_preview1``.
-
-We have extended the APIs to support certain POSIX functions that are not available in `wasi-libc <https://github.com/WebAssembly/wasi-libc>`_ such as ``socket``, ``bind``, ``connect`` etc.
+Moreover, some APIs have been extended to support certain POSIX functions that are not available in `wasi-libc <https://github.com/WebAssembly/wasi-libc>`_ such as ``socket``, ``bind``, ``connect`` etc.
 
 Usage
 ------
@@ -29,6 +27,10 @@ To use the WASI Add-on Library, add the following to the project build file:
       .. code-block:: xml
 
          <dependency org="ej.library.runtime" name="wasi" rev="0.1.0"/>
+
+.. note:
+
+   All the implemented functions are exported under the module name ``wasi_snapshot_preview1``.
 
 
 In your application code, you must first call the WASI initialization method ``Wasi.init(byte[] memory, String... preopensDirectories)`` before using WASI.
