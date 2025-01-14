@@ -203,11 +203,28 @@ To use Managed C in your Application, follow these steps:
 
 #. **Run the Executable:**
 
-    Once the Application is built, execute it on your device. You should get the following output:
+    Once the Application is built, execute it on your device. 
+    
+.. tabs::
+   
+   .. tab:: SDK 6
 
-    .. code:: console
+      Run the following command:
+      
+      .. code:: bash
 
-        factorial(10) = 3628800
+         ./gradlew runOnDevice
+      
+   .. tab:: SDK 5
+
+      Refer to :ref:`device_build` section.
+
+    
+Once the Executable is deployed on your Device, you should get the following output:
+
+.. code:: console
+
+   factorial(10) = 3628800
 
 
 For further details, refer to the following sub-sections:
