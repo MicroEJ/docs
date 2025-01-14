@@ -68,8 +68,12 @@ Also, make sure the tool does not apply a filter to smooth when scaling.
 Take screenshots of the simulated display
 -----------------------------------------
 
-An alternative is to make a screenshot and zooming with an image viewer/editor. For that, use a screenshot tool or programmatically
-extend the Front Panel with:
+An alternative is to make a screenshot and zooming with an image viewer/editor.
+For that:
+
+- Use :ref:`frontpanel_display_screenshot` button (available since UI Pack 14.3.0).
+- Use a screenshot tool.
+- Programmatically extend the Front Panel with:
 
 .. code-block:: java
 
@@ -203,5 +207,5 @@ For example, for ``bpp=RGB565``, apply the following filter:
 Keep the Front Panel always on top
 ----------------------------------
 
-To keep the front panel visible while developing the application, use multiple displays and/or use tools like Microsoft PowerToys'
+To keep the Front Panel visible while developing the application, use multiple displays and/or use tools like Microsoft PowerToys'
 `Always on Top <https://learn.microsoft.com/en-us/windows/powertoys/always-on-top>`_ utility.
