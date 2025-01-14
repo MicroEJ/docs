@@ -87,7 +87,7 @@ The `Device API Module`_ must be added to the project build file to use the Devi
 .. _Device API Module: https://repository.microej.com/modules/ej/api/device/
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

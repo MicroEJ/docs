@@ -39,7 +39,7 @@ The Event Queue :ref:`Pack <pack_overview>` module must be installed in your VEE
          <dependency org="com.microej.pack.event" name="event-pack" rev="2.0.1" transitive="false"/>
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
