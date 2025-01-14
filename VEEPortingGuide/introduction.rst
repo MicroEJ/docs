@@ -182,7 +182,7 @@ Please note that porting MicroEJ to a new device is also something that is part 
 .. _VEE Port Examples: https://github.com/microej?q=vee&type=all&language=&sort=
 
 ..
-   | Copyright 2021-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2021-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

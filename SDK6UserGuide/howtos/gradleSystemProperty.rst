@@ -35,7 +35,7 @@ The ``providers.systemProperty("myPropertyName")`` API returns a ``org.gradle.ap
    If the property to pass is an :ref:`Application option <application_options>`, it must be prefixed by ``microej.option.*``.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

@@ -113,7 +113,7 @@ It is important to note that the declaration order of the repositories matters.
 Gradle requests the repositories in the order they are declared and stops as soon as it finds a matching version.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

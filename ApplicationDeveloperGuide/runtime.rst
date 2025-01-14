@@ -269,7 +269,7 @@ The following code prints the formatted Architecture characteristics on standard
 .. _ReferenceQueue.remove(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/ref/ReferenceQueue.html#remove--
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
