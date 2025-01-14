@@ -170,39 +170,36 @@ To use Managed C in your Application, follow these steps:
 
 #. **Build the Application:**
 
-   In a terminal, navigate to your application base directory and run the following command to build the Application:
+   In a terminal, navigate to your application base directory and perform the following steps:
 
 .. tabs::
    
-   .. tab:: SDk 6
+   .. tab:: SDK 6
 
-      In the file ``build.gradle.kts`` add your veeport path in ``microejVee(files("/path/to/veeport"))``.
-      
-      Then run:
+      Edit the file ``build.gradle.kts`` and add the location to :ref:`your prebuilt VEE Port <managedc_getting_started_prerequisites>` using ``microejVee(files("/path/to/veeport"))``.
+            
+      Then run the following command to build the Application:
       
       .. code:: bash
 
-         ./gradlew build
+         ./gradlew buildExecutable
+      
+      .. note::
+
+         See :ref:`sdk_6_select_veeport` section for alternative ways to connect your VEE Port.
 
    .. tab:: SDK 5
-            
-      .. code:: console
+
+      Run the following command to build the Application:            
+
+      .. code:: bash
 
             mmm build -Dplatform-loader.target.platform.dir=<prebuilt_veeport_path>/source
             
       .. note::
          
-            Replace ``<prebuilt_veeport_path>`` by the location of the root directory of your prebuilt VEE Port (see :ref:`managedc_getting_started_prerequisites`).       
-
-\
-
-   You should see the following message at the end of the build:
-
-      .. code:: console
-
-         BUILD SUCCESSFUL
-
-         Total time: 20 seconds
+            Replace ``<prebuilt_veeport_path>`` with the location of :ref:`your prebuilt VEE Port <managedc_getting_started_prerequisites>`.   
+            See :ref:`platform_selection` section for alternative ways to connect your VEE Port.    
 
 #. **Run the Executable:**
 
