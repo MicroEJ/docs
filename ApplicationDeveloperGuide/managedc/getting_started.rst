@@ -46,7 +46,7 @@ To use Managed C in your Application, follow these steps:
 
    .. tab:: SDK 5
 
-      .. code:: console
+      .. code:: bash
 
             mmm init -Dskeleton.org=com.is2t.easyant.skeletons -Dskeleton.module=firmware-singleapp -Dskeleton.rev=2.+ -Dproject.org=com.mycompany -Dproject.module=myproject -Dproject.rev=1.0.0 -Dskeleton.target.dir=myproject
 
@@ -157,9 +157,9 @@ To use Managed C in your Application, follow these steps:
 
 #. **Compile the C File to WebAssembly:**
 
-   In a terminal, navigate to the module directory containing the ``module.ivy`` file and run the following command to compile the C code to WebAssembly:
+   In a terminal, navigate to your application base directory and run the following command to compile the C code to WebAssembly:
 
-   .. code:: console
+   .. code:: bash
    
       [path_to_wasi_sdk]/bin/clang -Wl,--no-entry -Wl,--export-all -Wl,--allow-undefined -z stack-size=4096 -nostdlib -mcpu=mvp -O3 src/main/c/factorial.c -o src/main/resources/factorial.wasm
 
@@ -170,51 +170,69 @@ To use Managed C in your Application, follow these steps:
 
 #. **Build the Application:**
 
-   In a terminal, navigate to the directory containing the ``module.ivy`` file and run the following command to build the Application:
+   In a terminal, navigate to your application base directory and perform the following steps:
 
 .. tabs::
    
-   .. tab:: SDk 6
+   .. tab:: SDK 6
 
-      In the file ``build.gradle.kts`` add your veeport path in ``microejVee(files("/path/to/veeport"))``.
-      
-      Then run:
+      Edit the file ``build.gradle.kts`` and add the location to :ref:`your prebuilt VEE Port <managedc_getting_started_prerequisites>` using ``microejVee(files("/path/to/veeport"))``.
+            
+      Then run the following command to build the Application:
       
       .. code:: bash
 
-         ./gradlew build
+         ./gradlew buildExecutable
+      
+      .. note::
+
+         See :ref:`sdk_6_select_veeport` section for alternative ways to connect your VEE Port.
 
    .. tab:: SDK 5
-            
-      .. code:: console
+
+      Run the following command to build the Application:            
+
+      .. code:: bash
 
             mmm build -Dplatform-loader.target.platform.dir=<prebuilt_veeport_path>/source
             
       .. note::
          
-            Replace ``<prebuilt_veeport_path>`` by the location of the root directory of your prebuilt VEE Port (see :ref:`managedc_getting_started_prerequisites`).       
-
-\
-
-   You should see the following message at the end of the build:
-
-      .. code:: console
-
-         BUILD SUCCESSFUL
-
-         Total time: 20 seconds
+            Replace ``<prebuilt_veeport_path>`` with the location of :ref:`your prebuilt VEE Port <managedc_getting_started_prerequisites>`.   
+            See :ref:`platform_selection` section for alternative ways to connect your VEE Port.    
 
 #. **Run the Executable:**
 
-    Once the Application is built, execute it on your device. You should get the following output:
+    Once the Application is built, execute it on your device. 
+    
+.. tabs::
+   
+   .. tab:: SDK 6
 
-    .. code:: console
+      Run the following command:
+      
+      .. code:: bash
 
-        factorial(10) = 3628800
+         ./gradlew runOnDevice
+      
+   .. tab:: SDK 5
 
+      Refer to :ref:`device_build` section.
+
+    
+Once the Executable is deployed on your Device, you should get the following output:
+
+.. code:: console
+
+   factorial(10) = 3628800
+
+Congratulations! You just run your first Managed C code. You are now ready to learn how to build more complex Managed C projects.
 
 For further details, refer to the following sub-sections:
 
+- :ref:`managedc.compilation`: Instructions to compile and link an existing C or C++ project to WebAssembly.
+- :ref:`managedc.communication`: Specifies the communication mechanism to seamlessly link your Java and Managed C code together. 
+- :ref:`wasm.wasi`: Discover WASI, the WebAssembly System Interface implemented by MicroEJ.
 - :ref:`Troubleshooting <managedc.troubleshooting>`: Assistance for resolving common issues when working with Managed C.
 
 ..
