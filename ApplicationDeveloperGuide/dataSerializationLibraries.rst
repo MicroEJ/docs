@@ -349,7 +349,7 @@ The execution of this example on the Simulator should print the following trace:
 	Data deserialized = {menu={value=File, id=file, popup={menuitem=[{value=New, onclick=CreateNewDoc()}, {value=Open, onclick=OpenDoc()}, {value=Close, onclick=CloseDoc()}]}}}
 
 ..
-   | Copyright 2021-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2021-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

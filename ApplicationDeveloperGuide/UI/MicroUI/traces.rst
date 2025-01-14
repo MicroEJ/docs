@@ -404,7 +404,7 @@ The following text can be copied in a file called ``SYSVIEW_MicroUI.txt`` and co
 .. hint:: Retrieve a compatible file with the VEE Port's UI Pack in the UI Pack (open it with as a zip): in the VEE Port configuration project, open ``[veeport-configuration]\target~\dependencies\[architecture]-ui-pack.xpfp\build\fragments\microui\content\lib\SYSVIEW_MicroUI.txt``.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
