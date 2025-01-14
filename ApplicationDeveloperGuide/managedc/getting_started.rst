@@ -226,9 +226,13 @@ Once the Executable is deployed on your Device, you should get the following out
 
    factorial(10) = 3628800
 
+Congratulations! You just run your first Managed C code example. You are now ready to learn how to build more complex Managed C projects.
 
 For further details, refer to the following sub-sections:
 
+- :ref:`managedc.compilation`: Instructions to compile and link an existing C or C++ project to WebAssembly.
+- :ref:`managedc.communication`: Specifies the communication mechanism to seamlessly link Java and C code together. 
+- :ref:`wasm.wasi`: Discover WASI, the WebAssembly System Interface implemented by MicroEJ.
 - :ref:`Troubleshooting <managedc.troubleshooting>`: Assistance for resolving common issues when working with Managed C.
 
 ..
