@@ -1,9 +1,9 @@
 .. _managedc.compilation:
 
-Compilation
-===========
+Compile your C Project
+======================
 
-MicroEJ supports Managed C through WebAssembly, so Managed C code needs to be compiled to WebAssembly first. 
+MicroEJ supports Managed C through WebAssembly, so your C/C++ code needs to be compiled to WebAssembly first. 
 
 The supported toolchain for compiling C code to WebAssembly is `WASI SDK <https://github.com/WebAssembly/wasi-sdk/>`__.
 
@@ -12,7 +12,7 @@ Install the Toolchain
 
 Download the `WASI SDK version 20 or higher <https://github.com/WebAssembly/wasi-sdk/releases>`__ and extract it at a location of your choice on your machine, named ``[path_to_wasi_sdk]`` in the rest of the documentation.
 
-Compile a simple C file
+Compile a Simple C File
 -----------------------
 
 Let's assume we have a file named ``my_app.c`` in the folder ``src/main/c``.
@@ -43,8 +43,8 @@ In the terminal, navigate to the ``src/main/c`` directory and execute the follow
 The generated file ``my_app.wasm`` is the result of the link of all the content of the object file(s) (functions, globals, constants) in a single WebAssembly module.
 This linked WebAssembly module can now be mapped to a :ref:`@WasmModule <managedc.communication.managedc_to_java>`.
 
-C++ code
---------
+Compile C++ code
+----------------
 
 WASI SDK also includes a C++ compiler `clang++`, which you can use to compile and link C++ code.
 
