@@ -49,8 +49,10 @@ Usage
 -----
 
 1. Run the application in the Simulator.
-2. Open the file ``MicroUIFlushVisualizer/MicroUIFlushVisualizer.html`` that was generated in the :ref:`application output folder <outputfiles>`.
+2. Since UI Pack 14.3.0, the button |FlushVizualizer| in the toolbar of the Front Panel opens the Flush Vizualizer.
+3. The file ``MicroUIFlushVisualizer/MicroUIFlushVisualizer.html`` is generated in the :ref:`application output folder <outputfiles>` and can be opened during or after the execution.
 
+.. |FlushVizualizer| image:: images/monitoring.png
 .. image:: images/MicroUIFlushVisualizerApplicationOutputFolder.png
 
 .. note::
