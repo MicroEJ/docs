@@ -46,7 +46,7 @@ To use Managed C in your Application, follow these steps:
 
    .. tab:: SDK 5
 
-      .. code:: console
+      .. code:: bash
 
             mmm init -Dskeleton.org=com.is2t.easyant.skeletons -Dskeleton.module=firmware-singleapp -Dskeleton.rev=2.+ -Dproject.org=com.mycompany -Dproject.module=myproject -Dproject.rev=1.0.0 -Dskeleton.target.dir=myproject
 
@@ -159,7 +159,7 @@ To use Managed C in your Application, follow these steps:
 
    In a terminal, navigate to your application base directory and run the following command to compile the C code to WebAssembly:
 
-   .. code:: console
+   .. code:: bash
    
       [path_to_wasi_sdk]/bin/clang -Wl,--no-entry -Wl,--export-all -Wl,--allow-undefined -z stack-size=4096 -nostdlib -mcpu=mvp -O3 src/main/c/factorial.c -o src/main/resources/factorial.wasm
 
