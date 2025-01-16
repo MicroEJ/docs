@@ -49,7 +49,7 @@ The line ``example.JavaCode.method1`` represents the execution of the C function
 Calling Java from Managed C
 ---------------------------
 
-The Core Engine allows to expose Java static methods to Managed C. Functions has to be declared as ``extern`` in the Managed C 
+The Core Engine allows to expose Java static methods to Managed C. Functions have to be declared as ``extern`` in the Managed C 
 source code. Here is a C source code example:
 
 .. code:: c
