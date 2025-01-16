@@ -41,7 +41,7 @@ In the terminal, navigate to the ``src/main/c`` directory and execute the follow
     If your module is composed of multiple C files, append all object files to the command line.
 
 The generated file ``my_app.wasm`` is the result of the link of all the content of the object file(s) (functions, globals, constants) in a single WebAssembly module.
-This linked WebAssembly module can now be mapped to a :ref:`@WasmModule <managedc.communication.managedc_to_java>`.
+This linked WebAssembly module can now be bound to a :ref:`@WasmModule <managedc.bind.method.java>`.
 
 Compile C++ Code
 ----------------
