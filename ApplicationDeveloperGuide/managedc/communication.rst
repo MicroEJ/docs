@@ -3,7 +3,46 @@
 Communication Between Java and Managed C
 ========================================
 
-The Core Engine allows to communicate between Java and Managed C. Java static methods can be used from Managed C code and vice-versa.
+The Core Engine allows to communicate between Java and Managed C using direct calls between Java methods and Managed C functions. 
+Also, the Java code can directly access the Managed C linear memory through a Java ``byte`` array.
+
+Principle
+---------
+
+The following figure illustrates the link between a Java method and a C function with a first code example.
+Basically, a Java static method declared ``native`` can be mapped to a Managed C function.
+Conversely, a Managed C function declared ``extern`` can be mapped to a Java static method.
+
+.. figure:: ../images/managedc-communication-example.png
+   :scale: 70%
+   :align: center
+
+The next figure illustrates the call stack of the Core Engine main thread:
+
+.. figure:: ../images/managedc-communication-callstack.png
+   :scale: 70%
+   :align: center
+
+You can notice that from Core Engine execution point of view, there is no distinction between Java methods and C functions.
+The execution of the main entry point produces the following stack trace:
+
+.. code:: console
+
+   Exception in thread "main" java.lang.RuntimeException: Core Engine Stack Trace
+      [...]
+      at java.lang.RuntimeException.<init>(RuntimeException.java:18)
+      at example.JavaCode.method2(JavaCode.java:13)
+      at example.JavaCode.method1(Unknown Source)
+      at example.JavaCode.main(JavaCode.java:26)
+      at java.lang.MainThread.run(Thread.java:856)
+      at java.lang.Thread.runWrapper(Thread.java:465)
+      [...]
+
+The line ``example.JavaCode.method1`` represents the execution of the C function named ``function1``.
+
+.. note::
+   
+   The Core Engine prints ``Unknown Source`` because the retrieval of line numbers in C files is no yet available.
 
 .. _managedc.communication.java_to_managedc:
 
