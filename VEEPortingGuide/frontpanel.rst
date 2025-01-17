@@ -423,6 +423,117 @@ area is delimited by the fully opaque pixels. Every pixel in the
 filter image which is not fully opaque is considered not part of the
 active area.
 
+Extension / Customization
+=========================
+
+Since UI Pack 14.3.0 it is also possible to extend the Front Panel window.
+
+There are several zones available for extension: the tool bar, the status bar and the sides of the device.
+It may be convenient for example to concentrate all the mocks into one window instead of several ones.
+
+The device widget can be retrieved using ``FrontPanel.getFrontPanel().getDeviceWidget()``.
+From this widget, it is possible to retrieve the extensible zones. 
+
+Tool Bar
+--------
+
+The `tool bar`_ can be retrieved with ``(javax.swing.JToolBar) ((javax.swing.JComponent) FrontPanel.getFrontPanel().getDeviceWidget()).getParent().getParent().getComponent(1)``.
+Then it is possible to add one or several `actions`_ using `JToolBar.add()`_.
+A good practice is to add a separator before adding the actions using `JToolBar.addSeparator()`_.
+
+For example:
+
+.. code:: Java
+
+   JToolBar toolBar = (JToolBar) ((JComponent) FrontPanel.getFrontPanel().getDeviceWidget()).getParent().getParent().getComponent(1);
+   ImageIcon myActionIcon = new ImageIcon(getClass().getClassLoader().getResource("myIcon.png"));
+   AbstractAction myAction = new AbstractAction(null, myActionIcon) {
+      private static final long serialVersionUID = 1L;
+
+      @Override
+      public void actionPerformed(ActionEvent e) {
+         // Execute my action.
+      }
+   };
+   toolBar.addSeparator();
+   toolBar.add(myAction);
+
+.. figure:: images/fp-toolbar-action.png
+   
+   An example of action in the toolbar with the MicroEJ mascot as icon.
+
+.. _actions: https://docs.oracle.com/javase/7/docs/api/javax/swing/Action.html
+.. _tool bar: https://docs.oracle.com/javase/7/docs/api/javax/swing/JToolBar.html
+.. _JToolBar.add(): https://docs.oracle.com/javase/7/docs/api/javax/swing/JToolBar.html#add(javax.swing.Action)
+.. _JToolBar.addSeparator(): https://docs.oracle.com/javase/7/docs/api/javax/swing/JToolBar.html#addSeparator()
+
+Status Bar
+----------
+
+The status bar can be retrieved with ``(javax.swing.JPanel) ((javax.swing.JComponent) FrontPanel.getFrontPanel().getDeviceWidget()).getParent().getParent().getComponent(2)``.
+
+The status bar contains 3 zones: one on the left, one on the center, one on the right.
+Each zone is a component included in the status bar and can be retrieved with its position, respectively ``0``, ``1`` and ``2``.
+In each zone, it is possible to add one or several `components`_.
+A good practice is to add a `separator`_ before adding the components.
+
+For example:
+
+.. code:: Java
+
+   JPanel statusBar = (JPanel) ((JComponent) FrontPanel.getFrontPanel().getDeviceWidget()).getParent().getParent().getComponent(2);
+   JPanel statusBarLeft = (JPanel) statusBar.getComponent(0);
+   JLabel myLabel = new JLabel("My information");
+   JSeparator mySeparator = new JSeparator(SwingConstants.VERTICAL);
+   Dimension myLabelPreferredSize = mySeparator.getPreferredSize();
+   myLabelPreferredSize.height = myLabel.getPreferredSize().height;
+   mySeparator.setPreferredSize(myLabelPreferredSize);
+   statusBarLeft.add(mySeparator);
+   statusBarLeft.add(myLabel);
+
+.. figure:: images/fp-statusbar-information.png
+   
+   An example of simple information in the status bar.
+
+.. _components: https://docs.oracle.com/javase/7/docs/api/javax/swing/JComponent.html
+.. _separator: https://docs.oracle.com/javase/7/docs/api/javax/swing/JSeparator.html
+
+Around the Device
+-----------------
+
+The panel containing the device can be retrieved with ``(java.swing.JPanel) ((javax.swing.JComponent) FrontPanel.getFrontPanel().getDeviceWidget()).getParent()``
+
+The panel uses a `border layout`_, the device being in the center.
+It is possible to add widgets around the device, on `north`_, `west`_, `east`_ or `south`_.
+
+For example:
+
+.. code:: Java
+
+   JPanel panel = (JPanel) ((JComponent) FrontPanel.getFrontPanel().getDeviceWidget()).getParent();
+   panel.add(new JLabel("My left label"), BorderLayout.WEST);
+   panel.add(new JLabel("My top label"), BorderLayout.NORTH);
+   panel.add(new JButton("My bottom button"), BorderLayout.SOUTH);
+   JPanel myPanel = new JPanel();
+   myPanel.setLayout(new BoxLayout(myPanel, BoxLayout.Y_AXIS));
+   panel.add(myPanel, BorderLayout.EAST);
+   myPanel.add(new JLabel("My controls"));
+   myPanel.add(new JButton("My first control"));
+
+   // Update the window to be resized to fit the new widgets.
+   JFrame frame = (JFrame) panel.getParent().getParent().getParent().getParent();
+   frame.pack();
+
+.. figure:: images/fp-controls.png
+   
+   An example of widgets around the device.
+
+.. _border layout: https://docs.oracle.com/javase/7/docs/api/java/awt/BorderLayout.html
+.. _center: https://docs.oracle.com/javase/7/docs/api/java/awt/BorderLayout#CENTER.html
+.. _north: https://docs.oracle.com/javase/7/docs/api/java/awt/BorderLayout#NORTH.html
+.. _south: https://docs.oracle.com/javase/7/docs/api/java/awt/BorderLayout#SOUTH.html
+.. _west: https://docs.oracle.com/javase/7/docs/api/java/awt/BorderLayout#WEST.html
+.. _east: https://docs.oracle.com/javase/7/docs/api/java/awt/BorderLayout#EAST.html
 
 .. _fp_installation:
 
