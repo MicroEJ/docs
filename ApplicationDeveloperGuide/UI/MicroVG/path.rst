@@ -81,7 +81,7 @@ The opacity value of the drawing is defined by the Alpha channel of the ARGB col
 .. code-block:: java
 
    LinearGradient gradient = new LinearGradient(0, 0, 100, 0, new int[] { 0xffff0000, 0xffffff00, 0xffffffff });
-   VectorGraphicsPainter.fillPath(g, path, new Matrix(), gradient);
+   VectorGraphicsPainter.fillGradientPath(g, path, new Matrix(), gradient);
 
 |midTable|
 
