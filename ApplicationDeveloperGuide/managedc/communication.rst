@@ -319,7 +319,7 @@ Call a Java Method out of the WebAssembly Module
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The `import_module <https://clang.llvm.org/docs/AttributeReference.html#import-module>`__ attribute is used when the Java method to be bound belongs to a Java class other than the one bound to the WebAssembly module.
-The module_name can be either the fully qualified name of the Java class containing the Java method (e.g: ``com.mycompany.MyApp``) or the name of the ``@WasmModule`` annotation of the class containing the Java method.
+The module name can be either the fully qualified name of the Java class containing the Java method (e.g: ``com.mycompany.MyApp``) or the name of the ``@WasmModule`` annotation of the class containing the Java method.
   
 The most common case is to call a Java method declared in a library from C code.
 The corresponding Java class fully qualified name is provided as a parameter of the ``__import_module__`` attribute..
