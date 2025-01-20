@@ -211,7 +211,7 @@ as stated by the `WebAssembly 1.0 specification <https://www.w3.org/TR/wasm-core
 
 .. note::
    
-   The use of POSIX pthreads in Managed C is in the roadmap and will be available in a future version.
+   The support of POSIX pthreads in Managed C is in the roadmap and will be available in a future version.
    Implementations of `WebAssembly threads profile <https://github.com/WebAssembly/threads>`__ and `WASI threads <https://github.com/WebAssembly/wasi-threads>`__ are in-progress.
 
 Here is an example:
