@@ -164,7 +164,8 @@ all Java-declared methods and Managed C functions that meet the following condit
 - The Java method is declared ``static``.
 - The signature (name, parameters and return type) of the Java method matches with the signature of the Managed C function (see :ref:`managedc.type.mapping`). 
 - The Managed C function has been exported by the WebAssembly module. See :ref:`--export* compilation options <managedc.link.command_line_options>`. 
-  (Managed C functions declared ``static`` cannot be exported as they are only visible in the C file they are declared).
+  (Managed C functions declared ``static`` cannot be exported as they are only visible in the C file they are declared) [1]_.
+
 
 Here is an example:
   
@@ -191,7 +192,12 @@ Here is an example:
       // Bound to Java method 'com.mycompany.MyApp.print(int)'
       extern void print(int c);
 
-The following sections explain how to customize the default binding from the Java code side and the C code side.
+
+
+.. [1] By default, the :ref:`clang compiler <managedc.link.command_line_options>` exports symbols declared as ``extern`` to the WebAssembly module named ``env``. 
+   This module name is automatically bound to the current WebAssembly module.
+
+
 
 .. _managedc.bind.method.java:
 
