@@ -27,7 +27,7 @@ The next figure illustrates the call stack of the Core Engine main thread:
    :align: center
 
 
-You can notice that, from Core Engine execution point of view, there is no distinction between Java methods and C functions.
+You can notice that, from Core Engine execution point of view, there is no distinction between Java methods and Managed C functions.
 The execution of the main entry point produces the following stack trace:
 
 .. code-block:: console
