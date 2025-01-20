@@ -231,7 +231,7 @@ Congratulations! You just run your first Managed C code. You are now ready to le
 For further details, refer to the following sub-sections:
 
 - :ref:`managedc.compilation`: Instructions to compile and link an existing C or C++ project to WebAssembly.
-- :ref:`managedc.communication`: Specifies the communication mechanism to seamlessly link your Java and Managed C code together. 
+- :ref:`managedc.binding`: Specifies the mechanism to seamlessly link your Java and Managed C code together. 
 - :ref:`wasm.wasi`: Discover WASI, the WebAssembly System Interface implemented by MicroEJ.
 - :ref:`Troubleshooting <managedc.troubleshooting>`: Assistance for resolving common issues when working with Managed C.
 
