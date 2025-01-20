@@ -3,7 +3,7 @@
 Bind Java and Managed C Code
 ============================
 
-The Core Engine allows a direct link of Java and Managed C code based on a bi-directionnal binding between Java methods and Managed C functions.
+The Core Engine features a direct connection between Java and Managed C code through a bidirectional binding between Java methods and Managed C functions.
 Also, the Java code can directly access the Managed C linear memory through a Java ``byte`` array.
 
 Principle
