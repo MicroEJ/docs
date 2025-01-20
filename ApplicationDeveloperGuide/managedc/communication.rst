@@ -11,7 +11,7 @@ Principle
 
 The following figure illustrates the binding between Java methods and C functions through a first code example.
 
-Basically, a Java static method declared ``native`` and annotated with ``WasmFunction`` is bound a Managed C function with the same name.
+Basically, a Java static method declared as ``native`` and annotated with ``WasmFunction`` is bound to a Managed C function with the same name.
 Conversely, a Managed C function declared ``extern`` is bound to a Java static method with the same name.
 
 Here is a first example:
