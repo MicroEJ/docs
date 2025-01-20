@@ -162,7 +162,7 @@ Once a Java class is :ref:`bound to a WebAssembly module <managedc.bind.module>`
 all Java-declared methods and Managed C functions that meet the following conditions are automatically bound:
 
 - The Java method is declared ``static``.
-- The signature (name, parameters and return type) of the Java method matches with the signature of the Managed C function (see :ref:`managedc.type.mapping`). 
+- The signature (name, parameters and return type) of the Java method matches with the signature of the Managed C function (see :ref:`managedc.matching.types`). 
 - The Managed C function has been exported by the WebAssembly module. See :ref:`--export* compilation options <managedc.link.command_line_options>`. 
   (Managed C functions declared ``static`` cannot be exported as they are only visible in the C file they are declared) [1]_.
 
@@ -390,7 +390,7 @@ The `export_name <https://clang.llvm.org/docs/AttributeReference.html#export-nam
          putchar(c);
       }
 
-.. _managedc.type.mapping:
+.. _managedc.matching.types:
 
 Matching Types
 --------------
