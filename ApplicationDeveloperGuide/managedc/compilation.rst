@@ -12,6 +12,8 @@ Install the Toolchain
 
 Download the `WASI SDK version 20 or higher <https://github.com/WebAssembly/wasi-sdk/releases>`__ and extract it at a location of your choice on your machine, named ``[path_to_wasi_sdk]`` in the rest of the documentation.
 
+.. _managedc.compilation.file:
+
 Compile a Simple C File
 -----------------------
 
@@ -23,7 +25,7 @@ In the terminal, navigate to the ``src/main/c`` directory and execute the follow
 
     [path_to_wasi_sdk]/bin/clang -mcpu=mvp -O3 -o my_app.o -c my_app.c
 
-.. _managedc.compilation.command_line_options:
+.. _managedc.link.module:
 
 Link a WebAssembly Module
 -------------------------
