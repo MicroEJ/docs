@@ -55,8 +55,8 @@ Install Java Annotations
 
 The binding from Java to Managed C code relies on two Java annotations: 
 
-- ``WasmModule``: to bind a Java class to a WebAssembly module.
-- ``WasmFunction``: to bind a Java method to a Managed C function.
+- ``WasmModule``: to bind a Java class to a Managed C code :ref:`linked to WebAssembly module <managedc.link.module>`.
+- ``WasmFunction``: to bind a Java method to a Managed C function :ref:`compiled to a WebAssembly function <managedc.compilation.file>`.
 
 These annotations must be available to your :ref:`Application or Library project <sdk_6_create_project>`.
 
