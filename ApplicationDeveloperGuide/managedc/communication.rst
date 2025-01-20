@@ -198,6 +198,7 @@ Here is an example:
    This module name is automatically bound to the current WebAssembly module.
 
 
+The following sections explain how to customize the default binding :ref:`from the Java code side <managedc.bind.method.java>` and :ref:`from the C code side <managedc.bind.method.c>`.
 
 .. _managedc.bind.method.java:
 
@@ -205,6 +206,11 @@ Bind a Managed C Function from Java Code
 ----------------------------------------
 
 The ``@WasmFunction`` annotation is used to extend the default :ref:`Java Method to Managed C Function binding <managedc.bind.method.java>` from the Java code side.
+
+.. _managedc.call.method.java.to.c:
+
+Call a Managed C Function from Java Code
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The most common case is to call a Managed C function from Java code.
 
@@ -262,6 +268,11 @@ You should see the following output when launching the Java application:
 
           1 + 2 = 3
 
+.. _managedc.bind.method.java.to.c:
+
+Bind a Managed C Function with a Different Name
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Another use of the ``@WasmFunction`` annotation is to bind a Java Method to a Managed C function that has a different name from the Java method.
 In that case, you can provide the name of the corresponding Managed C function as a parameter of the ``@WasmFunction`` annotation.
 This is especially useful if you want to write a Java method name in camel case while binding it to a Managed C function name written in snake case.
@@ -302,7 +313,10 @@ Bind a Java Method from C Code
 The ``import_module``, ``import_name`` and ``export_name`` `C attributes <https://clang.llvm.org/docs/AttributeReference.html>` 
 are used to extend the default :ref:`Java Method to Managed C Function binding <managedc.bind.method.java>` from C code side.
 
-By default, when no attribute is specified, the Java method is searched in the Java class bound to the WebAssembly module, with the name declared by the Managed C function.
+.. _managedc.call.method.c.to.java:
+
+Call a Java Method out of the WebAssembly Module
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The `import_module <https://clang.llvm.org/docs/AttributeReference.html#import-module>`__ attribute is used when the Java method to be bound belongs to a Java class other than the one bound to the WebAssembly module.
 The module_name can be either the fully qualified name of the Java class containing the Java method (e.g: ``com.mycompany.MyApp``) or the name of the ``@WasmModule`` annotation of the class containing the Java method.
@@ -321,6 +335,11 @@ Here is an example with the standard Java `Math.max(int,int)`_ method.
       extern int max(int i, int j);
 
 .. _Math.max(int,int): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Math.html#max-int-int-
+
+.. _managedc.bind.method.c.to.java:
+
+Bind a Managed C Function with a Different Name
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The `import_name <https://clang.llvm.org/docs/AttributeReference.html#import-name>`__ attribute is used when the Managed C function name has a different name from the Java method.
 The corresponding Java method name is provided as a parameter of the ``__import_name__`` attribute.
