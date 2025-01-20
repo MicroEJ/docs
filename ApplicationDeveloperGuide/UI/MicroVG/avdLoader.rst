@@ -1,5 +1,7 @@
 .. include:: aliases.rst
 
+.. _avd_loader:
+
 Android Vector Drawable Loader
 ==============================
 
