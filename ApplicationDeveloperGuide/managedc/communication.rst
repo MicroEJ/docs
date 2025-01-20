@@ -275,7 +275,7 @@ This is especially useful if you want to write a Java method name in camel case 
             System.out.println(a + " + " + b + " = "+ doAdd(a, b));
          }
 
-         @WasmFunction("add")
+         @WasmFunction("do_add")
          public static native synchronized int doAdd(int a, int b);
       }
 
