@@ -547,6 +547,11 @@ You should see the following output when launching the Java application:
       Managed C Memory values from 1024 to 1034:
       1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 
+Start Function
+--------------
+
+When a WebAssembly module declares a `start function <https://www.w3.org/TR/wasm-core-1/#start-function%E2%91%A0>`__, it is automatically executed 
+during the :ref:`initialization of the Java class <soar_clinit>` it is bound to.
 
 ..
    | Copyright 2023, MicroEJ Corp. Content in this space is free 
