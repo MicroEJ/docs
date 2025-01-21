@@ -580,6 +580,8 @@ You should see the following output when launching the Java application:
       Managed C Memory values from 1024 to 1034:
       1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 
+.. _managedc.bind.start.function:
+
 Start Function
 --------------
 
