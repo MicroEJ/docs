@@ -341,8 +341,8 @@ Here is an example with the standard Java `Math.max(int,int)`_ method.
 
 .. _managedc.bind.method.c.to.java:
 
-Bind a Managed C Function with a Different Name
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Bind a Java Method with a Different Name
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The `import_name <https://clang.llvm.org/docs/AttributeReference.html#import-name>`__ attribute is used when the Managed C function name has a different name from the Java method.
 The corresponding Java method name is provided as a parameter of the ``__import_name__`` attribute.
