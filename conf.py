@@ -105,3 +105,24 @@ linkcheck_ignore = [r'^(?!#|.*microej\.com|.*nxp\.com|.*facer\.io|.*github\.com\
 #linkcheck_ignore = [r'https?:\/\/github\.com\/.+#.+']
 
 linkcheck_timeout = 20
+
+
+def setup(app):
+    app.connect("source-read", add_custom_prolog)
+
+def add_custom_prolog(app, docname, source):
+    
+    # Check if the file is in the desired sub-folder
+    if docname.startswith("SDKUserGuide/"):
+        sub_folders_count = len(docname.split("/"))     
+        sub_folders = ""  
+        for i in range(sub_folders_count-1):
+            sub_folders = sub_folders+"../"
+
+        custom_include = f".. include:: {sub_folders}sdk5_eol.rst"
+        custom_prolog = f"""
+{custom_include}
+"""
+        # Prepend the custom prolog to the source content
+        source[0] = custom_prolog + source[0]
+        print(f"Added custom prolog for {docname}: '{custom_include}'")
