@@ -216,7 +216,7 @@ The most common case is to call a Managed C function from Java code.
 
 For that, the Java method being bound must be declared ``native``, as it does not include a body.
 Additionnally, it must be annotated with the ``@WasmFunction`` annotation. This indicates to the SOAR that the Java method must be bound to a Managed C function.
-Otherwise, the SOAR will consider the Java method as a standard native method and will try to link it to a native C function.
+Otherwise, the SOAR will consider the Java method as a standard native method and will try to link it to a native C function. [2]_
 
 Finally, the Java method must be declared ``synchronized`` to ensure there is one and only one thread executing Managed C code at a time, 
 as stated by the `WebAssembly 1.0 specification <https://www.w3.org/TR/wasm-core-1/#configurations%E2%91%A0>`__.
@@ -267,6 +267,9 @@ You should see the following output when launching the Java application:
    .. code-block:: console
 
           1 + 2 = 3
+
+.. [2] When the WebAssembly module is included in a Sandboxed Application, use of ``native`` keyword in the Java method declaration is allowed in that case, 
+       since SOAR interprets first the ``WasmFunction`` annotation and the ``native`` keyword is only used to declare a Java method with no body.
 
 .. _managedc.bind.method.java.to.c:
 
@@ -544,11 +547,6 @@ You should see the following output when launching the Java application:
       Managed C Memory values from 1024 to 1034:
       1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 
-Multi-Sandboxed Context
------------------------
-
-Managed C modules and functions can be called in a Multi-Sandboxed context. Use of ``native`` keyword in the Java method declaration is allowed in that case, 
-since SOAR interprets first the annotation and the ``native`` keyword is only used to declare a Java method with no body.
 
 ..
    | Copyright 2023, MicroEJ Corp. Content in this space is free 
