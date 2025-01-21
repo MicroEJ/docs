@@ -398,12 +398,11 @@ The `export_name <https://clang.llvm.org/docs/AttributeReference.html#export-nam
 Matching Types
 --------------
 
-Java methods called by Managed C can only use Java base types ``int``, ``long``, ``float``, ``double`` as parameters and return types. 
-
+Java methods bound to Managed C functions can only use Java base types ``int``, ``long``, ``float``, ``double`` as parameters and return types. 
 
 Here is the matching table:
 
-.. list-table::  Managed C Types / Java Type matching
+.. list-table::  Managed C Types / Java Types matching
    :widths: 25 25 25
    :header-rows: 1
 
