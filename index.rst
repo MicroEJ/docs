@@ -30,7 +30,6 @@ Browse the following chapters to familiarize yourself and understand the princip
    Glossary <glossary>
    overview/index
    GettingStarted/gettingStarted
-   SDKUserGuide/index
    SDK6UserGuide/index
    ApplicationDeveloperGuide/index
    VEEPortingGuide/index
@@ -38,6 +37,7 @@ Browse the following chapters to familiarize yourself and understand the princip
    VEEWearUserGuide/index
    VEEEnergyUserGuide/index
    Trainings/index
+   SDKUserGuide/index
    support
    about
 
