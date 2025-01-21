@@ -84,9 +84,9 @@ Build Without The Standard Library
 ----------------------------------
 
 The ``-nostdlib`` flag is a linker option used to exclude the standard library when building a program. 
-It prevents the compiler and linker from automatically linking in standard system libraries (like libc in C or C++), as well as the startup code that initializes the runtime environment (e.g., _start);
-This is useful for compiling code to Wasm where you want to exclude unnecessary system dependencies.
-
+It prevents the compiler and linker from automatically linking with the standard system libraries (like libc in C or C++ Standard Library), 
+as well as the :ref:`startup code <managedc.bind.start.function>` that initializes the runtime environment.
+This is useful for building a Wasm module that contains only its own code, with all dependencies :ref:`bound to Java methods <managedc.bind.method>`.
 
 ..
    | Copyright 2023-2024, MicroEJ Corp. Content in this space is free 
