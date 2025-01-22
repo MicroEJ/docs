@@ -103,33 +103,56 @@ To configure the Wi-Fi network used by the controller:
    Additionally, the serial output of the ESP32-S3 board shows connection status.
 #. Connect your computer back to this network: your computer and the
    controller must be in the same network.
-#. Reboot the ESP32-S3 board. 
+#. Reboot the ESP32-S3 board. At this point, the configuration is saved and the board will reconnect
+   automatically every time it is powered up. If the board fails to connect, the configuration will
+   be available again for re-configuration.
 
 Simulation
 ~~~~~~~~~~
 
-It is possible to run the Simulator as many times as necessary using the same
-setup. Also, rebooting the controller will automatically set up the network with
-the saved configuration.
+To configure the Bluetooth Controller for the simulation:
 
-The IP address of the controller is available in the logs :
+#. Get the IP address of the controller from its logs:
 
-.. image:: images/blemock-controller-ip.png
-   :align: center
-   :scale: 80%
+   .. image:: images/blemock-controller-ip.png
+      :align: center
+      :scale: 80%
 
-Before running your Bluetooth application on the Simulator, in the
-:ref:`Run configuration <concepts-microejlaunches>` panel, set the simulation mode
-to "Controller (over net)" and configure the connection options.
+#. Configure the application options:
 
-.. figure:: images/blemock-configuration.png
-   :alt: Bluetooth Mock Configuration
-   :align: center
-   :scale: 80%
+   .. tabs::
 
-   Bluetooth Mock Configuration
+         .. tab:: SDK 6
 
-Launching the application on the Simulator restores the controller to its initial state.
+            Set the following :ref:`application options <sdk_6_define_option>`:
+
+            .. code-block:: properties
+
+               ###############################################################################
+               # Bluetooth Options
+               ###############################################################################
+
+               # Set the Bluetooth simulation mode.
+               # Supported values: 'stub' (default), 'net' (Bluetooth Controller)
+               s3.bluetooth.mode=net
+               
+               # When using `net` mode, set the IP address of the Bluetooth Controller.
+               s3.bluetooth.net.host=192.168.x.y
+
+         .. tab:: SDK 5
+
+            In the :ref:`Run configuration <concepts-microejlaunches>` panel, set the simulation mode
+            to "Controller (over net)" and configure the connection options.
+
+            .. figure:: images/blemock-configuration.png
+               :alt: Bluetooth Mock Configuration
+               :align: center
+               :scale: 80%
+
+               Bluetooth Mock Configuration
+
+#. Run the application on the simulator.
+   Note that when starting a new simulation, the Bluetooth Controller is reset to its initial state.
 
 .. _blemock-troubleshooting:
 
