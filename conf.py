@@ -120,7 +120,9 @@ def add_custom_prolog(app, docname, source):
 
         custom_include = f".. include:: {sub_folders}sdk5_eol.rst"
         custom_prolog = f"""
+
 {custom_include}
+
 """
         # Prepend the custom prolog to the source content
         source[0] = custom_prolog + source[0] + custom_prolog
