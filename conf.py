@@ -123,5 +123,5 @@ def add_custom_prolog(app, docname, source):
 {custom_include}
 """
         # Prepend the custom prolog to the source content
-        source[0] = custom_prolog + source[0]
+        source[0] = custom_prolog + source[0] + custom_prolog
         print(f"Added custom prolog for {docname}: '{source[0]}'")
