@@ -52,7 +52,10 @@ IntelliJ IDEA is used on this Getting Started but feel free to use your favorite
 Install West
 ^^^^^^^^^^^^
 
-Install the ::guilabel:`west` command line tool
+* `West <https://docs.zephyrproject.org/latest/develop/west/index.html>`__ is a Zephyr tool for multiple repository management systems. It will be used to fetch the code and
+its dependencies.
+* Install West by following `Installing west <https://docs.zephyrproject.org/latest/develop/west/install.html>`__ instructions (tested with west 1.2.0).
+* Check that the tool has been properly installed by running the command: ``west --version``, it should print the west version you installed.
 
 Get the VEE Port Project
 ^^^^^^^^^^^^^^^^^^^^^^^^
