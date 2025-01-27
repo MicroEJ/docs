@@ -97,6 +97,20 @@ This chapter explains how to create a new Configuration in all the supported IDE
          New Gradle Configuration in Visual Studio Code
     
       - Fill the option or property in the Search Bar and press ``Enter``.
+
+      .. warning::
+         All task options must be defined **without** quotes in Visual Studio Code. For example, 
+         to run the :ref:`Local Deployment Socket <sdk6_localDeployTool>`, the ``execTool`` task must be executed with the 
+         ``--name=localDeploymentSocket`` option. 
+         
+         If quotes are used (``--name="localDeploymentSocket"``), Visual Studio Code does not correctly pass the option to Gradle and 
+         the build fails with the following error:
+
+         .. code-block:: console
+
+            > MicroEJ Tool '"localDeploymentSocket"' not found in <path\to\project>\build\vee\scripts\
+            Make sure that the correct MicroEJ VEE is selected.
+      
       - The newly created Configuration is available in the Gradle tasks view.
 
       .. figure:: images/vscode-pinned_task.png
