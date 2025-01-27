@@ -6,6 +6,41 @@
 Changelog
 =========
 
+.. _section_ui_changelog_14_3_0:
+
+[14.3.0] - 2025-01-24
+=====================
+
+FrontPanel
+""""""""""
+
+**Added**
+
+- Add the class ``ej.fp.widget.display.Rectangle`` (extracted from ``ej.tool.frontpanel#widget#4.0.2``).
+- Add all MicroUI and Drawing algorithms in the Flush Visualizer traces.
+- Add a toolbar with various options (zoom, etc.).
+- Add a statusbar with various information (current zoom, coordinates, etc.).
+- Add the ability to resize and/or scroll the Front Panel.
+
+**Changed**
+
+- Speed up the drawing of images whose format is identical to the display, without transparency or transformation.
+- Display a tree of regions and drawings in the Flush Visualizer traces.
+
+ImageGenerator
+""""""""""""""
+
+**Fixed**
+
+- Fix the usage of an incompatible or corrupted cache (drop it).
+
+FontGenerator
+"""""""""""""
+
+**Fixed**
+
+- Fix the usage of an incompatible or corrupted cache (drop it).
+
 .. _section_ui_changelog_14_2_0:
 
 [14.2.0] - 2024-11-18
