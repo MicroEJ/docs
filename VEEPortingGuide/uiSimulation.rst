@@ -38,8 +38,8 @@ Its module.ivy file should look like this example:
       </configurations>
       
       <dependencies>
-         <dependency org="ej.tool.frontpanel" name="framework" rev="1.1.1"/>
-         <dependency org="ej.tool.frontpanel" name="widget" rev="4.0.0"/>
+         <dependency org="ej.tool.frontpanel" name="framework" rev="1.2.0"/>
+         <dependency org="ej.tool.frontpanel" name="widget" rev="5.0.0"/>
       </dependencies>
    </ivy-module>
 
@@ -49,7 +49,7 @@ To add interactive Front Panel Widgets (typically a simulated display and input 
 
 .. code-block:: xml
 
-   <dependency org="ej.tool.frontpanel" name="widget" rev="4.0.0"/>
+   <dependency org="ej.tool.frontpanel" name="widget" rev="5.0.0"/>
 
 .. note:: The life cycle of this library is different than the UI pack's one, see :ref:`section_ui_releasenotes_frontpanel`.
 
