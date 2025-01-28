@@ -217,7 +217,7 @@ The next step is to select an :ref:`Architecture <architecture_overview>` compat
 A VEE Port requires exactly one Architecture.
 MicroEJ Corp. provides MicroEJ Evaluation Architectures for most common instructions sets and compilers
 at https://repository.microej.com/modules/com/microej/architecture. 
-Please refer to the chapter :ref:`architectures_toolchains` for the details of ABI and compiler options.
+Refer to the chapter :ref:`architectures_toolchains` for the details of ABI and compiler options.
 
 If the requested MicroEJ Architecture is not available for evaluation or to get a MicroEJ Production Architecture,
 please contact your MicroEJ sales representative or :ref:`our support team <get_support>`.
@@ -236,8 +236,10 @@ Once you know which Architecture to use, add it as a dependency of the VEE Port 
 The ``[UID]`` of the dependency needed for your VEE Port can be found in the chapter :ref:`architectures_toolchains`.
 Check the table of your corresponding Architecture and follow the link in the :guilabel:`Module` column.
 
-For example, to declare the MicroEJ Evaluation Architecture version ``8.1.1`` for Arm® Cortex®-M4 microcontrollers compiled with GNU CC toolchain:
+.. warning::
+  We recommend to use an Architecture 8.1 minimum to have full support on the SDK features.
 
+For example, to declare the MicroEJ Evaluation Architecture version ``8.1.1`` for Arm® Cortex®-M4 microcontrollers compiled with GNU CC toolchain:
 
 .. code-block:: java
     :emphasize-lines: 3
@@ -537,7 +539,7 @@ Proceed with the following steps by replacing ``[my_option]`` with your option n
 
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

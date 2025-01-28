@@ -24,7 +24,7 @@ The following table describes Foundation Libraries API versions implemented in M
      - Trace
      - Device
      - ECOM-COMM
-   * - [8.0.0-8.2.0]
+   * - [8.0.0-8.3.0]
      - `1.3 <https://repository.microej.com/modules/ej/api/edc/1.3.7/>`__
      - `1.4 <https://repository.microej.com/modules/ej/api/bon/1.4.3/>`__
      - `1.7 <https://repository.microej.com/modules/ej/api/kf/1.7.0/>`__
@@ -114,7 +114,7 @@ The following table describes Foundation Libraries API versions implemented in M
    See :ref:`architecture7_migration_ecom`.
 
 ..
-   | Copyright 2023-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2023-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

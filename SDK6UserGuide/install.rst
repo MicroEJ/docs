@@ -12,13 +12,13 @@ System Requirements
 -------------------
 
 - **Hardware**
-   - Intel x64 (Dual-core i5 minimum) or macOS AArch64 (M1) processor
+   - Intel x64 (Dual-core i5 minimum), ARM or macOS AArch64 (M1) processor
    - 4GB RAM (minimum)
    - 16GB Disk (minimum)
 
 - **Operating Systems**
-   - Windows 11 or Windows 10
-   - Linux distributions (tested on Ubuntu 20.04 and 22.04)
+   - Windows 11 or Windows 10 with Intel x64 or ARM chip
+   - Linux distributions (tested on Ubuntu 20.04, 22.04 and 24.04)
    - macOS x86_64 with Intel chip
    - macOS aarch64 with M1 chip
 
@@ -262,7 +262,7 @@ Once your favorite IDE is installed, plugins must be installed to develop MicroE
 
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

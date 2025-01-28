@@ -23,7 +23,7 @@ If you want to make MicroEJ repositories available only to some projects, here i
    //    }
    }
 
-- Add the following property to a ``gradle.properties`` file at the root of your MicroEJ SDK 6 projects::
+- Add the following property to a ``gradle.properties`` file at the root of your SDK 6 projects::
 
    systemProp.gradle.repository=microejCentral
 
@@ -43,7 +43,7 @@ activate these repositories by default, you can edit the ``defaultRepository`` i
    with ``.gradle.kts``.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

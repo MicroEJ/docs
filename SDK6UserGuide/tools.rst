@@ -16,8 +16,10 @@ The format of the task is as follow:
 
    ./gradlew execTool --name=TOOL_NAME --toolProperty=PROPERTY="VALUE" --toolProperty=PROPERTY="VALUE" ...
 
-The parameter required ``--name`` is used to describe the name of the tool to execute.
-The optional parameters ``--toolProperty`` are used to configure the tool's options.
+The task required option ``--name`` is used to describe the name of the tool to execute.
+The options ``--toolProperty`` are used to configure the tool's options.
+
+.. note:: The task options can also be defined in your IDE by creating a new Configuration. For more information, you can refer to :ref:`sdk_6_howto_create_custom_configuration_in_ide`.
 
 In addition, the tool's options can be defined in ``configuration/tools/TOOL_NAME.properties``.
 
@@ -65,7 +67,7 @@ The following sections describe the IDE tools and their options:
    nullAnalysis
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

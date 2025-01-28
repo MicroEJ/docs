@@ -81,7 +81,7 @@ The opacity value of the drawing is defined by the Alpha channel of the ARGB col
 .. code-block:: java
 
    LinearGradient gradient = new LinearGradient(0, 0, 100, 0, new int[] { 0xffff0000, 0xffffff00, 0xffffffff });
-   VectorGraphicsPainter.fillPath(g, path, new Matrix(), gradient);
+   VectorGraphicsPainter.fillGradientPath(g, path, new Matrix(), gradient);
 
 |midTable|
 
@@ -202,7 +202,7 @@ The supported blending modes are:
    ``MULTIPLY``
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
