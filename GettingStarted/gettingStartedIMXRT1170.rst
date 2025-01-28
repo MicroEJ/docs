@@ -85,7 +85,7 @@ The first step is to import the :guilabel:`VEE Port` into your IDE:
    If you are using another IDE than IntelliJ IDEA, please have a look at :ref:`sdk_6_import_project` section.
 
 * If you are in the Welcome Screen, click on the :guilabel:`Open` button. Otherwise click either on :guilabel:`File` > :guilabel:`Open...` or on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project From Existing Sources...`.
-* Select the ``Demo-SmartThermostat`` directory located where you downloaded it and click on the :guilabel:`OK` button.
+* Select the ``nxp-vee-imxrt1170-evk`` directory located where you downloaded it and click on the :guilabel:`OK` button.
 
       .. figure:: images/iMXRT1170/getting-started-import-demo-application.png
          :alt: Import demo application
@@ -141,20 +141,21 @@ You may have to accept the SDK EULA if you haven't already done it, please have 
 Run an Application on the Virtual Device
 ----------------------------------------
 
-In order to execute the :guilabel:`Demo-SmartThermostat` Application on the Virtual Device, the SDK provides the Gradle :guilabel:`runOnSimulator` task. 
+In this example, we will run the :guilabel:`animatedMascot` Application available in the i.MX RT1170 VEE Port.
+In order to execute the :guilabel:`animatedMascot` Application on the Virtual Device, the SDK provides the Gradle :guilabel:`runOnSimulator` task. 
 
 .. note::
   
    If you are using another IDE than IntelliJ IDEA, please have a look at :ref:`sdk_6_run_on_simulator` section.
 
-* Double-click on the :guilabel:`runOnSimulator` task in the Gradle tasks view. It may takes few seconds.
+* In the Gradle view, navigate to :guilabel:`nxpvee-mimxrt1170-evk > apps > animatedMascot > Tasks > microej`. Double-click on the :guilabel:`runOnSimulator` task in the Gradle tasks view. It may takes few seconds.
 
       .. figure:: images/iMXRT1170/getting-started-runOnSimulator.png
          :alt: runOnSimulator task
          :align: center
          :scale: 70%
 
-The Virtual Device starts and executes the :guilabel:`Demo-SmartThermostat` application.
+The Virtual Device starts and executes the :guilabel:`animatedMascot` application.
 
       .. figure:: images/iMXRT1170/getting-started-virtual-device.png
          :alt: Virtual Device
@@ -188,7 +189,7 @@ Otherwise, learn how to :ref:`Modify the Java Application <sdk_6_getting_started
 Run an Application on i.MX RT1170 Evaluation Kit
 ------------------------------------------------
 
-To deploy :guilabel:`Demo-SmartThermostat` application on your board, you will have to:
+To deploy the :guilabel:`animatedMascot` application on your board, you will have to:
 
 * Setup your Environment (Toolchain, flashing-tool, hardware setup).
 * Request a 30 days :ref:`Evaluation License <sdk_eula>` and install an activation key.
@@ -308,7 +309,7 @@ Congratulations! You have finished the setup of your environment. You are now re
 Build the Executable for i.MX RT1170 Evaluation Kit
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In order to build the Executable of the :guilabel:`Demo-SmartThermostat` Application, the SDK provides the :guilabel:`buildExecutable` Gradle task.
+In order to build the Executable of the :guilabel:`animatedMascot` Application, the SDK provides the :guilabel:`buildExecutable` Gradle task.
 
 .. note::
   
@@ -336,12 +337,12 @@ Now your Evaluation license is installed, you can relaunch your application buil
 
 The Gradle task deploys the Application in the BSP and then builds the BSP using Make.
 
-The :guilabel:`Demo-SmartThermostat` application is built and ready to be flashed on i.MX RT1170 Evaluation Kit once the hardware setup is completed.
+The :guilabel:`animatedMascot` application is built and ready to be flashed on i.MX RT1170 Evaluation Kit once the hardware setup is completed.
 
 Flash the Application on the i.MX RT1170 Evaluation Kit
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In order to flash the :guilabel:`Demo-SmartThermostat` Application on i.MX RT1170 Evaluation Kit, the application provides the Gradle :guilabel:`runOnDevice` task.
+In order to flash the :guilabel:`animatedMascot` Application on i.MX RT1170 Evaluation Kit, the application provides the Gradle :guilabel:`runOnDevice` task.
 
 .. note::
   
@@ -354,7 +355,7 @@ In order to flash the :guilabel:`Demo-SmartThermostat` Application on i.MX RT117
          :align: center
          :scale: 70%
 
-Once the firmware is flashed, you should see the :guilabel:`Demo-SmartThermostat` running on your board.      
+Once the firmware is flashed, you should see the :guilabel:`animatedMascot` running on your board.      
 
 .. raw:: html
 
