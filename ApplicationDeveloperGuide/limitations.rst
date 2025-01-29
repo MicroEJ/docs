@@ -3,7 +3,7 @@
 Limitations
 ===========
 
-The following table lists the limitations of MicroEJ Architectures version ``7.14.0`` or higher, for both Evaluation and Production usage.
+The following table lists the limitations of MicroEJ Architectures version ``8.4.0`` or higher, for both Evaluation and Production usage.
 Please consult :ref:`architecture_changelog` for limitations changes on former versions.
 
 .. note::
