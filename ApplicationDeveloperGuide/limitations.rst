@@ -64,12 +64,18 @@ Please consult :ref:`architecture_changelog` for limitations changes on former v
    * - Number of static fields (References)
      - 65536
      - 65536
-   * - Number of threads
+   * - [Mono-Sandbox] Number of threads
      - 63
      - 63
-   * - Number of held monitors [3]_
+   * - [Multi-Sandbox] Number of threads
+     - 255
+     - 255
+   * - [Mono-Sandbox] Number of held monitors [3]_
      - 63
      - 63
+   * - [Multi-Sandbox] Number of held monitors [3]_
+     - 255
+     - 255
    * - Time limit
      - 60 minutes
      - unlimited
