@@ -35,6 +35,17 @@ specific configuration:
    -  ``QNX70``: BlackBerry QNX 7.0
 
 
+.. _changelog-8.4.0:
+
+[8.4.0] - RC 
+------------
+
+Core Engine
+~~~~~~~~~~~
+
+- [Multi] - Increased the limitation on the maximum number of threads from 63 to 255 when multi-sandbox capability is enabled.
+
+
 .. _changelog-8.3.0:
 
 [8.3.0] - 2024-12-24
