@@ -68,14 +68,14 @@ Please consult :ref:`architecture_changelog` for limitations changes on former v
      - 63
      - 63
    * - [Multi-Sandbox] Number of threads
-     - 255
-     - 255
-   * - [Mono-Sandbox] Number of held monitors [3]_
+     - 255 [3]_
+     - 255 [3]_
+   * - [Mono-Sandbox] Number of held monitors [4]_
      - 63
      - 63
-   * - [Multi-Sandbox] Number of held monitors [3]_
-     - 255
-     - 255
+   * - [Multi-Sandbox] Number of held monitors [4]_
+     - 255 [3]_
+     - 255 [3]_
    * - Time limit
      - 60 minutes
      - unlimited
@@ -83,7 +83,7 @@ Please consult :ref:`architecture_changelog` for limitations changes on former v
      - 500000000
      - unlimited
    * - Number of Java heap Garbage Collection
-     - 3000 [4]_
+     - 3000 [5]_
      - unlimited
    * - Number of Shielded Plug databases
      - unlimited
@@ -98,12 +98,15 @@ Please consult :ref:`architecture_changelog` for limitations changes on former v
    
 .. [2]
    All instance fields declared in the class and its super classes.
-
+   
 .. [3]
+   Since Architecture version 8.4.0. Was 63 in version 8.3.0.
+
+.. [4]
    The maximum number of different monitors that can be held by one thread at any
    time is defined by the :ref:`maximum number of monitors per thread Application option <option_maximum_number_of_monitors_per_thread>`.
 
-.. [4]
+.. [5]
    The Java heap Garbage Collection limit may throw unexpected cascading `java.lang.OutOfMemoryError`_ exceptions before the MicroEJ Core Engine exits.
 
 .. _java.lang.OutOfMemoryError: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/OutOfMemoryError.html
