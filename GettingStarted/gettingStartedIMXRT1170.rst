@@ -5,7 +5,6 @@ i.MX RT1170 Evaluation Kit
 
 During this Getting Started, you will learn to:
 
-* Import the i.MX RT1170 Evaluation Kit VEE Port into your IDE and build it.
 * Run an Application on the i.MX RT1170 Evaluation Kit Virtual Device.
 * Run the same Application on your i.MX RT1170 Evaluation Kit.
 
@@ -56,8 +55,8 @@ its dependencies.
 * Install West by following `Installing west <https://docs.zephyrproject.org/latest/develop/west/install.html>`__ instructions (tested with west 1.2.0).
 * Check that the tool has been properly installed by running the command: ``west --version``, it should print the west version you installed.
 
-Get the VEE Port Project
-^^^^^^^^^^^^^^^^^^^^^^^^
+Get the i.MX RT1170 VEE Port Project
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For this Getting Started, the ::guilabel:`NXP i.MX RT1170 Evaluation Kit VEE Port` will be used. 
 
@@ -75,22 +74,22 @@ You can download the i.MX RT1170 VEE Port using the following command::
    If you don’t have Git installed, you can download the source code directly from our `GitHub repository <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk/releases/tag/NXPVEE-MIMXRT1170-EVK-2.2.0>`__. 
    Then you can click on ::guilabel:`Code > Download ZIP`.
 
-Set up the VEE Port project on your IDE
----------------------------------------
+Set up the i.MX RT1170 VEE Port project on your IDE
+---------------------------------------------------
 
 Import the Project
 ^^^^^^^^^^^^^^^^^^
 
-The first step is to import the :guilabel:`VEE Port` into your IDE: 
+The first step is to import the :guilabel:`i.MX RT1170 VEE Port` into your IDE: 
 
 .. note::
   
    If you are using another IDE than IntelliJ IDEA, please have a look at :ref:`sdk_6_import_project` section.
 
-* If you are in the Welcome Screen, click on the :guilabel:`Open` button. Otherwise click either on :guilabel:`File` > :guilabel:`Open...` or on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project From Existing Sources...`.
+* If you are on the Welcome Screen, click on the :guilabel:`Open` button. Otherwise click either on :guilabel:`File` > :guilabel:`Open...` or on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project From Existing Sources...`.
 * Select the ``nxp-vee-imxrt1170-evk`` directory located where you downloaded it and click on the :guilabel:`OK` button.
 
-      .. figure:: images/iMXRT1170/getting-started-import-demo-application.png
+      .. figure:: images/iMXRT1170/getting-started-import-project.png
          :alt: Import demo application
          :align: center
          :scale: 70%
