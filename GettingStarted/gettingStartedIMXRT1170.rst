@@ -5,8 +5,9 @@ i.MX RT1170 Evaluation Kit
 
 During this Getting Started, you will learn to:
 
-* run an Application on the i.MX RT1170 Evaluation Kit Virtual Device,
-* run the same Application on your i.MX RT1170 Evaluation Kit.
+* Import the i.MX RT1170 Evaluation Kit VEE Port into your IDE and build it.
+* Run an Application on the i.MX RT1170 Evaluation Kit Virtual Device.
+* Run the same Application on your i.MX RT1170 Evaluation Kit.
 
 In case you are not familiar with MicroEJ, please visit `Discover MicroEJ <https://developer.microej.com/discover-microej/>`__ to understand the principles of our technology.
 
@@ -26,11 +27,10 @@ The first part consists of running a demo application on the Virtual Device. All
 
 The second part consists of running the same demo application on your device. For that, you will need:
 
-* i.MX RT1170 EVKB Evaluation Kit, available `here <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__.
-* RK055HDMIPI4MA0 display panel, available `here <https://www.nxp.com/part/RK055HDMIPI4MA0>`__.
-* A GNU ARM Embedded Toolchain, Cmake and Make are needed to build the BSP. You will be guided on how to install the toolchain later.
-* LinkServer tool to flash the board. You will be guided on how to install this tool later.
-* The ::guilabel:`west` command line tool from the Zephyr project. You will be guided on how to install this tool later.
+* An i.MX RT1170 EVKB Evaluation Kit, available `here <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__.
+* An RK055HDMIPI4MA0 display panel, available `here <https://www.nxp.com/part/RK055HDMIPI4MA0>`__.
+* The ::guilabel:`MCUXPresso SDK` to build the BSP and flash the board. You will be guided on how to install this tool later.
+* The ::guilabel:`West` command line tool from the Zephyr project. You will be guided on how to install this tool later.
 
 .. _sdk_6_getting_started_imxrt1170_environment_setup:
 
@@ -59,7 +59,11 @@ its dependencies.
 Get the VEE Port Project
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-For this Getting Started, the :guilabel:`app` Application will be use. You can download it using the following command::
+For this Getting Started, the ::guilabel:`NXP i.MX RT1170 Evaluation Kit VEE Port` will be used. 
+
+It contains the sources of the VEE Port which will be necessary to run applications on the simulator or on the device. It also contains some applications samples.
+
+You can download the i.MX RT1170 VEE Port using the following command::
    
    mkdir nxpvee-mimxrt1170-prj
    cd nxpvee-mimxrt1170-prj
@@ -71,8 +75,8 @@ For this Getting Started, the :guilabel:`app` Application will be use. You can d
    If you don’t have Git installed, you can download the source code directly from our `GitHub repository <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk/releases/tag/NXPVEE-MIMXRT1170-EVK-2.2.0>`__. 
    Then you can click on ::guilabel:`Code > Download ZIP`.
 
-Set up the Application on your IDE
-----------------------------------
+Set up the VEE Port project on your IDE
+---------------------------------------
 
 Import the Project
 ^^^^^^^^^^^^^^^^^^
@@ -141,6 +145,7 @@ Run an Application on the Virtual Device
 ----------------------------------------
 
 In this example, we will run the :guilabel:`animatedMascot` Application, which is available in the i.MX RT1170 VEE Port.
+
 In order to execute the :guilabel:`animatedMascot` Application on the Virtual Device, the SDK provides the Gradle :guilabel:`runOnSimulator` task. 
 
 .. note::
