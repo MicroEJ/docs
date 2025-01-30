@@ -45,13 +45,15 @@ Install MICROEJ SDK 6
 ^^^^^^^^^^^^^^^^^^^^^
 
 Install MICROEJ SDK 6 by following :ref:`sdk_6_install` instructions. 
-IntelliJ IDEA is used on this Getting Started, but feel free to use your favorite IDE.
+
+IntelliJ IDEA is used in this Getting Started, but feel free to use your favorite IDE.
 
 Install West
 ^^^^^^^^^^^^
 
-* `West <https://docs.zephyrproject.org/latest/develop/west/index.html>`__ is a Zephyr tool for multiple repository management systems. It will be used to fetch the code and
+`West <https://docs.zephyrproject.org/latest/develop/west/index.html>`__ is a Zephyr tool for multiple repository management systems. It will be used to fetch the code and
 its dependencies.
+
 * Install West by following `Installing west <https://docs.zephyrproject.org/latest/develop/west/install.html>`__ instructions (tested with west 1.2.0).
 * Check that the tool has been properly installed by running the command: ``west --version``, it should print the west version you installed.
 
@@ -143,7 +145,7 @@ You may have to accept the SDK EULA if you haven't already done it, please have 
 Run an Application on the Virtual Device
 ----------------------------------------
 
-In this example, we will run the :guilabel:`animatedMascot` Application, which is available in the i.MX RT1170 VEE Port.
+In this example, we will run the :guilabel:`animatedMascot` Application which is available in the i.MX RT1170 VEE Port.
 
 In order to execute the :guilabel:`animatedMascot` Application on the Virtual Device, the SDK provides the Gradle :guilabel:`runOnSimulator` task. 
 
@@ -169,9 +171,6 @@ The Virtual Device starts and executes the :guilabel:`animatedMascot` applicatio
   
    The Front Panel may be too big for your screen because of the RK055HDMIPI4MA0 display resolution. You can scroll down to see the bottom of the display.
 
-   If you want to know more about the use of the :guilabel:`Demo-SmartThermostat`, please have a look at its `README.md <https://github.com/MicroEJ/Demo-SmartThermostat/blob/1.0.0/smart-thermostat/README.md>`__ file.
-
-
 .. figure:: images/well-done-mascot.png
    :alt: Well Done
    :align: center
@@ -189,8 +188,8 @@ Otherwise, learn how to :ref:`Modify the Java Application <sdk_6_getting_started
 
 .. _sdk_6_getting_started_rt1170_run_on_device:
 
-Run an Application on i.MX RT1170 Evaluation Kit
-------------------------------------------------
+Run an Application on the i.MX RT1170 Evaluation Kit
+----------------------------------------------------
 
 To deploy the :guilabel:`animatedMascot` application on your board, you will have to:
 
