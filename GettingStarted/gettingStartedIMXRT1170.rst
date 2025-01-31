@@ -28,8 +28,8 @@ The second part consists of running the same demo application on your device. Fo
 
 * An i.MX RT1170 EVKB Evaluation Kit, available `here <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__.
 * An RK055HDMIPI4MA0 display panel, available `here <https://www.nxp.com/part/RK055HDMIPI4MA0>`__.
-* The ::guilabel:`MCUXPresso SDK` to build the BSP and flash the board. You will be guided on how to install this tool later.
-* The ::guilabel:`West` command line tool from the Zephyr project. You will be guided on how to install this tool later.
+* The :guilabel:`MCUXPresso` SDK to build the BSP and flash the board. You will be guided on how to install this tool later.
+* The :guilabel:`West` command line tool from the Zephyr project. You will be guided on how to install this tool later.
 
 .. _sdk_6_getting_started_imxrt1170_environment_setup:
 
@@ -60,11 +60,11 @@ its dependencies.
 Get the i.MX RT1170 VEE Port Project
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For this Getting Started, the ::guilabel:`NXP i.MX RT1170 Evaluation Kit VEE Port` will be used. 
+For this Getting Started, the `NXP i.MX RT1170 Evaluation Kit VEE Port<https://github.com/nxp-mcuxpresso/nxp-vee-imxrt1170-evk>`__ will be used. 
 
 It contains the sources of the VEE Port which will be necessary to run applications on the simulator or on the device. It also contains some applications samples.
 
-You can download the i.MX RT1170 VEE Port using the following command::
+You can download the i.MX RT1170 VEE Port using the following commands::
    
    mkdir nxpvee-mimxrt1170-prj
    cd nxpvee-mimxrt1170-prj
@@ -74,7 +74,7 @@ You can download the i.MX RT1170 VEE Port using the following command::
 .. note::
   
    If you don’t have Git installed, you can download the source code directly from our `GitHub repository <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk/releases/tag/NXPVEE-MIMXRT1170-EVK-2.2.0>`__. 
-   Then you can click on ::guilabel:`Code > Download ZIP`.
+   Then you can click on :guilabel:`Code > Download ZIP`.
 
 Set up the i.MX RT1170 VEE Port project on your IDE
 ---------------------------------------------------
@@ -145,15 +145,15 @@ You may have to accept the SDK EULA if you haven't already done it, please have 
 Run an Application on the Virtual Device
 ----------------------------------------
 
-In this example, we will run the :guilabel:`animatedMascot` Application which is available in the i.MX RT1170 VEE Port.
+In this example, we will run the :guilabel:`animatedMascot` Application which is available as an example sample in the i.MX RT1170 VEE Port.
 
 In order to execute the :guilabel:`animatedMascot` Application on the Virtual Device, the SDK provides the Gradle :guilabel:`runOnSimulator` task. 
 
 .. note::
   
-   If you are using another IDE than IntelliJ IDEA, please have a look at :ref:`sdk_6_run_on_simulator` section.
+   If you are using another IDE than IntelliJ IDEA, please have a look at the :ref:`sdk_6_run_on_simulator` section.
 
-* In the Gradle view, navigate to :guilabel:`nxpvee-mimxrt1170-evk > apps > animatedMascot > Tasks > microej`. Double-click on the :guilabel:`runOnSimulator` task in the Gradle tasks view. It may take a few seconds.
+* In the Gradle view, navigate to :guilabel:`nxpvee-mimxrt1170-evk > apps > animatedMascot > Tasks > microej`. Double-click on the :guilabel:`runOnSimulator` task.
 
       .. figure:: images/iMXRT1170/getting-started-runOnSimulator.png
          :alt: runOnSimulator task
@@ -185,7 +185,6 @@ If you want to learn how to run an application on your i.MX RT1170 Evaluation Ki
 
 Otherwise, learn how to :ref:`Modify the Java Application <sdk_6_getting_started_rt1170_modify_java_application>`.
 
-
 .. _sdk_6_getting_started_rt1170_run_on_device:
 
 Run an Application on the i.MX RT1170 Evaluation Kit
@@ -195,8 +194,7 @@ To deploy the :guilabel:`animatedMascot` application on your board, you will hav
 
 * Setup your Environment (Toolchain, flashing tool, hardware setup).
 * Request a 30 days :ref:`Evaluation License <sdk_eula>` and install an activation key.
-* Build the Executable.
-* Flash the board.
+* Build the Executable and Flash it on the board.
 
 .. _sdk_6_getting_started_rt1170_run_on_device_environment_setup:
 
@@ -211,8 +209,8 @@ MCUXPresso SDK Setup
 Install MCUXPresso SDK
 ++++++++++++++++++++++
 
-* Download and install `MCUXpresso Installer <https://github.com/nxp-mcuxpresso/vscode-for-mcux/wiki/Dependency-Installation>`__,
-* Once installed, open it,
+* Download and install `MCUXpresso Installer <https://github.com/nxp-mcuxpresso/vscode-for-mcux/wiki/Dependency-Installation>`__.
+* Once installed, open it.
 * Select :guilabel:`MCUXpresso SDK Developer` and :guilabel:`LinkSever` and click Install:
 
   .. figure:: images/iMXRT1170/getting-started-mcuxpresso-setup-1.png
@@ -244,7 +242,7 @@ Install Make
 ++++++++++++
 
 `Make <https://gnuwin32.sourceforge.net/packages/make.htm>`__ is the tool that will generate the Executable based on the files generated by CMake. It will also be used to flash the board. 
-Under :guilabel:`Download` section, you can select the Setup program for the complete package, except sources. 
+Under the :guilabel:`Download` section, you can select the Setup program for the complete package, except sources. 
 
 By default, it will automatically add Make to your path.
 If not, you can manually add ``GnuWin32\bin`` folder to your path.
@@ -262,7 +260,7 @@ Add the Flashing Tool Environment variable
 * Open the :guilabel:`Edit the system environment variables` application on Windows.
 * Click on the :guilabel:`Environment Variables...` button.
 * Select :guilabel:`Path` variable under the :guilabel:`User variables` section and edit it.
-* Click on :guilabel:`New` and point to the ``LinkServer_{version}`` folder located where you installed LinkServer (e.g. ``C:\nxp\LinkServer_1.2.45``).
+* Click on :guilabel:`New` and point to the ``LinkServer_{version}`` folder located where you installed LinkServer (e.g. ``C:\nxp\LinkServer_1.6.133``).
 
 .. _sdk_6_getting_started_rt1170_hardware_setup:
 
@@ -332,7 +330,6 @@ In order to build the Executable of the :guilabel:`animatedMascot` Application, 
 Request your Evaluation License:
 
 * Request your Evaluation license by following the :ref:`evaluation_license_request_activation_key` instructions. You will be asked to fill the machine UID field with the UID you copied before.
-
 * When you have received your activation key by email, drop it in the license directory by following the :ref:`evaluation_license_install_license_key` instructions (drop the license key zip file to the ``~/.microej/licenses/`` directory).
 
 Now your Evaluation license is installed, you can relaunch your application build by double-clicking on the :guilabel:`buildExecutable` task in the Gradle tasks view. It may take some time.
@@ -344,7 +341,7 @@ The :guilabel:`animatedMascot` application is built and ready to be flashed on i
 Flash the Application on the i.MX RT1170 Evaluation Kit
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In order to flash the :guilabel:`animatedMascot` Application on i.MX RT1170 Evaluation Kit, the application provides the Gradle :guilabel:`runOnDevice` task.
+In order to flash the :guilabel:`animatedMascot` Application on i.MX RT1170 Evaluation Kit, the application provides the :guilabel:`runOnDevice` Gradle task.
 
 .. note::
   
