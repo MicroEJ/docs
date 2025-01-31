@@ -92,7 +92,7 @@ The first step is to import the :guilabel:`i.MX RT1170 VEE Port` into your IDE:
 * Select the ``nxp-vee-imxrt1170-evk`` directory located where you downloaded it and click on the :guilabel:`OK` button.
 
       .. figure:: images/iMXRT1170/getting-started-import-project.png
-         :alt: Import demo application
+         :alt: Import VEE Port sources
          :align: center
          :scale: 70%
 
@@ -147,7 +147,7 @@ Run an Application on the Virtual Device
 
 In this example, we will run the :guilabel:`animatedMascot` Application which is available as an example sample in the i.MX RT1170 VEE Port.
 
-In order to execute the :guilabel:`animatedMascot` Application on the Virtual Device, the SDK provides the Gradle :guilabel:`runOnSimulator` task. 
+In order to execute the :guilabel:`animatedMascot` Application on the Virtual Device, the SDK provides the :guilabel:`runOnSimulator` Gradle task. 
 
 .. note::
   
@@ -389,27 +389,36 @@ Modify the Java Application
 
 With MicroEJ, it is easy to modify and test your Java application on the Virtual Device.
 
-For example, we could modify the color of the background that is shown on the inside part of the Home Screen.
+We will modify the :guilabel:`simpleGFX` Application which is available as an example sample in the i.MX RT1170 VEE Port.
 
-* Open :guilabel:`ThermoColors.java` file located in the :guilabel:`src/main/java/com/microej/demo/smart_thermostat/style` folder.
-* Background color is set line 31, replace the following line:
+The :guilabel:`animatedMascot` Application can be executed on the Virtual Device with the he :guilabel:`runOnSimulator` Gradle task:
+
+      .. figure:: images/iMXRT1170/getting-started-virtual-device-simplegfx.png
+         :alt: simpleGFX Application on the Virtual Device
+         :align: center
+         :scale: 70%
+
+* Open :guilabel:`SimpleGFXWidget.java` file located in the :guilabel:`src/main/java/com/nxp/example/simplegfx` folder.
+* The rectangles colors are set line 22, replace the following lines:
 
 .. code:: 
 
-   public static final int BG_INSIDE = 0xB6B1AB;
+   private static final int NXP_ORANGE = 0xF9B500;
+   private static final int NXP_BLUE = 0x0EAFE0;
+   private static final int NXP_GREEN = 0x69CA00;
 
 by
 
 .. code:: 
 
-   public static final int BG_INSIDE = Colors.RED;
+   private static final int NXP_ORANGE = Colors.RED;
+    private static final int NXP_BLUE = Colors.BLUE;
+    private static final int NXP_GREEN = Colors.GREEN;
 
-* Follow :ref:`sdk_6_getting_started_rt1170_run_virtual_device` instructions to launch the modified application on the Virtual Device.
+* Launch the application again on the Virtual Device:
 
-Here is the modified application running in simulation: 
-
-      .. figure:: images/iMXRT1170/getting-started-virtual-device-modified.png
-         :alt: Virtual Device
+      .. figure:: images/iMXRT1170/getting-started-virtual-device-simplegfx-modified.png
+         :alt: Modified simpleGFX Application on the Virtual Device
          :align: center
          :scale: 70%
 
