@@ -15,7 +15,7 @@ Prerequisites
 
 .. note::
   
-   This Getting Started has been tested on Windows 10 & 11. Also, note that examples used in this Getting Started could depend on older tools and libraries. Most notably, our dependency manager plugin (using `Gradle <https://gradle.org/>`_) could be an older version.
+   This Getting Started has been tested on Windows 10 & 11. Also, note that examples used in this Getting Started could depend on older tools and libraries. Most notably, our dependency manager plugin (using `Gradle <https://gradle.org/>`__) could be an older version.
 
 This Getting Started is separated into two main parts.
 
@@ -60,7 +60,7 @@ its dependencies.
 Get the i.MX RT1170 VEE Port Project
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For this Getting Started, the `NXP i.MX RT1170 Evaluation Kit VEE Port<https://github.com/nxp-mcuxpresso/nxp-vee-imxrt1170-evk>`__ will be used. 
+For this Getting Started, the `NXP i.MX RT1170 Evaluation Kit VEE Port <https://github.com/nxp-mcuxpresso/nxp-vee-imxrt1170-evk>`__ will be used. 
 
 It contains the sources of the VEE Port which will be necessary to run applications on the simulator or on the device. It also contains some applications samples.
 
@@ -444,7 +444,7 @@ If you are an application developer, you can continue to explore MicroEJ's APIs 
 
 You can also learn how to build bigger and better applications by reading our :ref:`Application Developer Guide <application-developer-guide>`.
 
-If you are an embedded engineer, you could look at our VEE port examples at `GitHub <https://github.com/microej?q=vee&type=all&language=&sort=>`_. And to learn how to create custom VEE Ports, you can read our :ref:`VEE Porting Guide <vee-porting-guide>`.
+If you are an embedded engineer, you could look at our VEE port examples at `GitHub <https://github.com/microej?q=vee&type=all&language=&sort=>`__. And to learn how to create custom VEE Ports, you can read our :ref:`VEE Porting Guide <vee-porting-guide>`.
 
 You can also follow the :ref:`Kernel Developer Guide <kernel-developer-guide>` for more information on our multi-application framework or read about our powerful wearable solution called :ref:`VEE Wear <vee-wear>`.
 
