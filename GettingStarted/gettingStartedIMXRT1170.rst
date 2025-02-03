@@ -245,7 +245,7 @@ Install Make
 Under the :guilabel:`Download` section, you can select the Setup program for the complete package, except sources. 
 
 By default, it will automatically add Make to your path.
-If not, you can manually add ``GnuWin32\bin`` folder to your path.
+If not, you can manually add the ``GnuWin32\bin`` folder to your path.
 
 Check that the tool has been properly installed: 
 
@@ -415,7 +415,7 @@ by
     private static final int NXP_BLUE = Colors.BLUE;
     private static final int NXP_GREEN = Colors.GREEN;
 
-* Launch the application again on the Virtual Device:
+* Relaunch the application on the Virtual Device:
 
       .. figure:: images/iMXRT1170/getting-started-virtual-device-simplegfx-modified.png
          :alt: Modified simpleGFX Application on the Virtual Device
