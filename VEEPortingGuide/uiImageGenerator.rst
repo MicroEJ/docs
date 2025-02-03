@@ -295,16 +295,25 @@ When no option is specified, the image is not converted and embedded as well.
 
       image1:XXX
 
-Linker File
-===========
+Link
+====
 
-In addition to images binary files, the Image Generator module generates a linker file (``*.lscf``).
-This linker file declares an image section called ``.rodata.images``.
-This section follows the next rules:
+.. tabs::
 
-* The files are always listed in same order between two application builds.
-* The section is aligned on the value specified by the Display module property ``imageBuffer.memoryAlignment`` (32 bits by default).
-* Each file is aligned on section alignment value.
+   .. tab:: Architecture 8
+
+      Each image listed in an ``.images.list`` file (generated or not) is embedded by the application like a  :ref:`resource<section.classpath.elements.raw_resources>`.
+      An image is aligned in memory on the value specified by the Display module property ``imageBuffer.memoryAlignment`` (32 bits by default).
+     
+   .. tab:: Architecture 7
+
+      In addition to images binary files, the Image Generator module generates a linker file (``*.lscf``).
+      This linker file declares an image section called ``.rodata.images``.
+      This section follows the next rules:
+
+        * The files are always listed in same order between two application builds.
+        * The section is aligned on the value specified by the Display module property ``imageBuffer.memoryAlignment`` (32 bits by default).
+        * Each file is aligned on section alignment value.
 
 External Resources
 ==================
