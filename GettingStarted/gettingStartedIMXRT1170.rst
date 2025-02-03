@@ -62,7 +62,7 @@ Get the i.MX RT1170 VEE Port Project
 
 For this Getting Started, the `NXP i.MX RT1170 Evaluation Kit VEE Port <https://github.com/nxp-mcuxpresso/nxp-vee-imxrt1170-evk>`__ will be used. 
 
-It contains the sources of the VEE Port which will be necessary to run applications on the simulator or on the device. It also contains some applications samples.
+It contains the sources of the VEE Port which will be necessary build and run applications on the simulator and on the device. The VEE Port also includes some applications samples which will be used in this Getting Started.
 
 You can download the i.MX RT1170 VEE Port using the following commands::
    
@@ -145,7 +145,7 @@ You may have to accept the SDK EULA if you haven't already done it, please have 
 Run an Application on the Virtual Device
 ----------------------------------------
 
-In this example, we will run the :guilabel:`animatedMascot` Application which is available as an example sample in the i.MX RT1170 VEE Port.
+In this example, we will run the :guilabel:`animatedMascot` Application, which is available as an example sample in the i.MX RT1170 VEE Port.
 
 In order to execute the :guilabel:`animatedMascot` Application on the Virtual Device, the SDK provides the :guilabel:`runOnSimulator` Gradle task. 
 
@@ -181,7 +181,7 @@ Well Done!
 
 Now you know how to run an application on a Virtual Device.
 
-If you want to learn how to run an application on your i.MX RT1170 Evaluation Kit, you can continue this Getting Started: :ref:`Run an Application on i.MX RT1170 Evaluation Kit <sdk_6_getting_started_rt1170_run_on_device>`.
+If you want to learn how to run an application on your i.MX RT1170 Evaluation Kit, you can continue this Getting Started: :ref:`Run an Application on the i.MX RT1170 Evaluation Kit <sdk_6_getting_started_rt1170_run_on_device>`.
 
 Otherwise, learn how to :ref:`Modify the Java Application <sdk_6_getting_started_rt1170_modify_java_application>`.
 
@@ -370,7 +370,7 @@ Once the firmware is flashed, you should see the :guilabel:`animatedMascot` runn
          </tr>
          <tr>
             <td style="width:50%;text-align:center;font-size:18px;font-style:italic;">
-               Fig 1. The Application running on i.MXRT1170 Evaluation Kit
+               Fig 1. The Application running on the i.MXRT1170 Evaluation Kit
             </td>
             <td style="width:50%;text-align:center;font-size:18px;font-style:italic;">
                Fig 2. The Application logs on Termite
