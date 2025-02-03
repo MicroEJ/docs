@@ -8,7 +8,7 @@ Description
 ===========
 
 This training will show you how to run Sandboxed Applications
-on-top of a pre-built Multi-Sandbox Executable for the NXP i.MXRT1170 Evaluation Kit.
+on top of a pre-built Multi-Sandbox Executable for the NXP i.MXRT1170 Evaluation Kit.
 
 During this training, you will learn how
 to run Sandboxed Application in Simulation using
@@ -62,8 +62,8 @@ Also, follow the steps described in the sections below to complete your environm
 Install MICROEJ SDK 6
 ~~~~~~~~~~~~~~~~~~~~~
 
-Follow :ref:`MICROEJ SDK 6 installation Guide <sdk_6_install>`,
-Android Studio is used on this training but feel free to use your favorite IDE,
+Follow :ref:`MICROEJ SDK 6 installation Guide <sdk_6_install>`.
+Android Studio is used in this training, but feel free to use your favorite IDE.
 
 Accept the MICROEJ SDK EULA
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -74,11 +74,11 @@ please have a look at :ref:`sdk_6_eula_acceptation`.
 Hardware Setup for NXP i.MXRT1170 EVKB
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Refer for the NXP i.MXRT1170 EVKB :ref:`sdk_6_getting_started_rt1170_hardware_setup` guide.
+Refer to the NXP i.MXRT1170 EVKB :ref:`sdk_6_getting_started_rt1170_hardware_setup` guide.
 
 Additionally, make sure to:
 
-* Insert a micro-SD card (FAT32-formatted) in the board connector,
+* Insert a micro-SD card (FAT32-formatted) in the board connector.
 * Connect the ``1GB`` Ethernet connector to the internet.
 
 Flash the Multi-Sandbox Executable on your NXP i.MXRT1170 Evaluation Kit
@@ -102,9 +102,9 @@ Flash the Multi-Sandbox Executable using ``LinkServer``:
 - Download and install `LinkServer for Microcontroller <https://www.nxp.com/design/design-center/software/development-software/mcuxpresso-software-and-tools-/linkserver-for-microcontrollers:LINKERSERVER>`_ (minimum version 1.6.133).
 - Once installed, the ``LinkServer`` installation folder must be set on your Path. To do so:
 
-  - Open the Edit the system environment variables application on Windows,
-  - Click on the ``Environment Variables…`` button,
-  - Select ``Path`` variable under the ``User`` variables section and edit it,
+  - Open the Edit the system environment variables application on Windows.
+  - Click on the ``Environment Variables…`` button.
+  - Select ``Path`` variable under the ``User`` variables section and edit it.
   - Click on ``New`` and point to the ``LinkServer`` installation folder located where you installed
     ``LinkServer`` (e.g. ``nxp/LinkServer_1.6.133/``).
 
@@ -113,12 +113,12 @@ Flash the Multi-Sandbox Executable using ``LinkServer``:
 Set up the logs output:
 
 - Get the COM port where your board is connected 
-  (if you are using Windows, you can open your Device Manager from the Windows menu),
+  (if you are using Windows, you can open your Device Manager from the Windows menu).
 - Set up a serial terminal (e.g. Termite) to see output logs from the board.
   Set it with the COM port retrieved previously and by following `Logs Output <https://github.com/MicroEJ/VEEPort-STMicroelectronics-STM32F7508-DK/blob/2.3.1/README.rst>`__
-  instructions,
-- Press the reset button of the board (Black button),
-- Get the IP address of your board. You will find it in the logs output:
+  instructions.
+- Press the board's reset button.
+- Get your board's IP address. You will find it in the logs output:
 
    .. figure:: images/multiSandbox/iMXRT1170/getting-started-imxrt1170-termite-green-fw-output.png
       :alt: Logs Output on Termite Serial Terminal
@@ -164,7 +164,7 @@ Import the project into your IDE:
   
    If you are using an IDE other than Android Studio, please have a look at :ref:`sdk_6_import_project` section.
 
-* If you are in the Welcome Screen, click on the :guilabel:`Open` button. Otherwise click either on :guilabel:`File` > :guilabel:`Open...`,
+* If you are on the Welcome Screen, click on the :guilabel:`Open` button. Otherwise click either on :guilabel:`File` > :guilabel:`Open...`.
 * Select the :guilabel:`Demo-Sandboxed-Applications` directory located where you downloaded it and click on the :guilabel:`OK` button.
 
 The Gradle project should now be imported in Android Studio, your workspace contains the following project in the :guilabel:`Projects` view: 
@@ -188,7 +188,7 @@ task:
 
 .. note::
   
-   Each application is bound to each other. Running one of the application on the Simulator will run all the applications.
+   Each application is bound to each other. Running one of the applications on the Simulator will run all the applications.
 
 The Virtual Device starts and executes the Demo-Sandboxed-Applications:
 
@@ -208,14 +208,14 @@ Each application needs to be deployed individually.
 
 Configure the ``localDeploy`` tool in the project:
 
-* Open the ``gradle.properties`` file located at the root of the :guilabel:`Demo-Sandboxed-Applications` project,
-* Get the IP address of your board and add it to the ``ipAddress`` field.
+* Open the ``gradle.properties`` file located at the root of the :guilabel:`Demo-Sandboxed-Applications` project.
+* Get your board's IP address and add it to the ``ipAddress`` field.
 
 Open the Gradle tasks view to deploy the applications on your NXP i.MXRT1170 Evaluation Kit.
 Deploy them in the following order:
 
-1. Deploy :guilabel:`app-power-provider`: double-click on the :guilabel:`app-power-provider > Tasks > microej > localDeploy` task,
-2. Deploy :guilabel:`app-gui`: double-click on the :guilabel:`app-gui > Tasks > microej > localDeploy` task, 
+1. Deploy :guilabel:`app-power-provider`: double-click on the :guilabel:`app-power-provider > Tasks > microej > localDeploy` task.
+2. Deploy :guilabel:`app-gui`: double-click on the :guilabel:`app-gui > Tasks > microej > localDeploy` task.
 3. Deploy :guilabel:`app-mqtt-publisher`: double-click on the :guilabel:`app-mqtt-publisher > Tasks > microej > localDeploy` task. 
 
 The applications are running on the NXP i.MXRT1170 Evaluation Kit:
@@ -242,7 +242,7 @@ It can be seen in the console logs:
       :align: center
       :scale: 70%
 
-Use a MQTT client to subscribe to the topic, example using Docker:
+Use an MQTT client to subscribe to the topic, for example, using Docker:
 
 .. code-block::
 
@@ -290,7 +290,7 @@ Well Done!
 Now you know how to run Sandboxed Applications on a Multi-Sandbox Executable!
 
 The next step is about creating a Sandboxed Application project from scratch and
-running it on Virtual Device and on NXP i.MXRT1170.
+running it on the Virtual Device and on the NXP i.MXRT1170 board.
 
 .. _training_multisandbox_applications_imxrt1170_create_app:
 
@@ -306,7 +306,7 @@ Create the Sandboxed Application Project
 
 Create a new Sandboxed Application project as follows in Android Studio:
 
-- Click on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...`,
+- Click on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...`.
 - Select :guilabel:`Generic` > :guilabel:`New MicroEJ project`:
 
    .. figure:: images/androidStudio/android-studio-create-project-01.png
@@ -314,11 +314,11 @@ Create a new Sandboxed Application project as follows in Android Studio:
       :align: center
       :scale: 70%
 
-- Click on the :guilabel:`Next` button,
-- Fill the name of the project in the :guilabel:`Name` field,
-- Fill the package name of the project in the :guilabel:`Package name` field,
-- Select the location of the project in the :guilabel:`Save location` field,
-- Keep the default Android SDK in the :guilabel:`Minimum SDK` field,
+- Click on the :guilabel:`Next` button.
+- Fill in the name of the project in the :guilabel:`Name` field.
+- Fill in the package name of the project in the :guilabel:`Package name` field.
+- Select the location of the project in the :guilabel:`Save location` field.
+- Keep the default Android SDK in the :guilabel:`Minimum SDK` field.
 - Select :guilabel:`Kotlin` for the :guilabel:`Build configuration language` field:
 
 .. note::
@@ -330,11 +330,11 @@ Create a new Sandboxed Application project as follows in Android Studio:
       :align: center
       :scale: 70%
 
-- Click on :guilabel:`Next` button,
-- Fill the group of the artifact to publish in the :guilabel:`Group` field,
-- Fill the version of the artifact to publish in the :guilabel:`Version` field,
-- Select the project type in the drop-down list,
-- Select the :guilabel:`Application` project type,
+- Click on :guilabel:`Next` button.
+- Fill the group of the artifact to publish in the :guilabel:`Group` field.
+- Fill the version of the artifact to publish in the :guilabel:`Version` field.
+- Select the project type in the drop-down list.
+- Select the :guilabel:`Application` project type.
 - Click on :guilabel:`Finish` button:
 
    .. figure:: images/androidStudio/android-studio-create-project-03.png
@@ -342,7 +342,7 @@ Create a new Sandboxed Application project as follows in Android Studio:
       :align: center
       :scale: 70%
 
-- Change the view from :guilabel:`Android` to :guilabel:`Project` in the selectbox at the top of the project's files tree:
+- Change the view from :guilabel:`Android` to :guilabel:`Project` in the select box at the top of the project's files tree:
 
    .. figure:: images/androidStudio/android-studio-create-project-04.png
       :alt: Project View in Android Studio
@@ -350,7 +350,7 @@ Create a new Sandboxed Application project as follows in Android Studio:
       :scale: 70%
 
 .. note::
-   If you do not use the last version of Android Studio, make sure that Gradle Wrapper uses at least Gradle version ``8.6``.
+   If you do not use the latest version of Android Studio, make sure that Gradle Wrapper uses at least Gradle version ``8.6``.
    Refer to the :ref:`sdk_6_create_project_gradle_wrapper` section for more information.
 
 .. _training_multisandbox_applications_imxrt1170_run_virtual_device:
@@ -362,7 +362,7 @@ MicroEJ provides `ready to use kernels on the Developer Repository <https://forg
 
 The :guilabel:`MyApplication` project needs to be configured to use a kernel:
 
-- Open the ``app/build.gradle.kts`` file of the :guilabel:`MyApplication` project,
+- Open the ``app/build.gradle.kts`` file of the :guilabel:`MyApplication` project.
 - Declare the dependency to the NXP i.MXRT1170 kernel as follows:
   
    .. code-block:: kotlin
@@ -384,7 +384,7 @@ In order to execute the :guilabel:`MyApplication` project on the Virtual Device,
   
    If you are using an IDE other than Android Studio, please have a look at :ref:`sdk_6_run_on_simulator` section.
 
-* Double-click on the :guilabel:`runOnSimulator` task in the Gradle tasks view. It may take few seconds to start:
+* Double-click on the :guilabel:`runOnSimulator` task in the Gradle tasks view. It may take a few seconds to start:
 
    .. figure:: images/multiSandbox/getting-started-runOnSimulator.png
       :alt: runOnSimulator task
@@ -409,7 +409,7 @@ This tool will deploy the application on the NXP i.MXRT1170 Evaluation Kit throu
 
 Configure the ``localDeploy`` tool in :guilabel:`MyApplication` project:
 
-- Open the ``app/build.gradle.kts`` file of the :guilabel:`MyApplication` project,
+- Open the ``app/build.gradle.kts`` file of the :guilabel:`MyApplication` project.
 - Paste the following code at the beginning of the file:
 
    .. code-block:: kotlin
@@ -482,7 +482,7 @@ Configure the ``localDeploy`` tool in :guilabel:`MyApplication` project:
       }
 
 
-- Update the ``boardIP`` variable with your board IP address,
+- Update the ``boardIP`` variable with your board IP address.
 - Reload the Gradle project:
 
    .. figure:: images/multiSandbox/getting-started-reload-gradle-project.png
@@ -490,7 +490,7 @@ Configure the ``localDeploy`` tool in :guilabel:`MyApplication` project:
       :align: center
       :scale: 70%
 
-- A :guilabel:`localDeploy` task is now visible in the :guilabel:`microej` tasks list,
+- A :guilabel:`localDeploy` task is now visible in the :guilabel:`microej` tasks list.
 - Double-click on the :guilabel:`localDeploy` task to deploy :guilabel:`MyApplication` on the board.
 - :guilabel:`MyApplication` is successfully deployed and the ``Hello World!`` is displayed
   in the serial terminal: 
@@ -518,12 +518,12 @@ run it on your device!
 Going Further
 -------------
 
-You have now successfully executed Sandboxed Applications on an embedded device so what's next?
+You have now successfully executed Sandboxed Applications on an embedded device, so what's next?
 
 If you are a Kernel Developer, you can follow the
 :ref:`trainings_multi-sandbox` courses to get familiar with Kernel development.
 
-If you are an application developer you can continue to explore MicroEJ's APIs and functionalities by running and studying our samples at GitHub:
+If you are an application developer, you can continue to explore MicroEJ's APIs and functionalities by running and studying our samples at GitHub:
 
 .. list-table::
    :widths: 33 33 33
@@ -532,7 +532,7 @@ If you are an application developer you can continue to explore MicroEJ's APIs a
      - Eclasspath
      - IoT
    * - This project gathers all the basic examples of the foundation libraries. 
-     - This project gather all the examples of eclasspath. 
+     - This project gathers all the examples of eclasspath. 
      - This project gathers simple applications using net libraries. 
    * - https://github.com/MicroEJ/Example-Foundation-Libraries
      - https://github.com/MicroEJ/Example-Eclasspath
@@ -540,14 +540,14 @@ If you are an application developer you can continue to explore MicroEJ's APIs a
 
 You can also learn how to build bigger and better applications by reading our :ref:`Application Developer Guide <application-developer-guide>`.
 
-If you are an embedded engineer you could look at our VEE port examples at `GitHub <https://github.com/microej?q=vee&type=all&language=&sort=>`_. And to learn how create custom VEE ports you can read our :ref:`VEE Porting Guide <vee-porting-guide>`.
+If you are an embedded engineer, you could look at our VEE port examples at `GitHub <https://github.com/microej?q=vee&type=all&language=&sort=>`_. And to learn how create custom VEE ports, you can read our :ref:`VEE Porting Guide <vee-porting-guide>`.
 
 You can also follow the :ref:`Kernel Developer Guide <kernel-developer-guide>` for more information on our multi-application framework or read about our powerful wearable solution called :ref:`VEE Wear <vee-wear>`.
 
-Last but not least you can choose to learn about specific topics by following one of our many :ref:`trainings` ranging from how to easily debug application to setting up a Continuous Integration process and a lot of things in between.
+Last but not least, you can choose to learn about specific topics by following one of our many :ref:`trainings` ranging from how to easily debug applications to setting up a Continuous Integration process and a lot of things in between.
 
 ..
-   | Copyright 2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2024-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
