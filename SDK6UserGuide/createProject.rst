@@ -448,20 +448,6 @@ This section explains the different ways to add a module to an existing project.
       
          Module Creation in IntelliJ IDEA
 
-      - Include the module to your project by adding the following line to the :guilabel:`settings.gradle.kts` file of the project::
-      
-            include("<module_name>")
-      
-      - Right-click on the module name in the Gradle tasks view and click on :guilabel:`Unlink Gradle Project`.
-      - Reload of a Gradle project by clicking on the reload icon button which appears on the right of the editor:
-
-         .. figure:: images/intellij-reload-gradle-project.png
-            :alt: Gradle Project reload in IntelliJ IDEA
-            :align: center
-            :scale: 70%
-
-            Gradle Project reload in IntelliJ IDEA
-
    .. tab:: Eclipse
 
       The creation of a module with Eclipse is done as follows:
