@@ -268,16 +268,15 @@ Hardware Setup
          :align: center
          :scale: 70%
 
-Setup the i.MX RT1170 Evaluation Kit
+Setup the i.MX RT1170 EVKB
 
-* Check that the dip switches (SW1) are set to OFF, OFF, ON and OFF.
-* Ensure jumpers J6 and J7 are closed.
-* Connect the micro-USB cable to J11 to power the board.
-* You can connect 5 V power supply to J43 if you need to use the display
+* Check that the dip switches (SW1) are set to OFF, OFF, ON, and OFF.
+* Connect a micro-USB cable to J86 to power the board.
+* You can connect a 5V power supply to J43 if you need to use the display
 
-The USB connection is used as a serial console for the SoC, as a CMSIS-DAP debugger and as a power input for the board.
+The USB connection is used as a serial console for the SoC, as a CMSIS-DAP debugger, and as a power input for the board.
 
-The VEE Port uses the virtual UART from the i.MX RT1170 Evaluation Kit USB port. A COM port is automatically mounted when the board is plugged into a computer using a USB cable. All board logs are available through this COM port.
+The MicroEJ VEE Port uses the virtual UART from the i.MX RT1170 EVKB USB port. A COM port is automatically mounted when the board is plugged into a computer using a USB cable. All board logs are available through this COM port.
 
 The COM port uses the following parameters:
 
