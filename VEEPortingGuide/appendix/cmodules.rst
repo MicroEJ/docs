@@ -9,32 +9,32 @@ This section describes how to install a C module on your VEE Port, depending on 
 Fetching the module source files
 ++++++++++++++++++++++++++++++++
 
-SDK 5
-=====
+.. tabs::
 
-Under the SDK 5 follow these steps:
+   .. tab:: SDK 5
 
-- Go to the location of your C module, for example the C module for microUI 14.2.0 is located `here <https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/14.2.0/>`_.
-- Get the dependency declaration, for the previous example this would be: ``<dependency org="com.microej.clibrary.llimpl" name="microui" rev="14.2.0" />``.
-- Add it inside the block ``<dependencies>`` from the file ``module.ivy`` of your ``*-configuration`` project.
-- Remove the ``.properties`` files in the folder ``*-bsp/projects/microej``.
-- Build the module ``*-configuration/``.
+      Under the SDK 5 follow these steps:
 
-SDK 6
-=====
+      - Go to the location of your C module, for example the C module for microUI 14.2.0 is located `here <https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/14.2.0/>`_.
+      - Get the dependency declaration, for the previous example this would be: ``<dependency org="com.microej.clibrary.llimpl" name="microui" rev="14.2.0" />``.
+      - Add it inside the block ``<dependencies>`` from the file ``module.ivy`` of your ``*-configuration`` project.
+      - Remove the ``.properties`` files in the folder ``*-bsp/projects/microej``.
+      - Build the module ``*-configuration/``.
 
-Under the SDK 6 follow these steps:
+   .. tab:: SDK 6
 
-- Go to the location of your C module, for example the C module for microUI 14.2.0 is located `here <https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/14.2.0/>`_.
-- Download the archive file ``.cco``.
-- Unzip the content of this file.
-- The source files are located in the folder ``bsp/``.
-- Copy the content of this folder into your VEE Port BSP.
+      Under the SDK 6 follow these steps:
+
+      - Go to the location of your C module, for example the C module for microUI 14.2.0 is located `here <https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/14.2.0/>`_.
+      - Download the archive file ``.cco``.
+      - Unzip the content of this file.
+      - The source files are located in the folder ``bsp/``.
+      - Copy the content of this folder into your VEE Port BSP.
 
 Configure and Build
 +++++++++++++++++++
 
-- Update the build of your BSP (IAR, CMake, etc) to include any new files if this is case.
+- Update the build of your BSP (IAR, CMake, etc) to include any new files if this is the case.
 - Configure the module if required (typically the configuration is located in files suffixed with ``*_configuration.h``).
 - Now you should be able to build your BSP.
 
