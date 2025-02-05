@@ -32,7 +32,7 @@ Fetching the module source files
       - Copy the **content** of the ``bsp/`` folder into your VEE Port at the path ``bsp/vee/port/``.
 
 C module configuration and firmware build
-+++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++
 
 - Update the toolchain build of your BSP (IAR, CMake, etc...) to include any new files if this is the case.
 - Configure the C module if required (typically, the configuration is located in files suffixed with ``*_configuration.h``).
