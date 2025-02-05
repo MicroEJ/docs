@@ -315,7 +315,7 @@ Create a new Sandboxed Application project as follows in IntelliJ IDEA:
 - Fill the name of the artifact to publish in the :guilabel:`Artifact` field.
 - Keep the default JDK in the :guilabel:`JDK` field.
 
-   .. figure:: images/intelliJ/intellij-studio-create-project.png
+   .. figure:: images/intelliJ/intellij-create-project.png
       :alt: Project Creation in IntelliJ IDEA
       :align: center
       :scale: 70%
