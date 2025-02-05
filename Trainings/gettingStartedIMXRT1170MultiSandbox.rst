@@ -306,51 +306,26 @@ Create the Sandboxed Application Project
 Create a new Sandboxed Application project as follows in IntelliJ IDEA:
 
 - Click on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...`.
-- Select :guilabel:`Generic` > :guilabel:`New MicroEJ project`:
-
-   .. figure:: images/androidStudio/android-studio-create-project-01.png
-      :alt: Project Creation in Android Studio
-      :align: center
-      :scale: 70%
-
-- Click on the :guilabel:`Next` button.
+- Select :guilabel:`MicroEJ`:
 - Fill in the name of the project in the :guilabel:`Name` field.
-- Fill in the package name of the project in the :guilabel:`Package name` field.
-- Select the location of the project in the :guilabel:`Save location` field.
-- Keep the default Android SDK in the :guilabel:`Minimum SDK` field.
-- Select :guilabel:`Kotlin` for the :guilabel:`Build configuration language` field:
-
-.. note::
-   Groovy build script DSL is not officially supported by the SDK, so the project created by the Wizard uses Kotlin regardless
-   of the language selected by the user.
-      
-   .. figure:: images/androidStudio/android-studio-create-project-02.png
-      :alt: Project Creation in Android Studio
-      :align: center
-      :scale: 70%
-
-- Click on :guilabel:`Next` button.
-- Fill the group of the artifact to publish in the :guilabel:`Group` field.
-- Fill the version of the artifact to publish in the :guilabel:`Version` field.
-- Select the project type in the drop-down list.
+- Select the location of the project in the :guilabel:`Location` field.
 - Select the :guilabel:`Application` project type.
-- Click on :guilabel:`Finish` button:
+- Fill the version of the artifact to publish in the :guilabel:`Version` field.
+- Fill the group of the artifact to publish in the :guilabel:`Group` field.
+- Fill the name of the artifact to publish in the :guilabel:`Artifact` field.
+- Keep the default JDK in the :guilabel:`JDK` field.
 
-   .. figure:: images/androidStudio/android-studio-create-project-03.png
-      :alt: Project Creation in Android Studio
+   .. figure:: images/intelliJ/intellij-studio-create-project.png
+      :alt: Project Creation in IntelliJ IDEA
       :align: center
       :scale: 70%
 
-- Change the view from :guilabel:`Android` to :guilabel:`Project` in the select box at the top of the project's files tree:
+- Click on the :guilabel:`Create` button. The new project is created and opened:
 
-   .. figure:: images/androidStudio/android-studio-create-project-04.png
-      :alt: Project View in Android Studio
+.. figure:: images/intelliJ/intellij-new-project.png
+      :alt: New in IntelliJ IDEA
       :align: center
       :scale: 70%
-
-.. note::
-   If you do not use the latest version of Android Studio, make sure that Gradle Wrapper uses at least Gradle version ``8.6``.
-   Refer to the :ref:`sdk_6_create_project_gradle_wrapper` section for more information.
 
 .. _training_multisandbox_applications_imxrt1170_run_virtual_device:
 
