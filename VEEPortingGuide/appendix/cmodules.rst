@@ -4,7 +4,7 @@
 C Modules Installation
 ======================
 
-This section describes how to install a C module on your VEE Port, depending on your SDK version the first steps will vary.
+This section describes how to install a C module on your VEE Port, depending on your SDK version the first steps may vary.
 
 Fetching the module source files
 ++++++++++++++++++++++++++++++++
