@@ -412,8 +412,8 @@ by
 .. code:: 
 
    private static final int NXP_ORANGE = Colors.RED;
-    private static final int NXP_BLUE = Colors.BLUE;
-    private static final int NXP_GREEN = Colors.GREEN;
+   private static final int NXP_BLUE = Colors.BLUE;
+   private static final int NXP_GREEN = Colors.GREEN;
 
 * Relaunch the application on the Virtual Device:
 
