@@ -11,7 +11,7 @@ This training will show you how to run Sandboxed Applications
 on top of a pre-built Multi-Sandbox Executable for the NXP i.MXRT1170 Evaluation Kit.
 
 During this training, you will learn how
-to run Sandboxed Application in Simulation using
+to run Sandboxed Applications in Simulation using
 the Virtual Device and on NXP i.MXRT1170:
 
 1. :ref:`training_multisandbox_applications_imxrt1170_run_demo_sandboxed_apps`.
@@ -63,7 +63,7 @@ Install MICROEJ SDK 6
 ~~~~~~~~~~~~~~~~~~~~~
 
 Follow :ref:`MICROEJ SDK 6 installation Guide <sdk_6_install>`.
-Android Studio is used in this training, but feel free to use your favorite IDE.
+IntelliJ IDEA is used in this training, but feel free to use your favorite IDE.
 
 Accept the MICROEJ SDK EULA
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -115,8 +115,7 @@ Set up the logs output:
 - Get the COM port where your board is connected 
   (if you are using Windows, you can open your Device Manager from the Windows menu).
 - Set up a serial terminal (e.g. Termite) to see output logs from the board.
-  Set it with the COM port retrieved previously and by following `Logs Output <https://github.com/MicroEJ/VEEPort-STMicroelectronics-STM32F7508-DK/blob/2.3.1/README.rst>`__
-  instructions.
+  Refer to the NXP i.MXRT1170 EVKB :ref:`sdk_6_getting_started_rt1170_hardware_setup` to setup the serial terminal.
 - Press the board's reset button.
 - Get your board's IP address. You will find it in the logs output:
 
@@ -302,9 +301,9 @@ Create the Sandboxed Application Project
 
 .. note::
   
-   If you are using an IDE other than Android Studio, please have a look at :ref:`sdk_6_create_project` section.
+   If you are using an IDE other than IntelliJ IDEA, please have a look at :ref:`sdk_6_create_project` section.
 
-Create a new Sandboxed Application project as follows in Android Studio:
+Create a new Sandboxed Application project as follows in IntelliJ IDEA:
 
 - Click on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...`.
 - Select :guilabel:`Generic` > :guilabel:`New MicroEJ project`:
@@ -382,7 +381,7 @@ In order to execute the :guilabel:`MyApplication` project on the Virtual Device,
 
 .. note::
   
-   If you are using an IDE other than Android Studio, please have a look at :ref:`sdk_6_run_on_simulator` section.
+   If you are using an IDE other than IntelliJ IDEA, please have a look at :ref:`sdk_6_run_on_simulator` section.
 
 * Double-click on the :guilabel:`runOnSimulator` task in the Gradle tasks view. It may take a few seconds to start:
 
