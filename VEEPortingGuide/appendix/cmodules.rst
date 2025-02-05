@@ -19,7 +19,7 @@ Fetching the module source files
       - Get the dependency declaration, for the previous example this would be: ``<dependency org="com.microej.clibrary.llimpl" name="microui" rev="14.2.0" />``.
       - Add it inside the block ``<dependencies>`` from the file ``module.ivy`` of your VEE Port ``*-configuration`` project.
       - **If you update a C module:** Remove the ``.properties`` file in the folder ``*-bsp/projects/microej`` corresponding to the desired C module. For example with microui C module, its .properties file is named ``cco_microui.properties``.
-      - Build the module ``*-configuration/``.
+      - Rebuild the VEE Port: in the SDK 5 Project Explorer, right click on the VEE Port module ``*-configuration > build module``.
 
    .. tab:: SDK 6
 
