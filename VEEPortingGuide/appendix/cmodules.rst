@@ -34,9 +34,9 @@ Fetching the module source files
 Configure and Build
 +++++++++++++++++++
 
-- Update the build of your BSP (IAR, CMake, etc) to include any new files if this is the case.
-- Configure the module if required (typically the configuration is located in files suffixed with ``*_configuration.h``).
-- Now you should be able to build your BSP.
+- Update the toolchain build of your BSP (IAR, CMake, etc...) to include any new files if this is the case.
+- Configure the C module if required (typically, the configuration is located in files suffixed with ``*_configuration.h``).
+- Now you should be able to build your BSP firmware.
 
 ..
    | Copyright 2025, MicroEJ Corp. Content in this space is free 
