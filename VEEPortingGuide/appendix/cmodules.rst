@@ -13,7 +13,7 @@ Fetching the module source files
 
    .. tab:: SDK 5
 
-      Under the SDK 5 follow these steps:
+      Under the SDK 5, follow these steps:
 
       - Go to the location of your C module, for example the C module for microUI 14.2.0 is located `here <https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/14.2.0/>`_.
       - Get the dependency declaration, for the previous example this would be: ``<dependency org="com.microej.clibrary.llimpl" name="microui" rev="14.2.0" />``.
