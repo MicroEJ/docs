@@ -29,7 +29,7 @@ Fetching the module source files
       - Download the archive file ``.cco``.
       - Unzip the content of this file.
       - The source files are located in the folder ``bsp/``.
-      - Copy the content of this folder into your VEE Port BSP.
+      - Copy the **content** of the ``bsp/`` folder into your VEE Port at the path ``bsp/vee/port/``.
 
 Configure and Build
 +++++++++++++++++++
