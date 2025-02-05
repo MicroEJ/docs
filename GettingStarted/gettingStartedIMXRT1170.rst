@@ -17,7 +17,7 @@ Prerequisites
   
    This Getting Started has been tested on Windows 10 & 11. Also, note that examples used in this Getting Started could depend on older tools and libraries. Most notably, our dependency manager plugin (using `Gradle <https://gradle.org/>`__) could be an older version.
 
-This Getting Started is separated into two main parts.
+This Getting Started is separated in two main parts.
 
 The first part consists of running a demo application on the Virtual Device. All you need is:
 
@@ -39,7 +39,7 @@ Environment Setup
 To follow this Getting Started, you need to: 
 
 * Install MICROEJ SDK 6.
-* Get the VEE port from Github.
+* Get the VEE Port sources from Github.
 
 Install MICROEJ SDK 6
 ^^^^^^^^^^^^^^^^^^^^^
@@ -57,12 +57,12 @@ its dependencies.
 * Install West by following `Installing west <https://docs.zephyrproject.org/latest/develop/west/install.html>`__ instructions (tested with west 1.2.0).
 * Check that the tool has been properly installed by running the command: ``west --version``, it should print the west version you installed.
 
-Get the i.MX RT1170 VEE Port Project
+Get the i.MX RT1170 VEE Port project
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For this Getting Started, the `NXP i.MX RT1170 Evaluation Kit VEE Port <https://github.com/nxp-mcuxpresso/nxp-vee-imxrt1170-evk>`__ will be used. 
 
-It contains the sources of the VEE Port which will be necessary build and run applications on the simulator and on the device. The VEE Port also includes some applications samples which will be used in this Getting Started.
+It contains the sources of the VEE Port which will be necessary to build and run applications on the simulator and on the device. The VEE Port also includes some applications samples which will be used in this Getting Started.
 
 You can download the i.MX RT1170 VEE Port using the following commands::
    
@@ -391,7 +391,7 @@ With MicroEJ, it is easy to modify and test your Java application on the Virtual
 
 We will modify the :guilabel:`simpleGFX` Application which is available as an example sample in the i.MX RT1170 VEE Port.
 
-The :guilabel:`animatedMascot` Application can be executed on the Virtual Device with the he :guilabel:`runOnSimulator` Gradle task:
+The :guilabel:`simpleGFX` Application can be executed on the Virtual Device with the he :guilabel:`runOnSimulator` Gradle task:
 
       .. figure:: images/iMXRT1170/getting-started-virtual-device-simplegfx.png
          :alt: simpleGFX Application on the Virtual Device
