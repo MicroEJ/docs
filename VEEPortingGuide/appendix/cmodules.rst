@@ -26,7 +26,7 @@ Fetching the module source files
       Under the SDK 6, follow these steps:
 
       - Go to the location of your C module, for example the C module for microUI 14.2.0 is located `here <https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/14.2.0/>`_.
-      - Download the archive file ``.cco``.
+      - Download the archive file with the ``.cco`` extension.
       - Unzip the content of this file.
       - The source files are located in the folder ``bsp/``.
       - Copy the **content** of the ``bsp/`` folder into your VEE Port at the path ``bsp/vee/port/``.
