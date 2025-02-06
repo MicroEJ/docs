@@ -71,7 +71,7 @@ Here are some useful compilation options:
 
 Here are some useful link options:
 
-* ``-nostdlib``: Omits the standard library.
+* ``-nostdlib``: Omits the standard library. See :ref:`managedc.link.nostdlib`.
 * ``-Wl,--no-entry``: Specifies no entry point for the WebAssembly module.
 * ``-Wl,--export=foo``: Exports a symbol named 'foo'.
 * ``-Wl,--export-all``: Exports all symbols.
@@ -79,6 +79,7 @@ Here are some useful link options:
 * ``-Wl,--global-base=n``: Sets the global base to 'n'.
 * ``-z stack-size=n``: Adjusts the stack size to 'n'.
 
+.. _managedc.link.nostdlib:
 
 Build Without The Standard Library
 ----------------------------------
