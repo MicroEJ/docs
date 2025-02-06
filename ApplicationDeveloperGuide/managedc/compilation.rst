@@ -36,7 +36,7 @@ In the terminal, navigate to the ``src/main/c`` directory and execute the follow
 
 .. code:: console
 
-    [path_to_wasi_sdk]/bin/clang -Wl,--export-all -o my_app.wasm my_app.o
+    [path_to_wasi_sdk]/bin/clang -Wl,--no-entry -Wl,--export-all -Wl,--allow-undefined -o my_app.wasm my_app.o
 
 .. note::
     
@@ -55,7 +55,7 @@ WASI SDK also includes a C++ compiler `clang++`, which you can use to compile an
     # compile
     [path_to_wasi_sdk]/bin/clang++ -mcpu=mvp -O3 -o my_app.o -c my_app.cc
     # link
-    [path_to_wasi_sdk]/bin/clang++ -Wl,--export-all -o my_app.wasm my_app.o
+    [path_to_wasi_sdk]/bin/clang++ -Wl,--no-entry -Wl,--export-all -Wl,--allow-undefined -o my_app.wasm my_app.o
 
 
 .. _managedc.link.command_line_options:
