@@ -419,21 +419,12 @@ Then you can use it in your test classes:
 Test Suite Reports
 ------------------
 
-Once a testsuite is completed, the JUnit XML report is generated in the module project location ``build/testsuite/output/<date>/testsuite-report.xml``.
+Once a testsuite is completed, the JUnit HTML report is generated in the module project location ``build/reports/tests/<testsuite>/index.xml``.
 
-  .. figure:: ../SDKUserGuide/images/testsuiteReportXMLExample.png
-     :alt: Example of MicroEJ Test Suite XML Report
+  .. figure:: ../SDK6UserGuide/images/junitHtmlReport.png
+     :alt: Example of JUnit HTML Report
      
-     Example of MicroEJ Test Suite XML Report
-  
-  XML report file can also be opened In Eclipse in the JUnit View. 
-  Right-click on the file > :guilabel:`Open With` >  :guilabel:`JUnit View`:
-
-  .. figure:: ../SDKUserGuide/images/testsuiteReportXMLExampleJunitView.png
-     :alt: Example of MicroEJ Test Suite XML Report in JUnit View
-     
-     Example of MicroEJ Test Suite XML Report in JUnit View
-
+     Example of JUnit HTML Report
 
 .. _sdk_6_mixing_testsuites:
 
