@@ -124,13 +124,7 @@ Module Dependencies
          version = "0.1.0-RC"
 
          dependencies {
-            implementation("ej.tool.frontpanel:framework:1.1.0")
-            implementation("com.microej.pack.ui:ui-pack:14.0.1") {
-               artifact {
-                     name = "frontpanel"
-                     extension = "jar"
-               }
-            }
+            implementation("ej.tool.frontpanel:framework:1.1.1")
          }
 
    .. tab:: SDK 5
