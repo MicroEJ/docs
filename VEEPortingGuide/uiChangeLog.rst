@@ -6,6 +6,18 @@
 Changelog
 =========
 
+.. _section_ui_changelog_14_3_2:
+
+[14.3.2] - 2025-02-10
+=====================
+
+FrontPanel
+""""""""""
+
+**Fixed**
+
+- Fix the performance issue of ``LLUIDisplay.convertRegion()`` when using the Front Panel Framework 1.3.0.
+
 .. _section_ui_changelog_14_3_0:
 
 [14.3.0] - 2025-01-24
@@ -26,6 +38,7 @@ FrontPanel
 
 - Speed up the drawing of images whose format is identical to the display, without transparency or transformation.
 - Display a tree of regions and drawings in the Flush Visualizer traces.
+- Use the Front Panel Framework 1.3.0 to implement ``LLUIDisplay.convertRegion()``.
 
 ImageGenerator
 """"""""""""""
