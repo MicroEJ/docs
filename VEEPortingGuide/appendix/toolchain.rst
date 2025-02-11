@@ -115,7 +115,6 @@ ARM Cortex-M33
 
 MicroEJ supports Cortex-M33 core with DSP extension using :ref:`Cortex-M4 architectures <architectures_toolchains_cm4>`.
 
-However, :ref:`Cortex-M4 architectures <architectures_toolchains_cm4>` are compatible with Cortex-M33 core with DSP extension.
 
 .. _architectures_toolchains_cm4:
 
