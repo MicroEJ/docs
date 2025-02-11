@@ -71,6 +71,12 @@ You can download the i.MX RT1170 VEE Port using the following commands::
    west init -m https://github.com/nxp-mcuxpresso/nxp-vee-imxrt1170-evk .
    west update
 
+
+.. warning::
+   
+   The path to the VEE Port sources should be as short as possible and contain **no whitespace** or **non-ASCII** character.
+   It is recommended to clone the repository as close as possible to your file system root.
+
 .. note::
   
    If you don’t have Git installed, you can download the source code directly from our `GitHub repository <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk/releases/tag/NXPVEE-MIMXRT1170-EVK-2.2.0>`__. 
