@@ -42,7 +42,10 @@ For Beginners
          <div class="training_item">
             <a class="training_link" href="trainingSdkBasics.html">
                <div class="training_image_container">
-                  <div class="training_image_text"></div>
+                  <ul class="training_image_list">
+                     <li class="training_course_number">Course</li>
+                     <li class="training_duration">4h</li>
+                  </ul>
                   <img src="../_static/images/training/training_sdk_veeport.jpg" alt="MICROEJ SDK Basics">
                </div>
                <h3 class="training_title">MICROEJ SDK Basics</h3>
@@ -57,7 +60,10 @@ For Beginners
          <div class="training_item">
             <a class="training_link" href="trainingDebugTools.html">
                <div class="training_image_container">
-                  <div class="training_image_text"></div>
+                  <ul class="training_image_list">
+                     <li class="training_course_number">Course</li>
+                     <li class="training_duration">8h</li>
+                  </ul>
                   <img src="../_static/images/training/training_debug.jpg" alt="Debug Tools">
                </div>
                <h3 class="training_title">Debugging with MICROEJ SDK</h3>
@@ -71,7 +77,10 @@ For Beginners
          <div class="training_item">
             <a class="training_link" href="trainingCManagedCodeCommunication.html">
                <div class="training_image_container">
-                  <div class="training_image_text"></div>
+                  <ul class="training_image_list">
+                     <li class="training_course_number">Course</li>
+                     <li class="training_duration">4h</li>
+                  </ul>
                   <img src="../_static/images/training/training_managed_code_c_communication.jpg" alt="C / Managed Code Communication">
                </div>
                <h3 class="training_title">C / Managed Code Communication</h3>
@@ -85,7 +94,10 @@ For Beginners
          <div class="training_item">
             <a class="training_link" href="trainingMock.html">
                <div class="training_image_container">
-                  <div class="training_image_text"></div>
+                  <ul class="training_image_list">
+                     <li class="training_course_number">Course</li>
+                     <li class="training_duration">1h</li>
+                  </ul>
                   <img src="../_static/images/training/training_mock.jpg" alt="MicroEJ Java Specificities">
                </div>   
                <h3 class="training_title">Simulate Hardware Behavior using Mocks</h3>
@@ -117,7 +129,10 @@ For Application Developers
          <div class="training_item">
             <a class="training_link" href="tutorialImproveCodeQuality.html">
                <div class="training_image_container">
-                  <div class="training_image_text"></div>
+                  <ul class="training_image_list">
+                     <li class="training_course_number">Course</li>
+                     <li class="training_duration">30min</li>
+                  </ul>
                   <img src="../_static/images/training/training_java_code_practices.jpg" alt="Best Java Code Practices">
                </div>
                <h3 class="training_title">Best Java Code Practices</h3>
@@ -131,7 +146,10 @@ For Application Developers
          <div class="training_item">
             <a class="training_link" href="trainingApplicationTesting.html">
                <div class="training_image_container">
-                  <div class="training_image_text"></div>
+                  <ul class="training_image_list">
+                     <li class="training_course_number">Course</li>
+                     <li class="training_duration">4h</li>
+                  </ul>
                   <img src="../_static/images/training/training_junit.jpg" alt="JUnit">
                </div>
                <h3 class="training_title">Application Testing</h3>
@@ -145,7 +163,10 @@ For Application Developers
          <div class="training_item">            
             <a class="training_link" href="tutorialOptimizeMemoryFootprint.html">
                <div class="training_image_container">
-                  <div class="training_image_text"></div>
+                  <ul class="training_image_list">
+                     <li class="training_course_number">Course</li>
+                     <li class="training_duration">30min</li>
+                  </ul>
                   <img src="../_static/images/training/training_optimize_footprint.jpg" alt="Optimize the Memory Footprint of an Application">
                </div>
                <h3 class="training_title">Optimize the Memory Footprint of an Application</h3>
@@ -158,7 +179,10 @@ For Application Developers
 
          <div class="training_item">
             <div class="training_image_container">
-               <div class="training_image_text"></div>
+               <ul class="training_image_list">
+                     <li class="training_course_number">Course</li>
+                     <!--li class="training_image_list_item">6h</li-->
+                  </ul>
                <img src="../_static/images/training/training_microej_java.jpg" alt="MicroEJ Java Specificities">
             </div>
             <h3 class="training_title">MicroEJ Java Specificities</h3>
@@ -187,7 +211,10 @@ For VEE Developers
          <div class="training_item">
             <a class="training_link" href="trainingVEEPortDevFromScratch.html">
                <div class="training_image_container">
-                  <div class="training_image_text"></div>
+                  <ul class="training_image_list">
+                     <li class="training_course_number">Course</li>
+                     <li class="training_duration">7h</li>
+                  </ul>
                   <img src="../_static/images/training/training_createFirmwareFromScratch.jpg" alt="VEE Port Creation for a Custom Device">
                </div>
                <h3 class="training_title">VEE Port Creation for a Custom Device</h3>
@@ -202,7 +229,10 @@ For VEE Developers
          <div class="training_item">
             <a class="training_link" href="trainingPQT.html">
                <div class="training_image_container">
-                  <div class="training_image_text"></div>
+                  <ul class="training_image_list">
+                     <li class="training_course_number">Course</li>
+                     <!--li class="training_image_list_item">6h</li-->
+                  </ul>
                   <img src="../_static/images/training/training_pqt.jpg" alt="PQT">
                </div>
                <h3 class="training_title">Qualify & Test your VEE Port</h3>
@@ -216,7 +246,10 @@ For VEE Developers
          <div class="training_item">
             <a class="training_link" href="trainingDebugHardfault.html">
                <div class="training_image_container">
-                  <div class="training_image_text"></div>
+                  <ul class="training_image_list">
+                     <li class="training_course_number">Course</li>
+                     <li class="training_duration">30min</li>
+                  </ul>
                   <img src="../_static/images/training/trainingDebugHardfault.jpg" alt="PQT">
                </div>
                <h3 class="training_title">Debug a HardFault</h3>
@@ -231,7 +264,10 @@ For VEE Developers
          <div class="training_item">
             <a class="training_link" href="trainingAsyncWorker.html">
                <div class="training_image_container">
-                  <div class="training_image_text"></div>
+                  <ul class="training_image_list">
+                     <li class="training_course_number">Course</li>
+                     <li class="training_duration">2h</li>
+                  </ul>
                   <img src="../_static/images/training/training_async_worker.jpg" alt="Async Worker">
                </div>
                <h3 class="training_title">Delegate Blocking Operations using Async Worker</h3>
@@ -263,7 +299,10 @@ Graphical User Interface
          <div class="training_item">
             <a class="training_link" href="trainingGuiRaster.html">
                <div class="training_image_container">
-                  <div class="training_image_text"></div>
+                  <ul class="training_image_list">
+                     <li class="training_course_number">Course</li>
+                     <li class="training_duration">8h</li>
+                  </ul>
                   <img src="../_static/images/training/training_gui.jpg" alt="Develop GUI with MicroEJ">
                </div>
                <h3 class="training_title">Develop GUI with MicroEJ</h3>
@@ -277,7 +316,10 @@ Graphical User Interface
          <div class="training_item">
             <a class="training_link" href="trainingDebugGUIFreeze.html">
                <div class="training_image_container">
-                  <div class="training_image_text"></div>
+                  <ul class="training_image_list">
+                     <li class="training_course_number">Course</li>
+                     <li class="training_duration">1h</li>
+                  </ul>
                   <img src="../_static/images/training/trainingDebugGUIFreeze.jpg" alt="Debugging a GUI Application Freeze">
                </div>
                <h3 class="training_title">Debug a GUI Application Freeze</h3>
@@ -288,10 +330,13 @@ Graphical User Interface
             </a>
             </div>
 
+         <div class="training_item">
             <a class="training_link" href="trainingGrayscaleDisplayConsiderations.html">
-            <div>
                <div class="training_image_container">
-                  <div class="training_image_text">Course 3</div>
+                  <ul class="training_image_list">
+                     <li class="training_course_number">Course</li>
+                     <li class="training_duration">30min</li>
+                  </ul>
                   <img src="../_static/images/training/trainingGrayscaleDisplayConsiderations.jpg" alt="Grayscale Display Considerations">
                </div>
                <h3 class="training_title">Grayscale Display Considerations</h3>
@@ -299,9 +344,8 @@ Graphical User Interface
                to take into account when developing a GUI application using a grayscale display.
                </p>
                <a class="training_learn_more_link" href="trainingGrayscaleDisplayConsiderations.html">Learn more</a>
-            </div>
             </a>
-
+            </div>
          </div>
 
 
@@ -321,7 +365,10 @@ Multi-Sandbox
          <div class="training_item">
             <a class="training_link" href="trainingKernel.html">
                <div class="training_image_container">
-                  <div class="training_image_text"></div>
+                  <ul class="training_image_list">
+                     <li class="training_course_number">Course</li>
+                     <!--li class="training_image_list_item">6h</li-->
+                  </ul>
                   <img src="../_static/images/training/training_kernel.jpg" alt="GUI Application Development">
                </div>
                <h3 class="training_title">Kernel Development</h3>
@@ -335,7 +382,10 @@ Multi-Sandbox
          <div class="training_item">
             <a class="training_link" href="trainingSandboxedApps.html">
                <div class="training_image_container">
-                  <div class="training_image_text"></div>
+                  <ul class="training_image_list">
+                     <li class="training_course_number">Course</li>
+                     <li class="training_duration">6h</li>
+                  </ul>
                   <img src="../_static/images/training/training_sandboxed_apps.jpg" alt="GUI Validation">
                </div>
                <h3 class="training_title">Sandboxed Applications Development</h3>
@@ -363,7 +413,10 @@ Connectivity
          <div class="training_item">
             <a class="training_link" href="trainingNetworking.html">
                <div class="training_image_container">
-                  <div class="training_image_text"></div>
+                  <ul class="training_image_list">
+                     <li class="training_course_number">Course</li>
+                     <!--li class="training_image_list_item">6h</li-->
+                  </ul>
                   <img src="../_static/images/training/training_networking.jpg" alt="Networking Basics">
                </div>
                <h3 class="training_title">Networking Basics</h3>
@@ -377,7 +430,10 @@ Connectivity
          <div class="training_item">
             <a class="training_link" href="../ApplicationDeveloperGuide/dataSerializationLibraries.html">
                <div class="training_image_container">
-                  <div class="training_image_text"></div>
+                  <ul class="training_image_list">
+                     <li class="training_course_number">Course</li>
+                     <li class="training_duration">1h</li>
+                  </ul>
                   <img src="../_static/images/training/code.jpg" alt="Explore Data Serialization Formats">
                </div>
                <h3 class="training_title">Explore Data Serialization Formats</h3>
@@ -405,7 +461,10 @@ For DevOps
          <div class="training_item">
             <a class="training_link" href="tutorialSetupBuildUsingJenkinsAndArtifactory.html">
                <div class="training_image_container">
-                  <div class="training_image_text"></div>
+                  <ul class="training_image_list">
+                     <li class="training_course_number">Course</li>
+                     <li class="training_duration">1h</li>
+                  </ul>
                   <img src="../_static/images/training/training_ci_jenkins_artifactory.jpg" alt="Setup Build Using Jenkins And Artifactory">
                </div>
                <h3 class="training_title">Setup Build Using Jenkins And Artifactory</h3>
@@ -431,19 +490,23 @@ For DevOps
             
             // Loop through each container
             trainingItemsContainers.forEach(container => {
-                // Select all .training_item sections inside the current container
-                const trainingItems = container.querySelectorAll('.training_item');
-                
-                // Loop through each .training_item and update the course number
-                trainingItems.forEach((item, index) => {
-                    // Find the course number element inside .training_item
-                    const courseText = item.querySelector('.training_image_text');
-                    
-                    // Update the course number (index + 1 to start at 1)
-                    if (courseText) {
-                        courseText.textContent = `Course ${index + 1}`;
-                    }
-                });
+               // Select all .training_item sections inside the current container
+               const trainingItems = container.querySelectorAll('.training_item');
+
+               // Loop through each .training_item and update the course number
+               trainingItems.forEach((item, index) => {
+                  // Find the course number element inside .training_item
+                  const list = item.querySelector('.training_image_list')
+
+                  if(list != null){
+                     const courseText = list.firstElementChild;
+         
+                     // Update the course number (index + 1 to start at 1)
+                     if (courseText) {
+                           courseText.textContent = `Course ${index + 1}`;
+                     }
+                  }
+               });
             });
         }
 
