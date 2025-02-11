@@ -74,7 +74,7 @@ You can download the i.MX RT1170 VEE Port using the following commands::
 
 .. warning::
    
-   The path to the VEE Port sources should be as short as possible and contain **no whitespace** or **non-ASCII** character.
+   The toolchain requires the path to the VEE Port sources to be as short as possible and contain **no whitespace** or **non-ASCII** character.
    It is recommended to clone the repository as close as possible to your file system root.
 
 .. note::
