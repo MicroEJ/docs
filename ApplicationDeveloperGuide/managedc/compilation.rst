@@ -76,8 +76,9 @@ Here are some useful link options:
 * ``-Wl,--export=foo``: Exports a symbol named 'foo'.
 * ``-Wl,--export-all``: Exports all symbols.
 * ``-Wl,--allow-undefined``: Allow undefined symbols.
-* ``-Wl,--global-base=n``: Sets the global base to 'n'.
-* ``-z stack-size=n``: Adjusts the stack size to 'n'.
+* ``-Wl,--stack-first``: Places the stack at the begining of linear memory. See :ref:`managedc.linear.memory.layout`.
+* ``-Wl,--initial-memory=n``: Sets the initial size of the linear memory to 'n' bytes. See :ref:`managedc.linear.memory.size.configuration`.
+* ``-z stack-size=n``: Adjusts the stack size to 'n' bytes. See :ref:`managedc.linear.memory.size.stack`.
 
 .. _managedc.link.nostdlib:
 
