@@ -31,13 +31,11 @@ Additionnal WebAssembly Instructions
 
 .. _managedc.instructions.partially_supported:
 
-Wasm Instructions partially supported
--------------------------------------
+Partially Supported WebAssembly Instructions 
+--------------------------------------------
 
-* memory_grow: Executing the ``memory_grow`` instruction will not result in an error, but it will not expand the Wasm linear memory either.
+* memory_grow: Executing the ``memory_grow`` instruction will not result in an error, but it will not expand the Wasm linear memory either. See :ref:`managedc_linear_memory` for more details.
 
-Therefore, applications should not try to increase the Wasm linear memory.
-Use the following linker options to set both the initial and maximum linear memory size to the same value: ``-Wl,--initial-memory=<value>`` and  ``-Wl,--max-memory=<value>`` 
 
 
 ..
