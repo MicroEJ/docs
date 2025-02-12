@@ -148,7 +148,7 @@ For Application Developers
                <div class="training_image_container">
                   <ul class="training_image_list">
                      <li class="training_course_number">Course</li>
-                     <li class="training_duration">4h</li>
+                     <li class="training_duration">3h</li>
                   </ul>
                   <img src="../_static/images/training/training_junit.jpg" alt="JUnit">
                </div>
@@ -213,7 +213,7 @@ For VEE Developers
                <div class="training_image_container">
                   <ul class="training_image_list">
                      <li class="training_course_number">Course</li>
-                     <li class="training_duration">7h</li>
+                     <li class="training_duration">4h</li>
                   </ul>
                   <img src="../_static/images/training/training_createFirmwareFromScratch.jpg" alt="VEE Port Creation for a Custom Device">
                </div>
@@ -266,7 +266,7 @@ For VEE Developers
                <div class="training_image_container">
                   <ul class="training_image_list">
                      <li class="training_course_number">Course</li>
-                     <li class="training_duration">2h</li>
+                     <li class="training_duration">30 min</li>
                   </ul>
                   <img src="../_static/images/training/training_async_worker.jpg" alt="Async Worker">
                </div>
@@ -384,7 +384,7 @@ Multi-Sandbox
                <div class="training_image_container">
                   <ul class="training_image_list">
                      <li class="training_course_number">Course</li>
-                     <li class="training_duration">6h</li>
+                     <li class="training_duration">4h</li>
                   </ul>
                   <img src="../_static/images/training/training_sandboxed_apps.jpg" alt="GUI Validation">
                </div>
@@ -432,7 +432,7 @@ Connectivity
                <div class="training_image_container">
                   <ul class="training_image_list">
                      <li class="training_course_number">Course</li>
-                     <li class="training_duration">1h</li>
+                     <li class="training_duration">30 min</li>
                   </ul>
                   <img src="../_static/images/training/code.jpg" alt="Explore Data Serialization Formats">
                </div>
