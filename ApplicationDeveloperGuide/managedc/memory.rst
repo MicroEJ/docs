@@ -69,7 +69,7 @@ The following Managed C code declares a static array of ``100`` bytes, and does 
     char my_static_data[100];
 
 
-The C code is compiled with the following options: ``-Wl,--no-entry -nostdlib -Wl,--export=my_static_data -Wl,--stack-first``.
+The C code is compiled with the following options: ``-Wl,--no-entry -nostdlib -Wl,--export-all -Wl,--stack-first``.
 
 The next table shows the impacts of additionnal options on the allocated linear memory size:
 
