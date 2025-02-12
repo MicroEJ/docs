@@ -34,7 +34,7 @@ Additionnal WebAssembly Instructions
 Partially Supported WebAssembly Instructions 
 --------------------------------------------
 
-* memory_grow: Executing the ``memory_grow`` instruction will not result in an error, but it will not expand the Wasm linear memory either. See :ref:`managedc_linear_memory` for more details.
+* memory_grow: Executing the ``memory_grow`` instruction will not result in an error, but it will not expand the Wasm linear memory either. See :ref:`managedc.linear.memory` for more details.
 
 
 
