@@ -92,7 +92,7 @@ The next table shows the impacts of additionnal options on the allocated linear 
    * - ``-Wl,--initial-memory=262144``
      - ``262144``
      - ``262144``
-     - The linear memory size is set to the Wasm initial number of pages (``4`` pages).
+     - The linear memory size is set to the Wasm module initial number of pages (``4`` pages).
    * - ``-z stack-size=512``
      - ``612``
      - ``65536``
