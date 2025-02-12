@@ -120,7 +120,7 @@ For Application Developers
             <div>
                <div class="training_image_container">
                   <div class="training_image_text">Course 1</div>
-                  <img src="../_static/images/training/training_java_code_practices.jpg" alt="Multi-Sandbox Applications">
+                  <img src="../_static/images/training/training_sandboxed_apps.jpg" alt="Multi-Sandbox Applications">
                </div>
                <h3 class="training_title">Get Started with Multi-Sandbox Applications</h3>
                <p class="training_description">In this training, you will get an introduction
