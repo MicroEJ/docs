@@ -306,7 +306,7 @@ Create the Sandboxed Application Project
 Create a new Sandboxed Application project as follows in IntelliJ IDEA:
 
 - Click on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...`.
-- Select :guilabel:`MicroEJ`:
+- Select :guilabel:`MicroEJ`.
 - Fill in the name of the project in the :guilabel:`Name` field.
 - Select the location of the project in the :guilabel:`Location` field.
 - Select the :guilabel:`Application` project type.

@@ -13,10 +13,6 @@ In case you are not familiar with MicroEJ, please visit `Discover MicroEJ <https
 Prerequisites
 -------------
 
-.. note::
-  
-   This Getting Started has been tested on Windows 10 & 11. Also, note that examples used in this Getting Started could depend on older tools and libraries. Most notably, our dependency manager plugin (using `Gradle <https://gradle.org/>`__) could be an older version.
-
 This Getting Started is separated in two main parts.
 
 The first part consists of running a demo application on the Virtual Device. All you need is:
@@ -172,10 +168,6 @@ The Virtual Device starts and executes the :guilabel:`animatedMascot` applicatio
          :alt: Virtual Device
          :align: center
          :scale: 70%
-
-.. note::
-  
-   The Front Panel may be too big for your screen because of the RK055HDMIPI4MA0 display resolution. You can scroll down to see the bottom of the display.
 
 .. figure:: images/well-done-mascot.png
    :alt: Well Done
