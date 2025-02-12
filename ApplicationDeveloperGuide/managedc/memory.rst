@@ -44,7 +44,7 @@ By default, the size of the linear memory is initialized with the Wasm module in
 The Wasm module initial number of pages can be configured using the ``-Wl,--initial-memory=[size_in_bytes]`` :ref:`linker option <managedc.link.command_line_options>`. 
 The given size must be a multiple of 64KB, i.e. a number of pages.
 
-It is possible to reduce the size of the linear memory lower than 64KB if both conditions are met:
+The size of the linear memory can be reduced below 64KB if both of the following conditions are met:
 
 * the Wasm module does not embed neither the ``memory.size`` nor the ``memory.grow`` instructions. This is the case if the C code does not transitively calls the ``malloc`` implementation declared in WASI libc.
 * the Wasm module exports the ``__heap_base`` global using the ``-Wl,--export=__heap_base`` :ref:`linker option <managedc.link.command_line_options>`.
