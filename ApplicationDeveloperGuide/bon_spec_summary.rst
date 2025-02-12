@@ -12,12 +12,12 @@
 
             .. code-block:: java
 
-               implementation("ej.api:bon:1.4.3")
+               implementation("ej.api:bon:1.4.4")
 
          .. tab:: SDK 5
 
             .. code-block:: xml
 
-               <dependency org="ej.api" name="bon" rev="1.4.3" />
+               <dependency org="ej.api" name="bon" rev="1.4.4" />
    * - Module Location
      - https://repository.microej.com/modules/ej/api/bon/
