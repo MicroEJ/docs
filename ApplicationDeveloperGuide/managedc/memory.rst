@@ -13,8 +13,8 @@ Configure the Linear Memory Layout
 
 The Wasm linear memory is composed of the following sections:
 
-* **Static Data**: Contains statically linked constants and global variables.
 * **Main Stack**: Used for temporary allocations and to store some local variables. The stack grows downward (toward lower memory addresses).
+* **Static Data**: Contains statically linked constants and global variables.
 * **Heap**: Used for dynamic memory allocations. The heap grows upward (toward upper memory addresses).
 
 MicroEJ recommends linking a Wasm module using the ``-Wl,--stack-first`` :ref:`linker option <managedc.link.command_line_options>`.
