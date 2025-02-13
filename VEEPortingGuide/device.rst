@@ -30,13 +30,13 @@ To enable it, the Device Information :ref:`Pack <pack_overview>` module must be 
 
       .. code-block:: kotlin
 
-         microejPack("com.microej.pack.audio:audio-pack:1.0.0")
+         microejPack("com.microej.pack.device:device-pack:1.2.0")
 
    .. tab:: SDK 5 (module.ivy)
 
       .. code-block:: xml
 
-         <dependency org="com.microej.pack.audio" name="audio-pack" rev="1.0.0"/>
+         <dependency org="com.microej.pack.device" name="device-pack" rev="1.2.0"/>
 
       Then, using the VEE Port Editor (see :ref:`platform_module_configuration`), enable the `Device Information` library.
 
