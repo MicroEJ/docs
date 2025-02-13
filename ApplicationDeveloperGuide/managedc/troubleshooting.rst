@@ -90,6 +90,51 @@ Running code containing Managed C in a simulation will prompt an error similar t
 
     ERROR: Inconsistent Mock implementation: the type 'com/mycompany/Module' cannot be loaded from the HIL classpath (java.lang.ClassNotFoundException:com.mycompany.Module).
 
+-----------------------------------------------------------------
+java.lang.ArrayIndexOutOfBoundsException in malloc
+-----------------------------------------------------------------
+
+If you encounter a stack trace like the following, you have likely reached the upper bound of linear memory. 
+The ``dlmalloc`` function attempted to expand memory using ``memory.grow`` but accessed memory that was not allocated, resulting in an out-of-bounds exception.
+
+.. code:: console
+
+  Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException
+          at com.mycompany.myapplication.TestOutOfBounds.wasm:$dlmalloc(Unknown Source)
+          at com.mycompany.myapplication.TestOutOfBounds.wasm:$malloc(Unknown Source)
+          at com.mycompany.myapplication.TestOutOfBounds.wasm:$allocate_too_much_memory(Unknown Source)
+          at com.mycompany.myapplication.TestOutOfBounds.wasm:sync:call(Unknown Source)
+          at com.mycompany.myapplication.TestOutOfBounds.call(Unknown Source)
+          at com.mycompany.myapplication.TestOutOfBounds.main(TestOutOfBounds.java:23)
+          at java.lang.MainThread.run(Thread.java:856)
+          at java.lang.Thread.runWrapper(Thread.java:465)
+
+-----------------------------------------------------------------
+Unexpected java.lang.ArithmeticException in call stack trace
+-----------------------------------------------------------------
+
+If you encounter a stack trace like the following, you have likely reached the lower bound of the linear memory.
+The code execution stops while attempting to load or store data in the stack due to a computed negative unsigned offset, leading to an arithmetic exception.
+
+.. code:: console
+
+  Exception in thread "main" java.lang.ArithmeticException
+          at com.mycompany.myapplication.TestOutOfBounds.wasm:$recursiveCall0(Unknown Source)
+          at com.mycompany.myapplication.TestOutOfBounds.wasm:$recursiveCall0(Unknown Source)
+          at com.mycompany.myapplication.TestOutOfBounds.wasm:$recursiveCall0(Unknown Source)
+          at com.mycompany.myapplication.TestOutOfBounds.wasm:$recursiveCall0(Unknown Source)
+          at com.mycompany.myapplication.TestOutOfBounds.wasm:$recursiveCall0(Unknown Source)
+          at com.mycompany.myapplication.TestOutOfBounds.wasm:$recursiveCall0(Unknown Source)
+          at com.mycompany.myapplication.TestOutOfBounds.wasm:$recursiveCall0(Unknown Source)
+          at com.mycompany.myapplication.TestOutOfBounds.wasm:$recursiveCall0(Unknown Source)
+          at com.mycompany.myapplication.TestOutOfBounds.wasm:$recursiveCall0(Unknown Source)
+          at com.mycompany.myapplication.TestOutOfBounds.wasm:$recursiveCall0(Unknown Source)
+          at com.mycompany.myapplication.TestOutOfBounds.wasm:sync:recursiveCall(Unknown Source)
+          at com.mycompany.myapplication.TestOutOfBounds.recursiveCall(Unknown Source)
+          at com.mycompany.myapplication.TestOutOfBounds.main(TestOutOfBounds.java:34)
+          at java.lang.MainThread.run(Thread.java:856)
+          at java.lang.Thread.runWrapper(Thread.java:465)
+
 
 ..
    | Copyright 2023, MicroEJ Corp. Content in this space is free 
