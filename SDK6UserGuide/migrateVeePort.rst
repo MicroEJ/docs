@@ -287,10 +287,10 @@ Then for each Testsuite:
    }
 
 - The tested VEE Port was defined in SDK 5 in the ``config.properties`` file, with the ``target.platform.dir`` property.
-  In SDK6, it is done by declaring the VEE Port Configuration project as a project dependency::
+  In SDK 6, it is done by declaring the VEE Port Configuration project as a project dependency::
 
    dependencies {
-      microejVee(project(":vee-port"))
+      testMicroejVee(project(":vee-port"))
    }
 
   and including the testsuite project in the ``settings.gradle.kts`` file of the multi-project::
