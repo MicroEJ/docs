@@ -22,37 +22,20 @@ FrontPanel
 
 .. warning:: The following issues concern the UI Packs **14.3.0** and **14.3.2**.
 
-.. list-table:: Front Panel Issues
-   :widths: 30 30 30
-   :header-rows: 1
+*Front Panel*
 
-   * - Description
-     - Cause
-     - Work Around
-   * - Some glitches may appear around the display.
-     - When the display is non-rectangular (see :ref:`section_ui_simulation_display`), the Front Panel widget display filter sometimes partially disappears.
-     - none.
-   * - The rendering of Front Panel widgets other than the display is truncated: the right and bottom lines (1 pixel width) are missing.
-     - Widget rendering clip is too small.
-     - Increase the size of each widget image with empty right and bottom lines.
-   * - With a zoom other than 1:1, the rendering of Front Panel widgets other than the display is truncated or non-existent.
-     - Widget rendering clip does not follow zoom (no scaling).
-     - none, use only 1:1 zoom.
+- On non-rectangular displays (see :ref:`section_ui_simulation_display`), the Front Panel widget display's filter sometimes disappears partially, causing some visual glitches around the display.
+- The rendering of Front Panel widgets other than the display is truncated: the right and bottom lines (1 pixel thick) are missing.
+  This is caused by the widget rendering clip being too small.
+  As a workaround, you can increase the size of each widget image with empty lines on the right and bottom sides.
+- With a zoom other than 1:1, some Front Panel widgets other than the display may not be rendered, or may be truncated.
 
+*Flush Visualizer*
 
-.. list-table:: Flush Visualizer Issues
-   :widths: 30 30 30
-   :header-rows: 1
+- A native Concurrent Exception may be thrown during application animations.
+  This is due to the drawing storage not being synchronized with the Flush Visualizer text file dump.
+- On non-rectangular displays (see :ref:`section_ui_simulation_display`), the Front Panel widget display's filter sometimes disappears partially, causing some visual glitches around the display in the screenshot.
 
-   * - Description
-     - Cause
-     - Work Around
-   * - A native Concurrent Exception can be thrown during application animations.
-     - Drawings storage is not synchronized with the Flush Visualizer text file dump.
-     - none.
-   * - Some glitches may appear around the display in the screenshot.
-     - When the display is non-rectangular (see :ref:`section_ui_simulation_display`), the Front Panel widget display filter sometimes partially disappears.
-     - none.
 
 .. _section_ui_changelog_14_3_0:
 
