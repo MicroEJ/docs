@@ -18,6 +18,42 @@ FrontPanel
 
 - Fix the performance issue of ``LLUIDisplay.convertRegion()`` when using the Front Panel Framework 1.3.0.
 
+**Known Issues**
+
+.. warning:: The following issues concern the UI Packs **14.3.0** and **14.3.2**.
+
+.. list-table:: Front Panel Issues
+   :widths: 30 30 30
+   :header-rows: 1
+
+   * - Description
+     - Cause
+     - Work Around
+   * - Some glitches may appear around the display.
+     - When the display is non-rectangular (see :ref:`section_ui_simulation_display`), the Front Panel widget display filter sometimes partially disappears.
+     - none.
+   * - The rendering of Front Panel widgets other than the display is truncated: the right and bottom lines (1 pixel width) are missing.
+     - Widget rendering clip is too small.
+     - Increase the size of each widget image with empty right and bottom lines.
+   * - With a zoom other than 1:1, the rendering of Front Panel widgets other than the display is truncated or non-existent.
+     - Widget rendering clip does not follow zoom (no scaling).
+     - none, use only 1:1 zoom.
+
+
+.. list-table:: Flush Visualizer Issues
+   :widths: 30 30 30
+   :header-rows: 1
+
+   * - Description
+     - Cause
+     - Work Around
+   * - A native Concurrent Exception can be thrown during application animations.
+     - Drawings storage is not synchronized with the Flush Visualizer text file dump.
+     - none.
+   * - Some glitches may appear around the display in the screenshot.
+     - When the display is non-rectangular (see :ref:`section_ui_simulation_display`), the Front Panel widget display filter sometimes partially disappears.
+     - none.
+
 .. _section_ui_changelog_14_3_0:
 
 [14.3.0] - 2025-01-24
