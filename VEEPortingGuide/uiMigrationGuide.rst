@@ -6,6 +6,23 @@
 Migration Guide
 ===============
 
+.. _section_ui_migrationguide_pack_14.3.2:
+
+From 14.2.0 to 14.3.2
+=====================
+
+Front Panel
+"""""""""""
+
+* Fetch `Front Panel Widgets 5.1.0`_ (it fetches by transitivity the `UI Pack 14.3.2`_):
+
+  .. code-block:: xml
+
+     <dependency org="ej.tool.frontpanel" name="widget" rev="5.1.0"/>
+
+.. _Front Panel Widgets 5.1.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/5.1.0/
+.. _UI Pack 14.3.2: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/14.3.2/
+
 .. _section_ui_migrationguide_pack_14.2.0:
 
 From 14.1.1 to 14.2.0
