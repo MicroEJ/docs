@@ -300,20 +300,23 @@ Then the option can be retrieved as a System Property in the mock:
 Dependencies
 ============
 
+A Mock project must include the `Mock API module <https://repository.microej.com/modules/com/microej/tool/runtime/mock-api/>`__ dependency for bi-directional communication with the Simulator via the HIL Engine.
+
 .. tabs::
 
    .. tab:: SDK 6
 
-      - Copy the ``HILEngine.jar`` from the VEE Port into a project folder, for example in ``libs``.
-      - Add a dependency to this local library in the ``build.gradle.kts`` file:
+      Add a dependency to the Mock API in the ``build.gradle.kts`` file:
 
          .. code-block:: kotlin
 
-            implementation(files("libs/HILEngine.jar"))
+            compileOnly("com.microej.tool.runtime:mock-api:2.5.0")
 
    .. tab:: SDK 5
 
-      The HIL Engine API is automatically provided by the ``microej-mock`` project skeleton.
+      The Mock API is automatically provided by the ``microej-mock`` project skeleton.
+
+Other dependencies to standard Java modules can be added, such as the :ref:`JavaFX Mock <mock_javafx>`.
 
 Installation
 ============

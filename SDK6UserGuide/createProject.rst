@@ -354,6 +354,8 @@ Mock
   .. note::
     The ``java`` plugin must not be added since it is automatically applied by the MicroEJ plugin.
 
+Refer to the :ref:`VEE Porting Guide Mock chapter <mock>` for how to develop a Mock.
+
 Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
 
 .. _sdk_6_create_project_configure_jse_library:
