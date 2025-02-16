@@ -38,6 +38,8 @@ To get the most out of this training, participants should have:
 Training Resources
 ==================
 
+.. _training_c_managed_code_communication_unit1:
+
 Unit 1: C / Managed Code Communication with MICROEJ VEE
 -------------------------------------------------------
 
@@ -65,7 +67,7 @@ how to properly implement a blocking native method:
    tutorialImplementABlockingNativeMethodWithSNI
 
 ..
-   | Copyright 2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2024-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
