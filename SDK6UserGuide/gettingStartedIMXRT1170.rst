@@ -123,7 +123,7 @@ The Gradle project should now be imported in IntelliJ IDEA, your workspace conta
 Accept the MICROEJ SDK EULA
 ---------------------------
 
-You may have to accept the SDK EULA if you didn't already do, please have a look at :ref:`sdk_6_eula_acceptation`.
+You may have to accept the SDK EULA if you haven't already done it, please have a look at :ref:`sdk_6_eula_acceptation`.
 
 .. _sdk_6_getting_started_rt1170_run_virtual_device:
 
@@ -162,7 +162,7 @@ The Virtual Device starts and executes the :guilabel:`Demo-SmartThermostat` appl
    :align: center
    :scale: 70%
 
-Well done !
+Well Done!
 -----------
 
 Now you know how to run an application on a Virtual Device.
@@ -298,12 +298,12 @@ The COM port uses the following parameters:
 
 You can have a look at your application logs with an RS232 Terminal (e.g. `Termite <https://www.compuphase.com/software_termite.htm>`__).
 
-Congratulations, you have finished the setup of your environment. You are now ready to discover how to build and flash a MicroEJ application.
+Congratulations! You have finished the setup of your environment. You are now ready to discover how to build and flash a MicroEJ application.
 
 Build the Executable for i.MX RT1170 Evaluation Kit
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In order to build the Executable of the :guilabel:`Demo-SmartThermostat` Application, the SDK provides the Gradle :guilabel:`buildExecutable` task.
+In order to build the Executable of the :guilabel:`Demo-SmartThermostat` Application, the SDK provides the :guilabel:`buildExecutable` Gradle task.
 
 .. note::
   
@@ -323,11 +323,11 @@ In order to build the Executable of the :guilabel:`Demo-SmartThermostat` Applica
 
 Request your Evaluation License:
 
-* Request your Evaluation license by following the :ref:`evaluation_license_request_activation_key` instructions. You will be asked to fill the machine UID you just copied before.
+* Request your Evaluation license by following the :ref:`evaluation_license_request_activation_key` instructions. You will be asked to fill the machine UID field with the UID you copied before.
 
 * When you have received your activation key by email, drop it in the license directory by following the :ref:`evaluation_license_install_license_key` instructions (drop the license key zip file to the ``~/.microej/licenses/`` directory).
 
-Now your Evaluation license is installed, you can relaunch your application build by double-clicking on the :guilabel:`buildExecutable` task in the Gradle tasks view. It may takes some time.
+Now your Evaluation license is installed, you can relaunch your application build by double-clicking on the :guilabel:`buildExecutable` task in the Gradle tasks view. It may take some time.
 
 The Gradle task deploys the Application in the BSP and then builds the BSP using Make.
 
@@ -342,7 +342,7 @@ In order to flash the :guilabel:`Demo-SmartThermostat` Application on i.MX RT117
   
    If you are using another IDE than IntelliJ IDEA, please have a look at :ref:`sdk_6_run_on_device` section.
 
-* Double-click on the :guilabel:`runOnDevice` task in the Gradle tasks view. It may takes some time.
+* Double-click on the :guilabel:`runOnDevice` task in the Gradle tasks view. It may take some time.
 
       .. figure:: images/gettingStarted/iMXRT1170/getting-started-runOnDevice.png
          :alt: runOnDevice task
@@ -413,7 +413,7 @@ Going Further
 
 You have now successfully executed a MicroEJ application on an embedded device so what's next?
 
-If you are an application developer you can continue to explore MicroEJ's API and functionalities by running and studying our samples at GitHub:
+If you are an application developer you can continue to explore MicroEJ's APIs and functionalities by running and studying our samples at GitHub:
 
 .. list-table::
    :widths: 33 33 33
@@ -432,7 +432,7 @@ You can also learn how to build bigger and better applications by reading our :r
 
 If you are an embedded engineer you could look at our VEE port examples at `GitHub <https://github.com/microej?q=vee&type=all&language=&sort=>`_. And to learn how create custom VEE ports you can read our :ref:`VEE Porting Guide <vee-porting-guide>`.
 
-You can also follow the :ref:`Kernel Developer Guide <kernel-developer-guide>` for more information on our multi-applications framework or read about our powerful wearable solution called :ref:`VEE Wear <vee-wear>`.
+You can also follow the :ref:`Kernel Developer Guide <kernel-developer-guide>` for more information on our multi-application framework or read about our powerful wearable solution called :ref:`VEE Wear <vee-wear>`.
 
 Last but not least you can choose to learn about specific topics by following one of our many :ref:`trainings` ranging from how to easily debug application to setting up a Continuous Integration process and a lot of things in between.
 
