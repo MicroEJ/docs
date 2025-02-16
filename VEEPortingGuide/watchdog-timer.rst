@@ -153,13 +153,13 @@ To use TimerTask in your Java application, add the following `BON API`_ dependen
 
       .. code-block:: kotlin
 
-         implementation("ej.api:bon:1.4.0")
+         implementation("ej.api:bon:1.4.4")
 
    .. tab:: SDK 5 (module.ivy)
 
       .. code-block:: xml
 
-         <dependency org="ej.api" name="bon" rev="1.4.0" />
+         <dependency org="ej.api" name="bon" rev="1.4.4" />
 
 
 Then, you can use this example code:
