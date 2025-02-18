@@ -85,6 +85,14 @@ Example:
    com.mycompany.myapp.Labels
    com.mycompany.myapp.Messages
 
+.. note::
+
+  For each line, PO files whose name starts with the interface name (``Labels`` or ``Messages`` in the example) 
+  are retrieved from the MicroEJ Classpath and used to generate:
+
+  - a Java interface with the given fully qualified name, containing a field for each ``msgid`` of the PO files.
+  - a NLS binary file containing the translations.
+ 
 .. _nls_usage:
 
 Usage
@@ -874,6 +882,56 @@ Since the generated resource is referenced by the ``.resources.list`` generated 
 Unless it is also referenced by an ``.externresources.list`` in which case the SOAR will output the resource in the :ref:`External Resources Folder<external_resources_folder>` instead.
 
 This resource is loaded as soon as the BinaryNLS instance is created, in the clinit of the generated NLS interface (see :ref:`Principle <section.nls.principle>`).
+
+.. _nls_external_resource:
+
+Loading Translations as an External Resource
+--------------------------------------------
+
+When the resource is also referenced by an ``.externresources.list`` file,
+can it be loaded as external resource in order to be loaded from an external memory (e.g. from a FileSystem).
+
+.. note::
+ 
+ This mode requires to setup the :ref:`External Resources Loader<section_externalresourceloader>` in the VEE Port.
+
+Usage
+^^^^^
+
+The procedure below assumes that the application already has a localization source files named ``HelloWorldMessages_en_US.po``
+referenced as an internal resource in a ``.nls.list`` file. 
+The localization source file is declared as follows in the ``.nls.list`` file: ``com.microej.example.nls.generated.HelloWorldMessages``.
+
+The procedure below explains how to declare this translation as external resource:
+
+- Create a ``.nls.externresources.list`` file next to the ``.nls.list`` file,
+- Add the path to the generated external resource. This path can be deduced from the declaration done in the
+  ``.nls.list`` file, for example:
+  
+  Content of the ``.nls.list`` file:
+
+  .. code::
+
+    com.microej.example.nls.generated.HelloWorldMessages
+
+  Path to add in the ``.nls.externresources.list`` file:
+
+  .. code::
+
+    /com/microej/example/nls/generated/HelloWorldMessages.nls
+   
+  This path can also be found in the application build folder once the application has been built for the device 
+  (e.g. ``build/adp/src-adpgenerated/binarynls/java/com/microej/exercises/generated/HelloWorldMessages.nls.resources.list``).
+  
+- Build the application for the device,
+- Open the :ref:`soar_map_file` file to check that the resource is not embedded anymore in the application binary.
+  The ``xxx_HelloWorldMessages_en_US.nls`` line should not appear anymore in the ``ApplicationResources`` section.
+- The resource containing translations is now located in the :ref:`External Resources Folder <external_resources_folder>`
+  (e.g. ``build/application/object/externalResources/com/microej/exercises/generated/HelloWorldMessages.nls``).
+  This resource must be embedded on the target and loaded using the External Resources Loader.
+
+A simple implementation of the External Resources Loader is available on GitHub:
+`Example-ExternalResourceLoader <https://github.com/MicroEJ/Example-ExternalResourceLoader>`_.
 
 Fallback on Default Resource
 ----------------------------
