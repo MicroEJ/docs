@@ -24,7 +24,18 @@ Additionnal WebAssembly Instructions
 
 * i32.atomic.load
 * i64.atomic.load
+* i32.atomic.load8_u
+* i32.atomic.load16_u
+* i64.atomic.load8_u
+* i64.atomic.load16_u
+* i64.atomic.load32_u
 * i32.atomic.store
+* i64.atomic.store
+* i32.atomic.store8
+* i32.atomic.store16
+* i64.atomic.store8
+* i64.atomic.store16
+* i64.atomic.store32
 * i32.atomic.rmw.xchg
 * i32.atomic.rmw.cmpxchg
 
@@ -35,7 +46,7 @@ Partially Supported WebAssembly Instructions
 --------------------------------------------
 
 * memory_grow: Executing the ``memory_grow`` instruction will not result in an error, but it will not expand the Wasm linear memory either. See :ref:`managedc.linear.memory` for more details.
-
+* i32.atomic.* and i64.atomic.* instructions do not currently check for nonalingned memory access.
 
 
 ..
