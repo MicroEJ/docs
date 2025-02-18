@@ -1,6 +1,11 @@
 
 .. |UIPACKVERSION| replace:: 14.3.3
+.. |FPFRAMEWORKVERSION| replace:: 1.3.0
+.. |FPWIDGETSVERSION| replace:: 5.2.0
+.. |MICROUIVERSION| replace:: 3.6.0
+
 .. |VGPACKVERSION| replace:: 1.7.0
+.. |MICROVGVERSION| replace:: 1.5.0
 
 .. _MicroUI API 3.6.0: https://repository.microej.com/modules/ej/api/microui/3.6.0/
 .. _MicroUI API 3.5.0: https://repository.microej.com/modules/ej/api/microui/3.5.0/

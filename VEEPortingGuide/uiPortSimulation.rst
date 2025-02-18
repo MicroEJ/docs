@@ -1,3 +1,5 @@
+.. include:: uiReplaces.rst
+
 .. _ui_port_sim:
 
 ==========
@@ -24,7 +26,7 @@ Add the following dependency to the project build file:
 
       .. code-block:: kotlin
 
-         implementation("ej.tool.frontpanel:framework:1.3.0")
+         implementation("ej.tool.frontpanel:framework:[Front Panel Framework version]")
          implementation("com.microej.pack.ui:ui-pack:[UI Pack version]") {
             artifact {
                   name = "frontpanel"
@@ -40,6 +42,8 @@ Add the following dependency to the project build file:
             <artifact name="frontpanel" type="jar"/>
          </dependency>
 
+
+.. note:: The latest version of the UI Pack is |UIPACKVERSION| and the latest version of the Front Panel Framework is |FPFRAMEWORKVERSION|.
 
 See :ref:`section_ui_simulation` for more information about the Front Panel project dependencies.
 
