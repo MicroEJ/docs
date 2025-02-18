@@ -880,8 +880,8 @@ This resource is loaded as soon as the BinaryNLS instance is created, in the cli
 Loading Translations as an External Resource
 --------------------------------------------
 
-When the resource is also referenced by an ``.externresources.list`` file,
-can it be loaded as external resource in order to be loaded from an external memory (e.g. from a FileSystem).
+When the resource is also referenced by a ``.nls.externresources.list`` file,
+it can be loaded as External Resource in order to be loaded from an external memory (e.g. from a FileSystem).
 
 .. note::
  
@@ -890,14 +890,14 @@ can it be loaded as external resource in order to be loaded from an external mem
 Usage
 ^^^^^
 
-The procedure below assumes that the application already has a localization source files named ``HelloWorldMessages_en_US.po``
-referenced as an internal resource in a ``.nls.list`` file. 
-The localization source file is declared as follows in the ``.nls.list`` file: ``com.microej.example.nls.generated.HelloWorldMessages``.
+The procedure below assumes that the application already has localization source files named ``HelloWorldMessages*.po``
+referenced as internal resources in a ``.nls.list`` file. 
+The localization source files are declared as follows in the ``.nls.list`` file: ``com.microej.example.nls.generated.HelloWorldMessages``.
 
-The procedure below explains how to declare this translation as external resource:
+The procedure below explains how to declare those translations as an External Resource:
 
 - Create a ``.nls.externresources.list`` file next to the ``.nls.list`` file,
-- Add the path to the generated external resource. This path can be deduced from the declaration done in the
+- Add the path to the generated External Resource. This path can be deduced from the declaration done in the
   ``.nls.list`` file, for example:
   
   Content of the ``.nls.list`` file:
@@ -916,8 +916,8 @@ The procedure below explains how to declare this translation as external resourc
   (e.g. ``build/adp/src-adpgenerated/binarynls/java/com/microej/exercises/generated/HelloWorldMessages.nls.resources.list``).
   
 - Build the application for the device,
-- Open the :ref:`soar_map_file` file to check that the resource is not embedded anymore in the application binary.
-  The ``xxx_HelloWorldMessages_en_US.nls`` line should not appear anymore in the ``ApplicationResources`` section.
+- Open the :ref:`soar_map_file` file to check that the translations are not embedded anymore in the application binary.
+  The ``xxx_HelloWorldMessages_*.nls`` lines should not appear anymore in the ``ApplicationResources`` section.
 - The resource containing translations is now located in the :ref:`External Resources Folder <external_resources_folder>`
   (e.g. ``build/application/object/externalResources/com/microej/exercises/generated/HelloWorldMessages.nls``).
   This resource must be embedded on the target and loaded using the External Resources Loader.
@@ -925,18 +925,17 @@ The procedure below explains how to declare this translation as external resourc
 A simple implementation of the External Resources Loader is available on GitHub:
 `Example-ExternalResourceLoader <https://github.com/MicroEJ/Example-ExternalResourceLoader>`_.
 
-Fallback on Default Resource
-----------------------------
-
-When using a resource referenced as External Resource (``.externresources.list``), the application is not guaranteed to access it at startup (external memory failure, corruption, ...).
+When using a resource referenced as External Resource,
+the application is not guaranteed to access it at startup (external memory failure, corruption, ...).
 
 The application can be configured to fallback on a default resource embedded in the Application binary.
 This resource can be a "lighter" version of the one loaded using the External Resources Loader (e.g. only embed the English language).
 
-Usage
-^^^^^
+Fallback on Default Resource
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The procedure below assumes that the application already has localization source files named ``HelloWorldMessages*.po`` that are referenced as External Resource.
+The procedure below assumes that the application already has localization source files named 
+``HelloWorldMessages*.po`` that are referenced as External Resource.
 
 The procedure below explains how to setup the fallback on a default resource embedding the ``en_US`` locale only:
 
