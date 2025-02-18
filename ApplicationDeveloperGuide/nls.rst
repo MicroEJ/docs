@@ -85,14 +85,6 @@ Example:
    com.mycompany.myapp.Labels
    com.mycompany.myapp.Messages
 
-.. note::
-
-  For each line, PO files whose name starts with the interface name (``Labels`` or ``Messages`` in the example) 
-  are retrieved from the MicroEJ Classpath and used to generate:
-
-  - a Java interface with the given fully qualified name, containing a field for each ``msgid`` of the PO files.
-  - a NLS binary file containing the translations.
- 
 .. _nls_usage:
 
 Usage
@@ -1070,8 +1062,8 @@ close this resource, before it can potentially be modified depending on the exte
 
 .. _chapter.microej.nlsExternalLoader:
 
-NLS External Loader Tool
-------------------------
+Virtual Device PO Loader Tool
+-----------------------------
 
 The `NLS External Loader`_ tool allows to update the PO files of an application executed on a Virtual Device without rebuilding it.
 PO files can be dropped in a given location in the Virtual Device folders to dynamically replace the language strings packaged in the application.
