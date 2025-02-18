@@ -31,7 +31,7 @@ For Beginners
    :hidden:
 
    trainingSdkBasics
-   trainingDebugTools
+   trainingDevelopmentTools
    trainingCManagedCodeCommunication
    trainingMock
 
@@ -58,7 +58,7 @@ For Beginners
          </div>
 
          <div class="training_item">
-            <a class="training_link" href="trainingDebugTools.html">
+            <a class="training_link" href="trainingDevelopmentTools.html">
                <div class="training_image_container">
                   <ul class="training_image_list">
                      <li class="training_course_number">Course</li>
@@ -67,10 +67,10 @@ For Beginners
                   <img src="../_static/images/training/training_debug.jpg" alt="Debug Tools">
                </div>
                <h3 class="training_title">Debugging with MICROEJ SDK</h3>
-               <p class="training_description">In this training, you will get an overview of the debug tools provided 
-               to developers to debug an application. 
+               <p class="training_description">Maximize your knowledge of MICROEJ SDK Development Tools to 
+               accelerate your product development.
                </p>
-               <a class="training_learn_more_link" href="trainingDebugTools.html">Learn more</a>
+               <a class="training_learn_more_link" href="trainingDevelopmentTools.html">Learn more</a>
             </a>
          </div>
 
@@ -543,7 +543,7 @@ For DevOps
          // If yes, remove the content not nxp-mimxrt1170 specific
          if (urlParams.has('nxp-mimxrt1170')) {
             // Execute the remove functions
-            ['trainingDebugTools.html', 'trainingSandboxedApps.html'].forEach((href) => {
+            ['trainingSandboxedApps.html'].forEach((href) => {
                removeChildDivByHref(href);
                removeListItemByHref(href);
 

@@ -1,14 +1,14 @@
-.. _training_debug_tools:
+.. _training_development_tools:
 
-==========================
-Debugging with MICROEJ SDK
-==========================
+=======================================
+Mastering MICROEJ SDK Development Tools
+=======================================
 
 Description
 ===========
 
-This training describes the available tools provided to developers to debug an application.
-It also presents debugging methods applied to two concrete uses cases (GUI application freeze and HardFault).
+This training describes the available tools provided by MICROEJ SDK
+to accelerate your product development.
 
 Intended Audience
 =================
@@ -22,7 +22,7 @@ To get the most out of this training, participants should have:
 
 - A good understanding of the :ref:`overview` section.
 - A basic knowledge of the :ref:`chapter-glossary`.
-- Access to the `STM32F7508-DK Evaluation Kit <https://www.st.com/en/evaluation-tools/stm32f7508-dk.html>`__.
+- Access to the `NXP i.MX RT1170 Evaluation Kit <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__.
 
 Training Resources
 ==================
@@ -35,20 +35,16 @@ Unit 1: Master logging within your Application
 Unit 2: MicroEJ Debug Tools Overview
 ------------------------------------
 
-.. |debug_tools_sdk5_slides| raw:: html
+TODO LINKS
+
+.. |development_tools_sdk6_rt1170_slides| raw:: html
 
    <a href="https://repository.microej.com/packages/training/debugging_with_microej_sdk/DEV-M0127-PRE-MicroEJ-Debug-Tools-SDK5-STM32F7508-2.2-RC20240820.pdf" target="_blank">Slides: MicroEJ Debug Tools Overview</a>
 
-.. tabs::
+This training is provided as a PDF:
 
-   .. tab:: MICROEJ SDK 5
-
-      - |debug_tools_sdk5_slides|
-      - :download:`Resources <https://repository.microej.com/packages/training/debugging_with_microej_sdk/debugging_with_microej_sdk_e4cb0a54.zip>`
-
-   .. tab:: MICROEJ SDK 6
-
-      - Coming soon!
+- |development_tools_sdk6_rt1170_slides| (for MICROEJ SDK 6)
+- :download:`Resources <https://repository.microej.com/packages/training/debugging_with_microej_sdk/debugging_with_microej_sdk_e4cb0a54.zip>`
 
 ..
    | Copyright 2021-2025, MicroEJ Corp. Content in this space is free 
