@@ -34,8 +34,7 @@ Install the Sentinel LDK Run-time Environment (RTE) for License Server
 
 First, download `Sentinel_RTE_Installation-1.1.0.zip <https://repository.microej.com/packages/sentinel/Sentinel_RTE_Installation-1.1.0.zip>`__ file. It contains installer for Windows, macOS and Linux.
 
-Installation for Windows 
-""""""""""""""""""""""""
+**Installation for Windows**
 
 - Get ``haspdinst_37102.exe`` file
 - Type ``haspdinst_37102.exe -i`` in the command line. The installation or upgrade process is performed automatically. A message is displayed informing you that the Sentinel LDK Run-time Environment was successfully installed
@@ -43,8 +42,7 @@ Installation for Windows
 .. note::
 	To uninstall Sentinel RTE, type ``haspdinst_37102.exe -r`` in the command line. A message is displayed informing you that the Sentinel LDK Run-time Environment was successfully removed.
 
-Installation for Linux 
-""""""""""""""""""""""
+**Installation for Linux**
 
 Get ``aksusbd_37102-10.12.1.tar.gz`` file and extract it. The installation packages are in the directory ``pkg``, as root enter the following command:
 
@@ -55,8 +53,7 @@ Get ``aksusbd_37102-10.12.1.tar.gz`` file and extract it. The installation packa
 .. note::
 	All install/uninstall commands must be executed with root rights. On Ubuntu, prefix the commands with the ``sudo`` command. On other Linux distributions, use the ``su`` utility to become root in the terminal window.
 
-Installation for macOS
-""""""""""""""""""""""
+**Installation for macOS**
 
 - Get ``Sentinel_Runtime_37102.tar`` file
 - In ``SentinelRuntimeInstaller.framework/Versions/A/Resources/`` double-click on ``Sentinel_Runtime.pkg``
@@ -105,8 +102,7 @@ This section contains instructions for the MicroEJ Developer to setup its workst
 First, download `Sentinel_RTE_Installation-1.1.0.zip <https://repository.microej.com/packages/sentinel/Sentinel_RTE_Installation-1.1.0.zip>`__ file. It contains installer for Windows, macOS and Linux.
 `Sentinel LDK Run-time Environment <https://docs.sentinel.thalesgroup.com/ldk/rte.htm>`__ enables your protected software to run by communicating with Sentinel protection keys. 
 
-For Windows 
-"""""""""""
+**Installation for Windows**
 
 - Get ``haspdinst_37102.exe`` file
 - Type ``haspdinst_37102.exe -i`` in the command line. The installation or upgrade process is performed automatically. A message is displayed informing you that the Sentinel LDK Run-time Environment was successfully installed
@@ -114,8 +110,7 @@ For Windows
 .. note::
 	To uninstall Sentinel RTE, type ``haspdinst_37102.exe -r`` in the command line. A message is displayed informing you that the Sentinel LDK Run-time Environment was successfully removed.
 
-For Linux 
-"""""""""
+**Installation for Linux**
 
 Get ``aksusbd_37102-10.12.1.tar.gz`` file and extract it. The installation packages are in the directory ``pkg``, as root enter the following command:
 
@@ -126,8 +121,7 @@ Get ``aksusbd_37102-10.12.1.tar.gz`` file and extract it. The installation packa
 .. note::
 	All install/uninstall commands must be executed with root rights. On Ubuntu, prefix the commands with the ``sudo`` command. On other Linux distributions, use the ``su`` utility to become root in the terminal window.
 
-For macOS
-"""""""""
+**Installation for MacOS**
 
 - Get ``Sentinel_Runtime_37102.tar`` file
 - In ``SentinelRuntimeInstaller.framework/Versions/A/Resources/`` double-click on ``Sentinel_Runtime.pkg``
