@@ -28,7 +28,7 @@ This section contains instructions for the System Administrator to setup the Sen
   Especially, you have to choose a host machine that is accessible through the network to all your developer workstations.
 
 Install the Sentinel LDK Run-time Environment (RTE) for License Server
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 `Sentinel LDK Run-time Environment <https://docs.sentinel.thalesgroup.com/ldk/rte.htm>`__ enables your protected software to run by communicating with Sentinel protection keys. 
 
@@ -61,7 +61,7 @@ Get ``aksusbd_37102-10.12.1.tar.gz`` file and extract it. The installation packa
 - Follow the instructions of the installer wizard until the installation is complete. The first time that you run Admin Control Center and submit configuration changes, ``hasplmd`` creates configuration files in ``/private/etc/hasplm/``
 
 Configure the License Server
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - On the host machine, open a web browser.
 - Browse ``http://<server-ip-address>:1947`` to open the Sentinel Admin Control Center.
@@ -129,7 +129,7 @@ Get ``aksusbd_37102-10.12.1.tar.gz`` file and extract it. The installation packa
 - Follow the instructions of the installer wizard until the installation is complete. The first time that you run Admin Control Center and submit configuration changes, ``hasplmd`` creates configuration files in ``/private/etc/hasplm/``
 
 Configure the Sentinel LDK Run-time Environment (RTE)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Install the Sentinel Java Client. The Sentinel Java client is an OS specific shared library that must be made accessible to your Java Runtime Environment that will run the SDK.
 
@@ -169,8 +169,6 @@ Configure the Sentinel LDK Run-time Environment (RTE)
      In :guilabel:`Sentinel Keys` tab, you should see the license key provided by your Floating License Server (e.g. ``central-sentinel-server``). 
 
       .. image:: images/sentinel_rte_client_installed_license.png
-
-.. _setup_sentinel_runtime:
 
 Runtime Installation Instructions and Troubleshooting
 -----------------------------------------------------
