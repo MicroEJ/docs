@@ -27,7 +27,8 @@ This section contains instructions for the System Administrator to setup the Sen
   The host machine must be choosen with care, as its fingerprint will be required to generate the license file.
   Especially, you have to choose a host machine that is accessible through the network to all your developer workstations.
 
-Install the Sentinel LDK Run-time Environment (RTE)
+Install the Sentinel LDK Run-time Environment (RTE) for License Server
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 `Sentinel LDK Run-time Environment <https://docs.sentinel.thalesgroup.com/ldk/rte.htm>`__ enables your protected software to run by communicating with Sentinel protection keys. 
 
@@ -101,7 +102,41 @@ Setup the Developer Workstation
 
 This section contains instructions for the MicroEJ Developer to setup its workstation in order to connect a Sentinel Floating License Server.
 
-- Install the :ref:`Sentinel LDK Run-time Environment (RTE) <sentinel_rte_installation>` on your workstation.
+First, download `Sentinel_RTE_Installation-1.1.0.zip <https://repository.microej.com/packages/sentinel/Sentinel_RTE_Installation-1.1.0.zip>`__ file. It contains installer for Windows, macOS and Linux.
+`Sentinel LDK Run-time Environment <https://docs.sentinel.thalesgroup.com/ldk/rte.htm>`__ enables your protected software to run by communicating with Sentinel protection keys. 
+
+Installation for Windows 
+""""""""""""""""""""""""
+
+- Get ``haspdinst_37102.exe`` file
+- Type ``haspdinst_37102.exe -i`` in the command line. The installation or upgrade process is performed automatically. A message is displayed informing you that the Sentinel LDK Run-time Environment was successfully installed
+
+.. note::
+	To uninstall Sentinel RTE, type ``haspdinst_37102.exe -r`` in the command line. A message is displayed informing you that the Sentinel LDK Run-time Environment was successfully removed.
+
+Installation for Linux 
+""""""""""""""""""""""
+
+Get ``aksusbd_37102-10.12.1.tar.gz`` file and extract it. The installation packages are in the directory ``pkg``, as root enter the following command:
+
+- For RedHat, SUSE, or CentOS 64-bit Intel systems: ``rpm -i aksusbd-10.12.1.x86_64.rpm``
+- For Ubuntu or Debian 64-bit Intel systems: ``dpkg -i aksusbd_10.12-1_amd64.deb``
+- Copy ``aksusbd-10.12.1/haspvlib_37102.so`` and ``aksusbd-10.12.1/haspvlib_x86_64_37102.so`` to ``/var/hasplm`` directory
+
+.. note::
+	All install/uninstall commands must be executed with root rights. On Ubuntu, prefix the commands with the ``sudo`` command. On other Linux distributions, use the ``su`` utility to become root in the terminal window.
+
+Installation for macOS
+""""""""""""""""""""""
+
+- Get ``Sentinel_Runtime_37102.tar`` file
+- In ``SentinelRuntimeInstaller.framework/Versions/A/Resources/`` double-click on ``Sentinel_Runtime.pkg``
+- Double-click the Install Sentinel Runtime Environment disk image icon. The installer wizard is launched
+- Follow the instructions of the installer wizard until the installation is complete. The first time that you run Admin Control Center and submit configuration changes, ``hasplmd`` creates configuration files in ``/private/etc/hasplm/``
+
+Configure the Sentinel LDK Run-time Environment (RTE)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 - Install the Sentinel Java Client. The Sentinel Java client is an OS specific shared library that must be made accessible to your Java Runtime Environment that will run the SDK.
 
    - **Windows**
@@ -145,46 +180,6 @@ This section contains instructions for the MicroEJ Developer to setup its workst
 
 Runtime Installation Instructions and Troubleshooting
 -----------------------------------------------------
-
-.. _sentinel_rte_installation:
-
-Install the Sentinel LDK Run-time Environment (RTE)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-`Sentinel LDK Run-time Environment <https://docs.sentinel.thalesgroup.com/ldk/rte.htm>`__ enables your protected software to run by communicating with Sentinel protection keys. 
-It must be installed by each developer to :ref:`setup its workstation <setup_sentinel_developer_workstation>` and also by your System Administrator to :ref:`setup the Sentinel Floating License Server <setup_sentinel_floating_license_server>`.
-
-First, download `Sentinel_RTE_Installation-1.1.0.zip <https://repository.microej.com/packages/sentinel/Sentinel_RTE_Installation-1.1.0.zip>`__ file. It contains installer for Windows, macOS and Linux.
-
-Installation for Windows 
-""""""""""""""""""""""""
-
-- Get ``haspdinst_37102.exe`` file
-- Type ``haspdinst_37102.exe -i`` in the command line. The installation or upgrade process is performed automatically. A message is displayed informing you that the Sentinel LDK Run-time Environment was successfully installed
-
-.. note::
-	To uninstall Sentinel RTE, type ``haspdinst_37102.exe -r`` in the command line. A message is displayed informing you that the Sentinel LDK Run-time Environment was successfully removed.
-
-Installation for Linux 
-""""""""""""""""""""""
-
-Get ``aksusbd_37102-10.12.1.tar.gz`` file and extract it. The installation packages are in the directory ``pkg``, as root enter the following command:
-
-- For RedHat, SUSE, or CentOS 64-bit Intel systems: ``rpm -i aksusbd-10.12.1.x86_64.rpm``
-- For Ubuntu or Debian 64-bit Intel systems: ``dpkg -i aksusbd_10.12-1_amd64.deb``
-- Copy ``aksusbd-10.12.1/haspvlib_37102.so`` and ``aksusbd-10.12.1/haspvlib_x86_64_37102.so`` to ``/var/hasplm`` directory
-
-.. note::
-	All install/uninstall commands must be executed with root rights. On Ubuntu, prefix the commands with the ``sudo`` command. On other Linux distributions, use the ``su`` utility to become root in the terminal window.
-
-Installation for macOS
-""""""""""""""""""""""
-
-- Get ``Sentinel_Runtime_37102.tar`` file
-- In ``SentinelRuntimeInstaller.framework/Versions/A/Resources/`` double-click on ``Sentinel_Runtime.pkg``
-- Double-click the Install Sentinel Runtime Environment disk image icon. The installer wizard is launched
-- Follow the instructions of the installer wizard until the installation is complete. The first time that you run Admin Control Center and submit configuration changes, ``hasplmd`` creates configuration files in ``/private/etc/hasplm/``
-
 
 Check Activation with the Command Line Tool
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
