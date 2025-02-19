@@ -92,7 +92,7 @@ To use Managed C in your Application, follow these steps:
 
             import ej.wasm.*;
 
-            @WasmModule("factorial")
+            @WasmModule("example")
             public class Main {
                ...
             }
@@ -104,7 +104,7 @@ To use Managed C in your Application, follow these steps:
 
             import ej.wasm.*;   
 
-            @WasmModule("factorial")
+            @WasmModule("example")
             public class Main {
 
                ...
@@ -118,7 +118,7 @@ To use Managed C in your Application, follow these steps:
       .. code-block:: java
          :emphasize-lines: 5
          
-         @WasmModule("factorial")
+         @WasmModule("example")
          public class Main {
             
             public static void main(String[] args) {
@@ -131,7 +131,7 @@ To use Managed C in your Application, follow these steps:
 
 #. **Create the C File:**
 
-   Create a file named ``factorial.c`` in the directory ``src/main/c``:
+   Create a file named ``example.c`` in the directory ``src/main/c``:
 
    .. code:: c
 
@@ -151,7 +151,7 @@ To use Managed C in your Application, follow these steps:
 
    .. code:: bash
    
-      [path_to_wasi_sdk]/bin/clang -Wl,--no-entry -Wl,--stack-first -Wl,--allow-undefined -z stack-size=4096 -mcpu=mvp -O3 -Wl,--export=factorial src/main/c/factorial.c -o src/main/resources/factorial.wasm
+      [path_to_wasi_sdk]/bin/clang -Wl,--no-entry -Wl,--stack-first -Wl,--allow-undefined -z stack-size=4096 -mcpu=mvp -O3 -Wl,--export=factorial src/main/c/example.c -o src/main/resources/example.wasm
 
    .. note::
          
@@ -160,7 +160,7 @@ To use Managed C in your Application, follow these steps:
 
    .. note::
          
-         The generated file name ``factorial.wasm`` matches the module name of the annotated Java class
+         The generated file name ``example.wasm`` matches the module name of the annotated Java class
          and is created in the ``src/main/resources`` directory to facilitate inclusion in the Application classpath.
 
 #. **Build the Application:**
