@@ -28,7 +28,6 @@ This section contains instructions for the System Administrator to setup the Sen
   Especially, you have to choose a host machine that is accessible through the network to all your developer workstations.
 
 Install the Sentinel LDK Run-time Environment (RTE)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 `Sentinel LDK Run-time Environment <https://docs.sentinel.thalesgroup.com/ldk/rte.htm>`__ enables your protected software to run by communicating with Sentinel protection keys. 
 
