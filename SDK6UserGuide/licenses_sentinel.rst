@@ -221,7 +221,7 @@ Make sure you correctly configured the access to the Sentinel Floating License S
 No Administrator Privileges on Developer Workstation
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 
-:ref:`Sentinel LDK RTE installation <sentinel_rte_installation>` requires administrator privileges and facilitates the setup of the network server.
+Sentinel LDK RTE installation requires administrator privileges and facilitates the setup of the network server.
 However, it is not necessary to be installed on the developer workstation in case of floating licenses. 
 See this `documentation <https://docs.sentinel.thalesgroup.com/ldk/LDKdocs/SPNL/LDK_SLnP_Guide/Distributing/Distributing_LDK/RTE_when_required.htm>`__ for more details.
 If you are in such situation, please can contact `our support team <https://www.microej.com/contact/#form_2>`_.
