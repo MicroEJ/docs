@@ -1,97 +1,115 @@
 .. _managedc.compilation:
 
-Compile your C Project
-======================
+Compiling your C Project
+========================
 
-MicroEJ supports Managed C through WebAssembly, so your Managed C or C++ code needs to be compiled to WebAssembly first. 
+MicroEJ supports Managed C through WebAssembly, meaning your Managed C or C++ code must be compiled to WebAssembly first. 
 
-The supported toolchain for compiling C code to WebAssembly is `WASI SDK <https://github.com/WebAssembly/wasi-sdk/>`__.
+The supported toolchain for this process is `WASI SDK <https://github.com/WebAssembly/wasi-sdk/>`__.
 
-Install the Toolchain
----------------------
+Installing the Toolchain
+------------------------
 
-Download the `WASI SDK version 20 or higher <https://github.com/WebAssembly/wasi-sdk/releases>`__ and extract it at a location of your choice on your machine, named ``[path_to_wasi_sdk]`` in the rest of the documentation.
+Download the `WASI SDK version 20 or higher <https://github.com/WebAssembly/wasi-sdk/releases>`__ and extract it at the location of your choice on your machine.
+This location will be referred to as ``[path_to_wasi_sdk]`` in the rest of this documentation.
 
 .. _managedc.compilation.file:
 
-Compile a Simple C File
------------------------
+Compiling a Simple C File
+-------------------------
 
-Let's assume we have a file named ``my_app.c`` in the folder ``src/main/c``.
+Assuming you have a file named ``my_app.c`` located in the ``src/main/c`` folder, follow these steps:
 
-In the terminal, navigate to the ``src/main/c`` directory and execute the following command:
+* Open your terminal and navigate to your project root directory.
+* Execute the following command:
 
-.. code:: console
+   .. code:: console
 
-    [path_to_wasi_sdk]/bin/clang -mcpu=mvp -O3 -o my_app.o -c my_app.c
+       [path_to_wasi_sdk]/bin/clang -mcpu=mvp -O3 -c -o src/main/resources/my_app.o src/main/c/my_app.c
+
+
+The compilation option ``-mcpu=mvp`` ensures that the output adheres to the WebAssembly MVP specification. 
+For a detailed explanation of the compiler options, please consult the official documentation for `clang <https://clang.llvm.org/docs/ClangCommandLineReference.html>`_.
+
 
 .. _managedc.link.module:
 
-Link a WebAssembly Module
--------------------------
+Linking a WebAssembly Module
+----------------------------
 
-Let's assume we have now an object file named ``my_app.o`` in the folder ``src/main/c``.
+Once the C files are compiled into object files (``.o`` files),
+you need to link them to create a WebAssembly module (``.wasm`` file).
 
-In the terminal, navigate to the ``src/main/c`` directory and execute the following command:
+During linking, specify the functions that need to be exposed to the Java application using 
+the ``--export=[function_name]`` option for each function. 
+
+For instance, if you have an object file named ``my_app.o`` in the ``src/main/resources`` folder 
+and you want to build a WebAssembly module that exports the C functions ``foo`` and ``bar``, 
+run the following command:
 
 .. code:: console
 
-    [path_to_wasi_sdk]/bin/clang -Wl,--no-entry -Wl,--export-all -Wl,--allow-undefined -o my_app.wasm my_app.o
+    [path_to_wasi_sdk]/bin/clang -Wl,--no-entry -Wl,--stack-first -z stack-size=4096 -mcpu=mvp -O3 -Wl,--export=foo -Wl,--export=bar -o src/main/resources/my_app.wasm src/main/resourcesmy_app.o
+
 
 .. note::
+
+    For convenience, you can store the list of exported functions in an options file.
+    Create a file named ``exports.txt`` containing:
+
+    .. code:: console
+
+        --export=foo 
+        --export=bar
+
+    You can then reference this file in the command line using the ``-Wl,@exports.txt`` option. 
     
-    If your module is composed of multiple C files, append all object files to the command line.
+If your module consists of multiple C files, make sure to append all the object files to the command line.
 
-The generated file ``my_app.wasm`` is the result of the link of all the content of the object file(s) (functions, globals, constants) in a single WebAssembly module.
-This linked WebAssembly module can now be bound to a :ref:`@WasmModule <managedc.bind.method.java>`.
-
-Compile C++ Code
-----------------
-
-WASI SDK also includes a C++ compiler `clang++`, which you can use to compile and link C++ code.
-
-.. code:: console
-
-    # compile
-    [path_to_wasi_sdk]/bin/clang++ -mcpu=mvp -O3 -o my_app.o -c my_app.cc
-    # link
-    [path_to_wasi_sdk]/bin/clang++ -Wl,--no-entry -Wl,--export-all -Wl,--allow-undefined -o my_app.wasm my_app.o
-
+The resulting file, ``my_app.wasm``, will be a linked WebAssembly module consisting of all content from the object files (functions, globals, constants). 
+This module can now be bound to a :ref:`Java @WasmModule <managedc.bind.module>`.
 
 .. _managedc.link.command_line_options:
 
-Command Line Options
---------------------
+Linker Options
+``````````````
 
-For a comprehensive understanding of command line options, please consult the official documentation for `clang <https://clang.llvm.org/docs/ClangCommandLineReference.html>`_ and `wasm-ld <https://lld.llvm.org/WebAssembly.html>`_. 
+Here are some useful linker options you might need:
 
-Here are some useful compilation options:
+* ``-nostdlib``: Omits the standard library. See :ref:`managedc.link.nostdlib` for more details.
+* ``-Wl,--no-entry``: Specifies that there is no entry point for the WebAssembly module.
+* ``-Wl,--export=[function_name]``: Exports the symbol named ``function_name``.
+* ``-Wl,--allow-undefined``: Allows undefined symbols, which is necessary when the WebAssembly module references extern symbols defined in Java.
+* ``-Wl,--stack-first``: Places the stack at the begining of linear memory. Refer to :ref:`managedc.linear.memory.layout` for more information.
+* ``-Wl,--initial-memory=n``: Sets the initial size of the linear memory to ``n`` bytes. See :ref:`managedc.linear.memory.size.configuration` for additional details.
+* ``-z stack-size=n``: Adjusts the stack size to 'n' bytes. Consult :ref:`managedc.linear.memory.size.stack` for further information.
 
-* ``-mcpu=mvp``: Restrict generation to WebAssembly MVP specification.
+For an in-depth understanding of the linker options, please refer to the official documentation for `wasm-ld <https://lld.llvm.org/WebAssembly.html>`_. 
 
-Here are some useful link options:
+Compiling C++ Code
+-------------------
 
-* ``-nostdlib``: Omits the standard library. See :ref:`managedc.link.nostdlib`.
-* ``-Wl,--no-entry``: Specifies no entry point for the WebAssembly module.
-* ``-Wl,--export=foo``: Exports a symbol named 'foo'.
-* ``-Wl,--export-all``: Exports all symbols.
-* ``-Wl,--allow-undefined``: Allow undefined symbols.
-* ``-Wl,--stack-first``: Places the stack at the begining of linear memory. See :ref:`managedc.linear.memory.layout`.
-* ``-Wl,--initial-memory=n``: Sets the initial size of the linear memory to 'n' bytes. See :ref:`managedc.linear.memory.size.configuration`.
-* ``-z stack-size=n``: Adjusts the stack size to 'n' bytes. See :ref:`managedc.linear.memory.size.stack`.
+The WASI SDK also includes a C++ compiler, ``clang++``, which you can use to compile and link C++ code using similar options.
+
+.. code:: console
+
+    # To compile:
+    [path_to_wasi_sdk]/bin/clang++ [...] -o my_app.o my_app.cc
+    # To link:
+    [path_to_wasi_sdk]/bin/clang++ [...] -o my_app.wasm my_app.o
 
 .. _managedc.link.nostdlib:
 
-Build Without The Standard Library
-----------------------------------
+Building Without The Standard Library
+-------------------------------------
 
 The ``-nostdlib`` flag is a linker option used to exclude the standard library when building a program. 
-It prevents the compiler and linker from automatically linking with the standard system libraries (like libc in C or C++ Standard Library), 
-as well as the :ref:`startup code <managedc.bind.start.function>` that initializes the runtime environment.
-This is useful for building a Wasm module that contains only its own code, with all dependencies :ref:`bound to Java methods <managedc.bind.method>`.
+It prevents the compiler and linker from automatically linking with the standard system libraries (such as ``libc`` in C or the C++ Standard Library), 
+and the :ref:`startup code <managedc.bind.start.function>` that initializes the runtime environment.
+This is particularly useful for building a Wasm module that contains only its own code, with all dependencies :ref:`bound to Java methods <managedc.bind.method>`.
 
 ..
-   | Copyright 2023-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2023-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
