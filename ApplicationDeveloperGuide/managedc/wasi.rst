@@ -3,11 +3,11 @@
 WASI Library
 ============
 
-WebAssembly System Interface (WASI) provides a modular and secure system interface designed to enable WASM module to interact with the underlying operating system in a platform-independent manner.
+WebAssembly System Interface (WASI) provides a modular and secure system interface designed to enable Wasm module to interact with the underlying operating system in a platform-independent manner.
 
 MicroEJ provides its own WASI Library which implements a subset of `WASI 0.1 APIs specification <https://github.com/WebAssembly/WASI/blob/main/legacy/preview1/docs.md>`_.
 
-Moreover, some APIs have been extended to support certain POSIX functions that are not available in `wasi-libc <https://github.com/WebAssembly/wasi-libc>`_ such as ``socket``, ``bind``, ``connect`` etc.
+Moreover, some APIs have been extended to support certain POSIX functions that are not available in `wasi-libc <https://github.com/WebAssembly/wasi-libc>`_ such as ``socket``, ``bind``, ``connect``, etc.
 
 Usage
 ------
@@ -28,16 +28,11 @@ To use the WASI Add-on Library, add the following to the project build file:
 
          <dependency org="ej.library.runtime" name="wasi" rev="0.1.0"/>
 
-.. note:
-
-   All the implemented functions are exported under the module name ``wasi_snapshot_preview1``.
-
-
 In your application code, you must first call the WASI initialization method ``Wasi.init(byte[] memory, String... preopensDirectories)`` before using WASI.
 
-The ``memory`` parameter must be set to your WASM module memory and the ``preopensDirectories`` to the list of directories pathnames you want to preopened if any.
+The ``memory`` parameter must be set to your Wasm module memory and the ``preopensDirectories`` to the list of directories pathnames you want to preopened if any.
 
-If a directory is not preopened, it cannot be used by the WASM module.
+If a directory is not preopened, it cannot be used by the Wasm module.
 
 Here is an example:
 
@@ -92,7 +87,7 @@ In this example, the implementation of The POSIX-compliant C functions ``clock_g
 
 .. note:: 
 
-  WASI cannot be used in more than one WASM module in a `Standalone Application <standalone_application>`; otherwise calls to WASI methods will result in undefined behavior.
+  WASI cannot be used in more than one Wasm module in a `Standalone Application <standalone_application>`; otherwise calls to WASI methods will result in undefined behavior.
 
   In a `Sandboxed Application <sandboxed_application>`, WASI methods must not be exposed in the `Kernel API <kernel.api>` and each Application and the Kernel can use WASI in only one module.
 
@@ -137,7 +132,7 @@ List of the currently supported high-level WASI-based POSIX APIs:
 +-----------------+------------------------------------------------------------------------------------------------+
 | **Sockets**     | ``send``, ``recv``, ``shutdown``, ``close``                                                    |
 +-----------------+------------------------------------------------------------------------------------------------+
-| **Clocks**      | ``clock_getres``, ``clock_gettime`` ``gettimeofday``                                           |
+| **Clocks**      | ``clock_getres``, ``clock_gettime``, ``gettimeofday``                                          |
 +-----------------+------------------------------------------------------------------------------------------------+
 | **Process**     | ``exit``                                                                                       |
 +-----------------+------------------------------------------------------------------------------------------------+
@@ -160,7 +155,7 @@ List of the high-level extended WASI-based POSIX APIs that provide functionaliti
 +-------------+-----------------------------------------------+
 
 ..
-   | Copyright 2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2024-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

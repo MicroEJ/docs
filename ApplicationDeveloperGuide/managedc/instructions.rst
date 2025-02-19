@@ -1,7 +1,7 @@
 .. _managedc.instructions:
 
-Instructions
-============
+Supported Instructions
+======================
 
 The MicroEJ engine supports the version 1.0 of the `Wasm specification <https://www.w3.org/TR/wasm-core-1/>`_ with the following additionnal instsructions and limitations.
 
@@ -39,7 +39,7 @@ Partially Supported WebAssembly Instructions
 
 
 ..
-   | Copyright 2023-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2023-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
