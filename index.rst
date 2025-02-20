@@ -15,8 +15,7 @@ Browse the following chapters to familiarize yourself and understand the princip
 
 - The :ref:`chapter-glossary` chapter describes MicroEJ terminology.
 - The :ref:`overview` chapter introduces MicroEJ products and technology.
-- The :ref:`sdk_user_guide` chapter presents MICROEJ SDK 5 (Software Development Kit). Use SDK 5 for legacy development.
-- The :ref:`sdk_6_user_guide` chapter presents MICROEJ SDK 6 (Software Development Kit). Use SDK 6 for new projects.
+- The :ref:`sdk_6_user_guide` chapter presents MICROEJ SDK 6, the Software Development Kit for developing new projects.
 - The :ref:`application-developer-guide` presents how to develop a Java or JavaScript application on MICROEJ VEE (Virtual Execution Environment).
 - The :ref:`vee-porting-guide` teaches you how to integrate MICROEJ VEE into a C Board Support Package as well as simulation configurations.
 - The :ref:`kernel-developer-guide` introduces you to advanced concepts, such as partial updates and dynamic app life cycle workflows.
@@ -29,7 +28,6 @@ Browse the following chapters to familiarize yourself and understand the princip
 
    Glossary <glossary>
    overview/index
-   SDKUserGuide/index
    SDK6UserGuide/index
    ApplicationDeveloperGuide/index
    VEEPortingGuide/index
@@ -37,6 +35,7 @@ Browse the following chapters to familiarize yourself and understand the princip
    VEEWearUserGuide/index
    VEEEnergyUserGuide/index
    Trainings/index
+   SDKUserGuide/index
    support
    about
 
