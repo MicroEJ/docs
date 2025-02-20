@@ -5,10 +5,10 @@ In addition to single-workstation license based on a hardware dongle, MICROEJ SD
 
 This chapter contains instructions that will allow you to setup Sentinel environment and activate your license.
 
-There are two main steps:
+There are two installation flows:
 
-#. First, your System Administrator has to :ref:`setup the Sentinel Floating License Server  <setup_sentinel_floating_license_server>` on a host machine.
-#. Then, on your Developer workstation, proceed with the :ref:`setup of the Sentinel client for the SDK  <setup_sentinel_developer_workstation>`.
+#. If you are a System Administrator, :ref:`setup the Sentinel Floating License Server  <setup_sentinel_floating_license_server>` on a host machine.
+#. If you are a Developer, proceed with the :ref:`setup of the Sentinel client for the SDK  <setup_sentinel_developer_workstation>`.
 
 .. figure:: images/sentinel_architecture.png
 
@@ -106,6 +106,8 @@ First, download `Sentinel_RTE_Installation-1.1.0.zip <https://repository.microej
 
 - Get ``haspdinst_37102.exe`` file
 - Type ``haspdinst_37102.exe -i`` in the command line. The installation or upgrade process is performed automatically. A message is displayed informing you that the Sentinel LDK Run-time Environment was successfully installed
+- Put ``MicroEJ_library\hasp_windows_x64_37102.dll`` file in the system folder (``%SystemRoot%\system32``) if you have administrator rights on your machine. 
+  Otherwise drop the ``hasp_windows_x64_37102.dll`` file beside ``java.exe`` executable of the Java Development Kit (JDK) used to run the SDK.
 
 .. note::
 	To uninstall Sentinel RTE, type ``haspdinst_37102.exe -r`` in the command line. A message is displayed informing you that the Sentinel LDK Run-time Environment was successfully removed.
@@ -117,6 +119,9 @@ Get ``aksusbd_37102-10.12.1.tar.gz`` file and extract it. The installation packa
 - For RedHat, SUSE, or CentOS 64-bit Intel systems: ``rpm -i aksusbd-10.12.1.x86_64.rpm``
 - For Ubuntu or Debian 64-bit Intel systems: ``dpkg -i aksusbd_10.12-1_amd64.deb``
 - Copy ``aksusbd-10.12.1/haspvlib_37102.so`` and ``aksusbd-10.12.1/haspvlib_x86_64_37102.so`` to ``/var/hasplm`` directory
+- Get ``MicroEJ_library/libhasp_linux_x86_64_37102.so`` file and copy it in a directory of your choice
+- Set ``LD_LIBRARY_PATH`` variable with command ``export LD_LIBRARY_PATH=<your_directory>:$LD_LIBRARY_PATH``.
+  This modification has to be setup at session startup  (e.g: using ``.bashrc`` file) to ensure that OS is properly configured before running the SDK.
 
 .. note::
 	All install/uninstall commands must be executed with root rights. On Ubuntu, prefix the commands with the ``sudo`` command. On other Linux distributions, use the ``su`` utility to become root in the terminal window.
@@ -127,48 +132,28 @@ Get ``aksusbd_37102-10.12.1.tar.gz`` file and extract it. The installation packa
 - In ``SentinelRuntimeInstaller.framework/Versions/A/Resources/`` double-click on ``Sentinel_Runtime.pkg``
 - Double-click the Install Sentinel Runtime Environment disk image icon. The installer wizard is launched
 - Follow the instructions of the installer wizard until the installation is complete. The first time that you run Admin Control Center and submit configuration changes, ``hasplmd`` creates configuration files in ``/private/etc/hasplm/``
+- Get ``MicroEJ_library/hasp_darwin_37102.dylib`` file and copy it in a directory of your choice
+- Set ``DYLD_LIBRARY_PATH`` variable with command ``export DYLD_LIBRARY_PATH=<your_directory>:$DYLD_LIBRARY_PATH``.
+  This modification has to be setup at session startup  (e.g: using ``.bashrc`` file) to ensure that OS is properly configured before running the SDK.
 
-Configure the Sentinel LDK Run-time Environment (RTE)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Install the Sentinel Java Client. The Sentinel Java client is an OS specific shared library that must be made accessible to your Java Runtime Environment that will run the SDK.
+Configure the Remote Floating License Server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-   - **Windows**
-
-      - Put ``MicroEJ_library\hasp_windows_x64_37102.dll`` file in the system folder (``%SystemRoot%\system32``) if you have administrator rights on your machine.
-      
-      Otherwise drop the ``hasp_windows_x64_37102.dll`` file beside ``java.exe`` executable of the Java Development Kit (JDK) used to run the SDK.
-
-   - **Linux**
-
-      - Get ``MicroEJ_library/libhasp_linux_x86_64_37102.so`` file and copy it in a directory of your choice
-      - Set ``LD_LIBRARY_PATH`` variable with command ``export LD_LIBRARY_PATH=<your_directory>:$LD_LIBRARY_PATH``. 
-      
-      This modification has to be setup at session startup  (e.g: using ``.bashrc`` file) to ensure that OS is properly configured before running the SDK.
-
-   - **macOS**
-
-      - Get ``MicroEJ_library/hasp_darwin_37102.dylib`` file and copy it in a directory of your choice
-      - Set ``DYLD_LIBRARY_PATH`` variable with command ``export DYLD_LIBRARY_PATH=<your_directory>:$DYLD_LIBRARY_PATH``. 
+- On the developer workstation, open a web browser.
+- Browse http://localhost:1947 to open the Sentinel Admin Control Center. 
+- Go to :guilabel:`Configuration` > :guilabel:`Access to Remote License Managers`.
+- Check :guilabel:`Allow Access to Remote Licenses`.
+- Uncheck :guilabel:`Broadcast Search for Remote Licenses`.
+- In :guilabel:`Remote License Search Parameters`, add the Floating License Server IP address that should have been shared by your System Administrator.
    
-      This modification has to be setup at session startup  (e.g: using ``.bashrc`` file) to ensure that OS is properly configured before running the SDK.
+   .. image:: images/sentinel_rte_client_remote_config.png
 
-- Configure the Remote Floating License Server.
-  
-   - On the developer workstation, open a web browser.
-   - Browse http://localhost:1947 to open the Sentinel Admin Control Center. 
-   - Go to :guilabel:`Configuration` > :guilabel:`Access to Remote License Managers`.
-   - Check :guilabel:`Allow Access to Remote Licenses`.
-   - Uncheck :guilabel:`Broadcast Search for Remote Licenses`.
-   - In :guilabel:`Remote License Search Parameters`, add the Floating License Server IP address that should have been shared by your System Administrator.
-   
-      .. image:: images/sentinel_rte_client_remote_config.png
+- Click on :guilabel:`Submit` button.
+- Your computer should now have access to the licenses configured on the Floating License Server. 
+  In :guilabel:`Sentinel Keys` tab, you should see the license key provided by your Floating License Server (e.g. ``central-sentinel-server``). 
 
-   - Click on :guilabel:`Submit` button.
-   - Your computer should now have access to the licenses configured on the Floating License Server. 
-     In :guilabel:`Sentinel Keys` tab, you should see the license key provided by your Floating License Server (e.g. ``central-sentinel-server``). 
-
-      .. image:: images/sentinel_rte_client_installed_license.png
+   .. image:: images/sentinel_rte_client_installed_license.png
 
 Runtime Installation Instructions and Troubleshooting
 -----------------------------------------------------
