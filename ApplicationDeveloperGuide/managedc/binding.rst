@@ -48,69 +48,12 @@ The line ``example.JavaCode.function1`` represents the execution of the Managed 
    
    The Core Engine prints ``Unknown Source`` because the retrieval of line numbers in C files is no yet available.
 
-.. _managedc.annotations:
-
-Install Java Annotations
-------------------------
-
-The binding from Java to Managed C code relies on two Java annotations: 
-
-- ``WasmModule``: to bind a Java class to a Managed C code :ref:`linked to WebAssembly module <managedc.link.module>`.
-- ``WasmFunction``: to bind a Java method to a Managed C function :ref:`compiled to a WebAssembly function <managedc.compilation.file>`.
-
-These annotations must be available to your :ref:`Application or Library project <sdk_6_create_project>`.
-
-If you haven't already created them, create a file named ``WasmModule.java`` in your project directory ``src/main/java/ej/wasm`` with the following content:
-   
-.. code-block:: java
-
-   package ej.wasm;
-   
-   import java.lang.annotation.ElementType;
-   import java.lang.annotation.Retention;
-   import java.lang.annotation.RetentionPolicy;
-   import java.lang.annotation.Target;
-   
-   @Retention(RetentionPolicy.CLASS)
-   @Target(ElementType.TYPE)
-   public @interface WasmModule {
-      String value();
-   }
-
-Then create a file named ``WasmFunction.java`` in the directory ``src/main/java/ej/wasm`` with the following content:
-   
-.. code-block:: java
-
-   package ej.wasm;
-   
-   import java.lang.annotation.ElementType;
-   import java.lang.annotation.Target;
-   
-   @Target(ElementType.METHOD)
-   public @interface WasmFunction {
-      String value() default "";
-   }
-
-
-Your project files should look like the following:
-
-.. code-block:: console
-
-   ├── src
-   │   └── main
-   │       ├── java
-   │       │   ├── ej
-   │       │   │   └── wasm
-   │       │   │       ├── WasmFunction.java
-   │       │   │       └── WasmModule.java
-
 .. _managedc.bind.module:
 
 Bind a WebAssembly Module to a Java class
 -----------------------------------------
 
-Assuming you :ref:`installed Java Annotations <managedc.annotations>`, 
-the first step is to bind your :ref:`compiled WebAssembly module <managedc.compilation>` to a Java class.
+The first step is to bind your :ref:`compiled WebAssembly module <managedc.compilation>` to a Java class.
 
 First, the WebAssembly module file must be available in the :ref:`chapter.microej.classpath`.
 For that, drop your WebAssembly module to your project directory ``src/main/resources``. Let's assume it is called ``my_app.wasm``.
@@ -138,13 +81,9 @@ Your project files should look like the following:
    ├── src
    │   └── main
    │       ├── java
-   │       │   ├── com
-   │       │   │   └── mycompany
-   │       │   │       └── MyApp.java
-   │       │   └── ej
-   │       │       └── wasm
-   │       │           ├── WasmFunction.java
-   │       │           └── WasmModule.java
+   │       │   └── com
+   │       │       └── mycompany
+   │       │           └── MyApp.java
    │       └── resources
    │           └── my_app.wasm
 
@@ -313,7 +252,7 @@ This is especially useful if you want to write a Java method name in camel case 
 Bind a Java Method from C Code
 ------------------------------
 
-The ``import_module``, ``import_name`` and ``export_name`` `C attributes <https://clang.llvm.org/docs/AttributeReference.html>` 
+The ``import_module``, ``import_name`` and ``export_name`` `C attributes <https://clang.llvm.org/docs/AttributeReference.html>`__ 
 are used to extend the default :ref:`Java Method to Managed C Function binding <managedc.bind.method.java>` from C code side.
 
 .. _managedc.call.method.c.to.java:
@@ -477,21 +416,6 @@ Managed C module memory is zero-initialiazed (once) when the :ref:`soar_clinit` 
 .. note:: 
    A SOAR error will occurred if ``@WasmMemory`` is not strictly followed by a Java static byte array declaration (see :ref:`managedc.troubleshooting`).
 
-To use the annotation ``@WasmMemory``, create the file ``WasmMemory.java`` in ``src/main/java/com/microej/wasm`` with the following content:
-
-.. code:: java
-
-   package ej.wasm;
-
-   import java.lang.annotation.ElementType;
-   import java.lang.annotation.Target;
-
-   @Target(ElementType.FIELD)
-   public @interface WasmMemory {
-      String value() default "";
-   }
-
-
 Here is a Java example:
 
 .. code:: java
@@ -589,7 +513,7 @@ When a WebAssembly module declares a `start function <https://www.w3.org/TR/wasm
 during the :ref:`initialization of the Java class <soar_clinit>` it is bound to.
 
 ..
-   | Copyright 2023, MicroEJ Corp. Content in this space is free 
+   | Copyright 2023-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
