@@ -31,7 +31,7 @@ There are two ways to create a gradient:
    LinearGradient gradient = new LinearGradient(0, 0, 99, 0, 
                                                 new int[] { 0xffff0000, 0xffffff00, 0xffffffff });
 
-   VectorGraphicsPainter.fillPath(g, path, new Matrix(), gradient);
+   VectorGraphicsPainter.fillGradientPath(g, path, new Matrix(), gradient);
 
 |midTable|
 
@@ -52,7 +52,7 @@ There are two ways to create a gradient:
                                                 new int[] { 0xffff0000, 0xffffff00, 0xffffffff },
                                                 new float[] { 0.4f, 0.6f, 0.8f });
 
-   VectorGraphicsPainter.fillPath(g, path, new Matrix(), gradient);
+   VectorGraphicsPainter.fillGradientPath(g, path, new Matrix(), gradient);
 
 |midTable|
 
@@ -76,7 +76,7 @@ The transformation applied to the object (`Path` or `String`) to draw with a gra
    matrix.postRotate(30);
    matrix.postTranslate(100, 100);
 
-   VectorGraphicsPainter.fillPath(g, path, matrix, gradient);
+   VectorGraphicsPainter.fillGradientPath(g, path, matrix, gradient);
 
 |midTable|
 

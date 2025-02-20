@@ -29,6 +29,8 @@ Example:
    /com/mycompany/MyImage1.svg:VGF
    /com/mycompany/androidVectorDrawable.xml:VG8
 
+.. warning:: In the case where the output format is not specified, the resource is embedded as is, as described in the Image Generator chapter :ref:`section_image_unspecified_output`. This use case is useful for loading an encoded VG image, as described in the :ref:`avd_loader` chapter.
+
 .. _ej.microvg.VectorImage.getImage(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorImage.html#getImage-java.lang.String-
 
 Supported Input Files

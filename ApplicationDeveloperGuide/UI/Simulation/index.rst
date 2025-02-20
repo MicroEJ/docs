@@ -1,16 +1,12 @@
 Simulation
 ==========
 
-The :ref:`Front Panel  Mock <section_frontpanel>` is provided by the VEE Ports.
-
-It is especially useful for those exposing a MicroUI display, LEDs and input devices.
-It then provides an interactive window for the Application simulation.
-
 The following sections present the options of the Front Panel and some tooling and tips to help debugging and optimizing an application.
 
 .. toctree::
    :maxdepth: 1
 
+   front-panel-overview
    front-panel-options
    flush-visualizer
    refresh-strategy-highlighting

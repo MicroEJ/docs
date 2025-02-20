@@ -63,7 +63,7 @@ the :ref:`Central <central_repository>` and :ref:`Developer <developer_repositor
 There are several ways to declare repositories.
 To get started, you can declare them globally to make them available in all your projects:
 
-- Create the folder ``<user.home>/.gradle/init.d`` if it does not exist.
+- Create the folder ``$USER_HOME/.gradle/init.d`` if it does not exist.
 - Download and copy :download:`this file <resources/microej.init.gradle.kts>` in the previously created folder.
 
 At this stage, you can already build a project from the command line, 

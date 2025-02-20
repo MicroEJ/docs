@@ -24,7 +24,7 @@ Add the following dependency to the project build file:
 
       .. code-block:: kotlin
 
-         implementation("ej.tool.frontpanel:framework:1.1.0")
+         implementation("ej.tool.frontpanel:framework:1.3.0")
          implementation("com.microej.pack.ui:ui-pack:[UI Pack version]") {
             artifact {
                   name = "frontpanel"

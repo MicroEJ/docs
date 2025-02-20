@@ -494,6 +494,19 @@ execTool
 - The configuration file with all the properties set to launch the application (``build/properties/target.properties``)
 - The folder containing the application configuration (``configuration``)
 
+**Options**:
+
+
+.. list-table::
+   :widths: 25 25
+
+   * - **Option**
+     - **Description**
+   * - ``name``
+     - ``Name of the Tool.``
+   * - ``toolProperty``
+     - ``Option of the Tool.``
+
 **Module Natures**:
 
 This task is used by the following module natures:
@@ -517,7 +530,8 @@ generateApplicationWrapper
 **Outputs**:
 
 - The directory in which the Wrapper Java class has been generated (``build/generated/microej-app-wrapper/java``)
-- The directory in which the Wrapper resources have been generated (``build/generated/microej-app-wrapper/resources``)
+- The directory in which the Wrapper Kernel resources have been generated (``build/generated/microej-app-wrapper/kernel-resources``)
+- The directory in which the Wrapper Feature resources have been generated (``build/generated/microej-app-wrapper/feature-resources``)
 
 **Module Natures**:
 

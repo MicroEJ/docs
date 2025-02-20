@@ -80,7 +80,7 @@ The configuration of the testsuites of a project must be defined inside the foll
             dependencies { // (4)
                 implementation(project())
                 implementation("ej.api:edc:1.3.5")
-                implementation("ej.library.test:junit:1.7.1")
+                implementation("ej.library.test:junit:1.10.3")
                 implementation("org.junit.platform:junit-platform-launcher:1.8.2")
             }
          }
@@ -111,7 +111,7 @@ Before creating the Test class, make sure this library is declared in the testsu
          val test by getting(JvmTestSuite::class) {
             ...
             dependencies {
-               implementation("ej.library.test:junit:1.7.1")
+               implementation("ej.library.test:junit:1.10.3")
             }
             ...
          }
@@ -474,7 +474,7 @@ Therefore:
 
             dependencies {
                implementation(project())
-               implementation("ej.library.test:junit:1.7.1")
+               implementation("ej.library.test:junit:1.10.3")
                implementation("org.junit.platform:junit-platform-launcher:1.8.2")
             }
          }
@@ -493,7 +493,7 @@ Therefore:
 
             dependencies {
                implementation(project())
-               implementation("ej.library.test:junit:1.7.1")
+               implementation("ej.library.test:junit:1.10.3")
                implementation("org.junit.platform:junit-platform-launcher:1.8.2")
             }
 
