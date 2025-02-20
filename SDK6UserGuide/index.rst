@@ -42,6 +42,7 @@ The SDK is licensed under the :ref:`SDK End User License Agreement (EULA) <sdk6_
    gettingStarted
    install
    licenses
+   licenses_sentinel
    limitations
    createProject
    importProject
