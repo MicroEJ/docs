@@ -7,9 +7,9 @@ This chapter explains how to create a new Configuration in all the supported IDE
 
 .. tabs::
 
-   .. tab:: Android Studio / IntelliJ IDEA
+   .. tab:: IntelliJ IDEA / Android Studio
 
-      The creation of a new Configuration with Android Studio / IntelliJ IDEA is done as follows:
+      The creation of a new Configuration with IntelliJ IDEA / Android Studio is done as follows:
       
       - Click on :guilabel:`Run` > :guilabel:`Edit Configurations...`.
       - Click on :guilabel:`+` and Select :guilabel:`Gradle`.

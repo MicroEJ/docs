@@ -23,42 +23,6 @@ The first step is to create a VEE Port configuration project:
 
 .. tabs::
 
-    .. tab:: Android Studio
-       
-        - Click :guilabel:`File` > :guilabel:`New` > :guilabel:`Project from Version Control...`.
-        - Select :guilabel:`Repository URL`.
-        - Select :guilabel:`Git` as Version control.
-        - Fill the URL of the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.0.0>`__ Github Repository.
-        - Fill the Directory in which the Project Template must be cloned.
-        - Click on :guilabel:`Clone` button.
-
-        .. figure:: images/android-studio-version-control-window.png
-            :alt: Version Control Window in Android Studio
-            :align: center
-            :scale: 70%
-
-            Version Control Window in Android Studio
-      
-        - When the Gradle project is loaded, select :guilabel:`View` > :guilabel:`Tool Windows` > :guilabel:`Terminal`.
-        - In the integrated terminal, run the following command at the root of the project to remove the Git Repository:
-
-          .. tabs::
-
-             .. tab:: Windows
-
-                .. code-block:: java
-
-                  rm -r -Force .git*
-
-
-             .. tab:: Linux/macOS
-
-                .. code-block:: java
-
-                  rm -rf .git*
-              
-        - Rename the project and change its group and version in the ``build.gradle.kts`` build script.
-
     .. tab:: IntelliJ IDEA
        
         - Click :guilabel:`File` > :guilabel:`New` > :guilabel:`Project from Version Control...`.
@@ -95,6 +59,41 @@ The first step is to create a VEE Port configuration project:
               
         - Rename the project and change its group and version in the ``build.gradle.kts`` build script.
 
+    .. tab:: Android Studio
+       
+        - Click :guilabel:`File` > :guilabel:`New` > :guilabel:`Project from Version Control...`.
+        - Select :guilabel:`Repository URL`.
+        - Select :guilabel:`Git` as Version control.
+        - Fill the URL of the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.0.0>`__ Github Repository.
+        - Fill the Directory in which the Project Template must be cloned.
+        - Click on :guilabel:`Clone` button.
+
+        .. figure:: images/android-studio-version-control-window.png
+            :alt: Version Control Window in Android Studio
+            :align: center
+            :scale: 70%
+
+            Version Control Window in Android Studio
+      
+        - When the Gradle project is loaded, select :guilabel:`View` > :guilabel:`Tool Windows` > :guilabel:`Terminal`.
+        - In the integrated terminal, run the following command at the root of the project to remove the Git Repository:
+
+          .. tabs::
+
+             .. tab:: Windows
+
+                .. code-block:: java
+
+                  rm -r -Force .git*
+
+
+             .. tab:: Linux/macOS
+
+                .. code-block:: java
+
+                  rm -rf .git*
+              
+        - Rename the project and change its group and version in the ``build.gradle.kts`` build script.
 
     .. tab:: Eclipse
             

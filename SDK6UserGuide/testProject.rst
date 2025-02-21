@@ -123,7 +123,7 @@ This can be done manually or with IDE menu:
   
 .. tabs::
 
-   .. tab:: Android Studio / IntelliJ IDEA
+   .. tab:: IntelliJ IDEA / Android Studio
 
       - right-click on the ``src/test/java`` folder.
       - select :guilabel:`New` > :guilabel:`Java Class`, then press ``Alt`` + ``Insert`` and select ``Test Method``.
@@ -160,9 +160,9 @@ which means that the tests are also executed when launching one of these tasks.
 
 .. tabs::
 
-   .. tab:: Android Studio / IntelliJ IDEA
+   .. tab:: IntelliJ IDEA / Android Studio
 
-      In order to execute the testsuite from Android Studio or IntelliJ IDEA, double-click on the task in the Gradle tasks view:
+      In order to execute the testsuite from IntelliJ IDEA or Android Studio, double-click on the task in the Gradle tasks view:
 
       .. image:: images/intellij-test-gradle-project.png
          :width: 30%

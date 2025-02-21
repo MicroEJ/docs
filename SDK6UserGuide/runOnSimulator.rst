@@ -17,7 +17,7 @@ Once these prerequisites are fulfilled, the Application can be started with the 
 
 .. tabs::
 
-   .. tab:: Android Studio / IntelliJ IDEA
+   .. tab:: IntelliJ IDEA / Android Studio
 
       By double-clicking on the ``runOnSimulator`` task in the Gradle tasks view:
 
@@ -102,10 +102,10 @@ If you want to connect the IDE debugger:
 
 .. tabs::
 
-   .. tab:: Android Studio / IntelliJ IDEA
+   .. tab:: IntelliJ IDEA / Android Studio
 
       .. warning::
-         Android Studio and IntelliJ IDEA need an Architecture 8.1 or higher for debug mode.
+         IntelliJ IDEA and Android Studio need an Architecture 8.1 or higher for debug mode.
 
       - Add a breakpoint in your Application code.
       - Click on :guilabel:`Run` > :guilabel:`Edit Configurations...`.
