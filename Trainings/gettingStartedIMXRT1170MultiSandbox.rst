@@ -42,16 +42,7 @@ To get the most out of this training, participants should have:
 - Access to the `NXP i.MX RT1170 Evaluation Kit EVKB <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__.
 - Access to the `RK055HDMIPI4MA0 display panel <https://www.nxp.com/part/RK055HDMIPI4MA0>`__.
 - A FAT32-formatted microSD card.
-
-Environment Setup
------------------
-
-To follow this training, you need:
-
-* A FAT32-formatted microSD card.
-* An RS232 Terminal (e.g. `Termite <https://www.compuphase.com/software_termite.htm>`__).
-
-Also, follow the steps described in the sections below to complete your environment setup. 
+- An available Ethernet network connection.
 
 .. note::
   
@@ -59,22 +50,11 @@ Also, follow the steps described in the sections below to complete your environm
    Also note that examples used in this training could depend on older tools and libraries. 
    Most notably our dependency manager plugin (using `Gradle <https://gradle.org/>`__) could be an older version.
 
-Install MICROEJ SDK 6
-~~~~~~~~~~~~~~~~~~~~~
+Environment Setup
+-----------------
 
-Follow :ref:`MICROEJ SDK 6 installation Guide <sdk_6_install>`.
-IntelliJ IDEA is used in this training, but feel free to use your favorite IDE.
-
-Accept the MICROEJ SDK EULA
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-You may have to accept the SDK EULA if you haven't already done it, 
-please have a look at :ref:`sdk_6_eula_acceptation`.
-
-Hardware Setup for NXP i.MXRT1170 EVKB
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Refer to the NXP i.MXRT1170 EVKB :ref:`sdk_6_getting_started_rt1170_hardware_setup` guide.
+Before starting, make sure to follow the :ref:`Getting Started for NXP i.MX RT1170 Evaluation Kit <sdk_6_getting_started_imxrt1170>`
+to setup your environment and be able to run a demo application on the Virtual Device and on the i.MX RT1170 Evaluation Kit.
 
 Additionally, make sure to:
 
@@ -84,7 +64,7 @@ Additionally, make sure to:
 Flash the Multi-Sandbox Executable on your NXP i.MXRT1170 Evaluation Kit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Download the Multi-Sandbox Executable: `NXP-MIMXRT1170_GCC_GREEN-2.0.0.out <https://repository.microej.com/packages/green/2.0.0/firmware/NXP-MIMXRT1170_GCC/NXP-MIMXRT1170_GCC_GREEN-2.0.0.out>`__.
+Download the Multi-Sandbox Executable: `NXP-MIMXRT1170_GCC_GREEN-2.1.0.out <https://repository.microej.com/packages/green/2.0.0/firmware/NXP-MIMXRT1170_GCC/NXP-MIMXRT1170_GCC_GREEN-2.0.0.out>`__.
 
 .. note::
    
@@ -99,16 +79,11 @@ Download the Multi-Sandbox Executable: `NXP-MIMXRT1170_GCC_GREEN-2.0.0.out <http
 
 Flash the Multi-Sandbox Executable using ``LinkServer``:
 
-- Download and install `LinkServer for Microcontroller <https://www.nxp.com/design/design-center/software/development-software/mcuxpresso-software-and-tools-/linkserver-for-microcontrollers:LINKERSERVER>`_ (minimum version 1.6.133).
-- Once installed, the ``LinkServer`` installation folder must be set on your Path. To do so:
+- Open a shell terminal on your workstation and run the following command:
 
-  - Open the Edit the system environment variables application on Windows.
-  - Click on the ``Environment Variables…`` button.
-  - Select ``Path`` variable under the ``User`` variables section and edit it.
-  - Click on ``New`` and point to the ``LinkServer`` installation folder located where you installed
-    ``LinkServer`` (e.g. ``nxp/LinkServer_1.6.133/``).
-
-- Run the command ``LinkServer flash MIMXRT1176xxxxx:MIMXRT1170-EVKB load NXP-MIMXRT1170_GCC_GREEN-2.1.0.elf``.
+  .. code-block::
+   
+      LinkServer flash MIMXRT1176xxxxx:MIMXRT1170-EVKB load NXP-MIMXRT1170_GCC_GREEN-2.1.0.elf
 
 Set up the logs output:
 
@@ -161,12 +136,12 @@ Import the project into your IDE:
 
 .. note::
   
-   If you are using an IDE other than Android Studio, please have a look at :ref:`sdk_6_import_project` section.
+   If you are using an IDE other than IntelliJ IDEA, please have a look at :ref:`sdk_6_import_project` section.
 
 * If you are on the Welcome Screen, click on the :guilabel:`Open` button. Otherwise click either on :guilabel:`File` > :guilabel:`Open...`.
 * Select the :guilabel:`Demo-Sandboxed-Applications` directory located where you downloaded it and click on the :guilabel:`OK` button.
 
-The Gradle project should now be imported in Android Studio, your workspace contains the following project in the :guilabel:`Projects` view: 
+The Gradle project should now be imported in IntelliJ IDEA, your workspace contains the following project in the :guilabel:`Projects` view: 
 
    .. figure:: images/multiSandbox/getting-started-demo-sandboxed-applications-project.png
       :alt: Workspace view
@@ -195,7 +170,7 @@ The Virtual Device starts and executes the Demo-Sandboxed-Applications:
 
         <div class="figure align-center">
                 <video width="640" height="360" controls="controls" >
-                        <source src="https://repository.microej.com/packages/videos/DEV-M0127_VID_Demo-Sandboxed-Applications_STM32F7508-DK_SIM_20241028.webm" type="video/webm">
+                        <source src="https://repository.microej.com/packages/videos/DEV-M0127_VID_Demo-Sandboxed-Applications_NXP_i.MXRT1170_SIM_20241127.webm" type="video/webm">
                 </video>
         </div>
 
@@ -223,7 +198,7 @@ The applications are running on the NXP i.MXRT1170 Evaluation Kit:
 
         <div class="figure align-center">
                 <video width="640" height="360" controls="controls" >
-                        <source src="https://repository.microej.com/packages/videos/DEV-M0127_VID_Demo-Sandboxed-Applications_STM32F7508-DK_EMB_20241028.webm" type="video/webm">
+                        <source src="https://repository.microej.com/packages/videos/DEV-M0127_VID_Demo-Sandboxed-Applications_NXP_i.MXRT1170_EMB_20241127.webm" type="video/webm">
                 </video>
         </div>
 
