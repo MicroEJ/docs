@@ -63,13 +63,6 @@ Configuring NLS in MicroEJ
 
     com.mycompany.myapp.generated.Labels
 
-  .. note::
-
-   For each line, PO files whose name starts with the interface name (``Labels`` in the example) are retrieved from the MicroEJ Classpath and used to generate:
-
-   - a Java interface with the given fully qualified name, containing a field for each ``msgid`` of the PO files.
-   - a NLS binary file containing the translations.
- 
 Usage
 -----
 
@@ -123,40 +116,6 @@ Usage
 
   .. image:: images/labelsampleenus.png
    :align: center
-
-.. _nls_external_resource:
-
-Loading Translations as an External Resource
---------------------------------------------
-
-When building the Application or running it on Simulator, the Resource Buffer Generator is executed.
-
-A resource containing translations is generated. 
-This resource can be loaded as external resource in order to be loaded from an external memory (e.g. from a FileSystem).
-
-.. note::
- 
- This mode requires to setup the :ref:`External Resources Loader<section_externalresourceloader>` in the VEE Port.
-
-Follow the steps below to declare translations as external resources:
-
-- Add a ``myapp.nls.externresources.list`` file in the **src/main/resources/list** folder,
-- Add the following path inside the file: 
-  
-  .. code::
-  
-   /com/mycompany/myapp/generated/Labels.nls
-   
-  This path can be found in ``src-adpgenerated/binarynls/java/com/mycompany/myapp/generated/Labels.nls.resources.list``
-
-- Build the application for the target,
-- Open the ``SOAR.map`` file to check that the resource is not embedded anymore in the application binary.
-  The ``xxx_Labels.nls`` line should not appear anymore in the ``ApplicationResources`` section.
-- The resource containing translations is now located in the ``com.mycompany.myapp.Main/externalResources`` folder.
-  This resource must be embedded on the target and loaded using the External Resources Loader.
-
-A simple implementation of the External Resources Loader is available on GitHub:
-`Example-ExternalResourceLoader <https://github.com/MicroEJ/Example-ExternalResourceLoader>`_.
 
 ..
    | Copyright 2021-2025, MicroEJ Corp. Content in this space is free 
