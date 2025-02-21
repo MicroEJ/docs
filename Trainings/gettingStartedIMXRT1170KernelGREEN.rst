@@ -1,7 +1,11 @@
 .. _training_kernel_green_imxrt1170:
 
+=======================
 Get Started with Kernel
 =======================
+
+Description
+===========
 
 This Getting Started is a step-by-step guide explaining
 how to build a Multi-Sandbox Executable for the NXP i.MXRT1170 Evaluation Kit.
@@ -21,55 +25,47 @@ During this Getting Started, you will learn how to:
 
 In case you are not familiar with MicroEJ, please visit `Discover MicroEJ <https://developer.microej.com/discover-microej/>`__ to understand the principles of our technology.
 
+
+Intended Audience
+=================
+
+This training is designed for developers who want to gain a first understanding 
+of the Kernel development flow.
+
 Prerequisites
--------------
+=============
+
+To get the most out of this training, participants should have:
+
+- A good understanding of the :ref:`overview` section.
+- A basic knowledge of the :ref:`chapter-glossary`.
+- Access to the `NXP i.MX RT1170 Evaluation Kit EVKB <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__.
+- Access to the `RK055HDMIPI4MA0 display panel <https://www.nxp.com/part/RK055HDMIPI4MA0>`__.
+- A FAT32-formatted microSD card.
+- An available Ethernet network connection.
 
 .. note::
   
-   This Getting Started has been tested on Windows 10. 
-   Also note that examples used in this Getting Started could depend on older tools and libraries. 
+   This training has been tested on Windows 10. 
+   Also note that examples used in this training could depend on older tools and libraries. 
    Most notably our dependency manager plugin (using `Gradle <https://gradle.org/>`__) could be an older version.
-
-For this Getting Started, all you need is:
-
-* NXP i.MXRT1170 EVKB, available `here <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__.
-* RK055HDMIPI4MA0 display panel, available `here <https://www.nxp.com/part/RK055HDMIPI4MA0>`__.
-* A FAT32-formatted microSD card.
-
-.. _training_kernel_green_imxrt1170_environment_setup:
 
 Environment Setup
 -----------------
 
-To follow this Getting Started, you need to: 
-
-Install MICROEJ SDK 6
-~~~~~~~~~~~~~~~~~~~~~
-
-Follow :ref:`MICROEJ SDK 6 installation Guide <sdk_6_install>`,
-Android Studio is used on this Getting Started but feel free to use your favorite IDE,
-
-Accept the MICROEJ SDK EULA
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-You may have to accept the SDK EULA if you haven't already done it, please have a look at :ref:`sdk_6_eula_acceptation`.
-
-Setup the NXP i.MXRT1170 EVKB
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Follow this :ref:`Environment Setup <sdk_6_getting_started_rt1170_run_on_device_environment_setup>`
-guide to get a development environment up and running for NXP i.MXRT1170 EVKB.
+Before starting, make sure to follow the :ref:`Getting Started for NXP i.MX RT1170 Evaluation Kit <sdk_6_getting_started_imxrt1170>`
+to setup your environment and be able to run a demo application on the Virtual Device and on the i.MX RT1170 Evaluation Kit.
 
 Additionally, make sure to:
 
-* Insert a micro-SD card (FAT32-formatted) in the board connector,
+* Insert a micro-SD card (FAT32-formatted) in the board connector.
 * Connect the ``1GB`` Ethernet connector to the internet.
 
 Congratulations! You have finished the setup of your environment.
 You are now ready to discover how to build and flash the :guilabel:`Kernel-GREEN`.
 
-Set up the Kernel GREEN on your IDE
------------------------------------
+Set up the Kernel GREEN Project in your IDE
+-------------------------------------------
 
 Import the Project
 ~~~~~~~~~~~~~~~~~~
@@ -80,12 +76,12 @@ The first step is to import the :guilabel:`Kernel-GREEN` into your IDE:
 
 .. note::
   
-   If you are using an IDE other than Android Studio, please have a look at :ref:`sdk_6_import_project` section.
+   If you are using an IDE other than IntelliJ IDEA, please have a look at :ref:`sdk_6_import_project` section.
 
 * If you are in the Welcome Screen, click on the :guilabel:`Open` button. Otherwise click either on :guilabel:`File` > :guilabel:`Open...`,
 * Select the :guilabel:`Kernel-GREEN` directory located where you downloaded it and click on the :guilabel:`OK` button.
 
-The Gradle project should now be imported in Android Studio,
+The Gradle project should now be imported in IntelliJ IDEA,
 your workspace contains the following project in the :guilabel:`Projects` view: 
 
    .. figure:: images/multiSandbox/getting-started-import-kernel-green.png
@@ -122,58 +118,20 @@ for more information about the Kernel configuration.
 Run the Kernel GREEN on NXP i.MXRT1170 Evaluation Kit
 -----------------------------------------------------
 
-Make sure to have completed all the :ref:`training_kernel_green_imxrt1170_environment_setup`
-steps before going further.
-
 To deploy :guilabel:`Kernel-GREEN` on your board, you will have to:
 
-* Request a 30 days :ref:`Evaluation License <sdk_eula>` and install an activation key,
-* Build the Executable,
-* Flash the board.
+* Build the :guilabel:`Kernel-GREEN` Executable,
+* Flash it on the board.
 
-Build the Executable for the NXP i.MXRT1170 Evaluation Kit
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Build and Flash the Kernel GREEN on the NXP i.MXRT1170 Evaluation Kit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In order to build the Executable of the :guilabel:`Kernel-GREEN`,
-the SDK provides the :guilabel:`buildExecutable` Gradle task.
-
-.. note::
-  
-   If you are using an IDE other than Android Studio, please have a look at :ref:`sdk_6_build_executable` section.
-   Come back on this page if you need to activate an Evaluation License.
-
-* Double-click on the :guilabel:`buildExecutable` task in the Gradle tasks view.
-* The build stops with a failure.
-* Go to the top project in the console view and scroll up to get the following error message:
-
-   .. figure:: images/console-output-license-uid.png
-      :alt: Console Output License UID
-      :align: center
-      :scale: 70%
-
-* Copy the UID. It will be required to activate your Evaluation license.
-
-Request your Evaluation License:
-
-* Request your Evaluation license by following the :ref:`evaluation_license_request_activation_key` instructions. You will be asked to fill the machine UID field with the UID you copied before.
-
-* When you have received your activation key by email, drop it in the license directory by following the :ref:`evaluation_license_install_license_key` instructions (drop the license key zip file to the ``~/.microej/licenses/`` directory).
-
-Now your Evaluation license is installed, you can relaunch your Kernel build by double-clicking on the :guilabel:`buildExecutable` task in the Gradle tasks view. It may take some time.
-
-The gradle task deploys the Kernel in the BSP and then builds the BSP using Make.
-
-The :guilabel:`Kernel-GREEN` is built and ready to be flashed on a NXP i.MXRT1170 Evaluation Kit once the hardware setup is completed.
-
-Flash the Kernel GREEN on the NXP i.MXRT1170 Evaluation Kit
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-In order to flash the :guilabel:`Kernel-GREEN` on the NXP i.MXRT1170 Evaluation Kit,
+In order to build and flash the :guilabel:`Kernel-GREEN` on the NXP i.MXRT1170 Evaluation Kit,
 the application provides the Gradle :guilabel:`runOnDevice` task.
 
 .. note::
   
-   If you are using an IDE other than Android Studio, please have a look at :ref:`sdk_6_run_on_device` section.
+   If you are using an IDE other than IntelliJ IDEA, please have a look at :ref:`sdk_6_run_on_device` section.
 
 * Double-click on the :guilabel:`runOnDevice` task in the Gradle tasks view. It may take some time:
 
