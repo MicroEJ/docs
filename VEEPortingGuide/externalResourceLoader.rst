@@ -83,7 +83,7 @@ Pre-Processed External Resources
 
 When working with :ref:`chapter.microej.applicationResources` declared as external resources, the Application build process will
 output those external resources in a dedicated output folder named ``externalResources/``.
-This folder gathers all the resources that should be programmed on the device.
+This folder gathers all the resources that should be deployed on the device.
 
 In some cases, those resources can be pre-processed by tools during the Application build process
 (e.g. convert an image to the format declared in ``.imagesext.list``)
@@ -96,8 +96,7 @@ The location of the ``externalResources/`` folder is different between SDK 5 and
 
       The ``externalResources/`` folder is located in the ``build/application/object`` folder of the application project.
 
-      It is generated when building the application for the device (:ref:`sdk6_module_natures.tasks.buildExecutable`, :ref:`sdk6_module_natures.tasks.runOnDevice`
-      or :ref:`sdk6_module_natures.tasks.buildApplicationObjectFile`).
+      It is generated when building the application for the device (:ref:`sdk6_module_natures.tasks.buildApplicationObjectFile`).
 
    .. tab:: SDK 5
 
@@ -108,14 +107,11 @@ The location of the ``externalResources/`` folder is different between SDK 5 and
 Simulation
 ==========
 
-The :ref:`chapter.microej.applicationResources` declared as external resources are automatically taken into account
-by the Simulator, thanks to their declarations in ``*ext.list`` files.
+The :ref:`chapter.microej.applicationResources` provided by the application project, including those marked as external resources, and those that need pre-processing, are made available to the application during the simulation.
 
 However, it is also possible to provide an input folder containing all the External Resources of the Application.
 
-That way, the Simulator will simulate the availability of these resources.
-If they are not made available in this folder, the Simulator will not able to load them.
-This can be useful to mimic the resources made available on the device (e.g. share an SD Card between the Simulator and the device containing the same External Resources)
+This can be useful to mimic the external resources storage on the device (e.g. share an SD Card between the Simulator and the device).
 
 Follow the steps below to provide an input folder containing External Resources:
 
