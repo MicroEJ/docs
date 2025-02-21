@@ -53,15 +53,15 @@ The solution is to use a JDK 11 or a higher LTS version (``11``, ``17`` or ``21`
 
   Alternatively, you can set the ``JAVA_HOME`` environment variable to point to the installation directory of the JDK.
 
-- For Android Studio and IntelliJ IDEA, go to :guilabel:`File` > :guilabel:`Settings...` > :guilabel:`Build, Execution, Deployment` > :guilabel:`Build Tools` > :guilabel:`Gradle`,
+- For IntelliJ IDEA and Android Studio, go to :guilabel:`File` > :guilabel:`Settings...` > :guilabel:`Build, Execution, Deployment` > :guilabel:`Build Tools` > :guilabel:`Gradle`,
   and make sure the selected :guilabel:`Gradle JVM` is a supported JDK version:
 
 	.. figure:: images/intellij-project-jdk.png
-		:alt: Project JDK in Android Studio and IntelliJ IDEA
+		:alt: Project JDK in IntelliJ IDEA and Android Studio
 		:align: center
 		:scale: 70%
 
-		Project JDK in Android Studio and IntelliJ IDEA
+		Project JDK in IntelliJ IDEA and Android Studio
 
 
 Unresolved Dependency
