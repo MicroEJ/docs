@@ -30,21 +30,40 @@ Consider this part of the tree:
 
 .. code::
 
-  |  |  |_ Clip #3 (0,0) 44x46 [16% of Clip #2]
-  |  |  |  |_ fillRectangle (0,0) 44x46 color=0xffee502e [100% of Clip #3]
-  |  |  |  |_ fillRectangle (0,44) 44x2 color=0xffcf4520 [4% of Clip #3]
+  |_ UI_SetClip #10 dest=0x0 region=(0,0)(44x46)  [16.91% of UI_SetClip #9]
+  |  |
+  |  |_ MWT_Render #11 (MWT) [dest=0x0] Render a widget (ID = 61) region=(0,0)(44x46)         [100.00% of UI_SetClip #10]
+  |  |  |_ UI_SetForegroundColor dest=0x0 color=0xffee502e
+  |  |  |
+  |  |  |_ UI_FillRectangle dest=0x0 anchor=0,0 size=44x46 
+  |  |  |  |_ UI_DrawnRegion dest=0x0 clipDisabled=true region=(0,0)(44x46) [100.00% of MWT_Render #11]
+  |  |  |_ UI_FillRectangle  Drawing operation done
+  |  |  |_ UI_SetForegroundColor dest=0x0 color=0xffcf4520
+  |  |  |
+  |  |  |_ UI_FillRectangle dest=0x0 anchor=0,44 size=44x2 
+  |  |  |  |_ UI_DrawnRegion dest=0x0 clipDisabled=true region=(0,44)(44x2) [4.35% of MWT_Render #11]
+  |  |  |_ UI_FillRectangle  Drawing operation done
+  |  |  |
+  |  |  |_ UI_SetClip #12 dest=0x0 region=(0,0)(44x44)  [95.65% of MWT_Render #11]
   |  |  |  |
-  |  |  |  |_ Clip #4 (10,10) 24x24 [28% of Clip #3]
-  |  |  |  |  |_ drawImage (0,0) 24x24 at (10,10) alpha=255 color=0xffffffff [100% of Clip #4]
-  |  |  |  |  [100% drawn of Clip #4]
-  |  |  |  [132% drawn of Clip #3]
+  |  |  |  |_ UI_SetClip #13 dest=0x0 region=(10,10)(24x24)  [29.75% of UI_SetClip #12]
+  |  |  |  |  |_ UI_SetForegroundColor dest=0x0 color=0xffffffff
+  |  |  |  |  |
+  |  |  |  |  |_ UI_DrawImage dest=0x0 image=0x3 from 0,0 size=24x24 anchor=10,10 alpha=255 
+  |  |  |  |  |  |_ UI_DrawnRegion dest=0x0 clipDisabled=true region=(10,10)(24x24) [100.00% of UI_SetClip #13]
+  |  |  |  |  |_ UI_DrawImage  Drawing operation done
+  |  |  |  |  [100.00% drawn of UI_SetClip #13]
+  |  |  |  [29.75% drawn of UI_SetClip #12]
+  |  |  [132.81% drawn of MWT_Render #11]
+  |  |_ MWT_Render  (MWT) Widget render done (ID = 61)
+  |  [132.81% drawn of UI_SetClip #10]
 
 We can see that:
 
-- The clip #3 is 16% of the clip #2.
-- It draws 2 rectangles and an image that take respectively 100%, 4% and 100% of their parent region.
-- The clip #4 is fully covered by the image (100%).
-- The clip #3 is covered at 132% (100% for the 1st rectangle, 4% for the 2nd, 28% for the clip #4 and its inner image).
+- The MWT_Render #11 is 100% of the clip #10, which is 16.91% of the clip #9.
+- It draws 2 rectangles and an image that take respectively 100%, 4.35% and 100% of their parent region.
+- The clip #13 is fully covered by the image (100%).
+- The clip #10 is covered at 132.81%: 100% for the 1st rectangle, 4.35% for the 2nd, 28.46% for the clip #12 and its inner image (29.75 x 95.65%)
 
 A value of 100% indicates that the area drawn is equivalent to the surface of the region.
 A value of 200% indicates that the area drawn is equivalent to twice the surface of the region.
@@ -59,6 +78,8 @@ Use :ref:`systemview` to identify the bottlenecks in your application on the emb
 A total area drawn over 200% is inefficient, but your application may have bigger bottlenecks.
 Confirm it by measuring the time spent drawing vs. the time spent elsewhere between flushes.
 
+.. _flush_visualizer_install:
+
 Installation
 ------------
 
@@ -66,7 +87,12 @@ The Flush Visualizer option is available for the ``Display`` widget in
 `frontpanel widget module <https://forge.microej.com/artifactory/microej-developer-repository-release/ej/tool/frontpanel/widget/>`__
 version 4.+ for UI Pack 14.0.0 or later.
 
-Set the option ``ej.fp.display.flushVisualizer`` to ``true`` to enable the flush visualizer.
+Set the following options:
+
+- ``ej.fp.display.flushVisualizer`` to ``true`` to enable the Flush Visualizer (screenshots only since UI Pack 14.4.0)
+- ``core.trace.enabled`` and ``core.trace.autostart``  to ``true`` to enable and catch the traces in the Flush Visualizer (tree of drawing operations)
+
+.. note:: Only the traces that target the display are shown in the tree; all other traces (drawings in buffered images and third-party traces of the other libraries) are dropped.
 
 Refer to the :ref:`application_options` documentation to set the option.
 

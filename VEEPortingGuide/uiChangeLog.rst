@@ -6,6 +6,18 @@
 Changelog
 =========
 
+.. _section_ui_changelog_14_4_0:
+
+[14.4.0] - _XXX_TODO_
+=====================
+
+FrontPanel
+""""""""""
+
+**Changed**
+
+- Improve the content of the tree of the drawing operations in the Flush Visualizer.
+
 .. _section_ui_changelog_14_3_3:
 
 [14.3.3] - 2025-02-18
