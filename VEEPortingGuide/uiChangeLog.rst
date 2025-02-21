@@ -6,6 +6,18 @@
 Changelog
 =========
 
+.. _section_ui_changelog_14_3_3:
+
+[14.3.3] - 2025-02-18
+=====================
+
+FrontPanel
+""""""""""
+
+**Fixed**
+
+- Fix the five issues of the UI Pack 14.3.2 (see below).
+
 .. _section_ui_changelog_14_3_2:
 
 [14.3.2] - 2025-02-10
@@ -35,7 +47,6 @@ FrontPanel
 - A native Concurrent Exception may be thrown during application animations.
   This is due to the drawing storage not being synchronized with the Flush Visualizer text file dump.
 - On non-rectangular displays (see :ref:`section_ui_simulation_display`), the Front Panel widget display's filter sometimes disappears partially, causing some visual glitches around the display in the screenshot.
-
 
 .. _section_ui_changelog_14_3_0:
 
