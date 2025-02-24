@@ -125,6 +125,7 @@ The installation process is different in SDK 5 and SDK 6:
 
       In the VEE Port configuration file, check :guilabel:`External Resources Loader` to install this module.
 
+.. _external_resources_folder.use:
 
 Use
 ===
@@ -132,6 +133,8 @@ Use
 The External Resources Loader is automatically used when the MicroEJ
 Application tries to open an external resource.
 
+A simple implementation of the External Resources Loader is available on GitHub:
+`Example-ExternalResourceLoader <https://github.com/MicroEJ/Example-ExternalResourceLoader>`_.
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
