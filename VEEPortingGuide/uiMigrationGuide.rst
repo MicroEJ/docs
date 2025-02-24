@@ -15,7 +15,7 @@ Front Panel
 """""""""""
 
 * Fetch `Front Panel Widgets 5.3.0`_ (see :ref:`section_frontpanel_ui_dependencies`).
-* To enable all Flush Visualizer functionalities, set the properties ``core.trace.enabled`` and ``core.trace.autostart``  to ``true`` (see :ref:`flush_visualizer_install`).
+* To enable all Flush Visualizer functionalities, set the properties ``core.trace.enabled`` and ``core.trace.autostart``  to ``true`` (see :ref:`flush_visualizer_install`). The property ``ej.fp.display.flushVisualizer`` is not used anymore.
 
 .. XXX_TODO link
 .. _Front Panel Widgets 5.3.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/5.1.0/
