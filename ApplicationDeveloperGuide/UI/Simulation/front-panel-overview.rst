@@ -120,9 +120,8 @@ Refresh Strategy
 
 Some buttons enable (or disable) some debug information in relation with the :ref:`section_brs`; see :ref:`refresh_strategy_highlighting`.
 
-Flush Vizualizer
+Flush Visualizer
 ----------------
 
-Some buttons allow to record and visualize the drawings made between two flushs; see :ref:`flush_visualizer`.
+Some buttons allow to record and visualize the drawings made between two flushes; see :ref:`flush_visualizer`.
 
-.. |FlushVizualizer| image:: images/monitoring.png

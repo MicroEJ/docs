@@ -12,17 +12,20 @@ To achieve efficient UI rendering, minimizing unnecessary work that consumes val
 For example, assuming the application targets 60 FPS to perform a transition between two screens, that means the application has 1/60s ~= 16ms in total to execute the rendering and the flush (see :ref:`rendering_pipeline`).
 
 The Flush Visualizer is a tool designed to investigate potential performance bottlenecks in UI applications running on the Simulator.
+It uses the :ref:`microui_traces` to record the drawings whose target is the display (since UI Pack 14.4.0, see :ref:`flush_visualizer_install`).
+All other traces (drawings in buffered images and third-party traces of the other libraries) are dropped. 
+
 The Flush Visualizer provides the following information:
 
-- A timeline with a step for each flush.
-- A screenshot of what is shown on the display at flush time.
-- The list of what is done before this flush (and after the previous one) organized as a tree.
-- A node of the tree can be either a region (the display or a clip) or a drawing operation.
-- Each region defines its bounds and can contain one or several other nodes.
-- Each region also displays the percentage of their parent region they cover.
-- Some of the drawings can compute the percentage of their parent region they cover.
-- The others are either negligeable or unknown.
-- At the end of each region, there is a summary of the percentage covered by the drawings in this region (recursively).
+  - A timeline with a step for each flush.
+  - A screenshot of what is shown on the display at flush time.
+  - The list of what is done before this flush (and after the previous one) organized as a tree.
+  - A node of the tree can be either a region (the display or a clip) or a drawing operation.
+  - Each region defines its bounds and can contain one or several other nodes.
+  - Each region also displays the percentage of their parent region they cover.
+  - Some of the drawings can compute the percentage of their parent region they cover.
+  - The others are either negligeable or unknown.
+  - At the end of each region, there is a summary of the percentage covered by the drawings in this region (recursively).
 
 .. image:: images/flush-visualizer-annotated.png
 
@@ -91,15 +94,13 @@ version 4.+ for UI Pack 14.0.0 or later.
 
    .. tab:: Since UI Pack 14.4.0
 
-    * set the property ``core.trace.enabled`` to ``true`` to enable the Flush Vizualizer.
-    * set the property ``core.trace.autostart`` to ``true`` to start the recording on startup.
-    * Start and pause the recording by clicking on the button |FlushVizualizerRecord|.
-
-    .. note:: Only the traces that target the display are shown in the tree; all other traces (drawings in buffered images and third-party traces of the other libraries) are dropped.
+    * Set the property ``core.trace.enabled`` to ``true`` to enable the Flush Visualizer.
+    * Set the property ``core.trace.autostart`` to ``true`` to start the recording on startup.
+    * Start and pause the recording by clicking on the button |FlushVisualizerRecord|.
 
    .. tab:: Before UI Pack 14.4.0
 
-    * set the property ``ej.fp.display.flushVisualizer`` to ``true`` to enable the Flush Vizualizer.
+    * Set the property ``ej.fp.display.flushVisualizer`` to ``true`` to enable the Flush Visualizer.
 
 Refer to the :ref:`application_options` documentation to set the option.
 
@@ -107,11 +108,11 @@ Usage
 -----
 
 1. Run the application in the Simulator.
-2. Since UI Pack 14.3.0, the button |FlushVizualizer| in the toolbar of the Front Panel opens the Flush Vizualizer.
+2. Since UI Pack 14.3.0, the button |FlushVisualizer| in the toolbar of the Front Panel opens the Flush Visualizer.
 3. The file ``MicroUIFlushVisualizer/MicroUIFlushVisualizer.html`` is generated in the :ref:`application output folder <outputfiles>` and can be opened during or after the execution.
 
-.. |FlushVizualizer| image:: images/monitoring.png
-.. |FlushVizualizerRecord| image:: images/record.png
+.. |FlushVisualizer| image:: images/monitoring.png
+.. |FlushVisualizerRecord| image:: images/record.png
 .. image:: images/MicroUIFlushVisualizerApplicationOutputFolder.png
 
 .. note::
