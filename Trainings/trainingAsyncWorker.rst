@@ -22,7 +22,7 @@ Prerequisites
 To get the most out of this training, participants should have:
 
 - A good knowledge of C programming language.
-- A good understanding of :ref:`sni_specification` concepts.
+- A good understanding of :ref:`training_c_managed_code_communication_unit1` training (especially the ``Blocking Functions and Asynchronous Code`` section).
 
 Training Resources
 ==================
@@ -47,7 +47,7 @@ Refer to the following guide to implement asynchronously SNI functions using Asy
 - `Async Worker Implementation Guide <https://github.com/MicroEJ/VEEPort-Espressif-ESP32-S3-DevKitC-1/blob/2.5.0/ESP32-S3-DevKitC1-Xtensa-FreeRTOS-bsp/projects/microej/util/inc/microej_async_worker.h>`_
 
 ..
-   | Copyright 2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2024-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

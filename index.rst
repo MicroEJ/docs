@@ -11,10 +11,14 @@ Welcome to the MicroEJ developer documentation.
 MicroEJ (pronounced “micro-EDGE”) turns any electronic product or ‘things’ into smart things, MicroEJ tools and libraries enable you to easily create efficient and feature complete applications for embedded devices.
 MicroEJ leverages a runtime environment called VEE (`Virtual Execution Environment <overview/vee.html>`_) to simplify and secure embedded development. 
 
+Navigation
+----------
+
 Browse the following chapters to familiarize yourself and understand the principles of development with MicroEJ Technology.
 
 - The :ref:`chapter-glossary` chapter describes MicroEJ terminology.
 - The :ref:`overview` chapter introduces MicroEJ products and technology.
+- The :ref:`sdk_6_getting_started` is the best way to start your journey with MicroEJ's technology. Set up a development environment and start coding!
 - The :ref:`sdk_user_guide` chapter presents MICROEJ SDK 5 (Software Development Kit). Use SDK 5 for legacy development.
 - The :ref:`sdk_6_user_guide` chapter presents MICROEJ SDK 6 (Software Development Kit). Use SDK 6 for new projects.
 - The :ref:`application-developer-guide` presents how to develop a Java or JavaScript application on MICROEJ VEE (Virtual Execution Environment).
@@ -23,12 +27,33 @@ Browse the following chapters to familiarize yourself and understand the princip
 - The :ref:`vee-wear` addresses the development of smartwatch applications using VEE Wear, specifically designed for low-power MCU and MPU.
 - The :ref:`trainings` chapter offers online courses to help you learn the essentials of Firmware development using MICROEJ SDK.
 
+Useful Links
+------------
+
+- `Resources Hub <https://repository.microej.com/index.php>`__: gathers all useful resources for developers on a daily basis.
+- `Forum <https://forum.microej.com/>`__: provides announcements to keep up to date in MicroEJ technology releases. It also provides
+  many topics that could answer your questions when developing on MicroEJ technology.
+- Browse MicroEJ Module Repositories to look for dependencies:
+  
+  - `Central Repository Modules <https://repository.microej.com/modules/>`__.
+  - `Developer Repository Modules <https://forge.microej.com/ui/native/microej-developer-repository-release/>`__.
+  - See :ref:`module_repositories` for more information.
+
+- `Licenses Server <https://license.microej.com/>`__
+
+Useful Resources
+----------------
+
+- :ref:`SDK6 Cheat Sheet <sdk6_cheat_sheet>`: a must-have when working with MICROEJ SDK6.
+- `MicroEJ GitHub <https://github.com/MicroEJ/>`__: provides several pinned repositories, a must-have to get started.
+
 .. toctree::
    :maxdepth: 2
    :hidden:
 
    Glossary <glossary>
    overview/index
+   GettingStarted/gettingStarted
    SDKUserGuide/index
    SDK6UserGuide/index
    ApplicationDeveloperGuide/index

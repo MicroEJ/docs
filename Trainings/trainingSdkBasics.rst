@@ -13,12 +13,14 @@ You will run your project on both a simulator and an actual device using MICROEJ
 
 What you will learn:
 
-- Building a MICROEJ VEE Port.
-- Developing and running a Java Application.
-- Editing Front Panel Files.
-- Calling C functions from Java.
-- Creating custom Foundation Libraries.
-- Managing Multithreading with SNI.
+- Understand the VEE Port concepts
+- Create and run your first application project with MICROEJ SDK
+- Learn how to configure your Application Project
+- Use a Front Panel project
+- Get an overview of MICROEJ SDK Development Tools
+- Call a C function from Managed Code
+- Blink an LED from Managed Code
+
 
 Intended Audience
 =================
@@ -37,6 +39,8 @@ To get the most out of this training, participants should have:
 
 Training Resources
 ==================
+
+TODO LINKS
 
 .. |microej_sdk_basics_nxp_rt1170_sdk6_slides| raw:: html
 
@@ -57,7 +61,6 @@ This training is provided as a PDF, along with a downloadable ``.zip`` package o
    .. tab:: MICROEJ SDK 5
 
       - |microej_sdk_basics_nxp_rt1170_sdk5_slides|
-      - |microej_sdk_basics_stm32f7508_sdk5_slides|
       - :download:`Resources <https://repository.microej.com/packages/training/microej_sdk_basics/gpio-foundation-library-example-sdk5_14562492.zip>`
 
    .. tab:: MICROEJ SDK 6
