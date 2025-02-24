@@ -58,6 +58,8 @@ And here is an example of an Android String resource:
 
    The Android String resources `string arrays <https://developer.android.com/guide/topics/resources/string-resource#StringArray>`_ feature is also supported.
 
+.. _section.nls.list_files:
+
 NLS List Files
 --------------
 
@@ -877,10 +879,10 @@ This resource is loaded as soon as the BinaryNLS instance is created, in the cli
 
 .. _nls_external_resource:
 
-Loading Translations as an External Resource
---------------------------------------------
+External Resource
+-----------------
 
-When the resource is also referenced by a ``.nls.externresources.list`` file,
+When the resource is also referenced by a ``.nls.externresources.list`` file (cf. :ref:`section.nls.list_files`),
 it can be loaded as External Resource in order to be loaded from an external memory (e.g. from a FileSystem).
 
 .. note::
@@ -921,9 +923,7 @@ The procedure below explains how to declare those translations as an External Re
 - The resource containing translations is now located in the :ref:`External Resources Folder <external_resources_folder>`
   (e.g. ``build/application/object/externalResources/com/microej/exercises/generated/HelloWorldMessages.nls``).
   This resource must be embedded on the target and loaded using the External Resources Loader.
-
-A simple implementation of the External Resources Loader is available on GitHub:
-`Example-ExternalResourceLoader <https://github.com/MicroEJ/Example-ExternalResourceLoader>`_.
+  For more information, refer to the :ref:`External Resources Loader Use section <external_resources_folder.use>`.
 
 When using a resource referenced as External Resource,
 the application is not guaranteed to access it at startup (external memory failure, corruption, ...).
