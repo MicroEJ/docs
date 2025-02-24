@@ -78,15 +78,19 @@ APIs such as ``read``, ``mark`` etc.
 
 .. _external_resources_folder:
 
-Pre-Processed External Resources
-================================
+External Resources Folder
+=========================
 
 When working with :ref:`chapter.microej.applicationResources` declared as external resources, the Application build process will
 output those external resources in a dedicated output folder named ``externalResources/``.
-This folder gathers all the resources that should be deployed on the device.
 
-In some cases, those resources can be pre-processed by tools during the Application build process
-(e.g. convert an image to the format declared in ``.imagesext.list``)
+This folder gathers all the :ref:`chapter.microej.applicationResources` that should be deployed on the device.
+This folder not only contains the pre-processed resources but also all the other external resources from the project that are not pre-processed:
+
+- Pre-processed resources: resources formatted by MICROEJ SDK to optimize footprint and/or parsing/processing. 
+  That is for example the case of :ref:`MicroUI Fonts <section.ui.Fonts>`, :ref:`NLS Resources <chapter.nls>` and :ref:`MicroUI Images embedded in RAW format <section.ui.Images>`.
+- Unprocessed resources: resources embedded as-is, like :ref:`Raw Resources <section.classpath.elements.raw_resources>` or 
+  :ref:`section.ui.Images` with no output format defined (e.g. image embedded as a ``.png``).
 
 The location of the ``externalResources/`` folder is different between SDK 5 and SDK 6:
 
@@ -103,20 +107,6 @@ The location of the ``externalResources/`` folder is different between SDK 5 and
       The ``externalResources/`` folder is located in the output folder of the application project.
       This folder is defined in the ``Execution`` tab of the :ref:`concepts-microejlaunches` configuration
       (e.g. ``Example-ExternalResourceLoader/com.microej.externalresourceloader.ExternalImages/externalResources``).
-
-Simulation
-==========
-
-The :ref:`chapter.microej.applicationResources` provided by the application project, including those marked as external resources, and those that need pre-processing, are made available to the application during the simulation.
-
-However, it is also possible to provide an input folder containing all the External Resources of the Application.
-
-This can be useful to mimic the external resources storage on the device (e.g. share an SD Card between the Simulator and the device).
-
-Follow the steps below to provide an input folder containing External Resources:
-
-- In the Application project, rename all the ``*ext.list`` files to ``*ext.list.tmp``.
-- Add the following property in the :ref:`application_options`: ``ej.externalResources.input.dir=C:\\PATH\\TO\\EXTERNAL\\RESOURCES``.
 
 Dependencies
 ============
@@ -150,6 +140,28 @@ Use
 The External Resources Loader is automatically used when the MicroEJ
 Application tries to open an external resource.
 
+A simple implementation of the External Resources Loader is available on GitHub:
+`Example-ExternalResourceLoader <https://github.com/MicroEJ/Example-ExternalResourceLoader>`_.
+
+Simulation
+----------
+
+The :ref:`chapter.microej.applicationResources` provided by the application project, 
+including those marked as external resources, are automatically 
+made available to the application during the simulation.
+
+On Device 
+---------
+
+The :ref:`chapter.microej.applicationResources` marked as external resources must be deployed
+on the device before running the application.
+
+The typical development flow when working with External Resources on the device is:
+
+1. Build the application & program the device,
+2. Test the application with the external resources (it is possible to change them after the executable build),
+3. When good, re-build the application, and collect the external resources in the output folder,
+4. Deploy the external resources on your device (e.g. copy them to the device FileSystem).
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
