@@ -87,12 +87,19 @@ The Flush Visualizer option is available for the ``Display`` widget in
 `frontpanel widget module <https://forge.microej.com/artifactory/microej-developer-repository-release/ej/tool/frontpanel/widget/>`__
 version 4.+ for UI Pack 14.0.0 or later.
 
-Set the following options:
+.. tabs::
 
-- ``ej.fp.display.flushVisualizer`` to ``true`` to enable the Flush Visualizer (screenshots only since UI Pack 14.4.0)
-- ``core.trace.enabled`` and ``core.trace.autostart``  to ``true`` to enable and catch the traces in the Flush Visualizer (tree of drawing operations)
+   .. tab:: Since UI Pack 14.4.0
 
-.. note:: Only the traces that target the display are shown in the tree; all other traces (drawings in buffered images and third-party traces of the other libraries) are dropped.
+    * set the property ``core.trace.enabled`` to ``true`` to enable the Flush Vizualizer.
+    * set the property ``core.trace.autostart`` to ``true`` to start the recording on startup.
+    * Start and pause the recording by clicking on the button |FlushVizualizerRecord|.
+
+    .. note:: Only the traces that target the display are shown in the tree; all other traces (drawings in buffered images and third-party traces of the other libraries) are dropped.
+
+   .. tab:: Before UI Pack 14.4.0
+
+    * set the property ``ej.fp.display.flushVisualizer`` to ``true`` to enable the Flush Vizualizer.
 
 Refer to the :ref:`application_options` documentation to set the option.
 
@@ -104,6 +111,7 @@ Usage
 3. The file ``MicroUIFlushVisualizer/MicroUIFlushVisualizer.html`` is generated in the :ref:`application output folder <outputfiles>` and can be opened during or after the execution.
 
 .. |FlushVizualizer| image:: images/monitoring.png
+.. |FlushVizualizerRecord| image:: images/record.png
 .. image:: images/MicroUIFlushVisualizerApplicationOutputFolder.png
 
 .. note::
