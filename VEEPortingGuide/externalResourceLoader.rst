@@ -147,7 +147,7 @@ Simulation
 ----------
 
 The :ref:`chapter.microej.applicationResources` provided by the application project, 
-including those marked as external resources, are automatically 
+pre-processed and/or unprocessed, are automatically 
 made available to the application during the simulation.
 
 On Device 
