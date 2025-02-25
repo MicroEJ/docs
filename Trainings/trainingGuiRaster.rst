@@ -48,35 +48,16 @@ Training Resources
    getStartedWithGUI/index
    tutorialValidateGUIs
 
-Unit 1: Basic GUI Features Overview
------------------------------------
-
-This guide provides an overview of the features available in MicroEJ GUI libraries:
-
-.. tabs::
-
-   .. tab:: MICROEJ SDK 5
-      
-      - :ref:`tutorial_get_started_with_gui`
-
-   .. tab:: MICROEJ SDK 6
-
-      - Coming soon!
-
-
-Unit 2: Coding Challenges
+Unit 1: Coding Challenges
 -------------------------
 
 This project contains coding challenges to learn the basics of UI development with MicroEJ.
 The training is divided into multiple steps, each helping the user create the views of a smartwatch.
 
-- `Tutorial-UI-Wearable <https://github.com/MicroEJ/Tutorial-UI-Wearable>`_ (for MICROEJ SDK 6)
+- `Slides: Tutorial-UI Training Manual <https://github.com/MicroEJ/Tutorial-UI/blob/step/1/doc/UI-training-manual.pdf>`_ (for MICROEJ SDK 6)
+- `Resources <https://github.com/MicroEJ/Tutorial-UI>`_
 
-.. warning::
-    A training manual is provided in ``doc/UI-training-manual.pdf``.
-    Download the document to visualize it entirely.
-
-Unit 3: GUI Validation
+Unit 2: GUI Validation
 ----------------------
 
 This guide provides an overview of
