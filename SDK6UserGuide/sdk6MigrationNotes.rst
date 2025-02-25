@@ -102,6 +102,24 @@ and set the property ``applicationEntryPoint`` to the Full Qualified Name of the
       applicationEntryPoint = "com.mycompany.MyFeature"
    }   
 
+Testsuite Execution
+~~~~~~~~~~~~~~~~~~~
+
+When upgrading from ``0.15.0`` to an higher version (up to ``1.0.0``), you may encounter the following error when executing a testsuite::
+
+   Preparing the execution of tests with the MicroEJ JUnit test engine
+
+   org.junit.platform.commons.JUnitException: TestEngine with ID 'microej-junit-test-engine' failed to execute tests
+      at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:113)
+      at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88)
+      ...
+   Caused by: com.microej.testengine.TestEngineException: More than one VEE Port have been provided to run the testsuite
+      at com.microej.testengine.MicroejTestEngine.execute(MicroejTestEngine.java:203)
+      at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:107)
+      ... 29 more
+
+Execute the ``clean`` task before executing the testsuite to solve this issue.
+
 ---------------------
 From 0.14.0 to 0.15.0
 ---------------------
