@@ -68,14 +68,14 @@ Please consult :ref:`architecture_changelog` for limitations changes on former v
      - 63
      - 63
    * - [Multi-Sandbox] Number of threads
-     - 255 [3]_
-     - 255 [3]_
+     - 127 [3]_
+     - 127 [3]_
    * - [Mono-Sandbox] Number of held monitors [4]_
      - 63
      - 63
    * - [Multi-Sandbox] Number of held monitors [4]_
-     - 255 [3]_
-     - 255 [3]_
+     - 127 [3]_
+     - 127 [3]_
    * - Time limit
      - 60 minutes
      - unlimited

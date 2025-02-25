@@ -43,7 +43,7 @@ specific configuration:
 Core Engine
 ~~~~~~~~~~~
 
-- [Multi] - Increased the limitation on the maximum number of threads from 63 to 255 when multi-sandbox capability is enabled.
+- [Multi] - Increased the limitation on the maximum number of threads from 63 to 127 when Multi-Sandbox capability is enabled.
 
 
 .. _changelog-8.3.0:
