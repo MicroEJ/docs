@@ -156,12 +156,12 @@ On Device
 The :ref:`chapter.microej.applicationResources` marked as external resources must be deployed
 on the device before running the application.
 
-The typical development flow when working with External Resources on the device is:
+After that, the external resources can be updated (without re-building the application) with the following development flow:
 
-1. Build the application & program the device,
-2. Test the application with the external resources (it is possible to change them after the executable build),
-3. When good, re-build the application, and collect the external resources in the output folder,
-4. Deploy the external resources on your device (e.g. copy them to the device FileSystem).
+1. Update the external resources in the application project.
+2. Test the application with the updated resources on the simulator.
+3. When good, re-build the application, and collect the external resources in the output folder (the build is required to trigger the processing of the resources).
+4. Deploy the external resources on the device (e.g. copy them to the file system of the device: removable SD card, USB mass storage, ...).
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
