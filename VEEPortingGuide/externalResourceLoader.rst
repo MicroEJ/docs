@@ -153,8 +153,7 @@ made available to the application during the simulation.
 On Device 
 ---------
 
-The :ref:`chapter.microej.applicationResources` marked as external resources must be deployed
-on the device before running the application.
+The external resources must be deployed on the device before they can be consumed by the application.
 
 After that, the external resources can be updated (without re-building the application) with the following development flow:
 
