@@ -143,8 +143,8 @@ Application tries to open an external resource.
 A simple implementation of the External Resources Loader is available on GitHub:
 `Example-ExternalResourceLoader <https://github.com/MicroEJ/Example-ExternalResourceLoader>`_.
 
-Simulation
-----------
+On Simulator
+------------
 
 The :ref:`chapter.microej.applicationResources` provided by the application project, 
 pre-processed and/or unprocessed, are automatically 
