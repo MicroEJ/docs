@@ -58,6 +58,9 @@ The training is divided into multiple steps, each helping the user create the vi
 - `Slides: Tutorial-UI Training Manual <https://github.com/MicroEJ/Tutorial-UI/blob/step/1/doc/UI-training-manual.pdf>`_ (for MICROEJ SDK 6)
 - `Resources <https://github.com/MicroEJ/Tutorial-UI>`_
 
+.. warning::
+    Training slides are provided on GitHub. Download the document to visualize it entirely.
+
 Unit 2: GUI Validation
 ----------------------
 
