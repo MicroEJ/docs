@@ -5,16 +5,16 @@ How To Install MicroEJ Plugin Snapshot Version on Android Studio or IntelliJ IDE
 
 If you want to test the version under development, the latest snapshot version of the plugin can be installed:
 
-- In Android Studio or IntelliJ IDEA, go to ``File > Settings...``.
+- In IntelliJ IDEA or Android Studio, go to ``File > Settings...``.
 - Go to ``Plugins`` menu.
 - Click on the icon at the right of the ``Installed`` tab, then click on ``Manage Plugin Repositories``.
 
 .. figure:: images/intellij-add-plugin-repository.png
-   :alt: Android Studio and IntelliJ IDEA Plugin Repository
+   :alt: IntelliJ IDEA and Android Studio Plugin Repository
    :align: center
    :scale: 70%
 
-   Android Studio and IntelliJ IDEA Plugin Repository
+   IntelliJ IDEA and Android Studio Plugin Repository
 
 - Click on the ``+`` icon.
 - Set the URL ``https://repository.microej.com/intellij-plugins/snapshots/updatePlugins.xml``.
@@ -23,11 +23,11 @@ If you want to test the version under development, the latest snapshot version o
 - In the search field, type ``MicroEJ``:
 
 .. figure:: images/intellij-install-plugin.png
-   :alt: Android Studio and IntelliJ IDEA Snapshot Plugin Installation
+   :alt: IntelliJ IDEA and Android Studio Snapshot Plugin Installation
    :align: center
    :scale: 70%
 
-   Android Studio and IntelliJ IDEA Snapshot Plugin Installation
+   IntelliJ IDEA and Android Studio Snapshot Plugin Installation
 
 - Click on the ``Install`` button.
 - Click on the ``Restart IDE`` button.

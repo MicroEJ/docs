@@ -14,7 +14,7 @@ Once these prerequisites are fulfilled, the Feature file can be built:
 
 .. tabs::
 
-   .. tab:: Android Studio / IntelliJ IDEA
+   .. tab:: IntelliJ IDEA / Android Studio
 
       By double-clicking on the ``buildFeature`` task in the Gradle tasks view:
 
@@ -102,7 +102,7 @@ Once these prerequisites are fulfilled, the Feature file can be built:
 
 .. tabs::
 
-   .. tab:: Android Studio / IntelliJ IDEA
+   .. tab:: IntelliJ IDEA / Android Studio
 
       By double-clicking on the ``buildFeatureFromWPK`` task in the Gradle tasks view:
 
