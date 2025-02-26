@@ -919,7 +919,7 @@ The procedure below explains how to declare those translations as an External Re
   
 - Build the application for the device,
 - Open the :ref:`soar_map_file` file to check that the translations are not embedded anymore in the application binary.
-  The ``xxx_HelloWorldMessages_*.nls`` lines should not appear anymore in the ``ApplicationResources`` section.
+  The ``xxx_HelloWorldMessages_*.nls`` lines **must** not appear anymore in the ``ApplicationResources`` section.
 - The resource containing translations is now located in the :ref:`External Resources Folder <external_resources_folder>`
   (e.g. ``build/application/object/externalResources/com/microej/exercises/generated/HelloWorldMessages.nls``).
   This resource must be embedded on the target and loaded using the External Resources Loader.
