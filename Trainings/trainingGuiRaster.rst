@@ -45,7 +45,6 @@ Training Resources
 .. toctree::
    :hidden:
 
-   getStartedWithGUI/index
    tutorialValidateGUIs
 
 Unit 1: Coding Challenges
