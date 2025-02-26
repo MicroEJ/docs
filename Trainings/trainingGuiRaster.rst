@@ -47,6 +47,8 @@ Training Resources
 
    tutorialValidateGUIs
 
+.. _training_gui_raster.coding_challenges:
+
 Unit 1: Coding Challenges
 -------------------------
 
