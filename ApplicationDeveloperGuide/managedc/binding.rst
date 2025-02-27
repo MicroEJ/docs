@@ -162,7 +162,7 @@ as stated by the `WebAssembly 1.0 specification <https://www.w3.org/TR/wasm-core
 
 .. note::
    
-   An first support of POSIX pthreads is available through the implementation of :ref:`WASI Threads <wasi.threads>`. 
+   A first support of POSIX pthreads is available through the implementation of :ref:`WASI Threads <wasi.threads>`. 
 
 Here is an example:
 
