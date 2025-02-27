@@ -34,9 +34,9 @@ If your WebAssembly file uses an unsupported instruction, you might encounter a 
       [soar2-r] 1 : SOAR-L ERROR :
       [soar2-r] [M401] - Unsupported WebAssembly instruction: '0xc0' (i32.lt_s) in function 'my_function' in module '/path/to/mymodule.wasm'.
 
------------------------------------------------------------------
-SOAR-L ERROR "Import function '...' cannot be resolved in ..."
------------------------------------------------------------------
+-------------------------------------
+SOAR-L ERROR "Unknown method '...'
+-------------------------------------
 
 Java methods called from C source code has to follow the right Java method signature convention. An error in 
 SOAR-L might occur if the Java method is not found.
@@ -46,12 +46,12 @@ Failure to do so may result in the following error:
 .. code:: console
 
     soar2-r/do:
-      [soar2-r] 4 : SOAR-L ERROR :
-      [soar2-r] [M405] - Import function 'delay' cannot be resolved in module '/path/to/mymodule.wasm' (the method 'com.mycompany.MyApp.delay(int)void' does not exist).
+      [soar2-r] 4 : SOAR-S ERROR :
+      [soar2-r] [M57] - Unknown method 'com.mycompany.MyWebAssemblyModule.delay(long)void' (caused by an import function in the Wasm module 'my_module.wasm' bound to the class 'com.mycompany.MyWebAssemblyModule').
 
------------------------------------------------------------------
-SOAR-L ERROR "Cannot find an exported function '...' mapped ..."
------------------------------------------------------------------
+----------------------------------------------------------------------
+SOAR-L ERROR "Cannot find the exported function '...' bound to ..."
+----------------------------------------------------------------------
 
 When using the ``@WasmFunction`` annotation on a Java method, ensure there's a corresponding WebAssembly function with the right signature in the associated WebAssembly module.
 An error in SOAR-L might occur if no function matching the annotated Java method signature is found.
@@ -62,7 +62,7 @@ Failure to do so may result in the following error:
 
     soar2-r/do:
       [soar2-r] 1 : SOAR-L ERROR :
-      [soar2-r] [M407] - Cannot find the exported function 'factorial' mapped to the 'com.mycompany.MyApp.factorial(int)int' method.
+      [soar2-r] [M407] - Cannot find the exported function 'factorial' bound to the method 'com.mycompany.MyApp.factorial(int)int'.
 
 -----------------------------------------------------------------
 SOAR-L ERROR "'...' is not a byte array"
