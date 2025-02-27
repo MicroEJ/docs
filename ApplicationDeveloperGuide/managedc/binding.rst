@@ -58,16 +58,18 @@ The first step is to bind your :ref:`compiled WebAssembly module <managedc.compi
 First, the WebAssembly module file must be available in the :ref:`chapter.microej.classpath`.
 For that, drop your WebAssembly module to your project directory ``src/main/resources``. Let's assume it is called ``my_app.wasm``.
 
-Add to the desired Java class the ``@WasmModule`` annotation.
-Finally, set the annotation parameter with the module :ref:`resource name <section.classpath.elements.raw_resources>` without the ``.wasm`` extension (e.g. ``@WasmModule(my_app)``). 
+Add to the desired Java class the ``@WasmModule`` annotation with the module name (e.g. ``@WasmModule("my_app")``).
+When the SOAR loads the Java class, it will transitively load the annotated WebAssembly module from the :ref:`resource <section.classpath.elements.raw_resources>` path without the ``.wasm`` extension (e.g. ``/my_app.wasm``).
 
 Your class should look like the following code:
 
 .. code-block:: java
    
    package com.mycompany;
+      
+   import ej.wasm.WasmModule;
 
-   // This Java class is bound to a WebAssembly module 
+   // This Java class is bound to a WebAssembly module named 'my_app' and
    // loaded from the '/my_app.wasm' resource in MicroEJ classpath.
    @WasmModule("my_app")
    public class MyApp {
@@ -87,10 +89,21 @@ Your project files should look like the following:
    │       └── resources
    │           └── my_app.wasm
 
+  
+If necessary, you can specify a custom resource path instead of the default one derived from the module name:
 
-.. note::
+.. code-block:: java
    
-   When the SOAR loads the Java class, it will transitively load the annotated WebAssembly module from the classpath.
+   package com.mycompany;
+      
+   import ej.wasm.WasmModule;
+
+   // This Java class is bound to a WebAssembly module named 'my_app' and
+   // loaded from the '/src/module1.0.wasm' resource in MicroEJ classpath.
+   @WasmModule(value = "my_app", resource = "/src/module1.0.wasm")
+   public class MyApp {
+      
+   }  
 
 .. _managedc.bind.method:
 
@@ -113,6 +126,8 @@ Here is an example:
    .. code-block:: java
 
       package com.mycompany;
+      
+      import ej.wasm.WasmModule;
 
       @WasmModule("my_app")
       public class MyApp {
