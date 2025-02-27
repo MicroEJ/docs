@@ -154,6 +154,113 @@ List of the high-level extended WASI-based POSIX APIs that provide functionaliti
 | **Miscs**   | ``dup``, ``dup2``, ``pipe``                   |
 +-------------+-----------------------------------------------+
 
+.. _wasi.threads:
+
+WASI Threads
+------------
+
+MicroEJ provides support of POSIX threads (pthreads) in Managed C through the implementations 
+of `WebAssembly threads profile <https://github.com/WebAssembly/threads>`__ and `WASI threads specification <https://github.com/WebAssembly/wasi-threads>`__.
+
+This allows running the following code:
+
+.. code:: c
+
+   #include <pthread.h>
+   #include <semaphore.h>
+   #include <stdio.h>
+   #include <unistd.h>
+
+   void* thread_entry_point(void *ctx) {
+      // Called in a new pthread
+      return 0;
+   }
+
+   int main() {
+      pthread_attr_t new_thread_attr;
+      pthread_t new_thread;
+
+      // Initialize the stack size
+      pthread_attr_init(&new_thread_attr);
+      int res = pthread_attr_setstacksize(&new_thread_attr, 2048);
+      if(res != 0){
+         // Unable to set the stack size
+         return -1;
+      }
+
+      pthread_create(&new_thread, &new_thread_attr, &thread_entry_point, NULL);
+
+      // ...
+
+      pthread_join(new_thread, NULL);
+
+      return 0;
+   }
+
+
+Enable WASI Threads
+~~~~~~~~~~~~~~~~~~~
+
+- Compile and link your Wasm Module with the additional options: ``--target=wasm32-wasi-threads -pthread``.
+- In your Application, set the :ref:`option <application_options>` ``com.microej.runtime.core.wasithreads.enabled`` to ``true``.
+- In your Wasm module, declare the binding to the ``wasi_thread_start`` function, and initialize WASI accordingly:
+
+   .. code:: java
+
+      package com.mycompany;
+
+      import ej.wasm.WasmFunction;
+      import ej.wasm.WasmMemory;
+      import ej.wasm.WasmModule;
+      import ej.wasi.*;
+      import ej.wasi.thread.WasiThreadRedirection;
+
+      import java.io.IOException;
+
+      @WasmModule("my_app")
+      public class MyApp {
+
+          @WasmMemory
+          private static byte[] Memory;
+
+          // Define the binding to 'wasi_thread_start' function
+          @WasmFunction
+          private static final native void wasi_thread_start(int threadId, int args);
+
+          public static void main(String[] args) {
+
+              // Initialize WASI with the thread start redirection
+              WasiThreadRedirection wtr = new WasiThreadRedirection() {
+                  public void start(int threadId, int args) {
+                      wasi_thread_start(threadId, args);
+                  }
+              };
+
+              try {
+                  Wasi.init(Memory, wtr);
+              } catch (IOException e) {
+                  // error during initialization
+              }
+
+              // ...
+          }
+      }
+
+Limitations
+~~~~~~~~~~~
+
+An Application can declare at most one Wasm module.
+
+Stack Management
+~~~~~~~~~~~~~~~~
+
+The Java ``synchronized`` keyword is no longer mandatory on methods bounds to C functions, since multiple threads can now re-enter C code. 
+However, threads created from Java still share the main stack of linear memory, so you must ensure they do not execute C code simultaneously.
+
+Threads created from Managed C (pthreads) have a dedicated stack dynamically allocated in the heap of linear memory. 
+By default, if not specified, the WASI libc stack size is ``128KB``. 
+It is strongly recommended to set the stack size at thread creation using the ``pthread_attr_setstacksize`` function.
+
 ..
    | Copyright 2024-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
