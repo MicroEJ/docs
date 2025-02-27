@@ -8,6 +8,15 @@ Migration Notes
    When updating the plugin version, it is recommended to perform a ``clean`` on your project(s).
    For multi-projects, run the ``clean`` command on the root project.
 
+-------------------
+From 1.0.0 to 1.1.0
+-------------------
+
+The following plugins have been removed:
+
+- plugin ``com.microej.gradle.j2se-library``, replaced by ``com.microej.gradle.jse-library``.
+- plugin ``com.microej.gradle.runtime-api``, replaced by ``com.microej.gradle.runtime-environment``.
+
 ---------------------
 From 0.19.0 to 0.20.0
 ---------------------
