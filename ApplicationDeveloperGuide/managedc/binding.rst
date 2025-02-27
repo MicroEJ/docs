@@ -66,8 +66,9 @@ Your class should look like the following code:
 .. code-block:: java
    
    package com.mycompany;
+      
+   import ej.wasm.WasmModule;
 
-   // This Java class is bound to a WebAssembly module 
    // loaded from the '/my_app.wasm' resource in MicroEJ classpath.
    @WasmModule("my_app")
    public class MyApp {
@@ -113,6 +114,8 @@ Here is an example:
    .. code-block:: java
 
       package com.mycompany;
+      
+      import ej.wasm.WasmModule;
 
       @WasmModule("my_app")
       public class MyApp {
