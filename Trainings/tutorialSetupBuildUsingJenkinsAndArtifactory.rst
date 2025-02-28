@@ -21,25 +21,21 @@ This guide should take 1 hour to complete.
 Intended Audience
 -----------------
 
-The audience for this document is engineers who are in charge of integrating
-:ref:`MicroEJ Module Manager (MMM) <mmm>` to their continuous integration environment.
+The audience for this document is engineers who are in charge of integrating `MICROEJ SDK 6 <https://docs.microej.com/en/latest/SDK6UserGuide/index.html#>`_ to their continuous integration environment.
 
-In addition, this document should be of interest to all developers
-wishing to understand how MicroEJ works with headless module builds.
-
-For those who are only interested in command line module build, consider using the :ref:`MMM Command Line Interface <mmm_cli>`.
+In addition, this document should be of interest to all developers wishing to understand how MicroEJ works with headless module builds.
 
 Prerequisites
 -------------
 
-*  `MICROEJ SDK 5 <https://docs.microej.com/en/latest/SDKUserGuide/>`_ ``5.8.1`` or higher.
+*  An internet connection.
 *  `Docker and Docker Compose V2 <https://docs.docker.com/>`_ on Linux, Windows or Mac
 *  Git ``2.x`` installed, with Git executable in path. We recommend installing Git Bash if your operating system is Windows (`<https://gitforwindows.org/>`_).
 
-This training was tested with Jenkins ``2.426.1``, Artifactory ``7.71.5`` and Gitea ``1.21.1``.
+This training was tested with Jenkins ``2.479.3``, Artifactory ``7.77.17`` and Gitea ``1.23.4``.
 
 .. note::
-    For SDK versions before 5.4.0, please refer to this `MicroEJ Documentation Archive <https://docs.microej.com/_/downloads/en/20201009/pdf/>`_.
+    For `SDK 5 <https://docs.microej.com/en/latest/SDKUserGuide/index.html>`_, please refer to this `MicroEJ Documentation Archive <https://docs.microej.com/_/downloads/en/20240215/pdf/>`_, section ``9.6 Setup an Automated Build using Jenkins and Artifactory``.
 
 Introduction
 ------------

@@ -1,7 +1,7 @@
 version: '3'
 services:
   artifactory:
-    image: releases-docker.jfrog.io/jfrog/artifactory-oss:7.71.5
+    image: releases-docker.jfrog.io/jfrog/artifactory-oss:7.104.10
     container_name: artifactory
     environment:
       - JF_ROUTER_ENTRYPOINTS_EXTERNALPORT=8082
@@ -25,7 +25,7 @@ services:
         hard: 40000
 
   gitea:
-    image: gitea/gitea:1.21.1
+    image: gitea/gitea:1.23.4
     container_name: gitea
     environment:
       - USER_UID=1000
