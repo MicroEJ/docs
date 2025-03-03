@@ -145,12 +145,6 @@ Interface
 The MicroEJ Simulator interface is defined by static methods on the Java
 class ``com.is2t.hil.NativeInterface``.
 
-.. note::
-
-   By default the maximum HIL frame size in bytes is ``262144``. If needed, the size can be increased by setting :ref:`com.microej.simulator.hil.frame.size <option_hil_maximum_frame_size>` application option.
-   
-   ``com.is2t.hil.BrokenConnection`` will be thrown by the HIL Engine if a frame is larger than the maximum HIL frame size (e.g. dealing with large Java resources).
-
 Array Type Arguments
 --------------------
 
@@ -270,6 +264,14 @@ from the original Java world, using the ``getResourceContent`` method.
       byte[] data = ni.getResourceContent(pathStr);
       ...
    }
+
+
+.. note::
+
+   By default the maximum HIL frame size in bytes is ``262144``. If needed, the size can be increased by setting :ref:`com.microej.simulator.hil.frame.size <option_hil_maximum_frame_size>` application option.
+   
+   ``com.is2t.hil.BrokenConnection`` will be thrown by the HIL Engine if a frame is larger than the maximum HIL frame size (e.g. dealing with large Java resources).
+
 
 Synchronous Terminations
 ------------------------
