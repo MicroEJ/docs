@@ -246,8 +246,8 @@ Enable WASI Threads
           }
       }
 
-Limitations
-~~~~~~~~~~~
+WASI Threads Limitations
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 An Application can declare at most one Wasm module.
 
