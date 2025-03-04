@@ -197,6 +197,11 @@ This allows running the following code:
       return 0;
    }
 
+.. note::
+
+    By default, if not specified, the WASI libc stack size is ``128KB``. 
+    It is strongly recommended to set the stack size at thread creation using the ``pthread_attr_setstacksize`` function.
+
 
 Enable WASI Threads
 ~~~~~~~~~~~~~~~~~~~
@@ -249,10 +254,10 @@ Enable WASI Threads
 WASI Threads Limitations
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-An Application can declare at most one Wasm module.
+**Unique Wasm Module**
 
-Stack Management
-~~~~~~~~~~~~~~~~
+
+**Stack Management**
 
 The Java ``synchronized`` keyword is no longer mandatory on methods bound to C functions, as multiple threads can now invoke C code. 
 However, there is a key limitation: threads created from Java still share the same C main stack in linear memory.
@@ -260,8 +265,6 @@ As a result, Java threads must not execute C code simultaneously.
 If two Java threads call a C function in parallel, it will result in C stack corruption.
 
 In contrast, pthreads created in Managed C have their own stack, which is dynamically allocated in linear memory, allowing them to execute C code in parallel without restriction.
-By default, if not specified, the WASI libc stack size is ``128KB``. 
-It is strongly recommended to set the stack size at thread creation using the ``pthread_attr_setstacksize`` function.
 
 ..
    | Copyright 2024-2025, MicroEJ Corp. Content in this space is free 
