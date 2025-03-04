@@ -255,7 +255,9 @@ Stack Management
 ~~~~~~~~~~~~~~~~
 
 The Java ``synchronized`` keyword is no longer mandatory on methods bound to C functions, as multiple threads can now invoke C code. 
-However, threads created from Java still share the main stack of linear memory, so you must ensure they do not execute C code simultaneously.
+However, there is a key limitation: threads created from Java still share the same C main stack in linear memory.
+As a result, Java threads must not execute C code simultaneously.
+If two Java threads call a C function in parallel, it will result in C stack corruption.
 
 Threads created from Managed C (pthreads) have a dedicated stack dynamically allocated in the heap of linear memory. 
 By default, if not specified, the WASI libc stack size is ``128KB``. 
