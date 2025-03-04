@@ -256,6 +256,8 @@ WASI Threads Limitations
 
 **Unique Wasm Module**
 
+When WASI threads are enabled, an Application can embed at most one Wasm module.
+With the :ref:`Multi-Sandbox capability <multisandbox>` enabled, this limit applies to each :ref:`class space <kf_class_space>`.
 
 **Stack Management**
 
