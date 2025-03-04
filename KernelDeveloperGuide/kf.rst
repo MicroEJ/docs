@@ -632,6 +632,8 @@ Feature code is unlinked from the Kernel and reclaimed. The Feature is
 removed from the list of loaded Features and its state is set to the
 ``UNINSTALLED`` state. The Feature does not exist anymore in the system.
 
+.. _kf_class_space:
+
 Class Spaces
 ------------
 
