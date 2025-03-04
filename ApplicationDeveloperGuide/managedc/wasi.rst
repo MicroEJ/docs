@@ -201,7 +201,7 @@ This allows running the following code:
 Enable WASI Threads
 ~~~~~~~~~~~~~~~~~~~
 
-- Compile and link your Wasm Module with the additional options: ``--target=wasm32-wasi-threads -pthread``.
+- Compile and link your Wasm Module with these additional Clang options: ``--target=wasm32-wasi-threads -pthread``.
 - In your Application, set the :ref:`option <application_options>` ``com.microej.runtime.core.wasithreads.enabled`` to ``true``.
 - In your Wasm module, declare the binding to the ``wasi_thread_start`` function, and initialize WASI accordingly:
 
