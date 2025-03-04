@@ -254,7 +254,7 @@ An Application can declare at most one Wasm module.
 Stack Management
 ~~~~~~~~~~~~~~~~
 
-The Java ``synchronized`` keyword is no longer mandatory on methods bounds to C functions, since multiple threads can now re-enter C code. 
+The Java ``synchronized`` keyword is no longer mandatory on methods bound to C functions, as multiple threads can now invoke C code. 
 However, threads created from Java still share the main stack of linear memory, so you must ensure they do not execute C code simultaneously.
 
 Threads created from Managed C (pthreads) have a dedicated stack dynamically allocated in the heap of linear memory. 
