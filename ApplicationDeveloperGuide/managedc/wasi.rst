@@ -259,7 +259,7 @@ However, there is a key limitation: threads created from Java still share the sa
 As a result, Java threads must not execute C code simultaneously.
 If two Java threads call a C function in parallel, it will result in C stack corruption.
 
-Threads created from Managed C (pthreads) have a dedicated stack dynamically allocated in the heap of linear memory. 
+In contrast, pthreads created in Managed C have their own stack, which is dynamically allocated in linear memory, allowing them to execute C code in parallel without restriction.
 By default, if not specified, the WASI libc stack size is ``128KB``. 
 It is strongly recommended to set the stack size at thread creation using the ``pthread_attr_setstacksize`` function.
 
