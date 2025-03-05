@@ -426,7 +426,7 @@ The Module serves two purposes, depending on whether it is added to a Mock or a 
 	      at java.lang.Thread.run(Thread.java:325)
 	      at java.lang.Thread.runWrapper(Thread.java:387)
 
-   This issue affects most JDK distributions. As a workaround, we have successfully used Oracle JDK versions ``17.0.14`` to ``21.0.6`` to avoid this issue.
+   This issue affects most JDK distributions. As a workaround, we recommend to use Oracle JDK versions ``17.0.14`` to ``21.0.6`` to avoid this issue.
 
 Mock Framework
 ==============
