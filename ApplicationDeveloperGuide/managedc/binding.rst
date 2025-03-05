@@ -451,7 +451,7 @@ Here is a full C/Java example manipulating Managed C module memory in Java:
 
       /* Managed C function called by Java -------*/
       void app_main() {
-         printManagedCMemoryValues(&array[0], sizeof(array));
+         printWasmMemoryValues(&array[0], sizeof(array));
       }
 
 - Java source code (``MyApp.java``):
