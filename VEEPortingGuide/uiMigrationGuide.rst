@@ -16,9 +16,8 @@ Front Panel
 
 * Fetch `Front Panel Widgets 5.2.0`_ (see :ref:`section_frontpanel_ui_dependencies`).
 
-.. XXX_TODO link
-.. _Front Panel Widgets 5.2.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/5.1.0/
-.. _UI Pack 14.3.3: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/14.3.2/
+.. _Front Panel Widgets 5.2.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/5.2.0/
+.. _UI Pack 14.3.3: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/14.3.3/
 
 .. _section_ui_migrationguide_pack_14.2.0:
 
