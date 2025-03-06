@@ -38,7 +38,7 @@ is issued, where ``<messageId>`` meaning is defined in the following table:
    * - -4
      - No native stack found to execute the Java native method.
    * - -3
-     - Maximum stack size for a thread has been reached. Increase the maximum size of the thread stack parameter.
+     - Maximum stack size for a thread has been reached. :ref:`Increase the maximum size of the thread stack parameter <option_maximum_number_of_stack_blocks_per_thread>`.
    * - -2
      - No Java stack block could be allocated with the given size. Increase the Java stack block size.
    * - -1
