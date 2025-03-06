@@ -45,6 +45,11 @@ Core Engine
 
 - [Multi] - Increased the limitation on the maximum number of threads from 63 to 127 when Multi-Sandbox capability is enabled.
 
+SOAR
+~~~~
+
+- Increased the maximum number of blocks allowed in a method to prevent the ``[M200] - Maximum number of blocks reached`` error.
+
 
 .. _changelog-8.3.0:
 
