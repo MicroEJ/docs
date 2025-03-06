@@ -1,7 +1,7 @@
 version: '3'
 services:
   artifactory:
-    image: releases-docker.jfrog.io/jfrog/artifactory-oss:7.104.10
+    image: releases-docker.jfrog.io/jfrog/artifactory-oss:7.71.5
     container_name: artifactory
     environment:
       - JF_ROUTER_ENTRYPOINTS_EXTERNALPORT=8082
