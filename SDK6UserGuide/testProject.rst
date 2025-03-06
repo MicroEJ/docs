@@ -451,7 +451,7 @@ Then you can use it in your test classes:
 Test Suite Reports
 ------------------
 
-Once a testsuite is completed, the JUnit HTML report is generated in the module project location ``build/reports/tests/<testsuite>/index.xml``.
+Once a testsuite is completed, the JUnit HTML report is generated in the module project location ``build/reports/tests/<testsuite>/index.html``.
 
   .. figure:: ../SDK6UserGuide/images/junitHtmlReport.png
      :alt: Example of JUnit HTML Report
