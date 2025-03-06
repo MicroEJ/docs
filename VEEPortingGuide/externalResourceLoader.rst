@@ -133,6 +133,7 @@ The installation process is different in SDK 5 and SDK 6:
 
       In the VEE Port configuration file, check :guilabel:`External Resources Loader` to install this module.
 
+.. _external_resources_folder.use:
 
 Use
 ===
