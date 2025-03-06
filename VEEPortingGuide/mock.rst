@@ -265,6 +265,14 @@ from the original Java world, using the ``getResourceContent`` method.
       ...
    }
 
+
+.. note::
+
+   By default the maximum HIL frame size in bytes is ``262144``. If needed, the size can be increased by setting :ref:`com.microej.simulator.hil.frame.size <option_hil_maximum_frame_size>` application option.
+   
+   ``com.is2t.hil.BrokenConnection`` will be thrown by the HIL Engine if a frame is larger than the maximum HIL frame size (e.g. dealing with large Java resources).
+
+
 Synchronous Terminations
 ------------------------
 
@@ -398,6 +406,27 @@ The Module serves two purposes, depending on whether it is added to a Mock or a 
 
 - In a Mock project, JavaFX is added as a compile-time dependency, its content is not included in the Mock.
 - If your VEE Port contains at least one Mock, JavaFX must be added to the VEE Port project in order to embed its content in the VEE Port.  
+
+.. warning::
+
+   There is a `known issue <https://bugs.openjdk.org/browse/JDK-8296654>`__ with JavaFX and Apple Silicon computers. The task ``runOnSimulator`` fails with
+   an error ::
+
+      libc++abi: terminating due to uncaught exception of type NSException
+      Exiting /Users/bguedas/Git/J0059_Example-Mock-Framework/custom-widgets-app/build/vee/scripts/hil.xml.
+      Exception in thread "thread2" java.lang.UnsatisfiedLinkError: Broken connection with client
+	      at java.lang.Throwable.fillInStackTrace(Throwable.java:82)
+	      at java.lang.Throwable.<init>(Throwable.java:37)
+	      at java.lang.Error.<init>(Error.java:18)
+	      at java.lang.LinkageError.<init>(LinkageError.java:18)
+	      at java.lang.UnsatisfiedLinkError.<init>(UnsatisfiedLinkError.java:10)
+	      at com.microej.example.mockframework.Main$1.run(Main.java:45)
+	      at com.is2t.bon.timer.TimerTaskList.runLaunchedTasks(TimerTaskList.java:237)
+	      at ej.bon.Timer.run(Timer.java:431)
+	      at java.lang.Thread.run(Thread.java:325)
+	      at java.lang.Thread.runWrapper(Thread.java:387)
+
+   This issue affects most JDK distributions. As a workaround, we recommend to use Oracle JDK versions ``17.0.14`` to ``21.0.6`` to avoid this issue.
 
 Mock Framework
 ==============
