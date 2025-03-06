@@ -215,7 +215,7 @@ Create a new MicroEJ Module
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Now we will create an Application project that we'll push to a Git repository. In this example, we will use a plublic template but you can create an application
-project from scratch with the :ref:`public SD6 documentation <https://docs.microej.com/en/latest/SDK6UserGuide/createProject.html>`.
+project from scratch with the :ref:`sdk_6_user_guide`.
 
 .. note::
    For demonstration purposes, we'll create a new project and share it on a local Git bare repository.
