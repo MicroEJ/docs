@@ -32,7 +32,7 @@ Prerequisites
 *  `Docker and Docker Compose V2 <https://docs.docker.com/>`_ on Linux, Windows or Mac
 *  Git ``2.x`` installed, with Git executable in path. We recommend installing Git Bash if your operating system is Windows (`<https://gitforwindows.org/>`_).
 
-This training was tested with Jenkins ``2.479.3``, Artifactory ``7.77.17`` and Gitea ``1.23.4``.
+This training was tested with Jenkins ``2.462.3``, Artifactory ``7.71.5`` and Gitea ``1.23.4``.
 
 .. note::
     For `SDK 5 <https://docs.microej.com/en/latest/SDKUserGuide/index.html>`_, please refer to this `MicroEJ Documentation Archive <https://docs.microej.com/_/downloads/en/20240215/pdf/>`_, section ``9.6 Setup an Automated Build using Jenkins and Artifactory``.
@@ -238,7 +238,8 @@ project from scratch with the :ref:`sdk_6_user_guide`.
     .. literalinclude:: resources/Jenkinsfile
         :language: groovy
 
-#. Update ``build.gradle.kts`` file and set line 20 with this line:
+#. Update ``build.gradle.kts`` file and set line 20 with this text:
+    
     .. code-block::
 
         microejVee("com.nxp.vee.mimxrt1170:evk_platform:2.2.0")
