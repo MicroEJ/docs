@@ -38,7 +38,7 @@ All BSP
 
 .. _section_ui_migrationguide_pack_14.1.1:
 
-From 14.0.2 to 14.1.1
+From 14.0.3 to 14.1.1
 =====================
 
 .. _section_ui_migrationguide_pack_14.1.1_bsp_without_gpu:
@@ -119,9 +119,9 @@ BSP with NemaGFX
     * Delete the properties files ``cco_microui.properties`` and ``cco_microui-nemagfx.properties``.
     * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.1.1_bsp_without_gpu`.
 
-.. _section_ui_migrationguide_pack_14.0.2:
+.. _section_ui_migrationguide_pack_14.0.3:
 
-From 14.0.1 to 14.0.2
+From 14.0.1 to 14.0.3
 =====================
 
 BSP without GPU
