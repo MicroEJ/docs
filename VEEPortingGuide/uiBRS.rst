@@ -363,22 +363,28 @@ Strategy: Predraw
 Principle
 ---------
 
-This strategy considers that the drawings are always performed in a buffer, and a swap with another buffer is made by the implementation of ``LLUI_DISPLAY_IMPL_flush()``.
-In this case, the restoration is mandatory because the new back buffer must contain the past before the buffer swapping.
+This strategy can be used to refresh an outdated buffer to the active back buffer before they are swapped.
+The regions of the back buffer to be refreshed are maitained relative to the active back buffer and updated at every drawing.
+Note that the regions may cumulate drawing regions from multiple frames (such as in 3+ buffer policies or in the "Transfer & Swap" buffer policy).
 
-The principle of this strategy is to cumulate the drawing regions and restore them just before the very first drawing after a flush.
-The refresh consists in calling the LLAPI ``LLUI_DISPLAY_IMPL_flush()`` that will swap the buffers.
+This refresh may be needed so that the buffer contains the *past* before the rendering of the next frame can start.
+This strategy consists in performing this refresh just before the very first drawing of the rendering of the next frame.
+This way, the region of this first drawing can be removed from the region to be refreshed.
+Especially, if the first drawing is on the full frame (typically the Application UI switches to a different screen), no refresh is needed.
 
-Some regions to restore are updated or removed according to the implicit and explicit regions *given* **before** the very first drawing after a flush.
-These regions are the regions that the application will alter, so it is useless to restore them.
-For instance, if the very first drawing after a flush fully fills the buffer (erase the buffer), the past is not restored.
-
-The implicit and explicit regions **after** the very first drawing have the same signification: a dirty region to restore before the very first drawing after the next flush.
+.. note::
+   The Application UI may use *explicit* regions to notify this strategy before the first drawing to indicate regions that will later be re-drawn in this frame.
+   It can be useful if not included in the region of the first drawing. Note that in many cases, this is not needed as MWT default render policy will start by
+   drawing the background of the widget being rendered.
 
 Behavior
 --------
 
 The following table illustrates how the strategy works:
+
+.. I wonder if we could improve this by adding the actual API calls `Display.flush()`, `MyPainter.drawA()`,
+   `MyPainter.drawB()`, `MyPainter.drawC()`, ..
+   But I am not sure how to do that with a simple table (one call corresponds to multiple actions)
 
 .. list-table:: Strategy "Predraw"
    :widths: 30 60 20 20
@@ -388,7 +394,7 @@ The following table illustrates how the strategy works:
      - Strategy Work
      - Back Buffer  
      - Front Buffer 
-   * - Startup
+   * - Initial State
      - 
      - .. image:: images/ui_brs0.png
      - .. image:: images/ui_brs0.png 
@@ -515,10 +521,12 @@ On startup, the front buffer is mapped on buffer (C), buffer (A) is the back buf
 
 13. The buffer (C) will now be used for the next drawings. Go to step 5.
 
+.. _section_brs_predraw_transmitswap:
+
 Use (Transmit and Swap Buffer)
 ------------------------------
 
-Here are the steps around the strategy describing how to use it in :ref:`transmit and swap<section_display_transmitswap>` buffer policy.
+Here is how the predraw strategy applies to the :ref:`Transmit & Swap <section_display_transmitswap>` buffer policy (including optimizations):
 
 .. tabs::
 
@@ -540,29 +548,23 @@ Here are the steps around the strategy describing how to use it in :ref:`transmi
 
         Transmit and Swap (parallel)
 
-The two buffers have the same role alternatively: back buffer and transmission buffer.
-On startup, the transmission buffer has yet to be used.
+In this policy, the newly active back buffer is refreshed after a swap.
+Note that, if the transmit operation (to the front buffer) is completed before the first drawing, the back buffers can be swapped back
+(revert the drawing pointer to the previously active back buffer).
+In this case, the predraw refresh is not needed: the active back buffer is already up-to-date.
 
-In this policy, the implementation of ``LLUI_DISPLAY_IMPL_flush()`` consists in swapping the back buffers and transmitting the content of the back buffer to the front buffer (SPI, DSI, etc.).
-This subtlety allows the reuse of the same back buffer after the end of the transmission: this prevents the restoration of the past.
+In details:
 
-1. Some drawings are performed in the back buffer.
-2. A ``Display.flush()`` is asked, the Graphics Engine calls ``LLUI_DISPLAY_IMPL_refresh()``.
-3. The strategy calls ``LLUI_DISPLAY_IMPL_flush()``.
-4. The display driver has to implement ``LLUI_DISPLAY_IMPL_flush()`` which consists in starting the transmission of the back buffer content to the LCD device's buffer and swapping both buffers (back and transmission buffers).
-5. The new back buffer is immediately available (free); the BSP has to notify the Graphics Engine by calling ``LLUI_DISPLAY_setBackBuffer()``, giving the new back buffer address (== previous transmission buffer).
-6. The Graphics Engine is now unlocked.
-7. Before the very first drawing, this strategy copies the regions to restore from the previous back buffer to the new back buffer.
-8. Some drawings are performed in the back buffer.
-9. A second ``Display.flush()`` is asked, the Graphics Engine calls ``LLUI_DISPLAY_IMPL_refresh()``.
-10. The strategy calls ``LLUI_DISPLAY_IMPL_flush()``.
-11. The system is locked: the LCD driver still needs to finish transmitting the transmission buffer data to the LCD device's buffer.
-12. As soon as the transmission is done, the BSP has to notify the Graphics Engine by calling ``LLUI_DISPLAY_setBackBuffer()``, giving the new back buffer address (== previous transmission buffer).
-13. The application is sleeping (doesn't want to draw in the back buffer)
+1. Drawings are performed on the active back buffer, regions to be refreshed are updated for the free back buffer.
+2. When *flush* is requested, a transmit from active back buffer to front buffer is initiated and the buffers are "swapped" (the drawing pointer is changed to buffer B).
+3. Then:
 
-   .. hint:: Optimization: As soon as the transmission to the LCD device's buffer is done, the BSP should call again ``LLUI_DISPLAY_setBackBuffer()`` by giving the transmission buffer (which is now free). If the drawing has yet to start in the back buffer, the Graphics Engine will reuse this transmission buffer as a new back buffer instead of using the other one; the restoration becomes useless.
+   a. If the Application requests a new drawing before the frame transfer is completed, the "pre-draw" refresh is performed.
+   b. If the frame transfer is completed before the Application requests a new drawing, the buffers are "swapped" back (the pointer to "current buffer for drawing" is reverted to buffer A).
+      In that case, no refresh is needed, and the Application can continue drawing on the same back buffer. In this case, the regions to be refreshed are cumulates the drawing of multiple frames.
 
-14.  The BSP should notify the Graphics Engine again by calling ``LLUI_DISPLAY_setBackBuffer()``, giving the transmission buffer address: the Graphics Engine will reuse this buffer for future drawings, and the strategy will not need to restore anything.
+.. I understand that I am removing some (maybe useful) documentation on the details of the sequence of native API calls.
+   I think this helps to clarify the concept. We may add this back in the typical implementations section?
 
 .. _section_brs_default:
 
