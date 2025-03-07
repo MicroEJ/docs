@@ -6,22 +6,18 @@
 Migration Guide
 ===============
 
-.. _section_ui_migrationguide_pack_14.3.2:
+.. _section_ui_migrationguide_pack_14.3.3:
 
-From 14.2.0 to 14.3.2
+From 14.2.0 to 14.3.3
 =====================
 
 Front Panel
 """""""""""
 
-* Fetch `Front Panel Widgets 5.1.0`_ (it fetches by transitivity the `UI Pack 14.3.2`_):
+* Fetch `Front Panel Widgets 5.2.0`_ (see :ref:`section_frontpanel_ui_dependencies`).
 
-  .. code-block:: xml
-
-     <dependency org="ej.tool.frontpanel" name="widget" rev="5.1.0"/>
-
-.. _Front Panel Widgets 5.1.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/5.1.0/
-.. _UI Pack 14.3.2: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/14.3.2/
+.. _Front Panel Widgets 5.2.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/5.2.0/
+.. _UI Pack 14.3.3: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/14.3.3/
 
 .. _section_ui_migrationguide_pack_14.2.0:
 
@@ -42,7 +38,7 @@ All BSP
 
 .. _section_ui_migrationguide_pack_14.1.1:
 
-From 14.0.2 to 14.1.1
+From 14.0.3 to 14.1.1
 =====================
 
 .. _section_ui_migrationguide_pack_14.1.1_bsp_without_gpu:
@@ -123,9 +119,9 @@ BSP with NemaGFX
     * Delete the properties files ``cco_microui.properties`` and ``cco_microui-nemagfx.properties``.
     * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.1.1_bsp_without_gpu`.
 
-.. _section_ui_migrationguide_pack_14.0.2:
+.. _section_ui_migrationguide_pack_14.0.3:
 
-From 14.0.1 to 14.0.2
+From 14.0.1 to 14.0.3
 =====================
 
 BSP without GPU
