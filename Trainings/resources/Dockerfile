@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.426.1-lts
+FROM jenkins/jenkins:2.462.3
 USER root
 RUN apt-get update -qq \
     && apt-get install -qqy apt-transport-https ca-certificates curl gnupg2 software-properties-common
