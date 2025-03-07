@@ -26,7 +26,7 @@ FrontPanel
 - Add a button to start/stop the recording of the drawings in the Flush Visualizer.
 - Add the class ``Log`` that provides utility methods to log the drawings.
 - Add ``MicroUIImage.getIdentifier()`` that identifies an image (useful for the logs).
-- Add the same logs than embedded side (all drawings, out of clip, drawn regions, etc.).
+- Add the same logs as embedded side (all drawings, out of clip, drawn regions, etc.).
 
 **Changed**
 
