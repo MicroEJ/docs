@@ -23,7 +23,11 @@ Drawn Region(s)
 
 The buffer refresh strategies registers the list of drawn regions between two flushes.
 These regions can be highlighted during the execution of an application.
-It is activated by setting the ``ej.fp.brs.drawnColor`` option to any 24-bit RGB color.
+It can be activated or deactivated with the |DrawnRegions| button in the toolbar.
+
+.. |DrawnRegions| image:: images/debugDrawn.png
+
+The color of the rectangles can be configured by setting the ``ej.fp.brs.drawnColor`` option to any 24-bit RGB color (when set, the feature is activated at startup).
 
 For example with ``ej.fp.brs.drawnColor=0x00ff00``:
 
@@ -43,7 +47,11 @@ Restored Region(s)
 ------------------
 
 It is also possible to track the regions restored by the buffer refresh strategies.
-The ``ej.fp.brs.restoredColor`` option can be set to any 24-bit RGB color to highlight these regions.
+It can be activated or deactivated with the |RestoredRegions| button in the toolbar.
+
+.. |RestoredRegions| image:: images/debugRestored.png
+
+The color of the rectangles can be configured by setting the ``ej.fp.brs.restoredColor`` option can be set to any 24-bit RGB color to highlight these regions (when set, the feature is activated at startup).
 
 For example with ``ej.fp.brs.restoredColor=0xff00ff``:
 
@@ -72,7 +80,11 @@ These regions are considered as "dirty" since they do not contain the current dr
 In other words, it can cause glitches .
 
 To detect easily these regions, a rectangle can be filled with a color for each clip handled by the buffer refresh strategy.
-It is activated by setting the ``ej.fp.brs.dirtyColor`` option to any 32-bit ARGB color (opaque or semi-transparent).
+It can be activated or deactivated with the |DirtyRegions| button in the toolbar.
+
+.. |DirtyRegions| image:: images/debugDirty.png
+
+The color of the rectangles can be configured by setting the ``ej.fp.brs.dirtyColor`` option to any 32-bit ARGB color, opaque or semi-transparent (when set, the feature is activated at startup).
 
 For example: ``ej.fp.brs.dirtyColor=0x200000ff``:
 

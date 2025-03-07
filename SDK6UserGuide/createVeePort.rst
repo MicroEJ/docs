@@ -455,12 +455,27 @@ the SDK allows to define properties in the ``configuration.properties`` of the V
 - ``bsp.publication.excludes.pattern``: comma-separated list of Ant-style files and folders patterns to exclude from the published VEE Port.
   By default no files or folders are excluded.
 
+The paths are relative to the BSP root folder (defined by the ``bsp.root.dir`` properties of the ``configuration.properties`` file). 
+
 Here is an example which excludes 3 folders::
 
   bsp.publication.includes.pattern=**/*
   bsp.publication.excludes.pattern=**/VEE_PORT_EVAL/,**/WIN32/,**/Utilities/Media/
 
 Refer to the Javadoc of the `Gradle PatternFilterable class <https://docs.gradle.org/current/javadoc/org/gradle/api/tasks/util/PatternFilterable.html>`__ to have more details on the Ant-style patterns.
+
+Filtering the VEE Runtime Library
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The SDK forbids the publication of the VEE Runtime Library when publishing a VEE Port.
+The following error is raised in such a case::
+
+  SDK EULA does not allow to share MicroEJ Core IP in BSP source files: 'C:\Users\johndoe\my-project\vee-port\build\tmp\publishVeePort\bsp\vee\lib\microejruntime.a'.
+
+The BSP Publication Filtering feature allows to filter this file before the publication 
+by defining this property in the ``configuration.properties`` file::
+
+  bsp.publication.excludes.pattern=**/microejruntime.a
 
 BSP Connection
 ==============
