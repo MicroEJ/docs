@@ -50,7 +50,7 @@ The `MicroVG`_ :ref:`Pack <pack_overview>` module must be installed in your VEE 
 
          <dependency org="com.microej.pack.vg" name="vg-pack" rev="[VG Pack version]" conf="default->default"/>
 
-.. note:: The latest current Pack version is |VGPACKVERSION|.
+.. note:: The latest version of the VG Pack is |VGPACKVERSION|.
 
 The VG Pack will be automatically available after a VEE Port rebuild.
 
