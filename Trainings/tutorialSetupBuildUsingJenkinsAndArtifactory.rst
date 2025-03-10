@@ -238,7 +238,7 @@ project from scratch with the :ref:`sdk_6_user_guide`.
     .. literalinclude:: resources/Jenkinsfile
         :language: groovy
 
-#. Update ``build.gradle.kts`` file and set line 20 with this text (we use RT1170 Vee Port for this example):
+#. Update ``build.gradle.kts`` file and set line 20 with this text. Building or running an Application with the SDK requires a VEE Port, so we use RT1170 Vee Port for this example:
     
     .. code-block::
 
