@@ -259,7 +259,7 @@ This file configures the MicroEJ Module Manager to import and publish modules fr
         ├── build.gradle.kts
         ├── CHANGELOG.md
         ├── configuration
-        │ └── common.properties
+        │   └── common.properties
         ├── gradle
         │ └── wrapper
         │     ├── gradle-wrapper.jar
