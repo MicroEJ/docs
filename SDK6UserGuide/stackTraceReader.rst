@@ -36,13 +36,6 @@ Lines owned by the Kernel can be decoded with the Executable debug information f
 Usage
 =====
 
-To decode an Application stack trace, the Stack Trace Reader tool requires the Application Executable file.
-
-In an Application project
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If you have an Application project and want to decode a stack trace for this Application, you can execute the tool in the project.
-
 .. tip::
 
     .. collapse:: Click here if you don't have an Application to test yet and want to quickly test the Stack Trace Reader tool.
@@ -77,91 +70,197 @@ If you have an Application project and want to decode a stack trace for this App
                 at @C:0x8070c00@.@M:0x8077b40:0x8077b4c@
                 at @C:0x8070c00@.@M:0x80779b0:0x80779bb@
 
-Follow these steps:
+Decoding an Application stack trace depends on the SDK 6 version used in the project.
 
-- Make sure to build the Executable before executing the tool, by running either the ``buildExecutable`` or the ``runOnDevice`` task.
-  The Executable file produced by the Application project is automatically used if it exists.
-- When the Executable of the Application project is built, execute the ``stackTraceReader`` task, either from your IDE, or as a command line::
+In an Application project
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    ./gradlew stackTraceReader
+.. tabs::
 
-- When the message ``[INFO] Paste the MicroEJ core engine stack trace here.`` is displayed, paste the encoded stacktrace into the console.
-  The Stack Trace Reader immediately displays the decoded stack trace:
+    .. group-tab:: SDK 6 1.1.0 and higher
 
-.. code:: console
+        If you have an Application project and want to decode a stack trace for this Application, you can execute the tool in the project.
 
-    =============== [ MicroEJ Core Engine Trace ] ===============
-    console:
-    [INFO] Paste the MicroEJ core engine stack trace here.
-        VM START
-        Hello, World!
-        Exception in thread "main" @C:0x8070c30@
-             at @C:0x8070c60@.@M:0x8075850:0x807585a@
-             at @C:0x8070c30@.@M:0x80769a4:0x80769ba@
-             at @C:0x8070c30@.@M:0x807857c:0x8078596@
-             at @C:0x8070c00@.@M:0x8074e04:0x8074e1a@
-             at @C:0x8070ce0@.@M:0x807601c:0x807603c@
-             at @C:0x806fe10@.@M:0x807779c:0x80777b0@
-             at @C:0x8070c00@.@M:0x8077b40:0x8077b4c@
-             at @C:0x8070c00@.@M:0x80779b0:0x80779bb@
-        VM START
-        Hello, World!
-        Exception in thread "main" java.lang.Throwable
-             at java.lang.System.getStackTrace(Unknown Source)
-             at java.lang.Throwable.fillInStackTrace(Throwable.java:82)
-             at java.lang.Throwable.<init>(Throwable.java:32)
-             at java.lang.Thread.dumpStack(Thread.java:573)
-             at com.microej.Main.main(Main.java:22)
-             at java.lang.MainThread.run(Thread.java:855)
-             at java.lang.Thread.runWrapper(Thread.java:464)
-             at java.lang.Thread.callWrapper(Thread.java:449)
+        Follow these steps:
 
-The Stack Trace Reader tool interacts with the console by default.
-See the :ref:`sdk6.section.stacktrace.reader.tool.configure` chapter to learn about the other modes and configurations available.
+        - Make sure to build the Executable before executing the tool, by running either the ``buildExecutable`` or the ``runOnDevice`` task.
+          The Executable file produced by the Application project is automatically used if it exists.
+        - When the Executable of the Application project is built, execute the ``stackTraceReader`` task, either from your IDE, or as a command line::
+
+            ./gradlew stackTraceReader
+
+        - When the message ``[INFO] Paste the MicroEJ core engine stack trace here.`` is displayed, paste the encoded stacktrace into the console.
+          The Stack Trace Reader immediately displays the decoded stack trace:
+
+        .. code:: console
+
+            =============== [ MicroEJ Core Engine Trace ] ===============
+            console:
+            [INFO] Paste the MicroEJ core engine stack trace here.
+                VM START
+                Hello, World!
+                Exception in thread "main" @C:0x8070c30@
+                    at @C:0x8070c60@.@M:0x8075850:0x807585a@
+                    at @C:0x8070c30@.@M:0x80769a4:0x80769ba@
+                    at @C:0x8070c30@.@M:0x807857c:0x8078596@
+                    at @C:0x8070c00@.@M:0x8074e04:0x8074e1a@
+                    at @C:0x8070ce0@.@M:0x807601c:0x807603c@
+                    at @C:0x806fe10@.@M:0x807779c:0x80777b0@
+                    at @C:0x8070c00@.@M:0x8077b40:0x8077b4c@
+                    at @C:0x8070c00@.@M:0x80779b0:0x80779bb@
+                VM START
+                Hello, World!
+                Exception in thread "main" java.lang.Throwable
+                    at java.lang.System.getStackTrace(Unknown Source)
+                    at java.lang.Throwable.fillInStackTrace(Throwable.java:82)
+                    at java.lang.Throwable.<init>(Throwable.java:32)
+                    at java.lang.Thread.dumpStack(Thread.java:573)
+                    at com.microej.Main.main(Main.java:22)
+                    at java.lang.MainThread.run(Thread.java:855)
+                    at java.lang.Thread.runWrapper(Thread.java:464)
+                    at java.lang.Thread.callWrapper(Thread.java:449)
+
+        The Stack Trace Reader tool interacts with the console by default.
+        See the :ref:`sdk6.section.stacktrace.reader.tool.configure` chapter to learn about the other modes and configurations available.
+
+    .. group-tab:: SDK 6 1.0.0 and below
+
+        If you have an Application project and want to decode a stack trace for this Application, you can execute the tool in the project.
+
+        Follow these steps:
+
+        - Make sure to build the Executable before executing the tool, by running either the ``buildExecutable`` or the ``runOnDevice`` task.
+        - When the Executable of the Application project is built, execute the ``execTool`` task:
+
+        .. warning::
+
+            This tool requires to use Gradle **8.8** maximum. 
+            If you want to use a higher Gradle version, upgrade the SDK 6 version used in the project to ``1.1.0`` minimum 
+            and use the ``stackTraceReader`` task.
+
+        .. code:: console
+
+            ./gradlew execTool --name=stackTraceDecrypter \
+            --toolProperty=proxy.connection.connection.type="console" \
+            --toolProperty=application.file="../../application/executable/application.out" \
+            --toolProperty=additional.application.files="" \
+            --console plain
+
+        Paste the previous trace dump into the console.
+        The output of the Stack Trace Reader is the following:
+
+        .. code:: console
+
+            =============== [ MicroEJ Core Engine Trace ] ===============
+            console:
+            [INFO] Paste the MicroEJ core engine stack trace here.
+                VM START
+                Hello World from Gradle!
+                Exception in thread "main" @C:0x8070c30@
+                    at @C:0x8070c60@.@M:0x8075850:0x807585a@
+                    at @C:0x8070c30@.@M:0x80769a4:0x80769ba@
+                    at @C:0x8070c30@.@M:0x807857c:0x8078596@
+                    at @C:0x8070c00@.@M:0x8074e04:0x8074e1a@
+                    at @C:0x8070ce0@.@M:0x807601c:0x807603c@
+                    at @C:0x806fe10@.@M:0x807779c:0x80777b0@
+                    at @C:0x8070c00@.@M:0x8077b40:0x8077b4c@
+                    at @C:0x8070c00@.@M:0x80779b0:0x80779bb@
+                VM START
+                Hello World from Gradle!
+                Exception in thread "main" java.lang.Throwable
+                    at java.lang.System.getStackTrace(Unknown Source)
+                    at java.lang.Throwable.fillInStackTrace(Throwable.java:82)
+                    at java.lang.Throwable.<init>(Throwable.java:32)
+                    at java.lang.Thread.dumpStack(Thread.java:573)
+                    at com.microej.Main.main(Main.java:22)
+                    at java.lang.MainThread.run(Thread.java:855)
+                    at java.lang.Thread.runWrapper(Thread.java:464)
+                    at java.lang.Thread.callWrapper(Thread.java:449)
+
 
 Custom Executable File Location
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you want to decode a stack trace of a different Executable file than the Application project one, 
-you must set the ``application.file`` System Property to define the Executable file location::
+.. tabs::
 
-   ./gradlew stackTraceReader -D"application.file"="/path/to/my/application.out"
+    .. group-tab:: SDK 6 1.1.0 and higher
+
+        If you want to decode a stack trace of a different Executable file than the Application project one, 
+        you must set the ``application.file`` System Property to define the Executable file location::
+
+        ./gradlew stackTraceReader -D"application.file"="/path/to/my/application.out"
+
+    .. group-tab:: SDK 6 1.0.0 and below
+
+        As shown in the above example, you can define the location of the Executable file with the ``application.file`` property::
+
+            ./gradlew execTool --name=stackTraceDecrypter \
+            --toolProperty=proxy.connection.connection.type="console" \
+            --toolProperty=application.file="../../application/executable/application.out" \
+            --toolProperty=additional.application.files="" \
+            --console plain
 
 .. _sdk6.section.stacktrace.reader.tool.configure:
 
 Configure
 ^^^^^^^^^
 
-The Stack Trace Reader tool uses by default the console to communicate with the device, 
-but this can be changed by setting the ``stackTraceReaderConnectionMode`` property in the ``microej`` block in the ``build.gradle.kts`` file::
+.. tabs::
 
-    microej {
-        stackTraceReaderConnectionMode = "file"
-        stackTraceReaderFilePath = "/path/to/input/file"
-        stackTraceReaderFileResultPath = "/path/to/output/file"
-    }
+    .. group-tab:: SDK 6 1.1.0 and higher
 
-Each mode has dedicated additional options.
-The list of the available modes, with their dedicated options, are:
+        The Stack Trace Reader tool uses by default the console to communicate with the device, 
+        but this can be changed by setting the ``stackTraceReaderConnectionMode`` property in the ``microej`` block in the ``build.gradle.kts`` file::
 
-- ``console`` (default mode): use the standard input/output.
-- ``file``: use files.
-    - ``stackTraceReaderFilePath``: Path to the file containing the encoded stack trace.
-    - ``stackTraceReaderFileResultPath``: Path to the output file for the decoded stack trace.
-- ``uart``: use Serial communication.
-    - ``stackTraceReaderUartPort``: PC COM port (example for Windows: ``COM1``, example for Linux: ``/dev/ttyS1``).
-    - ``stackTraceReaderUartBaudRate``: COM baudrate for PC-Device communication.
-- ``socket``: use a socket.
-    - ``stackTraceReaderSocketAddress``: IP address.
-    - ``stackTraceReaderSocketPort``: IP port.
+            microej {
+                stackTraceReaderConnectionMode = "file"
+                stackTraceReaderFilePath = "/path/to/input/file"
+                stackTraceReaderFileResultPath = "/path/to/output/file"
+            }
 
-For example, here is the configuration to use the ``socket`` mode on the address ``192.168.1.17`` and the port ``4000``::
+        Each mode has dedicated additional options.
+        The list of the available modes, with their dedicated options, are:
 
-    microej {
-        stackTraceReaderConnectionMode = "socket"
-        stackTraceReaderUartPort = "192.168.1.17"
-        stackTraceReaderUartBaudRate = "4000"
-    }
+        - ``console`` (default mode) : use the standard input/output.
+        - ``file`` : use files.
+            - ``stackTraceReaderFilePath`` : Path to the file containing the encoded stack trace.
+            - ``stackTraceReaderFileResultPath`` : Path to the output file for the decoded stack trace.
+        - ``uart`` (**Not yet available**) : use Serial communication.
+        - ``socket`` : use a socket.
+            - ``stackTraceReaderSocketAddress`` : IP address.
+            - ``stackTraceReaderSocketPort`` : IP port.
+
+        For example, here is the configuration to use the ``socket`` mode on the address ``192.168.1.17`` and the port ``4000``::
+
+            microej {
+                stackTraceReaderConnectionMode = "socket"
+                stackTraceReaderUartPort = "192.168.1.17"
+                stackTraceReaderUartBaudRate = "4000"
+            }
+
+    .. group-tab:: SDK 6 1.0.0 and below
+
+        The Stack Trace Reader tool uses by default the console to communicate with the device, 
+        but this can be changed by setting the ``proxy.connection.connection.type`` property::
+
+            ./gradlew execTool --name=stackTraceDecrypter \
+            --toolProperty=proxy.connection.connection.type="file" \
+            --toolProperty=application.file="../../application/executable/application.out" \
+            --toolProperty=additional.application.files="" \
+            --console plain
+
+        Each mode has dedicated additional options.
+        The list of the available modes, with their dedicated options, are:
+
+        - ``console`` (default mode) : use the standard input/output.
+        - ``file`` : use files.
+            - ``pcboardconnection.file.path`` : Path to the file containing the encoded stack trace.
+            - ``pcboardconnection.result.file`` : Path to the output file for the decoded stack trace.
+        - ``uart`` (**Not yet available**) : use Serial communication.
+        - ``socket`` : use a socket.
+            - ``pcboardconnection.socket.address`` : IP address.
+            - ``pcboardconnection.socket.port`` : IP port.
+
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
