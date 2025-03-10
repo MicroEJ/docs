@@ -273,12 +273,12 @@ This file configures the MicroEJ Module Manager to import and publish modules fr
         ├── settings.gradle.kts
         └── src
             ├── main
-            │ ├── java
-            │ │ └── com
-            │ │     └── mycompany
-            │ │         └── myapplication
-            │ │             └── Main.java
-            │ └── resources
+            │   ├── java
+            │   │   └── com
+            │   │       └── mycompany
+            │   │           └── myapplication
+            │   │               └── Main.java
+            │   └── resources
             └── test
                 ├── java
                 └── resources
