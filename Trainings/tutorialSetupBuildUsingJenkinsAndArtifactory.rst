@@ -222,7 +222,7 @@ project from scratch with the :ref:`sdk_6_user_guide`.
    You can adapt the following sections to use an existing MicroEJ project and your own Git repository.
 
 #. Clone https://github.com/MicroEJ/Tool-Project-Template-Application repository.
-#. Go to the repository directory and type the following commands:
+#. Go to the repository directory and type the following commands (replace ``<admin_user>`` by Gitea user)
 
    .. code-block:: sh
     
@@ -238,7 +238,7 @@ project from scratch with the :ref:`sdk_6_user_guide`.
     .. literalinclude:: resources/Jenkinsfile
         :language: groovy
 
-#. Update ``build.gradle.kts`` file and set line 20 with this text:
+#. Update ``build.gradle.kts`` file and set line 20 with this text (we use RT1170 Vee Port for this example):
     
     .. code-block::
 
