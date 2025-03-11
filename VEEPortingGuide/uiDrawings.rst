@@ -17,7 +17,7 @@ Each drawing can be overwritten independently in the VEE Port:
 - to use a GPU to perform the operation,
 - to target a destination whose format is different from the display back buffer format,
 - etc.
- 
+
 The MicroUI native drawing functions are listed in ``LLUI_PAINTER_impl.h`` and ``LLDW_PAINTER_impl.h`` (for the `Drawing`_ library) for the Embedded VEE Port and, respectively, ``LUIPainter.java`` and ``LLDWPainter.java`` for the Simulation VEE Port.
 
 The implementation must handle many constraints: synchronization between drawings, Graphics Engine notification, MicroUI `GraphicsContext`_ clip and colors, dirty flush area, etc.
@@ -50,7 +50,7 @@ For this image format, BSP implementation can call the ``UI_DRAWING_SOFT_drawIma
 .. _section_drawings_cco:
 
 MicroUI C Module
-================ 
+================
 
 Principle
 ---------
@@ -64,7 +64,7 @@ Synchronization with the Graphics Engine is already performed.
 
 In addition to the implementation of ``LLUI_PAINTER_impl.h``, an implementation of ``ui_drawing.h`` is already available in :ref:`MicroUI C module<section_ui_releasenotes_cmodule>` (in *weak* mode).
 This allows to implement only the functions the GPU can perform.
-For a given drawing, the weak function implementation is calling the equivalent of the drawing available in 
+For a given drawing, the weak function implementation is calling the equivalent of the drawing available in
 ``ui_drawing_soft.h`` (this file lists all drawing functions implemented by the Graphics Engine in software).
 
 .. note:: More details are available in ``LLUI_PAINTER_impl.h``, ``ui_drawing.h``, ``LLUI_Display.h``, and ``LLUI_Display_impl.h`` files.
@@ -95,7 +95,7 @@ The following diagram illustrates the steps to perform a shape drawing (not an i
       splines="true";
       bgcolor="transparent"
       node [style="filled,rounded" fontname="courier new" fontsize="10"];
-      
+
       { //out
          node [shape="ellipse" color="#e5e9eb" fontcolor="black"] mui, UID_soft_c
       }
@@ -108,17 +108,17 @@ The following diagram illustrates the steps to perform a shape drawing (not an i
       { // weak
          node [shape="box" style="dashed,rounded" color="#ee502e"] UID_weak_c
       }
-         
+
       // --- ELEMENTS -- //
-         
-      mui [label="[MicroUI]\nPainter.drawXXX();"] 
+
+      mui [label="[MicroUI]\nPainter.drawXXX();"]
       LLUI_h [label="[LLUI_PAINTER_impl.h]\nLLUI_PAINTER_IMPL_drawXXX();"]
       LLUI_c [label="[LLUI_PAINTER_impl.c]\nLLUI_PAINTER_IMPL_drawXXX();"]
       UID_h [label="[ui_drawing.h]\nUI_DRAWING_drawXXX();"]
       UID_weak_c [label="[ui_drawing.c]\nweak UI_DRAWING_drawXXX();"]
       UID_soft_h [label="[ui_drawing_soft.h]\nUI_DRAWING_SOFT_drawXXX();"]
       UID_soft_c [label="[Graphics Engine]"]
-         
+
       // --- FLOW -- //
 
       mui->LLUI_h->LLUI_c->UID_h->UID_weak_c->UID_soft_h->UID_soft_c
@@ -135,7 +135,7 @@ The following diagram illustrates the steps to perform a shape drawing (not an i
 
    void LLUI_PAINTER_IMPL_drawLine(MICROUI_GraphicsContext* gc, jint startX, jint startY, jint endX, jint endY) {
       // Synchronize the native function of MicroUI Painter.drawLine() with the Graphics Engine
-      if (LLUI_DISPLAY_requestDrawing(gc, (SNI_callback)&LLUI_PAINTER_IMPL_drawLine)) {
+      if (LLUI_DISPLAY_requestDrawing(gc, (SNI_callback)LLUI_PAINTER_IMPL_drawLine)) {
          // Call ui_drawing.h function
          DRAWING_Status status = UI_DRAWING_drawLine(gc, startX, startY, endX, endY);
          // Update the status of the Graphics Engine
@@ -199,7 +199,7 @@ The following diagram illustrates the steps to perform a shape drawing (not an i
       splines="true";
       bgcolor="transparent"
       node [style="filled,rounded" fontname="courier new" fontsize="10"];
-      
+
       { //in/out
          node [shape="ellipse" color="#e5e9eb" fontcolor="black"] mui, UID_soft_c, UID_gpu_hard
       }
@@ -218,7 +218,7 @@ The following diagram illustrates the steps to perform a shape drawing (not an i
 
       // --- SIMPLE FLOW ELEMENTS -- //
 
-      mui [label="[MicroUI]\nPainter.drawXXX();"] 
+      mui [label="[MicroUI]\nPainter.drawXXX();"]
       LLUI_h [label="[LLUI_PAINTER_impl.h]\nLLUI_PAINTER_IMPL_drawXXX();"]
       LLUI_c [label="[LLUI_PAINTER_impl.c]\nLLUI_PAINTER_IMPL_drawXXX();"]
       UID_h [label="[ui_drawing.h]\nUI_DRAWING_drawXXX();"]
@@ -267,7 +267,7 @@ This name redirection is useful when the VEE Port features multiple destination 
 
    // Contrary to the MicroUI C Module, this function is not "weak"
    DRAWING_Status UI_DRAWING_GPU_drawLine(MICROUI_GraphicsContext* gc, jint startX, jint startY, jint endX, jint endY) {
-      
+
       DRAWING_Status status;
 
       if (is_gpu_compatible(xxx)) {
@@ -310,8 +310,8 @@ Most of the time, the GPU performs *asynchronous* drawings: the drawing is start
 To notify the Graphics Engine, the status to return is ``DRAWING_RUNNING``.
 In case of the drawing is done after the call to ``gpu_draw_line()``, the status to return is ``DRAWING_DONE``.
 
-.. warning:: 
-   
+.. warning::
+
    If the drawing status is not set to the Graphics Engine, the global VEE execution is locked: the Graphics Engine waits indefinitely for the status and cannot perform the next drawing.
 
 GPU Synchronization
@@ -339,7 +339,7 @@ Simulation
 Principle
 ---------
 
-This is the same principle as :ref:`section_drawings_cco` for the Embedded side: 
+This is the same principle as :ref:`section_drawings_cco` for the Embedded side:
 
 * The drawing primitive natives called the matching method in ``LLUIPainter``.
 * The ``LLUIPainter`` synchronizes the drawings with the Graphics Engine and dispatches the drawing itself to an implementation of the interface ``UIDrawing``.
@@ -374,7 +374,7 @@ The following diagram illustrates the steps to perform a shape drawing (not an i
       splines="true";
       bgcolor="transparent"
       node [style="filled,rounded" fontname="courier new" fontsize="10"];
-      
+
       { //in/out
          node [shape="ellipse" color="#e5e9eb" fontcolor="black"] mui, UID_soft_c
       }
@@ -387,10 +387,10 @@ The following diagram illustrates the steps to perform a shape drawing (not an i
       { // weak
          node [shape="box" style="dashed,rounded" color="#ee502e"] UID_weak_c
       }
-         
+
       // --- ELEMENTS -- //
-      
-      mui [label="[MicroUI]\nPainter.drawXXX();"] 
+
+      mui [label="[MicroUI]\nPainter.drawXXX();"]
       LLUI_c [label="[FrontPanel]\nLLUIPainter.drawXXX();"]
       UID_h [label="[FrontPanel]\ngetUIDrawer().drawXXX();"]
       UID_weak_c [label="[FrontPanel]\nDisplayDrawer.drawXXX();"]
@@ -480,7 +480,7 @@ The following diagram illustrates the steps to perform a shape drawing (not an i
       splines="true";
       bgcolor="transparent"
       node [style="filled,rounded" fontname="courier new" fontsize="10"];
-      
+
       { //in/out
          node [shape="ellipse" color="#e5e9eb" fontcolor="black"] mui, UID_soft_c, UID_gpu_hard
       }
@@ -496,10 +496,10 @@ The following diagram illustrates the steps to perform a shape drawing (not an i
       { // choice
          node [shape="diamond" color="#e5e9eb"] UID_cond, UID_gpu_cond
       }
-         
+
       // --- SIMPLE FLOW ELEMENTS -- //
 
-      mui [label="[MicroUI]\nPainter.drawXXX();"] 
+      mui [label="[MicroUI]\nPainter.drawXXX();"]
       LLUI_c [label="[FrontPanel]\nLLUIPAINTER.drawXXX();"]
       UID_h [label="[FrontPanel]\ngetUIDrawer().drawXXX();"]
       UID_weak_c [label="[FrontPanel]\nDisplayDrawer.drawXXX();"]
@@ -559,7 +559,7 @@ Let's use the same example as the previous section (draw line function): the Fro
 The Front Panel framework is running over AWT.
 The method ``gc.getImage()`` returns a ``ej.fp.Image``.
 It is the representation of a MicroUI Image in the Front Panel framework.
-The method ``gc.getImage().getRAWImage()`` returns the implementation of the Front Panel image on the Java SE framework: an `AWT BufferedImage`_. 
+The method ``gc.getImage().getRAWImage()`` returns the implementation of the Front Panel image on the Java SE framework: an `AWT BufferedImage`_.
 The AWT graphics 2D can be retrieved from this buffered image.
 
 The MicroUI color (``gc.getRenderingColor()``) is converted to an AWT color.
@@ -594,7 +594,7 @@ There are two possible ways to register it:
          LLUIDisplay.Instance.registerUIDrawer(new MyDrawer());
       }
    }
-   
+
 - Invoke this widget in the .fp file:
 
 .. code-block:: java
@@ -657,7 +657,7 @@ The native drawing function implementation pattern is:
    void Java_com_mycompany_MyPainterClass_drawCustom(MICROUI_GraphicsContext* gc, jint x, jint y) {
 
       // Tell the Graphics Engine if the drawing can be performed
-      if (LLUI_DISPLAY_requestDrawing(gc, (SNI_callback)&Java_com_mycompany_MyPainterClass_drawCustom)) {
+      if (LLUI_DISPLAY_requestDrawing(gc, (SNI_callback)Java_com_mycompany_MyPainterClass_drawCustom)) {
          DRAWING_Status status;
 
          // Perform the drawing (respecting clip if not disabled)
@@ -683,7 +683,7 @@ The native drawing function implementation pattern is as follows (see below for 
 .. code-block:: java
 
    public static void drawCustom(byte[] target, int x, int y) {
-   
+
       // Retrieve the Graphics Engine instance
       LLUIDisplay graphicalEngine = LLUIDisplay.Instance;
 
@@ -828,8 +828,8 @@ The front panel version of the previous example that reported an out-of-memory e
 
 
 ..
-   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
-   for read and redistribute. Except if otherwise stated, modification 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free
+   for read and redistribute. Except if otherwise stated, modification
    is subject to MicroEJ Corp prior approval.
-   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and
    copyrights are the property of their respective owners.
