@@ -98,35 +98,12 @@ The first step is to import the :guilabel:`i.MX RT1170 VEE Port` into your IDE:
          :align: center
          :scale: 70%
 
-* If you are asked to choose a project model, select :guilabel:`Gradle`. 
+* If you are asked to choose a project model, select :guilabel:`Gradle` and click on the :guilabel:`Create` button.
 
-      .. raw:: html
-
-         <div style="display:block;margin-bottom:24px;">
-            <table>
-               <tr>
-                  <td style="width:50%;text-align:center;vertical-align:middle;" alt="Project Model Selection when Opening in IntelliJ IDEA">
-                     <img src="../_images/intellij-import-gradle-project-01.png">
-                  </td>
-                  <td style="width:50%;text-align:center;vertical-align:middle;" alt="Project Model Selection when Importing in IntelliJ IDEA">
-                     <img src="../_images/intellij-import-gradle-project-02.png">
-                  </td>
-               </tr>
-               <tr>
-                  <td style="width:50%;text-align:center;font-size:18px;font-style:italic;">
-                     Fig 1. Project Model Selection when Opening in IntelliJ IDEA
-                  </td>
-                  <td style="width:50%;text-align:center;font-size:18px;font-style:italic;">
-                     Fig 2. Project Model Selection when Importing in IntelliJ IDEA
-                  </td>
-               </tr>
-            </table>
-         </div>
-
-      .. |image1| image:: images/intellij-import-gradle-project-01.png
-      .. |image2| image:: images/intellij-import-gradle-project-02.png
-
-* Click on the :guilabel:`Create` button.
+      .. figure:: images/intellij-import-gradle-project-02.png
+         :alt: New Project From Existing Sources view
+         :align: center
+         :scale: 70%
 
 The Gradle project should now be imported in IntelliJ IDEA, your workspace contains the following projects: 
 
