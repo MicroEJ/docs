@@ -267,10 +267,10 @@ Hardware Setup
 
 Set up the NXP i.MX RT1170 EVKB:
 
-* Check that the dip switches (``SW1``) are set to ``OFF``, ``OFF``, ``ON`` and ``OFF``,
-* Ensure jumper ``J5`` is removed,
-* Connect the display panel ``RK055HDMIPI4MA0``,
-* Connect the micro-USB cable to ``J86`` to power the board,
+* Check that the dip switches (``SW1``) are set to ``OFF``, ``OFF``, ``ON`` and ``OFF``.
+* Ensure jumper ``J5`` is removed.
+* Connect the display panel ``RK055HDMIPI4MA0``.
+* Connect the micro-USB cable to ``J86`` to power the board.
 * Connect a 5 V power supply to ``J43``.
 
   .. figure:: images/iMXRT1170/getting-started-hardware-setup.png
