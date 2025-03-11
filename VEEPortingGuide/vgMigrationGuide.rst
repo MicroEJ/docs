@@ -37,7 +37,7 @@ Optionally, update the :ref:`C Module FreeType <section_vg_c_module_freetype>` t
 
 * Delete the directory ``thirdparty/freetype``.
 * Remove ``thirdparty/freetype/inc`` and ``thirdparty/freetype/inc/ftvector`` from your include path.
-* Add ``thirdparty/freetype/include``, `thirdparty/freetype/src`` and `freetype_support/src`` to your include path.
+* Add ``thirdparty/freetype/include``, ``thirdparty/freetype/src`` and ``freetype_support/src`` to your include path.
 * Remove ``thirdparty/freetype/lib/freetype.a`` from your build path.
 * Build FreeType and add the library and support files following the `C Module FreeType's instructions`_.
 
@@ -51,7 +51,7 @@ Optionally, update the :ref:`C Module HarfBuzz <section_vg_c_module_harfbuzz>` t
 * Delete the directory ``thirdparty/harfbuzz``.
 * Remove ``thirdparty/harfbuzz/inc`` from your include path.
 * Add ``thirdparty/harfbuzz/src`` to your include path.
-* Remove ``thirdparty/harfbuzz/lib/harfbuzz.a`` and `thirdparty/harfbuzz/src/hb-alloc.c`` from your build path.
+* Remove ``thirdparty/harfbuzz/lib/harfbuzz.a`` and ``thirdparty/harfbuzz/src/hb-alloc.c`` from your build path.
 * Build HarfBuzz and add the library and support files following `C Module HarfBuzz's instructions`_.
 
 .. _C Module HarfBuzz's instructions: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/thirdparty/harfbuzz/3.0.0/README-3.0.0.md
@@ -82,7 +82,7 @@ LLAPIs
 BSP with VGLite
 """""""""""""""
 
-* Follow the migration steps of :ref:`BSP with VGLite <section_ui_migrationguide_pack_14.0.2>` for the new UI Pack.
+* Follow the migration steps of :ref:`BSP with VGLite <section_ui_migrationguide_pack_14.0.3>` for the new UI Pack.
 * *[VEE Port configuration project]*
 
 	* Fetch the `VG Pack 1.6.0`_ and the `C Module MicroVG over VGLite 8.0.1`_.

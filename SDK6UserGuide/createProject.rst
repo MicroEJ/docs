@@ -14,6 +14,59 @@ If you want to create a VEE Port project, refer to the :ref:`sdk_6_veeport_creat
 
 .. tabs::
 
+   .. tab:: IntelliJ IDEA
+
+      The creation of a project with IntelliJ IDEA is done as follows:
+      
+      - Click on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...`.
+      - Select :guilabel:`MicroEJ` in :guilabel:`Generators` list on the left panel.
+      - Fill the name of the project in the :guilabel:`Name` field.
+      - Select the location of the project in the :guilabel:`Location` field.
+      - Select the project type. If there is no button for your project type, click on :guilabel:`Other` button and select it in the drop-down list.
+      - If you selected :guilabel:`Application` project type, you can check :guilabel:`This is a kernel application` checkbox if your Application is a Kernel.
+      - Fill the version of the artifact to publish in the :guilabel:`Version` field.
+      - Fill the group of the artifact to publish in the :guilabel:`Group` field.
+      - Fill the name of the artifact to publish in the :guilabel:`Artifact` field.
+      - Select the JVM used by Gradle in the :guilabel:`JDK` combobox.
+      - Check the :guilabel:`Add sample code` checkbox.
+      - Click on :guilabel:`Create` button.
+      
+      .. figure:: images/intellij-create-microej-project.png
+         :alt: Project Creation in IntelliJ IDEA
+         :align: center
+         :scale: 70%
+      
+         Project Creation in IntelliJ IDEA
+
+      .. note::
+         The Gradle project created by the wizard uses Gradle Wrapper with Gradle version ``8.10.2``.
+         Refer to the :ref:`sdk_6_create_project_gradle_wrapper` section for more information.
+
+      .. note::
+         By default, IntelliJ IDEA automatically saves any file change, 
+         but requires the user to explicitly trigger the reload of a Gradle project when its configuration has changed.
+         Therefore, when the configuration of a Gradle project has been updated, 
+         you have to click on the reload icon button which appears on the right of the editor:
+
+         .. figure:: images/intellij-reload-gradle-project.png
+            :alt: Gradle Project reload in IntelliJ IDEA
+            :align: center
+            :scale: 70%
+
+            Gradle Project reload in IntelliJ IDEA
+
+         You can also configure IntelliJ IDEA to automatically reload a Gradle project after a change.
+         Refer to the :ref:`sdk_6_howto_gradle_autoreloading` section for more information.
+      
+      .. warning::
+       When reloading your Gradle project, the build can fail if the SDK EULA has not been accepted.
+       In that case, you must set the ``ACCEPT_MICROEJ_SDK_EULA_V3_1C`` environment variable to ``YES`` and
+       restart IntelliJ IDEA. For more information about SDK EULA, refer to the :ref:`sdk_6_licenses` chapter.
+
+      When the Gradle project is loaded, it should compile successfully, without any error.
+      You can then learn :ref:`how to launch the build of the project <sdk_6_build_project>`, 
+      or :ref:`how to run it on the Simulator <sdk_6_run_on_simulator>` in the case of an Application.
+
    .. tab:: Android Studio
 
       The creation of a project with Android Studio is done as follows:
@@ -101,59 +154,6 @@ If you want to create a VEE Port project, refer to the :ref:`sdk_6_veeport_creat
       You can then learn :ref:`how to launch the build of the project <sdk_6_build_project>`, 
       or :ref:`how to run it on the Simulator <sdk_6_run_on_simulator>` in the case of an Application.
 
-   .. tab:: IntelliJ IDEA
-
-      The creation of a project with IntelliJ IDEA is done as follows:
-      
-      - Click on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...`.
-      - Select :guilabel:`MicroEJ` in :guilabel:`Generators` list on the left panel.
-      - Fill the name of the project in the :guilabel:`Name` field.
-      - Select the location of the project in the :guilabel:`Location` field.
-      - Select the project type. If there is no button for your project type, click on :guilabel:`Other` button and select it in the drop-down list.
-      - If you selected :guilabel:`Application` project type, you can check :guilabel:`This is a kernel application` checkbox if your Application is a Kernel.
-      - Fill the version of the artifact to publish in the :guilabel:`Version` field.
-      - Fill the group of the artifact to publish in the :guilabel:`Group` field.
-      - Fill the name of the artifact to publish in the :guilabel:`Artifact` field.
-      - Select the JVM used by Gradle in the :guilabel:`JDK` combobox.
-      - Check the :guilabel:`Add sample code` checkbox.
-      - Click on :guilabel:`Create` button.
-      
-      .. figure:: images/intellij-create-microej-project.png
-         :alt: Project Creation in IntelliJ IDEA
-         :align: center
-         :scale: 70%
-      
-         Project Creation in IntelliJ IDEA
-
-      .. note::
-         The Gradle project created by the wizard uses Gradle Wrapper with Gradle version ``8.10.2``.
-         Refer to the :ref:`sdk_6_create_project_gradle_wrapper` section for more information.
-
-      .. note::
-         By default, IntelliJ IDEA automatically saves any file change, 
-         but requires the user to explicitly trigger the reload of a Gradle project when its configuration has changed.
-         Therefore, when the configuration of a Gradle project has been updated, 
-         you have to click on the reload icon button which appears on the right of the editor:
-
-         .. figure:: images/intellij-reload-gradle-project.png
-            :alt: Gradle Project reload in IntelliJ IDEA
-            :align: center
-            :scale: 70%
-
-            Gradle Project reload in IntelliJ IDEA
-
-         You can also configure IntelliJ IDEA to automatically reload a Gradle project after a change.
-         Refer to the :ref:`sdk_6_howto_gradle_autoreloading` section for more information.
-      
-      .. warning::
-       When reloading your Gradle project, the build can fail if the SDK EULA has not been accepted.
-       In that case, you must set the ``ACCEPT_MICROEJ_SDK_EULA_V3_1C`` environment variable to ``YES`` and
-       restart IntelliJ IDEA. For more information about SDK EULA, refer to the :ref:`sdk_6_licenses` chapter.
-
-      When the Gradle project is loaded, it should compile successfully, without any error.
-      You can then learn :ref:`how to launch the build of the project <sdk_6_build_project>`, 
-      or :ref:`how to run it on the Simulator <sdk_6_run_on_simulator>` in the case of an Application.
-
    .. tab:: Eclipse
 
       The creation of a project with Eclipse is done as follows:
@@ -212,11 +212,11 @@ If you want to create a VEE Port project, refer to the :ref:`sdk_6_veeport_creat
       - Depending on the type of your project, fill the URI of the corresponding Github template repository in the Search Bar. 
         The available templates are:
       
-         - `Application Project Template <https://github.com/MicroEJ/Tool-Project-Template-Application/tree/1.2.0>`__
-         - `Add-On Library Project Template <https://github.com/MicroEJ/Tool-Project-Template-Add-On-Library/tree/1.2.0>`__
-         - `Mock Project Template <https://github.com/MicroEJ/Tool-Project-Template-Mock/tree/1.2.0>`__
-         - `Runtime Environment Template <https://github.com/MicroEJ/Tool-Project-Template-Runtime-Environment/tree/1.1.0>`__
-         - `Java SE Library Template <https://github.com/MicroEJ/Tool-Project-Template-JavaSE-Library/tree/1.1.0>`__
+         - `Application Project Template <https://github.com/MicroEJ/Tool-Project-Template-Application/tree/1.3.0>`__
+         - `Add-On Library Project Template <https://github.com/MicroEJ/Tool-Project-Template-Add-On-Library/tree/1.3.0>`__
+         - `Mock Project Template <https://github.com/MicroEJ/Tool-Project-Template-Mock/tree/1.3.0>`__
+         - `Runtime Environment Template <https://github.com/MicroEJ/Tool-Project-Template-Runtime-Environment/tree/1.2.0>`__
+         - `Java SE Library Template <https://github.com/MicroEJ/Tool-Project-Template-JavaSE-Library/tree/1.2.0>`__
       
       - Click on :guilabel:`Clone from URL`.
       
@@ -255,11 +255,11 @@ If you want to create a VEE Port project, refer to the :ref:`sdk_6_veeport_creat
       - Depending on the type of your project, retrieve the URI of the corresponding Github template repository. 
         The available templates are:
       
-         - `Application Project Template <https://github.com/MicroEJ/Tool-Project-Template-Application/tree/1.2.0>`__
-         - `Add-On Library Project Template <https://github.com/MicroEJ/Tool-Project-Template-Add-On-Library/tree/1.2.0>`__
-         - `Mock Project Template <https://github.com/MicroEJ/Tool-Project-Template-Mock/tree/1.2.0>`__
-         - `Runtime Environment Template <https://github.com/MicroEJ/Tool-Project-Template-Runtime-Environment/tree/1.1.0>`__
-         - `Java SE Library Template <https://github.com/MicroEJ/Tool-Project-Template-JavaSE-Library/tree/1.1.0>`__
+         - `Application Project Template <https://github.com/MicroEJ/Tool-Project-Template-Application/tree/1.3.0>`__
+         - `Add-On Library Project Template <https://github.com/MicroEJ/Tool-Project-Template-Add-On-Library/tree/1.3.0>`__
+         - `Mock Project Template <https://github.com/MicroEJ/Tool-Project-Template-Mock/tree/1.3.0>`__
+         - `Runtime Environment Template <https://github.com/MicroEJ/Tool-Project-Template-Runtime-Environment/tree/1.2.0>`__
+         - `Java SE Library Template <https://github.com/MicroEJ/Tool-Project-Template-JavaSE-Library/tree/1.2.0>`__
       
       - Clone the repository::
 
@@ -308,7 +308,7 @@ Application Project
 - Add the ``com.microej.gradle.application`` plugin in the ``build.gradle.kts`` file::
 
     plugins {
-        id("com.microej.gradle.application") version "1.0.0"
+        id("com.microej.gradle.application") version "1.1.0"
     }
 
   .. note::
@@ -332,7 +332,7 @@ Add-On Library Project
 - Add the ``com.microej.gradle.addon-library`` plugin in the build script::
 
     plugins {
-        id("com.microej.gradle.addon-library") version "1.0.0"
+        id("com.microej.gradle.addon-library") version "1.1.0"
     }
 
   .. note::
@@ -348,11 +348,13 @@ Mock
 - Add the ``com.microej.gradle.mock`` plugin in the build script::
 
     plugins {
-        id("com.microej.gradle.mock") version "1.0.0"
+        id("com.microej.gradle.mock") version "1.1.0"
     }
 
   .. note::
     The ``java`` plugin must not be added since it is automatically applied by the MicroEJ plugin.
+
+Refer to the :ref:`VEE Porting Guide Mock chapter <mock>` for how to develop a Mock.
 
 Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
 
@@ -364,7 +366,7 @@ Java SE Library Project
 - Add the ``com.microej.gradle.jse-library`` plugin in the build script::
 
     plugins {
-        id("com.microej.gradle.jse-library") version "1.0.0"
+        id("com.microej.gradle.jse-library") version "1.1.0"
     }
 
   .. note::
@@ -380,7 +382,7 @@ Runtime Environment Project
 - Add the ``com.microej.gradle.runtime-environment`` plugin in the build script::
 
     plugins {
-        id("com.microej.gradle.runtime-environment") version "1.0.0"
+        id("com.microej.gradle.runtime-environment") version "1.1.0"
     }
 
   .. note::
@@ -403,26 +405,6 @@ This section explains the different ways to add a module to an existing project.
    :download:`this file <resources/microej.init.gradle.kts>` must be added to your :guilabel:`settings.gradle.kts` file.
 
 .. tabs::
-
-   .. tab:: Android Studio
-
-      The creation of a module with Android Studio is done as follows:
-      
-      - Click on :guilabel:`File` > :guilabel:`New` > :guilabel:`New Module...`.
-      - Select :guilabel:`MicroEJ Module` in :guilabel:`Templates` list on the left panel.
-      - Fill the name of the module in the :guilabel:`Name` field.
-      - Fill the group of the artifact to publish in the :guilabel:`Group` field.
-      - Fill the version of the artifact to publish in the :guilabel:`Version` field.
-      - Select the module type in the drop-down list.
-      - If you selected :guilabel:`Application` module type, you can check :guilabel:`This is a kernel application` checkbox if your Application is a Kernel.
-      - Click on :guilabel:`Finish` button.
-
-      .. figure:: images/android-studio-create-microej-module.png
-         :alt: Module Creation in Android Studio
-         :align: center
-         :scale: 70%
-      
-         Module Creation in Android Studio
 
    .. tab:: IntelliJ IDEA
 
@@ -448,19 +430,25 @@ This section explains the different ways to add a module to an existing project.
       
          Module Creation in IntelliJ IDEA
 
-      - Include the module to your project by adding the following line to the :guilabel:`settings.gradle.kts` file of the project::
-      
-            include("<module_name>")
-      
-      - Right-click on the module name in the Gradle tasks view and click on :guilabel:`Unlink Gradle Project`.
-      - Reload of a Gradle project by clicking on the reload icon button which appears on the right of the editor:
+   .. tab:: Android Studio
 
-         .. figure:: images/intellij-reload-gradle-project.png
-            :alt: Gradle Project reload in IntelliJ IDEA
-            :align: center
-            :scale: 70%
+      The creation of a module with Android Studio is done as follows:
+      
+      - Click on :guilabel:`File` > :guilabel:`New` > :guilabel:`New Module...`.
+      - Select :guilabel:`MicroEJ Module` in :guilabel:`Templates` list on the left panel.
+      - Fill the name of the module in the :guilabel:`Name` field.
+      - Fill the group of the artifact to publish in the :guilabel:`Group` field.
+      - Fill the version of the artifact to publish in the :guilabel:`Version` field.
+      - Select the module type in the drop-down list.
+      - If you selected :guilabel:`Application` module type, you can check :guilabel:`This is a kernel application` checkbox if your Application is a Kernel.
+      - Click on :guilabel:`Finish` button.
 
-            Gradle Project reload in IntelliJ IDEA
+      .. figure:: images/android-studio-create-microej-module.png
+         :alt: Module Creation in Android Studio
+         :align: center
+         :scale: 70%
+      
+         Module Creation in Android Studio
 
    .. tab:: Eclipse
 

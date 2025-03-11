@@ -10,31 +10,44 @@ The following sections provides a non-exhaustive list of tips to make the best u
 Pixel Accurate Display: Window scaling
 --------------------------------------
 
-The Front Panel Display is designed for a pixel-accurate simulation of the GUI application. It uses MicroUI's Graphics Engine, not the system native engine.
-Therefore, the Front Panel does not support scaling of the window. For accurate graphics, the window must not be resized by the system or the application
-that launched the simulation (typically the IDE). Check your settings:
+The Front Panel Display is designed for a pixel-accurate simulation of the GUI application.
+It uses MicroUI's Graphics Engine, not the system native engine.
+Therefore, the Front Panel does not support scaling of the window.
+For accurate graphics, the window must not be resized by the system or the application that launched the simulation (typically the IDE).
+Here are several distinct solutions:
 
 .. tabs::
 
-   .. tab:: System (Windows)
+   .. tab:: Scaling of the Front Panel
 
-      On Windows, check your Display settings:
+      In Windows settings, if the Display is scaled, the application can be launched with the property ``sun.java2d.uiScale`` set to ``1``.
+      It will force the Front Panel to be displayed at 100% instead of the selected value in the Windows Display settings.
 
-      .. figure:: images/windows-settings-display-scale+layout.png
+      .. figure:: images/windows-settings-display-scale125.png
          :alt: Windows Display "Scale & Layout" settings
          :align: center
 
          Windows Display "Scale & Layout" settings
 
-   .. tab:: Application (Windows)
+   .. tab:: Disable auto-scaling
 
-      If needed, override the application auto scaling with the system's in Windows Explorer:
+      Override the application auto scaling with the system's in Windows Explorer:
 
       .. figure:: images/windows-application-high-dpi-scaling-override.png
          :alt: Windows Application "High DPI scaling override" setting
          :align: center
 
          Windows Application "High DPI scaling override" setting
+
+   .. tab:: Reset display scaling
+
+      On Windows, set your Display settings to 100%:
+
+      .. figure:: images/windows-settings-display-scale+layout.png
+         :alt: Windows Display "Scale & Layout" settings
+         :align: center
+
+         Windows Display "Scale & Layout" settings
 
 .. _fp-tips-zoom-pixels:
 
@@ -68,8 +81,12 @@ Also, make sure the tool does not apply a filter to smooth when scaling.
 Take screenshots of the simulated display
 -----------------------------------------
 
-An alternative is to make a screenshot and zooming with an image viewer/editor. For that, use a screenshot tool or programmatically
-extend the Front Panel with:
+An alternative is to make a screenshot and zooming with an image viewer/editor.
+For that:
+
+- Use :ref:`frontpanel_display_screenshot` button (available since UI Pack 14.3.0).
+- Use a screenshot tool.
+- Programmatically extend the Front Panel with:
 
 .. code-block:: java
 
@@ -203,5 +220,5 @@ For example, for ``bpp=RGB565``, apply the following filter:
 Keep the Front Panel always on top
 ----------------------------------
 
-To keep the front panel visible while developing the application, use multiple displays and/or use tools like Microsoft PowerToys'
+To keep the Front Panel visible while developing the application, use multiple displays and/or use tools like Microsoft PowerToys'
 `Always on Top <https://learn.microsoft.com/en-us/windows/powertoys/always-on-top>`_ utility.

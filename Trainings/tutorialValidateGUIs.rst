@@ -32,7 +32,7 @@ Documents and Tools to Improve Application Code Quality
 Here is a list of documents or tools that help to improve the quality of application code:
 
 - The :ref:`Improve the Quality of Java Code<improve_code_quality>` training explains how to improve the Quality of Java Code.
-- The :ref:`Get Started With GUI<tutorial_get_started_with_gui>` training provides guidelines to start developing an efficient GUI.
+- The :ref:`Tutorial-UI<training_gui_raster.coding_challenges>` training provides guidelines to start developing an efficient GUI.
 - The `SonarQube™ <https://github.com/MicroEJ/ExampleTool-Sonar>`_ source code quality analyzer allows to analyze an Application or Library code quality.
 
 Using Recent Versions of UI Libraries

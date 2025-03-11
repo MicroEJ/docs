@@ -147,7 +147,7 @@ A Kernel API or a Runtime Environment module must be added as dependency of the 
       .. code:: java
 
          dependencies {
-            microejRuntimeEnvironment("com.mycompany:myruntimeapi:1.0.0")
+            microejRuntimeEnvironment("com.mycompany:myruntime-environment:1.0.0")
          }
 
    .. tab:: SDK 5

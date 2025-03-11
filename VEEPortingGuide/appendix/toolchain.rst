@@ -67,6 +67,11 @@ by MicroEJ Architectures.
    | ARM Cortex-M0   | GCC                    | YES         | YES         | NO           |
    |                 |                        |             |             |              |
    +-----------------+------------------------+-------------+-------------+--------------+
+   | ARM Cortex-M33  | IAR Embedded Workbench | YES         | YES         | YES          |
+   |                 | for ARM                |             |             |              |
+   +-----------------+------------------------+-------------+-------------+--------------+
+   | ARM Cortex-M33  | GCC                    | YES         | NO          | YES          |
+   +-----------------+------------------------+-------------+-------------+--------------+
    | ARM Cortex-M4   | IAR Embedded Workbench | YES         | YES         | YES          |
    |                 | for ARM                |             |             |              |
    +-----------------+------------------------+-------------+-------------+--------------+
@@ -105,6 +110,14 @@ ARM Cortex-M0
      - ``-mabi=aapcs -mcpu=cortex-m0 -mlittle-endian -mthumb``
      - `flopi0G22 <https://repository.microej.com/modules/com/microej/architecture/CM0/CM0_GCC48/flopi0G22/>`__
 
+ARM Cortex-M33
+==============
+
+MicroEJ supports Cortex-M33 core with DSP extension using :ref:`Cortex-M4 architectures <architectures_toolchains_cm4>`.
+
+
+.. _architectures_toolchains_cm4:
+
 ARM Cortex-M4
 =============
 
@@ -136,8 +149,6 @@ ARM Cortex-M4
 .. note::
   
   -  Cortex-M4 architectures are compiled using ``hardfp`` convention call.
-  -  Cortex-M4 architectures are compatible with Cortex-M33 core with DSP extension.
-
 
 ARM Cortex-M7
 =============

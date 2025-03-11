@@ -11,6 +11,7 @@ Appendices
     ../platformMigration
     ../architecture8Migration
     ../architecture7Migration
+    cmodules
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 

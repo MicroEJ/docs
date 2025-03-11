@@ -58,6 +58,8 @@ And here is an example of an Android String resource:
 
    The Android String resources `string arrays <https://developer.android.com/guide/topics/resources/string-resource#StringArray>`_ feature is also supported.
 
+.. _section.nls.list_files:
+
 NLS List Files
 --------------
 
@@ -875,18 +877,65 @@ Unless it is also referenced by an ``.externresources.list`` in which case the S
 
 This resource is loaded as soon as the BinaryNLS instance is created, in the clinit of the generated NLS interface (see :ref:`Principle <section.nls.principle>`).
 
-Fallback on Default Resource
-----------------------------
+.. _nls_external_resource:
 
-When using a resource referenced as External Resource (``.externresources.list``), the application is not guaranteed to access it at startup (external memory failure, corruption, ...).
+External Resource
+-----------------
 
-The application can be configured to fallback on a default resource embedded in the Application binary.
-This resource can be a "lighter" version of the one loaded using the External Resources Loader (e.g. only embed the English language).
+When the resource is also referenced by a ``.nls.externresources.list`` file (cf. :ref:`section.nls.list_files`),
+it can be loaded as External Resource in order to be loaded from an external memory (e.g. from a FileSystem).
+
+.. note::
+ 
+ This mode requires to setup the :ref:`External Resources Loader<section_externalresourceloader>` in the VEE Port.
 
 Usage
 ^^^^^
 
-The procedure below assumes that the application already has localization source files named ``HelloWorldMessages*.po`` that are referenced as External Resource.
+The procedure below assumes that the application already has localization source files named ``HelloWorldMessages*.po``
+referenced as internal resources in a ``.nls.list`` file. 
+The localization source files are declared as follows in the ``.nls.list`` file: ``com.microej.example.nls.generated.HelloWorldMessages``.
+
+The procedure below explains how to declare those translations as an External Resource:
+
+- Create a ``.nls.externresources.list`` file next to the ``.nls.list`` file,
+- Add the path to the generated External Resource. This path can be deduced from the declaration done in the
+  ``.nls.list`` file, for example:
+  
+  Content of the ``.nls.list`` file:
+
+  .. code::
+
+    com.microej.example.nls.generated.HelloWorldMessages
+
+  Path to add in the ``.nls.externresources.list`` file:
+
+  .. code::
+
+    /com/microej/example/nls/generated/HelloWorldMessages.nls
+   
+  This path can also be found in the application build folder once the application has been built for the device 
+  (e.g. ``build/adp/src-adpgenerated/binarynls/java/com/microej/exercises/generated/HelloWorldMessages.nls.resources.list``).
+  
+- Build the application for the device,
+- Open the :ref:`soar_map_file` file to check that the translations are not embedded anymore in the application binary.
+  The ``xxx_HelloWorldMessages_*.nls`` lines **must** not appear anymore in the ``ApplicationResources`` section.
+- The resource containing translations is now located in the :ref:`External Resources Folder <external_resources_folder>`
+  (e.g. ``build/application/object/externalResources/com/microej/exercises/generated/HelloWorldMessages.nls``).
+  This resource must be embedded on the target and loaded using the External Resources Loader.
+  For more information, refer to the :ref:`External Resources Loader Use section <external_resources_folder.use>`.
+
+When using a resource referenced as External Resource,
+the application is not guaranteed to access it at startup (external memory failure, corruption, ...).
+
+The application can be configured to fallback on a default resource embedded in the Application binary.
+This resource can be a "lighter" version of the one loaded using the External Resources Loader (e.g. only embed the English language).
+
+Fallback on Default Resource
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The procedure below assumes that the application already has localization source files named 
+``HelloWorldMessages*.po`` that are referenced as External Resource.
 
 The procedure below explains how to setup the fallback on a default resource embedding the ``en_US`` locale only:
 
@@ -1012,8 +1061,8 @@ close this resource, before it can potentially be modified depending on the exte
 
 .. _chapter.microej.nlsExternalLoader:
 
-NLS External Loader Tool
-------------------------
+Virtual Device PO Loader Tool
+-----------------------------
 
 The `NLS External Loader`_ tool allows to update the PO files of an application executed on a Virtual Device without rebuilding it.
 PO files can be dropped in a given location in the Virtual Device folders to dynamically replace the language strings packaged in the application.

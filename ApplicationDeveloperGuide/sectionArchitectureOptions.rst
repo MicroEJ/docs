@@ -287,6 +287,8 @@ Option(text): Timeout (s)
 It specifies the time the MicroEJ Simulator should wait before failing when
 it invokes native methods.
 
+.. _option_hil_maximum_frame_size:
+
 Option(text): Maximum frame size (bytes)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

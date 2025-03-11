@@ -8,6 +8,15 @@ Migration Notes
    When updating the plugin version, it is recommended to perform a ``clean`` on your project(s).
    For multi-projects, run the ``clean`` command on the root project.
 
+-------------------
+From 1.0.0 to 1.1.0
+-------------------
+
+The following plugins have been removed:
+
+- plugin ``com.microej.gradle.j2se-library``, replaced by ``com.microej.gradle.jse-library``.
+- plugin ``com.microej.gradle.runtime-api``, replaced by ``com.microej.gradle.runtime-environment``.
+
 ---------------------
 From 0.19.0 to 0.20.0
 ---------------------
@@ -101,6 +110,24 @@ and set the property ``applicationEntryPoint`` to the Full Qualified Name of the
    microej {
       applicationEntryPoint = "com.mycompany.MyFeature"
    }   
+
+Testsuite Execution
+~~~~~~~~~~~~~~~~~~~
+
+When upgrading from ``0.15.0`` to an higher version (up to ``1.0.0``), you may encounter the following error when executing a testsuite::
+
+   Preparing the execution of tests with the MicroEJ JUnit test engine
+
+   org.junit.platform.commons.JUnitException: TestEngine with ID 'microej-junit-test-engine' failed to execute tests
+      at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:113)
+      at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88)
+      ...
+   Caused by: com.microej.testengine.TestEngineException: More than one VEE Port have been provided to run the testsuite
+      at com.microej.testengine.MicroejTestEngine.execute(MicroejTestEngine.java:203)
+      at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:107)
+      ... 29 more
+
+Execute the ``clean`` task before executing the testsuite to solve this issue.
 
 ---------------------
 From 0.14.0 to 0.15.0

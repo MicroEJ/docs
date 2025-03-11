@@ -29,6 +29,7 @@ Let's have a look at the mostly used configurations:
 - **testImplementation** (from Gradle Java plugin) : Dependencies used by the test classes of the project.
   This configuration extends the **implementation** configuration, so it inherits from all the dependencies declared with the **implementation** configuration.
 - **microejVee** : VEE Port, Virtual Device or Kernel used by the project for build and test.
+- **testMicroejVee** : VEE Port, Virtual Device or Kernel used by the project for test only.
 
 Here is an example of dependencies declaration for a project::
 

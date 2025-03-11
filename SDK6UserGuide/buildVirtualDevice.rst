@@ -18,7 +18,7 @@ Once these prerequisites are fulfilled, the Virtual Device can be built:
 
 .. tabs::
 
-   .. tab:: Android Studio / IntelliJ IDEA
+   .. tab:: IntelliJ IDEA / Android Studio
 
       By double-clicking on the ``buildVirtualDevice`` task in the Gradle tasks view:
 

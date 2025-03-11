@@ -81,9 +81,9 @@ Project configuration
 
 .. tabs::
 
-   .. tab:: Android Studio / IntelliJ IDEA
+   .. tab:: IntelliJ IDEA / Android Studio
 
-    Follow these steps to enable the Null Analysis tool in Android Studio and IntelliJ IDEA:
+    Follow these steps to enable the Null Analysis tool in IntelliJ IDEA and Android Studio:
 
     - Go to :guilabel:`File` > :guilabel:`Settings...`.
     - Go to :guilabel:`Editor` > :guilabel:`Inspections`.
@@ -225,7 +225,7 @@ Disabling Analysis for Test Folder
 
 .. tabs::
 
-   .. tab:: Android Studio / IntelliJ IDEA
+   .. tab:: IntelliJ IDEA / Android Studio
 
     The Analysis of the test folder can be disabled by unchecking the option ``Include test sources`` when launching a Code Inspection:
 
@@ -273,7 +273,7 @@ Sharing Null Analysis IDE Configuration
 
 .. tabs::
 
-   .. tab:: Android Studio / IntelliJ IDEA
+   .. tab:: IntelliJ IDEA / Android Studio
 
     The configuration related to Null Analysis is located in the ``.idea/misc.xml`` and ``.idea/inspectionProfiles/*`` files.
     In order to share them, they must be committed in your project source reposiory.
@@ -286,7 +286,7 @@ Sharing Null Analysis IDE Configuration
 
       .. warning::
 
-        Android Studio and IntelliJ IDEA create a ``.gitignore`` file in the ``.idea`` folder.
+        IntelliJ IDEA and Android Studio create a ``.gitignore`` file in the ``.idea`` folder.
         You can remove it or adapt it to fit your needs.
 
    .. tab:: Eclipse

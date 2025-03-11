@@ -57,13 +57,8 @@ Executing tests on the Simulator allows to check the behavior of the code in an 
 but without requiring the board.
 This solution is therefore less constraining and more portable than testing on the board.
 
-The target VEE Port must be declared in the projects dependencies, as explained in :ref:`sdk_6_select_veeport`.
 
-Declaring a VEE Port in project dependencies only applies to the current project. 
-This configuration is not fetched transitively by consumer projects.
-Especially when configuring the VEE Port to test a library project, 
-application projects depending on this library will not "see" this test VEE Port, 
-they must configure a VEE Port on their own and are free to use a different one.
+.. _sdk_6_testsuite_configuration:
 
 Configure the Testsuite
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -98,6 +93,43 @@ This piece of configuration is the minimum configuration required to define a te
   to annotate Java Test classes. Finally the fourth line declares a dependency to a required JUnit library.
 
 
+.. _sdk_6_testsuite_vee_configuration:
+
+Configure the VEE
+~~~~~~~~~~~~~~~~~
+
+The VEE used to execute the tests must be declared in the project dependencies,
+with the ``microejVee`` or the ``testMicroejVee`` configuration (refer to :ref:`sdk_6_select_veeport` for more details on the selection capabilities).
+A VEE declared with the ``microejVee`` configuration is used to run the Application, as well as to execute the testsuites.
+The ``microejVee`` is generally used in Application projects, since the tests should run on the same Application target VEE::
+
+   dependencies {
+       ...
+       microejVee("com.mycompany:vee-port:1.0.0")
+   }
+
+A VEE declared with the ``testMicroejVee`` configuration is used only for the testsuites.
+It is recommended in Library projects, since they don't need a VEE to run, the VEE is scoped for the tests only::
+
+   dependencies {
+       ...
+       testMicroejVee("com.mycompany:vee-port:1.0.0")
+   }
+
+As a summary, the rules are:
+
+- Only one VEE must be declared globally.
+- If the VEE is declared with ``microejVee``, it is used to run the Application (if it is an Application) and to execute the tests.
+- If the VEE is declared with ``testMicroejVee``, it is only used to execute the tests.
+
+.. warning::
+
+   Declaring a VEE in project dependencies only applies to the current project. 
+   This configuration is not fetched transitively by consumer projects.
+   But it is highly recommended to scope the VEE to its usage since this behavior is aimed to change in a future version.
+   Especially when configuring the VEE to test a Library project, it is recommended to use ``testMicroejVee``.
+
+
 Create a Test Class
 ~~~~~~~~~~~~~~~~~~~
 
@@ -123,7 +155,7 @@ This can be done manually or with IDE menu:
   
 .. tabs::
 
-   .. tab:: Android Studio / IntelliJ IDEA
+   .. tab:: IntelliJ IDEA / Android Studio
 
       - right-click on the ``src/test/java`` folder.
       - select :guilabel:`New` > :guilabel:`Java Class`, then press ``Alt`` + ``Insert`` and select ``Test Method``.
@@ -160,9 +192,9 @@ which means that the tests are also executed when launching one of these tasks.
 
 .. tabs::
 
-   .. tab:: Android Studio / IntelliJ IDEA
+   .. tab:: IntelliJ IDEA / Android Studio
 
-      In order to execute the testsuite from Android Studio or IntelliJ IDEA, double-click on the task in the Gradle tasks view:
+      In order to execute the testsuite from IntelliJ IDEA or Android Studio, double-click on the task in the Gradle tasks view:
 
       .. image:: images/intellij-test-gradle-project.png
          :width: 30%
@@ -419,21 +451,12 @@ Then you can use it in your test classes:
 Test Suite Reports
 ------------------
 
-Once a testsuite is completed, the JUnit XML report is generated in the module project location ``build/testsuite/output/<date>/testsuite-report.xml``.
+Once a testsuite is completed, the JUnit HTML report is generated in the module project location ``build/reports/tests/<testsuite>/index.html``.
 
-  .. figure:: ../SDKUserGuide/images/testsuiteReportXMLExample.png
-     :alt: Example of MicroEJ Test Suite XML Report
+  .. figure:: ../SDK6UserGuide/images/junitHtmlReport.png
+     :alt: Example of JUnit HTML Report
      
-     Example of MicroEJ Test Suite XML Report
-  
-  XML report file can also be opened In Eclipse in the JUnit View. 
-  Right-click on the file > :guilabel:`Open With` >  :guilabel:`JUnit View`:
-
-  .. figure:: ../SDKUserGuide/images/testsuiteReportXMLExampleJunitView.png
-     :alt: Example of MicroEJ Test Suite XML Report in JUnit View
-     
-     Example of MicroEJ Test Suite XML Report in JUnit View
-
+     Example of JUnit HTML Report
 
 .. _sdk_6_mixing_testsuites:
 

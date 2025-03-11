@@ -411,7 +411,7 @@ Functions ``LLUI_DISPLAY_IMPL_imageHeapXXX`` allow to control the image buffers 
 Implementation of these LLAPIs is already available on the Central Repository (``LLUI_DISPLAY_HEAP_impl.c``). 
 This implementation is using a best fit allocator. 
 It can be updated to log the allocations, the remaining space, etc. 
-When no implementation is included in the BSP, the default Graphics Engine'a allocator (a best fit allocator) is used.
+When no implementation is included in the BSP, the default Graphics Engine's allocator (a best fit allocator) is used.
 
 .. _ResourceImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html
 .. _BufferedImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html

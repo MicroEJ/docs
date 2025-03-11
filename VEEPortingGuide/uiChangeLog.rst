@@ -6,6 +6,84 @@
 Changelog
 =========
 
+.. _section_ui_changelog_14_3_3:
+
+[14.3.3] - 2025-02-18
+=====================
+
+FrontPanel
+""""""""""
+
+**Fixed**
+
+- Fix the five issues of the UI Pack 14.3.2 (see below).
+
+.. _section_ui_changelog_14_3_2:
+
+[14.3.2] - 2025-02-10
+=====================
+
+FrontPanel
+""""""""""
+
+**Fixed**
+
+- Fix the performance issue of ``LLUIDisplay.convertRegion()`` when using the Front Panel Framework 1.3.0.
+
+**Known Issues**
+
+.. warning:: The following issues concern the UI Packs **14.3.0** and **14.3.2**.
+
+*Front Panel*
+
+- On non-rectangular displays (see :ref:`section_ui_simulation_display`), the Front Panel widget display's filter sometimes disappears partially, causing some visual glitches around the display.
+- The rendering of Front Panel widgets other than the display is truncated: the right and bottom lines (1 pixel thick) are missing.
+  This is caused by the widget rendering clip being too small.
+  As a workaround, you can increase the size of each widget image with empty lines on the right and bottom sides.
+- With a zoom other than 1:1, some Front Panel widgets other than the display may not be rendered, or may be truncated.
+
+*Flush Visualizer*
+
+- A native Concurrent Exception may be thrown during application animations.
+  This is due to the drawing storage not being synchronized with the Flush Visualizer text file dump.
+- On non-rectangular displays (see :ref:`section_ui_simulation_display`), the Front Panel widget display's filter sometimes disappears partially, causing some visual glitches around the display in the screenshot.
+
+.. _section_ui_changelog_14_3_0:
+
+[14.3.0] - 2025-01-24
+=====================
+
+FrontPanel
+""""""""""
+
+**Added**
+
+- Add the class ``ej.fp.widget.display.Rectangle`` (extracted from ``ej.tool.frontpanel#widget#4.0.2``).
+- Add all MicroUI and Drawing algorithms in the Flush Visualizer traces.
+- Add a toolbar with various options (zoom, etc.).
+- Add a statusbar with various information (current zoom, coordinates, etc.).
+- Add the ability to resize and/or scroll the Front Panel.
+
+**Changed**
+
+- Speed up the drawing of images whose format is identical to the display, without transparency or transformation.
+- Display a tree of regions and drawings in the Flush Visualizer traces.
+- Use the Front Panel Framework 1.3.0 to implement ``LLUIDisplay.convertRegion()``.
+
+ImageGenerator
+""""""""""""""
+
+**Fixed**
+
+- Fix the usage of an incompatible or corrupted cache (drop it).
+
+FontGenerator
+"""""""""""""
+
+**Fixed**
+
+- Fix the usage of an incompatible or corrupted cache (drop it).
+
 .. _section_ui_changelog_14_2_0:
 
 [14.2.0] - 2024-11-18

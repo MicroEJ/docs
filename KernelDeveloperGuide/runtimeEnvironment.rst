@@ -43,7 +43,7 @@ Create a new Runtime Environment Module
       .. code:: java
 
          plugins {
-            id("com.microej.gradle.runtime-environment") version "1.0.0"
+            id("com.microej.gradle.runtime-environment") version "1.1.0"
          }   
 
    .. tab:: SDK 5
