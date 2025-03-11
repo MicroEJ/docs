@@ -244,21 +244,19 @@ Hardware Setup
 
 Set up the NXP i.MX RT1170 EVKB:
 
-* Check that the dip switches (``SW1``) are set to ``OFF``, ``OFF``, ``ON`` and ``OFF``.
-* Ensure jumper ``J5`` is removed.
-* Connect the display panel ``RK055HDMIPI4MA0``.
-* Connect the micro-USB cable to ``J86`` to power the board.
-* Connect a 5 V power supply to ``J43``.
-
-  .. figure:: images/iMXRT1170/getting-started-hardware-setup.png
+  .. figure:: images/iMXRT1170/getting-started-hardware-setup.jpg
      :alt: NXP i.MX RT1170 EVKB Hardware Setup
      :align: center
 
      NXP i.MX RT1170 EVKB Hardware Setup
-     
-The USB connection is used as a serial console for the SoC, as a CMSIS-DAP debugger and as a power input for the board.
 
-The VEE Port uses the virtual UART from the i.MX RT1170 Evaluation Kit USB port. A COM port is automatically mounted when the board is plugged into a computer using a USB cable. All board logs are available through this COM port.
+* Check that the dip switches (SW1) are set to OFF, OFF, ON, and OFF.
+* Connect a micro-USB cable to J86 to power the board.
+* You can connect a 5V power supply to J43 if you need to use the display
+     
+The USB connection is used as a serial console for the SoC, as a CMSIS-DAP debugger, and as a power input for the board.
+
+The VEE Port uses the virtual UART from the i.MX RT1170 EVKB USB port. A COM port is automatically mounted when the board is plugged into a computer using a USB cable. All board logs are available through this COM port.
 
 The COM port uses the following parameters:
 
