@@ -19,6 +19,33 @@ This binary code is linked by a tool named :ref:`SOAR <soar>` before execution: 
 .. [2]
    Tim Lindholm & Frank Yellin, The Java™ Virtual Machine Specification, Second Edition, 1999
 
+.. _java_lambdas:
+
+Java Lambdas
+~~~~~~~~~~~~
+
+.. note::
+
+   This feature is available for SDK 6 only and requires an Architecture version ``8.0.0`` or higher.
+
+Starting from SDK 6 ``1.0.0``, it is possible to use Java lambdas in the code of your Application. This feature is disabled by default, you can enable it as follows:
+
+- Apply the `Foojay Toolchains Plugin <https://github.com/gradle/foojay-toolchains>`__ in the ``settings.gradle.kts`` file of your project::
+
+    plugins {
+        id("org.gradle.toolchains.foojay-resolver-convention").version("0.9.0")
+    }
+
+- Set the project property ``java.lambdas.enabled`` to ``true`` in command line with the ``-P`` argument:
+
+.. code:: console
+   
+   $ ./gradlew runOnSimulator -Pjava.lambdas.enabled=true
+
+or by adding it in the ``gradle.properties`` file of your project::
+
+    java.lambdas.enabled=true
+
 .. _runtime_core_libraries:
 
 Core Libraries
