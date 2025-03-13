@@ -6,6 +6,25 @@
 Changelog
 =========
 
+.. _section_ui_changelog_14_4_1:
+
+[14.4.1] - 2025-03-13
+=====================
+
+MicroUI
+"""""""
+
+**Changed**
+
+- Change some log identifiers to be backward compatible with the UI Pack since version 12.1.5.
+
+FrontPanel
+""""""""""
+
+**Fixed**
+
+- Fix the use of the logs in the mode ``s3.board.compliant`` (Use target characteristics).
+
 .. _section_ui_changelog_14_4_0:
 
 [14.4.0] - 2025-03-07
