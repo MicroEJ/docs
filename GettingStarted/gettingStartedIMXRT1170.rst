@@ -322,7 +322,7 @@ In order to flash the :guilabel:`animatedMascot` Application on i.MX RT1170 Eval
          :align: center
          :scale: 70%
 
-Once the firmware is flashed, you should see the :guilabel:`animatedMascot` running on your board.      
+Once the firmware is flashed, you should see the :guilabel:`animatedMascot` running on your board. 
 
 .. raw:: html
 
@@ -346,9 +346,6 @@ Once the firmware is flashed, you should see the :guilabel:`animatedMascot` runn
          </tr>
       </table>
    </div>
-
-.. |image3| image:: images/iMXRT1170/getting-started-rt1170-hardware-demo-running.jpg
-.. |image4| image:: images/iMXRT1170/getting-started-rt1170-termite-application-output.png
 
 .. _sdk_6_getting_started_rt1170_modify_java_application:
 
