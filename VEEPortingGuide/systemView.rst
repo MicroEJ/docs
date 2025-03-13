@@ -182,7 +182,7 @@ Modify startup code of your BSP
       See section :ref:`systemview_no_rtt_block` for more details.
       You may also find the RTT block address in RAM by searching ``_SEGGER_RTT`` in the .map file generated with the firmware binary.
 
-#. Add a call to ``SEGGER_SYSVIEW_setMicroJVMTask((U32)pvCreatedTask);`` just after creating the OS task to register the MicroEJ Core Engine OS task. The handler to give is the one filled by the ``xTaskCreate`` function.
+#. Add a call to ``SYSVIEW_setMicroJVMTask(pvCreatedTask);`` just after creating the OS task. The handler to give is the parameter of type TaskHandle_t passed to the ``xTaskCreate`` function. This will register the MicroEJ Core Engine OS task.
 
 Add description files to Systemview installation folder
 -------------------------------------------------------
