@@ -6,10 +6,15 @@
 Migration Guide
 ===============
 
-.. _section_ui_migrationguide_pack_14.4.0:
+.. _section_ui_migrationguide_pack_14.4.1:
 
-From 14.3.3 to 14.4.0
+From 14.3.3 to 14.4.1
 =====================
+
+MicroUI
+"""""""
+
+* Update the SystemView description file for MicroUI logs as described :ref:`here<microui_systemview>`.
 
 Front Panel
 """""""""""

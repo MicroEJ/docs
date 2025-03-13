@@ -489,6 +489,8 @@ The following tables describe some events data.
    * - 0x1 (1)
      - nearest neighbor
 
+.. _microui_systemview:
+
 SystemView Integration
 ----------------------
 
@@ -591,7 +593,7 @@ The following text can be copied in a file called ``SYSVIEW_MicroUI.txt`` and co
    # Old Drawing Events
    # ------------------
 
-   # Deprecated (kept for backward compatibility UI Pack < 14.4.0)
+   # Deprecated (kept for backward compatibility UI Pack < 14.4.1)
 
    NamedType UIDrawAlgo 1=WRITE_PIXEL
    NamedType UIDrawAlgo 2=DRAW_LINE
@@ -669,7 +671,7 @@ The following text can be copied in a file called ``SYSVIEW_MicroUI.txt`` and co
 
    # [10-19]: 10 events
 
-   # Deprecated (kept for backward compatibility UI Pack < 14.4.0)
+   # Deprecated (kept for backward compatibility UI Pack < 14.4.1)
    10       UI_FlushStart      region=(%u,%u)(%ux%u)
    11       UI_FlushDone       flush done
    12       UI_DrawInternal    draw=%UIDrawAlgo                   | draw=%UIDrawAlgo done
@@ -703,7 +705,7 @@ The following text can be copied in a file called ``SYSVIEW_MicroUI.txt`` and co
 
    # [40-139]: 100 events (see symbol CCO_MICROUI_NB_LOGS)
 
-   # Deprecated (kept for backward compatibility UI Pack < 14.4.0)
+   # Deprecated (kept for backward compatibility UI Pack < 14.4.1)
    40       UI_Draw              %UIDrawAlgo  |  %UIDrawAsync
    50       BRS_NewRegion        region (%u,%u) to (%u,%u)
    53       BRS_AddRegion        (%u,%u) to (%u,%u)
