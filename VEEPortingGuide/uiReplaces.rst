@@ -1,7 +1,7 @@
 
 .. |UIPACKVERSION| replace:: 14.4.1
 .. |FPFRAMEWORKVERSION| replace:: 1.3.0
-.. |FPWIDGETSVERSION| replace:: 5.3.0
+.. |FPWIDGETSVERSION| replace:: 5.3.1
 .. |MICROUIVERSION| replace:: 3.6.0
 
 .. |VGPACKVERSION| replace:: 1.7.0
