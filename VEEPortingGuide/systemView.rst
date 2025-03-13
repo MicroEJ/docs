@@ -43,13 +43,13 @@ SEGGER SystemView: http://segger.com/downloads/systemview/.
 .. note:: This SystemView section has been written for SystemView version V2.52a. Later versions may need modification to the following steps.
 
 .. note::
-   This download page also contains links to download the "Target Sources" package. The next sections of this documentation will go through the installation of those. If your BSP project already integrates a specific version, make sure to download & install the matching version of the SystemView program.
+   This download page also contains links to download the "Target Sources" package. The following sections of this documentation will go through the installation of those. If your BSP project already integrates a specific version, make sure to download & install the matching version of the SystemView program.
 
 Integrate SystemView in your VEE Port
 =====================================
 
 For detailed instructions on the integration of SystemView Target Sources in your BSP, please refer to the "Getting started with SystemView on the target" section of the SystemView User Manual.
-Especially, this documentation focuses on the integration with FreeRTOS. If you integrating with a different RTOS, make sure to check the samples in the Target Sources package.
+This documentation focuses on the integration with FreeRTOS. If you are integrating with a different RTOS, make sure to check the samples in the Target Sources package.
 
 Apply FreeRTOS patch
 --------------------
@@ -63,17 +63,6 @@ The patch is available in the Systemview installation folder: ``<installation_di
 
 .. note::
    For FreeRTOS v10.2.0, the official patch may not work. Here is an `unofficial patch <https://forum.segger.com/index.php/Thread/6158-SOLVED-SystemView-Kernelpatch-for-FreeRTOS-10-2-0/?s=add3b0f6a33159b9c4b602da0082475afeceb89a>`_
-
-Disable traces of recurrent OS events
--------------------------------------
-
-Not all OS events are useful to the profiling analysis. It can be useful to filter out events from systick/queue/... in order to reduce the load and improve the stability of the analysis
-
-On FreeRTOS, here are the changes to disable these traces:
-
-#. In ``port.c``, comment the calls to all functions beginning by ``traceISR``.
-
-#. In ``queue.c``, comment the calls to all functions beginning by ``traceQUEUE_SEND``, ``traceQUEUE_RECEIVE`` and ``traceQUEUE_PEEK``.
 
 Add source files to your BSP for SystemView with MicroEJ/FreeRTOS integration
 -----------------------------------------------------------------------------
@@ -154,12 +143,17 @@ This file can be modified to fit your system configuration:
             SEGGER_SYSVIEW_SetRAMBase(SYSVIEW_RAM_BASE);
          }
 
-2. Add in your BSP the MicroEJ C module files for SystemView: `com.microej.clibrary.thirdparty#systemview`_. These files correspond to the sources provided in the installation folder of Systemview (``<installation_dir>/Src/SEGGER``) with a patch for MicroEJ (including recommended configuration and prefix for task names).
+2. Add in your BSP the MicroEJ C module files for SystemView: `com.microej.clibrary.thirdparty#systemview`_. These files correspond to the sources provided in the installation folder of Systemview (``<installation_dir>/Src/SEGGER``) with a patch for MicroEJ (including recommended configuration and prefixes for task names).
 
 #. Add in your BSP the MicroEJ C module files for SystemView FreeRTOS support. These files correspond to the sources provided in the installation folder of Systemview (``<installation_dir>/Src/Sample/FreeRTOSVXX`` and ``<installation_dir>/Src/Sample/FreeRTOSVXX/Config``) with a patch for MicroEJ.
    
    * FreeRTOS 10: `com.microej.clibrary.thirdparty#systemview-freertos10`_ 
    * For other versions of FreeRTOS, please contact :ref:`our support team <get_support>`.
+
+   Not all OS events are useful to the profiling analysis. It can be useful to filter out events from systick/queue/... in order to reduce the load and improve the stability of the analysis. To disable these traces on FreeRTOS, modify ``SEGGER_SYSVIEW_FreeRTOS.h``:
+
+   * Comment the defines beginning by ``traceISR``.
+   * Comment the defines beginning by ``traceQUEUE``.
 
 #. Add in your BSP the Abstraction Layer implementation of the :ref:`Java Trace API <trace_implementations>` for SystemView by adding C module files in your BSP: `com.microej.clibrary.llimpl#trace-systemview`_
 
@@ -285,8 +279,7 @@ Add custom events to the SystemView analysis
 MicroEJ Architecture can generate specific events that allow monitoring of current Java thread, Java exceptions, Java allocations, ... as well as custom application events.
 Please refer to the :ref:`event-tracing` section.
 
-For Application custom events, the first step is to add logs in the Java application using a dedicated ``Tracer``. Please read the documentation
-page :ref:`codeInstrumentationForLogging`. Below is an example of ``Tracer`` usage:
+For custom application events, the first step is to add logs to the Java application using a dedicated ``Tracer``. Please read the documentation page :ref:`codeInstrumentationForLogging`. Below is an example of ``Tracer`` usage:
 
 .. code-block:: java
 
@@ -349,7 +342,7 @@ MicroEJ Core Engine OS Task
 
 The :ref:`MicroEJ Core Engine <core_engine>` task is the native OS task that executes the Core Engine internals & the Application threads.
 The provided SystemView configuration replaces (splits) the execution segments of this OS task with (into) the different components that are actually executed.
-This simplifies profiling analysis by exposing the execution segments of the Scheduler, Garbage Collector & the different Application threads (with their names, see section below) directly into SystemView's timeline, along with the other native OS tasks.
+This simplifies profiling analysis by exposing the execution segments of the Scheduler, Garbage Collector & the different Application threads (with their names, see the section below) directly into SystemView's timeline, along with the other native OS tasks.
 
 OS Tasks and Java Threads Names
 -------------------------------
