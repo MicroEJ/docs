@@ -3,7 +3,7 @@
 Getting Started
 ===============
 
-      .. figure:: images/gettingStarted/getting-started_DOC_1200x297.jpg
+      .. figure:: images/getting-started_DOC_1200x297.jpg
          :alt: Getting Started Banner
          :align: center
          :scale: 100%
@@ -45,22 +45,22 @@ In case you cannot get hands on your desired starter kit, please contact us, we 
    :header-rows: 0
 
    * - |logo_nxp|
-     - |image_imx93|
-       :ref:`i.MX 93 Evaluation Kit <sdk_6_getting_started_imx93>`
-   * - |logo_nxp|
      - |image_rt1170|
        :ref:`i.MX RT1170 Evaluation Kit <sdk_6_getting_started_imxrt1170>`
+   * - |logo_nxp|
+     - |image_imx93|
+       :ref:`i.MX 93 Evaluation Kit <sdk_6_getting_started_imx93>`
    * - |logo_st|
      - |image_stm32f7508|
-       :ref:`STM32F7508-DK Evaluation Kit <sdk_6_getting_started_stm32f7508>`
+       :ref:`STM32F7508-DK Discovery Kit <sdk_6_getting_started_stm32f7508>`
 
 .. toctree::
    :hidden:
 
-   gettingStartedIMX93
    gettingStartedIMXRT1170
+   gettingStartedIMX93
    gettingStartedSTM32F7508
-   
+
 VEE Port Examples
 -----------------
 
@@ -76,14 +76,14 @@ These VEE ports are provided as-is. They can include libraries that are not the 
 
 All VEE Port source code examples can be found at `GitHub <https://github.com/MicroEJ/?q=VEE&type=all&language=&sort=>`_.
 
-.. |logo_nxp| image:: images/gettingStarted/logo-nxp_100px.png
+.. |logo_nxp| image:: images/logo-nxp_100px.png
 
-.. |logo_st| image:: images/gettingStarted/logo-st_100px.png
+.. |logo_st| image:: images/logo-st_100px.png
 
-.. |image_rt595| image:: images/gettingStarted/Board-NXP_i.MX-RT595-EK_100px.png
-.. |image_imx93| image:: images/gettingStarted/Board-NXP_i.MX-93-EK_100px.png
-.. |image_rt1170| image:: images/gettingStarted/Board-NXP_i.MX-RT1170-EK_100px.png
-.. |image_stm32f7508| image:: images/gettingStarted/Board-ST_STM32F7508-DK_100px.png
+.. |image_rt595| image:: images/Board-NXP_i.MX-RT595-EK_100px.png
+.. |image_imx93| image:: images/Board-NXP_i.MX-93-EK_100px.png
+.. |image_rt1170| image:: images/Board-NXP_i.MX-RT1170-EK_100px.png
+.. |image_stm32f7508| image:: images/Board-ST_STM32F7508-DK_100px.png
 
 .. toctree::
    :hidden:

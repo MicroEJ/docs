@@ -75,7 +75,7 @@ The first step is to import the :guilabel:`Demo-Wearable-VG` Application into yo
 * If you are in the Welcome Screen, click on the :guilabel:`Open` button. Otherwise click either on :guilabel:`File` > :guilabel:`Open...` or on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project From Existing Sources...`.
 * Select the ``Demo-Wearable-VG`` directory located where you downloaded it and click on the :guilabel:`OK` button.
 
-      .. figure:: images/gettingStarted/iMXRT595/getting-started-import-demo-application.png
+      .. figure:: images/iMXRT595/getting-started-import-demo-application.png
          :alt: Import demo application
          :align: center
          :scale: 70%
@@ -112,7 +112,7 @@ The first step is to import the :guilabel:`Demo-Wearable-VG` Application into yo
 
 The Gradle project should now be imported in IntelliJ IDEA, your workspace contains the following projects: 
 
-      .. figure:: images/gettingStarted/iMXRT595/getting-started-workspace-view.png
+      .. figure:: images/iMXRT595/getting-started-workspace-view.png
          :alt: Workspace view
          :align: center
          :scale: 70%
@@ -122,7 +122,7 @@ The Gradle project should now be imported in IntelliJ IDEA, your workspace conta
 Accept the MICROEJ SDK EULA
 ---------------------------
 
-You may have to accept the SDK EULA if you didn't already do, please have a look at :ref:`sdk_6_eula_acceptation`.
+You may have to accept the SDK EULA if you haven't already done it, please have a look at :ref:`sdk_6_eula_acceptation`.
 
 .. _sdk_6_getting_started_rt595_run_virtual_device:
 
@@ -137,14 +137,14 @@ In order to execute the :guilabel:`Demo-Wearable-VG` Application on the Virtual 
 
 * Double-click on the :guilabel:`runOnSimulator` task in the Gradle tasks view. It may takes few seconds.
 
-      .. figure:: images/gettingStarted/iMXRT595/getting-started-runOnSimulator.png
+      .. figure:: images/iMXRT595/getting-started-runOnSimulator.png
          :alt: runOnSimulator task
          :align: center
          :scale: 70%
 
 The Virtual Device starts and executes the :guilabel:`Demo-Wearable-VG` application.
 
-      .. figure:: images/gettingStarted/iMXRT595/getting-started-virtual-device.png
+      .. figure:: images/iMXRT595/getting-started-virtual-device.png
          :alt: Virtual Device
          :align: center
          :scale: 70%
@@ -153,12 +153,12 @@ The Virtual Device starts and executes the :guilabel:`Demo-Wearable-VG` applicat
   
    If you want to know more about the use of the :guilabel:`Demo-Wearable-VG`, please have a look at its `README.md <https://github.com/MicroEJ/Demo-Wearable-VG/blob/2.0.0/watch-vg/README.md>`__ file.
 
-.. figure:: images/gettingStarted/well-done-mascot.png
+.. figure:: images/well-done-mascot.png
    :alt: Well Done
    :align: center
    :scale: 70%
 
-Well done !
+Well Done!
 -----------
 
 Now you know how to run an application on a Virtual Device.
@@ -207,7 +207,7 @@ The toolchain is the `GNU ARM Embedded Toolchain <https://developer.arm.com/down
 
 At the end of the installation, it will ask you to complete the Setup of the wizard, choose the following options: 
 
-      .. figure:: images/gettingStarted/iMXRT595/getting-started-arm-gcc-installation.png
+      .. figure:: images/iMXRT595/getting-started-arm-gcc-installation.png
          :alt: Import demo application
          :align: center
          :scale: 70%
@@ -259,7 +259,7 @@ Once installed, ``LinkServer_xxx/binaries`` folder must be set on your Path. To 
 Hardware Setup
 """"""""""""""
 
-      .. figure:: images/gettingStarted/iMXRT595/getting-started-hardware-setup.png
+      .. figure:: images/iMXRT595/getting-started-hardware-setup.png
          :alt: Hardware Setup
          :align: center
          :scale: 70%
@@ -294,12 +294,12 @@ The COM port uses the following parameters:
 
 You can have a look at your application logs with an RS232 Terminal (e.g. `Termite <https://www.compuphase.com/software_termite.htm>`__).
 
-Congratulations, you have finished the setup of your environment. You are now ready to discover how to build and flash a MicroEJ application.
+Congratulations! You have finished the setup of your environment. You are now ready to discover how to build and flash a MicroEJ application.
 
 Build the Executable for i.MX RT595 Evaluation Kit
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In order to build the Executable of the :guilabel:`Demo-Wearable-VG` Application, the SDK provides the Gradle :guilabel:`buildExecutable` task.
+In order to build the Executable of the :guilabel:`Demo-Wearable-VG` Application, the SDK provides the :guilabel:`buildExecutable` Gradle task.
 
 .. note::
   
@@ -310,7 +310,7 @@ In order to build the Executable of the :guilabel:`Demo-Wearable-VG` Application
 * The build stops with a failure.
 * Go to the top project in the console view and scroll up to get the following error message:
 
-      .. figure:: images/gettingStarted/iMXRT595/getting-started-console-output-license-uid.png
+      .. figure:: images/iMXRT595/getting-started-console-output-license-uid.png
          :alt: Console Output License UID
          :align: center
          :scale: 70%
@@ -319,11 +319,11 @@ In order to build the Executable of the :guilabel:`Demo-Wearable-VG` Application
 
 Request your Evaluation License:
 
-* Request your Evaluation license by following the :ref:`evaluation_license_request_activation_key` instructions. You will be asked to fill the machine UID you just copied before.
+* Request your Evaluation license by following the :ref:`evaluation_license_request_activation_key` instructions. You will be asked to fill the machine UID field with the UID you copied before.
 
 * When you have received your activation key by email, drop it in the license directory by following the :ref:`evaluation_license_install_license_key` instructions (drop the license key zip file to the ``~/.microej/licenses/`` directory).
 
-Now your Evaluation license is installed, you can relaunch your application build by double-clicking on the :guilabel:`buildExecutable` task in the Gradle tasks view. It may takes some time.
+Now your Evaluation license is installed, you can relaunch your application build by double-clicking on the :guilabel:`buildExecutable` task in the Gradle tasks view. It may take some time.
 
 The Gradle task deploys the MicroEJ application in the BSP and then builds the BSP using Make.
 
@@ -352,9 +352,9 @@ In order to flash the :guilabel:`Demo-Wearable-VG` Application on i.MX RT595 Eva
   
    If you are using another IDE than IntelliJ IDEA, please have a look at :ref:`sdk_6_run_on_device` section.
 
-* Double-click on the :guilabel:`runOnDevice` task in the Gradle tasks view. It may takes some time.
+* Double-click on the :guilabel:`runOnDevice` task in the Gradle tasks view. It may take some time.
 
-      .. figure:: images/gettingStarted/iMXRT595/getting-started-runOnDevice.png
+      .. figure:: images/iMXRT595/getting-started-runOnDevice.png
          :alt: runOnDevice task
          :align: center
          :scale: 70%
@@ -384,8 +384,8 @@ Once the firmware is flashed, you should see the :guilabel:`Demo-Wearable-VG` ru
       </table>
    </div>
 
-.. |image3| image:: images/gettingStarted/iMXRT595/getting-started-rt595-hardware-demo-running.png
-.. |image4| image:: images/gettingStarted/iMXRT595/getting-started-rt595-termite-application-output.png
+.. |image3| image:: images/iMXRT595/getting-started-rt595-hardware-demo-running.png
+.. |image4| image:: images/iMXRT595/getting-started-rt595-termite-application-output.png
 
 
 .. _sdk_6_getting_started_rt595_modify_java_application:
@@ -414,7 +414,7 @@ by
 
 Here is the modified application running in simulation: 
 
-      .. figure:: images/gettingStarted/iMXRT595/getting-started-virtual-device-modified.png
+      .. figure:: images/iMXRT595/getting-started-virtual-device-modified.png
          :alt: Virtual Device
          :align: center
          :scale: 70%
@@ -424,7 +424,7 @@ Going Further
 
 You have now successfully executed a MicroEJ application on an embedded device so what's next?
 
-If you are an application developer you can continue to explore MicroEJ's API and functionalities by running and studying our samples at GitHub:
+If you are an application developer you can continue to explore MicroEJ's APIs and functionalities by running and studying our samples at GitHub:
 
 .. list-table::
    :widths: 33 33 33
@@ -443,7 +443,7 @@ You can also learn how to build bigger and better applications by reading our :r
 
 If you are an embedded engineer you could look at our VEE port examples at `GitHub <https://github.com/microej?q=vee&type=all&language=&sort=>`_. And to learn how create custom VEE ports you can read our :ref:`VEE Porting Guide <vee-porting-guide>`.
 
-You can also follow the :ref:`Kernel Developer Guide <kernel-developer-guide>` for more information on our multi-applications framework or read about our powerful wearable solution called :ref:`VEE Wear <vee-wear>`.
+You can also follow the :ref:`Kernel Developer Guide <kernel-developer-guide>` for more information on our multi-application framework or read about our powerful wearable solution called :ref:`VEE Wear <vee-wear>`.
 
 Last but not least you can choose to learn about specific topics by following one of our many :ref:`trainings` ranging from how to easily debug application to setting up a Continuous Integration process and a lot of things in between.
 
