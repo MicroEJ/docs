@@ -41,24 +41,6 @@ Unit 1: Kernel Development with MICROEJ SDK
 
 Training for MICROEJ SDK 6 is coming soon!
 
-Unit 2: Kernel-GREEN
---------------------
-
-Kernel "GREEN", a MicroEJ Kernel Application project is a Kernel code example that offers basic services 
-for developing a Sandboxed Application and deploying it easily on your Device. 
-Additionally, this project serves as a starting point for Kernel developers to learn and demonstrate 
-most of the Multi-Sandboxing capabilities of the MicroEJ technology.
-
-.. tabs::
-
-   .. tab:: MICROEJ SDK 5
-
-      - `Kernel GREEN on GitHub <https://github.com/MicroEJ/Kernel-GREEN>`_
-
-   .. tab:: MICROEJ SDK 6
-
-      Kernel GREEN for MICROEJ SDK 6 is coming soon!
-
 
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 

@@ -15,6 +15,7 @@ Browse the following chapters to familiarize yourself and understand the princip
 
 - The :ref:`chapter-glossary` chapter describes MicroEJ terminology.
 - The :ref:`overview` chapter introduces MicroEJ products and technology.
+- The :ref:`sdk_6_getting_started` is the best way to start your journey with MicroEJ's technology. Set up a development environment and start coding!
 - The :ref:`sdk_user_guide` chapter presents MICROEJ SDK 5 (Software Development Kit). Use SDK 5 for legacy development.
 - The :ref:`sdk_6_user_guide` chapter presents MICROEJ SDK 6 (Software Development Kit). Use SDK 6 for new projects.
 - The :ref:`application-developer-guide` presents how to develop a Java or JavaScript application on MICROEJ VEE (Virtual Execution Environment).
@@ -29,6 +30,7 @@ Browse the following chapters to familiarize yourself and understand the princip
 
    Glossary <glossary>
    overview/index
+   GettingStarted/gettingStarted
    SDKUserGuide/index
    SDK6UserGuide/index
    ApplicationDeveloperGuide/index
