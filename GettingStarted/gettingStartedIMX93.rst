@@ -81,7 +81,7 @@ The first step is to import the :guilabel:`Example-Java-Widget` Application into
 * If you are in the Welcome Screen, click on the :guilabel:`Open` button. Otherwise, click either on :guilabel:`File` > :guilabel:`Open...` or on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project From Existing Sources...`.
 * Select the ``Example-Java-Widget`` directory located where you downloaded it and click on the :guilabel:`OK` button.
 
-      .. figure:: images/gettingStarted/iMX93/getting-started-import-demo.png
+      .. figure:: images/iMX93/getting-started-import-demo.png
          :alt: Import demo application
          :align: center
          :scale: 70%
@@ -118,7 +118,7 @@ The first step is to import the :guilabel:`Example-Java-Widget` Application into
 
 The Gradle project should now be imported into IntelliJ IDEA. Your workspace contains the following projects: 
 
-      .. figure:: images/gettingStarted/iMX93/getting-started-project-view.png
+      .. figure:: images/iMX93/getting-started-project-view.png
          :alt: Workspace view
          :align: center
          :scale: 70%
@@ -156,19 +156,19 @@ To execute the :guilabel:`Example-Java-Widget` Application on the Virtual Device
 
 * Double-click on the :guilabel:`runOnSimulator` task in the Gradle tasks view. It may take a few seconds.
 
-      .. figure:: images/gettingStarted/iMX93/getting-started-runOnSimulator.png
+      .. figure:: images/iMX93/getting-started-runOnSimulator.png
          :alt: runOnSimulator task
          :align: center
          :scale: 70%
 
 The Virtual Device starts and executes the :guilabel:`Example-Java-Widget` application.
 
-      .. figure:: images/gettingStarted/iMX93/getting-started-virtual-device.png
+      .. figure:: images/iMX93/getting-started-virtual-device.png
          :alt: Virtual Device
          :align: center
          :scale: 70%
 
-.. figure:: images/gettingStarted/well-done-mascot.png
+.. figure:: images/well-done-mascot.png
    :alt: Well Done
    :align: center
    :scale: 70%
@@ -266,14 +266,14 @@ To flash the image on Windows, do the following:
 * Select your ``.wic`` file by clicking on ``SELECT``
 * Finally click on ``START`` at the bottom and wait for the process to finish.
 
-      .. figure:: images/gettingStarted/iMX93/getting-started-rufus.png
+      .. figure:: images/iMX93/getting-started-rufus.png
          :alt: Rufus
          :align: center
 
 Hardware Setup
 """"""""""""""
 
-      .. figure:: images/gettingStarted/iMX93/getting-started-setup.png
+      .. figure:: images/iMX93/getting-started-setup.png
          :alt: Setup
          :align: center
          :scale: 70%
@@ -338,7 +338,7 @@ Congratulations! You have finished the setup of your environment. You are now re
 Build the Executable for i.MX93 Evaluation Kit
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To build the Executable of the :guilabel:`Example-Java-Widget` Application, the SDK provides the Gradle :guilabel:`buildExecutable` task.
+To build the Executable of the :guilabel:`Example-Java-Widget` Application, the SDK provides the :guilabel:`buildExecutable` Gradle task.
 
 .. note::
   
@@ -358,7 +358,7 @@ To build the Executable of the :guilabel:`Example-Java-Widget` Application, the 
 
       * ``WSL_DISTRIBUTION_NAME``: Name of the WSL distribution if using Windows (by default ``Ubuntu``).
 
-      .. figure:: images/gettingStarted/iMX93/getting-started-intellij-variables.png
+      .. figure:: images/iMX93/getting-started-intellij-variables.png
          :alt: IntelliJ variables
          :align: center
          :scale: 70%
@@ -367,7 +367,7 @@ To build the Executable of the :guilabel:`Example-Java-Widget` Application, the 
 * The build stops with a failure.
 * Go to the top project in the console view and scroll up to get the following error message:
 
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-console-output-license-uid.png
+      .. figure:: images/iMXRT1170/getting-started-console-output-license-uid.png
          :alt: Console Output License UID
          :align: center
          :scale: 70%
@@ -407,7 +407,7 @@ To run the :guilabel:`Example-Java-Widget` Application on i.MX93 Evaluation Kit,
 
 * Double-click on the :guilabel:`runOnDevice` task in the Gradle tasks view. It may take some time.
 
-      .. figure:: images/gettingStarted/iMX93/getting-started-runOnDevice.png
+      .. figure:: images/iMX93/getting-started-runOnDevice.png
          :alt: runOnDevice task
          :align: center
          :scale: 70%
@@ -464,7 +464,7 @@ with
 * Follow :ref:`sdk_6_getting_started_imx93_run_virtual_device` instructions to launch the modified application on the Virtual Device.
 
 
-      .. figure:: images/gettingStarted/iMX93/getting-started-runOnSimulator-modified.png
+      .. figure:: images/iMX93/getting-started-runOnSimulator-modified.png
          :alt: runOnDevice task
          :align: center
          :scale: 70%
@@ -474,7 +474,7 @@ Going Further
 
 You have now successfully executed a MicroEJ application on an embedded device so what's next?
 
-If you are an application developer you can continue to explore MicroEJ's API and functionalities by running and studying our samples at GitHub:
+If you are an application developer you can continue to explore MicroEJ's APIs and functionalities by running and studying our samples at GitHub:
 
 .. list-table::
    :widths: 33 33 33
@@ -493,7 +493,7 @@ You can also learn how to build bigger and better applications by reading our :r
 
 If you are an embedded engineer you could look at our VEE port examples at `GitHub <https://github.com/microej?q=vee&type=all&language=&sort=>`_. And to learn how create custom VEE ports you can read our :ref:`VEE Porting Guide <vee-porting-guide>`.
 
-You can also follow the :ref:`Kernel Developer Guide <kernel-developer-guide>` for more information on our multi-applications framework or read about our powerful wearable solution called :ref:`VEE Wear <vee-wear>`.
+You can also follow the :ref:`Kernel Developer Guide <kernel-developer-guide>` for more information on our multi-application framework or read about our powerful wearable solution called :ref:`VEE Wear <vee-wear>`.
 
 Last but not least you can choose to learn about specific topics by following one of our many :ref:`trainings` ranging from how to easily debug application to setting up a Continuous Integration process and a lot of things in between.
 
