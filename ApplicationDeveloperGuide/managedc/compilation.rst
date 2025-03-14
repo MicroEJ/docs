@@ -1,6 +1,6 @@
 .. _managedc.compilation:
 
-Compiling your C Project
+Compiling your Project
 ========================
 
 MicroEJ supports Managed C through WebAssembly, meaning your Managed C or C++ code must be compiled to WebAssembly first. 
@@ -94,9 +94,12 @@ The WASI SDK also includes a C++ compiler, ``clang++``, which you can use to com
 .. code:: console
 
     # To compile:
-    [path_to_wasi_sdk]/bin/clang++ [...] -o my_app.o my_app.cc
+    [path_to_wasi_sdk]/bin/clang++ [...] -fno-exceptions -c -o my_app.o my_app.cc
     # To link:
-    [path_to_wasi_sdk]/bin/clang++ [...] -o my_app.wasm my_app.o
+    [path_to_wasi_sdk]/bin/clang++ [...] -fno-exceptions -o my_app.wasm my_app.o
+
+.. note::
+    C++ exceptions are not supported, so you'll need to build your C++ code with the `-fno-exceptions` flag.
 
 .. _managedc.link.nostdlib:
 
