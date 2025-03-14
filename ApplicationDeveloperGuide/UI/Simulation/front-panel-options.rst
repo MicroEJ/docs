@@ -40,10 +40,6 @@ Please refer to the dedicated sections (:ref:`SDK 6<sdk_6_define_option>` or :re
      - :ref:`fp_ui_classpath`
      - Run the Front Panel in the same VM as the standard mocks. 
      - false
-   * - ``ej.fp.display.flushVisualizer``
-     - :ref:`flush_visualizer`
-     - Export all the frames drawn on the display and list the drawings done for each frame.
-     - false
    * - ``ej.fp.brs.drawnColor``
      - :ref:`refresh_drawn_regions`
      - Identify the drawn regions for each frame.
