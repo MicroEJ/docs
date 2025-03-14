@@ -7,9 +7,6 @@ python:
   install:
     - requirements: requirements.txt
 
-formats:
-  - pdf
-
 sphinx:
   fail_on_warning: true
   configuration: conf.py
@@ -23,3 +20,6 @@ build:
   jobs:
     pre_build:
       - make linkcheck
+      # Clean to force sources to be read again during html build
+      # See custom prolog injection in 'conf.py' using 'source-read' extension
+      - make clean
