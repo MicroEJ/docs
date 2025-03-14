@@ -7,9 +7,6 @@ python:
   install:
     - requirements: requirements.txt
 
-formats:
-  - pdf
-
 sphinx:
   fail_on_warning: true
   configuration: conf.py
