@@ -42,6 +42,8 @@ For further information on Architecture installation and releases, you can check
    architectureChangelog
    architectureReleaseNotes
    architectureDefaultApplication
+   architecture8Migration
+   architecture7Migration
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
