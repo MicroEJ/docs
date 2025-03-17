@@ -201,7 +201,7 @@ Now you know how to build and run a Multi-Sandbox Executable!
 
 If you want to learn how to run a Sandboxed Application on your Multi-Sandbox Executable, you can continue this Getting Started.
 
-.. _sdk_6_getting_started_stm32f7508_kernel_green_run_application:
+.. _sdk_6_getting_started_rt1170_kernel_green_run_application:
 
 Run a Sandboxed Application on your Multi-Sandbox Executable and Virtual Device
 -------------------------------------------------------------------------------

@@ -195,7 +195,7 @@ The Virtual Device starts and executes the Demo-Sandboxed-Applications:
 
         <div class="figure align-center">
                 <video width="640" height="360" controls="controls" >
-                        <source src="https://repository.microej.com/packages/videos/DEV-M0127_VID_Demo-Sandboxed-Applications_STM32F7508-DK_SIM_20241028.webm" type="video/webm">
+                        <source src="https://repository.microej.com/packages/videos/DEV-M0127_VID_Demo-Sandboxed-Applications_NXP_i.MXRT1170_SIM_20241127.webm" type="video/webm">
                 </video>
         </div>
 
@@ -223,7 +223,7 @@ The applications are running on the NXP i.MXRT1170 Evaluation Kit:
 
         <div class="figure align-center">
                 <video width="640" height="360" controls="controls" >
-                        <source src="https://repository.microej.com/packages/videos/DEV-M0127_VID_Demo-Sandboxed-Applications_STM32F7508-DK_EMB_20241028.webm" type="video/webm">
+                        <source src="https://repository.microej.com/packages/videos/DEV-M0127_VID_Demo-Sandboxed-Applications_NXP_i.MXRT1170_EMB_20241127.webm" type="video/webm">
                 </video>
         </div>
 
@@ -350,7 +350,7 @@ The :guilabel:`MyApplication` project needs to be configured to use a kernel:
 
 .. note::
    To use your own Kernel, refer to the
-   procedure described in :ref:`sdk_6_getting_started_stm32f7508_kernel_green_run_application`.
+   procedure described in :ref:`sdk_6_getting_started_rt1170_kernel_green_run_application`.
 
 In order to execute the :guilabel:`MyApplication` project on the Virtual Device, the SDK provides the Gradle :guilabel:`runOnSimulator` task. 
 
