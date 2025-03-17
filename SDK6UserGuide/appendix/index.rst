@@ -8,6 +8,7 @@ Appendices
     dependenciesConfigurations
     applicationWrapper
     cheatsheet
+    javaLambdas
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 

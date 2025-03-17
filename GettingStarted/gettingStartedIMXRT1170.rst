@@ -73,11 +73,6 @@ You can download the i.MX RT1170 VEE Port using the following commands::
    The toolchain requires the path to the VEE Port sources to be as short as possible and contain **no whitespace** or **non-ASCII** character.
    It is recommended to clone the repository as close as possible to your file system root.
 
-.. note::
-  
-   If you don’t have Git installed, you can download the source code directly from our `GitHub repository <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk/releases/tag/NXPVEE-MIMXRT1170-EVK-2.2.0>`__. 
-   Then you can click on :guilabel:`Code > Download ZIP`.
-
 Set up the i.MX RT1170 VEE Port project on your IDE
 ---------------------------------------------------
 
@@ -98,35 +93,12 @@ The first step is to import the :guilabel:`i.MX RT1170 VEE Port` into your IDE:
          :align: center
          :scale: 70%
 
-* If you are asked to choose a project model, select :guilabel:`Gradle`. 
+* If you are asked to choose a project model, select :guilabel:`Gradle` and click on the :guilabel:`Create` button.
 
-      .. raw:: html
-
-         <div style="display:block;margin-bottom:24px;">
-            <table>
-               <tr>
-                  <td style="width:50%;text-align:center;vertical-align:middle;" alt="Project Model Selection when Opening in IntelliJ IDEA">
-                     <img src="../_images/intellij-import-gradle-project-01.png">
-                  </td>
-                  <td style="width:50%;text-align:center;vertical-align:middle;" alt="Project Model Selection when Importing in IntelliJ IDEA">
-                     <img src="../_images/intellij-import-gradle-project-02.png">
-                  </td>
-               </tr>
-               <tr>
-                  <td style="width:50%;text-align:center;font-size:18px;font-style:italic;">
-                     Fig 1. Project Model Selection when Opening in IntelliJ IDEA
-                  </td>
-                  <td style="width:50%;text-align:center;font-size:18px;font-style:italic;">
-                     Fig 2. Project Model Selection when Importing in IntelliJ IDEA
-                  </td>
-               </tr>
-            </table>
-         </div>
-
-      .. |image1| image:: images/intellij-import-gradle-project-01.png
-      .. |image2| image:: images/intellij-import-gradle-project-02.png
-
-* Click on the :guilabel:`Create` button.
+      .. figure:: images/intellij-import-gradle-project-02.png
+         :alt: New Project From Existing Sources view
+         :align: center
+         :scale: 70%
 
 The Gradle project should now be imported in IntelliJ IDEA, your workspace contains the following projects: 
 
@@ -267,21 +239,19 @@ Hardware Setup
 
 Set up the NXP i.MX RT1170 EVKB:
 
-* Check that the dip switches (``SW1``) are set to ``OFF``, ``OFF``, ``ON`` and ``OFF``,
-* Ensure jumper ``J5`` is removed,
-* Connect the display panel ``RK055HDMIPI4MA0``,
-* Connect the micro-USB cable to ``J86`` to power the board,
-* Connect a 5 V power supply to ``J43``.
-
-  .. figure:: images/iMXRT1170/getting-started-hardware-setup.png
+  .. figure:: images/iMXRT1170/getting-started-hardware-setup.jpg
      :alt: NXP i.MX RT1170 EVKB Hardware Setup
      :align: center
 
      NXP i.MX RT1170 EVKB Hardware Setup
-     
-The USB connection is used as a serial console for the SoC, as a CMSIS-DAP debugger and as a power input for the board.
 
-The VEE Port uses the virtual UART from the i.MX RT1170 Evaluation Kit USB port. A COM port is automatically mounted when the board is plugged into a computer using a USB cable. All board logs are available through this COM port.
+* Check that the dip switches (SW1) are set to OFF, OFF, ON, and OFF.
+* Connect a micro-USB cable to J86 to power the board.
+* You can connect a 5V power supply to J43 if you need to use the display
+     
+The USB connection is used as a serial console for the SoC, as a CMSIS-DAP debugger, and as a power input for the board.
+
+The VEE Port uses the virtual UART from the i.MX RT1170 EVKB USB port. A COM port is automatically mounted when the board is plugged into a computer using a USB cable. All board logs are available through this COM port.
 
 The COM port uses the following parameters:
 
@@ -352,7 +322,7 @@ In order to flash the :guilabel:`animatedMascot` Application on i.MX RT1170 Eval
          :align: center
          :scale: 70%
 
-Once the firmware is flashed, you should see the :guilabel:`animatedMascot` running on your board.      
+Once the firmware is flashed, you should see the :guilabel:`animatedMascot` running on your board. 
 
 .. raw:: html
 
@@ -377,8 +347,8 @@ Once the firmware is flashed, you should see the :guilabel:`animatedMascot` runn
       </table>
    </div>
 
-.. |image3| image:: images/iMXRT1170/getting-started-rt1170-hardware-demo-running.jpg
-.. |image4| image:: images/iMXRT1170/getting-started-rt1170-termite-application-output.png
+.. |image1| image:: images/iMXRT1170/getting-started-rt1170-hardware-demo-running.jpg
+.. |image2| image:: images/iMXRT1170/getting-started-rt1170-termite-application-output.png
 
 .. _sdk_6_getting_started_rt1170_modify_java_application:
 

@@ -19,7 +19,7 @@ Once these prerequisites are fulfilled, the Application can be deployed on the D
 
 .. tabs::
 
-   .. tab:: Android Studio / IntelliJ IDEA
+   .. tab:: IntelliJ IDEA / Android Studio
 
       By double-clicking on the ``runOnDevice`` task in the Gradle tasks view:
 

@@ -388,7 +388,7 @@ Multi-Sandbox
                <div class="training_image_container">
                   <ul class="training_image_list">
                      <li class="training_course_number">Course</li>
-                     <li class="training_image_list_item">1h</li>
+                     <li class="training_duration">1h</li>
                   </ul>
                   <img src="../_static/images/training/training_kernel.jpg" alt="Kernel">
                </div>

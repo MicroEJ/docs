@@ -1,3 +1,5 @@
+.. include:: uiReplaces.rst
+
 .. _ui_port_conf:
 
 =====================
@@ -33,10 +35,10 @@ As an example, the module dependency to add for a Cortex-M4 and GCC toolchain wo
    .. tab:: SDK 6 (build.gradle.kts)
 
       .. code-block:: kotlin
-         :emphasize-lines: 3
+         :emphasize-lines: 2
 
          dependencies {
-            microejPack("com.microej.architecture.CM4.CM4hardfp_GCC48:flopi4G25-ui-pack:14.2.0")
+            microejPack("com.microej.architecture.CM4.CM4hardfp_GCC48:flopi4G25-ui-pack:[UI Pack version]")
          }
 
    .. tab:: SDK 5 (module.ivy)
@@ -46,8 +48,10 @@ As an example, the module dependency to add for a Cortex-M4 and GCC toolchain wo
 
          <dependencies>
             <!-- MicroEJ Architecture Specific Pack -->
-            <dependency org="com.microej.architecture.CM4.CM4hardfp_GCC48" name="flopi4G25-ui-pack" rev="14.2.0"/>
+            <dependency org="com.microej.architecture.CM4.CM4hardfp_GCC48" name="flopi4G25-ui-pack" rev="[UI Pack version]"/>
          </dependencies>
+
+.. note:: The latest version of the UI Pack is |UIPACKVERSION|.
 
 UI Pack Modules
 ===============

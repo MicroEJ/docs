@@ -21,25 +21,21 @@ This guide should take 1 hour to complete.
 Intended Audience
 -----------------
 
-The audience for this document is engineers who are in charge of integrating
-:ref:`MicroEJ Module Manager (MMM) <mmm>` to their continuous integration environment.
+The audience for this document is engineers who are in charge of integrating `MICROEJ SDK 6 <https://docs.microej.com/en/latest/SDK6UserGuide/index.html#>`_ to their continuous integration environment.
 
-In addition, this document should be of interest to all developers
-wishing to understand how MicroEJ works with headless module builds.
-
-For those who are only interested in command line module build, consider using the :ref:`MMM Command Line Interface <mmm_cli>`.
+In addition, this document should be of interest to all developers wishing to understand how MicroEJ works with headless module builds.
 
 Prerequisites
 -------------
 
-*  `MICROEJ SDK 5 <https://docs.microej.com/en/latest/SDKUserGuide/>`_ ``5.8.1`` or higher.
+*  An internet connection.
 *  `Docker and Docker Compose V2 <https://docs.docker.com/>`_ on Linux, Windows or Mac
 *  Git ``2.x`` installed, with Git executable in path. We recommend installing Git Bash if your operating system is Windows (`<https://gitforwindows.org/>`_).
 
-This training was tested with Jenkins ``2.426.1``, Artifactory ``7.71.5`` and Gitea ``1.21.1``.
+This training was tested with Jenkins ``2.462.3``, Artifactory ``7.71.5`` and Gitea ``1.23.4``.
 
 .. note::
-    For SDK versions before 5.4.0, please refer to this `MicroEJ Documentation Archive <https://docs.microej.com/_/downloads/en/20201009/pdf/>`_.
+    For `SDK 5 <https://docs.microej.com/en/latest/SDKUserGuide/index.html>`_, please refer to this `MicroEJ Documentation Archive <https://docs.microej.com/_/downloads/en/20240215/pdf/>`_, section ``9.6 Setup an Automated Build using Jenkins and Artifactory``.
 
 Introduction
 ------------
@@ -218,85 +214,77 @@ Let’s build an "Hello World" Sandboxed Application project.
 Create a new MicroEJ Module
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In this example, we will create a very simple module using the Sandbox Application buildtype (``build-application``) that we'll push to a Git repository.
+Now we will create an Application project that we'll push to a Git repository. In this example, we will use a plublic template but you can create an application
+project from scratch with the :ref:`sdk_6_user_guide`.
 
 .. note::
    For demonstration purposes, we'll create a new project and share it on a local Git bare repository.
    You can adapt the following sections to use an existing MicroEJ project and your own Git repository.
 
-#. Start MICROEJ SDK. 
-#. Go to :guilabel:`File` > :guilabel:`New` > :guilabel:`Sandboxed Application Project`.
-#. Fill in the template fields, set :guilabel:`Project name` to ``com.example.hello-world``.
-       
-    .. image:: images/tuto_microej_cli_module_creation.PNG
-        :align: center
+#. Clone https://github.com/MicroEJ/Tool-Project-Template-Application repository.
+#. Go to the repository directory and type the following commands (replace ``<admin_user>`` by Gitea user)
 
-#. Click :guilabel:`Finish`. This will create the project files and structure.
-#. Right-click on source folder ``src/main/java`` and select :guilabel:`New` > :guilabel:`Package`. Set a name to the package and click :guilabel:`Finish`.
-#. Right-click on the new package and select :guilabel:`New` > :guilabel:`Class`. Set ``Main`` as name for the class and check ``public static void main(String[] args)``, then click :guilabel:`Finish`.
-#. Add the line ``System.out.println("Hello World!");`` to the method and save it.
-
-    .. image:: images/tuto_microej_cli_module_files.PNG
-        :align: center
-
-#. Locate the project files
-    #. In the :guilabel:`Package Explorer` view, right-click on the project then click on :guilabel:`Properties`.
-    #. Select :guilabel:`Resource` menu.
-    #. Click on the arrow button on line :guilabel:`Location` to show the project in the system explorer.
-
-    .. image:: images/tuto_microej_cli_module_location.PNG
-        :align: center
-
-.. note::
-   For more details about Applications development, refer to the :ref:`Application Developer Guide <application-developer-guide>`.
-
-Upload to your Git repository
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   .. code-block:: sh
+    
+      git remote rename origin old-origin
+      git remote add origin http://localhost:3000/<admin_user>/helloworld.git
+      git push --set-upstream origin --all
 
 .. note::
    We need the IP address of the Docker Bridge Network, here we consider that it's ``172.17.0.1`` but you can check with the command ``ip addr show docker0`` on the Docker host.
 
-#. Open the project directory, create a file named ``Jenkinsfile`` and copy this content inside:
+#. On the project directory, create a file named ``Jenkinsfile`` and copy this content inside:
 
     .. literalinclude:: resources/Jenkinsfile
         :language: groovy
 
-#. Create a directory named ``ivy``, create a file named ``ivysettings-artifactory.xml`` and copy this content inside: 
+#. Update ``build.gradle.kts`` file and set line 20 with this text. Building or running an Application with the SDK requires a VEE Port, so we use RT1170 Vee Port for this example:
+    
+    .. code-block::
 
-    .. literalinclude:: resources/ivysettings-artifactory.xml
+        microejVee("com.nxp.vee.mimxrt1170:evk_platform:2.2.0")
+
+
+#. Create a file named ``init.gradle.kts`` and copy this content inside: 
+
+    .. literalinclude:: resources/init.gradle.kts
         :language: xml
 
 This file configures the MicroEJ Module Manager to import and publish modules from the Artifactory repositories described in this training. Please refer to the :ref:`mmm_settings_file` section for more details.
 
     .. note::
-       At this point, the content of the directory ``com.example.hello-world`` should look like the following:
+       At this point, the content of the directory ``Tool-Project-Template-Application`` should look like the following:
        ::
     
-        com.example.hello-world
-        ├── bin
-        │   └── ...
-        ├── ivy
-        │   └── ivysettings-artifactory.xml
-        ├── src
-        │   └── ...
-        ├── src-adpgenerated/
-        │   └── ...
+        ├── build.gradle.kts
         ├── CHANGELOG.md
+        ├── configuration
+        │   └── common.properties
+        ├── gradle
+        │   └── wrapper
+        │       ├── gradle-wrapper.jar
+        │       └── gradle-wrapper.properties
+        ├── gradlew
+        ├── gradlew.bat
+        ├── init.gradle.kts
         ├── Jenkinsfile
         ├── LICENSE.txt
         ├── README.md
-        └── module.ivy
-    
-#. Open a terminal from the directory ``com.example.hello-world`` and type the following commands:
+        ├── settings.gradle.kts
+        └── src
+            ├── main
+            │   ├── java
+            │   │   └── com
+            │   │       └── mycompany
+            │   │           └── myapplication
+            │   │               └── Main.java
+            │   └── resources
+            └── test
+                ├── java
+                └── resources
 
-   .. code-block:: sh
-   
-      git init
-      git checkout -b main
-      git add *
-      git commit -m "Add Hello World application"
-      git remote add origin http://localhost:3000/<admin_user>/helloworld.git
-      git push -u origin main
+#. Push these modifications to Gitea repository
+
 
 Create a New Jenkins Job
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -323,12 +311,12 @@ Build the "Hello World" Application
 
 Let's run the job!
 
-In Jenkins ``Hello World`` dashboard, click on :guilabel:`main` branch, then click on :guilabel:`Build Now`. 
+In Jenkins ``Hello World`` dashboard, click on :guilabel:`master` branch, then click on :guilabel:`Build Now`. 
 
 .. note::
    You can check the build progress by clicking on the build progress bar and showing the :guilabel:`Console Output`.
 
-At the end of the build, the module is published to ``http://localhost:8082/artifactory/list/custom-modules-snapshot/com/example/hello-world/``.
+At the end of the build, the module is published to ``http://localhost:8082/artifactory/list/custom-modules-snapshot/com/mycompany/my-application/``.
 
 
 Congratulations!
@@ -336,9 +324,9 @@ Congratulations!
 At this point of the training:
 
 * Artifactory is hosting your module builds and MicroEJ modules. 
-* Jenkins automates the build process using :ref:`MicroEJ Module Manager <mmm>`.
+* Jenkins automates the build process using SDK6.
 
-The next recommended step is to adapt MMM/Jenkins/Artifactory configuration to your ecosystem and development flow.
+The next recommended step is to adapt Gradle/Jenkins/Artifactory configuration to your ecosystem and development flow.
 
 
 Appendix
@@ -372,24 +360,6 @@ In :guilabel:`Post-build actions` tab:
 
 3. Check :guilabel:`Retain long standard output/error`.
 4. Check :guilabel:`Do not fail the build on empty test results`
-
-Customize ``target~`` path
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Some systems and toolchains don't handle long path properly.  A
-workaround for this issue is to move the build directory (that is, the
-``target~`` directory) closer to the root directory.
-
-To change the ``target~`` directory path, set the
-:ref:`build option <mmm_build_options>` ``target``.
-
-In :guilabel:`Advanced`, expand :guilabel:`Properties` text field and
-set the ``target`` property to the path of your choice.  For example:
-
-.. code-block:: properties
-
-   target=C:/tmp/
-
 
 ..
    | Copyright 2021-2025, MicroEJ Corp. Content in this space is free 

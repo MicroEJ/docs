@@ -14,9 +14,7 @@ embedded systems comprising multiple threads and interrupts.
 A specific SystemView extension made by MicroEJ allows to trace the OS tasks and the MicroEJ Java threads at the same time.
 This chapter explains how to add the SystemView feature to a VEE Port and set it up.
 
-.. note:: SystemView support for MicroEJ is compatible with FreeRTOS 9 and FreeRTOS 10. 
-
-.. note:: This SystemView section has been written for SystemView version V2.52a. Later versions may or may not work, and may need modification to the following steps.
+.. note:: MicroEJ supports integration with SystemView on FreeRTOS 9 and FreeRTOS 10.
 
 .. note:: 
    SystemView provides implementations for several combinations of toolchain and CPU architectures.
@@ -37,32 +35,43 @@ References
 * https://www.segger.com/products/development-tools/systemview/
 * https://www.segger.com/downloads/jlink/UM08027
 
-Installation
-============
+Pre-requisites
+==============
 
-SystemView installation consists of adding several items in the BSP. The following steps describe them, and they must be performed in the right order.
-If SystemView support is already available in the BSP, apply only modifications made by MicroEJ on SystemView files and SystemView for
-FreeRTOS files to enable MicroEJ Java threads monitoring.
+SEGGER SystemView: http://segger.com/downloads/systemview/.
 
-1. Download and install SystemView V2.52a: http://segger.com/downloads/systemview/.
-2. Apply SystemView for FreeRTOS patch as described in the documentation (https://www.segger.com/downloads/jlink/UM08027);the patch is available in the installation folder ``SEGGER/SystemView/Src/Sample/FreeRTOSVxx``.
+.. note:: This SystemView section has been written for SystemView version V2.52a. Later versions may need modification to the following steps.
 
-.. note:: If you are using FreeRTOS V10.2.0, use the patch located here: https://forum.segger.com/index.php/Thread/6158-SOLVED-SystemView-Kernelpatch-for-FreeRTOS-10-2-0/?s=add3b0f6a33159b9c4b602da0082475afeceb89a
+.. note::
+   This download page also contains links to download the "Target Sources" package. The following sections of this documentation will go through the installation of those. If your BSP project already integrates a specific version, make sure to download & install the matching version of the SystemView program.
 
-.. note:: 
-   If the RTOS version of your system is more recent than the ones provided in the SystemView V2.52a install
-   directory ``SEGGER/SystemView_V252a/Src/Sample``, consider to use a newer version of SystemView and follow the updated documentation.
+Integrate SystemView in your VEE Port
+=====================================
 
-3. Check if the patch disabled SystemView systick events in ``port.c``, if not remove these lines manually:
+For detailed instructions on the integration of SystemView Target Sources in your BSP, please refer to the "Getting started with SystemView on the target" section of the SystemView User Manual.
+This documentation focuses on the integration with FreeRTOS. If you are integrating with a different RTOS, make sure to check the samples in the Target Sources package.
 
-.. figure:: images/sytemview_remove_systick.png
-   :alt: Disable systick events (too many events are generated).
-   :align: center
-   :scale: 75
-   :width: 921px
-   :height: 734px
+Apply FreeRTOS patch
+--------------------
 
-4. Add ``SEGGER/SystemView/Src/Sample/FreeRTOSVxx/Config/SEGGER_SYSVIEW_Config_FreeRTOS.c`` in your BSP.
+In FreeRTOS v9.x & v10.x, SystemView requires a patch to FreeRTOS source files in order to inject OS event hooks when SystemView profiling is enabled.
+
+Starting from FreeRTOS v11: SystemView integrates with FreeRTOS new built-in mechanism for profiling OS events (`Trace Hook Macros <https://freertos.org/Documentation/02-Kernel/02-Kernel-features/09-RTOS-trace-feature>`_). You can skip this step if you use FreeRTOS v11.
+
+Apply SystemView for FreeRTOS patch as described in the `documentation <https://www.segger.com/downloads/jlink/UM08027>`_ (see section 4.7.5).
+The patch is available in the Systemview installation folder: ``<installation_dir>/Src/Sample/FreeRTOSVxx``.
+
+.. note::
+   For FreeRTOS v10.2.0, the official patch may not work. Here is an `unofficial patch <https://forum.segger.com/index.php/Thread/6158-SOLVED-SystemView-Kernelpatch-for-FreeRTOS-10-2-0/?s=add3b0f6a33159b9c4b602da0082475afeceb89a>`_
+
+Add source files to your BSP for SystemView with MicroEJ/FreeRTOS integration
+-----------------------------------------------------------------------------
+
+.. _com.microej.clibrary.thirdparty#systemview: https://repository.microej.com/modules/com/microej/clibrary/thirdparty/systemview/1.3.1/
+.. _com.microej.clibrary.thirdparty#systemview-freertos10: https://repository.microej.com/modules/com/microej/clibrary/thirdparty/systemview-freertos10/1.1.1/
+.. _com.microej.clibrary.llimpl#trace-systemview: https://repository.microej.com/modules/com/microej/clibrary/llimpl/trace-systemview/3.1.0/
+
+1. Add ``<installation_dir>/Src/Config/SEGGER_SYSVIEW_Config_FreeRTOS.c`` in your BSP.
 
 This file can be modified to fit your system configuration:
    
@@ -134,49 +143,57 @@ This file can be modified to fit your system configuration:
             SEGGER_SYSVIEW_SetRAMBase(SYSVIEW_RAM_BASE);
          }
 
+2. Add in your BSP the MicroEJ C module files for SystemView: `com.microej.clibrary.thirdparty#systemview`_. These files correspond to the sources provided in the installation folder of Systemview (``<installation_dir>/Src/SEGGER``) with a patch for MicroEJ (including recommended configuration and prefixes for task names).
 
-5. Add in your BSP the MicroEJ C module files for SystemView: `com.microej.clibrary.thirdparty#systemview`_ (or check the differences between pre-installed SystemView and C files provided by this module)
-6. Add in your BSP the MicroEJ C module files for SystemView FreeRTOS support (or check the differences between pre-installed SystemView and C files provided by this module)
+#. Add in your BSP the MicroEJ C module files for SystemView FreeRTOS support. These files correspond to the sources provided in the installation folder of Systemview (``<installation_dir>/Src/Sample/FreeRTOSVXX`` and ``<installation_dir>/Src/Sample/FreeRTOSVXX/Config``) with a patch for MicroEJ.
    
    * FreeRTOS 10: `com.microej.clibrary.thirdparty#systemview-freertos10`_ 
-   * FreeRTOS 9: please contact :ref:`our support team <get_support>` to get the latest maintenance version of ``com.microej.clibrary.thirdparty#systemview-freertos9`` module.
+   * For other versions of FreeRTOS, please contact :ref:`our support team <get_support>`.
 
-7. Install the Abstraction Layer implementation of the :ref:`Java Trace API <trace_implementations>` for SystemView by adding C module files in your BSP: `com.microej.clibrary.llimpl#trace-systemview`_
-8. Make FreeRTOS compatible with SystemView: open  ``FreeRTOSConfig.h`` and:
+   Not all OS events are useful to the profiling analysis. It can be useful to filter out events from systick/queue/... in order to reduce the load and improve the stability of the analysis. To disable these traces on FreeRTOS, modify ``SEGGER_SYSVIEW_FreeRTOS.h``:
 
-   * add ``#define INCLUDE_xTaskGetIdleTaskHandle 1``
-   * add ``#define INCLUDE_pxTaskGetStackStart 1``
-   * add ``#define INCLUDE_uxTaskPriorityGet 1``
-   * comment the line ``#define traceTASK_SWITCHED_OUT()`` if defined 
-   * comment the line ``#define traceTASK_SWITCHED_IN()`` if defined 
-   * add ``#include "SEGGER_SYSVIEW_FreeRTOS.h"`` at the end of the file
+   * Comment the defines beginning by ``traceISR``.
+   * Comment the defines beginning by ``traceQUEUE``.
 
-9. Enable SystemView on startup (before creating the first OS task): call ``SEGGER_SYSVIEW_Conf();``. The following include directive is required: ``#include "SEGGER_SYSVIEW.h"``.
-10. Print the RTT block address to the serial port on startup: ``printf("SEGGER_RTT block address: %p\n", &(_SEGGER_RTT));``. The following include directive is required: ``#include "SEGGER_RTT.h"``.
+#. Add in your BSP the Abstraction Layer implementation of the :ref:`Java Trace API <trace_implementations>` for SystemView by adding C module files in your BSP: `com.microej.clibrary.llimpl#trace-systemview`_
 
-.. note::
-   
-   This is useful if SystemView does not automatically find the RTT block address.
-   See section :ref:`systemview_no_rtt_block` for more details.
+Configure FreeRTOS for SystemView
+---------------------------------
 
-.. note::
+Open  ``FreeRTOSConfig.h`` and make these changes:
 
-   You may also find the RTT block address in RAM by searching ``_SEGGER_RTT`` in the .map file generated with the firmware binary.
+#. add ``#define INCLUDE_xTaskGetIdleTaskHandle 1``
+#. add ``#define INCLUDE_pxTaskGetStackStart 1``
+#. add ``#define INCLUDE_uxTaskPriorityGet 1``
+#. comment the line ``#define traceTASK_SWITCHED_OUT()`` if defined 
+#. comment the line ``#define traceTASK_SWITCHED_IN()`` if defined 
+#. add ``#include "SEGGER_SYSVIEW_FreeRTOS.h"`` at the end of the file
 
-11. Add a call to ``SEGGER_SYSVIEW_setMicroJVMTask((U32)pvCreatedTask);`` just after creating the OS task to register the MicroEJ Core Engine OS task. The handler to give is the one filled by the ``xTaskCreate`` function.
+Modify startup code of your BSP
+-------------------------------
 
-12. Copy the file ``/YourPlatformProject-bsp/projects/microej/trace/systemview/SYSVIEW_MicroEJ.txt`` to the SystemView installation path, such as ``SEGGER/SystemView_V252a/Description/``. If you use MicroUI traces, you can also copy the file in the section :ref:`microui_traces`
+#. Enable SystemView on startup (before creating the first OS task): call ``SEGGER_SYSVIEW_Conf();``. The following include directive is required: ``#include "SEGGER_SYSVIEW.h"``.
 
-.. _com.microej.clibrary.thirdparty#systemview: https://repository.microej.com/modules/com/microej/clibrary/thirdparty/systemview/1.3.1/
-.. _com.microej.clibrary.thirdparty#systemview-freertos10: https://repository.microej.com/modules/com/microej/clibrary/thirdparty/systemview-freertos10/1.1.1/
-.. _com.microej.clibrary.llimpl#trace-systemview: https://repository.microej.com/modules/com/microej/clibrary/llimpl/trace-systemview/3.1.0/
+#. Print the RTT block address to the serial port on startup: ``printf("SEGGER_RTT block address: %p\n", &(_SEGGER_RTT));``. The following include directive is required: ``#include "SEGGER_RTT.h"``.
 
+   .. note::
+      
+      This is useful if SystemView does not automatically find the RTT block address.
+      See section :ref:`systemview_no_rtt_block` for more details.
+      You may also find the RTT block address in RAM by searching ``_SEGGER_RTT`` in the .map file generated with the firmware binary.
+
+#. Add a call to ``SYSVIEW_setMicroJVMTask(pvCreatedTask);`` just after creating the OS task. The handler to give is the parameter of type TaskHandle_t passed to the ``xTaskCreate`` function. This will register the MicroEJ Core Engine OS task.
+
+Add description files to Systemview installation folder
+-------------------------------------------------------
+
+Copy the file ``SYSVIEW_MicroEJ.txt`` of the C module `com.microej.clibrary.llimpl#trace-systemview`_ to the SystemView installation path, such as ``SEGGER/SystemView_V252a/Description/``. If your VEE Port integrates MicroUI, also add the trace descriptions files from :ref:`microui_traces`.
 
 
 .. _section_non_default_cpu_setup:
 
 Non default CPU recommendations
-===============================
+-------------------------------
 
 As mentioned in the SEGGER documentation, SystemView can be used on any CPU. In the case of a CPU not supported by
 default, the following macros that redirect to 4 functions must be implemented:
@@ -248,63 +265,21 @@ The file generated can now be read by the SystemView software.
    `SEGGER website <https://www.segger.com/products/development-tools/systemview/technology/post-mortem-mode>`__.
 
 
+Usage
+=====
 
-MicroEJ Core Engine OS Task
-===========================
+Trace application events
+------------------------
 
-The :ref:`MicroEJ Core Engine <core_engine>` task is the OS task that executes MicroEJ Java threads. 
-Once it is :ref:`started <core_engine_implementation>` (by calling ``SNI_startVM``), it executes the initialization code and rapidly starts to execute the MicroEJ Application main thread.
-At that time, the events produced by this OS task (context switch, semaphores, etc.) are dispatched to the current MicroEJ Java thread.
-Consequently, this OS task is useless when the MicroEJ Application is running.
+To enable events recording, refer to the :ref:`event_enable_recording` section to configure the required :ref:`Application Options <application_options>`.
 
-SystemView for MicroEJ disables the visibility of this OS task when the MicroEJ Application is running. It simplifies the SystemView client debugging.
-
-OS Tasks and Java Threads Names
-===============================
-
-To make a distinction between the OS tasks and the MicroEJ Java threads, a prefix is added to the OS tasks names (``[OS]``) and the Java threads names (``[MEJ]``).
-
-.. _fig_sv_names:
-.. figure:: images/sv_names.*
-   :alt: OS and Thread Names
-   :align: center
-
-   OS Tasks and Java Threads Names
-
-.. note:: 
-
-   SystemView limits the number of characters to 32. The prefix length is included in these 32 characters; consequently, the end of the original OS task or Java thread name can be cropped.
-
-OS Tasks and Java Threads Priorities
-====================================
-
-SystemView lists the OS tasks and Java threads according to their priorities. 
-However, the priority notion does not have the same signification when talking about OS tasks or Java threads: a Java thread priority depends on the MicroEJ Core Engine OS task priority.
-
-As a consequence, a Java thread with the priority ``5`` may not appear between an OS task with the priority ``4`` and another OS task with priority ``6``:
-
-* if the MicroEJ Core Engine OS task priority is ``3``, the Java thread must appear below an OS task with priority ``4``. 
-* if the MicroEJ Core Engine OS task priority is ``7``, the Java thread must appear above an OS task with priority ``6``. 
-
-To keep a consistent line ordering in SystemView, the priorities sent to the SystemView client respect the following rules:
-
-* OS task: ``priority_sent = task_priority * 100``.
-* MicroEJ Java thread: ``priority_sent = MicroJvm_task_priority * 100 + thread_priority``.
-
-Use
-===
+Add custom events to the SystemView analysis
+--------------------------------------------
 
 MicroEJ Architecture can generate specific events that allow monitoring of current Java thread, Java exceptions, Java allocations, ... as well as custom application events.
 Please refer to the :ref:`event-tracing` section.
 
-To enable events recording, refer to the :ref:`event_enable_recording` section to configure the required :ref:`Application Options <application_options>`.
-
-
-Add custom events to the SystemView analysis
-============================================
-
-The first step is to add logs in the Java application using a dedicated ``Tracer``. Please read the documentation
-page :ref:`codeInstrumentationForLogging`. Below is an example of ``Tracer`` usage:
+For custom application events, the first step is to add logs to the Java application using a dedicated ``Tracer``. Please read the documentation page :ref:`codeInstrumentationForLogging`. Below is an example of ``Tracer`` usage:
 
 .. code-block:: java
 
@@ -361,6 +336,45 @@ parameters to appear in the SystemView timeline view, use the modifiers below:
 * ``%x`` - Display parameter as hexadecimal integer.
 
 Check the other text files provided by SEGGER for more examples in the install directory ``SEGGER/SystemView_VXXX/Description``.
+
+MicroEJ Core Engine OS Task
+---------------------------
+
+The :ref:`MicroEJ Core Engine <core_engine>` task is the native OS task that executes the Core Engine internals & the Application threads.
+The provided SystemView configuration replaces (splits) the execution segments of this OS task with (into) the different components that are actually executed.
+This simplifies profiling analysis by exposing the execution segments of the Scheduler, Garbage Collector & the different Application threads (with their names, see the section below) directly into SystemView's timeline, along with the other native OS tasks.
+
+OS Tasks and Java Threads Names
+-------------------------------
+
+To make a distinction between the OS tasks and the MicroEJ Java threads, a prefix is added to the OS tasks names (``[OS]``) and the Java threads names (``[MEJ]``).
+
+.. _fig_sv_names:
+.. figure:: images/sv_names.*
+   :alt: OS and Thread Names
+   :align: center
+
+   OS Tasks and Java Threads Names
+
+.. note:: 
+
+   SystemView limits the number of characters to 32. The prefix length is included in these 32 characters; consequently, the end of the original OS task or Java thread name can be cropped.
+
+OS Tasks and Java Threads Priorities
+------------------------------------
+
+SystemView lists the OS tasks and Java threads according to their priorities. 
+However, the priority notion does not have the same signification when talking about OS tasks or Java threads: a Java thread priority depends on the MicroEJ Core Engine OS task priority.
+
+As a consequence, a Java thread with the priority ``5`` may not appear between an OS task with the priority ``4`` and another OS task with priority ``6``:
+
+* if the MicroEJ Core Engine OS task priority is ``3``, the Java thread must appear below an OS task with priority ``4``. 
+* if the MicroEJ Core Engine OS task priority is ``7``, the Java thread must appear above an OS task with priority ``6``. 
+
+To keep a consistent line ordering in SystemView, the priorities sent to the SystemView client respect the following rules:
+
+* OS task: ``priority_sent = task_priority * 100``.
+* MicroEJ Java thread: ``priority_sent = MicroJvm_task_priority * 100 + thread_priority``.
 
 Troubleshooting
 ===============
