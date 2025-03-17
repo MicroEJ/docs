@@ -59,7 +59,7 @@ The Kernel provides the following APIs to the Apps:
    * - Bluetooth
      - `2.2 <https://repository.microej.com/javadoc/microej_5.x/libraries/bluetooth-2.2-api/>`__
    * - VEE Wear Services
-     - `0.11 <https://repository.microej.com/javadoc/wear-services/0.11.0/>`__
+     - `1.0 <https://repository.microej.com/javadoc/wear-services/1.0.0/>`__
 
 .. _vee_wear_services:
 
@@ -109,14 +109,14 @@ The library also provides interfaces to components that are implemented by the A
    * - `ComplicationDataSource`_
      - provides data that can be displayed on watchface complications
 
-Using `ComponentService <https://repository.microej.com/javadoc/wear-services/0.11.0/com/microej/wear/services/ComponentService.html>`_, Apps can register their own components into the Kernel.
+Using `ComponentService <https://repository.microej.com/javadoc/wear-services/1.0.0/com/microej/wear/services/ComponentService.html>`_, Apps can register their own components into the Kernel.
 Once a component is registered, its lifecycle is managed by the Kernel: the Kernel will call the methods of the component when the user navigates in the relevant menus of the watch.
 
 To use the VEE Wear Services, add the following line to the project build file:
 
 .. code-block:: kotlin
 
-	implementation("com.microej.library.wear:wear-services:0.11.0")
+	implementation("com.microej.library.wear:wear-services:1.0.0")
 
 VEE Wear Apps
 -------------
@@ -132,7 +132,7 @@ To create an App project, follow these steps:
 
 - :ref:`Create an SDK 6 Application project <sdk_6_create_project>`.
 - Open the ``build.gradle.kts`` file.
-- Add a dependency to the VEE Wear Services library: add ``implementation("com.microej.library.wear:wear-services:0.11.0")`` in the ``dependencies`` block.
+- Add a dependency to the VEE Wear Services library: add ``implementation("com.microej.library.wear:wear-services:1.0.0")`` in the ``dependencies`` block.
 
 Implementing the Entry Point
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -159,9 +159,9 @@ They are listed in the Activity Launcher:
 
 To implement an Activity, create a class that implements the `Activity`_ interface and its methods:
 
-- `getName() <https://repository.microej.com/javadoc/wear-services/0.11.0/com/microej/wear/components/Activity.html#getName()>`__ should return the name of the Activity. This is the name that is visible in the Activity Launcher.
-- `renderIcon() <https://repository.microej.com/javadoc/wear-services/0.11.0/com/microej/wear/components/Activity.html#renderIcon(ej.microui.display.GraphicsContext,int,int,int)>`__ should render the icon of the Activity in the given region. This is the icon that is visible in the Activity Launcher.
-- `createRenderable() <https://repository.microej.com/javadoc/wear-services/0.11.0/com/microej/wear/components/Activity.html#createRenderable()>`__ should create the Renderable that renders the Activity (see :ref:`Implementing a Renderable <vee_wear_renderable>`).
+- `getName() <https://repository.microej.com/javadoc/wear-services/1.0.0/com/microej/wear/components/Activity.html#getName()>`__ should return the name of the Activity. This is the name that is visible in the Activity Launcher.
+- `renderIcon() <https://repository.microej.com/javadoc/wear-services/1.0.0/com/microej/wear/components/Activity.html#renderIcon(ej.microui.display.GraphicsContext,int,int,int)>`__ should render the icon of the Activity in the given region. This is the icon that is visible in the Activity Launcher.
+- `createRenderable() <https://repository.microej.com/javadoc/wear-services/1.0.0/com/microej/wear/components/Activity.html#createRenderable()>`__ should create the Renderable that renders the Activity (see :ref:`Implementing a Renderable <vee_wear_renderable>`).
 
 Once the Activity is implemented, make sure it is registered in the Kernel by calling `ComponentService.registerActivity()`_. This method is usually called in the entry point of the App.
 
@@ -176,8 +176,8 @@ They are listed in the Watchface Picker.
 
 To implement a Watchface, create a class that implements the `Watchface`_ interface and its methods:
 
-- `renderPreview() <https://repository.microej.com/javadoc/wear-services/0.11.0/com/microej/wear/components/Watchface.html#renderPreview(ej.microui.display.GraphicsContext,int,int,int)>`__ should render a preview of the UI in the given region. This is the preview that is visible in the Watchface Picker.
-- `createRenderable() <https://repository.microej.com/javadoc/wear-services/0.11.0/com/microej/wear/components/Watchface.html#createRenderable()>`__ should create the Renderable that renders the Watchface (see :ref:`Implementing a Renderable <vee_wear_renderable>`). The renderable can use the `ComponentService.getComplicationDataSources()`_ API to render complications that show data from third-party Apps.
+- `renderPreview() <https://repository.microej.com/javadoc/wear-services/1.0.0/com/microej/wear/components/Watchface.html#renderPreview(ej.microui.display.GraphicsContext,int,int,int)>`__ should render a preview of the UI in the given region. This is the preview that is visible in the Watchface Picker.
+- `createRenderable() <https://repository.microej.com/javadoc/wear-services/1.0.0/com/microej/wear/components/Watchface.html#createRenderable()>`__ should create the Renderable that renders the Watchface (see :ref:`Implementing a Renderable <vee_wear_renderable>`). The renderable can use the `ComponentService.getComplicationDataSources()`_ API to render complications that show data from third-party Apps.
 
 Once the Wathface is implemented, make sure it is registered in the Kernel by calling `ComponentService.registerWatchface()`_. This method is usually called in the entry point of the App.
 
@@ -190,10 +190,10 @@ A Renderable is a user interface which can be rendered on a graphics context dur
 
 To implement a Renderable, create a class that implements the `Renderable`_ interface and its methods:
 
-- `onAttached() <https://repository.microej.com/javadoc/wear-services/0.11.0/com/microej/wear/components/Renderable.html#onAttached()>`__ should load the resources necessary for rendering the UI.
-- `onDetached() <https://repository.microej.com/javadoc/wear-services/0.11.0/com/microej/wear/components/Renderable.html#onDetached()>`__ should dispose the resources loaded in ``onAttached()``.
-- `render() <https://repository.microej.com/javadoc/wear-services/0.11.0/com/microej/wear/components/Renderable.html#render(ej.microui.display.GraphicsContext)>`__ should render the UI on the given graphics context.
-- `showOnDisplay() <https://repository.microej.com/javadoc/wear-services/0.11.0/com/microej/wear/components/Renderable.html#showOnDisplay()>`__ should show on the display a `Displayable`_ that will render the UI in fullscreen and handle events.
+- `onAttached() <https://repository.microej.com/javadoc/wear-services/1.0.0/com/microej/wear/components/Renderable.html#onAttached()>`__ should load the resources necessary for rendering the UI.
+- `onDetached() <https://repository.microej.com/javadoc/wear-services/1.0.0/com/microej/wear/components/Renderable.html#onDetached()>`__ should dispose the resources loaded in ``onAttached()``.
+- `render() <https://repository.microej.com/javadoc/wear-services/1.0.0/com/microej/wear/components/Renderable.html#render(ej.microui.display.GraphicsContext)>`__ should render the UI on the given graphics context.
+- `showOnDisplay() <https://repository.microej.com/javadoc/wear-services/1.0.0/com/microej/wear/components/Renderable.html#showOnDisplay()>`__ should show on the display a `Displayable`_ that will render the UI in fullscreen and handle events.
 
 The `wear-util <https://forge.microej.com/ui/native/microej-developer-repository-release/com/microej/library/wear/wear-util/>`__ library provides 2 generic implementations of Renderable:
 
@@ -212,9 +212,9 @@ Watchfaces can render complications the way they want using the data provided by
 
 To implement a Complication Data Source, create a class that implements the `ComplicationDataSource`_ interface and its methods:
 
-- `hasText() <https://repository.microej.com/javadoc/wear-services/0.11.0/com/microej/wear/components/ComplicationDataSource.html#hasText()>`__, `hasIcon() <https://repository.microej.com/javadoc/wear-services/0.11.0/com/microej/wear/components/ComplicationDataSource.html#hasIcon()>`__ and `hasProgress() <https://repository.microej.com/javadoc/wear-services/0.11.0/com/microej/wear/components/ComplicationDataSource.html#hasProgress()>`__ should return whether the source provides the associated information.
-- `getText() <https://repository.microej.com/javadoc/wear-services/0.11.0/com/microej/wear/components/ComplicationDataSource.html#getText()>`__ and `getProgress() <https://repository.microej.com/javadoc/wear-services/0.11.0/com/microej/wear/components/ComplicationDataSource.html#getProgress()>`__ should return the associated information.
-- `renderIcon() <https://repository.microej.com/javadoc/wear-services/0.11.0/com/microej/wear/components/ComplicationDataSource.html#renderIcon(ej.microui.display.GraphicsContext,int,int,int,int)>`__ should render the icon in the given region.
+- `hasText() <https://repository.microej.com/javadoc/wear-services/1.0.0/com/microej/wear/components/ComplicationDataSource.html#hasText()>`__, `hasIcon() <https://repository.microej.com/javadoc/wear-services/1.0.0/com/microej/wear/components/ComplicationDataSource.html#hasIcon()>`__ and `hasProgress() <https://repository.microej.com/javadoc/wear-services/1.0.0/com/microej/wear/components/ComplicationDataSource.html#hasProgress()>`__ should return whether the source provides the associated information.
+- `getText() <https://repository.microej.com/javadoc/wear-services/1.0.0/com/microej/wear/components/ComplicationDataSource.html#getText()>`__ and `getProgress() <https://repository.microej.com/javadoc/wear-services/1.0.0/com/microej/wear/components/ComplicationDataSource.html#getProgress()>`__ should return the associated information.
+- `renderIcon() <https://repository.microej.com/javadoc/wear-services/1.0.0/com/microej/wear/components/ComplicationDataSource.html#renderIcon(ej.microui.display.GraphicsContext,int,int,int,int)>`__ should render the icon in the given region.
 
 Once the Complication Data Source is implemented, make sure it is registered in the Kernel by calling `ComponentService.registerComplicationDataSource()`_. This method is usually called in the entry point of the App.
 
@@ -242,25 +242,25 @@ Once the project is configured, the App can be built like any MicroEJ Applicatio
 .. _FeatureEntryPoint: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/FeatureEntryPoint.html
 .. _Displayable: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Displayable.html
 .. _Desktop: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Desktop.html
-.. _Activity: https://repository.microej.com/javadoc/wear-services/0.11.0/com/microej/wear/components/Activity.html
-.. _Watchface: https://repository.microej.com/javadoc/wear-services/0.11.0/com/microej/wear/components/Watchface.html
-.. _ComplicationDataSource: https://repository.microej.com/javadoc/wear-services/0.11.0/com/microej/wear/components/ComplicationDataSource.html
-.. _Renderable: https://repository.microej.com/javadoc/wear-services/0.11.0/com/microej/wear/components/Renderable.html
-.. _KernelServiceProvider: https://repository.microej.com/javadoc/wear-services/0.11.0/com/microej/wear/KernelServiceProvider.html
-.. _ComponentService: https://repository.microej.com/javadoc/wear-services/0.11.0/com/microej/wear/services/ComponentService.html
-.. _DeviceService: https://repository.microej.com/javadoc/wear-services/0.11.0/com/microej/wear/services/DeviceService.html
-.. _ExternalResourceService: https://repository.microej.com/javadoc/wear-services/0.11.0/com/microej/wear/services/ExternalResourceService.html
-.. _FontService: https://repository.microej.com/javadoc/wear-services/0.11.0/com/microej/wear/services/FontService.html
-.. _HealthService: https://repository.microej.com/javadoc/wear-services/0.11.0/com/microej/wear/services/HealthService.html
-.. _NavigationService: https://repository.microej.com/javadoc/wear-services/0.11.0/com/microej/wear/services/NavigationService.html
-.. _TimeService: https://repository.microej.com/javadoc/wear-services/0.11.0/com/microej/wear/services/TimeService.html
+.. _Activity: https://repository.microej.com/javadoc/wear-services/1.0.0/com/microej/wear/components/Activity.html
+.. _Watchface: https://repository.microej.com/javadoc/wear-services/1.0.0/com/microej/wear/components/Watchface.html
+.. _ComplicationDataSource: https://repository.microej.com/javadoc/wear-services/1.0.0/com/microej/wear/components/ComplicationDataSource.html
+.. _Renderable: https://repository.microej.com/javadoc/wear-services/1.0.0/com/microej/wear/components/Renderable.html
+.. _KernelServiceProvider: https://repository.microej.com/javadoc/wear-services/1.0.0/com/microej/wear/KernelServiceProvider.html
+.. _ComponentService: https://repository.microej.com/javadoc/wear-services/1.0.0/com/microej/wear/services/ComponentService.html
+.. _DeviceService: https://repository.microej.com/javadoc/wear-services/1.0.0/com/microej/wear/services/DeviceService.html
+.. _ExternalResourceService: https://repository.microej.com/javadoc/wear-services/1.0.0/com/microej/wear/services/ExternalResourceService.html
+.. _FontService: https://repository.microej.com/javadoc/wear-services/1.0.0/com/microej/wear/services/FontService.html
+.. _HealthService: https://repository.microej.com/javadoc/wear-services/1.0.0/com/microej/wear/services/HealthService.html
+.. _NavigationService: https://repository.microej.com/javadoc/wear-services/1.0.0/com/microej/wear/services/NavigationService.html
+.. _TimeService: https://repository.microej.com/javadoc/wear-services/1.0.0/com/microej/wear/services/TimeService.html
 
 .. _Display.requestShow(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#requestShow-ej.microui.display.Displayable-
-.. _ComponentService.getComplicationDataSources(): https://repository.microej.com/javadoc/wear-services/0.11.0/com/microej/wear/services/ComponentService.html#getComplicationDataSources()
-.. _ComponentService.registerActivity(): https://repository.microej.com/javadoc/wear-services/0.11.0/com/microej/wear/services/ComponentService.html#registerActivity(com.microej.wear.components.Activity)
-.. _ComponentService.registerWatchface(): https://repository.microej.com/javadoc/wear-services/0.11.0/com/microej/wear/services/ComponentService.html#registerWatchface(com.microej.wear.components.Watchface)
-.. _ComponentService.registerComplicationDataSource(): https://repository.microej.com/javadoc/wear-services/0.11.0/com/microej/wear/services/ComponentService.html#registerComplicationDataSource(com.microej.wear.components.ComplicationDataSource)
-.. _NavigationService.handleEvent(): https://repository.microej.com/javadoc/wear-services/0.11.0/com/microej/wear/services/NavigationService.html#handleEvent(int)
+.. _ComponentService.getComplicationDataSources(): https://repository.microej.com/javadoc/wear-services/1.0.0/com/microej/wear/services/ComponentService.html#getComplicationDataSources()
+.. _ComponentService.registerActivity(): https://repository.microej.com/javadoc/wear-services/1.0.0/com/microej/wear/services/ComponentService.html#registerActivity(com.microej.wear.components.Activity)
+.. _ComponentService.registerWatchface(): https://repository.microej.com/javadoc/wear-services/1.0.0/com/microej/wear/services/ComponentService.html#registerWatchface(com.microej.wear.components.Watchface)
+.. _ComponentService.registerComplicationDataSource(): https://repository.microej.com/javadoc/wear-services/1.0.0/com/microej/wear/services/ComponentService.html#registerComplicationDataSource(com.microej.wear.components.ComplicationDataSource)
+.. _NavigationService.handleEvent(): https://repository.microej.com/javadoc/wear-services/1.0.0/com/microej/wear/services/NavigationService.html#handleEvent(int)
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
