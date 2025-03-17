@@ -347,6 +347,9 @@ Once the firmware is flashed, you should see the :guilabel:`animatedMascot` runn
       </table>
    </div>
 
+.. |image1| image:: images/iMXRT1170/getting-started-rt1170-hardware-demo-running.jpg
+.. |image2| image:: images/iMXRT1170/getting-started-rt1170-termite-application-output.png
+
 .. _sdk_6_getting_started_rt1170_modify_java_application:
 
 Modify the Java Application
