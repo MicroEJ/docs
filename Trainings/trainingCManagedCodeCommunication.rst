@@ -45,13 +45,22 @@ Unit 1: C / Managed Code Communication with MICROEJ VEE
 
 .. |c_managed_code_communication_slides| raw:: html
 
-   <a href="https://repository.microej.com/packages/training/DEV-M0127_0030-PRE-C_Managed_Code_Communication-1.4-RC20240820.pdf" target="_blank">Slides: C / Managed Code Communication with MICROEJ VEE</a>
+   <a href="https://repository.microej.com/packages/training/DEV-M0127-PRE-C_Managed_Code_Communication-1.4_20250317.pdf" target="_blank">Slides: C / Managed Code Communication with MICROEJ VEE</a>
 
 
 This training provides a comprehensive overview of the various methods for 
-C / Managed Code communication:
+C / Managed Code communication.
+
+This training is provided as a PDF, along with a downloadable ``.zip`` package of resources:
 
 - |c_managed_code_communication_slides|
+- :download:`Resources <https://repository.microej.com/packages/training/microej_sdk_basics/gpio-basic_0f5cf862_20250317.zip>`
+
+.. note::
+   The ``SNI and Blocking Functions`` section requires to use the `NXP i.MX RT1170 Evaluation Kit <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__
+   to run the hand's on.
+
+   The rest of the training is board agnostic.
 
 Unit 2: Implementing a Blocking Java Native Method with SNI
 -----------------------------------------------------------

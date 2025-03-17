@@ -13,7 +13,8 @@ to accelerate your product development.
 Intended Audience
 =================
 
-This training is designed for developers who want to learn about the tools available for debugging embedded applications.
+This training is designed for developers who want to learn about the tools available for 
+developing and debugging embedded applications.
 
 Prerequisites
 =============
@@ -32,19 +33,17 @@ Unit 1: Master logging within your Application
 
 - Read the following documentation: :ref:`codeInstrumentationForLogging`.
 
-Unit 2: MicroEJ Debug Tools Overview
-------------------------------------
-
-TODO LINKS
+Unit 2: MicroEJ Development Tools Overview
+------------------------------------------
 
 .. |development_tools_sdk6_rt1170_slides| raw:: html
 
-   <a href="https://repository.microej.com/packages/training/debugging_with_microej_sdk/DEV-M0127-PRE-MicroEJ-Debug-Tools-SDK5-STM32F7508-2.2-RC20240820.pdf" target="_blank">Slides: MicroEJ Debug Tools Overview</a>
+   <a href="https://repository.microej.com/packages/training/microej_development_tools/DEV-M0127-PRE-MicroEJ-Development-Tools-SDK6-NXP-i.MXRT1170-3.0_20250317.pdf" target="_blank">Slides: MICROEJ SDK Development Tools</a>
 
-This training is provided as a PDF:
+This training is provided as a PDF, along with a downloadable ``.zip`` package of resources:
 
 - |development_tools_sdk6_rt1170_slides| (for MICROEJ SDK 6)
-- :download:`Resources <https://repository.microej.com/packages/training/debugging_with_microej_sdk/debugging_with_microej_sdk_e4cb0a54.zip>`
+- :download:`Resources <https://repository.microej.com/packages/training/microej_development_tools/microej-development-tools_0f5cf862_20250317.zip>`
 
 ..
    | Copyright 2021-2025, MicroEJ Corp. Content in this space is free 

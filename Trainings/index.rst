@@ -127,24 +127,6 @@ For Application Developers
          <div class="training_items">
 
          <div class="training_item">
-            <!--a class="training_link" href="gettingStartedIMXRT1170MultiSandbox.html"-->
-               <div class="training_image_container">
-                  <ul class="training_image_list">
-                     <li class="training_course_number">Course</li>
-                     <li class="training_duration">30min</li>
-                  </ul>
-                  <img src="../_static/images/training/training_sandboxed_apps.jpg" alt="Multi-Sandbox Applications">
-               </div>
-               <h3 class="training_title">Get Started with Multi-Sandbox Applications</h3>
-               <p class="training_description">In this training, you will get an introduction
-               on how to execute a Multi-Sandbox Application on a Multi-Sandbox Executable.
-               </p>
-               <a class="training_learn_more_link" href="">Coming Soon!</a>
-               <!--a class="training_learn_more_link" href="gettingStartedIMXRT1170MultiSandbox.html">Learn more</a-->
-            <!--/a-->
-         </div>
-
-         <div class="training_item">
             <a class="training_link" href="tutorialImproveCodeQuality.html">
                <div class="training_image_container">
                   <ul class="training_image_list">
@@ -209,6 +191,25 @@ For Application Developers
             <a>Learn more</a>
          </div>
             
+
+         <div class="training_item">
+            <!--a class="training_link" href="gettingStartedIMXRT1170MultiSandbox.html"-->
+               <div class="training_image_container">
+                  <ul class="training_image_list">
+                     <li class="training_course_number">Course</li>
+                     <!--li class="training_duration">30min</li-->
+                  </ul>
+                  <img src="../_static/images/training/training_sandboxed_apps.jpg" alt="Multi-Sandbox Applications">
+               </div>
+               <h3 class="training_title">Get Started with Multi-Sandbox Applications</h3>
+               <p class="training_description">In this training, you will get an introduction
+               on how to execute a Multi-Sandbox Application on a Multi-Sandbox Executable.
+               </p>
+               <a class="training_learn_more_link" href="">Coming Soon!</a>
+               <!--a class="training_learn_more_link" href="gettingStartedIMXRT1170MultiSandbox.html">Learn more</a-->
+            <!--/a-->
+         </div>
+
          </div>
 
 For VEE Developers
@@ -383,24 +384,6 @@ Multi-Sandbox
          <div class="training_items">
 
          <div class="training_item">
-            <!--a class="training_link" href="gettingStartedIMXRT1170KernelGREEN.html"-->
-               <div class="training_image_container">
-                  <ul class="training_image_list">
-                     <li class="training_course_number">Course</li>
-                     <li class="training_duration">1h</li>
-                  </ul>
-                  <img src="../_static/images/training/training_kernel.jpg" alt="Kernel">
-               </div>
-               <h3 class="training_title">Get Started with Kernel</h3>
-               <p class="training_description">In this training, you will get an introduction on how to setup an environment
-               and create your first GREEN Kernel executable.
-               </p>
-               <a class="training_learn_more_link" href="">Coming Soon!</a>
-               <!--a class="training_learn_more_link" href="gettingStartedIMXRT1170KernelGREEN.html">Learn more</a-->
-            <!--/a-->
-         </div>
-
-         <div class="training_item">
             <a class="training_link" href="trainingKernel.html">
                <div class="training_image_container">
                   <ul class="training_image_list">
@@ -433,6 +416,24 @@ Multi-Sandbox
                <a class="training_learn_more_link" href="trainingSandboxedApps.html">Learn more</a>
             </a>
             </div>
+            
+         <div class="training_item">
+            <!--a class="training_link" href="gettingStartedIMXRT1170KernelGREEN.html"-->
+               <div class="training_image_container">
+                  <ul class="training_image_list">
+                     <li class="training_course_number">Course</li>
+                     <!--li class="training_duration">1h</li-->
+                  </ul>
+                  <img src="../_static/images/training/training_kernel.jpg" alt="Kernel">
+               </div>
+               <h3 class="training_title">Get Started with Kernel</h3>
+               <p class="training_description">In this training, you will get an introduction on how to setup an environment
+               and create your first GREEN Kernel executable.
+               </p>
+               <a class="training_learn_more_link" href="">Coming Soon!</a>
+               <!--a class="training_learn_more_link" href="gettingStartedIMXRT1170KernelGREEN.html">Learn more</a-->
+            <!--/a-->
+         </div>
 
          </div>
 
