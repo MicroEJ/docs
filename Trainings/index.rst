@@ -285,7 +285,7 @@ For VEE Developers
                <div class="training_image_container">
                   <ul class="training_image_list">
                      <li class="training_course_number">Course</li>
-                     <li class="training_duration">30 min</li>
+                     <li class="training_duration">1h</li>
                   </ul>
                   <img src="../_static/images/training/training_async_worker.jpg" alt="Async Worker">
                </div>
