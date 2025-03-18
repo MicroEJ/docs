@@ -31,7 +31,7 @@ To use the `FS Library <https://repository.microej.com/modules/ej/api/fs//>`_, a
 
          <dependency org="ej.api" name="fs" rev="2.1.1"/>
 
-Building or running an Application which uses the FS API Library requires the VEE Port to provide the :ref:`FS Pack <https://repository.microej.com/modules/com/microej/pack/fs/>`_.
+Building or running an Application which uses the FS API Library requires the VEE Port to provide the `FS Pack <https://repository.microej.com/modules/com/microej/pack/fs/>`_.
 
 Examples
 --------

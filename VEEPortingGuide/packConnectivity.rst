@@ -1,5 +1,5 @@
 Connectivity features
-================
+=====================
 
 .. toctree::
    :maxdepth: 1
