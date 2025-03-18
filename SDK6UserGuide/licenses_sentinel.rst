@@ -53,13 +53,6 @@ Get ``aksusbd_37102-10.12.1.tar.gz`` file and extract it. The installation packa
 .. note::
 	All install/uninstall commands must be executed with root rights. On Ubuntu, prefix the commands with the ``sudo`` command. On other Linux distributions, use the ``su`` utility to become root in the terminal window.
 
-**Installation for macOS**
-
-- Get ``Sentinel_Runtime_37102.tar`` file
-- In ``SentinelRuntimeInstaller.framework/Versions/A/Resources/`` double-click on ``Sentinel_Runtime.pkg``
-- Double-click the Install Sentinel Runtime Environment disk image icon. The installer wizard is launched
-- Follow the instructions of the installer wizard until the installation is complete. The first time that you run Admin Control Center and submit configuration changes, ``hasplmd`` creates configuration files in ``/private/etc/hasplm/``
-
 Configure the License Server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -136,6 +129,16 @@ Get ``aksusbd_37102-10.12.1.tar.gz`` file and extract it. The installation packa
 - Set ``DYLD_LIBRARY_PATH`` variable with command ``export DYLD_LIBRARY_PATH=<your_directory>:$DYLD_LIBRARY_PATH``.
   This modification has to be setup at session startup  (e.g: using ``.bashrc`` file) to ensure that OS is properly configured before running the SDK.
 
+  .. note::
+
+   If you use the Sentinel RTE on WSL (Windows Subsystem for Linux): you can set the service to start on boot by creating the file ``/etc/wsl.conf`` and add these lines to it:
+
+   .. code-block::
+   
+      [boot]
+      command="service aksusbd start"
+
+   You can check the service status with the command ``sudo service aksusbd status``
 
 Configure the Remote Floating License Server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
