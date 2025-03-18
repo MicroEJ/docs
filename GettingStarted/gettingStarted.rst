@@ -26,14 +26,6 @@ What you will learn:
 - How to run an app on a real development board.
 - Discover more examples and guided tutorials to go further with MicroEJ technology.
 
-.. raw:: html
-
-        <div class="figure align-center">
-                <video width="960" height="540" poster="https://developer.microej.com/wp-content/uploads/2024/03/hellomicroej_thirddraft_preview.jpg" controls="controls" >
-                        <source src="https://repository.microej.com/packages/videos/gettingStartedSDK6_v9.0_opt.mp4" type="video/mp4">
-                </video>
-        </div>
-
 VEE Ports for Evaluation
 ------------------------
 
