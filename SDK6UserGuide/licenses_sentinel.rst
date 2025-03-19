@@ -164,6 +164,7 @@ Configure the Remote Floating License Server
    On Linux, you can check that the RTE is properly configured by checking the file ``hasp_37102.ini`` in ``/etc/hasplm`` or ``~/.hasplm`` (if you have not installed RTE as root) and check if these lines exist:
 
    .. code-block::
+      
       [REMOTE]
       broadcastsearch = 0
       serversearchinterval = 30
