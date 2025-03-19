@@ -66,7 +66,7 @@ For Beginners
                   </ul>
                   <img src="../_static/images/training/training_debug.jpg" alt="Debug Tools">
                </div>
-               <h3 class="training_title">Debugging with MICROEJ SDK</h3>
+               <h3 class="training_title">Mastering MICROEJ SDK Development Tools</h3>
                <p class="training_description">Maximize your knowledge of MICROEJ SDK Development Tools to 
                accelerate your product development.
                </p>
