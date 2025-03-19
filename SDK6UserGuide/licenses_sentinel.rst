@@ -107,17 +107,28 @@ First, download `Sentinel_RTE_Installation-1.1.0.zip <https://repository.microej
 
 **Installation for Linux**
 
+.. note::
+	All install/uninstall commands must be executed with root rights. On Ubuntu, prefix the commands with the ``sudo`` command. On other Linux distributions, use the ``su`` utility to become root in the terminal window.
+
 Get ``aksusbd_37102-10.12.1.tar.gz`` file and extract it. The installation packages are in the directory ``pkg``, as root enter the following command:
 
 - For RedHat, SUSE, or CentOS 64-bit Intel systems: ``rpm -i aksusbd-10.12.1.x86_64.rpm``
 - For Ubuntu or Debian 64-bit Intel systems: ``dpkg -i aksusbd_10.12-1_amd64.deb``
 - Copy ``aksusbd-10.12.1/haspvlib_37102.so`` and ``aksusbd-10.12.1/haspvlib_x86_64_37102.so`` to ``/var/hasplm`` directory
 - Get ``MicroEJ_library/libhasp_linux_x86_64_37102.so`` file and copy it in a directory of your choice
-- Set ``LD_LIBRARY_PATH`` variable with command ``export LD_LIBRARY_PATH=<your_directory>:$LD_LIBRARY_PATH``.
+- Set ``LD_LIBRARY_PATH`` variable with command ``export LD_LIBRARY_PATH=<directory_of_libhasp_file>:$LD_LIBRARY_PATH`` (just the directory, not with the file name).
   This modification has to be setup at session startup  (e.g: using ``.bashrc`` file) to ensure that OS is properly configured before running the SDK.
 
 .. note::
-	All install/uninstall commands must be executed with root rights. On Ubuntu, prefix the commands with the ``sudo`` command. On other Linux distributions, use the ``su`` utility to become root in the terminal window.
+
+   If you use the Sentinel RTE on WSL (Windows Subsystem for Linux): you can set the service to start on boot by creating the file ``/etc/wsl.conf`` and add these lines to it:
+
+   .. code-block::
+   
+      [boot]
+      command="service aksusbd start"
+
+   You can check the service status with the command ``sudo service aksusbd status``
 
 **Installation for MacOS**
 
@@ -129,22 +140,12 @@ Get ``aksusbd_37102-10.12.1.tar.gz`` file and extract it. The installation packa
 - Set ``DYLD_LIBRARY_PATH`` variable with command ``export DYLD_LIBRARY_PATH=<your_directory>:$DYLD_LIBRARY_PATH``.
   This modification has to be setup at session startup  (e.g: using ``.bashrc`` file) to ensure that OS is properly configured before running the SDK.
 
-  .. note::
-
-   If you use the Sentinel RTE on WSL (Windows Subsystem for Linux): you can set the service to start on boot by creating the file ``/etc/wsl.conf`` and add these lines to it:
-
-   .. code-block::
-   
-      [boot]
-      command="service aksusbd start"
-
-   You can check the service status with the command ``sudo service aksusbd status``
 
 Configure the Remote Floating License Server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - On the developer workstation, open a web browser.
-- Browse http://localhost:1947 to open the Sentinel Admin Control Center. 
+- Browse http://localhost:1947 to open the Sentinel Admin Control Center (be careful if you work with WSL, localhost may point to Windows and not to your WSL instance). 
 - Go to :guilabel:`Configuration` > :guilabel:`Access to Remote License Managers`.
 - Check :guilabel:`Allow Access to Remote Licenses`.
 - Uncheck :guilabel:`Broadcast Search for Remote Licenses`.
@@ -157,6 +158,16 @@ Configure the Remote Floating License Server
   In :guilabel:`Sentinel Keys` tab, you should see the license key provided by your Floating License Server (e.g. ``central-sentinel-server``). 
 
    .. image:: images/sentinel_rte_client_installed_license.png
+
+.. note::
+
+   On Linux, you can check that the RTE is properly configured by checking the file ``hasp_37102.ini`` in ``/etc/hasplm`` or ``~/.hasplm`` (if you have not installed RTE as root) and check if these lines exist:
+
+   .. code-block::
+      [REMOTE]
+      broadcastsearch = 0
+      serversearchinterval = 30
+      serveraddr = <license_server_IP>
 
 Runtime Installation Instructions and Troubleshooting
 -----------------------------------------------------
