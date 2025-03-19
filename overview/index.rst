@@ -15,6 +15,16 @@ The MicroEJ solution is made up of two products:
   It allows devices to run multiple and mixed managed code (Java, JavaScript, ...) and C software applications.
 - MICROEJ SDK allows developers to develop applications in Managed Code and deploy them to resource-constrained devices, such as microcontrollers.
 
+The following video demonstrates the typical development process using MICROEJ SDK 6 Simulator:
+
+.. raw:: html
+
+        <div class="figure align-center">
+                <video width="960" height="540" poster="https://developer.microej.com/wp-content/uploads/2024/03/hellomicroej_thirddraft_preview.jpg" controls="controls" >
+                        <source src="https://repository.microej.com/packages/videos/gettingStartedSDK6_v9.0_opt.mp4" type="video/mp4">
+                </video>
+        </div>
+
 .. _vee:
 
 MICROEJ VEE

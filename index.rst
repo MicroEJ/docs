@@ -11,6 +11,9 @@ Welcome to the MicroEJ developer documentation.
 MicroEJ (pronounced “micro-EDGE”) turns any electronic product or ‘things’ into smart things, MicroEJ tools and libraries enable you to easily create efficient and feature complete applications for embedded devices.
 MicroEJ leverages a runtime environment called VEE (`Virtual Execution Environment <overview/vee.html>`_) to simplify and secure embedded development. 
 
+Navigation
+----------
+
 Browse the following chapters to familiarize yourself and understand the principles of development with MicroEJ Technology.
 
 - The :ref:`chapter-glossary` chapter describes MicroEJ terminology.
@@ -22,6 +25,26 @@ Browse the following chapters to familiarize yourself and understand the princip
 - The :ref:`kernel-developer-guide` introduces you to advanced concepts, such as partial updates and dynamic app life cycle workflows.
 - The :ref:`vee-wear` addresses the development of smartwatch applications using VEE Wear, specifically designed for low-power MCU and MPU.
 - The :ref:`trainings` chapter offers online courses to help you learn the essentials of Firmware development using MICROEJ SDK.
+
+Useful Links
+------------
+
+- `Resources Hub <https://repository.microej.com/index.php>`__: gathers all useful resources for developers on a daily basis.
+- `Forum <https://forum.microej.com/>`__: provides announcements to keep up to date in MicroEJ technology releases. It also provides
+  many topics that could answer your questions when developing on MicroEJ technology.
+- Browse MicroEJ Module Repositories to look for dependencies:
+  
+  - `Central Repository Modules <https://repository.microej.com/modules/>`__.
+  - `Developer Repository Modules <https://forge.microej.com/ui/native/microej-developer-repository-release/>`__.
+  - See :ref:`module_repositories` for more information.
+
+- `Licenses Server <https://license.microej.com/>`__
+
+Useful Resources
+----------------
+
+- :ref:`SDK6 Cheat Sheet <sdk6_cheat_sheet>`: a must-have when working with MICROEJ SDK6.
+- `MicroEJ GitHub <https://github.com/MicroEJ/>`__: provides several pinned repositories, a must-have to get started.
 
 .. toctree::
    :maxdepth: 2
