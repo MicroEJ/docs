@@ -413,7 +413,7 @@ The Module serves two purposes, depending on whether it is added to a Mock or a 
    an error ::
 
       libc++abi: terminating due to uncaught exception of type NSException
-      Exiting /Users/bguedas/Git/J0059_Example-Mock-Framework/custom-widgets-app/build/vee/scripts/hil.xml.
+      Exiting /Users/microej/Git/J0059_Example-Mock-Framework/custom-widgets-app/build/vee/scripts/hil.xml.
       Exception in thread "thread2" java.lang.UnsatisfiedLinkError: Broken connection with client
 	      at java.lang.Throwable.fillInStackTrace(Throwable.java:82)
 	      at java.lang.Throwable.<init>(Throwable.java:37)
@@ -426,7 +426,7 @@ The Module serves two purposes, depending on whether it is added to a Mock or a 
 	      at java.lang.Thread.run(Thread.java:325)
 	      at java.lang.Thread.runWrapper(Thread.java:387)
 
-   This issue affects most JDK distributions. As a workaround, we recommend to use one of the following Temurin JDK versions: 
+   This issue affects most JDK distributions. As a workaround, we recommend to use one of the following Eclipse Temurin distributions: 
    `17.0.9 <https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.9%2B9/OpenJDK17U-jdk_aarch64_mac_hotspot_17.0.9_9.tar.gz>`__ or
    `21.0.1 <https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.1%2B12/OpenJDK21U-jdk_aarch64_mac_hotspot_21.0.1_12.tar.gz>`__ to avoid this issue.
 
