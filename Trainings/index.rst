@@ -144,6 +144,7 @@ For Application Developers
                <a class="training_learn_more_link" href="gettingStartedIMXRT1170MultiSandbox.html">Learn more</a>
             </div>
             </a>
+         </div>
 
          <div class="training_item">
             <a class="training_link" href="tutorialImproveCodeQuality.html">
@@ -420,6 +421,7 @@ Multi-Sandbox
                <a class="training_learn_more_link" href="gettingStartedIMXRT1170KernelGREEN.html">Learn more</a>
             </div>
             </a>
+         </div>
 
          <div class="training_item">
             <a class="training_link" href="trainingKernel.html">
