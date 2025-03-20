@@ -84,7 +84,7 @@ Additionally, make sure to:
 Flash the Multi-Sandbox Executable on your NXP i.MXRT1170 Evaluation Kit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Download the Multi-Sandbox Executable: `NXP-MIMXRT1170_GCC_GREEN-2.0.0.out <https://repository.microej.com/packages/green/2.0.0/firmware/NXP-MIMXRT1170_GCC/NXP-MIMXRT1170_GCC_GREEN-2.0.0.out>`__.
+Download the Multi-Sandbox Executable: `NXP-MIMXRT1170-3.0.0_GCC_GREEN-2.1.0.elf <https://repository.microej.com/packages/green/2.1.0/firmware/NXP-MIMXRT1170_GCC/NXP-MIMXRT1170-3.0.0_GCC_GREEN-2.1.0.elf>`__.
 
 .. note::
    
