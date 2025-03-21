@@ -3,7 +3,7 @@
 MicroEJ Runtime
 ===============
 
-MicroEJ allows to run code written in :ref:`Java <java_language>` as primary language and in :ref:`C <c_language>`. It also supports code extensions written in :ref:`JavaScript <javascript>`.
+MicroEJ allows to run code written in :ref:`Java <java_language>` as primary language and in :ref:`C or C++ <c_language>`. It also supports code extensions written in :ref:`JavaScript <javascript>`.
 
 Such code is oftenly called `Managed Code`_ as it is executed by a runtime, the :ref:`Core Engine <core_engine>` (also called `MEJ32`).
 
