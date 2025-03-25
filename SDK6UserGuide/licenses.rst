@@ -521,7 +521,7 @@ Check that your dongle is attached to WSL from Powershell:
 
   .. code-block:: console
 
-      usbipd list
+      usbipd.exe list
 
 You should have a  line saying ``Attached - Ubuntu``:
 
