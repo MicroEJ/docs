@@ -461,9 +461,9 @@ Open a bash terminal in your WSL instance, and check the USB dongle is successfu
 
 You should see your USB dongle connected with ``ID 096e:0006``:
 
-.. code:: console
+.. code-block:: console
+   :emphasize-lines: 2
 
-      :emphasize-lines: 2
       Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
       Bus 001 Device 002: ID 096e:0006 Feitian Technologies, Inc. HID Dongle (for OEMs - manufacturer string is "OEM")
       Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
