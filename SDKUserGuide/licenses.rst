@@ -440,13 +440,13 @@ Add the udev rule described in :ref:`production_license_linux`, and restart udev
 
       /etc/init.d/udev restart
 
-You then need to unplug and plug your dongle again before attaching the dongle to WSL from powershell:
+You then need to unplug and plug your dongle again before attaching the dongle to WSL from PowerShell:
 
   .. code-block:: console
 
       usbipd.exe attach --wsl --busid <BUSID>
 
-The ``<BUSID>`` can be obtainted with the following powershell command:
+The ``<BUSID>`` can be obtainted with the following PowerShell command:
 
   .. code-block:: console
 
@@ -500,7 +500,7 @@ and add the USB dongle in the :guilabel:`USB Devices Filters` list.
 WSL Troubleshooting
 """""""""""""""""""
 
-Check that your dongle is attached to WSL from Powershell:
+Check that your dongle is attached to WSL from PowerShell:
 
   .. code-block:: console
 
@@ -530,7 +530,7 @@ In you WSL console, the dongle must also be recognized. Ckeck by using ``lsusb``
 This might not be sufficient. If you're still facing license issues, restart udev, abd attach your dongle to WSL once again.
 
 .. note::
-   Hibernation may have unattached your dongle. Reload udev, unplug/plug your dongle and attach it from powershell.
+   Hibernation may have unattached your dongle. Reload udev, unplug/plug your dongle and attach it from PowerShell.
 
 Dongle not detected in the licenses screen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -417,7 +417,7 @@ Add the udev rule described in :ref:`production_license_linux`, and restart udev
 
       sudo /etc/init.d/udev restart
 
-Ensure your USB dongle is plugged, then start a Powershell terminal in administrator mode.
+Ensure your USB dongle is plugged, then start a PowerShell terminal in administrator mode.
 
 List the connected devices with the following command:
 
@@ -517,7 +517,7 @@ and add the USB dongle in the :guilabel:`USB Devices Filters` list.
 WSL Troubleshooting
 """""""""""""""""""
 
-Check that your dongle is attached to WSL from Powershell:
+Check that your dongle is attached to WSL from PowerShell:
 
   .. code-block:: console
 
@@ -547,7 +547,7 @@ In you WSL console, the dongle must also be recognized. Ckeck by using ``lsusb``
 This might not be sufficient. If you're still facing license issues, restart udev, abd attach your dongle to WSL once again.
 
 .. note::
-   Hibernation may have unattached your dongle. Reload udev, unplug/plug your dongle and attach it from powershell.
+   Hibernation may have unattached your dongle. Reload udev, unplug/plug your dongle and attach it from PowerShell.
 
 Remote USB Dongle Connection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
