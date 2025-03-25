@@ -415,7 +415,7 @@ Add the udev rule described in :ref:`production_license_linux`, and restart udev
 
    .. code-block:: console
 
-      /etc/init.d/udev restart
+      sudo /etc/init.d/udev restart
 
 You then need to unplug and plug your dongle again before attaching the dongle to WSL from powershell:
 
