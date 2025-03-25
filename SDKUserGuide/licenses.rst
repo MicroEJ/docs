@@ -438,21 +438,61 @@ Add the udev rule described in :ref:`production_license_linux`, and restart udev
 
    .. code-block:: console
 
-      /etc/init.d/udev restart
+      sudo /etc/init.d/udev restart
 
-You then need to unplug and plug your dongle again before attaching the dongle to WSL from PowerShell:
+Ensure your USB dongle is plugged, then start a PowerShell terminal in administrator mode.
 
-  .. code-block:: console
-
-      usbipd.exe attach --wsl --busid <BUSID>
-
-The ``<BUSID>`` can be obtainted with the following PowerShell command:
+List the connected devices with the following command:
 
   .. code-block:: console
 
-      usbipd list
+      usbipd.exe list
+
+You should see your USB dongle connected with ``VID:PID==096e:0006``:
+
+.. code-block:: console   
+   :emphasize-lines: 9
+
+      PS C:\Users\user> usbipd list
+      Connected:
+      BUSID  VID:PID    DEVICE                                                        STATE
+      2-6    0c45:674c  Integrated Webcam, Integrated IR Webcam, USB DFU              Not shared
+      2-8    0a5c:5843  Dell ControlVault w/ Fingerprint Touch Sensor, Microsoft ...  Not shared
+      2-10   8087:0033  Intel(R) Wireless Bluetooth(R)                                Not shared
+      3-1    0bda:8153  Realtek USB GbE Family Controller                             Not shared
+      4-6    413c:c010  Dell DA310                                                    Not shared
+      6-4    096e:0006  USB Input Device                                              Not shared
+      6-6    046d:0819  USB Video Device, USB Audio Device                            Not shared
+      7-1    045e:0084  USB Input Device                                              Not shared
+      7-2    04d9:1400  USB Input Device                                              Not shared
+      7-3    10d5:55a2  USB Input Device                                              Not shared
+
+Here the ``BUSID`` is ``6-4``.
+
+Bind and attach the dongle to WSL:
+
+  .. code-block:: console
+
+      usbipd.exe bind --busid <BUSID>
+      usbipd.exe attach --wsl  --busid <BUSID>
+
+Open a bash terminal in your WSL instance, and check the USB dongle is successfully mounted with the following command:
+
+  .. code-block:: console
+
+      lsusb
+
+You should see your USB dongle connected with ``ID 096e:0006``:
+
+.. code:: console
+
+      :emphasize-lines: 2
+      Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+      Bus 001 Device 002: ID 096e:0006 Feitian Technologies, Inc. HID Dongle (for OEMs - manufacturer string is "OEM")
+      Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 
 .. note::
+
       You'll need to follow these steps each time you system is rebooted or the dongle is plugged/unplugged.
 
 .. _production_license_troubleshooting:
@@ -504,7 +544,7 @@ Check that your dongle is attached to WSL from PowerShell:
 
   .. code-block:: console
 
-      usbipd list
+      usbipd.exe list
 
 You should have a  line saying ``Attached - Ubuntu``:
 
