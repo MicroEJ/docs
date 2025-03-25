@@ -309,7 +309,7 @@ To get more details on connected USB dongle(s), run the debug tool as following:
    
 .. tabs::
 
-   .. tab:: Atchitecture v8.1.0 or higher
+   .. tab:: Architecture v8.1.0 or higher
    
       .. code:: console
 
