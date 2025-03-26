@@ -28,7 +28,7 @@ The first step is to create a VEE Port configuration project:
         - Click :guilabel:`File` > :guilabel:`New` > :guilabel:`Project from Version Control...`.
         - Select :guilabel:`Repository URL`.
         - Select :guilabel:`Git` as Version control.
-        - Fill the URL of the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.0.0>`__ Github Repository.
+        - Fill the URL of the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.1.0>`__ Github Repository.
         - Fill the Directory in which the Project Template must be cloned.
         - Click on :guilabel:`Clone` button.
 
@@ -64,7 +64,7 @@ The first step is to create a VEE Port configuration project:
         - Click :guilabel:`File` > :guilabel:`New` > :guilabel:`Project from Version Control...`.
         - Select :guilabel:`Repository URL`.
         - Select :guilabel:`Git` as Version control.
-        - Fill the URL of the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.0.0>`__ Github Repository.
+        - Fill the URL of the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.1.0>`__ Github Repository.
         - Fill the Directory in which the Project Template must be cloned.
         - Click on :guilabel:`Clone` button.
 
@@ -98,7 +98,7 @@ The first step is to create a VEE Port configuration project:
     .. tab:: Eclipse
             
         - Open a new terminal.    
-        - Clone the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.0.0>`__ Github Repository::
+        - Clone the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.1.0>`__ Github Repository::
 
              git clone git@github.com:MicroEJ/Tool-Project-Template-VEEPort.git
       
@@ -153,7 +153,7 @@ The first step is to create a VEE Port configuration project:
 
             Command Palette in VS Code
       
-        - Fill the URI of the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.0.0>`__ Github Repository in the Search Bar.
+        - Fill the URI of the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.1.0>`__ Github Repository in the Search Bar.
         - Click on :guilabel:`Clone from URL`.
 
         .. figure:: images/vscode-search-bar-vee-port-template.png
@@ -186,7 +186,7 @@ The first step is to create a VEE Port configuration project:
 
     .. tab:: Command Line Interface
             
-        - Clone the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.0.0>`__ Github Repository::
+        - Clone the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.1.0>`__ Github Repository::
 
              git clone git@github.com:MicroEJ/Tool-Project-Template-VEEPort.git
       
@@ -363,7 +363,7 @@ Here are some examples::
     com.microej.runtime.ssl.enabled=false
 
 For a complete list of the properties allowing to enable/disable modules, 
-refer to the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/blob/1.0.0/vee-port/configuration.properties>`_.
+refer to the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/blob/1.1.0/vee-port/configuration.properties>`_.
 
 .. _sdk_6_veeport_pack_configuration:
 
