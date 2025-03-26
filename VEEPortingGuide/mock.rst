@@ -381,15 +381,23 @@ JavaFX
 `JavaFX <https://openjfx.io/>`_ is an open-source library for creating modern Java user interfaces that is highly portable. 
 It can be used to quickly create graphical Mocks for your VEE Port.
 
-The installation instructions depends on the SDK version:
+The installation instructions depend on the SDK version:
 
 .. tabs::
 
    .. tab:: SDK 6
 
-      .. code-block:: kotlin
+      - Add JavaFX as a compile-time dependency in your Mock project:
 
-        microejMock("com.microej.tool:javafx:1.2.0")
+         .. code-block:: kotlin
+
+            compileOnly(group="com.microej.tool", name="javafx", version="1.2.0", configuration="provided")
+
+      - If your VEE Port contains at least one Mock, add JavaFX as a Mock dependency in your VEE Port project:
+
+         .. code-block:: kotlin
+
+            microejMock("com.microej.tool:javafx:1.2.0")
 
    .. tab:: SDK 5
 
