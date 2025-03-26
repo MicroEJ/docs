@@ -58,7 +58,7 @@ Get Example-Java-Widget
 
 For this Getting Started, the :guilabel:`Example-Java-Widget` Application will be used. You can download it using the following command::
    
-   git clone -b 8.0.0 https://github.com/MicroEJ/Example-Java-Widget.git
+   git clone -b 8.1.1 https://github.com/MicroEJ/Example-Java-Widget.git
 
 .. note::
   
