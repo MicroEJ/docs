@@ -750,6 +750,14 @@ a ``MyTest.properties`` file must be created. Its path must be: ``src/test/resou
 
 Application Options defined in this file do not require the ``microej.testsuite.properties.`` prefix.
 
+.. note::
+   If the testsuite is configured to execute main classes (thanks to the parameter ``TestMode.MAIN``)::
+
+      microej.useMicroejTestEngine(this, TestTarget.SIM, TestMode.MAIN)
+   
+   the properties file must be named after the main class. 
+   If the main class has been generated from a JUnit test class, its class name is prefixed by ``_AllTests_``.
+
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
