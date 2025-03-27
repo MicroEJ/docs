@@ -53,7 +53,7 @@ To simulate a Bluetooth application, follow these three steps:
 - Configure the Wi-Fi network
 - Run the application on the Simulator
 
-If your are facing any issues, check the :ref:`Troubleshooting <blemock-troubleshooting>` section.
+If you are facing any issues, check the :ref:`Troubleshooting <blemock-troubleshooting>` section.
 
 Controller Firmware Installation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
