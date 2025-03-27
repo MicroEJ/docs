@@ -12,7 +12,7 @@ To achieve efficient UI rendering, minimizing unnecessary work that consumes val
 For example, assuming the application targets 60 FPS to perform a transition between two screens, that means the application has 1/60s ~= 16ms in total to execute the rendering and the flush (see :ref:`rendering_pipeline`).
 
 The Flush Visualizer is a tool designed to investigate potential performance bottlenecks in UI applications running on the Simulator.
-It uses the :ref:`microui_traces` to record the drawings whose target is the display (since UI Pack 14.4.0, see :ref:`flush_visualizer_install`).
+It uses the :ref:`microui_traces` to record the drawings whose target is the display (since UI Pack 14.4.1, see :ref:`flush_visualizer_install`).
 All other traces (drawings in buffered images and third-party traces of the other libraries) are dropped. 
 
 The Flush Visualizer provides the following information:
@@ -92,13 +92,13 @@ version 4.+ for UI Pack 14.0.0 or later.
 
 .. tabs::
 
-   .. tab:: Since UI Pack 14.4.0
+   .. tab:: Since UI Pack 14.4.1
 
     * Set the property ``core.trace.enabled`` to ``true`` to enable the Flush Visualizer.
     * Set the property ``core.trace.autostart`` to ``true`` to start the recording on startup.
     * Start and pause the recording by clicking on the button |FlushVisualizerRecord|.
 
-   .. tab:: Before UI Pack 14.4.0
+   .. tab:: Before UI Pack 14.4.1
 
     * Set the property ``ej.fp.display.flushVisualizer`` to ``true`` to enable the Flush Visualizer.
 

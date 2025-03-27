@@ -16,26 +16,8 @@ MicroUI
 
 **Changed**
 
-- Change some log identifiers to be backward compatible with the UI Pack since version 12.1.5.
-
-FrontPanel
-""""""""""
-
-**Fixed**
-
-- Fix the use of the logs in the mode ``s3.board.compliant`` (Use target characteristics).
-
-.. _section_ui_changelog_14_4_0:
-
-[14.4.0] - 2025-03-07
-=====================
-
-MicroUI
-"""""""
-
-**Changed**
-
 - Improve the trace events (SystemView description file `SYSVIEW_MicroUI.txt` is updated).
+- Change some log identifiers to be backward compatible with the UI Pack since version 12.1.5.
 
 FrontPanel
 """"""""""
@@ -57,6 +39,7 @@ FrontPanel
 **Fixed**
 
 - Fix the execution of the Front Panel in the HIL classpath (VEE Port with UI and application without UI; since UI Pack 14.3.0).
+- Fix the use of the logs in the mode ``s3.board.compliant`` (Use target characteristics).
 
 **Removed**
 
