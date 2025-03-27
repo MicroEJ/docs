@@ -247,7 +247,7 @@ Multi-Sandbox Executable and Virtual Device.
          dependencies {
             ...
             //Uncomment the microejVee dependency to set the VEE Port or Kernel to use
-            microejVee("com.microej.kernel:GREEN:2.1.0")
+            microejVee("com.microej.kernel:GREEN:2.1.1")
          }
    
    

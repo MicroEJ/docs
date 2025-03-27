@@ -84,7 +84,7 @@ Additionally, make sure to:
 Flash the Multi-Sandbox Executable on your NXP i.MXRT1170 Evaluation Kit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Download the Multi-Sandbox Executable: `NXP-MIMXRT1170-3.0.0_GCC_GREEN-2.1.0.elf <https://repository.microej.com/packages/green/2.1.0/firmware/NXP-MIMXRT1170_GCC/NXP-MIMXRT1170-3.0.0_GCC_GREEN-2.1.0.elf>`__.
+Download the Multi-Sandbox Executable: `NXP-MIMXRT1170-3.0.0_GCC_GREEN-2.1.1.elf <https://repository.microej.com/packages/green/2.1.1/firmware/NXP-MIMXRT1170_GCC/NXP-MIMXRT1170-3_0_0_GCC_GREEN-2.1.1.elf>`__.
 
 .. note::
    
@@ -108,7 +108,7 @@ Flash the Multi-Sandbox Executable using ``LinkServer``:
   - Click on ``New`` and point to the ``LinkServer`` installation folder located where you installed
     ``LinkServer`` (e.g. ``nxp/LinkServer_1.6.133/``).
 
-- Run the command ``LinkServer flash MIMXRT1176xxxxx:MIMXRT1170-EVKB load NXP-MIMXRT1170_GCC_GREEN-2.1.0.elf``.
+- Run the command ``LinkServer flash MIMXRT1176xxxxx:MIMXRT1170-EVKB load NXP-MIMXRT1170_GCC_GREEN-2.1.1.elf``.
 
 Set up the logs output:
 
@@ -344,7 +344,7 @@ The :guilabel:`MyApplication` project needs to be configured to use a kernel:
       dependencies {
          ...
          //Uncomment the microejVee dependency to set the VEE Port or Kernel to use
-         microejVee("com.microej.kernel:NXP-MIMXRT1170_GCC_GREEN:2.1.0")
+         microejVee("com.microej.kernel:NXP-MIMXRT1170_GCC_GREEN:2.1.1")
       }
 
 
