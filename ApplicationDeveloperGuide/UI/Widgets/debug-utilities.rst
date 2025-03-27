@@ -5,6 +5,8 @@ Debug Utilities
 
 A few utilities useful for debugging are available in the package ``ej.widget.util.debug`` of the widget library.
 
+.. _widget_library_debug_utilities_hierarchy:
+
 Print the Hierarchy of Widgets
 ------------------------------
 
@@ -25,7 +27,38 @@ For example:
     |  |  +--Label
     |  +--Label
 
+The method `HierarchyInspector.hierarchyStyleToString(Widget)`_ returns the same information plus the list of the attributes of the style of each widget in the hierarchy.
+It only adds the attributes that differ from the `default style`_.
+
+For example:
+
+.. code-block::
+
+    Scroll (background=RectangularBackground, horizontalAlignment=hcenter)
+    +--ScrollableList (background=RectangularBackground)
+    |  +--Label (color=white, font=RasterFont[SourceSansPro_19px-300], horizontalAlignment=hcenter, verticalAlignment=vcenter)
+    |  +--Dock (background=NoBackground)
+    |  |  +--ImageWidget (horizontalAlignment=hcenter, verticalAlignment=vcenter)
+    |  |  +--Label (color=0xf8a331, font=RasterFont[SourceSansPro_19px-300], horizontalAlignment=hcenter, verticalAlignment=vcenter)
+    |  +--Label (color=white, font=RasterFont[SourceSansPro_19px-300], horizontalAlignment=hcenter, verticalAlignment=vcenter)
+
+If the constant ``ej.mwt.debug.cascadingstyle.enabled`` is set (see :ref:`this section <mwt_how_to_debug_source_rule>`), it will also print the selector that originated each style's attribute.
+
+For example:
+
+.. code-block::
+
+    Scroll (background=RectangularBackground from default, horizontalAlignment=hcenter from .class 896560)
+    +--ScrollableList (background=RectangularBackground from default)
+    |  +--Label (color=white from .class 896572, background=NoBackground from .class 896572, font=RasterFont[SourceSansPro_19px-300] from .class 896572, horizontalAlignment=hcenter from .class 896572, verticalAlignment=vcenter from .class 896572)
+    |  +--Dock (background=NoBackground from default)
+    |  |  +--ImageWidget (horizontalAlignment=hcenter from .class 896571, verticalAlignment=vcenter from .class 896571)
+    |  |  +--Label (color=0xf8a331 from .class 896572 and :nth-child(odd), font=RasterFont[SourceSansPro_19px-300] from .class 896572, horizontalAlignment=hcenter from .class 896572, verticalAlignment=vcenter from .class 896572)
+    |  +--Label (color=white from .class 896572, font=RasterFont[SourceSansPro_19px-300] from .class 896572, horizontalAlignment=hcenter from .class 896572, verticalAlignment=vcenter from .class 896572)
+
 .. _HierarchyInspector.hierarchyToString(Widget): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/debug/HierarchyInspector.html#hierarchyToString-ej.mwt.Widget-
+.. _HierarchyInspector.hierarchyStyleToString(Widget): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/debug/HierarchyInspector.html#hierarchyStyleToString-ej.mwt.Widget-
+.. _default style: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/DefaultStyle.html
   
 Print the Path to a Widget
 --------------------------
