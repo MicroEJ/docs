@@ -28,6 +28,11 @@ Use
       --toolProperty=board.timeout="120000" \
       --toolProperty=use.storage="true"
 
+.. note::
+
+   It is also possible to create a custom task of type ``ExecToolTask`` dedicated to the Local Deployment Socket. 
+   Refer to the :ref:`sdk_6_create_cutom_exectool_task` chapter for more information.
+
 Options
 =======
 

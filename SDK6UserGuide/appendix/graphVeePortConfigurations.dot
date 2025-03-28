@@ -1,0 +1,40 @@
+digraph mygraph {
+    rankdir="BT";
+    bgcolor="transparent"
+    fontname="Helvetica,Arial,sans-serif"
+    node [
+        shape = box
+        width = 1.5
+        color = "#7dc5dc"
+        style = filled
+        fontname="Helvetica,Arial,sans-serif"
+    ]
+    edge [fontname="Helvetica,Arial,sans-serif"]
+    "microejArchitecture" [fillcolor = "#41f753"]
+    "microejPack" [fillcolor = "#41f753"]
+    "microejMock" [fillcolor = "#41f753"]
+    "microejFrontPanel" [fillcolor = "#41f753"]
+    "microejTool" [fillcolor = "#41f753"]
+
+    "microejArchitectureClasspath" [fillcolor = "#b0d6d3"]
+    "microejPackClasspath" [fillcolor = "#b0d6d3"]
+    "microejMockClasspath" [fillcolor = "#b0d6d3"]
+    "microejFrontPanelClasspath" [fillcolor = "#b0d6d3"]
+    "microejToolClasspath" [fillcolor = "#b0d6d3"]
+
+    "microejArchitectureClasspath" -> "microejArchitecture"
+    "microejPackClasspath" -> "microejPack"
+    "microejMockClasspath" -> "microejMock"
+    "microejFrontPanelClasspath" -> "microejFrontPanel"
+    "microejToolClasspath" -> "microejTool"
+    "buildVeePort" -> "microejArchitectureClasspath" [ label="uses" ]
+    "buildVeePort" -> "microejPackClasspath" [ label="uses" ]
+    "buildVeePort" -> "microejMockClasspath" [ label="uses" ]
+    "buildVeePort" -> "microejFrontPanelClasspath" [ label="uses" ]
+    "buildVeePort" -> "microejToolClasspath" [ label="uses" ]
+    "buildVeePortConfiguration" -> "microejArchitectureClasspath" [ label="uses" ]
+    "buildVeePortConfiguration" -> "microejPackClasspath" [ label="uses" ]
+    "buildVeePortConfiguration" -> "microejMockClasspath" [ label="uses" ]
+    "buildVeePortConfiguration" -> "microejFrontPanelClasspath" [ label="uses" ]
+    "buildVeePortConfiguration" -> "microejToolClasspath" [ label="uses" ]
+}

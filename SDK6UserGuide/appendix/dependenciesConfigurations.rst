@@ -29,6 +29,7 @@ The MicroEJ Gradle plugins also define dependency configurations for internal us
     - ``jdtCompilerClasspath``, used by the :ref:`sdk6_module_natures.addon_lib` and :ref:`sdk6_module_natures.application` plugins
     - ``wrapperClasspath``, used by the ``compileJava`` task
     - ``microejRuntimeEnvironmentFullRuntimeClasspath``, used by the :ref:`sdk6_module_natures.tasks.buildVirtualDevice`, :ref:`sdk6_module_natures.tasks.buildApplicationObjectFile` and :ref:`sdk6_module_natures.tasks.buildExecutable` tasks
+    - ``microejVeeFullClasspath``, used by the :ref:`sdk6_module_natures.tasks.loadVee` task
 
 Publication Variants
 --------------------
@@ -75,6 +76,23 @@ runtimeEnvironment
 This variant is used to publish a Runtime Environment, 
 that can be fetched by declaring a dependency with the ``microejRuntimeEnvironment`` configuration.
 The ``LibraryElement`` attribute of the variant is set to ``microej-runtime-environment``.
+
+.. _gradle_veeport_project_dependencies_configurations:
+
+Dependencies Configurations in a VEE Port Project
+--------------------------------------------------
+
+This section describes all the dependency configurations added to your VEE Port project by the MicroEJ Gradle plugins.
+
+The following graph describes the dependency configurations. Use this legend to interpret the colors:
+
+    - Green background : Dependencies can be declared against this configuration
+    - Gray background : This configuration is for consumption by tasks only
+    - Blue background : A task
+
+.. graphviz:: graphVeePortConfigurations.dot
+
+The VEE Port plugin also defines the variant ``microejVeePort`` that is used to :ref:`publish the VEE Port configuration <sdk_6_veeport_publication>`. 
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
