@@ -27,6 +27,10 @@ execute the ``execTool`` task as followed:
       --toolProperty=serail.to.socket.server.port="5555" \
       --console plain
 
+.. note::
+
+   It is also possible to create a custom task of type ``ExecToolTask`` dedicated to the Serial to Socket Transmitter. 
+   Refer to the :ref:`sdk_6_create_cutom_exectool_task` chapter for more information.
 
 Options
 =======

@@ -220,6 +220,11 @@ If you are in a Multi-Sandbox context, you have to include the ``.fodbg`` files 
       --toolProperty=additional.memory.filenames="/path/to/additonal1.hex;/path/to/additional2.hex..." \
       --console plain
 
+.. note::
+
+   It is also possible to create a custom task of type ``ExecToolTask`` dedicated to the ``heapDumperPlatform`` tool. 
+   Refer to the :ref:`sdk_6_create_cutom_exectool_task` chapter for more information.
+
 You can find the list of available options below:
 
 .. list-table::
