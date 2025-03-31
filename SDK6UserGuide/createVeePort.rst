@@ -39,7 +39,8 @@ The first step is to create a VEE Port configuration project:
 
             Version Control Window in IntelliJ IDEA
       
-        - When the Gradle project is loaded, select :guilabel:`View` > :guilabel:`Tool Windows` > :guilabel:`Terminal`.
+        - When the Gradle project is loaded, rename the project and change its group and version in the ``build.gradle.kts`` build script.
+        - Select :guilabel:`View` > :guilabel:`Tool Windows` > :guilabel:`Terminal`.
         - In the integrated terminal, run the following command at the root of the project to remove the Git Repository:
 
           .. tabs::
@@ -56,8 +57,6 @@ The first step is to create a VEE Port configuration project:
                 .. code-block:: java
 
                   rm -rf .git*
-              
-        - Rename the project and change its group and version in the ``build.gradle.kts`` build script.
 
     .. tab:: Android Studio
        
@@ -75,7 +74,8 @@ The first step is to create a VEE Port configuration project:
 
             Version Control Window in Android Studio
       
-        - When the Gradle project is loaded, select :guilabel:`View` > :guilabel:`Tool Windows` > :guilabel:`Terminal`.
+        - When the Gradle project is loaded, rename the project and change its group and version in the ``build.gradle.kts`` build script.
+        - Select :guilabel:`View` > :guilabel:`Tool Windows` > :guilabel:`Terminal`.
         - In the integrated terminal, run the following command at the root of the project to remove the Git Repository:
 
           .. tabs::
@@ -92,12 +92,10 @@ The first step is to create a VEE Port configuration project:
                 .. code-block:: java
 
                   rm -rf .git*
-              
-        - Rename the project and change its group and version in the ``build.gradle.kts`` build script.
 
     .. tab:: Eclipse
             
-        - Open a new terminal.    
+        - Open a new terminal.
         - Clone the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.1.0>`__ Github Repository::
 
              git clone git@github.com:MicroEJ/Tool-Project-Template-VEEPort.git
@@ -164,7 +162,8 @@ The first step is to create a VEE Port configuration project:
             Search Bar in VS Code
       
         - In the upcoming popup, choose a folder and click on the ``Select as Repository Destination`` button.
-        - When the Gradle project is loaded, select :guilabel:`Terminal` > :guilabel:`New Terminal`.
+        - When the Gradle project is loaded, rename the project and change its group and version in the ``build.gradle.kts`` build script.
+        - Select :guilabel:`Terminal` > :guilabel:`New Terminal`.
         - In the integrated terminal, run the following command at the root of the project to remove the Git Repository:
 
           .. tabs::
@@ -181,8 +180,6 @@ The first step is to create a VEE Port configuration project:
                 .. code-block:: java
 
                   rm -rf .git*
-              
-        - Rename the project and change its group and version in the ``build.gradle.kts`` build script.
 
     .. tab:: Command Line Interface
             
@@ -221,33 +218,34 @@ Refer to the chapter :ref:`architectures_toolchains` for the details of ABI and 
 If the requested MicroEJ Architecture is not available for evaluation or to get a MicroEJ Production Architecture,
 please contact your MicroEJ sales representative or :ref:`our support team <get_support>`.
 
-Once you know which Architecture to use, add it as a dependency of the VEE Port project in the ``vee-port/build.gradle.kts`` file:
+The VEE Port project template comes with a default Architecture, defined in the Version Catalog file located at ``gradle/libs.versions.toml``::
+
+  architecture = { group = "com.microej.architecture.CM4.CM4hardfp_GCC48", name = "flopi4G25", version = "8.2.0" }
+
+and referenced in the ``vee-port/build.gradle.kts`` file:
 
 .. code-block:: java
     :emphasize-lines: 3
 
     dependencies {
 
-        microejArchitecture("com.microej.architecture.[ISA].[TOOLCHAIN]:[UID]:[VERSION]")
+        microejArchitecture(libs.architecture)
 
     }
 
-The ``[UID]`` of the dependency needed for your VEE Port can be found in the chapter :ref:`architectures_toolchains`.
+If you want to use another Architecture, update the Version Catalog file accordingly.
+
+The name of the Architecture dependency module needed for your VEE Port can be found in the chapter :ref:`architectures_toolchains`.
 Check the table of your corresponding Architecture and follow the link in the :guilabel:`Module` column.
 
 .. warning::
   We recommend to use an Architecture 8.1 minimum to have full support on the SDK features.
 
-For example, to declare the MicroEJ Evaluation Architecture version ``8.1.1`` for Arm® Cortex®-M4 microcontrollers compiled with GNU CC toolchain:
+For example, to declare the Architecture version ``8.3.0`` for Arm® Cortex®-M7 microcontrollers compiled with IAR toolchain:
 
 .. code-block:: java
-    :emphasize-lines: 3
 
-    dependencies {
-
-        microejArchitecture("com.microej.architecture.CM4.CM4hardfp_GCC48:flopi4G25:8.1.1")
-
-    }
+    architecture = { group = "com.microej.architecture.CM7.CM7hardfp_IAR83", name = "flopi7I36", version = "8.3.0" }
 
 Runtime Capability
 ------------------
@@ -420,6 +418,11 @@ launch a VEE Port build without the dropins folder by executing the Gradle task 
 The built VEE Port is located in the folder ``vee-port/build/vee``.
 Then fill the dropins folder with additional features and build again the VEE Port to get a customized VEE Port.
 
+BSP Connection
+==============
+
+In order to build the Executable of an Application, the BSP Connection must be configured.
+Refer to the :ref:`bsp_connection` section for more details.
 
 .. _sdk_6_veeport_publication:
 
@@ -428,10 +431,21 @@ VEE Port Publication
 
 Publishing a VEE Port in a repository allows to make it easily available to any project.
 
-To be able to publish a VEE Port, you have to make sure that the ``group`` and ``version`` property are defined in the ``vee-port/build.gradle.kts`` file::
+To be able to publish a VEE Port, you have to make sure that the ``group`` and ``version`` properties are defined for the VEE Port subproject.
+If you have created your VEE Port project from `the template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.1.0>`__, they are defined in main ``build.gradle.kts`` file::
 
-  group = "com.mycompany"
+  allprojects {
+    group = "com.mycompany.myboard"
+    version = "0.1.0-RC"
+  }
+
+You can adapt them to your need, or define them directly in the VEE Port subproject, in the ``vee-port/build.gradle.kts`` file::
+
+  group = "com.mycompany.myboard"
   version = "1.0.0"
+
+Changing the ``group`` and ``version`` properties in the main ``build.gradle.kts`` file will affect all the subprojects, 
+whereas defining them in the ``vee-port/build.gradle.kts`` file will only affect the VEE Port subproject.
 
 The name of the artifact can be defined in the ``settings.gradle.kts`` file with the ``rootProject.name`` property.
 It is set by default to the folder name of the project.
@@ -477,12 +491,6 @@ by defining this property in the ``configuration.properties`` file::
 
   bsp.publication.excludes.pattern=**/microejruntime.a
 
-BSP Connection
-==============
-
-In order to build the Executable of an Application, the BSP Connection must be configured.
-Refer to the :ref:`bsp_connection` section for more details.
-
 .. _sdk_6_veeport_link_time_option:
 
 Link-Time Option
@@ -496,8 +504,8 @@ To define a link-time option, first choose an option name with only alphanumeric
 Proceed with the following steps by replacing ``[my_option]`` with your option name everywhere:
 
 - Create a folder inside your :ref:`sdk_6_veeport_customization` part (e.g: ``vee-port/dropins/scripts/init-[my_option]``)
-- Create an init script file and put it inside (e.g: ``vee-port/dropins/scripts/init-[my_option]/init-[my_option].xml`` file). 
-  Here is the init script file template content: 
+- Create an Ant init script file and put it inside (e.g: ``vee-port/dropins/scripts/init-[my_option]/init-[my_option].xml`` file). 
+  Here is the Ant init script file template content: 
 
   .. code-block:: xml
 	
