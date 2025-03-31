@@ -175,14 +175,6 @@ This can be done manually or with IDE menu:
    Gradle allows to define alternative folders for test sources but it would require additional configuration, 
    so it is recommended to stick with the ``src/test/java`` folder.
 
-
-Setup a VEE Port
-~~~~~~~~~~~~~~~~
-
-Before running tests, at least one target VEE Port must be configured using one of the methods described in the :ref:`sdk_6_select_veeport` page.
-If several VEE Ports are defined, the testsuite is executed on each of them.
-
-
 Execute the Tests
 ~~~~~~~~~~~~~~~~~
 
