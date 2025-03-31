@@ -70,7 +70,6 @@ html_static_path = ['_themes/microej/static', '_static']
 # unwanted bits.
 html_title = project
 
-# LaTeX customizations
 latex_elements = {
     'preamble': r'\usepackage{microej}',
     'figure_align': 'H',

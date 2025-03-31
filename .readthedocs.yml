@@ -21,8 +21,18 @@ build:
   apt_packages:
     - graphviz
   jobs:
-    pre_build:
-      - make linkcheck
-      # Clean to force sources to be read again during html build
-      # See custom prolog injection in 'conf.py' using 'source-read' extension
-      - make clean
+    pre_install:
+      - echo "Current branch ${READTHEDOCS_VERSION}"
+
+#     build:
+#       pdf:
+#         - |
+#           echo "## Current branch $READTHEDOCS_VERSION"
+#           case $READTHEDOCS_VERSION in
+#             "feature-"*) 
+#               echo "PDF generation enabled for branch $READTHEDOCS_VERSION"
+#               make latexpdf
+#               ;;
+#             *)    
+#               echo "Skipping PDF generation for branch $READTHEDOCS_VERSION" ;;
+#           esac
