@@ -24,8 +24,10 @@ Refer to :ref:`SDK 6 <sdk_6_veeport_pack_import>` or :ref:`SDK 5 <platform_confi
    packEssentials
    packDisplay
    packConnectivity
-   fs
-   audio
+   packSecurity
+   packFs
+   packAudio
+   packDevice
    packPeripheral
 
 ..

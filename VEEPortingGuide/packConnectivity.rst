@@ -4,9 +4,8 @@ Connectivity features
 .. toctree::
    :maxdepth: 1
 
-   net
-   bluetooth
-   security
+   packNet
+   packBluetooth
 
 ..
    | Copyright 2025, MicroEJ Corp. Content in this space is free 

@@ -5,8 +5,6 @@ Essential features
    :maxdepth: 1
 
    packEventQueue
-   device
-   systemView
 
 ..
    | Copyright 2025, MicroEJ Corp. Content in this space is free 
