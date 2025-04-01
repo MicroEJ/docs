@@ -206,6 +206,8 @@ The first step is to create a VEE Port configuration project:
 
         - Rename the project and change its group and version in the ``build.gradle.kts`` build script.
 
+.. _architecture_selection:
+
 Architecture Selection
 ======================
 

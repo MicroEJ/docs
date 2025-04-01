@@ -6,19 +6,30 @@ Core Engine
 
 The Core Engine is the core component of the Architecture.
 It executes at runtime the Application code.
+The Core Engine and its components are mandatory.
+
+.. figure:: images/mjvm_block-diagram.png
+   :alt: Core Engine Block Diagram
+   :align: center
+   :scale: 80%
+
+   Core Engine Block Diagram
 
 .. note::
 
    In the following explanations, the term `task` refers to native tasks scheduled by the underlying OS or RTOS, 
    while `thread` refers to MicroEJ threads scheduled by the Core Engine.
 
+
 .. toctree::
    :maxdepth: 1
 
-   coreIntroduction
+   coreEngineCreateVEEPort
+   coreEngineUse
+   coreEngineDescription
+   coreImplementation
+   coreEngineCapabilities
    advanceTrace
-   multiSandbox
-   tinySandbox
    externalResourceLoader
    native
    simulation

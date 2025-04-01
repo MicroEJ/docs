@@ -4,9 +4,9 @@ Hardware peripheral features
 .. toctree::
    :maxdepth: 1
 
-   watchdog-timer
-   hal
-   serialCommunications
+   packWatchdog
+   packHal
+   packSerialCommunications
 
 ..
    | Copyright 2025, MicroEJ Corp. Content in this space is free 

@@ -1,111 +1,6 @@
-Block Diagram
-=============
-
-.. figure:: images/mjvm_block-diagram.png
-   :alt: Core Engine Block Diagram
-   :align: center
-   :scale: 80%
-
-   Core Engine Block Diagram
-
-Link Flow
-=========
-
-:ref:`The following diagram <fig_mjvm_flow2>` shows the overall build flow. 
-Application development is performed within MICROEJ SDK.
-The remaining steps are performed within the C third-party IDE.
-
-.. _fig_mjvm_flow2:
-.. figure:: images/mjvm_flow2.*
-   :alt: Core Engine Flow
-   :align: center
-   :scale: 80%
-
-   Core Engine Flow
-
-1. Step 1 consists in writing an Application against a set of
-   Foundation Libraries available in the VEE Port.
-
-2. Step 2 consists in compiling the Application code and the
-   required libraries in an ELF library, using the SOAR.
-
-3. Step 3 consists in linking the previous ELF file with the 
-   Core Engine library and a third-party BSP (OS, drivers, etc.). This
-   step requires a third-party linker provided by a C toolchain.
-
-
-Architecture
-============
-
-The Core Engine and its components have been compiled for one
-specific CPU architecture and for use with a specific C compiler.
-
-The Core Engine implements a :ref:`green thread architecture <runtime_gt>`. It runs in a single task. 
-
-Green threads are threads that are internally managed by the Core Engine
-instead of being natively managed by the underlying
-OS/RTOS scheduler. 
-The Core Engine defines a multi-threaded environment without relying on
-any native OS capabilities.
-
-Therefore, the whole Java world runs in one single task, within
-which the Core Engine re-creates a layer of (green) threads.
-One immediate advantage is that the Java-world CPU consumption is fully
-controlled by the task it is running in, allowing embedded
-engineers to easily arbitrate between the different parts of their
-application. In particular in an open-to-third-parties framework, the
-maximum CPU time given to the Java world is fully under control at no
-risk, whatever the number and/or the activities of the Java threads.
-
-The next illustration shows 4 tasks, with the last one running the Core Engine with 2 threads. 
-When the last task is scheduled by the underlying OS, the Core Engine executes and schedules the threads.
-
-.. figure:: images/mjvm_gt.png
-   :alt: A Green Threads Architecture Example
-   :align: center
-
-   A Green Threads Architecture Example
-
-The activity of the Core Engine is defined by the Application. When
-the Application is blocked (i.e., when all the MicroEJ threads
-sleep), the task running the Core Engine sleeps.
-
-.. _core_engine_capabilities:
-
-Capabilities
-============
-
-The Core Engine defines 3 exclusive capabilities:
-
--  Mono-Sandbox: capability to produce a monolithic Executable
-   (default one).
-
--  Multi-Sandbox: capability to produce a extensible Executable on
-   which new applications can be dynamically installed. See section
-   :ref:`multisandbox`.
-
--  Tiny-Sandbox: capability to produce a compacted Executable
-   (optimized for size). See section :ref:`tinysandbox`.
-
-All the Core Engine capabilities may not be available on all
-architectures. Refer to section :ref:`appendix_matrixcapabilities`
-for more details.
-
-To select the Core Engine capability, define the property ``com.microej.runtime.capability``
-in the ``configuration.properties`` file (SDK 6) or in the ``mjvm/mjvm.properties`` file (SDK 5) 
-of the VEE Port project, with one of the following values:
-
-- ``mono`` for Mono-Sandbox (default value)
-
-- ``multi`` for Multi-Sandbox
-
-- ``tiny`` for Tiny-Sandbox
-
-If the property ``com.microej.runtime.capability`` is not defined,
-the Mono-Sandbox Core Engine capability is used.
-
 .. _core_engine_implementation:
 
+==============
 Implementation
 ==============
 
@@ -127,7 +22,7 @@ The file ``LLMJVM_impl.h`` that comes with the Architecture defines the API
 to be implemented. See section :ref:`LLMJVM-API-SECTION`.
 
 Initialization
---------------
+==============
 
 The Low Level Core Engine API deals with two objects: the
 structure that represents the Core Engine, and the task that runs the
@@ -142,7 +37,7 @@ initialization of both objects:
    Core Engine.
 
 Scheduling
-----------
+==========
 
 To support the green thread round-robin policy, the Core Engine assumes
 there is an RTOS timer or some other mechanism that counts (down) and
@@ -177,10 +72,8 @@ to disable the round-robin scheduling.
 	Increasing the time slice can create a latency with intensive threads
 	monopolizing the CPU.
 
-
-
 Idle Mode
----------
+=========
 
 When the Core Engine has no activity to execute, it calls the
 ``LLMJVM_IMPL_idleVM`` function, which is assumed to put the Core Engine task
@@ -190,7 +83,7 @@ execute again, it calls the ``LLMJVM_IMPL_ackWakeup`` function to
 acknowledge the restart of its activity.
 
 Time
-----
+====
 
 The Core Engine defines two different times:
 
@@ -226,7 +119,7 @@ to the Application:
 .. _core_engine_error_codes:
 
 Error Codes
------------
+===========
 
 The C function ``SNI_createVM`` returns a negative value if an error 
 occurred during the Core Engine initialization or execution.
@@ -315,78 +208,10 @@ The following table describes these error codes.
    +-------------+-------------------------------------------------------------+
 
 
-Example
--------
-
-The following example shows how to create and launch the Core
-Engine from the C world. This function (``microej_main``) should be called
-from a dedicated task.
-
-.. code:: c
-
-	#include <stdio.h>
-	#include "microej_main.h"
-	#include "LLMJVM.h"
-	#include "sni.h"
-
-	#ifdef __cplusplus
-	   extern "C" {
-	#endif
-
-	/**
-	 * @brief Creates and starts a MicroEJ instance. This function returns when the MicroEJ execution ends.
-	 * @param argc arguments count
-	 * @param argv arguments vector
-	 * @param app_exit_code_ptr pointer where this function stores the application exit code or 0 in case of error in the Core Engine. May be null.
-	 * @return the Core Engine error code in case of error, or 0 if the execution ends without error.
-	 */
-	int microej_main(int argc, char **argv, int* app_exit_code_ptr) {
-		void* vm;
-		int core_engine_error_code = -1;
-		int32_t app_exit_code = 0;
-		// create Core Engine
-		vm = SNI_createVM();
-
-		if (vm == NULL) {
-			printf("MicroEJ initialization error.\n");
-		} else {
-			printf("MicroEJ START\n");
-
-			// Error codes documentation is available in LLMJVM.h
-			core_engine_error_code = (int)SNI_startVM(vm, argc, argv);
-
-			if (core_engine_error_code < 0) {
-				// Error occurred
-				if (core_engine_error_code == LLMJVM_E_EVAL_LIMIT) {
-					printf("Evaluation limits reached.\n");
-				} else {
-					printf("MicroEJ execution error (err = %d).\n", (int) core_engine_error_code);
-				}
-			} else {
-				// Core Engine execution ends normally
-				app_exit_code = SNI_getExitCode(vm);
-				printf("MicroEJ END (exit code = %d)\n", (int) app_exit_code);
-			}
-
-			// delete Core Engine
-			SNI_destroyVM(vm);
-		}
-
-		if(app_exit_code_ptr != NULL){
-			*app_exit_code_ptr = (int)app_exit_code;
-		}
-
-		return core_engine_error_code;
-	}
-
-	#ifdef __cplusplus
-	   }
-	#endif
-   
 .. _core_engine_restart:
 
 Restart the Core Engine
------------------------  
+======================= 
 
 The Core Engine supports the restart of the Application after the end of its execution. 
 The application stops when all non-daemon threads are terminated or when ``System.exit(exitCode)`` is called. 
@@ -427,7 +252,7 @@ To restart the application, call again the ``SNI_startVM`` function (see the fol
 .. _vm_dump:
 
 Dump the States of the Core Engine
-----------------------------------
+==================================
 
 The internal Core Engine function called ``LLMJVM_dump`` allows
 you to dump the state of all MicroEJ threads: name, priority, stack
@@ -524,7 +349,7 @@ See Stack Trace Reader documentation for :ref:`SDK 6 <sdk6.section.stacktrace.re
 .. _vm_dump_fault_handler:
 
 Dump The State Of All MicroEJ Threads From A Fault Handler
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------------------------------
 
 It is recommended to call the ``LLMJVM_dump`` API as a last resort in a fault handler.
 Calling ``LLMJVM_dump`` is undefined if the VM is not paused.
@@ -533,7 +358,7 @@ The call to ``LLMJVM_dump`` MUST be done last in the fault handler.
 .. _vm_dump_debugger:
 
 Trigger VM Dump From Debugger
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------
 
 
 To trigger a VM dump from the debugger, set the PC register to the ``LLMJVM_dump`` physical memory address.
@@ -554,7 +379,7 @@ Requirements:
 .. _core_engine.check_integrity:
 
 Check Internal Structure Integrity
-----------------------------------
+==================================
 
 The internal Core Engine function called ``LLMJVM_checkIntegrity`` checks the internal structure integrity of the Core Engine and returns its checksum.
 
@@ -596,170 +421,6 @@ A typical use of this API is to verify that a native implementation does not cor
     void LLMJVM_on_CheckIntegrity_error(uint32_t errorCode, void* errorAddress) {
         printf("Integrity error detected at address %p (error code: %d)\n", errorAddress, errorCode);
     }
-
-
-Generic Output
-==============
-
-The `System.err`_ stream is connected to the `System.out`_ print
-stream. See below for how to configure the destination of these streams.
-
-.. _System.err: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#err
-.. _System.out: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#out
-
-.. _core_engine_link:
-
-Link
-====
-
-Several sections are defined by the Core Engine. Each section must be linked by the third-party linker.
-Read-Only (RO) sections can be placed in writable memories. 
-In such cases, it is the responsibility of the BSP to prevent these sections from being written.
-
-Starting from :ref:`Architecture 8.0.0 <changelog-8.0.0>`, sections have been renamed to follow the standard ELF naming convention.
-
-.. tabs::
-
-    .. tab:: Linker Sections (Architecture ``8.x``)
-
-        .. table:: 
-            :widths: 15 30 5 5
-        
-            +--------------------------------+-----------------------------------+-------------+------------+
-            | Section name                   | Aim                               | Location    | Alignment  |
-            |                                |                                   |             | (in bytes) |
-            +================================+===================================+=============+============+
-            | ``.bss.microej.heap``          | Application heap                  | RW          | 4          |
-            +--------------------------------+-----------------------------------+-------------+------------+
-            | ``.bss.microej.immortals``     | Application immortal heap         | RW          | 4          |
-            |                                |                                   |             |            |
-            +--------------------------------+-----------------------------------+-------------+------------+
-            | ``.bss.microej.stacks``        | Application threads stack         | RW [1]_     | 8          |
-            |                                | blocks                            |             |            |
-            +--------------------------------+-----------------------------------+-------------+------------+
-            | ``.bss.microej.statics``       | Application static fields         | RW          | 8          |
-            +--------------------------------+-----------------------------------+-------------+------------+
-            | ``.rodata.microej.resource.*`` | Application resources             | RO          | 16         |
-            |                                | (one section per resource)        |             |            |
-            +--------------------------------+-----------------------------------+-------------+------------+
-            | ``.rodata.microej.soar``       | Application and library           | RO          | 16         |
-            |                                | code                              |             |            |
-            +--------------------------------+-----------------------------------+-------------+------------+
-            | ``.bss.microej.runtime``       | Core Engine                       | RW [1]_     | 8          |
-            |                                | internal structures               |             |            |
-            +--------------------------------+-----------------------------------+-------------+------------+
-            | ``.text.__icetea__*``          | Core Engine                       | RX          | ISA        |
-            |                                | generated code                    |             | Specific   |
-            +--------------------------------+-----------------------------------+-------------+------------+
-            | ``.bss.microej.kernel``        | Core Engine Multi-Sandbox section |             |            |
-            |                                | (Feature code chunk)              | RW          | 4          |
-            +--------------------------------+-----------------------------------+-------------+------------+
-   
-        .. note::
-            
-            During its startup, the Core Engine automatically zero-initializes the sections ``.bss.microej.runtime``, ``.bss.microej.heap``, and ``.bss.microej.immortals``. 
-
-    .. tab:: Linker Sections (Architecture ``7.x``)
-
-        .. table:: 
-            :widths: 15 30 5 5
-                
-            +-----------------------------+-----------------------------+-------------+------------+
-            | Section name                | Aim                         | Location    | Alignment  |
-            |                             |                             |             | (in bytes) |
-            +=============================+=============================+=============+============+
-            | ``_java_heap``              | Application heap            | RW          | 4          |
-            +-----------------------------+-----------------------------+-------------+------------+
-            | ``_java_immortals``         | Application immortal heap   | RW          | 4          |
-            |                             |                             |             |            |
-            +-----------------------------+-----------------------------+-------------+------------+
-            | ``.bss.vm.stacks.java``     | Application threads stack   | RW [1]_     | 8          |
-            |                             | blocks                      |             |            |
-            +-----------------------------+-----------------------------+-------------+------------+
-            | ``.bss.soar``               | Application static fields   | RW          | 8          |
-            +-----------------------------+-----------------------------+-------------+------------+
-            | ``.rodata.resources``       | Application resources       | RO          | 16         |
-            |                             |                             |             |            |
-            +-----------------------------+-----------------------------+-------------+------------+
-            | ``.text.soar``              | Application and library     | RO          | 16         |
-            |                             | code                        |             |            |
-            +-----------------------------+-----------------------------+-------------+------------+
-            | ``ICETEA_HEAP``             | Core Engine                 | RW [1]_     | 8          |
-            |                             | internal structures         |             |            |
-            +-----------------------------+-----------------------------+-------------+------------+
-            | ``.text.__icetea__*``       | Core Engine                 | RX          | ISA        |
-            |                             | generated code              |             | Specific   |
-            +-----------------------------+-----------------------------+-------------+------------+
-
-        .. note::
-            
-            During its startup, the Core Engine automatically zero-initializes the sections ``ICETEA_HEAP``, ``_java_heap``, and ``_java_immortals``. 
-
-.. [1]
-   Among all RW sections, those should be always placed into internal RAM for performance purpose.
-
-Dependencies
-============
-
-The Core Engine requires an implementation of its low level APIs
-in order to run. Refer to the chapter :ref:`core_engine_implementation` for more
-information.
-
-
-Installation
-============
-
-The Core Engine and its components are mandatory.  
-By default, it is configured with Mono-Sandbox capability.
-See the :ref:`core_engine_capabilities` section to update the Core Engine with Multi-Sandbox or Tiny-Sandbox capability.
-
-Abstraction Layer
-=================
-
-Core Engine Abstraction Layer implementations can be found on `MicroEJ Github`_ for several RTOS.
-
-.. _MicroEJ Github: https://github.com/orgs/MicroEJ/repositories?q=AbstractionLayer-Core&type=all&language=&sort=
-
-.. _memory-considerations:
-
-Memory Considerations
-=====================
-
-The memory consumption of main Core Engine runtime elements are described in :ref:`the table below <table-memory>`. 
-
-.. _table-memory:
-.. table:: Memory Considerations
-
-   +-----------+-----------+-----------------+-----------------+-----------------+
-   | Runtime   | Memory    | Size in bytes   | Size in bytes   | Size in bytes   |
-   | element   |           | (Mono-sandbox)  | (Multi-Sandbox) | (Tiny-Sandbox)  |
-   +===========+===========+=================+=================+=================+
-   | Object    | RW        | 4               | 8 (+4)          | 4               |
-   | Header    |           |                 |                 |                 |
-   +-----------+-----------+-----------------+-----------------+-----------------+
-   | Thread    | RW        | 168             | 192 (+24)       | 168             |
-   +-----------+-----------+-----------------+-----------------+-----------------+
-   | Stack     | RW        | 12              | 20 (+8)         | 12              |
-   | Frame     |           |                 |                 |                 |
-   | Header    |           |                 |                 |                 |
-   +-----------+-----------+-----------------+-----------------+-----------------+
-   | Class     | RO        | 32              | 36 (+4)         | 32              |
-   | Type      |           |                 |                 |                 |
-   +-----------+-----------+-----------------+-----------------+-----------------+
-   | Interface | RO        | 16              | 24 (+8)         | 16              |
-   | Type      |           |                 |                 |                 |
-   +-----------+-----------+-----------------+-----------------+-----------------+
-
-.. note::
-	To get the full size of an Object, search for the type in the :ref:`SOAR Information File <soar_info_file>` and read the attribute ``instancesize`` (this includes the Object header). 
-
-.. note::
-	To get the full size of a Stack Frame, search for the method in the :ref:`SOAR Information File <soar_info_file>` and read the attribute ``stacksize`` (this includes the Stack Frame header). 
-
-Use
-===
-
-Refer to the :ref:`MicroEJ Runtime <runtime_core_libraries>` documentation.
 
 ..
    | Copyright 2025, MicroEJ Corp. Content in this space is free 

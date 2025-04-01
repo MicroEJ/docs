@@ -12,6 +12,7 @@ VEE Porting Guide
    coreEngine
    pack
    veePortQualification
+   cModule
    appendix/index
 
 ..

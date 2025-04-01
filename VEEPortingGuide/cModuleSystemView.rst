@@ -4,8 +4,8 @@
 SystemView
 ==========
 
-Principle
-=========
+Overview
+========
 
 SystemView is a real-time recording and visualization tool for embedded systems that reveals the actual runtime behavior of an application,
 going far deeper than the system insights provided by debuggers. This is particularly effective when developing and working with complex
@@ -30,23 +30,27 @@ the `STM32F7508-DK VEE Port <https://github.com/MicroEJ/Platform-STMicroelectron
    :scale: 75
 
 References
-==========
+----------
 
 * https://www.segger.com/products/development-tools/systemview/
 * https://www.segger.com/downloads/jlink/UM08027
 
-Pre-requisites
-==============
+Integrate SystemView in your VEE Port
+=====================================
 
-SEGGER SystemView: http://segger.com/downloads/systemview/.
+Prerequisites
+-------------
+
+For Systemview C module to be compatible with your VEE Port, the following elements must be integrated into your VEE Port:
+
+- Core Engine: refer to :ref:`vee_port_from_scratch` documentation.
+
+SEGGER SystemView must be installed: http://segger.com/downloads/systemview/.
 
 .. note:: This SystemView section has been written for SystemView version V2.52a. Later versions may need modification to the following steps.
 
 .. note::
    This download page also contains links to download the "Target Sources" package. The following sections of this documentation will go through the installation of those. If your BSP project already integrates a specific version, make sure to download & install the matching version of the SystemView program.
-
-Integrate SystemView in your VEE Port
-=====================================
 
 For detailed instructions on the integration of SystemView Target Sources in your BSP, please refer to the "Getting started with SystemView on the target" section of the SystemView User Manual.
 This documentation focuses on the integration with FreeRTOS. If you are integrating with a different RTOS, make sure to check the samples in the Target Sources package.
@@ -265,8 +269,8 @@ The file generated can now be read by the SystemView software.
    `SEGGER website <https://www.segger.com/products/development-tools/systemview/technology/post-mortem-mode>`__.
 
 
-Usage
-=====
+Use SystemView in your VEE Port
+===============================
 
 Trace application events
 ------------------------
