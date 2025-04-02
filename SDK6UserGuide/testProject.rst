@@ -629,6 +629,26 @@ since it avoids adding confguration to change the tests sources folder.
 With this configuration, tests on the Simulator are located in the ``src/test/java`` folder, 
 and tests on a Java SE VM are located in the ``src/testOnJavaSe/java`` folder.
 
+.. _sdk_6_vee_configuration_by_testsuite:
+
+Configure a VEE by Testsuite
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The VEE declared in the project dependencies with the ``microejVee`` or the ``testMicroejVee`` configuration 
+(refer to :ref:`sdk_6_testsuite_vee_configuration` for more details) is used to execute all testsuites, 
+but it is also possible to run a testsuite on a dedicated VEE. To define a VEE for your testsuite, you must:
+
+- Create a new ``<testsuite_name>MicroejVee`` configuration depending on your testsuite name in the ``build.gradle.kts`` file of your project. For example::
+
+   val testOnDeviceMicroejVee by configurations.creating     
+
+- Declare the VEE in the project dependencies with your new configuration::
+
+   dependencies {
+       ...
+       testOnDeviceMicroejVee("com.mycompany:vee-port:1.0.0")
+   }
+
 .. _sdk_6_testsuite_engine_options:
 
 Configure the Testsuite Engine
