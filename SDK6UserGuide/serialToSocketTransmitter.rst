@@ -27,10 +27,41 @@ execute the ``execTool`` task as followed:
       --toolProperty=serail.to.socket.server.port="5555" \
       --console plain
 
-.. note::
+Run Serial to Socket Transmitter with Custom Task
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   It is also possible to create a custom task of type ``ExecToolTask`` dedicated to the Serial to Socket Transmitter. 
-   Refer to the :ref:`sdk_6_create_cutom_exectool_task` chapter for more information.
+To simplify the use of the Serial to Socket Transmitter, it is also possible to create a :ref:`custom task <sdk_6_create_cutom_exectool_task>` 
+in the ``build.gradle.kts`` file of your project as follows:
+
+- Import the ``ExecToolTask`` and ``LoadVeeTask`` classes::
+
+    import com.microej.gradle.tasks.ExecToolTask
+    import com.microej.gradle.tasks.LoadVeeTask
+
+- Create a new task of type ``ExecToolTask``::
+
+    val loadVee = tasks.withType(LoadVeeTask::class).named("loadVee")
+    val mainSourceSet = project.extensions.getByType(SourceSetContainer::class).getByName(SourceSet.MAIN_SOURCE_SET_NAME)
+
+    tasks.register<ExecToolTask>("serialToSocketTransmitter") {
+        group = "microej"
+        veeDir.set(loadVee.flatMap { it.loadedVeeDir })
+        resourcesDirectories.from(mainSourceSet.output.resourcesDir, layout.buildDirectory.dir("generated/microej-app-wrapper/resources"))
+        classesDirectories.from(mainSourceSet.output.classesDirs, layout.buildDirectory.dir("generated/microej-app-wrapper/classes"))
+        classpathFromConfiguration.from(project.configurations.getByName("runtimeClasspath"))
+
+        toolName = "serialToSocketTransmitter"
+        toolProperties.putAll(mapOf(
+            "serail.to.socket.comm.port" to "COM8",
+            "serail.to.socket.comm.baudrate" to "115200",
+            "serail.to.socket.server.port" to "5555"
+        ))
+    }
+
+- The custom task can then be executed::
+
+    $ ./gradlew serialToSocketTransmitter
+
 
 Options
 =======
