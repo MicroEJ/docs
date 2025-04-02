@@ -1,8 +1,7 @@
 .. _core_engine_implementation:
 
-==============
-Implementation
-==============
+Instantiation
+=============
 
 The Core Engine implements the :ref:`[SNI] specification <runtime_sni>`. 
 It is created and initialized with the C function ``SNI_createVM``.
