@@ -52,6 +52,11 @@ hyperlinks to navigate into the report and source / bytecode level code.
        --toolProperty=cc.src.folders="/MODULE_PATH/src" \
        --toolProperty=cc.html.dir="/MODULE_PATH/cc"
 
+.. note::
+
+   It is also possible to create a custom task of type ``ExecToolTask`` dedicated to the Code Coverage Analyzer. 
+   Refer to the :ref:`sdk_6_create_cutom_exectool_task` chapter for more information.
+
 Options
 =======
 

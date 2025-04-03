@@ -175,14 +175,6 @@ This can be done manually or with IDE menu:
    Gradle allows to define alternative folders for test sources but it would require additional configuration, 
    so it is recommended to stick with the ``src/test/java`` folder.
 
-
-Setup a VEE Port
-~~~~~~~~~~~~~~~~
-
-Before running tests, at least one target VEE Port must be configured using one of the methods described in the :ref:`sdk_6_select_veeport` page.
-If several VEE Ports are defined, the testsuite is executed on each of them.
-
-
 Execute the Tests
 ~~~~~~~~~~~~~~~~~
 
@@ -451,12 +443,33 @@ Then you can use it in your test classes:
 Test Suite Reports
 ------------------
 
-Once a testsuite is completed, the JUnit HTML report is generated in the module project location ``build/reports/tests/<testsuite>/index.html``.
+.. tabs::
 
-  .. figure:: ../SDK6UserGuide/images/junitHtmlReport.png
-     :alt: Example of JUnit HTML Report
-     
-     Example of JUnit HTML Report
+    .. group-tab:: SDK 6 1.1.0 and higher
+
+        Once a testsuite is completed, the JUnit HTML report is generated in the module project location ``build/reports/tests/<testsuite>/index.html``.
+
+        .. figure:: ../SDK6UserGuide/images/junitHtmlReport.png
+           :alt: Example of JUnit HTML Report
+
+           Example of JUnit HTML Report
+
+    .. group-tab:: SDK 6 1.0.0 and below
+
+        Once a testsuite is completed, the JUnit XML report is generated in the module project location ``build/testsuite/output/<date>/testsuite-report.xml``.
+
+        .. figure:: ../SDKUserGuide/images/testsuiteReportXMLExample.png
+           :alt: Example of MicroEJ Test Suite XML Report
+
+           Example of MicroEJ Test Suite XML Report
+
+        XML report file can also be opened In Eclipse in the JUnit View.
+        Right-click on the file > :guilabel:`Open With` >  :guilabel:`JUnit View`:
+
+        .. figure:: ../SDKUserGuide/images/testsuiteReportXMLExampleJunitView.png
+           :alt: Example of MicroEJ Test Suite XML Report in JUnit View
+
+           Example of MicroEJ Test Suite XML Report in JUnit View
 
 .. _sdk_6_mixing_testsuites:
 
@@ -749,6 +762,14 @@ For example, to inject an Application Option for the test class ``MyTest`` locat
 a ``MyTest.properties`` file must be created. Its path must be: ``src/test/resources/com/mycompany/MyTest.properties``.
 
 Application Options defined in this file do not require the ``microej.testsuite.properties.`` prefix.
+
+.. note::
+   If the testsuite is configured to execute main classes (thanks to the parameter ``TestMode.MAIN``)::
+
+      microej.useMicroejTestEngine(this, TestTarget.SIM, TestMode.MAIN)
+   
+   the properties file must be named after the main class. 
+   If the main class has been generated from a JUnit test class, its class name is prefixed by ``_AllTests_``.
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
