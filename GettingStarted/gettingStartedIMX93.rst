@@ -58,7 +58,7 @@ Get Example-Java-Widget
 
 For this Getting Started, the :guilabel:`Example-Java-Widget` Application will be used. You can download it using the following command::
    
-   git clone -b 8.0.0 https://github.com/MicroEJ/Example-Java-Widget.git
+   git clone -b 8.1.1 https://github.com/MicroEJ/Example-Java-Widget.git
 
 .. note::
   
@@ -131,7 +131,7 @@ In the Gradle build file ``build.gradle.kts``, replace the VEE dependency ``micr
 .. code-block::
 
    dependencies {
-      microejVee("com.microej.veeport.imx93:VEEPort_eval:1.0.2")
+      microejVee("com.microej.veeport.imx93:vee-port:3.0.2")
    }
 
 For more information about how to select a VEE Port please refer to the following section: :ref:`sdk_6_select_veeport`.
@@ -412,32 +412,7 @@ To run the :guilabel:`Example-Java-Widget` Application on i.MX93 Evaluation Kit,
          :align: center
          :scale: 70%
 
-.. warning::
-
-   The application deployment script (``run.sh``) is not compatible with OpenSSH 9.0+ (typically Ubuntu 24.04).
-   The ``runOnDevice`` task should fail with:
-
-     .. code-block::
-
-        sh: /usr/lib/openssh/sftp-server: No such file or directory
-        scp: Connection closed
-
-   This is because the Yocto distribution uses Dropbear, and from this OpenSSH version the ``-O`` must be added
-   to ``scp`` commands in order to use the legacy SCP protocol.
-   To work around this issue:
-
-   * Copy the folder ``./build/vee`` to the root directory of the project (``./vee``).
-   * Change the dependency in ``build.gradle.kts`` to ``microejVee(files("vee"))``.
-   * And fix the ``./vee/bsp/projects/microej/scripts/run.sh`` script (line 70):
-
-     .. code-block:: diff
-
-        - $SSH_PASSWORD_OPTION scp -oStrictHostKeyChecking=no ${APPLICATION_FILE} $SSH_USER@$SSH_HOSTNAME:$SSH_REMOTE_APPLICATION
-        + $SSH_PASSWORD_OPTION scp -O -oStrictHostKeyChecking=no ${APPLICATION_FILE} $SSH_USER@$SSH_HOSTNAME:$SSH_REMOTE_APPLICATION
-
-   * Then, run the ``runOnDevice`` task again.
-
-Once the application is running, you should see the :guilabel:`Example-Java-Widget` on your board.      
+Once the application is running, you should see the :guilabel:`Example-Java-Widget` on your board.
 
 .. _sdk_6_getting_started_imx93_modify_java_application:
 
