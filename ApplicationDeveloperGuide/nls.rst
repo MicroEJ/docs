@@ -143,32 +143,92 @@ However, you can also pick this locale to default to yourself, by adding a ``com
 Plural Forms
 ------------
 
-Version 4.0.0 of the `NLS module`_ and version 3.0.0 of the `binary-nls`_ module introduce the support of GNU gettext's plural form feature in PO files.
+The version 4.0.0 of the `NLS module`_ and version 3.0.0 of the `binary-nls`_ module introduce the support of `GNU gettext's plural forms`_ feature in PO files.
+The version 3.2.0 of `binary-nls`_ adds support of plural forms for Android String resources `quantity strings <https://developer.android.com/guide/topics/resources/string-resource#Plurals>`_.
 
-.. warning:: This feature concerns only the PO files, not the Android String resources `quantity strings <https://developer.android.com/guide/topics/resources/string-resource#Plurals>`_ .
+This feature allows the localizations to define plural forms and adapt the localized messages based on a numeric value using `ej.nls.NLS.getMessage(id, count)`_:
 
-This allows usage of ``Plural-Forms`` header entries and several ``msgstr`` 's per ``msgid`` (referred to as plural forms) `as specified by gettext`_; you can then retrieve the correct message in a locale for a given count of things by using the `ej.nls.NLS.getMessage()`_ methods that take in this count value as an argument.
+   .. code-block:: java
 
-If a message for a given ``msgid`` has a ``msgid_plural`` and plural forms in a PO file for an interface declared in an NLS list file, it must also have plural forms in all other PO files for this interface.
+      int count;
+      String localizedMessagePlural = MyLabels.NLS.getMessage(MyLabels.MyMessageId, count);
+
+The mapping of ``count`` to a quantity depends on the locale. The `binary-nls`_ plural engine is based on `GNU gettext's plural forms`_.
+Each localization file (PO or XML) that makes use of plural forms must specify the plural rule for the associated locale.
+The rule is defined in `GNU gettext's plural forms`_ format. See the manual (previous link) to get the plural forms for many languages.
+
+.. tabs::
+
+   .. tab:: GNU gettext (PO)
+
+      First, set the plural rule using the ``Plural-Forms`` header entry. Then, for each ``msgid``, set the ``msgstr`` for all plural forms.
+
+      .. code-block:: po
+
+         "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;"
+
+         msgid "One file removed"
+         msgid_plural "%d files removed"
+         msgstr[0] "%d slika je uklonjena"
+         msgstr[1] "%d datoteke uklonjenih"
+         msgstr[2] "%d slika uklonjenih"
+
+   .. tab:: Android String resources (XML)
+
+      `binary-nls`_ maps a quantity to a plural form index and then makes use of a plural rule similar to that found
+      in PO files to map the ``count`` to the localized message for the associated quantity.
+      This rule must be added to your XML file with a custom ``<ej-plural-rule>`` element.
+      For example, the plural rule for French could look like this:
+
+      .. code-block:: xml
+
+         <resources>
+             <ej-plural-rule nplurals="3">
+                 (n > 1) ? 0 : 1
+             </ej-plural-rule>
+
+             <plurals name="Plural forms">
+                 <item quantity="one">%d fruit</item>
+                 <item quantity="many">%d fruits</item>
+                 <item quantity="other">%d fruits</item>
+             </plurals>
+         </resources>
+
+      The ``nplurals`` attribute must be set to the number of quantity keys supported by the locale language,
+      as defined in `Unicode CLDR Language Plural Rules`_ (for cardinal type).
+      The returned index corresponds to the index of supported quantities, in order from the list ``zero``, ``one``, ``two``, ``few``, ``many``, and ``other``.
+      For example, in French, ``one``, ``many`` and ``other`` are supported, and they are indexed by, respectively, ``0``, ``1``, and ``2`` (and ``nplurals`` must be set to ``3``).
+
+
+.. note::
+
+    If a locale defines plural forms for a message, all other locales for the same NLS interface must provide the plural forms for this message.
+
+.. note::
+
+   The plural rule can only be set at build time. When updating NLS locale data using `nls_external_resource`_, only the localized messages can be updated.
+   It assumes that the plural rule used is the same as when the application was built.
 
 .. note::
 
    Please note that one significant difference with gettext's implementation is that the expression described in the ``plural`` field of the ``Plural-Forms`` header must be a valid **Java** expression returning an ``int``, as opposed to a C expression. A usual case in which this makes a difference is for expressions that rely on boolean values being evaluated as zero or one in C, such as in: 
 
-   .. code-block::
+   .. code-block:: po
 
       "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
    This expression will not work with our implementation as Java does not interpret booleans as integers. An easy way to convert this expression would be:
 
-   .. code-block::
+   .. code-block:: po
 
       "Plural-Forms: nplurals=2; plural=n != 1 ? 1 : 0;\n"
 
    Also note that the validity of these provided expressions is not entirely checked. Providing an expression that is not valid Java or that would return an invalid plural form index would cause errors at runtime or even in the Java files generated by the Add-On Processor.
 
 .. _NLS module: https://repository.microej.com/modules/ej/library/runtime/nls/
-.. _as specified by gettext: https://www.gnu.org/software/gettext/manual/html_node/Plural-forms.html
+.. _GNU gettext's plural forms: https://www.gnu.org/software/gettext/manual/html_node/Plural-forms.html
+.. _ej.nls.NLS.getMessage(id, count): https://repository.microej.com/javadoc/microej_5.x/apis/ej/nls/NLS.html#getMessage-int-int-
+.. _Unicode CLDR Language Plural Rules: https://www.unicode.org/cldr/charts/47/supplemental/language_plural_rules.html
 
 Missing Translations
 --------------------
