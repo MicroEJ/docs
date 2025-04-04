@@ -31,6 +31,19 @@ To use the MicroAI Library, add the following line to the project build file:
 
 Building or running an Application which uses the MicroAI Library requires the VEE Port to provide the :ref:`MicroAI Pack <pack_microai>`.
 
+Machine Learning Model Format
+-----------------------------
+
+MicroAI is designed to be **framework-agnostic**, meaning it does not rely on a specific Machine Learning framework like TensorFlow or ONNX.
+Instead, the model format used by the MicroEJ Application depends on the VEE Port implementation of the MicroAI library. 
+Please check which model formats are supported by your target VEE Port.
+
+MicroEJ Simulator
+~~~~~~~~~~~~~~~~~
+
+If you need to use the MicroEJ Simulator, you must use a model in **TensorFlow Lite for Microcontrollers (TFLM)** format. 
+Other model formats will not be compatible with the MicroEJ Simulator and cannot be executed within it.
+
 APIs
 ----
 
