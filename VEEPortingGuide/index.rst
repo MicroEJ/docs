@@ -23,6 +23,7 @@ VEE Porting Guide
    net
    bluetooth
    audio
+   microai
    packEventQueue
    fs
    hal
