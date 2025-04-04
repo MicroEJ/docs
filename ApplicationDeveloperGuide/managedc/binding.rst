@@ -59,7 +59,7 @@ First, the WebAssembly module file must be available in the :ref:`chapter.microe
 For that, drop your WebAssembly module to your project directory ``src/main/resources``. Let's assume it is called ``my_app.wasm``.
 
 Add to the desired Java class the ``@WasmModule`` annotation with the module name (e.g. ``@WasmModule("my_app")``).
-When the SOAR loads the Java class, it will transitively load the annotated WebAssembly module from the :ref:`resource <section.classpath.elements.raw_resources>` path without the ``.wasm`` extension (e.g. ``/my_app.wasm``).
+When the SOAR loads the Java class, it will transitively load the annotated WebAssembly module from the :ref:`resource <section.classpath.elements.raw_resources>` path with the ``.wasm`` extension (e.g. ``/my_app.wasm``).
 
 Your class should look like the following code:
 
