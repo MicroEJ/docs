@@ -55,6 +55,10 @@ First action when dealing with MicroAI is to load the trained Machine Learning m
 There is 2 way to load a model, using an application resource with MLInferenceEngine(String modelPath) constructor or from an InputStream using MLInferenceEngine(InputStream is) constructor.
 The 2 constructors map the model into a native data structure, build an interpreter to run the model with and allocate memory for the model's tensors.
 
+InputStream constructor will block until the model is completely retrieved/loaded on the native side. 
+It will load the model inside the MicroAI heap.
+Size of MicroAI heap is defined from the :ref:`MicroAI Configurations <microai_configuration>`.
+
 Once initialized, MLInferenceEngine allows to get input/output model tensors and to run inferences on the trained model.
 
 For example, the following snippet loads a trained model from application resources and run inference on it:
@@ -101,6 +105,8 @@ Stateless and immutable classes:
 
 * Tensor.DataType: Enumerates MicroAI data types.
 * Tensor.QuantizationParameters: Represents quantized parameters of a tensor.
+
+.. _microai_configuration:
 
 Configuration
 -------------
