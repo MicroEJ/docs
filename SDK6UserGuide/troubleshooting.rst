@@ -340,7 +340,7 @@ To fix this issue, you must update the dependency of your testsuite to use the s
 					implementation(project())
 					implementation("ej.api:edc:1.3.7")
 					implementation("ej.api:kf:1.7.0")
-					implementation("ej.library.test:junit:1.7.1")
+					implementation("ej.library.test:junit:1.11.0")
 					implementation("org.junit.platform:junit-platform-launcher:1.8.2")
 				}
 			}

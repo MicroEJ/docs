@@ -1,3 +1,5 @@
+.. _kf_testsuite:
+
 Setup a KF Test Suite
 =====================
 
