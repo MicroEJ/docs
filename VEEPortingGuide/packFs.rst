@@ -19,7 +19,7 @@ Prerequisites
 
 For the FS Pack to be compatible with your VEE Port, the following elements must be integrated into your VEE Port:
 
-- Core Engine: refer to :ref:`vee_port_from_scratch` documentation.
+- Core Engine: refer to :ref:`vee_port_core_from_scratch` documentation.
 
 - Async Worker: the instructions are not available yet. Please ask MicroEJ support.
 

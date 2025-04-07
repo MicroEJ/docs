@@ -23,12 +23,14 @@ The Core Engine and its components are mandatory.
    In the following explanations, the term `task` refers to native tasks scheduled by the underlying OS or RTOS, 
    while `thread` refers to MicroEJ threads scheduled by the Core Engine.
 
+.. _vee_port_core_from_scratch:
+
 Create a VEE Port with CoreEngine capabilities
 ==============================================
 
 Follow these steps to integrate CoreEngine into a new VEE Port:
 
-#. Follow the :ref:`veeport_project_creation` and :ref:`_architecture_selection` documentation sections.
+#. Follow the :ref:`veeport_project_creation` and :ref:`architecture_selection` documentation sections.
 
 #. Build the default HelloWorld application included in the VEE Port template. Refer to :ref:`sdk_6_build_executable` documentation. The build will fail but the ``microejruntime.a`` and ``microejapp.o`` will be generated, this is what we want.
 

@@ -43,7 +43,7 @@ Prerequisites
 
 For Systemview C module to be compatible with your VEE Port, the following elements must be integrated into your VEE Port:
 
-- Core Engine: refer to :ref:`vee_port_from_scratch` documentation.
+- Core Engine: refer to :ref:`vee_port_core_from_scratch` documentation.
 
 SEGGER SystemView must be installed: http://segger.com/downloads/systemview/.
 
