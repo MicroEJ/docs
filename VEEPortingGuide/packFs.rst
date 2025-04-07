@@ -48,11 +48,11 @@ Integration steps
 
       .. tab:: SDK 6
 
-         In SDK 6, Modify the `FS` section of the `VEE Port configuration file <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/blob/master/vee-port/configuration.properties>`_
+         In SDK 6, Modify the `FS` section of the `VEE Port configuration file <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/blob/1.1.0/vee-port/configuration.properties>`_
 
       .. tab:: SDK 5
 
-	      In SDK 5, the configuration is done in the properties file ``fs/fs.properties``. The properties are the same as in `SDK 6 VEE Port configuration file <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/blob/master/vee-port/configuration.properties>`_, but the prefix ``com.microej.runtime`` must be removed.
+	      In SDK 5, the configuration is done in the properties file ``fs/fs.properties``. The properties are the same as in `SDK 6 VEE Port configuration file <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/blob/1.1.0/vee-port/configuration.properties>`_, but the prefix ``com.microej.runtime`` must be removed.
 
    The FS Pack defines two pre-configured File System types: ``Unix`` and ``FatFS``.
    Some characteristics don't need to be specified for these File System types, but they can be overridden if needed.
@@ -65,8 +65,8 @@ Integration steps
 
 3. Implement the abstration layer. Following implementations are available:
 
-    * `FatFS <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk/tree/main/bsp/vee/port/fs>`_
-    * `Linux (all abstraction layers are gathered in one repo) <https://github.com/MicroEJ/AbstractionLayer-Linux/tree/master/projects/microej/fs>`_
+    * `FatFS <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk/tree/NXPVEE-MIMXRT1170-EVK-3.0.0/bsp/vee/port/fs>`_
+    * `Linux (all abstraction layers are gathered in one repo) <https://github.com/MicroEJ/AbstractionLayer-Linux/tree/3.1.0/vee/port/fs>`_
     * LittleFS (on demand)
     * EmFile (on demand)
     * FileX (on demand)
@@ -74,7 +74,7 @@ Integration steps
 
    Refer to :ref:`pack_fs_c_api` for more details on the FS pack Abstraction Layer API.
 
-4. Run the `FS testsuite <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/master/vee-port/validation/fs>`_ to test the abstration layer implementation.
+4. Run the `FS testsuite <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.1.0/vee-port/validation/fs>`_ to test the abstration layer implementation.
 
 Use the FS API in your Application
 ==================================
