@@ -11,6 +11,8 @@ MicroEJ also provide C modules that do not depend on a pack or foundation librar
 .. toctree::
    :maxdepth: 1
 
+   cModuleOsal
+   cModuleAsyncWorker
    cModuleSystemView
 ..
 

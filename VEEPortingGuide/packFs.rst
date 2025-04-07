@@ -21,7 +21,7 @@ For the FS Pack to be compatible with your VEE Port, the following elements must
 
 - Core Engine: refer to :ref:`vee_port_core_from_scratch` documentation.
 
-- Async Worker: the instructions are not available yet. Please ask MicroEJ support.
+- Async Worker: refer to :ref:`c_module_async_worker` documentation.
 
 Integration steps
 -----------------

@@ -17,11 +17,13 @@ On top of a MicroEJ Architecture can be imported MicroEJ Packs which provide add
 Each MicroEJ Pack is optional and can be selected on demand in the VEE Port configuration.
 Refer to :ref:`SDK 6 <sdk_6_veeport_pack_import>` or :ref:`SDK 5 <platform_configuration_creation>` documentation to learn how to do it.
 
+Before adding any pack in your VEE Port, first ensure that Core Engine is properly integrated and validated. Please refer to :ref:`vee_port_core_from_scratch` documentation.
+
 .. toctree::
    :maxdepth: 1
 
    packIntroduction
-   packEssentials
+   packEventQueue
    packDisplay
    packConnectivity
    packSecurity
