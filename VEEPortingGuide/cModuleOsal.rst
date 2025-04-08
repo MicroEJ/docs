@@ -7,12 +7,12 @@ OS Abstraction Layer (OSAL)
 Overview
 ========
 
-Some packs need to call APIs from the RTOS (queue, semaphore,...). In order to have generic packs, an OS Abstraction Layer (OSAL) is necessary to use these kind of functions.
+Some packs need to call APIs from the RTOS (queue, semaphore,...). In order to have generic packs, an OS Abstraction Layer (OSAL) is necessary to use this kind of function.
 
 Integrate OSAL in your VEE Port
 ===============================
 
-If your OS is not mentionned in this documentation, please ask MicroEJ support.
+If your OS is not mentioned in this documentation, please ask MicroEJ support.
 
 FreeRTOS
 --------

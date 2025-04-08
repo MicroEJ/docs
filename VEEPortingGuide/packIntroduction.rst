@@ -2,15 +2,7 @@
 Introduction
 ============
 
-On top of a MicroEJ Architecture can be imported MicroEJ Packs which provide additional features such as:
-
--  :ref:`Serial Communications <pack_ecom_comm>`,
--  :ref:`Graphical User Interface <pack_gui>`,
--  :ref:`Networking <pack_net>`,
--  :ref:`Bluetooth <pack_bluetooth>`,
--  :ref:`Audio <pack_audio>`,
--  :ref:`File System <pack_fs>`,
--  etc.
+On top of a MicroEJ Architecture can be imported MicroEJ Packs which provide additional features.
 
 Each MicroEJ Pack is optional and can be selected on demand in the VEE Port configuration.
 Refer to :ref:`SDK 6 <sdk_6_veeport_pack_import>` or :ref:`SDK 5 <platform_configuration_creation>` documentation to learn how to do it.

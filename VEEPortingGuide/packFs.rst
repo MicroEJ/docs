@@ -7,9 +7,7 @@ File System
 Overview
 ========
 
-The FS (File System) Pack defines a low-level File System framework for embedded devices. It allows you to manage abstract files and directories without worrying about the native underlying File System kind.
-
-The MicroEJ Application manages File System elements using File/Directory abstraction. The FS, implementation made for each VEE Port is responsible for surfacing the native File System specific behavior.
+The FS (File System) Pack defines a low-level File System framework for embedded devices. It allows the MicroEJ Application to manage abstract files and directories without worrying about the native underlying File System kind.
 
 Integrate the FS Pack into your VEE Port
 ========================================
@@ -63,7 +61,7 @@ Integration steps
 
    Refer to :ref:`pack_fs_config` for more details on the FS pack parameters.
 
-3. Implement the abstration layer. Following implementations are available:
+3. Add the Abstraction Layer implementation to your VEE Port. The following implementations are available:
 
     * `FatFS <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk/tree/NXPVEE-MIMXRT1170-EVK-3.0.0/bsp/vee/port/fs>`_
     * `Linux (all abstraction layers are gathered in one repo) <https://github.com/MicroEJ/AbstractionLayer-Linux/tree/3.1.0/vee/port/fs>`_
@@ -74,7 +72,7 @@ Integration steps
 
    Refer to :ref:`pack_fs_c_api` for more details on the FS pack Abstraction Layer API.
 
-4. Run the `FS testsuite <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.1.0/vee-port/validation/fs>`_ to test the abstration layer implementation.
+4. Run the `FS testsuite <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.1.0/vee-port/validation/fs>`_ to test the Abstraction Layer implementation.
 
 Use the FS API in your Application
 ==================================

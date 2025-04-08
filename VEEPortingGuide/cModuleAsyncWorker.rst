@@ -15,9 +15,9 @@ Integrate Async Worker in your VEE Port
 Prerequisites
 -------------
 
-OSAL must be integrated in your VEE Port. Please refer to :ref:`c_module_osal` documentation.
+OSAL must be integrated into your VEE Port. Please refer to :ref:`c_module_osal` documentation.
 
-Add Async Worker sources in your VEE Port
+Add Async Worker Sources in your VEE Port
 -----------------------------------------
 
 To integrate Async Worker in your VEE Port, add the following sources:

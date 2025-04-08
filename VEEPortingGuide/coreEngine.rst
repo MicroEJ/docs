@@ -32,7 +32,7 @@ Follow these steps to integrate CoreEngine into a new VEE Port:
 
 #. Follow the :ref:`veeport_project_creation` and :ref:`architecture_selection` documentation sections.
 
-#. Build the default HelloWorld application included in the VEE Port template. Refer to :ref:`sdk_6_build_executable` documentation. The build will fail but the ``microejruntime.a`` and ``microejapp.o`` will be generated, this is what we want.
+#. Build the default HelloWorld application included in the VEE Port template. Refer to :ref:`sdk_6_build_executable` documentation. The build will fail, but the ``microejruntime.a`` and ``microejapp.o`` will be generated; this is what we want.
 
 #. Import a basic BSP example provided by your silicon vendor in the `bsp` folder.
 
@@ -45,13 +45,13 @@ Follow these steps to integrate CoreEngine into a new VEE Port:
 
 #. Implement the functions ``LLBSP_IMPL_putchar`` and ``LLBSP_IMPL_printf`` if the default implementation does not fit.
 
-#. Create a RTOS task that calls ``microej_main`` at start with the right heap size.
+#. Create an RTOS task that calls ``microej_main`` at start with the correct heap size. Also, check that the total heap size is sufficient to create this new task.
 
 #. Add the added source files to the build system of the project, as well as ``microejruntime.a`` and ``microejapp.o``.
 
-#. Build and run the example on the device.
+#. Build and run the example on the device. Check that the HelloWorld application runs without error and fix the issues if needed.
 
-#. Implement the build and run scripts (in ``bsp/vee/scripts`` folder) that will allow to build and run an application from a gradle task. You can find examples of implementation in available `VEE Ports on GitHub`. You can test your implementation by re-building the HelloWorld application (refer to Refer to :ref:`sdk_6_build_executable`). This time the build should be successful. To run this application from gradle tasks, refer to :ref:`sdk_6_run_on_device` documentation.
+#. Implement the build and run scripts (in ``bsp/vee/scripts`` folder). These scripts are necessary to build and run an Application from a gradle task. You can find examples of implementation in available `VEE Ports on GitHub`_. You can test your implementation by re-building the HelloWorld application (refer to :ref:`sdk_6_build_executable`). This time, the build should be successful. To run this Application from gradle tasks, refer to :ref:`sdk_6_run_on_device` documentation.
 
 #. Run the `Core validation testsuite`_ to validate your implementation.
 
