@@ -44,6 +44,9 @@ MicroEJ Simulator
 If you need to use the MicroEJ Simulator, you must use a model in **TensorFlow Lite for Microcontrollers (TFLM)** format. 
 Other model formats will not be compatible with the MicroEJ Simulator and cannot be executed within it.
 
+Tensorflow Lite for Microcontrollers supports a limited subset of TensorFlow operations, which impacts the model architectures that it is possible to run.
+The supported operators list corresponds to the list in the `all_ops_resolver.cc <https://github.com/tensorflow/tflite-micro/blob/cdc3a3203f7721d17f6058979385a79cbd217551/tensorflow/lite/micro/all_ops_resolver.cc>`_ file.
+
 APIs
 ----
 
