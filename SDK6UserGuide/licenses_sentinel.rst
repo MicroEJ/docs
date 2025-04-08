@@ -90,7 +90,7 @@ Your Sentinel Floating License Server is successfully configured. All you have t
 Setup the Developer Workstation
 -------------------------------
 
-This section contains instructions for the MicroEJ Developer server to setup its workstation in order to connect a Sentinel Floating License Server.
+This section contains instructions for the MicroEJ Developer to setup its workstation in order to connect a Sentinel Floating License Server.
 
 First, download `Sentinel_RTE_Installation-1.1.0.zip <https://repository.microej.com/packages/sentinel/Sentinel_RTE_Installation-1.1.0.zip>`__ file. It contains installer for Windows, macOS and Linux.
 `Sentinel LDK Run-time Environment <https://docs.sentinel.thalesgroup.com/ldk/rte.htm>`__ enables your protected software to run by communicating with Sentinel protection keys. 
