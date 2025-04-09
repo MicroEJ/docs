@@ -6,6 +6,23 @@
 Migration Guide
 ===============
 
+From 1.7.0 to 1.7.1
+===================
+
+BSP with VGLite
+"""""""""""""""
+
+* *[VEE Port configuration project]*
+
+	* Fetch the `VG Pack 1.7.1`_ and the `C Module MicroVG over VGLite 9.0.1`_.
+
+BSP with NemaVG
+"""""""""""""""
+
+* *[VEE Port configuration project]*
+
+	* Fetch the `VG Pack 1.7.1`_ and the `C Module MicroVG over NemaVG 2.0.1`_.
+
 From 1.6.0 to 1.7.0
 ===================
 
