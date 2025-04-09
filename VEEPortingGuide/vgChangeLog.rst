@@ -6,6 +6,54 @@
 Changelog
 =========
 
+[1.7.1] - 2025-04-09
+====================
+
+Front Panel
+"""""""""""
+
+**Fixed**
+
+- Fix the drawing bounds of the BufferedVectorImage's elements.
+- Fix the drawing of a BufferedVectorImage outside the destination's clip.
+- Fix the drawing of the BufferedVectorImage's elements which are outside the BufferedVectorImage's clip.
+- Fix the drawing of gradient paths with zero or one color. 
+- Fix the management of transparent gradients for the NemaVG GPU.
+
+C Module MicroVG
+""""""""""""""""
+
+**Fixed**
+
+- Fix the dependency to Freetype (MicroUI Font drawings with vector fonts).
+
+C Module VGLite
+"""""""""""""""
+
+**Fixed**
+
+- Fix the drawing of a BufferedVectorImage when applying a rotation.
+- Fix the drawing bounds of the BufferedVectorImage's elements.
+- Fix the use of clip when drawing a BufferedVectorImage that contains vector images.
+- Fix the clip when drawing a vector image in a BufferedVectorImage.
+- Fix the drawing of gradient paths with zero or one color.
+
+**Removed**
+
+- Remove useless and invalid external field declaration.
+- Remove dependency to a specific version of Freetype: the C module Freetype must be fetched independently.
+
+C Module NemaVG
+"""""""""""""""
+
+**Fixed**
+
+- Fix the drawing of a BufferedVectorImage when applying a rotation.
+- Fix the drawing bounds of the BufferedVectorImage's elements.
+- Fix the use of clip when drawing a BufferedVectorImagee that contains vector images.
+- Fix the clip when drawing a vector image in a BufferedVectorImage.
+- Fix the drawing of gradient paths with zero or one color.
+
 [1.7.0] - 2024-10-09
 ====================
 
