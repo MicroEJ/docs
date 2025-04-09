@@ -3,6 +3,40 @@
 Changelog
 ---------
 
+.. _changelog-1.2.0:
+
+[1.2.0] - 2025-04-09
+~~~~~~~~~~~~~~~~~~~~
+
+Added
+"""""
+
+- Allow to define the JVM used to launch the VD in the `JAVA_HOME` environment variable.
+- Add POM and Gradle module files in generated Ivy descriptor file to allow to fetch them from a SDK 5 offline repository.
+- Remove the JDK from the classpath in the Eclipse and VS Code (when using RedHat's Java Extension) IDE.
+- Support the declaration of Mocks in an Application and in a Library.
+- Support Kernel Application, Runtime Environment and VEE Port projects in Ivy descriptor.
+- Publish testsuite reports if tests have been executed.
+- Support Libraries as dependencies of a VEE Port.
+
+Changed
+"""""""
+
+- Improve the error message when publishing the VEE Runtime Library.
+- Improve the error message when project depends on a Kernel whose Virtual Device or Executable is missing.
+- Display correctly the error message when the launch of a VEE Port script fails.
+- Load the VEE used to build the project and the VEE used for tests in different folders.
+
+Fixed
+"""""
+
+- Virtual Device launch fails on Windows with a custom Java absolute path.
+- Kernel Javadoc contains Kernel sources instead of exposed APIs.
+- Add only the JAR file to the variant of a Foundation Library published with MMM, to be compatible with the SPDX Gradle plugin.
+- Print test execution logs stdout instead of stderr.
+- Mock not installed in the VEE Port built on the fly when running an Application.
+- Make lambdas processing tasks fail when lambda processing fails.
+
 .. _changelog-1.1.0:
 
 [1.1.0] - 2025-02-28
