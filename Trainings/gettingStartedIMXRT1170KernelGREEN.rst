@@ -1,5 +1,13 @@
+.. |GREEN_KERNEL_VERSION| replace:: ``2.1.1``  
+.. |GREEN_KERNEL_DEPENDENCY| replace:: ``microejVee("com.microej.kernel:GREEN:2.1.1")`` 
+.. |GREEN_KERNEL_SOURCES_LINK| replace:: `Kernel GREEN <https://github.com/MicroEJ/Kernel-GREEN>`__
+.. |VEE_PORT_VERSION| replace:: ``3.0.0``
+.. |VEE_PORT_LINK| replace:: `NXP i.MXRT1170 VEE Port <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk>`__
+.. |SDK_PLUGIN_VERSION| replace:: ``1.1.0``  
+
 .. _training_kernel_green_imxrt1170:
 
+=======================
 Get Started with Kernel
 =======================
 
@@ -7,7 +15,7 @@ This Getting Started is a step-by-step guide explaining
 how to build a Multi-Sandbox Executable for the NXP i.MXRT1170 Evaluation Kit.
 
 This Executable will be built from the
-`Kernel GREEN <https://github.com/MicroEJ/Kernel-GREEN>`__ sources.
+|GREEN_KERNEL_SOURCES_LINK| sources.
 
 The Multi-Sandbox Executable built in this Getting Started can then be used to
 complete the :ref:`training_multisandbox_applications_imxrt1170` Getting Started.
@@ -26,7 +34,13 @@ Prerequisites
 
 .. note::
   
-   This Getting Started has been tested on Windows 10. 
+   This Getting Started has been tested in the following conditions:
+
+   - Windows 11.
+   - IntelliJ IDEA with MicroEJ plugin for IntelliJ IDEA |SDK_PLUGIN_VERSION|.
+   - |GREEN_KERNEL_SOURCES_LINK| |GREEN_KERNEL_VERSION|.
+   - |VEE_PORT_LINK| |VEE_PORT_VERSION|.
+
    Also note that examples used in this Getting Started could depend on older tools and libraries. 
    Most notably our dependency manager plugin (using `Gradle <https://gradle.org/>`__) could be an older version.
 
@@ -74,7 +88,7 @@ Set up the Kernel GREEN on your IDE
 Import the Project
 ~~~~~~~~~~~~~~~~~~
 
-Clone or download the `Kernel GREEN <https://github.com/MicroEJ/Kernel-GREEN>`__ sources,
+Clone or download the |GREEN_KERNEL_SOURCES_LINK| sources,
 
 The first step is to import the :guilabel:`Kernel-GREEN` into your IDE: 
 
@@ -101,11 +115,11 @@ Select a VEE Port
 
 As Applications need to depend on a VEE Port in order to be built, so does a Kernel project.
 Refer to the ``Prerequisites`` section of the
-`Kernel GREEN README <https://github.com/MicroEJ/Kernel-GREEN/blob/master/README.md>`__
+|GREEN_KERNEL_SOURCES_LINK| README
 to learn more about the VEE Port requirements.
 
 By default, the :guilabel:`Kernel-GREEN` project already uses the
-`NXP i.MXRT1170 VEE Port <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk>`__.
+|VEE_PORT_LINK| |VEE_PORT_VERSION|.
 
 Kernel Configuration
 ^^^^^^^^^^^^^^^^^^^^
@@ -116,7 +130,7 @@ for the Kernel (runtime heap size, maximum number of threads, images heap size, 
 This configuration will also impact Sandboxed Applications running on top of the Kernel
 (e.g. max number of threads per application). 
 
-Check the `Kernel GREEN README <https://github.com/MicroEJ/Kernel-GREEN/blob/master/README.md>`__
+Check the |GREEN_KERNEL_SOURCES_LINK| README
 for more information about the Kernel configuration.
 
 Run the Kernel GREEN on NXP i.MXRT1170 Evaluation Kit
@@ -222,7 +236,6 @@ Multi-Sandbox Executable and Virtual Device.
       .. code-block:: kotlin
 
          rootProject.name = "MyApplication"
-         include(":app")
          includeBuild("C:\\YOUR_PATH\\Kernel-GREEN")
 
    - Reload the Gradle project:
@@ -239,22 +252,15 @@ Multi-Sandbox Executable and Virtual Device.
          :align: center
          :scale: 90%
 
-   - Open the ``app/build.gradle.kts`` file of the :guilabel:`MyApplication` project,
-   - Declare the dependency to the :guilabel:`Kernel-GREEN` project as follows:
+   - Open the ``build.gradle.kts`` file of the :guilabel:`MyApplication` project,
+   - Add the dependency to the :guilabel:`Kernel-GREEN` project: |GREEN_KERNEL_DEPENDENCY|
 
-      .. code-block:: kotlin
-
-         dependencies {
-            ...
-            //Uncomment the microejVee dependency to set the VEE Port or Kernel to use
-            microejVee("com.microej.kernel:GREEN:2.1.1")
-         }
    
    
       .. note::
             
             Make sure that the version corresponds to the version defined in your
-            `Kernel-GREEN build.gradle.kts <https://github.com/MicroEJ/Kernel-GREEN/blob/master/build.gradle.kts>`_ file.
+            |GREEN_KERNEL_SOURCES_LINK| ``build.gradle.kts`` file.
 
    - Come back to the :ref:`training_multisandbox_applications_imxrt1170_run_virtual_device` Getting Started.
 
