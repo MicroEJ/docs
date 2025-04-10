@@ -135,7 +135,7 @@ For Application Developers
                      <li class="training_course_number">Course</li>
                      <li class="training_duration">1h</li>
                   </ul>
-                  <img src="../_static/images/training/training_java_code_practices.jpg" alt="Multi-Sandbox Applications">
+                  <img src="../_static/images/training/training_sandboxed_apps.jpg" alt="Multi-Sandbox Applications">
                </div>
                <h3 class="training_title">Get Started with Multi-Sandbox Applications</h3>
                <p class="training_description">In this training, you will get an introduction
@@ -209,25 +209,6 @@ For Application Developers
             <p class="training_description">Coming Soon!
             </p>
             <a>Learn more</a>
-         </div>
-            
-
-         <div class="training_item">
-            <!--a class="training_link" href="gettingStartedIMXRT1170MultiSandbox.html"-->
-               <div class="training_image_container">
-                  <ul class="training_image_list">
-                     <li class="training_course_number">Course</li>
-                     <!--li class="training_duration">30min</li-->
-                  </ul>
-                  <img src="../_static/images/training/training_sandboxed_apps.jpg" alt="Multi-Sandbox Applications">
-               </div>
-               <h3 class="training_title">Get Started with Multi-Sandbox Applications</h3>
-               <p class="training_description">In this training, you will get an introduction
-               on how to execute a Multi-Sandbox Application on a Multi-Sandbox Executable.
-               </p>
-               <a class="training_learn_more_link" href="">Coming Soon!</a>
-               <!--a class="training_learn_more_link" href="gettingStartedIMXRT1170MultiSandbox.html">Learn more</a-->
-            <!--/a-->
          </div>
 
          </div>
