@@ -440,6 +440,8 @@ Then you can use it in your test classes:
       }
    }
 
+.. _sdk_6_testsuite_reports:
+
 Test Suite Reports
 ------------------
 
@@ -470,6 +472,31 @@ Test Suite Reports
            :alt: Example of MicroEJ Test Suite XML Report in JUnit View
 
            Example of MicroEJ Test Suite XML Report in JUnit View
+
+.. _sdk_6_publish_testsuite_reports:
+
+Publish Test Suite Reports
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Starting from SDK 6 ``1.2.0``, it is possible to publish an archive file containing all testsuite reports of a project.
+By default, the tests are not executed when publishing a project, so you must explicitly run your testsuite to publish the reports::
+
+   ./gradlew test publish
+
+The published archive file contains the HTML and XML reports of all testsuites that have been executed.
+If your project contains :ref:`multiple testsuites <sdk_6_mixing_testsuites>`, you must execute each testsuite whose report must be published::
+
+   ./gradlew testOnSim testOnJavaSE publish
+
+You can also bind the ``check`` task to all your testsuites in the ``build.gradle.kts`` file of your project::
+
+   tasks.named("check") {
+       dependsOn("testOnSim", "testOnJavaSE")
+   }
+
+and execute the ``check`` task when publishing the project::
+
+   ./gradlew check publish
 
 .. _sdk_6_mixing_testsuites:
 
