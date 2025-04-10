@@ -61,7 +61,7 @@ This solution is therefore less constraining and more portable than testing on t
 .. _sdk_6_testsuite_configuration:
 
 Configure the Testsuite
-~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^
 
 The configuration of the testsuites of a project must be defined inside the following block in the ``build.gradle.kts`` file:
 
@@ -96,7 +96,7 @@ This piece of configuration is the minimum configuration required to define a te
 .. _sdk_6_testsuite_vee_configuration:
 
 Configure the VEE
-~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^
 
 The VEE used to execute the tests must be declared in the project dependencies,
 with the ``microejVee`` or the ``testMicroejVee`` configuration (refer to :ref:`sdk_6_select_veeport` for more details on the selection capabilities).
@@ -129,9 +129,8 @@ As a summary, the rules are:
    But it is highly recommended to scope the VEE to its usage since this behavior is aimed to change in a future version.
    Especially when configuring the VEE to test a Library project, it is recommended to use ``testMicroejVee``.
 
-
 Create a Test Class
-~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^
 
 The SDK provides a JUnit library containing the subset of the supported JUnit API: ``ej.library.test:junit``.
 Before creating the Test class, make sure this library is declared in the testsuite dependencies:
@@ -176,7 +175,7 @@ This can be done manually or with IDE menu:
    so it is recommended to stick with the ``src/test/java`` folder.
 
 Execute the Tests
-~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^
 
 Once the testsuite is configured, it can be run thanks to the ``test`` Gradle task.
 This task is bound to the ``check`` and the ``build`` Gradle lifecycle tasks,
@@ -217,7 +216,7 @@ which means that the tests are also executed when launching one of these tasks.
 .. _sdk_6_test_generate_code_coverage:
 
 Generate Code Coverage
-~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^
 
 To generate the Code Coverage files (``.cc``) for each test, configure the test suite as follows:
 
@@ -246,7 +245,7 @@ To generate the Code Coverage files (``.cc``) for each test, configure the test 
 Then, to generate an HTML report, see :ref:`sdk6.section.code_coverage_analyzer`.
 
 Filter the Tests
-~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^
 
 Gradle automatically executes all the tests located in the test source folder.
 If you want to execute only a subset of these tests, Gradle provides 2 solutions:
@@ -476,7 +475,7 @@ Test Suite Reports
 .. _sdk_6_publish_testsuite_reports:
 
 Publish Test Suite Reports
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Starting from SDK 6 ``1.2.0``, it is possible to publish an archive file containing all testsuite reports of a project.
 By default, the tests are not executed when publishing a project, so you must explicitly run your testsuite to publish the reports::
@@ -510,7 +509,7 @@ Configuring multiple testsuites is almost only a matter of aggregating the tests
 as described in the `Gradle documentation <https://docs.gradle.org/current/userguide/jvm_test_suite_plugin.html#sec:declare_an_additional_test_suite>`__.
 
 Mixing tests on the Simulator and on a device
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you need to define a testsuite to run on the Simulator and a testsuite to run on a device, 
 the only point to take care is related to the tests source location, because:
@@ -626,7 +625,7 @@ Then you use the test filtering capabilities to configure which package to run i
    }
 
 Mixing tests on the Simulator and on a Java SE VM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Defining tests on the Simulator and on a Java SE VM is only a matter of aggregating the configuration of each testsuite:
 
@@ -744,7 +743,7 @@ Inject Application Options
 They can be defined globally, to be applied on all tests, or specifically to a test.
 
 Inject Application Options Globally
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In order to define an Application Option globally, 
 it must be prefixed by ``microej.testsuite.properties.`` and passed as a System Property,
@@ -782,7 +781,7 @@ For example, to inject the property ``core.memory.immortal.size``:
       }
 
 Inject Application Options For a Specific Test
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In order to define an Application Option for a specific test, 
 it must be set in a file with the same name as the test case file,
@@ -801,6 +800,35 @@ Application Options defined in this file do not require the ``microej.testsuite.
    
    the properties file must be named after the main class. 
    If the main class has been generated from a JUnit test class, its class name is prefixed by ``_AllTests_``.
+
+
+Test Suite Advanced Configuration
+---------------------------------
+
+.. _sdk_6_vee_configuration_by_testsuite:
+
+Configure a VEE by Test Suite
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The VEE declared in the project dependencies with the ``microejVee`` or the ``testMicroejVee`` configuration 
+(refer to :ref:`sdk_6_testsuite_vee_configuration` for more details) is used to execute all test suites. 
+If your project contains a test suite other than the built-in ``test`` test suite, 
+it is also possible to run the test suite on a dedicated VEE. To define a VEE for your custom testsuite, you must:
+
+- Create a new ``<testsuite_name>MicroejVee`` configuration depending on your test suite name in the ``build.gradle.kts`` file of your project. For example::
+
+   configurations.create("testOnDeviceMicroejVee") {
+       isCanBeConsumed = false
+       isCanBeResolved = false
+       isTransitive = false
+   }
+
+- Declare the VEE in the project dependencies with your new configuration::
+
+   dependencies {
+       ...
+       "testOnDeviceMicroejVee"("com.mycompany:vee-port:1.0.0")
+   }
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
