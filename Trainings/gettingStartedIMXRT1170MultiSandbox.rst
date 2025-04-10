@@ -3,7 +3,6 @@
 .. |GREEN_KERNEL_SOURCES_LINK| replace:: `Kernel GREEN <https://github.com/MicroEJ/Kernel-GREEN>`__
 .. |FLASH_COMMAND_LINE| replace:: ``LinkServer flash MIMXRT1176xxxxx:MIMXRT1170-EVKB load NXP-MIMXRT1170-3_0_0_GCC_GREEN-2.1.1.elf``
 .. |GREEN_KERNEL_DEPENDENCY| replace:: ``microejVee("com.microej.kernel:NXP-MIMXRT1170-3_0_0_GCC_GREEN:2.1.1")``
-.. |SDK_PLUGIN_VERSION| replace:: ``1.1.0``  
 
 .. _training_multisandbox_applications_imxrt1170:
 
@@ -47,7 +46,6 @@ Prerequisites
    This Getting Started has been tested in the following conditions:
 
    - Windows 11.
-   - IntelliJ IDEA with MicroEJ plugin for IntelliJ IDEA |SDK_PLUGIN_VERSION|.
    - Multi-Sandbox Executable: |MULTI_SANDBOX_EXECUTABLE_LINK|.
 
 To get the most out of this training, participants should have:
@@ -67,12 +65,6 @@ To follow this training, you need:
 * An RS232 Terminal (e.g. `Termite <https://www.compuphase.com/software_termite.htm>`__).
 
 Also, follow the steps described in the sections below to complete your environment setup. 
-
-.. note::
-  
-   This training has been tested on Windows 10. 
-   Also note that examples used in this training could depend on older tools and libraries. 
-   Most notably our dependency manager plugin (using `Gradle <https://gradle.org/>`__) could be an older version.
 
 Install MICROEJ SDK 6
 ~~~~~~~~~~~~~~~~~~~~~

@@ -3,7 +3,6 @@
 .. |GREEN_KERNEL_SOURCES_LINK| replace:: `Kernel GREEN <https://github.com/MicroEJ/Kernel-GREEN>`__
 .. |VEE_PORT_VERSION| replace:: ``3.0.0``
 .. |VEE_PORT_LINK| replace:: `NXP i.MXRT1170 VEE Port <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk>`__
-.. |SDK_PLUGIN_VERSION| replace:: ``1.1.0``  
 
 .. _training_kernel_green_imxrt1170:
 
@@ -37,7 +36,6 @@ Prerequisites
    This Getting Started has been tested in the following conditions:
 
    - Windows 11.
-   - IntelliJ IDEA with MicroEJ plugin for IntelliJ IDEA |SDK_PLUGIN_VERSION|.
    - |GREEN_KERNEL_SOURCES_LINK| |GREEN_KERNEL_VERSION|.
    - |VEE_PORT_LINK| |VEE_PORT_VERSION|.
 
