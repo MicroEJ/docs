@@ -1,3 +1,10 @@
+.. |MULTI_SANDBOX_EXECUTABLE_LINK| replace:: `NXP-MIMXRT1170-3.0.0_GCC_GREEN-2.1.1.elf <https://repository.microej.com/packages/green/2.1.1/firmware/NXP-MIMXRT1170_GCC/NXP-MIMXRT1170-3_0_0_GCC_GREEN-2.1.1.elf>`__
+.. |GREEN_KERNEL_PACKAGE_LINK| replace:: `directory <https://repository.microej.com/packages/green/2.1.1/>`__
+.. |GREEN_KERNEL_SOURCES_LINK| replace:: `Kernel GREEN <https://github.com/MicroEJ/Kernel-GREEN>`__
+.. |FLASH_COMMAND_LINE| replace:: ``LinkServer flash MIMXRT1176xxxxx:MIMXRT1170-EVKB load NXP-MIMXRT1170-3_0_0_GCC_GREEN-2.1.1.elf``
+.. |GREEN_KERNEL_DEPENDENCY| replace:: ``microejVee("com.microej.kernel:NXP-MIMXRT1170-3_0_0_GCC_GREEN:2.1.1")``
+.. |SDK_PLUGIN_VERSION| replace:: ``1.1.0``  
+
 .. _training_multisandbox_applications_imxrt1170:
 
 ===========================================
@@ -34,6 +41,14 @@ of the Multi-Sandbox development flow.
 
 Prerequisites
 =============
+
+.. note::
+  
+   This Getting Started has been tested in the following conditions:
+
+   - Windows 11.
+   - IntelliJ IDEA with MicroEJ plugin for IntelliJ IDEA |SDK_PLUGIN_VERSION|.
+   - Multi-Sandbox Executable: |MULTI_SANDBOX_EXECUTABLE_LINK|.
 
 To get the most out of this training, participants should have:
 
@@ -84,18 +99,18 @@ Additionally, make sure to:
 Flash the Multi-Sandbox Executable on your NXP i.MXRT1170 Evaluation Kit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Download the Multi-Sandbox Executable: `NXP-MIMXRT1170-3.0.0_GCC_GREEN-2.2.0.elf <https://repository.microej.com/packages/green/2.2.0/firmware/NXP-MIMXRT1170_GCC/NXP-MIMXRT1170-3_0_0_GCC_GREEN-2.2.0.elf>`__.
+Download the Multi-Sandbox Executable: |MULTI_SANDBOX_EXECUTABLE_LINK|.
 
 .. note::
    
    The Multi-Sandbox Executable used in this documentation is built from the
-   `Kernel GREEN <https://github.com/MicroEJ/Kernel-GREEN>`__ sources.
+   |GREEN_KERNEL_SOURCES_LINK| sources.
    Refer to the :ref:`training_kernel_green_imxrt1170`
    training to build your own Multi-Sandbox Executable.
 
    If you want more information about this Multi-Sandbox Executable,
    the Javadoc and the Release notes are available in this
-   `directory <https://repository.microej.com/packages/green/1.2.0/>`__.
+   |GREEN_KERNEL_PACKAGE_LINK|.
 
 Flash the Multi-Sandbox Executable using ``LinkServer``:
 
@@ -108,7 +123,7 @@ Flash the Multi-Sandbox Executable using ``LinkServer``:
   - Click on ``New`` and point to the ``LinkServer`` installation folder located where you installed
     ``LinkServer`` (e.g. ``nxp/LinkServer_1.6.133/``).
 
-- Run the command ``LinkServer flash MIMXRT1176xxxxx:MIMXRT1170-EVKB load NXP-MIMXRT1170_GCC_GREEN-2.2.0.elf``.
+- Run the command |FLASH_COMMAND_LINE|.
 
 Set up the logs output:
 
@@ -336,17 +351,8 @@ MicroEJ provides `ready to use kernels on the Developer Repository <https://forg
 
 The :guilabel:`MyApplication` project needs to be configured to use a kernel:
 
-- Open the ``app/build.gradle.kts`` file of the :guilabel:`MyApplication` project.
-- Declare the dependency to the NXP i.MXRT1170 kernel as follows:
-  
-   .. code-block:: kotlin
-
-      dependencies {
-         ...
-         //Uncomment the microejVee dependency to set the VEE Port or Kernel to use
-         microejVee("com.microej.kernel:NXP-MIMXRT1170_GCC_GREEN:2.1.1")
-      }
-
+- Open the ``build.gradle.kts`` file of the :guilabel:`MyApplication` project.
+- Add the dependency to the NXP i.MXRT1170 kernel: |GREEN_KERNEL_DEPENDENCY|
 
 .. note::
    To use your own Kernel, refer to the
@@ -383,7 +389,7 @@ This tool will deploy the application on the NXP i.MXRT1170 Evaluation Kit throu
 
 Configure the ``localDeploy`` tool in :guilabel:`MyApplication` project:
 
-- Open the ``app/build.gradle.kts`` file of the :guilabel:`MyApplication` project.
+- Open the ``build.gradle.kts`` file of the :guilabel:`MyApplication` project.
 - Paste the following code at the beginning of the file:
 
    .. code-block:: kotlin
@@ -409,7 +415,7 @@ Configure the ``localDeploy`` tool in :guilabel:`MyApplication` project:
       val boardIP = "<Board IP Address>" // board ip address
       val boardPort = 4001 // AppConnect port
       val force = true // overwrote existing app with same name
-      val start = false // start app after install
+      val start = true // start app after install
       // Note: if your metadata (feature.kf) is part of '/src/main/resources', modify this path accordingly
       val featureKFFilePath = "generated/microej-app-wrapper/feature-resources/feature.kf"
 
