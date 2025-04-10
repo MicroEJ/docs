@@ -66,7 +66,7 @@ An external resource can be programmed inside the CPU address space
 range. This memory (or a part of memory) is not managed by the SOAR and
 so the resources inside are considered as external.
 
-Most of time the content of an external resource must be copied in a
+Most of the time the content of an external resource must be copied in a
 memory inside the CPU address space range in order to be accessible by
 the MicroEJ algorithms (draw an image etc.). However, when the resource
 is already inside the CPU address space range, this copy is useless. The
