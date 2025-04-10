@@ -148,7 +148,7 @@ This test suite **must** be executed to validate the UI Port and after each modi
 The UI Port test suite is available here: 
 
 - SDK 5: https://github.com/MicroEJ/VEEPortQualificationTools/tree/master/tests/ui/ui3
-- SDK 6: https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/master/vee-port/validation/ui
+- SDK 6: https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.1.0/vee-port/validation/ui
 
 The test suite is constituted of two blocks:
 

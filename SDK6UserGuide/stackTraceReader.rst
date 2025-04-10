@@ -146,6 +146,11 @@ In an Application project
             --toolProperty=additional.application.files="" \
             --console plain
 
+        .. note::
+
+            It is also possible to create a custom task of type ``ExecToolTask`` dedicated to the Stack Trace Reader. 
+            Refer to the :ref:`sdk_6_create_cutom_exectool_task` chapter for more information.
+
         Paste the previous trace dump into the console.
         The output of the Stack Trace Reader is the following:
 

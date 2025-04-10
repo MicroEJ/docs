@@ -338,18 +338,24 @@ The ``equals(Object)`` method is written that way:
       (field2 == null ? other.field2 == null : field2.equals(other.field2));
   }
 
-The `Object.hashCode()`_ method is written that way:
+The goal of the `Object.hashCode()`_ is to produce different values for unequal objects.
+A good hashcode is uniformly distributed among hash buckets (for instance in HashMap, HashSet, etc.)
 
-- Choose a prime number.
-- Create a result local, whatever the value (usually the prime number).
-- For each field, multiply the previous result with the prime
-  plus the hash code of the field and store it as the result.
+The ``hashCode()`` method is written that way:
+
+- Choose any prime number such as ``31`` (that is large enough so that the number of buckets is unlikely to be divisible by it) or a bigger one.
+- Create a result local intialized with the hashcode of the most significant field.
+- For each remaining field, multiply the previous result with the prime plus the hash code of the field and store it as the result.
 - Return the result.
+- Only the fields used in ``equals()`` must be used.
+- Derivative fields, that are computed from fields already included in computing of ``hashCode()`` can be ignored.
+- Precomputing the hashcode may be convenient for performance purpose (especially when fields are final).
+- The hashcode can also be lazy initialized the first time it is requested.
 
 Depending on its type, the hash code of a field is:
 
-- Boolean: ``(f ? 0 : 1)``.
-- Byte, char, short, int: ``(int) f)``.
+- Boolean: ``(f ? 1231 : 1237)``.
+- Byte, char, short, int: ``(int) f``.
 - Long: ``(int)(f ^ (f >>> 32))``.
 - Float: ``Float.floatToIntBits(f)``.
 - Double: ``Double.doubleToLongBits(f)`` and the same as for a long.
@@ -362,8 +368,8 @@ Depending on its type, the hash code of a field is:
 
   @Override
   public int hashCode() {
-    int result = PRIME;
-    result = PRIME * result + field1;
+    int result = field0;
+    result = PRIME * result + (field1 ? -1 : 1);
     result = PRIME * result + (field2 == null ? 0 : field2.hashCode());
     return result;
   }

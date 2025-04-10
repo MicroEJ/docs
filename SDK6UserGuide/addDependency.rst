@@ -36,7 +36,7 @@ Here is an example of dependencies declaration for a project::
    dependencies {
       implementation("ej.library.runtime:basictool:1.7.0")
 
-      testImplementation("ej.library.test:junit:1.7.1")
+      testImplementation("ej.library.test:junit:1.11.0")
 
       microejVee("com.microej.platform.esp32.esp-wrover-kit-v41:HDAHT:1.8.0")
    }

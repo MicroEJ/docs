@@ -277,7 +277,7 @@ VEE Debugger Proxy Options Summary
 Troubleshooting
 ===============
 
-You may encounter some command line issues if you try to run the proxy on Windows Powershell. 
+You may encounter some command line issues if you try to run the proxy on Windows PowerShell. 
 
 On Windows workstation, we recommend using ``CMD`` Command Prompt instead.
 

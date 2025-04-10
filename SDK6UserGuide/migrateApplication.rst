@@ -109,7 +109,7 @@ so the following dependency::
 
 will be converted to::
 
-   testImplementation("ej.library.test:junit:1.7.1")
+   testImplementation("ej.library.test:junit:1.11.0")
 
 Also note that this will not resolve snapshot builds since versions are explicit in SDK 6, see :ref:`this chapter <sdk_6_add_dependency_version>` for more details.
 To resolve both snapshot and release versions, use ``[1.0.0-RC,1.0.0]`` instead of ``1.0.0``.
@@ -119,6 +119,84 @@ To resolve both snapshot and release versions, use ``[1.0.0-RC,1.0.0]`` instead 
    `Multi-Project Build Basics <https://docs.gradle.org/current/userguide/intro_multi_project_builds.html>`__).
 
 Refer to the :ref:`sdk_6_add_dependency` page to go further on the Gradle dependencies and configurations.
+
+Tests
+^^^^^
+
+The SDK 5 supported only one testsuite by module. The SDK 6 allows to define multiple testsuites, with different configurations.
+Therefore, the SDK 6 requires to explicitly configure the testsuites to execute.
+
+- If your SDK 5 project executed tests on the Simulator (the most common case), 
+
+   - Define the following testsuite in the ``build.gradle.kts`` file:
+
+      .. code-block::
+
+         testing {
+            suites {
+               val test by getting(JvmTestSuite::class) {
+                  microej.useMicroejTestEngine(this)
+
+                  dependencies {
+                     implementation(project())
+                     implementation("ej.api:edc:1.3.5")
+                     implementation("ej.library.test:junit:1.11.0")
+                     implementation("org.junit.platform:junit-platform-launcher:1.8.2")
+                  }
+               }
+            }
+         }
+
+   - Add the additional test dependencies, if any.
+   - Check that the test sources are located in the ``src/<testsuite-name>/java``, so in ``src/test/java`` with this default testsuite.
+     Since this is the same folder used in SDK 5, there should be not change required in your project.
+   - Adapt the pattern of the executed tests. 
+     It is defined in SDK 5 with the property ``test.run.includes.pattern``, and relied on the generated tests classes names, not the original ones.
+     For example if you want to execute only the ``MyTest`` test class, it was defined like this in SDK 5::
+
+         <ea:property name="test.run.includes.pattern" value="**/_AllTests_MyTest.class"/>
+
+     In SDK 6, it is based on the original tests classes and must be defined by the ``filter`` object of the ``test`` task in the ``build.gradke.kts`` file. 
+     So it should be configured as follows::
+
+        testing {
+           suites {
+              val test by getting(JvmTestSuite::class) {
+
+                 ...
+
+                 targets {
+                    all {
+                       testTask.configure {
+                          filter {
+                             includeTestsMatching("MyTest")
+                          }
+                       }
+                    }
+                 }
+              }
+           }
+        }
+
+     If the tests pattern was the following one (meaning "All test classes")::
+
+        <ea:property name="test.run.includes.pattern" value="**/_AllTests_*.class"/>
+      
+     there is no need to add a filter, all tests classes are executed by default in SDK 6.
+
+- If your SDK 5 project executed tests on the Device using the KF Testsuite (since it was the only way to execute such tests with the SDK 5), 
+  
+   - If you really want to execute test projects with a Kernel and Sandboxed Applications on Device (formely called KF Testsuite),
+     refer to the :ref:`kf_testsuite` page.
+   - If you want to execute tests classes (like on the Simulator, but on the Device),
+
+      - Follow the steps to execute the tests on the Simulator.
+      - Replace the line ``microej.useMicroejTestEngine(this)`` by ``microej.useMicroejTestEngine(this, TestTarget.EMB)``.
+      - Add the ``import`` statement at the beginning of the file::
+
+         import com.microej.gradle.plugins.TestTarget
+
+Refer to the :ref:`sdk_6_test_project` page to go further on the SDK 6 testsuites configurations.
 
 Configuration Folder
 --------------------
@@ -158,35 +236,6 @@ It must now be defined in SDK 6 by the ``applicationEntryPoint`` property of the
 
    microej {
       applicationEntryPoint = "com.mycompany.MyFeature"
-   }
-
-
-Tests Pattern
-^^^^^^^^^^^^^
-
-The pattern of the executed tests is defined in SDK 5 with the property ``test.run.includes.pattern``::
-
-   <ea:property name="test.run.includes.pattern" value="**/_AllTests_MyTest.class"/>
-
-It must now be defined in SDK 6 by the ``filter`` object of the ``test`` task in the ``build.gradke.kts`` file::
-
-   testing {
-      suites {
-        val test by getting(JvmTestSuite::class) {
-
-            ...
-
-            targets {
-                all {
-                    testTask.configure {
-                        filter {
-                            includeTestsMatching("MyTest")
-                        }
-                    }
-                }
-            }
-        }
-      }
    }
 
 
@@ -284,7 +333,7 @@ And here the migration from a ``module.ivy`` file to a ``build.gradle.kts`` file
       implementation("ej.api:edc:1.3.3")
       implementation("ej.api:kf:1.6.1")
 
-      testImplementation("ej.library.test:junit:1.7.1")
+      testImplementation("ej.library.test:junit:1.11.0")
 
       microejVee("com.microej.platform.esp32.esp-wrover-kit-v41:HDAHT:1.8.2")
    }

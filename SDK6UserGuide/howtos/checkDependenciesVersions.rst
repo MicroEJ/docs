@@ -112,7 +112,7 @@ Here is an example of report::
     - ej.library.eclasspath:collections [1.4.0 -> 1.4.2]
     - ej.library.runtime:basictool [1.5.0 -> 1.7.0]
     - ej.library.runtime:service [1.1.1 -> 1.2.0]
-    - ej.library.test:junit [1.7.1 -> 1.10.0]
+    - ej.library.test:junit [1.7.1 -> 1.11.0]
 
     Gradle release-candidate updates:
     - Gradle: [8.3 -> 8.13]

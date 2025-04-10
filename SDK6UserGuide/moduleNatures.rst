@@ -35,7 +35,6 @@ This plugin adds the following tasks to your project:
 
 This module nature inherits from the configuration of all its tasks.
 
-
 .. _sdk6_module_natures.application:
 
 Application
@@ -68,7 +67,6 @@ This plugin adds the following tasks to your project:
 
 .. graphviz:: graphApplicationModule.dot
 
-
 .. _sdk6_module_natures.jse_lib:
 
 Java SE Library
@@ -88,7 +86,6 @@ This plugin adds the following tasks to your project:
 **Configuration**:
 
 This module nature inherits from the configuration of all its tasks.
-
 
 .. _sdk6_module_natures.mock:
 
@@ -129,6 +126,27 @@ This plugin adds the following tasks to your project:
 - :ref:`sdk6_module_natures.tasks.builRuntimeEnvironmentJar`
 
 .. graphviz:: graphRuntimeEnvironmentModule.dot
+
+**Configuration**:
+
+This module nature inherits from the configuration of all its tasks.
+
+.. _sdk6_module_natures.veeport:
+
+VEE Port
+--------
+
+**Plugin Name**: ``com.microej.gradle.veeport``
+
+**Tasks**:
+
+This plugin adds the following tasks to your project:
+
+- :ref:`sdk6_module_natures.tasks.checkModule`
+- :ref:`sdk6_module_natures.tasks.buildVeePort`
+- :ref:`sdk6_module_natures.tasks.buildVeePortConfiguration`
+
+.. graphviz:: graphVeePortModule.dot
 
 **Configuration**:
 
@@ -660,6 +678,54 @@ buildFeatureFromWPK
 This task is used by the following module natures:
 
 - :ref:`sdk6_module_natures.application`
+
+.. _sdk6_module_natures.tasks.buildVeePort:
+
+buildVeePort
+^^^^^^^^^^^^
+
+**Description**: Builds the VEE Port.
+
+**Inputs**:
+
+- The project configuration file (``configuration.properties``)
+- The project dropins folder
+- The project microui folder (``extensions/microui``)
+- The project classpath which contains the Architecture, Packs, Mocks, Front Panels and Tools
+
+**Outputs**:
+
+- The Zip file of the VEE Port (``build/veePort.zip``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.veeport`
+
+.. _sdk6_module_natures.tasks.buildVeePortConfiguration:
+
+buildVeePortConfiguration
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Description**: Zips the VEE Port Configuration.
+
+**Inputs**:
+
+- The project configuration file (``configuration.properties``)
+- The project dropins folder
+- The project microui folder (``extensions/microui``)
+- The project classpath which contains the Architecture, Packs, Mocks, Front Panels and Tools
+
+**Outputs**:
+
+- The Zip file of the VEE Port Configuration (``build/<project_name>.zip``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.veeport`
 
 .. _gradle_global_build_options:
 

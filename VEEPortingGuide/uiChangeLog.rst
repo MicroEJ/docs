@@ -6,6 +6,61 @@
 Changelog
 =========
 
+.. _section_ui_changelog_14_4_1:
+
+[14.4.1] - 2025-03-13
+=====================
+
+MicroUI
+"""""""
+
+**Changed**
+
+- Improve the trace events (SystemView description file `SYSVIEW_MicroUI.txt` is updated).
+- Change some log identifiers to be backward compatible with the UI Pack since version 12.1.5.
+
+FrontPanel
+""""""""""
+
+**Added**
+
+- Add a button to start/stop the recording of the drawings in the Flush Visualizer.
+- Add the class ``Log`` that provides utility methods to log the drawings.
+- Add ``MicroUIImage.getIdentifier()`` that identifies an image (useful for the logs).
+- Add the same logs as embedded side (all drawings, out of clip, drawn regions, etc.).
+
+**Changed**
+
+- Improve the content of the tree of the drawing operations in the Flush Visualizer.
+- Show the time between two frames in the Flush Visualizer.
+- Use the core property ``core.trace.enabled`` to enable the Flush Visualizer.
+- Do not draw if the clip is empty (align behavior between the simulator and the embedded side). 
+
+**Fixed**
+
+- Fix the execution of the Front Panel in the HIL classpath (VEE Port with UI and application without UI; since UI Pack 14.3.0).
+- Fix the use of the logs in the mode ``s3.board.compliant`` (Use target characteristics).
+
+**Removed**
+
+- Remove the use of the property ``ej.fp.display.flushVisualizer`` (replaced by ``core.trace.enabled``). 
+
+C Module MicroUI
+""""""""""""""""
+
+**Added**
+
+- Add some logs: out of clip, drawn region, etc.
+ 
+**Changed**
+
+- Gather all logs identifiers and functions in ``ui_log.c``.
+- Log all drawing parameters. 
+
+**Removed**
+
+- Remove some logs of the BRS management.
+
 .. _section_ui_changelog_14_3_3:
 
 [14.3.3] - 2025-02-18

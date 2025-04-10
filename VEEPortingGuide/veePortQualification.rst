@@ -44,7 +44,7 @@ VEE Port Qualification Tools (PQT):
       
       In SDK 6, it is located at:
 
-      - the ``validation`` folder of the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/master/vee-port/validation>`__ for the Java Testsuites.
+      - the ``validation`` folder of the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.1.0/vee-port/validation>`__ for the Java Testsuites.
       - the `AbstractionLayer Tests repository <https://github.com/MicroEJ/AbstractionLayer-Tests>`__ for the C tests.
 
    .. group-tab:: SDK 5
@@ -87,7 +87,7 @@ The VEE Port Qualification Tools provide the following components:
 
 Please refer to the VEE Port Qualification Tools README in `SDK 5
 <https://github.com/MicroEJ/VEEPortQualificationTools>`__ or in `SDK 6
-<https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/master/vee-port/validation>`__ for more
+<https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.1.0/vee-port/validation>`__ for more
 details and the location of the components.
 
 .. _vee_port_testsuite:

@@ -381,15 +381,23 @@ JavaFX
 `JavaFX <https://openjfx.io/>`_ is an open-source library for creating modern Java user interfaces that is highly portable. 
 It can be used to quickly create graphical Mocks for your VEE Port.
 
-The installation instructions depends on the SDK version:
+The installation instructions depend on the SDK version:
 
 .. tabs::
 
    .. tab:: SDK 6
 
-      .. code-block:: kotlin
+      - Add JavaFX as a compile-time dependency in your Mock project:
 
-        microejMock("com.microej.tool:javafx:1.2.0")
+         .. code-block:: kotlin
+
+            compileOnly(group="com.microej.tool", name="javafx", version="1.2.0", configuration="provided")
+
+      - If your VEE Port contains at least one Mock, add JavaFX as a Mock dependency in your VEE Port project:
+
+         .. code-block:: kotlin
+
+            microejMock("com.microej.tool:javafx:1.2.0")
 
    .. tab:: SDK 5
 
@@ -413,7 +421,7 @@ The Module serves two purposes, depending on whether it is added to a Mock or a 
    an error ::
 
       libc++abi: terminating due to uncaught exception of type NSException
-      Exiting /Users/bguedas/Git/J0059_Example-Mock-Framework/custom-widgets-app/build/vee/scripts/hil.xml.
+      Exiting /Users/microej/Git/J0059_Example-Mock-Framework/custom-widgets-app/build/vee/scripts/hil.xml.
       Exception in thread "thread2" java.lang.UnsatisfiedLinkError: Broken connection with client
 	      at java.lang.Throwable.fillInStackTrace(Throwable.java:82)
 	      at java.lang.Throwable.<init>(Throwable.java:37)
@@ -426,7 +434,14 @@ The Module serves two purposes, depending on whether it is added to a Mock or a 
 	      at java.lang.Thread.run(Thread.java:325)
 	      at java.lang.Thread.runWrapper(Thread.java:387)
 
-   This issue affects most JDK distributions. As a workaround, we recommend to use Oracle JDK versions ``17.0.14`` to ``21.0.6`` to avoid this issue.
+   This issue affects most JDK distributions. As a workaround, we recommend to use one of the following Eclipse Temurin distributions: 
+   `17.0.9 <https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.9%2B9/OpenJDK17U-jdk_aarch64_mac_hotspot_17.0.9_9.tar.gz>`__ or
+   `21.0.1 <https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.1%2B12/OpenJDK21U-jdk_aarch64_mac_hotspot_21.0.1_12.tar.gz>`__ to avoid this issue.
+
+   You need to make your MICROEJ SDK installation point to one of the decompressed JDK archives given above.
+
+   Note that newer versions of these JDKs (``17.0.10`` or higher, and ``21.0.2`` or higher) will have this issue. Installation from the ``.pkg``
+   distribution might be overwritten by a newer version.  
 
 Mock Framework
 ==============

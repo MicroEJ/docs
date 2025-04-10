@@ -36,6 +36,64 @@ Here is an example of a ``xxx.constants.list`` file with the result in an applic
 
 .. note:: Available since MWT 3.3.0.
 
+Enabling Traces for System View
+-------------------------------
+
+MWT logs some keypoints when traces are enabled (see :ref:`event-tracing`).
+
+Here is the list of the logs:
+
+* The creation of a widget. A unique ID is associated to the widget at this moment that will be used in the other traces all along its lifetime.
+* The creation of a desktop. A unique ID is associated to the desktop at this moment that will be used in the other traces all along its lifetime.
+* The request to show a desktop.
+* The request to layout a widget.
+* The request to layout a desktop.
+* The request to render a widget. The region of the rendering request is available in the trace.
+* The request to render a desktop.
+* The update of the style of a widget. There is another trace for the end of the cascading update of containers.
+* The compute of the optimal size of a widget. There is another trace for the end of the cascading compute of containers.
+* The lay out of a widget. There is another trace for the end of the cascading lay out of containers.
+* The rendering of a widget. There is another trace for the end of the cascading rendering of containers.
+* When a widget is shown.
+* When a widget is hidden.
+* When a desktop is shown.
+* When a desktop is hidden.
+* When a widget is attached.
+* When a widget is detached.
+
+It is possible to print more information about the created widgets and desktops (to associate the ID with an actual object).
+It can be activated by setting the :ref:`Application Option <application_options>` named ``ej.mwt.debug.log.trace.enabled`` to ``true``.
+
+The traces can be seen in SystemView.
+For the traces to be more human-readable, the file ``SYSVIEW_MWT.txt``` must be put in SystemView installation folder (e.g. ``SEGGER/SystemView_V252a/Description/``).
+This file can be found in the ``resources`` folder of the jar of MWT.
+Otherwise, it can be created manually with the following content:
+
+.. code-block::
+
+    NamedType UIDestination  *="[dest=0x%x]"
+
+    0   MWT_CreateWidget            (MWT) Create a widget (ID = %u, type = %x)
+    1   MWT_CreateDesktop           (MWT) Create a desktop (ID = %u, type = %x)
+    2   MWT_RequestShowDesktop      (MWT) Request to show a desktop (ID = %u)
+    3   MWT_RequestLayout           (MWT) Request to layout a widget (ID = %u)
+    4   MWT_RequestLayoutDesktop    (MWT) Request to layout a desktop (ID = %u)
+    5   MWT_RequestRender           (MWT) Request to render a widget (ID = %u %u,%u %ux%u)
+    6   MWT_RequestRenderDesktop    (MWT) Request to render a desktop (ID = %u)
+    7   MWT_UpdateStyle             (MWT) Update the style of a widget (ID = %u)                                | (MWT) Widget style updated (ID = %u)
+    8   MWT_ComputeOptimalSize      (MWT) Compute the optimal size of a widget (ID = %u %ux%u)                  | (MWT) Widget size computed (ID = %u)
+    9   MWT_Layout                  (MWT) Lay out a widget (ID = %u %u,%u %ux%u)                                | (MWT) Widget layout done (ID = %u)
+    # // region seen as a container (use a START event)
+    10  MWT_Render                  (MWT) %UIDestination Render a widget (ID = %u) region=(%u,%u)(%ux%u)        | (MWT) Widget render done (ID = %u)
+    11  MWT_OnShown                 (MWT) A widget is shown (ID = %u)
+    12  MWT_OnHidden                (MWT) A widget is hidden (ID = %u)
+    13  MWT_OnShownDesktop          (MWT) A desktop is shown (ID = %u)
+    14  MWT_OnHiddenDesktop         (MWT) A desktop is hidden (ID = %u)
+    15  MWT_OnAttached              (MWT) A widget is attached (ID = %u)
+    16  MWT_OnDetached              (MWT) A widget is detached (ID = %u)
+
+.. note:: Available since MWT 3.6.0.
+
 Monitoring the Render Operations
 --------------------------------
 
@@ -127,9 +185,31 @@ Here is an example of a ``xxx.constants.list`` file with the result in an applic
 
 .. note:: Available since MWT 3.5.0 & Widget 5.0.0.
 
+.. _mwt_how_to_debug_source_rule:
+
+Finding which Rule Originates the Attributes of a Widget's Style
+----------------------------------------------------------------
+
+The method `CascadingStylesheet.getStyleSources()`_ is able to retrieve the selectors used to create a Style (that has been originated from a CascadingStylesheet).
+It requires to set the constant ``ej.mwt.debug.cascadingstyle.enabled`` to ``true``.
+
+The result of this method is an array containing 16 selectors: one for each parameter of the style.
+The indices for each style entry are available as constants in the ``CascadingStylesheet`` class.
+For each entry, the selector belongs to the rule selected to fill the matching parameter (thus set by `getSelectorStyle()`_).
+A ``null`` entry means that the parameter is from the default style (thus set by `getDefaultStyle()`_).
+
+This feature is used in the :ref:`HierarchyInspector <widget_library_debug_utilities_hierarchy>` of the Widget library.
+
+.. warning:: Beware that enabling that feature may downgrade the performances (more time to compute a style and more Java heap used).
+
+.. note:: Available since MWT 3.6.0.
+
+.. _CascadingStylesheet.getStyleSources(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/stylesheet/cascading/CascadingStylesheet.html#getStyleSources-ej.mwt.style.Style-
+.. _getDefaultStyle(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/stylesheet/cascading/CascadingStylesheet.html#getDefaultStyle--
+.. _getSelectorStyle(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/stylesheet/cascading/CascadingStylesheet.html#getSelectorStyle-ej.mwt.stylesheet.selector.Selector-
+
 Detecting Text Overflow
 -----------------------
-
 
 Widgets that display a text may experience text overflow when the strings are too long to fit into the available area.
 It can be the case, for example, in applications that support multiple languages because widgets have to deal with texts of different lengths.

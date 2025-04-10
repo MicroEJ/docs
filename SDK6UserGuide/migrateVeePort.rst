@@ -312,7 +312,7 @@ Then for each Testsuite:
 
             dependencies {
                implementation(project()) // (1)
-               implementation("ej.library.test:junit:1.7.1") // (2)
+               implementation("ej.library.test:junit:1.11.0") // (2)
                implementation("org.junit.platform:junit-platform-launcher:1.8.2") // (3)
 
                implementation("ej.api:security:1.4.0") // (4)
