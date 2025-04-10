@@ -728,8 +728,12 @@ The following configuration parameters are available:
      - Not set
    * - ``microej.testsuite.verbose.level``
      - Verbose level of the testsuite output. Available values are ``error``, ``warning``, ``info``, ``verbose`` and ``debug``.
-     - ``info``
 
+       .. deprecated:: 1.2.0
+
+          The testsuite verbose level follows Gradle log level.
+
+     - ``info``
 
 .. _sdk_6_testsuite_application_options:
 
