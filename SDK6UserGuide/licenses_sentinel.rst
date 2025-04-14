@@ -141,8 +141,8 @@ Get ``aksusbd_37102-10.12.1.tar.gz`` file and extract it. The installation packa
   This modification has to be setup at session startup  (e.g: using ``.bashrc`` file) to ensure that OS is properly configured before running the SDK.
 
 
-Configure the Remote Floating License Server
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Add Remote Floating License Server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - On the developer workstation, open a web browser.
 - Browse http://localhost:1947 to open the Sentinel Admin Control Center (be careful if you work with WSL, localhost may point to Windows and not to your WSL instance). 
@@ -169,6 +169,28 @@ Configure the Remote Floating License Server
       broadcastsearch = 0
       serversearchinterval = 30
       serveraddr = <license_server_IP>
+
+
+Running in a container
+~~~~~~~~~~~~~~~~~~~~~~
+
+If you want to configure a CI (Continuous integration) runner you can follow one of these two solutions:
+
+1. Create a Docker image with the RTE installed inside. To add the remote Floating License Server create the file ``hasp_37102.ini`` in ``/etc/hasplm`` or ``~/.hasplm`` (if you have not installed RTE as root) and add these lines:
+   
+   .. code-block::
+      
+      [REMOTE]
+      broadcastsearch = 0
+      serversearchinterval = 30
+      serveraddr = <license_server_IP>
+
+2. Or install and configure the RTE on the host and run the Docker container with these options:
+
+   .. code-block::
+      
+      -v /var/hasplm:/var/hasplm:ro -v /home/<host_user>/.hasplm:/home/<container_user>/.hasplm:ro -e LD_LIBRARY_PATH=/var/hasplm
+
 
 Runtime Installation Instructions and Troubleshooting
 -----------------------------------------------------
