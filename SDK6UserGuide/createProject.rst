@@ -212,11 +212,11 @@ If you want to create a VEE Port project, refer to the :ref:`sdk_6_veeport_creat
       - Depending on the type of your project, fill the URI of the corresponding Github template repository in the Search Bar. 
         The available templates are:
       
-         - `Application Project Template <https://github.com/MicroEJ/Tool-Project-Template-Application/tree/1.3.0>`__
-         - `Add-On Library Project Template <https://github.com/MicroEJ/Tool-Project-Template-Add-On-Library/tree/1.3.0>`__
-         - `Mock Project Template <https://github.com/MicroEJ/Tool-Project-Template-Mock/tree/1.3.0>`__
-         - `Runtime Environment Template <https://github.com/MicroEJ/Tool-Project-Template-Runtime-Environment/tree/1.2.0>`__
-         - `Java SE Library Template <https://github.com/MicroEJ/Tool-Project-Template-JavaSE-Library/tree/1.2.0>`__
+         - `Application Project Template <https://github.com/MicroEJ/Tool-Project-Template-Application/tree/1.4.0>`__
+         - `Add-On Library Project Template <https://github.com/MicroEJ/Tool-Project-Template-Add-On-Library/tree/1.4.0>`__
+         - `Mock Project Template <https://github.com/MicroEJ/Tool-Project-Template-Mock/tree/1.4.0>`__
+         - `Runtime Environment Template <https://github.com/MicroEJ/Tool-Project-Template-Runtime-Environment/tree/1.3.0>`__
+         - `Java SE Library Template <https://github.com/MicroEJ/Tool-Project-Template-JavaSE-Library/tree/1.3.0>`__
       
       - Click on :guilabel:`Clone from URL`.
       
@@ -255,11 +255,11 @@ If you want to create a VEE Port project, refer to the :ref:`sdk_6_veeport_creat
       - Depending on the type of your project, retrieve the URI of the corresponding Github template repository. 
         The available templates are:
       
-         - `Application Project Template <https://github.com/MicroEJ/Tool-Project-Template-Application/tree/1.3.0>`__
-         - `Add-On Library Project Template <https://github.com/MicroEJ/Tool-Project-Template-Add-On-Library/tree/1.3.0>`__
-         - `Mock Project Template <https://github.com/MicroEJ/Tool-Project-Template-Mock/tree/1.3.0>`__
-         - `Runtime Environment Template <https://github.com/MicroEJ/Tool-Project-Template-Runtime-Environment/tree/1.2.0>`__
-         - `Java SE Library Template <https://github.com/MicroEJ/Tool-Project-Template-JavaSE-Library/tree/1.2.0>`__
+         - `Application Project Template <https://github.com/MicroEJ/Tool-Project-Template-Application/tree/1.4.0>`__
+         - `Add-On Library Project Template <https://github.com/MicroEJ/Tool-Project-Template-Add-On-Library/tree/1.4.0>`__
+         - `Mock Project Template <https://github.com/MicroEJ/Tool-Project-Template-Mock/tree/1.4.0>`__
+         - `Runtime Environment Template <https://github.com/MicroEJ/Tool-Project-Template-Runtime-Environment/tree/1.3.0>`__
+         - `Java SE Library Template <https://github.com/MicroEJ/Tool-Project-Template-JavaSE-Library/tree/1.3.0>`__
       
       - Clone the repository::
 
@@ -308,7 +308,7 @@ Application Project
 - Add the ``com.microej.gradle.application`` plugin in the ``build.gradle.kts`` file::
 
     plugins {
-        id("com.microej.gradle.application") version "1.1.0"
+        id("com.microej.gradle.application") version "1.2.0"
     }
 
   .. note::
@@ -332,7 +332,7 @@ Add-On Library Project
 - Add the ``com.microej.gradle.addon-library`` plugin in the build script::
 
     plugins {
-        id("com.microej.gradle.addon-library") version "1.1.0"
+        id("com.microej.gradle.addon-library") version "1.2.0"
     }
 
   .. note::
@@ -348,7 +348,7 @@ Mock
 - Add the ``com.microej.gradle.mock`` plugin in the build script::
 
     plugins {
-        id("com.microej.gradle.mock") version "1.1.0"
+        id("com.microej.gradle.mock") version "1.2.0"
     }
 
   .. note::
@@ -366,7 +366,7 @@ Java SE Library Project
 - Add the ``com.microej.gradle.jse-library`` plugin in the build script::
 
     plugins {
-        id("com.microej.gradle.jse-library") version "1.1.0"
+        id("com.microej.gradle.jse-library") version "1.2.0"
     }
 
   .. note::
@@ -382,7 +382,7 @@ Runtime Environment Project
 - Add the ``com.microej.gradle.runtime-environment`` plugin in the build script::
 
     plugins {
-        id("com.microej.gradle.runtime-environment") version "1.1.0"
+        id("com.microej.gradle.runtime-environment") version "1.2.0"
     }
 
   .. note::

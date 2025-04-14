@@ -329,12 +329,15 @@ Other dependencies to standard Java modules can be added, such as the :ref:`Java
 Installation
 ============
 
+In a VEE Port
+-------------
+
 .. tabs::
 
    .. tab:: SDK 6
 
-      - :ref:`Create a Mock project <sdk_6_create_project_configure_project>`,
-      - add the Mock as a dependency of your VEE Port project:
+      - :ref:`Create a Mock project <sdk_6_create_project_configure_project>`.
+      - Add the Mock as a dependency of your VEE Port project:
 
          - either as a project dependency if both projects are in the same multi-project:
 
@@ -364,6 +367,38 @@ Installation
       - or by manually copying the JAR file ``[mock_project]/target~/rip/mocks/[mock_name].jar`` to the :ref:`VEE Port configuration <platform_configuration_creation>` mock dropins folder ``dropins/mocks/dropins/``.
 
       Make sure the option :ref:`resolve_foundation_libraries_in_workspace` is enabled to use the mock without having to install it after each modification during development.
+
+In an Application
+-----------------
+
+You can also install a Mock from an Application project, for example when a native function is added directly in the Application project.
+When a Mock is declared in an Application, it is automatically added in the VEE Port used to build or run the Application.
+
+.. tabs::
+
+   .. tab:: SDK 6
+
+      .. warning::
+
+         A Mock can be installed from an SDK 6 Application project only if the VEE Port used in the project is an SDK 6 VEE Port.
+
+      - add the Mock as a dependency of your Application project:
+
+         - either as a project dependency if both projects are in the same multi-project:
+
+            .. code-block:: kotlin
+               
+               microejMock(project(":myMockProject"))
+
+         - or as a module dependency:
+
+            .. code-block:: kotlin
+               
+               microejMock("com.mycompany:my-mock:1.0.0")
+
+   .. tab:: SDK 5
+
+      *Installing a Mock from an Application project is not supported in SDK 5.*
 
 
 Use
