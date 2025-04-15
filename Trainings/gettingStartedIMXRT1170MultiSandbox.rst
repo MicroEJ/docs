@@ -493,7 +493,7 @@ Going Further
 You have now successfully executed Sandboxed Applications on an embedded device, so what's next?
 
 If you are a Kernel Developer, you can follow the
-:ref:`trainings_multi-sandbox` courses to get familiar with Kernel development.
+:ref:`trainings_kernel` courses to get familiar with Kernel development.
 
 If you are an application developer, you can continue to explore MicroEJ's APIs and functionalities by running and studying our samples at GitHub:
 

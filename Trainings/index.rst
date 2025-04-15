@@ -119,6 +119,7 @@ For Application Developers
    :hidden:
    
    gettingStartedIMXRT1170MultiSandbox
+   trainingSandboxedApps
    tutorialImproveCodeQuality
    tutorialOptimizeMemoryFootprint
    trainingApplicationTesting
@@ -145,6 +146,23 @@ For Application Developers
             </div>
             </a>
          </div>
+            
+         <div class="training_item">
+            <a class="training_link" href="trainingSandboxedApps.html">
+               <div class="training_image_container">
+                  <ul class="training_image_list">
+                     <li class="training_course_number">Course</li>
+                     <li class="training_duration">4h</li>
+                  </ul>
+                  <img src="../_static/images/training/training_sandboxed_apps.jpg" alt="GUI Validation">
+               </div>
+               <h3 class="training_title">Sandboxed Applications Development</h3>
+               <p class="training_description">In this training, you will get an introduction to Application development
+               in a Multi-Sandbox context.
+               </p>
+               <a class="training_learn_more_link" href="trainingSandboxedApps.html">Learn more</a>
+            </a>
+            </div>
 
          <div class="training_item">
             <a class="training_link" href="tutorialImproveCodeQuality.html">
@@ -301,6 +319,60 @@ For VEE Developers
 
          </div>
 
+
+.. _trainings_kernel:
+
+For Kernel Developers
+=====================
+
+.. toctree::
+   :hidden:
+   
+   gettingStartedIMXRT1170KernelGREEN
+   trainingKernel
+
+.. raw:: html
+
+         <div class="training_items">
+
+         <div class="training_item">
+            <a class="training_link" href="gettingStartedIMXRT1170KernelGREEN.html">
+            <div>
+               <div class="training_image_container">
+                  <ul class="training_image_list">
+                     <li class="training_course_number">Course</li>
+                     <li class="training_duration">1h</li>
+                  </ul>
+                  <img src="../_static/images/training/training_kernel.jpg" alt="Kernel">
+               </div>
+               <h3 class="training_title">Get Started with Kernel</h3>
+               <p class="training_description">In this training, you will get an introduction on how to setup an environment
+               and create your first GREEN Kernel executable.
+               </p>
+               <a class="training_learn_more_link" href="gettingStartedIMXRT1170KernelGREEN.html">Learn more</a>
+            </div>
+            </a>
+         </div>
+
+         <div class="training_item">
+            <a class="training_link" href="trainingKernel.html">
+               <div class="training_image_container">
+                  <ul class="training_image_list">
+                     <li class="training_course_number">Course</li>
+                     <li class="training_duration">2h</li>
+                  </ul>
+                  <img src="../_static/images/training/training_kernel.jpg" alt="GUI Application Development">
+               </div>
+               <h3 class="training_title">Kernel Development</h3>
+               <p class="training_description">In this training, you will get an introduction to Kernel development
+               in a Multi-Sandbox context.
+               </p>
+               <a class="training_learn_more_link" href="trainingKernel.html">Learn more</a>
+            </a>
+            </div>
+
+         </div>
+
 Graphical User Interface
 ========================
 
@@ -366,96 +438,6 @@ Graphical User Interface
                <a class="training_learn_more_link" href="trainingGrayscaleDisplayConsiderations.html">Learn more</a>
             </a>
             </div>
-         </div>
-
-
-.. _trainings_multi-sandbox:
-
-Multi-Sandbox
-=============
-
-.. toctree::
-   :hidden:
-   
-   gettingStartedIMXRT1170KernelGREEN
-   trainingKernel
-   trainingSandboxedApps
-
-.. raw:: html
-
-         <div class="training_items">
-
-         <div class="training_item">
-            <a class="training_link" href="gettingStartedIMXRT1170KernelGREEN.html">
-            <div>
-               <div class="training_image_container">
-                  <ul class="training_image_list">
-                     <li class="training_course_number">Course</li>
-                     <li class="training_duration">1h</li>
-                  </ul>
-                  <img src="../_static/images/training/training_kernel.jpg" alt="Kernel">
-               </div>
-               <h3 class="training_title">Get Started with Kernel</h3>
-               <p class="training_description">In this training, you will get an introduction on how to setup an environment
-               and create your first GREEN Kernel executable.
-               </p>
-               <a class="training_learn_more_link" href="gettingStartedIMXRT1170KernelGREEN.html">Learn more</a>
-            </div>
-            </a>
-         </div>
-
-         <div class="training_item">
-            <a class="training_link" href="trainingKernel.html">
-               <div class="training_image_container">
-                  <ul class="training_image_list">
-                     <li class="training_course_number">Course</li>
-                     <li class="training_duration">2h</li>
-                  </ul>
-                  <img src="../_static/images/training/training_kernel.jpg" alt="GUI Application Development">
-               </div>
-               <h3 class="training_title">Kernel Development</h3>
-               <p class="training_description">In this training, you will get an introduction to Kernel development
-               in a Multi-Sandbox context.
-               </p>
-               <a class="training_learn_more_link" href="trainingKernel.html">Learn more</a>
-            </a>
-            </div>
-            
-         <div class="training_item">
-            <a class="training_link" href="trainingSandboxedApps.html">
-               <div class="training_image_container">
-                  <ul class="training_image_list">
-                     <li class="training_course_number">Course</li>
-                     <li class="training_duration">4h</li>
-                  </ul>
-                  <img src="../_static/images/training/training_sandboxed_apps.jpg" alt="GUI Validation">
-               </div>
-               <h3 class="training_title">Sandboxed Applications Development</h3>
-               <p class="training_description">In this training, you will get an introduction to Application development
-               in a Multi-Sandbox context.
-               </p>
-               <a class="training_learn_more_link" href="trainingSandboxedApps.html">Learn more</a>
-            </a>
-            </div>
-            
-         <div class="training_item">
-            <!--a class="training_link" href="gettingStartedIMXRT1170KernelGREEN.html"-->
-               <div class="training_image_container">
-                  <ul class="training_image_list">
-                     <li class="training_course_number">Course</li>
-                     <!--li class="training_duration">1h</li-->
-                  </ul>
-                  <img src="../_static/images/training/training_kernel.jpg" alt="Kernel">
-               </div>
-               <h3 class="training_title">Get Started with Kernel</h3>
-               <p class="training_description">In this training, you will get an introduction on how to setup an environment
-               and create your first GREEN Kernel executable.
-               </p>
-               <a class="training_learn_more_link" href="">Coming Soon!</a>
-               <!--a class="training_learn_more_link" href="gettingStartedIMXRT1170KernelGREEN.html">Learn more</a-->
-            <!--/a-->
-         </div>
-
          </div>
 
 Connectivity
