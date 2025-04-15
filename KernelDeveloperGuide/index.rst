@@ -8,7 +8,6 @@ Kernel Developer Guide
 
    overview
    kf
-   gettingStarted
    kernelCreation
    kernelAPI
    runtimeEnvironment
