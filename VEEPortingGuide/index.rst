@@ -8,29 +8,11 @@ VEE Porting Guide
 
    introduction
    architecture
-   pack
    bspConnection
-   veePortQualification
    coreEngine
-   advanceTrace
-   multiSandbox
-   tinySandbox
-   native
-   externalResourceLoader
-   serialCommunications
-   ui
-   vg
-   net
-   bluetooth
-   audio
-   packEventQueue
-   fs
-   hal
-   device
-   security
-   watchdog-timer
-   systemView
-   simulation
+   pack
+   veePortQualification
+   cModule
    appendix/index
 
 ..

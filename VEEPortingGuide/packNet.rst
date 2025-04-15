@@ -7,11 +7,11 @@ Networking
 .. toctree::
     :maxdepth: 2
 
-    netIntroduction
-    networkCoreEngine
-    ssl
-    networkInterfaces
-    wifi
+    packNetIntroduction
+    packNetworkCoreEngine
+    packSsl
+    packNetworkInterfaces
+    packWifi
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
