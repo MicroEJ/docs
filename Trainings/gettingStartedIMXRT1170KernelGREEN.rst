@@ -35,18 +35,24 @@ Prerequisites
   
    This Getting Started has been tested in the following conditions:
 
-   - Windows 11.
+   - Windows 10/11.
    - |GREEN_KERNEL_SOURCES_LINK| |GREEN_KERNEL_VERSION|.
    - |VEE_PORT_LINK| |VEE_PORT_VERSION|.
 
-   Also note that examples used in this Getting Started could depend on older tools and libraries. 
-   Most notably our dependency manager plugin (using `Gradle <https://gradle.org/>`__) could be an older version.
+To get the most out of this training, participants should have:
 
-For this Getting Started, all you need is:
+- A good understanding of the :ref:`overview` section.
+- A basic knowledge of the :ref:`chapter-glossary`.
 
-* NXP i.MXRT1170 EVKB, available `here <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__.
-* RK055HDMIPI4MA0 display panel, available `here <https://www.nxp.com/part/RK055HDMIPI4MA0>`__.
-* A FAT32-formatted microSD card.
+Hardware setup
+--------------
+
+To follow this training, you need:
+
+- A `NXP i.MX RT1170 Evaluation Kit EVKB <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__.
+- A `RK055HDMIPI4MA0 display panel <https://www.nxp.com/part/RK055HDMIPI4MA0>`__.
+- A FAT32-formatted microSD card.
+- An Ethernet cable
 
 .. _training_kernel_green_imxrt1170_environment_setup:
 
@@ -59,7 +65,7 @@ Install MICROEJ SDK 6
 ~~~~~~~~~~~~~~~~~~~~~
 
 Follow :ref:`MICROEJ SDK 6 installation Guide <sdk_6_install>`,
-Android Studio is used on this Getting Started but feel free to use your favorite IDE,
+IntelliJ is used on this Getting Started but feel free to use your favorite IDE,
 
 Accept the MICROEJ SDK EULA
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -92,12 +98,12 @@ The first step is to import the :guilabel:`Kernel-GREEN` into your IDE:
 
 .. note::
   
-   If you are using an IDE other than Android Studio, please have a look at :ref:`sdk_6_import_project` section.
+   If you are using an IDE other than IntelliJ, please have a look at :ref:`sdk_6_import_project` section.
 
 * If you are in the Welcome Screen, click on the :guilabel:`Open` button. Otherwise click either on :guilabel:`File` > :guilabel:`Open...`,
 * Select the :guilabel:`Kernel-GREEN` directory located where you downloaded it and click on the :guilabel:`OK` button.
 
-The Gradle project should now be imported in Android Studio,
+The Gradle project should now be imported in IntelliJ,
 your workspace contains the following project in the :guilabel:`Projects` view: 
 
    .. figure:: images/multiSandbox/getting-started-import-kernel-green.png
@@ -137,12 +143,6 @@ Run the Kernel GREEN on NXP i.MXRT1170 Evaluation Kit
 Make sure to have completed all the :ref:`training_kernel_green_imxrt1170_environment_setup`
 steps before going further.
 
-To deploy :guilabel:`Kernel-GREEN` on your board, you will have to:
-
-* Request a 30 days :ref:`Evaluation License <sdk_eula>` and install an activation key,
-* Build the Executable,
-* Flash the board.
-
 Build the Executable for the NXP i.MXRT1170 Evaluation Kit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -151,7 +151,7 @@ the SDK provides the :guilabel:`buildExecutable` Gradle task.
 
 .. note::
   
-   If you are using an IDE other than Android Studio, please have a look at :ref:`sdk_6_build_executable` section.
+   If you are using an IDE other than IntelliJ, please have a look at :ref:`sdk_6_build_executable` section.
    Come back on this page if you need to activate an Evaluation License.
 
 * Double-click on the :guilabel:`buildExecutable` task in the Gradle tasks view.
@@ -165,7 +165,7 @@ the SDK provides the :guilabel:`buildExecutable` Gradle task.
 
 * Copy the UID. It will be required to activate your Evaluation license.
 
-Request your Evaluation License:
+Request your :ref:`Evaluation License <sdk_eula>`:
 
 * Request your Evaluation license by following the :ref:`evaluation_license_request_activation_key` instructions. You will be asked to fill the machine UID field with the UID you copied before.
 
@@ -185,7 +185,7 @@ the application provides the Gradle :guilabel:`runOnDevice` task.
 
 .. note::
   
-   If you are using an IDE other than Android Studio, please have a look at :ref:`sdk_6_run_on_device` section.
+   If you are using an IDE other than IntelliJ, please have a look at :ref:`sdk_6_run_on_device` section.
 
 * Double-click on the :guilabel:`runOnDevice` task in the Gradle tasks view. It may take some time:
 

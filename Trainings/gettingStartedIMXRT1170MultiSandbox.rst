@@ -47,7 +47,7 @@ Prerequisites
   
    This Getting Started has been tested in the following conditions:
 
-   - Windows 11.
+   - Windows 10/11.
    - Multi-Sandbox Executable: |MULTI_SANDBOX_EXECUTABLE_LINK|.
    - |DEMO_SANDBOXED_APPS_SOURCES_LINK| |DEMO_SANDBOXED_APPS_VERSION|.
 
@@ -55,16 +55,22 @@ To get the most out of this training, participants should have:
 
 - A good understanding of the :ref:`overview` section.
 - A basic knowledge of the :ref:`chapter-glossary`.
-- Access to the `NXP i.MX RT1170 Evaluation Kit EVKB <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__.
-- Access to the `RK055HDMIPI4MA0 display panel <https://www.nxp.com/part/RK055HDMIPI4MA0>`__.
+
+Hardware setup
+--------------
+
+To follow this training, you need:
+
+- A `NXP i.MX RT1170 Evaluation Kit EVKB <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVKB>`__.
+- A `RK055HDMIPI4MA0 display panel <https://www.nxp.com/part/RK055HDMIPI4MA0>`__.
 - A FAT32-formatted microSD card.
+- An Ethernet cable
 
 Environment Setup
 -----------------
 
 To follow this training, you need:
 
-* A FAT32-formatted microSD card.
 * An RS232 Terminal (e.g. `Termite <https://www.compuphase.com/software_termite.htm>`__).
 
 Also, follow the steps described in the sections below to complete your environment setup. 
@@ -171,12 +177,12 @@ Import the project into your IDE:
 
 .. note::
   
-   If you are using an IDE other than Android Studio, please have a look at :ref:`sdk_6_import_project` section.
+   If you are using an IDE other than IntelliJ, please have a look at :ref:`sdk_6_import_project` section.
 
 * If you are on the Welcome Screen, click on the :guilabel:`Open` button. Otherwise click either on :guilabel:`File` > :guilabel:`Open...`.
 * Select the :guilabel:`Demo-Sandboxed-Applications` directory located where you downloaded it and click on the :guilabel:`OK` button.
 
-The Gradle project should now be imported in Android Studio, your workspace contains the following project in the :guilabel:`Projects` view: 
+The Gradle project should now be imported in IntelliJ, your workspace contains the following project in the :guilabel:`Projects` view: 
 
    .. figure:: images/multiSandbox/getting-started-demo-sandboxed-applications-project.png
       :alt: Workspace view
