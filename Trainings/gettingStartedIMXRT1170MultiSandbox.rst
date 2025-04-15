@@ -1,8 +1,10 @@
 .. |MULTI_SANDBOX_EXECUTABLE_LINK| replace:: `NXP-MIMXRT1170-3.0.0_GCC_GREEN-2.1.1.elf <https://repository.microej.com/packages/green/2.1.1/firmware/NXP-MIMXRT1170_GCC/NXP-MIMXRT1170-3_0_0_GCC_GREEN-2.1.1.elf>`__
 .. |GREEN_KERNEL_PACKAGE_LINK| replace:: `directory <https://repository.microej.com/packages/green/2.1.1/>`__
 .. |GREEN_KERNEL_SOURCES_LINK| replace:: `Kernel GREEN <https://github.com/MicroEJ/Kernel-GREEN>`__
+.. |DEMO_SANDBOXED_APPS_SOURCES_LINK| replace:: `Demo-Sandboxed-Applications <https://github.com/MicroEJ/Demo-Sandboxed-Applications>`__
 .. |FLASH_COMMAND_LINE| replace:: ``LinkServer flash MIMXRT1176xxxxx:MIMXRT1170-EVKB load NXP-MIMXRT1170-3_0_0_GCC_GREEN-2.1.1.elf``
 .. |GREEN_KERNEL_DEPENDENCY| replace:: ``microejVee("com.microej.kernel:NXP-MIMXRT1170-3_0_0_GCC_GREEN:2.1.1")``
+.. |DEMO_SANDBOXED_APPS_VERSION| replace:: ``2.0.0``
 
 .. _training_multisandbox_applications_imxrt1170:
 
@@ -47,6 +49,7 @@ Prerequisites
 
    - Windows 11.
    - Multi-Sandbox Executable: |MULTI_SANDBOX_EXECUTABLE_LINK|.
+   - |DEMO_SANDBOXED_APPS_SOURCES_LINK| |DEMO_SANDBOXED_APPS_VERSION|.
 
 To get the most out of this training, participants should have:
 
@@ -141,7 +144,7 @@ Training Course
 Run the Demo-Sandboxed-Applications
 -----------------------------------
 
-The `Demo-Sandboxed-Applications <https://github.com/MicroEJ/Demo-Sandboxed-Applications>`__ 
+The |DEMO_SANDBOXED_APPS_SOURCES_LINK| 
 showcases the communication between Sandboxed Applications using the Shared Interfaces.
 
 The following projects are provided:
