@@ -136,7 +136,7 @@ For Application Developers
                      <li class="training_course_number">Course</li>
                      <li class="training_duration">1h</li>
                   </ul>
-                  <img src="../_static/images/training/training_sandboxed_apps.jpg" alt="Multi-Sandbox Applications">
+                  <img src="../_static/images/training/training_sandboxed_apps_get_started.jpg" alt="Multi-Sandbox Applications">
                </div>
                <h3 class="training_title">Get Started with Multi-Sandbox Applications</h3>
                <p class="training_description">In this training, you will get an introduction
@@ -343,7 +343,7 @@ For Kernel Developers
                      <li class="training_course_number">Course</li>
                      <li class="training_duration">1h</li>
                   </ul>
-                  <img src="../_static/images/training/training_kernel.jpg" alt="Kernel">
+                  <img src="../_static/images/training/training_kernel_get_started.jpg" alt="Kernel">
                </div>
                <h3 class="training_title">Get Started with Kernel</h3>
                <p class="training_description">In this training, you will get an introduction on how to setup an environment
