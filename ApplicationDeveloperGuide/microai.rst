@@ -53,14 +53,16 @@ APIs
 MLInferenceEngine
 ~~~~~~~~~~~~~~~~~
 
-First action when dealing with MicroAI is to load the trained Machine Learning model using MLInferenceEngine class. 
+The first action when dealing with MicroAI is to load the trained Machine Learning model using MLInferenceEngine class. 
 
-There is 2 way to load a model, using an application resource with MLInferenceEngine(String modelPath) constructor or from an InputStream using MLInferenceEngine(InputStream is) constructor.
+There are 2 ways to load a model:
+* from an application resource with MLInferenceEngine(String modelPath) constructor
+* from an InputStream using MLInferenceEngine(InputStream is) constructor.
 The 2 constructors map the model into a native data structure, build an interpreter to run the model with and allocate memory for the model's tensors.
 
-InputStream constructor will block until the model is completely retrieved/loaded on the native side. 
+The InputStream constructor will block until the model is completely retrieved/loaded on the native side. 
 It will load the model inside the MicroAI heap.
-Size of MicroAI heap is defined from the :ref:`MicroAI Configurations <microai_configuration>`.
+The size of MicroAI heap is defined from the :ref:`MicroAI Configurations <microai_configuration>`.
 
 Once initialized, MLInferenceEngine allows to get input/output model tensors and to run inferences on the trained model.
 
