@@ -46,8 +46,10 @@ MLInferenceEngine
 The first action when dealing with MicroAI is to load the trained Machine Learning model using MLInferenceEngine class. 
 
 There are 2 ways to load a model:
-* from an application resource with MLInferenceEngine(String modelPath) constructor
-* from an InputStream using MLInferenceEngine(InputStream is) constructor.
+
+* from an application resource with ``MLInferenceEngine(String modelPath)`` constructor
+* from an InputStream using ``MLInferenceEngine(InputStream is)`` constructor.
+
 The 2 constructors map the model into a native data structure, build an interpreter to run the model with and allocate memory for the model's tensors.
 
 The InputStream constructor will block until the model is completely retrieved/loaded on the native side. 
