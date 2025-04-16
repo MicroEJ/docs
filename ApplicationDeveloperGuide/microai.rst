@@ -15,21 +15,11 @@ The MicroAI Library is provided as a Foundation Library.
 
 To use the MicroAI Library, add the following line to the project build file:
 
-.. tabs::
+.. code-block:: kotlin
 
-   .. tab:: Gradle (build.gradle.kts)
+   implementation("ej.api:microai:1.0.0")
 
-      .. code-block:: kotlin
-
-         implementation("ej.api:microai:1.0.0")
-
-   .. tab:: MMM (module.ivy)
-
-      .. code-block:: xml
-
-         <dependency org="ej.api" name="microai" rev="1.0.0"/>
-
-Building or running an Application which uses the MicroAI Library requires the VEE Port to provide the :ref:`MicroAI Pack <pack_microai>`.
+Building or running an Application which uses the MicroAI Library a SDK6 VEE Port that provides the :ref:`MicroAI Pack <pack_microai>`.
 
 Machine Learning Model Format
 -----------------------------

@@ -24,23 +24,12 @@ Dependencies
 Installation
 ============
 
-MicroAI is a module that is pulled by the MicroEJ Application. 
+MicroAI is an additional module. 
+To enable it, the MicroAI :ref:`Pack <pack_overview>` must be installed in your VEE Port:
 
-The MicroAI :ref:`Mock <mock>` module must be installed in your VEE Port to be able to run a MicroAI application on the MicroEJ Simulator:
+.. code-block:: kotlin
 
-.. tabs::
-
-   .. tab:: SDK 6 (build.gradle.kts)
-
-      .. code-block:: kotlin
-
-         microejMock("com.microej.microai:microai-mock:1.0.0")
-
-   .. tab:: SDK 5 (module.ivy)
-
-      .. code-block:: xml
-
-         <dependency org="com.microej.microai" name="microai-mock" rev="1.0.0"/>
+   microejPack("ej.api:microai:1.0.0")
 
 Use
 ===
