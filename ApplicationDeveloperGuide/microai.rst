@@ -21,13 +21,13 @@ To use the MicroAI Library, add the following line to the project build file:
 
       .. code-block:: kotlin
 
-         implementation("com.microej.microai.microai-lib:1.0.0")
+         implementation("ej.api:microai:1.0.0")
 
    .. tab:: MMM (module.ivy)
 
       .. code-block:: xml
 
-         <dependency org="com.microej.microai" name="microai-lib" rev="1.0.0"/>
+         <dependency org="ej.api" name="microai" rev="1.0.0"/>
 
 Building or running an Application which uses the MicroAI Library requires the VEE Port to provide the :ref:`MicroAI Pack <pack_microai>`.
 
