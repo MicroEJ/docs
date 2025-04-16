@@ -285,6 +285,17 @@ Audio Pack
      - `1.0.0 <https://repository.microej.com/modules/ej/api/audio/1.0.0/>`__
      - `1.0.0 <https://repository.microej.com/modules/com/microej/pack/audio/audio-testsuite/1.0.0/>`__
 
+MicroAI Pack
+------------
+
+.. list-table:: MicroAI Library and Validation
+   :widths: 20 20
+
+   * - MicroAI Library
+     - Java Test Suite
+   * - 1.0.0 (On demand [1]_)
+     - 1.0.0 (On demand [1]_)
+
 .. _test_suite_versioning_event_queue:
 
 EVENT QUEUE Pack
