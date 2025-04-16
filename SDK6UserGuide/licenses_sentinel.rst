@@ -151,6 +151,8 @@ Then you can continue with the :ref:`Remote Floating License Server <add_remonte
 Add Remote Floating License Server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+**With a browser**
+
 - On the developer workstation, open a web browser.
 - Browse http://localhost:1947 to open the Sentinel Admin Control Center (be careful if you work with WSL, localhost may point to Windows and not to your WSL instance). 
 - Go to :guilabel:`Configuration` > :guilabel:`Access to Remote License Managers`.
@@ -166,24 +168,9 @@ Add Remote Floating License Server
 
    .. image:: images/sentinel_rte_client_installed_license.png
 
-.. note::
+**With command line**
 
-   On Linux, you can check that the RTE is properly configured by checking the file ``hasp_37102.ini`` in ``/etc/hasplm`` or ``~/.hasplm`` (if you have not installed RTE as root) and check if these lines exist:
-
-   .. code-block::
-      
-      [REMOTE]
-      broadcastsearch = 0
-      serversearchinterval = 30
-      serveraddr = <license_server_IP>
-
-
-Running in a container
-~~~~~~~~~~~~~~~~~~~~~~
-
-If you want to configure a CI (Continuous integration) runner you can follow one of these two solutions:
-
-1. Create a Docker image with the RTE installed inside. To add the remote Floating License Server create the file ``hasp_37102.ini`` in ``/etc/hasplm`` or ``~/.hasplm`` (if you have not installed RTE as root) and add these lines:
+- On Linux update or create the file ``hasp_37102.ini`` in ``/etc/hasplm`` or ``~/.hasplm`` (if you have not installed RTE as root). For Windows edit ``%CommonProgramFiles(x86)%\Aladdin Shared\HASP\hasplm.ini`` file. For both OS add these lines to the ini file:
    
    .. code-block::
       
@@ -191,6 +178,16 @@ If you want to configure a CI (Continuous integration) runner you can follow one
       broadcastsearch = 0
       serversearchinterval = 30
       serveraddr = <license_server_IP>
+
+- Restart the service.
+
+
+Running in a container
+~~~~~~~~~~~~~~~~~~~~~~
+
+If you want to configure a CI (Continuous integration) runner you can follow one of these two solutions:
+
+1. Create a Docker image with the RTE installed inside, see :ref:`Installation for Linux <setup_sentinel_developer_workstation>`
 
 2. Or install and configure the RTE on the host and run the Docker container with these options:
 
