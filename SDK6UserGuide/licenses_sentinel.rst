@@ -246,7 +246,7 @@ The following error occurred when there is no Sentinel license available. Go to 
    :align: center
    :scale: 75%
 
-Make sure you correctly configured the access to the Sentinel Floating License Server. Please refer to :ref:`setup_sentinel_developer_workstation`.
+Make sure you correctly configured the access to the Sentinel Floating License Server. Please refer to :ref:`add_remonte_floating_license_server`.
 
 No Administrator Privileges on Developer Workstation
 """"""""""""""""""""""""""""""""""""""""""""""""""""
