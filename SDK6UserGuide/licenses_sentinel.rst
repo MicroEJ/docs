@@ -154,7 +154,7 @@ Add Remote Floating License Server
 **With a browser**
 
 - On the developer workstation, open a web browser.
-- Browse http://localhost:1947 to open the Sentinel Admin Control Center (be careful if you work with WSL, localhost may point to Windows and not to your WSL instance). 
+- Browse http://localhost:1947 to open the Sentinel Admin Control Center (if you work with WSL read note below). 
 - Go to :guilabel:`Configuration` > :guilabel:`Access to Remote License Managers`.
 - Check :guilabel:`Allow Access to Remote Licenses`.
 - Uncheck :guilabel:`Broadcast Search for Remote Licenses`.
@@ -167,6 +167,10 @@ Add Remote Floating License Server
   In :guilabel:`Sentinel Keys` tab, you should see the license key provided by your Floating License Server (e.g. ``central-sentinel-server``). 
 
    .. image:: images/sentinel_rte_client_installed_license.png
+
+.. note::
+
+   If you use WSL (Windows Subsystem for Linux) localhost may point to Windows and not to your WSL instance. On WSL terminal you can launch ``hostname -I`` command, copy the first IP and use it insteal of ``localhost`` in your browser.
 
 **With command line**
 
