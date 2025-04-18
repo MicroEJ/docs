@@ -172,7 +172,7 @@ Add Remote Floating License Server
 
    If you use WSL (Windows Subsystem for Linux) ``localhost`` refers to your Windows localhost and not to your WSL instance. On WSL terminal, launch ``hostname -I`` command, copy the first IP address and use it instead  of ``localhost`` in your browser (e.g. http://172.30.106.171:1947/).
 
-**With command line**
+**From Command Line**
 
 - On Linux: update or create the file ``hasp_37102.ini`` in ``/etc/hasplm`` or ``~/.hasplm`` (if you have not installed RTE as root). 
 - On Windows: edit ``%CommonProgramFiles(x86)%\Aladdin Shared\HASP\hasplm.ini`` file. 
