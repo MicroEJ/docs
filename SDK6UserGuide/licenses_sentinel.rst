@@ -196,7 +196,7 @@ If you want to configure a CI (Continuous integration) runner you can follow one
 
 1. Create a Docker image with the RTE installed inside, see :ref:`Installation for Linux <setup_sentinel_developer_workstation>`
 
-2. Or install and configure the RTE on the host and run the Docker container with these options:
+- Or install and configure the RTE on the host and run the Docker container with these options:
 
    .. code-block::
       
