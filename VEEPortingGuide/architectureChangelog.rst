@@ -45,11 +45,17 @@ Core Engine
 
 - [Multi] - Increased the limitation on the maximum number of threads from 63 to 127 when Multi-Sandbox capability is enabled.
 
+Simulator
+~~~~~~~~~
+
+- Added, to Front Panel, the resize ability, an options toolbar and a status bar.
+- Fixed, in Front Panel, synchronization on the widget display accesses and rendering of the widgets other than display.
+- Fixed, in Front Panel, accessibility to the FrontPanelTitleProvider (introduced in version `3.0.0`).
+
 SOAR
 ~~~~
 
 - Increased the maximum number of blocks allowed in a method to prevent the ``[M200] - Maximum number of blocks reached`` error.
-
 
 .. _changelog-8.3.0:
 
