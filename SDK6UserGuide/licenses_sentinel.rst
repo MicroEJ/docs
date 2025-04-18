@@ -146,7 +146,7 @@ Then you can continue with the :ref:`Remote Floating License Server <add_remonte
 
 Then you can continue with the :ref:`Remote Floating License Server <add_remonte_floating_license_server>` section.
 
-.. _add_remonte_floating_license_server:
+.. _add_remote_floating_license_server:
 
 Add Remote Floating License Server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
