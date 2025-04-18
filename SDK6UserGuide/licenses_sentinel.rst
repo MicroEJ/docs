@@ -170,7 +170,7 @@ Add Remote Floating License Server
 
 .. note::
 
-   If you use WSL (Windows Subsystem for Linux) localhost may point to Windows and not to your WSL instance. On WSL terminal you can launch ``hostname -I`` command, copy the first IP and use it insteal of ``localhost`` in your browser.
+   If you use WSL (Windows Subsystem for Linux) ``localhost`` refers to your Windows localhost and not to your WSL instance. On WSL terminal, launch ``hostname -I`` command, copy the first IP address and use it instead  of ``localhost`` in your browser (e.g. http://172.30.106.171:1947/).
 
 **With command line**
 
