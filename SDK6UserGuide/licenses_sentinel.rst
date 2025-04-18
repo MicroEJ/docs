@@ -174,7 +174,10 @@ Add Remote Floating License Server
 
 **With command line**
 
-- On Linux update or create the file ``hasp_37102.ini`` in ``/etc/hasplm`` or ``~/.hasplm`` (if you have not installed RTE as root). For Windows edit ``%CommonProgramFiles(x86)%\Aladdin Shared\HASP\hasplm.ini`` file. For both OS add these lines to the ini file:
+- On Linux: update or create the file ``hasp_37102.ini`` in ``/etc/hasplm`` or ``~/.hasplm`` (if you have not installed RTE as root). 
+- On Windows: edit ``%CommonProgramFiles(x86)%\Aladdin Shared\HASP\hasplm.ini`` file. 
+
+Then add to the ``.ini`` file the following lines:
    
    .. code-block::
       
