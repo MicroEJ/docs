@@ -17,6 +17,16 @@ MICROEJ SDK is licensed under the `SDK End User License Agreement (EULA) <https:
 
    SDK Detailed View
 
+.. _commercial_component_license:
+
+Commercial Component License
+----------------------------
+
+One the the main feature of MICROEJ SDK is to download, install and link modules with MICROEJ VEE to produce a binary Executable for a target device.
+Modules provided by MicroEJ Corp. are hosted in various :ref:`repositories <module_repositories>`, each distributed under specific license terms detailed in its respective ``LICENSE.txt`` file.
+Some of these modules are licensed under the `Commercial Component License <https://repository.microej.com/licenses/sdk/LAW-0988-LCS-CommercialComponents-1.1-A.txt>`_.
+The Commercial Component license extends the SDK EULA terms by adding specific requirements and restrictions related to production deployment.
+
 .. _sdk6_license_manager:
 
 License Manager Overview
@@ -57,7 +67,7 @@ SDK EULA Acceptation
 --------------------
 
 The use of MICROEJ SDK 6 requires to accept the :ref:`sdk6_eula`.
-If the license is not accepted, the following message is displayed when executing a Gradle task:
+If the SDK EULA license is not accepted, the following message is displayed when executing a Gradle task:
 
 .. code:: text
 
@@ -70,7 +80,7 @@ If the license is not accepted, the following message is displayed when executin
     or specifying the -Daccept-microej-sdk-eula-v3-1c=YES command line option, 
     or setting the ACCEPT_MICROEJ_SDK_EULA_V3_1C=YES environment variable.
 
-As mentioned in the message, there are several ways to accept the EULA:
+As mentioned in the message, there are several ways to accept the SDK EULA license:
 
 - define the ``accept-microej-sdk-eula-v3-1c`` system property in a ``gradle.properties`` file with the ``systemProp.`` prefix:
 
