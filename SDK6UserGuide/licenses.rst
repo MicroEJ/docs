@@ -22,7 +22,7 @@ MICROEJ SDK is licensed under the `SDK End User License Agreement (EULA) <https:
 Commercial Component License
 ----------------------------
 
-One the the main feature of MICROEJ SDK is to download, install and link modules with MICROEJ VEE to produce a binary Executable for a target device.
+One of the main features of MICROEJ SDK is to download, install and link modules with MICROEJ VEE to produce a binary Executable for a target device.
 Modules provided by MicroEJ Corp. are hosted in various :ref:`repositories <module_repositories>`, each distributed under specific license terms detailed in its respective ``LICENSE.txt`` file.
 Some of these modules are licensed under the `Commercial Component License <https://repository.microej.com/licenses/sdk/LAW-0988-LCS-CommercialComponents-1.1-A.txt>`_.
 The Commercial Component license extends the SDK EULA terms by adding specific requirements and restrictions related to production deployment.
