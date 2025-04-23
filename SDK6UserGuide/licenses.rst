@@ -67,7 +67,7 @@ SDK EULA Acceptation
 --------------------
 
 The use of MICROEJ SDK 6 requires to accept the :ref:`sdk6_eula`.
-If the SDK EULA license is not accepted, the following message is displayed when executing a Gradle task:
+If the SDK EULA is not accepted, the following message is displayed when executing a Gradle task:
 
 .. code:: text
 
@@ -80,7 +80,7 @@ If the SDK EULA license is not accepted, the following message is displayed when
     or specifying the -Daccept-microej-sdk-eula-v3-1c=YES command line option, 
     or setting the ACCEPT_MICROEJ_SDK_EULA_V3_1C=YES environment variable.
 
-As mentioned in the message, there are several ways to accept the SDK EULA license:
+As mentioned in the message, there are several ways to accept the SDK EULA:
 
 - define the ``accept-microej-sdk-eula-v3-1c`` system property in a ``gradle.properties`` file with the ``systemProp.`` prefix:
 
