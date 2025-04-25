@@ -11,6 +11,20 @@ Changelog
 [14.4.1] - 2025-03-13
 =====================
 
+Known Issue
+"""""""""""
+
+- This version is not compatible with the VG Pack (any versions): 
+
+  - Reason: A VEE Port with this UI Pack and a VG Pack cannot be built:
+
+	.. code-block:: bash
+
+		[java] microvg/ui-pack:
+		[java] C:\[...]-configuration\target~\scripts\rip\build\autoConfiguration-microvg.xml:43: VG Pack requires the UI Pack 14.1.0 or higher and the platform fetches the UI Pack ${ui.packVersion}.
+
+  - Workaround: None, use the UI Pack 14.3.3 instead.
+
 MicroUI
 """""""
 
