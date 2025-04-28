@@ -49,14 +49,18 @@ Core Engine
 Simulator
 ~~~~~~~~~
 
+- Added :ref:`Mock event tracing <mock_event_tracing>`.
 - Added, in Front Panel, the ability to resize the window, an options toolbar and a status bar (see :ref:`frontpanel_overview`).
 - Fixed, in Front Panel, synchronization on the widget display accesses and rendering of the widgets other than display.
 - Fixed initialization of an empty Immortal Heap when :ref:`option_immortal_heap` is set to 0.
+- Fix the implementation of `Tracer.isTraceStarted()`_ that could return ``true`` when trace is not yet enabled in some cases.
 
 SOAR
 ~~~~
 
 - Increased the maximum number of blocks allowed in a method to prevent the ``[M200] - Maximum number of blocks reached`` error.
+
+.. _Tracer.isTraceStarted() : https://repository.microej.com/javadoc/microej_5.x/apis/ej/trace/Tracer.html#isTraceStarted--
 
 .. _changelog-8.3.0:
 
