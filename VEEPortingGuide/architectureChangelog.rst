@@ -49,7 +49,7 @@ Core Engine
 Simulator
 ~~~~~~~~~
 
-- Added, in Front Panel, the ability to resize the window, an options toolbar and a status bar.
+- Added, in Front Panel, the ability to resize the window, an options toolbar and a status bar (see :ref:`frontpanel_overview`).
 - Fixed, in Front Panel, synchronization on the widget display accesses and rendering of the widgets other than display.
 - Fixed initialization of an empty Immortal Heap when :ref:`option_immortal_heap` is set to 0.
 
