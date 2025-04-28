@@ -43,17 +43,15 @@ specific configuration:
 Core Engine
 ~~~~~~~~~~~
 
+- Updated ExternalResourceLoader implementation to use SNI 1.4 which removes allocations to the Immortal Heap.
 - [Multi] - Increased the limitation on the maximum number of threads from 63 to 127 when Multi-Sandbox capability is enabled.
-- Updated ExternalResourceLoader implementation to use SNI 1.4 which reduces RAM consumption.
 
 Simulator
 ~~~~~~~~~
 
-- Added, to Front Panel, the resize ability, an options toolbar and a status bar.
+- Added, in Front Panel, the ability to resize the window, an options toolbar and a status bar.
 - Fixed, in Front Panel, synchronization on the widget display accesses and rendering of the widgets other than display.
-- Fixed, in Front Panel, accessibility to the FrontPanelTitleProvider (introduced in version `3.0.0`).
-- Fixed initialization of immortal/heap memory sizes to 0, which was set to a default value instead.
-- Fixed reset method of ResourceInputStream that throws IOException after an end of stream is reached.
+- Fixed initialization of an empty Immortal Heap when :ref:`option_immortal_heap` is set to 0.
 
 SOAR
 ~~~~
