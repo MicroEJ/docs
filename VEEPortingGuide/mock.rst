@@ -304,6 +304,7 @@ Then the option can be retrieved as a System Property in the mock:
          String myOption = System.getProperty("mymockoption"); // returns "mymockvalue"
    }
 
+.. _mock-api:
 
 Dependencies
 ============
@@ -698,6 +699,37 @@ Installation
 
             <dependency org="com.microej.library.mock" name="mock-framework" rev="1.0.1" />
             <dependency org="com.microej.tool" name="javafx" rev="1.2.0" />
+
+.. _mock_event_tracing:
+
+Event Tracing
+=============
+
+Starting from :ref:`Architecture 8.4.0 <changelog-8.4.0>`, it is possible to record events from the Mock.
+The :ref:`Mock API <mock-api>` provides the same API (`ej.trace.Tracer`_) as the one used for :ref:`Application Event Tracing <event-tracing>`:
+
+.. code-block:: java
+
+      Tracer tracer = new Tracer("MyMockGroup", 10);
+      tracer.recordEvent(1);
+      tracer.recordEvent(2);
+      tracer.recordEvent(3);
+
+Events are recorded only if :ref:`Event Recording is enabled <event_enable_recording>`.
+
+.. _ej.trace.Tracer: https://repository.microej.com/javadoc/microej_5.x/apis/ej/trace/Tracer.html
+
+By default, the Simulator traces are printed on the standard console.
+
+.. code-block:: console
+
+   [TRACE: MyMockGroup] Event 0x1()
+   [TRACE: MyMockGroup] Event 0x2()
+   [TRACE: MyMockGroup] Event 0x3()
+
+However, it is also possible to connect other trace recorders as needed.
+In particular, you can export traces in the in the ``*.SVdat`` format for analysis with the the :ref:`Segger SystemView <systemview>` tool.
+For more information, please contact `our support team <https://www.microej.com/contact/#form_2>`_.
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
