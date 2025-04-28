@@ -53,7 +53,7 @@ Simulator
 - Added, in Front Panel, the ability to resize the window, an options toolbar and a status bar (see :ref:`frontpanel_overview`).
 - Fixed, in Front Panel, synchronization on the widget display accesses and rendering of the widgets other than display.
 - Fixed initialization of an empty Immortal Heap when :ref:`option_immortal_heap` is set to 0.
-- Fix the implementation of `Tracer.isTraceStarted()`_ that could return ``true`` when trace is not yet enabled in some cases.
+- Fix the implementation of `Tracer.isTraceStarted()`_ that could return ``true`` when trace recording is not yet enabled in some cases.
 
 SOAR
 ~~~~
