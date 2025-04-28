@@ -154,7 +154,7 @@ The following table describes the version of FreeType included in the C module:
 
 **HarfBuzz**
 
-The :ref:`FreeType C module <section_vg_c_module_harfbuzz>` provides HarfBuzz with additional source files.
+The :ref:`HarfBuzz C module <section_vg_c_module_harfbuzz>` provides HarfBuzz with additional source files.
 
 The following table describes the version of HarfBuzz included in the C module:
 
