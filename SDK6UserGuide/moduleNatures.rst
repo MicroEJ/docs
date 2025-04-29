@@ -19,6 +19,8 @@ Add-On Library
 
 **Documentation**: :ref:`libraries`
 
+**Template**: `Add-On Library Project Template <https://github.com/MicroEJ/Tool-Project-Template-Add-On-Library/tree/1.4.0>`__
+
 **Tasks**:
 
 This plugin adds the following tasks to your project:
@@ -42,7 +44,9 @@ Application
 
 **Plugin Name**: ``com.microej.gradle.application``
 
-**Documentation**: :ref:`standalone_application`
+**Documentation**: :ref:`standalone_application`, :ref:`sandboxed_application`, :ref:`kernel-developer-guide`
+
+**Template**: `Application Project Template <https://github.com/MicroEJ/Tool-Project-Template-Application/tree/1.4.0>`__
 
 **Tasks**:
 
@@ -74,6 +78,8 @@ Java SE Library
 
 **Plugin Name**: ``com.microej.gradle.jse-library``
 
+**Template**: `Java SE Library Template <https://github.com/MicroEJ/Tool-Project-Template-JavaSE-Library/tree/1.3.0>`__
+
 **Tasks**:
 
 This plugin adds the following tasks to your project:
@@ -93,6 +99,10 @@ Mock
 ----
 
 **Plugin Name**: ``com.microej.gradle.mock``
+
+**Documentation**: :ref:`mock`
+
+**Template**: `Mock Project Template <https://github.com/MicroEJ/Tool-Project-Template-Mock/tree/1.4.0>`__
 
 **Tasks**:
 
@@ -114,6 +124,10 @@ Runtime Environment
 -------------------
 
 **Plugin Name**: ``com.microej.gradle.runtime-environment``
+
+**Documentation**: :ref:`runtime_environment`
+
+**Template**: `Runtime Environment Template <https://github.com/MicroEJ/Tool-Project-Template-Runtime-Environment/tree/1.3.0>`__
 
 **Tasks**:
 
@@ -137,6 +151,10 @@ VEE Port
 --------
 
 **Plugin Name**: ``com.microej.gradle.veeport``
+
+**Documentation**: :ref:`vee-porting-guide`
+
+**Template**: `VEE Port Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.2.0>`__
 
 **Tasks**:
 
