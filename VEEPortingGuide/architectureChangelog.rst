@@ -54,6 +54,7 @@ Simulator
 - Fixed, in Front Panel, synchronization on the widget display accesses and rendering of the widgets other than display.
 - Fixed initialization of an empty Immortal Heap when :ref:`option_immortal_heap` is set to 0.
 - Fix the implementation of `Tracer.isTraceStarted()`_ that could return ``true`` when trace recording is not yet enabled in some cases.
+- Fixed `InputStream.reset()`_ method on a :ref:`Resource <chapter.microej.applicationResources>` that could throw an unexpected `IOException`_ after the end of stream is reached.
 
 SOAR
 ~~~~
@@ -61,6 +62,7 @@ SOAR
 - Increased the maximum number of blocks allowed in a method to prevent the ``[M200] - Maximum number of blocks reached`` error.
 
 .. _Tracer.isTraceStarted() : https://repository.microej.com/javadoc/microej_5.x/apis/ej/trace/Tracer.html#isTraceStarted--
+.. _InputStream.reset() : https://repository.microej.com/javadoc/microej_5.x/apis/java/io/InputStream.html#reset--
 
 .. _changelog-8.3.0:
 
