@@ -93,7 +93,7 @@ This MicroUI BufferedImage implementation can only target images with the displa
 In other words, the application cannot create a MicroUI BufferedImage with a format different than the display format.
 This is the most frequent use case, the only one available with MicroUI before version 3.2.
 
-.. hint:: To select this implementation (to disable the multi formats support), the define ``LLUI_GC_SUPPORTED_FORMATS`` must be unset or lower than ``2``.
+.. hint:: To select this implementation (to disable the multi formats support), the define ``UI_GC_SUPPORTED_FORMATS`` must be unset or lower than ``2``.
 
 This is the default implementation.
 
@@ -105,7 +105,7 @@ Multiple Formats Implementation
 This MicroUI BufferedImage implementation allows the creation of a MicroUI BufferedImage whose format differs from the display format.
 This advanced use case is available only with MicroUI 3.2 or higher.
 
-.. hint:: To select this implementation, the define ``LLUI_GC_SUPPORTED_FORMATS`` must be set to ``2`` or more. Its value defines the available number of *extra* formats the VEE Port features.
+.. hint:: To select this implementation, the define ``UI_GC_SUPPORTED_FORMATS`` must be set to ``2`` or more. Its value defines the available number of *extra* formats the VEE Port features.
 
 The MicroUI C module uses some tables to redirect the image management to the expected :ref:`drawer <section_buffered_image_drawer>`.
 There is one table per Abstraction Layer API not to embed all algorithms (a table and its functions are only embedded in the final binary file if and only if the MicroUI drawing method is called).
@@ -125,7 +125,7 @@ For instance, the following table allows redirecting the drawing ``writePixel`` 
   static const UI_DRAWING_writePixel_t UI_DRAWER_writePixel[] = {
     &UI_DRAWING_writePixel_0,
     &UI_DRAWING_writePixel_1,
-  #if (LLUI_GC_SUPPORTED_FORMATS > 2)
+  #if (UI_GC_SUPPORTED_FORMATS > 2)
     &UI_DRAWING_writePixel_2,
   #endif
   };
@@ -134,7 +134,7 @@ For instance, the following table allows redirecting the drawing ``writePixel`` 
 * ``UI_DRAWING_writePixel_1`` and ``UI_DRAWING_writePixel_2`` are the drawing functions called for the images whose format are respectively identified by the index ``1`` and ``2`` (see *Image Creation* below).
 
 By default, the C module only manages up to 3 formats: the *display* format (index ``0``) and two other formats.
-To add another format, the C module must be customized: look for everywhere the define ``LLUI_GC_SUPPORTED_FORMATS`` is used and add a new cell in the tables.
+To add another format, the C module must be customized: look for everywhere the define ``UI_GC_SUPPORTED_FORMATS`` is used and add a new cell in the tables.
 
 Custom Format
 """""""""""""
@@ -142,7 +142,7 @@ Custom Format
 A MicroUI BufferedImage can have a *custom* format once the Multiple Formats Implementation is selected.
 However, third-party support is required to render this kind of image.
 
-.. hint:: In addition to the ``#define LLUI_GC_SUPPORTED_FORMATS``, the ``#define LLUI_IMAGE_CUSTOM_FORMATS`` must be set. This is the same preprocessor macro used to render custom RAW images: see :ref:`section_buffered_image_drawer_custom`.
+.. hint:: In addition to the ``#define UI_GC_SUPPORTED_FORMATS``, the ``#define UI_FEATURE_IMAGE_CUSTOM_FORMATS`` must be set. This is the same preprocessor macro used to render custom RAW images: see :ref:`section_buffered_image_drawer_custom`.
 
 .. _section_buffered_image_c_creation:
 
@@ -262,7 +262,7 @@ To draw into a buffered image with the display format, the same concepts to draw
 
 The MicroUI C module already implements all ``ui_drawing.h`` functions, and the drawings are redirected to the :ref:`section_drawings_soft`.
 However the function names are ``UI_DRAWING_DEFAULT_drawX()`` and not ``UI_DRAWING_drawX()``.
-Thanks to the define ``LLUI_GC_SUPPORTED_FORMATS``, the function names are redefined with C macros.
+Thanks to the define ``UI_GC_SUPPORTED_FORMATS``, the function names are redefined with C macros.
 This compile-time redirection allows using the same implementation (``UI_DRAWING_DEFAULT_drawX()``) when the multiple formats support is disabled or enabled (when the target is an image with the same format as the display).
 
 The weak implementation of the function ``UI_DRAWING_DEFAULT_drawX()`` calls :ref:`section_drawings_soft` .
@@ -271,7 +271,7 @@ This implementation allows a GPU or a third-party drawer to perform the renderin
 Single Format Implementation
 """"""""""""""""""""""""""""
 
-The define ``LLUI_GC_SUPPORTED_FORMATS`` is unset or lower than ``2``; the compile-time redirection is:
+The define ``UI_GC_SUPPORTED_FORMATS`` is unset or lower than ``2``; the compile-time redirection is:
 
 .. code:: c
 
@@ -390,7 +390,7 @@ See :ref:`section_drawings_cco`.
   static const UI_DRAWING_drawLine_t UI_DRAWER_drawLine[] = {
     &UI_DRAWING_drawLine_0,
     &UI_DRAWING_drawLine_1,
-  #if (LLUI_GC_SUPPORTED_FORMATS > 2)
+  #if (UI_GC_SUPPORTED_FORMATS > 2)
     &UI_DRAWING_drawLine_2,
   #endif
   };

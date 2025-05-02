@@ -93,14 +93,14 @@ The default implementation can only draw images with a :ref:`standard format <se
 In other words, the application cannot draw a custom image.
 This is the most frequent use case, the only one available with MicroUI before version 3.2.
 
-.. attention:: To select this implementation (to disable the custom format support), the define ``LLUI_IMAGE_CUSTOM_FORMATS`` must be unset.
+.. attention:: To select this implementation (to disable the custom format support), the define ``UI_FEATURE_IMAGE_CUSTOM_FORMATS`` must be unset.
 
 The image drawing is similar to ``UI_DRAWING_GPU_drawLine`` (see :ref:`section_drawings_cco`), but, theoretically, it should let the image drawer handle the image instead of calling the software drawer directly.
-However the MicroUI C Module (and the extended MicroUI modules that handle a GPU) takes advantage of the define ``LLUI_IMAGE_CUSTOM_FORMATS``: as it is not set, the C Modules bypass the indirection to the image drawer, and as a consequence, the implementation of the weak function only consists in calling the Graphics Engine's software algorithm. 
+However the MicroUI C Module (and the extended MicroUI modules that handle a GPU) takes advantage of the define ``UI_FEATURE_IMAGE_CUSTOM_FORMATS``: as it is not set, the C Modules bypass the indirection to the image drawer, and as a consequence, the implementation of the weak function only consists in calling the Graphics Engine's software algorithm. 
 This tip reduces the footprint and the CPU usage.
 
-An implementation of a third-party GPU can optionally take advantage of the define ``LLUI_IMAGE_CUSTOM_FORMATS``.
-The following diagrams illustrate the drawing of an image with or without taking advantage of the define ``LLUI_IMAGE_CUSTOM_FORMATS`` (respectively *default* and *optimized* implementation).
+An implementation of a third-party GPU can optionally take advantage of the define ``UI_FEATURE_IMAGE_CUSTOM_FORMATS``.
+The following diagrams illustrate the drawing of an image with or without taking advantage of the define ``UI_FEATURE_IMAGE_CUSTOM_FORMATS`` (respectively *default* and *optimized* implementation).
 
 
 .. tabs::
@@ -251,7 +251,7 @@ These name redirections are helpful when the VEE Port features more than one des
 
 **UI_DRAWING_GPU_drawImage** (to write in the BSP)
 
-Similar to ``UI_DRAWING_GPU_drawLine`` (see :ref:`section_drawings_cco`), but lets the image drawer manage the image instead of calling the software drawer directly (*Default Implementation*) or takes advantage of the define ``LLUI_IMAGE_CUSTOM_FORMATS`` (*Optimized Implementation*):
+Similar to ``UI_DRAWING_GPU_drawLine`` (see :ref:`section_drawings_cco`), but lets the image drawer manage the image instead of calling the software drawer directly (*Default Implementation*) or takes advantage of the define ``UI_FEATURE_IMAGE_CUSTOM_FORMATS`` (*Optimized Implementation*):
 
 
 .. tabs::
@@ -310,14 +310,14 @@ Similar to ``UI_DRAWING_GPU_drawLine`` (see :ref:`section_drawings_cco`), but le
 
    // Use the compiler's 'weak' attribute
    __weak DRAWING_Status UI_DRAWING_DEFAULT_drawImage(MICROUI_GraphicsContext* gc, MICROUI_Image* img, jint regionX, jint regionY, jint width, jint height, jint x, jint y, jint alpha) {
-   #if !defined(LLUI_IMAGE_CUSTOM_FORMATS)
+   #if !defined(UI_FEATURE_IMAGE_CUSTOM_FORMATS)
       return UI_DRAWING_SOFT_drawImage(gc, img, regionX, regionY, width, height, x, y, alpha);
    #else
       return UI_IMAGE_DRAWING_draw(gc, img, regionX, regionY, width, height, x, y, alpha);
    #endif
    }
 
-The define ``LLUI_IMAGE_CUSTOM_FORMATS`` is not set, so the implementation of the weak function only consists in calling the Graphics Engine's software algorithm.
+The define ``UI_FEATURE_IMAGE_CUSTOM_FORMATS`` is not set, so the implementation of the weak function only consists in calling the Graphics Engine's software algorithm.
 
 .. _section_buffered_image_drawer_custom:
 
@@ -327,7 +327,7 @@ Custom Format Support
 In addition to the :ref:`standard formats <section_image_standard_raw>`, this implementation allows drawing images with a :ref:`custom format <section_image_custom_raw>`.
 This advanced use case is available only with MicroUI 3.2 or higher.
 
-.. attention:: To select this implementation, the define ``LLUI_IMAGE_CUSTOM_FORMATS`` must be set (no specific value).
+.. attention:: To select this implementation, the define ``UI_FEATURE_IMAGE_CUSTOM_FORMATS`` must be set (no specific value).
 
 The MicroUI C module uses some tables to redirect the image management to the expected extension.
 There is one table per Image Abstraction Layer API (draw, copy, region, rotate, scale, flip) to embed only the necessary algorithms (a table and its functions are only embedded in the final binary file if and only if the MicroUI drawing method is called).
@@ -451,14 +451,14 @@ Take the same example as the *Standard Formats Only* implementation (draw an ima
 
    // use the compiler's 'weak' attribute
    __weak DRAWING_Status UI_DRAWING_DEFAULT_drawImage(MICROUI_GraphicsContext* gc, MICROUI_Image* img, jint regionX, jint regionY, jint width, jint height, jint x, jint y, jint alpha) {
-   #if !defined(LLUI_IMAGE_CUSTOM_FORMATS)
+   #if !defined(UI_FEATURE_IMAGE_CUSTOM_FORMATS)
       return UI_DRAWING_SOFT_drawImage(gc, img, regionX, regionY, width, height, x, y, alpha);
    #else
       return UI_IMAGE_DRAWING_draw(gc, img, regionX, regionY, width, height, x, y, alpha);
    #endif
    }
 
-The define ``LLUI_IMAGE_CUSTOM_FORMATS`` is set so the implementation of the weak function redirects the image drawing to the image drawer manager (``ui_image_drawing.h``).
+The define ``UI_FEATURE_IMAGE_CUSTOM_FORMATS`` is set so the implementation of the weak function redirects the image drawing to the image drawer manager (``ui_image_drawing.h``).
 
 **UI_IMAGE_DRAWING_draw** (available in MicroUI C Module)
 
