@@ -340,7 +340,7 @@ C Module MicroUI
 **Removed**
 
 - Remove ``microui_event_decoder_conf.h``: import ``ui_configuration.h`` instead.
-- Remove ``ui_dislay_brs_configuration.h``: import ``ui_configuration.h`` instead.
+- Remove ``ui_display_brs_configuration.h``: import ``ui_configuration.h`` instead.
 
 C Module DMA2D
 """"""""""""""

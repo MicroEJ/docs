@@ -102,7 +102,7 @@ Display: Buffer Configuration
 =============================
 
 This configuration consists in declaring the available number of buffers where MicroUI can draw (back buffer) and the strategy to apply to update these buffers after a flush.
-Read and update the configuration file ``ui_display_brs_configuration.h``; more details in the chapter :ref:`section_display`.
+Read and update the configuration file ``ui_configuration.h``; more details in the chapter :ref:`section_display`.
 
 Display: Optional Features
 ==========================

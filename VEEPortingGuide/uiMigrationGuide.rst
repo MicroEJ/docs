@@ -82,7 +82,6 @@ BSP without GPU
     * Add the source file in ``ui/src/ui_font_drawing.c`` to the project.
     * Update ``c`` and ``h`` files and BSP configuration (if any) to use the new preprocessor values:
 
-        * ``UI_FEATURE_EVENT_DECODER`` replaces ``MICROUIEVENTDECODER_ENABLED``
         * ``UI_DEBUG_PRINT`` replaces ``LLUI_DEBUG_TRACE``
         * ``UI_FEATURE_EVENT_DECODER`` replaces ``MICROUIEVENTDECODER_ENABLED``
         * ``UI_EVENTDECODER_EVENTGEN_COMMAND`` replaces ``MICROUIEVENTDECODER_EVENTGEN_COMMAND``
