@@ -28,6 +28,8 @@ A drawer is an engine that has the responsibility to:
 The implementation is not the same between the Embedded side and the Simulation.
 However, the concepts are the same and are described in dedicated chapters.
 
+.. _section_buffered_image_formats:
+
 Formats
 =======
 
@@ -57,6 +59,8 @@ Unlike the display format, the VEE Port must feature a :ref:`drawer <section_buf
 * Image creation: the drawer allows the creation of this kind of buffered image; if the VEE Port does not feature a drawer for a specific format, the MicroUI ``BufferedImage`` cannot be created, and an exception is thrown at runtime.
 * Draw into the image: the drawer can implement all MicroUI drawings or just a reduced set; when a drawing is not implemented, a stub implementation (that does nothing) is used.
 * Draw the image: the image is *standard*, so its rendering is *standard* also; the rules to draw this kind of buffered image are described in the chapter  :ref:`image renderer standard <section_buffered_image_drawer_standard>` (no extra support needed in the VEE Port).
+
+.. _section_buffered_image_format_custom:
 
 Custom
 ------

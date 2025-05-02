@@ -39,6 +39,9 @@ BSP with VGLite
 
 	* Fetch the `VG Pack 1.7.0`_ and the `C Module MicroVG over VGLite 9.0.0`_.
 
+* Set the define ``UI_GC_SUPPORTED_FORMATS`` to ``2`` or more in ``ui_configuration.h``.
+* Set the define ``UI_FEATURE_FONT_CUSTOM_FORMATS`` in ``ui_configuration.h``.
+
 BSP with NemaVG
 """""""""""""""
 
@@ -46,6 +49,9 @@ BSP with NemaVG
 * *[VEE Port configuration project]*
 
 	* Fetch the `VG Pack 1.7.0`_ and the `C Module MicroVG over NemaVG 2.0.0`_.
+
+* Set the define ``UI_GC_SUPPORTED_FORMATS`` to ``2`` or more in ``ui_configuration.h``.
+* Set the define ``UI_FEATURE_FONT_CUSTOM_FORMATS`` in ``ui_configuration.h``.
 
 FreeType
 """"""""

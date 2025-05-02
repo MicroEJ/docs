@@ -81,9 +81,12 @@ This generic C module requires some specific modules:
 Usage
 -----
 
-1. This C module transitively fetches the :ref:`C Module for MicroUI<section_ui_cco>`, follow its implementation rules.
+1. Install the :ref:`C Module for MicroUI<section_ui_cco>` and follow its implementation rules.
 2. Add all C files in the BSP project.
 3. Configure the options in the header file ``vg_configuration.h``.
+4. To optionally use the `ej.microvg.BufferedVectorImage`_, the support of :ref:`custom image format<section_buffered_image_format_custom>` is required. As described :ref:`here<section_buffered_image_c_multi>`, set the define ``UI_GC_SUPPORTED_FORMATS`` to ``2`` or more in ``ui_configuration.h``.
+5. To optionally use a MicroVG vector font `ej.microvg.VectorFont`_ in the MicroUI drawings (for instance `ej.microui.display.Painter.drawString()`_ ), the support of :ref:`custom font format<section_font_drawer_custom_format>` is required. As described :ref:`here<section_font_drawer_custom>`, set the define ``UI_FEATURE_FONT_CUSTOM_FORMATS`` in ``ui_configuration.h``.
+6. Select one of the GPU implementations (see next chapters).
 
 .. _section_vg_c_module_freetype:
 
@@ -189,8 +192,10 @@ This C module is available on the :ref:`developer_repository`: `com.microej.clib
 Usage
 -----
 
-1. This C module transitively fetches the :ref:`C Module for MicroUI for VGLite<section_ui_cco>`, follow its implementation rules.
-2. Add all C files in the BSP project.
+1. Install the :ref:`C Module for MicroUI for VGLite<section_ui_cco>` and follow its implementation rules.
+2. Install the :ref:`C Module for MicroVG<section_vg_c_module_microvg>` and follow its implementation rules.
+3. Add all C files in the BSP project.
+4. Check the port by running the ``vg`` validation as described in the `VEE Port project template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/>`_
 
 .. _com.microej.clibrary.llimpl#microvg-vglite: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-vglite/
 
@@ -222,8 +227,10 @@ This C module is available on the :ref:`developer_repository`: `com.microej.clib
 Usage
 -----
 
-1. This C module transitively fetches the :ref:`C Module for MicroUI for NemaGFX<section_ui_cco>`, follow its implementation rules.
-2. Add all C files in the BSP project.
+1. Install the :ref:`C Module for MicroUI for NemaGFX<section_ui_cco>` and follow its implementation rules.
+2. Install the :ref:`C Module for MicroVG<section_vg_c_module_microvg>` and follow its implementation rules.
+3. Add all C files in the BSP project.
+4. Check the port by running the ``vg`` validation as described in the `VEE Port project template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/>`_
 
 .. _com.microej.clibrary.llimpl#microvg-nema: https://forge.microej.com/ui/native/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-nemavg/
 
@@ -233,6 +240,9 @@ Compatibility
 The compatibility between the components (Packs, C modules, and Libraries) is described in the :ref:`section_vg_releasenotes`.
 
 
+.. _ej.microui.display.Painter.drawString(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Painter.html#drawString-ej.microui.display.GraphicsContext-java.lang.String-ej.microui.display.Font-int-int-
+.. _ej.microvg.BufferedVectorImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/BufferedVectorImage.html
+.. _ej.microvg.VectorFont: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html
 .. _ej.microvg.VectorFont.loadFont(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html#loadFont-java.lang.String-
 .. _ej.microvg.VectorFont.close(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html#close--
 
