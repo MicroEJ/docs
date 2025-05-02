@@ -131,7 +131,7 @@ Usage (to enable the events logger)
 """""""""""""""""""""""""""""""""""
 
 1. Add all C files in the BSP project.
-2. Configure the options in ``microui_event_decoder_conf.h`` (by default, the logger is disabled).
+2. Configure the options in ``ui_configuration.h`` (by default, the logger is disabled).
 
 Buffer Refresh Strategy
 -----------------------
@@ -159,7 +159,7 @@ Usage
 """""
 
 1. Add all C files in the BSP project (whatever the strategy).
-2. Configure the options in ``ui_display_brs_configuration.h``.
+2. Configure the options in ``ui_configuration.h``.
 3. Comment the line ``#error [...]"``.
 4. (optional) Implement ``UI_DISPLAY_BRS_restore()`` (using a GPU, for instance).
 
