@@ -4,7 +4,7 @@
 .. |FPWIDGETSVERSION| replace:: 5.3.1
 .. |MICROUIVERSION| replace:: 3.6.0
 
-.. |VGPACKVERSION| replace:: 1.7.0
+.. |VGPACKVERSION| replace:: 1.7.1
 .. |MICROVGVERSION| replace:: 1.5.0
 
 .. _MicroUI API 3.6.0: https://repository.microej.com/modules/ej/api/microui/3.6.0/
@@ -67,12 +67,15 @@
 .. _C Module RT500 7.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-mimxrt595-evk/7.0.0
 .. _NXP i.MX RT500: https://www.nxp.com/products/processors-and-microcontrollers/arm-microcontrollers/i-mx-rt-crossover-mcus/i-mx-rt500-crossover-mcu-with-arm-cortex-m33-dsp-and-gpu-cores:i.MX-RT500
 
+.. _VG Pack 1.7.1: https://repository.microej.com/modules/com/microej/pack/vg/vg-pack/1.7.1/
 .. _VG Pack 1.7.0: https://repository.microej.com/modules/com/microej/pack/vg/vg-pack/1.7.0/
 .. _VG Pack 1.6.0: https://repository.microej.com/modules/com/microej/pack/vg/vg-pack/1.6.0/
 
+.. _C Module MicroVG over VGLite 9.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-vglite/9.0.1/
 .. _C Module MicroVG over VGLite 9.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-vglite/9.0.0/
 .. _C Module MicroVG over VGLite 8.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-vglite/8.0.1/
 
+.. _C Module MicroVG over NemaVG 2.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-nemavg/2.0.1/
 .. _C Module MicroVG over NemaVG 2.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-nemavg/2.0.0/
 
 ..
