@@ -6,9 +6,9 @@
 Migration Guide
 ===============
 
-.. _section_ui_migrationguide_pack_14.4.1:
+.. _section_ui_migrationguide_pack_14.4.2:
 
-From 14.3.3 to 14.4.1
+From 14.3.3 to 14.4.2
 =====================
 
 MicroUI
@@ -23,6 +23,13 @@ Front Panel
 * To enable all Flush Visualizer functionalities, set the properties ``core.trace.enabled`` and ``core.trace.autostart``  to ``true`` (see :ref:`flush_visualizer_install`). The property ``ej.fp.display.flushVisualizer`` is not used anymore.
 
 .. _Front Panel Widgets 5.3.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/5.3.1/
+
+.. _section_ui_migrationguide_pack_14.4.1:
+
+From 14.3.3 to 14.4.1
+=====================
+
+UI Pack 14.4.1 is deprecated, use the UI Pack 14.4.2 instead.
 
 .. _section_ui_migrationguide_pack_14.3.3:
 
