@@ -797,12 +797,12 @@ Principle
 ---------
 
 The :ref:`MicroUI C module<section_ui_releasenotes_cmodule>` features some Buffer Refresh Strategies.
-To select a strategy, configure the define ``UI_DISPLAY_BRS`` in the configuration file ``ui_display_brs_configuration.h``:
+To select a strategy, configure the define ``UI_FEATURE_BRS`` in the configuration file ``ui_configuration.h``:
 
-   * Set ``UI_DISPLAY_BRS_SINGLE`` to select the strategy :ref:`Single<section_brs_single>`.
-   * Set ``UI_DISPLAY_BRS_PREDRAW`` to select the strategy :ref:`Predraw<section_brs_predraw>`.
-   * Set ``UI_DISPLAY_BRS_LEGACY`` to select the strategy :ref:`Legacy<section_brs_legacy>`.
-   * Unset the define ``UI_DISPLAY_BRS`` to select the strategy :ref:`Default<section_brs_default>` or to implement a :ref:`Custom<section_brs_custom>` strategy.
+   * Set ``UI_FEATURE_BRS_SINGLE`` to select the strategy :ref:`Single<section_brs_single>`.
+   * Set ``UI_FEATURE_BRS_PREDRAW`` to select the strategy :ref:`Predraw<section_brs_predraw>`.
+   * Set ``UI_FEATURE_BRS_LEGACY`` to select the strategy :ref:`Legacy<section_brs_legacy>`.
+   * Unset the define ``UI_FEATURE_BRS`` to select the strategy :ref:`Default<section_brs_default>` or to implement a :ref:`Custom<section_brs_custom>` strategy.
 
 Options
 -------
@@ -810,12 +810,12 @@ Options
 Some strategies require some options to configure them.
 The options (some *defines*) are shared between the strategies:
 
-* ``UI_DISPLAY_BRS_DRAWING_BUFFER_COUNT`` (``ui_display_brs_configuration.h``): configures the available number of back buffers. Used by:
+* ``UI_FEATURE_BRS_DRAWING_BUFFER_COUNT`` (``ui_configuration.h``): configures the available number of back buffers. Used by:
 
   * Predraw: allowed values are ``1``, ``2``, or ``3`` (``1`` is valid, but this strategy is not optimized for this use case). See the comment of the define ``UI_DISPLAY_BRS_PREDRAW`` to increase this value.
   * Single:  allowed value is ``1`` (sanity check).
 
-* ``UI_DISPLAY_BRS_FLUSH_SINGLE_RECTANGLE`` (``ui_display_brs_configuration.h``): configures the number of rectangles that the strategy gives to the implementation of ``LLUI_DISPLAY_IMPL_flush()``. If not set, the number of regions depends on the strategy. If set, only one region is given: the bounding box of all drawing regions. Used by:
+* ``UI_FEATURE_BRS_FLUSH_SINGLE_RECTANGLE`` (``ui_configuration.h``): configures the number of rectangles that the strategy gives to the implementation of ``LLUI_DISPLAY_IMPL_flush()``. If not set, the number of regions depends on the strategy. If set, only one region is given: the bounding box of all drawing regions. Used by:
 
   * Predraw: The list of regions is often useless (the LCD driver just has to swap the back and front buffers); however, this list can be used for the buffer policy :ref:`section_display_transmitswap`. Calculating the bounding box uses takes a bit of memory and time; if the bounding box is not used, it is recommended to refrain from enabling this option.
   * Single: The list of regions can be useful to refresh small parts of the front buffer.
