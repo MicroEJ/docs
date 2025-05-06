@@ -76,7 +76,6 @@ The configuration of the testsuites of a project must be defined inside the foll
                 implementation(project())
                 implementation("ej.api:edc:1.3.5")
                 implementation("ej.library.test:junit:1.11.0")
-                implementation("org.junit.platform:junit-platform-launcher:1.8.2")
             }
          }
       }
@@ -92,6 +91,11 @@ This piece of configuration is the minimum configuration required to define a te
   The second line declares a dependency on the ``edc`` Library. The third line declares a dependency to the JUnit API used 
   to annotate Java Test classes. Finally the fourth line declares a dependency to a required JUnit library.
 
+.. warning::
+
+   With SDK 6 prior to ``1.1.0``, ``junit-platform-launcher`` must be added as a test dependency::
+
+      implementation("org.junit.platform:junit-platform-launcher:1.8.2")
 
 .. _sdk_6_testsuite_vee_configuration:
 
@@ -537,7 +541,6 @@ Therefore:
             dependencies {
                implementation(project())
                implementation("ej.library.test:junit:1.11.0")
-               implementation("org.junit.platform:junit-platform-launcher:1.8.2")
             }
          }
 
@@ -556,7 +559,6 @@ Therefore:
             dependencies {
                implementation(project())
                implementation("ej.library.test:junit:1.11.0")
-               implementation("org.junit.platform:junit-platform-launcher:1.8.2")
             }
 
             targets {
