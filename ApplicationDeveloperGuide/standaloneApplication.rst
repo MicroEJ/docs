@@ -71,7 +71,7 @@ For instance, in command line::
 
     -Dmicroej.option.soar.generate.classnames=false
 
-in ``build.gradle.properties``::
+in ``build.gradle.kts``::
 
    System.setProperty("microej.option.soar.generate.classnames", "false")
 
