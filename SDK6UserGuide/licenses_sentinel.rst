@@ -105,6 +105,8 @@ First, download `Sentinel_RTE_Installation-1.1.0.zip <https://repository.microej
 .. note::
 	To uninstall Sentinel RTE, type ``haspdinst_37102.exe -r`` in the command line. A message is displayed informing you that the Sentinel LDK Run-time Environment was successfully removed.
 
+Then you can continue with the :ref:`Remote Floating License Server <add_remote_floating_license_server>` section.
+
 **Installation for Linux**
 
 .. note::
@@ -130,6 +132,8 @@ Get ``aksusbd_37102-10.12.1.tar.gz`` file and extract it. The installation packa
 
    You can check the service status with the command ``sudo service aksusbd status``
 
+Then you can continue with the :ref:`Remote Floating License Server <add_remote_floating_license_server>` section.
+
 **Installation for MacOS**
 
 - Get ``Sentinel_Runtime_37102.tar`` file
@@ -140,12 +144,17 @@ Get ``aksusbd_37102-10.12.1.tar.gz`` file and extract it. The installation packa
 - Set ``DYLD_LIBRARY_PATH`` variable with command ``export DYLD_LIBRARY_PATH=<your_directory>:$DYLD_LIBRARY_PATH``.
   This modification has to be setup at session startup  (e.g: using ``.bashrc`` file) to ensure that OS is properly configured before running the SDK.
 
+Then you can continue with the :ref:`Remote Floating License Server <add_remote_floating_license_server>` section.
+
+.. _add_remote_floating_license_server:
 
 Add Remote Floating License Server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+**Fron Sentinel Admin Control Center**
+
 - On the developer workstation, open a web browser.
-- Browse http://localhost:1947 to open the Sentinel Admin Control Center (be careful if you work with WSL, localhost may point to Windows and not to your WSL instance). 
+- Browse http://localhost:1947 to open the Sentinel Admin Control Center (if you work with WSL read note below). 
 - Go to :guilabel:`Configuration` > :guilabel:`Access to Remote License Managers`.
 - Check :guilabel:`Allow Access to Remote Licenses`.
 - Uncheck :guilabel:`Broadcast Search for Remote Licenses`.
@@ -161,22 +170,14 @@ Add Remote Floating License Server
 
 .. note::
 
-   On Linux, you can check that the RTE is properly configured by checking the file ``hasp_37102.ini`` in ``/etc/hasplm`` or ``~/.hasplm`` (if you have not installed RTE as root) and check if these lines exist:
+   If you use WSL (Windows Subsystem for Linux) ``localhost`` refers to your Windows localhost and not to your WSL instance. On WSL terminal, launch ``hostname -I`` command, copy the first IP address and use it instead  of ``localhost`` in your browser (e.g. http://172.30.106.171:1947/).
 
-   .. code-block::
-      
-      [REMOTE]
-      broadcastsearch = 0
-      serversearchinterval = 30
-      serveraddr = <license_server_IP>
+**From Command Line**
 
+- On Linux: update or create the file ``hasp_37102.ini`` in ``/etc/hasplm`` or ``~/.hasplm`` (if you have not installed RTE as root). 
+- On Windows: edit ``%CommonProgramFiles(x86)%\Aladdin Shared\HASP\hasplm.ini`` file. 
 
-Running in a container
-~~~~~~~~~~~~~~~~~~~~~~
-
-If you want to configure a CI (Continuous integration) runner you can follow one of these two solutions:
-
-1. Create a Docker image with the RTE installed inside. To add the remote Floating License Server create the file ``hasp_37102.ini`` in ``/etc/hasplm`` or ``~/.hasplm`` (if you have not installed RTE as root) and add these lines:
+Then add to the ``.ini`` file the following lines:
    
    .. code-block::
       
@@ -185,7 +186,17 @@ If you want to configure a CI (Continuous integration) runner you can follow one
       serversearchinterval = 30
       serveraddr = <license_server_IP>
 
-2. Or install and configure the RTE on the host and run the Docker container with these options:
+- Restart the service.
+
+
+Running in a container
+~~~~~~~~~~~~~~~~~~~~~~
+
+If you want to configure a CI (Continuous integration) runner you can follow one of these two solutions:
+
+- Either create a Docker image with the RTE installed inside, see :ref:`Installation for Linux <setup_sentinel_developer_workstation>` section.
+
+- Or install and configure the RTE on the host and run the Docker container with these options:
 
    .. code-block::
       
@@ -238,7 +249,7 @@ The following error occurred when there is no Sentinel license available. Go to 
    :align: center
    :scale: 75%
 
-Make sure you correctly configured the access to the Sentinel Floating License Server. Please refer to :ref:`setup_sentinel_developer_workstation`.
+Make sure you correctly configured the access to the Sentinel Floating License Server. Please refer to :ref:`add_remote_floating_license_server`.
 
 No Administrator Privileges on Developer Workstation
 """"""""""""""""""""""""""""""""""""""""""""""""""""
