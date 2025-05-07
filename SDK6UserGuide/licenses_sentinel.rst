@@ -105,7 +105,7 @@ First, download `Sentinel_RTE_Installation-1.1.0.zip <https://repository.microej
 .. note::
 	To uninstall Sentinel RTE, type ``haspdinst_37102.exe -r`` in the command line. A message is displayed informing you that the Sentinel LDK Run-time Environment was successfully removed.
 
-Then you can continue with the :ref:`Remote Floating License Server <add_remonte_floating_license_server>` section.
+Then you can continue with the :ref:`Remote Floating License Server <add_remote_floating_license_server>` section.
 
 **Installation for Linux**
 
@@ -132,7 +132,7 @@ Get ``aksusbd_37102-10.12.1.tar.gz`` file and extract it. The installation packa
 
    You can check the service status with the command ``sudo service aksusbd status``
 
-Then you can continue with the :ref:`Remote Floating License Server <add_remonte_floating_license_server>` section.
+Then you can continue with the :ref:`Remote Floating License Server <add_remote_floating_license_server>` section.
 
 **Installation for MacOS**
 
@@ -144,7 +144,7 @@ Then you can continue with the :ref:`Remote Floating License Server <add_remonte
 - Set ``DYLD_LIBRARY_PATH`` variable with command ``export DYLD_LIBRARY_PATH=<your_directory>:$DYLD_LIBRARY_PATH``.
   This modification has to be setup at session startup  (e.g: using ``.bashrc`` file) to ensure that OS is properly configured before running the SDK.
 
-Then you can continue with the :ref:`Remote Floating License Server <add_remonte_floating_license_server>` section.
+Then you can continue with the :ref:`Remote Floating License Server <add_remote_floating_license_server>` section.
 
 .. _add_remote_floating_license_server:
 
@@ -249,7 +249,7 @@ The following error occurred when there is no Sentinel license available. Go to 
    :align: center
    :scale: 75%
 
-Make sure you correctly configured the access to the Sentinel Floating License Server. Please refer to :ref:`add_remonte_floating_license_server`.
+Make sure you correctly configured the access to the Sentinel Floating License Server. Please refer to :ref:`add_remote_floating_license_server`.
 
 No Administrator Privileges on Developer Workstation
 """"""""""""""""""""""""""""""""""""""""""""""""""""
