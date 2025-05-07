@@ -191,25 +191,72 @@ which means that the tests are also executed when launching one of these tasks.
 
       In order to execute the testsuite from IntelliJ IDEA or Android Studio, double-click on the task in the Gradle tasks view:
 
-      .. image:: images/intellij-test-gradle-project.png
+      .. figure:: images/intellij-test-gradle-project.png
          :width: 30%
          :align: center
+
+         Run Gradle ``test`` task from IntelliJ IDEA / Android Studio
 
    .. tab:: Eclipse
 
       In order to execute the testsuite from Eclipse, double-click on the task in the Gradle tasks view:
 
-      .. image:: images/eclipse-test-gradle-project.png
-         :width: 50%
+      .. figure:: images/eclipse-test-gradle-project.png
+         :width: 30%
          :align: center
+
+         Run Gradle ``test`` task from Eclipse
+
+
+      .. warning::
+
+         By right-clicking on a test class file, the menu proposes :guilabel:`Gradle Test` and :guilabel:`JUnit Test` in the :guilabel:`Run As` entry.
+
+         .. figure:: images/eclipse_run_as_gradle_test.png
+            :width: 40%
+            :align: center
+
+            Run test as Gradle test in a class right-click menu
+
+         Always use the :guilabel:`Run` > :guilabel:`Gradle Test` entry.
 
    .. tab:: Visual Studio Code
 
       In order to execute the testsuite from VS Code, double-click on the task in the Gradle tasks view:
 
-      .. image:: images/vscode-test-gradle-project.png
+      .. figure:: images/vscode-test-gradle-project.png
          :width: 25%
          :align: center
+
+         Run Gradle ``test`` task from Visual Studio Code
+
+
+      .. warning::
+
+         Test start buttons (represented as green triangle) may appear on the left side of class and method definitions.
+         
+         .. figure:: images/vscode_run_test.png
+            :width: 30%
+            :align: center
+
+            Green triangles are test start buttons
+
+         Running tests from these buttons may fail because they do not use the Gradle Runner by default. To run a test with Gradle, right-click on the green triangle
+         and select :guilabel:`Execute Using Profile...`
+
+         .. figure:: images/vscode_execute_using_profile.png
+            :width: 30%
+            :align: center
+
+            Right-click menu on test start buttons
+
+         and then select :guilabel:`Delegate Test to Gradle`.
+
+         .. figure:: images/vscode_delegate_test_to_gradle.png
+            :width: 30%
+            :align: center
+
+            Run test class or test method with Gradle
 
    .. tab:: Command Line Interface
 
