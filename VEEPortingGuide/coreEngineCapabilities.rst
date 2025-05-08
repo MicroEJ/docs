@@ -1,12 +1,45 @@
+.. _core_engine_capabilities:
+
+========================
+Core Engine Capabilities
+========================
+
+The Core Engine defines 3 exclusive capabilities:
+
+-  Mono-Sandbox: capability to produce a monolithic Executable
+   (default one).
+
+-  Multi-Sandbox: capability to produce a extensible Executable on
+   which new applications can be dynamically installed. See section
+   :ref:`multisandbox`.
+
+-  Tiny-Sandbox: capability to produce a compacted Executable
+   (optimized for size). See section :ref:`tinysandbox`.
+
+All the Core Engine capabilities may not be available on all
+architectures. Refer to section :ref:`appendix_matrixcapabilities`
+for more details.
+
+To select the Core Engine capability, define the property ``com.microej.runtime.capability``
+in the ``configuration.properties`` file (SDK 6) or in the ``mjvm/mjvm.properties`` file (SDK 5) 
+of the VEE Port project, with one of the following values:
+
+- ``mono`` for Mono-Sandbox (default value)
+
+- ``multi`` for Multi-Sandbox
+
+- ``tiny`` for Tiny-Sandbox
+
+If the property ``com.microej.runtime.capability`` is not defined,
+the Mono-Sandbox Core Engine capability is used.
+
 .. _multisandbox:
 
-=============
 Multi-Sandbox
 =============
 
-
 Principle
-=========
+---------
 
 The Multi-Sandbox capability of the Core Engine allows a
 main application (called Standalone Application) to install and execute
@@ -17,7 +50,7 @@ Standalone Application generated on a Multi-Sandbox-enabled
 VEE Port. A Feature is a Sandboxed Application generated against a specific Kernel.
 
 Functional Description
-======================
+----------------------
 
 The Multi-Sandbox process extends the overall process described in
 :ref:`the overview of the platform process <fig_overall-process>`.
@@ -36,21 +69,21 @@ The binary file produced (the ``.fo`` file) can be installed on the Kernel on wh
 For more details on the build flow, please refer to :ref:`Multi-Sandbox Kernel link <kernel_link>` and :ref:`Sandboxed Application link <application_link>` sections.
 
 Memory Considerations
-=====================
+---------------------
 
 Multi-Sandbox memory overhead of Core Engine runtime
 elements are described in :ref:`Memory Considerations table <memory-considerations>`.
 
 
 Dependencies
-============
+------------
 
 -  ``LLKERNEL_impl.h`` implementation (see :ref:`feature_memory_installation` section).
 
 .. _multisandbox_installation:
 
 Installation
-============
+------------
 
 Multi-Sandbox is an option disabled by default. 
 To enable the Multi-Sandbox capability of the Core Engine, set the property ``com.microej.runtime.capability`` to ``multi`` 
@@ -78,7 +111,7 @@ in the VEE Port project:
 
 
 Use
-===
+---
 
 The `KF API Module`_ must be added to the build file of the 
 Application project to use :ref:`[KF] <kf_specification>` library.
@@ -110,10 +143,10 @@ This library provides a set of options. Refer to the chapter
 .. _feature_memory_installation:
 
 Feature Installation
-====================
+--------------------
 
 Introduction
-------------
+~~~~~~~~~~~~
 
 Feature installation is triggered by a call to the `Kernel.install(InputStream)`_ method. It consists of the following steps:
 
@@ -141,7 +174,7 @@ Only a small amount of RAM is required.
 The ``LLKERNEL_impl.h`` Abstraction Layer interface provides Low Level APIs for allocating and transferring Feature content in different memory areas, including ROM.
 
 Installation Flow
------------------
+~~~~~~~~~~~~~~~~~
 
 The RO Data (Application Resources) is directly transferred to the target location.
 The Code is divided into chunks. Each chunk is temporarily copied to RAM to be relocated. Then it is transferred to the target location.
@@ -185,7 +218,7 @@ The detailed uninstallation flow is described in the following sequence diagram:
 .. _feature_persistency:
 
 Feature Persistency
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 Feature Persistency is the ability of the Core Engine to gather installed Features from prior executions of the Kernel upon start up.
 This means that the Kernel will boot with a set of available Features that were already installed.
@@ -206,12 +239,12 @@ To ensure that the Features remain available even after the device restarts, you
 
 
 Advanced Options
-----------------
+~~~~~~~~~~~~~~~~
 
 .. _feature_code_chunk_size:
 
 Code Chunk Size
-~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^
 
 Feature ``.fo`` Code section is divided into chunks that are temporary copied to RAM to be relocated. 
 The Code chunk size can be configured with the following option:
@@ -225,7 +258,7 @@ A small number will reduce the RAM consumption but will increase the ``.fo`` siz
 .. _inputstream_transfer_buffer_size:
 
 InputStream Transfer Buffer Size
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When calling the `Kernel.install(InputStream)`_ method, the Feature ``.fo`` bytes are read from the InputStream using a temporary byte array allocated in the Java Heap. 
 The size of this array can be configured with the following option:
@@ -235,7 +268,7 @@ The size of this array can be configured with the following option:
 **Default Value**: ``512`` (bytes)
 
 Relocation Process Yield
-~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 When a Feature file has a large amount of code, it may appear that the Core Engine blocks while applying relocations during the Feature installation.
 The number of relocations to apply in batch can be configured with the following option:
@@ -251,7 +284,7 @@ A small number will give more smooth execution for threads but a slowest install
 
 
 Determining the Amount of Required Memory
------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The amount of memory required for installing a ``.fo`` file is determined by analyzing the sizes of the ELF sections.
 
@@ -314,7 +347,7 @@ The following table summarizes the sections and their content:
 .. _feature_inplace_installation:
 
 In-Place Installation
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 .. note:: 
 
@@ -356,7 +389,7 @@ The In-Place uninstallation flow is described in the following sequence diagram:
 .. _multisandbox_ram_control:
 
 RAM Control
-===========
+-----------
 
 .. note::
 
@@ -387,9 +420,57 @@ This is necessary for the automatic release of native resources when the Core En
 Foundation Libraries can no longer register native resources using the deprecated class ``ej.lang.ResourceManager``. 
 Attempting to do so will result in an exception being thrown.
 
-..
-   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
-   for read and redistribute. Except if otherwise stated, modification 
-   is subject to MicroEJ Corp prior approval.
-   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
-   copyrights are the property of their respective owners.
+.. _tinysandbox:
+
+Tiny-Sandbox
+============
+
+
+Principle
+---------
+
+The Tiny-Sandbox capability of the Core Engine allows to
+build a Standalone Application optimized for size. This capability is suitable
+for environments requiring a small memory footprint.
+
+.. _tinysandbox_installation:
+
+Installation
+------------
+
+Tiny-Sandbox is an option disabled by default. 
+To enable the Tiny-Sandbox capability of the Core Engine, set the property ``com.microej.runtime.capability`` to ``tiny`` 
+in the ``configuration.properties`` file (SDK 6) or in the ``mjvm/mjvm.properties`` file (SDK 5) of the VEE Port project.
+See the example below:
+
+.. code-block::
+
+  com.microej.runtime.capability=tiny
+
+
+.. note::
+
+   In SDK 5, before :ref:`Architecture 8.1.0 <changelog-8.1.0>`, enabling the Tiny-Sandbox capability
+   was done by setting the property ``mjvm.standalone.configuration`` in the ``configuration.xml`` file as follows:
+
+   .. code-block::
+   
+      <property name="mjvm.standalone.configuration" value="tiny"/>
+
+   See section :ref:`platformCustomization` for more info on the ``configuration.xml`` file.
+
+
+Limitations
+-----------
+
+In addition to general :ref:`limitations`:
+
+-  The maximum application code size (classes and methods) cannot exceed
+   ``256KB``. This does not include application resources, immutable
+   objects and internal strings which are not limited.
+
+-  The option :guilabel:`SOAR` > :guilabel:`Debug` > :guilabel:`Embed all type names` has no effect.
+   Only the fully qualified names of types marked as required types are
+   embedded.
+
+-  Incompatible with dynamic linkers enabling Address Space Layout Randomization (ASLR).
