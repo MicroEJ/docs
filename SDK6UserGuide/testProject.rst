@@ -281,11 +281,17 @@ Other methods are available for test filtering, such as ``excludeTestsMatching``
 Refer to the `TestFilter <https://docs.gradle.org/current/javadoc/org/gradle/api/tasks/testing/TestFilter.html>`__
 documentation for the complete list of available filtering methods.
 
-As mentionned earlier, Gradle allows to filter the tests from the command line directly, thanks to the ``--tests`` option::
+Gradle also allows to filter the tests from the command line directly, thanks to the ``--tests`` option.
+For example, to execute only the tests from the class ``MyTestClass``, run this command::
 
    ./gradlew test --tests MyTestClass
 
-This can be convenient to quickly execute one test for example, without requiring a change in the build script file.
+This can be convenient to quickly execute one test, without requiring a change in the build script file.
+
+.. note::
+   The test class referenced by the ``--tests`` option is executed only if it is not excluded in the test 
+   configuration in the ``build.gradle.kts`` file. Therefore, make sure to adpat your test configuration 
+   when using this option.
 
 Refer to the Gradle `Test filtering <https://docs.gradle.org/current/userguide/java_testing.html#test_filtering>`__
 documentation for more details on how to filter the tests and on the available patterns.
