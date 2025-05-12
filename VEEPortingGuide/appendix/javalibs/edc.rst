@@ -40,9 +40,9 @@ is issued, where ``<messageId>`` meaning is defined in the following table:
    * - -3
      - Maximum stack size for a thread has been reached. :ref:`Increase the maximum size of the thread stack parameter <option_maximum_number_of_stack_blocks_per_thread>`.
    * - -2
-     - No Java stack block could be allocated with the given size. Increase the Java stack block size.
+     - No stack block could be allocated with the given size. Increase the stack block size.
    * - -1
-     - The Java stack space is full. Increase the Java stack size or the number of Java stack blocks.
+     - The stack space is full. Increase the stack size or the number of stack blocks.
    * - 1
      - A closed stream is being written/read.
    * - 2 

@@ -612,7 +612,7 @@ Core Engine
 -  Added automatic heap consumption fing when option ``com.microej.runtime.debug.heap.monitoring.enabled`` is set to ``true``
 -  Fixed some parts of ``LLMJVM_checkIntegrity()`` code were embedded even if not called
 -  [Multi] - Fixed potential crash during the call of
-   ``LLMJVM_checkIntegrity()`` when analyzing a corrupted Java stack (make
+   ``LLMJVM_checkIntegrity()`` when analyzing a corrupted stack (make
    this function robust to object references with an invalid memory
    address)
 
