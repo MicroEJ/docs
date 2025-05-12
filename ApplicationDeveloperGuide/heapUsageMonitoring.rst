@@ -7,7 +7,7 @@ Introduction
 ------------
 
 When building a :ref:`standalone_application`, the Managed heap size must be specified
-as an :ref:`Application Option <application_options>` (see :ref:`option_java_heap`).
+as an :ref:`Application Option <application_options>` (see :ref:`option_managed_heap`).
 The value to set in this option depends on the maximum heap usage, and the 
 developer can estimate it by running the application.
 
@@ -22,7 +22,7 @@ Here are the descriptions of the different notions related to heap usage:
 -  **Heap Size:** current size of the heap.
 
 -  **Maximum Heap Size:** maximum size of the heap. The heap size cannot exceed 
-   this value. See :ref:`option_java_heap`.
+   this value. See :ref:`option_managed_heap`.
 
 -  **Heap Usage:** the amount of the heap currently being used to store alive 
    objects.
