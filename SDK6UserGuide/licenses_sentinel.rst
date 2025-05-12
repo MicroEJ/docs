@@ -103,8 +103,8 @@ First, download `Sentinel_RTE_Installation-1.1.0.zip <https://repository.microej
   Otherwise drop the ``hasp_windows_x64_37102.dll`` file beside ``java.exe`` executable of the Java Development Kit (JDK) used to run the SDK.
 
 .. note::
-   To restart RTE, go to Services window and restart ``Sentinel LDK License Manager`` service.
-	To uninstall Sentinel RTE, type ``haspdinst_37102.exe -r`` in the command line. A message is displayed informing you that the Sentinel LDK Run-time Environment was successfully removed.
+   
+   To restart RTE, go to Services window and restart ``Sentinel LDK License Manager`` service. To uninstall Sentinel RTE, type ``haspdinst_37102.exe -r`` in the command line. A message is displayed informing you that the Sentinel LDK Run-time Environment was successfully removed.
 
 Then you can continue with the :ref:`Remote Floating License Server <add_remote_floating_license_server>` section.
 
@@ -175,7 +175,7 @@ Add Remote Floating License Server
 
 .. note::
 
-   If you use WSL (Windows Subsystem for Linux) ``localhost`` refers to your Windows localhost and not to your WSL instance. First, on WSL, create ``/etc/hasplm/hasplm.ini`` file and add  ``accremote = 1 `` line to it. Then on WSL terminal, launch ``hostname -I`` command, copy the first IP address and use it instead  of ``localhost`` in your browser (e.g. http://172.30.106.171:1947/).
+   If you use WSL (Windows Subsystem for Linux) ``localhost`` refers to your Windows localhost and not to your WSL instance. First, on WSL, create ``/etc/hasplm/hasplm.ini`` file and add  ``accremote = 1`` line to it. Then on WSL terminal, launch ``hostname -I`` command, copy the first IP address and use it instead  of ``localhost`` in your browser (e.g. http://172.30.106.171:1947/).
 
 **From Command Line**
 
