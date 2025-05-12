@@ -175,11 +175,11 @@ native function.
 
    Java and C shared objects
 
-Managed world to C World
-=====================
+Managed World to C World
+========================
 
-C Function Call From Managed world 
--------------------------------
+C Function Call From Managed World 
+----------------------------------
 
 The SNI specification allows the invocation of methods from Java to C: these
 methods must be declared ``static`` ``native`` methods, and the parameters must be
