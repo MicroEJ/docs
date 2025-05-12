@@ -1281,7 +1281,7 @@ Front Panel
 **Fixed**
 
 * Fix the "display context switch" and the loading of feature's font.
-* Fix OOM (Java heap space) when opening/closing several hundreds of big RAW Images.
+* Fix OOM (Managed heap space) when opening/closing several hundreds of big RAW Images.
 * Fix the synchronization with the Graphics Engine when calling `GraphicsContext.setColor()`_ or `GraphicsContext.enableEllipsis()`_.
 
 .. _GraphicsContext.setColor(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html#setColor-int-
@@ -1388,7 +1388,7 @@ Front Panel
 **Fixed**
 
 * Fix OutputFormat A8 when loading an image (path or stream) or converting a RAW image.
-* Fix OOM (Java heap space) when opening/closing several hundreds of MicroUI Images.
+* Fix OOM (Managed heap space) when opening/closing several hundreds of MicroUI Images.
 * Simulates the image data alignment.
 
 LLAPIs
@@ -1555,7 +1555,7 @@ MicroUI Implementation
 
 **Fixed**
 
-* Reduce Java heap usage.
+* Reduce Managed heap usage.
 * Fix empty images heap.
 * Draw image algorithm does not respect image stride in certain circumstances.
 * Fix flush limits of `drawThickFadedLine`_, `drawThickEllipse`_ and `drawThickFadedEllipse`_.
@@ -1819,7 +1819,7 @@ MicroUI Implementation
 
 **Fixed**
 
-* Obsolete references on Java heap are used (since MicroEJ UI Pack 12.0.0).
+* Obsolete references on Managed heap are used (since MicroEJ UI Pack 12.0.0).
 
 .. _section_ui_changelog_12_1_3:
 

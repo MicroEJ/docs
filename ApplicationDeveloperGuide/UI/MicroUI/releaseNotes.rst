@@ -55,7 +55,7 @@ From 10.x to 12.x
 =================
 
 * In MicroEJ application launcher > ``Configuration`` tab > :ref:`MicroUI <section_ui_options_microui>`: check ``Use Flying Images`` when the application is using the flying images (property ``com.microej.library.microui.flyingimage.enabled``).
-* In MicroEJ application launcher, increase the :ref:`Java heap <option_java_heap>`: it now contains MicroUI images metadata (size, format, clip etc.). The iceatea heap has been automatically decreased.
+* In MicroEJ application launcher, increase the :ref:`Managed heap <option_java_heap>`: it now contains MicroUI images metadata (size, format, clip etc.). The icetea heap has been automatically decreased.
 
 From 9.x to 10.x
 ================

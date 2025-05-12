@@ -46,11 +46,11 @@ Memory Management
 The Java management of memory may affect UI performances:
 
 - Too much memory allocation/deallocation for UI resources (Images, Fonts).
-- Too much object instantiation will lead to a big Java heap size. In some use cases, the garbage collection may lead to the UI slowing down.
+- Too much object instantiation will lead to a big Managed heap size. In some use cases, the garbage collection may lead to the UI slowing down.
 
 To avoid those pitfalls:
 
-- Calibrate the memories (Java heap, Images heap, etc.).
+- Calibrate the memories (Managed heap, Images heap, etc.).
 - Uses memory debugging tools:
 
   - :ref:`Optimize Memory Footprint<tutorial_optimize_memory_footprint>` training.
