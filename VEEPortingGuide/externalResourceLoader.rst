@@ -10,7 +10,7 @@ Functional Description
 
 The External Resources Loader is an optional module. When not installed,
 only :ref:`internal resources<chapter.microej.applicationResources>` are available for the MicroEJ Application. When
-the External Resources Loader is installed, the MicroEJ Core Engine
+the External Resources Loader is installed, the Core Engine
 tries first to retrieve the expected resource from its available list of
 internal resources, before asking the BSP to load it (using
 ``LLEXT_RES_impl.h`` functions).

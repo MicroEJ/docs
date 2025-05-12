@@ -120,7 +120,7 @@ Here is a short example of how to use this library to log the entry/exit of the 
    
    The `Tracer`_ object records the entry/exit of method ``switchState`` with event ID ``0``.
    
-#. Finally, to enable the MicroEJ Core Engine trace system, set the ``core.trace.enabled`` :ref:`option <application_options>` to ``true``.
+#. Finally, to enable the Core Engine trace system, set the ``core.trace.enabled`` :ref:`option <application_options>` to ``true``.
 
 This produces the following output:
 

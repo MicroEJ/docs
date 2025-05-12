@@ -43,10 +43,10 @@ Event Recording
 
 Events are recorded if and only if:
 
-- the MicroEJ Core Engine trace system is enabled,
+- the Core Engine trace system is enabled,
 - and trace recording is started.
 
-To enable the MicroEJ Core Engine trace system, set the :ref:`Application Option <application_options>` named ``core.trace.enabled`` to ``true`` (see also :ref:`launch configuration <architecture_options_group_trace>`).
+To enable the Core Engine trace system, set the :ref:`Application Option <application_options>` named ``core.trace.enabled`` to ``true`` (see also :ref:`launch configuration <architecture_options_group_trace>`).
 
 Then, multiple ways are available to start and stop the trace recording:
   
@@ -170,7 +170,7 @@ Advanced Event Tracing
 Method invocation can be :ref:`profiled <Advanced-Event-Tracing>`.
 
 .. note::
-   This feature requires Architecture version ``7.17.0`` or higher and is only available on MicroEJ Core Engine, not on Simulator.
+   This feature requires Architecture version ``7.17.0`` or higher and is only available on the Core Engine, not on Simulator.
 
 MicroEJ Corp. provides an implementation on Linux targets to profile an Application and generate a flamegraph for the `Trace Compass <https://www.eclipse.org/tracecompass/>`_ tool.
 

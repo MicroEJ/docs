@@ -103,7 +103,7 @@ If applicable, configure the MPU should to protect the application.
   For example, FreeRTOS includes FreeRTOS-MPU https://www.freertos.org/Security/04-FreeRTOS-MPU-memory-protection-unit.
 
 * Configure the MPU to configure the access to the JVM heap and stack to prevent any other native threads from altering this area.
-  Refer to :ref:`this section<core_engine_link>` for the list of section names defined by the MicroEJ Core Engine.
+  Refer to :ref:`this section<core_engine_link>` for the list of section names defined by the Core Engine.
 
 Memory Corruption
 -----------------
