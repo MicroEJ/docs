@@ -85,7 +85,7 @@ Category: Memory
 Group: Heaps
 ^^^^^^^^^^^^
 
-.. _option_java_heap:
+.. _option_managed_heap:
 
 Option(text): Managed heap size (in bytes)
 """"""""""""""""""""""""""""""""""""""""""
