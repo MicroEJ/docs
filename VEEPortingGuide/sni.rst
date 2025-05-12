@@ -8,14 +8,14 @@ Simple Native Interface Specification (SNI)
 Introduction
 ============
 
-The Simple Native Interface specification (SNI) defines how to cross the barrier between the Java world and the
+The Simple Native Interface specification (SNI) defines how to cross the barrier between the Managed world and the
 native world:
 
 -  Call a C function from Java.
 
 -  Pass parameters to the C function.
 
--  Return a value from the C world to the Java world.
+-  Return a value from the C world to the Managed world.
 
 -  Manipulate (read & write) shared memory both in Java and C: the
    immortal space.
@@ -110,7 +110,7 @@ When a Java native method executes, it executes its C counterpart
 function. This is done using the CPU budget of the task that has
 started the Core Engine. While the C function executes, no other Java methods executes 
 and the Core Engine cannot schedule other threads.
-The Java world “waits” for the C function to finish. 
+The Managed world “waits” for the C function to finish. 
 
 The following illustration shows the execution a the Core Engine task. 
 ``Green thread 3`` has called a native method that executes in C. 
@@ -175,10 +175,10 @@ native function.
 
    Java and C shared objects
 
-Java World to C World
+Managed world to C World
 =====================
 
-C Function Call From Java world 
+C Function Call From Managed world 
 -------------------------------
 
 The SNI specification allows the invocation of methods from Java to C: these
@@ -451,7 +451,7 @@ The Core Engine needs first to be initialized, and
 then started. It is the programmer responsibility to create a task
 and to start the Core Engine within this task.
 
-SNI defines C functions to create a Java world, to start it and to free it:
+SNI defines C functions to create a Managed world, to start it and to free it:
 
 -  ``void SNI_createVM(void)``: creates and initializes the Core Engine context.
 -  ``int32_t SNI_startVM(void,int32_t,char)``: starts the Core Engine. 

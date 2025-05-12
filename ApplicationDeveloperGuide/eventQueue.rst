@@ -8,7 +8,7 @@ Event Queue
 Principle
 =========
 
-The Event Queue Foundation Library provides an asynchronous communication interface between the native world and the Java world based on events.
+The Event Queue Foundation Library provides an asynchronous communication interface between the native world and the Managed world based on events.
 
 
 Functional Description
@@ -18,7 +18,7 @@ Functional Description
 Overview
 --------
 
-The Event Queue Foundation Library allows users to send events from the native world to the Java world. It is composed of a Java API that provides mechanisms to register specific event notifications and a C API that allows someone to send events in the queue.
+The Event Queue Foundation Library allows users to send events from the native world to the Managed world. It is composed of a Java API that provides mechanisms to register specific event notifications and a C API that allows someone to send events in the queue.
 
 .. figure:: images/event-queue-overview.png
    :alt: Event Queue Overview
@@ -101,7 +101,7 @@ It contains two methods that are used to handle standard and extended events.
 Before registering your listener, you must get a valid unique type using the ``getNewType()`` method from the ``EventQueue`` class.
 Then you can register your listener using the ``registerListener(EventQueueListener listener, int type)`` method from the ``EventQueue`` class.
 
-The unique type your listener uses could be stored on the Java world and passed/stored to the C world.
+The unique type your listener uses could be stored on the Managed world and passed/stored to the C world.
 One way to do it is to create a native method that sends the event type to the C world during the initialization phase.
 
 To set the default listener, you must use ``EventQueue.setDefaultListener(EventQueueListener listener)``.
@@ -164,7 +164,7 @@ For example:
 
 .. code-block:: c
 
-   // Assuming that event_type has been passed from the Java world through a native method after registering your listener.
+   // Assuming that event_type has been passed from the Managed world through a native method after registering your listener.
    int type = event_type;
    int data = 12;
 
@@ -182,7 +182,7 @@ For example:
 
    EventQueue eventQueue = EventQueue.getInstance();
 
-   // Assuming that eventType has been stored in the Java world when you registered the listener.
+   // Assuming that eventType has been stored in the Managed world when you registered the listener.
    int type = eventType;
    int data = 12;
 
@@ -288,7 +288,7 @@ For example:
       int z;
    }
 
-   // Assuming that event_type has been passed from the Java world through a native method after registering your listener.
+   // Assuming that event_type has been passed from the Managed world through a native method after registering your listener.
    int type = event_type;
 
    struct accelerometer_data data;
@@ -310,7 +310,7 @@ For example:
 
    EventQueue eventQueue = EventQueue.getInstance();
 
-   // Assuming that eventType has been stored in the Java world when you registered the listener.
+   // Assuming that eventType has been stored in the Managed world when you registered the listener.
    int type = eventType;
 
    // Array of 3 integers. Each integer is stored in 4 bytes.

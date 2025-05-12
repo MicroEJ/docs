@@ -20,7 +20,7 @@ Functional Description
 ======================
 
 The Input module implements the MicroUI ``int``-based event generators' framework.
-``LLUI_INPUT`` specifies the Abstraction Layer APIs that send events to the Java world.
+``LLUI_INPUT`` specifies the Abstraction Layer APIs that send events to the Managed world.
 
 Drivers for input devices must generate events that are sent, via a MicroUI `Event Generator`_, to the application.
 An event generator accepts notifications from devices, and generates an event in a standard format that can be handled by the application.

@@ -63,13 +63,13 @@ OS/RTOS scheduler.
 The Core Engine defines a multi-threaded environment without relying on
 any native OS capabilities.
 
-Therefore, the whole Java world runs in one single task, within
+Therefore, the whole Managed world runs in one single task, within
 which the Core Engine re-creates a layer of (green) threads.
 One immediate advantage is that the Java-world CPU consumption is fully
 controlled by the task it is running in, allowing embedded
 engineers to easily arbitrate between the different parts of their
 application. In particular in an open-to-third-parties framework, the
-maximum CPU time given to the Java world is fully under control at no
+maximum CPU time given to the Managed world is fully under control at no
 risk, whatever the number and/or the activities of the Java threads.
 
 The next illustration shows 4 tasks, with the last one running the Core Engine with 2 threads. 
