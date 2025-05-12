@@ -70,7 +70,7 @@ controlled by the task it is running in, allowing embedded
 engineers to easily arbitrate between the different parts of their
 application. In particular in an open-to-third-parties framework, the
 maximum CPU time given to the Managed world is fully under control at no
-risk, whatever the number and/or the activities of the Java threads.
+risk, whatever the number and/or the activities of the threads.
 
 The next illustration shows 4 tasks, with the last one running the Core Engine with 2 threads. 
 When the last task is scheduled by the underlying OS, the Core Engine executes and schedules the threads.
@@ -587,7 +587,7 @@ The internal structures of the Core Engine that can be altered legitimately by a
 The following internal structures may be modified without affecting the checksum:
 
 - basetype fields in Java objects or content of Java arrays of base type,
-- internal structures modified by a ``LLMJVM`` function call (e.g., set a pending Java exception, suspend or resume the Java thread, register a resource, ...).
+- internal structures modified by a ``LLMJVM`` function call (e.g., set a pending Java exception, suspend or resume the thread, register a resource, ...).
 
 This function affects the performances and should only be used for debug purpose.
 A typical use of this API is to verify that a native implementation does not corrupt the internal structures:

@@ -35,7 +35,7 @@ The following sections explain how to instrument the code to locate the issue wh
 The steps followed are:
 
 1. Check if the RTOS properly schedules the Core Engine task.
-2. Check if the Core Engine properly schedules all Java threads.
+2. Check if the Core Engine properly schedules all threads.
 3. Check if the Core Engine properly schedules the MicroUI thread.
 4. Check if Input Events are properly processed.
 
@@ -77,7 +77,7 @@ on standard output, blink an LED, use SystemView, etc.).
 Set the heartbeat task priority to the same priority as the Core Engine task. 
 
 **(2)** In this configuration, if the heartbeat is still running when the UI freeze occurs, we can go a step 
-further and check whether the Core Engine is still scheduling Java threads or not. 
+further and check whether the Core Engine is still scheduling threads or not. 
 See next section :ref:`training_debug_gui_application_freeze.check_java_threads_scheduling`.
 
 **(3)** If the heartbeat doesn't run when the UI freeze occurs, set the heartbeat task priority to the maximum priority.
@@ -97,13 +97,13 @@ This can be caused by an RTOS timer task or an interrupt handler that never retu
 
 .. _training_debug_gui_application_freeze.check_java_threads_scheduling:
 
-Check Java Threads Scheduling
------------------------------
+Check Threads Scheduling
+------------------------
 
 As a reminder, the threading model implemented by Core Engine is called green thread: it defines a multi-threaded environment without relying on any native RTOS capabilities. 
-Therefore, all Java threads run in a single RTOS task.
+Therefore, all threads run in a single RTOS task.
 For more details, please refer to the :ref:`MicroEJ Core Engine<core_engine>` section.
-A quick way to check if the Java threads are scheduled correctly is, here again, to make one of the threads print a heartbeat message. Copy/paste the following snippet in the ``main()`` method of the application:
+A quick way to check if the threads are scheduled correctly is, here again, to make one of the threads print a heartbeat message. Copy/paste the following snippet in the ``main()`` method of the application:
 
 .. code-block:: java
 
@@ -117,17 +117,17 @@ A quick way to check if the Java threads are scheduled correctly is, here again,
    Timer timer = new Timer();
    timer.schedule(task, 10_000, 10_000);
 
-This code creates a new Java thread that will print the message ``Alive``
+This code creates a new thread that will print the message ``Alive``
 on the standard output every 10 seconds.
 
 Assuming no one canceled the ``Timer``, if the ``Alive`` printouts stop when the UI freeze occurs, then it can mean that:
 
-- The Core Engine stopped scheduling the Java threads.
+- The Core Engine stopped scheduling the threads.
 - Or that one or more threads with a higher priority prevent the threads with a lower priority from running.
 
 Here are a few suggestions:
 
-- Ensure no Java threads with a high priority prevent the scheduling of the other Java threads.
+- Ensure no threads with a high priority prevent the scheduling of the other threads.
   For example, convert the above example with a dedicated thread with the highest priority:
 
   .. code-block:: java
@@ -155,7 +155,7 @@ Here are a few suggestions:
 
 - When a Java native method is called, it calls its C counterpart function in the RTOS task that runs the Core Engine.
   While the C function is running, no other Java methods can run because the Core Engine waits for the C function to finish.
-  Consequently, no Java thread can ever run again if the C function never returns.
+  Consequently, no thread can ever run again if the C function never returns.
   Therefore, spot any suspect native functions and trace every entry/exit to detect faulty code.
 
 Please refer to :ref:`implementation_details` if you encounter issues
@@ -165,7 +165,7 @@ Check UI Thread Liveness
 ------------------------
 
 Now, what if the ``Alive`` heartbeat runs while the UI is frozen?
-Java threads are getting scheduled, but the UI thread (also called
+threads are getting scheduled, but the UI thread (also called
 Display Pump thread) does not process display events.
 
 Let's make the heartbeat snippet above execute in the UI
@@ -290,7 +290,7 @@ Please refer to :ref:`the Event Buffer documentation <section_inputs_eventbuffer
 Implementation Details
 ----------------------
 
-Java Threads Creation
+Threads Creation
 ~~~~~~~~~~~~~~~~~~~~~
 
 The number of threads in the MicroEJ Application must be sufficient to support the creation of additional threads when using `Timer`_ and `Thread`_.

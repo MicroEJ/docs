@@ -1046,7 +1046,7 @@ MicroUI
 
 **Fixed**
 
-* Fix the unexpected resuming of the pump Java thread when a new event is added to the queue if it is an other component than the MicroUI queue that has suspended the pump Java thread.
+* Fix the unexpected resuming of the pump thread when a new event is added to the queue if it is an other component than the MicroUI queue that has suspended the pump thread.
 * Fix the flush bounds of drawCircleArc and drawEllipseArc.
 
 Front Panel
