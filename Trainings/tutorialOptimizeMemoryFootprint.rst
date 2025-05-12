@@ -423,7 +423,7 @@ Managed heap and Immortals Heap
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - Configure the :ref:`immortals heap <option_immortal_heap>` option to be as small as possible. You can get the minimum value by calling `Immortals.freeMemory()`_ after the creation of all the immortal objects.
-- Configure the :ref:`Managed heap <option_java_heap>` option to fit the needs of the application. You can get it by using the :ref:`Heap Usage Monitoring Tool <heap_usage_monitoring>`.
+- Configure the :ref:`Managed heap <option_managed_heap>` option to fit the needs of the application. You can get it by using the :ref:`Heap Usage Monitoring Tool <heap_usage_monitoring>`.
 
 .. _Immortals.freeMemory(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Immortals.html
 

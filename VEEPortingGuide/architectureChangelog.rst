@@ -185,7 +185,7 @@ Core Engine
 
 - Added option :ref:`com.microej.runtime.core.gc.markstack.levels.max <option_gc_stack_size>` to configure the maximum number of elements of the Garbage Collector's mark stack.
 - In ``sni.h``, clarified the behavior of ``SNI_createVM()``, ``SNI_startVM()``, and ``SNI_destroyVM()`` when restarting the Core Engine. See also the :ref:`Core Engine implementation <core_engine_implementation>` section.
-- Fixed missing default initialization of the options :ref:`core.memory.javaheap.size <option_java_heap>` and :ref:`core.memory.immortal.size <option_immortal_heap>`.
+- Fixed missing default initialization of the options :ref:`core.memory.javaheap.size <option_managed_heap>` and :ref:`core.memory.immortal.size <option_immortal_heap>`.
 - [Multi] - Added a check when ``LLKERNEL_IMPL_getFeatureHandle()`` returns ``0``. Corresponding error code is ``LLKERNEL_FEATURE_INIT_ERROR_NULL_HANDLE``.
 - [Multi] - Removed Feature installation in RAM (legacy :ref:`In-Place Installation mode <feature_inplace_installation>`). See :ref:`architecture8_migration_llkernel`.
 - [Multi] - Updated :ref:`Feature installation boot sequence <feature_persistency>`: all Feature handles are now retrieved prior to initializing them.
@@ -345,7 +345,7 @@ Simulator
 - Added support for mark/reset on an InputStream returned by `Class.getResourceAsStream()`_.
 - Fixed "Internal limits" error in HIL engine when too many array arguments are used at the same time by one or several native methods.
 - Fixed slow reading with an array of bytes of the input stream returned by `Class.getResourceAsStream(String)`_.
-- Fixed configuration of the Managed heap size using :ref:`option_java_heap`. The legacy ``core.memory.javaheapsum.size`` option is not more supported.
+- Fixed configuration of the Managed heap size using :ref:`option_managed_heap`. The legacy ``core.memory.javaheapsum.size`` option is not more supported.
 - Fixed :ref:`option_immortal_heap` default value when running a Standalone Application using MMM.
 - Fixed stop of the HIL Engine if Simulator was terminated before the connection is established.
 - Fixed load of the Mock classes in the classpath order (left-to-right).

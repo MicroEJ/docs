@@ -271,14 +271,14 @@ The following table describes these error codes.
    +-------------+-------------------------------------------------------------+
    | -5          | Not enough resources to start the very first MicroEJ        |
    |             | thread that executes ``main`` method. See section           |
-   |             | :ref:`option_java_heap`.                                    |
+   |             | :ref:`option_managed_heap`.                                 |
    +-------------+-------------------------------------------------------------+
    | -12         | Number of threads limitation reached. See sections          |
    |             | :ref:`limitations` and :ref:`option_number_of_threads`.     |
    +-------------+-------------------------------------------------------------+
    | -13         | Fail to start the Application because the                   |
    |             | specified managed heap is too large or too small.           |
-   |             | See section :ref:`option_java_heap`.                        |
+   |             | See section :ref:`option_managed_heap`.                     |
    +-------------+-------------------------------------------------------------+
    | -14         | Invalid Application stack configuration. The                |
    |             | stack start or end is not eight-byte aligned, or stack      |
