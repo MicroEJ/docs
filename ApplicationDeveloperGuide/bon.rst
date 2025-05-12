@@ -553,7 +553,7 @@ BON defines two phases of execution:
 Mono-threaded Phase
 ~~~~~~~~~~~~~~~~~~~
 
-During the initialization phase, there is only one Java thread running:
+During the initialization phase, there is only one thread running:
 the main thread which will eventually execute the ``main(String[])``
 method once the system enters the mission phase.
 
@@ -602,7 +602,7 @@ Utilities
 Timer & TimerTask
 ~~~~~~~~~~~~~~~~~
 
-A `Timer`_ defines a single Java thread in charge of scheduling
+A `Timer`_ defines a single thread in charge of scheduling
 `Runnable`_ objects from the `TimerTask`_ class. All `TimerTask`_
 are executed sequentially, according to their schedule. A `Timer`_ does
 its best effort to schedule the `TimerTask`_ appropriately, which depends

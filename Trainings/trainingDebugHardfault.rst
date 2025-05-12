@@ -202,7 +202,7 @@ Trigger a VM Dump
 This function prints the VM state.
 Data printed in the VM state are:
 
-* List of Java threads
+* List of threads
 * Stack trace for each thread
 
 See :ref:`this section<vm_dump>` to learn more about ``LLMJVM_dump``.

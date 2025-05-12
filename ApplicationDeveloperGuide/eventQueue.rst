@@ -36,7 +36,7 @@ Then the Event Pump automatically retrieves new events pushed in the FIFO and no
 Architecture
 ------------
 
-The Event Queue Foundation Library uses a dedicated Java thread to forward and process events. Application event listener's calls are done in the context of the Event Queue thread. 
+The Event Queue Foundation Library uses a dedicated thread to forward and process events. Application event listener's calls are done in the context of the Event Queue thread. 
 
 .. figure:: images/event-queue-architecture.png
    :alt: Event Queue Architecture
@@ -46,7 +46,7 @@ The Event Queue Foundation Library uses a dedicated Java thread to forward and p
    Event Queue Architecture
 
 
-Events reading operations are done using the SNI mechanism. Event Queue Java thread is suspended when the events FIFO is empty and resumed when a new event is sent.
+Events reading operations are done using the SNI mechanism. Event Queue thread is suspended when the events FIFO is empty and resumed when a new event is sent.
 
 .. note:: 
 

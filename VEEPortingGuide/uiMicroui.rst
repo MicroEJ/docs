@@ -123,8 +123,8 @@ In this case, some callbacks are available to notify the end of this kind of par
 
 However some actions have to wait the end of a previous parallel action.
 By consequence the caller thread is blocked until the previous action is done; in other words, until the previous parallel action has called its callback.
-In this case, only the current Java thread is locked (because it cannot continue its execution until both actions are performed).
-All other Java threads can run, even a thread with a lower priority than current thread.
+In this case, only the current thread is locked (because it cannot continue its execution until both actions are performed).
+All other threads can run, even a thread with a lower priority than current thread.
 If no thread has to be run, MicroEJ Core Engine goes in sleep mode until the native callback is called.
 
 Antialiasing

@@ -25,14 +25,14 @@ GitHub example shows the minimum steps required to create a Java program that ma
 Overview
 ========
 
-The MicroEJ Core Engine implements a green thread architecture with all the Java threads executed within one single
-RTOS/OS task. Thus, it embeds its own scheduler that controls the execution of the Java threads. 
-With such an architecture, the MicroEJ Core Engine cannot preempt a Java thread that executes a native method.
-Therefore a blocking native method will prevent the execution of other Java threads.
+The MicroEJ Core Engine implements a green thread architecture with all the threads executed within one single
+RTOS/OS task. Thus, it embeds its own scheduler that controls the execution of the threads. 
+With such an architecture, the MicroEJ Core Engine cannot preempt a thread that executes a native method.
+Therefore a blocking native method will prevent the execution of other threads.
 To mitigate the contention, a native method must explicitly yield its current use of the processor.
 
 This training will explain how to use SNI to implement a blocking Java native method without blocking the
-execution of other Java threads.
+execution of other threads.
 
 Requirements
 ============
@@ -103,7 +103,7 @@ Application Behavior
 --------------------
 
 In this example, the execution of the ``waitButton()`` native method will block until a button is pressed. 
-In other words, while ``Java_example_NativeCCallExample_waitButton()`` has not returned, no other Java thread can
+In other words, while ``Java_example_NativeCCallExample_waitButton()`` has not returned, no other thread can
 be scheduled.
 
 This is because the native function is called in the same RTOS/OS task as the Java application.
@@ -124,8 +124,8 @@ Here is a summary of what will be done in C:
 - Signal the MicroEJ Core Engine to suspend the current thread when the native function returns.
 - Remove the blocking operations from the native function so that it returns immediately.
 - Implement a callback function that returns the index of the pressed button.
-- Register this callback function in the MicroEJ Core Engine to call it when the Java thread is resumed.
-- Resume the Java thread when a button is pressed.
+- Register this callback function in the MicroEJ Core Engine to call it when the thread is resumed.
+- Resume the thread when a button is pressed.
 
 
 This schematic summarizes the steps described above:
@@ -140,20 +140,20 @@ Update the C Native Function Implementation
 Step 1: Update the C Native Function
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The ``Java_example_NativeCCallExample_waitButton()`` function will now suspend the current Java thread. It will also
+The ``Java_example_NativeCCallExample_waitButton()`` function will now suspend the current thread. It will also
 store the information required to resume it and return the index of the pressed button.
 
 The SNI functions used in this example are defined in ``sni.h``. See this header file for a more detailed description of
 the API.
 
-- Store the ID of the Java thread that called the function. This ID should be stored in a global variable.
-  It is used to resume the Java thread when a button is pressed.
+- Store the ID of the thread that called the function. This ID should be stored in a global variable.
+  It is used to resume the thread when a button is pressed.
 
   .. code-block:: C
   
       java_thread_id = SNI_getCurrentJavaThreadID();
 
-- Signal the MicroEJ Core Engine to suspend the current Java thread and specify the callback function to be called when
+- Signal the MicroEJ Core Engine to suspend the current thread and specify the callback function to be called when
   the thread is resumed.
   Let's call the callback function ``waitButton_callback()``.
     
@@ -185,7 +185,7 @@ The updated ``Java_example_NativeCCallExample_waitButton()`` function should loo
 Step 2: Update the Button Interrupt Function
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The role of the button interrupt is now to resume the Java thread when a button event occurs.
+The role of the button interrupt is now to resume the thread when a button event occurs.
 Update it this way:
 
 .. code:: C
@@ -204,7 +204,7 @@ Step 3: Implement the Callback Function
 The callback function must have the same signature as the SNI native (same parameters and return type):
 ``jint waitButton_callback()``.
 
-The callback function is automatically called by the Java thread when it is resumed.
+The callback function is automatically called by the thread when it is resumed.
 Use the ``SNI_getCallbackArgs()`` function to retrieve the arguments that was previously given to
 the ``SNI_suspendCurrentJavaThreadWithCallback()`` or ``SNI_resumeJavaThreadWithArg()`` functions.
 
@@ -221,7 +221,7 @@ Application Behavior
 --------------------
 
 In this configuration, calling the  native method ``waitButton()`` will still return only when a button is pressed, 
-but it will not prevent other Java threads from being scheduled.
+but it will not prevent other threads from being scheduled.
 
 ..
    | Copyright 2021-2025, MicroEJ Corp. Content in this space is free 
