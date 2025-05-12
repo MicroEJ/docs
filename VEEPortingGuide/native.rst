@@ -2,7 +2,7 @@ Native Interface Mechanisms
 ===========================
 
 
-The MicroEJ Core Engine provides two ways to link MicroEJ Application
+The Core Engine provides two ways to link MicroEJ Application
 code with native C code. The two ways are fully complementary, and can
 be used at the same time.
 

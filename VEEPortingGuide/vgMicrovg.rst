@@ -25,7 +25,7 @@ Native Calls
 ============
 
 Like MicroUI, the MicroVG implementation for MicroEJ uses native methods to perform some actions (manipulate matrices, perform drawings, decode and render fonts, etc.). 
-The library implementation has been designed not to block native methods (wait until the end of the drawing, etc.), which can lock the complete MicroEJ Core Engine execution. 
+The library implementation has been designed not to block native methods (wait until the end of the drawing, etc.), which can lock the complete Core Engine execution. 
 
 Refer to the :ref:`MicroUI implementation <section_microui_native_calls>` to have more details about the native calls.
 

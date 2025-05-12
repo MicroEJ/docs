@@ -97,7 +97,7 @@ Memory
 ------
 
 The thread is always running.
-The user has to count it to determine the number of concurrent threads the MicroEJ Core Engine can run (see *Memory* options in :ref:`application_options`).
+The user has to count it to determine the number of concurrent threads the Core Engine can run (see *Memory* options in :ref:`application_options`).
 
 Exceptions
 ----------
@@ -115,7 +115,7 @@ Native Calls
 ============
 
 The MicroUI implementation for MicroEJ uses native methods to perform some actions (read input devices events, perform drawings, turn on LEDs, etc.).
-The library implementation has been designed to not use blocking native methods (wait input devices, wait end of drawing, etc.) which can lock the full MicroEJ Core Engine execution.
+The library implementation has been designed to not use blocking native methods (wait input devices, wait end of drawing, etc.) which can lock the full Core Engine execution.
 
 The specification of the native methods is to perform the action as fast as possible.
 The action execution may be sequential or parallel because an action is able to use a third-party device (software or hardware).
@@ -125,7 +125,7 @@ However some actions have to wait the end of a previous parallel action.
 By consequence the caller thread is blocked until the previous action is done; in other words, until the previous parallel action has called its callback.
 In this case, only the current thread is locked (because it cannot continue its execution until both actions are performed).
 All other threads can run, even a thread with a lower priority than current thread.
-If no thread has to be run, MicroEJ Core Engine goes in sleep mode until the native callback is called.
+If no thread has to be run, Core Engine goes in sleep mode until the native callback is called.
 
 Antialiasing
 ============

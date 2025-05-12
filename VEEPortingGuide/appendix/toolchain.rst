@@ -43,23 +43,23 @@ There are three ABIs:
 
 It is important to note that code compiled with a particular ABI might
 not be compatible with code compiled with another ABI. MicroEJ modules,
-including the MicroEJ Core Engine, use the hard ABI.
+including the Core Engine, use the hard ABI.
 
 
 .. _appendix_matrixcapabilities:
 
-Supported MicroEJ Core Engine Capabilities by Architecture Matrix
-=================================================================
+Supported Core Engine Capabilities by Architecture Matrix
+=========================================================
 
-The following table lists the supported MicroEJ Core Engine capabilities
+The following table lists the supported Core Engine capabilities
 by MicroEJ Architectures.
 
 .. tabularcolumns:: |p{2.5cm}|p{4cm}|p{2.7cm}|p{2.5cm}|p{2.7cm}|
 
-.. table:: Supported MicroEJ Core Engine Capabilities by MicroEJ Architecture Matrix
+.. table:: Supported Core Engine Capabilities by MicroEJ Architecture Matrix
 
    +-----------------+------------------------+-------------+-------------+--------------+
-   | MicroEJ Core Engine Architectures        | Capabilities                             |
+   | Core Engine Architectures                | Capabilities                             |
    +-----------------+------------------------+-------------+-------------+--------------+
    | MCU             | Compiler               | Mono-       | Tiny-       | Multi-       |
    |                 |                        | Sandbox     | Sandbox     | Sandbox      |

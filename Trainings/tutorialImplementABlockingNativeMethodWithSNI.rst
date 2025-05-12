@@ -25,9 +25,9 @@ GitHub example shows the minimum steps required to create a Java program that ma
 Overview
 ========
 
-The MicroEJ Core Engine implements a green thread architecture with all the threads executed within one single
+The Core Engine implements a green thread architecture with all the threads executed within one single
 RTOS/OS task. Thus, it embeds its own scheduler that controls the execution of the threads. 
-With such an architecture, the MicroEJ Core Engine cannot preempt a thread that executes a native method.
+With such an architecture, the Core Engine cannot preempt a thread that executes a native method.
 Therefore a blocking native method will prevent the execution of other threads.
 To mitigate the contention, a native method must explicitly yield its current use of the processor.
 
@@ -121,10 +121,10 @@ This section will explain how to update the example code to make a non-blocking 
 
 Here is a summary of what will be done in C:
   
-- Signal the MicroEJ Core Engine to suspend the current thread when the native function returns.
+- Signal the Core Engine to suspend the current thread when the native function returns.
 - Remove the blocking operations from the native function so that it returns immediately.
 - Implement a callback function that returns the index of the pressed button.
-- Register this callback function in the MicroEJ Core Engine to call it when the thread is resumed.
+- Register this callback function in the Core Engine to call it when the thread is resumed.
 - Resume the thread when a button is pressed.
 
 
@@ -153,7 +153,7 @@ the API.
   
       java_thread_id = SNI_getCurrentJavaThreadID();
 
-- Signal the MicroEJ Core Engine to suspend the current thread and specify the callback function to be called when
+- Signal the Core Engine to suspend the current thread and specify the callback function to be called when
   the thread is resumed.
   Let's call the callback function ``waitButton_callback()``.
     

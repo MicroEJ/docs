@@ -9,7 +9,7 @@ Please consult :ref:`architecture_changelog` for limitations changes on former v
 .. note::
  
    The term `unlimited` means there is no Architecture specific limitation. However, there may be limitations driven by device memory layout.   
-   Please refer to your VEE Port specific documentation to get the memory mapping of :ref:`MicroEJ Core Engine sections <core_engine_link>`.
+   Please refer to your VEE Port specific documentation to get the memory mapping of :ref:`Core Engine sections <core_engine_link>`.
 
 
 .. list-table:: Architecture Limitations
@@ -98,7 +98,7 @@ Please consult :ref:`architecture_changelog` for limitations changes on former v
    time is defined by the :ref:`maximum number of monitors per thread Application option <option_maximum_number_of_monitors_per_thread>`.
 
 .. [4]
-   The Managed heap Garbage Collection limit may throw unexpected cascading `java.lang.OutOfMemoryError`_ exceptions before the MicroEJ Core Engine exits.
+   The Managed heap Garbage Collection limit may throw unexpected cascading `java.lang.OutOfMemoryError`_ exceptions before the Core Engine exits.
 
 .. _java.lang.OutOfMemoryError: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/OutOfMemoryError.html
 

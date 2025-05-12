@@ -8,7 +8,7 @@ optimized to fulfill embedded constraints. The final execution context
 is an embedded device that may not even have a file system. Files
 required by the application at runtime are not directly copied to the
 target device, they are compiled to produce the application binary code
-which will be executed by MicroEJ Core Engine.
+which will be executed by the Core Engine.
 
 As a part of the compile-time trimming process, all types not required
 by the embedded application are eliminated from the final binary.
@@ -255,13 +255,13 @@ System Properties can also be defined using :ref:`application_options`. This
 can be done by setting the option with a specific
 prefix in their name:
 
--  Properties for both the MicroEJ Core Engine and the MicroEJ Simulator :
+-  Properties for both the Core Engine and the Simulator :
    name starts with ``microej.java.property.*``
 
--  Properties for the MicroEJ Simulator: name starts with
+-  Properties for the Simulator only: name starts with
    ``sim.java.property.*``
 
--  Properties for the MicroEJ Core Engine: name starts with
+-  Properties for the Core Engine only: name starts with
    ``emb.java.property.*``
 
 For example, to define the property ``myProp`` with the value

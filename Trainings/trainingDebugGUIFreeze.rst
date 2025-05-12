@@ -102,7 +102,7 @@ Check Threads Scheduling
 
 As a reminder, the threading model implemented by Core Engine is called green thread: it defines a multi-threaded environment without relying on any native RTOS capabilities. 
 Therefore, all threads run in a single RTOS task.
-For more details, please refer to the :ref:`MicroEJ Core Engine<core_engine>` section.
+For more details, please refer to the :ref:`Core Engine  <core_engine>` section.
 A quick way to check if the threads are scheduled correctly is, here again, to make one of the threads print a heartbeat message. Copy/paste the following snippet in the ``main()`` method of the application:
 
 .. code-block:: java

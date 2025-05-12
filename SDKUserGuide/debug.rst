@@ -105,7 +105,7 @@ Foundation Library sources are directly included in the implementation file (JAR
 They are located in the following Platform folders:
 
 - :guilabel:`javaLibs` for generic Foundation Libraries (defaults).
-- :guilabel:`MICROJVM/javaLibs` for Foundation Libraries specific to the MicroEJ Core Engine.
+- :guilabel:`MICROJVM/javaLibs` for Foundation Libraries specific to the Core Engine.
 - :guilabel:`S3/javaLibs` for Foundation Libraries specific to the Simulator.
 
 .. figure:: images/foundation_library_implementation_folders.png

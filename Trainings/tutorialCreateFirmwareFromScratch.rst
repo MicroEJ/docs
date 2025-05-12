@@ -375,7 +375,7 @@ compatible with the FreeRTOS BSP and GCC toolchain.
 
 When selecting a MicroEJ Architecture, special care must be taken to
 ensure the compatibility between the toolchain used in the BSP and the
-toolchain used to build the MicroEJ Core Engine included in the
+toolchain used to build the Core Engine included in the
 MicroEJ Architecture.
 
 The list of MicroEJ Architectures supported is listed :ref:`here <architectures_toolchains>`.
@@ -720,7 +720,7 @@ To summarize, the following steps remain to complete the integration
 between MicroEJ and the FreeRTOS BSP:
 
 - Implement minimal Low Level APIs
-- Invoke the MicroEJ Core Engine
+- Invoke the Core Engine
 - Build and link the firmware with the MicroEJ Runtime and MicroEJ Application
 
 
@@ -867,10 +867,10 @@ The ``microej`` folder in the BSP has the following structure:
   4 directories, 21 files
 
 
-Invoke MicroEJ Core Engine
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Invoke the Core Engine
+~~~~~~~~~~~~~~~~~~~~~~
 
-The MicroEJ Core Engine is created and initialized with the C function
+The Core Engine is created and initialized with the C function
 ``SNI_createVM``. Then it is started and executed in the current RTOS
 task by calling ``SNI_startVM``. The function ``SNI_startVM`` returns
 when the MicroEJ Application exits. Both functions are declared in the
