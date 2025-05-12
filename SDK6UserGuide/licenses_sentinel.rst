@@ -103,6 +103,7 @@ First, download `Sentinel_RTE_Installation-1.1.0.zip <https://repository.microej
   Otherwise drop the ``hasp_windows_x64_37102.dll`` file beside ``java.exe`` executable of the Java Development Kit (JDK) used to run the SDK.
 
 .. note::
+   To restart RTE, go to Services window and restart ``Sentinel LDK License Manager`` service.
 	To uninstall Sentinel RTE, type ``haspdinst_37102.exe -r`` in the command line. A message is displayed informing you that the Sentinel LDK Run-time Environment was successfully removed.
 
 Then you can continue with the :ref:`Remote Floating License Server <add_remote_floating_license_server>` section.
@@ -143,6 +144,10 @@ Then you can continue with the :ref:`Remote Floating License Server <add_remote_
 - Get ``MicroEJ_library/hasp_darwin_37102.dylib`` file and copy it in a directory of your choice
 - Set ``DYLD_LIBRARY_PATH`` variable with command ``export DYLD_LIBRARY_PATH=<your_directory>:$DYLD_LIBRARY_PATH``.
   This modification has to be setup at session startup  (e.g: using ``.bashrc`` file) to ensure that OS is properly configured before running the SDK.
+
+.. note::
+
+   To restart the daemons, on a terminal, go to ``/Library/LaunchDaemons/`` and launch ``sudo launchctl load com.aladdin.aksusbd.plist`` and ``sudo launchctl load com.aladdin.hasplmd.plist``
 
 Then you can continue with the :ref:`Remote Floating License Server <add_remote_floating_license_server>` section.
 
