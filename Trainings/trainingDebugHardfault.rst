@@ -177,7 +177,7 @@ Attach an embedded debugger and get the following information:
     * the whole memory, if possible
     * otherwise, get the *hot sections* 
 
-        * BSP and Java heap and stack
+        * BSP and Managed heap and stack
         * UI buffer
         * immortals heap
         * sections where the Java application and BSP are working together

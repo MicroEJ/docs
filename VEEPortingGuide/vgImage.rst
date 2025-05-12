@@ -131,7 +131,7 @@ To load this kind of image, the application has to call `VectorImage.getImage()`
 This API takes the image relative path: ``/avd_image_1.xml`` or ``/path/to/avd_image_2.xml`` or ``/svg_image.svg``.
 
 The implementation uses the Abstraction Layer API to retrieve the image. 
-No data is stored in the Java heap (except the `VectorImage`_ object's instance).
+No data is stored in the Managed heap (except the `VectorImage`_ object's instance).
 
 Resource Vector Image
 =====================
