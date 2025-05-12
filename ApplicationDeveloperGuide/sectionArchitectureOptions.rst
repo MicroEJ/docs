@@ -88,7 +88,7 @@ Group: Heaps
 .. _option_java_heap:
 
 Option(text): Managed heap size (in bytes)
-"""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""
 
 *Option Name*: ``core.memory.javaheap.size``
 
@@ -789,14 +789,14 @@ output when Core Engine throws an OutOfMemoryError.
 .. _option_enable_heap_usage:
 
 Option(checkbox): Enable Managed heap usage monitoring
-"""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 *Option Name*: ``com.microej.runtime.debug.heap.monitoring.enabled``
 
 *Default value*: ``false``
 
 Option(text): Managed heap initial size
-""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""
 
 *Option Name*: ``com.microej.runtime.debug.heap.monitoring.init.size``
 
