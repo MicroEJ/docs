@@ -88,16 +88,6 @@ defined by ``EDC``, ``KF``, ``BON``, ``MicroUI`` and ``BasicTool`` Kernel APIs m
          - Unlike SDK 5 (MMM), Kernel API dependencies are not transitively fetched with SDK 6. 
            Therefore, they must be explicitly added.
          - The Libraries dependencies must be declared with `api` (as shown in the example above) to be consumable by the Kernel.
-         - Versions of EDC higher than ``1.3.5`` are not compatible with the creation of a Runtime Environment.
-           To make sure to use version ``1.3.5`` of EDC, use this snippet in your ``build.gradle.kts`` file:
-
-               .. code:: java
-
-                  configurations {
-                     "runtimeClasspath" {
-                        resolutionStrategy.force("ej.api:edc:1.3.5")
-                     }
-                  }
 
    .. tab:: SDK 5
 
