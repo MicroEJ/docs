@@ -64,7 +64,7 @@ SOAR
 ~~~~
 
 - Increased the maximum number of blocks allowed in a method to prevent the ``[M200] - Maximum number of blocks reached`` error.
-- Added an appropriate error message when a resource with an invalid name (contains a delimiter) is used.
+- Added an appropriate error message when a resources list file contains an invalid resource declaration.
 
 .. _Tracer.isTraceStarted() : https://repository.microej.com/javadoc/microej_5.x/apis/ej/trace/Tracer.html#isTraceStarted--
 .. _InputStream.reset() : https://repository.microej.com/javadoc/microej_5.x/apis/java/io/InputStream.html#reset--
