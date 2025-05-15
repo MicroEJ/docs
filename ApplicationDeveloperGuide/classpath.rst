@@ -205,7 +205,7 @@ Example:
    If a Resource is declared multiple times in the classpath, the alignment constraint with the highest value is used. 
    If the alignment constraints are specific to the target, it is recommended to only declare them in the Application project instead of libraries.
 
-If a resource filename contains a delimiter (such as whitespace, : or =), the delimiter must be escaped using the backslash ``\`` character in the ``*.resources.list`` file.
+If a resource filename contains a delimiter (such as a whitespace, ``:``, or ``=``), the delimiter must be escaped using the backslash ``\`` character in the ``*.resources.list`` file.
 Example:
 ::
 
