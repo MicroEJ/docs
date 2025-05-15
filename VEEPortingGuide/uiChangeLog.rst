@@ -6,6 +6,25 @@
 Changelog
 =========
 
+.. _section_ui_changelog_14_4_2:
+
+[14.4.2] - Unreleased
+=====================
+
+VG Pack
+"""""""
+
+**Fixed**
+
+- Fix the VEE Port build with the UI Pack 14.4 and the VG Pack 1.7 (since UI Pack 14.4.1).
+
+FrontPanel
+""""""""""
+
+**Fixed**
+
+- Fix the use of the SDK5 option "Resolve in workspace" (since UI Pack 14.4.1).
+
 .. _section_ui_changelog_14_4_1:
 
 [14.4.1] - 2025-03-13
@@ -340,7 +359,7 @@ C Module MicroUI
 **Removed**
 
 - Remove ``microui_event_decoder_conf.h``: import ``ui_configuration.h`` instead.
-- Remove ``ui_dislay_brs_configuration.h``: import ``ui_configuration.h`` instead.
+- Remove ``ui_display_brs_configuration.h``: import ``ui_configuration.h`` instead.
 
 C Module DMA2D
 """"""""""""""
