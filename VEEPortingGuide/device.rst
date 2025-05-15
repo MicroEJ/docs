@@ -47,8 +47,8 @@ When installed, the Device Information Pack module can be configured.
    .. tab:: SDK 6
 
      In SDK 6, the configuration is done in the properties file ``configuration.properties`` of the VEE Port project.
-	  All the properties names listed below must be prefixed by ``com.microej.runtime.device.``.
-	  For example the ``architecture`` properties is defined by the ``com.microej.runtime.device.architecture`` property.
+	  All the properties names listed below must be prefixed by ``com.microej.pack.device.``.
+	  For example the ``architecture`` properties is defined by the ``com.microej.pack.device.architecture`` property.
 
    .. tab:: SDK 5
 
