@@ -138,7 +138,7 @@ qualified name (FQN) embedded. Its FQN can be retrieved using the stack
 trace reader tool (see :ref:`section.stacktrace.reader.tool`).
 
 Required Types are declared in MicroEJ Classpath using ``*.types.list``
-files. The file format is a standard Java properties file, each line
+files. The file format is a standard `Java properties file`_, each line
 listing the fully qualified name of a type. Example:
 
 ::
@@ -182,7 +182,7 @@ Raw Resources are declared in ``*.resources.list`` files (**and** in ``*.externr
   }
 
 
-The file format is a standard Java properties file, each line is a relative ``/``
+The file format is a standard `Java properties file`_, each line is a relative ``/``
 separated name of a file in MicroEJ Classpath to be embedded as a
 resource. Example:
 
@@ -205,7 +205,15 @@ Example:
    If a Resource is declared multiple times in the classpath, the alignment constraint with the highest value is used. 
    If the alignment constraints are specific to the target, it is recommended to only declare them in the Application project instead of libraries.
 
+If a resource filename contains a delimiter (such as a whitespace, ``:``, or ``=``), the delimiter must be escaped using the backslash ``\`` character in the ``*.resources.list`` file.
+Example:
+::
+
+   # The resource filename: "resource name contains whitespace.txt"
+   com/mycompany/resource\ name\ contains\ whitespace.txt
+
 .. _java.lang.Class.getResourceAsStream(String): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getResourceAsStream-java.lang.String-
+.. _Java properties file: https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Properties.html#load(java.io.Reader)
 
 .. _section.classpath.elements.immutables:
 
@@ -217,8 +225,7 @@ with a call to `ej.bon.Immutables.get(String)`_. Immutables objects are
 declared in files called *immutable objects data files*, which format is
 described in the :ref:`[BON] specification <immutable>`.
 Immutables objects data files are declared in MicroEJ Classpath using
-``*.immutables.list`` files. The file format is a standard Java
-properties file, each line is a ``/`` separated name of a relative file
+``*.immutables.list`` files. The file format is a standard `Java properties file`_, each line is a ``/`` separated name of a relative file
 in MicroEJ Classpath to be loaded as an Immutable objects data file.
 Example:
 
@@ -240,7 +247,7 @@ call to `System.getProperty(String)`_.
 System Properties are defined when building a :ref:`standalone_application`,
 by declaring ``*.properties.list`` files in MicroEJ Classpath. 
 
-The file format is a standard Java properties file. Example:
+The file format is a standard `Java properties file`_. Example:
 
 .. code-block:: xml
    :caption: Example of Contents of a MicroEJ Properties File
@@ -302,7 +309,7 @@ call to `ej.bon.Constants.get[Type](String)`_, where ``Type`` if one of:
 - String.
 
 Constants are declared in MicroEJ Classpath ``*.constants.list`` files. The file format is a
-standard Java properties file. Example:
+standard `Java properties file`_. Example:
 
 .. code-block:: xml
    :caption: Example of Contents of a BON constants File
