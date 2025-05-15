@@ -182,7 +182,7 @@ Raw Resources are declared in ``*.resources.list`` files (**and** in ``*.externr
   }
 
 
-The file format is a standard Java properties file, each line is a relative ``/``
+The file format is a standard `Java properties file`_, each line is a relative ``/``
 separated name of a file in MicroEJ Classpath to be embedded as a
 resource. Example:
 
@@ -205,7 +205,15 @@ Example:
    If a Resource is declared multiple times in the classpath, the alignment constraint with the highest value is used. 
    If the alignment constraints are specific to the target, it is recommended to only declare them in the Application project instead of libraries.
 
+If a resource filename contains a delimiter (such as whitespace, : or =), the delimiter must be escaped using the backslash ``\`` character in the ``*.resources.list`` file.
+Example:
+::
+
+   # The resource filename: "resource name contains whitespace.txt"
+   com/mycompany/resource\ name\ contains\ whitespace.txt
+
 .. _java.lang.Class.getResourceAsStream(String): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getResourceAsStream-java.lang.String-
+.. _Java properties file: https://docs.oracle.com/cd/E23095_01/Platform.93/ATGProgGuide/html/s0204propertiesfileformat01.html
 
 .. _section.classpath.elements.immutables:
 
