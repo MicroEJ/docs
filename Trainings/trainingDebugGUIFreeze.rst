@@ -165,7 +165,7 @@ Check UI Thread Liveness
 ------------------------
 
 Now, what if the ``Alive`` heartbeat runs while the UI is frozen?
-threads are getting scheduled, but the UI thread (also called
+Threads are getting scheduled, but the UI thread (also called
 Display Pump thread) does not process display events.
 
 Let's make the heartbeat snippet above execute in the UI
