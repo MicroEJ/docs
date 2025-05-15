@@ -148,10 +148,10 @@ If you wish to integrate an alternative implementation, contact `our support tea
    The Binary Code Verifier is enabled by default when building a Sandboxed Application, and disabled by default when building a Standalone Application.
    See :ref:`option_enable_bytecode_verifier` for more details.
 
-Enable SOAR Logs
-----------------
+Enable SOAR Verbose Logs
+------------------------
 
-SOAR logs can be enabled by setting the ``execution.verbose`` system property to ``true``.
+SOAR logs can be enabled by setting the ``execution.verbose`` Application Option to ``true``.
 As for :ref:`Application Options <application_options>`, with SDK 6 the system property must be prefixed with ``microej.option``.
 
 For instance, to enable SOAR logs from command line::
@@ -160,7 +160,7 @@ For instance, to enable SOAR logs from command line::
 
 or from ``gradle.properties`` file::
 
-   systemProp.microej.execution.verbose=true
+   systemProp.microej.option.execution.verbose=true
 
 You should see SOAR logs on tasks ``buildExecutable``, ``buildFeature`` and ``buildFeatureFromWPK``.
 For instance::
