@@ -291,7 +291,7 @@ Implementation Details
 ----------------------
 
 Threads Creation
-~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~
 
 The number of threads in the MicroEJ Application must be sufficient to support the creation of additional threads when using `Timer`_ and `Thread`_.
 The number of available threads can be updated in the launch configuration of the application (see :ref:`option_number_of_threads`).
