@@ -4,6 +4,11 @@
 SystemView
 ==========
 
+.. note::
+
+   In the following explanations, the term `task` refers to native tasks scheduled by the underlying OS or RTOS, 
+   while `thread` refers to MicroEJ threads scheduled by the Core Engine.
+   
 Principle
 =========
 
