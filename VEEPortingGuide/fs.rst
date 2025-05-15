@@ -65,8 +65,8 @@ type can be used. When this type is selected, all the File System characteristic
    .. tab:: SDK 6
 
       In SDK 6, the configuration is done in the properties file ``configuration.properties`` of the VEE Port project.
-	  All the properties names listed below must be prefixed by ``com.microej.runtime.fs.``.
-	  For example the ``fs`` properties is defined by the ``com.microej.runtime.fs.fs`` property.
+	  All the properties names listed below must be prefixed by ``com.microej.pack.fs.``.
+	  For example the ``fs`` properties is defined by the ``com.microej.pack.fs.fs`` property.
 
    .. tab:: SDK 5
 
@@ -106,11 +106,11 @@ The list below describes the properties that can be defined in the configuration
 Properties File Template
 ------------------------
 
-The following snippet can be used as a template for ``fs.properties`` file:
-
 .. tabs::
 
    .. tab:: SDK 6
+
+		The following snippet can be used as a template for ``configuration.properties`` file for the File System configuration properties:
 
 		.. code-block:: properties
 
@@ -120,7 +120,7 @@ The following snippet can be used as a template for ``fs.properties`` file:
 			#   - Unix
 			#   - Custom
 			# @optional, default value is "Unix"
-			#com.microej.runtime.fs=
+			#com.microej.pack.fs.fs=
 
 			# Defines the File System root volume.
 			# @optional for the following File System types:
@@ -128,7 +128,7 @@ The following snippet can be used as a template for ``fs.properties`` file:
 			#   - Unix (default value is "/")
 			# @mandatory for the following File System type:
 			#   - Custom
-			#com.microej.runtime.root.dir=
+			#com.microej.pack.fs.root.dir=
 
 			# Defines the File System user directory.
 			# @optional for the following File System type:
@@ -136,7 +136,7 @@ The following snippet can be used as a template for ``fs.properties`` file:
 			# @mandatory for the following File System types:
 			#   - Unix
 			#   - Custom
-			#com.microej.runtime.user.dir=
+			#com.microej.pack.fs.user.dir=
 
 			# Defines the File System temporary directory.
 			# @optional for the following File System types:
@@ -144,7 +144,7 @@ The following snippet can be used as a template for ``fs.properties`` file:
 			#   - Unix (default value is "/tmp")
 			# @mandatory for the following File System type:
 			#   - Custom
-			#com.microej.runtime.java.io.tmpdir=
+			#com.microej.pack.fs.java.io.tmpdir=
 
 			# Defines the File System file separator.
 			# @optional for the following File System types:
@@ -152,7 +152,7 @@ The following snippet can be used as a template for ``fs.properties`` file:
 			#   - Unix (default value is "/")
 			# @mandatory for the following File System type:
 			#   - Custom
-			#com.microej.runtime.file.separator=
+			#com.microej.pack.fs.file.separator=
 
 			# Defines the File System path separator.
 			# @optional for the following File System types:
@@ -160,7 +160,7 @@ The following snippet can be used as a template for ``fs.properties`` file:
 			#   - Unix (default value is ":")
 			# @mandatory for the following File System type:
 			#   - Custom
-			#com.microej.runtime.path.separator=
+			#com.microej.pack.fs.path.separator=
 
 			# Defines the case sensitivity of the File System.
 			# Valid values are "caseInsensitive" and "caseSensitive".
@@ -169,9 +169,11 @@ The following snippet can be used as a template for ``fs.properties`` file:
 			#   - Unix (default value is "caseSensitive")
 			# @mandatory for the following File System type:
 			#   - Custom
-			#com.microej.runtime.case.sensitivity=
+			#com.microej.pack.fs.case.sensitivity=
 
    .. tab:: SDK 5
+
+		The following snippet can be used as a template for ``fs.properties`` file:
 
 		.. code-block:: properties
 
