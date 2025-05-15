@@ -156,7 +156,7 @@ Then you can continue with the :ref:`Remote Floating License Server <add_remote_
 Add Remote Floating License Server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Fron Sentinel Admin Control Center**
+**From Sentinel Admin Control Center**
 
 - On the developer workstation, open a web browser.
 - Browse http://localhost:1947 to open the Sentinel Admin Control Center (if you work with WSL read note below). 
