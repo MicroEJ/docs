@@ -328,7 +328,7 @@ This typically happen when linking ELF object files containing dead code or debu
 If such functions refer to unresolved symbols, you may need to define a fake symbol to make the linker happy.
 You can declare it in your BSP project or directly in your VEE Port as following:
 
-- Create a file ``link/armlink-weak.lscf`` in the :ref:`dropins <platformCustomization>` directory of your VEE Port configuration project.
+- Create a file ``MICROJVM/link/armlink-weak.lscf`` in the :ref:`dropins <platformCustomization>` directory of your VEE Port configuration project.
 - Edit the file and declare as many symbols as required. See also the :ref:`microej_linker` chapter for more details on the MicroEJ linker file syntax.
   
   .. code-block:: xml
