@@ -44,6 +44,7 @@
 .. _C Module DMA2D 1.0.8: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/1.0.8/
 .. _C Module DMA2D 1.0.6: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/1.0.6/
 
+.. _C Module MicroUI over VGLite to version 10.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/10.0.1/
 .. _C Module MicroUI over VGLite to version 10.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/10.0.0/
 .. _C Module MicroUI over VGLite to version 9.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/9.0.0/
 .. _C Module VGLite 8.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/8.0.1/
@@ -57,6 +58,7 @@
 .. _C Module VGLite 4.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/4.0.0/
 .. _C Module VGLite 3.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/3.0.0/
 
+.. _C Module MicroUI over NemaGFX to version 4.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx/4.0.1/
 .. _C Module MicroUI over NemaGFX to version 4.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx/4.0.0/
 .. _C Module MicroUI over NemaGFX to version 3.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx/3.0.0/
 .. _C Module NemaGFX 2.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx/2.0.1/

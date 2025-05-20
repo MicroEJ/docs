@@ -8,7 +8,7 @@ Changelog
 
 .. _section_ui_changelog_14_4_2:
 
-[14.4.2] - Unreleased
+[14.4.2] - 2025-05-20
 =====================
 
 VG Pack
@@ -24,6 +24,22 @@ FrontPanel
 **Fixed**
 
 - Fix the use of the SDK5 option "Resolve in workspace" (since UI Pack 14.4.1).
+
+C Module VGLite
+"""""""""""""""
+
+**Fixed**
+
+- Fix the implementation of ``UI_DRAWING_VGLITE_copyImage()`` to use the right software algorithm.
+- Fix the premultiplication of the format ARGB1555: it is useless.
+
+C Module NemaGFX
+""""""""""""""""
+
+**Fixed**
+
+- Fix the rendering of a RGB565 image with a transparent opacity.
+- Fix the implementation of ``UI_DRAWING_NEMA_copyImage()`` to use the right software algorithm.
 
 .. _section_ui_changelog_14_4_1:
 
