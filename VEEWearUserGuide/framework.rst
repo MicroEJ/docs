@@ -29,7 +29,7 @@ The build generates an executable file and a Virtual Device which must be provid
 
 The VEE Wear Kernel Application requires the following amount of memory:
 
-- RAM: around 400KB (mainly for Java heap and buffered images)
+- RAM: around 400KB (mainly for Managed heap and buffered images)
 - ROM: from 250KB to 1MB for each App (mainly for its images)
 
 The Kernel provides the following APIs to the Apps:

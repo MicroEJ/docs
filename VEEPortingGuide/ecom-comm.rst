@@ -310,7 +310,7 @@ and receiving data. The ECOM Comm C module will fill the transmit
 buffer, and get bytes from the receive buffer. There is no flow control.
 
 When the transmit buffer is full, an attempt to write more bytes from
-the MicroEJ Application will block the Java thread trying to write,
+the MicroEJ Application will block the thread trying to write,
 until some characters are sent on the serial line and space in the
 buffer is available again.
 
@@ -378,7 +378,7 @@ driver has to define a strategy to store received bytes that were not
 handed to the C module yet. This could be a fixed or variable side FIFO,
 the older received but unread bytes may be dropped, or a more complex
 priority arbitration could be set up. On the transmit side, if the
-driver does not do any buffering, the Java thread waiting to send
+driver does not do any buffering, the thread waiting to send
 something will be blocked and wait for the UART to send all the data.
 
 In Custom mode flow control (eg. RTS/CTS or XON/XOFF) can be used to

@@ -44,7 +44,7 @@ It produces a ``.kdat`` file that will be used to link the Sandboxed Application
 
    Kernel Metadata Generator
 
-The ``.kdat`` file is optimized for size. When linking a Sandboxed Application ``.fso`` file, only the required metadata will be loaded in Java heap.
+The ``.kdat`` file is optimized for size. When linking a Sandboxed Application ``.fso`` file, only the required metadata will be loaded in Managed heap.
 It will be loaded from a standard `InputStream`_,
 so that it can be stored to a memory that is not accessible from the CPU's address space.
 

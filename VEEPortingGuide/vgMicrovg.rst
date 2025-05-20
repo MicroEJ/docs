@@ -25,7 +25,7 @@ Native Calls
 ============
 
 Like MicroUI, the MicroVG implementation for MicroEJ uses native methods to perform some actions (manipulate matrices, perform drawings, decode and render fonts, etc.). 
-The library implementation has been designed not to block native methods (wait until the end of the drawing, etc.), which can lock the complete MicroEJ Core Engine execution. 
+The library implementation has been designed not to block native methods (wait until the end of the drawing, etc.), which can lock the complete Core Engine execution. 
 
 Refer to the :ref:`MicroUI implementation <section_microui_native_calls>` to have more details about the native calls.
 
@@ -64,8 +64,8 @@ When installed, the MicroVG Pack module must be configured.
    .. tab:: SDK 6
 
      In SDK 6, the configuration is done in the properties file ``configuration.properties`` of the VEE Port project.
-	  All the properties names listed below must be prefixed by ``com.microej.runtime.microvg.``.
-	  For example the ``implementation`` properties is defined by the ``com.microej.runtime.microvg.implementation`` property.
+	  All the properties names listed below must be prefixed by ``com.microej.pack.microvg.``.
+	  For example the ``implementation`` properties is defined by the ``com.microej.pack.microvg.implementation`` property.
 
    .. tab:: SDK 5
 
@@ -86,7 +86,7 @@ Example:
 
       .. code-block:: XML
 
-         com.microej.runtime.microvg.implementation=nema
+         com.microej.pack.microvg.implementation=nema
 
    .. tab:: SDK 5
 

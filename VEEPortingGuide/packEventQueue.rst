@@ -8,7 +8,7 @@ Event Queue
 Principle
 =========
 
-The Event Queue Foundation Library provides an asynchronous communication interface between the native world and the Java world based on events.
+The Event Queue Foundation Library provides an asynchronous communication interface between the native world and the Managed world based on events.
 Its functional architecture and usage are documented in the :ref:`Application Developer Guide <event_queue>`.
 
 Dependencies

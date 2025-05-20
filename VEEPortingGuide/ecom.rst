@@ -81,7 +81,7 @@ A device registration listener is defined by implementing
 `ej.ecom.RegistrationListener`_. When a device is registered to or
 unregistered from the device manager, listeners registered for the
 device type are notified. The notification mechanism is done in a
-dedicated Java thread. The mechanism can be enabled or disabled (see
+dedicated thread. The mechanism can be enabled or disabled (see
 :ref:`application_options`).
 
 .. _ej.ecom.Device: https://repository.microej.com/javadoc/microej_5.x/apis/ej/ecom/Device.html

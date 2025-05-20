@@ -103,7 +103,7 @@ If applicable, configure the MPU should to protect the application.
   For example, FreeRTOS includes FreeRTOS-MPU https://www.freertos.org/Security/04-FreeRTOS-MPU-memory-protection-unit.
 
 * Configure the MPU to configure the access to the JVM heap and stack to prevent any other native threads from altering this area.
-  Refer to :ref:`this section<core_engine_link>` for the list of section names defined by the MicroEJ Core Engine.
+  Refer to :ref:`this section<core_engine_link>` for the list of section names defined by the Core Engine.
 
 Memory Corruption
 -----------------
@@ -177,7 +177,7 @@ Attach an embedded debugger and get the following information:
     * the whole memory, if possible
     * otherwise, get the *hot sections* 
 
-        * BSP and Java heap and stack
+        * BSP and Managed heap and stack
         * UI buffer
         * immortals heap
         * sections where the Java application and BSP are working together
@@ -202,7 +202,7 @@ Trigger a VM Dump
 This function prints the VM state.
 Data printed in the VM state are:
 
-* List of Java threads
+* List of threads
 * Stack trace for each thread
 
 See :ref:`this section<vm_dump>` to learn more about ``LLMJVM_dump``.

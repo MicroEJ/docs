@@ -167,7 +167,7 @@ Garbage Collector
 
 The Core Engine includes a state-of-the-art memory management
 system, the Garbage Collector (GC). It manages a bounded piece of RAM
-memory, devoted to the Java world. The GC automatically frees dead Java
+memory, devoted to the Managed world. The GC automatically frees dead Java
 objects, and defragments the memory in order to optimize RAM usage. This
 is done transparently while the Application keep running.
 

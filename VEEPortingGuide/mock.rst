@@ -253,7 +253,7 @@ root: The stored files are called "Java resources" and are accessible
 using a path as a String.
 
 The MicroEJ Simulator interface allows the retrieval of any resource
-from the original Java world, using the ``getResourceContent`` method.
+from the original Managed world, using the ``getResourceContent`` method.
 
 .. code-block:: java
 

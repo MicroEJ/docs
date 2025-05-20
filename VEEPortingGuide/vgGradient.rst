@@ -23,7 +23,7 @@ A linear gradient is a succession of colors at different positions.
 The colors from the MicroVG library implementation are encoded in the 32-bit format: ARGB8888.
 The color encoding in the gradient is a VEE Port-specific implementation.
 
-The buffer where the gradient is encoded is stored in the Java heap.
+The buffer where the gradient is encoded is stored in the Managed heap.
 The MicroVG implementation on demand automatically increases the buffer size.
 
 .. _LinearGradient: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/LinearGradient.html

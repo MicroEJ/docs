@@ -11,6 +11,20 @@ Changelog
 [14.4.1] - 2025-03-13
 =====================
 
+Known Issue
+"""""""""""
+
+- This version is not compatible with the VG Pack (any versions): 
+
+  - Reason: A VEE Port with this UI Pack and a VG Pack cannot be built:
+
+	.. code-block:: bash
+
+		[java] microvg/ui-pack:
+		[java] C:\[...]-configuration\target~\scripts\rip\build\autoConfiguration-microvg.xml:43: VG Pack requires the UI Pack 14.1.0 or higher and the platform fetches the UI Pack ${ui.packVersion}.
+
+  - Workaround: None, use the UI Pack 14.3.3 instead.
+
 MicroUI
 """""""
 
@@ -1032,7 +1046,7 @@ MicroUI
 
 **Fixed**
 
-* Fix the unexpected resuming of the pump Java thread when a new event is added to the queue if it is an other component than the MicroUI queue that has suspended the pump Java thread.
+* Fix the unexpected resuming of the pump thread when a new event is added to the queue if it is an other component than the MicroUI queue that has suspended the pump thread.
 * Fix the flush bounds of drawCircleArc and drawEllipseArc.
 
 Front Panel
@@ -1267,7 +1281,7 @@ Front Panel
 **Fixed**
 
 * Fix the "display context switch" and the loading of feature's font.
-* Fix OOM (Java heap space) when opening/closing several hundreds of big RAW Images.
+* Fix OOM (Managed heap space) when opening/closing several hundreds of big RAW Images.
 * Fix the synchronization with the Graphics Engine when calling `GraphicsContext.setColor()`_ or `GraphicsContext.enableEllipsis()`_.
 
 .. _GraphicsContext.setColor(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html#setColor-int-
@@ -1374,7 +1388,7 @@ Front Panel
 **Fixed**
 
 * Fix OutputFormat A8 when loading an image (path or stream) or converting a RAW image.
-* Fix OOM (Java heap space) when opening/closing several hundreds of MicroUI Images.
+* Fix OOM (Managed heap space) when opening/closing several hundreds of MicroUI Images.
 * Simulates the image data alignment.
 
 LLAPIs
@@ -1541,7 +1555,7 @@ MicroUI Implementation
 
 **Fixed**
 
-* Reduce Java heap usage.
+* Reduce Managed heap usage.
 * Fix empty images heap.
 * Draw image algorithm does not respect image stride in certain circumstances.
 * Fix flush limits of `drawThickFadedLine`_, `drawThickEllipse`_ and `drawThickFadedEllipse`_.
@@ -1805,7 +1819,7 @@ MicroUI Implementation
 
 **Fixed**
 
-* Obsolete references on Java heap are used (since MicroEJ UI Pack 12.0.0).
+* Obsolete references on Managed heap are used (since MicroEJ UI Pack 12.0.0).
 
 .. _section_ui_changelog_12_1_3:
 

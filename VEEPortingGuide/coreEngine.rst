@@ -63,14 +63,14 @@ OS/RTOS scheduler.
 The Core Engine defines a multi-threaded environment without relying on
 any native OS capabilities.
 
-Therefore, the whole Java world runs in one single task, within
+Therefore, the whole Managed world runs in one single task, within
 which the Core Engine re-creates a layer of (green) threads.
 One immediate advantage is that the Java-world CPU consumption is fully
 controlled by the task it is running in, allowing embedded
 engineers to easily arbitrate between the different parts of their
 application. In particular in an open-to-third-parties framework, the
-maximum CPU time given to the Java world is fully under control at no
-risk, whatever the number and/or the activities of the Java threads.
+maximum CPU time given to the Managed world is fully under control at no
+risk, whatever the number and/or the activities of the threads.
 
 The next illustration shows 4 tasks, with the last one running the Core Engine with 2 threads. 
 When the last task is scheduled by the underlying OS, the Core Engine executes and schedules the threads.
@@ -271,14 +271,14 @@ The following table describes these error codes.
    +-------------+-------------------------------------------------------------+
    | -5          | Not enough resources to start the very first MicroEJ        |
    |             | thread that executes ``main`` method. See section           |
-   |             | :ref:`option_java_heap`.                                    |
+   |             | :ref:`option_managed_heap`.                                 |
    +-------------+-------------------------------------------------------------+
    | -12         | Number of threads limitation reached. See sections          |
    |             | :ref:`limitations` and :ref:`option_number_of_threads`.     |
    +-------------+-------------------------------------------------------------+
    | -13         | Fail to start the Application because the                   |
    |             | specified managed heap is too large or too small.           |
-   |             | See section :ref:`option_java_heap`.                        |
+   |             | See section :ref:`option_managed_heap`.                     |
    +-------------+-------------------------------------------------------------+
    | -14         | Invalid Application stack configuration. The                |
    |             | stack start or end is not eight-byte aligned, or stack      |
@@ -587,7 +587,7 @@ The internal structures of the Core Engine that can be altered legitimately by a
 The following internal structures may be modified without affecting the checksum:
 
 - basetype fields in Java objects or content of Java arrays of base type,
-- internal structures modified by a ``LLMJVM`` function call (e.g., set a pending Java exception, suspend or resume the Java thread, register a resource, ...).
+- internal structures modified by a ``LLMJVM`` function call (e.g., set a pending Java exception, suspend or resume the thread, register a resource, ...).
 
 This function affects the performances and should only be used for debug purpose.
 A typical use of this API is to verify that a native implementation does not corrupt the internal structures:

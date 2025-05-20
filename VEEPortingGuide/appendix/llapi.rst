@@ -575,7 +575,7 @@ Creation
 The header file ``LLVG_PATH_impl.h`` allows to convert a MicroVG library format path in a buffer that represents the same vectorial path in the target specific format (generally GPU format).
 
 The first function called is ``LLVG_PATH_IMPL_initializePath``, which allows the implementation to initialize the path buffer.
-The buffer is allocated in the Java heap and its size is fixed by the MicroVG implementation.
+The buffer is allocated in the Managed heap and its size is fixed by the MicroVG implementation.
 When the buffer is too small for the target specific format, the implementation has to return the expected buffer size instead of the keyword ``LLVG_SUCCESS``.
 
 The next steps consist in appending some commands in the path buffer.
@@ -636,7 +636,7 @@ Only one function has to be implemented: ``LLVG_GRADIENT_IMPL_initializeGradient
 It consists in encoding the MicroVG LinearGradient in a buffer that represents the linear gradient in target specific format (generally GPU format).  
 
 This function allows the implementation to initialize the gradient buffer.
-The buffer is allocated in the Java heap and its size is fixed by the MicroVG implementation.
+The buffer is allocated in the Managed heap and its size is fixed by the MicroVG implementation.
 When the buffer is too small for the target specific format, the implementation has to return the expected buffer size instead of the keyword ``LLVG_SUCCESS``.
 
 .. _LLVG-FONT-API-SECTION:

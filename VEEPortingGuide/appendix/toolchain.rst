@@ -43,23 +43,23 @@ There are three ABIs:
 
 It is important to note that code compiled with a particular ABI might
 not be compatible with code compiled with another ABI. MicroEJ modules,
-including the MicroEJ Core Engine, use the hard ABI.
+including the Core Engine, use the hard ABI.
 
 
 .. _appendix_matrixcapabilities:
 
-Supported MicroEJ Core Engine Capabilities by Architecture Matrix
-=================================================================
+Supported Core Engine Capabilities by Architecture Matrix
+=========================================================
 
-The following table lists the supported MicroEJ Core Engine capabilities
+The following table lists the supported Core Engine capabilities
 by MicroEJ Architectures.
 
 .. tabularcolumns:: |p{2.5cm}|p{4cm}|p{2.7cm}|p{2.5cm}|p{2.7cm}|
 
-.. table:: Supported MicroEJ Core Engine Capabilities by MicroEJ Architecture Matrix
+.. table:: Supported Core Engine Capabilities by MicroEJ Architecture Matrix
 
    +-----------------+------------------------+-------------+-------------+--------------+
-   | MicroEJ Core Engine Architectures        | Capabilities                             |
+   | Core Engine Architectures                | Capabilities                             |
    +-----------------+------------------------+-------------+-------------+--------------+
    | MCU             | Compiler               | Mono-       | Tiny-       | Multi-       |
    |                 |                        | Sandbox     | Sandbox     | Sandbox      |
@@ -328,7 +328,7 @@ This typically happen when linking ELF object files containing dead code or debu
 If such functions refer to unresolved symbols, you may need to define a fake symbol to make the linker happy.
 You can declare it in your BSP project or directly in your VEE Port as following:
 
-- Create a file ``link/armlink-weak.lscf`` in the :ref:`dropins <platformCustomization>` directory of your VEE Port configuration project.
+- Create a file ``MICROJVM/link/armlink-weak.lscf`` in the :ref:`dropins <platformCustomization>` directory of your VEE Port configuration project.
 - Edit the file and declare as many symbols as required. See also the :ref:`microej_linker` chapter for more details on the MicroEJ linker file syntax.
   
   .. code-block:: xml

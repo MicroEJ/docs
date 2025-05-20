@@ -10,7 +10,7 @@ Advanced Event Tracing
 Principle
 =========
 
-MicroEJ Core Engine allows method execution to be profiled. The following two new hooks functions are used for that:
+Core Engine allows method execution to be profiled. The following two new hooks functions are used for that:
 
 - ``LLMJVM_MONITOR_IMPL_on_invoke_method`` called at the start of the method invocation.
 - ``LLMJVM_MONITOR_IMPL_on_return_method`` called when returning from the invoked method.
@@ -19,7 +19,7 @@ Calling these functions each time a method is invoked will slow down the applica
 so these functions are not called by default when event tracing is enabled and started.
 
 .. note::
-   This feature requires Architecture version ``7.17.0`` or higher and is only available on MicroEJ Core Engine, not on Simulator.
+   This feature requires Architecture version ``7.17.0`` or higher and is only available on the Core Engine, not on the Simulator.
 
 To activate them, you need to follow these steps:
 

@@ -4,6 +4,11 @@
 SystemView
 ==========
 
+.. note::
+
+   In the following explanations, the term `task` refers to native tasks scheduled by the underlying OS or RTOS, 
+   while `thread` refers to MicroEJ threads scheduled by the Core Engine.
+   
 Principle
 =========
 
@@ -11,7 +16,7 @@ SystemView is a real-time recording and visualization tool for embedded systems 
 going far deeper than the system insights provided by debuggers. This is particularly effective when developing and working with complex
 embedded systems comprising multiple threads and interrupts.
 
-A specific SystemView extension made by MicroEJ allows to trace the OS tasks and the MicroEJ Java threads at the same time.
+A specific SystemView extension made by MicroEJ allows to trace the OS tasks and the MicroEJ threads at the same time.
 This chapter explains how to add the SystemView feature to a VEE Port and set it up.
 
 .. note:: MicroEJ supports integration with SystemView on FreeRTOS 9 and FreeRTOS 10.
@@ -76,11 +81,11 @@ Add source files to your BSP for SystemView with MicroEJ/FreeRTOS integration
 This file can be modified to fit your system configuration:
    
    * Update ``SYSVIEW_APP_NAME``, ``SYSVIEW_DEVICE_NAME``, and ``SYSVIEW_RAM_BASE`` defines to fit your system information.
-   * To add MicroEJ Java threads management in SystemView tasks initialization:
+   * To add MicroEJ threads management in SystemView tasks initialization:
   
       * Add these includes ``#include "task.h"``, ``#include "LLMJVM_MONITOR_SYSVIEW.h"``, ``#include "LLTRACE_SYSVIEW_configuration.h"``, ``#include "SEGGER_SYSVIEW_configuration.h"``
         and the include that declares the external variable ``pvMEJCoreEngineTask``. ``pvMEJCoreEngineTask`` must be the FreeRTOS task handle
-        used to create the MicroEJ Core Engine task. Initializes this variable at ``NULL`` before the call of the FreeRTOS scheduler.
+        used to create the Core Engine task. Initializes this variable at ``NULL`` before the call of the FreeRTOS scheduler.
       * In function ``_cbSendSystemDesc(void)``, add this instruction: ``SEGGER_SYSVIEW_SendSysDesc("N="SYSVIEW_APP_NAME",D="SYSVIEW_DEVICE_NAME",O=FreeRTOS");`` before ``SEGGER_SYSVIEW_SendSysDesc("I#15=SysTick");``.
       * Replace the ``Global function`` section with this code:
 
@@ -106,16 +111,16 @@ This file can be modified to fit your system configuration:
             * Using the post mortem analysis, FreeRTOS tasks regularly call the SYSVIEW_MICROEJ_X_OS_SendTaskList() function when
             * a packet (systemview event) is sent to the SEGGER circular buffer. It is necessary because the information of tasks
             * must be regularly uploaded in the circular buffer in order to provide a valid analysis at any moment.
-            * Consequently, we only allow to call LLMJVM_MONITOR_SYSTEMVIEW_send_task_list() when the current task is the MicroEJ Core Engine.
+            * Consequently, we only allow to call LLMJVM_MONITOR_SYSTEMVIEW_send_task_list() when the current task is the Core Engine.
             */
 
             /* Obtain the handle of the current task. */
             TaskHandle_t xHandle = xTaskGetCurrentTaskHandle();
             configASSERT( xHandle ); // Check the handle is not NULL.
 
-            // Check if the current task handle is the MicroEJ Core Engine task handle. pvMEJCoreEngineTask is an external variable.
+            // Check if the current task handle is the Core Engine task handle. pvMEJCoreEngineTask is an external variable.
             if( xHandle == pvMEJCoreEngineTask){
-               // Launched by the MicroEJ Core Engine, we execute LLMJVM_MONITOR_SYSTEMVIEW_send_task_list()
+               // Launched by the Core Engine, we execute LLMJVM_MONITOR_SYSTEMVIEW_send_task_list()
                LLMJVM_MONITOR_SYSTEMVIEW_send_task_list();
             }
          #else
@@ -123,13 +128,13 @@ This file can be modified to fit your system configuration:
             * LIVE analysis
             *
             * Using the live analysis, the call of SYSVIEW_MICROEJ_X_OS_SendTaskList() is triggered by
-            * the SystemView Software through the J-Link probe. Consequently, the MicroEJ Core Engine task will never call
-            * the function LLMJVM_MONITOR_SYSTEMVIEW_send_task_list(). However, if the MicroEJ Core Engine task is created,
+            * the SystemView Software through the J-Link probe. Consequently, the Core Engine task will never call
+            * the function LLMJVM_MONITOR_SYSTEMVIEW_send_task_list(). However, if the Core Engine task is created,
             * the function must be called LLMJVM_MONITOR_SYSTEMVIEW_send_task_list().
             */
-            // Check if the MicroEJ Core Engine task handle is not NULL. pvMEJCoreEngineTask is an external variable.
+            // Check if the Core Engine task handle is not NULL. pvMEJCoreEngineTask is an external variable.
             if( NULL != pvMEJCoreEngineTask){
-               // The MicroEJ Core Engine task is running, we execute LLMJVM_MONITOR_SYSTEMVIEW_send_task_list()
+               // The Core Engine task is running, we execute LLMJVM_MONITOR_SYSTEMVIEW_send_task_list()
                LLMJVM_MONITOR_SYSTEMVIEW_send_task_list();
             }
          #endif
@@ -182,7 +187,7 @@ Modify startup code of your BSP
       See section :ref:`systemview_no_rtt_block` for more details.
       You may also find the RTT block address in RAM by searching ``_SEGGER_RTT`` in the .map file generated with the firmware binary.
 
-#. Add a call to ``SYSVIEW_setMicroJVMTask(pvCreatedTask);`` just after creating the OS task. The handler to give is the parameter of type TaskHandle_t passed to the ``xTaskCreate`` function. This will register the MicroEJ Core Engine OS task.
+#. Add a call to ``SYSVIEW_setMicroJVMTask(pvCreatedTask);`` just after creating the OS task. The handler to give is the parameter of type TaskHandle_t passed to the ``xTaskCreate`` function. This will register the Core Engine OS task.
 
 Add description files to Systemview installation folder
 -------------------------------------------------------
@@ -276,7 +281,7 @@ To enable events recording, refer to the :ref:`event_enable_recording` section t
 Add custom events to the SystemView analysis
 --------------------------------------------
 
-MicroEJ Architecture can generate specific events that allow monitoring of current Java thread, Java exceptions, Java allocations, ... as well as custom application events.
+MicroEJ Architecture can generate specific events that allow monitoring of current thread, Java exceptions, Java allocations, ... as well as custom application events.
 Please refer to the :ref:`event-tracing` section.
 
 For custom application events, the first step is to add logs to the Java application using a dedicated ``Tracer``. Please read the documentation page :ref:`codeInstrumentationForLogging`. Below is an example of ``Tracer`` usage:
@@ -337,44 +342,44 @@ parameters to appear in the SystemView timeline view, use the modifiers below:
 
 Check the other text files provided by SEGGER for more examples in the install directory ``SEGGER/SystemView_VXXX/Description``.
 
-MicroEJ Core Engine OS Task
----------------------------
+Core Engine OS Task
+-------------------
 
-The :ref:`MicroEJ Core Engine <core_engine>` task is the native OS task that executes the Core Engine internals & the Application threads.
+The :ref:`Core Engine <core_engine>` task is the native OS task that executes the Core Engine internals & the Application threads.
 The provided SystemView configuration replaces (splits) the execution segments of this OS task with (into) the different components that are actually executed.
 This simplifies profiling analysis by exposing the execution segments of the Scheduler, Garbage Collector & the different Application threads (with their names, see the section below) directly into SystemView's timeline, along with the other native OS tasks.
 
-OS Tasks and Java Threads Names
--------------------------------
+OS Tasks and Threads Names
+--------------------------
 
-To make a distinction between the OS tasks and the MicroEJ Java threads, a prefix is added to the OS tasks names (``[OS]``) and the Java threads names (``[MEJ]``).
+To make a distinction between the OS tasks and the MicroEJ threads, a prefix is added to the OS tasks names (``[OS]``) and the threads names (``[MEJ]``).
 
 .. _fig_sv_names:
 .. figure:: images/sv_names.*
    :alt: OS and Thread Names
    :align: center
 
-   OS Tasks and Java Threads Names
+   OS Tasks and Threads Names
 
 .. note:: 
 
-   SystemView limits the number of characters to 32. The prefix length is included in these 32 characters; consequently, the end of the original OS task or Java thread name can be cropped.
+   SystemView limits the number of characters to 32. The prefix length is included in these 32 characters; consequently, the end of the original OS task or thread name can be cropped.
 
-OS Tasks and Java Threads Priorities
-------------------------------------
+OS Tasks and Threads Priorities
+-------------------------------
 
-SystemView lists the OS tasks and Java threads according to their priorities. 
-However, the priority notion does not have the same signification when talking about OS tasks or Java threads: a Java thread priority depends on the MicroEJ Core Engine OS task priority.
+SystemView lists the OS tasks and threads according to their priorities. 
+However, the priority notion does not have the same signification when talking about OS tasks or threads: a thread priority depends on the Core Engine OS task priority.
 
-As a consequence, a Java thread with the priority ``5`` may not appear between an OS task with the priority ``4`` and another OS task with priority ``6``:
+As a consequence, a thread with the priority ``5`` may not appear between an OS task with the priority ``4`` and another OS task with priority ``6``:
 
-* if the MicroEJ Core Engine OS task priority is ``3``, the Java thread must appear below an OS task with priority ``4``. 
-* if the MicroEJ Core Engine OS task priority is ``7``, the Java thread must appear above an OS task with priority ``6``. 
+* if the Core Engine OS task priority is ``3``, the thread must appear below an OS task with priority ``4``. 
+* if the Core Engine OS task priority is ``7``, the thread must appear above an OS task with priority ``6``. 
 
 To keep a consistent line ordering in SystemView, the priorities sent to the SystemView client respect the following rules:
 
 * OS task: ``priority_sent = task_priority * 100``.
-* MicroEJ Java thread: ``priority_sent = MicroJvm_task_priority * 100 + thread_priority``.
+* MicroEJ thread: ``priority_sent = MicroJvm_task_priority * 100 + thread_priority``.
 
 Troubleshooting
 ===============
