@@ -24,6 +24,20 @@ Front Panel
 
 .. _Front Panel Widgets 5.3.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/5.3.1/
 
+BSP with VGLite
+"""""""""""""""
+
+* *[VEE Port configuration project]*
+
+    * Set the dependency to the `C Module MicroUI over VGLite to version 10.0.1`_.
+	
+BSP with NemaGFX
+""""""""""""""""
+
+* *[VEE Port configuration project]*
+
+    * Set the dependency to the `C Module MicroUI over NemaGFX to version 4.0.1`_.
+
 .. _section_ui_migrationguide_pack_14.4.1:
 
 From 14.3.3 to 14.4.1
