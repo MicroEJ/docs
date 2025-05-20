@@ -116,7 +116,7 @@ To use the VEE Wear Services, add the following line to the project build file:
 
 .. code-block:: kotlin
 
-	implementation("com.microej.library.wear:wear-services:1.0.0")
+	implementation("com.microej.library.wear:wear-services:1.1.0")
 
 VEE Wear Apps
 -------------
@@ -132,7 +132,7 @@ To create an App project, follow these steps:
 
 - :ref:`Create an SDK 6 Application project <sdk_6_create_project>`.
 - Open the ``build.gradle.kts`` file.
-- Add a dependency to the VEE Wear Services library: add ``implementation("com.microej.library.wear:wear-services:1.0.0")`` in the ``dependencies`` block.
+- Add a dependency to the VEE Wear Services library: add ``implementation("com.microej.library.wear:wear-services:1.1.0")`` in the ``dependencies`` block.
 
 Implementing the Entry Point
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
