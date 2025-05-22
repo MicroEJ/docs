@@ -83,16 +83,16 @@ The default implementation can only draw strings with :ref:`internal fonts <sect
 In other words, the application cannot draw with a custom font.
 This is the most frequent use case, the only one available with MicroUI before version 3.6.
 
-.. attention:: To select this implementation (to disable the custom font support), the define ``LLUI_FONT_CUSTOM_FORMATS`` must be unset.
+.. attention:: To select this implementation (to disable the custom font support), the define ``UI_FEATURE_FONT_CUSTOM_FORMATS`` must be unset.
 
 The font drawing is similar to ``UI_DRAWING_GPU_drawLine`` (see :ref:`section_drawings_cco`), except that the drawing consists in decoding the string first (to optionally apply a complex layout manager), and then calling the Graphics Engine's software algorithms to draw the string.
 
 Theoretically, the weak drawer should let the font drawer handle the font instead of calling the software drawer directly.
-However the MicroUI C Module takes advantage of the define ``LLUI_FONT_CUSTOM_FORMATS``: as it is not set, the C Module bypasses the indirection to the font drawer, and as a consequence the implementation of the weak function only consists in calling the Graphics Engine's software algorithm (basic string layouter, see :ref:`section_font_languages` and software drawings). 
+However the MicroUI C Module takes advantage of the define ``UI_FEATURE_FONT_CUSTOM_FORMATS``: as it is not set, the C Module bypasses the indirection to the font drawer, and as a consequence the implementation of the weak function only consists in calling the Graphics Engine's software algorithm (basic string layouter, see :ref:`section_font_languages` and software drawings). 
 This tip reduces the footprint and the CPU usage.
 
-An implementation of a third-party complex layouter can optionally take advantage of the define ``LLUI_FONT_CUSTOM_FORMATS``.
-The following diagrams illustrate the drawing of a string with or without taking advantage of the define ``LLUI_FONT_CUSTOM_FORMATS`` (respectively *default* and *optimized* implementation).
+An implementation of a third-party complex layouter can optionally take advantage of the define ``UI_FEATURE_FONT_CUSTOM_FORMATS``.
+The following diagrams illustrate the drawing of a string with or without taking advantage of the define ``UI_FEATURE_FONT_CUSTOM_FORMATS`` (respectively *default* and *optimized* implementation).
 
 .. tabs::
 
@@ -233,7 +233,7 @@ These name redirections are helpful when the VEE Port features more than one des
 
 **UI_DRAWING_LAYOUT_drawString** (to write in the BSP)
 
-Similar to ``UI_DRAWING_GPU_drawLine`` (see :ref:`section_drawings_cco`), but lets the font drawer manage the font instead of calling the software drawer directly (*Default Implementation*) or takes advantage of the define ``LLUI_FONT_CUSTOM_FORMATS`` (*Optimized Implementation*):
+Similar to ``UI_DRAWING_GPU_drawLine`` (see :ref:`section_drawings_cco`), but lets the font drawer manage the font instead of calling the software drawer directly (*Default Implementation*) or takes advantage of the define ``UI_FEATURE_FONT_CUSTOM_FORMATS`` (*Optimized Implementation*):
 
 .. tabs::
 
@@ -279,14 +279,14 @@ Similar to ``UI_DRAWING_GPU_drawLine`` (see :ref:`section_drawings_cco`), but le
 
    // Use the compiler's 'weak' attribute
    __weak DRAWING_Status UI_DRAWING_DEFAULT_drawString(MICROUI_GraphicsContext *gc, jchar *chars, jint length, MICROUI_Font *font, jint x, jint y) {
-   #if !defined(LLUI_FONT_CUSTOM_FORMATS)
+   #if !defined(UI_FEATURE_FONT_CUSTOM_FORMATS)
       return UI_DRAWING_SOFT_drawString(gc, chars, length, font, x, y);
    #else
       return UI_FONT_DRAWING_drawString(gc, chars, length, font, x, y);
    #endif
    }
 
-The define ``LLUI_FONT_CUSTOM_FORMATS`` is not set, so the implementation of the weak function only consists in calling the Graphics Engine's software algorithm.
+The define ``UI_FEATURE_FONT_CUSTOM_FORMATS`` is not set, so the implementation of the weak function only consists in calling the Graphics Engine's software algorithm.
 
 
 .. _section_font_drawer_custom:
@@ -297,7 +297,7 @@ Custom Font Format
 In addition to the :ref:`internal font format <section_font_internal_format>`, this implementation allows drawing strings with a :ref:`custom font format <section_font_custom>`.
 This advanced use case is available only with MicroUI 3.6 or higher.
 
-.. attention:: To select this implementation, the define ``LLUI_FONT_CUSTOM_FORMATS`` must be set (no specific value).
+.. attention:: To select this implementation, the define ``UI_FEATURE_FONT_CUSTOM_FORMATS`` must be set (no specific value).
 
 The MicroUI C module uses some tables to redirect the font management to the expected extension.
 There is one table per Font Abstraction Layer API (draw, rotate, scale) to embed only the necessary algorithms (a table and its functions are only embedded in the final binary file if and only if the MicroUI drawing method is called).
@@ -426,14 +426,14 @@ Take the same example as the *Internal Font Formats Only* implementation (draw a
 
    // Use the compiler's 'weak' attribute
    __weak DRAWING_Status UI_DRAWING_DEFAULT_drawString(MICROUI_GraphicsContext *gc, jchar *chars, jint length, MICROUI_Font *font, jint x, jint y) {
-   #if !defined(LLUI_FONT_CUSTOM_FORMATS)
+   #if !defined(UI_FEATURE_FONT_CUSTOM_FORMATS)
       return UI_DRAWING_SOFT_drawString(gc, chars, length, font, x, y);
    #else
       return UI_FONT_DRAWING_drawString(gc, chars, length, font, x, y);
    #endif
    }
 
-The define ``LLUI_FONT_CUSTOM_FORMATS`` is set so the implementation of the weak function redirects the string drawing to the font drawer manager (``ui_font_drawing.h``).
+The define ``UI_FEATURE_FONT_CUSTOM_FORMATS`` is set so the implementation of the weak function redirects the string drawing to the font drawer manager (``ui_font_drawing.h``).
 
 **UI_FONT_DRAWING_draw** (available in MicroUI C Module)
 
