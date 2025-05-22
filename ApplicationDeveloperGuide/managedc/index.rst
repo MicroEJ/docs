@@ -13,7 +13,7 @@ MicroEJ provides the capability to develop parts of an application in C or C++, 
    MicroEJ Runtime Overview
 
 .. note::
-   This feature requires Architecture version ``8.3.0`` or higher, and is currently not supported in simulation.
+   This feature requires Architecture version ``8.4.0`` or higher, and is currently not supported in simulation.
 
 Managed C code is enabled through the support of `WebAssembly 1.0 <https://www.w3.org/TR/wasm-core-1/>`_, with :ref:`some additionnal instructions <managedc.instructions>`. 
 

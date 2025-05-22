@@ -17,11 +17,11 @@ Before you begin, ensure that the following elements are available on your works
 
       .. tab:: SDK6
 
-         - A pre-built VEE Port using an Architecture v8.3.0 or higher.
+         - A pre-built VEE Port using an Architecture v8.4.0 or higher.
 
       .. tab:: SDK 5
 
-         - A pre-built VEE Port using an Architecture v8.3.0 or higher.
+         - A pre-built VEE Port using an Architecture v8.4.0 or higher.
          - :ref:`MMM CLI (Command Line Interface) <mmm_build_kit>`, for building the demo module from command line.         
 
 Steps
