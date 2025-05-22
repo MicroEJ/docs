@@ -782,6 +782,11 @@ The following configuration parameters are available:
           The testsuite verbose level follows Gradle log level.
 
      - ``info``
+   * - ``microej.testsuite.status.pattern``
+     - **since `1.3.0`** Pattern to change test ``PASSED`` and ``FAILED`` tags in testsuite logs.
+       These tags are catched by the testsuite engine to determine if a test has passed or failed.
+       The ``{}`` placeholder in the pattern will be replaced by ``PASSED`` or ``FAILED`` respectively in order to discriminate these tags from other test logs.
+     - ``.:[{}]:.``
 
 .. _sdk_6_testsuite_application_options:
 
