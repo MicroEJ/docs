@@ -1,3 +1,5 @@
+.. _native_mechanisms:
+
 Native Interface Mechanisms
 ===========================
 
