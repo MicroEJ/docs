@@ -887,6 +887,27 @@ Three header files is provided:
 
    Defines the set of functions that the BSP must implement for audio playback.
 
+.. _LLMICROAI-API-SECTION:
+
+LLML: MicroAI
+=============
+
+Naming Convention
+-----------------
+
+The Low Level MicroAI API (LLML), relies on functions that need to
+be implemented by engineers in a driver. The names of these functions
+match the ``LLML_IMPL_*`` pattern.
+
+Header Files
+------------
+
+Three header files are provided:
+
+-  LLML_impl.h
+
+   Defines the set of functions that the BSP must implement for Machine Learning.
+
 .. _LLEVENT-API-SECTION:
 
 LLEVENT: Event Queue
