@@ -45,6 +45,7 @@ Core Engine
 
 - Updated ExternalResourceLoader implementation to use SNI 1.4 which removes allocations to the Immortal Heap.
 - [Multi] - Increased the limitation on the maximum number of threads from 63 to 127 when Multi-Sandbox capability is enabled.
+- Fixed an issue where ``LLMJVM_MONITOR_IMPL_on_thread_state_changed()`` was not called when a thread was preempted by another thread due to higher priority or round-robin scheduling.
 
 Simulator
 ~~~~~~~~~
@@ -53,7 +54,7 @@ Simulator
 - Added, in Front Panel, the ability to resize the window, an options toolbar and a status bar (see :ref:`frontpanel_overview`).
 - Fixed, in Front Panel, synchronization on the widget display accesses and rendering of the widgets other than display.
 - Fixed initialization of an empty Immortal Heap when :ref:`option_immortal_heap` is set to 0.
-- Fix the implementation of `Tracer.isTraceStarted()`_ that could return ``true`` when trace recording is not yet enabled in some cases.
+- Fixed the implementation of `Tracer.isTraceStarted()`_ that could return ``true`` when trace recording is not yet enabled in some cases.
 - Fixed `InputStream.reset()`_ method on a :ref:`Resource <chapter.microej.applicationResources>` that could throw an unexpected `IOException`_ after the end of stream is reached.
 - Fixed Front Panel not starting at boot. It was previously only displayed after the `MicroUI.start()`_ call.
 
