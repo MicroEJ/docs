@@ -19,7 +19,7 @@ To use the MicroAI Library, add the following line to the project build file:
 
    implementation("ej.api:microai:1.0.0")
 
-Building or running an Application which uses the MicroAI Library a SDK6 VEE Port that provides the :ref:`MicroAI Pack <pack_microai>`.
+Building or running an Application which uses the MicroAI Library requires a SDK6 VEE Port that provides the :ref:`MicroAI Pack <pack_microai>`.
 
 Machine Learning Model Format
 -----------------------------
@@ -43,22 +43,27 @@ APIs
 MLInferenceEngine
 ~~~~~~~~~~~~~~~~~
 
-The first action when dealing with MicroAI is to load the trained Machine Learning model using MLInferenceEngine class. 
+The first action when working with MicroAI is to load the trained Machine Learning model using ``MLInferenceEngine`` class. 
 
 There are 2 ways to load a model:
 
-* from an application resource with ``MLInferenceEngine(String modelPath)`` constructor
-* from an InputStream using ``MLInferenceEngine(InputStream is)`` constructor.
+* From an application resource with ``MLInferenceEngine(String modelPath)`` constructor.
+* From an InputStream using ``MLInferenceEngine(InputStream is)`` constructor.
 
-The 2 constructors map the model into a native data structure, build an interpreter to run the model with and allocate memory for the model's tensors.
+The ``MLInferenceEngine`` constructor will:
 
-The InputStream constructor will block until the model is completely retrieved/loaded on the native side. 
-It will load the model inside the MicroAI heap.
+1. Map the model into a native data structure.
+2. Build an interpreter to run the model with.
+3. Allocate memory for the model's tensors.
+
+When using ``MLInferenceEngine(InputStream is)``, the model is loaded inside the MicroAI heap.
 The size of MicroAI heap is defined from the :ref:`MicroAI Configurations <microai_configuration>`.
 
-Once initialized, MLInferenceEngine allows to get input/output model tensors and to run inferences on the trained model.
+Note that the call to ``MLInferenceEngine(InputStream is)`` will block until the model is completely retrieved/loaded.
 
-For example, the following snippet loads a trained model from application resources and run inference on it:
+Once initialized, ``MLInferenceEngine`` allows to get input/output model tensors and to run inferences on the trained model.
+
+For example, the following snippet loads a trained model from the application resources and runs an inference on it:
 
 
 .. code-block:: java
@@ -79,9 +84,9 @@ For example, the following snippet loads a trained model from application resour
 Tensor
 ~~~~~~
 
-Tensor parameters can be retrieved from the Tensor class. 
+Tensor parameters can be retrieved from the ``Tensor`` class. 
 
-It allows to get some usefull information such as the data type, the number of dimensions, the number of elements, the size in bytes or the quantization parameters.
+It allows to get some useful information such as the data type, the number of dimensions, the number of elements, the size in bytes or the quantization parameters.
 
 There are 2 kinds of tensors:
 
@@ -93,15 +98,15 @@ Classes Summary
 
 Main classes:
 
-* MLInferenceEngine: Loads a model, get its tensors and run inferences on it.
-* Tensor: Retrieves tensor information.
-* InputTensor: Loads input data before running an inference.
-* OutputTensor: Retrieves output data after running an inference.
+* ``MLInferenceEngine``: Loads a model, get its tensors and runs inferences on it.
+* ``Tensor``: Retrieves a tensor information.
+* ``InputTensor``: Loads input data before running an inference.
+* ``OutputTensor``: Retrieves output data after running an inference.
 
 Stateless and immutable classes:
 
-* Tensor.DataType: Enumerates MicroAI data types.
-* Tensor.QuantizationParameters: Represents quantized parameters of a tensor.
+* ``Tensor.DataType``: Enumerates MicroAI data types.
+* ``Tensor.QuantizationParameters``: Represents quantized parameters of a tensor.
 
 .. _microai_configuration:
 
@@ -134,7 +139,7 @@ For example, the following snippet runs inference on model that takes 1 quantize
             OutputTensor outputTensor = mlInferenceEngine.getOutputTensor(0); // Get output tensor of the trained model.
             float[] outputData = new float[outputTensor.getNumberElements()]; // Create an array that fits size of output tensor.
 
-            // Retrieve and prints inference result.
+            // Retrieve and print inference result.
             outputTensor.getOutputData(outputData); // Retrieve output data from MicroAI output tensor.
             System.out.println("Inference result with " + realValue + " input is " + outputData[0]);
         }

@@ -902,7 +902,7 @@ match the ``LLML_IMPL_*`` pattern.
 Header Files
 ------------
 
-Three header files is provided:
+Three header files are provided:
 
 -  LLML_impl.h
 
