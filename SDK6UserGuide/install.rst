@@ -120,6 +120,16 @@ Once your favorite IDE is installed, plugins must be installed to develop MicroE
       
       - In IntelliJ IDEA, open the Settings window (menu :guilabel:`File` > :guilabel:`Settings...` on Windows and Linux, 
         menu :guilabel:`IntelliJ IDEA` > :guilabel:`Settings...` on macOS).
+      - Go to the :guilabel:`Languages & Frameworks` > :guilabel:`Kotlin` menu.
+      - Uncheck :guilabel:`Enable K2`.
+
+	      .. figure:: images/intellij_disable_K2.png
+		      :alt: Disable K2 in IntelliJ IDEA
+		      :align: center
+		      :scale: 70%
+
+		      Disable K2 in IntelliJ IDEA
+
       - Go to :guilabel:`Plugins` menu.
       - In the search field, type ``MicroEJ``:
       
@@ -143,6 +153,10 @@ Once your favorite IDE is installed, plugins must be installed to develop MicroE
       - Click on the :guilabel:`Restart IDE` button.
 
       To install the snapshot version of the MicroEJ plugin, please refer to :ref:`sdk_6_install_plugin_snapshot`.
+
+      .. warning::
+
+         If the whole Gradle build file is red (in error), check that K2 is disabled and invalidate the caches. See :ref:`sdk_6_disable_k2` for more details.
 
    .. tab:: Android Studio
 
