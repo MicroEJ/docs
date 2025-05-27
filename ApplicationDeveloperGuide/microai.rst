@@ -13,7 +13,7 @@ Usage
 
 The MicroAI Library is provided as a Foundation Library.
 
-To use the MicroAI Library, add the following line to the project build file:
+To use the `MicroAI Library <https://repository.microej.com/modules/ej/api/microai/>`_, add the following line to the project build file:
 
 .. code-block:: kotlin
 
@@ -43,25 +43,25 @@ APIs
 MLInferenceEngine
 ~~~~~~~~~~~~~~~~~
 
-The first action when working with MicroAI is to load the trained Machine Learning model using ``MLInferenceEngine`` class. 
+The first action when working with MicroAI is to load the trained Machine Learning model using `MLInferenceEngine`_ class. 
 
 There are 2 ways to load a model:
 
-* From an application resource with ``MLInferenceEngine(String modelPath)`` constructor.
-* From an InputStream using ``MLInferenceEngine(InputStream is)`` constructor.
+* From an application resource with `_MLInferenceEngine(String modelPath)`_ constructor.
+* From an InputStream using `_MLInferenceEngine(InputStream is)`_ constructor.
 
-The ``MLInferenceEngine`` constructor will:
+The `MLInferenceEngine`_ constructor will:
 
 1. Map the model into a native data structure.
 2. Build an interpreter to run the model with.
 3. Allocate memory for the model's tensors.
 
-When using ``MLInferenceEngine(InputStream is)``, the model is loaded inside the MicroAI heap.
+When using `_MLInferenceEngine(InputStream is)`_, the model is loaded inside the MicroAI heap.
 The size of MicroAI heap is defined from the :ref:`MicroAI Configurations <microai_configuration>`.
 
-Note that the call to ``MLInferenceEngine(InputStream is)`` will block until the model is completely retrieved/loaded.
+Note that the call to `_MLInferenceEngine(InputStream is)`_ will block until the model is completely retrieved/loaded.
 
-Once initialized, ``MLInferenceEngine`` allows to get input/output model tensors and to run inferences on the trained model.
+Once initialized, `MLInferenceEngine`_ allows to get input/output model tensors and to run inferences on the trained model.
 
 For example, the following snippet loads a trained model from the application resources and runs an inference on it:
 
@@ -84,29 +84,29 @@ For example, the following snippet loads a trained model from the application re
 Tensor
 ~~~~~~
 
-Tensor parameters can be retrieved from the ``Tensor`` class. 
+Tensor parameters can be retrieved from the `Tensor`_ class. 
 
 It allows to get some useful information such as the data type, the number of dimensions, the number of elements, the size in bytes or the quantization parameters.
 
 There are 2 kinds of tensors:
 
-* InputTensor: Offers services to load input data inside MicroAI input tensors before running an inference. Tensor input data must be one of the types supported by MicroAI (see Tensor.DataType).
-* OutputTensor: Offers services to retrieve output data from MicroAI output tensors after running an inference. Tensor output data must be one of the types supported by MicroAI (see Tensor.DataType).
+* `InputTensor`_: Offers services to load input data inside MicroAI input tensors before running an inference. Tensor input data must be one of the types supported by MicroAI (see Tensor.DataType).
+* `OutputTensor`_: Offers services to retrieve output data from MicroAI output tensors after running an inference. Tensor output data must be one of the types supported by MicroAI (see Tensor.DataType).
 
 Classes Summary
 ~~~~~~~~~~~~~~~
 
 Main classes:
 
-* ``MLInferenceEngine``: Loads a model, get its tensors and runs inferences on it.
-* ``Tensor``: Retrieves a tensor information.
-* ``InputTensor``: Loads input data before running an inference.
-* ``OutputTensor``: Retrieves output data after running an inference.
+* `MLInferenceEngine`_: Loads a model, get its tensors and runs inferences on it.
+* `Tensor`_: Retrieves a tensor information.
+* `InputTensor`_: Loads input data before running an inference.
+* `OutputTensor`_: Retrieves output data after running an inference.
 
 Stateless and immutable classes:
 
-* ``Tensor.DataType``: Enumerates MicroAI data types.
-* ``Tensor.QuantizationParameters``: Represents quantized parameters of a tensor.
+* `Tensor.DataType`_: Enumerates MicroAI data types.
+* `Tensor.QuantizationParameters`_: Represents quantized parameters of a tensor.
 
 .. _microai_configuration:
 
@@ -144,6 +144,14 @@ For example, the following snippet runs inference on model that takes 1 quantize
             System.out.println("Inference result with " + realValue + " input is " + outputData[0]);
         }
 
+.. _MLInferenceEngine: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microai/MLInferenceEngine.html
+.. _MLInferenceEngine(String modelPath): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microai/MLInferenceEngine.html#MLInferenceEngine-java.lang.String-
+.. _MLInferenceEngine(InputStream is): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microai/MLInferenceEngine.html#MLInferenceEngine-java.io.InputStream-
+.. _Tensor: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microai/Tensor.html
+.. _InputTensor: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microai/InputTensor.html
+.. _OutputTensor: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microai/OutputTensor.html
+.. _Tensor.DataType: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microai/Tensor.DataType.html
+.. _Tensor.QuantizationParameters: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microai/Tensor.QuantizationParameters.html
 
 ..
    | Copyright 2025, MicroEJ Corp. Content in this space is free 
