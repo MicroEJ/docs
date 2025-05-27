@@ -47,8 +47,8 @@ The first action when working with MicroAI is to load the trained Machine Learni
 
 There are 2 ways to load a model:
 
-* From an application resource with `_MLInferenceEngine(String modelPath)`_ constructor.
-* From an InputStream using `_MLInferenceEngine(InputStream is)`_ constructor.
+* From an application resource with `MLInferenceEngine(String modelPath)`_ constructor.
+* From an InputStream using `MLInferenceEngine(InputStream is)`_ constructor.
 
 The `MLInferenceEngine`_ constructor will:
 
@@ -56,10 +56,10 @@ The `MLInferenceEngine`_ constructor will:
 2. Build an interpreter to run the model with.
 3. Allocate memory for the model's tensors.
 
-When using `_MLInferenceEngine(InputStream is)`_, the model is loaded inside the MicroAI heap.
+When using `MLInferenceEngine(InputStream is)`_, the model is loaded inside the MicroAI heap.
 The size of MicroAI heap is defined from the :ref:`MicroAI Configurations <microai_configuration>`.
 
-Note that the call to `_MLInferenceEngine(InputStream is)`_ will block until the model is completely retrieved/loaded.
+Note that the call to `MLInferenceEngine(InputStream is)`_ will block until the model is completely retrieved/loaded.
 
 Once initialized, `MLInferenceEngine`_ allows to get input/output model tensors and to run inferences on the trained model.
 
