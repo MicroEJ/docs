@@ -55,6 +55,10 @@ Simulator
 - Fixed initialization of an empty Immortal Heap when :ref:`option_immortal_heap` is set to 0.
 - Fix the implementation of `Tracer.isTraceStarted()`_ that could return ``true`` when trace recording is not yet enabled in some cases.
 - Fixed `InputStream.reset()`_ method on a :ref:`Resource <chapter.microej.applicationResources>` that could throw an unexpected `IOException`_ after the end of stream is reached.
+- Fixed Front Panel not starting at boot. It was previously only displayed after the `MicroUI.start()`_ call.
+
+.. _MicroUI.start() : https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/MicroUI.html#start--
+
 
 SOAR
 ~~~~
