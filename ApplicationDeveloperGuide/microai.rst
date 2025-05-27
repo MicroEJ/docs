@@ -17,7 +17,7 @@ To use the `MicroAI Library <https://repository.microej.com/modules/ej/api/micro
 
 .. code-block:: kotlin
 
-   implementation("ej.api:microai:1.0.0")
+   implementation("ej.api:microai:2.0.0")
 
 Building or running an Application which uses the MicroAI Library requires a SDK6 VEE Port that provides the :ref:`MicroAI Pack <pack_microai>`.
 
