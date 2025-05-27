@@ -8,6 +8,8 @@ Introduction
 
 The MicroAI Library provides APIs to interact with trained Machine Learning models, especially to run inferences.
 
+.. _microai_api_usage:
+
 Usage
 -----
 
@@ -25,7 +27,7 @@ Machine Learning Model Format
 -----------------------------
 
 MicroAI is designed to be **framework-agnostic**, meaning it does not rely on a specific Machine Learning framework like TensorFlow or ONNX.
-Instead, the model format used by the MicroEJ Application depends on the VEE Port implementation of the MicroAI library. 
+Instead, the model format used by the Application depends on the VEE Port implementation of the MicroAI library. 
 Please check which model formats are supported by your target VEE Port.
 
 MicroEJ Simulator

@@ -8,13 +8,14 @@ Principle
 =========
 
 The MicroAI Foundation Library defines a low-level Machine Learning framework for embedded devices.
-It allows to interact with trained Machine Learning models, especially to run inferences.
+It allows to run inferences on trained Machine Learning models.
 
 Functional Description
 ======================
 
-The MicroEJ Application manages MicroAI models using Model instantiation/Inference/Tensor abstraction.
-The MicroAI implementation made for each MicroEJ platform is responsible for surfacing the native Machine Learning specific behavior.
+A typical Application using MicroAI will load a model binary file, read its input/output characteristics, and finally perform an inference.
+
+The MicroAI integration in a VEE port relies on a native AI framework (Tensorflow-lite, ONNX Runtime, etc...) to implement all of the above functionalities.
 
 Dependencies
 ============
@@ -29,12 +30,12 @@ To enable it, the MicroAI :ref:`Pack <pack_overview>` must be installed in your 
 
 .. code-block:: kotlin
 
-   api("ej.api:microai:1.0.0")
+   api("ej.api:microai:2.0.0")
 
 Use
 ===
 
-See :ref:`MicroAI API <microai_api>` chapter in Application Developer Guide.
+See :ref:`MicroAI API <microai_api_usage>` chapter in Application Developer Guide.
 
 ..
    | Copyright 2025, MicroEJ Corp. Content in this space is free 
