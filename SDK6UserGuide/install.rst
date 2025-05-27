@@ -144,6 +144,10 @@ Once your favorite IDE is installed, plugins must be installed to develop MicroE
 
       To install the snapshot version of the MicroEJ plugin, please refer to :ref:`sdk_6_install_plugin_snapshot`.
 
+      .. warning::
+
+         Check that K2 is disabled in the settings. See the troubleshooting section on :ref:`sdk_6_disable_k2` to know how to disable it.
+
    .. tab:: Android Studio
 
       Follow these steps to install the latest stable version of the MicroEJ plugin for Android Studio:
