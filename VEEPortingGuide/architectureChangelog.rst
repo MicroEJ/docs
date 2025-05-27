@@ -67,6 +67,15 @@ SOAR
 - Increased the maximum number of blocks allowed in a method to prevent the ``[M200] - Maximum number of blocks reached`` error.
 - Added an appropriate error message when a resources list file contains an invalid resource declaration.
 
+
+Integration
+~~~~~~~~~~~
+
+- Added Memory Map Scripts for new Foundation Libraries: ``Eclasspath Time``, ``Storage``, ``NETUtil``, ``Protobuf``, ``Facer``, ``Message``, ``KFUtil``, ``ConnectivityManager``, ``AppConnect``, ``Hoka``, ``Property``, ``Script``, ``Layout``.
+- Updated Memory Map Scripts for the latest versions of Foundation Libraries: ``FS``, ``Security``, and Add-On Libraries: ``Eclasspath Executor``, ``Eclasspath IO``.
+- Fixed incorrect assignment of some ``.bss`` , ``.text`` and ``.rodata`` sections in Memory Map Scripts; these were previously placed in the default ``BSP`` category.
+
+
 .. _Tracer.isTraceStarted() : https://repository.microej.com/javadoc/microej_5.x/apis/ej/trace/Tracer.html#isTraceStarted--
 .. _InputStream.reset() : https://repository.microej.com/javadoc/microej_5.x/apis/java/io/InputStream.html#reset--
 
