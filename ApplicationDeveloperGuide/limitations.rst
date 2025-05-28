@@ -3,7 +3,7 @@
 Limitations
 ===========
 
-The following table lists the limitations of MicroEJ Architectures version ``7.14.0`` or higher, for both Evaluation and Production usage.
+The following table lists the limitations of MicroEJ Architectures version ``8.4.0`` or higher, for both Evaluation and Production usage.
 Please consult :ref:`architecture_changelog` for limitations changes on former versions.
 
 .. note::
@@ -64,12 +64,18 @@ Please consult :ref:`architecture_changelog` for limitations changes on former v
    * - Number of static fields (References)
      - 65536
      - 65536
-   * - Number of threads
+   * - [Mono-Sandbox] Number of threads
      - 63
      - 63
-   * - Number of held monitors [3]_
+   * - [Multi-Sandbox] Number of threads
+     - 127
+     - 127
+   * - [Mono-Sandbox] Number of held monitors [4]_
      - 63
      - 63
+   * - [Multi-Sandbox] Number of held monitors [4]_
+     - 127 [3]_
+     - 127 [3]_
    * - Time limit
      - 60 minutes
      - unlimited
@@ -92,7 +98,7 @@ Please consult :ref:`architecture_changelog` for limitations changes on former v
    
 .. [2]
    All instance fields declared in the class and its super classes.
-
+   
 .. [3]
    The maximum number of different monitors that can be held by one thread at any
    time is defined by the :ref:`maximum number of monitors per thread Application option <option_maximum_number_of_monitors_per_thread>`.
