@@ -202,7 +202,7 @@ Best Practices
 
 This section describes rules made of best practices, well-known restrictions of the Java Programming Language, and more generally Object Oriented paradigm.
 Due to the resource constraints related to CPU, RAM, or FLASH usage, some
-Java best pratices can be counter productive when used in an embedded
+Java best practices can be counterproductive when used in an embedded
 software development context. This section also exists to discuss such limitations.
 Be also aware that there is no absolute truth when talking about these limitations,
 you should keep in mind that depending on your hardware some may apply some may not.
@@ -354,8 +354,8 @@ The `Object.hashCode()`_ method is written that way:
 
 Depending on its type, the hash code of a field is:
 
-- Boolean: ``(f ? 0 : 1)``.
-- Byte, char, short, int: ``(int) f)``.
+- Boolean: ``(f ? 1231 : 1237)``.
+- Byte, char, short, int: ``(int) f``.
 - Long: ``(int)(f ^ (f >>> 32))``.
 - Float: ``Float.floatToIntBits(f)``.
 - Double: ``Double.doubleToLongBits(f)`` and the same as for a long.
@@ -390,7 +390,7 @@ Autoboxing and Numbers
 
 - Avoid using boxed primitives (Integer, Byte, Float classes) if not needed. Most of
   the time using boxed primitives leads to autoboxing (the process of converting
-  primitives to boxed primitives) which can CPU intensive due to casting.
+  primitives to boxed primitives), which can be CPU intensive due to casting.
 
 .. code:: java
 
@@ -403,9 +403,9 @@ Autoboxing and Numbers
   // Here you "autobox" the basetype into its corresponding primitive type
   list.add(5);
 
-- Avoid using floats and double if exact numbers are needed.
-  Use BigDecimal for floating points operations when precision is needed.
-  For better performances use int and long operation.
+- Avoid using floats and doubles if exact numbers are needed.
+  Use BigDecimal for floating point operations when precision is needed.
+  For better performances use int and long operations.
 
 - Prefer 32-bit floats for embedded performance. Double operations are CPU intensive.
 
@@ -414,7 +414,7 @@ Generics
 
 - Do not use raw types such as the Collection, prefer using a parameterized type instead
   (it ensures type safety, avoid explicit type casting, and improve code readability).
-  Generics and parametrized types are a compile time feature, it won't impact runtime performances.
+  Generics and parametrized types are a compile time feature, it won't impact runtime performances and memory footprint.
 
 .. code:: java
 
