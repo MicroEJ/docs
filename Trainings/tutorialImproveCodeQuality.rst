@@ -648,22 +648,22 @@ Usage of Inner Classes
 
 .. code:: java
 
-public class OuterClass {
+  public class OuterClass {
     
-    // Avoid non-static inner class (an instance of this class is stored in the outer class)
-    private class InnerClass1 {
-        public void message() {
-            System.out.println("This is a non-static inner class.");
-        }
-    }
+      // Avoid non-static inner class (an instance of this class is stored in the outer class)
+      private class InnerClass1 {
+          public void message() {
+              System.out.println("This is a non-static inner class.");
+          }
+      }
 
-    // Prefer static inner class (the instances are shared among all instances of OuterClass)
-    public static class InnerClass2 {
-        public void message() {
-            System.out.println("This is a static inner class.");
-        }
-    }
-}
+      // Prefer static inner class (the instances are shared among all instances of OuterClass)
+      public static class InnerClass2 {
+          public void message() {
+              System.out.println("This is a static inner class.");
+          }
+      }
+  }
   
 - Prefer short inner classes for readability (if your inner class gets too complex it surely deserves its own file).
 
