@@ -52,13 +52,13 @@ Integration
 
 - Added Memory Map Scripts for new Foundation Libraries: ``Audio``, ``EventQueue``, ``Metrology``, ``MicroAI`` and new Add-On Libraries: ``AppConnect``, ``ConnectivityManager``, ``Eclasspath Time``,  ``Facer``, ``Hoka``, ``KFUtil``, ``Layout``, ``Message``, ``NETUtil``, ``Property``, ``Protobuf``, ``Script``, ``Storage``.
 - Updated Memory Map Scripts for the latest versions of Foundation Libraries: ``FS``, ``Security``, and Add-On Libraries: ``Eclasspath Executor``, ``Eclasspath IO``.
-- Fixed incorrect assignment of some ``.bss`` , ``.text`` and ``.rodata`` sections in Memory Map Scripts; these were previously placed in the default ``BSP`` category.
+- Fixed incorrect assignment of some ``.bss``, ``.text``, and ``.rodata`` sections in Memory Map Scripts; these were previously placed in the default ``BSP`` category.
 
 Simulator
 ~~~~~~~~~
 
 - Added :ref:`Mock event tracing <mock_event_tracing>`.
-- Added, in Front Panel, the ability to resize the window, an options toolbar and a status bar (see :ref:`frontpanel_overview`).
+- Added, in Front Panel, the ability to resize the window, an options toolbar, and a status bar (see :ref:`frontpanel_overview`).
 - Fixed, in Front Panel, synchronization on the widget display accesses and rendering of the widgets other than display.
 - Fixed initialization of an empty Immortal Heap when :ref:`option_immortal_heap` is set to 0.
 - Fixed the implementation of `Tracer.isTraceStarted()`_ that could return ``true`` when trace recording is not yet enabled in some cases.

@@ -728,7 +728,7 @@ By default, the Simulator traces are printed on the standard console.
    [TRACE: MyMockGroup] Event 0x3()
 
 However, it is also possible to connect other trace recorders as needed.
-In particular, you can export traces in the in the ``*.SVdat`` format for analysis with the the :ref:`Segger SystemView <systemview>` tool.
+In particular, you can export traces in the ``*.SVdat`` format for analysis with the :ref:`Segger SystemView <systemview>` tool.
 For more information, please contact `our support team <https://www.microej.com/contact/#form_2>`_.
 
 ..
