@@ -558,7 +558,7 @@ You should have a  line saying ``Attached - Ubuntu``:
       3-1    045e:0823  USB Input Device                                              Not attached
       3-4    046d:c31c  USB Input Device                                              Not attached
 
-In you WSL console, the dongle must also be recognized. Ckeck by using ``lsusb```:
+In you WSL console, the dongle must also be recognized. Ckeck by using ``lsusb``:
 
    .. code-block:: console
 

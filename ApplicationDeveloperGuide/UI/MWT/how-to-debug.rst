@@ -65,7 +65,7 @@ It is possible to print more information about the created widgets and desktops 
 It can be activated by setting the :ref:`Application Option <application_options>` named ``ej.mwt.debug.log.trace.enabled`` to ``true``.
 
 The traces can be seen in SystemView.
-For the traces to be more human-readable, the file ``SYSVIEW_MWT.txt``` must be put in SystemView installation folder (e.g. ``SEGGER/SystemView_V252a/Description/``).
+For the traces to be more human-readable, the file ``SYSVIEW_MWT.txt`` must be put in SystemView installation folder (e.g. ``SEGGER/SystemView_V252a/Description/``).
 This file can be found in the ``resources`` folder of the jar of MWT.
 Otherwise, it can be created manually with the following content:
 
