@@ -503,7 +503,7 @@ Note that ``host`` and ``host/`` will link to the same request handler whatever 
 
 Development Mode
 ----------------
-Development mode can be activated by calling ``HttpServer#builder()#developmentMode()```.
+Development mode can be activated by calling ``HttpServer#builder()#developmentMode()``.
 
 This will tell the HOKA server to send the exception stack trace to the client.
 

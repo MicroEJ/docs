@@ -176,7 +176,7 @@ Overview
 This C module is a specific implementation of the C module MicroUI over STM32 DMA2D (Chrom-ART Graphics Accelerator):
 
 * It implements a set of drawings using the official Chrom-ART Graphics Accelerator API.
-* It is compatible with several STM32 MCU: ``STM32F4XX```, ``STM32F7XX``` and ``STM32H7XX```.
+* It is compatible with several STM32 MCU: ``STM32F4XX``, ``STM32F7XX`` and ``STM32H7XX``.
 * It manages several configurations of memory cache.
 * It is compatible with the :ref:`multiple destination formats <section_bufferedimage_cco>` module (but can only handle one destination format).
 * It is compatible with the :ref:`Buffer Refresh Strategies (BRS)<section_brs>` ``predraw``, ``single`` and ``legacy`` (switch).
