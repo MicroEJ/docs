@@ -35,6 +35,49 @@ specific configuration:
    -  ``QNX70``: BlackBerry QNX 7.0
 
 
+.. _changelog-8.4.0:
+
+[8.4.0] - 2025-05-28
+--------------------
+
+Core Engine
+~~~~~~~~~~~
+
+- Updated :ref:`External Resources Loader<section_externalresourceloader>` implementation to use SNI 1.4 which removes allocations to the Immortal Heap.
+- Fixed an issue where ``LLMJVM_MONITOR_IMPL_on_thread_state_changed()`` was not called when a thread was preempted by another thread due to higher priority or round-robin scheduling.
+- [Multi] - Increased the :ref:`limitation <limitations>` on the maximum number of threads from 63 to 127.
+
+Integration
+~~~~~~~~~~~
+
+- Added Memory Map Scripts for new Foundation Libraries: ``Audio``, ``EventQueue``, ``Metrology``, ``MicroAI`` and new Add-On Libraries: ``AppConnect``, ``ConnectivityManager``, ``Eclasspath Time``,  ``Facer``, ``Hoka``, ``KFUtil``, ``Layout``, ``Message``, ``NETUtil``, ``Property``, ``Protobuf``, ``Script``, ``Storage``.
+- Updated Memory Map Scripts for the latest versions of Foundation Libraries: ``FS``, ``Security``, and Add-On Libraries: ``Eclasspath Executor``, ``Eclasspath IO``.
+- Fixed incorrect assignment of some ``.bss``, ``.text``, and ``.rodata`` sections in Memory Map Scripts; these were previously placed in the default ``BSP`` category.
+
+Simulator
+~~~~~~~~~
+
+- Added :ref:`Mock event tracing <mock_event_tracing>`.
+- Added, in Front Panel, the ability to resize the window, an options toolbar, and a status bar (see :ref:`frontpanel_overview`).
+- Fixed, in Front Panel, synchronization on the widget display accesses and rendering of the widgets other than display.
+- Fixed initialization of an empty Immortal Heap when :ref:`option_immortal_heap` is set to 0.
+- Fixed the implementation of `Tracer.isTraceStarted()`_ that could return ``true`` when trace recording is not yet enabled in some cases.
+- Fixed `InputStream.reset()`_ method on a :ref:`Resource <chapter.microej.applicationResources>` that could throw an unexpected `IOException`_ after the end of stream is reached.
+- Fixed Front Panel not starting at boot. It was previously only displayed after the `MicroUI.start()`_ call.
+
+.. _MicroUI.start() : https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/MicroUI.html#start--
+
+
+SOAR
+~~~~
+
+- Added an appropriate error message when a resources list file contains an invalid resource declaration.
+- Increased the maximum number of blocks allowed in a method to prevent the ``[M200] - Maximum number of blocks reached`` error.
+
+
+.. _Tracer.isTraceStarted() : https://repository.microej.com/javadoc/microej_5.x/apis/ej/trace/Tracer.html#isTraceStarted--
+.. _InputStream.reset() : https://repository.microej.com/javadoc/microej_5.x/apis/java/io/InputStream.html#reset--
+
 .. _changelog-8.3.0:
 
 [8.3.0] - 2024-12-24
@@ -46,10 +89,14 @@ Foundation Libraries
 - Fixed, in ``EDC``, implementation of `java.util.WeakHashMap.put()`_ which could lead to a memory leak when new elements are added but never accessed.
 - Fixed, in ``EDC``, :ref:`Enable SecurityManager checks option <option_enable_security_manager>` was not disabled by default.
 
-Tools
-~~~~~
+Integration
+~~~~~~~~~~~
 
-- Updated License Manager (Evaluation) to debug installed license from command line (see :ref:`sdk6_evaluation_license_check`).
+- Added the declaration of :ref:`section.classpath.elements.constants` as :ref:`Application Options <application_options>`.
+- Updated Architecture End User License Agreement to version ``SDK 3.1-c``.
+- Fixed :ref:`Front Panel File option <section_frontpanel_multiple_fp_files>` option was not taken into account on VEE Ports that do not depend on UI Pack.
+- Fixed an issue where Sentinel licenses were not displayed in the License Manager in some cases.
+- Removed warning messages related to missing :ref:`GC mark stack size option <option_gc_stack_size>` when building on Device.
 
 Simulator
 ~~~~~~~~~
@@ -66,16 +113,12 @@ SOAR
 - Added a check to verify compatibility with the expected MicroEJ classfile version (``1.7``).
 - Fixed precedence of a :ref:`System Property <system_properties>` declared as an :ref:`Application Option <application_options>` to take priority over one defined in the classpath.
 
+Tools
+~~~~~
+
+- Updated License Manager (Evaluation) to debug installed license from command line (see :ref:`sdk6_evaluation_license_check`).
+
 .. _Kernel.clone(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#clone-T-ej.kf.Module-
-
-Integration
-~~~~~~~~~~~
-
-- Updated Architecture End User License Agreement to version ``SDK 3.1-c``.
-- Added the declaration of :ref:`section.classpath.elements.constants` as :ref:`Application Options <application_options>`.
-- Fixed :ref:`Front Panel File option <section_frontpanel_multiple_fp_files>` option was not taken into account on VEE Ports that do not depend on UI Pack.
-- Fixed an issue where Sentinel licenses were not displayed in the License Manager in some cases.
-- Removed warning messages related to missing :ref:`GC mark stack size option <option_gc_stack_size>` when building on Device.
 
 .. _changelog-8.2.0:
 
@@ -98,8 +141,8 @@ Core Engine
 Integration
 ~~~~~~~~~~~
 
-- Add Architecture tools compatibility with SDKs running on JDK 17 and JDK 21.
-- Fix message to correctly display the BSP location, ensuring compatibility with both SDK 5 and SDK 6.
+- Added Architecture tools compatibility with SDKs running on JDK 17 and JDK 21.
+- Fixed message to correctly display the BSP location, ensuring compatibility with both SDK 5 and SDK 6.
 
 Simulator
 ~~~~~~~~~
