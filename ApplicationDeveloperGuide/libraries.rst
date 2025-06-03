@@ -43,6 +43,7 @@ To consult its libraries APIs documentation, please visit `<https://developer.mi
    networking
    bluetooth
    audio
+   microai
    javaTime
    eventQueue
    js/index
