@@ -26,9 +26,12 @@ Building or running an Application which uses the MicroAI Library requires a SDK
 Machine Learning Model Format
 -----------------------------
 
-MicroAI is designed to be **framework-agnostic**, meaning it does not rely on a specific Machine Learning framework like TensorFlow or ONNX.
-Instead, the model format used by the Application depends on the VEE Port implementation of the MicroAI library. 
-Please check which model formats are supported by your target VEE Port.
+MicroAI API is designed to be **framework-agnostic**, meaning it does not rely on a specific Machine Learning framework like TensorFlow or ONNX.
+
+The Machine Learning framework is integrated at the VEE Port level, as a C/C++ library.
+
+The Application is responsible of loading the model file. 
+Therefore, before developing an Application with MicroAI, check which model file formats are supported by your target VEE Port.
 
 MicroEJ Simulator
 ~~~~~~~~~~~~~~~~~
