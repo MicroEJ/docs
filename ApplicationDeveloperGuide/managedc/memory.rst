@@ -9,7 +9,7 @@ The linear memory is composed of the following sections:
 
 * **Main Stack**: Used for temporary allocations and to store some local variables. The stack grows downward (toward lower memory addresses).
 * **Static Data**: Contains statically linked constants and global variables.
-* **Heap**: Used for dynamic memory allocations. The heap grows upward (toward upper memory addresses).
+* **Heap** (optional): Used for dynamic memory allocations. The heap grows upward (toward upper memory addresses).
 
 The linear memory is initialized during the execution of :ref:`soar_clinit`. It is allocated in the Managed Heap and zero-initialized (once).
 Each :ref:`Wasm Module <managedc.bind.module>` declares its own linear memory. 
