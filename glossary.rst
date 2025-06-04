@@ -36,7 +36,7 @@ MicroEJ Glossary
             A Mono-Sandbox Executable is an Executable that implements an unmodifiable set of functions.
 
          Multi-Sandbox Executable
-            A Multi-Sandbox Executable is an Executable that implements the ability to be extended, by exposing a set of APIs and a memory space to link Sandboxed Applications.
+            A Multi-Sandbox Executable is an Executable that implements the ability to be extended, by exposing a Runtime Environment and a memory space to link Sandboxed Applications.
 
    Foundation Library
       A Foundation Library is a library that provides core or hardware-dependent functionalities. A Foundation Library combines `Managed Code`_ (Java, Javascript, managed-C, etc. ) and low-level APIs (C, asm, etc.) implemented by one or more Abstraction Layers through a native interface (:ref:`SNI <sni_specification>`).
@@ -49,6 +49,10 @@ MicroEJ Glossary
 
    Mock
       A Mock is a mockup of a board support package (BSP) capability that mimics a hardware functionality for the Simulator.
+
+   Runtime Environment
+      A Runtime Environment is a custom set of APIs exposed by a Multi-Sandbox Executable, designed to support the development and execution of compatible Sandboxed Applications.
+      It typically serves as the base component for building an ecosystem of applications within a specific domain.
 
    Simulator
       The Simulator allows running Applications on a target hardware simulator on the developer’s desktop computer. The Simulator runs one or more Mock that mimics the hardware functionality. It enables developers to develop their Applications without the need of hardware.
