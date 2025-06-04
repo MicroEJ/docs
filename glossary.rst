@@ -50,9 +50,6 @@ MicroEJ Glossary
    Mock
       A Mock is a mockup of a board support package (BSP) capability that mimics a hardware functionality for the Simulator.
 
-   Module Manager
-      MicroEJ Module Manager (MMM) downloads, installs and controls the consistency of all the dependencies and versions required to build and publish a MicroEJ asset. It is based on `Semantic Versioning <https://semver.org>`_ specification.
-
    Simulator
       The Simulator allows running Applications on a target hardware simulator on the developer’s desktop computer. The Simulator runs one or more Mock that mimics the hardware functionality. It enables developers to develop their Applications without the need of hardware.
 
