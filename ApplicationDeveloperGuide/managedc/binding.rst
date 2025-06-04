@@ -425,8 +425,6 @@ according to C source code and C compiler options. On Java side, Managed C modul
 using ``@WasmMemory`` annotation on a Java static byte array field declaration (mapping automatically 
 done by the :ref:`soar`).
 
-Managed C module memory is zero-initialiazed (once) when the :ref:`soar_clinit` of the Java class annotated with ``@WasmMemory`` is executed.
-
 .. note:: 
    A SOAR error will occurred if ``@WasmMemory`` is not strictly followed by a Java static byte array declaration (see :ref:`managedc.troubleshooting`).
 
