@@ -15,7 +15,7 @@ MicroEJ provides the capability to develop parts of an application in C or C++, 
 .. note::
    This feature requires Architecture version ``8.4.0`` or higher, and is currently not supported in simulation.
 
-Managed C code is enabled through the support of `WebAssembly 1.0 <https://www.w3.org/TR/wasm-core-1/>`_, with :ref:`some additionnal instructions <managedc.instructions>`. 
+Managed C code is enabled through the support of `WebAssembly 1.0 <https://www.w3.org/TR/wasm-core-1/>`_, with :ref:`some additionnal instructions <managedc.implementation_notes.instructions.supported>`. 
 
 You can start exploring this functionality by following the instructions provided in the :ref:`Getting Started <managedc.getting_started>` page.
 
@@ -27,8 +27,8 @@ You can start exploring this functionality by following the instructions provide
    compilation
    binding
    memory
+   implementation_notes
    wasi
-   instructions
    troubleshooting
 ..
    | Copyright 2023-2024, MicroEJ Corp. Content in this space is free 
