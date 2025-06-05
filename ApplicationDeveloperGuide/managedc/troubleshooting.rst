@@ -3,6 +3,9 @@
 Troubleshooting
 ===============
 
+SOAR Errors
+~~~~~~~~~~~~
+
 -----------------------------------------------------------------
 SOAR-L ERROR "Unknown module ..."
 -----------------------------------------------------------------
@@ -90,6 +93,34 @@ Running code containing Managed C in a simulation will prompt an error similar t
 
     ERROR: Inconsistent Mock implementation: the type 'com/mycompany/Module' cannot be loaded from the HIL classpath (java.lang.ClassNotFoundException:com.mycompany.Module).
 
+Runtime Errors
+~~~~~~~~~~~~~~
+
+-----------------------------
+java.lang.AssertionError
+-----------------------------
+
+If you encounter a stack trace like the following, you are executing an unreachable wasm instruction.
+
+.. code:: console
+
+  Exception in thread "main" java.lang.AssertionError
+
+-----------------------------------------------------------------------
+java.lang.ArrayIndexOutOfBoundsException when using a pointer
+-----------------------------------------------------------------------
+
+If you encounter a stack trace like the following, you are trying to access an adress outside of the linear memory, which results in an out-of-bounds exception.
+
+.. code:: console
+
+  Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException
+          at com.mycompany.myapplication.TestOutOfBounds.wasm:sync:oob(Unknown Source)
+          at com.mycompany.myapplication.TestOutOfBounds.oob(Unknown Source)
+          at com.mycompany.myapplication.TestOutOfBounds.main(TestOutOfBounds.java:11)
+          at java.lang.MainThread.run(Thread.java:856)
+          at java.lang.Thread.runWrapper(Thread.java:465)
+
 -----------------------------------------------------------------
 java.lang.ArrayIndexOutOfBoundsException in malloc
 -----------------------------------------------------------------
@@ -109,16 +140,16 @@ The ``dlmalloc`` function attempted to expand memory using ``memory.grow`` but a
           at java.lang.MainThread.run(Thread.java:856)
           at java.lang.Thread.runWrapper(Thread.java:465)
 
------------------------------------------------------------------
-Unexpected java.lang.ArithmeticException in call stack trace
------------------------------------------------------------------
+------------------------------------------------------------------------
+Unexpected java.lang.ArrayIndexOutOfBoundsException in call stack trace
+------------------------------------------------------------------------
 
 If you encounter a stack trace like the following, you have likely reached the lower bound of the linear memory.
-The code execution stops while attempting to load or store data in the stack due to a computed negative unsigned offset, leading to an arithmetic exception.
+The code execution stops while attempting to load or store data in the stack due to a computed negative unsigned offset.
 
 .. code:: console
 
-  Exception in thread "main" java.lang.ArithmeticException
+  Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException
           at com.mycompany.myapplication.TestOutOfBounds.wasm:$recursiveCall0(Unknown Source)
           at com.mycompany.myapplication.TestOutOfBounds.wasm:$recursiveCall0(Unknown Source)
           at com.mycompany.myapplication.TestOutOfBounds.wasm:$recursiveCall0(Unknown Source)
