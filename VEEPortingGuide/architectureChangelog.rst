@@ -1479,16 +1479,7 @@ SOAR
    -  *WARNING: Current limitation: the ``if`` statement cannot wrap or
       be nested in a ``try-catch-finally`` statement*
 
--  Added an option for grouping all the methods by type in a single ELF
-   section
-
-   -  ``com.microej.soar.groupMethodsByType.enabled`` (``false`` by
-      default)
-   -  *WARNING: this option avoids to reach the maximum number of ELF
-      sections (65536) when building a large application, but affects
-      the application code size (especially inline methods are embedded
-      even if they are not used)*
-
+-  Added :ref:`enable_group_methods` for grouping all the methods by type in a single ELF section
 -  Added an error message when ``microejapp.o`` cannot be generated
    because the maximum number of ELF sections (65536) is reached
 
