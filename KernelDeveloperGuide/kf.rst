@@ -716,8 +716,10 @@ If a Feature exceeds its execution quota while holding a monitor (via one of its
 and another Module (Feature or Kernel) with no execution quota limit attempts to acquire the same monitor (via one of its threads), 
 the thread holding the monitor will continue its execution until it releases the monitor.
 
-RAM Control: Managed Heap Configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. _kernel_ram_control_memory_limits:
+
+RAM Control: Managed Heap Limits
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Kernel and Features allocate objects in the Managed Heap, whose size is statically configured by the Kernel using the :ref:`option_managed_heap`.
 By default, the Kernel and Features can allocate without restriction, as long as sufficient space is available in the Managed Heap. Every allocated object is tracked (see :ref:`Object ownership <kf_owner_object>`).
