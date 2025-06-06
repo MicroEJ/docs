@@ -147,6 +147,8 @@ them.
 The owner of a type can be retrieved by calling
 `Kernel.getOwner()`_ with the `Class`_ instance.
 
+.. _kf_owner_object:
+
 Object
 ~~~~~~
 
@@ -714,6 +716,41 @@ If a Feature exceeds its execution quota while holding a monitor (via one of its
 and another Module (Feature or Kernel) with no execution quota limit attempts to acquire the same monitor (via one of its threads), 
 the thread holding the monitor will continue its execution until it releases the monitor.
 
+RAM Control: Managed Heap Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Kernel and Features allocate objects in the Managed Heap, whose size is statically configured by the Kernel using the :ref:`option_managed_heap`.
+By default, the Kernel and Features can allocate without restriction, as long as sufficient space is available in the Managed Heap. Every allocated object is tracked (see :ref:`Object ownership <kf_owner_object>`).
+
+The following APIs allow to configure the Managed Heap usage:
+
+- `Kernel.setReservedMemory()`_: Sets the *minimum* amount of memory heap reserved for the Kernel. This is a lower bound: the Kernel may allocate more memory than this reservation if needed.
+- `Feature.setMemoryLimit()`_: Sets the *maximum* amount of memory heap that can be allocated by a Feature. This is an upper bound, not a reservation. 
+  
+  - Allocation may fail before the memory limit is reached.  
+  - Memory limits of multiple Features can overlap.  
+  - A Feature's memory limit can also overlap with the Kernel’s reserved memory.
+
+
+The diagrams below illustrate a Kernel with two Features with various heap configuration scenarios. 
+Kernel reserved memory and Feature memory limits are depicted as contiguous blocks for simplicity.
+However, in reality, they represent the total size of allocated objects, which are scattered throughout the Managed Heap.
+
+**Case 1:** No Kernel memory reservation, no Feature limit (Default configuration)
+
+   .. figure:: png/kf_spec/heap_configuration_case1.png
+      :scale: 50%
+
+**Case 2:** Kernel memory reservation, one Feature with no memory limit, one Feature with a memory limit that overlaps the Kernel’s reserved memory.
+
+   .. figure:: png/kf_spec/heap_configuration_case2.png
+      :scale: 50%
+
+**Case 3:** Kernel memory reservation, with two Features configured to equally share the remaining heap
+
+   .. figure:: png/kf_spec/heap_configuration_case3.png
+      :scale: 50%
+
 
 RAM Control: Feature Criticality
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1097,6 +1134,7 @@ with the expected behavior.
 .. _Feature.stop(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Feature.html#stop--
 .. _Module.getVersion(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Module.html#getVersion--
 .. _Feature.setExecutionQuota(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Module.html#setExecutionQuota-int-
+.. _Feature.setMemoryLimit(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Feature.html#setMemoryLimit-long-
 .. _FeatureEntryPoint.start(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/FeatureEntryPoint.html#start--
 .. _FeatureEntryPoint.stop(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/FeatureEntryPoint.html#stop--
 .. _Feature.MAX_CRITICALITY: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Feature.html#MAX_CRITICALITY
@@ -1113,6 +1151,7 @@ with the expected behavior.
 .. _Kernel.getOwner(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#getOwner-java.lang.Object-
 .. _Kernel.getContextOwner(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#getContextOwner--
 .. _Kernel.runUnderContext(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#runUnderContext-ej.kf.Module-java.lang.Runnable-
+.. _Kernel.setReservedMemory(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#setReservedMemory-long-
 .. _Long.MAX_VALUE: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Long.html#MAX_VALUE
 .. _OutOfMemoryError: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/OutOfMemoryError.html
 .. _System.arraycopy(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#arraycopy-java.lang.Object-int-java.lang.Object-int-int-
