@@ -27,6 +27,11 @@ The linear memory is available in the Java host as an array of bytes (``byte[]``
   
     The :ref:`Managed Heap size <option_managed_heap>` must be greater than the sum of the :ref:`linear memory sizes <managedc.linear.memory.size.configuration>` allocated by all Wasm Modules.
 
+.. note::
+
+  In :ref:`multisandbox` mode, the sum of the linear memory sizes allocated by all Wasm Modules in a Feature must be lower than :ref:`the Feature memory limit configured by the Kernel <kernel_ram_control_memory_limits>` (if any).
+ 
+
 .. _managedc.linear.memory.layout:
 
 Configure the Linear Memory Layout
