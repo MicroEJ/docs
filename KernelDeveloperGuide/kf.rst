@@ -717,8 +717,8 @@ the thread holding the monitor will continue its execution until it releases the
 
 .. _ram_control:
 
-RAM Control: Managed Heap Configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RAM Control: Managed Heap Limits
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Kernel and Features allocate objects in the Managed Heap, whose size is statically configured by the Kernel using the :ref:`option_managed_heap`.
 By default, the Kernel and Features can allocate without restriction, as long as sufficient space is available in the Managed Heap. Every allocated object is tracked (see :ref:`Object ownership <kf_owner_object>`).
