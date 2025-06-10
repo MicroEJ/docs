@@ -34,7 +34,7 @@ Option(checkbox): Group Methods by Type
 *Description*:
 
 Group all embedded methods of a Java type in single ELF section in ``microejapp.o``. 
-This avoids to reach the following SOAR errorr while building a large application and the maximum number of ELF sections (65536) is reached.
+This avoids to reach the following SOAR error while building a large application and the maximum number of ELF sections (65536) is reached.
 
 .. code-block:: console
 
