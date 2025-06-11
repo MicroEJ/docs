@@ -87,13 +87,13 @@ The Watchdog Timer :ref:`Pack <pack_overview>` module must be installed in your 
 
 .. tabs::
 
-   .. tab:: SDK 6 (build.gradle.kts)
+   .. group-tab:: SDK 6 (build.gradle.kts)
 
       .. code-block:: kotlin
 
          microejPack("com.microej.pack.watchdog-timer:watchdog-timer-pack:2.0.1")
 
-   .. tab:: SDK 5 (module.ivy)
+   .. group-tab:: SDK 5 (module.ivy)
 
       .. code-block:: xml
 
@@ -103,17 +103,17 @@ As well as the C Component module:
 
 .. tabs::
 
-   .. tab:: SDK 6 (build.gradle.kts)
+   .. group-tab:: SDK 6 (build.gradle.kts)
 
-      Install the `Watchdog Timer C Component module <https://repository.microej.com/modules/com/microej/clibrary/llimpl/watchdog-timer-generic/3.0.1/>`_` in your VEE Port.
+      Install the `Watchdog Timer C Component module <https://repository.microej.com/modules/com/microej/clibrary/llimpl/watchdog-timer-generic/3.0.1/>`__ in your VEE Port.
 
-   .. tab:: SDK 5 (module.ivy)
+   .. group-tab:: SDK 5 (module.ivy)
 
       .. code-block:: xml
 
          <dependency org="com.microej.clibrary.llimpl" name="watchdog-timer-generic" rev="3.0.1"/>
 
-	  Then the VEE Port project must be rebuilt (:ref:`platform_build`).
+      Then the VEE Port project must be rebuilt (:ref:`platform_build`).
 
 
 Then, you have to implement functions that match the ``LLWATCHDOG_TIMER_IMPL_*_action`` pattern
@@ -126,13 +126,13 @@ The `WatchdogTimer API Module`_ must be added to the project build file to use t
 
 .. tabs::
 
-   .. tab:: SDK 6 (build.gradle.kts)
+   .. group-tab:: SDK 6 (build.gradle.kts)
 
       .. code-block:: kotlin
 
          implementation("ej.api:watchdog-timer:2.0.0")
 
-   .. tab:: SDK 5 (module.ivy)
+   .. group-tab:: SDK 5 (module.ivy)
 
       .. code-block:: xml
 
@@ -149,13 +149,13 @@ To use TimerTask in your Java application, add the following `BON API`_ dependen
 
 .. tabs::
 
-   .. tab:: SDK 6 (build.gradle.kts)
+   .. group-tab:: SDK 6 (build.gradle.kts)
 
       .. code-block:: kotlin
 
          implementation("ej.api:bon:1.4.4")
 
-   .. tab:: SDK 5 (module.ivy)
+   .. group-tab:: SDK 5 (module.ivy)
 
       .. code-block:: xml
 
