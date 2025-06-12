@@ -124,18 +124,18 @@ Atomic Memory Accesses Wait and Notify operators
 
 .. _managedc.implementation_notes.instructions.partially_supported:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Partially Supported WebAssembly Instructions 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Partially Supported Instructions 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* ``memory_grow``: instruction always returns the previous size but does not expand the Wasm linear memory. See :ref:`managedc.linear.memory` for more details.
+* ``memory_grow``: instruction always returns the previous size but does not expand the :ref:`linear memory <managedc.linear.memory>`.
 * ``i32.atomic.load*``, ``i32.atomic.store*``, ``i64.atomic.load*`` and ``i64.atomic.store*``: instructions do not check for unaligned memory access.
 
 .. _managedc.implementation_notes.traps:
 
-----------------------------
-WebAssembly Trap Conditions
-----------------------------
+---------------
+Trap Conditions
+---------------
 
 This document lists all WebAssembly instructions that can trigger traps, the conditions under which they occur and the Java exception class that will be thrown.
 
