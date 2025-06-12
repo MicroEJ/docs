@@ -105,6 +105,11 @@ If you encounter a stack trace like the following, you are executing an `unreach
 .. code:: console
 
   Exception in thread "main" java.lang.AssertionError
+        at com.mycompany.myapplication.TestUnreachable.wasm:sync:foo(Unknown Source)
+        at com.mycompany.myapplication.TestUnreachable.foo(Unknown Source)
+        at com.mycompany.myapplication.TestUnreachable.main(TestUnreachable.java:11)
+        at java.lang.MainThread.run(Thread.java:856)
+        at java.lang.Thread.runWrapper(Thread.java:465)
 
 -----------------------------------------------------------------------
 java.lang.ArrayIndexOutOfBoundsException when using a pointer
