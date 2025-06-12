@@ -115,7 +115,7 @@ If you encounter a stack trace like the following, you are executing an `unreach
 java.lang.ArrayIndexOutOfBoundsException when using a pointer
 -----------------------------------------------------------------------
 
-If you encounter a stack trace like the following, you are trying to access an address outside of the linear memory, which results in an out-of-bounds exception.
+If you encounter a stack trace like the following, you are trying to access an address outside of the :ref:`linear memory <managedc.linear.memory>`, which results in an out-of-bounds exception.
 
 .. code:: console
 
@@ -130,7 +130,7 @@ If you encounter a stack trace like the following, you are trying to access an a
 java.lang.ArrayIndexOutOfBoundsException in malloc
 -----------------------------------------------------------------
 
-If you encounter a stack trace like the following, you have likely reached the upper bound of linear memory. 
+If you encounter a stack trace like the following, you have likely reached the upper bound of the :ref:`linear memory <managedc.linear.memory>`. 
 The ``dlmalloc`` function attempted to expand memory using ``memory.grow`` but accessed memory that was not allocated, resulting in an out-of-bounds exception.
 
 .. code:: console
@@ -149,8 +149,8 @@ The ``dlmalloc`` function attempted to expand memory using ``memory.grow`` but a
 Unexpected java.lang.ArrayIndexOutOfBoundsException in call stack trace
 ------------------------------------------------------------------------
 
-If you encounter a stack trace like the following, you have likely reached the lower bound of the linear memory.
-The code execution stops while attempting to load or store data in the stack due to a computed negative unsigned offset.
+If you encounter a stack trace like the following, you have likely reached the lower bound of the :ref:`linear memory <managedc.linear.memory>`.
+The code execution stops while attempting to load or store data in the stack due to a computed negative offset.
 
 .. code:: console
 
