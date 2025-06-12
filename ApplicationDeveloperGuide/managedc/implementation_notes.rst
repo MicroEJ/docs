@@ -10,7 +10,7 @@ Wasm Implementation Notes
 Supported Instructions
 ------------------------
 
-The MicroEJ engine supports the version 1.0 of the `Wasm specification <https://www.w3.org/TR/wasm-core-1/>`_ with the following additionnal instsructions and limitations.
+The SOAR supports the `Wasm specification 1.0 <https://www.w3.org/TR/wasm-core-1/>`_ with the following additionnal instructions and limitations.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Additionnal Instructions
