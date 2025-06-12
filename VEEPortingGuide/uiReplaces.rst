@@ -1,5 +1,5 @@
 
-.. |UIPACKVERSION| replace:: 14.4.1
+.. |UIPACKVERSION| replace:: 14.4.2
 .. |FPFRAMEWORKVERSION| replace:: 1.3.0
 .. |FPWIDGETSVERSION| replace:: 5.3.1
 .. |MICROUIVERSION| replace:: 3.6.0
@@ -13,6 +13,7 @@
 .. _MicroVG API 1.5: https://repository.microej.com/modules/ej/api/microvg/1.5.0/
 .. _MicroVG API 1.4: https://repository.microej.com/modules/ej/api/microvg/1.4.0/
 
+.. _C Module MicroUI 14.4.2: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/14.4.2/
 .. _C Module MicroUI 14.4.1: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/14.4.1/
 .. _C Module MicroUI 14.3.3: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/14.3.3/
 .. _C Module MicroUI 14.3.2: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/14.3.2/
@@ -29,6 +30,7 @@
 .. _C Module MicroUI 1.1.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/1.1.0/
 .. _C Module MicroUI 1.0.3: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/1.0.3/
 
+.. _C Module MicroUI over DMA2D to version 7.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-dma2d/7.0.1/
 .. _C Module MicroUI over DMA2D to version 7.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-dma2d/7.0.0/
 .. _C Module MicroUI over DMA2D to version 6.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-dma2d/6.0.0/
 .. _C Module DMA2D 5.0.1: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/5.0.1/
@@ -43,6 +45,7 @@
 .. _C Module DMA2D 1.0.8: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/1.0.8/
 .. _C Module DMA2D 1.0.6: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/1.0.6/
 
+.. _C Module MicroUI over VGLite to version 10.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/10.0.1/
 .. _C Module MicroUI over VGLite to version 10.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/10.0.0/
 .. _C Module MicroUI over VGLite to version 9.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/9.0.0/
 .. _C Module VGLite 8.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/8.0.1/
@@ -56,6 +59,7 @@
 .. _C Module VGLite 4.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/4.0.0/
 .. _C Module VGLite 3.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/3.0.0/
 
+.. _C Module MicroUI over NemaGFX to version 4.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx/4.0.1/
 .. _C Module MicroUI over NemaGFX to version 4.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx/4.0.0/
 .. _C Module MicroUI over NemaGFX to version 3.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx/3.0.0/
 .. _C Module NemaGFX 2.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx/2.0.1/

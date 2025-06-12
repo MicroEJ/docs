@@ -6,9 +6,9 @@
 Migration Guide
 ===============
 
-.. _section_ui_migrationguide_pack_14.4.1:
+.. _section_ui_migrationguide_pack_14.4.2:
 
-From 14.3.3 to 14.4.1
+From 14.3.3 to 14.4.2
 =====================
 
 MicroUI
@@ -23,6 +23,34 @@ Front Panel
 * To enable all Flush Visualizer functionalities, set the properties ``core.trace.enabled`` and ``core.trace.autostart``  to ``true`` (see :ref:`flush_visualizer_install`). The property ``ej.fp.display.flushVisualizer`` is not used anymore.
 
 .. _Front Panel Widgets 5.3.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/5.3.1/
+
+BSP with DMA2D
+""""""""""""""
+
+* *[VEE Port configuration project]*
+
+    * Set the dependency to the `C Module MicroUI over DMA2D to version 7.0.1`_.
+    
+BSP with VGLite
+"""""""""""""""
+
+* *[VEE Port configuration project]*
+
+    * Set the dependency to the `C Module MicroUI over VGLite to version 10.0.1`_.
+	
+BSP with NemaGFX
+""""""""""""""""
+
+* *[VEE Port configuration project]*
+
+    * Set the dependency to the `C Module MicroUI over NemaGFX to version 4.0.1`_.
+
+.. _section_ui_migrationguide_pack_14.4.1:
+
+From 14.3.3 to 14.4.1
+=====================
+
+UI Pack 14.4.1 is deprecated, use the UI Pack 14.4.2 instead.
 
 .. _section_ui_migrationguide_pack_14.3.3:
 
@@ -82,7 +110,6 @@ BSP without GPU
     * Add the source file in ``ui/src/ui_font_drawing.c`` to the project.
     * Update ``c`` and ``h`` files and BSP configuration (if any) to use the new preprocessor values:
 
-        * ``UI_FEATURE_EVENT_DECODER`` replaces ``MICROUIEVENTDECODER_ENABLED``
         * ``UI_DEBUG_PRINT`` replaces ``LLUI_DEBUG_TRACE``
         * ``UI_FEATURE_EVENT_DECODER`` replaces ``MICROUIEVENTDECODER_ENABLED``
         * ``UI_EVENTDECODER_EVENTGEN_COMMAND`` replaces ``MICROUIEVENTDECODER_EVENTGEN_COMMAND``

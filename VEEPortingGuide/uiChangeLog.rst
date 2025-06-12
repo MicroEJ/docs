@@ -6,6 +6,48 @@
 Changelog
 =========
 
+.. _section_ui_changelog_14_4_2:
+
+[14.4.2] - 2025-05-20
+=====================
+
+VG Pack
+"""""""
+
+**Fixed**
+
+- Fix the VEE Port build with the UI Pack 14.4 and the VG Pack 1.7 (since UI Pack 14.4.1).
+
+FrontPanel
+""""""""""
+
+**Fixed**
+
+- Fix the use of the SDK5 option "Resolve in workspace" (since UI Pack 14.4.1).
+
+C Module DMA2D
+""""""""""""""
+
+**Fixed**
+
+- Fix the implementation of ``UI_DRAWING_DMA2D_copyImage()`` to use the right software algorithm.
+
+C Module VGLite
+"""""""""""""""
+
+**Fixed**
+
+- Fix the implementation of ``UI_DRAWING_VGLITE_copyImage()`` to use the right software algorithm.
+- Fix the premultiplication of the format ARGB1555: it is useless.
+
+C Module NemaGFX
+""""""""""""""""
+
+**Fixed**
+
+- Fix the rendering of a RGB565 image with a transparent opacity.
+- Fix the implementation of ``UI_DRAWING_NEMA_copyImage()`` to use the right software algorithm.
+
 .. _section_ui_changelog_14_4_1:
 
 [14.4.1] - 2025-03-13
@@ -340,7 +382,7 @@ C Module MicroUI
 **Removed**
 
 - Remove ``microui_event_decoder_conf.h``: import ``ui_configuration.h`` instead.
-- Remove ``ui_dislay_brs_configuration.h``: import ``ui_configuration.h`` instead.
+- Remove ``ui_display_brs_configuration.h``: import ``ui_configuration.h`` instead.
 
 C Module DMA2D
 """"""""""""""
