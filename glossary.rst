@@ -58,7 +58,7 @@ MicroEJ Glossary
       The Simulator allows running Applications on a target hardware simulator on the developer’s desktop computer. The Simulator runs one or more Mock that mimics the hardware functionality. It enables developers to develop their Applications without the need of hardware.
 
    VEE Port
-      A VEE Port is an implementation of MICROEJ VEE tailored to run on a particular hardware board, including both the target device (such as a microcontroller or processor) and its associated board configuration. It integrates an Architecture, one or more Foundation Libraries with their respective Abstraction Layers, and the board support package (BSP). It also includes associated Mocks for the Simulator.
+      A VEE Port is an implementation of MICROEJ VEE tailored to run on a particular device (hardware board including both the processor and the peripherals). It integrates an Architecture, one or more Foundation Libraries with their respective Abstraction Layers, and the board support package (BSP). It also includes associated Mocks for the Simulator.
 
    Virtual Device
       A Virtual Device is a software package that includes the simulation part of an Executable: runtime, libraries and application(s). It can be run on any desktop computer without the need of the SDK.
