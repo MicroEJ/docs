@@ -25,6 +25,13 @@ FrontPanel
 
 - Fix the use of the SDK5 option "Resolve in workspace" (since UI Pack 14.4.1).
 
+C Module DMA2D
+""""""""""""""
+
+**Fixed**
+
+- Fix the implementation of ``UI_DRAWING_DMA2D_copyImage()`` to use the right software algorithm.
+
 C Module VGLite
 """""""""""""""
 

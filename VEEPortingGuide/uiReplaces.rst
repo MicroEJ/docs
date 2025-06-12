@@ -30,6 +30,7 @@
 .. _C Module MicroUI 1.1.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/1.1.0/
 .. _C Module MicroUI 1.0.3: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/1.0.3/
 
+.. _C Module MicroUI over DMA2D to version 7.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-dma2d/7.0.1/
 .. _C Module MicroUI over DMA2D to version 7.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-dma2d/7.0.0/
 .. _C Module MicroUI over DMA2D to version 6.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-dma2d/6.0.0/
 .. _C Module DMA2D 5.0.1: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/5.0.1/

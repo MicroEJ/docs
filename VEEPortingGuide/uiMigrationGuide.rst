@@ -24,6 +24,13 @@ Front Panel
 
 .. _Front Panel Widgets 5.3.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/5.3.1/
 
+BSP with DMA2D
+""""""""""""""
+
+* *[VEE Port configuration project]*
+
+    * Set the dependency to the `C Module MicroUI over DMA2D to version 7.0.1`_.
+    
 BSP with VGLite
 """""""""""""""
 
