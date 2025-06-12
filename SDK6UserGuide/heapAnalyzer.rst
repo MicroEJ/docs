@@ -158,7 +158,7 @@ If you are in a Multi-Sandbox context, the following sections must be dumped add
   
   .. code-block:: console
    
-      dump ihex memory <installed features_start_adress> <installed features_end_adress>
+      dump ihex memory <installed features_start_address> <installed features_end_address>
 
   To simplify the dump commands, you can also consider the following options :
 
