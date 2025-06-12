@@ -100,7 +100,7 @@ Runtime Errors
 java.lang.AssertionError
 -----------------------------
 
-If you encounter a stack trace like the following, you are executing an unreachable wasm instruction.
+If you encounter a stack trace like the following, you are executing an `unreachable instruction <https://www.w3.org/TR/wasm-core-1/#syntax-instr-control>`_.
 
 .. code:: console
 
