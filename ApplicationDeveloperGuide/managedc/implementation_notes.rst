@@ -137,7 +137,16 @@ Partially Supported Instructions
 Trap Conditions
 ---------------
 
-This document lists all WebAssembly instructions that can trigger traps, the conditions under which they occur and the Java exception class that will be thrown.
+When an instruction triggers a `trap <https://www.w3.org/TR/wasm-core-1/#trap>`_, the Core Engine throws a Java exception.
+This has for effect to abort the execution of the current Wasm module, by dropping all the C stack frames, until the Java exception is caught by a host Java method.
+
+.. figure:: ../images/managedc-communication-trap.png
+   :scale: 75%
+   :align: center
+
+   Wasm Instruction Trap Behaviour
+
+The following table lists all instructions that can trigger a trap, the conditions under which the trap may occur and the Java exception class that is thrown.
 
 .. table::
    :widths: 57 15 28
