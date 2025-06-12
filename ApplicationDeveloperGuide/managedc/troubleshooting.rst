@@ -110,7 +110,7 @@ If you encounter a stack trace like the following, you are executing an unreacha
 java.lang.ArrayIndexOutOfBoundsException when using a pointer
 -----------------------------------------------------------------------
 
-If you encounter a stack trace like the following, you are trying to access an adress outside of the linear memory, which results in an out-of-bounds exception.
+If you encounter a stack trace like the following, you are trying to access an address outside of the linear memory, which results in an out-of-bounds exception.
 
 .. code:: console
 
