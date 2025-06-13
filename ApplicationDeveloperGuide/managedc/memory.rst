@@ -1,21 +1,41 @@
 .. _managedc.linear.memory:
 
-Configure the Linear Memory
-===========================
+The Linear Memory
+=================
 
 The WebAssembly specification defines the linear memory as a contiguous, byte-addressable memory region used by Wasm programs to read and write data.
-The linear memory is available as an array of bytes (``byte[]``) in the :ref:`the host <managedc.communication.managedc_memory>`.
+
+The linear memory is composed of the following sections:
+
+* **Main Stack**: Used for temporary allocations and to store some local variables. The stack grows downward (toward lower memory addresses).
+* **Static Data**: Contains statically linked constants and global variables.
+* **Malloc Heap** (optional): Used for dynamic memory allocations. The malloc heap grows upward (toward upper memory addresses).
+
+The linear memory is initialized during the execution of :ref:`soar_clinit`. It is allocated in the Managed Heap and zero-initialized (once).
+Each :ref:`Wasm Module <managedc.bind.module>` declares its own linear memory. 
+The following figure illustrates the Managed Heap layout. 
+
+.. figure:: ../images/linear-memory-overview.png
+   :scale: 75%
+   :align: center
+
+   Managed Heap Overview with Wasm Module Linear Memory
+
+The linear memory is available in the Java host as an array of bytes (``byte[]``). See :ref:`managedc.communication.managedc_memory` for more details.
+
+.. note::
+  
+    The :ref:`Managed Heap size <option_managed_heap>` must be greater than the sum of the :ref:`linear memory sizes <managedc.linear.memory.size.configuration>` allocated by all Wasm Modules.
+
+.. note::
+
+  In :ref:`multisandbox` mode, the sum of the linear memory sizes allocated by all Wasm Modules in a Feature must be lower than :ref:`the Feature memory limit configured by the Kernel <kernel_ram_control_memory_limits>` (if any).
+ 
 
 .. _managedc.linear.memory.layout:
 
 Configure the Linear Memory Layout
 ----------------------------------
-
-The Wasm linear memory is composed of the following sections:
-
-* **Main Stack**: Used for temporary allocations and to store some local variables. The stack grows downward (toward lower memory addresses).
-* **Static Data**: Contains statically linked constants and global variables.
-* **Heap**: Used for dynamic memory allocations. The heap grows upward (toward upper memory addresses).
 
 MicroEJ recommends linking a Wasm module using the ``-Wl,--stack-first`` :ref:`linker option <managedc.link.command_line_options>`.
 
@@ -27,7 +47,7 @@ Thus, you will get the following memory layout:
 
    Wasm Linear Memory Layout
 
-This ensures that both stack overflows and heap overflows trigger an exception when accessing out-of-bounds memory.
+This ensures that both main stack overflows and malloc heap overflows trigger an exception when accessing out-of-bounds memory.
 
 .. _managedc.linear.memory.size.configuration:
 
@@ -49,7 +69,7 @@ The size of the linear memory can be reduced below 64KB if both of the following
 * the Wasm module does not embed neither the ``memory.size`` nor the ``memory.grow`` instructions. This is the case if the C code does not transitively calls the ``malloc`` implementation declared in WASI libc.
 * the Wasm module exports the ``__heap_base`` global using the ``-Wl,--export=__heap_base`` :ref:`linker option <managedc.link.command_line_options>`.
 
-In this case, the linear memory is initialized to the value of the ``__heap_base`` global, which represents the sum of the stack size and the static data size.
+In this case, the linear memory is initialized to the value of the ``__heap_base`` global, which represents the sum of the main stack size and the static data size.
 
 .. _managedc.linear.memory.size.stack:
 
@@ -57,7 +77,7 @@ Configure the Main Stack Size
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 By default, the main stack size is initialized to ``65536``.
-You can adjust the linear memory stack size to using the ``-z stack-size=[size_in_bytes]`` :ref:`linker option <managedc.link.command_line_options>`.
+You can adjust the main stack size to using the ``-z stack-size=[size_in_bytes]`` :ref:`linker option <managedc.link.command_line_options>`.
 
 Configuration Examples
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -101,5 +121,6 @@ The next table shows the impacts of additionnal options on the allocated linear 
    * - ``-z stack-size=512 -Wl,--export=__heap_base``
      - ``612``
      - ``612``
-     - The linear memory size is set to the value of the ``__heap_base`` global (``512`` bytes of stack + ``100`` bytes of static data).
+     - The linear memory size is set to the value of the ``__heap_base`` global (``512`` bytes of main stack + ``100`` bytes of static data).
    
+
