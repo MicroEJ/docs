@@ -100,16 +100,11 @@ Runtime Errors
 java.lang.AssertionError
 -----------------------------
 
-If you encounter a stack trace like the following, you are executing an `unreachable instruction <https://www.w3.org/TR/wasm-core-1/#syntax-instr-control>`_.
+If you encounter an exception like the following (without stack trace), you are executing an `unreachable instruction <https://www.w3.org/TR/wasm-core-1/#syntax-instr-control>`_.
 
 .. code:: console
 
   Exception in thread "main" java.lang.AssertionError
-        at com.mycompany.myapplication.TestUnreachable.wasm:sync:foo(Unknown Source)
-        at com.mycompany.myapplication.TestUnreachable.foo(Unknown Source)
-        at com.mycompany.myapplication.TestUnreachable.main(TestUnreachable.java:11)
-        at java.lang.MainThread.run(Thread.java:856)
-        at java.lang.Thread.runWrapper(Thread.java:465)
 
 -----------------------------------------------------------------------
 java.lang.ArrayIndexOutOfBoundsException when using a pointer
