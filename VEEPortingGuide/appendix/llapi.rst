@@ -98,12 +98,12 @@ Three C header files are provided:
 -  LLMJVM_impl.h
 
    Defines the set of functions that the BSP must implement to launch
-   and schedule the virtual machine
+   and schedule the Core Engine
 
 -  LLMJVM.h
 
-   Defines the set of functions provided by virtual machine that can be
-   called by the BSP when using the virtual machine
+   Defines the set of functions provided by Core Engine that can be
+   called by the BSP
 
 -  LLBSP_impl.h
 

@@ -44,7 +44,7 @@ Example
 
    /**
     * Abstract class providing a native method to access sensor value.
-    * This method will be executed out of virtual machine.
+    * This method will be executed out of the Core Engine.
     */
    public abstract class Sensor {
 
