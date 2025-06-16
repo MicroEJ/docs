@@ -23,7 +23,7 @@ behavior.
 GNSS Mock
 =========
 
-GNSS values on simulator can be control through an UI that could be activated and deactivated with the property : ``com.is2t.gnss.embedded.mock.ui``.
+GNSS values on simulator can be controlled through an UI that can be activated and deactivated with the property : ``com.is2t.gnss.embedded.mock.ui``.
 
 Dependencies
 ============
