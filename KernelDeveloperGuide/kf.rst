@@ -9,7 +9,7 @@ Introduction
 Multi-Sandboxing of Applications is based on Kernel & Features semantic (KF).
 
 This document defines the Kernel & Features specification (KF profile), a Trusted Execution
-Environment (TEE) targeting virtual machines.
+Environment (TEE) targeting embedded systems.
 
 Specification Summary
 ~~~~~~~~~~~~~~~~~~~~~

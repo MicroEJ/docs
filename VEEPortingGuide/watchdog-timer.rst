@@ -35,9 +35,9 @@ the Watchdog Timer API and the Watchdog timer.
 	:scale: 80%
 
 
-The particularity of this library is that it can be either used in Java, in C inside the BSP
+The particularity of this library is that it can be either used in managed code or in native code inside the BSP
 or even both of them. The use of this library in the BSP in C is relevant when the user needs
-to monitor an item of the software system which is outside of the MicroEJ Virtual Machine. 
+to monitor an item of the software system which is not executed by the Core Engine. 
 The sequence diagram below shows a standard use of the Watchdog API in Java and in C.
 
 

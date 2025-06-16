@@ -437,11 +437,11 @@ RTT block found by SystemView but no traces displayed
   block the MCU execution if the application is running out of a Debug session.
 * You can check the state of the MCU using J-Link tools such as ``J-Link Commander`` and ``Ozone`` to start a Debug session.
 
-Bus hardfault when running SystemView without Java Virtual Machine (JVM)
-------------------------------------------------------------------------
+Bus hardfault when running SystemView without Core Engine
+---------------------------------------------------------
 
-The function  ``LLMJVM_MONITOR_SYSTEMVIEW_send_task_list();`` triggers  a  ``Bus Hardfault`` when no JVM is launched.
-To solve this issue, comment this function call out in ``SEGGER_SYSVIEW_Config_FreeRTOS.c`` when you run SystemView without launching the JVM.
+The function  ``LLMJVM_MONITOR_SYSTEMVIEW_send_task_list();`` triggers  a  ``Bus Hardfault`` when no Core Engine is launched.
+To solve this issue, comment this function call out in ``SEGGER_SYSVIEW_Config_FreeRTOS.c`` when you run SystemView without launching the Core Engine.
 
 
 
