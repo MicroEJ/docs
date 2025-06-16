@@ -728,7 +728,9 @@ The following APIs allow to configure the Managed Heap usage:
 - `Kernel.setReservedMemory()`_: Sets the amount of memory heap *reserved* for the Kernel. This is a lower bound: the Kernel may allocate more memory than this reservation if needed.
 - `Feature.setMemoryLimit()`_: Sets the *maximum* amount of memory heap that can be allocated by a Feature. This is an upper bound, not a reservation.
   
-Especially, allocations from Features will fail (throw an OutOfMemoryError):
+  - Allocation may fail before the memory limit is reached in case the Managed heap is full.  
+  - Memory limits of multiple Features can overlap.  
+  - A Feature's memory limit can also overlap with the Kernel’s reserved memory.
 
 - when the feature-specific limit is reached, before the Managed Heap is full;
 - when the Managed Heap is full, before the feature-specific limit is reached;
