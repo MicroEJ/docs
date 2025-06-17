@@ -216,6 +216,8 @@ The following example illustrates this feature.
 
    VectorGraphicsPainter.drawFilteredImage(g, image, matrix1, colorMatrix1);
 
+   imageFiltered.close();
+
 |midTable|
 
 .. figure:: images/drawImageFilter.png
