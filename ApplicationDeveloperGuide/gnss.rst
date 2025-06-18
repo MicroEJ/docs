@@ -73,24 +73,23 @@ Turning the GNSS Engine OFF
 
     `readPosition()` call will throw an IOException if an error occured during data reading, however, timestamp will still be updated.
 
+.. _gnss_usage:
 
 Use
 ===
 
-The `GNSS API Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
-Application project to use the Event Queue Foundation Library.
+The GNSS Library is provided as a Foundation Library.
 
-.. code-block:: xml
+To use the `GNSS API Module <https://forge.microej.com/artifactory/microej-developer-repository-release/ej/api/gnss/>`_, add the following line to the project build file:
 
-   <dependency org="ej.api" name="gnss" rev="2.0.0"/>
+.. code-block:: kotlin
 
-To use this API, your VEE Port must implement a compatible version. 
-Please refer to the :ref:`VEE Porting Guide <pack_gnss>` to port GNSS for your project.
+   implementation("ej.api:gnss:2.0.0")
 
-.. _GNSS API Module: https://forge.microej.com/artifactory/microej-developer-repository-release/ej/api/gnss/
+Building or running an Application which uses the GNSS Library requires a SDK6 VEE Port that provides the :ref:`GNSS Pack <pack_gnss>`.
 
 ..
-   | Copyright 2023-2025, MicroEJ Corp. Content in this space is free 
+   | Copyright 2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
