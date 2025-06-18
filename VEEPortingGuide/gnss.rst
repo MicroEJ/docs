@@ -17,7 +17,7 @@ Functional Description
 
 The MicroEJ Application manages the GNSS engine using
 GnssManager abstraction. The GNSS implementation made for each MicroEJ
-Platform is responsible for surfacing the native File System specific
+VEE Port is responsible for surfacing the native GNSS specific
 behavior.
 
 GNSS Mock
@@ -35,31 +35,20 @@ Dependencies
 Installation
 ============
 
-The GNSS :ref:`Pack <pack_overview>` module must be installed in your VEE Port.
+GNSS is an additional module.
+The GNSS :ref:`Pack <pack_overview>` module must be installed in your VEE Port:
 
-In the Platform configuration project, (``-configuration`` suffix), add
-the following dependency to the :ref:`module.ivy <mmm_module_description>` file:
+.. code-block:: kotlin
 
-::
-
-	<dependency org="com.microej.pack.gnss" name="gnss-pack" rev="2.0.0" />
-
-The Platform project must be rebuilt (:ref:`platform_build`).
+   microejPack("com.microej.pack.gnss:gnss-pack:2.0.0")
 
 Use
 ===
 
-The `GNSS API Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
-Application project to use the GNSS library.
-
-.. code-block:: xml
-
-   <dependency org="com.microej.pack.gnss" name="gnss-pack" rev="2.0.0"/>
-
-.. _GNSS API Module: https://forge.microej.com/artifactory/microej-developer-repository-release/ej/api/gnss/
+See :ref:`MicroAI API <gnss_usage>` chapter in Application Developer Guide.
 
 ..
-   | Copyright 2023, MicroEJ Corp. Content in this space is free 
+   | Copyright 2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
