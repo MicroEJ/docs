@@ -749,6 +749,7 @@ However, in reality, they represent the total size of allocated objects, which a
    .. figure:: png/kf_spec/heap_configuration_case3.png
       :scale: 50%
 
+.. _kf_ram_control_feature_criticality:
 
 RAM Control: Feature Criticality
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -766,6 +767,8 @@ stopped following next semantic:
    sequence until there are no more Features to stop.
 
 If no memory is reclaimed, then an `OutOfMemoryError`_ is thrown.
+
+See :ref:`Core Engine RAM Control implementation <multisandbox_ram_control>` for more details.
 
 Time-out Control: Watchdog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
