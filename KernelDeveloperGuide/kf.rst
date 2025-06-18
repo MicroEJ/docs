@@ -6,10 +6,7 @@ Kernel & Features Specification (KF)
 Introduction
 ------------
 
-Multi-Sandboxing of Applications is based on Kernel & Features semantic (KF).
-
-This document defines the Kernel & Features specification (KF profile), a Trusted Execution
-Environment (TEE) targeting embedded systems.
+The Kernel & Features (KF) specification defines the concepts for setting up Multi-Sandboxing of Applications, managing their lifecycle, and controlling their execution.
 
 Specification Summary
 ~~~~~~~~~~~~~~~~~~~~~
