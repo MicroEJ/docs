@@ -113,7 +113,7 @@ A Kernel must define the set of classes, methods and static fields all applicati
 
 .. note::
 
-   According to the :ref:`Kernel and Features specification <kf_specification>`, no API is open by default to Sandboxed Applications.
+   According to the :ref:`kf_specification`, no API is open by default to Sandboxed Applications.
 
 This can be done either by declaring :ref:`Kernel APIs <kernel.api>` or by defining a :ref:`Runtime Environment <runtime_environment>`.
 

@@ -123,7 +123,7 @@ Kernel & Features (KF)
 
 The Kernel & Features semantic (KF) extends the runtime for managing Multi-Sandboxed Applications.
 
-Read the :ref:`Kernel & Features specification <kf_specification>` for more details, the :ref:`Multi-Sandbox capability <multisandbox>` of the Core Engine
+Read the :ref:`kf_specification` for more details, the :ref:`Multi-Sandbox capability <multisandbox>` of the Core Engine
 and more generally the :ref:`kernel-developer-guide` chapter.
 
 **Specification Summary:**

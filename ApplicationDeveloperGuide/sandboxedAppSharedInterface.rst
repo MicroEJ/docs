@@ -55,7 +55,7 @@ being transferred to this application.
 
    Shared Interfaces Proxy Overview
 
-This mecanism is formally specified in the :ref:`[KF] specification <kf_specification>`.
+This mecanism is formally specified in the :ref:`kf_specification`.
 
 .. _section.shared.interfaces.element:
 

@@ -12,7 +12,7 @@ The Multi-Sandbox capability of the Core Engine allows a
 main application (called Standalone Application) to install and execute
 at runtime additional applications (called Sandboxed Applications).
 
-The Core Engine implements the :ref:`[KF] specification <kf_specification>`. A Kernel is a
+The Core Engine implements the :ref:`kf_specification`. A Kernel is a
 Standalone Application generated on a Multi-Sandbox-enabled
 VEE Port. A Feature is a Sandboxed Application generated against a specific Kernel.
 
@@ -81,7 +81,7 @@ Use
 ===
 
 The `KF API Module`_ must be added to the build file of the 
-Application project to use :ref:`[KF] <kf_specification>` library.
+Application project to use :ref:`kf_specification` library.
 
 .. tabs::
 
