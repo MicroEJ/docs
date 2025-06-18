@@ -72,7 +72,7 @@ Kernel API file definition is explained here: :ref:`Kernel API <kernel.api.def>`
 Access Error Codes
 ------------------
 
-When an instruction is executed that will break a :ref:`[KF] specification <kf_specification>` insulation
+When an instruction is executed that will break a :ref:`kf_specification` insulation
 semantic rule, a `java.lang.IllegalAccessError`_ is thrown, with an
 error code composed of two parts: ``[source][errorKind]``.
 
