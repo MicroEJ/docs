@@ -727,10 +727,10 @@ The following APIs allow to configure the Managed Heap usage:
   
 Especially, allocations from Features will fail (throw an OutOfMemoryError):
 
-    - when the feature-specific limit is reached, before the Managed heap is full;
-    - when the Managed heap is full, before the feature-specific limit is reached;
-    - when the Managed heap is almost full, so that the allocation would exceed the amount of memory that can be
-      allocated for Features (i.e. total Managed heap size minus memory reserved for Kernel).
+- when the feature-specific limit is reached, before the Managed heap is full;
+- when the Managed heap is full, before the feature-specific limit is reached;
+- when the Managed heap is almost full, so that the allocation would exceed the amount of memory that can be allocated
+  for Features (i.e. total Managed heap size minus memory reserved for Kernel).
 
 The diagrams below illustrate a Kernel with two Features with various heap configuration scenarios. 
 Kernel reserved memory and Feature memory limits are depicted as contiguous blocks for simplicity.
