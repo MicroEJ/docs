@@ -46,6 +46,7 @@ To consult its libraries APIs documentation, please visit `<https://developer.mi
    microai
    javaTime
    eventQueue
+   gnss
    js/index
 
 ..
