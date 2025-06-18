@@ -1,4 +1,4 @@
-.. _chapter.gnss:
+.. _gnss_api:
 
 ====
 GNSS
@@ -90,7 +90,7 @@ Please refer to the :ref:`VEE Porting Guide <pack_gnss>` to port GNSS for your p
 .. _GNSS API Module: https://forge.microej.com/artifactory/microej-developer-repository-release/ej/api/gnss/
 
 ..
-   | Copyright 2023, MicroEJ Corp. Content in this space is free 
+   | Copyright 2023-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
