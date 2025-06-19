@@ -82,7 +82,7 @@ For all HardFault handlers, the following data are available and must be printed
 Optionally:
 
 * Content of the stack
-* Call function ``LLMJVM_dump`` (from ``LLMJVM.h``) to display the VM state (see :ref:`vm_dump`)
+* Call function ``LLMJVM_dump`` (from ``LLMJVM.h``) to display the Core Engine state (see :ref:`vm_dump`)
 
 Refer to the architecture documentation for how to configure the exception interrupt vector.
 
@@ -195,15 +195,12 @@ Memory Dump Analysis
 * Run the Heap Dumper to check the application heap has not been corrupted.
 * Make sure the native stack is not full (usually, there shall have the remaining initialization patterns in memory on top of the stack, such as ``0xDEADBEEF``)
 
-Trigger a VM Dump
------------------
+Trigger a Core Engine Dump
+--------------------------
 
 ``LLMJVM_dump`` function is provided by ``LLMJVM.h``.
-This function prints the VM state.
-Data printed in the VM state are:
-
-* List of threads
-* Stack trace for each thread
+This function prints a snapshot of the Core Engine's current state.
+The output includes the list of threads and their stack traces.
 
 See :ref:`this section<vm_dump>` to learn more about ``LLMJVM_dump``.
 

@@ -390,7 +390,7 @@ Test on Java SE VM
 
 The SDK allows to run tests on a Java SE VM.
 This can be useful, for example, when the usage of mock libraries like ``Mockito`` is 
-needed (this kind of library is not supported by the MicroEJ VM).
+needed (this kind of library is not supported by the MicroEJ Core Engine).
 
 There is nothing specific related to MicroEJ to run tests on a Java SE VM.
 Follow the `Gradle documentation <https://docs.gradle.org/current/userguide/jvm_test_suite_plugin.html>`__ to setup such tests.

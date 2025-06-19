@@ -774,7 +774,7 @@ Tools
 SOAR
 ~~~~
 
--  [Multi] - Fixed potential VM crash when declaring a Proxy class which
+-  [Multi] - Fixed potential Core Engine crash when declaring a Proxy class which
    is ``abstract``.
 
 .. _section-1:

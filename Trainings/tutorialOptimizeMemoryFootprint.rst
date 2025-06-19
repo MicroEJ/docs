@@ -362,7 +362,7 @@ The following application code guidelines are recommended in order to minimize t
 - Adjust the type of ``int`` fields (32 bits) according to the expected range of values being stored (``byte`` for 8 bits signed integers, ``short`` for 16 bits signed integers, ``char`` for 16 bits unsigned integers).
 - When designing a generic and reusable component, allow the user to configure the size of any buffer allocated internally (either at runtime using a constructor parameter, or globally using a BON constant). That way, the user can select the optimal buffer size depending on his use-case and avoid wasting memory.
 - Avoid allocating immortal arrays to call native methods, use regular arrays instead. Immortal arrays are never reclaimed and they are not necessary anymore when calling a native method.
-- Reduce the maximum number of parallel threads. Each thread require a dedicated internal structure and VM stack blocks.
+- Reduce the maximum number of parallel threads. Each thread require a dedicated internal structure and one or more stack blocks.
   
   - Avoid creating threads on the fly for asynchronous execution, use shared thread instances instead (`ej.bon.Timer`_, `Executor`_, `MicroUI.callSerially(Runnable)`_, ...). 
 
@@ -438,8 +438,8 @@ Thread Stacks
 .. _Thread.getAllStackTraces(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Thread.html#getAllStackTraces--
 .. _Thread.activeCount(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Thread.html#activeCount--
  
-VM Dump
-"""""""
+Core Engine Dump
+""""""""""""""""
 
 The ``LLMJVM_dump()`` function declared in ``LLMJVM.h`` may be called to print information on alive threads such as their current and maximum stack block usage.
 This function may be called from the application by exposing it in a :ref:`native function <sni_specification>`. See :ref:`vm_dump` section for usage.
