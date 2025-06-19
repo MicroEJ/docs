@@ -712,7 +712,7 @@ The following configuration parameters are available:
      - The time in seconds before a test is considered as failed. Set it to ``0`` to disable the timeout.
      - ``60``
    * - ``microej.testsuite.jvmArgs``
-     - The arguments to pass to the Java VM started for each test.
+     - The arguments to pass to the Java SE VM started for each test.
      - Not set
    * - ``microej.testsuite.lockPort``
      - The localhost port used by the framework to synchronize its execution with other frameworks on same computer.
