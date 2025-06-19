@@ -107,7 +107,7 @@ Examples:
 
   .. code-block:: xml
 
-    VM START
+    MicroEJ START
     [TRACE] [1] Declare group "Application"
     [TRACE] [1] Event 0x0
 
@@ -135,7 +135,7 @@ Examples:
 
   .. code-block:: xml
 
-    VM START
+    MicroEJ START
     [TRACE] [1] Declare group "Application"
     [TRACE] [1] Event 0x1 (14 [0xE],54 [0x36])
     [TRACE] [1] Event End 0x1 (68 [0x44])
