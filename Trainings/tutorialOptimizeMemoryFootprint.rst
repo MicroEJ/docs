@@ -384,7 +384,7 @@ MicroEJ Platform Configuration
 
 The following configuration guidelines are recommended in order to minimize the runtime size of the application:
 
-- Check the size of the stack of each RTOS task. For example, 1.0KB may be enough for the MicroJVM task but it can be increased to allow deep native calls. See :ref:`debugstackoverflows` section for more information.
+- Check the size of the stack of each RTOS task. For example, 1.0KB may be enough for the Core Engine task but it can be increased to allow deep native calls. See :ref:`debugstackoverflows` section for more information.
 - Check the size of the heap allocated by the RTOS (for example, ``configTOTAL_HEAP_SIZE`` for FreeRTOS).
 - Check that the size of the back buffer matches the size of the display. Use a :ref:`partial buffer <section_display_partial>` if the back buffer does not fit in the RAM.
 

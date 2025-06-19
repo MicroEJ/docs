@@ -122,7 +122,7 @@ The cause(s) of a memory corruption can be:
 * A device incorrectly initialized or misconfigured.
 * ...
 
-When the HardFault occurs in the MicroJVM task, the VM task heap or stack may be corrupted.
+When the HardFault occurs in the Core Engine task, one of its internal structures may be corrupted (such as the Managed heap or Threads stacks).
 Add ``LLMJVM_checkIntegrity`` call in checkpoints of the BSP code to identify the timeslot of the memory corruption.
 Typically, you can check a native with:
 
@@ -133,7 +133,7 @@ Typically, you can check a native with:
    	myNativeFunctionDo();
    	int32_t crcAfter = LLMJVM_checkIntegrity();
    	if(crcBefore != crcAfter){
-   		// Corrupted memory in MicroJVM virtual machine internal structures
+   		// Corrupted memory in Core Engine internal structures
    		while(1);
    	}
    }
