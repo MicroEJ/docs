@@ -58,7 +58,7 @@ Usage
 
         .. code:: console
 
-            VM START
+            MicroEJ START
             Hello, World!
             Exception in thread "main" @C:0x8070c30@
                 at @C:0x8070c60@.@M:0x8075850:0x807585a@
@@ -97,7 +97,7 @@ In an Application project
             =============== [ MicroEJ Core Engine Trace ] ===============
             console:
             [INFO] Paste the MicroEJ core engine stack trace here.
-                VM START
+                MicroEJ START
                 Hello, World!
                 Exception in thread "main" @C:0x8070c30@
                     at @C:0x8070c60@.@M:0x8075850:0x807585a@
@@ -108,7 +108,7 @@ In an Application project
                     at @C:0x806fe10@.@M:0x807779c:0x80777b0@
                     at @C:0x8070c00@.@M:0x8077b40:0x8077b4c@
                     at @C:0x8070c00@.@M:0x80779b0:0x80779bb@
-                VM START
+                MicroEJ START
                 Hello, World!
                 Exception in thread "main" java.lang.Throwable
                     at java.lang.System.getStackTrace(Unknown Source)
@@ -159,7 +159,7 @@ In an Application project
             =============== [ MicroEJ Core Engine Trace ] ===============
             console:
             [INFO] Paste the MicroEJ core engine stack trace here.
-                VM START
+                MicroEJ START
                 Hello World from Gradle!
                 Exception in thread "main" @C:0x8070c30@
                     at @C:0x8070c60@.@M:0x8075850:0x807585a@
@@ -170,7 +170,7 @@ In an Application project
                     at @C:0x806fe10@.@M:0x807779c:0x80777b0@
                     at @C:0x8070c00@.@M:0x8077b40:0x8077b4c@
                     at @C:0x8070c00@.@M:0x80779b0:0x80779bb@
-                VM START
+                MicroEJ START
                 Hello World from Gradle!
                 Exception in thread "main" java.lang.Throwable
                     at java.lang.System.getStackTrace(Unknown Source)

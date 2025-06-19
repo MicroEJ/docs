@@ -390,7 +390,7 @@ Test on Java SE VM
 
 The SDK allows to run tests on a Java SE VM.
 This can be useful, for example, when the usage of mock libraries like ``Mockito`` is 
-needed (this kind of library is not supported by the MicroEJ VM).
+needed (this kind of library is not supported by the MicroEJ Core Engine).
 
 There is nothing specific related to MicroEJ to run tests on a Java SE VM.
 Follow the `Gradle documentation <https://docs.gradle.org/current/userguide/jvm_test_suite_plugin.html>`__ to setup such tests.
@@ -712,7 +712,7 @@ The following configuration parameters are available:
      - The time in seconds before a test is considered as failed. Set it to ``0`` to disable the timeout.
      - ``60``
    * - ``microej.testsuite.jvmArgs``
-     - The arguments to pass to the Java VM started for each test.
+     - The arguments to pass to the Java SE VM started for each test.
      - Not set
    * - ``microej.testsuite.lockPort``
      - The localhost port used by the framework to synchronize its execution with other frameworks on same computer.

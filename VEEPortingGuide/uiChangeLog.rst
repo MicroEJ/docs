@@ -2175,7 +2175,7 @@ MicroUI Implementation
 
 **Changed**
 
-* SNI Callback feature in the VM to remove the SNI retry pattern *(not backward compatible)*.
+* SNI Callback feature in the Core Engine to remove the SNI retry pattern *(not backward compatible)*.
 
 .. _section_ui_changelog_10_0_1:
 

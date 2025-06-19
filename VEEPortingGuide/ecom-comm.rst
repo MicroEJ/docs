@@ -277,7 +277,7 @@ stack as soon as the ``LLCOMM_initialize`` function is called.
 Connections added during the call of the ``LLCOMM_impl_initialize``
 function are static connections. A static connection is registered to
 the ECOM registry and cannot be removed. When a connection is
-dynamically added outside the MicroJVM task context, a suitable
+dynamically added outside the Core Engine task context, a suitable
 reentrant synchronization mechanism must be implemented (see
 ``LLCOMM_IMPL_syncConnectionsEnter`` and
 ``LLCOMM_IMPL_syncConnectionsExit``).
