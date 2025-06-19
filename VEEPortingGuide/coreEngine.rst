@@ -552,8 +552,9 @@ Trigger Core Engine Dump From Debugger
 
 To trigger a Core Engine dump from the debugger, set the PC register to the ``LLMJVM_dump`` physical memory address.
 
-The symbol for the ``LLMJVM_dump`` API is defined in the header file ``LLMJVM.h``.
-Search for this symbol in the appropriate C toolchain ``.map`` file.
+``LLMJVM_dump`` is an alias defined in ``intern/LLMJVM.h`` header file. 
+Check the macro definition in this header file to identify the real function name being referenced.
+Then, search for this function in the appropriate C toolchain ``.map`` file to locate the function's address in memory.
 
 .. note::
 
