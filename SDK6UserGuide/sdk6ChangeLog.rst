@@ -3,6 +3,45 @@
 Changelog
 ---------
 
+.. _changelog-1.3.0:
+
+[1.3.0] - 2025-06-19
+~~~~~~~~~~~~~~~~~~~~
+
+Added
+"""""
+
+- Add license information in published POM file.
+- Add a custom attribute to the variants of an Application, a VEE Port, a Mock and a Runtime Environment to improve the
+  resolution of MicroEJ dependencies.
+- Add the ``stackTraceReader`` task to the Library plugin.
+- Support the declaration of Libraries with the ``microejPack`` configuration in a VEE Port.
+- Add ``microejComponents`` task that prints MicroEJ commercial components dependency list in the console.
+
+Changed
+"""""""
+
+- Improve error message when the dependency defined with the ``microejApplication`` configuration is not an Application.
+- Clarify the message when a Library is not found in the VEE Port.
+- Add tests on ``includeTestsMatching`` in tests filter.
+
+Fixed
+"""""
+
+- Support build of WPK and Virtual Device when an include build is used for a dependent library.
+- Failure when running a KF Testsuite defined in a subproject of a multi-project.
+- Error message when the Application provided as VEE dependency is not a Kernel.
+- Testsuite not executed again after switching test target (Simulator or Device).
+- Build of Runtime Environment when it depends on an Addon Library project.
+- Load of a VEE Port declared as a project dependency when its project does not use the same version as the Application.
+- Application options set with ``System.setProperty()`` not taken into account.
+- Null Analysis check failure in Runtime Environment projects by adding back ``package-info.java`` files.
+- Allow verbose mode on ``buildFeature`` task by setting system property ``microej.option.execution.verbose`` to ``true``.
+- Update ``junit-test-engine`` to fix test duration and stack traces.
+- Compile on JDK instead of on dependencies only when the use of Java Lambdas is enabled.
+- VEE Port dropins files not considered when related to RIP packs.
+- Compilation errors when building a Runtime Environment with EDC 1.3.6+.
+
 .. _changelog-1.2.0:
 
 [1.2.0] - 2025-04-09
@@ -11,7 +50,7 @@ Changelog
 Added
 """""
 
-- Allow to define the JVM used to launch the VD in the `JAVA_HOME` environment variable.
+- Allow to define the JVM used to launch the VD in the ``JAVA_HOME`` environment variable.
 - Add POM and Gradle module files in generated Ivy descriptor file to allow to fetch them from a SDK 5 offline repository.
 - Remove the JDK from the classpath in the Eclipse and VS Code (when using RedHat's Java Extension) IDE.
 - Support the declaration of Mocks in an Application and in a Library.
