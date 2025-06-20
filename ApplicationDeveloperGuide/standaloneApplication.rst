@@ -66,10 +66,14 @@ Using System Properties
 -----------------------
 
 Application options can be defined by System properties using the ``microej.option.*`` prefix.
-System properties can either be defined in command line using ``-D`` argument, or in ``gradle.properties`` file using ``systemProp.*`` prefix.
+System properties can either be defined in command line using ``-D`` argument, in ``build.gradle.kts`` by calling ``System.setProperty(key, value)``, or in ``gradle.properties`` file using ``systemProp.*`` prefix.
 For instance, in command line::
 
     -Dmicroej.option.soar.generate.classnames=false
+
+in ``build.gradle.kts``::
+
+   System.setProperty("microej.option.soar.generate.classnames", "false")
 
 or in ``gradle.properties`` file::
 
