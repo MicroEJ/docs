@@ -308,7 +308,7 @@ Application Project
 - Add the ``com.microej.gradle.application`` plugin in the ``build.gradle.kts`` file::
 
     plugins {
-        id("com.microej.gradle.application") version "1.2.0"
+        id("com.microej.gradle.application") version "1.3.0"
     }
 
   .. note::
@@ -332,7 +332,7 @@ Add-On Library Project
 - Add the ``com.microej.gradle.addon-library`` plugin in the build script::
 
     plugins {
-        id("com.microej.gradle.addon-library") version "1.2.0"
+        id("com.microej.gradle.addon-library") version "1.3.0"
     }
 
   .. note::
@@ -348,7 +348,7 @@ Mock
 - Add the ``com.microej.gradle.mock`` plugin in the build script::
 
     plugins {
-        id("com.microej.gradle.mock") version "1.2.0"
+        id("com.microej.gradle.mock") version "1.3.0"
     }
 
   .. note::
@@ -366,7 +366,7 @@ Java SE Library Project
 - Add the ``com.microej.gradle.jse-library`` plugin in the build script::
 
     plugins {
-        id("com.microej.gradle.jse-library") version "1.2.0"
+        id("com.microej.gradle.jse-library") version "1.3.0"
     }
 
   .. note::
@@ -382,7 +382,7 @@ Runtime Environment Project
 - Add the ``com.microej.gradle.runtime-environment`` plugin in the build script::
 
     plugins {
-        id("com.microej.gradle.runtime-environment") version "1.2.0"
+        id("com.microej.gradle.runtime-environment") version "1.3.0"
     }
 
   .. note::
