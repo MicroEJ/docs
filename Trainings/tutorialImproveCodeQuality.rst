@@ -8,7 +8,7 @@ Description
 
 This training describes some rules and tools aimed at improving the quality of a Java code to simplify its maintenance.
 It makes up a minimum consistent set of rules which can be applied in any situation, especially on embedded systems where performance and low memory footprint matter.
-Also be aware of MicroEJ runtime specifities by reading the :ref:`mjvm_javalanguage` page.
+Also be aware of MicroEJ runtime specificities by reading the :ref:`mjvm_javalanguage` page.
 
 Intended Audience
 -----------------
@@ -341,13 +341,19 @@ The ``equals(Object)`` method is written that way:
       (field2 == null ? other.field2 == null : field2.equals(other.field2));
   }
 
-The `Object.hashCode()`_ method is written that way:
+The goal of the `Object.hashCode()`_ is to produce different values for unequal objects.
+A good hashcode is uniformly distributed among hash buckets (for instance in HashMap, HashSet, etc.)
 
-- Choose a prime number.
-- Create a result local, whatever the value (usually the prime number).
-- For each field, multiply the previous result with the prime
-  plus the hash code of the field and store it as the result.
+The ``hashCode()`` method is written that way:
+
+- Choose any prime number such as ``31`` (that is large enough so that the number of buckets is unlikely to be divisible by it) or a bigger one.
+- Create a result local intialized with the hashcode of the most significant field.
+- For each remaining field, multiply the previous result with the prime plus the hash code of the field and store it as the result.
 - Return the result.
+- Only the fields used in ``equals()`` must be used.
+- Derivative fields, that are computed from fields already included in computing of ``hashCode()`` can be ignored.
+- Precomputing the hashcode may be convenient for performance purpose (especially when fields are final).
+- The hashcode can also be lazy initialized the first time it is requested.
 
 Depending on its type, the hash code of a field is:
 
@@ -366,8 +372,8 @@ Depending on its type, the hash code of a field is:
 
   @Override
   public int hashCode() {
-    int result = PRIME;
-    result = PRIME * result + field1;
+    int result = field0;
+    result = PRIME * result + (field1 ? -1 : 1);
     result = PRIME * result + (field2 == null ? 0 : field2.hashCode());
     return result;
   }
@@ -406,12 +412,12 @@ Autoboxing and Numbers
 
 - Prefer 32-bit floats for embedded performance. Double operations are CPU intensive.
 
-Generics
-^^^^^^^^
+Generic Types
+^^^^^^^^^^^^^
 
 - Do not use raw types such as the Collection, prefer using a parameterized type instead
   (it ensures type safety, avoid explicit type casting, and improve code readability).
-  Generics and parametrized types are a compile time feature, it won't impact runtime performances and memory footprint.
+  Generic and parameterized types are a compile time feature, it won't impact runtime performances and memory footprint.
 
 .. code:: java
 
