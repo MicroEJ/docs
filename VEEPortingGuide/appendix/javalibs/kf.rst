@@ -141,62 +141,84 @@ This exception carries a specific error code, which can be retrieved by calling 
 on the `InvalidFormatException`_ instance.
 The returned message will follow the format: ``code=<id>``, where ``id`` corresponds the specific error encountered.
 
-Error codes ranging from ``150`` to ``180``, thrown during Feature installation, typically indicate an invalid or corrupted Feature file. 
-This corruption may occur during the file transfer process.
-
-Other possible causes for this exception include errors returned by the LLKERNEL abstraction layer, 
-or issues with a stored Feature, such as corruption or incompatibility.
+- Error code ``3`` indicates that an unexpected exception occurs during Feature installation (e.g. ``code=3:<exception_type>``).
+  
+  When the exception type is ``java.lang.OutOfMemoryError``, it may indicate there is not enough space in the Managed Heap to load the :ref:`Feature's metadata section <feature_memory_installation>`. 
+  If sufficient memory is available or if a different exception type is reported (e.g. ``code=3:java.lang.ArrayIndexOutOfBoundsException``), this likely points to a :ref:`corrupted Feature file <kf-loader-error-codes-corrupted-fo>`. 
 
 .. _table_kf-install-errorcodes-llkernel:
-.. table:: Feature Installation Error Codes Related to LLKERNEL Implementation
 
-   +---------+--------------------------------------------------------------------------------------------------------+
-   | Id      | Description                                                                                            |
-   +=========+========================================================================================================+
-   | 51      | The ``LLKERNEL_impl_copyToROM()`` function returned an error.                                          |
-   +---------+--------------------------------------------------------------------------------------------------------+
-   | 52      | The :ref:`maximum number of installed Features <option_maximum_number_of_dynamic_features>` is reached.|
-   +---------+--------------------------------------------------------------------------------------------------------+
-   | 54      | The address returned by the last call to                                                               |
-   |         | ``LLKERNEL_impl_getFeatureAddressRAM()`` or                                                            |
-   |         | ``LLKERNEL_impl_getFeatureAddressROM()`` does not match the                                            |
-   |         | alignment constraint.                                                                                  |
-   +---------+--------------------------------------------------------------------------------------------------------+
-   | 55      | The address returned by the last call to                                                               |
-   |         | ``LLKERNEL_impl_getFeatureAddressROM()`` overlaps with a                                               |
-   |         | previously returned address.                                                                           |
-   +---------+--------------------------------------------------------------------------------------------------------+
-   | 56      | The address returned by the last call to                                                               |
-   |         | ``LLKERNEL_impl_getFeatureAddressRAM()`` overlaps with a                                               |
-   |         | previously returned address.                                                                           |
-   +---------+--------------------------------------------------------------------------------------------------------+
-   | 58      | The ``.fo`` file cannot be installed on this Kernel because it                                         | 
-   |         | contains a code chunk section with a size greater than this                                            |
-   |         | Kernel code chunk size.                                                                                |
-   +---------+--------------------------------------------------------------------------------------------------------+
-   | 59      | The ``LLKERNEL_IMPL_allocateFeature()`` function returned                                              |
-   |         | ``0``. The Feature cannot be allocated in memory.                                                      | 
-   +---------+--------------------------------------------------------------------------------------------------------+
+- Error codes ranging from ``50`` to ``100``, thrown during Feature installation, indicate an error returned by the LLKERNEL Abstraction Layer.
+
+   .. table:: Feature Installation Error Codes Related to LLKERNEL Implementation
+
+      +---------+--------------------------------------------------------------------------------------------------------+
+      | Id      | Description                                                                                            |
+      +=========+========================================================================================================+
+      | 51      | The ``LLKERNEL_impl_copyToROM()`` function returned an error.                                          |
+      +---------+--------------------------------------------------------------------------------------------------------+
+      | 52      | The :ref:`maximum number of installed Features <option_maximum_number_of_dynamic_features>` is reached.|
+      +---------+--------------------------------------------------------------------------------------------------------+
+      | 54      | The address returned by the last call to                                                               |
+      |         | ``LLKERNEL_impl_getFeatureAddressRAM()`` or                                                            |
+      |         | ``LLKERNEL_impl_getFeatureAddressROM()`` does not match the                                            |
+      |         | alignment constraint.                                                                                  |
+      +---------+--------------------------------------------------------------------------------------------------------+
+      | 55      | The address returned by the last call to                                                               |
+      |         | ``LLKERNEL_impl_getFeatureAddressROM()`` overlaps with a                                               |
+      |         | previously returned address.                                                                           |
+      +---------+--------------------------------------------------------------------------------------------------------+
+      | 56      | The address returned by the last call to                                                               |
+      |         | ``LLKERNEL_impl_getFeatureAddressRAM()`` overlaps with a                                               |
+      |         | previously returned address.                                                                           |
+      +---------+--------------------------------------------------------------------------------------------------------+
+      | 58      | The ``.fo`` file cannot be installed on this Kernel because it                                         | 
+      |         | contains a code chunk section with a size greater than this                                            |
+      |         | Kernel code chunk size.                                                                                |
+      +---------+--------------------------------------------------------------------------------------------------------+
+      | 59      | The ``LLKERNEL_IMPL_allocateFeature()`` function returned                                              |
+      |         | ``0``. The Feature cannot be allocated in memory.                                                      | 
+      +---------+--------------------------------------------------------------------------------------------------------+
 
 .. _table_kf-load-errorcodes-llkernel:
-.. table:: Installed Feature Loading Error Codes
 
-   +---------+----------------------------------------------------------------+
-   | Id      | Description                                                    |
-   +=========+================================================================+
-   | 53      | The installed Feature content has been corrupted               |
-   |         | (CRC check error).                                             |
-   +---------+----------------------------------------------------------------+
-   | 57      | The address returned by the last call to                       |
-   |         | ``LLKERNEL_impl_getFeatureAddressRAM()`` is not the same than  |
-   |         | the one returned when the Feature has been installed.          |
-   +---------+----------------------------------------------------------------+
-   | 60      | The ``LLKERNEL_IMPL_getFeatureHandle()`` function returned     |
-   |         | ``0``. The handle for an installed Feature could not be        |
-   |         | retrieved as expected.                                         | 
-   +---------+----------------------------------------------------------------+
-   
+  Those thrown at Kernel boot indicate an issue with an already installed Feature, such as memory corruption or Feature link incompatibility.
+
+   .. table:: Installed Feature Loading Error Codes
+
+      +---------+----------------------------------------------------------------+
+      | Id      | Description                                                    |
+      +=========+================================================================+
+      | 53      | The installed Feature content has been corrupted               |
+      |         | (CRC check error).                                             |
+      +---------+----------------------------------------------------------------+
+      | 57      | The address returned by the last call to                       |
+      |         | ``LLKERNEL_impl_getFeatureAddressRAM()`` is not the same than  |
+      |         | the one returned when the Feature has been installed.          |
+      +---------+----------------------------------------------------------------+
+      | 60      | The ``LLKERNEL_IMPL_getFeatureHandle()`` function returned     |
+      |         | ``0``. The handle for an installed Feature could not be        |
+      |         | retrieved as expected.                                         | 
+      +---------+----------------------------------------------------------------+
+
+- Error codes ranging from ``150`` to ``180``, thrown during Feature installation, typically indicate an invalid or a :ref:`corrupted Feature file <kf-loader-error-codes-corrupted-fo>`. 
+
+.. _kf-loader-error-codes-corrupted-fo:
+
+Corrupted Feature File
+~~~~~~~~~~~~~~~~~~~~~~
+
+A corrupted Feature is most likely the result of an issue during the streaming transfer of the ``.fo`` file.
+This is typically caused by an incorrect implementation of the `java.io.InputStream`_ instance passed to the `Kernel.install(InputStream)`_ method.
+
+If your InputStream is provided by a Foundation Library, ensure that your VEE Port has been successfully :ref:`qualified <veeport_qualification>`.
+For example, when using a `java.io.FileInputStream`_, verify that the :ref:`File System <pack_fs>` port has been fully validated.
+The Feature loader relies on `InputStream.skip(long)`_, which is not commonly used. Be sure this method is correctly implemented, particularly with regard to handling the 64-bit long argument.
+
 .. _java.lang.IllegalAccessError: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/IllegalAccessError.html
+.. _java.io.FileInputStream: https://repository.microej.com/javadoc/microej_5.x/apis/java/io/FileInputStream.html
+.. _java.io.InputStream: https://repository.microej.com/javadoc/microej_5.x/apis/java/io/InputStream.html
+.. _InputStream.skip(long): https://repository.microej.com/javadoc/microej_5.x/apis/java/io/InputStream.html#skip-long-
 .. _Kernel.install(InputStream): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#install-java.io.InputStream-
 .. _ej.kf.InvalidFormatException: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/InvalidFormatException.html
 .. _InvalidFormatException: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/InvalidFormatException.html
