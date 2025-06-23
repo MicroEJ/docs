@@ -76,7 +76,6 @@ The configuration of the testsuites of a project must be defined inside the foll
                 implementation(project())
                 implementation("ej.api:edc:1.3.5")
                 implementation("ej.library.test:junit:1.11.0")
-                implementation("org.junit.platform:junit-platform-launcher:1.8.2")
             }
          }
       }
@@ -92,6 +91,11 @@ This piece of configuration is the minimum configuration required to define a te
   The second line declares a dependency on the ``edc`` Library. The third line declares a dependency to the JUnit API used 
   to annotate Java Test classes. Finally the fourth line declares a dependency to a required JUnit library.
 
+.. warning::
+
+   With SDK 6 prior to ``1.1.0``, ``junit-platform-launcher`` must be added as a test dependency::
+
+      implementation("org.junit.platform:junit-platform-launcher:1.8.2")
 
 .. _sdk_6_testsuite_vee_configuration:
 
@@ -187,25 +191,72 @@ which means that the tests are also executed when launching one of these tasks.
 
       In order to execute the testsuite from IntelliJ IDEA or Android Studio, double-click on the task in the Gradle tasks view:
 
-      .. image:: images/intellij-test-gradle-project.png
+      .. figure:: images/intellij-test-gradle-project.png
          :width: 30%
          :align: center
+
+         Run Gradle ``test`` task from IntelliJ IDEA / Android Studio
 
    .. tab:: Eclipse
 
       In order to execute the testsuite from Eclipse, double-click on the task in the Gradle tasks view:
 
-      .. image:: images/eclipse-test-gradle-project.png
-         :width: 50%
+      .. figure:: images/eclipse-test-gradle-project.png
+         :width: 30%
          :align: center
+
+         Run Gradle ``test`` task from Eclipse
+
+
+      .. warning::
+
+         By right-clicking on a test class file, the menu proposes :guilabel:`Gradle Test` and :guilabel:`JUnit Test` in the :guilabel:`Run As` entry.
+
+         .. figure:: images/eclipse_run_as_gradle_test.png
+            :width: 40%
+            :align: center
+
+            Run test as Gradle test in a class right-click menu
+
+         Always use the :guilabel:`Run` > :guilabel:`Gradle Test` entry.
 
    .. tab:: Visual Studio Code
 
       In order to execute the testsuite from VS Code, double-click on the task in the Gradle tasks view:
 
-      .. image:: images/vscode-test-gradle-project.png
+      .. figure:: images/vscode-test-gradle-project.png
          :width: 25%
          :align: center
+
+         Run Gradle ``test`` task from Visual Studio Code
+
+
+      .. warning::
+
+         Test start buttons (represented as green triangle) may appear on the left side of class and method definitions.
+         
+         .. figure:: images/vscode_run_test.png
+            :width: 30%
+            :align: center
+
+            Green triangles are test start buttons
+
+         Running tests from these buttons may fail because they do not use the Gradle Runner by default. To run a test with Gradle, right-click on the green triangle
+         and select :guilabel:`Execute Using Profile...`
+
+         .. figure:: images/vscode_execute_using_profile.png
+            :width: 30%
+            :align: center
+
+            Right-click menu on test start buttons
+
+         and then select :guilabel:`Delegate Test to Gradle`.
+
+         .. figure:: images/vscode_delegate_test_to_gradle.png
+            :width: 30%
+            :align: center
+
+            Run test class or test method with Gradle
 
    .. tab:: Command Line Interface
 
@@ -390,7 +441,7 @@ Test on Java SE VM
 
 The SDK allows to run tests on a Java SE VM.
 This can be useful, for example, when the usage of mock libraries like ``Mockito`` is 
-needed (this kind of library is not supported by the MicroEJ VM).
+needed (this kind of library is not supported by the MicroEJ Core Engine).
 
 There is nothing specific related to MicroEJ to run tests on a Java SE VM.
 Follow the `Gradle documentation <https://docs.gradle.org/current/userguide/jvm_test_suite_plugin.html>`__ to setup such tests.
@@ -543,7 +594,6 @@ Therefore:
             dependencies {
                implementation(project())
                implementation("ej.library.test:junit:1.11.0")
-               implementation("org.junit.platform:junit-platform-launcher:1.8.2")
             }
          }
 
@@ -562,7 +612,6 @@ Therefore:
             dependencies {
                implementation(project())
                implementation("ej.library.test:junit:1.11.0")
-               implementation("org.junit.platform:junit-platform-launcher:1.8.2")
             }
 
             targets {
@@ -712,7 +761,7 @@ The following configuration parameters are available:
      - The time in seconds before a test is considered as failed. Set it to ``0`` to disable the timeout.
      - ``60``
    * - ``microej.testsuite.jvmArgs``
-     - The arguments to pass to the Java VM started for each test.
+     - The arguments to pass to the Java SE VM started for each test.
      - Not set
    * - ``microej.testsuite.lockPort``
      - The localhost port used by the framework to synchronize its execution with other frameworks on same computer.
@@ -739,6 +788,11 @@ The following configuration parameters are available:
           The testsuite verbose level follows Gradle log level.
 
      - ``info``
+   * - ``microej.testsuite.status.pattern``
+     - **since `1.3.0`** Pattern to change test passed (default is ``.:[|PASSED|]:.``) and failed (default is ``.:[|FAILED|]:.``) tags in testsuite logs.
+       These tags are catched by the testsuite engine to determine if a test has passed or failed.
+       The ``{}`` placeholder in the pattern will be replaced by ``PASSED`` or ``FAILED`` respectively in order to discriminate these tags from other test logs.
+     - ``.:[|{}|]:.``
 
 .. _sdk_6_testsuite_application_options:
 

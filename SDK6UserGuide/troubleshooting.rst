@@ -72,7 +72,7 @@ If this kind of message appears when resolving plugins or modules dependencies:
 .. code:: console
 
    * What went wrong:
-   Plugin [id: 'com.microej.gradle.application', version: '1.2.0'] was not found in any of the following sources:
+   Plugin [id: 'com.microej.gradle.application', version: '1.3.0'] was not found in any of the following sources:
 
 or this kind:
 
@@ -347,6 +347,37 @@ To fix this issue, you must update the dependency of your testsuite to use the s
 		}
 	}
 
+.. _sdk_6_disable_k2:
+
+Gradle Build Files (`*.kts`) Errors in IntelliJ IDEA
+----------------------------------------------------
+
+Since version ``2025.1``, the new Kotlin K2 compiler is enabled by default to compile Gradle build scripts. For now, it requires a JDK in project's classpath in order to
+interpret the build file successfully. MicroEJ projects do not have JDK in classpath, the Gradle build scripts are thus fully marked in red with the following errors::
+
+	Cannot access 'Comparable' which is a supertype of 'KotlinBuildScript'. Check your module classpath for missing or conflicting dependencies.
+	Cannot access 'Object' which is a supertype of 'KotlinBuildScript'. Check your module classpath for missing or conflicting dependencies.
+
+To fix this, you need to
+
+  - uncheck :guilabel:`Enable K2` in :guilabel:`Settings...` > :guilabel:`Languages & Frameworks` > :guilabel:`Kotlin`
+
+	.. figure:: images/intellij_disable_K2.png
+		:alt: Disable K2 in IntelliJ IDEA
+		:align: center
+		:scale: 70%
+
+		Disable K2 in IntelliJ IDEA
+
+	- Invalidate caches from :guilabel:`Files` > :guilabel:`Invalidate Caches...` and check all the checkboxes as shown below, and click on :guilabel:`Invalidate and Restart`
+
+	.. figure:: images/intellij_invalidate_caches.png
+		:alt: Invalidate all the caches
+		:align: center
+		:scale: 70%
+
+		Invalidate all the caches
+	
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 

@@ -11,6 +11,7 @@ MicroEJ Foundation Libraries
     ecom-comm
     microui
     fs
+    gnss
     net
     ssl
 

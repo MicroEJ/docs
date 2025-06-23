@@ -12,7 +12,7 @@ The Multi-Sandbox capability of the Core Engine allows a
 main application (called Standalone Application) to install and execute
 at runtime additional applications (called Sandboxed Applications).
 
-The Core Engine implements the :ref:`[KF] specification <kf_specification>`. A Kernel is a
+The Core Engine implements the :ref:`kf_specification`. A Kernel is a
 Standalone Application generated on a Multi-Sandbox-enabled
 VEE Port. A Feature is a Sandboxed Application generated against a specific Kernel.
 
@@ -81,7 +81,7 @@ Use
 ===
 
 The `KF API Module`_ must be added to the build file of the 
-Application project to use :ref:`[KF] <kf_specification>` library.
+Application project to use :ref:`kf_specification` library.
 
 .. tabs::
 
@@ -363,7 +363,7 @@ RAM Control
    This feature requires Architecture :ref:`8.1.0 <changelog-8.1.0>` or higher.
 
 In a Multi-Sandbox environment, RAM Control automatically stops less critical Features when a more critical Feature cannot allocate new objects. 
-See the `RAM Control: Feature Criticality` section of the :ref:`kf_specification` for more details.
+See the :ref:`kf_ram_control_feature_criticality` section of the :ref:`kf_specification` for more details.
 
 By default, RAM Control is disabled in the Core Engine. 
 To enable it, set the property ``com.microej.runtime.kf.ramcontrol.enabled`` to ``true`` in the VEE Port configuration:

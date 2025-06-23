@@ -332,6 +332,18 @@ The properties file can additional properties:
    provided by the hardware (see :ref:`fp_ui_decoder`). Use comma (',') to specify several decoders among this list: bmp, jpg, jpeg, gif, png. If empty or unspecified,
    no image decoder is added.
 
+   .. tabs::
+
+      .. tab:: SDK 6
+
+         In SDK 6, the configuration is done in the properties file ``vee-port/configuration.properties`` of the VEE Port project.
+         
+         Define the property using the ``com.microej.pack.frontpanel`` prefix: ``com.microej.pack.frontpanel.hardwareImageDecoders.list=jpg,bmp,png``
+
+      .. tab:: SDK 5
+
+         In SDK 5, set the ``hardwareImageDecoders.list`` property in the properties file ``frontpanel/frontpanel.properties``.
+
 Use
 ===
 

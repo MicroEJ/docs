@@ -23,8 +23,10 @@ VEE Porting Guide
    net
    bluetooth
    audio
+   microai
    packEventQueue
    fs
+   gnss
    hal
    device
    security

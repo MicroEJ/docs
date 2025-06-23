@@ -3,7 +3,7 @@
 Fundamental Concepts
 ====================
 
-Multi-Sandboxing is based on the :ref:`the Kernel & Features Specification <kf_specification>` (KF).
+Multi-Sandboxing is based on the :ref:`kf_specification`.
 
 It allows an application code to be split between multiples parts: 
 
@@ -25,7 +25,7 @@ Some fundamental points:
 
 .. note::
 
-   You can go further by reading :ref:`the Kernel & Features Specification <kf_specification>`.
+   You can go further by reading the :ref:`kf_specification`.
 
 
 ..

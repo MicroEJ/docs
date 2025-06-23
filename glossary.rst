@@ -6,10 +6,10 @@ MicroEJ Glossary
 .. glossary::
 
    Add-On Library
-      An Add-On Library is a pure `Managed Code`_ (Java, Javascript, managed-C, etc.) library. It runs over one or more Foundation Libraries.
+      An Add-On Library is a pure `Managed Code`_ (Java, Javascript, Managed C, etc.) library. It runs over one or more Foundation Libraries.
 
    Abstraction Layer
-      An Abstraction Layer is the code (C, asm, etc.) that implements a Foundation Library's low-level APIs over a board support package (BSP) or a C library.
+      An Abstraction Layer is the native code (C, asm, etc.) that implements a Foundation Library's low-level APIs over a board support package (BSP) or a C library.
 
    Application
       An Application is a software program that runs on a MICROEJ VEE.
@@ -26,17 +26,17 @@ MicroEJ Glossary
    Architecture
       An Architecture is a software package that includes the Core Engine port to a target instruction set and a C compiler, core Foundation Libraries (:ref:`[EDC], [BON], [SNI], [KF] <runtime_core_libraries>`) and the Simulator. Architectures are distributed either as evaluation or production version.
 
-   Core Engine, also named "MEJ32"
+   Core Engine
       `The Core Engine, also named MEJ32, is a scalable 32-bit core <https://developer.microej.com/mej32-virtual-machine-for-embedded-systems/>`_ for resource-constrained embedded devices. It is delivered in various flavors, mostly as a binary software package. The Core Engine allows applications written in various languages to run in a safe container.
 
    Executable
-      An Executable is the result of the binary link of a Standalone Application with a VEE Port. It can be programmed into the flash memory of a device. (formerly called a Firmware)
+      An Executable is the result of the binary link of a Standalone Application with a VEE Port. It can be programmed into the flash memory of a device.
 
          Mono-Sandbox Executable
             A Mono-Sandbox Executable is an Executable that implements an unmodifiable set of functions.
 
          Multi-Sandbox Executable
-            A Multi-Sandbox Executable is an Executable that implements the ability to be extended, by exposing a set of APIs and a memory space to link Sandboxed Applications.
+            A Multi-Sandbox Executable is an Executable that implements the ability to be extended, by exposing a Runtime Environment and a memory space to link Sandboxed Applications.
 
    Foundation Library
       A Foundation Library is a library that provides core or hardware-dependent functionalities. A Foundation Library combines `Managed Code`_ (Java, Javascript, managed-C, etc. ) and low-level APIs (C, asm, etc.) implemented by one or more Abstraction Layers through a native interface (:ref:`SNI <sni_specification>`).
@@ -50,14 +50,15 @@ MicroEJ Glossary
    Mock
       A Mock is a mockup of a board support package (BSP) capability that mimics a hardware functionality for the Simulator.
 
-   Module Manager
-      MicroEJ Module Manager (MMM) downloads, installs and controls the consistency of all the dependencies and versions required to build and publish a MicroEJ asset. It is based on `Semantic Versioning <https://semver.org>`_ specification.
+   Runtime Environment
+      A Runtime Environment is a custom set of APIs exposed by a Multi-Sandbox Executable, designed to support the development and execution of compatible Sandboxed Applications.
+      It typically serves as the base component for building an ecosystem of applications within a specific domain.
 
    Simulator
       The Simulator allows running Applications on a target hardware simulator on the developer’s desktop computer. The Simulator runs one or more Mock that mimics the hardware functionality. It enables developers to develop their Applications without the need of hardware.
 
    VEE Port
-      A VEE Port is an implementation of MICROEJ VEE for a target device. It integrates an Architecture, one or more Foundation Libraries with their respective Abstraction Layers, and the board support package (BSP). It also includes associated Mocks for the Simulator. (formerly called Platform)
+      A VEE Port is an implementation of MICROEJ VEE tailored to run on a particular device (hardware board including both the processor and the peripherals). It integrates an Architecture, one or more Foundation Libraries with their respective Abstraction Layers, and the board support package (BSP). It also includes associated Mocks for the Simulator.
 
    Virtual Device
       A Virtual Device is a software package that includes the simulation part of an Executable: runtime, libraries and application(s). It can be run on any desktop computer without the need of the SDK.

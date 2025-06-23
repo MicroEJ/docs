@@ -102,7 +102,7 @@ Display: Buffer Configuration
 =============================
 
 This configuration consists in declaring the available number of buffers where MicroUI can draw (back buffer) and the strategy to apply to update these buffers after a flush.
-Read and update the configuration file ``ui_display_brs_configuration.h``; more details in the chapter :ref:`section_display`.
+Read and update the configuration file ``ui_configuration.h``; more details in the chapter :ref:`section_display`.
 
 Display: Optional Features
 ==========================
@@ -148,7 +148,7 @@ This test suite **must** be executed to validate the UI Port and after each modi
 The UI Port test suite is available here: 
 
 - SDK 5: https://github.com/MicroEJ/VEEPortQualificationTools/tree/master/tests/ui/ui3
-- SDK 6: https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.2.0/vee-port/validation/ui
+- SDK 6: https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.3.0/vee-port/validation/ui
 
 The test suite is constituted of two blocks:
 

@@ -15,26 +15,30 @@ digraph mygraph {
     "microejMock" [fillcolor = "#41f753"]
     "microejFrontPanel" [fillcolor = "#41f753"]
     "microejTool" [fillcolor = "#41f753"]
+    "api" [fillcolor = "#41f753"]
+    "implementation" [fillcolor = "#41f753"]
 
     "microejArchitectureClasspath" [fillcolor = "#b0d6d3"]
     "microejPackClasspath" [fillcolor = "#b0d6d3"]
     "microejMockClasspath" [fillcolor = "#b0d6d3"]
     "microejFrontPanelClasspath" [fillcolor = "#b0d6d3"]
     "microejToolClasspath" [fillcolor = "#b0d6d3"]
+    "apiClasspath" [fillcolor = "#b0d6d3"]
+    "implementationClasspath" [fillcolor = "#b0d6d3"]
 
     "microejArchitectureClasspath" -> "microejArchitecture"
     "microejPackClasspath" -> "microejPack"
     "microejMockClasspath" -> "microejMock"
     "microejFrontPanelClasspath" -> "microejFrontPanel"
     "microejToolClasspath" -> "microejTool"
-    "buildVeePort" -> "microejArchitectureClasspath" [ label="uses" ]
-    "buildVeePort" -> "microejPackClasspath" [ label="uses" ]
-    "buildVeePort" -> "microejMockClasspath" [ label="uses" ]
-    "buildVeePort" -> "microejFrontPanelClasspath" [ label="uses" ]
-    "buildVeePort" -> "microejToolClasspath" [ label="uses" ]
-    "buildVeePortConfiguration" -> "microejArchitectureClasspath" [ label="uses" ]
-    "buildVeePortConfiguration" -> "microejPackClasspath" [ label="uses" ]
-    "buildVeePortConfiguration" -> "microejMockClasspath" [ label="uses" ]
-    "buildVeePortConfiguration" -> "microejFrontPanelClasspath" [ label="uses" ]
-    "buildVeePortConfiguration" -> "microejToolClasspath" [ label="uses" ]
+    "implementation" -> "api"
+    "apiClasspath" -> "api"
+    "implementationClasspath" -> "implementation"
+    "buildVeePort and buildVeePortConfiguration" -> "microejArchitectureClasspath" [ label="uses" ]
+    "buildVeePort and buildVeePortConfiguration" -> "microejPackClasspath" [ label="uses" ]
+    "buildVeePort and buildVeePortConfiguration" -> "microejMockClasspath" [ label="uses" ]
+    "buildVeePort and buildVeePortConfiguration" -> "microejFrontPanelClasspath" [ label="uses" ]
+    "buildVeePort and buildVeePortConfiguration" -> "microejToolClasspath" [ label="uses" ]
+    "buildVeePort and buildVeePortConfiguration" -> "apiClasspath" [ label="uses" ]
+    "buildVeePort and buildVeePortConfiguration" -> "implementationClasspath" [ label="uses" ]
 }

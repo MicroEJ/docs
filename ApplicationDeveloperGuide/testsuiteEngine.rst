@@ -138,13 +138,13 @@ The following attributes are optional:
      - The name of the current tested product.
      - ``TestSuite``
    * - ``jvm``
-     - The location of your Java VM to start the test suite (the
+     - The location of your Java SE VM to start the test suite (the
        ``harnessScript`` is called as is:  ``[jvm] [...] -buildfile
        [harnessScript]``).
      - ``java.home`` location if the property is set, ``java``
        otherwise.
    * - ``jvmargs``
-     - The arguments to pass to the Java VM started for each test.
+     - The arguments to pass to the Java SE VM started for each test.
      - None.
    * - ``testsuiteReportFileProperty``
      - The name of the Ant property in which the path of the final

@@ -441,12 +441,12 @@ To restart the application, call again the ``SNI_startVM`` function (see the fol
 
 .. _vm_dump:
 
-Dump the States of the Core Engine
-----------------------------------
+Dump the State of the Core Engine
+---------------------------------
 
 The internal Core Engine function called ``LLMJVM_dump`` allows
 you to dump the state of all MicroEJ threads: name, priority, stack
-trace, etc. This function must only be called from the MicroJvm virtual machine thread context and only from a native function or callback.
+trace, etc. This function must only be called from the Core Engine thread context and only from a native function or callback.
 Calling this function from another context may lead to undefined behavior and should be done only for debug purpose.
 
 This is an example of a dump:
@@ -534,7 +534,7 @@ This is an example of a dump:
       --------------------------------------------------------------------------------
       ================================================================================
 
-See Stack Trace Reader documentation for :ref:`SDK 6 <sdk6.section.stacktrace.reader.tool>` or :ref:`SDK 5 <stack_trace_reader>` for additional info related to working with VM dumps.
+See Stack Trace Reader documentation for :ref:`SDK 6 <sdk6.section.stacktrace.reader.tool>` or :ref:`SDK 5 <stack_trace_reader>` for additional info related to working with Core Engine dumps.
 
 .. _vm_dump_fault_handler:
 
@@ -542,16 +542,15 @@ Dump The State Of All MicroEJ Threads From A Fault Handler
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 It is recommended to call the ``LLMJVM_dump`` API as a last resort in a fault handler.
-Calling ``LLMJVM_dump`` is undefined if the VM is not paused.
+Calling ``LLMJVM_dump`` is undefined if the Core Engine is not paused.
 The call to ``LLMJVM_dump`` MUST be done last in the fault handler.
 
 .. _vm_dump_debugger:
 
-Trigger VM Dump From Debugger
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Trigger Core Engine Dump From Debugger
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-To trigger a VM dump from the debugger, set the PC register to the ``LLMJVM_dump`` physical memory address.
+To trigger a Core Engine dump from the debugger, set the PC register to the ``LLMJVM_dump`` physical memory address.
 
 The symbol for the ``LLMJVM_dump`` API is defined in the header file ``LLMJVM.h``.
 Search for this symbol in the appropriate C toolchain ``.map`` file.

@@ -69,6 +69,7 @@ Usage
 """""
 
 1. Add all C files in the BSP project.
+2. Check the port by running the ``ui`` validation as described in the `VEE Port project template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/>`_
 
 Images Heap
 -----------
@@ -131,7 +132,7 @@ Usage (to enable the events logger)
 """""""""""""""""""""""""""""""""""
 
 1. Add all C files in the BSP project.
-2. Configure the options in ``microui_event_decoder_conf.h`` (by default, the logger is disabled).
+2. Configure the options in ``ui_configuration.h`` (by default, the logger is disabled).
 
 Buffer Refresh Strategy
 -----------------------
@@ -159,7 +160,7 @@ Usage
 """""
 
 1. Add all C files in the BSP project (whatever the strategy).
-2. Configure the options in ``ui_display_brs_configuration.h``.
+2. Configure the options in ``ui_configuration.h``.
 3. Comment the line ``#error [...]"``.
 4. (optional) Implement ``UI_DISPLAY_BRS_restore()`` (using a GPU, for instance).
 
@@ -176,7 +177,7 @@ Overview
 This C module is a specific implementation of the C module MicroUI over STM32 DMA2D (Chrom-ART Graphics Accelerator):
 
 * It implements a set of drawings using the official Chrom-ART Graphics Accelerator API.
-* It is compatible with several STM32 MCU: ``STM32F4XX```, ``STM32F7XX``` and ``STM32H7XX```.
+* It is compatible with several STM32 MCU: ``STM32F4XX``, ``STM32F7XX`` and ``STM32H7XX``.
 * It manages several configurations of memory cache.
 * It is compatible with the :ref:`multiple destination formats <section_bufferedimage_cco>` module (but can only handle one destination format).
 * It is compatible with the :ref:`Buffer Refresh Strategies (BRS)<section_brs>` ``predraw``, ``single`` and ``legacy`` (switch).
@@ -193,9 +194,11 @@ Files
 Usage
 -----
 
-1. Add the C file to the BSP project.
-2. Add the BSP global define ``DRAWING_DMA2D_BPP`` to specify the destination format: 16, 24, or 32 respectively ``DMA2D_RGB565``, ``DMA2D_RGB888`` and ``DMA2D_ARGB8888``.
-3. Call ``UI_DRAWING_DMA2D_initialize()`` from ``LLUI_DISPLAY_IMPL_initialize()``.
+1. Install the :ref:`C Module for MicroUI<section_ui_cco>` and follow its implementation rules.
+2. Add the C file to the BSP project.
+3. Add the BSP global define ``DRAWING_DMA2D_BPP`` to specify the destination format: 16, 24, or 32 respectively ``DMA2D_RGB565``, ``DMA2D_RGB888`` and ``DMA2D_ARGB8888``.
+4. Call ``UI_DRAWING_DMA2D_initialize()`` from ``LLUI_DISPLAY_IMPL_initialize()``.
+5. Check the port by running the ``ui`` validation as described in the `VEE Port project template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/>`_
 
 Drawings
 --------
@@ -401,27 +404,30 @@ Files
 Usage
 -----
 
-1. Add the C files to the BSP project.
-2. Call ``UI_VGLITE_initialize`` from ``LLUI_DISPLAY_IMPL_initialize`` before calling any VGLite-related function.
-3. Call ``UI_VGLITE_start`` from ``LLUI_DISPLAY_IMPL_initialize`` after configuring the VGLite library.
-4. Configure the options in ``ui_vglite_configuration.h``.
-5. Comment the line ``#error [...]"``.
-6. Call ``UI_VGLITE_IRQHandler`` during the GPU interrupt routine.
-7. Set the VGLite library's preprocessor define ``VG_DRIVER_SINGLE_THREAD``.
-8. The VGLite library must be patched to be compatible with this C module:
+1. Install the :ref:`C Module for MicroUI<section_ui_cco>` and follow its implementation rules.
+2. Add the C files to the BSP project.
+3. Call ``UI_VGLITE_initialize`` from ``LLUI_DISPLAY_IMPL_initialize`` before calling any VGLite-related function.
+4. Call ``UI_VGLITE_start`` from ``LLUI_DISPLAY_IMPL_initialize`` after configuring the VGLite library.
+5. Configure the options in ``ui_vglite_configuration.h``.
+6. Comment the line ``#error [...]"``.
+7. Call ``UI_VGLITE_IRQHandler`` during the GPU interrupt routine.
+8. Set the VGLite library's preprocessor define ``VG_DRIVER_SINGLE_THREAD``.
+9. The VGLite library must be patched to be compatible with this C module:
 
    .. code-block:: bash
 
          cd [...]/sdk/middleware/vglite
          patch -p1 < [...]/3.0.15_rev7.patch
 
-9. In the file ``vglite_window.c``, add the function ``VGLITE_CancelSwapBuffers()`` and its prototype in ``vglite_window.h``:
+10. In the file ``vglite_window.c``, add the function ``VGLITE_CancelSwapBuffers()`` and its prototype in ``vglite_window.h``:
 
    .. code-block:: c
 
          void VGLITE_CancelSwapBuffers(void) {
             fb_idx = fb_idx == 0 ? (APP_BUFFER_COUNT - 1) : (fb_idx ) - 1;
          }
+
+11. Check the port by running the ``ui`` validation as described in the `VEE Port project template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/>`_
 
 Options
 -------
@@ -541,11 +547,14 @@ Files
 
 Usage
 -----
-1. Add the C files to the BSP project.
-2. Add ``ui_nemagfx/inc`` to the include path.
-3. Call ``UI_NEMA_initialize()`` from ``LLUI_DISPLAY_IMPL_initialize()``.
-4. Configure the options in ``ui_nema_configuration.h``.
-5. Comment the line ``#error [...]"``.
+
+1. Install the :ref:`C Module for MicroUI<section_ui_cco>` and follow its implementation rules.
+2. Add the C files to the BSP project.
+3. Add ``ui_nemagfx/inc`` to the include path.
+4. Call ``UI_NEMA_initialize()`` from ``LLUI_DISPLAY_IMPL_initialize()``.
+5. Configure the options in ``ui_nema_configuration.h``.
+6. Comment the line ``#error [...]"``.
+7. Check the port by running the ``ui`` validation as described in the `VEE Port project template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/>`_
 
 .. _section_ui_c_module_microui_nemagfx_implementation:
 

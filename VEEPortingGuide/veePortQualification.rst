@@ -44,7 +44,7 @@ VEE Port Qualification Tools (PQT):
       
       In SDK 6, it is located at:
 
-      - the ``validation`` folder of the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.2.0/vee-port/validation>`__ for the Java Testsuites.
+      - the ``validation`` folder of the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.3.0/vee-port/validation>`__ for the Java Testsuites.
       - the `AbstractionLayer Tests repository <https://github.com/MicroEJ/AbstractionLayer-Tests>`__ for the C tests.
 
    .. group-tab:: SDK 5
@@ -188,6 +188,19 @@ FS Pack
      - `2.0.6 <https://repository.microej.com/modules/ej/api/fs/2.0.6/>`__
      - On demand [1]_
 
+GNSS Pack
+---------
+
+.. list-table:: GNSS API Implementation and Validation
+   :widths: 20 10 10
+
+   * - GNSS Pack
+     - GNSS API
+     - Java Test Suite
+   * - 2.0.0
+     - `2.0.0 <https://forge.microej.com/artifactory/microej-developer-repository-release/ej/api/gnss/2.0.0/>`__
+     - `2.0.0 <https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/pack/gnss/gnss-testsuite/2.0.0/>`__
+
 .. _test_suite_versioning_bluetooth:
 
 Bluetooth Pack
@@ -284,6 +297,17 @@ Audio Pack
    * - [1.0.0-1.1.0[
      - `1.0.0 <https://repository.microej.com/modules/ej/api/audio/1.0.0/>`__
      - `1.0.0 <https://repository.microej.com/modules/com/microej/pack/audio/audio-testsuite/1.0.0/>`__
+
+MicroAI Pack
+------------
+
+.. list-table:: MicroAI Library and Validation
+   :widths: 20 20
+
+   * - MicroAI Library
+     - Java Test Suite
+   * - 1.0.0 (On demand [1]_)
+     - 1.0.0 (On demand [1]_)
 
 .. _test_suite_versioning_event_queue:
 
