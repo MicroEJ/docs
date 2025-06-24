@@ -1,0 +1,6 @@
+{
+    "restructuredtext.linter.doc8.extraArgs": [
+        "--ignore D001", // Line too long
+        "--ignore D004" // Found literal carriage return
+    ]
+}
