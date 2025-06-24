@@ -15,6 +15,7 @@ VEE Porting Guide
    advanceTrace
    multiSandbox
    tinySandbox
+   libraries
    native
    externalResourceLoader
    serialCommunications
