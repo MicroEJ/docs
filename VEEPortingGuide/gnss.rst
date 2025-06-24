@@ -45,7 +45,7 @@ The GNSS :ref:`Pack <pack_overview>` module must be installed in your VEE Port:
 Use
 ===
 
-See :ref:`MicroAI API <gnss_usage>` chapter in Application Developer Guide.
+See :ref:`GNSS API <gnss_usage>` chapter in Application Developer Guide.
 
 ..
    | Copyright 2025, MicroEJ Corp. Content in this space is free 
