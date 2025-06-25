@@ -149,57 +149,56 @@ The returned message will follow the format: ``code=<id>``, where ``id`` corresp
 
 - Error codes ranging from ``50`` to ``100``, thrown during Feature installation, indicate an error returned by the LLKERNEL Abstraction Layer.
 
-.. _table_kf-install-errorcodes-llkernel:
-   .. table:: Feature Installation Error Codes Related to LLKERNEL Implementation
+  .. _table_kf-install-errorcodes-llkernel:
+  .. table:: Feature Installation Error Codes Related to LLKERNEL Implementation
 
-      +---------+--------------------------------------------------------------------------------------------------------+
-      | Id      | Description                                                                                            |
-      +=========+========================================================================================================+
-      | 51      | The ``LLKERNEL_impl_copyToROM()`` function returned an error.                                          |
-      +---------+--------------------------------------------------------------------------------------------------------+
-      | 52      | The :ref:`maximum number of installed Features <option_maximum_number_of_dynamic_features>` is reached.|
-      +---------+--------------------------------------------------------------------------------------------------------+
-      | 54      | The address returned by the last call to                                                               |
-      |         | ``LLKERNEL_impl_getFeatureAddressRAM()`` or                                                            |
-      |         | ``LLKERNEL_impl_getFeatureAddressROM()`` does not match the                                            |
-      |         | alignment constraint.                                                                                  |
-      +---------+--------------------------------------------------------------------------------------------------------+
-      | 55      | The address returned by the last call to                                                               |
-      |         | ``LLKERNEL_impl_getFeatureAddressROM()`` overlaps with a                                               |
-      |         | previously returned address.                                                                           |
-      +---------+--------------------------------------------------------------------------------------------------------+
-      | 56      | The address returned by the last call to                                                               |
-      |         | ``LLKERNEL_impl_getFeatureAddressRAM()`` overlaps with a                                               |
-      |         | previously returned address.                                                                           |
-      +---------+--------------------------------------------------------------------------------------------------------+
-      | 58      | The ``.fo`` file cannot be installed on this Kernel because it                                         | 
-      |         | contains a code chunk section with a size greater than this                                            |
-      |         | Kernel code chunk size.                                                                                |
-      +---------+--------------------------------------------------------------------------------------------------------+
-      | 59      | The ``LLKERNEL_IMPL_allocateFeature()`` function returned                                              |
-      |         | ``0``. The Feature cannot be allocated in memory.                                                      | 
-      +---------+--------------------------------------------------------------------------------------------------------+
-
+     +---------+--------------------------------------------------------------------------------------------------------+
+     | Id      | Description                                                                                            |
+     +=========+========================================================================================================+
+     | 51      | The ``LLKERNEL_impl_copyToROM()`` function returned an error.                                          |
+     +---------+--------------------------------------------------------------------------------------------------------+
+     | 52      | The :ref:`maximum number of installed Features <option_maximum_number_of_dynamic_features>` is reached.|
+     +---------+--------------------------------------------------------------------------------------------------------+
+     | 54      | The address returned by the last call to                                                               |
+     |         | ``LLKERNEL_impl_getFeatureAddressRAM()`` or                                                            |
+     |         | ``LLKERNEL_impl_getFeatureAddressROM()`` does not match the                                            |
+     |         | alignment constraint.                                                                                  |
+     +---------+--------------------------------------------------------------------------------------------------------+
+     | 55      | The address returned by the last call to                                                               |
+     |         | ``LLKERNEL_impl_getFeatureAddressROM()`` overlaps with a                                               |
+     |         | previously returned address.                                                                           |
+     +---------+--------------------------------------------------------------------------------------------------------+
+     | 56      | The address returned by the last call to                                                               |
+     |         | ``LLKERNEL_impl_getFeatureAddressRAM()`` overlaps with a                                               |
+     |         | previously returned address.                                                                           |
+     +---------+--------------------------------------------------------------------------------------------------------+
+     | 58      | The ``.fo`` file cannot be installed on this Kernel because it                                         |
+     |         | contains a code chunk section with a size greater than this                                            |
+     |         | Kernel code chunk size.                                                                                |
+     +---------+--------------------------------------------------------------------------------------------------------+
+     | 59      | The ``LLKERNEL_IMPL_allocateFeature()`` function returned                                              |
+     |         | ``0``. The Feature cannot be allocated in memory.                                                      |
+     +---------+--------------------------------------------------------------------------------------------------------+
 
   Those thrown at Kernel boot indicate an issue with an already installed Feature, such as memory corruption or Feature link incompatibility after Kernel update.
 
-.. _table_kf-load-errorcodes-llkernel:
-   .. table:: Installed Feature Loading Error Codes
+  .. _table_kf-load-errorcodes-llkernel:
+  .. table:: Installed Feature Loading Error Codes
 
-      +---------+----------------------------------------------------------------+
-      | Id      | Description                                                    |
-      +=========+================================================================+
-      | 53      | The installed Feature content has been corrupted               |
-      |         | (CRC check error).                                             |
-      +---------+----------------------------------------------------------------+
-      | 57      | The address returned by the last call to                       |
-      |         | ``LLKERNEL_impl_getFeatureAddressRAM()`` is not the same than  |
-      |         | the one returned when the Feature has been installed.          |
-      +---------+----------------------------------------------------------------+
-      | 60      | The ``LLKERNEL_IMPL_getFeatureHandle()`` function returned     |
-      |         | ``0``. The handle for an installed Feature could not be        |
-      |         | retrieved as expected.                                         | 
-      +---------+----------------------------------------------------------------+
+     +---------+----------------------------------------------------------------+
+     | Id      | Description                                                    |
+     +=========+================================================================+
+     | 53      | The installed Feature content has been corrupted               |
+     |         | (CRC check error).                                             |
+     +---------+----------------------------------------------------------------+
+     | 57      | The address returned by the last call to                       |
+     |         | ``LLKERNEL_impl_getFeatureAddressRAM()`` is not the same than  |
+     |         | the one returned when the Feature has been installed.          |
+     +---------+----------------------------------------------------------------+
+     | 60      | The ``LLKERNEL_IMPL_getFeatureHandle()`` function returned     |
+     |         | ``0``. The handle for an installed Feature could not be        |
+     |         | retrieved as expected.                                         |
+     +---------+----------------------------------------------------------------+
 
 - Error codes ranging from ``150`` to ``180``, thrown during Feature installation, typically indicate an invalid or a :ref:`corrupted Feature file <kf-loader-error-codes-corrupted-fo>`. 
 
