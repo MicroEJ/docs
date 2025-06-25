@@ -41,8 +41,15 @@ To debug an application on device, first run the :ref:`MicroEJ debugger proxy <d
    MicroEJ Development Tools Overview of the Remote Java Application
 
 
-In the SDK, open the Debug perspective (:guilabel:`Window` > :guilabel:`Perspective` > :guilabel:`Open Perspective` > :guilabel:`Other...` > :guilabel:`Debug`) to show the current debugging process.
+- In the SDK, open the Debug perspective (:guilabel:`Window` > :guilabel:`Perspective` > :guilabel:`Open Perspective` > :guilabel:`Other...` > :guilabel:`Debug`) to show the current debugging process.
 
+- Click on the :guilabel:`Pause` icon to access the thread list, including their stack trace
+
+.. figure:: images/debugger_tool_bar_pause_button.png
+   :alt: MicroEJ Development Tools Overview of the Debugger on Board Toolbar
+   :align: center
+
+   MicroEJ Development Tools Overview of the Debugger on Board Toolbar
 
 .. figure:: images/debug3.png
    :alt: MicroEJ Development Tools Overview of the Debugger on Board
