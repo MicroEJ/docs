@@ -146,10 +146,10 @@ The returned message will follow the format: ``code=<id>``, where ``id`` corresp
   When the exception type is ``java.lang.OutOfMemoryError``, it may indicate there is not enough space in the Managed Heap to load the :ref:`Feature's metadata section <feature_memory_installation>`. 
   If sufficient memory is available or if a different exception type is reported (e.g. ``code=3:java.lang.ArrayIndexOutOfBoundsException``), this likely points to a :ref:`corrupted Feature file <kf-loader-error-codes-corrupted-fo>`. 
 
-.. _table_kf-install-errorcodes-llkernel:
 
 - Error codes ranging from ``50`` to ``100``, thrown during Feature installation, indicate an error returned by the LLKERNEL Abstraction Layer.
 
+.. _table_kf-install-errorcodes-llkernel:
    .. table:: Feature Installation Error Codes Related to LLKERNEL Implementation
 
       +---------+--------------------------------------------------------------------------------------------------------+
@@ -180,10 +180,10 @@ The returned message will follow the format: ``code=<id>``, where ``id`` corresp
       |         | ``0``. The Feature cannot be allocated in memory.                                                      | 
       +---------+--------------------------------------------------------------------------------------------------------+
 
-.. _table_kf-load-errorcodes-llkernel:
 
   Those thrown at Kernel boot indicate an issue with an already installed Feature, such as memory corruption or Feature link incompatibility after Kernel update.
 
+.. _table_kf-load-errorcodes-llkernel:
    .. table:: Installed Feature Loading Error Codes
 
       +---------+----------------------------------------------------------------+
