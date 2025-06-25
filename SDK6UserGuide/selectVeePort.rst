@@ -9,8 +9,7 @@ Use one of the following available options to provide it to your project.
 
 .. note::
 
-   Declaring a VEE Port in project dependencies only applies to the current project. 
-   This configuration is not fetched transitively by consumer projects.
+   Declaring a VEE Port in project dependencies only applies to the current project.
    Especially when configuring the VEE Port to test a library project, 
    application projects depending on this library will not "see" this test VEE Port, 
    they must configure a VEE Port on their own and are free to use a different one.
@@ -115,6 +114,10 @@ Otherwise the name of the subproject folder is used, so ``vee-port`` in the reco
 Using a Local VEE Port Directory
 --------------------------------
 
+.. warning::
+
+   A local VEE Port Directory can not be used if the transitive resolution of the VEE Port is enabled, refer to :ref:`sdk_6_vee_port_transitivity` for more information.
+
 When your VEE Port is available in a local directory, 
 you can use it by declaring a file dependency in the ``build.gradle.kts`` file, with the ``microejVee`` configuration::
 
@@ -139,6 +142,10 @@ This is generally the case when the VEE Port has been built locally
 
 Using a Local VEE Port Archive
 ------------------------------
+
+.. warning::
+
+   A local VEE Port Archive can not be used if the transitive resolution of the VEE Port is enabled, refer to :ref:`sdk_6_vee_port_transitivity` for more information.
 
 When your VEE Port is available locally as an archive file (``.zip`` or ``.vde``),
 you can use it by declaring a file dependency in the ``build.gradle.kts`` file, with the ``microejVee`` configuration::
@@ -180,6 +187,29 @@ If not set, the ``eval`` value is used.
 
    When the VEE Port is a local archive or folder (``microejVee(files(...))``), the Architecture Usage is defined when the VEE Port is built and can no longer be changed.
    In SDK 6 (with the ``buildVeePort`` task), the Architecture Usage is defined by setting the ``architectureUsage`` property in the ``build.gradke.kts`` file of the VEE Port project.
+
+.. _sdk_6_vee_port_transitivity:
+
+Resolve a VEE Port transitively
+-------------------------------
+
+.. warning::
+
+   The transitive resolution of a VEE Port is not supported for VEE Ports built with SDK 5 or SDK 6 ``1.2.0`` or older and local VEE Ports.
+   While this feature is optional for now, it will be enabled by default in the next SDK 6 major version, so it is highly recommended to update your VEE Port if necessary.
+
+By default, the VEE Port is not fetched transitively by consumer projects, but starting from SDK 6 ``1.4.0``, it is possible to enable the transitivity of the VEE Port by:
+
+- Setting the project property ``feature.vee.transitivity.enabled`` to ``true`` in command line with the ``-P`` argument::
+   
+    ./gradlew runOnSimulator -Pfeature.vee.transitivity.enabled=true
+
+- or by adding it in the ``gradle.properties`` file of your project::
+
+    feature.vee.transitivity.enabled=true
+
+When the feature is enabled, the transitive dependencies of the VEE Port are fetched to build the compile classpath and runtime classpath of the project. 
+For more information about the transitivity of the VEE Port, refer to :ref:`gradle_vee_transitivity_chapter`.
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
