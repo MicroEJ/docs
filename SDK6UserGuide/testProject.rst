@@ -129,9 +129,9 @@ As a summary, the rules are:
 .. warning::
 
    Declaring a VEE in project dependencies only applies to the current project. 
-   This configuration is not fetched transitively by consumer projects.
-   But it is highly recommended to scope the VEE to its usage since this behavior is aimed to change in a future version.
-   Especially when configuring the VEE to test a Library project, it is recommended to use ``testMicroejVee``.
+   By default the transitive resolution of the VEE is disabled but you can enable it with the project property ``feature.vee.transitivity.enabled``,
+   refer to :ref:`sdk_6_vee_port_transitivity` for more information.
+   When configuring the VEE to test a Library project, it is recommended to use ``testMicroejVee``.
 
 Create a Test Class
 ^^^^^^^^^^^^^^^^^^^
