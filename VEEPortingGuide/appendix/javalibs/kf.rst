@@ -182,7 +182,7 @@ The returned message will follow the format: ``code=<id>``, where ``id`` corresp
 
 .. _table_kf-load-errorcodes-llkernel:
 
-  Those thrown at Kernel boot indicate an issue with an already installed Feature, such as memory corruption or Feature link incompatibility.
+  Those thrown at Kernel boot indicate an issue with an already installed Feature, such as memory corruption or Feature link incompatibility after Kernel update.
 
    .. table:: Installed Feature Loading Error Codes
 
