@@ -32,6 +32,9 @@ The MicroEJ Gradle plugin adds the 2 following rules:
   .. graphviz:: graphDependencies02.dot
     :align: center
 
+.. note::
+
+  This rule is not applied if :ref:`the VEE Port transitive resolution <sdk_6_vee_port_transitivity>` is enabled.
 
 If you want to come back to the Gradle default behavior,
 these 2 rules can be disabled by setting the ``microejConflictResolutionRulesEnabled`` 
