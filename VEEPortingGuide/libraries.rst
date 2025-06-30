@@ -198,6 +198,26 @@ The following trace shall appear on the standard output::
     Sensor value: 42
     VM END (exit code = 0)
 
+Add LSC Files
+-------------
+
+Libraries can configure the Linking process thanks to LSC files.
+Refer to the :ref:`microej_linker` page for more information.
+
+These files must be added in the ``src/main/lscf`` folder of the Library project::
+
+   |- src/
+   |    |- main/
+   |    |    |- java/
+   |    |    |    |- com/
+   |    |    |    |    |- mycompany/
+   |    |    |    |    |    |- Sensor.java
+   |    |    |- include/
+   |    |    |    |- LLMYLIB_impl.h
+   |    |    |- lscf/
+   |    |    |    |- mylib.lscf
+   |- build.gradle.kts
+
 Create the Mock
 ---------------
 
