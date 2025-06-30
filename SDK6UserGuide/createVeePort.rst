@@ -98,7 +98,7 @@ The first step is to create a VEE Port configuration project:
         - Open a new terminal.
         - Clone the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.3.0>`__ Github Repository::
 
-             git clone git@github.com:MicroEJ/Tool-Project-Template-VEEPort.git
+             git clone https://github.com/MicroEJ/Tool-Project-Template-VEEPort.git
       
         - Remove the Git Repository from the project:
 
@@ -185,7 +185,7 @@ The first step is to create a VEE Port configuration project:
             
         - Clone the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.3.0>`__ Github Repository::
 
-             git clone git@github.com:MicroEJ/Tool-Project-Template-VEEPort.git
+             git clone https://github.com/MicroEJ/Tool-Project-Template-VEEPort.git
       
         - Remove the Git Repository from the project:
 
