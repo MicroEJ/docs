@@ -46,7 +46,7 @@ To use Managed C in your Application, follow these steps:
 
          .. code:: bash
 
-               git clone git@github.com:MicroEJ/Tool-Project-Template-Application.git
+               git clone https://github.com/MicroEJ/Tool-Project-Template-Application.git
                cd Tool-Project-Template-Application
                rm -rf .git*
 
