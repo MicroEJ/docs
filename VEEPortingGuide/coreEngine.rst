@@ -550,15 +550,34 @@ The call to ``LLMJVM_dump`` MUST be done last in the fault handler.
 Trigger Core Engine Dump From Debugger
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To trigger a Core Engine dump from the debugger, set the PC register to the ``LLMJVM_dump`` physical memory address.
+To trigger a Core Engine dump manually from the debugger, you need to set the PC (Program Counter) register 
+to the physical memory address of the ``LLMJVM_dump`` function.
 
-The symbol for the ``LLMJVM_dump`` API is defined in the header file ``LLMJVM.h``.
-Search for this symbol in the appropriate C toolchain ``.map`` file.
+Follow these steps:
+
+1. **Ensure LLMJVM_dump is not optimized out**
+
+   Explicitly reference the ``LLMJVM_dump`` function in your BSP code. It is declared in the ``LLMJVM.h`` header file.
+
+   .. note::
+
+      If the function is not used anywhere, linker optimization may remove it, making it unavailable in the final binary.
+
+2. **Locate the symbol in the map file**
+
+   Search for the symbol ``__icetea__virtual__com_is2t_microjvm_IGreenThreadMicroJvm___dump`` in your C toolchain’s ``.map`` file. 
+   This will give you the runtime memory address of the function.
+
+3. **Trigger the dump via the debugger**
+
+   In your debugger, set the **PC register** to the retrieved address. Then, resume execution to trigger the dump.
+
 
 .. note::
 
-   ``LLMJVM_dump`` (in ``LLMJVM.h``) needs to be called explicitly.
-   A linker optimization may remove the symbol if it is not used anywhere in the code.
+   ``LLMJVM_dump`` is an alias defined in ``intern/LLMJVM.h`` header file. 
+   If you cannot find the symbol listed above, 
+   check the macro definition in that header file to determine the actual function name being referenced and exported.
 
 Requirements:
 

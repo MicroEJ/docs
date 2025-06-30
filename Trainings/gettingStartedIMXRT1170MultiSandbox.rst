@@ -8,9 +8,9 @@
 
 .. _training_multisandbox_applications_imxrt1170:
 
-===========================================
-Get Started with Multi-Sandbox Applications
-===========================================
+=======================================
+Get Started with Sandboxed Applications
+=======================================
 
 Description
 ===========
@@ -20,7 +20,7 @@ on top of a pre-built Multi-Sandbox Executable for the NXP i.MXRT1170 Evaluation
 
 During this training, you will learn how
 to run Sandboxed Applications in Simulation using
-the Virtual Device and on NXP i.MXRT1170:
+the Virtual Device and on NXP i.MXRT1170 Evaluation Kit:
 
 1. :ref:`training_multisandbox_applications_imxrt1170_run_demo_sandboxed_apps`.
 2. :ref:`Create Sandboxed Application and run it <training_multisandbox_applications_imxrt1170_create_app>`.
