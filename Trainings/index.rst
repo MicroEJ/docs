@@ -138,9 +138,9 @@ For Application Developers
                   </ul>
                   <img src="../_static/images/training/training_sandboxed_apps_get_started.jpg" alt="Multi-Sandbox Applications">
                </div>
-               <h3 class="training_title">Get Started with Multi-Sandbox Applications</h3>
+               <h3 class="training_title">Get Started with Sandboxed Applications</h3>
                <p class="training_description">In this training, you will get an introduction
-               on how to execute a Multi-Sandbox Application on a Multi-Sandbox Executable.
+               on how to execute a Sandboxed Application on a Multi-Sandbox Executable.
                </p>
                <a class="training_learn_more_link" href="gettingStartedIMXRT1170MultiSandbox.html">Learn more</a>
             </div>

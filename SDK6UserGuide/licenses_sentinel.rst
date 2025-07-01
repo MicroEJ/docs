@@ -120,7 +120,7 @@ Get ``aksusbd_37102-10.12.1.tar.gz`` file and extract it. The installation packa
 - Copy ``aksusbd-10.12.1/haspvlib_37102.so`` and ``aksusbd-10.12.1/haspvlib_x86_64_37102.so`` to ``/var/hasplm`` directory
 - Get ``MicroEJ_library/libhasp_linux_x86_64_37102.so`` file and copy it in a directory of your choice
 - Set ``LD_LIBRARY_PATH`` variable with command ``export LD_LIBRARY_PATH=<directory_of_libhasp_file>:$LD_LIBRARY_PATH`` (just the directory, not with the file name).
-  This modification has to be setup at session startup  (e.g: using ``.bashrc`` file) to ensure that OS is properly configured before running the SDK.
+  This modification has to be setup at session startup  (e.g: using ``~/.bashrc`` or ``~/.profile`` files) to ensure that OS is properly configured before running the SDK.
 
 .. note::
 
@@ -242,7 +242,11 @@ Sentinel API dynamic library not found (code 400)
 """""""""""""""""""""""""""""""""""""""""""""""""
 
 The following error occurred when the library ``hasp_[os]_37102.[ext]`` has not been found. Please refer to :ref:`setup_sentinel_developer_workstation`. 
-Specifically, if you are on Linux, check the library is readable with the command ``file libhasp_linux_x86_64_37102.so``.
+
+Specifically, if you are on Linux:
+- check the library is readable with the command ``file libhasp_linux_x86_64_37102.so``.
+- check the `LD_LIBRARY_PATH` environment variable is properly set before launching MICROEJ SDK. 
+  If MICROEJ SDK is launched from a desktop application, it must have been set in the ``~/.profile`` file.
 
 Sentinel key not found (code 7)
 """""""""""""""""""""""""""""""
