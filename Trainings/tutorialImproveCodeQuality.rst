@@ -494,7 +494,7 @@ Reflection
 
 - Java reflection forces to embed the fully qualified name of Java elements. As such
   it can be costly in persistent memory. MicroEJ has made the choice to only allow
-  `Class.forName() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#forName-java.lang.String->`_, `Class.getName() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getName-->`_, `Class.getSimpleName() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getSimpleName-->`_, and `Class.newInstance() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getSimpleName-->`_
+  `Class.forName() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#forName-java.lang.String->`_, `Class.getName() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getName-->`_, `Class.getSimpleName() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getSimpleName-->`_, and `Class.newInstance()`_
   methods from the reflection framework.
 
 BON Constants
