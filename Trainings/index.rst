@@ -119,8 +119,8 @@ For Application Developers
    :hidden:
    
    gettingStartedIMXRT1170MultiSandbox
-   trainingSandboxedApps
    tutorialImproveCodeQuality
+   trainingSandboxedApps
    tutorialOptimizeMemoryFootprint
    trainingApplicationTesting
 
@@ -146,7 +146,24 @@ For Application Developers
             </div>
             </a>
          </div>
-            
+
+         <div class="training_item">
+            <a class="training_link" href="tutorialImproveCodeQuality.html">
+               <div class="training_image_container">
+                  <ul class="training_image_list">
+                     <li class="training_course_number">Course</li>
+                     <li class="training_duration">1h</li>
+                  </ul>
+                  <img src="../_static/images/training/training_java_code_practices.jpg" alt="MicroEJ Java Programming Pratices">
+               </div>
+               <h3 class="training_title">MicroEJ Java Programming Pratices</h3>
+               <p class="training_description">In this training, you will learn the best practices to
+               write Java code considering embedded systems constraints.
+               </p>
+               <a class="training_learn_more_link" href="tutorialImproveCodeQuality.html">Learn more</a>
+            </a>
+         </div>
+	 
          <div class="training_item">
             <a class="training_link" href="trainingSandboxedApps.html">
                <div class="training_image_container">
@@ -163,23 +180,6 @@ For Application Developers
                <a class="training_learn_more_link" href="trainingSandboxedApps.html">Learn more</a>
             </a>
             </div>
-
-         <div class="training_item">
-            <a class="training_link" href="tutorialImproveCodeQuality.html">
-               <div class="training_image_container">
-                  <ul class="training_image_list">
-                     <li class="training_course_number">Course</li>
-                     <li class="training_duration">30min</li>
-                  </ul>
-                  <img src="../_static/images/training/training_java_code_practices.jpg" alt="Best Java Code Practices">
-               </div>
-               <h3 class="training_title">Best Java Code Practices</h3>
-               <p class="training_description">In this training, you will learn the best practices to
-               write Java code considering embedded systems constraints.
-               </p>
-               <a class="training_learn_more_link" href="tutorialImproveCodeQuality.html">Learn more</a>
-            </a>
-         </div>
 
          <div class="training_item">
             <a class="training_link" href="trainingApplicationTesting.html">
@@ -213,20 +213,6 @@ For Application Developers
                </p>
                <a class="training_learn_more_link" href="tutorialOptimizeMemoryFootprint.html">Learn more</a>
             </a>
-         </div>
-
-         <div class="training_item">
-            <div class="training_image_container">
-               <ul class="training_image_list">
-                     <li class="training_course_number">Course</li>
-                     <!--li class="training_image_list_item">6h</li-->
-                  </ul>
-               <img src="../_static/images/training/training_microej_java.jpg" alt="MicroEJ Java Specificities">
-            </div>
-            <h3 class="training_title">MicroEJ Java Specificities</h3>
-            <p class="training_description">Coming Soon!
-            </p>
-            <a>Learn more</a>
          </div>
 
          </div>

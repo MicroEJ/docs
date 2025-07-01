@@ -1,7 +1,7 @@
 .. _improve_code_quality:
 
-Best Java Code Practices
-========================
+MicroEJ Java Programming Practices
+==================================
 
 Description
 -----------
@@ -216,7 +216,6 @@ Common Pitfalls
 - Do not use non-final method inside the constructor.
 - Do not overburden the constructor with logic.
 - Do not directly store an array given by parameter.
-- Do not directly return an internal array or an internal non-immutable Object. Once returned the caller could modify "your" instance without warning or synchronization.
 - Save object reference from a field to a local before using it (see :ref:`local_extraction`).
 
 .. _Object.equals(Object): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Object.html#equals-java.lang.Object-
@@ -378,7 +377,7 @@ Depending on its type, the hash code of a field is:
     return result;
   }
 
-- Prefer using "foo".equals(string).
+- Prefer using "foo".equals(string) to avoid potential null accesses.
 
 .. code:: java
 	  
@@ -391,9 +390,9 @@ Depending on its type, the hash code of a field is:
 Autoboxing and Numbers
 ^^^^^^^^^^^^^^^^^^^^^^
 
-- Avoid using boxed primitives (Integer, Byte, Float classes) if not needed. Most of
+- Avoid using boxed primitives (such as Integer, Byte, Float classes) if not needed. Most of
   the time using boxed primitives leads to autoboxing (the process of converting
-  primitives to boxed primitives), which can be CPU intensive due to casting.
+  primitives to boxed primitives and the other way around), which can be CPU intensive due to casting.
 
 .. code:: java
 
@@ -406,17 +405,12 @@ Autoboxing and Numbers
   // Here you "autobox" the basetype into its corresponding primitive type
   list.add(5);
 
-- Avoid using floats and doubles if exact numbers are needed.
-  Use BigDecimal for floating-point operations when precision is needed.
-  For better performances use int and long operations.
-
-- Prefer 32-bit floats for embedded performance. Double operations are CPU intensive.
+- Prefer 32-bit floats for embedded performance. Double operations are more CPU intensive.
 
 Generic Types
 ^^^^^^^^^^^^^
 
-- Do not use raw types such as the Collection, prefer using a parameterized type instead
-  (it ensures type safety, avoid explicit type casting, and improve code readability).
+- Do not use parameterized types as raw types such as using the Collection without specifying the type parameter, prefer using a parameterized type as designed (it ensures type safety, avoid explicit type casting, and improve code readability).
   Generic and parameterized types are a compile time feature, it won't impact runtime performances and memory footprint.
 
 .. code:: java
@@ -432,26 +426,20 @@ Generic Types
 Memory Use of Objects
 ^^^^^^^^^^^^^^^^^^^^^
 
-- MicroEJ VEE is a 32-bit virtual machine, as such there is no advantages to have locals smaller than
-  intended for optimization purposes. However fields are optimized in a Java object structure. The organization
-  of fields in memory is left to the runtime implementation.
+- The Java bytecode specification defines a 32-bit operand stack model. Declaring local variables with types that require fewer bits (byte, short, char) results in additional conversion and casting instructions during execution. However this is not applicable the declaring Java instance fields, which are optimized for size in the internal Java object structure. The organization of fields in memory is left to the runtime implementation.
 
-- Locals operations in Java are happening using the thread's own stack (by pushing and popping values onto the stack).
-  Locals are tied to their scope/context usually their associated method.
-  Objects are stored in heap.
+- Operations on local variables in Java are happening using the thread's own stack (by loading and storing values onto the stack).
+  Local variables are tied to their scope/context usually their associated method.
+  Objects are stored in Managed Heap.
   
-- :ref:`memory-considerations` and :ref:`limitations` are also documentation pages that describes
+- :ref:`memory-considerations` and :ref:`limitations` are also documentation pages that describe
   the memory use of Objects and the limitations of the MicroEJ runtime.
 
-- Consider using Object pools instead of automatically allocating new Objects. In the same vein use
-  the singleton design pattern to keep unique instances when applicable.
-
 - You rarely need to trigger a Garbage Collection (GC) manually through ``System.gc()``.
-  Also note that depending on the implementation, the Virtual Machine may ignore the call.
-  A use case example that would require a manual GC trigger is when you need an accurate memory usage of the heap (before a call to ``Runtime.getRuntime().freeMemory()``).
+  A use case example that would require a manual GC trigger is when you need an accurate memory usage of the Managed Heap (before a call to ``Runtime.getRuntime().freeMemory()``).
 
 - Prefer using an array for fixed memory usage against dynamic data structure. If you do not need
-  the convienience of dynamically allocated types, it is most of the time more efficient (CPU wise) to
+  the convenience of dynamically allocated types, it is most of the time more efficient (CPU wise) to
   use arrays. Dynamical allocated types tend to check for size and have mechanisms to enlarge on-the-fly
   the data structure. Using an array prevent that but obviously you keep the runtime checks.
 
@@ -462,6 +450,13 @@ Memory Use of Objects
 
   // Over (when applicable)
   ArrayList<Integer> arrayList = new ArrayList<>();
+
+- Try calibrating data structure by giving it a size at initialization (avoid automatically enlarging them when needed).
+
+.. code:: java
+
+  // Try initializing the ArrayList with a know size
+  Collection<String> colors = new ArrayList<String>(500);
 
 - To use the cloning mechanism provided by Java, here are the rules to respect:
 
@@ -487,19 +482,20 @@ Memory Use of Objects
   protected Object clone() throws CloneNotSupportedException {
 	return super.clone();
   }
-    
+
+- For specific memory size optimizations, see :ref:`tutorial_optimize_memory_footprint`.
   
 Reflection
 ^^^^^^^^^^
 
-- Java reflection forces to embed the fully qualified name of Java elements. As such
-  it can be costly in persistent memory. MicroEJ has made the choice to only allow
-  ``Class.forName()``, ``Class.getName()``, ``Class.getSimpleName()``, and ``Class.newInstance()``
-  methods from the reflection framework.
-
 - MicroEJ does not embed the fully qualified name of all classes in the final binary. As such
   you need to explicitly specify which type names to embed using ``*.types.list`` files (see
   :ref:`section.classpath.elements.types`).
+
+- Java reflection forces to embed the fully qualified name of Java elements. As such
+  it can be costly in persistent memory. MicroEJ has made the choice to only allow
+  `Class.forName() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#forName-java.lang.String->`_, `Class.getName() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getName-->`_, `Class.getSimpleName() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getSimpleName-->`_, and `Class.newInstance() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getSimpleName-->`_
+  methods from the reflection framework.
 
 BON Constants
 ^^^^^^^^^^^^^
@@ -527,8 +523,6 @@ Concurrency
 - Do not implement applications that expect a behavior of the underlying task scheduler.
   Make your synchronization between threads explicit.
 
-- In a multi-threaded context to access the value of field in memory declare the field ``volatile``.
-
 - Best pratices for synchronization:
   
   - Small exclusion zones, large exclusion zones usually means thread wait longer.
@@ -542,7 +536,7 @@ Concurrency
 Serialization
 ^^^^^^^^^^^^^
 
-- There is no support of the standard serialization Java framework with MicroEJ. You could choose other ways for serializing objects such as:
+- The “native” serialization of the standard JVM is not implemented by MicroEJ. This mechanism has historically introduced numerous compatibility issues and has since been officially deprecated. Synchronization and serialization should be handled at the application level, using structured data formats such as Google Protobuf, FlatBuffers, JSON, CBOR, XML, etc.
 
   - the ``ByteArray`` type (see the `Javadoc <https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/ByteArray.html>`_)
   - the JSON libraries:
@@ -557,17 +551,16 @@ Annotations
 ^^^^^^^^^^^
 
 - MicroEJ supports only compile-time annotations. The usual annotations we encourage to use are
-  ``@Override``, the Null Analysis annotations, and ``@deprecated``.
+  ``@Override``, the Null Analysis annotations, and ``@Deprecated``.
 
-- Another typical use case of annotations use in MicroEJ technology is testing. See :ref:`sdk_6_test_project` for more information.
+- Another typical use case of annotations is for declaring JUnit tests. See :ref:`sdk_6_test_project` for more information.
 
 - You can also define your custom annotations in conjonction with add-on processors.
 
 Polymorphism, Inheritance, and Interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- Interfaces are not more costly than abstract classes, everything is done at compile-time.
-  But prefer interfaces to abstract classes for the following reasons:
+- Prefer interfaces to abstract classes for the following reasons:
 
   - it easily integrates with existing classes, add the ``implements`` to existing classes, it is harder to do with abstract classes,
   - interfaces allow the easy notion of `mixin <https://en.wikipedia.org/wiki/Mixin>`_,
@@ -579,16 +572,16 @@ Exceptions
 ^^^^^^^^^^
 Here are in no particular order best pratices around managing exceptions in Java:
 
-- Use existing exceptions for your API, e.g., there is no need to to create a ``MyModelOptionException`` when ``IllegalArgumentException`` exists.
+- Use existing exceptions for your API, e.g., there is no need to create a ``MyModelOptionException`` when `IllegalArgumentException <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/IllegalArgumentException.html>`_ exists.
 - Use checked exceptions for recoverable errors, use unchecked exceptions for programming errors or code violations.
 
   - Checked exceptions allows to complete your API with its exceptional conditions.
   - Unchecked exceptions are throwables such as errors and runtime exceptions, they usually indicate a violation of some fundamental rules of
-    Java (such as ``ArrayIndexOutOfBoundsException``).
-  - It is a good pratice to have your custom unchecked exceptions to extend ``RuntimeException``.
+    Java (such as `ArrayIndexOutOfBoundsException <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/ArrayIndexOutOfBoundsException.html>`_).
+  - It is a good pratice to have your custom unchecked exceptions to extend `RuntimeException <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/RuntimeException.html>`_.
   - Do not use unchecked exceptions to not be bothered using ``throws`` in your methods.
 
-- If you want an "undying" thread, you should catch all ``Throwable``.
+- If you want an "undying" thread, you should catch all `Throwable <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Throwable.html>`_.
 
 - Avoid exception masking (e.g., doing nothing in a catch clause).
 
@@ -611,7 +604,7 @@ Here are in no particular order best pratices around managing exceptions in Java
     throw new MyException(e);
   }
 
-- It is a good practice to set your custom ``Thread.UncaughtExceptionHandler`` to improve the robustness of your application.
+- It is a good practice to set your custom `Thread.UncaughtExceptionHandler <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Thread.UncaughtExceptionHandler.html>`_ to improve the robustness of your application. It could set per thread or at application level.
 
 .. code:: java
 
@@ -625,26 +618,26 @@ Here are in no particular order best pratices around managing exceptions in Java
 
   }
 
-- Exceptions should be kept exceptional, however it could be beneficial sometimes to let an exception
-  occur in place of doing a lot of checks (you could replace lots of always executed ``if`` statements with a single exception).
-
+- Automatically close resources using try-with-resources.
+  
 - For more information on Exception as well as a hierarchy of common exceptions please read `this article <https://rollbar.com/blog/java-exceptions-hierarchy-explained/#>`_.
 
 Data Encapsulation and Fields
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - Keep your fields private by default.
-- Provide field getters and setters when needed. 
+- Provide field getters and setters when needed.
+  - Do not directly return an internal array or an internal non-immutable Object. Once returned the caller could modify "your" instance without warning or synchronization.
 - Use ``final`` for public basetype fields because:
 
-  - By default it forces field to be read-only.
+  - By default it forces fields to be read-only.
   - It ensures thread safety.
   - It forces you to consider if the field should have right access and communicate intent to other developers.
 
 Native Interfaces
 ^^^^^^^^^^^^^^^^^
 
-- Several mechanisms exist to communicate between managed and native world. Find more information at :ref:`native_mechanisms`.
+- Several mechanisms exist to communicate between managed and native worlds. Find more information at :ref:`native_mechanisms`.
 
 Usage of Inner Classes
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -676,58 +669,89 @@ Usage of Inner Classes
 Usage of Clinits
 ^^^^^^^^^^^^^^^^
 
-- :ref:`soar_clinit` describes how MicroEJ deals with class initialization.
+- The clinit order is done statically by the SOAR before the execution, as such clinits shall be limited to class internal constant initialization, with as less as possible dependency. :ref:`soar_clinit` describes how MicroEJ deals with class initialization.
 
-About Class Loading
-^^^^^^^^^^^^^^^^^^^
+About Limitations
+^^^^^^^^^^^^^^^^^
 
-- For a deeper look at what is allowed at class loading please consult :ref:`limitations`.
+- For a deeper look at what is allowed interms of numbers fields or methods in a class, maximum number of threads and more: please consult :ref:`limitations`.
 
 Inlining
 ^^^^^^^^
 
-- For better CPU performance at runtime, MicroEJ uses inlining techniques more information at :ref:`soar_method_inlining`.
+- For better CPU performance at runtime, the SOAR implements some inlining techniques more information at :ref:`soar_method_inlining`.
 
 Binary creation from classpath
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- Not all files found in the classpath is embedded in a MicroEJ application, to manage embedded resources consult :ref:`chapter.microej.applicationResources`.
+- Not all files found in the classpath are embedded in a MicroEJ Application, to manage embedded resources consult :ref:`chapter.microej.applicationResources`.
 
-- In the same philosophy MicroEJ does not embed every unused types from the classpath in the final binary. More information at :ref:`chapter.microej.classpath`.
+- In the same philosophy the SOAR does not embed every unused types from the classpath in the final binary. More information at :ref:`chapter.microej.classpath`.
 
-- MicroEJ tools also strip the unused methods from the code.
+- The SOAR also strips the unused methods from the code.
 
 Immutables and Immortals
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-- MicroEJ defines two specific categories of objects: Immutables (objects that cannot change) and Immortals (objects that cannot be garbage-collected). More information below.
+- MICROEJ VEE defines two additional categories of objects: Immutables (objects that cannot change) and Immortals (objects that cannot be garbage-collected). More information below.
 
   - :ref:`immutable`
   - :ref:`immortal`
 
-Operations in Loops
-^^^^^^^^^^^^^^^^^^^
+Loop Invariants
+^^^^^^^^^^^^^^^
 
-- Avoid unnecessary operations in loop (e.g., accessing a Collection size if not changing, accessing fields, etc.).
+- Avoid unnecessary operations in loop (e.g., accessing a Collection size if not changing, accessing fields, etc.), consider using primitive types for loop variables, and minimize object creation.
+
+.. code:: java
+
+   // Prefer "caching" class fields in a local variable when it does not depend on the loop operations
+   int localNumberToUse = this.numberToUse;
+   for (int i = 0; i < 10000; i++) {
+      result = thingsToMultiply * localNumberToUse
+   }
+
+   // Prefer accessing Collection size outside of a loop
+   Collection<String> colors = new ArrayList<>();
+   colors.add("Red");
+   colors.add("Green");
+   colors.add("Blue");
+
+   // Retrieve the size only once
+   int size = colors.size();
+   for (String color : colors) {
+      // Cheaper access for each loop
+      System.out.println(color + " is a color in an ArrayList of " + size + " colors.");
+   }
+
+- A `foreach` loop is a shorter way to write a loop over collections or arrays. It eliminates the need for explicit indexing and provides better readability.
+
+.. code:: java
+
+   int[] scores = {90, 85, 95, 88};
+
+   for (int score : scores) {
+      System.out.println("Score: " + score);
+   }
 
 Use of I/O Classes
 ^^^^^^^^^^^^^^^^^^
 
-- Be mindful of the use of IO classes and their buffered version, while buffered types such as ``BufferedInputStream`` are classes that improve the performance
-  of input/output operations by reducing the number of I/O calls. These types do it by consuming more memory.
+- Be mindful of the use of IO classes and their buffered version. While buffered types such as `BufferedInputStream <https://repository.microej.com/javadoc/microej_5.x/apis/java/io/BufferedInputStream.html>`_ are classes that improve the performance of input/output operations by reducing the number of I/O calls, these types do it by consuming more memory.
 
 Logging
 ^^^^^^^
 
-- Use BON constants to enable disable logging traces in your code, see :ref:`section.classpath.elements.constants`.
+- Use BON constants to enable and disable logging traces in your code to conserve ROM space, see :ref:`section.classpath.elements.constants`.
+- Use Logger over System.out.println.
 
 Array Copy
 ^^^^^^^^^^
 
-- When doing operations on arrays use ``System.arraycopy()`` when possible as it is optimized.
+- When doing memory transfers on arrays use `System.arraycopy() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#arraycopy-java.lang.Object-int-java.lang.Object-int-int->`_ when possible as it is optimized to run nearly as fast as a native ``memmove``.
 
-Switch Satements
-^^^^^^^^^^^^^^^^
+Switch Statements
+^^^^^^^^^^^^^^^^^
 
 - Try to optimize your switch statement with contiguous case values resulting in a faster implementation.
 
@@ -735,16 +759,14 @@ Switch Satements
   cases density. Prefer declaring consecutive cases (`table_switch`) for performance (``O(1)``) and slightly
   smaller code memory footprint instead of `lookup_switch` (``O(log N)``).
   
-Recommended Design Patterns and Classes Use
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Recommended Design Patterns and Design Principles
+-------------------------------------------------
 
-- Use Static Factory Methods in place of Constructors.
-- Favor Composition over Inheritance.
-- Single responsability methods.
-- Use Logger over System.out.println.
-- Automatically close resources using try-with-resources.
-- Try calibrating data structure by giving it a size at initialization (avoid automatically enlarging them when needed).
-- For specific memory size optimizations, see :ref:`tutorial_optimize_memory_footprint`.
+TODO Design pattern book, SOLID,
+
+- https://en.wikipedia.org/wiki/Design_Patterns
+- SOLID
+  
 
 Related Tools
 -------------
