@@ -435,8 +435,8 @@ Memory Use of Objects
 - :ref:`memory-considerations` and :ref:`limitations` are also documentation pages that describe
   the memory use of Objects and the limitations of the MicroEJ runtime.
 
-- You rarely need to trigger a Garbage Collection (GC) manually through ``System.gc()``.
-  A use case example that would require a manual GC trigger is when you need an accurate memory usage of the Managed Heap (before a call to ``Runtime.getRuntime().freeMemory()``).
+- You rarely need to trigger a Garbage Collection (GC) manually through `System.gc() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#gc-->`_.
+  A use case example that would require a manual GC trigger is when you need an accurate memory usage of the Managed Heap (before a call to `Runtime.getRuntime().freeMemory() <https://repository.microej.com/javadoc/microej_5.x/apis/index.html?java/lang/System.html>`_).
 
 - Prefer using an array for fixed memory usage against dynamic data structure. If you do not need
   the convenience of dynamically allocated types, it is most of the time more efficient (CPU wise) to
@@ -455,7 +455,7 @@ Memory Use of Objects
 
 .. code:: java
 
-  // Try initializing the ArrayList with a know size
+  // Try initializing the ArrayList with a known size
   Collection<String> colors = new ArrayList<String>(500);
 
 - To use the cloning mechanism provided by Java, here are the rules to respect:
