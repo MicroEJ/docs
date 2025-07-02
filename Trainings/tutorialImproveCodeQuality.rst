@@ -419,6 +419,9 @@ Generic Types
   ArrayList<Foo> paramList = new ArrayList<>();
   paramList.add(new Foo("I'm foo!"));
 
+  // Compiler will trigger an error if you try to add a wrong type here
+  paramList.add(new Bar("I'm bar!"));
+
   // Over
   ArrayList list = new ArrayList();
   list.add(new Foo("I'm another foo!"));
@@ -440,7 +443,7 @@ Memory Use of Objects
 
 - Prefer using an array for fixed memory usage against dynamic data structure. If you do not need
   the convenience of dynamically allocated types, it is most of the time more efficient (CPU wise) to
-  use arrays. Dynamical allocated types tend to check for size and have mechanisms to enlarge on-the-fly
+  use arrays. Dynamical allocated types such as collection types tend to check for size and have mechanisms to enlarge on-the-fly
   the data structure. Using an array prevent that but obviously you keep the runtime checks.
 
 .. code:: java
