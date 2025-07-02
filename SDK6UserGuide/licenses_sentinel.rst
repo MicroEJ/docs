@@ -244,6 +244,7 @@ Sentinel API dynamic library not found (code 400)
 The following error occurred when the library ``hasp_[os]_37102.[ext]`` has not been found. Please refer to :ref:`setup_sentinel_developer_workstation`. 
 
 Specifically, if you are on Linux:
+
 - check the library is readable with the command ``file libhasp_linux_x86_64_37102.so``.
 - check the `LD_LIBRARY_PATH` environment variable is properly set before launching MICROEJ SDK. 
   If MICROEJ SDK is launched from a desktop application, it must have been set in the ``~/.profile`` file.
