@@ -68,6 +68,28 @@ To enable it, the Net :ref:`Pack <pack_overview>` (which bundles several librari
 
          Net Pack Modules
 
+Initialization
+==============
+
+When porting the Net library it is necessary to initialize and configure the lower layers of the network before the application can access it.
+This includes configuring the hardware network interfaces, initializing the IP stack, and ensuring connectivity is available.
+The Net library assumes that these are correctly set up and ready for use when the initialization is done.
+
+The entry point for this initialization is the following native function: ``LLNET_CHANNEL_impl_initialize``:
+
+.. code-block::
+
+   /**
+    * @brief Initializes the TCP/IP stack components.
+    *
+    * @note Throws NativeIOException on error.
+    *
+    * @see LLNET_ERRORS.h header file for error codes.
+    */
+   void LLNET_CHANNEL_IMPL_initialize(void);
+
+It is called from a static code block in the Net library so it will run before the application starts, see `this implementation example<https://github.com/MicroEJ/nxp-vee-imxrt1170-evk/blob/main/bsp/vee/port/net/src/LLNET_CHANNEL_bsd.c#L63>`_.
+
 Use
 ===
 
