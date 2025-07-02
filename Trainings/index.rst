@@ -119,7 +119,7 @@ For Application Developers
    :hidden:
    
    gettingStartedIMXRT1170MultiSandbox
-   tutorialImproveCodeQuality
+   trainingMicroEJJavaProgrammingPractices
    trainingSandboxedApps
    tutorialOptimizeMemoryFootprint
    trainingApplicationTesting
@@ -148,7 +148,7 @@ For Application Developers
          </div>
 
          <div class="training_item">
-            <a class="training_link" href="tutorialImproveCodeQuality.html">
+            <a class="training_link" href="trainingMicroEJJavaProgrammingPractices.html">
                <div class="training_image_container">
                   <ul class="training_image_list">
                      <li class="training_course_number">Course</li>
@@ -160,7 +160,7 @@ For Application Developers
                <p class="training_description">In this training, you will learn the best practices to
                write Java code considering embedded systems constraints.
                </p>
-               <a class="training_learn_more_link" href="tutorialImproveCodeQuality.html">Learn more</a>
+               <a class="training_learn_more_link" href="trainingMicroEJJavaProgrammingPractices.html">Learn more</a>
             </a>
          </div>
 	 
