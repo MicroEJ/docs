@@ -6,10 +6,10 @@ MicroEJ Glossary
 .. glossary::
 
    Add-On Library
-      An Add-On Library is a pure `Managed Code`_ (Java, Javascript, Managed C, etc.) library. It runs over one or more Foundation Libraries.
+      An Add-On Library is a pure `Managed Code`_ (Java code, C code or Javascript code) library. It runs over one or more Foundation Libraries.
 
    Abstraction Layer
-      An Abstraction Layer is the native code (C, asm, etc.) that implements a Foundation Library's low-level APIs over a board support package (BSP) or a C library.
+      An Abstraction Layer is the native code (C code, Assembly code, etc.) that implements a Foundation Library's low-level APIs over a board support package (BSP) or a C library.
 
    Application
       An Application is a software program that runs on a MICROEJ VEE.
@@ -39,7 +39,7 @@ MicroEJ Glossary
             A Multi-Sandbox Executable is an Executable that implements the ability to be extended, by exposing a Runtime Environment and a memory space to link Sandboxed Applications.
 
    Foundation Library
-      A Foundation Library is a library that provides core or hardware-dependent functionalities. A Foundation Library combines `Managed Code`_ (Java, Javascript, managed-C, etc. ) and low-level APIs (C, asm, etc.) implemented by one or more Abstraction Layers through a native interface (:ref:`SNI <sni_specification>`).
+      A Foundation Library is a library that provides core or hardware-dependent functionalities. A Foundation Library combines `Managed Code`_ (Java code, C code or Javascript code) and low-level APIs (C code, Assembly code, etc.) implemented by one or more Abstraction Layers through a native interface (:ref:`SNI <sni_specification>`).
 
    MICROEJ SDK
       MICROEJ SDK is a comprehensive tools suite for developers to build VEE Ports for their devices, create Applications, build Executable, and run Virtual Devices.

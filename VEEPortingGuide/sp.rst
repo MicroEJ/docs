@@ -52,7 +52,7 @@ To embed the database in your binary file, the XML file description
 must be processed by the :ref:`SP compiler <sp_compiler>`. This compiler generates a binary
 file (``.o``) that will be linked to the overall application by the linker.
 It also generates two descriptions of the block ID constants, one in
-Java and one in C. These constants can be used by either the Java or the
+Java code and one in C code. These constants can be used by either the Java code or the
 C application modules.
 
 .. _sp_compiler:
@@ -68,7 +68,7 @@ name is :guilabel:`Shielded Plug Compiler`. It outputs:
    linker. It is an ELF format description that reserves both the
    necessary RAM and the necessary Flash memory for the Shielded Plug database.
 
--  Two descriptions, one in Java and one in C, of the block ID constants
+-  Two descriptions, one in Java code and one in C code, of the block ID constants
    to be used by either Java or C application modules.
 
 .. figure:: images/sp_flow.png
@@ -84,7 +84,7 @@ Example
 
 Below is an example of using a database. The code that publishes the
 data is written in C, and the code that receives the data is written in
-Java. The data is transferred using two memory blocks. ``TEMP`` is a scalar
+Java code. The data is transferred using two memory blocks. ``TEMP`` is a scalar
 value, ``THERMOSTAT`` is a boolean.
 
 Database Description

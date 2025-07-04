@@ -85,7 +85,7 @@ Five C header files are provided:
    by the driver (or other C code) when using a Custom connection
 
 The ECOM Comm drivers are implemented using standard LLAPI features. The
-diagram below shows an example of the objects (both Java and C) that
+diagram below shows an example of the objects (both Java and C code) that
 exist to support a Buffered connection.
 
 .. figure:: images/architecture.*

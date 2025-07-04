@@ -11,13 +11,13 @@ Introduction
 The Simple Native Interface specification (SNI) defines how to cross the barrier between the Managed world and the
 native world:
 
--  Call a C function from Java.
+-  Call a C function from Java code.
 
 -  Pass parameters to the C function.
 
 -  Return a value from the C world to the Managed world.
 
--  Manipulate (read & write) shared memory both in Java and C: the
+-  Manipulate (read & write) shared memory both in Java and C code: the
    immortal space.
 
 .. note::
@@ -40,7 +40,7 @@ First Example
 =============
 
 This first example shows how to declare and implement a Java native
-method using SNI. First the method has to be declared ``native`` in Java:
+method using SNI. First the method has to be declared ``native`` in Java code:
 this states that the method is written in another language. 
 
 .. code-block:: java
@@ -100,8 +100,8 @@ Then, the implementation of the method is written in C language.
           return SENSOR_ERROR;
       }
 
-Java and C Execution Sequence
-=============================
+Java code and C Execution Sequence
+==================================
 
 Calling C from Java
 -------------------
@@ -161,7 +161,7 @@ having provisioned its ID (e.g. 3). Another task may later resume the thread.
 Java And Native Separation
 --------------------------
 
-The following illustration shows both Java and C code
+The following illustration shows both Java code and C code
 accesses to shared objects in the immortal space, while also accessing
 their respective memory.
 In C code, non-immortal arrays can only be accessed within the local scope of a 
@@ -173,7 +173,7 @@ native function.
    :scale: 75%
    :align: center
 
-   Java and C shared objects
+   Java code and C shared objects
 
 Managed World to C World
 ========================
@@ -184,7 +184,7 @@ C Function Call From Managed World
 The SNI specification allows the invocation of methods from Java to C: these
 methods must be declared ``static`` ``native`` methods, and the parameters must be
 base types or array of base types. 
-These native methods are used in Java as standard Java methods.
+These native methods are used in Java code as standard Java methods.
 
 Example:
 
@@ -284,9 +284,9 @@ SNI allows to get a Java array length in a C function.
 Strings
 ^^^^^^^
 
-Strings are typically represented quite differently between C & Java.
+Strings are typically represented quite differently between C & Java code.
 In C, strings are represented with C ``char`` (8-bit) array with a
-``'\0'`` as last character. In Java, strings are ``jchar`` (16-bit) array, not
+``'\0'`` as last character. In Java code, strings are ``jchar`` (16-bit) array, not
 terminated by ``'\0'``.
 
 To help with the conversion, the `SNI Java API <https://repository.microej.com/javadoc/microej_5.x/apis/ej/sni/SNI.html>`_

@@ -108,7 +108,7 @@ SNI allows you to:
 -  Call a C function from a Java method.
 -  Share memory between C and Java using Immortal arrays (see the :ref:`runtime_bon` to learn about immortal objects).
 
-SNI also provides some Java APIs to manipulate some data arrays between Java and the native (C) world.
+SNI also provides some Java APIs to manipulate some data arrays between Java world and the native (C) world.
 
 Read the :ref:`Simple Native Interface specification <sni_specification>` for more details.
 

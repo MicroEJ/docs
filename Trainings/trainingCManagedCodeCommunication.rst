@@ -13,7 +13,7 @@ to perform C / Managed Code communication using Native Interface Mechanisms.
 What you will learn:
 
 - SNI Overview
-- Exposing a C API in Java
+- Exposing a C API in Java code
 - Immortal Arrays
 - Error Management
 - Blocking Functions and Asynchronous Code

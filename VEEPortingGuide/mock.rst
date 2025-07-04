@@ -248,7 +248,7 @@ This behavior is implemented in a Mock using the following methods on a ``lock``
 Resource Management
 -------------------
 
-In Java, every class can play the role of a small read-only file system
+Every Java class can play the role of a small read-only file system
 root: The stored files are called "Java resources" and are accessible
 using a path as a String.
 

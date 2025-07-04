@@ -5,7 +5,7 @@ Implement a Blocking Java Native Method with SNI
 ================================================
 
 This training describes the good practices to follow when implementing a blocking native method in C.
-A native method is a method declared in Java with the ``native`` keyword and implemented in C using the
+A native method is a method declared in Java code with the ``native`` keyword and implemented in C using the
 :ref:`Simple Native Interface (SNI) <sni_specification>`.
 
 Intended Audience
