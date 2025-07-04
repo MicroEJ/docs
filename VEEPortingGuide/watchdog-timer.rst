@@ -35,10 +35,10 @@ the Watchdog Timer API and the Watchdog timer.
 	:scale: 80%
 
 
-The particularity of this library is that it can be either used in managed code or in native code inside the BSP
+The particularity of this library is that it can be either used in Managed code or in native code inside the BSP
 or even both of them. The use of this library in the BSP in C is relevant when the user needs
 to monitor an item of the software system which is not executed by the Core Engine. 
-The sequence diagram below shows a standard use of the Watchdog API in Java and in C.
+The sequence diagram below shows a standard use of the Watchdog API in Java code and in C code.
 
 
 .. figure:: images/watchdog_seq_diagram.png
@@ -140,8 +140,8 @@ The `WatchdogTimer API Module`_ must be added to the project build file to use t
 
 .. _WatchdogTimer API Module: https://repository.microej.com/modules/ej/api/watchdog-timer/
 
-Code example in Java
-====================
+Java Code Eexample 
+==================
 
 Here is an example that summarizes all features in a simple use case.
 The checkpoint is performed in a TimerTask scheduled to run every 5 seconds.
@@ -227,9 +227,9 @@ section, you can use functions defined in ``LLWATCHDOG_TIMER_impl.h``.
 
 Note that compared to the Java API, you have to get error codes returned by functions
 to check if the function is executed correctly since you have no access to
-exceptions generated for the Java.
+exceptions generated for the Java code.
 
-The Watchdog Timer Low Level API provides a set of functions with the same usage as in Java.
+The Watchdog Timer Low Level API provides a set of functions with the same usage as in Java code.
 Here is the list of the watchdog Low Level API functions:
 
 .. code:: c

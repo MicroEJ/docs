@@ -24,7 +24,7 @@ required.  The validation of the Abstraction Layer implementation is
 performed by running tests at two-levels:
 
 - In C, by calling Low Level APIs (usually manually).
-- In Java, by calling Foundation Library APIs (usually automatically using :ref:`vee_port_testsuite`).
+- In Java code, by calling Foundation Library APIs (usually automatically using :ref:`vee_port_testsuite`).
 
 The following figure depicts an example for the FS Pack:
 

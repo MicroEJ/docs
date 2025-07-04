@@ -63,7 +63,7 @@ Finally, build and execute the application with the :ref:`MMM CLI <mmm_build_kit
 
 The sum and multiply results should be displayed.
 
-For more information about communication between Java and JavaScript please refer to the :ref:`js.java` page.
+For more information about communication between Java code and JavaScript code please refer to the :ref:`js.java` page.
 
 ..
    | Copyright 2021-2025, MicroEJ Corp. Content in this space is free 
