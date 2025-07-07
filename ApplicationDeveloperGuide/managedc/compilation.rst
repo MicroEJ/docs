@@ -34,17 +34,17 @@ For a detailed explanation of the compiler options, please consult the official 
 
 .. _managedc.link.module:
 
-Linking a WebAssembly Module
-----------------------------
+Linking a Wasm Module
+---------------------
 
 Once the C files are compiled into object files (``.o`` files),
-you need to link them to create a WebAssembly module (``.wasm`` file).
+you need to link them to create a Wasm module (``.wasm`` file).
 
 During linking, specify the functions that need to be exposed to the Java application using 
 the ``--export=[function_name]`` option for each function. 
 
 For instance, if you have an object file named ``my_app.o`` in the ``src/main/resources`` folder 
-and you want to build a WebAssembly module that exports the C functions ``foo`` and ``bar``, 
+and you want to build a Wasm module that exports the C functions ``foo`` and ``bar``, 
 run the following command:
 
 .. code:: console
@@ -66,7 +66,7 @@ run the following command:
     
 If your module consists of multiple C files, make sure to append all the object files to the command line.
 
-The resulting file, ``my_app.wasm``, will be a linked WebAssembly module consisting of all content from the object files (functions, globals, constants). 
+The resulting file, ``my_app.wasm``, will be a linked Wasm module consisting of all content from the object files (functions, globals, constants). 
 This module can now be bound to a :ref:`Java @WasmModule <managedc.bind.module>`.
 
 .. _managedc.link.command_line_options:
@@ -77,9 +77,9 @@ Linker Options
 Here are some useful linker options you might need:
 
 * ``-nostdlib``: Omits the standard library. See :ref:`managedc.link.nostdlib` for more details.
-* ``-Wl,--no-entry``: Specifies that there is no entry point for the WebAssembly module.
+* ``-Wl,--no-entry``: Specifies that there is no entry point for the Wasm module.
 * ``-Wl,--export=[function_name]``: Exports the symbol named ``function_name``.
-* ``-Wl,--allow-undefined``: Allows undefined symbols, which is necessary when the WebAssembly module references extern symbols defined in Java.
+* ``-Wl,--allow-undefined``: Allows undefined symbols, which is necessary when the Wasm module references extern symbols defined in Java.
 * ``-Wl,--stack-first``: Places the stack at the begining of linear memory. Refer to :ref:`managedc.linear.memory.layout` for more information.
 * ``-Wl,--initial-memory=n``: Sets the initial size of the linear memory to ``n`` bytes. See :ref:`managedc.linear.memory.size.configuration` for additional details.
 * ``-z stack-size=n``: Adjusts the stack size to 'n' bytes. Consult :ref:`managedc.linear.memory.size.stack` for further information.
