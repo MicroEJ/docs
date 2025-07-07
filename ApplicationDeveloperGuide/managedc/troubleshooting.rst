@@ -10,9 +10,9 @@ SOAR Errors
 SOAR-L ERROR "Unknown module ..."
 -----------------------------------------------------------------
 
-When using the ``@WasmModule`` annotation on a Java class, ensure there's a corresponding WebAssembly file in the classpath. 
+When using the ``@WasmModule`` annotation on a Java class, ensure there's a corresponding Wasm file in the classpath. 
 
-An error in SOAR-L might occur if the WebAssembly file is missing. 
+An error in SOAR-L might occur if the Wasm file is missing. 
 
 Failure to do so may result in the following error:
 
@@ -29,7 +29,7 @@ SOAR-L ERROR "Unsupported WebAssembly instruction ..."
 
 Not all WebAssembly instructions are supported. 
 
-If your WebAssembly file uses an unsupported instruction, you might encounter a SOAR-L error, for example:
+If your Wasm file uses an unsupported instruction, you might encounter a SOAR-L error, for example:
 
 .. code:: console
 
@@ -56,7 +56,7 @@ Failure to do so may result in the following error:
 SOAR-L ERROR "Cannot find the exported function '...' bound to ..."
 ----------------------------------------------------------------------
 
-When using the ``@WasmFunction`` annotation on a Java method, ensure there's a corresponding WebAssembly function with the right signature in the associated WebAssembly module.
+When using the ``@WasmFunction`` annotation on a Java method, ensure there's a corresponding Wasm function with the right signature in the associated Wasm module.
 An error in SOAR-L might occur if no function matching the annotated Java method signature is found.
 
 Failure to do so may result in the following error:
