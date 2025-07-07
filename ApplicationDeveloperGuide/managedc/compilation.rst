@@ -49,7 +49,7 @@ run the following command:
 
 .. code:: console
 
-    [path_to_wasi_sdk]/bin/clang -Wl,--no-entry -Wl,--stack-first -z stack-size=4096 -mcpu=mvp -O3 -Wl,--export=foo -Wl,--export=bar -o src/main/resources/my_app.wasm src/main/resourcesmy_app.o
+    [path_to_wasi_sdk]/bin/clang -Wl,--no-entry -Wl,--stack-first -z stack-size=4096 -mcpu=mvp -O3 -Wl,--export=foo -Wl,--export=bar -o src/main/resources/my_app.wasm src/main/resources/my_app.o
 
 
 .. note::
