@@ -165,7 +165,7 @@ WASI Threads
 ------------
 
 MicroEJ provides support of POSIX threads (pthreads) in Managed C through the implementations 
-of `WebAssembly threads profile <https://github.com/WebAssembly/threads>`__ and `WASI threads specification <https://github.com/WebAssembly/wasi-threads>`__.
+of `Threads Proposal for WebAssembly <https://github.com/WebAssembly/threads>`__ and `WASI threads specification <https://github.com/WebAssembly/wasi-threads>`__.
 
 This allows running the following code:
 

@@ -50,16 +50,16 @@ The line ``example.JavaCode.function1`` represents the execution of the Managed 
 
 .. _managedc.bind.module:
 
-Bind a WebAssembly Module to a Java class
------------------------------------------
+Bind a Wasm Module to a Java class
+----------------------------------
 
-The first step is to bind your :ref:`compiled WebAssembly module <managedc.compilation>` to a Java class.
+The first step is to bind your :ref:`compiled Wasm module <managedc.compilation>` to a Java class.
 
-First, the WebAssembly module file must be available in the :ref:`chapter.microej.classpath`.
-For that, drop your WebAssembly module to your project directory ``src/main/resources``. Let's assume it is called ``my_app.wasm``.
+First, the Wasm module file must be available in the :ref:`chapter.microej.classpath`.
+For that, drop your Wasm module to your project directory ``src/main/resources``. Let's assume it is called ``my_app.wasm``.
 
 Add to the desired Java class the ``@WasmModule`` annotation with the module name (e.g. ``@WasmModule("my_app")``).
-When the SOAR loads the Java class, it will transitively load the annotated WebAssembly module from the :ref:`resource <section.classpath.elements.raw_resources>` path with the ``.wasm`` extension (e.g. ``/my_app.wasm``).
+When the SOAR loads the Java class, it will transitively load the annotated Wasm module from the :ref:`resource <section.classpath.elements.raw_resources>` path with the ``.wasm`` extension (e.g. ``/my_app.wasm``).
 
 Your class should look like the following code:
 
@@ -69,7 +69,7 @@ Your class should look like the following code:
       
    import ej.wasm.WasmModule;
 
-   // This Java class is bound to a WebAssembly module named 'my_app' and
+   // This Java class is bound to a Wasm module named 'my_app' and
    // loaded from the '/my_app.wasm' resource in MicroEJ classpath.
    @WasmModule("my_app")
    public class MyApp {
@@ -98,7 +98,7 @@ If necessary, you can specify a custom resource path instead of the default one 
       
    import ej.wasm.WasmModule;
 
-   // This Java class is bound to a WebAssembly module named 'my_app' and
+   // This Java class is bound to a Wasm module named 'my_app' and
    // loaded from the '/src/module1.0.wasm' resource in MicroEJ classpath.
    @WasmModule(value = "my_app", resource = "/src/module1.0.wasm")
    public class MyApp {
@@ -110,12 +110,12 @@ If necessary, you can specify a custom resource path instead of the default one 
 Bind a Java Method to a Managed C Function
 ------------------------------------------
 
-Once a Java class is :ref:`bound to a WebAssembly module <managedc.bind.module>`, 
+Once a Java class is :ref:`bound to a Wasm module <managedc.bind.module>`, 
 all Java-declared methods and Managed C functions that meet the following conditions are automatically bound:
 
 - The Java method is declared ``static``.
 - The signature (name, parameters and return type) of the Java method matches with the signature of the Managed C function (see :ref:`managedc.matching.types`). 
-- The Managed C function has been exported by the WebAssembly module. See :ref:`--export* compilation options <managedc.link.command_line_options>`. 
+- The Managed C function has been exported by the Wasm module. See :ref:`--export* compilation options <managedc.link.command_line_options>`. 
   (Managed C functions declared ``static`` cannot be exported as they are only visible in the C file they are declared) [1]_.
 
 
@@ -148,8 +148,8 @@ Here is an example:
 
 
 
-.. [1] By default, the :ref:`clang compiler <managedc.link.command_line_options>` exports symbols declared as ``extern`` to the WebAssembly module named ``env``. 
-   This module name is automatically bound to the current WebAssembly module.
+.. [1] By default, the :ref:`clang compiler <managedc.link.command_line_options>` exports symbols declared as ``extern`` to the Wasm module named ``env``. 
+   This module name is automatically bound to the current Wasm module.
 
 
 The following sections explain how to customize the default binding :ref:`from the Java code side <managedc.bind.method.java>` and :ref:`from the C code side <managedc.bind.method.c>`.
@@ -221,7 +221,7 @@ You should see the following output when launching the Java application:
 
           1 + 2 = 3
 
-.. [2] When the WebAssembly module is included in a Sandboxed Application, use of ``native`` keyword in the Java method declaration is allowed in that case, 
+.. [2] When the Wasm module is included in a Sandboxed Application, use of ``native`` keyword in the Java method declaration is allowed in that case, 
        since SOAR interprets first the ``WasmFunction`` annotation and the ``native`` keyword is only used to declare a Java method with no body.
 
 .. _managedc.bind.method.java.to.c:
@@ -271,10 +271,10 @@ are used to extend the default :ref:`Java Method to Managed C Function binding <
 
 .. _managedc.call.method.c.to.java:
 
-Call a Java Method out of the WebAssembly Module
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Call a Java Method out of the Wasm Module
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The `import_module <https://clang.llvm.org/docs/AttributeReference.html#import-module>`__ attribute is used when the Java method to be bound belongs to a Java class other than the one bound to the WebAssembly module.
+The `import_module <https://clang.llvm.org/docs/AttributeReference.html#import-module>`__ attribute is used when the Java method to be bound belongs to a Java class other than the one bound to the Wasm module.
 The module name can be either the fully qualified name of the Java class containing the Java method (e.g: ``com.mycompany.MyApp``) or the name of the ``@WasmModule`` annotation of the class containing the Java method.
   
 The most common case is to call a Java method declared in a library from C code.
@@ -521,7 +521,7 @@ You should see the following output when launching the Java application:
 Start Function
 --------------
 
-When a WebAssembly module declares a `start function <https://www.w3.org/TR/wasm-core-1/#start-function%E2%91%A0>`__, it is automatically executed 
+When a Wasm module declares a `start function <https://www.w3.org/TR/wasm-core-1/#start-function%E2%91%A0>`__, it is automatically executed 
 during the :ref:`initialization of the Java class <soar_clinit>` it is bound to.
 
 ..
