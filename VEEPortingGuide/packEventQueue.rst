@@ -30,13 +30,13 @@ The Event Queue :ref:`Pack <pack_overview>` module must be installed in your VEE
 
       .. code-block:: kotlin
 
-         microejPack("com.microej.pack.event:event-pack:2.0.1")
+         microejPack("com.microej.pack.event:event-pack:2.2.0")
 
    .. tab:: SDK 5 (module.ivy)
 
       .. code-block:: xml
 
-         <dependency org="com.microej.pack.event" name="event-pack" rev="2.0.1" transitive="false"/>
+         <dependency org="com.microej.pack.event" name="event-pack" rev="2.2.0" transitive="false"/>
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
