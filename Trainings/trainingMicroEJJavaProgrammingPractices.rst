@@ -8,7 +8,7 @@ Description
 
 This training describes some rules and tools aimed at improving the quality of a Java code to simplify its maintenance.
 It makes up a minimum consistent set of rules which can be applied in any situation, especially on embedded systems where performance and low memory footprint matter.
-Also be aware of MicroEJ runtime specificities by reading the :ref:`mjvm_javalanguage` page.
+Also be aware of MicroEJ runtime specificities by reading the :ref:`java_language` page.
 
 Intended Audience
 -----------------
