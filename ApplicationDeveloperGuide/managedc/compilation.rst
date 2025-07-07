@@ -38,19 +38,22 @@ Linking a Wasm Module
 ---------------------
 
 Once the C files are compiled into object files (``.o`` files),
-you need to link them to create a Wasm module (``.wasm`` file).
+the next step is to link them together to produce a Wasm module (``.wasm`` file).
 
-During linking, specify the functions that need to be exposed to the Java application using 
-the ``--export=[function_name]`` option for each function. 
+For instance, if you have an object file named ``my_app.o`` in the ``src/main/resources`` folder,
+the following command line produces a Wasm module including the transitive dependencies to the :ref:`WASI Libc <wasm.wasi>`.
+All unresolved symbols will be expected to be defined by the Java host.
 
-For instance, if you have an object file named ``my_app.o`` in the ``src/main/resources`` folder 
-and you want to build a Wasm module that exports the C functions ``foo`` and ``bar``, 
-run the following command:
+    .. code:: console
 
-.. code:: console
+        [path_to_wasi_sdk]/bin/clang -Wl,--stack-first -z stack-size=4096 --export=[function_name] -Wl,--allow-undefined -o src/main/resources/my_app.wasm src/main/resources/my_app.o
 
-    [path_to_wasi_sdk]/bin/clang -Wl,--no-entry -Wl,--stack-first -z stack-size=4096 -mcpu=mvp -O3 -Wl,--export=foo -Wl,--export=bar -o src/main/resources/my_app.wasm src/main/resources/my_app.o
+You have to specify the functions that can be called by the Java application using 
+the ``--export=[function_name]`` option for each function.     
 
+When your object file declares a ``main`` function, the linker will automatically export a function named ``_start``. 
+This function will perform some initialization code before calling the user's main function. 
+You don't have to export the ``main`` function. You will just have to bind the function named ``_start`` to a Java method. 
 
 .. note::
 
@@ -63,11 +66,13 @@ run the following command:
         --export=bar
 
     You can then reference this file in the command line using the ``-Wl,@exports.txt`` option. 
-    
-If your module consists of multiple C files, make sure to append all the object files to the command line.
 
+If your module consists of multiple C files, make sure to append all the object files to the command line.
 The resulting file, ``my_app.wasm``, will be a linked Wasm module consisting of all content from the object files (functions, globals, constants). 
-This module can now be bound to a :ref:`Java @WasmModule <managedc.bind.module>`.
+This Wasm module can now be :ref:`bound to a Java class <managedc.bind.module>`.
+See also :ref:`managedc.link.command_line_options` for more details and alternatives.
+
+
 
 .. _managedc.link.command_line_options:
 
@@ -77,7 +82,7 @@ Linker Options
 Here are some useful linker options you might need:
 
 * ``-nostdlib``: Omits the standard library. See :ref:`managedc.link.nostdlib` for more details.
-* ``-Wl,--no-entry``: Specifies that there is no entry point for the Wasm module.
+* ``-Wl,--no-entry``: Specifies that there is no entry point for the Wasm module (required when ``-nostdlib`` is set).
 * ``-Wl,--export=[function_name]``: Exports the symbol named ``function_name``.
 * ``-Wl,--allow-undefined``: Allows undefined symbols, which is necessary when the Wasm module references extern symbols defined in the Java code.
 * ``-Wl,--stack-first``: Places the stack at the begining of linear memory. Refer to :ref:`managedc.linear.memory.layout` for more information.
