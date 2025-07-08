@@ -79,7 +79,7 @@ Here are some useful linker options you might need:
 * ``-nostdlib``: Omits the standard library. See :ref:`managedc.link.nostdlib` for more details.
 * ``-Wl,--no-entry``: Specifies that there is no entry point for the Wasm module.
 * ``-Wl,--export=[function_name]``: Exports the symbol named ``function_name``.
-* ``-Wl,--allow-undefined``: Allows undefined symbols, which is necessary when the Wasm module references extern symbols defined in Java.
+* ``-Wl,--allow-undefined``: Allows undefined symbols, which is necessary when the Wasm module references extern symbols defined in the Java code.
 * ``-Wl,--stack-first``: Places the stack at the begining of linear memory. Refer to :ref:`managedc.linear.memory.layout` for more information.
 * ``-Wl,--initial-memory=n``: Sets the initial size of the linear memory to ``n`` bytes. See :ref:`managedc.linear.memory.size.configuration` for additional details.
 * ``-z stack-size=n``: Adjusts the stack size to 'n' bytes. Consult :ref:`managedc.linear.memory.size.stack` for further information.

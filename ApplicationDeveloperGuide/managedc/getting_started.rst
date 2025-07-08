@@ -155,7 +155,7 @@ To use Managed C in your Application, follow these steps:
 
    .. note::
          
-         To call a Managed C function from Java, you need to export it using the ``-Wl,--export=[function_name]`` link option.
+         To call a Managed C function from Java code, you need to export it using the ``-Wl,--export=[function_name]`` link option.
          In this case, the ``factorial`` function is exported with ``-Wl,--export=factorial``.
 
    .. note::
@@ -225,7 +225,7 @@ Congratulations! You have successfully run your first Managed C code. You are no
 For further details, refer to the following sub-sections:
 
 - :ref:`managedc.compilation`: Instructions on how to compile and link an existing C or C++ project to WebAssembly.
-- :ref:`managedc.binding`: Information on how to seamlessly link your Java and Managed C code.
+- :ref:`managedc.binding`: Information on how to seamlessly link your Java code and Managed C code.
 - :ref:`Linear memory <managedc.linear.memory>`: Instructions to configure WebAssembly Linear memory.
 - :ref:`wasm.wasi`: Explore WASI, the WebAssembly System Interface implemented by MicroEJ.
 - :ref:`Troubleshooting <managedc.troubleshooting>`: Help with resolving common issues when working with Managed C.
