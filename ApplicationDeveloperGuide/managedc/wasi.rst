@@ -87,11 +87,8 @@ In this example, the implementation of The POSIX-compliant C functions ``clock_g
 
 .. note:: 
 
-  WASI cannot be used in more than one Wasm module in a `Standalone Application <standalone_application>`; otherwise calls to WASI methods will result in undefined behavior.
-
-  In a `Sandboxed Application <sandboxed_application>`, WASI methods must not be exposed in the `Kernel API <kernel.api>` and each Application and the Kernel can use WASI in only one module.
-
-  Using WASI in multiple modules within an Application or the Kernel will result in undefined behavior.
+  WASI cannot be used by more than one Wasm module within a single Application. Otherwise, calls to WASI methods may result in undefined behavior.
+  In particular, in Multi-Sandbox mode, WASI APIs must not be exposed as :ref:`Kernel APIs <kernel.api>`. This restriction allows each Application and the Kernel to use WASI independently, while still limiting usage to a single Wasm module per context.
 
 
 WASI APIs
