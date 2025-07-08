@@ -47,7 +47,7 @@ Here is an example:
         void print_time() {
             struct timespec ts;
             clock_gettime(CLOCK_REALTIME, &ts);
-            printf("%lld.%.9ld", (long long)ts.tv_sec, ts.tv_nsec);
+            printf("%lld.%.9ld\n", (long long)ts.tv_sec, ts.tv_nsec);
         }
 
 
@@ -72,7 +72,7 @@ Here is an example:
             public static void main(String[] args) throws IOException {
             
                 // Initialize WASI with the memory of my_app module and no preopened directories
-                Wasi.init(Memory, null);
+                Wasi.init(Memory);
 
                 // Call and the "print_time" Wasm function
                 printTime();
