@@ -96,6 +96,22 @@ Running code containing Managed C in a simulation will prompt an error similar t
 Runtime Errors
 ~~~~~~~~~~~~~~
 
+--------------------------
+java.lang.OutOfMemoryError
+--------------------------
+
+If you encounter a stack trace like the following, there is insufficient space in the Managed Heap to allocate a Wasm module linear memory.
+Increase the :ref:`Managed Heap size <option_managed_heap>` or :ref:`reduce the linear memory size <managedc.linear.memory.size.configuration>` of the Wasm module.
+
+.. code:: console
+
+  java.lang.OutOfMemoryErrorM:0x808d2c8:0x808d2d3@
+          at com.mycompany.MyApplication.<clinit>(Unknown Source)
+          at java.lang.Thread.execClinit(Unknown Source)
+          at java.lang.Thread.clinitWrapper(Thread.java:484)
+          at java.lang.Thread.callWrapper(Thread.java:450)
+
+
 -----------------------------
 java.lang.AssertionError
 -----------------------------
