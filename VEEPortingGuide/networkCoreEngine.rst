@@ -107,7 +107,7 @@ It is called from a static code block in the Net library so it will run before t
       }
    }
 
-This example is used on VEE Port with BSD-like sockets APIs, on all VEE Ports a macro is provided to call custom initialization code (also see header `here <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk/blob/main/bsp/vee/port/net/inc/LLNET_configuration.h#L108>`_):
+This example is used on VEE Port with BSD-like sockets APIs, on all VEE Ports a macro is provided to call custom initialization code (also see `here <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk/blob/main/bsp/vee/port/net/inc/LLNET_configuration.h#L108>`_):
 
 .. code-block::
 
@@ -128,6 +128,17 @@ This example is used on VEE Port with BSD-like sockets APIs, on all VEE Ports a 
     */
    #include "lwip_util.h"
    #define llnet_init		llnet_lwip_init
+
+In the previous declaration we call a custom lwip compatible initialization that does the following:
+
+- Initializes the hardware.
+- Initializes the lwip stack.
+- Configure the network interface.
+- Sends a DHCP request and assigns the address to the interface once the DHCP request is done.
+
+This is suitable for most of the networks with a DHCP server.
+
+.. For static IP setting provide a lwip static configuration (?)
 
 Use
 ===
