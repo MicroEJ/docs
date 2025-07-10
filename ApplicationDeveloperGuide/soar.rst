@@ -91,7 +91,7 @@ SOAR automatically optimizes a virtual method call to a direct method call if th
 Method Inlining
 ---------------
 
-Method inlining consists of replacing a direct method call with the content of the method. This avoids the creation of a new stack frame context, which can be slower than executing the code itself.
+Method inlining consists of replacing a direct method call with the content of the method. This avoids the creation of a new call frame, which can be slower than executing the code itself.
 Method inlining is transitively applied from leaf to root methods.
 
 The following method code patterns are inlined:
