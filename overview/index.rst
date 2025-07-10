@@ -100,7 +100,10 @@ Each component has dependencies and requirements that must be
 carefully respected in order to build an Executable.
 
 
-So first let's have a look at what you can rely on in terms of resources MicroEJ offers and where to find them.
+Resources and Dependencies Flow
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Let's take a closer look at the resources MicroEJ has to offer and where to find them.
 
 .. figure:: images/qa_resources-v4.png
     :alt: MicroEJ Resources and Origins to Build Applications
@@ -109,7 +112,10 @@ So first let's have a look at what you can rely on in terms of resources MicroEJ
 
     MicroEJ Resources to Build Applications and their Origins
 
-To build your application, a VEE Port is required, you can see below how a VEE port is built from a MICROEJ Architecture.
+VEE Port Build Flow
+^^^^^^^^^^^^^^^^^^^
+
+To build an application, a VEE Port is required, you can see below how a VEE port is built from a MICROEJ Architecture.
     
 .. figure:: images/qa_veeportbuild-v4.png
     :alt: VEE Port Build Flow
@@ -118,8 +124,10 @@ To build your application, a VEE Port is required, you can see below how a VEE p
 
     VEE Port Build Flow
 
+Executable Build Flow
+^^^^^^^^^^^^^^^^^^^^^
 
-And then using a VEE Port here is how to build the executable for embedded devices.
+Using a VEE Port here is how we build the executable for embedded devices.
  
 .. figure:: images/qa_executablebuildmanagedc-v4.png
     :alt: Executable Build Flow
