@@ -140,30 +140,102 @@ Specifications
    ../VEEPortingGuide/sni
    ../KernelDeveloperGuide/kf
 
+
 .. _runtime_gt: 
 
 Scheduler
 ---------
 
-The Core Engine features a `Green Threads model <https://en.wikipedia.org/wiki/Green_threads>`_. The semantic is as follows:
+The Core Engine implements a multi-threaded environment without relying on native OS capabilities.
+It includes a built-in scheduler and adopts a `Green Threads model <https://en.wikipedia.org/wiki/Green_threads>`_, enabling full control over thread management.
+This design ensures that the scheduling policy is entirely portable and remains independent of the underlying RTOS or operating system on which the Core Engine runs.
+
+.. figure:: images/runtime-threads-overview.png
+   :align: center
+   :scale: 80%
+
+   Green Threads Model Overview
+
+For more details refer to the :ref:`Core Engine Theading Integration <core_engine_threading_integration>` section.
+
+Scheduling Policy
+~~~~~~~~~~~~~~~~~
+
+The Core Engine defines the following scheduling semantic:
 
 -  preemptive for different priorities,
 -  round-robin for same priorities,
--  "priority inheritance protocol" when priority inversion occurs. [3]_
-
-Threads stacks automatically adapt their sizes according to the thread requirements: once a thread terminates,
-its associated stack is reclaimed, freeing the corresponding RAM memory.
+-  "priority inheritance protocol" when priority inversion occurs. This protocol raises the priority of a thread that is holding a monitor needed by a higher-priority thread,
+   to the priority of that higher-priority thread (until exiting the monitor).
 
 
-.. [3]
+.. _runtime_threads_and_stacks:
 
-	This protocol raises the priority of a thread that is holding a monitor needed by a higher-priority thread,
-	to the priority of that higher-priority thread (until exiting the monitor).
+Threads and Stacks Allocation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A thread requires a stack to execute. The stack holds an ordered list of call frames (one for each method currently called).
+Each call frame contains runtime data for the corresponding method invocation, including slots for local variables and parameters.
+The size of a call frame depends on the method’s content and complexity.
+
+The following figure illustrates an example of thread execution, showing each thread with its associated stack of call frames:
+
+.. figure:: images/runtime-threads-call-frames.png
+   :align: center
+   :scale: 70%
+
+**Core Engine Memory Allocation**
+
+Memory for threads and their stacks is statically defined at link time. 
+The Application developer is responsible for configuring these sizes. 
+This design ensures that thread creation and stack operations remain lightweight and avoid any reliance on dynamic memory allocation or underlying RTOS/OS mechanisms at runtime.
+
+- Thread Allocation: The maximum number of threads is specified via the :ref:`maximum number of threads option <option_number_of_threads>`.
+- Stack Allocation: Each thread stack is composed of fixed-size blocks, which are allocated from a shared pool. 
+  This approach ensures efficient memory reuse and eliminates fragmentation during execution. 
+  The Application developer defines the :ref:`number of blocks in the pool <option_number_of_stack_blocks>` and the :ref:`size of each stack block <option_stack_block_size>`.
+
+**Thread and Call Stack Behavior**
+
+A Core Engine thread slot is only assigned when the thread is started by calling the `Thread.start()`_ method. 
+At that point, it is assigned one stack block from the stack pool to begin execution.
+Each method call pushes a call frame onto the stack. 
+If a call frame cannot fit into the currently allocated stack block, the thread acquires an additional block from the pool.
+Stacks dynamically grow by acquiring more blocks, as needed by the call depth. 
+However, once a block is allocated to a thread, it remains associated with that thread until it is terminatied, even if the thread's stack depth decreases.
+
+A thread remains active as long as it is executing. Its status can be checked by calling the `Thread.isAlive()`_ method for example. 
+Once a thread is terminated (either by returning from its `Runnable.run()`_ method or due to an uncaught exception), its thread slot and all associated stack blocks are released.
+The released thread slot and stack blocks can then be used by other threads.
+
+The following figure illustrates a possible memory layout for the previously described thread example, showing how call frames can span across multiple fixed-size stack blocks within each thread's stack:
+
+.. figure:: images/runtime-threads-call-frames-allocation.png
+   :align: center
+   :scale: 70%
+
+**Thread and Stack Memory Errors**
+
+If there is insufficient memory to start a thread using the `Thread.start()`_ method, the Core Engine may throw one of the following exceptions:
+
+- ``InternalLimitsError : too many java alive thread``: The maximum number of alive threads is reached. Check the :ref:`maximum number of threads option <option_number_of_threads>`.
+- ``OutOfMemoryError: Stack space``: The stack pool is exhausted and no additional block can be allocated. Check the :ref:`number of stack blocks option <option_number_of_stack_blocks>` or the :ref:`stack block size option <option_stack_block_size>`.
+
+If a method call requires more stack space than is available, the following exceptions may be thrown:
+
+- ``StackOverflowError: EDC-1.3:E=-1``: The stack pool is exhausted and no additional block can be allocated. Check the :ref:`number of stack blocks option <option_number_of_stack_blocks>` or the :ref:`stack block size option <option_stack_block_size>`.
+- ``StackOverflowError: EDC-1.3:E=-2``: The next call frame is too large to fit in a single stack block. Check the :ref:`stack block size option <option_stack_block_size>`.
+- ``StackOverflowError: EDC-1.3:E=-3``: The thread has reached the maximum number of stack blocks it is allowed to use. Check the :ref:`the maximum number of blocks per thread option <option_maximum_number_of_stack_blocks_per_thread>`.
+
+
+.. _Thread.start(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Thread.html#start--
+.. _Thread.isAlive(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Thread.html#isAlive--
+.. _Runnable.run(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Runnable.html#run()--
 
 .. _runtime_gc: 
 
-Garbage Collector
------------------
+Managed Heap & Garbage Collector
+--------------------------------
 
 The Core Engine includes a state-of-the-art memory management
 system, the Garbage Collector (GC). It manages a bounded piece of RAM

@@ -48,14 +48,20 @@ The remaining steps are performed within the C third-party IDE.
    Core Engine library and a third-party BSP (OS, drivers, etc.). This
    step requires a third-party linker provided by a C toolchain.
 
-
 Architecture
 ============
 
 The Core Engine and its components have been compiled for one
 specific CPU architecture and for use with a specific C compiler.
 
-The Core Engine implements a :ref:`green thread architecture <runtime_gt>`. It runs in a single task. 
+Refer to the chapter :ref:`architectures_toolchains` for list of supported Architectures and the details of ABI and compiler options.
+
+.. _core_engine_threading_integration:
+
+Threading Integration
+=====================
+
+The Core Engine implements a :ref:`green thread model <runtime_gt>`. It runs in a single task. 
 
 Green threads are threads that are internally managed by the Core Engine
 instead of being natively managed by the underlying
@@ -772,7 +778,7 @@ The memory consumption of main Core Engine runtime elements are described in :re
    +-----------+-----------+-----------------+-----------------+-----------------+
    | Thread    | RW        | 168             | 192 (+24)       | 168             |
    +-----------+-----------+-----------------+-----------------+-----------------+
-   | Stack     | RW        | 12              | 20 (+8)         | 12              |
+   | Call      | RW        | 12              | 20 (+8)         | 12              |
    | Frame     |           |                 |                 |                 |
    | Header    |           |                 |                 |                 |
    +-----------+-----------+-----------------+-----------------+-----------------+
@@ -787,7 +793,7 @@ The memory consumption of main Core Engine runtime elements are described in :re
 	To get the full size of an Object, search for the type in the :ref:`SOAR Information File <soar_info_file>` and read the attribute ``instancesize`` (this includes the Object header). 
 
 .. note::
-	To get the full size of a Stack Frame, search for the method in the :ref:`SOAR Information File <soar_info_file>` and read the attribute ``stacksize`` (this includes the Stack Frame header). 
+	To get the full size of a call frame, search for the method in the :ref:`SOAR Information File <soar_info_file>` and read the attribute ``stacksize`` (this includes the call frame header). 
 
 Use
 ===
