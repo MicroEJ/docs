@@ -803,7 +803,7 @@ Option(text): Maximum number of frames dumpers on OutOfMemoryError
 
 *Option Name*: ``core.memory.oome.nb.frames``
 
-*Default value*: ``5``
+*Default value*: ``1``
 
 *Description*:
 
