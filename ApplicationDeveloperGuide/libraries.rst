@@ -3,25 +3,11 @@
 Libraries
 =========
 
-A MicroEJ Foundation Library is a MicroEJ Core library that provides
-core runtime APIs or hardware-dependent functionality. A Foundation
-library is divided into an API and an implementation. A Foundation
-library API is composed of a name and a 2 digits version (e.g.
-``EDC-1.3``) and follows the semantic versioning (`<http://semver.org>`_)
-specification. A Foundation Library API only contains prototypes without
-code. Foundation Library implementations are provided by VEE Ports.
-From a MicroEJ Classpath, Foundation Library APIs
-dependencies are automatically mapped to the associated implementations
-provided by the VEE Port or the Virtual Device on which the application
-is being executed.
+Two types of libraries are supported:
 
-A MicroEJ Add-On Library is a MicroEJ library that is implemented on top
-of MicroEJ Foundation Libraries (100% full Java code). A MicroEJ Add-On
-Library is distributed in a single JAR file, with a 3 digits version and
-provides its associated source code.
+- Foundation Libraries are MicroEJ Core libraries that provide core runtime APIs or hardware-dependent functionality. 
 
-Foundation and Add-On Libraries are added to MicroEJ Classpath by the
-application developer as module dependencies (see :ref:`mmm`).
+- Add-On Libraries are MicroEJ libraries that are implemented on top of MicroEJ Foundation Libraries (100% full Managed code). 
 
 .. figure:: images/ClassPath_2.png
    :alt: MicroEJ Foundation Libraries and Add-On Libraries
