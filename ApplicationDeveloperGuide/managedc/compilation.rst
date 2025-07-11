@@ -39,21 +39,29 @@ Linking a Wasm Module
 
 Once the C files are compiled into object files (``.o`` files),
 the next step is to link them together to produce a Wasm module (``.wasm`` file).
+Use ``clang`` as the linker driver to generate the final ``.wasm`` module. 
+It automatically calls ``wasm-ld``, the Wasm linker.
 
-For instance, if you have an object file named ``my_app.o`` in the ``src/main/resources`` folder,
-the following command line produces a Wasm module including the transitive dependencies to the :ref:`WASI Libc <wasm.wasi>`.
-All unresolved symbols will be expected to be defined by the Java host.
+The following options are recommended to ensure the produced ``.wasm`` binary is compatible with the MicroEJ VEE:
+
+* ``-Wl,--allow-undefined``: Allows undefined symbols, which is necessary when the Wasm module references extern symbols defined in the Java code.
+* ``-Wl,--stack-first``: Places the stack at the begining of the linear memory. Refer to :ref:`managedc.linear.memory.layout` for more information.
+* ``-z stack-size=n``: Adjusts the stack size to 'n' bytes. Consult :ref:`managedc.linear.memory.size.stack` for further information.
+
+For example, if you have the object file ``src/main/resources/my_app.o`` that defines a ``main`` entry point,
+the following command will generate a Wasm module including this entry point along with all transitive dependencies from the :ref:`WASI Libc <wasm.wasi>`.
+Any unresolved symbols in the object file are expected to be provided by the Java host.
 
     .. code:: console
 
-        [path_to_wasi_sdk]/bin/clang -Wl,--stack-first -z stack-size=4096 --export=[function_name] -Wl,--allow-undefined -o src/main/resources/my_app.wasm src/main/resources/my_app.o
+        [path_to_wasi_sdk]/bin/clang -Wl,--stack-first -z stack-size=4096 -Wl,--allow-undefined -o src/main/resources/my_app.wasm src/main/resources/my_app.o
 
-You have to specify the functions that can be called by the Java application using 
-the ``--export=[function_name]`` option for each function.     
 
-When your object file declares a ``main`` function, the linker will automatically export a function named ``_start``. 
-This function will perform some initialization code before calling the user's main function. 
-You don't have to export the ``main`` function. You will just have to bind the function named ``_start`` to a Java method. 
+When your object file defines a ``main`` function, the linker automatically exports a function named ``_start``. 
+This function performs initialization tasks before invoking the user-defined ``main``. 
+You must bind the ``_start`` function — not ``main`` — to a Java method.
+
+Additionally, any other functions that should be callable from the Java application must be explicitly exported using the ``-Wl,--export=[function_name]`` linker option (this does not apply to ``main``, which is invoked internally by ``_start``).  
 
 .. note::
 
@@ -67,11 +75,11 @@ You don't have to export the ``main`` function. You will just have to bind the f
 
     You can then reference this file in the command line using the ``-Wl,@exports.txt`` option. 
 
-If your module consists of multiple C files, make sure to append all the object files to the command line.
-The resulting file, ``my_app.wasm``, will be a linked Wasm module consisting of all content from the object files (functions, globals, constants). 
-This Wasm module can now be :ref:`bound to a Java class <managedc.bind.module>`.
-See also :ref:`managedc.link.command_line_options` for more details and alternatives.
+If your module is composed of multiple C files, make sure to append all the object files to the command line.
+The resulting file, ``my_app.wasm``, will be a linked Wasm module containing all functions, globals, and constants defined across those object files.
 
+This Wasm module can then be :ref:`bound to a Java class <managedc.bind.module>` for integration with your application.
+For additional details and alternative configurations, see the :ref:`managedc.link.command_line_options` section.
 
 
 .. _managedc.link.command_line_options:
@@ -79,15 +87,12 @@ See also :ref:`managedc.link.command_line_options` for more details and alternat
 Linker Options
 ``````````````
 
-Here are some useful linker options you might need:
+Here are other linker options you might need:
 
 * ``-nostdlib``: Omits the standard library. See :ref:`managedc.link.nostdlib` for more details.
-* ``-Wl,--no-entry``: Specifies that there is no entry point for the Wasm module (required when ``-nostdlib`` is set).
 * ``-Wl,--export=[function_name]``: Exports the symbol named ``function_name``.
-* ``-Wl,--allow-undefined``: Allows undefined symbols, which is necessary when the Wasm module references extern symbols defined in the Java code.
-* ``-Wl,--stack-first``: Places the stack at the begining of linear memory. Refer to :ref:`managedc.linear.memory.layout` for more information.
+* ``-Wl,--no-entry``: Specifies that there is no entry point for the Wasm module (required when ``-nostdlib`` is set).
 * ``-Wl,--initial-memory=n``: Sets the initial size of the linear memory to ``n`` bytes. See :ref:`managedc.linear.memory.size.configuration` for additional details.
-* ``-z stack-size=n``: Adjusts the stack size to 'n' bytes. Consult :ref:`managedc.linear.memory.size.stack` for further information.
 
 For an in-depth understanding of the linker options, please refer to the official documentation for `wasm-ld <https://lld.llvm.org/WebAssembly.html>`_. 
 
