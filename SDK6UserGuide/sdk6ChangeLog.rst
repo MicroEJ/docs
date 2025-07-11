@@ -3,6 +3,27 @@
 Changelog
 ---------
 
+.. _changelog-1.3.1:
+
+[1.3.1] - 2025-07-11
+~~~~~~~~~~~~~~~~~~~~
+
+Changed
+"""""""
+
+- Improve the name of the mocks jar files in the Virtual Device (use ``[group]-[module]-[version].jar``).
+
+Fixed
+"""""
+
+- Wrong classpath used to generate Application Wrapper class which could make the build fail when declaring a dependency with ``compileOnly``.
+- Update ``junit-test-engine`` to fix testsuite using serial to socket and custom success/failure tag with JUnit.
+- Remove duplicated entries in the test classpath.
+- Missing white space in error message when no Architecture is provided.
+- Pass test engine classpath based on ``junit-test-engine`` dependencies only to prevent unexpected classpath entries.
+- Improve the error message when the ``buildVirtualDevice`` task fails because two mocks depend on a local jar with the same name.
+- Fix installation of dependencies in the Virtual Device when a project defined in the same multi-project depends on it with ``includeBuild``.
+
 .. _changelog-1.3.0:
 
 [1.3.0] - 2025-06-19
