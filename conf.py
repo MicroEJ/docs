@@ -28,7 +28,11 @@ extensions = [
     'sphinx_copybutton',
     'sphinx_tabs.tabs',
     'sphinx_toolbox.collapse',
+    'sphinxext.remoteliteralinclude',
 ]
+
+remoteliteralinclude_retry_time = 1.0
+remoteliteralinclude_max_retry_time = 180.0
 
 sphinx_tabs_valid_builders = ['linkcheck']
 sphinx_tabs_disable_tab_closing = True
