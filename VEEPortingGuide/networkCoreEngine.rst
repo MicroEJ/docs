@@ -88,46 +88,21 @@ The entry point for this initialization is the following native function: ``LLNE
     */
    void LLNET_CHANNEL_IMPL_initialize(void);
 
-It is called from a static code block in the Net library so it will run before the application starts, see `this implementation example <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk/blob/main/bsp/vee/port/net/src/LLNET_CHANNEL_bsd.c#L63>`_.
+It is called from a static code block in the Net library so it will run before the application starts, see the following implementation example `available here <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk/blob/main/bsp/vee/port/net/src/LLNET_CHANNEL_bsd.c>`_:
 
-.. code-block::
+.. rli:: https://raw.githubusercontent.com/MicroEJ/nxp-vee-imxrt1170-evk/refs/heads/main/bsp/vee/port/net/src/LLNET_CHANNEL_bsd.c
+   :language: c
+   :lines: 63-76
+   :linenos:
+   :lineno-start: 63
 
-   void LLNET_CHANNEL_IMPL_initialize(void)
-   {
-      LLNET_DEBUG_TRACE("%s\n", __func__);
-      int32_t res;
-   #ifdef LLNET_IGNORE_SIGPIPE
-      // Ignore SIGPIPE signal that is sent when a connection is closed by the remote host.
-      signal(SIGPIPE, SIG_IGN);
-   #endif
-      llnet_init();
-      res = async_select_init();
-      if(res != 0){
-         SNI_throwNativeIOException(J_EUNKNOWN, "init error");
-      }
-   }
+This example is used on VEE Port with BSD-like sockets APIs, on all VEE Ports a macro is provided to call custom initialization code (also see `here <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk/blob/main/bsp/vee/port/net/inc/LLNET_configuration.h>`_):
 
-This example is used on VEE Port with BSD-like sockets APIs, on all VEE Ports a macro is provided to call custom initialization code (also see `here <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk/blob/main/bsp/vee/port/net/inc/LLNET_configuration.h#L108>`_):
-
-.. code-block::
-
-   /**
-    * Use this macro to define the initialization function of the network stack.
-    * Called from LLNET_CHANNEL_IMPL_initialize().
-    *
-    * For example, It can be used to initialize ecom-network & ecom-wifi:
-    * 	#include "LLECOM_NETWORK.h"
-    *	#include "LLECOM_WIFI.h"
-    *	static inline int32_t llnet_init() {
-    *		LLECOM_NETWORK_initialize();
-    *		LLECOM_WIFI_initialize();
-    *		return 0;
-    *	}
-    *
-    * By default this macro does nothing.
-    */
-   #include "lwip_util.h"
-   #define llnet_init		llnet_lwip_init
+.. rli:: https://raw.githubusercontent.com/MicroEJ/nxp-vee-imxrt1170-evk/refs/heads/main/bsp/vee/port/net/inc/LLNET_configuration.h
+   :language: c
+   :lines: 92-108
+   :linenos:
+   :lineno-start: 92
 
 In the previous declaration we call a custom lwip compatible initialization that does the following:
 
