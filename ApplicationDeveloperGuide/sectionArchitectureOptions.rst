@@ -146,15 +146,8 @@ Group: Threads
 
 *Description*:
 
-This group allows the configuration of application and library thread(s). A
-thread needs a stack to run. This stack is allocated from a pool and this
-pool contains several blocks. Each block has the same size. At thread startup
-the thread uses only one block for its stack. When the first block is full it
-uses another block. The maximum number of blocks per thread must be
-specified. When the maximum number of blocks for a thread is reached or when
-there is no free block in the pool, a StackOverflow error is thrown. When a
-thread terminates all associated blocks are freed. These blocks can then be
-used by other threads.
+This group allows the configuration of application and library thread(s).
+See :ref:`runtime_threads_and_stacks` section for more details.
 
 .. _option_number_of_threads:
 
@@ -182,6 +175,8 @@ Option(text): Number of blocks in pool
 *Description*:
 
 Specifies the number of blocks in the stacks pool.
+
+.. _option_stack_block_size:
 
 Option(text): Block size (in bytes)
 """""""""""""""""""""""""""""""""""
@@ -807,7 +802,7 @@ Option(text): Maximum number of frames dumpers on OutOfMemoryError
 
 *Description*:
 
-Specifies the maximum number of stack frames that can be dumped to the standard
+Specifies the maximum number of call frames that can be dumped to the standard
 output when Core Engine throws an OutOfMemoryError.
 
 .. _option_enable_heap_usage:
