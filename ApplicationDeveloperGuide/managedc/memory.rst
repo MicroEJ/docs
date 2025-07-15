@@ -37,7 +37,7 @@ The linear memory is available in the Java host as an array of bytes (``byte[]``
 Configure the Linear Memory Layout
 ----------------------------------
 
-MicroEJ recommends linking a Wasm module using the ``-Wl,--stack-first`` :ref:`linker option <managedc.link.command_line_options>`.
+MicroEJ recommends linking a Wasm module using the ``-Wl,--stack-first`` `linker option <https://lld.llvm.org/WebAssembly.html#cmdoption-stack-first>`_.
 
 Thus, you will get the following memory layout:
 
@@ -61,13 +61,13 @@ However, the minimum page size (64KB) is not suitable for constrained embedded e
 MicroEJ implementation allocates the linear memory once at module startup and is not dynamically resized.
 
 By default, the size of the linear memory is initialized with the Wasm module initial number of pages.
-The Wasm module initial number of pages can be configured using the ``-Wl,--initial-memory=[size_in_bytes]`` :ref:`linker option <managedc.link.command_line_options>`. 
+The Wasm module initial number of pages can be configured using the ``-Wl,--initial-memory=[size_in_bytes]`` `linker option <https://lld.llvm.org/WebAssembly.html#cmdoption-initial-memory>`__. 
 The given size must be a multiple of 64KB, i.e. a number of pages.
 
 The size of the linear memory can be reduced below 64KB if both of the following conditions are met:
 
 * the Wasm module does not embed neither the ``memory.size`` nor the ``memory.grow`` instructions. This is the case if the C code does not transitively calls the ``malloc`` implementation declared in WASI libc.
-* the Wasm module exports the ``__heap_base`` global using the ``-Wl,--export=__heap_base`` :ref:`linker option <managedc.link.command_line_options>`.
+* the Wasm module exports the ``__heap_base`` global using the ``-Wl,--export=__heap_base`` `linker option <https://lld.llvm.org/WebAssembly.html#exports>`__.
 
 In this case, the linear memory is initialized to the value of the ``__heap_base`` global, which represents the sum of the main stack size and the static data size.
 
@@ -77,7 +77,7 @@ Configure the Main Stack Size
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 By default, the main stack size is initialized to ``65536``.
-You can adjust the main stack size to using the ``-z stack-size=[size_in_bytes]`` :ref:`linker option <managedc.link.command_line_options>`.
+You can adjust the main stack size to using the ``-z stack-size=[size_in_bytes]`` `linker option <https://man.archlinux.org/man/extra/lld/ld.lld.1.en#stack-size>`__.
 
 Configuration Examples
 ~~~~~~~~~~~~~~~~~~~~~~
