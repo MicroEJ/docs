@@ -42,7 +42,7 @@ the next step is to link them together to produce a Wasm module (``.wasm`` file)
 Use ``clang`` as the linker driver to generate the final ``.wasm`` module. 
 It automatically calls ``wasm-ld``, the Wasm linker.
 
-The following options are recommended to ensure the produced ``.wasm`` binary is compatible with the MicroEJ VEE:
+The following options are recommended to ensure the produced ``.wasm`` binary is compatible with MICROEJ VEE:
 
 * ``-Wl,--allow-undefined``: Allows undefined symbols, which is necessary when the Wasm module references extern symbols defined in Java.
 * ``-Wl,--stack-first``: Places the stack at the begining of the linear memory. Refer to :ref:`managedc.linear.memory.layout` for more information.
