@@ -119,10 +119,10 @@ The WASI SDK also includes a C++ compiler, ``clang++``, which you can use to com
 Building Without The Standard Library
 -------------------------------------
 
-The ``-nostdlib`` flag is a linker option used to exclude the standard library when building a program. 
-It prevents the compiler and linker from automatically linking with the standard system libraries (such as ``libc`` in C or the C++ Standard Library), 
-and the :ref:`startup code <managedc.bind.start.function>` that initializes the runtime environment.
-This is particularly useful for building a Wasm module that contains only its own code, with all dependencies :ref:`bound to Java methods <managedc.bind.method>`.
+The ``-Wl,--no-entry -nostdlib`` options prevent the compiler and linker from automatically linking with the standard system libraries (such as ``libc`` in C or the C++ Standard Library), 
+and omit embedding the :ref:`startup code <managedc.bind.start.function>` responsible for initializing the runtime environment.
+This configuration is particularly useful for building Wasm modules that embed only their own code, with all external dependencies defined by the Java host.
+
 
 ..
    | Copyright 2023-2025, MicroEJ Corp. Content in this space is free 
