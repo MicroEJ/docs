@@ -61,7 +61,7 @@ When your object file defines a ``main`` function, the linker automatically expo
 This function performs initialization tasks before invoking the user-defined ``main``. 
 You must bind the ``_start`` function — not ``main`` — to a Java method.
 
-Additionally, any other functions that should be callable from the Java application must be explicitly exported using the ``-Wl,--export=[function_name]`` linker option (this does not apply to ``main``, which is invoked internally by ``_start``).  
+Additionally, any other functions that should be callable from the Java Application must be explicitly exported using the ``-Wl,--export=[function_name]`` linker option (this does not apply to ``main``, which is invoked internally by ``_start``).  
 
 .. note::
 
