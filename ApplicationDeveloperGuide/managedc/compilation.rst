@@ -95,7 +95,7 @@ The WASI SDK also includes a C++ compiler, ``clang++``, which you can use to com
     [path_to_wasi_sdk]/bin/clang++ [...] -fno-exceptions -o my_app.wasm my_app.o
 
 .. note::
-    C++ exceptions are not supported, so you'll need to build your C++ code with the `-fno-exceptions` flag.
+    C++ exceptions are not supported, so you'll need to build your C++ code with the ``-fno-exceptions`` flag.
 
 .. _managedc.link.nostdlib:
 
