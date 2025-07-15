@@ -44,9 +44,9 @@ It automatically calls ``wasm-ld``, the Wasm linker.
 
 The following options are recommended to ensure the produced ``.wasm`` binary is compatible with MICROEJ VEE:
 
-* ``-Wl,--allow-undefined``: Allows undefined symbols, which is necessary when the Wasm module references extern symbols defined by the Java host.
-* ``-Wl,--stack-first``: Places the stack at the begining of the linear memory. Refer to :ref:`managedc.linear.memory.layout` for more information.
-* ``-z stack-size=n``: Adjusts the stack size to 'n' bytes. Consult :ref:`managedc.linear.memory.size.stack` for further information.
+* `-Wl,--allow-undefined <https://lld.llvm.org/WebAssembly.html#cmdoption-allow-undefined>`_: Allows undefined symbols, which is necessary when the Wasm module references extern symbols defined by the Java host.
+* `-Wl,--stack-first <https://lld.llvm.org/WebAssembly.html#cmdoption-stack-first>`_: Places the stack at the begining of the linear memory. Refer to :ref:`managedc.linear.memory.layout` for more information.
+* `-z stack-size=n <https://man.archlinux.org/man/extra/lld/ld.lld.1.en#stack-size>`_: Adjusts the stack size to 'n' bytes. Consult :ref:`managedc.linear.memory.size.stack` for further information.
 
 For example, if you have the object file ``src/main/resources/my_app.o`` that defines a ``main`` entry point,
 the following command will generate a Wasm module including this entry point along with all transitive dependencies from the :ref:`WASI Libc <wasm.wasi>`.
@@ -61,7 +61,7 @@ When your object file defines a ``main`` function, the linker automatically expo
 This function performs initialization tasks before invoking the user-defined ``main``. 
 You must bind the ``_start`` function — not ``main`` — to a Java method.
 
-Additionally, any other functions that should be callable from the Java Application must be explicitly exported using the ``-Wl,--export=[function_name]`` linker option (this does not apply to ``main``, which is invoked internally by ``_start``).  
+Additionally, any other functions that should be callable from the Java Application must be explicitly exported using the ``-Wl,--export=[function_name]`` `linker option <https://lld.llvm.org/WebAssembly.html#exports>`__ (this does not apply to ``main``, which is invoked internally by ``_start``).  
 
 .. note::
 
