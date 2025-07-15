@@ -78,24 +78,7 @@ Additionally, any other functions that should be callable from the Java Applicat
 If your module is composed of multiple C files, make sure to append all the object files to the command line.
 The resulting file, ``my_app.wasm``, will be a linked Wasm module containing all functions, globals, and constants defined across those object files.
 
-This Wasm module can then be :ref:`bound to a Java class <managedc.bind.module>` for integration with your application.
-For additional details and alternative configurations, see the :ref:`managedc.link.command_line_options` section.
-
-
-.. _managedc.link.command_line_options:
-
-Linker Options
-``````````````
-
-Here are some useful linker options you might need:
-
-* ``-nostdlib``: Omits the standard library. See :ref:`managedc.link.nostdlib` for more details.
-* ``-Wl,--no-entry``: Specifies that there is no entry point for the Wasm module (required when ``-nostdlib`` is set).
-* ``-Wl,--export=[function_name]``: Exports the symbol named ``function_name``.
-* ``-Wl,--allow-undefined``: Allows undefined symbols, which is necessary when the Wasm module references extern symbols defined in Java.
-* ``-Wl,--stack-first``: Places the stack at the begining of linear memory. Refer to :ref:`managedc.linear.memory.layout` for more information.
-* ``-Wl,--initial-memory=n``: Sets the initial size of the linear memory to ``n`` bytes. See :ref:`managedc.linear.memory.size.configuration` for additional details.
-* ``-z stack-size=n``: Adjusts the stack size to 'n' bytes. Consult :ref:`managedc.linear.memory.size.stack` for further information.
+This Wasm module can then be :ref:`bound to a Java class <managedc.bind.module>` for integration with your application. You may also need to :ref:`managedc.linear.memory.size.configuration`.
 
 For an in-depth understanding of the linker options, please refer to the official documentation for `wasm-ld <https://lld.llvm.org/WebAssembly.html>`_. 
 
