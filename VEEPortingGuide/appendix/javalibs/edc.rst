@@ -38,11 +38,11 @@ is issued, where ``<messageId>`` meaning is defined in the following table:
    * - -4
      - No native stack found to execute the Java native method.
    * - -3
-     - Maximum stack size for a thread has been reached. :ref:`Increase the maximum size of the thread stack parameter <option_maximum_number_of_stack_blocks_per_thread>`.
+     - Maximum stack size for a thread has been reached. See :ref:`runtime_threads_and_stacks`.
    * - -2
-     - No stack block could be allocated with the given size. Increase the stack block size.
+     - No stack block could be allocated with the given size. See :ref:`runtime_threads_and_stacks`.
    * - -1
-     - The stack space is full. Increase the stack size or the number of stack blocks.
+     - The stack space is full. See :ref:`runtime_threads_and_stacks`.
    * - 1
      - A closed stream is being written/read.
    * - 2 

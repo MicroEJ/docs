@@ -1228,7 +1228,7 @@ Core Engine
    -  Total number of created threads
    -  Maximum number of stack blocks used
    -  Current number of stack blocks used
-   -  Objects referenced by each stack frame: address, type, length (in
+   -  Objects referenced by each call frame: address, type, length (in
       case of arrays), string content (in case of String objects)
    -  [Multi] - Kernel stale references with the name of the Feature
       stopped
@@ -1291,7 +1291,7 @@ SOAR
 ~~~~
 
 -  Added a new option ``core.memory.oome.nb.frames`` to configure the
-   maximum number of stack frames that can be dumped when an internal
+   maximum number of call frames that can be dumped when an internal
    `OutOfMemoryError`_
    is thrown by Core Engine
 
