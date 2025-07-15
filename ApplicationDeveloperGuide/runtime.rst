@@ -230,7 +230,7 @@ If a method call requires more stack space than is available, the following exce
 
 .. _Thread.start(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Thread.html#start--
 .. _Thread.isAlive(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Thread.html#isAlive--
-.. _Runnable.run(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Runnable.html#run()--
+.. _Runnable.run(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Runnable.html#run--
 
 .. _runtime_gc: 
 
