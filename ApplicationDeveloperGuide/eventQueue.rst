@@ -378,13 +378,13 @@ The Event Queue Mock API dependency must be added to the project build file of y
 
       .. code-block:: kotlin
 
-         implementation(group="com.microej.pack.event", name="event-pack", version="2.0.0", configuration="mockAPI")
+         implementation(group="com.microej.pack.event", name="event-pack", version="2.2.0", configuration="mockAPI")
 
    .. tab:: MMM (module.ivy)
 
       .. code-block:: xml
 
-         <dependency org="com.microej.pack.event" name="event-pack" rev="2.0.0" conf="provided->mockAPI"/>
+         <dependency org="com.microej.pack.event" name="event-pack" rev="2.2.0" conf="provided->mockAPI"/>
 
 It provides two methods: 
 
@@ -413,16 +413,26 @@ Application project to use the Event Queue Foundation Library.
 
       .. code-block:: kotlin
 
-         implementation("ej.api:event:2.0.0")
+         implementation("ej.api:event:2.1.0")
 
    .. tab:: MMM (module.ivy)
 
       .. code-block:: xml
 
-         <dependency org="ej.api" name="event" rev="2.0.0"/>
+         <dependency org="ej.api" name="event" rev="2.1.0"/>
 
 To use this API, your VEE Port must implement a compatible version. 
 Please refer to the :ref:`VEE Porting Guide <pack_event>` to port the Event Queue for your project.
+
+Configuration
+-------------
+
+The :ref:`Event Queue Pack <pack_event>` can be configured by defining the following :ref:`Application Options <application_options>`:
+
+
+- ``event.thread.name``: defines the name of the Event Queue thread. Its default value is ``EventQueue``.
+- ``event.thread.priority``: defines the priority of the Event Queue thread. Its value must be between `Thread.MIN_PRIORITY <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Thread.html#MIN_PRIORITY>`_ and `Thread.MAX_PRIORITY <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Thread.html#MAX_PRIORITY>`_, and its default value is `Thread.NORM_PRIORITY <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Thread.html#NORM_PRIORITY>`_.
+- ``event.thread.daemon``: defines whether the Event Queue thread is a `daemon thread <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Thread.html#setDaemon-boolean->`_. Its default value is ``false``.
 
 .. _Event Queue API Module: https://forge.microej.com/artifactory/microej-developer-repository-release/ej/api/event/
 ..
