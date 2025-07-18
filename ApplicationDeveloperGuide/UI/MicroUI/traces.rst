@@ -8,8 +8,6 @@ Debug Traces
 MicroUI logs several actions when traces are enabled (see :ref:`event-tracing`). 
 This chapter explains the trace identifiers.
 
-.. note:: Most of the logs are only available on the Embedded VEE Port (not on the Simulator).
-
 Trace format
 ------------
 
@@ -40,7 +38,7 @@ Trace identifiers
 
 The following tables describe some events data.
 
-.. warning:: These tables are only compatible with the latest pack available (|UIPACKVERSION|).
+.. warning:: These tables are compatible with the UI Packs [12.1.5 - |UIPACKVERSION|].
 
 .. list-table:: MicroUI Traces
    :widths: 10 60 30
@@ -504,7 +502,7 @@ The traces are :ref:`systemview` compatible.
 
 The following text can be copied in a file called ``SYSVIEW_MicroUI.txt`` and copied in SystemView installation folder (e.g. ``SEGGER/SystemView_V252a/Description/``).
 
-.. warning:: These traces are only compatible with the latest pack available (|UIPACKVERSION|).
+.. warning:: These traces are compatible with the UI Packs [12.1.5 - |UIPACKVERSION|] (see the known issue in the UI Packs :ref:`14.4.1<section_ui_changelog_14_4_1>` and :ref:`14.4.2<section_ui_changelog_14_4_2>`).
 
 .. code-block::
 
