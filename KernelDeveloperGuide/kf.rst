@@ -632,6 +632,8 @@ Feature code is unlinked from the Kernel and reclaimed. The Feature is
 removed from the list of loaded Features and its state is set to the
 ``UNINSTALLED`` state. The Feature does not exist anymore in the system.
 
+.. _kf_class_space:
+
 Class Spaces
 ------------
 
@@ -711,8 +713,10 @@ If a Feature exceeds its execution quota while holding a monitor (via one of its
 and another Module (Feature or Kernel) with no execution quota limit attempts to acquire the same monitor (via one of its threads), 
 the thread holding the monitor will continue its execution until it releases the monitor.
 
-RAM Control: Managed Heap Configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. _kernel_ram_control_memory_limits:
+
+RAM Control: Managed Heap Limits
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Kernel and Features allocate objects in the Managed Heap, whose size is statically configured by the Kernel using the :ref:`option_managed_heap`.
 By default, the Kernel and Features can allocate without restriction, as long as sufficient space is available in the Managed Heap. Every allocated object is tracked (see :ref:`Object ownership <kf_owner_object>`).
@@ -722,7 +726,9 @@ The following APIs allow to configure the Managed Heap usage:
 - `Kernel.setReservedMemory()`_: Sets the amount of memory heap *reserved* for the Kernel. This is a lower bound: the Kernel may allocate more memory than this reservation if needed.
 - `Feature.setMemoryLimit()`_: Sets the *maximum* amount of memory heap that can be allocated by a Feature. This is an upper bound, not a reservation.
   
-Especially, allocations from Features will fail (throw an OutOfMemoryError):
+  - Allocation may fail before the memory limit is reached in case the Managed heap is full.  
+  - Memory limits of multiple Features can overlap.  
+  - A Feature's memory limit can also overlap with the Kernel’s reserved memory.
 
 - when the feature-specific limit is reached, before the Managed heap is full;
 - when the Managed heap is full, before the feature-specific limit is reached;
