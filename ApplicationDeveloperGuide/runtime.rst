@@ -202,7 +202,7 @@ At that point, it is assigned one stack block from the stack pool to begin execu
 Each method call pushes a call frame onto the stack. 
 If a call frame cannot fit into the currently allocated stack block, the thread acquires an additional block from the pool.
 Stacks dynamically grow by acquiring more blocks, as needed by the call depth. 
-However, once a block is allocated to a thread, it remains associated with that thread until it is terminatied, even if the thread's stack depth decreases.
+However, once a block is allocated to a thread, it remains associated with that thread until it is terminated, even if the thread's stack depth decreases.
 
 A thread remains active as long as it is executing. Its status can be checked by calling the `Thread.isAlive()`_ method for example. 
 Once a thread is terminated (either by returning from its `Runnable.run()`_ method or due to an uncaught exception), its thread slot and all associated stack blocks are released.
