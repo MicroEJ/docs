@@ -195,6 +195,10 @@ This design ensures that thread creation and stack operations remain lightweight
   This approach ensures efficient memory reuse and eliminates fragmentation during execution. 
   The Application developer defines the :ref:`number of blocks in the pool <option_number_of_stack_blocks>` and the :ref:`size of each stack block <option_stack_block_size>`.
 
+Additionally, the Application developer can configure the :ref:`maximum number of stack blocks per thread <option_maximum_number_of_stack_blocks_per_thread>`,
+enforcing an upper bound on the stack memory consumption of individual threads. 
+This mechanism prevents a single thread from consuming all available stack blocks, particularly in case of unbounded or deep recursive method calls.
+
 **Thread and Call Stack Behavior**
 
 A Core Engine thread slot is only assigned when the thread is started by calling the `Thread.start()`_ method. 
