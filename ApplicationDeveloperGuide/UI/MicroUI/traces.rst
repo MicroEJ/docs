@@ -428,7 +428,7 @@ The following tables describe some events data.
    +-------------+--------------------------------------------+
    | 0x6c (108)  | Draw thick circle arc                      |
    +-------------+--------------------------------------------+
-   | 0xc8 (200)  | Draw image with fli                        |
+   | 0xc8 (200)  | Draw image with flip                       |
    +-------------+--------------------------------------------+
    | 0xc9 (201)  | Draw image with rotation (simple)          |
    +-------------+--------------------------------------------+
@@ -501,6 +501,7 @@ The traces are :ref:`systemview` compatible.
    MicroUI Traces displayed in SystemView
 
 The following text can be copied in a file called ``SYSVIEW_MicroUI.txt`` and copied in SystemView installation folder (e.g. ``SEGGER/SystemView_V252a/Description/``).
+Please note that SystemView requires a newline at the end of the file; otherwise, the events may not be decoded correctly.
 
 .. warning:: These traces are compatible with the UI Packs [12.1.5 - |UIPACKVERSION|] (see the known issue in the UI Packs :ref:`14.4.1<section_ui_changelog_14_4_1>` and :ref:`14.4.2<section_ui_changelog_14_4_2>`).
 
@@ -766,9 +767,7 @@ The following text can be copied in a file called ``SYSVIEW_MicroUI.txt`` and co
    134      UI_DrawScaledRenderableString  %UIDestination %UIString anchor=%d,%d factor=%dx%d %UIApprox | %UIDrawAsync
    135      UI_DrawRotatedCharacter        %UIDestination char=%c anchor=%d,%d center=%d,%d angle=%d %UIAlpha %UIApprox | %UIDrawAsync
    136      UI_DrawImageDeformed           %UIDestination %UISource | %UIDrawAsync
-
-
-
+   
 
 .. hint:: Retrieve a compatible file with the VEE Port's UI Pack in the UI Pack (open it with as a zip): in the VEE Port configuration project, open ``[veeport-configuration]\target~\dependencies\[architecture]-ui-pack.xpfp\build\fragments\microui\content\lib\SYSVIEW_MicroUI.txt``.
 
