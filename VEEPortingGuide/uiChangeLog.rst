@@ -11,6 +11,39 @@ Changelog
 [14.4.2] - 2025-05-20
 =====================
 
+Known Issues
+""""""""""""
+
+- Some SystemView logs are not identified, example: ``Function #586 Returns 0x0 after 169.844 us``.
+
+  - Reason: The new C header file  ``ui_log.h`` (in the C Module MicroUI) defines some invalid log identifiers:
+  
+	.. code-block:: c
+
+		#define UI_LOG_drawThickFadedPoint 70
+		[...]
+		#define UI_LOG_drawRotatedCharacter 95
+	
+  - Workaround: Change manually the log identifiers:
+  
+	.. code-block:: c
+
+		#define UI_LOG_drawThickFadedPoint 110
+		#define UI_LOG_drawThickFadedLine 111
+		#define UI_LOG_drawThickFadedCircle 112
+		#define UI_LOG_drawThickFadedCircleArc 113
+		#define UI_LOG_drawThickFadedEllipse 114
+		#define UI_LOG_drawThickLine 115
+		#define UI_LOG_drawThickCircle 116
+		#define UI_LOG_drawThickEllipse 117
+		#define UI_LOG_drawThickCircleArc 118
+		#define UI_LOG_drawFlippedImage 130
+		#define UI_LOG_drawRotatedImage 131
+		#define UI_LOG_drawScaledImage 132
+		#define UI_LOG_drawScaledString 133
+		#define UI_LOG_drawScaledRenderableString 134
+		#define UI_LOG_drawRotatedCharacter 135
+
 VG Pack
 """""""
 
@@ -24,6 +57,13 @@ FrontPanel
 **Fixed**
 
 - Fix the use of the SDK5 option "Resolve in workspace" (since UI Pack 14.4.1).
+
+C Module MicroUI
+""""""""""""""""
+
+**Known Issues**
+
+- see above.
 
 C Module DMA2D
 """"""""""""""
@@ -53,8 +93,8 @@ C Module NemaGFX
 [14.4.1] - 2025-03-13
 =====================
 
-Known Issue
-"""""""""""
+Known Issues
+""""""""""""
 
 - This version is not compatible with the VG Pack (any versions): 
 
@@ -66,6 +106,36 @@ Known Issue
 		[java] C:\[...]-configuration\target~\scripts\rip\build\autoConfiguration-microvg.xml:43: VG Pack requires the UI Pack 14.1.0 or higher and the platform fetches the UI Pack ${ui.packVersion}.
 
   - Workaround: None, use the UI Pack 14.3.3 instead.
+
+- Some SystemView logs are not identified, example: ``Function #586 Returns 0x0 after 169.844 us``.
+
+  - Reason: The new C header file  ``ui_log.h`` (in the C Module MicroUI) defines some invalid log identifiers:
+  
+	.. code-block:: c
+
+		#define UI_LOG_drawThickFadedPoint 70
+		[...]
+		#define UI_LOG_drawRotatedCharacter 95
+	
+  - Workaround: Change manually the log identifiers:
+  
+	.. code-block:: c
+
+		#define UI_LOG_drawThickFadedPoint 110
+		#define UI_LOG_drawThickFadedLine 111
+		#define UI_LOG_drawThickFadedCircle 112
+		#define UI_LOG_drawThickFadedCircleArc 113
+		#define UI_LOG_drawThickFadedEllipse 114
+		#define UI_LOG_drawThickLine 115
+		#define UI_LOG_drawThickCircle 116
+		#define UI_LOG_drawThickEllipse 117
+		#define UI_LOG_drawThickCircleArc 118
+		#define UI_LOG_drawFlippedImage 130
+		#define UI_LOG_drawRotatedImage 131
+		#define UI_LOG_drawScaledImage 132
+		#define UI_LOG_drawScaledString 133
+		#define UI_LOG_drawScaledRenderableString 134
+		#define UI_LOG_drawRotatedCharacter 135
 
 MicroUI
 """""""
@@ -116,6 +186,10 @@ C Module MicroUI
 **Removed**
 
 - Remove some logs of the BRS management.
+
+**Known Issues**
+
+- see above.
 
 .. _section_ui_changelog_14_3_3:
 
