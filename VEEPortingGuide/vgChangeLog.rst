@@ -64,8 +64,8 @@ UI Pack
 
 * Compatible with UI Pack 14.1.1 (Font extensibility).
 
-MicroVG Implementation
-""""""""""""""""""""""
+MicroVG
+"""""""
 
 * Implement `MicroVG API 1.5`_.
 
@@ -90,8 +90,8 @@ C Module HarfBuzz
 [1.6.0] - 2024-07-19
 ====================
 
-MicroVG Implementation
-""""""""""""""""""""""
+MicroVG
+"""""""
 
 **Added**
 
@@ -271,6 +271,9 @@ C Module VGLite
 
 [1.4.0] - 2023-07-21
 ====================
+
+UI Pack
+"""""""
 
 **Fixed**
 
