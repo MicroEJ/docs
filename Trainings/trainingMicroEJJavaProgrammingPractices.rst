@@ -25,7 +25,7 @@ Readable Code
 
 This section describes rules to get a readable code, in order to facilitate:
 
-- the maintenance of an existing code with multiple developers contributions (e.g., merge conflicts, reviews). 
+- the maintenance of an existing code with multiple developers contributions (e.g., merge conflicts, reviews).
 - the landing to a new code base when the same rules are applied across different modules and components.
 
 Naming Convention
@@ -52,7 +52,7 @@ Interfaces and Subclasses Naming Convention
 An Interface is named after the feature it exposes.
 It does not have a ``I`` prefix because it hurts readability and may cause naming issues when potentially converted to/from an abstract class.
 
-The classes implementing an interface are named after the interface and how they implement it. 
+The classes implementing an interface are named after the interface and how they implement it.
 Using ``Impl`` suffix is not recommended because it does not express the implementation specificity. If there is no specificity, maybe there is no need to have an interface.
 
 Example: an interface ``Storage`` (that allows to load/store data) may have several implementations, such as ``StorageFs`` (on a file system), ``StorageDb`` (on a database), ``StorageRam`` (volatile storage in RAM).
@@ -81,7 +81,7 @@ Javadoc comments convention is based on the `official documentation <https://www
 
 .. note::
 
-   Javadoc is written in HTML format and doesn't accept XHTML format: tags must not be closed. 
+   Javadoc is written in HTML format and doesn't accept XHTML format: tags must not be closed.
    For example, use only a ``<p>`` between two paragraphs.
 
 Here is a list of the rules to follow when writing Javadoc:
@@ -162,10 +162,10 @@ MicroEJ defines a formatting profile for ``.java`` files, which is automatically
 .. note::
 
    MicroEJ SDK automatically applies formatting when a ``.java`` file is saved. It is also possible to manually apply formatting on specific files:
-   
+
    - In ``Package Explorer``, select the desired files, folders or projects,
    - then go to :guilabel:`Source` > :guilabel:`Format`. The processed files must not have any warning or error.
-   
+
 Here is the list of formatting rules included in this profile:
 
 - Indentation is done with 1 tab.
@@ -194,10 +194,10 @@ Here is a list of additional formatting rules that are not automatically applied
   the visibility (easier to read).
 
 .. note::
-   
+
    Most of these rules are checked by :ref:`sonar_code_analysis`.
 
-Best Practices 
+Best Practices
 --------------
 
 This section describes rules made of best practices, well-known restrictions of the Java Programming Language, and more generally Object Oriented paradigm.
@@ -225,7 +225,7 @@ Simplify Maintenance
 ^^^^^^^^^^^^^^^^^^^^
 
 - Extract constants instead of using magic numbers.
-- Use parenthesis for complex operation series; it simplifies the understanding 
+- Use parenthesis for complex operation series; it simplifies the understanding
   of operator priorities.
 - Write short lines. This can be achieved by extracting locals (see :ref:`local_extraction`).
 - Use a limited number of parameters in methods (or perhaps a new type
@@ -243,7 +243,7 @@ Basic Optimizations
 
 - Avoid explicitly initializing fields to ``0`` or ``null``, because they are zero-initialized by the runtime. A ``//VM_DONE`` comment
   can be written to understand the optimization.
-- Avoid using built-in thread safe types (`Vector`_, `Hashtable`_, `StringBuffer`_, etc.). 
+- Avoid using built-in thread safe types (`Vector`_, `Hashtable`_, `StringBuffer`_, etc.).
   Usually synchronization has to be done at a higher level.
 - Avoid serializing/deserializing data from byte arrays using manual
   bitwise operations, use `ByteArray`_ utility methods instead.
@@ -317,7 +317,7 @@ The ``equals(Object)`` method is written that way:
 
 - Compare the argument with ``this`` using the ``==`` operator. If both are
   equals, return ``true``. This test is for performance purposes, so it is
-  optional and may be removed if the object has a few fields.
+  optional and may be removed if the object has few fields.
 - Use an ``instanceof`` to check if the argument has the correct type. If not,
   return ``false``. This check also validates that the argument is not null.
 - Cast the argument to the correct type.
@@ -361,10 +361,10 @@ Depending on its type, the hash code of a field is:
 - Long: ``(int)(f ^ (f >>> 32))``.
 - Float: ``Float.floatToIntBits(f)``.
 - Double: ``Double.doubleToLongBits(f)`` and the same as for a long.
-- Object: ``(f == null ? 0 : f.hashCode())``. 
+- Object: ``(f == null ? 0 : f.hashCode())``.
 - Array: add the hash codes of all its elements (depending on their type).
 - The hashcode of a null field is 0.
-  
+
 .. code:: java
 
   private static final int PRIME = 31;
@@ -380,7 +380,7 @@ Depending on its type, the hash code of a field is:
 - Prefer using "foo".equals(string) to avoid potential null accesses.
 
 .. code:: java
-	  
+
   String s = null;
   // Null safe
   "foo".equals(s);
@@ -429,12 +429,12 @@ Generic Types
 Memory Use of Objects
 ^^^^^^^^^^^^^^^^^^^^^
 
-- The Java bytecode specification defines a 32-bit operand stack model. Declaring local variables with types that require fewer bits (byte, short, char) results in additional conversion and casting instructions during execution. However this is not applicable the declaring Java instance fields, which are optimized for size in the internal Java object structure. The organization of fields in memory is left to the runtime implementation.
+- The Java bytecode specification defines a 32-bit operand stack model. Declaring local variables with types that require fewer bits (byte, short, char) results in additional conversion and casting instructions during execution. However this is not applicable when declaring Java instance fields, which are optimized for size in the internal Java object structure. The organization of fields in memory is left to the runtime implementation.
 
 - Operations on local variables in Java are happening using the thread's own stack (by loading and storing values onto the stack).
   Local variables are tied to their scope/context usually their associated method.
   Objects are stored in Managed Heap.
-  
+
 - :ref:`memory-considerations` and :ref:`limitations` are also documentation pages that describe
   the memory use of Objects and the limitations of the MicroEJ runtime.
 
@@ -479,7 +479,7 @@ Memory Use of Objects
 	newClone.setField(newClone.getField().clone());
 	return newClone;
   }
-  
+
   // Over
   @Override
   protected Object clone() throws CloneNotSupportedException {
@@ -487,7 +487,7 @@ Memory Use of Objects
   }
 
 - For specific memory size optimizations, see :ref:`tutorial_optimize_memory_footprint`.
-  
+
 Reflection
 ^^^^^^^^^^
 
@@ -502,7 +502,7 @@ Reflection
 
 BON Constants
 ^^^^^^^^^^^^^
-  
+
 - Consider using BON constants, they allow for sections of code to not be embedded in the final binary depending
   on the constant value.
   Constants are resolved at binary level without having to recompile the sources. More information can be
@@ -527,7 +527,7 @@ Concurrency
   Make your synchronization between threads explicit.
 
 - Best pratices for synchronization:
-  
+
   - Small exclusion zones, large exclusion zones usually means thread wait longer.
   - Use `Executors <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/concurrent/Executor.html>`_.
   - For the use of explicit synchronization and use of monitors, you can consult this
@@ -535,7 +535,7 @@ Concurrency
 
 - There is no explicit way to kill a Java thread. A well designed thread that is long running checks for
   interrupts at regular intervals and acts on interrupt signals. More information can be found `here <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Thread.html#interrupt-->`_.
-    
+
 Serialization
 ^^^^^^^^^^^^^
 
@@ -543,12 +543,12 @@ Serialization
 
   - the ``ByteArray`` type (see the `Javadoc <https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/ByteArray.html>`_)
   - the JSON libraries:
-    
+
     - `ej.json <https://repository.microej.com/javadoc/microej_5.x/apis/ej/json/package-summary.html>`_
     - `org.json.me <https://repository.microej.com/javadoc/microej_5.x/apis/org/json/me/package-summary.html>`_
-      
+
   - the `CBOR library <https://repository.microej.com/javadoc/microej_5.x/apis/ej/cbor/package-summary.html>`_
-  - the `protobuf library <https://repository.microej.com/javadoc/microej_5.x/apis/com/google/protobuf/package-summary.html>`_ 
+  - the `protobuf library <https://repository.microej.com/javadoc/microej_5.x/apis/com/google/protobuf/package-summary.html>`_
 
 Annotations
 ^^^^^^^^^^^
@@ -622,7 +622,7 @@ Here are in no particular order best pratices around managing exceptions in Java
   }
 
 - Automatically close resources using try-with-resources.
-  
+
 - For more information on Exception as well as a hierarchy of common exceptions please read `this article <https://rollbar.com/blog/java-exceptions-hierarchy-explained/#>`_.
 
 Data Encapsulation and Fields
@@ -651,7 +651,7 @@ Usage of Inner Classes
 .. code:: java
 
   public class OuterClass {
-    
+
       // Avoid non-static inner class (an instance of this class is stored in the outer class)
       private class InnerClass1 {
           public void message() {
@@ -666,7 +666,7 @@ Usage of Inner Classes
           }
       }
   }
-  
+
 - Prefer short inner classes for readability (if your inner class gets too complex it surely deserves its own file).
 
 Usage of Clinits
@@ -677,7 +677,7 @@ Usage of Clinits
 About Limitations
 ^^^^^^^^^^^^^^^^^
 
-- For a deeper look at what is allowed interms of numbers fields or methods in a class, maximum number of threads and more: please consult :ref:`limitations`.
+- For a deeper look at what is allowed in terms of number of fields or methods in a class, maximum number of threads and more: please consult :ref:`limitations`.
 
 Inlining
 ^^^^^^^^
@@ -801,9 +801,9 @@ Code Instrumentation
 We have tools allow the profiling and logging of Java code behavior, please refer to :ref:`codeInstrumentationForLogging`.
 
 ..
-   | Copyright 2020-2025, MicroEJ Corp. Content in this space is free 
-   for read and redistribute. Except if otherwise stated, modification 
+   | Copyright 2020-2025, MicroEJ Corp. Content in this space is free
+   for read and redistribute. Except if otherwise stated, modification
    is subject to MicroEJ Corp prior approval.
-   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and
    copyrights are the property of their respective owners.
 
