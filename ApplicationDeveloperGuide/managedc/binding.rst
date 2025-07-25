@@ -115,7 +115,7 @@ all Java-declared methods and Managed C functions that meet the following condit
 
 - The Java method is declared ``static``.
 - The signature (name, parameters and return type) of the Java method matches with the signature of the Managed C function (see :ref:`managedc.matching.types`). 
-- The Managed C function has been exported by the Wasm module. See :ref:`-Wl,--export* options <managedc.link.module>`. 
+- The Managed C function has been exported by the Wasm module. See ``-Wl,--export`` :ref:`linker option <managedc.link.module>`. 
   (Managed C functions declared ``static`` cannot be exported as they are only visible in the C file they are declared) [1]_.
 
 
