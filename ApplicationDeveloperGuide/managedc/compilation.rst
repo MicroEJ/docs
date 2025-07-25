@@ -44,9 +44,9 @@ It automatically calls ``wasm-ld``, the Wasm linker.
 
 The following options are recommended to ensure the produced ``.wasm`` binary is compatible with MICROEJ VEE:
 
-* `-Wl,--allow-undefined <https://lld.llvm.org/WebAssembly.html#cmdoption-allow-undefined>`_: Allows undefined symbols, which is necessary when the Wasm module references extern symbols defined by the Java host.
-* `-Wl,--stack-first <https://lld.llvm.org/WebAssembly.html#cmdoption-stack-first>`_: Places the stack at the begining of the linear memory. Refer to :ref:`managedc.linear.memory.layout` for more information.
-* `-z stack-size=n <https://man.archlinux.org/man/extra/lld/ld.lld.1.en#stack-size>`_: Adjusts the stack size to 'n' bytes. Consult :ref:`managedc.linear.memory.size.stack` for further information.
+* ``-Wl,--allow-undefined``: Allows undefined symbols, which is necessary when the Wasm module references extern symbols defined by the Java host. See `linker documentation <https://lld.llvm.org/WebAssembly.html#cmdoption-allow-undefined>`__.
+* ``-Wl,--stack-first``: Places the stack at the begining of the linear memory. See `linker documentation <https://lld.llvm.org/WebAssembly.html#cmdoption-stack-first>`__ and refer to :ref:`managedc.linear.memory.layout` for more information.
+* ``-z stack-size=n``: Adjusts the stack size to 'n' bytes. See `linker documentation <https://man.archlinux.org/man/extra/lld/ld.lld.1.en#stack-size>`__ and consult :ref:`managedc.linear.memory.size.stack` for further information.
 
 For example, if you have the object file ``src/main/resources/my_app.o`` that defines a ``main`` entry point,
 the following command will generate a Wasm module including this entry point along with all transitive dependencies from the :ref:`WASI Libc <wasm.wasi>`.
