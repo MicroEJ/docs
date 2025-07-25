@@ -155,7 +155,7 @@ To use Managed C in your Application, follow these steps:
 
    .. note::
          
-         To call a Managed C function from Java code, you need to export it using the ``-Wl,--export=[function_name]`` link option.
+         To call a Managed C function from Java code, you need to export it using the ``-Wl,--export=[function_name]`` `linker option <https://lld.llvm.org/WebAssembly.html#exports>`_.
          In this case, the ``factorial`` function is exported with ``-Wl,--export=factorial``.
 
    .. note::
