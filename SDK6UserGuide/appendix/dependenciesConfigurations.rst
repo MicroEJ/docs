@@ -31,7 +31,6 @@ The MicroEJ Gradle plugins also define dependency configurations for internal us
     - ``microejRuntimeEnvironmentFullRuntimeClasspath``, used by the :ref:`sdk6_module_natures.tasks.buildVirtualDevice`, :ref:`sdk6_module_natures.tasks.buildApplicationObjectFile` and :ref:`sdk6_module_natures.tasks.buildExecutable` tasks
     - ``microejFullRuntimeClasspath``, used by the :ref:`sdk6_module_natures.tasks.runOnSimulator` and :ref:`sdk6_module_natures.tasks.buildApplicationObjectFile` tasks
     - ``microejVeeFullClasspath``, used by the :ref:`sdk6_module_natures.tasks.loadVee` task
-    - ``microejVeeCompileClasspath``, used by the :ref:`sdk6_module_natures.application` plugin
     - ``microejVeeRuntimeClasspath``, used by the :ref:`sdk6_module_natures.application` plugin
 
 .. _gradle_veeport_project_dependencies_configurations:
@@ -117,6 +116,19 @@ This variant is used to publish the files generated when building the Feature of
 It is configured with the following attribute:
 
 - the custom ``com.microej.artifact.element`` attribute, set to ``feature-build-files``
+
+applicationApiElements
+""""""""""""""""""""""
+
+This variant is used to publish the Runtime Environment of an Application.
+It is configured with the following attributes:
+
+- the standard ``LibraryElement`` attribute, set to ``jar``
+- the standard ``Category`` attribute, set to ``library``
+- the standard ``Usage`` attribute, set to ``java-api``
+- the standard ``TargetJvmVersion`` attribute, set to ``7``
+- the standard ``Bundling`` attribute, set to ``external``
+- the custom ``com.microej.artifact.element`` attribute, set to ``runtime-environment-api``
 
 Mock
 ^^^^

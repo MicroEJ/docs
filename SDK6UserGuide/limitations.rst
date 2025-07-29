@@ -18,14 +18,16 @@ It is also important to note the following SDK 5 / SDK 6 compatibility rules:
 - SDK 6 Virtual Device cannot be used by SDK 5 Applications.
 - SDK 5 Virtual Device cannot be used to build the Virtual Device of a SDK 6 Application (augmented Virtual Device).
 
-When the :ref:`VEE Port transitive resolution <sdk_6_vee_port_transitivity>` is enabled, the following VEE Ports are not supported:
+When the :ref:`VEE transitive resolution <gradle_vee_transitivity_chapter>` is enabled, the following VEE Ports and Kernels are not supported:
 
 - VEE Ports built with SDK 6 ``1.2.0`` or older
-- SDK 5 VEE Ports
+- Kernels built with SDK 6 ``1.3.0`` or older
+- SDK 5 VEE Ports and Kernels
 - local VEE Port Directory
 - local VEE Port archive file
+- local Kernels
 
-The feature will be enabled by default in the next SDK 6 major version, so it is highly recommended to update your VEE Port if it does not allow to be 
+The feature will be enabled by default in the next SDK 6 major version, so it is highly recommended to update your VEE Port or your Kernel if it does not allow to be 
 transitively resolved.
 
 ..
