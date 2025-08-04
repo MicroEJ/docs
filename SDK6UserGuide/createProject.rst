@@ -123,7 +123,8 @@ If you want to create a VEE Port project, refer to the :ref:`sdk_6_veeport_creat
          Project View in Android Studio
 
       .. note::
-         If you do not use the last version of Android Studio, make sure that Gradle Wrapper uses at least Gradle version ``8.6``.
+         If you do not use the last version of Android Studio, make sure that Gradle Wrapper uses Gradle ``8``, 
+         and at least version ``8.6`` (the version 9 is not supported yet).
          Refer to the :ref:`sdk_6_create_project_gradle_wrapper` section for more information.
 
       The project created by the wizard is a multi-project with a single subproject (named ``app``).
@@ -546,7 +547,7 @@ This requires to `install the Gradle distribution <https://gradle.org/install/>`
   gradle wrapper
 
 The Gradle version used by the project can then be updated in the ``gradle/wrapper/gradle-wrapper.properties`` file. 
-The SDK requires Gradle ``8.6`` or higher::
+The SDK requires Gradle ``8``, and at least version ``8.6`` (the version ``9`` is not supported yet)::
 
   distributionUrl=https\://services.gradle.org/distributions/gradle-8.6-bin.zip
 
