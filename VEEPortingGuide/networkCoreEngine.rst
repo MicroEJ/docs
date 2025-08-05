@@ -104,16 +104,20 @@ This example is used on VEE Port with BSD-like sockets APIs, on all VEE Ports a 
    :linenos:
    :lineno-start: 92
 
-In the previous declaration we call a custom lwip compatible initialization that does the following:
+In the previous declaration we call a custom LwIP compatible initialization that does the following:
 
 - Initializes the hardware.
-- Initializes the lwip stack.
+- Initializes the LwIP stack.
 - Configure the network interface.
 - Sends a DHCP request and assigns the address to the interface once the DHCP request is done.
 
 This is suitable for most of the networks with a DHCP server.
 
-.. For static IP setting provide a lwip static configuration (?)
+In environments where DHCP is not available, the network stack must be configured to use a static IP address instead.
+This involves manually assigning an IP address, subnet mask, gateway, and optionally DNS settings during the initialization phase.
+Refer to the documentation of your IP stack for target specific static IP configuration steps.
+
+.. Also provide example here?
 
 Use
 ===
