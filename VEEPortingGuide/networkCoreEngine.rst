@@ -68,6 +68,57 @@ To enable it, the Net :ref:`Pack <pack_overview>` (which bundles several librari
 
          Net Pack Modules
 
+Initialization
+==============
+
+When porting the Net library it is necessary to initialize and configure the lower layers of the network before the application can access it.
+This includes configuring the hardware network interfaces, initializing the IP stack, and ensuring connectivity is available.
+The Net library assumes that these are correctly set up and ready for use when the initialization is done.
+
+The entry point for this initialization is the following native function: ``LLNET_CHANNEL_impl_initialize``:
+
+.. code-block::
+
+   /**
+    * @brief Initializes the TCP/IP stack components.
+    *
+    * @note Throws NativeIOException on error.
+    *
+    * @see LLNET_ERRORS.h header file for error codes.
+    */
+   void LLNET_CHANNEL_IMPL_initialize(void);
+
+It is called from a static code block in the Net library so it will run before the application starts, see the following implementation example `available here <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk/blob/main/bsp/vee/port/net/src/LLNET_CHANNEL_bsd.c>`_:
+
+.. rli:: https://raw.githubusercontent.com/MicroEJ/nxp-vee-imxrt1170-evk/refs/heads/main/bsp/vee/port/net/src/LLNET_CHANNEL_bsd.c
+   :language: c
+   :lines: 63-76
+   :linenos:
+   :lineno-start: 63
+
+This example is used on VEE Port with BSD-like sockets APIs, on all VEE Ports a macro is provided to call custom initialization code (also see `here <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk/blob/main/bsp/vee/port/net/inc/LLNET_configuration.h>`_):
+
+.. rli:: https://raw.githubusercontent.com/MicroEJ/nxp-vee-imxrt1170-evk/refs/heads/main/bsp/vee/port/net/inc/LLNET_configuration.h
+   :language: c
+   :lines: 92-108
+   :linenos:
+   :lineno-start: 92
+
+In the previous declaration we call a custom LwIP compatible initialization that does the following:
+
+- Initializes the hardware.
+- Initializes the LwIP stack.
+- Configure the network interface.
+- Sends a DHCP request and assigns the address to the interface once the DHCP request is done.
+
+This is suitable for most of the networks with a DHCP server.
+
+In environments where DHCP is not available, the network stack must be configured to use a static IP address instead.
+This involves manually assigning an IP address, subnet mask, gateway, and optionally DNS settings during the initialization phase.
+Refer to the documentation of your IP stack for target specific static IP configuration steps.
+
+.. Also provide example here?
+
 Use
 ===
 
