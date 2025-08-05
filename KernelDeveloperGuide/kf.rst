@@ -690,6 +690,8 @@ loaded. An type exposed by the Kernel cannot be overloaded by a Feature.
 Resource Control Manager
 ------------------------
 
+.. _cpu_quota:
+
 CPU Control: Quotas
 ~~~~~~~~~~~~~~~~~~~
 
@@ -710,6 +712,8 @@ suspended (the Feature is paused).
 If a Feature exceeds its execution quota while holding a monitor (via one of its threads),
 and another Module (Feature or Kernel) with no execution quota limit attempts to acquire the same monitor (via one of its threads), 
 the thread holding the monitor will continue its execution until it releases the monitor.
+
+.. _ram_control:
 
 RAM Control: Managed Heap Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
