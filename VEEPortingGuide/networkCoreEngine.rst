@@ -88,13 +88,13 @@ The entry point for this initialization is the following native function: ``LLNE
     */
    void LLNET_CHANNEL_IMPL_initialize(void);
 
-It is called from a static code block in the Net library so it will run before the application starts, see the following implementation example `available here <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk/blob/0bc78b3864da4d51c1a0b638f060cafe319d5779/bsp/vee/port/net/src/LLNET_CHANNEL_bsd.c>`_:
+It is called during the `initialization phase <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/bon.html#runtime-phases>`_ of the Net library so it will run before the application starts, see the following implementation example `available here <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk/blob/0bc78b3864da4d51c1a0b638f060cafe319d5779/bsp/vee/port/net/src/lwip_util.c>`_:
 
-.. rli:: https://raw.githubusercontent.com/MicroEJ/nxp-vee-imxrt1170-evk/0bc78b3864da4d51c1a0b638f060cafe319d5779/bsp/vee/port/net/src/LLNET_CHANNEL_bsd.c
+.. rli:: https://raw.githubusercontent.com/MicroEJ/nxp-vee-imxrt1170-evk/0bc78b3864da4d51c1a0b638f060cafe319d5779/bsp/vee/port/net/src/lwip_util.c
    :language: c
-   :lines: 63-76
+   :lines: 411-450
    :linenos:
-   :lineno-start: 63
+   :lineno-start: 411
 
 This example is used on VEE Port with BSD-like sockets APIs, on all VEE Ports a macro is provided to call custom initialization code (also see `here <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk/blob/0bc78b3864da4d51c1a0b638f060cafe319d5779/bsp/vee/port/net/inc/LLNET_configuration.h>`_):
 
