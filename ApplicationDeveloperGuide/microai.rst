@@ -77,12 +77,14 @@ When using TensorFlow Lite, the tensors are allocated dynamically into the syste
 
 However when using Tensorflow Lite Micro, we must configure a `inferenceMemoryPoolSize`, which is called Arena Size, where all the input, output and intermediate tensors will be allocated.
 This is helps to have a deterministic memory usage.
-To determine which minimal value can be set, simply try larger values, until the `MLInferenceEngine`_ succeeds.
-Using the simulator, you will see such log:
+To determine which minimal value can be set, try larger values using the Simulator, until the `MLInferenceEngine`_ succeeds.
+At which point you should see such log:
+
 .. code-block:: java
+
         [microai mock] MicroInterpreter uses 1112 bytes, use this value to optimize the Arena Size
 
-Note: This example is very specific to the backend used
+Note: This example is very specific to the backend used.
 
 Code Example
 ^^^^^^^^^^^^
