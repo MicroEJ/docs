@@ -19,7 +19,7 @@ To use the `MicroAI Library <https://repository.microej.com/modules/ej/api/micro
 
 .. code-block:: kotlin
 
-   implementation("ej.api:microai:2.0.0")
+   implementation("ej.api:microai:2.1.0")
 
 Building or running an Application which uses the MicroAI Library requires a SDK6 VEE Port that provides the :ref:`MicroAI Pack <pack_microai>`.
 
@@ -63,21 +63,29 @@ The `MLInferenceEngine`_ constructor will:
 
 
 Using an Input Stream Model
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When using `MLInferenceEngine(InputStream is, int inferenceMemoryPoolSize)`_, the model is loaded inside the MicroAI heap.
 The size of MicroAI heap is defined from the :ref:`MicroAI Configurations <microai_configuration>`.
 
 Note that the call to `MLInferenceEngine(InputStream is, int inferenceMemoryPoolSize)`_ will block until the model is completely retrieved/loaded.
 
-Using an predefined Inference Memory Pool
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Using an Inference Memory Pool
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Some backend require to define a static size, in which the tensors will be allocated. For Tensorflow Lite Micro, it is called the Arena Size.
-For TensorFlow Lite, it is not necessary, and so the parameter is ignored.
+When using TensorFlow Lite, the tensors are allocated dynamically into the system heap.
+
+However when using Tensorflow Lite Micro, we must configure a `inferenceMemoryPoolSize`, which is called Arena Size, where all the input, output and intermediate tensors will be allocated.
+This is helps to have a deterministic memory usage.
+To determine which minimal value can be set, simply try larger values, until the `MLInferenceEngine`_ succeeds.
+Using the simulator, you will see such log:
+.. code-block:: java
+        [microai mock] MicroInterpreter uses 1112 bytes, use this value to optimize the Arena Size
+
+Note: This example is very specific to the backend used
 
 Code Example
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^
 Once initialized, `MLInferenceEngine`_ allows to get input/output model tensors and to run inferences on the trained model.
 
 For example, the following snippet loads a trained model from the application resources and runs an inference on it:
