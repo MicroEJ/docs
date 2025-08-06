@@ -88,17 +88,17 @@ The entry point for this initialization is the following native function: ``LLNE
     */
    void LLNET_CHANNEL_IMPL_initialize(void);
 
-It is called from a static code block in the Net library so it will run before the application starts, see the following implementation example `available here <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk/blob/main/bsp/vee/port/net/src/LLNET_CHANNEL_bsd.c>`_:
+It is called from a static code block in the Net library so it will run before the application starts, see the following implementation example `available here <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk/blob/0bc78b3864da4d51c1a0b638f060cafe319d5779/bsp/vee/port/net/src/LLNET_CHANNEL_bsd.c>`_:
 
-.. rli:: https://raw.githubusercontent.com/MicroEJ/nxp-vee-imxrt1170-evk/refs/heads/main/bsp/vee/port/net/src/LLNET_CHANNEL_bsd.c
+.. rli:: https://raw.githubusercontent.com/MicroEJ/nxp-vee-imxrt1170-evk/0bc78b3864da4d51c1a0b638f060cafe319d5779/bsp/vee/port/net/src/LLNET_CHANNEL_bsd.c
    :language: c
    :lines: 63-76
    :linenos:
    :lineno-start: 63
 
-This example is used on VEE Port with BSD-like sockets APIs, on all VEE Ports a macro is provided to call custom initialization code (also see `here <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk/blob/main/bsp/vee/port/net/inc/LLNET_configuration.h>`_):
+This example is used on VEE Port with BSD-like sockets APIs, on all VEE Ports a macro is provided to call custom initialization code (also see `here <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk/blob/0bc78b3864da4d51c1a0b638f060cafe319d5779/bsp/vee/port/net/inc/LLNET_configuration.h>`_):
 
-.. rli:: https://raw.githubusercontent.com/MicroEJ/nxp-vee-imxrt1170-evk/refs/heads/main/bsp/vee/port/net/inc/LLNET_configuration.h
+.. rli:: https://raw.githubusercontent.com/MicroEJ/nxp-vee-imxrt1170-evk/0bc78b3864da4d51c1a0b638f060cafe319d5779/bsp/vee/port/net/inc/LLNET_configuration.h
    :language: c
    :lines: 92-108
    :linenos:
