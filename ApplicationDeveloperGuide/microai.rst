@@ -148,7 +148,7 @@ For example, the following snippet runs inference on model that takes 1 quantize
 
 .. code-block:: java
 
-        try(MLInferenceEngine mlInferenceEngine = new MLInferenceEngine("/model.tflite")) { // Initialize the inference engine.
+        try(MLInferenceEngine mlInferenceEngine = new MLInferenceEngine("/model.tflite"), MEMORY_POOL_SIZE) { // Initialize the inference engine.
             InputTensor inputTensor = mlInferenceEngine.getInputTensor(0); // Get input tensor of the trained model.
             byte[] inputData = new byte[inputTensor.getNumberElements()]; // Create an array that fits size of input tensor.
 
