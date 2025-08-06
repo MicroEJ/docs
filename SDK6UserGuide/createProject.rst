@@ -123,9 +123,8 @@ If you want to create a VEE Port project, refer to the :ref:`sdk_6_veeport_creat
          Project View in Android Studio
 
       .. note::
-         If you do not use the last version of Android Studio, make sure that Gradle Wrapper uses Gradle ``8``, 
-         and at least version ``8.6`` (the version 9 is not supported yet).
-         Refer to the :ref:`sdk_6_create_project_gradle_wrapper` section for more information.
+         If you do not use the last version of Android Studio, 
+         refer to the :ref:`sdk_6_gradle_compatibility` table to use the right Gradle version in the :ref:`Gradle Wrapper configuration <sdk_6_create_project_gradle_wrapper>`.
 
       The project created by the wizard is a multi-project with a single subproject (named ``app``).
       The type of this subproject is the type that has previously been chosen.
@@ -546,10 +545,11 @@ This requires to `install the Gradle distribution <https://gradle.org/install/>`
 
   gradle wrapper
 
-The Gradle version used by the project can then be updated in the ``gradle/wrapper/gradle-wrapper.properties`` file. 
-The SDK requires Gradle ``8``, and at least version ``8.6`` (the version ``9`` is not supported yet)::
+The Gradle version used by the project can then be updated in the ``gradle/wrapper/gradle-wrapper.properties`` file: 
 
   distributionUrl=https\://services.gradle.org/distributions/gradle-8.6-bin.zip
+
+Check the :ref:`sdk_6_gradle_compatibility` table to use the right Gradle version.
 
 To use the Wrapper during a build, use ``gradlew`` or ``./gradlew`` depending on your OS instead of ``gradle`` in the command line:
 
@@ -567,6 +567,23 @@ In the following chapters of the documentation, the Linux command ``./gradlew`` 
 
 Refer to `the official Gradle documentation <https://docs.gradle.org/current/userguide/gradle_wrapper.html>`__ for more information about the Wrapper.
 
+.. _sdk_6_gradle_compatibility:
+
+SDK and Gradle Compatibility
+----------------------------
+
+The following table lists which version of Gradle is supported for each version of the SDK:
+
+.. list-table:: 
+   :widths: 50 50
+   :header-rows: 1
+
+   * - SDK Version
+     - Gradle Version
+   * - ``1.4.0``
+     - ``8.6-9.0``
+   * - ``1.0.0-1.3.1``
+     - ``8.6-8.14``
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
