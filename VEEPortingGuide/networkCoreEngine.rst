@@ -71,10 +71,7 @@ To enable it, the Net :ref:`Pack <pack_overview>` (which bundles several librari
 Initialization
 ==============
 
-When porting the Net library it is necessary to initialize and configure the lower layers of the network before the application can access it.
-This includes configuring the hardware network interfaces, initializing the IP stack, and ensuring connectivity is available.
-The Net library assumes that these are correctly set up and ready for use when the initialization is done.
-
+When porting the Net library the initialize function shall make sure the underlying network stack is initialized.
 The entry point for this initialization is the following native function: ``LLNET_CHANNEL_impl_initialize``:
 
 .. code-block::
