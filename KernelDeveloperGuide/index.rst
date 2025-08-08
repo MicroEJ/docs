@@ -14,6 +14,7 @@ Kernel Developer Guide
    kernelUID
    sandboxedAppLifecycle
    applicationSecurityPolicy
+   featurePolicyEnforcer
    featuresCommunication
    kfEnabledLibraries
    kfTestsuite
