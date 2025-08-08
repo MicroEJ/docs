@@ -76,9 +76,10 @@ Using an Inference Memory Pool
 When using TensorFlow Lite, the tensors are allocated dynamically into the system heap.
 
 However when using Tensorflow Lite Micro, we must configure a `inferenceMemoryPoolSize`, which is called Arena Size, where all the input, output and intermediate tensors will be allocated.
-This is helps to have a deterministic memory usage.
-To determine which minimal value can be set, try larger values using the Simulator, until the `MLInferenceEngine`_ succeeds.
-At which point you should see such log:
+This helps achieve deterministic memory usage.
+
+To figure out which minimal value can be set, try large enough values using the Simulator, until the `MLInferenceEngine`_ succeeds.
+At which point you should see such log, which will help to fine tune the `inferenceMemoryPoolSize` value:
 
 .. code-block:: java
 
@@ -94,7 +95,7 @@ For example, the following snippet loads a trained model from the application re
 
 .. code-block:: java
 
-        try(MLInferenceEngine mlInferenceEngine = new MLInferenceEngine("/model.tflite"), MEMORY_POOL_SIZE) { // Initialize the inference engine.
+        try(MLInferenceEngine mlInferenceEngine = new MLInferenceEngine("/model.tflite", MEMORY_POOL_SIZE)) { // Initialize the inference engine.
             InputTensor inputTensor = mlInferenceEngine.getInputTensor(0); // Get input tensor of the trained model.
             /*
              * Fill the input tensor
@@ -150,7 +151,7 @@ For example, the following snippet runs inference on model that takes 1 quantize
 
 .. code-block:: java
 
-        try(MLInferenceEngine mlInferenceEngine = new MLInferenceEngine("/model.tflite"), MEMORY_POOL_SIZE) { // Initialize the inference engine.
+        try(MLInferenceEngine mlInferenceEngine = new MLInferenceEngine("/model.tflite", MEMORY_POOL_SIZE)) { // Initialize the inference engine.
             InputTensor inputTensor = mlInferenceEngine.getInputTensor(0); // Get input tensor of the trained model.
             byte[] inputData = new byte[inputTensor.getNumberElements()]; // Create an array that fits size of input tensor.
 
