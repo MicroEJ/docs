@@ -8,7 +8,7 @@ The Feature Policy Enforcer allows the kernel to apply a set of *controls*, defi
 Principle
 ---------
 
-When a feature is installed, the Kernel checks whether it embeds a policy file. If present, the policy file is loaded and its rules are enforced throughout the lifecycle of the feature.
+When a feature is installed, the kernel checks whether it embeds a policy file. If present, the policy file is loaded and its rules are enforced throughout the lifecycle of the feature.
 It is assumed that the policy file has been approved beforehand by a moderator.
 
 The behaviour of each control is described as follows:
