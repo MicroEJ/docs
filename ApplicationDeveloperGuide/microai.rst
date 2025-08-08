@@ -171,8 +171,8 @@ For example, the following snippet runs inference on model that takes 1 quantize
         }
 
 .. _MLInferenceEngine: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microai/MLInferenceEngine.html
-.. _MLInferenceEngine(String modelPath, int inferenceMemoryPoolSize): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microai/MLInferenceEngine.html#MLInferenceEngine-java.lang.String-
-.. _MLInferenceEngine(InputStream is, int inferenceMemoryPoolSize): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microai/MLInferenceEngine.html#MLInferenceEngine-java.io.InputStream-
+.. _MLInferenceEngine(String modelPath, int inferenceMemoryPoolSize): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microai/MLInferenceEngine.html#MLInferenceEngine-java.lang.String-int-
+.. _MLInferenceEngine(InputStream is, int inferenceMemoryPoolSize): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microai/MLInferenceEngine.html#MLInferenceEngine-java.io.InputStream-int-
 .. _Tensor: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microai/Tensor.html
 .. _InputTensor: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microai/InputTensor.html
 .. _OutputTensor: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microai/OutputTensor.html
