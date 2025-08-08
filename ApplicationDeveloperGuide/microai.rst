@@ -19,7 +19,7 @@ To use the `MicroAI Library <https://repository.microej.com/modules/ej/api/micro
 
 .. code-block:: kotlin
 
-   implementation("ej.api:microai:2.0.0")
+   implementation("ej.api:microai:2.1.0")
 
 Building or running an Application which uses the MicroAI Library requires a SDK6 VEE Port that provides the :ref:`MicroAI Pack <pack_microai>`.
 
@@ -52,8 +52,8 @@ The first action when working with MicroAI is to load the trained Machine Learni
 
 There are 2 ways to load a model:
 
-* From an application resource with `MLInferenceEngine(String modelPath)`_ constructor.
-* From an InputStream using `MLInferenceEngine(InputStream is)`_ constructor.
+* From an application resource with `MLInferenceEngine(String modelPath, int inferenceMemoryPoolSize)`_ constructor.
+* From an InputStream using `MLInferenceEngine(InputStream is, int inferenceMemoryPoolSize)`_ constructor.
 
 The `MLInferenceEngine`_ constructor will:
 
@@ -61,19 +61,41 @@ The `MLInferenceEngine`_ constructor will:
 2. Build an interpreter to run the model with.
 3. Allocate memory for the model's tensors.
 
-When using `MLInferenceEngine(InputStream is)`_, the model is loaded inside the MicroAI heap.
+
+Using an Input Stream Model
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When using `MLInferenceEngine(InputStream is, int inferenceMemoryPoolSize)`_, the model is loaded inside the MicroAI heap.
 The size of MicroAI heap is defined from the :ref:`MicroAI Configurations <microai_configuration>`.
 
-Note that the call to `MLInferenceEngine(InputStream is)`_ will block until the model is completely retrieved/loaded.
+Note that the call to `MLInferenceEngine(InputStream is, int inferenceMemoryPoolSize)`_ will block until the model is completely retrieved/loaded.
 
+Using an Inference Memory Pool
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When using TensorFlow Lite, the tensors are allocated dynamically into the system heap.
+
+However when using Tensorflow Lite Micro, we must configure a `inferenceMemoryPoolSize`, which is called Arena Size, where all the input, output and intermediate tensors will be allocated.
+This helps achieve deterministic memory usage.
+
+To figure out which minimal value can be set, try large enough values using the Simulator, until the `MLInferenceEngine`_ succeeds.
+At which point you should see such log, which will help to fine tune the `inferenceMemoryPoolSize` value:
+
+.. code-block:: java
+
+        [microai mock] MicroInterpreter uses 1112 bytes, use this value to optimize the Arena Size
+
+Note: This example is very specific to the backend used.
+
+Code Example
+^^^^^^^^^^^^
 Once initialized, `MLInferenceEngine`_ allows to get input/output model tensors and to run inferences on the trained model.
 
 For example, the following snippet loads a trained model from the application resources and runs an inference on it:
 
-
 .. code-block:: java
 
-        try(MLInferenceEngine mlInferenceEngine = new MLInferenceEngine("/model.tflite")) { // Initialize the inference engine.
+        try(MLInferenceEngine mlInferenceEngine = new MLInferenceEngine("/model.tflite", MEMORY_POOL_SIZE)) { // Initialize the inference engine.
             InputTensor inputTensor = mlInferenceEngine.getInputTensor(0); // Get input tensor of the trained model.
             /*
              * Fill the input tensor
@@ -129,7 +151,7 @@ For example, the following snippet runs inference on model that takes 1 quantize
 
 .. code-block:: java
 
-        try(MLInferenceEngine mlInferenceEngine = new MLInferenceEngine("/model.tflite")) { // Initialize the inference engine.
+        try(MLInferenceEngine mlInferenceEngine = new MLInferenceEngine("/model.tflite", MEMORY_POOL_SIZE)) { // Initialize the inference engine.
             InputTensor inputTensor = mlInferenceEngine.getInputTensor(0); // Get input tensor of the trained model.
             byte[] inputData = new byte[inputTensor.getNumberElements()]; // Create an array that fits size of input tensor.
 
@@ -150,8 +172,8 @@ For example, the following snippet runs inference on model that takes 1 quantize
         }
 
 .. _MLInferenceEngine: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microai/MLInferenceEngine.html
-.. _MLInferenceEngine(String modelPath): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microai/MLInferenceEngine.html#MLInferenceEngine-java.lang.String-
-.. _MLInferenceEngine(InputStream is): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microai/MLInferenceEngine.html#MLInferenceEngine-java.io.InputStream-
+.. _MLInferenceEngine(String modelPath, int inferenceMemoryPoolSize): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microai/MLInferenceEngine.html#MLInferenceEngine-java.lang.String-int-
+.. _MLInferenceEngine(InputStream is, int inferenceMemoryPoolSize): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microai/MLInferenceEngine.html#MLInferenceEngine-java.io.InputStream-int-
 .. _Tensor: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microai/Tensor.html
 .. _InputTensor: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microai/InputTensor.html
 .. _OutputTensor: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microai/OutputTensor.html

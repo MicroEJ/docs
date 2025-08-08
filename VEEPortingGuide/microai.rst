@@ -30,7 +30,7 @@ To enable it, the MicroAI :ref:`Pack <pack_overview>` must be installed in your 
 
 .. code-block:: kotlin
 
-   api("ej.api:microai:2.0.0")
+   microejPack("ej.api:microai:2.1.0")
 
 Use
 ===
