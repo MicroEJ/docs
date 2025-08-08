@@ -67,6 +67,7 @@ digraph mygraph {
     "buildFeatureFromWPK" -> "loadKernelExecutable"
     "check" -> "test"
     "checkModule" -> "assemble"
+    "test" -> "classes"
     "test" -> "testClasses"
     "test" -> "loadTestVee"
     "compileTestJava" -> "adp"
