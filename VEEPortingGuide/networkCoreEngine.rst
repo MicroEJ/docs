@@ -74,7 +74,7 @@ Initialization
 When porting the Net library the initialize function shall make sure the underlying network stack is initialized.
 The entry point for this initialization is the following native function: ``LLNET_CHANNEL_impl_initialize``:
 
-.. code-block::
+.. code-block:: c
 
    /**
     * @brief Initializes the TCP/IP stack components.
@@ -85,36 +85,25 @@ The entry point for this initialization is the following native function: ``LLNE
     */
    void LLNET_CHANNEL_IMPL_initialize(void);
 
-It is called during the `initialization phase <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/bon.html#runtime-phases>`_ of the Net library so it will run before the application starts, see the following implementation example `available here <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk/blob/0bc78b3864da4d51c1a0b638f060cafe319d5779/bsp/vee/port/net/src/lwip_util.c>`_:
+It is called during the `initialization phase <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/bon.html#runtime-phases>`_ of the Net library so it will run before the application starts.
 
-.. rli:: https://raw.githubusercontent.com/MicroEJ/nxp-vee-imxrt1170-evk/0bc78b3864da4d51c1a0b638f060cafe319d5779/bsp/vee/port/net/src/lwip_util.c
-   :language: c
-   :lines: 411-450
-   :linenos:
-   :lineno-start: 411
+In most of the VEE Ports a macro ``llnet_init()`` is provided to call any specific code required before using the network:
 
-This example is used on VEE Port with BSD-like sockets APIs, on all VEE Ports a macro is provided to call custom initialization code (also see `here <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk/blob/0bc78b3864da4d51c1a0b638f060cafe319d5779/bsp/vee/port/net/inc/LLNET_configuration.h>`_):
+.. code-block:: c
 
-.. rli:: https://raw.githubusercontent.com/MicroEJ/nxp-vee-imxrt1170-evk/0bc78b3864da4d51c1a0b638f060cafe319d5779/bsp/vee/port/net/inc/LLNET_configuration.h
-   :language: c
-   :lines: 92-108
-   :linenos:
-   :lineno-start: 92
+   // ...
 
-In the previous declaration we call a custom LwIP compatible initialization that does the following:
+   #include "LLNET_configuration.h" // Macro is defined in this header.
+   #include "LLNET_CHANNEL_impl.h"
 
-- Initializes the hardware.
-- Initializes the LwIP stack.
-- Configure the network interface.
-- Sends a DHCP request and assigns the address to the interface once the DHCP request is done.
+   void LLNET_CHANNEL_IMPL_initialize(void) {
+      llnet_init(); // Custom initialization here.
+      // ...
+   }
 
-This is suitable for most of the networks with a DHCP server.
+   // ...
 
-In environments where DHCP is not available, the network stack must be configured to use a static IP address instead.
-This involves manually assigning an IP address, subnet mask, gateway, and optionally DNS settings during the initialization phase.
-Refer to the documentation of your IP stack for target specific static IP configuration steps.
-
-.. Also provide example here?
+An example of how the network is initialized with the same requirements can be found `here <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk/blob/0bc78b3864da4d51c1a0b638f060cafe319d5779/bsp/vee/port/net/src/lwip_util.c#L415>`_ in the NXP VEE Port for i.MX RT1170 EVK.
 
 Use
 ===
