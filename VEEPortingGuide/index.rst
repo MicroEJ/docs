@@ -23,6 +23,7 @@ VEE Porting Guide
    net
    bluetooth
    audio
+   metrology
    microai
    packEventQueue
    fs

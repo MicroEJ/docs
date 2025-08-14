@@ -47,6 +47,7 @@ To consult its libraries APIs documentation, please visit `<https://developer.mi
    javaTime
    eventQueue
    gnss
+   metrology
    js/index
 
 ..

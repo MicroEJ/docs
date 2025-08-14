@@ -1136,6 +1136,28 @@ Several C header files are provided:
    to manage X509 certificates operations like getting the public key,
    extracting the issuer, etc.
 
+.. _LLMETROLOGY-API-SECTION:
+
+LLMETROLOGY: METROLOGY
+======================
+
+Naming Convention
+-----------------
+
+The Low Level METROLOGY API (LLMETROLOGY), relies on functions that need to
+be implemented by engineers in a driver. The names of these functions
+match the ``LLMETROLOGY_IMPL_*`` pattern.
+
+Header Files
+------------
+
+One header file is provided:
+
+-  LLMETROLOGY_impl.h
+
+   Defines the set of functions that the BSP must implement to manage and configure
+   METROLOGY engine.
+
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
