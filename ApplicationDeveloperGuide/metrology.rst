@@ -6,7 +6,7 @@ Metrology
 Introduction
 ------------
 
-The Metrology Library provides APIs to retrieve metrology and metrology related data.
+The Metrology Library provides APIs for retrieving metrology data and managing metrology-related configurations.
 
 .. _metrology_api_usage:
 
@@ -26,13 +26,15 @@ Building or running an Application which uses the Metrology Library requires a S
 APIs
 ----
 
-The Metrology API isn't KF compatible, use in a multi-application context may lead to unexpected results. 
-It is recomended to use the Energy framework API to interact with the Metrology API.
+.. warning::
+
+        The Metrology API is not KF-compatible. Using it in a multi-application context may cause unexpected behavior. It is recommended to use the Energy Framework API to interact with the Metrology API.
+
 
 Static Configurations
 ~~~~~~~~~~~~~~~~~~~~~
 
-Meter static configuration can be retrieved with the following methods:
+The following methods allow you to retrieve static meter configurations:
 
 - `ej.energy.metrology.Metrology.getMeterForm()int`
 - `ej.energy.metrology.Metrology.getMeterServiceCurrent()int`
@@ -41,47 +43,49 @@ Meter static configuration can be retrieved with the following methods:
 Event API
 ~~~~~~~~~
 
-This API is based on the :ref:`Event Pack <pack_event>` and allows notification of Metrology data.
-It is appropriate to retrieve periodaically mean values, or process values over a period of time over 1 second. 
+This API is based on the :ref:`Event Pack <pack_event>` and provides notifications for Metrology data.
+It is suitable for retrieving processed data, like mean values, over periods of 1 second or more.
 
 Streaming API
 ~~~~~~~~~~~~~
 
-This API 
+The `waitStreamBuffer` method is a blocking call that returns when a streaming buffer is full.
+The application can lock the buffer during processing to prevent its data from being overwritten by the native process. 
+The buffer must be released after processing.
 
 Classes Summary
 ~~~~~~~~~~~~~~~
 
-* `Metrology`_: Get static configuration, register event listener and wait for streamed data.
-* `MetrologyEventListener`_: Interface to implement to retrieve Metrology event.
+* `Metrology`: Access static configurations, register event listeners, and wait for streamed data.
+* `MetrologyEventListener`: Interface to implement for receiving Metrology events.
 
 .. _metrology_configuration:
 
 Configuration
 -------------
 
-The :ref:`Metrology Pack <pack_metrology>` can be configured by defining the following :ref:`Application Options <application_options>`:
+The :ref:`Metrology Pack <pack_metrology>` can be configured by defining the following :ref:`Application Options <application_options>`.
 
-You can hook a DLMS server as data event data source on simulator, switch to a dlms source with:
+You can configure a DLMS server as the data source in the simulator by setting::
 
-- com.microej.energy.metrology.mock.dlms=true
+        com.microej.energy.metrology.mock.dlms=true
 
-You must provide the following properties in order for the Metrology mock to communicate with a DLMS server:
+The following properties must be provided for the Metrology mock to communicate with a DLMS server::
 
-- com.microej.energy.metrology.mock.dlms.objects=<MetrologyId>,<classId>,<obisCode>,<index>;etc...
-- com.microej.energy.metrology.mock.dlms.client.address=[0-9*]
-- com.microej.energy.metrology.mock.dlms.server.logical.address=[0-9*]
-- com.microej.energy.metrology.mock.dlms.server.physical.address=[0-9*]
-- com.microej.energy.metrology.mock.dlms.server.host=<host ip or name>
-- com.microej.energy.metrology.mock.dlms.server.port=[0-9*]
+        com.microej.energy.metrology.mock.dlms.objects=<MetrologyId>,<classId>,<obisCode>,<index>;etc...
+        com.microej.energy.metrology.mock.dlms.client.address=[0-9*]
+        com.microej.energy.metrology.mock.dlms.server.logical.address=[0-9*]
+        com.microej.energy.metrology.mock.dlms.server.physical.address=[0-9*]
+        com.microej.energy.metrology.mock.dlms.server.host=<host ip or name>
+        com.microej.energy.metrology.mock.dlms.server.port=[0-9*]
 
-Configure the available immortal size to accomodate both streaming buffer:
+Set the immortal memory size to accommodate streaming buffers::
 
-- core.memory.immortal.size=[0-9*]
+        core.memory.immortal.size=[0-9*]
 
-Streaming data source:
-
-- com.microej.energy.metrology.mock.stream.data.file=</streaming/data/file/path>
+For streaming data source::
+        
+        com.microej.energy.metrology.mock.stream.data.file=</streaming/data/file/path>
 
 Example
 -------
@@ -89,17 +93,17 @@ Example
 Event Data
 ~~~~~~~~~~
 
-The following snippet registers a Metrology listener:
+The following snippet demonstrates how to register a Metrology listener:
 
 .. code-block:: java
 
         String[] names = new String(){"Parameter1","Parameter2",...};
-	Metrology.setParameterNames(names); //Sets names and max number of parameters
+	Metrology.setParameterNames(names); // Sets names and max number of parameters
         
         OnMetrologyEventListener listener = new OnMetrologyEventListener();
-        Metrology.setListener(listener);
+        Metrology.setListener(listener); // Register the listener
 
-The following snippet process data:
+Processing the data:
 
 .. code-block:: java
 
@@ -107,24 +111,26 @@ The following snippet process data:
 
 	@Override
 	public void onParametersReceived(final float[] parametersValues) {
-		//Business logic here
+		
+                //Process the values here
+
         }
 
 Streaming Data
 ~~~~~~~~~~~~~~~
 
-The following snippet wait for streaming data and process it:
+The following snippet waits for streaming data and processes it:
 
 .. code-block:: java
 
-        byte[] buffer;
-        while (PROCESS) {
+        byte[] buffer; // local buffer pointer, no buffer content copy
+        while (PROCESS) { // PROCESS the process condition
 	    buffer = Metrology.waitStreamBuffer();// Get next data buffer.
 	    Metrology.lockStreamBuffer(); // Lock native buffer to prevent data overwrite.            
 
-            //Process the stream here
+            //Process the stream buffer here
 
-            Metrology.unlockStreamBuffer(); //Unlock native buffer.
+            Metrology.unlockStreamBuffer(); // Unlock native buffer.
         } 
 
 ..
