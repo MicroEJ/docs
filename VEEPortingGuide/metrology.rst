@@ -29,7 +29,7 @@ To enable it, the Metrology :ref:`Pack <pack_overview>` must be installed in you
 
 .. code-block:: kotlin
 
-   api("ej.api:metrology:3.1.2")
+   api("ej.api:metrology:3.2.0")
 
 Use
 ===

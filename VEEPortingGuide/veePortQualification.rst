@@ -326,15 +326,6 @@ EVENT QUEUE Pack
 
 .. [1] Test Suite available on demand, please contact :ref:`MicroEJ Support<get_support>`.
 
-Metrology Pack
-------------
-
-.. list-table:: Metrology Library and Validation
-   :widths: 20 20
-
-   * - Metrology Library
-   * - 3.2.0 (On demand [1]_)
-
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free
    for read and redistribute. Except if otherwise stated, modification
