@@ -98,7 +98,7 @@ The following snippet demonstrates how to register a Metrology listener:
 .. code-block:: java
 
         String[] names = new String(){"Parameter1","Parameter2",...};
-	Metrology.setParameterNames(names); // Sets names and max number of parameters
+        Metrology.setParameterNames(names); // Sets names and max number of parameters
         
         OnMetrologyEventListener listener = new OnMetrologyEventListener();
         Metrology.setListener(listener); // Register the listener
@@ -109,8 +109,8 @@ Processing the data:
 
         private static class OnMetrologyEventListener implements MetrologyEventListener {
 
-	@Override
-	public void onParametersReceived(final float[] parametersValues) {
+        @Override
+        public void onParametersReceived(final float[] parametersValues) {
 		
                 //Process the values here
 
@@ -125,8 +125,8 @@ The following snippet waits for streaming data and processes it:
 
         byte[] buffer; // local buffer pointer, no buffer content copy
         while (PROCESS) { // PROCESS the process condition
-	    buffer = Metrology.waitStreamBuffer();// Get next data buffer.
-	    Metrology.lockStreamBuffer(); // Lock native buffer to prevent data overwrite.            
+            buffer = Metrology.waitStreamBuffer();// Get next data buffer.
+            Metrology.lockStreamBuffer(); // Lock native buffer to prevent data overwrite.            
 
             //Process the stream buffer here
 
