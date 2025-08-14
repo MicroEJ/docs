@@ -902,11 +902,14 @@ match the ``LLML_IMPL_*`` pattern.
 Header Files
 ------------
 
-Three header files are provided:
+One header file is provided:
 
 -  LLML_impl.h
 
-   Defines the set of functions that the BSP must implement for Machine Learning.
+   Defines the set of functions that the BSP must implement to load a model file,
+   set the input data and read output data.
+   This API also implements a number of helper functions to get the model characteristics
+   such as tensor sizes, quantization parameters, etc...
 
 .. _LLEVENT-API-SECTION:
 
