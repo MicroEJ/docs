@@ -1,9 +1,9 @@
-.. _featurePolicyEnforcer:
+.. _resourceManager:
 
-Feature Policy Enforcer
-=======================
+Resource Manager
+================
 
-The Feature Policy Enforcer allows the kernel to apply a set of *controls*, defined in a policy file, to a feature. A *control* denotes either a resource limit (CPU, RAM, flash storage, network bandwidth) or the feature's priority level.
+The Resource Manager allows the kernel to apply a set of *controls*, defined in a policy file, to a feature. A *control* denotes either a resource limit (CPU, RAM, flash storage, network bandwidth) or the feature's priority level.
 
 Principle
 ---------
@@ -19,9 +19,9 @@ The behaviour of each control is described as follows:
 * **Flash storage**: If the flash storage limit is exceeded, a ``StorageLimitException`` is thrown.
 * **Network bandwidth**: Exceeding the daily bandwidth limit on the specified subnet triggers a ``BandwidthLimitException``.
 
-The following diagram illustrates a simplified flow of the Feature Policy Enforcer.
+The following diagram illustrates a simplified flow of the Resource Manager.
 
-.. image:: png/feature_policy_enforcer_flow.png
+.. image:: png/resource_manager_flow.png
    :align: center
 
 Policy File Format
@@ -72,7 +72,7 @@ Attributes
 Kernel Implementation
 ---------------------
 
-Here are the steps to integrate the Feature Policy Enforcer in your kernel:
+Here are the steps to integrate the Resource Manager in your kernel:
 
 1. Add the KF-Util library dependency in the kernel build file.
 
@@ -87,7 +87,7 @@ Here are the steps to integrate the Feature Policy Enforcer in your kernel:
 
           <dependency org="com.microej.library.util" name="kf-util" rev="3.1.0"/>
 
-2. Create an instance of the Feature Policy Enforcer.
+2. Create an instance of the Resource Manager.
 
 .. code-block:: java
 
