@@ -23,7 +23,7 @@ Dependencies
 .. _MicroAI Abstraction Layer for TensorFlow Lite: https://github.com/MicroEJ/AbstractionLayer-MicroAI-TensorFlowLite
 
 - ``LLML_impl.h`` implementation (see :ref:`LLMICROAI-API-SECTION`).
-- A port of MicroAI for TensorFlow Lite can be found in `MicroAI Abstraction Layer for TensorFlow Lite_`.
+- A port of MicroAI for TensorFlow Lite can be found in `MicroAI Abstraction Layer for TensorFlow Lite`_.
 
 Installation
 ============
