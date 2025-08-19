@@ -28,7 +28,7 @@ The SDK 5 build type defined in the ``module.ivy`` file with the ``ea:build`` ta
 For example, here is the block to add at the beginning of the file to migrate a ``build-microej-javalib`` SDK 5 module::
 
    plugins {
-       id("com.microej.gradle.addon-library") version "1.3.1"
+       id("com.microej.gradle.library") version "1.3.1"
    }
 
 The mapping between the main SDK 5 build types and Gradle plugins is:
@@ -39,7 +39,7 @@ The mapping between the main SDK 5 build types and Gradle plugins is:
    * - **MMM Build Type**
      - **Gradle Plugin**
    * - ``build-microej-javalib``
-     - ``com.microej.gradle.addon-library``
+     - ``com.microej.gradle.library``
    * - ``build-application``
      - ``com.microej.gradle.application``
    * - ``build-firmware-singleapp``
