@@ -15,7 +15,7 @@ This page describes the most common module natures as follows:
 Add-On Library
 --------------
 
-**Plugin Name**: ``com.microej.gradle.addon-library``
+**Plugin Name**: ``com.microej.gradle.library``
 
 **Documentation**: :ref:`libraries`
 
