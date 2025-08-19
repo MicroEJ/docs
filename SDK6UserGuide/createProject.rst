@@ -330,10 +330,10 @@ Refer to the page :ref:`sdk6_module_natures` for a complete list of the availabl
 Add-On Library Project
 ~~~~~~~~~~~~~~~~~~~~~~
 
-- Add the ``com.microej.gradle.addon-library`` plugin in the build script::
+- Add the ``com.microej.gradle.library`` plugin in the build script::
 
     plugins {
-        id("com.microej.gradle.addon-library") version "1.3.1"
+        id("com.microej.gradle.library") version "1.3.1"
     }
 
   .. note::
