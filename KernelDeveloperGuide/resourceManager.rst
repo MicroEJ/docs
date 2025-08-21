@@ -3,12 +3,12 @@
 Resource Manager
 ================
 
-The Resource Manager allows the kernel to apply a set of *controls*, defined in a policy file, to a feature. A *control* denotes either a resource limit (CPU, RAM, flash storage, network bandwidth) or the feature's priority level.
+The Resource Manager is a software component of the KF-Util library. It allows the kernel to apply a set of *controls*, defined in a policy file, to a feature. A *control* denotes either a resource limit (CPU, RAM, flash storage, network bandwidth) or the feature's priority level.
 
 Principle
 ---------
 
-When a feature is installed, the kernel checks whether it embeds a policy file. If present, the policy file is loaded and its rules are enforced throughout the lifecycle of the feature.
+When a feature is installed, the kernel checks whether it embeds a policy file. A policy file is a description file formatted in JSON. If present, the policy file is loaded and its rules are enforced throughout the lifecycle of the feature.
 It is assumed that the policy file has been approved beforehand by a moderator.
 
 The behaviour of each control is described as follows:
