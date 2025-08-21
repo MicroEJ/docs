@@ -64,7 +64,7 @@ Attributes
 * **priority**: Acceptable values for the priority level range from `1 <https://repository.microej.com/javadoc/microej_5.x/apis/constant-values.html#java.lang.Thread.MIN_PRIORITY>`_ to `10 <https://repository.microej.com/javadoc/microej_5.x/apis/constant-values.html#java.lang.Thread.MAX_PRIORITY>`_.
 * **cpu**: CPU usage limit expressed as a percentage (relative to a calibrated 100% baseline).
 * **ram**: RAM allocation limit expressed in bytes.
-* **flash**: Flash memory allocation limit expressed in bytes.
+* **flash**: Flash memory limit expressed in bytes. Flash storage operations are done over `FS <https://docs.microej.com/en/latest/VEEPortingGuide/fs.html>`_. Please refer to `StorageFs <https://repository.microej.com/javadoc/microej_5.x/apis/ej/storage/fs/StorageFs.html>`_ for details.
 * **networkData**:
     * **cidrSubnet**: Allowed IP range in CIDR notation.
     * **dailyDataLimit**: Daily upstream limit expressed in bytes.
