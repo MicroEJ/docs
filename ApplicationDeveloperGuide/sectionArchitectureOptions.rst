@@ -15,12 +15,12 @@ Option(checkbox): Embed all type names
 
 *Option Name*: ``soar.generate.classnames``
 
-*Default value*: ``true``
+*Default value*: ``false``
 
 *Description*:
 
 Embed the name of all types. When this option is disabled, only names of
-declared required types are embedded.
+declared :ref:`required types <section.classpath.elements.types>` are embedded.
 
 .. _enable_group_methods:
 

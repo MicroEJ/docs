@@ -59,7 +59,7 @@ but all properties files located in this folder are loaded, no matter what their
 To set an option in a properties file, open the file in a text editor and add a line to set the desired option to the desired value, 
 for example::
    
-   soar.generate.classnames=false
+   soar.generate.classnames=true
 
 
 Using System Properties
@@ -69,11 +69,11 @@ Application options can be defined by System properties using the ``microej.opti
 System properties can either be defined in command line using ``-D`` argument, or in ``gradle.properties`` file using ``systemProp.*`` prefix.
 For instance, in command line::
 
-    -Dmicroej.option.soar.generate.classnames=false
+    -Dmicroej.option.soar.generate.classnames=true
 
 or in ``gradle.properties`` file::
 
-   systemProp.microej.option.soar.generate.classnames=false
+   systemProp.microej.option.soar.generate.classnames=true
 
 See the :ref:`sdk_6_howto_gradle_system_property` for more information about System properties.
 
@@ -138,7 +138,7 @@ The figure below shows the expected tree of the ``build`` folder:
 
 It is recommended to index the properties files to your version control system.
 
-To set an option in a properties file, open the file in a text editor and add a line to set the desired option to the desired value. For example: ``soar.generate.classnames=false``.
+To set an option in a properties file, open the file in a text editor and add a line to set the desired option to the desired value. For example: ``soar.generate.classnames=true``.
 
 To use the options declared in properties files in a launcher, perform the following steps:
 
