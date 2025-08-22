@@ -265,7 +265,7 @@ Application Configuration
 
 The following application configuration guidelines are recommended in order to minimize the size of the application:
 
-- Disable class names generation by setting the ``soar.generate.classnames`` option to ``false``. Class names are only required when using Java reflection. In such case, the name of a specific class will be embedded only if is explicitly required. See :ref:`stripclassnames` section for more information.
+- Disable class names generation by setting the ``soar.generate.classnames`` option to ``false`` (default). Class names are only required when using Java reflection. In such case, the name of a specific class will be embedded only if is explicitly required. See :ref:`stripclassnames` section for more information.
 - Remove UTF-8 encoding support by setting the ``cldc.encoding.utf8.included`` option to ``false``. The default encoding (``ISO-8859-1``) is enough for most applications.
 - Remove ``SecurityManager`` checks by setting the ``com.microej.library.edc.securitymanager.enabled`` option to ``false``. This feature is only useful for Multi-Sandbox firmwares.
 
@@ -276,14 +276,13 @@ For more information on how to set an option, please refer to the :ref:`define_o
 Stripping Class Names from an Application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-By default, when a Java class is used, its name is embedded too. A class is used when one of its methods is called, for example.
 Embedding the name of every class is convenient when starting a new MicroEJ Application, but it is rarely necessary and takes a lot of ROM.
 This section explains how to embed only the required class names of an application.
 
 Removing All Class Names
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-First, the default behavior is inverted by defining the :ref:`Application option <application_options>` ``soar.generate.classnames`` to ``false``.
+First, make sure to set the :ref:`Application option <application_options>` ``soar.generate.classnames`` to ``false`` (default value).
 
 For more information on how to set an option, please refer to the :ref:`define_option` section.
 
