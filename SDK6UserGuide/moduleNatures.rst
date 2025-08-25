@@ -68,6 +68,7 @@ This plugin adds the following tasks to your project:
 - :ref:`sdk6_module_natures.tasks.generateApplicationWrapper`
 - :ref:`sdk6_module_natures.tasks.compileWrapperJava`
 - :ref:`sdk6_module_natures.tasks.buildFeatureFromWPK`
+- :ref:`sdk6_module_natures.tasks.shrinkRuntimeEnvironment`
 
 .. graphviz:: graphApplicationModule.dot
 
@@ -622,6 +623,7 @@ shrinkRuntimeEnvironment
 This task is used by the following module natures:
 
 - :ref:`sdk6_module_natures.runtime-environment`
+- :ref:`sdk6_module_natures.application`
 
 The ``shrinkRuntimeEnvironment`` task is used internally by the SDK and it is not intended to be executed by the user.
 
