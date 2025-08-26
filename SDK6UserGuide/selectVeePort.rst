@@ -114,10 +114,6 @@ Otherwise the name of the subproject folder is used, so ``vee-port`` in the reco
 Using a Local VEE Port Directory
 --------------------------------
 
-.. warning::
-
-   A local VEE Port Directory can not be used if the transitive resolution of the VEE Port is enabled, refer to :ref:`sdk_6_vee_port_transitivity` for more information.
-
 When your VEE Port is available in a local directory, 
 you can use it by declaring a file dependency in the ``build.gradle.kts`` file, with the ``microejVee`` configuration::
 
@@ -142,10 +138,6 @@ This is generally the case when the VEE Port has been built locally
 
 Using a Local VEE Port Archive
 ------------------------------
-
-.. warning::
-
-   A local VEE Port Archive can not be used if the transitive resolution of the VEE Port is enabled, refer to :ref:`sdk_6_vee_port_transitivity` for more information.
 
 When your VEE Port is available locally as an archive file (``.zip`` or ``.vde``),
 you can use it by declaring a file dependency in the ``build.gradle.kts`` file, with the ``microejVee`` configuration::
@@ -195,7 +187,8 @@ Resolve a VEE Port transitively
 
 .. warning::
 
-   The transitive resolution of a VEE Port is not supported for VEE Ports built with SDK 5 or SDK 6 ``1.2.0`` or older and local VEE Ports.
+   The transitive resolution of a VEE Port is not supported for VEE Ports built with SDK 5 or SDK 6 ``1.2.0`` or older provided 
+   as :ref:`module <sdk_6_select_veeport_module>` or :ref:`project <sdk_6_select_veeport_in_multiproject>`.
    While this feature is optional for now, it will be enabled by default in the next SDK 6 major version, so it is highly recommended to update your VEE Port if necessary.
 
 By default, the VEE Port is not fetched transitively by consumer projects, but starting from SDK 6 ``1.4.0``, it is possible to enable the transitivity of the VEE Port by:

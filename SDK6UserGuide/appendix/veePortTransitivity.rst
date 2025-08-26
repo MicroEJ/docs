@@ -34,10 +34,10 @@ to build the runtime classpath of the testsuites, not to compile the project.
 
    - a VEE Port built with SDK 6 ``1.2.0`` or older
    - a VEE Port built with SDK 5
-   - a local VEE Port Directory
-   - a local VEE Port archive file
 
    it is highly recommended to update your VEE Port project to SDK 6 ``1.3.0`` or higher as the feature will be enabled by default in the next SDK 6 major version.
+   This limitation does not concern VEE Ports available locally :ref:`in a directory <sdk_6_select_veeport_local_directory>` or 
+   :ref:`as an archive <sdk_6_select_veeport_local_archive>`.
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
