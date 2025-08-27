@@ -20,7 +20,7 @@ Option(checkbox): Embed all type names
 *Description*:
 
 Embed the name of all types. When this option is disabled, only names of
-declared :ref:`required types <section.classpath.elements.types>` are embedded.
+declared :ref:`required types <section.classpath.elements.types>` are embedded. This option affects code size.
 
 .. _enable_group_methods:
 
