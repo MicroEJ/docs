@@ -34,7 +34,7 @@ The MicroEJ Gradle plugin adds the 2 following rules:
 
 .. note::
 
-  This rule is not applied if :ref:`the VEE Port transitive resolution <sdk_6_vee_port_transitivity>` is enabled.
+  This rule is not applied if :ref:`the VEE transitive resolution <gradle_vee_transitivity_chapter>` is enabled.
 
 If you want to come back to the Gradle default behavior,
 these 2 rules can be disabled by setting the ``microejConflictResolutionRulesEnabled`` 
