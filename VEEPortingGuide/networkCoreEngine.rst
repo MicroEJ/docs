@@ -103,7 +103,7 @@ In most of the VEE Ports a macro ``llnet_init()`` is provided to call any specif
 
    // ...
 
-An example of how the network is initialized with the same requirements can be found `here <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk/blob/0bc78b3864da4d51c1a0b638f060cafe319d5779/bsp/vee/port/net/src/lwip_util.c#L415>`_ in the NXP VEE Port for i.MX RT1170 EVK.
+An example of how the network is initialized with the same requirements can be found `here <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk/blob/0bc78b3864da4d51c1a0b638f060cafe319d5779/bsp/vee/port/net/src/lwip_util.c>`_ in the NXP VEE Port for i.MX RT1170 EVK.
 
 Use
 ===
