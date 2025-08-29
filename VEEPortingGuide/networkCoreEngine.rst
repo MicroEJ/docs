@@ -68,6 +68,43 @@ To enable it, the Net :ref:`Pack <pack_overview>` (which bundles several librari
 
          Net Pack Modules
 
+Initialization
+==============
+
+When porting the Net library the initialize function shall make sure the underlying network stack is initialized.
+The entry point for this initialization is the following native function: ``LLNET_CHANNEL_impl_initialize``:
+
+.. code-block:: c
+
+   /**
+    * @brief Initializes the TCP/IP stack components.
+    *
+    * @note Throws NativeIOException on error.
+    *
+    * @see LLNET_ERRORS.h header file for error codes.
+    */
+   void LLNET_CHANNEL_IMPL_initialize(void);
+
+It is called during the `initialization phase <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/bon.html#runtime-phases>`_ of the Net library so it will run before the application starts.
+
+In most of the VEE Ports a macro ``llnet_init()`` is provided to call any specific code required before using the network:
+
+.. code-block:: c
+
+   // ...
+
+   #include "LLNET_configuration.h" // Macro is defined in this header.
+   #include "LLNET_CHANNEL_impl.h"
+
+   void LLNET_CHANNEL_IMPL_initialize(void) {
+      llnet_init(); // Custom initialization here.
+      // ...
+   }
+
+   // ...
+
+An example of how the network is initialized with the same requirements can be found `here <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk/blob/0bc78b3864da4d51c1a0b638f060cafe319d5779/bsp/vee/port/net/src/lwip_util.c>`_ in the NXP VEE Port for i.MX RT1170 EVK.
+
 Use
 ===
 
