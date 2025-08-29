@@ -109,7 +109,7 @@ so the following dependency::
 
 will be converted to::
 
-   testImplementation("ej.library.test:junit:1.11.0")
+   testImplementation("ej.library.test:junit:1.12.0")
 
 Also note that this will not resolve snapshot builds since versions are explicit in SDK 6, see :ref:`this chapter <sdk_6_add_dependency_version>` for more details.
 To resolve both snapshot and release versions, use ``[1.0.0-RC,1.0.0]`` instead of ``1.0.0``.
@@ -140,7 +140,7 @@ Therefore, the SDK 6 requires to explicitly configure the testsuites to execute.
                   dependencies {
                      implementation(project())
                      implementation("ej.api:edc:1.3.5")
-                     implementation("ej.library.test:junit:1.11.0")
+                     implementation("ej.library.test:junit:1.12.0")
                      implementation("org.junit.platform:junit-platform-launcher:1.8.2")
                   }
                }
@@ -333,7 +333,7 @@ And here the migration from a ``module.ivy`` file to a ``build.gradle.kts`` file
       implementation("ej.api:edc:1.3.3")
       implementation("ej.api:kf:1.6.1")
 
-      testImplementation("ej.library.test:junit:1.11.0")
+      testImplementation("ej.library.test:junit:1.12.0")
 
       microejVee("com.microej.platform.esp32.esp-wrover-kit-v41:HDAHT:1.8.2")
    }
