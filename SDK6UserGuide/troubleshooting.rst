@@ -64,15 +64,54 @@ The solution is to use a JDK 11 or a higher LTS version (``11``, ``17`` or ``21`
 		Project JDK in IntelliJ IDEA and Android Studio
 
 
-Unresolved Dependency
----------------------
+Unresolved Dependency When No Repository
+----------------------------------------
 
 If this kind of message appears when resolving plugins or modules dependencies:
 
 .. code:: console
 
-   * What went wrong:
-   Plugin [id: 'com.microej.gradle.application', version: '1.3.1'] was not found in any of the following sources:
+	* What went wrong:
+	Plugin [id: 'com.microej.gradle.application', version: '1.3.1'] was not found in any of the following sources:
+
+	- Gradle Core Plugins (plugin is not in 'org.gradle' namespace)
+	- Included Builds (No included builds contain this plugin)
+	- Plugin Repositories (could not resolve plugin artifact 'com.microej.gradle.application:com.microej.gradle.application.gradle.plugin:1.1.0')
+	Searched in the following repositories:
+		Gradle Central Plugin Repository
+
+or this kind:
+
+.. code:: console
+
+	* What went wrong:
+	Execution failed for task ':compileJava'.
+	> Could not resolve all files for configuration ':compileClasspath'.
+	> Cannot resolve external dependency ej.api:edc:1.3.7 because no repositories are defined.
+		Required by:
+			root project :
+
+It means that no module or plugin repository has been defined. 
+Make sure that the repositories have been configured as described in the :ref:`sdk_6_configure_repositories` section.
+In particular, make sure that the Gradle Init script is in the ``./gradle/init.d`` folder in the user home folder.
+
+Unresolved Dependency in Repositories
+-------------------------------------
+
+If this kind of message appears when resolving plugins or modules dependencies:
+
+.. code:: console
+
+	* What went wrong:
+	Plugin [id: 'com.microej.gradle.application', version: '1.3.1'] was not found in any of the following sources:
+
+	- Gradle Core Plugins (plugin is not in 'org.gradle' namespace)
+	- Included Builds (No included builds contain this plugin)
+	- Plugin Repositories (could not resolve plugin artifact 'com.microej.gradle.application:com.microej.gradle.application.gradle.plugin:1.3.1')
+	Searched in the following repositories:
+		microEJCentral(https://repository.microej.com/modules)
+		microEJForgeCentral(https://forge.microej.com/artifactory/microej-central-repository-release)
+		microEJForgeDeveloper(https://forge.microej.com/artifactory/microej-developer-repository-release)
 
 or this kind:
 
@@ -91,7 +130,7 @@ or this kind:
             project :
 
 
-First, check that either the requested plugin or module exists in your repository.
+First, check that either the requested plugin or module exists in the listed repositories.
 
 - If the plugin or module does not exist, 
   
