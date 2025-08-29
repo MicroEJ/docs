@@ -89,7 +89,7 @@ This piece of configuration is the minimum configuration required to define a te
   Simulator.
 - ``(4)``: adds the dependencies required by the tests. The first line declares a dependency to the code of the project.
   The second line declares a dependency on the ``edc`` Library. The third line declares a dependency to the JUnit API used 
-  to annotate Java Test classes. Finally the fourth line declares a dependency to a required JUnit library.
+  to annotate Java Test classes.
 
 .. warning::
 
