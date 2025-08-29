@@ -377,7 +377,25 @@ To fix this, you need to
 		:scale: 70%
 
 		Invalidate all the caches
-	
+
+.. _sdk_6_fetch_architecture_prod:
+
+Fail to fetch the ``prod`` version of an Architecture
+-----------------------------------------------------
+
+Fetching the ``prod`` version of an Architecture may raise the following error::
+
+   > Could not find flopi4G25-8.3.0-prod.xpf (com.microej.architecture.CM4.CM4hardfp_GCC48:flopi4G25:8.4.0).
+     Searched in the following locations:
+         https://repository.microej.com/modules/com/microej/architecture/CM4/CM4hardfp_GCC48/flopi4G25/8.4.0/flopi4G25-8.4.0-prod.xpf
+
+This happens when a module repository containing only the ``eval`` version of the Architecture is declared before the module repository containing the ``prod`` version.
+This is typically the case with the `MicroEJ Central Repository <https://developer.microej.com/central-repository/>`__ which contains only the ``eval`` versions of the public Architecture. 
+If the ``prod`` version is deployed in another repository declared after the MicroEJ Central Repository, the above error is raised.
+
+To fix this, declare the repository containing the ``prod`` version before the one containing the ``eval`` version.
+Refer to :ref:`sdk_6_howto_gradle_add_repository` for more details on how to declare module repositories.
+
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 

@@ -306,8 +306,8 @@ MicroAI Pack
 
    * - MicroAI Library
      - Java Test Suite
-   * - 1.0.0 (On demand [1]_)
-     - 1.0.0 (On demand [1]_)
+   * - `2.1.0 <https://repository.microej.com/modules/ej/api/microai/2.1.0/>`__
+     - 2.1.0 (On demand [1]_)
 
 .. _test_suite_versioning_event_queue:
 
