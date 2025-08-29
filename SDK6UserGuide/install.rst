@@ -63,7 +63,7 @@ the :ref:`Central <central_repository>` and :ref:`Developer <developer_repositor
 There are several ways to declare repositories.
 To get started, you can declare them globally to make them available in all your projects:
 
-- Create the folder ``$USER_HOME/.gradle/init.d`` if it does not exist.
+- Create the folder ``<USER_HOME>/.gradle/init.d`` if it does not exist.
 - Download and copy :download:`this file <resources/microej.init.gradle.kts>` in the previously created folder.
 
 At this stage, you can already build a project from the command line, 
@@ -81,7 +81,7 @@ SDK EULA Acceptation
 The use of MICROEJ SDK 6 requires to accept the :ref:`sdk6_eula`.
 
 The acceptance can be done at the project level or system-wide. For a system-wide acceptance, we recommend to define
-the ``accept-microej-sdk-eula-v3-1c`` system property in a ``gradle.properties`` file in your Gradle User Home folder ``$USER_HOME/.gradle/gradle.properties``:
+the ``accept-microej-sdk-eula-v3-1c`` system property in a ``gradle.properties`` file in your Gradle User Home folder ``<USER_HOME>/.gradle/gradle.properties``:
 
    .. code:: properties
 
