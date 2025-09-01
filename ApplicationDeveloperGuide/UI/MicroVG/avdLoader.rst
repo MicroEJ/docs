@@ -97,7 +97,7 @@ Format Limitations
 The library only supports a subset of the `Vector Drawable specification <https://developer.android.com/reference/android/graphics/drawable/VectorDrawable>`_.
 
 The AVD Loader is designed to load AVDs at runtime on embedded devices.
-It minimizes Managed heap usage and CPU time for XML parsing, Path creation, and adds little code to the final executable.
+It minimizes Managed Heap usage and CPU time for XML parsing, Path creation, and adds little code to the final executable.
 The format is intentionally limited to reduce processing time and complexity while ensuring good performance, knowing that the :ref:`pre-processing step <section.avdloader.convert>` can convert any AVD into the compatible format. 
 
 Note that this limitation on the Android Vector Drawable format does not apply to AVDs loaded as :ref:`raw vector images <vectorimage_overview>`.
@@ -145,7 +145,7 @@ The resulting vector image can then be drawn on the display:
    The image must be provided as a raw resource of the application, either :ref:`internal or external <chapter.microej.applicationResources>`. For external resource loading, the BSP must implement the proper Abstraction Layer API (LLAPI), see :ref:`section_externalresourceloader` for more information on the implementation.
 
 .. warning::
-   The new image is a ``ResourceVectorImage``. In the current implementation, an image loaded with the ``AvdImageLoader`` is allocated in the Managed heap. To release memory, the application must close the image and remove any references to it.
+   The new image is a ``ResourceVectorImage``. In the current implementation, an image loaded with the ``AvdImageLoader`` is allocated in the Managed Heap. To release memory, the application must close the image and remove any references to it.
 
 Limitations
 -----------
@@ -198,7 +198,7 @@ This processes the input SVG ``originalImage.svg`` and outputs a Vector Drawable
 Memory Usage
 ~~~~~~~~~~~~
 
-The loading of a Vector Drawable at runtime uses Managed heap:
+The loading of a Vector Drawable at runtime uses Managed Heap:
 
 * for the working buffers and intermediate objects used during the loading phase. The XML parser is optimized to stream the data and uses as few heap as possible.
 * for the image data.

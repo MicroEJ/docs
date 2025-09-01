@@ -122,7 +122,7 @@ The cause(s) of a memory corruption can be:
 * A device incorrectly initialized or misconfigured.
 * ...
 
-When the HardFault occurs in the Core Engine task, one of its internal structures may be corrupted (such as the Managed heap or Threads stacks).
+When the HardFault occurs in the Core Engine task, one of its internal structures may be corrupted (such as the Managed Heap or Threads stacks).
 Add ``LLMJVM_checkIntegrity`` call in checkpoints of the BSP code to identify the timeslot of the memory corruption.
 Typically, you can check a native with:
 
@@ -177,7 +177,7 @@ Attach an embedded debugger and get the following information:
     * the whole memory, if possible
     * otherwise, get the *hot sections* 
 
-        * BSP and Managed heap and stack
+        * BSP and Managed Heap and stack
         * UI buffer
         * immortals heap
         * sections where the Java application and BSP are working together
