@@ -93,7 +93,10 @@ or this kind:
 
 It means that no module or plugin repository has been defined. 
 Make sure that the repositories have been configured as described in the :ref:`sdk_6_configure_repositories` section.
-In particular, make sure that the Gradle Init script is in the ``./gradle/init.d`` folder in the user home folder.
+In particular, make sure that the Gradle Init script is in the ``.gradle/init.d`` folder in the Gradle User Home folder.
+The Gradle User Home folder is defined by default to the OS User Home folder, 
+and can be changed by setting the ``GRADLE_USER_HOME`` environment variable 
+or in the IDE settings (see `Intellij IDEA documentation <https://www.jetbrains.com/help/idea/gradle-settings.html>`__).
 
 Unresolved Dependency in Repositories
 -------------------------------------
