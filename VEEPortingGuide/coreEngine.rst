@@ -709,7 +709,7 @@ Starting from :ref:`Architecture 8.0.0 <changelog-8.0.0>`, sections have been re
             +=============================+=============================+=============+============+
             | ``_java_heap``              | Application heap            | RW          | 4          |
             +-----------------------------+-----------------------------+-------------+------------+
-            | ``_java_immortals``         | Application Immortals Heap   | RW          | 4          |
+            | ``_java_immortals``         | Application Immortals Heap  | RW          | 4          |
             |                             |                             |             |            |
             +-----------------------------+-----------------------------+-------------+------------+
             | ``.bss.vm.stacks.java``     | Application threads stack   | RW [1]_     | 8          |
