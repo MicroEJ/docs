@@ -1734,7 +1734,7 @@ MicroUI Implementation
 * Antialiased circle may be cropped.
 * `FillRoundedRectangle`_ can give invalid arguments to `FillRectangle`_.
 * Flush bounds may be invalid.
-* Reduce memory footprint (java heap and Immortals Heap).
+* Reduce memory footprint (Managed Heap and Immortals Heap).
 * No font is loaded when an external font is not available.
 * A8 color is cropped to display limitation too earlier on simulator.
 
@@ -1822,7 +1822,7 @@ MicroUI Implementation
 
 * Reduce EDC dependency.
 * Merge ``DisplayPump`` and ``InputPump``: only one thread is required by MicroUI.
-* Use a ``bss`` section to load characters from an external font instead of using java heap.
+* Use a ``bss`` section to load characters from an external font instead of using Managed Heap.
 
 **Removed**
 
@@ -1883,7 +1883,7 @@ Font Generator
 
 **Changed**
 
-* Used a dedicated ``bss`` section to load characters from an external font instead of using the java heap.
+* Used a dedicated ``bss`` section to load characters from an external font instead of using the Managed Heap.
 
 LLAPIs
 """"""
@@ -2035,8 +2035,8 @@ MicroUI Implementation
 **Changed**
 
 * Change ``CM4hardfp_IAR83`` compiler flags.
-*  Remove RAW images from cache as soon as possible to reduce java heap usage.
-* Do not cache RAW images with their paths to reduce java heap usage.
+*  Remove RAW images from cache as soon as possible to reduce Managed Heap usage.
+* Do not cache RAW images with their paths to reduce Managed Heap usage.
 
 **Fixed**
 
@@ -2083,11 +2083,11 @@ MicroUI Implementation
 **Changed**
 
 * Manage the Graphics Context clip on native side.
-* Use java heap to store images metadata instead of using icetea heap (remove option "max offscreen").
+* Use Managed Heap to store images metadata instead of using icetea heap (remove option "max offscreen").
 * Optimize retrieval of all fonts.
 * Ensure user buffer size is larger than LCD size.
-* Use java heap to store flying images metadata instead of using icetea heap (remove option "max flying images").
-* Use java heap to store fill polygon algorithm's objects instead of using icetea heap (remove option "max edges").
+* Use Managed Heap to store flying images metadata instead of using icetea heap (remove option "max flying images").
+* Use Managed Heap to store fill polygon algorithm's objects instead of using icetea heap (remove option "max edges").
 * ``SecurityManager`` enabled as a boolean constant option (footprint removal by default).
 * Remove ``FlyingImage`` feature using BON constants (option to enable it).
 
