@@ -1655,7 +1655,7 @@ Core Engine
 ~~~~~~~~~~~
 
 -  Fixed `OutOfMemoryError`_
-   thrown when allocating an object of the size of free memory in immortals heap
+   thrown when allocating an object of the size of free memory in Immortals Heap
 
 .. _soar-6:
 

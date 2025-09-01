@@ -1466,7 +1466,7 @@ MicroUI Implementation
 
 **Changed**
 
-* Check Immortals heap minimal size required by MicroUI implementation.
+* Check Immortals Heap minimal size required by MicroUI implementation.
 * Change the EventGenerator Pointer event format.
 * Do no systematically use the GPU to draw intermediate steps of a shape.
 
