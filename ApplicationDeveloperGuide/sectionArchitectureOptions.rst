@@ -128,7 +128,7 @@ heap is too small.
 .. _option_immortal_heap:
 
 Option(text): Immortals Heap size (in bytes)
-"""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""
 
 *Option Name*: ``core.memory.immortal.size``
 

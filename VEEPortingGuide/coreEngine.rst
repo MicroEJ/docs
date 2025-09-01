@@ -303,7 +303,7 @@ The following table describes these error codes.
    |             |                                                             |
    |             | - ``SNI_createVM`` called several times.                    |
    +-------------+-------------------------------------------------------------+
-   | -18         | The memory used for the Managed Heap or Immortals Heap       |
+   | -18         | The memory used for the Managed Heap or Immortals Heap      |
    |             | does not work properly. Read/Write memory checks            |
    |             | failed. This may be caused by an invalid external RAM       |
    |             | configuration. Verify ``_java_heap`` and                    |
@@ -670,7 +670,7 @@ Starting from :ref:`Architecture 8.0.0 <changelog-8.0.0>`, sections have been re
             +================================+===================================+=============+============+
             | ``.bss.microej.heap``          | Application heap                  | RW          | 4          |
             +--------------------------------+-----------------------------------+-------------+------------+
-            | ``.bss.microej.immortals``     | Application Immortals Heap         | RW          | 4          |
+            | ``.bss.microej.immortals``     | Application Immortals Heap        | RW          | 4          |
             |                                |                                   |             |            |
             +--------------------------------+-----------------------------------+-------------+------------+
             | ``.bss.microej.stacks``        | Application threads stack         | RW [1]_     | 8          |
@@ -709,7 +709,7 @@ Starting from :ref:`Architecture 8.0.0 <changelog-8.0.0>`, sections have been re
             +=============================+=============================+=============+============+
             | ``_java_heap``              | Application heap            | RW          | 4          |
             +-----------------------------+-----------------------------+-------------+------------+
-            | ``_java_immortals``         | Application Immortals Heap   | RW          | 4          |
+            | ``_java_immortals``         | Application Immortals Heap  | RW          | 4          |
             |                             |                             |             |            |
             +-----------------------------+-----------------------------+-------------+------------+
             | ``.bss.vm.stacks.java``     | Application threads stack   | RW [1]_     | 8          |
