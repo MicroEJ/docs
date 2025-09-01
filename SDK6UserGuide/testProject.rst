@@ -521,7 +521,7 @@ The properties are:
   This property is only required if the VEE Port does not redirect execution traces.
 
 Any other property can be passed to the Test Engine by prefixing it by ``microej.testsuite.properties.``.
-For example, to set the the Immortal heap size:
+For example, to set the the Immortals Heap size:
 
 .. code-block::
 

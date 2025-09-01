@@ -1734,7 +1734,7 @@ MicroUI Implementation
 * Antialiased circle may be cropped.
 * `FillRoundedRectangle`_ can give invalid arguments to `FillRectangle`_.
 * Flush bounds may be invalid.
-* Reduce memory footprint (java heap and immortal heap).
+* Reduce memory footprint (java heap and Immortals Heap).
 * No font is loaded when an external font is not available.
 * A8 color is cropped to display limitation too earlier on simulator.
 
