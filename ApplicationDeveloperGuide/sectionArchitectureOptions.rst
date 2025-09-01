@@ -111,7 +111,7 @@ Group: Heaps
 
 .. _option_managed_heap:
 
-Option(text): Managed heap size (in bytes)
+Option(text): Managed Heap size (in bytes)
 """"""""""""""""""""""""""""""""""""""""""
 
 *Option Name*: ``core.memory.javaheap.size``
@@ -120,9 +120,9 @@ Option(text): Managed heap size (in bytes)
 
 *Description*:
 
-Specifies the Managed heap size in bytes.
+Specifies the Managed Heap size in bytes.
 
-A Managed heap contains live objects. An OutOfMemory error can occur if the
+A Managed Heap contains live objects. An OutOfMemory error can occur if the
 heap is too small.
 
 .. _option_immortal_heap:
@@ -807,14 +807,14 @@ output when Core Engine throws an OutOfMemoryError.
 
 .. _option_enable_heap_usage:
 
-Option(checkbox): Enable Managed heap usage monitoring
+Option(checkbox): Enable Managed Heap usage monitoring
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 *Option Name*: ``com.microej.runtime.debug.heap.monitoring.enabled``
 
 *Default value*: ``false``
 
-Option(text): Managed heap initial size
+Option(text): Managed Heap initial size
 """""""""""""""""""""""""""""""""""""""
 
 *Option Name*: ``com.microej.runtime.debug.heap.monitoring.init.size``
@@ -823,7 +823,7 @@ Option(text): Managed heap initial size
 
 *Description*:
 
-Specify the initial size (in bytes) of the Managed heap.
+Specify the initial size (in bytes) of the Managed Heap.
 
 Group: SOAR
 ^^^^^^^^^^^

@@ -148,8 +148,8 @@ The Code is divided into chunks. Each chunk is temporarily copied to RAM to be r
 
 A minimum amount of RAM is required:
 
-- A temporary buffer is allocated in the Managed heap for reading bytes from the InputStream,
-- Metadata is allocated in the Managed heap,
+- A temporary buffer is allocated in the Managed Heap for reading bytes from the InputStream,
+- Metadata is allocated in the Managed Heap,
 - Code chunk is temporarily copied in a memory area to be relocated (see more details below).
 
 .. figure:: images/multisandbox-link-overview.png
@@ -227,7 +227,7 @@ A small number will reduce the RAM consumption but will increase the ``.fo`` siz
 InputStream Transfer Buffer Size
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When calling the `Kernel.install(InputStream)`_ method, the Feature ``.fo`` bytes are read from the InputStream using a temporary byte array allocated in the Managed heap. 
+When calling the `Kernel.install(InputStream)`_ method, the Feature ``.fo`` bytes are read from the InputStream using a temporary byte array allocated in the Managed Heap. 
 The size of this array can be configured with the following option:
 
 **Option Name**: ``com.microej.runtime.kf.link.transferbuffer.size``
@@ -284,15 +284,15 @@ The following table summarizes the sections and their content:
      - **Target Memory Location**
    * - ``.soar.rel``
      - Metadata
-     - Managed heap
+     - Managed Heap
      - None
    * - ``.strtab``
      - Metadata
-     - Managed heap
+     - Managed Heap
      - None
    * - ``.symbtab``
      - Metadata
-     - Managed heap
+     - Managed Heap
      - None
    * - ``.bss.soar.feature``
      - RW Data
@@ -308,7 +308,7 @@ The following table summarizes the sections and their content:
      - Features ROM area
    * - ``.shstrtab``
      - Metadata
-     - Managed heap
+     - Managed Heap
      - None
 
 .. _feature_inplace_installation:

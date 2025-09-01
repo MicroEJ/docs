@@ -283,7 +283,7 @@ The following table describes these error codes.
    |             | :ref:`limitations` and :ref:`option_number_of_threads`.     |
    +-------------+-------------------------------------------------------------+
    | -13         | Fail to start the Application because the                   |
-   |             | specified managed heap is too large or too small.           |
+   |             | specified Managed Heap is too large or too small.           |
    |             | See section :ref:`option_managed_heap`.                     |
    +-------------+-------------------------------------------------------------+
    | -14         | Invalid Application stack configuration. The                |
@@ -303,7 +303,7 @@ The following table describes these error codes.
    |             |                                                             |
    |             | - ``SNI_createVM`` called several times.                    |
    +-------------+-------------------------------------------------------------+
-   | -18         | The memory used for the managed heap or immortal heap       |
+   | -18         | The memory used for the Managed Heap or immortal heap       |
    |             | does not work properly. Read/Write memory checks            |
    |             | failed. This may be caused by an invalid external RAM       |
    |             | configuration. Verify ``_java_heap`` and                    |

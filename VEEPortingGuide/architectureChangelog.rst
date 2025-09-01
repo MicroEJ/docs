@@ -388,7 +388,7 @@ Simulator
 - Added support for mark/reset on an InputStream returned by `Class.getResourceAsStream()`_.
 - Fixed "Internal limits" error in HIL engine when too many array arguments are used at the same time by one or several native methods.
 - Fixed slow reading with an array of bytes of the input stream returned by `Class.getResourceAsStream(String)`_.
-- Fixed configuration of the Managed heap size using :ref:`option_managed_heap`. The legacy ``core.memory.javaheapsum.size`` option is not more supported.
+- Fixed configuration of the Managed Heap size using :ref:`option_managed_heap`. The legacy ``core.memory.javaheapsum.size`` option is not more supported.
 - Fixed :ref:`option_immortal_heap` default value when running a Standalone Application using MMM.
 - Fixed stop of the HIL Engine if Simulator was terminated before the connection is established.
 - Fixed load of the Mock classes in the classpath order (left-to-right).
@@ -1584,7 +1584,7 @@ Simulator
 ~~~~~~~~~
 
 -  Added ``Embed all types names`` option for Simulation
--  Added memory size simulation for Managed heap and Immortal Heap
+-  Added memory size simulation for Managed Heap and Immortal Heap
    (Enabling ``Use target characteristics`` option is no more required)
 -  Added Kernel & Features semantic, as defined in the ``KF-1.4``
    specification

@@ -8,7 +8,7 @@ Introduction
 
 Heap Dumper is a tool that allows to get a snapshot of the heap of an Application running on the Simulator or on a device. 
 
-The Heap Analyzer is a set of tools to help developers understand the contents of the Managed heap and find problems such as memory leaks.
+The Heap Analyzer is a set of tools to help developers understand the contents of the Managed Heap and find problems such as memory leaks.
 For its part, the Heap Analyzer IDE plugin is able to visualize dump files. 
 It helps you analyze their contents thanks to the following features:
 
@@ -76,7 +76,7 @@ Heap Dumper
 -----------
 
 The Heap Dumper generates ``.heap`` files. There are two implementations:
-- the one integrated to the Simulator: it directly dumps ``.heap`` files from the Managed heap. 
+- the one integrated to the Simulator: it directly dumps ``.heap`` files from the Managed Heap. 
 - the Heap Dumper tool: it generates ``.heap`` files from ``.hex`` files that must be manually retrieved from the device.
 
 The heap dump should be performed after a call to `System.gc()`_ to exclude discardable objects.
