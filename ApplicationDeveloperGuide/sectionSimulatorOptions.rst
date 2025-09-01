@@ -27,7 +27,7 @@ Option: Objects Heap Size
 
 This memory area contains any kind of objects (regular, immortal and immutable objects). 
 If you get a ``java.lang.OutOfMemoryError`` exception but your Managed Heap is not full, most likely you should augment this option.
-It must be greater than the sum of :ref:`Managed Heap <option_managed_heap>` and :ref:`Immortal Heap <option_immortal_heap>`.
+It must be greater than the sum of :ref:`Managed Heap <option_managed_heap>` and :ref:`Immortals Heap <option_immortal_heap>`.
 
 Option: System Chars Size
 ^^^^^^^^^^^^^^^^^^^^^^^^^

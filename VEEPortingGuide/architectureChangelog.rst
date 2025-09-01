@@ -43,7 +43,7 @@ specific configuration:
 Core Engine
 ~~~~~~~~~~~
 
-- Updated :ref:`External Resources Loader<section_externalresourceloader>` implementation to use SNI 1.4 which removes allocations to the Immortal Heap.
+- Updated :ref:`External Resources Loader<section_externalresourceloader>` implementation to use SNI 1.4 which removes allocations to the Immortals Heap.
 - Fixed an issue where ``LLMJVM_MONITOR_IMPL_on_thread_state_changed()`` was not called when a thread was preempted by another thread due to higher priority or round-robin scheduling.
 - [Multi] - Increased the :ref:`limitation <limitations>` on the maximum number of threads from 63 to 127.
 
@@ -60,7 +60,7 @@ Simulator
 - Added :ref:`Mock event tracing <mock_event_tracing>`.
 - Added, in Front Panel, the ability to resize the window, an options toolbar, and a status bar (see :ref:`frontpanel_overview`).
 - Fixed, in Front Panel, synchronization on the widget display accesses and rendering of the widgets other than display.
-- Fixed initialization of an empty Immortal Heap when :ref:`option_immortal_heap` is set to 0.
+- Fixed initialization of an empty Immortals Heap when :ref:`option_immortal_heap` is set to 0.
 - Fixed the implementation of `Tracer.isTraceStarted()`_ that could return ``true`` when trace recording is not yet enabled in some cases.
 - Fixed `InputStream.reset()`_ method on a :ref:`Resource <chapter.microej.applicationResources>` that could throw an unexpected `IOException`_ after the end of stream is reached.
 - Fixed Front Panel not starting at boot. It was previously only displayed after the `MicroUI.start()`_ call.
@@ -1584,7 +1584,7 @@ Simulator
 ~~~~~~~~~
 
 -  Added ``Embed all types names`` option for Simulation
--  Added memory size simulation for Managed Heap and Immortal Heap
+-  Added memory size simulation for Managed Heap and Immortals Heap
    (Enabling ``Use target characteristics`` option is no more required)
 -  Added Kernel & Features semantic, as defined in the ``KF-1.4``
    specification

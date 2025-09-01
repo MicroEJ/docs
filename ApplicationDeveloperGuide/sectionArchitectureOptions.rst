@@ -127,7 +127,7 @@ heap is too small.
 
 .. _option_immortal_heap:
 
-Option(text): Immortal heap size (in bytes)
+Option(text): Immortals Heap size (in bytes)
 """""""""""""""""""""""""""""""""""""""""""
 
 *Option Name*: ``core.memory.immortal.size``
@@ -136,9 +136,9 @@ Option(text): Immortal heap size (in bytes)
 
 *Description*:
 
-Specifies the Immortal heap size in bytes.
+Specifies the Immortals Heap size in bytes.
 
-The Immortal heap contains allocated Immortal objects. An OutOfMemory error can
+The Immortals Heap contains allocated Immortal objects. An OutOfMemory error can
 occur if the heap is too small.
 
 Group: Threads
