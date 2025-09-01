@@ -153,7 +153,7 @@ Determine which memory regions are affected and determine which components are r
 
     * What are the code sections for the BSP and the Application?
     * Where are the BSP stack and heap? What about the Application stack and heap?
-    * Where is the Java immortals heap?
+    * Where is the Java Immortals Heap?
     * Where are the Java strings?
     * Where is the MicroEJ UI buffer?
     * Besides the Java immortals, what are the other intersection point between the Java application and the BSP? (e.g., a temporary RAM buffer for JPEG decoder).
@@ -179,7 +179,7 @@ Attach an embedded debugger and get the following information:
 
         * BSP and Managed Heap and stack
         * UI buffer
-        * immortals heap
+        * Immortals Heap
         * sections where the Java application and BSP are working together
 
 * :ref:`vm_dump_debugger`
