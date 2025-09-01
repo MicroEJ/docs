@@ -34,17 +34,17 @@ The following figure shows the general process of building a Sandboxed Applicati
 Please refer to the :ref:`kernel-developer-guide` to learn more on writing Kernel Applications and building Multi-Sandbox Executable and Virtual Devices.
 
 
-Managing Sandboxed Applications with AppConnect
+AppConnect Application Management
 ================================================
 
 **AppConnect** is an embedded library designed to simplify the management of on-board Sandboxed Applications directly on the device.
-It provides services to install, start, stop, and uninstall Sandboxed Applications, as well as retrieve metadata about the deployed Applications and the target device.
-The library features a full-fledged HTTP server (listening on port ``4001`` by default) and exposes its services through a REST API.
+It provides services to install, start, stop, and uninstall applications, as well as to retrieve metadata about both deployed applications and the target device.
+The library includes a full-fledged HTTP server, providing a comprehensive REST API along with a web-based graphical interface.
 
 AppConnect supports three modes of interaction:
 
-- A Web application built on top of the `Vue.js <https://vuejs.org>`_ framework that allows users to interact with the managed Sandboxed Applications via a Web UI or REST API.
-- A CLI provided as a ``.jar`` executable that receives commands and forwards them to the the HTTP server for execution.
+- A web application enabling users to access and control applications via a web interface or REST API.
+- A Java-based command-line (CLI) tool that serves as a headless interface, offering the full functionality of the web application through its REST API, while enabling seamless automation and scripting directly from the command line.
 - A serial module that operates independently of the HTTP server, providing a shell for receiving and executing commands over a serial connection (UART).
 
 AppConnect Web UI
@@ -60,7 +60,7 @@ Installed Applications are listed on the Web UI, and they can be started, stoppe
 AppConnect REST API
 -------------------
 
-The REST API exposes the following endpoints to manage the board and its installed Sandboxed Applications:
+The REST API exposes the following endpoints to manage the board and its installed applications:
 
 Device Information
 ^^^^^^^^^^^^^^^^^^
