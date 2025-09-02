@@ -9,13 +9,13 @@ you can define the property ``org.gradle.java.home`` in the `Gradle Properties <
 Gradle Properties can be defined in the following locations, sorted by the highest priority:
 
 - command line, as set using ``-D``.
-- ``gradle.properties`` in the ``GRADLE_USER_HOME`` directory (defaults to ``$USER_HOME/.gradle``).
+- ``gradle.properties`` in the ``GRADLE_USER_HOME`` directory (defaults to ``<USER_HOME>/.gradle``).
 - ``gradle.properties`` in the project directory, then its parent project directory up to the build root directory.
 - ``gradle.properties`` in the Gradle installation directory.
 
 If an option is configured in multiple locations, the first one found in any of these locations wins.
 Therefore, if you want all your Gradle project to use a different JDK than the system default JDK, 
-you can add the following property in the file ``$USER_HOME/.gradle/gradle.properties``::
+you can add the following property in the file ``<USER_HOME>/.gradle/gradle.properties``::
 
    org.gradle.java.home="C:\\path\\to\\the\\jdk"
 

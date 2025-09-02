@@ -41,7 +41,7 @@ provided by default in MicroEJ SDK configuration, which is connected to :ref:`Mi
 
    <ea:property name="bar.populate.from.resolver" value="MicroEJChainResolver"/>
 
-The ``MicroEJChainResolver`` is a URL resolver defined in ``$USER_HOME\.microej\microej-ivysettings-[VERSION].xml`` that points to MicroEJ Central Repository.
+The ``MicroEJChainResolver`` is a URL resolver defined in ``<USER_HOME>\.microej\microej-ivysettings-[VERSION].xml`` that points to MicroEJ Central Repository.
 
 .. _module_repository_consistency:
 

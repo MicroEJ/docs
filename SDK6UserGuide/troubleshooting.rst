@@ -297,7 +297,7 @@ This feature can be disabled for a build by passing the ``--no-watch-fs`` option
 
 	./gradlew build --no-watch-fs
 
-or for all builds by setting the following property in the ``$USER_HOME/.gradle/gradle.properties`` file::
+or for all builds by setting the following property in the ``<USER_HOME>/.gradle/gradle.properties`` file::
 	
 	org.gradle.vfs.watch=false
 
@@ -443,7 +443,7 @@ Refer to :ref:`sdk_6_howto_gradle_add_repository` for more details on how to dec
 Missing Compilation Capability
 ------------------------------
 
-During the build of a project (precisely the Java compilation phase), the error following may be raised::
+During the build of a project (precisely the Java compilation phase), the following error may be raised::
 
 	* What went wrong:
 	Execution failed for task ':compileJava'.
@@ -451,7 +451,7 @@ During the build of a project (precisely the Java compilation phase), the error 
 		> Failed to calculate the value of task ':compileJava' property 'javaCompiler'.
 			> Toolchain installation 'C:\Program Files (x86)\Eclipse Adoptium\jre-11.0.28.6-hotspot' does not provide the required capabilities: [JAVA_COMPILER]
 
-This means that the JDK used by Gradle is not a JDK but a JRE, whereas Gradle and the SDK require a JDK.
+This means that the Java installation used by Gradle is not a JDK but a JRE, whereas Gradle and the SDK require a JDK.
 Therefore, the solution is to install and configure a JDK.
 Refer to :ref:`sdk_6_check_jdk` for more information.
 
