@@ -114,7 +114,11 @@ Start, stop, or uninstall an installed Application.
 AppConnect CLI
 --------------
 
-The AppConnect CLI is delivered as a ``.jar`` `executable <https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/library/appconnect-cli>`_ and provides a command-line interface for interacting with AppConnect.
+A Java-based command-line (CLI) tool that serves as a headless interface, offering the full functionality of the web application through its REST API, while enabling seamless automation and scripting directly from the command line.
+
+The CLI is available for download at the following `link <https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/library/appconnect-cli>`_.
+
+Download the latest version of `appconnect-cli-<version>.jar` from this page and follow the usage instructions outlined below.
 
 Requirements
 ^^^^^^^^^^^^
