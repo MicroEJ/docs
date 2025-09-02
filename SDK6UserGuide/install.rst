@@ -41,7 +41,7 @@ OR
 
 If the ``JAVA_HOME`` is set to a JDK, make sure that it is a JDK 11 or a higher LTS version.
 
-If the ``JAVA_HOME`` is not set, make sure a JDK executables are available in the ``PATH`` environment variable.
+If the ``JAVA_HOME`` is not set, make sure the JDK executables are available in the ``PATH`` environment variable.
 To check, execute ``java -version`` in a terminal::
 
    $ java -version
