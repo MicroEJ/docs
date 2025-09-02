@@ -35,13 +35,13 @@ The ``providers.systemProperty("myPropertyName")`` API returns a ``org.gradle.ap
    If the property to pass is an :ref:`Application option <application_options>`, it must be prefixed by ``microej.option.*``.
 
 .. note::
-   If the property to pass is a JVM argument, it can be set in a system property named ``microej.jvmargs``. This property accepts a whitespace-separated list of JVM options, which will be passed to the underlying Java process used during the project build.
+   If the property to pass is a JVM argument, it can be set in a system property named ``microej.launch.jvmargs``. This property accepts a whitespace-separated list of JVM options, which will be passed to the underlying Java process used during the project build.
    
    For example, to control the JVM maximum and initial heap of the JVM running the simulator, the command line would be:
 
    .. code::
       
-      $ ./gradlew runOnSimulator -Dmicroej.jvmargs="-Xmx1024m -Xms512m"
+      $ ./gradlew runOnSimulator -Dmicroej.launch.jvmargs="-Xmx1024m -Xms512m"
 
    Note that these options only apply to the JVM forked during the project build. This does not affect the JVM settings for the Gradle Daemon.
    To configure the Gradle Daemon, you can use the property ``org.gradle.jvmargs``, see the `Gradle Properties Reference <https://docs.gradle.org/current/userguide/build_environment.html#gradle_properties_reference>`__ for more details.
