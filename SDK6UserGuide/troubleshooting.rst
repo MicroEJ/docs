@@ -438,6 +438,23 @@ If the ``prod`` version is deployed in another repository declared after the Mic
 To fix this, declare the repository containing the ``prod`` version before the one containing the ``eval`` version.
 Refer to :ref:`sdk_6_howto_gradle_add_repository` for more details on how to declare module repositories.
 
+.. _sdk_6_missing_compilation_capability:
+
+Missing Compilation Capability
+------------------------------
+
+During the build of a project (precisely the Java compilation phase), the error following may be raised::
+
+	* What went wrong:
+	Execution failed for task ':compileJava'.
+	> Error while evaluating property 'javaCompiler' of task ':compileJava'.
+		> Failed to calculate the value of task ':compileJava' property 'javaCompiler'.
+			> Toolchain installation 'C:\Program Files (x86)\Eclipse Adoptium\jre-11.0.28.6-hotspot' does not provide the required capabilities: [JAVA_COMPILER]
+
+This means that the JDK used by Gradle is not a JDK but a JRE, whereas Gradle and the SDK require a JDK.
+Therefore, the solution is to install and configure a JDK.
+Refer to :ref:`sdk_6_check_jdk` for more information.
+
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 

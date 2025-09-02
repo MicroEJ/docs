@@ -31,26 +31,34 @@ System Requirements
 Check your JDK version
 ----------------------
 
-The SDK requires a JDK 11 or a higher LTS version to be installed and:
+The SDK requires a JDK (not a JRE) 11 or a higher LTS version to be installed and:
 
 - The ``JAVA_HOME`` environment variable set to the path of a JDK.
 
 OR
 
-- The ``java`` executable of a JDK available in the ``PATH``.
+- The ``java`` and ``javac`` executables of a JDK available in the ``PATH``.
 
 If the ``JAVA_HOME`` is set to a JDK, make sure that it is a JDK 11 or a higher LTS version.
 
-If the ``JAVA_HOME`` is not set, make sure a JDK executable is available in the ``PATH`` environment variable.
-To check, run ``java -version`` in a terminal::
+If the ``JAVA_HOME`` is not set, make sure a JDK executables are available in the ``PATH`` environment variable.
+To check, execute ``java -version`` in a terminal::
 
    $ java -version
-   openjdk version "11.0.15" 2022-04-19
-   OpenJDK Runtime Environment Temurin-11.0.15+10 (build 11.0.15+10)
-   OpenJDK 64-Bit Server VM Temurin-11.0.15+10 (build 11.0.15+10, mixed mode)
+   openjdk 11.0.19 2023-04-18
+   OpenJDK Runtime Environment Temurin-11.0.19+7 (build 11.0.19+7)
+   OpenJDK 64-Bit Server VM Temurin-11.0.19+7 (build 11.0.19+7, mixed mode)
 
-If you don't have a JDK installed, 
-you can download and install one from `Adoptium <https://adoptium.net/temurin/releases/>`__.
+Then execute ``javac --version``::
+
+   $ javac --version
+   javac 11.0.19
+
+If the ``java`` program is not found, it means there is no JDK installed or it is not available in the ``PATH`` or ``JAVA_HOME`` environment variables.
+If it is not installed, you can download and install one from `Adoptium <https://adoptium.net/temurin/releases/>`__.
+
+If the ``java`` program is found but not the ``javac`` program, it means a JRE is installed and used, not a JDK.
+In this case, install a JDK. You can download and install one from `Adoptium <https://adoptium.net/temurin/releases/>`__.
 
 
 .. _sdk_6_configure_repositories:
