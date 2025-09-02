@@ -35,27 +35,40 @@ Please refer to the :ref:`kernel-developer-guide` to learn more on writing Kerne
 
 
 AppConnect Application Management
-================================================
+=================================
 
 **AppConnect** is an embedded library designed to simplify the management of on-board Sandboxed Applications directly on the device.
 It provides services to install, start, stop, and uninstall applications, as well as to retrieve metadata about both deployed applications and the target device.
 The library includes a full-fledged HTTP server, providing a comprehensive REST API along with a web-based graphical interface.
 
-AppConnect supports three modes of interaction:
+AppConnect supports four modes of interaction:
 
-- A web application enabling users to access and control applications via a web interface or REST API.
-- A Java-based command-line (CLI) tool that serves as a headless interface, offering the full functionality of the web application through its REST API, while enabling seamless automation and scripting directly from the command line.
-- A serial module that operates independently of the HTTP server, providing a shell for receiving and executing commands over a serial connection (UART).
+- Web App — See :ref:`web_app_section`.
+- REST API — See :ref:`rest_api_section`.
+- HTTP CLI — See :ref:`http_cli_section`.
+- Serial Shell — See :ref:`serial_shell_section`.
 
-AppConnect Web UI
------------------
+.. _web_app_section:
+
+AppConnect Web App
+------------------
 
 Installed Applications are listed on the Web UI, and they can be started, stopped, or uninstalled.
+
+The screenshot below highlights the following elements:
+
+1. Device information that displays the firmware UID, name and version.
+2. CPU and RAM monitoring when supported by the device and the applications.
+3. The current state of each application (``INSTALLED``, ``RUNNING`` , or ``STOPPED``).
+4. Action buttons to start, stop, or uninstall applications.
+5. Connection to the MicroEJ App Store.
 
 .. figure:: images/app_connect_web_ui.png
    :alt: AppConnect Web UI
    :align: center
    :scale: 75%
+
+.. _rest_api_section:
 
 AppConnect REST API
 -------------------
@@ -102,8 +115,8 @@ Install an application on the device.
 - ``force``: If ``true``, uninstall any existing application with the same name before installing the new one. Default: ``false``.
 - ``start``: If ``true``, automatically start the application after installation. Default: ``false``.
 
-Manage Installed Applications
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Manage Applications
+^^^^^^^^^^^^^^^^^^^
 
 Start, stop, or uninstall an installed Application.
 
@@ -111,10 +124,12 @@ Start, stop, or uninstall an installed Application.
 
 **Required parameters:** ``id``, ``action``.
 
-AppConnect CLI
---------------
+.. _http_cli_section:
 
-A Java-based command-line (CLI) tool that serves as a headless interface, offering the full functionality of the web application through its REST API, while enabling seamless automation and scripting directly from the command line.
+AppConnect HTTP CLI
+-------------------
+
+AppConnect CLI is a Java-based command-line (CLI) tool that serves as a headless interface, offering the full functionality of the web application through its REST API, while enabling seamless automation and scripting directly from the command line.
 
 The CLI is available for download at the following `link <https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/library/appconnect-cli>`_.
 
@@ -169,10 +184,12 @@ Once the connection is established, you can execute various commands to manage a
 
 For detailed information on any command, use the ``--help`` option with that command.
 
-AppConnect Serial
------------------
+.. _serial_shell_section:
 
-The ``appconnect-serial`` module provides a shell for use over a serial connection. It reads commands from an input stream, and writes execution results to an output stream.
+AppConnect Serial Shell
+-----------------------
+
+The ``appconnect-serial`` module provides a shell for use over a serial connection (UART). It reads commands from an input stream, and writes execution results to an output stream.
 
 Requirements
 ^^^^^^^^^^^^
