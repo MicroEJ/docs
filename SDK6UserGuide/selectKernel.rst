@@ -36,6 +36,17 @@ the Kernel project must be declared as a dependency in the ``build.gradle.kts`` 
 
     }
 
+To find the name of the Kernel project, you can execute the ``projects`` task on the multi-project to display all its subprojects, for example::
+
+  Root project 'my-multi-project'
+  +--- Project ':application'
+  +--- Project ':library'
+  \--- Project ':my-kernel'
+
+The Kernel Virtual Device and Executable will be automatically built when they are required by the Application.
+For example the Virtual Device will be built before running the Application on the Simulator (with the ``runOnSimulator`` task),
+and the Executable will be built before building the Application Feature (with the ``buildFeature`` task).
+
 .. _sdk_6_select_kernel_outside_multi-project:
 
 Local Kernel project outside a multi-project
@@ -49,7 +60,7 @@ so all changes done to the Kernel are automatically considered when building or 
 
 This is done by adding the following line in the ``settings.gradle.kts`` file of the Application project::
 
-  includeBuild("[kernel-project-absolute-path]")
+  includeBuild("[kernel-project-path]")
 
 Then declaring the Kernel as a dependency in the ``build.gradle.kts`` file of the Application project::
 
@@ -61,13 +72,12 @@ Then declaring the Kernel as a dependency in the ``build.gradle.kts`` file of th
 
 The dependency must use the module notation (``"group:name:version"``), where the group and name match with the ones declared in the Kernel project.
 The group is defined in the ``build.gradle.kts`` file of the ``my-kernel`` project by the ``group`` property.
-The name is defined in the ``settings.gradle.kts`` file when the ``my-kernel`` project is included. 
-For example, the name of the Kernel is ``my-custom-kernel`` if the ``my-kernel`` subproject is included with::
+To find the name of the Kernel project, you can execute the ``projects`` task on the multi-project to display all its subprojects, for example::
 
-  include("my-custom-kernel")
-  project(":my-custom-kernel").projectDir = file("my-kernel")
-
-Otherwise the name of the subproject folder is used, so ``my-kernel`` in the recommended structure. 
+  Root project 'my-multi-project'
+  +--- Project ':application'
+  +--- Project ':library'
+  \--- Project ':my-kernel'
 
 .. _sdk_6_select_local_kernel:
 
