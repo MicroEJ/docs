@@ -130,7 +130,7 @@ As a summary, the rules are:
 
    Declaring a VEE in project dependencies only applies to the current project. 
    By default the transitive resolution of the VEE is disabled but you can enable it with the project property ``feature.vee.transitivity.enabled``.
-   For more information, refer to :ref:`gradle_vee_transitivity_chapter`.
+   For more information, refer to :ref:`sdk_6_vee_port_transitivity`.
 
 Create a Test Class
 ^^^^^^^^^^^^^^^^^^^

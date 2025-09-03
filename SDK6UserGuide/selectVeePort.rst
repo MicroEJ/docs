@@ -72,7 +72,7 @@ and the :ref:`Architecture Usage <sdk_6_architecture_usage_selection>` of the VE
 
 The VEE Port will be automatically built when it is required by the Application.
 For example when running the Application on the Simulator (with the ``runOnSimulator`` task) 
-or when building the Application Executable (with the ``buildExecutable``),
+or when building the Application Executable (with the ``buildExecutable`` task),
 the VEE Port will be built before executing the requested task.
 
 .. _sdk_6_select_veeport_outside_multi-project:
@@ -88,7 +88,7 @@ so all changes done to the VEE Port are automatically considered when building o
 
 This is done by adding the following line in the ``settings.gradle.kts`` file of the Application project::
 
-  includeBuild("[vee-port-project-absolute-path]")
+  includeBuild("[vee-port-project-path]")
 
 Then declaring the VEE Port as a dependency in the ``build.gradle.kts`` file of the Application project::
 
