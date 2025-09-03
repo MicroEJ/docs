@@ -98,9 +98,8 @@ Here are the steps to integrate the Resource Manager in your kernel:
 .. code-block:: java
 
     public class CustomFeatureStateListener implements FeatureStateListener {
-
         @Override
-	    public void stateChanged(Feature feature, @Nullable State previousState) {
+        public void stateChanged(Feature feature, @Nullable State previousState) {
             switch (feature.getState()) {
             case INSTALLED:
                 if (previousState == null) {
