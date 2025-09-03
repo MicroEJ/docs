@@ -1,5 +1,3 @@
-.. _chapter.java_time:
-
 .. _Instant: https://repository.microej.com/javadoc/microej_5.x/apis/java/time/Instant.html
 .. _LocalDate: https://repository.microej.com/javadoc/microej_5.x/apis/java/time/LocalDate.html
 .. _LocalTime: https://repository.microej.com/javadoc/microej_5.x/apis/java/time/LocalTime.html
@@ -15,6 +13,8 @@
 .. _ZoneRules: https://repository.microej.com/javadoc/microej_5.x/apis/java/time/zone/ZoneRules.html
 .. _ZoneId: https://repository.microej.com/javadoc/microej_5.x/apis/java/time/ZoneId.html
 .. _ZoneOffset: https://repository.microej.com/javadoc/microej_5.x/apis/java/time/ZoneOffset.html
+
+.. _chapter.java_time:
 
 Date and Time
 =============
