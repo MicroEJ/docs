@@ -64,15 +64,57 @@ The solution is to use a JDK 11 or a higher LTS version (``11``, ``17`` or ``21`
 		Project JDK in IntelliJ IDEA and Android Studio
 
 
-Unresolved Dependency
----------------------
+Unresolved Dependency When No Repository
+----------------------------------------
 
 If this kind of message appears when resolving plugins or modules dependencies:
 
 .. code:: console
 
-   * What went wrong:
-   Plugin [id: 'com.microej.gradle.application', version: '1.3.1'] was not found in any of the following sources:
+	* What went wrong:
+	Plugin [id: 'com.microej.gradle.application', version: '1.3.1'] was not found in any of the following sources:
+
+	- Gradle Core Plugins (plugin is not in 'org.gradle' namespace)
+	- Included Builds (No included builds contain this plugin)
+	- Plugin Repositories (could not resolve plugin artifact 'com.microej.gradle.application:com.microej.gradle.application.gradle.plugin:1.1.0')
+	Searched in the following repositories:
+		Gradle Central Plugin Repository
+
+or this kind:
+
+.. code:: console
+
+	* What went wrong:
+	Execution failed for task ':compileJava'.
+	> Could not resolve all files for configuration ':compileClasspath'.
+	> Cannot resolve external dependency ej.api:edc:1.3.7 because no repositories are defined.
+		Required by:
+			root project :
+
+It means that no module or plugin repository has been defined. 
+Make sure that the repositories have been configured as described in the :ref:`sdk_6_configure_repositories` section.
+In particular, make sure that the Gradle Init script is in the ``.gradle/init.d`` folder in the Gradle User Home folder.
+The Gradle User Home folder is defined by default to the OS User Home folder, 
+and can be changed by setting the ``GRADLE_USER_HOME`` environment variable 
+or in the IDE settings (see `Intellij IDEA documentation <https://www.jetbrains.com/help/idea/gradle-settings.html>`__).
+
+Unresolved Dependency in Repositories
+-------------------------------------
+
+If this kind of message appears when resolving plugins or modules dependencies:
+
+.. code:: console
+
+	* What went wrong:
+	Plugin [id: 'com.microej.gradle.application', version: '1.3.1'] was not found in any of the following sources:
+
+	- Gradle Core Plugins (plugin is not in 'org.gradle' namespace)
+	- Included Builds (No included builds contain this plugin)
+	- Plugin Repositories (could not resolve plugin artifact 'com.microej.gradle.application:com.microej.gradle.application.gradle.plugin:1.3.1')
+	Searched in the following repositories:
+		microEJCentral(https://repository.microej.com/modules)
+		microEJForgeCentral(https://forge.microej.com/artifactory/microej-central-repository-release)
+		microEJForgeDeveloper(https://forge.microej.com/artifactory/microej-developer-repository-release)
 
 or this kind:
 
@@ -91,7 +133,7 @@ or this kind:
             project :
 
 
-First, check that either the requested plugin or module exists in your repository.
+First, check that either the requested plugin or module exists in the listed repositories.
 
 - If the plugin or module does not exist, 
   
@@ -255,7 +297,7 @@ This feature can be disabled for a build by passing the ``--no-watch-fs`` option
 
 	./gradlew build --no-watch-fs
 
-or for all builds by setting the following property in the ``$USER_HOME/.gradle/gradle.properties`` file::
+or for all builds by setting the following property in the ``<USER_HOME>/.gradle/gradle.properties`` file::
 	
 	org.gradle.vfs.watch=false
 
@@ -395,6 +437,23 @@ If the ``prod`` version is deployed in another repository declared after the Mic
 
 To fix this, declare the repository containing the ``prod`` version before the one containing the ``eval`` version.
 Refer to :ref:`sdk_6_howto_gradle_add_repository` for more details on how to declare module repositories.
+
+.. _sdk_6_missing_compilation_capability:
+
+Missing Compilation Capability
+------------------------------
+
+During the build of a project (precisely the Java compilation phase), the following error may be raised::
+
+	* What went wrong:
+	Execution failed for task ':compileJava'.
+	> Error while evaluating property 'javaCompiler' of task ':compileJava'.
+		> Failed to calculate the value of task ':compileJava' property 'javaCompiler'.
+			> Toolchain installation 'C:\Program Files (x86)\Eclipse Adoptium\jre-11.0.28.6-hotspot' does not provide the required capabilities: [JAVA_COMPILER]
+
+This means that the Java installation used by Gradle is not a JDK but a JRE, whereas Gradle and the SDK require a JDK.
+Therefore, the solution is to install and configure a JDK.
+Refer to :ref:`sdk_6_check_jdk` for more information.
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 

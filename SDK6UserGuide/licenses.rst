@@ -75,7 +75,7 @@ If the SDK EULA is not accepted, the following message is displayed when executi
     The license terms for this product can be downloaded from
     https://repository.microej.com/licenses/sdk/LAW-0011-LCS-MicroEJ_SDK-EULA-v3.1C.txt
     You can accept the EULA by setting the system property systemProp.accept-microej-sdk-eula-v3-1c=YES in a gradle.properties file
-          - in your Gradle User Home folder ($USER_HOME/.gradle/),
+          - in your Gradle User Home folder (<USER_HOME>/.gradle/),
           - or in the root folder of your project,
     or specifying the -Daccept-microej-sdk-eula-v3-1c=YES command line option, 
     or setting the ACCEPT_MICROEJ_SDK_EULA_V3_1C=YES environment variable.
@@ -88,7 +88,7 @@ As mentioned in the message, there are several ways to accept the SDK EULA:
 
       systemProp.accept-microej-sdk-eula-v3-1c=YES
 
-  This can be in the ``gradle.properties`` of your Gradle User Home folder (located by default at ``$USER_HOME/.gradle/gradle.properties``),
+  This can be in the ``gradle.properties`` of your Gradle User Home folder (located by default at ``<USER_HOME>/.gradle/gradle.properties``),
   or in the ``gradle.properties`` file at the root of your project for example.
 
 - define the ``accept-microej-sdk-eula-v3-1c`` system property in the command line:

@@ -5,9 +5,9 @@ How To Configure Multiple Gradle Repositories
 
 If you want to make MicroEJ repositories available only to some projects, here is an example of configuration:
 
-- Create a folder ``repositories`` in ``$USER_HOME/.gradle/init.d``.
+- Create a folder ``repositories`` in ``<USER_HOME>/.gradle/init.d``.
 - Move ``microej.init.gradle.kts`` to the ``repositories`` folder.
-- Create a new ``repositories.init.gradle.kts`` file in ``$USER_HOME/.gradle/init.d`` with the following content::
+- Create a new ``repositories.init.gradle.kts`` file in ``<USER_HOME>/.gradle/init.d`` with the following content::
 
    val defaultRepository = "myOtherRepo" // can be set to null
    val selectedRepository = System.getProperty("gradle.repository") ?: defaultRepository
@@ -37,7 +37,7 @@ activate these repositories by default, you can edit the ``defaultRepository`` i
 
 .. warning::
 
-   If you put a repository configuration file that ends with ``.gradle.kts`` at the root of ``$USER_HOME/.gradle/init.d``,
+   If you put a repository configuration file that ends with ``.gradle.kts`` at the root of ``<USER_HOME>/.gradle/init.d``,
    it will be automatically loaded. Contrary to what the official Gradle documentation says, the files does not need to end
    with ``.init.gradle.kts``. That is the reason why we recommend to put the files in a folder. These files also need to end
    with ``.gradle.kts``.

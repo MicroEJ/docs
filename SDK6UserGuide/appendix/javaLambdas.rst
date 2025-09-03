@@ -15,7 +15,7 @@ By default Gradle will use the Java toolchain available locally, but it can be c
     }
 
 This settings plugin downloads the first Java toolchain matching the specified requirements that it finds among the 
-`JVM Vendors <https://docs.gradle.org/current/userguide/toolchains.html#sec:precedence>`__ recognized by Gradle and unzips it in the ``$USER_HOME/.gradle/.jdks`` folder, 
+`JVM Vendors <https://docs.gradle.org/current/userguide/toolchains.html#sec:precedence>`__ recognized by Gradle and unzips it in the ``<USER_HOME>/.gradle/.jdks`` folder, 
 so you do not have to install one manually.
 
 .. note::

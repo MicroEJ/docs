@@ -12,7 +12,7 @@ Disable Ivy Descriptor Publication by Default
 
 If you don't need SDK 5 backward compatibility, you can disable Ivy descriptor publication by setting the Gradle property ``enable.ivy.descriptor.default=false``.
 
-This property can be set in a ``gradle.properties`` file in ``$USER_HOME/.gradle/`` to apply it globally, or at the root of the Gradle project to
+This property can be set in a ``gradle.properties`` file in ``<USER_HOME>/.gradle/`` to apply it globally, or at the root of the Gradle project to
 apply it at project level.
 It can also be passed to command line with ``-Penable.ivy.descriptor.default=false`` option.
 

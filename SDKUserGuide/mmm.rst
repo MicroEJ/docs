@@ -247,7 +247,7 @@ SDK Configuration
 By default, when starting an empty workspace, the SDK is configured to import dependencies
 from :ref:`MicroEJ Central Repository <central_repository>` and to publish built modules to a local directory.
 The repository configuration is stored in a :ref:`settings file <mmm_settings_file>` (``ivysettings.xml``), and the default one
-is located at ``$USER_HOME\.microej\microej-ivysettings-[VERSION].xml``
+is located at ``<USER_HOME>\.microej\microej-ivysettings-[VERSION].xml``
 
 .. _mmm_preferences_page:
 
