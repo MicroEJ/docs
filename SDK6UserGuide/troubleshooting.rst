@@ -455,6 +455,34 @@ This means that the Java installation used by Gradle is not a JDK but a JRE, whe
 Therefore, the solution is to install and configure a JDK.
 Refer to :ref:`sdk_6_check_jdk` for more information.
 
+.. _sdk_6_vee_launch_jvm_configuration_errors:
+
+Build Errors from JVM Memory Misconfiguration
+---------------------------------------------
+
+Below are two examples of error messages that can be raised when the JVM used to launch the VEE scripts is not configured properly.
+The ouput may vary depending on the Gradle task being executed but the errors share the same root cause.
+
+When :ref:`building an executable <sdk_6_build_executable>`::
+
+	=============== [ Launching SOAR ] ===============
+  	1 : ERROR :
+  	[M2] - OutOfMemory error. Try to increase heap space using JVM option '-Xmx' (e.g. '-Xmx4096M')
+  	Terminated with errors
+
+When :ref:`running on simulator <sdk_6_run_on_simulator>`::
+
+	=============== [ Launching on Simulator ] ===============
+	"Internal limits reached. Please contact support@microej.com"
+
+These errors are typically seen when running ``gradlew buildExecutable`` or ``gradlew runOnSimulator`` with insufficient heap.
+
+To resolve this, adjust the JVM memory configuration by setting the JVM options accordingly with the property ``microej.launch.jvmargs``, for example::
+
+	./gradlew buildExecutable -Dmicroej.launch.jvmargs="-Xmx1024m -Xms512m"
+
+Refer to :ref:`sdk_6_howto_gradle_system_property` for more information.	
+
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
