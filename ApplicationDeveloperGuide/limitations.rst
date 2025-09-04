@@ -82,7 +82,7 @@ Please consult :ref:`architecture_changelog` for limitations changes on former v
    * - Number of methods and constructors calls
      - 500000000
      - unlimited
-   * - Number of Managed heap Garbage Collection
+   * - Number of Managed Heap Garbage Collection
      - 3000 [4]_
      - unlimited
    * - Number of Shielded Plug databases
@@ -104,7 +104,7 @@ Please consult :ref:`architecture_changelog` for limitations changes on former v
    time is defined by the :ref:`maximum number of monitors per thread Application option <option_maximum_number_of_monitors_per_thread>`.
 
 .. [4]
-   The Managed heap Garbage Collection limit may throw unexpected cascading `java.lang.OutOfMemoryError`_ exceptions before the Core Engine exits.
+   The Managed Heap Garbage Collection limit may throw unexpected cascading `java.lang.OutOfMemoryError`_ exceptions before the Core Engine exits.
 
 .. _java.lang.OutOfMemoryError: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/OutOfMemoryError.html
 

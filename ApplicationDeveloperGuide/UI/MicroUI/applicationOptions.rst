@@ -6,7 +6,7 @@ Application Options
 MicroUI libraries and its tools provide a set of options. 
 See :ref:`application_options` to have more information about the application options.
 
-.. note:: MicroUI implementation requires one thread (MicroUI Pump) and at least 100 bytes in  the :ref:`immortals heap <option_immortal_heap>`.
+.. note:: MicroUI implementation requires one thread (MicroUI Pump) and at least 100 bytes in  the :ref:`Immortals Heap <option_immortal_heap>`.
 
 
 .. include:: sectionArchitectureOptions.rst

@@ -200,7 +200,7 @@ A ``null`` entry means that the parameter is from the default style (thus set by
 
 This feature is used in the :ref:`HierarchyInspector <widget_library_debug_utilities_hierarchy>` of the Widget library.
 
-.. warning:: Beware that enabling that feature may downgrade the performances (more time to compute a style and more Managed heap used).
+.. warning:: Beware that enabling that feature may downgrade the performances (more time to compute a style and more Managed Heap used).
 
 .. note:: Available since MWT 3.6.0.
 
