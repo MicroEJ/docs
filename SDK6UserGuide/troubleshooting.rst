@@ -481,8 +481,6 @@ To resolve this, adjust the JVM memory configuration by setting the JVM options 
 
 	./gradlew buildExecutable -Dmicroej.launch.jvmargs="-Xmx1024m -Xms512m"
 
-Refer to :ref:`sdk_6_howto_gradle_system_property` for more information.	
-
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
