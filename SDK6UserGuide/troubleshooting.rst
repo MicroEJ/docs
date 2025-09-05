@@ -475,7 +475,7 @@ When :ref:`running on simulator <sdk_6_run_on_simulator>`::
 	=============== [ Launching on Simulator ] ===============
 	"Internal limits reached. Please contact support@microej.com"
 
-These errors are typically seen when running ``gradlew buildExecutable`` or ``gradlew runOnSimulator`` with insufficient heap.
+These errors are typically seen when running ``gradlew buildExecutable`` or ``gradlew runOnSimulator`` if the forked JVM is started with insufficient heap.
 
 To resolve this, adjust the JVM memory configuration by setting the JVM options accordingly with the property ``microej.launch.jvmargs``, for example::
 
