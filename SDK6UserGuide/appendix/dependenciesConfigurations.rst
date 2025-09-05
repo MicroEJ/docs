@@ -175,6 +175,16 @@ It is configured with the following attributes:
 
 - the standard ``Usage`` attribute, set to ``java-runtime``
 
+javadocElements
+"""""""""""""""
+
+This variant is used to publish the aggregated Javadoc Jar file of all Libraries provided by the VEE Port with the ``api`` and the ``implementation`` configurations in your project.
+It is configured with the following attributes:
+
+- the standard ``Category`` attribute, set to ``documentation``
+- the standard ``Bundling`` attribute, set to ``external``
+- the standard ``DocType`` attribute, set to ``javadoc``
+
 .. _gradle_variants_attributes:
 
 Attributes of a Variant

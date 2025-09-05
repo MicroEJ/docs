@@ -457,6 +457,12 @@ An important point to notice is that publishing a VEE Port does not publish the 
 it publishes all the configuration and dropins of the project, as well as the BSP when it is configured in Full Connection mode.
 The VEE Port is then built on the fly when it is required (when building the Executable of an Application for example).
 
+Aggregated Javadoc
+------------------
+
+Starting from SDK 6 ``1.4.0``, a Javadoc Jar file is automatically built and published when publishing the VEE Port. This file contains the aggregated javadoc of 
+all Libraries provided to the VEE Port with the ``api`` configuration. 
+
 BSP Publication Filtering
 -------------------------
 

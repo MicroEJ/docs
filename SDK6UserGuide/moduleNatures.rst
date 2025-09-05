@@ -164,6 +164,9 @@ This plugin adds the following tasks to your project:
 - :ref:`sdk6_module_natures.tasks.checkModule`
 - :ref:`sdk6_module_natures.tasks.buildVeePort`
 - :ref:`sdk6_module_natures.tasks.buildVeePortConfiguration`
+- :ref:`sdk6_module_natures.tasks.extractLibrariesSources`
+- :ref:`sdk6_module_natures.tasks.javadoc`
+- :ref:`sdk6_module_natures.tasks.javadocJar`
 
 .. graphviz:: graphVeePortModule.dot
 
@@ -711,7 +714,7 @@ buildVeePort
 - The project configuration file (``configuration.properties``)
 - The project dropins folder
 - The project microui folder (``extensions/microui``)
-- The project classpath which contains the Architecture, Packs, Mocks, Front Panels and Tools
+- The project classpath which contains the Architecture, Packs, Mocks, Front Panels, Tools and Libraries
 
 **Outputs**:
 
@@ -735,11 +738,74 @@ buildVeePortConfiguration
 - The project configuration file (``configuration.properties``)
 - The project dropins folder
 - The project microui folder (``extensions/microui``)
-- The project classpath which contains the Architecture, Packs, Mocks, Front Panels and Tools
+- The project classpath which contains the Architecture, Packs, Mocks, Front Panels, Tools and Libraries
 
 **Outputs**:
 
 - The Zip file of the VEE Port Configuration (``build/<project_name>.zip``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.veeport`
+
+.. _sdk6_module_natures.tasks.extractLibrariesSources:
+
+extractLibrariesSources
+^^^^^^^^^^^^^^^^^^^^^^^
+
+**Description**: Extracts all Libraries source Jars to generate the Javadoc of the VEE Port.
+
+**Inputs**:
+
+- The VEE Port's Libraries exposed to the consumer
+
+**Outputs**:
+
+- The directory containing the sources of all provided Libraries (``build/librariesSources``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.veeport`
+
+.. _sdk6_module_natures.tasks.javadoc:
+
+javadoc
+^^^^^^^
+
+**Description**: Generates VEE Port aggregated javadoc.
+
+**Inputs**:
+
+- The directory containing the sources of all provided Libraries (``build/librariesSources``)
+
+**Outputs**:
+
+- The directory containing the aggregated javadoc (``build/docs/javadoc``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.veeport`
+
+.. _sdk6_module_natures.tasks.javadocJar:
+
+javadocJar
+^^^^^^^^^^
+
+**Description**: Assembles a jar archive containing the aggregated javadoc.
+
+**Inputs**:
+
+- The directory containing the aggregated javadoc (``build/docs/javadoc``)
+
+**Outputs**:
+
+- The directory containing the Jar file of the aggregated javadoc (``build/libs``)
 
 **Module Natures**:
 
