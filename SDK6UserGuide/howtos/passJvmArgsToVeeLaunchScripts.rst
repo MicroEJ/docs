@@ -3,7 +3,7 @@
 How To Pass JVM Arguments to the VEE Launch Scripts
 ===================================================
 
-Some tasks (e.g., ``runOnSimulator``, ``buildExecutable``) may start a new JVM process to run the VEE launch scripts.
+Some tasks (e.g., ``runOnSimulator``, ``buildExecutable``) start a new JVM process to run the VEE launch scripts.
 The arguments for this JVM can be configured to customize the execution environment, for example for adjusting memory settings or enabling remote debugging.
 
 The JVM arguments have to be set in a system property named ``microej.launch.jvmargs``. 
