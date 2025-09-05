@@ -17,6 +17,7 @@ digraph mygraph {
     "microejTool" [fillcolor = "#41f753"]
     "api" [fillcolor = "#41f753"]
     "implementation" [fillcolor = "#41f753"]
+    "microejLibrary" [fillcolor = "#41f753"]
 
     "microejArchitectureClasspath" [fillcolor = "#b0d6d3"]
     "microejPackClasspath" [fillcolor = "#b0d6d3"]
@@ -25,6 +26,7 @@ digraph mygraph {
     "microejToolClasspath" [fillcolor = "#b0d6d3"]
     "apiClasspath" [fillcolor = "#b0d6d3"]
     "implementationClasspath" [fillcolor = "#b0d6d3"]
+    "librarySourceClasspath" [fillcolor = "#b0d6d3"]
 
     "microejArchitectureClasspath" -> "microejArchitecture"
     "microejPackClasspath" -> "microejPack"
@@ -34,6 +36,8 @@ digraph mygraph {
     "implementation" -> "api"
     "apiClasspath" -> "api"
     "implementationClasspath" -> "implementation"
+    "microejLibrary" -> "implementation"
+    "librarySourceClasspath" -> "microejLibrary"
     "buildVeePort and buildVeePortConfiguration" -> "microejArchitectureClasspath" [ label="uses" ]
     "buildVeePort and buildVeePortConfiguration" -> "microejPackClasspath" [ label="uses" ]
     "buildVeePort and buildVeePortConfiguration" -> "microejMockClasspath" [ label="uses" ]
@@ -41,4 +45,5 @@ digraph mygraph {
     "buildVeePort and buildVeePortConfiguration" -> "microejToolClasspath" [ label="uses" ]
     "buildVeePort and buildVeePortConfiguration" -> "apiClasspath" [ label="uses" ]
     "buildVeePort and buildVeePortConfiguration" -> "implementationClasspath" [ label="uses" ]
+    "extractLibrariesSources" -> "librarySourceClasspath" [ label="uses" ]
 }
