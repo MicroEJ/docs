@@ -23,8 +23,10 @@ digraph mygraph {
     "microejMockClasspath" [fillcolor = "#b0d6d3"]
     "microejFrontPanelClasspath" [fillcolor = "#b0d6d3"]
     "microejToolClasspath" [fillcolor = "#b0d6d3"]
-    "apiClasspath" [fillcolor = "#b0d6d3"]
-    "implementationClasspath" [fillcolor = "#b0d6d3"]
+    "veeApiClasspath" [fillcolor = "#b0d6d3"]
+    "veeImplementationClasspath" [fillcolor = "#b0d6d3"]
+    "veeCompileClasspath" [fillcolor = "#b0d6d3"]
+    "veeRuntimeClasspath" [fillcolor = "#b0d6d3"]
 
     "microejArchitectureClasspath" -> "microejArchitecture"
     "microejPackClasspath" -> "microejPack"
@@ -32,13 +34,17 @@ digraph mygraph {
     "microejFrontPanelClasspath" -> "microejFrontPanel"
     "microejToolClasspath" -> "microejTool"
     "implementation" -> "api"
-    "apiClasspath" -> "api"
-    "implementationClasspath" -> "implementation"
+    "veeApiClasspath" -> "api"
+    "veeImplementationClasspath" -> "implementation"
+    "veeCompileClasspath" -> "api"
+    "veeRuntimeClasspath" -> "implementation"
     "buildVeePort and buildVeePortConfiguration" -> "microejArchitectureClasspath" [ label="uses" ]
     "buildVeePort and buildVeePortConfiguration" -> "microejPackClasspath" [ label="uses" ]
     "buildVeePort and buildVeePortConfiguration" -> "microejMockClasspath" [ label="uses" ]
     "buildVeePort and buildVeePortConfiguration" -> "microejFrontPanelClasspath" [ label="uses" ]
     "buildVeePort and buildVeePortConfiguration" -> "microejToolClasspath" [ label="uses" ]
-    "buildVeePort and buildVeePortConfiguration" -> "apiClasspath" [ label="uses" ]
-    "buildVeePort and buildVeePortConfiguration" -> "implementationClasspath" [ label="uses" ]
+    "buildVeePort and buildVeePortConfiguration" -> "veeApiClasspath" [ label="uses" ]
+    "buildVeePort and buildVeePortConfiguration" -> "veeImplementationClasspath" [ label="uses" ]
+    "extractLibrariesSources" -> "veeCompileClasspath" [ label="uses" ]
+    "javadoc" -> "veeRuntimeClasspath" [ label="uses" ]
 }
