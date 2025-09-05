@@ -356,7 +356,7 @@ documentation for more details on how to filter the tests and on the available p
 Debug the Tests on Simulator
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A test can be executed on the Simulator in debug mode by setting the project property ``execution.mode`` to ``debug`` 
+A test can be executed on the Simulator in debug mode by setting the testsuite property ``execution.mode`` to ``debug`` 
 when executing the ``test`` task::
 
    ./gradlew test --tests MyTest -Dmicroej.testsuite.properties.execution.mode="debug" -Dmicroej.testsuite.properties.debug.port="12000"
