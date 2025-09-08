@@ -194,7 +194,7 @@ The ``appconnect-serial`` module provides a shell for use over a serial connecti
 Requirements
 ^^^^^^^^^^^^
 
-AppConnect Serial requires the Serial Pack and API.
+AppConnect Serial requires the Serial Pack and API 2.0.0 or higher.
 
 Usage
 ^^^^^
