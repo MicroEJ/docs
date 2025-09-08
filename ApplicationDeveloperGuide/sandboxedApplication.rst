@@ -64,7 +64,7 @@ The screenshot below highlights the following elements.
 
 1. Device information that displays the firmware UID, name and version.
 2. CPU and RAM monitoring when supported by the device and the applications.
-3. The current state of each application (``INSTALLED``, ``RUNNING`` , or ``STOPPED``).
+3. The current state of each application (``RUNNING`` , ``STOPPED``).
 4. Action buttons to start, stop, or uninstall applications.
 5. Connection to the MicroEJ App Store.
 
