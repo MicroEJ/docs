@@ -43,10 +43,10 @@ The library includes a full-fledged HTTP server, providing a comprehensive REST 
 
 AppConnect supports four modes of interaction:
 
-- Web App — See :ref:`web_app_section`.
-- REST API — See :ref:`rest_api_section`.
-- HTTP CLI — See :ref:`http_cli_section`.
-- Serial Shell — See :ref:`serial_shell_section`.
+- :ref:`web_app_section`.
+- :ref:`rest_api_section`.
+- :ref:`http_cli_section`.
+- :ref:`serial_shell_section`.
 
 .. _web_app_section:
 
