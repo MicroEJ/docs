@@ -27,7 +27,7 @@ A font file:
 * is identified by the resource name,
 * can be stored as internal resource or external (see :ref:`vectorfont_external`).
 
-No data is stored in the Managed heap. 
+No data is stored in the Managed Heap. 
 The implementation is responsible for the font's cycle life: allocation and release.
 
 A font is used to draw a string with a color or with a :ref:`linear gradient<section_vg_gradient>`.

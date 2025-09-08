@@ -338,7 +338,7 @@ TZDB Zone Rules Provider
 The library also defines a provider of zone rules for the time zones defined in the `IANA Time Zone Database <https://www.iana.org/time-zones>`_ (TZDB).
 
 The TZDB provider reads the zones and rules from a raw resource at runtime.
-Compared to the ``TzdbZoneRulesProvider`` of Java SE distributions, this implementation uses less Managed heap at runtime, making it more suitable for embedded devices.
+Compared to the ``TzdbZoneRulesProvider`` of Java SE distributions, this implementation uses less Managed Heap at runtime, making it more suitable for embedded devices.
 
 .. warning::
    The TZDB provider requires a target VEE Port that uses an architecture version ``8.1.1`` minimum (for ``8.x``), or ``7.20.5`` minimum (for ``7.x``).
