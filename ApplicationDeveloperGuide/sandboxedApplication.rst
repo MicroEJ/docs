@@ -55,18 +55,18 @@ AppConnect Web App
 
 Installed Applications are listed on the Web UI, and they can be started, stopped, or uninstalled.
 
-The screenshot below highlights the following elements:
+The screenshot below highlights the following elements.
+
+.. figure:: images/app_connect_web_ui.png
+   :alt: AppConnect Web UI
+   :align: center
+   :scale: 75%
 
 1. Device information that displays the firmware UID, name and version.
 2. CPU and RAM monitoring when supported by the device and the applications.
 3. The current state of each application (``INSTALLED``, ``RUNNING`` , or ``STOPPED``).
 4. Action buttons to start, stop, or uninstall applications.
 5. Connection to the MicroEJ App Store.
-
-.. figure:: images/app_connect_web_ui.png
-   :alt: AppConnect Web UI
-   :align: center
-   :scale: 75%
 
 .. _rest_api_section:
 
@@ -201,9 +201,9 @@ Usage
 
 The ``appconnect-serial`` can be integrated into a Sandboxed Application as follows:
 
-1. Add the ``appconnect-serial`` dependency to the :ref:`Runtime Environment <runtime_environment>` of your Kernel.
+1. Add the ``appconnect-serial`` dependency directly to your Application. Alternatively, you can add it to the :ref:`Runtime Environment <runtime_environment>` of your Kernel.
 
-2. Define the list of permissions required to use AppConnect in an Application. For more information about permissions, please refer to this :ref:`section <application_declared_permissions>`.
+2. If the security manager is enabled and enforcing permission checks, the Application must be granted the following permissions.
 
 .. code-block:: json
 
@@ -217,6 +217,10 @@ The ``appconnect-serial`` can be integrated into a Sandboxed Application as foll
         }
       }
     }
+
+.. note::
+
+   For more information about permissions, please refer to this :ref:`section <application_declared_permissions>`.
 
 3. Create an instance of ``AppConnectShell`` and provide the input and output streams of your serial connection.
 
