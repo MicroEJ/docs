@@ -456,7 +456,7 @@ Connectivity
             </div>
 
          <div class="training_item">
-            <a class="training_link" href="../ApplicationDeveloperGuide/dataSerializationLibraries.html">
+            <a class="training_link" href="../ApplicationDeveloperGuide/dataSerialization.html">
                <div class="training_image_container">
                   <ul class="training_image_list">
                      <li class="training_course_number">Course</li>
@@ -468,7 +468,7 @@ Connectivity
                <p class="training_description">In this training, you will discover 
                some data serialization formats through basic code samples.
                </p>
-               <a class="training_learn_more_link" href="../ApplicationDeveloperGuide/dataSerializationLibraries.html">Learn more</a>
+               <a class="training_learn_more_link" href="../ApplicationDeveloperGuide/dataSerialization.html">Learn more</a>
             </a>
             </div>
 

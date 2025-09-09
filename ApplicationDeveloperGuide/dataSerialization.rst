@@ -105,6 +105,20 @@ MicroEJ has ported a couple Java libraries for some common data serialization fo
 
 .. _ResourceBuffer: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/ResourceBuffer.html
 
+Good Practices
+--------------
+
+Deciding which format to pick for some use case can depend on many parameters but here are a few things to have in mind.
+First, when the serialized data is sent to a remote, the format is usually specified by the API.
+When the serialized data is local (typically, for persistence) or you have control over both ends of the communicaton,
+binary formats can be used to improve footprint/bandwidth and speed up serialization / deserialization, while text formats
+can be used to simplify debugging.
+Also, text format is usually preferred for configuration files edited by humans and where the overhead is, in most cases, insignificant.
+For more properties (schema/schema-less, zero copy support, compatibility between schema versions, ...), refer to the formats documentation.
+
+When using data serialization for persistence, it is highly recommended to use some version number to indicate the version of the schema
+used to serialize the data so that a deserializer can verify the compatibility.
+
 .. _data_serialization_xml:
 
 XML
