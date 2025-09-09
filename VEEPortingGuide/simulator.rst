@@ -6,7 +6,7 @@ Principle
 The MicroEJ Platform provides an accurate MicroEJ Simulator that runs on
 workstations. Applications execute in an almost identical manner on both
 the workstation and on target devices. The MicroEJ Simulator features IO
-simulation, JDWP debug coupled with Eclipse, accurate Managed heap dump,
+simulation, JDWP debug coupled with Eclipse, accurate Managed Heap dump,
 and an accurate Java scheduling policy (the same as the embedded one). [1]_
 
 

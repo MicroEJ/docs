@@ -6,7 +6,7 @@ Heap Usage Monitoring
 Introduction
 ------------
 
-When building a :ref:`standalone_application`, the Managed heap size must be specified
+When building a :ref:`standalone_application`, the Managed Heap size must be specified
 as an :ref:`Application Option <application_options>` (see :ref:`option_managed_heap`).
 The value to set in this option depends on the maximum heap usage, and the 
 developer can estimate it by running the application.

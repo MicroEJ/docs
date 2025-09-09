@@ -37,7 +37,7 @@ List of commands:
 * ``LLVG_PATH_CMD_CUBIC``: MicroVG "CUBIC ABS" command.
 * ``LLVG_PATH_CMD_CUBIC_REL``: MicroVG "CUBIC REL" command.
 
-The buffer where the commands are encoded is stored in the Managed heap.
+The buffer where the commands are encoded is stored in the Managed Heap.
 The buffer size is automatically increased by the MicroVG implementation when no more commands can be added.
 
 A path is drawn with a color or with a :ref:`linear gradient<section_vg_gradient>`.

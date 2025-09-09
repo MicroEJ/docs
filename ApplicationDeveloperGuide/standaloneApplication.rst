@@ -30,8 +30,8 @@ Standalone Application Options
 To run a Standalone Application on a VEE Port, a set of options
 must be defined. Options can be of different types:
 
-- Memory Allocation options (e.g., set the Managed heap size). These options are usually called link-time options.
-- Simulator & Debug options (e.g., enable periodic Managed heap dump).
+- Memory Allocation options (e.g., set the Managed Heap size). These options are usually called link-time options.
+- Simulator & Debug options (e.g., enable periodic Managed Heap dump).
 - Deployment options (e.g., copy ``microejapp.o`` to a suitable BSP location).
 - Foundation Library specific options (e.g., embed UTF-8 encoding).
 
