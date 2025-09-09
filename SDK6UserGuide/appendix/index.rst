@@ -9,6 +9,8 @@ Appendices
     applicationWrapper
     cheatsheet
     javaLambdas
+    veeTransitivity
+    libraryMapping
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
