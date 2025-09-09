@@ -76,6 +76,8 @@ You are now ready to implement your policy to decide whether the given permissio
 The `KF-Util module <https://repository.microej.com/modules/com/microej/library/util/kf-util/>`_ provides ready-to-use implementations, described in the next sections.
 Examples of integration are also available in the `Kernel-GREEN`_ project on GitHub.
 
+.. _application_declared_permissions:
+
 Security Manager with Application Declared Permissions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
