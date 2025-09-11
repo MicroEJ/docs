@@ -1,6 +1,6 @@
 settingsEvaluated {
 
-   allprojects {
+   dependencyResolutionManagement {
       repositories {
 		google()
         mavenCentral()
