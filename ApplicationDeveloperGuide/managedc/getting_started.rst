@@ -68,6 +68,8 @@ To use Managed C in your Application, follow these steps:
 #. **Add the WASI Add-on Library to Your Project:**
 
    The MicroEJ WASI library provides utility classes, annotations, and WASI implementation required for developping Managed C.
+   
+   The library is available upon request. Please contact :ref:`our support team <get_support>`.
 
    .. tabs::
 
