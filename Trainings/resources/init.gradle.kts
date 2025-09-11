@@ -2,7 +2,7 @@ settingsEvaluated {
 
    val artifactorRepositoryUrl = "http://172.17.0.1:8082/artifactory"
 
-   allprojects {
+   dependencyResolutionManagement {
       repositories {
          /* MicroEJ Central repository for Maven/Gradle modules */
          maven {

@@ -46,7 +46,7 @@ The different ways to add a modules repository are:
 - update the Gradle Init Script to add, replace or delete a repository.
   The version of this script provided in the installation process is a recommended version to be applied to quickly setup an environment.
   However, it can be modified to adapt it to your need, especially for the list of repositories.
-  The modules repositories are defined in the block ``settingsEvaluated > allprojects > repositories``, 
+  The modules repositories are defined in the block ``settingsEvaluated > dependencyResolutionManagement > repositories``, 
   and are applied to all the Gradle builds executed on the machine.
 
 
@@ -73,7 +73,7 @@ The different ways to add a plugins repository are:
 - update the Gradle Init Script to add, replace or delete a repository.
   The version of this script provided in the installation process is a recommended version to be applied to quickly setup an environment.
   However, it can be modified to adapt it to your need, especially for the list of repositories.
-  The plugins repositories are defined in the block ``settingsEvaluated > allprojects > pluginManagement > repositories``, 
+  The plugins repositories are defined in the block ``settingsEvaluated > dependencyResolutionManagement > pluginManagement > repositories``, 
   and are applied to all the Gradle builds executed on the machine.
 
 ..

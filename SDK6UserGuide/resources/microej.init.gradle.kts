@@ -2,7 +2,7 @@ settingsEvaluated {
 
    val userHome = System.getProperty("user.home")
 
-   allprojects {
+   dependencyResolutionManagement {
       repositories {
          /* Local Repository for Maven/Gradle modules */
          maven {
