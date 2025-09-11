@@ -255,6 +255,10 @@ FrontPanel
 - Display a tree of regions and drawings in the Flush Visualizer traces.
 - Use the Front Panel Framework 1.3.0 to implement ``LLUIDisplay.convertRegion()``.
 
+**Fixed**
+
+- Fix the drawing order of the Front Panel widgets: use the order set in the ``.fp`` file and not systematically draw the display widget over the other widgets.
+
 ImageGenerator
 """"""""""""""
 

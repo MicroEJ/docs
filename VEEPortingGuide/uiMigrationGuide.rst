@@ -55,6 +55,7 @@ Front Panel
 """""""""""
 
 * Fetch `Front Panel Widgets 5.2.0`_ (see :ref:`section_frontpanel_ui_dependencies`).
+* A widget that overlaps the display widget must be transparent or defined **before** the display widget in the ``.fp`` file.
 
 .. _Front Panel Widgets 5.2.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/5.2.0/
 .. _UI Pack 14.3.3: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/14.3.3/
