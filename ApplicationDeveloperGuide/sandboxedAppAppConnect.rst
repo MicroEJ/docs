@@ -7,12 +7,10 @@ The library includes a full-fledged HTTP server, providing a comprehensive REST 
 
 AppConnect supports four modes of interaction:
 
-- :ref:`web_app_section`.
-- :ref:`rest_api_section`.
-- :ref:`http_cli_section`.
-- :ref:`serial_shell_section`.
-
-.. _web_app_section:
+- AppConnect Web App.
+- AppConnect REST API.
+- AppConnect HTTP CLI.
+- AppConnect Serial Shell.
 
 AppConnect Web App
 ^^^^^^^^^^^^^^^^^^
@@ -31,8 +29,6 @@ The screenshot below highlights the following elements.
 3. The current state of each application (``RUNNING`` , ``STOPPED``).
 4. Action buttons to start, stop, or uninstall applications.
 5. Connection to the MicroEJ App Store.
-
-.. _rest_api_section:
 
 AppConnect REST API
 ^^^^^^^^^^^^^^^^^^^
@@ -87,8 +83,6 @@ Start, stop, or uninstall an installed Application.
 *Endpoint:* ``POST /api/app/manage?id=(application identifier)&action=(start|stop|uninstall)``.
 
 *Required parameters:* ``id``, ``action``.
-
-.. _http_cli_section:
 
 AppConnect HTTP CLI
 ^^^^^^^^^^^^^^^^^^^
@@ -147,8 +141,6 @@ Once the connection is established, you can execute various commands to manage a
    * list, ls: List information about applications such as PID, name, version, state.
 
 For detailed information on any command, use the ``--help`` option with that command.
-
-.. _serial_shell_section:
 
 AppConnect Serial Shell
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -232,6 +224,7 @@ The following commands are available:
    start: Start an application.
    evaluation-info: Get information about MicroEJ forge URL and credentials.
    install: Install an application.
+
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free
