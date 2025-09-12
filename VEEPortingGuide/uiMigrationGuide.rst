@@ -11,11 +11,6 @@ Migration Guide
 From 14.3.3 to 14.4.2
 =====================
 
-MicroUI
-"""""""
-
-* Update the SystemView description file for MicroUI logs as described :ref:`here<microui_systemview>`.
-
 Front Panel
 """""""""""
 
@@ -27,23 +22,22 @@ Front Panel
 BSP with DMA2D
 """"""""""""""
 
-* *[VEE Port configuration project]*
-
-    * Set the dependency to the `C Module MicroUI over DMA2D to version 7.0.1`_.
+* Install the `C Module MicroUI over DMA2D to version 7.0.1`_.
     
 BSP with VGLite
 """""""""""""""
 
-* *[VEE Port configuration project]*
-
-    * Set the dependency to the `C Module MicroUI over VGLite to version 10.0.1`_.
+* Install the `C Module MicroUI over VGLite to version 10.0.1`_.
 	
 BSP with NemaGFX
 """"""""""""""""
 
-* *[VEE Port configuration project]*
+* Install the `C Module MicroUI over NemaGFX to version 4.0.1`_.
 
-    * Set the dependency to the `C Module MicroUI over NemaGFX to version 4.0.1`_.
+Application
+"""""""""""
+
+* Update the SystemView description file for MicroUI logs as described :ref:`here<microui_systemview>`.
 
 .. _section_ui_migrationguide_pack_14.4.1:
 
@@ -61,6 +55,7 @@ Front Panel
 """""""""""
 
 * Fetch `Front Panel Widgets 5.2.0`_ (see :ref:`section_frontpanel_ui_dependencies`).
+* A widget that overlaps the display widget must be transparent or defined **before** the display widget in the ``.fp`` file.
 
 .. _Front Panel Widgets 5.2.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/5.2.0/
 .. _UI Pack 14.3.3: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/14.3.3/
@@ -70,17 +65,10 @@ Front Panel
 From 14.1.1 to 14.2.0
 =====================
 
-All BSP
-"""""""
+BSP
+"""
 
-* *[VEE Port configuration project]*
-
-    * Set the dependency to the `C Module MicroUI 14.2.0`_.
-
-* *[BSP project]*
-
-    * Delete the properties file ``cco_microui.properties``.
-    * Build the VEE Port.
+* Install the `C Module MicroUI 14.2.0`_.
 
 .. _section_ui_migrationguide_pack_14.1.1:
 
@@ -92,77 +80,52 @@ From 14.0.3 to 14.1.1
 BSP without GPU
 """""""""""""""
 
-* *[VEE Port configuration project]*
+* Install the `C Module MicroUI 14.1.1`_.
+* Configure ``ui/inc/ui_configuration.h``, based on your previous settings in ``ui/inc/microui_event_decoder_conf.h`` and ``ui/inc/ui_display_brs_configuration.h``.
 
-    * Set the dependency to the `C Module MicroUI 14.1.1`_.
+    * Notice that the name (prefix) of the options changed, see :ref:`section_ui_changelog`.
+    * If the BSP uses the MicroUI C Module's image heap allocator instead of using the Graphics Engine's image heap allocator, set the preprocessor value ``UI_FEATURE_ALLOCATOR=UI_FEATURE_ALLOCATOR_BESTFIT``.
+    * Comment the line that starts with ``#error (...)``.
 
-* *[BSP project]*
+* Delete configuration files ``ui/inc/microui_event_decoder_conf.h`` and ``ui/inc/ui_display_brs_configuration.h``.
+* Add the source file in ``ui/src/ui_font_drawing.c`` to the project.
+* Update ``c`` and ``h`` files and BSP configuration (if any) to use the new preprocessor values:
 
-    * Delete the properties file ``cco_microui.properties``.
-    * Build the VEE Port.
-    * Configure ``ui/inc/ui_configuration.h``, based on your previous settings in ``ui/inc/microui_event_decoder_conf.h`` and ``ui/inc/ui_display_brs_configuration.h``.
-
-        * Notice that the name (prefix) of the options changed, see :ref:`section_ui_changelog`.
-        * If the BSP uses the MicroUI C Module's image heap allocator instead of using the Graphics Engine's image heap allocator, set the preprocessor value ``UI_FEATURE_ALLOCATOR=UI_FEATURE_ALLOCATOR_BESTFIT``.
-        * Comment the line that starts with ``#error (...)``.
-
-    * Delete configuration files ``ui/inc/microui_event_decoder_conf.h`` and ``ui/inc/ui_display_brs_configuration.h``.
-    * Add the source file in ``ui/src/ui_font_drawing.c`` to the project.
-    * Update ``c`` and ``h`` files and BSP configuration (if any) to use the new preprocessor values:
-
-        * ``UI_DEBUG_PRINT`` replaces ``LLUI_DEBUG_TRACE``
-        * ``UI_FEATURE_EVENT_DECODER`` replaces ``MICROUIEVENTDECODER_ENABLED``
-        * ``UI_EVENTDECODER_EVENTGEN_COMMAND`` replaces ``MICROUIEVENTDECODER_EVENTGEN_COMMAND``
-        * ``UI_EVENTDECODER_EVENTGEN_BUTTONS`` replaces ``MICROUIEVENTDECODER_EVENTGEN_BUTTONS``
-        * ``UI_EVENTDECODER_EVENTGEN_TOUCH`` replaces ``MICROUIEVENTDECODER_EVENTGEN_TOUCH``
-        * ``UI_FEATURE_BRS`` replaces ``UI_DISPLAY_BRS``
-        * ``UI_FEATURE_BRS_LEGACY`` replaces ``UI_DISPLAY_BRS_LEGACY``
-        * ``UI_FEATURE_BRS_SINGLE`` replaces ``UI_DISPLAY_BRS_SINGLE``
-        * ``UI_FEATURE_BRS_PREDRAW`` replaces ``UI_DISPLAY_BRS_PREDRAW``
-        * ``UI_FEATURE_BRS_DRAWING_BUFFER_COUNT`` replaces ``UI_DISPLAY_BRS_DRAWING_BUFFER_COUNT``
-        * ``UI_FEATURE_BRS_FLUSH_SINGLE_RECTANGLE`` replaces ``UI_DISPLAY_BRS_FLUSH_SINGLE_RECTANGLE``
-        * ``UI_GC_SUPPORTED_FORMATS`` replaces ``LLUI_GC_SUPPORTED_FORMATS``
-        * ``UI_FEATURE_IMAGE_CUSTOM_FORMATS`` replaces ``LLUI_IMAGE_CUSTOM_FORMATS``
+    * ``UI_DEBUG_PRINT`` replaces ``LLUI_DEBUG_TRACE``
+    * ``UI_FEATURE_EVENT_DECODER`` replaces ``MICROUIEVENTDECODER_ENABLED``
+    * ``UI_EVENTDECODER_EVENTGEN_COMMAND`` replaces ``MICROUIEVENTDECODER_EVENTGEN_COMMAND``
+    * ``UI_EVENTDECODER_EVENTGEN_BUTTONS`` replaces ``MICROUIEVENTDECODER_EVENTGEN_BUTTONS``
+    * ``UI_EVENTDECODER_EVENTGEN_TOUCH`` replaces ``MICROUIEVENTDECODER_EVENTGEN_TOUCH``
+    * ``UI_FEATURE_BRS`` replaces ``UI_DISPLAY_BRS``
+    * ``UI_FEATURE_BRS_LEGACY`` replaces ``UI_DISPLAY_BRS_LEGACY``
+    * ``UI_FEATURE_BRS_SINGLE`` replaces ``UI_DISPLAY_BRS_SINGLE``
+    * ``UI_FEATURE_BRS_PREDRAW`` replaces ``UI_DISPLAY_BRS_PREDRAW``
+    * ``UI_FEATURE_BRS_DRAWING_BUFFER_COUNT`` replaces ``UI_DISPLAY_BRS_DRAWING_BUFFER_COUNT``
+    * ``UI_FEATURE_BRS_FLUSH_SINGLE_RECTANGLE`` replaces ``UI_DISPLAY_BRS_FLUSH_SINGLE_RECTANGLE``
+    * ``UI_GC_SUPPORTED_FORMATS`` replaces ``LLUI_GC_SUPPORTED_FORMATS``
+    * ``UI_FEATURE_IMAGE_CUSTOM_FORMATS`` replaces ``LLUI_IMAGE_CUSTOM_FORMATS``
 
 BSP with DMA2D
 """"""""""""""
 
-* *[VEE Port configuration project]*
-
-    * Set the dependency to the `C Module MicroUI over DMA2D to version 7.0.0`_.
-
-* *[BSP project]*
-
-    * Delete the properties files ``cco_microui.properties`` and ``cco_display-dma2d.properties``.
-    * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.1.1_bsp_without_gpu`.
+* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.1.1_bsp_without_gpu`.
+* Install the `C Module MicroUI over DMA2D to version 7.0.0`_.
 
 .. _section_ui_migrationguide_14.1_vglite:
 
 BSP with VGLite
 """""""""""""""
 
-* *[VEE Port configuration project]*
-
-    * Set the dependency to the `C Module MicroUI over VGLite to version 10.0.0`_.
-
-* *[BSP project]*
-
-    * Delete the properties files ``cco_microui.properties`` and ``cco_microui-vglite.properties``.
-    * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.1.1_bsp_without_gpu`.
+* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.1.1_bsp_without_gpu`.
+* Install the `C Module MicroUI over VGLite to version 10.0.0`_.
 
 .. _section_ui_migrationguide_14.1_nemagfx:
 
 BSP with NemaGFX
 """"""""""""""""
 
-* *[VEE Port configuration project]*
-
-    * Set the dependency to the `C Module MicroUI over NemaGFX to version 4.0.0`_.
-
-* *[BSP project]*
-
-    * Delete the properties files ``cco_microui.properties`` and ``cco_microui-nemagfx.properties``.
-    * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.1.1_bsp_without_gpu`.
+* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.1.1_bsp_without_gpu`.
+* Install the `C Module MicroUI over NemaGFX to version 4.0.0`_.
 
 .. _section_ui_migrationguide_pack_14.0.3:
 
@@ -172,102 +135,78 @@ From 14.0.1 to 14.0.3
 BSP without GPU
 """""""""""""""
 
-* *[VEE Port configuration project]*
-
-    * Set the dependency to the `C Module MicroUI 4.1.0`_.
-    * Delete the properties file ``cco_microui.properties``.
-    * Build the VEE Port.
+* Install the `C Module MicroUI 4.1.0`_.
 
 BSP with DMA2D
 """"""""""""""
 
-* *[VEE Port configuration project]*
+* Install the `C Module MicroUI over DMA2D to version 6.0.0`_.
 
-    * Set the dependency to the `C Module MicroUI over DMA2D to version 6.0.0`_.
+    * Notice that the name of the module changed from ``display-dma2d`` to ``microui-dma2d``, and that the module was moved to the :ref:`developer_repository`.
 
-        * Notice that the name of the module changed from ``display-dma2d`` to ``microui-dma2d``, and that the module was moved to the :ref:`developer_repository`.
+* In the directory ``ui``, delete the following files:
 
-* *[BSP project]*
+    * ``inc/ui_drawing_dma2d.h``,
+    * ``src/ui_drawing_dma2d.c``.
 
-    * In the directory ``ui``, delete the following files:
-
-        * ``inc/ui_drawing_dma2d.h``,
-        * ``src/ui_drawing_dma2d.c``.
-
-    * Delete the properties files ``cco_microui.properties`` and ``cco_display-dma2d.properties``.
-    * Build the VEE Port.
-    * Configure ``ui_dma2d/inc/ui_dma2d_configuration.h``, based on your previous settings in ``ui/inc/ui_drawing_dma2d_configuration.h``.
-    * Delete ``ui/inc/ui_dma2d_configuration.h``.
-    * Add the source files in ``ui_dma2d/src`` to the project.
-    * Add the path ``ui_dma2d/inc`` to the include path.
+* Configure ``ui_dma2d/inc/ui_dma2d_configuration.h``, based on your previous settings in ``ui/inc/ui_drawing_dma2d_configuration.h``.
+* Delete ``ui/inc/ui_dma2d_configuration.h``.
+* Add the source files in ``ui_dma2d/src`` to the project.
+* Add the path ``ui_dma2d/inc`` to the include path.
 
 BSP with VGLite
 """""""""""""""
 
-* *[VEE Port configuration project]*
+* Install the `C Module MicroUI over VGLite to version 9.0.0`_.
+* In the directory ``ui``, delete the following files:
 
-    * Set the dependency to the `C Module MicroUI over VGLite to version 9.0.0`_.
+    * ``inc/color.h``,
+    * ``inc/ui_drawing_vglite.h``,
+    * ``inc/ui_drawing_vglite_path.h``,
+    * ``inc/ui_drawing_vglite_process.h``,
+    * ``inc/ui_vglite.h``,
+    * ``src/ui_drawing_vglite.c``,
+    * ``src/ui_drawing_vglite_path.c``,
+    * ``src/ui_drawing_vglite_process.c``.
 
-* *[BSP project]*
+* In the directory ``util``, delete the following files:
 
-    * In the directory ``ui``, delete the following files:
+    * ``inc/mej_math.h``,
+    * ``src/mej_math.c``,
 
-        * ``inc/color.h``,
-        * ``inc/ui_drawing_vglite.h``,
-        * ``inc/ui_drawing_vglite_path.h``,
-        * ``inc/ui_drawing_vglite_process.h``,
-        * ``inc/ui_vglite.h``,
-        * ``src/ui_drawing_vglite.c``,
-        * ``src/ui_drawing_vglite_path.c``,
-        * ``src/ui_drawing_vglite_process.c``.
+* In ``LLUI_DISPLAY_IMPL_initialize``:
 
-    * In the directory ``util``, delete the following files:
+    * Call ``UI_VGLITE_initialize`` to initialize the VGLite controller and the VGLite library.
+    * Replace the call to ``UI_VGLITE_init`` with ``UI_VGLITE_start``.
 
-        * ``inc/mej_math.h``,
-        * ``src/mej_math.c``,
-
-    * In ``LLUI_DISPLAY_IMPL_initialize``:
-
-        * Call ``UI_VGLITE_initialize`` to initialize the VGLite controller and the VGLite library.
-        * Replace the call to ``UI_VGLITE_init`` with ``UI_VGLITE_start``.
-
-    * Delete the properties files ``cco_microui.properties`` and ``cco_microui-vglite.properties``.
-    * Build the VEE Port.
-    * Configure ``ui_vglite/inc/ui_vglite_configuration.h``, based on your previous settings in ``ui/inc/ui_vglite_configuration.h``.
-    * Delete ``ui/inc/ui_vglite_configuration.h``.
-    * Add the source files in ``ui_vglite/src`` to the project.
-    * Add the path ``ui_vglite/inc`` to the include path.
+* Configure ``ui_vglite/inc/ui_vglite_configuration.h``, based on your previous settings in ``ui/inc/ui_vglite_configuration.h``.
+* Delete ``ui/inc/ui_vglite_configuration.h``.
+* Add the source files in ``ui_vglite/src`` to the project.
+* Add the path ``ui_vglite/inc`` to the include path.
 
 BSP with NemaGFX
 """"""""""""""""
 
-* *[VEE Port configuration project]*
+* Install the `C Module MicroUI over NemaGFX to version 3.0.0`_.
+* Delete ``ui/src/ui_drawing_nema.c``.
+* Replace the following calls with the new function names:
 
-    * Set the dependency to the `C Module MicroUI over NemaGFX to version 3.0.0`_.
+    * ``UI_DRAWING_NEMA_initialize`` becomes ``UI_NEMA_initialize``,
+    * ``UI_DRAWING_NEMA_post_operation`` becomes ``UI_NEMA_post_operation``,
+    * ``UI_DRAWING_NEMA_configure_memcpy`` becomes ``UI_NEMA_configure_memcpy``,
+    * ``UI_DRAWING_NEMA_start_memcpy`` becomes ``UI_NEMA_start_memcpy``.
 
-* *[BSP project]*
+* Configure ``ui_nemagfx/inc/ui_nema_configuration.h``, based on your previous settings in ``ui/inc/ui_drawing_nema_configuration.h``.
+* Add the source files in ``ui_nemagfx/src`` to the project.
+* Add the path ``ui_nemagfx/inc`` to the include path.
+* If you were using the task mode, switch to interrupt mode.
 
-    * Delete ``ui/src/ui_drawing_nema.c``.
-    * Replace the following calls with the new function names:
-
-        * ``UI_DRAWING_NEMA_initialize`` becomes ``UI_NEMA_initialize``,
-        * ``UI_DRAWING_NEMA_post_operation`` becomes ``UI_NEMA_post_operation``,
-        * ``UI_DRAWING_NEMA_configure_memcpy`` becomes ``UI_NEMA_configure_memcpy``,
-        * ``UI_DRAWING_NEMA_start_memcpy`` becomes ``UI_NEMA_start_memcpy``.
-
-    * Delete the properties files ``cco_microui.properties`` and ``cco_microui-nemagfx.properties``.
-    * Build the VEE Port.
-    * Configure ``ui_nemagfx/inc/ui_nema_configuration.h``, based on your previous settings in ``ui/inc/ui_drawing_nema_configuration.h``.
-    * Add the source files in ``ui_nemagfx/src`` to the project.
-    * Add the path ``ui_nemagfx/inc`` to the include path.
-    * If you were using the task mode, switch to interrupt mode.
-
-        * Remove your implementation of ``UI_DRAWING_NEMA_IMPL_operation_submitted``.
-        * Remove the task that called ``UI_DRAWING_NEMA_post_operation``.
-        * Look for any use of the macro ``NEMA_INTERRUPT_MODE``, which denotes a differentiation between the task mode and the interrupt mode.
-          This macro is no longer used.
-          Adjust your code so that only the code targeting the interrupt mode remains.
-        * Follow the steps detailed in the section :ref:`section_ui_c_module_microui_nemagfx_implementation`.
+    * Remove your implementation of ``UI_DRAWING_NEMA_IMPL_operation_submitted``.
+    * Remove the task that called ``UI_DRAWING_NEMA_post_operation``.
+    * Look for any use of the macro ``NEMA_INTERRUPT_MODE``, which denotes a differentiation between the task mode and the interrupt mode.
+      This macro is no longer used.
+      Adjust your code so that only the code targeting the interrupt mode remains.
+    * Follow the steps detailed in the section :ref:`section_ui_c_module_microui_nemagfx_implementation`.
 
 From 13.7.x to 14.0.1
 =====================
@@ -301,32 +240,26 @@ Front Panel
 BSP Without GPU
 """""""""""""""
 
-* *[VEE Port configuration project]*
+* Install the `C Module MicroUI 4.0.1`_.
+* Delete the VEE Port ``include`` folder (often ``/platform/inc``).
+* In the C project configuration, include the new C files ``ui_display_brs.c``, ``ui_display_brs_legacy.c``, ``ui_display_brs_predraw.c``, ``ui_display_brs_single.c`` and ``ui_rect_util.c``.
+* Read the documentation about the display :ref:`section_brs`; then configure the C module by setting the right configuration in ``ui_display_brs_configuration.h``.
+* Comment the line ``#error "This header must [...]"``.
+* The next actions depend on the available numbers of buffers allocated in the MCU memories and if the front buffer is mapped on an MCU's buffer (if not, that means the LCD device owns a buffer). The following table redirects the next steps according to the display connection with the MCU:
 
-    * Fetch the `C Module MicroUI 4.0.1`_.
+    .. table:: Transmit and/or Swap actions
 
-* *[BSP project]*
-
-    * Delete the VEE Port ``include`` folder (often ``/platform/inc``).
-    * Delete the properties file ``cco_microui.properties``.
-    * In the C project configuration, include the new C files ``ui_display_brs.c``, ``ui_display_brs_legacy.c``, ``ui_display_brs_predraw.c``, ``ui_display_brs_single.c`` and ``ui_rect_util.c``.
-    * Read the documentation about the display :ref:`section_brs`; then configure the C module by setting the right configuration in ``ui_display_brs_configuration.h``.
-    * Comment the line ``#error "This header must [...]"``.
-    * The next actions depend on the available numbers of buffers allocated in the MCU memories and if the front buffer is mapped on an MCU's buffer (if not, that means the LCD device owns a buffer). The following table redirects the next steps according to the display connection with the MCU:
-
-        .. table:: Transmit and/or Swap actions
-
-            +---------+--------+----------------------------------+
-            | Buffers | Mapped |           Next Actions           |
-            +=========+========+==================================+
-            | 2 (1+1) |   no   |        *[Display "Transmit"]*    |
-            +---------+--------+----------------------------------+
-            |    2    |  yes   | *[Display "Swap double buffer"]* |
-            +---------+--------+----------------------------------+
-            |    3    |  yes   | *[Display "Swap triple buffer"]* |
-            +---------+--------+----------------------------------+
-            | 3 (2+1) |   no   | *[Display "Transmit and Swap"]*  |
-            +---------+--------+----------------------------------+
+        +---------+--------+----------------------------------+
+        | Buffers | Mapped |           Next Actions           |
+        +=========+========+==================================+
+        | 2 (1+1) |   no   |        *[Display "Transmit"]*    |
+        +---------+--------+----------------------------------+
+        |    2    |  yes   | *[Display "Swap double buffer"]* |
+        +---------+--------+----------------------------------+
+        |    3    |  yes   | *[Display "Swap triple buffer"]* |
+        +---------+--------+----------------------------------+
+        | 3 (2+1) |   no   | *[Display "Transmit and Swap"]*  |
+        +---------+--------+----------------------------------+
 
 * *[Display "Transmit"]*
 
@@ -414,32 +347,22 @@ BSP Without GPU
 BSP with DMA2D
 """"""""""""""
 
-* *[VEE Port configuration project]*
-
-    * Fetch the `C Module DMA2D 5.0.1`_.
-
-* *[BSP project]*
-
-    * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.0.1_bsp_without_gpu`.
-    * Check the content of the configuration file ``ui_drawing_dma2d_configuration.h`` (a versioning has been added).
-    * Comment the line ``#error [...]"``.
-    * According to the display :ref:`section_brs`, unlock the MicroUI Graphics Engine in the LCD interrupt or the DMA2D memcpy callback (see :ref:`section_ui_c_module_microui_dma2d`).
+* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.0.1_bsp_without_gpu`.
+* Install the `C Module DMA2D 5.0.1`_.
+* Check the content of the configuration file ``ui_drawing_dma2d_configuration.h`` (a versioning has been added).
+* Comment the line ``#error [...]"``.
+* According to the display :ref:`section_brs`, unlock the MicroUI Graphics Engine in the LCD interrupt or the DMA2D memcpy callback (see :ref:`section_ui_c_module_microui_dma2d`).
 
 .. _section_ui_migrationguide_14.0_vglite:
 
 BSP with VGLite
 """""""""""""""
 
-* *[VEE Port configuration project]*
-
-    * Fetch the `C Module VGLite 8.0.1`_.
-
-* *[BSP project]*
-
-    * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.0.1_bsp_without_gpu`.
-    * Migrate VGLite library to the version **3.0.15_rev7**.
-    * Modify the VGLite library **3.0.15_rev7** by applying the patch ``3.0.15_rev7.patch`` (see README.md near the patch file for more information).
-    * In the file ``vglite_window.c``, add the function ``VGLITE_CancelSwapBuffers()`` and its prototype in ``vglite_window.h``:
+* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.0.1_bsp_without_gpu`.
+* Install the `C Module VGLite 8.0.1`_.
+* Migrate VGLite library to the version **3.0.15_rev7**.
+* Modify the VGLite library **3.0.15_rev7** by applying the patch ``3.0.15_rev7.patch`` (see README.md near the patch file for more information).
+* In the file ``vglite_window.c``, add the function ``VGLITE_CancelSwapBuffers()`` and its prototype in ``vglite_window.h``:
 
     .. code-block:: c
 
@@ -450,14 +373,9 @@ BSP with VGLite
 BSP with NemaGFX
 """"""""""""""""
 
-* *[VEE Port configuration project]*
-
-    * Fetch the `C Module NemaGFX 2.0.1`_.
-
-* *[BSP project]*
-
-    * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.0.1_bsp_without_gpu`.
-    * Check the content of the configuration file ``ui_drawing_nema_configuration.h`` (new version ``2``).
+* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.0.1_bsp_without_gpu`.
+* Install the `C Module NemaGFX 2.0.1`_.
+* Check the content of the configuration file ``ui_drawing_nema_configuration.h`` (new version ``2``).
 
 From 13.6.x to 13.7.2
 =====================
@@ -480,47 +398,27 @@ Front Panel
 BSP without GPU
 """""""""""""""
 
-* *[VEE Port configuration project]*
-
-	* Fetch the `C Module MicroUI 3.1.1`_.
-
-* *[BSP project]*
-
-	* Optionally, implement ``UI_DRAWING_freeImageResources(MICROUI_Image* image)`` (single-output buffered image format) or ``UI_DRAWING_freeImageResources_X(MICROUI_Image* image)`` (mulitple-output buffered image formats, where ``X`` is the image format identifier) to free the resources associated with a buffered image when it is closed.
+* Install the `C Module MicroUI 3.1.1`_.
+* Optionally, implement ``UI_DRAWING_freeImageResources(MICROUI_Image* image)`` (single-output buffered image format) or ``UI_DRAWING_freeImageResources_X(MICROUI_Image* image)`` (mulitple-output buffered image formats, where ``X`` is the image format identifier) to free the resources associated with a buffered image when it is closed.
 
 BSP with DMA2D
 """"""""""""""
 
-* *[VEE Port configuration project]*
-
-	* Fetch the `C Module DMA2D 4.1.0`_.
-
-* *[BSP project]*
-
-	* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_13.7.2_bsp_without_gpu`.
+* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_13.7.2_bsp_without_gpu`.
+* Install the `C Module DMA2D 4.1.0`_.
 
 BSP with VGLite
 """""""""""""""
 
-* *[VEE Port configuration project]*
-
-	* Fetch the `C Module VGLite 7.2.0`_.
-
-* *[BSP project]*
-
-	* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_13.7.2_bsp_without_gpu`.
+* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_13.7.2_bsp_without_gpu`.
+* Install the `C Module VGLite 7.2.0`_.
 
 BSP with NemaGFX
 """"""""""""""""
 
-* *[VEE Port configuration project]*
-
-	* Fetch the `C Module NemaGFX 1.2.0`_.
-
-* *[BSP project]*
-
-	* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_13.7.2_bsp_without_gpu`.
-	* Review all options of ``ui_drawing_nema_configuration.h`` (version ``2``).
+* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_13.7.2_bsp_without_gpu`.
+* Install the `C Module NemaGFX 1.2.0`_.
+* Review all options of ``ui_drawing_nema_configuration.h`` (version ``2``).
 
 From 13.5.x to 13.6.2
 =====================
@@ -552,42 +450,36 @@ BSP with VGLite
 
 These steps are for a VEE Port that manages its own implementation of ``LLUI_DISPLAY_impl.h`` (that did not use the old implementation which was available in this C Module):
 
-* *[VEE Port configuration project]*
+* Install the `C Module VGLite 7.1.0`_.
+* (optional) Fetch `C Module RT500 7.0.0`_
+* Delete the following files from the file-system and from the C project configuration:
 
-	* Fetch the `C Module VGLite 7.1.0`_.
-	* (optional) Fetch `C Module RT500 7.0.0`_
+        - ``inc/display_utils.h``
+        - ``inc/display_vglite.h``
+        - ``inc/drawing_vglite.h``
+        - ``inc/vglite_path.h``
+        - ``src/display_stub.c``
+        - ``src/display_utils.c``
+        - ``src/display_vglite.c``
+        - ``src/drawing_vglite.c``
+        - ``src/vglite_path.c``
 
-* *[BSP project]*
+* Add the new files to the C project configuration:
 
-	* Delete the properties file ``cco_microui-vglite.properties``.
-	* Delete the following files from the file-system and from the C project configuration:
+        - ``src/ui_drawing_vglite_path.c``
+        - ``src/ui_drawing_vglite_process.c``
+        - ``src/ui_vglite.c``
 
-          - ``inc/display_utils.h``
-          - ``inc/display_vglite.h``
-          - ``inc/drawing_vglite.h``
-          - ``inc/vglite_path.h``
-          - ``src/display_stub.c``
-          - ``src/display_utils.c``
-          - ``src/display_vglite.c``
-          - ``src/drawing_vglite.c``
-          - ``src/vglite_path.c``
-
-	* Add the new files to the C project configuration:
-
-          - ``src/ui_drawing_vglite_path.c``
-          - ``src/ui_drawing_vglite_process.c``
-          - ``src/ui_vglite.c``
-
-	* Review all imports of the removed header files.
-	* In the implementation of ``LLUI_DISPLAY_impl.h``, call ``UI_VGLITE_init()`` during the initialization step.
-	* In the GPU interrupt rountine, call ``UI_VGLITE_IRQHandler()``.
-	* Review all options of ``ui_vglite_configuration.h``.
-	* Implement ``UI_VGLITE_IMPL_notify_gpu_xxx()`` instead of ``DISPLAY_IMPL_notify_gpu_xxx()``.
-	* Implement ``UI_VGLITE_IMPL_error()`` instead of ``DISPLAY_IMPL_error()``.
-	* Change all calls to ``DISPLAY_VGLITE_xxx()`` functions to ``UI_VGLITE_xxx()`` functions.
-	* Change all calls to ``DRAWING_VGLITE_xxx()`` functions to ``UI_DRAWING_VGLITE_PROCESS_xxx()`` functions.
-	* Change all calls to ``VGLITE_PATH_xxx()`` functions to ``UI_DRAWING_VGLITE_PATH_xxx()`` functions.
-	* Change all calls to ``DISPLAY_UTILS_xxx()`` functions to ``UI_VGLITE_xxx()`` functions.
+* Review all imports of the removed header files.
+* In the implementation of ``LLUI_DISPLAY_impl.h``, call ``UI_VGLITE_init()`` during the initialization step.
+* In the GPU interrupt rountine, call ``UI_VGLITE_IRQHandler()``.
+* Review all options of ``ui_vglite_configuration.h``.
+* Implement ``UI_VGLITE_IMPL_notify_gpu_xxx()`` instead of ``DISPLAY_IMPL_notify_gpu_xxx()``.
+* Implement ``UI_VGLITE_IMPL_error()`` instead of ``DISPLAY_IMPL_error()``.
+* Change all calls to ``DISPLAY_VGLITE_xxx()`` functions to ``UI_VGLITE_xxx()`` functions.
+* Change all calls to ``DRAWING_VGLITE_xxx()`` functions to ``UI_DRAWING_VGLITE_PROCESS_xxx()`` functions.
+* Change all calls to ``VGLITE_PATH_xxx()`` functions to ``UI_DRAWING_VGLITE_PATH_xxx()`` functions.
+* Change all calls to ``DISPLAY_UTILS_xxx()`` functions to ``UI_VGLITE_xxx()`` functions.
 
 .. _section_ui_migrationguide_13.6_mimxrt595evk:
 
@@ -596,28 +488,18 @@ BSP With MCU i.MX RT595
 
 These steps are for a VEE Port that uses the implementation of ``LLUI_DISPLAY_impl.h`` which was available in the C Module :ref:`VGLite<section_ui_c_module_microui_vglite>`:
 
-* *[VEE Port configuration project]*
-
-	* Fetch the `C Module VGLite 7.1.0`_.
-	* Fetch `C Module RT500 7.0.0`_
-
-* *[BSP project]*
-
-	* Follow the steps of :ref:`section_ui_migrationguide_13.6_vglite` (described above) except the calls to ``UI_VGLITE_init()`` and ``UI_VGLITE_IRQHandler()``.
-	* Implement ``DISPLAY_DMA_IMPL_notify_dma_xxx()`` instead of ``DISPLAY_IMPL_notify_dma_xxx()``.
+* Install the `C Module VGLite 7.1.0`_.
+* Install the `C Module RT500 7.0.0`_
+* Follow the steps of :ref:`section_ui_migrationguide_13.6_vglite` (described above) except the calls to ``UI_VGLITE_init()`` and ``UI_VGLITE_IRQHandler()``.
+* Implement ``DISPLAY_DMA_IMPL_notify_dma_xxx()`` instead of ``DISPLAY_IMPL_notify_dma_xxx()``.
 
 BSP with NemaGFX
 """"""""""""""""
 
-* *[VEE Port configuration project]*
-
-	* Fetch the `C Module NemaGFX 1.0.0`_.
-
-* *[BSP project]*
-
-	* Add all the C files available in ``src`` folder.
-	* Configure the C project to include the ``inc`` folder.
-	* Read the comments in ``ui_drawing_nema_configuration.h`` and configure the C module.
+* Install the `C Module NemaGFX 1.0.0`_.
+* Add all the C files available in ``src`` folder.
+* Configure the C project to include the ``inc`` folder.
+* Read the comments in ``ui_drawing_nema_configuration.h`` and configure the C module.
 
 From 13.4.x to 13.5.1
 =====================
@@ -648,33 +530,21 @@ Front Panel
 BSP without GPU
 """""""""""""""
 
-* *[VEE Port configuration project]*
-
-	* Fetch the `C Module MicroUI 3.0.0`_.
-
-* *[BSP project]*
-
-	* Delete the VEE Port ``include`` folder (often ``/platform/inc``).
-	* Delete the properties file ``cco_microui.properties``.
-	* In the C project configuration, include the new C files ``ui_drawing.c``, ``ui_image_drawing.c`` and ``ui_drawing_stub.c``.
+* Install the `C Module MicroUI 3.0.0`_.
+* Delete the VEE Port ``include`` folder (often ``/platform/inc``).
+* In the C project configuration, include the new C files ``ui_drawing.c``, ``ui_image_drawing.c`` and ``ui_drawing_stub.c``.
 
 BSP with DMA2D
 """"""""""""""
 
 * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_13.5.1_bsp_without_gpu`.
-* *[VEE Port configuration project]*
-
-	* Fetch the `C Module DMA2D 4.0.0`_.
-
-* *[BSP project]*
-
-	* Delete the properties file ``cco_display-dma2d.properties``.
-	* Read the comments about the cache in ``drawing_dma2d_configuration.h``.
-	* Uncomment the expected define ``DRAWING_DMA2D_CACHE_MANAGEMENT`` (enable or disable the cache management).
-	* Delete the C files ``drawing_dma2d.h`` and  ``drawing_dma2d.c`` and remove them from the C project configuration.
-	* In the C project configuration, include the new C file ``ui_drawing_dma2d.c``.
-	* Replace the import ``drawing_dma2d.h`` by ``ui_drawing_dma2d.h``.
-	* Replace the calls to functions ``DRAWING_DMA2D_xxx()`` by ``UI_DRAWING_DMA2D_xxx()``.
+* Install the `C Module DMA2D 4.0.0`_.
+* Read the comments about the cache in ``drawing_dma2d_configuration.h``.
+* Uncomment the expected define ``DRAWING_DMA2D_CACHE_MANAGEMENT`` (enable or disable the cache management).
+* Delete the C files ``drawing_dma2d.h`` and  ``drawing_dma2d.c`` and remove them from the C project configuration.
+* In the C project configuration, include the new C file ``ui_drawing_dma2d.c``.
+* Replace the import ``drawing_dma2d.h`` by ``ui_drawing_dma2d.h``.
+* Replace the calls to functions ``DRAWING_DMA2D_xxx()`` by ``UI_DRAWING_DMA2D_xxx()``.
 
 .. _section_ui_migrationguide_13.5_vglite:
 
@@ -685,16 +555,10 @@ BSP with VGLite
 	The C Module is designed to target the `NXP i.MX RT500`_; however it can be locally customized for other boards (see :ref:`[Custom project]<section_cmodule_vglite_custom>`)
 
 * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_13.5.1_bsp_without_gpu`.
-* *[VEE Port configuration project]*
-
-	* Fetch the `C Module VGLite 6.0.1`_.
-
-* *[BSP project]*
-
-	* Delete the properties file ``cco_microui-vglite.properties``.
-	* Delete the C files ``vg_drawer.h`` and  ``vg_drawer.c`` and remove them from the C project configuration.
-	* Verify the options in ``display_configuration.h``.
-	* In the C project configuration, include the new C file ``ui_drawing_vglite.c``.
+* Install the `C Module VGLite 6.0.1`_.
+* Delete the C files ``vg_drawer.h`` and  ``vg_drawer.c`` and remove them from the C project configuration.
+* Verify the options in ``display_configuration.h``.
+* In the C project configuration, include the new C file ``ui_drawing_vglite.c``.
 
 From 13.3.x to 13.4.1
 =====================
@@ -704,25 +568,13 @@ From 13.3.x to 13.4.1
 BSP without GPU
 """""""""""""""
 
-* *[VEE Port configuration project]*
-
-	* Fetch the `C Module MicroUI 2.0.1`_.
-
-* *[BSP project]*
-
-	* Delete the properties file ``cco_microui.properties``.
+* Install the `C Module MicroUI 2.0.1`_.
 
 BSP with DMA2D
 """"""""""""""
 
 * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_13.4.1_bsp_without_gpu`.
-* *[VEE Port configuration project]*
-
-	* Fetch the `C Module DMA2D 3.0.2`_.
-
-* *[BSP project]*
-
-	* Delete the properties file ``cco_display-dma2d.properties``.
+* Install the `C Module DMA2D 3.0.2`_.
 
 BSP with VGLite
 """""""""""""""
@@ -731,14 +583,9 @@ BSP with VGLite
 	The C Module is designed to target the `NXP i.MX RT500`_; however it can be locally customized for other boards (see :ref:`[Custom project]<section_cmodule_vglite_custom>`)
 
 * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_13.4.1_bsp_without_gpu`.
-* *[VEE Port configuration project]*
-
-	* Fetch the `C Module VGLite 5.0.1`_.
-
-* *[BSP project]*
-
-  	* Migrate VGLite library to the version **3.0.15_rev4**.
-  	* Modify the VGLite library **3.0.15_rev4** by applying the patch ``3.0.15_rev4.patch`` (see README.md near patch file for more information).
+* Install the `C Module VGLite 5.0.1`_.
+* Migrate VGLite library to the version **3.0.15_rev4**.
+* Modify the VGLite library **3.0.15_rev4** by applying the patch ``3.0.15_rev4.patch`` (see README.md near patch file for more information).
 
 From 13.2.x to 13.3.1
 =====================
@@ -759,25 +606,13 @@ Front Panel
 BSP without GPU
 """""""""""""""
 
-* *[VEE Port configuration project]*
-
-	* Fetch the `C Module MicroUI 2.0.0`_.
-
-* *[BSP project]*
-
-	* Delete the properties file ``cco_microui.properties``.
+* Install the `C Module MicroUI 2.0.0`_.
 
 BSP with DMA2D
 """"""""""""""
 
 * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_13.3.1_bsp_without_gpu`.
-* *[VEE Port configuration project]*
-
-	* Fetch the `C Module DMA2D 3.0.0`_.
-
-* *[BSP project]*
-
-	* Delete the properties file ``cco_display-dma2d.properties``.
+* Install the `C Module DMA2D 3.0.0`_.
 
 BSP with VGLite
 """""""""""""""
@@ -786,16 +621,11 @@ BSP with VGLite
 	The C Module is designed to target the `NXP i.MX RT500`_; however it can be locally customized for other boards (see :ref:`[Custom project]<section_cmodule_vglite_custom>`).
 
 * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_13.3.1_bsp_without_gpu`.
-* *[VEE Port configuration project]*
-
-	* Fetch the `C Module VGLite 3.0.0`_.
-
-* *[BSP project]*
-
-	* Read the comments in ``display_configuration.h`` and configures the C module.
-	* Add all C files available in ``src`` folder.
-	* Configure the C project to include the ``inc`` folder.
- 	* Modify the VGLite library **3.0.11_rev3** by applying the patch ``3.0.11_rev3.patch`` (see README.md near patch file for more information).
+* Install the `C Module VGLite 3.0.0`_.
+* Read the comments in ``display_configuration.h`` and configures the C module.
+* Add all C files available in ``src`` folder.
+* Configure the C project to include the ``inc`` folder.
+* Modify the VGLite library **3.0.11_rev3** by applying the patch ``3.0.11_rev3.patch`` (see README.md near patch file for more information).
 
 .. _section_cmodule_vglite_custom:
 
@@ -846,31 +676,19 @@ Front Panel
 BSP without GPU
 """""""""""""""
 
-* *[VEE Port configuration project]*
-
-	* Fetch the `C Module MicroUI 1.1.1`_.
-
-* *[BSP project]*
-
-	* Delete the properties file ``cco_microui.properties``.
-	* Add a cast when using ``MICROUI_Image*`` object: ``(MICROUI_ImageFormat)image->format`` .
-	* Remove parameter ``MICROUI_GraphicsContext*`` when calling ``LLUI_DISPLAY_setDrawingLimits()``.
-	* Ensure to call ``LLUI_DISPLAY_setDrawingLimits()`` before calling ``LLUI_DISPLAY_setDrawingStatus()`` or ``LLUI_DISPLAY_notifyAsynchronousDrawingEnd()``.
-	* (optional) Add an implementation of ``LLUI_DISPLAY_IMPL_image_heap_xxx`` to control the :ref:`images heap allocation<section_image_loader_memory>`; by default the internal Graphics Engine's allocator is used. Another implementation is also available in the :ref:`MicroUI C module<section_ui_cco>`.
-	* (optional) Add the UI event logger available in the :ref:`MicroUI C module<section_ui_cco>`.
+* Install the `C Module MicroUI 1.1.1`_.
+* Add a cast when using ``MICROUI_Image*`` object: ``(MICROUI_ImageFormat)image->format`` .
+* Remove parameter ``MICROUI_GraphicsContext*`` when calling ``LLUI_DISPLAY_setDrawingLimits()``.
+* Ensure to call ``LLUI_DISPLAY_setDrawingLimits()`` before calling ``LLUI_DISPLAY_setDrawingStatus()`` or ``LLUI_DISPLAY_notifyAsynchronousDrawingEnd()``.
+* (optional) Add an implementation of ``LLUI_DISPLAY_IMPL_image_heap_xxx`` to control the :ref:`images heap allocation<section_image_loader_memory>`; by default the internal Graphics Engine's allocator is used. Another implementation is also available in the :ref:`MicroUI C module<section_ui_cco>`.
+* (optional) Add the UI event logger available in the :ref:`MicroUI C module<section_ui_cco>`.
 
 BSP with DMA2D
 """"""""""""""
 
 * **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_13.1.0_bsp_without_gpu`.
-* *[VEE Port configuration project]*
-
-	* Fetch the `C Module DMA2D 2.1.0`_.
-
-* *[BSP project]*
-
-	* Delete the properties file ``cco_display-dma2d.properties``.
-
+* Install the `C Module DMA2D 2.1.0`_.
+  
 .. _Front Panel Widgets 2.1.0: https://repository.microej.com/modules/ej/tool/frontpanel/widget/2.1.0/
 .. _UI Pack 13.1.0: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.1.0/
 
