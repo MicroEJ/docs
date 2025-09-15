@@ -6,6 +6,56 @@
 Changelog
 =========
 
+[1.7.2] - 2025-09-15
+====================
+
+MicroVG
+"""""""
+
+**Fixed**
+
+* Include ``SYSVIEW_MicroVG.txt`` in the library jar file (similarly to MicroUI library).
+  
+Front Panel
+"""""""""""
+
+**Fixed**
+
+* Fix the drawing of gradient in a BufferedVectorImage.
+
+Vector Image Converter
+""""""""""""""""""""""
+
+**Fixed**
+
+* Fix the generation of RAW vector images when building a feature.
+
+C Module MicroVG
+""""""""""""""""
+
+**Fixed**
+
+* Fix the usage of ``LLTRACE_impl.h`` with the Architecture 8.x.
+* Fix the default options in ``vg_conguration.h``: some options are disabled by default. 
+
+C Module VGLite
+""""""""""""""""
+
+**Fixed**
+
+* Fix the initialization of the ``BufferedVectorImage`` support.
+* Fix the drawing of a filtered image with opacity.
+
+C Module NemaVG
+"""""""""""""""
+
+**Fixed**
+
+* Fix the initialization of the ``BufferedVectorImage`` support.
+* Fix the invalid include directive to ``display.h`` (now requires the defines ``RESX`` and ``RESY``).
+* Fix the drawing of a filtered image with opacity.
+* Fix the rendering of some texts on a ``BufferedVectorImage`` (invalid bounding box).
+
 [1.7.1] - 2025-04-09
 ====================
 
