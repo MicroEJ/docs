@@ -6,6 +6,22 @@
 Migration Guide
 ===============
 
+From 1.7.1 to 1.7.2
+===================
+
+BSP with VGLite
+"""""""""""""""
+
+* Install the `C Module MicroVG 7.0.2`_.
+* Install the `C Module MicroVG over VGLite 9.0.2`_.
+
+BSP with NemaVG
+"""""""""""""""
+
+* Install the `C Module MicroVG 7.0.2`_.
+* Install the `C Module MicroVG over NemaVG 2.0.2`_.
+* Add the defines ``RESX`` and ``RESY`` in ``vg/inc/vg_configuration.h`` or in the C project global options.
+
 From 1.7.0 to 1.7.1
 ===================
 
