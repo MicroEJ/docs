@@ -11,6 +11,7 @@ The documentation build is based on `Sphinx <https://www.sphinx-doc.org/en/maste
 - Python 3.7 or higher,
 - Package installer for Python (`Pip <https://pip.pypa.io/en/stable/installation/>`_),
 - Graphviz (https://gitlab.com/graphviz/graphviz/-/releases).
+- `Doxygen <https://www.doxygen.nl/download.html>`_ the documentation generator tool (tested with versions ``1.8.17`` and ``1.9.4``)
 
 Building
 --------
@@ -19,7 +20,11 @@ First, you will need to install the documentation dependencies locally::
 
     pip install -r requirements.txt
 
-With dependencies installed, you can build the HTML docs::
+Second, you will need to generate the LLAPI Doxygen documentation locally::
+
+    make llapi_doxygen
+
+With dependencies installed and LLAPI Doxygen generated, you can build the HTML docs::
 
     make html
 
