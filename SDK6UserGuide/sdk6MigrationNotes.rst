@@ -9,6 +9,14 @@ Migration Notes
    For multi-projects, run the ``clean`` command on the root project.
 
 -------------------
+From 1.3.1 to 1.4.0
+-------------------
+
+The plugin ``com.microej.gradle.addon-library`` has been renamed to ``com.microej.gradle.library``.
+The previous name is still supported but it is deprecated and will be removed in the next major version.
+It is recommended to update your project now.
+
+-------------------
 From 1.0.0 to 1.1.0
 -------------------
 

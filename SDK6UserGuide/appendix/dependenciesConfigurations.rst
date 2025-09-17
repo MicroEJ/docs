@@ -29,7 +29,9 @@ The MicroEJ Gradle plugins also define dependency configurations for internal us
     - ``jdtCompilerClasspath``, used by the :ref:`sdk6_module_natures.addon_lib` and :ref:`sdk6_module_natures.application` plugins
     - ``wrapperClasspath``, used by the ``compileJava`` task
     - ``microejRuntimeEnvironmentFullRuntimeClasspath``, used by the :ref:`sdk6_module_natures.tasks.buildVirtualDevice`, :ref:`sdk6_module_natures.tasks.buildApplicationObjectFile` and :ref:`sdk6_module_natures.tasks.buildExecutable` tasks
+    - ``microejFullRuntimeClasspath``, used by the :ref:`sdk6_module_natures.tasks.runOnSimulator` and :ref:`sdk6_module_natures.tasks.buildApplicationObjectFile` tasks
     - ``microejVeeFullClasspath``, used by the :ref:`sdk6_module_natures.tasks.loadVee` task
+    - ``microejVeeRuntimeClasspath``, used by the :ref:`sdk6_module_natures.application` plugin
 
 .. _gradle_veeport_project_dependencies_configurations:
 
@@ -156,6 +158,32 @@ It is configured with the following attributes:
 
 - the custom ``com.microej.veeport.artifact.usage`` attribute, set to ``default``
 - the standard ``LibraryElement`` attribute, set to ``microej-vee-port``
+
+apiElements
+"""""""""""
+
+This variant is used to fetch the Libraries provided by the VEE Port when it is declared with the ``microejVee`` configuration in your project.
+It is configured with the following attributes:
+
+- the standard ``Usage`` attribute, set to ``java-api``
+
+runtimeElements
+"""""""""""""""
+
+This variant is used to fetch the Libraries provided by the VEE Port when it is declared with the ``microejVee`` configuration in your project.
+It is configured with the following attributes:
+
+- the standard ``Usage`` attribute, set to ``java-runtime``
+
+javadocElements
+"""""""""""""""
+
+This variant is used to publish the aggregated Javadoc Jar file of all Libraries provided by the VEE Port with the ``api`` and the ``implementation`` configurations in your project.
+It is configured with the following attributes:
+
+- the standard ``Category`` attribute, set to ``documentation``
+- the standard ``Bundling`` attribute, set to ``external``
+- the standard ``DocType`` attribute, set to ``javadoc``
 
 .. _gradle_variants_attributes:
 
