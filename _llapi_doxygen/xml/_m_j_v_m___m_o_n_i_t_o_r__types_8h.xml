@@ -1,0 +1,236 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="_m_j_v_m___m_o_n_i_t_o_r__types_8h" kind="file" language="C++">
+    <compoundname>MJVM_MONITOR_types.h</compoundname>
+    <includes local="no">stdint.h</includes>
+    <includedby refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h" local="no">LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h</includedby>
+    <includedby refid="_m_j_v_m___m_o_n_i_t_o_r_8h" local="yes">LLMJVM_MONITOR/MJVM_MONITOR.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>LLMJVM_MONITOR/MJVM_MONITOR_types.h</label>
+        <link refid="_m_j_v_m___m_o_n_i_t_o_r__types_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h</label>
+        <link refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h"/>
+      </node>
+      <node id="3">
+        <label>LLMJVM_MONITOR/MJVM_MONITOR.h</label>
+        <link refid="_m_j_v_m___m_o_n_i_t_o_r_8h"/>
+      </node>
+      <node id="1">
+        <label>LLMJVM_MONITOR/MJVM_MONITOR_types.h</label>
+        <link refid="_m_j_v_m___m_o_n_i_t_o_r__types_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct_m_j_v_m___m_o_n_i_t_o_r__thread__info__t" prot="public">MJVM_MONITOR_thread_info_t</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="_m_j_v_m___m_o_n_i_t_o_r__types_8h_1ae39c26eb35281f22a563f53d133077d0" prot="public" static="no">
+        <name>MJVM_MONITOR_OK</name>
+        <initializer>(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returned value when function call has succeeded. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="LLMJVM_MONITOR/MJVM_MONITOR_types.h" line="28" column="9" bodyfile="LLMJVM_MONITOR/MJVM_MONITOR_types.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_m_j_v_m___m_o_n_i_t_o_r__types_8h_1a769734183c0c1475ce7a99472996a463" prot="public" static="no">
+        <name>MJVM_MONITOR_ERROR</name>
+        <initializer>(-1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returned value when function call has failed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="LLMJVM_MONITOR/MJVM_MONITOR_types.h" line="33" column="9" bodyfile="LLMJVM_MONITOR/MJVM_MONITOR_types.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_m_j_v_m___m_o_n_i_t_o_r__types_8h_1a8755c0d3d3910f3b0f01c49983f65a73" prot="public" static="no">
+        <name>MJVM_MONITOR_INVALID_THREAD_INFO</name>
+        <initializer>(-2)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returned value when an invalid MJVM_MONITOR_ThreadInfo struct is given to a function. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="LLMJVM_MONITOR/MJVM_MONITOR_types.h" line="38" column="9" bodyfile="LLMJVM_MONITOR/MJVM_MONITOR_types.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_m_j_v_m___m_o_n_i_t_o_r__types_8h_1ad3fd0e14ef5162430d1798199a58b136" prot="public" static="no">
+        <name>MJVM_MONITOR_INVALID_THREAD_ID</name>
+        <initializer>(-3)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returned value when an invalid Java thread ID is given to a function. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="LLMJVM_MONITOR/MJVM_MONITOR_types.h" line="43" column="9" bodyfile="LLMJVM_MONITOR/MJVM_MONITOR_types.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="_m_j_v_m___m_o_n_i_t_o_r__types_8h_1a7cc9bb69e83e3c90890e9d14b3399a14" prot="public" static="no" strong="no">
+        <type></type>
+        <name>MJVM_MONITOR_state_t</name>
+        <enumvalue id="_m_j_v_m___m_o_n_i_t_o_r__types_8h_1a7cc9bb69e83e3c90890e9d14b3399a14a2fc03a05352b9b0fdee01c024132f7e3" prot="public">
+          <name>MJVM_MONITOR_STATE_READY</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>In the ready state, all functional prerequisites for a transition into the running state exist, and the thread only waits for allocation of the processor. The scheduler decides which ready thread is executed next. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_m_j_v_m___m_o_n_i_t_o_r__types_8h_1a7cc9bb69e83e3c90890e9d14b3399a14a0ba7d2f2be9b0c1f972bdab635d659be" prot="public">
+          <name>MJVM_MONITOR_STATE_RUNNING</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>In the running state, the CPU is assigned to the thread, so that its instructions can be executed. Only one thread can be in this state at any point in time, while all the other states can be adopted simultaneously by several threads. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_m_j_v_m___m_o_n_i_t_o_r__types_8h_1a7cc9bb69e83e3c90890e9d14b3399a14a225fea0198ab270887f6fe8015deab28" prot="public">
+          <name>MJVM_MONITOR_STATE_WAITING</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Thread state for a waiting thread. A thread is in the waiting state due to calling one of the following methods: <itemizedlist>
+<listitem>
+<para><computeroutput>Thread.sleep</computeroutput> </para>
+</listitem>
+<listitem>
+<para><computeroutput>Object.wait</computeroutput> </para>
+</listitem>
+<listitem>
+<para><computeroutput>Thread.join</computeroutput> </para>
+</listitem>
+<listitem>
+<para><computeroutput>SNI_suspendCurrentJavaThread</computeroutput> </para>
+</listitem>
+</itemizedlist>
+</para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_m_j_v_m___m_o_n_i_t_o_r__types_8h_1a7cc9bb69e83e3c90890e9d14b3399a14af54e129ad4a26c6da2d4d0da20a114b9" prot="public">
+          <name>MJVM_MONITOR_STATE_MONITOR_QUEUED</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>In the monitor queued state, a thread cannot continue execution because a monitor it tries to acquire is already owned by another thread. When this monitor is released, it will try to gain the ownership of the monitor. If it succeeds, it will be transferred into the ready state, otherwise it will remain in the monitor queued state. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_m_j_v_m___m_o_n_i_t_o_r__types_8h_1a7cc9bb69e83e3c90890e9d14b3399a14ac9ed2eeb414b955801262dca15ba404a" prot="public">
+          <name>MJVM_MONITOR_STATE_TERMINATED</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>In the terminated state the thread is passive and has completed its execution. </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="LLMJVM_MONITOR/MJVM_MONITOR_types.h" line="48" column="1" bodyfile="LLMJVM_MONITOR/MJVM_MONITOR_types.h" bodystart="49" bodyend="89"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Core Engine monitoring library types API. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>MicroEJ Developer Team </para>
+</simplesect>
+<simplesect kind="version"><para>1.0.0 </para>
+</simplesect>
+<simplesect kind="date"><para>1 June 2017 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>C</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>2015-2024<sp/>MicroEJ<sp/>Corp.<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>This<sp/>library<sp/>is<sp/>provided<sp/>in<sp/>source<sp/>code<sp/>for<sp/>use,<sp/>modification<sp/>and<sp/>test,<sp/>subject<sp/>to<sp/>license<sp/>terms.</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>Any<sp/>modification<sp/>of<sp/>the<sp/>source<sp/>code<sp/>will<sp/>break<sp/>MicroEJ<sp/>Corp.<sp/>warranties<sp/>on<sp/>the<sp/>whole<sp/>library.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>MJVM_MONITOR_TYPES_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MJVM_MONITOR_TYPES_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="_m_j_v_m___m_o_n_i_t_o_r__types_8h_1ae39c26eb35281f22a563f53d133077d0" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MJVM_MONITOR_OK<sp/>(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="_m_j_v_m___m_o_n_i_t_o_r__types_8h_1a769734183c0c1475ce7a99472996a463" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MJVM_MONITOR_ERROR<sp/>(-1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="_m_j_v_m___m_o_n_i_t_o_r__types_8h_1a8755c0d3d3910f3b0f01c49983f65a73" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MJVM_MONITOR_INVALID_THREAD_INFO<sp/>(-2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="_m_j_v_m___m_o_n_i_t_o_r__types_8h_1ad3fd0e14ef5162430d1798199a58b136" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MJVM_MONITOR_INVALID_THREAD_ID<sp/>(-3)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*<sp/>Specifies<sp/>the<sp/>states<sp/>of<sp/>the<sp/>Java<sp/>threads.</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="_m_j_v_m___m_o_n_i_t_o_r__types_8h_1a7cc9bb69e83e3c90890e9d14b3399a14" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="55" refid="_m_j_v_m___m_o_n_i_t_o_r__types_8h_1a7cc9bb69e83e3c90890e9d14b3399a14a2fc03a05352b9b0fdee01c024132f7e3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_m_j_v_m___m_o_n_i_t_o_r__types_8h_1a7cc9bb69e83e3c90890e9d14b3399a14a2fc03a05352b9b0fdee01c024132f7e3" kindref="member">MJVM_MONITOR_STATE_READY</ref><sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="_m_j_v_m___m_o_n_i_t_o_r__types_8h_1a7cc9bb69e83e3c90890e9d14b3399a14a0ba7d2f2be9b0c1f972bdab635d659be" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_m_j_v_m___m_o_n_i_t_o_r__types_8h_1a7cc9bb69e83e3c90890e9d14b3399a14a0ba7d2f2be9b0c1f972bdab635d659be" kindref="member">MJVM_MONITOR_STATE_RUNNING</ref><sp/>=<sp/>2,</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="_m_j_v_m___m_o_n_i_t_o_r__types_8h_1a7cc9bb69e83e3c90890e9d14b3399a14a225fea0198ab270887f6fe8015deab28" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_m_j_v_m___m_o_n_i_t_o_r__types_8h_1a7cc9bb69e83e3c90890e9d14b3399a14a225fea0198ab270887f6fe8015deab28" kindref="member">MJVM_MONITOR_STATE_WAITING</ref><sp/>=<sp/>3,</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="_m_j_v_m___m_o_n_i_t_o_r__types_8h_1a7cc9bb69e83e3c90890e9d14b3399a14af54e129ad4a26c6da2d4d0da20a114b9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_m_j_v_m___m_o_n_i_t_o_r__types_8h_1a7cc9bb69e83e3c90890e9d14b3399a14af54e129ad4a26c6da2d4d0da20a114b9" kindref="member">MJVM_MONITOR_STATE_MONITOR_QUEUED</ref><sp/>=<sp/>4,</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="_m_j_v_m___m_o_n_i_t_o_r__types_8h_1a7cc9bb69e83e3c90890e9d14b3399a14ac9ed2eeb414b955801262dca15ba404a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_m_j_v_m___m_o_n_i_t_o_r__types_8h_1a7cc9bb69e83e3c90890e9d14b3399a14ac9ed2eeb414b955801262dca15ba404a" kindref="member">MJVM_MONITOR_STATE_TERMINATED</ref><sp/>=<sp/>6,</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal">}<ref refid="_m_j_v_m___m_o_n_i_t_o_r__types_8h_1a7cc9bb69e83e3c90890e9d14b3399a14" kindref="member">MJVM_MONITOR_state_t</ref>;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/>*<sp/>Structure<sp/>that<sp/>contains<sp/>information<sp/>about<sp/>a<sp/>thread.</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94" refid="struct_m_j_v_m___m_o_n_i_t_o_r__thread__info__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>ID<sp/>of<sp/>the<sp/>thread.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="struct_m_j_v_m___m_o_n_i_t_o_r__thread__info__t_1a8b040b3f4223fa912543404449741a21" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/><ref refid="struct_m_j_v_m___m_o_n_i_t_o_r__thread__info__t_1a8b040b3f4223fa912543404449741a21" kindref="member">id</ref>;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Java<sp/>priority<sp/>of<sp/>the<sp/>thread.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98" refid="struct_m_j_v_m___m_o_n_i_t_o_r__thread__info__t_1a0e419656558bced57317b7b5b1f18453" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/><ref refid="struct_m_j_v_m___m_o_n_i_t_o_r__thread__info__t_1a0e419656558bced57317b7b5b1f18453" kindref="member">priority</ref>;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Current<sp/>state<sp/>of<sp/>the<sp/>thread.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100" refid="struct_m_j_v_m___m_o_n_i_t_o_r__thread__info__t_1a7d7c90b574eff9b6e449f011f02ac9c5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_m_j_v_m___m_o_n_i_t_o_r__types_8h_1a7cc9bb69e83e3c90890e9d14b3399a14" kindref="member">MJVM_MONITOR_state_t</ref><sp/><ref refid="struct_m_j_v_m___m_o_n_i_t_o_r__thread__info__t_1a7d7c90b574eff9b6e449f011f02ac9c5" kindref="member">state</ref>;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Maximum<sp/>Java<sp/>stack<sp/>usage<sp/>in<sp/>bytes.<sp/>-1<sp/>if<sp/>not<sp/>available.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102" refid="struct_m_j_v_m___m_o_n_i_t_o_r__thread__info__t_1a542a04be9fe3365e3cd2416e455d6827" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/><ref refid="struct_m_j_v_m___m_o_n_i_t_o_r__thread__info__t_1a542a04be9fe3365e3cd2416e455d6827" kindref="member">max_stack_usage</ref>;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}<sp/><ref refid="struct_m_j_v_m___m_o_n_i_t_o_r__thread__info__t" kindref="compound">MJVM_MONITOR_thread_info_t</ref>;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>MJVM_MONITOR_TYPES_H<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="LLMJVM_MONITOR/MJVM_MONITOR_types.h"/>
+  </compounddef>
+</doxygen>

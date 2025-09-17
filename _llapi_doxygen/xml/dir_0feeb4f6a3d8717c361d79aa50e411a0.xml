@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="dir_0feeb4f6a3d8717c361d79aa50e411a0" kind="dir">
+    <compoundname>LLMJVM_MONITOR</compoundname>
+    <innerfile refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h">LLMJVM_MONITOR_impl.h</innerfile>
+    <innerfile refid="_m_j_v_m___m_o_n_i_t_o_r_8h">MJVM_MONITOR.h</innerfile>
+    <innerfile refid="_m_j_v_m___m_o_n_i_t_o_r__types_8h">MJVM_MONITOR_types.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="LLMJVM_MONITOR/"/>
+  </compounddef>
+</doxygen>

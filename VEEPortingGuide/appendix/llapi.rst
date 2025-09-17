@@ -143,7 +143,7 @@ Naming Convention
 
 The Low Level Shielded Plug API, the ``LLSP`` API, relies on functions
 that need to be implemented. The naming convention for such functions is
-that their names match the ``LLSP_IMPL_*`` pattern.  
+that their names match the ``LLSP_IMPL_*`` pattern.  
 
 Header Files
 ------------
@@ -191,7 +191,7 @@ Naming Convention
 
 The Low Level API, the ``LLEXT_RES`` API, relies on functions that need
 to be implemented. The naming convention for such functions is that
-their names match the ``LLEXT_RES_IMPL_*`` pattern.  
+their names match the ``LLEXT_RES_IMPL_*`` pattern.  
 
 Header Files
 ------------
@@ -212,7 +212,7 @@ LLCOMM: Serial Communications
 Naming Convention
 -----------------
 
-The Low Level Comm API (LLCOMM), relies on functions that need to be
+The Low Level Comm API (LLCOMM), relies on functions that need to be
 implemented by engineers in a driver. The names of these functions match
 the ``LLCOM_BUFFERED_CONNECTION_IMPL_*`` or the
 ``LLCOM_CUSTOM_CONNECTION_IMPL_*``\ pattern.
@@ -263,7 +263,7 @@ engine, and it may be used to initialize the underlying devices and bind
 them to event generator IDs.
 
 ``LLUI_INPUT_IMPL_enterCriticalSection`` and
-``LLUI_INPUT_IMPL_exitCriticalSection``  need to provide the Input Engine with a
+``LLUI_INPUT_IMPL_exitCriticalSection``  need to provide the Input Engine with a
 critical section mechanism for synchronizing devices when sending events
 to the internal event queue. The mechanism used to implement the
 synchronization will depend on the VEE Port configuration (with or
@@ -280,7 +280,7 @@ Sending Events
 The ``LLUI_INPUT`` API provides two generic functions for a C driver to
 send data to its associated event generator:
 
--  ``LLUI_INPUT_sendEvent``:  Sends a 32-bit event to a specific event generator, specified by its ID. If the input buffer is full, the event is not added, and the function returns ``LLUI_INPUT_NOK``; otherwise it returns ``LLUI_INPUT_OK``.
+-  ``LLUI_INPUT_sendEvent``:  Sends a 32-bit event to a specific event generator, specified by its ID. If the input buffer is full, the event is not added, and the function returns ``LLUI_INPUT_NOK``; otherwise it returns ``LLUI_INPUT_OK``.
 
 -  ``LLUI_INPUT_sendEvents``: Sends a frame constituted by several 32-bit events to a specific event generator, specified by its ID. If the input buffer cannot receive the whole data, the frame is not added, and the function returns ``LLUI_INPUT_NOK``; otherwise it returns ``LLUI_INPUT_OK``.
 
@@ -384,7 +384,7 @@ LLUI_DISPLAY: Display
 Principle & Naming Convention
 -----------------------------
 
-The  Graphics Engine provides some Low Level APIs to connect a display driver. The file ``LLUI_DISPLAY_impl.h`` defines the API headers to be implemented. For the APIs themselves, the naming convention is that their names match the ``*_IMPL_*`` pattern when the functions need to be implemented:
+The  Graphics Engine provides some Low Level APIs to connect a display driver. The file ``LLUI_DISPLAY_impl.h`` defines the API headers to be implemented. For the APIs themselves, the naming convention is that their names match the ``*_IMPL_*`` pattern when the functions need to be implemented:
 
 * ``LLUI_DISPLAY_IMPL_initialize``
 * ``LLUI_DISPLAY_IMPL_binarySemaphoreTake``
@@ -795,7 +795,7 @@ LLECOM_NETWORK: Network Interfaces
 Naming Convention
 -----------------
 
-The Low Level Network Interfaces API (LLECOM_NETWORK), relies on functions that need to
+The Low Level Network Interfaces API (LLECOM_NETWORK), relies on functions that need to
 be implemented by engineers in a driver. The names of these functions
 match the ``LLECOM_NETWORK_IMPL_*`` pattern.
 
@@ -818,7 +818,7 @@ LLECOM_WIFI: Wi-Fi Management
 Naming Convention
 -----------------
 
-The Low Level Wi-FI API (LLECOM_WIFI), relies on functions that need to
+The Low Level Wi-FI API (LLECOM_WIFI), relies on functions that need to
 be implemented by engineers in a driver. The names of these functions
 match the ``LLECOM_WIFI_IMPL_*`` pattern.
 
@@ -840,7 +840,7 @@ LLBLUETOOTH: Bluetooth
 Naming Convention
 -----------------
 
-The Low Level Bluetooth API (LLBLUETOOTH), relies on functions that need to
+The Low Level Bluetooth API (LLBLUETOOTH), relies on functions that need to
 be implemented by engineers in a driver. The names of these functions
 match the ``LLBLUETOOTH_IMPL_*`` pattern.
 
@@ -866,7 +866,7 @@ LLAUDIO: Audio
 Naming Convention
 -----------------
 
-The Low Level Audio API (LLAUDIO), relies on functions that need to
+The Low Level Audio API (LLAUDIO), relies on functions that need to
 be implemented by engineers in a driver. The names of these functions
 match the ``LLAUDIO_*_IMPL_*`` pattern.
 
@@ -895,7 +895,7 @@ LLML: MicroAI
 Naming Convention
 -----------------
 
-The Low Level MicroAI API (LLML), relies on functions that need to
+The Low Level MicroAI API (LLML), relies on functions that need to
 be implemented by engineers in a driver. The names of these functions
 match the ``LLML_IMPL_*`` pattern.
 
@@ -919,7 +919,7 @@ LLEVENT: Event Queue
 Naming Convention
 -----------------
 
-The Low Level Event Queue API (LLEVENT), relies on functions that need to
+The Low Level Event Queue API (LLEVENT), relies on functions that need to
 be implemented by engineers in a driver. The names of these functions
 match the ``LLEVENT_IMPL_*`` or ``LLEVENT_*`` pattern.
 
@@ -944,7 +944,7 @@ LLFS: File System
 Naming Convention
 -----------------
 
-The Low Level File System API (LLFS), relies on functions that need to
+The Low Level File System API (LLFS), relies on functions that need to
 be implemented by engineers in a driver. The names of these functions
 match the ``LLFS_IMPL_*`` and the ``LLFS_File_IMPL_*`` pattern.
 
@@ -967,13 +967,13 @@ Two C header files are provided:
 
 .. _LLGNSS-API-SECTION:
 
-LLGNSS: GNSS
-============
+LLGNSS: GNSS (Global Navigation Satellite System)
+=================================================
 
 Naming Convention
 -----------------
 
-The Low Level GNSS API (LLGNSS), relies on functions that need to
+The Low Level GNSS API (LLGNSS), relies on functions that need to
 be implemented by engineers in a driver. The names of these functions
 match the ``LLGNSS_IMPL_*`` pattern.
 
@@ -1018,7 +1018,7 @@ LLDEVICE: Device Information
 Naming Convention
 -----------------
 
-The Low Level Device API (LLDEVICE), relies on functions that need to be
+The Low Level Device API (LLDEVICE), relies on functions that need to be
 implemented by engineers in a driver. The names of these functions match
 the ``LLDEVICE_IMPL_*`` pattern.
 
@@ -1041,7 +1041,7 @@ LLWATCHDOG_TIMER: Watchdog Timer
 Naming Convention
 -----------------
 
-The Low Level Watchdog Timer API (LLWATCHDOG_TIMER), provides functions that allow the use of this API
+The Low Level Watchdog Timer API (LLWATCHDOG_TIMER), provides functions that allow the use of this API
 at the BSP level in C. The names of these functions match the ``LLWATCHDOG_TIMER_IMPL_*`` pattern.
 
 The Watchdog API is delivered with a Generic C implementation on which the VEE Port must
@@ -1138,6 +1138,85 @@ Several C header files are provided:
    Defines a set of functions that must be implemented by the BSP in order
    to manage X509 certificates operations like getting the public key,
    extracting the issuer, etc.
+
+.. _LLTRACE-API-SECTION:
+
+LLTRACE: Trace
+==============
+
+Principle
+---------
+
+The :ref:`Trace module <event-tracing>` provides Low Level APIs to produce lightweight events for debugging and
+monitoring purposes. The file ``LLTRACE_impl.h``, which comes with the Core Engine, defines the API headers to be implemented.
+
+Naming Convention
+-----------------
+
+The Low Level Trace API ``LLTRACE`` relies on functions that need to be implemented. The naming convention for such
+functions is that their names match the ``LLTRACE_IMPL_*`` pattern.
+
+
+Initialization
+--------------
+
+Header Files
+------------
+
+Three C header files are provided:
+
+-  LLTRACE_impl.h
+
+   Defines the set of functions that the BSP must implement to launch
+   and schedule the Core Engine
+
+-  LLTRACE.h
+
+   Defines the set of functions provided by Core Engine that can be
+   called by the BSP
+
+
+.. doxygenfunction:: LLMJVM_MONITOR_IMPL_on_allocate
+
+.. doxygenfile:: LLTRACE_impl.h
+   :sections: func
+
+
+Implementation
+--------------
+
+
+.. _LLMJVM_MONITOR-API-SECTION:
+
+LLMJVM_MONITOR: Core Engine Monitoring
+======================================
+
+Naming Convention
+-----------------
+
+The Low Level Core Engine API, the ``LLMJVM`` API, relies on
+functions that need to be implemented. The naming convention for such
+functions is that their names match the ``LLMJVM_IMPL_*`` pattern.
+
+Header Files
+------------
+
+Three C header files are provided:
+
+-  LLMJVM_MONITOR_impl.h
+
+   Defines the set of functions that the BSP must implement to launch
+   and schedule the Core Engine
+
+-  MJVM_MONITOR.h
+
+   Defines the set of functions provided by Core Engine that can be
+   called by the BSP
+
+-  MJVM_MONITOR_types.h
+
+   Defines the set of extra functions that the BSP must implement.
+
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 

@@ -1,0 +1,691 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h" kind="file" language="C++">
+    <compoundname>LLMJVM_MONITOR_impl.h</compoundname>
+    <includes local="no">stdint.h</includes>
+    <includes local="no">stdbool.h</includes>
+    <includes refid="_m_j_v_m___m_o_n_i_t_o_r__types_8h" local="no">MJVM_MONITOR_types.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h</label>
+        <link refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>MJVM_MONITOR_types.h</label>
+        <link refid="_m_j_v_m___m_o_n_i_t_o_r__types_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>stdbool.h</label>
+      </node>
+      <node id="2">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1ac91881b7bb466b751384a1c73d0048bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void LLMJVM_MONITOR_IMPL_initialize</definition>
+        <argsstring>(bool auto_start)</argsstring>
+        <name>LLMJVM_MONITOR_IMPL_initialize</name>
+        <param>
+          <type>bool</type>
+          <declname>auto_start</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h" line="40" column="6" declfile="LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h" declline="40" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a47863bce9918f205a875ee2ea9e1d1f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void LLMJVM_MONITOR_IMPL_on_shutdown</definition>
+        <argsstring>(void)</argsstring>
+        <name>LLMJVM_MONITOR_IMPL_on_shutdown</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is called during Core Engine end. It may be used to freed specific data. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h" line="46" column="6" declfile="LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h" declline="46" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a8d19527b0cbf0cf109b136f2319fa668" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void LLMJVM_MONITOR_IMPL_on_thread_create</definition>
+        <argsstring>(int32_t thread_id)</argsstring>
+        <name>LLMJVM_MONITOR_IMPL_on_thread_create</name>
+        <param>
+          <type>int32_t</type>
+          <declname>thread_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is called by the Core Engine when a new Java thread is started. </para>
+<para>Implementation can use the function <computeroutput><ref refid="_m_j_v_m___m_o_n_i_t_o_r_8h_1a963b33bcbb53c6850d7502c09eb23ae7" kindref="member">MJVM_MONITOR_get_thread_info()</ref></computeroutput> to retrieve more information about the created thread.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>thread_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ID of the created thread. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h" line="58" column="6" declfile="LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h" declline="58" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a7963173e12af67d5a877264815e7a4ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void LLMJVM_MONITOR_IMPL_on_thread_modified</definition>
+        <argsstring>(int32_t thread_id)</argsstring>
+        <name>LLMJVM_MONITOR_IMPL_on_thread_modified</name>
+        <param>
+          <type>int32_t</type>
+          <declname>thread_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is called by the Core Engine when the priority or the name of a Java thread is modified. </para>
+<para>Implementation can use the function <computeroutput><ref refid="_m_j_v_m___m_o_n_i_t_o_r_8h_1a963b33bcbb53c6850d7502c09eb23ae7" kindref="member">MJVM_MONITOR_get_thread_info()</ref></computeroutput> to retrieve more information about the modified thread.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>thread_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ID of the modified thread. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h" line="70" column="6" declfile="LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h" declline="70" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a5caa9c5a46231948d47bb1a614871885" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void LLMJVM_MONITOR_IMPL_on_thread_state_changed</definition>
+        <argsstring>(int32_t thread_id, MJVM_MONITOR_state_t new_state)</argsstring>
+        <name>LLMJVM_MONITOR_IMPL_on_thread_state_changed</name>
+        <param>
+          <type>int32_t</type>
+          <declname>thread_id</declname>
+        </param>
+        <param>
+          <type><ref refid="_m_j_v_m___m_o_n_i_t_o_r__types_8h_1a7cc9bb69e83e3c90890e9d14b3399a14" kindref="member">MJVM_MONITOR_state_t</ref></type>
+          <declname>new_state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is called by the Core Engine when the state of a Java thread is modified (e.g., when a thread is waiting, running, etc.).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>thread_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ID of the modified thread.</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>new_state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New state of the thread. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h" line="82" column="6" declfile="LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h" declline="82" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a252ddb39b73362b95f7dc5f418dc3edf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void LLMJVM_MONITOR_IMPL_on_idle</definition>
+        <argsstring>(void)</argsstring>
+        <name>LLMJVM_MONITOR_IMPL_on_idle</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is called by the Core Engine when it enter in idle mode (i.e., all the Java threads are sleeping). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h" line="88" column="6" declfile="LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h" declline="88" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a532bb462c699ddd6ff7449da4d1f506e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void LLMJVM_MONITOR_IMPL_on_gc_start</definition>
+        <argsstring>(int32_t current_thread_id)</argsstring>
+        <name>LLMJVM_MONITOR_IMPL_on_gc_start</name>
+        <param>
+          <type>int32_t</type>
+          <declname>current_thread_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is called by the Core Engine when a garbage collector operation is started.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>current_thread_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ID of the thread that raises the GC. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h" line="97" column="6" declfile="LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h" declline="97" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a07885b7302192c66fe8228255d5bbc76" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void LLMJVM_MONITOR_IMPL_on_gc_stop</definition>
+        <argsstring>(int32_t current_thread_id)</argsstring>
+        <name>LLMJVM_MONITOR_IMPL_on_gc_stop</name>
+        <param>
+          <type>int32_t</type>
+          <declname>current_thread_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is called by the Core Engine when a garbage collector operation is finished.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>current_thread_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ID of the thread that raises the GC. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h" line="106" column="6" declfile="LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h" declline="106" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a7962b607ac76b43c6f1acbe0464affa9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void LLMJVM_MONITOR_IMPL_on_invoke_method</definition>
+        <argsstring>(void *method)</argsstring>
+        <name>LLMJVM_MONITOR_IMPL_on_invoke_method</name>
+        <param>
+          <type>void *</type>
+          <declname>method</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is called by the Core Engine when an method is invoked.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>method</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the invoked method. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h" line="114" column="6" declfile="LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h" declline="114" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a564fae265dcd0a0d9e59e8f9b45ca6c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void LLMJVM_MONITOR_IMPL_on_return_method</definition>
+        <argsstring>(void *method)</argsstring>
+        <name>LLMJVM_MONITOR_IMPL_on_return_method</name>
+        <param>
+          <type>void *</type>
+          <declname>method</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is called by the Core Engine when a method returns.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>method</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the invoked method. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h" line="122" column="6" declfile="LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h" declline="122" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a5eadee64bc7b08e418973d87169d7c82" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void LLMJVM_MONITOR_IMPL_on_allocate</definition>
+        <argsstring>(void *type, int32_t size, void *method, void *instruction_address, int32_t total_memory, int32_t free_memory, bool immortal)</argsstring>
+        <name>LLMJVM_MONITOR_IMPL_on_allocate</name>
+        <param>
+          <type>void *</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>int32_t</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>method</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>instruction_address</declname>
+        </param>
+        <param>
+          <type>int32_t</type>
+          <declname>total_memory</declname>
+        </param>
+        <param>
+          <type>int32_t</type>
+          <declname>free_memory</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>immortal</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is called by the Core Engine when a new Java object is allocated.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Class of the Java object.</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size in bytes of the Java object.</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>method</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Java method that allocates the object.</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>instruction_address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Address of the Java instruction that allocates the object.</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>total_memory</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Total size of the Java heap in bytes.</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>free_memory</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Amount of the free memory in the Java heap in bytes.</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>immortal</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><computeroutput>true</computeroutput> is the allocated object is immortal, <computeroutput>false</computeroutput> otherwise. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h" line="150" column="6" declfile="LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h" declline="150" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1abfa631baf486a7910f016d1891a96d75" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void LLMJVM_MONITOR_IMPL_on_exception</definition>
+        <argsstring>(void *exception_type, void *throw_method, void *throw_instruction_address, void *catch_method, void *catch_instruction_address, const char *message)</argsstring>
+        <name>LLMJVM_MONITOR_IMPL_on_exception</name>
+        <param>
+          <type>void *</type>
+          <declname>exception_type</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>throw_method</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>throw_instruction_address</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>catch_method</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>catch_instruction_address</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is called by the Core Engine when a Java exception is thrown.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>exception_type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Class of the Java exception.</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>throw_method</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Java method that throws the exception.</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>throw_instruction_address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Address of the Java instruction that throws the exception.</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>catch_method</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Java method that catches the exception.</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>catch_instruction_address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Address of the Java instruction that catches the exception.</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Message of the exception. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h" line="174" column="6" declfile="LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h" declline="174" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a0dd8738bddb2a177045d415080c9101c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void LLMJVM_MONITOR_IMPL_on_quota_reset</definition>
+        <argsstring>(int32_t context_id, int32_t quota)</argsstring>
+        <name>LLMJVM_MONITOR_IMPL_on_quota_reset</name>
+        <param>
+          <type>int32_t</type>
+          <declname>context_id</declname>
+        </param>
+        <param>
+          <type>int32_t</type>
+          <declname>quota</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is called by the Core Engine when the quota for an execution context is updated.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>context_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ID of the execution context being updated.</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>quota</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new quota assigned to the execution context. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h" line="186" column="6" declfile="LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h" declline="186" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a95f84bb1517d800a3510ba7f5fc8f871" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void LLMJVM_MONITOR_IMPL_on_quota_reached</definition>
+        <argsstring>(int32_t context_id)</argsstring>
+        <name>LLMJVM_MONITOR_IMPL_on_quota_reached</name>
+        <param>
+          <type>int32_t</type>
+          <declname>context_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is called by the Core Engine wwhen the quota for an execution context has been reached.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>context_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ID of the execution context which quota is reached. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h" line="194" column="6" declfile="LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h" declline="194" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a485463d5c96a273db5cf06dc0aae9215" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void LLMJVM_MONITOR_IMPL_on_quantum_counters_reset</definition>
+        <argsstring>()</argsstring>
+        <name>LLMJVM_MONITOR_IMPL_on_quantum_counters_reset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is called by the Core Engine when all the quantum counters are reset to zero. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h" line="199" column="6" declfile="LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h" declline="199" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a5a3d6ab89751ddfe866c24b6b4fc0f86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void LLMJVM_MONITOR_IMPL_on_thread_added_to_context</definition>
+        <argsstring>(int32_t thread_id, int32_t context_id)</argsstring>
+        <name>LLMJVM_MONITOR_IMPL_on_thread_added_to_context</name>
+        <param>
+          <type>int32_t</type>
+          <declname>thread_id</declname>
+        </param>
+        <param>
+          <type>int32_t</type>
+          <declname>context_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is called by the Core Engine when a thread is added to an execution context.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>thread_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ID of the added thread.</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>context_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ID of the execution context. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h" line="210" column="6" declfile="LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h" declline="210" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Core Engine Monitoring low level API. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>MicroEJ Developer Team </para>
+</simplesect>
+<simplesect kind="version"><para>1.3.0 </para>
+</simplesect>
+<simplesect kind="date"><para>23 August 2024 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>C</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>2017-2024<sp/>MicroEJ<sp/>Corp.<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>This<sp/>library<sp/>is<sp/>provided<sp/>in<sp/>source<sp/>code<sp/>for<sp/>use,<sp/>modification<sp/>and<sp/>test,<sp/>subject<sp/>to<sp/>license<sp/>terms.</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>Any<sp/>modification<sp/>of<sp/>the<sp/>source<sp/>code<sp/>will<sp/>break<sp/>MicroEJ<sp/>Corp.<sp/>warranties<sp/>on<sp/>the<sp/>whole<sp/>library.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LLMJVM_MONITOR_IMPL_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LLMJVM_MONITOR_IMPL_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_m_j_v_m___m_o_n_i_t_o_r__types_8h" kindref="compound">MJVM_MONITOR_types.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>This<sp/>function<sp/>is<sp/>called<sp/>once<sp/>during<sp/>Core<sp/>Engine<sp/>startup.</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*<sp/>It<sp/>may<sp/>be<sp/>used<sp/>to<sp/>initialize<sp/>specific<sp/>data.</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*<sp/>&lt;p&gt;</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*<sp/>When<sp/>&lt;code&gt;auto_start&lt;/code&gt;<sp/>is<sp/>true,<sp/>the<sp/>monitoring<sp/>traces<sp/>must<sp/>be<sp/>generated<sp/>now</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*<sp/>(i.e.,<sp/>call<sp/>the<sp/>&lt;code&gt;LLTRACE_start()&lt;/code&gt;<sp/>function).<sp/>If<sp/>&lt;code&gt;auto_start&lt;/code&gt;</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*<sp/>is<sp/>false,<sp/>the<sp/>monitoring<sp/>traces<sp/>must<sp/>not<sp/>be<sp/>generated<sp/>until<sp/>the<sp/>function</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*<sp/>&lt;code&gt;LLTRACE_start()&lt;/code&gt;<sp/>is<sp/>called.<sp/>Even<sp/>if<sp/>&lt;code&gt;auto_start&lt;/code&gt;<sp/>is<sp/>false,</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*<sp/>the<sp/>Core<sp/>Engine<sp/>will<sp/>call<sp/>the<sp/>LLMJVM_MONITOR_IMPL_*<sp/>functions.</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*<sp/>@param<sp/>auto_start</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>true<sp/>to<sp/>start<sp/>monitoring<sp/>now,<sp/>false<sp/>otherwise.</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1ac91881b7bb466b751384a1c73d0048bc" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1ac91881b7bb466b751384a1c73d0048bc" kindref="member">LLMJVM_MONITOR_IMPL_initialize</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>auto_start);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a47863bce9918f205a875ee2ea9e1d1f7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a47863bce9918f205a875ee2ea9e1d1f7" kindref="member">LLMJVM_MONITOR_IMPL_on_shutdown</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a8d19527b0cbf0cf109b136f2319fa668" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a8d19527b0cbf0cf109b136f2319fa668" kindref="member">LLMJVM_MONITOR_IMPL_on_thread_create</ref>(int32_t<sp/>thread_id);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a7963173e12af67d5a877264815e7a4ec" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a7963173e12af67d5a877264815e7a4ec" kindref="member">LLMJVM_MONITOR_IMPL_on_thread_modified</ref>(int32_t<sp/>thread_id);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a5caa9c5a46231948d47bb1a614871885" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a5caa9c5a46231948d47bb1a614871885" kindref="member">LLMJVM_MONITOR_IMPL_on_thread_state_changed</ref>(int32_t<sp/>thread_id,<sp/><ref refid="_m_j_v_m___m_o_n_i_t_o_r__types_8h_1a7cc9bb69e83e3c90890e9d14b3399a14" kindref="member">MJVM_MONITOR_state_t</ref><sp/>new_state);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a252ddb39b73362b95f7dc5f418dc3edf" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a252ddb39b73362b95f7dc5f418dc3edf" kindref="member">LLMJVM_MONITOR_IMPL_on_idle</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a532bb462c699ddd6ff7449da4d1f506e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a532bb462c699ddd6ff7449da4d1f506e" kindref="member">LLMJVM_MONITOR_IMPL_on_gc_start</ref>(int32_t<sp/>current_thread_id);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106" refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a07885b7302192c66fe8228255d5bbc76" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a07885b7302192c66fe8228255d5bbc76" kindref="member">LLMJVM_MONITOR_IMPL_on_gc_stop</ref>(int32_t<sp/>current_thread_id);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114" refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a7962b607ac76b43c6f1acbe0464affa9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a7962b607ac76b43c6f1acbe0464affa9" kindref="member">LLMJVM_MONITOR_IMPL_on_invoke_method</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>method);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122" refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a564fae265dcd0a0d9e59e8f9b45ca6c6" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a564fae265dcd0a0d9e59e8f9b45ca6c6" kindref="member">LLMJVM_MONITOR_IMPL_on_return_method</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>method);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150" refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a5eadee64bc7b08e418973d87169d7c82" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a5eadee64bc7b08e418973d87169d7c82" kindref="member">LLMJVM_MONITOR_IMPL_on_allocate</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>type,<sp/>int32_t<sp/>size,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>method,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>instruction_address,<sp/>int32_t<sp/>total_memory,<sp/>int32_t<sp/>free_memory,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>immortal);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174" refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1abfa631baf486a7910f016d1891a96d75" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1abfa631baf486a7910f016d1891a96d75" kindref="member">LLMJVM_MONITOR_IMPL_on_exception</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>exception_type,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>throw_method,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>throw_instruction_address,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>catch_method,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>catch_instruction_address,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>message);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186" refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a0dd8738bddb2a177045d415080c9101c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a0dd8738bddb2a177045d415080c9101c" kindref="member">LLMJVM_MONITOR_IMPL_on_quota_reset</ref>(int32_t<sp/>context_id,<sp/>int32_t<sp/>quota);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194" refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a95f84bb1517d800a3510ba7f5fc8f871" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a95f84bb1517d800a3510ba7f5fc8f871" kindref="member">LLMJVM_MONITOR_IMPL_on_quota_reached</ref>(int32_t<sp/>context_id);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199" refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a485463d5c96a273db5cf06dc0aae9215" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a485463d5c96a273db5cf06dc0aae9215" kindref="member">LLMJVM_MONITOR_IMPL_on_quantum_counters_reset</ref>();</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210" refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a5a3d6ab89751ddfe866c24b6b4fc0f86" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_l_l_m_j_v_m___m_o_n_i_t_o_r__impl_8h_1a5a3d6ab89751ddfe866c24b6b4fc0f86" kindref="member">LLMJVM_MONITOR_IMPL_on_thread_added_to_context</ref>(int32_t<sp/>thread_id,<sp/>int32_t<sp/>context_id);</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>LLMJVM_MONITOR_IMPL_H<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="LLMJVM_MONITOR/LLMJVM_MONITOR_impl.h"/>
+  </compounddef>
+</doxygen>

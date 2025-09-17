@@ -12,6 +12,7 @@ VEE Porting Guide
    bspConnection
    veePortQualification
    coreEngine
+   veePortTrace
    advanceTrace
    multiSandbox
    tinySandbox
