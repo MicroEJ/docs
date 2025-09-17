@@ -450,10 +450,10 @@ void LLTRACE_IMPL_record_event_u32x10(int32_t group_id, int32_t event_id, uint32
 
 /**
  * Record the end of the execution of an event for the given group. Call this function to
- * trace the duration of an event previously record with one of the <code>LLTRACE_IMPL_record_event_*()<code>
+ * trace the duration of an event previously record with one of the <code>LLTRACE_IMPL_record_event_*()</code>
  * function. This function should not be called for event that has no duration.
  * <p>
- * For example, if you want to trace the execution of a function, you can call <code>LLTRACE_IMPL_record_event_*()<code>
+ * For example, if you want to trace the execution of a function, you can call <code>LLTRACE_IMPL_record_event_*()</code>
  * at the beginning of the function and <code>LLTRACE_IMPL_record_event_end*()</code> at the end of the function.
  * <p>
  * The given event ID must be valid for the specified
@@ -476,10 +476,10 @@ void LLTRACE_IMPL_record_event_end(int32_t group_id, int32_t event_id);
 
 /**
  * Record the end of the execution of an event for the given group. Call this function to
- * trace the duration of an event previously record with one of the <code>LLTRACE_IMPL_record_event_()<code>
+ * trace the duration of an event previously record with one of the <code>LLTRACE_IMPL_record_event_()</code>
  * function. This function should not be called for event that has no duration.
  * <p>
- * For example, if you want to trace the execution of a function, you can call <code>LLTRACE_IMPL_record_event_*()<code>
+ * For example, if you want to trace the execution of a function, you can call <code>LLTRACE_IMPL_record_event_*()</code>
  * at the beginning of the function and <code>LLTRACE_IMPL_record_event_end*()</code> at the end of the function.
  * <p>
  * The given event ID must be valid for the specified

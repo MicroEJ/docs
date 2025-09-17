@@ -24,7 +24,7 @@
 	extern "C" {
 #endif
 
-/*
+/**
  * This function is called once during Core Engine startup.
  * It may be used to initialize specific data.
  * <p>
