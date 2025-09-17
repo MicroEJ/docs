@@ -52,7 +52,7 @@ Creating a Front Panel Project
 
    .. tab:: SDK 6
 
-      A Front Panel project template is available as part of the `VEE Port project template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.3.1>`_.
+      A Front Panel project template is available as part of the `VEE Port project template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.4.0>`_.
       Clone this template to create a Front Panel project.
 
    .. tab:: SDK 5
