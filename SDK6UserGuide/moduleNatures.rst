@@ -154,7 +154,7 @@ VEE Port
 
 **Documentation**: :ref:`vee-porting-guide`
 
-**Template**: `VEE Port Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.3.1>`__
+**Template**: `VEE Port Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.4.0>`__
 
 **Tasks**:
 
