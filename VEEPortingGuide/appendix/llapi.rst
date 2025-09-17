@@ -1154,11 +1154,8 @@ Naming Convention
 -----------------
 
 The Low Level Trace API ``LLTRACE`` relies on functions that need to be implemented. The naming convention for such
-functions is that their names match the ``LLTRACE_IMPL_*`` pattern.
+functions is that their names match the ``LLTRACE_IMPL_*`` pattern described in the file ``LLTRACE_impl.h``.
 
-
-Initialization
---------------
 
 Header Files
 ------------
@@ -1168,22 +1165,19 @@ Three C header files are provided:
 -  LLTRACE_impl.h
 
    Defines the set of functions that the BSP must implement to launch
-   and schedule the Core Engine
+   and schedule the Core Engine.
 
 -  LLTRACE.h
 
    Defines the set of functions provided by Core Engine that can be
-   called by the BSP
+   called by the BSP.
 
 
-.. doxygenfunction:: LLMJVM_MONITOR_IMPL_on_allocate
+Doxygen of functions in LLTRACE_impl.h
+--------------------------------------
 
 .. doxygenfile:: LLTRACE_impl.h
    :sections: func
-
-
-Implementation
---------------
 
 
 .. _LLMJVM_MONITOR-API-SECTION:
@@ -1191,12 +1185,17 @@ Implementation
 LLMJVM_MONITOR: Core Engine Monitoring
 ======================================
 
+Principle
+---------
+
+dsds
+
 Naming Convention
 -----------------
 
-The Low Level Core Engine API, the ``LLMJVM`` API, relies on
+The Low Level Core Engine Monitoring API, the ``LLMJVM_MONITOR`` API, relies on
 functions that need to be implemented. The naming convention for such
-functions is that their names match the ``LLMJVM_IMPL_*`` pattern.
+functions is that their names match the ``LLMJVM_MONITOR_IMPL_*`` pattern.
 
 Header Files
 ------------
@@ -1205,17 +1204,29 @@ Three C header files are provided:
 
 -  LLMJVM_MONITOR_impl.h
 
-   Defines the set of functions that the BSP must implement to launch
-   and schedule the Core Engine
+   Defines the set of functions that the BSP must implement to dsds
 
 -  MJVM_MONITOR.h
 
-   Defines the set of functions provided by Core Engine that can be
-   called by the BSP
+   Defines the set of functions provided by Core Engine Monitoring that can be
+   called by the BSP.
 
 -  MJVM_MONITOR_types.h
 
-   Defines the set of extra functions that the BSP must implement.
+   Defines the dsdss.
+
+
+Doxygen of functions in LLMJVM_MONITOR_impl.h
+---------------------------------------------
+
+.. doxygenfile:: LLMJVM_MONITOR_impl.h
+   :sections: func
+
+
+Doxygen of MJVM_MONITOR_types.h
+-------------------------------
+
+.. doxygenfile:: MJVM_MONITOR_types.h
 
 
 ..
