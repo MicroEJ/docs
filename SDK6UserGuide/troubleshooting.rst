@@ -382,7 +382,7 @@ To fix this issue, you must update the dependency of your testsuite to use the s
 					implementation(project())
 					implementation("ej.api:edc:1.3.7")
 					implementation("ej.api:kf:1.7.0")
-					implementation("ej.library.test:junit:1.11.0")
+					implementation("ej.library.test:junit:1.12.0")
 					implementation("org.junit.platform:junit-platform-launcher:1.8.2")
 				}
 			}
@@ -454,6 +454,32 @@ During the build of a project (precisely the Java compilation phase), the follow
 This means that the Java installation used by Gradle is not a JDK but a JRE, whereas Gradle and the SDK require a JDK.
 Therefore, the solution is to install and configure a JDK.
 Refer to :ref:`sdk_6_check_jdk` for more information.
+
+.. _sdk_6_vee_launch_jvm_configuration_errors:
+
+Build Errors from JVM Memory Misconfiguration
+---------------------------------------------
+
+Below are two examples of error messages that can be raised when the JVM used to launch the VEE scripts is not configured properly.
+The ouput may vary depending on the Gradle task being executed but the errors share the same root cause.
+
+When :ref:`building an executable <sdk_6_build_executable>`::
+
+	=============== [ Launching SOAR ] ===============
+  	1 : ERROR :
+  	[M2] - OutOfMemory error. Try to increase heap space using JVM option '-Xmx' (e.g. '-Xmx4096M')
+  	Terminated with errors
+
+When :ref:`running on simulator <sdk_6_run_on_simulator>`::
+
+	=============== [ Launching on Simulator ] ===============
+	"Internal limits reached. Please contact support@microej.com"
+
+These errors are typically seen when running ``gradlew buildExecutable`` or ``gradlew runOnSimulator`` if the forked JVM is started with insufficient heap.
+
+To resolve this, adjust the JVM memory configuration by setting the JVM options accordingly with the property ``microej.launch.jvmargs``, for example::
+
+	./gradlew buildExecutable -Dmicroej.launch.jvmargs="-Xmx1024m -Xms512m"
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
