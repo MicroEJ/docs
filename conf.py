@@ -58,6 +58,7 @@ if 'READTHEDOCS' in os.environ:
 exclude_patterns = [
     '_build',
     '_tools',
+    '_llapi_doxygen',
     'README.rst',
     'section*.rst',
     '**/section*.rst',
