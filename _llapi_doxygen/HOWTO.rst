@@ -21,11 +21,6 @@ Generation
 - Run the command ``doxygen microej_doxygen_config``
 
 
-Build locally the public documentation
---------------------------------------
-
-- Install the Python package ``Breathe``, should be done with command ``pip install -r requirements.txt``.
-
 ..
    | Copyright 2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 

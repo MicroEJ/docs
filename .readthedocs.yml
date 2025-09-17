@@ -20,8 +20,11 @@ build:
     python: "3.10"
   apt_packages:
     - graphviz
+    - doxygen
   jobs:
     pre_build:
+      # Build the LLAPI Doxygen used in the documentation.
+      - make llapi_doxygen
       - make linkcheck
       # Clean to force sources to be read again during html build
       # See custom prolog injection in 'conf.py' using 'source-read' extension
