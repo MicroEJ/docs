@@ -32,7 +32,7 @@ Event Tracing can be accessed from two APIs:
          <dependency org="ej.api" name="trace" rev="1.1.0"/>
      
   
-- A C API, provided by the Foundation Library header file named ``LLTRACE_impl.h``.
+- A C API, provided by the Foundation Library header file named ``LLTRACE.h``.
 
 .. _Trace API module: https://repository.microej.com/modules/ej/api/trace/
 
