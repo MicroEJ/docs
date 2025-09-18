@@ -1242,7 +1242,7 @@ Types and macros defined in MJVM_MONITOR_types.h
 ------------------------------------------------
 
 .. doxygenfile:: MJVM_MONITOR_types.h
-   :sections: define enum typedef package-type
+   :sections: define enum innerclass public-attrib
 
 
 ..
