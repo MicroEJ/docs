@@ -1160,7 +1160,7 @@ functions is that their names match the ``LLTRACE_IMPL_*`` pattern described in 
 Header Files
 ------------
 
-Three C header files are provided:
+Two C header files are provided:
 
 -  LLTRACE_impl.h
 
@@ -1170,13 +1170,20 @@ Three C header files are provided:
 -  LLTRACE.h
 
    Defines the set of functions provided by Core Engine that can be
-   called by the BSP.
+   called by the BSP to generate event traces.
 
 
-Doxygen of functions in LLTRACE_impl.h
---------------------------------------
+Documentation of functions in LLTRACE_impl.h
+--------------------------------------------
 
 .. doxygenfile:: LLTRACE_impl.h
+   :sections: func
+
+
+Documentation of functions in LLTRACE.h
+--------------------------------------------
+
+.. doxygenfile:: LLTRACE.h
    :sections: func
 
 
@@ -1188,7 +1195,8 @@ LLMJVM_MONITOR: Core Engine Monitoring
 Principle
 ---------
 
-dsds
+The Core Engine Monitoring provides Low Level APIs to track the Core Engine behavior at runtime through events and sending task information.
+The file ``LLMJVM_MONITOR_impl.h``, which comes with the Core Engine, defines the API headers to be implemented.
 
 Naming Convention
 -----------------
@@ -1204,7 +1212,7 @@ Three C header files are provided:
 
 -  LLMJVM_MONITOR_impl.h
 
-   Defines the set of functions that the BSP must implement to dsds
+   Defines the set of functions that the BSP must implement to enable trace recording from Core Engine events.
 
 -  MJVM_MONITOR.h
 
@@ -1213,20 +1221,28 @@ Three C header files are provided:
 
 -  MJVM_MONITOR_types.h
 
-   Defines the dsdss.
+   Defines types and macros used in the ``LLMJVM_MONITOR`` ``MJVM_MONITOR`` APIs.
 
 
-Doxygen of functions in LLMJVM_MONITOR_impl.h
----------------------------------------------
+Documentation of functions in LLMJVM_MONITOR_impl.h
+---------------------------------------------------
 
 .. doxygenfile:: LLMJVM_MONITOR_impl.h
    :sections: func
 
 
-Doxygen of MJVM_MONITOR_types.h
--------------------------------
+Documentation of functions in s in MJVM_MONITOR.h
+-------------------------------------------------
+
+.. doxygenfile:: MJVM_MONITOR.h
+   :sections: func
+
+
+Types and macros defined in MJVM_MONITOR_types.h
+------------------------------------------------
 
 .. doxygenfile:: MJVM_MONITOR_types.h
+   :sections: define enum typedef package-type
 
 
 ..
