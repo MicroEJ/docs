@@ -236,7 +236,7 @@ The more the consecutive pixels are identical, the more the compression is effic
 
 Here is the list of the compressed formats:
 
-- ARGB1565_RLE: 16-bit format, 1 bit for transparency, 5 for red, 6 for green, 5 for blue. (Formerly named RLE1 up to UI Pack 13.3.X.)
+- ARGB1565_RLE: 1 bit for transparency, 5 for red, 6 for green, 5 for blue. Colors are encoded as RGB565 and the transparency bit is encoded as part of the RLE block format (Formerly named RLE1 up to UI Pack 13.3.X.)
 - A8_RLE: similar to A8.
 
 ::
