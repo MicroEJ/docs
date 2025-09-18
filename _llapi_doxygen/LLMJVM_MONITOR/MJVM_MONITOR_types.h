@@ -42,7 +42,7 @@
  */
 #define MJVM_MONITOR_INVALID_THREAD_ID (-3)
 
-/*
+/**
  * Specifies the states of the Java threads.
  */
 typedef enum
@@ -88,17 +88,17 @@ typedef enum
 
 }MJVM_MONITOR_state_t;
 
-/*
+/**
  * Structure that contains information about a thread.
  */
 typedef struct {
-	/* ID of the thread. */
+	/** ID of the thread. */
 	int32_t id;
-	/* Java priority of the thread. */
+	/** Java priority of the thread. */
 	int32_t priority;
-	/* Current state of the thread. */
+	/** Current state of the thread. */
 	MJVM_MONITOR_state_t state;
-	/* Maximum Java stack usage in bytes. -1 if not available. */
+	/** Maximum Java stack usage in bytes. -1 if not available. */
 	int32_t max_stack_usage;
 } MJVM_MONITOR_thread_info_t;
 
