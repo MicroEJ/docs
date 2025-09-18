@@ -539,16 +539,8 @@ Concurrency
 Serialization
 ^^^^^^^^^^^^^
 
-- The “native” serialization of the standard JVM is not implemented by MicroEJ. This mechanism has historically introduced numerous compatibility issues and has since been officially deprecated. Synchronization and serialization should be handled at the application level, using structured data formats such as Google Protobuf, FlatBuffers, JSON, CBOR, XML, etc.
-
-  - the ``ByteArray`` type (see the `Javadoc <https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/ByteArray.html>`_)
-  - the JSON libraries:
-
-    - `ej.json <https://repository.microej.com/javadoc/microej_5.x/apis/ej/json/package-summary.html>`_
-    - `org.json.me <https://repository.microej.com/javadoc/microej_5.x/apis/org/json/me/package-summary.html>`_
-
-  - the `CBOR library <https://repository.microej.com/javadoc/microej_5.x/apis/ej/cbor/package-summary.html>`_
-  - the `protobuf library <https://repository.microej.com/javadoc/microej_5.x/apis/com/google/protobuf/package-summary.html>`_
+- The “native” serialization of the standard JVM is not implemented by MicroEJ. This mechanism has historically introduced numerous compatibility issues and has since been officially deprecated. Synchronization and serialization should be handled at the application level.
+  See data formats commonly used with MICROEJ VEE: :ref:`chapter.data_serialization`.
 
 Annotations
 ^^^^^^^^^^^
