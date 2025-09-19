@@ -1218,6 +1218,8 @@ Functions in LLTRACE_impl.h
    :sections: func
 
 
+.. _lltrace_h_section:
+
 Functions in LLTRACE.h
 ----------------------
 
