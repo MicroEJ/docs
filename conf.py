@@ -37,7 +37,8 @@ extensions = [
 # Breathe documentation https://breathe.readthedocs.io/en/latest/index.html
 breathe_projects = {'llapi_doxygen': '_llapi_doxygen/xml'}
 breathe_default_project = 'llapi_doxygen'
-
+breathe_show_define_initializer=True
+breathe_show_enumvalue_initializer=True
 
 remoteliteralinclude_retry_time = 1.0
 remoteliteralinclude_max_retry_time = 180.0

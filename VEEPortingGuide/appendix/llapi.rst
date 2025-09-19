@@ -110,6 +110,26 @@ Three C header files are provided:
    Defines the set of extra functions that the BSP must implement.
 
 
+Defines and functions in LLMJVM_impl.h
+--------------------------------------
+
+.. doxygenfile:: LLMJVM_impl.h
+   :sections: define func
+
+
+LLMJVM.h
+--------
+
+.. doxygenfile:: LLMJVM.h
+   :sections: define func
+
+Functions in LLBSP_impl.h
+-------------------------
+
+.. doxygenfile:: LLBSP_impl.h
+   :sections: func
+
+
 .. _LLKF-API-SECTION:
 
 LLKERNEL: Multi-Sandbox
@@ -125,12 +145,30 @@ their names match the ``LLKERNEL_IMPL_*`` pattern.
 Header Files
 ------------
 
-One C header file is provided:
+Two C header files are provided:
 
 -  LLKERNEL_impl.h
 
    Defines the set of functions that the BSP must implement to manage
    memory allocation of dynamically installed Applications.
+
+-  LLKERNEL.h
+
+   Defines the set of functions provided by the Core Engine that can be
+   called by the BSP.
+
+Defines and functions in LLKERNEL_impl.h
+----------------------------------------
+
+.. doxygenfile:: LLKERNEL_impl.h
+   :sections: define func
+
+
+LLKERNEL.h
+----------
+
+.. doxygenfile:: LLKERNEL.h
+   :sections: func
 
 
 .. _LLSP-API-SECTION:
@@ -1173,15 +1211,15 @@ Two C header files are provided:
    called by the BSP to generate event traces.
 
 
-Documentation of functions in LLTRACE_impl.h
---------------------------------------------
+Functions in LLTRACE_impl.h
+---------------------------
 
 .. doxygenfile:: LLTRACE_impl.h
    :sections: func
 
 
-Documentation of functions in LLTRACE.h
---------------------------------------------
+Functions in LLTRACE.h
+----------------------
 
 .. doxygenfile:: LLTRACE.h
    :sections: func
@@ -1224,15 +1262,15 @@ Three C header files are provided:
    Defines types and macros used in the ``LLMJVM_MONITOR`` ``MJVM_MONITOR`` APIs.
 
 
-Documentation of functions in LLMJVM_MONITOR_impl.h
----------------------------------------------------
+Functions in LLMJVM_MONITOR_impl.h
+----------------------------------
 
 .. doxygenfile:: LLMJVM_MONITOR_impl.h
    :sections: func
 
 
-Documentation of functions in s in MJVM_MONITOR.h
--------------------------------------------------
+Functions in MJVM_MONITOR.h
+---------------------------
 
 .. doxygenfile:: MJVM_MONITOR.h
    :sections: func
