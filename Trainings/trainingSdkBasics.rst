@@ -42,7 +42,7 @@ Training Resources
 
 .. |microej_sdk_basics_nxp_rt1170_sdk6_slides| raw:: html
 
-   <a href="https://repository.microej.com/packages/training/microej_sdk_basics/DEV-M0127-PRE-VEE_Port_and_Application_development-SDK6-NXP-i.MXRT1170-2.3_20250801.pdf" target="_blank">Slides: MICROEJ SDK Basics for NXP i.MX RT1170 Evaluation Kit</a>
+   <a href="https://repository.microej.com/packages/training/microej_sdk_basics/DEV-M0127-PRE-VEE_Port_and_Application_development-SDK6-NXP-i.MXRT1170-2.4_20250922.pdf" target="_blank">Slides: MICROEJ SDK Basics for NXP i.MX RT1170 Evaluation Kit</a>
 
 .. |microej_sdk_basics_nxp_rt1170_sdk5_slides| raw:: html
 
