@@ -46,7 +46,8 @@ Events are recorded if and only if:
 - the Core Engine trace system is enabled,
 - and trace recording is started.
 
-To enable the Core Engine trace system, set the :ref:`Application Option <application_options>` named ``core.trace.enabled`` to ``true`` (see also :ref:`launch configuration <architecture_options_group_trace>`).
+To enable the Core Engine trace system, set the :ref:`Application Option <application_options>` named ``core.trace.enabled`` to ``true`` (see also :ref:`launch configuration <architecture_options_group_trace>`). 
+You must also set the Application Option named ``core.memory.immortal.size`` to at least ``16``.
 
 Then, multiple ways are available to start and stop the trace recording:
   
