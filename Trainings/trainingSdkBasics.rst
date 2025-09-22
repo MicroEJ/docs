@@ -55,7 +55,7 @@ This training is provided as a PDF, along with a downloadable ``.zip`` package o
    .. tab:: MICROEJ SDK 6
 
       - |microej_sdk_basics_nxp_rt1170_sdk6_slides|
-      - :download:`Resources <https://repository.microej.com/packages/training/microej_sdk_basics/gpio-basic_0f5cf862_20250317.zip>`
+      - :download:`Resources <https://repository.microej.com/packages/training/microej_sdk_basics/gpio-basic_163c18b5_20250922.zip>`
 
    .. tab:: MICROEJ SDK 5
 
