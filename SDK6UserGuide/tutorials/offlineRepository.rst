@@ -61,11 +61,11 @@ Now that the Offline Repository of the Gradle plugins has been retrieved, you ca
     }
   }
 
-- Add the previously created repository declaration inside the `repositories` block of both `allprojects` and `pluginManagement` blocks:
+- Add the previously created repository declaration inside the `repositories` block of both `dependencyResolutionManagement` and `pluginManagement` blocks:
 
 .. code:: java
 
-  allprojects {
+  dependencyResolutionManagement {
     repositories {
       ...
       offlineMicroEjSdk()
