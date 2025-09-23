@@ -72,7 +72,7 @@ If this kind of message appears when resolving plugins or modules dependencies:
 .. code:: console
 
 	* What went wrong:
-	Plugin [id: 'com.microej.gradle.application', version: '1.3.1'] was not found in any of the following sources:
+	Plugin [id: 'com.microej.gradle.application', version: '1.4.0'] was not found in any of the following sources:
 
 	- Gradle Core Plugins (plugin is not in 'org.gradle' namespace)
 	- Included Builds (No included builds contain this plugin)
@@ -106,11 +106,11 @@ If this kind of message appears when resolving plugins or modules dependencies:
 .. code:: console
 
 	* What went wrong:
-	Plugin [id: 'com.microej.gradle.application', version: '1.3.1'] was not found in any of the following sources:
+	Plugin [id: 'com.microej.gradle.application', version: '1.4.0'] was not found in any of the following sources:
 
 	- Gradle Core Plugins (plugin is not in 'org.gradle' namespace)
 	- Included Builds (No included builds contain this plugin)
-	- Plugin Repositories (could not resolve plugin artifact 'com.microej.gradle.application:com.microej.gradle.application.gradle.plugin:1.3.1')
+	- Plugin Repositories (could not resolve plugin artifact 'com.microej.gradle.application:com.microej.gradle.application.gradle.plugin:1.4.0')
 	Searched in the following repositories:
 		microEJCentral(https://repository.microej.com/modules)
 		microEJForgeCentral(https://forge.microej.com/artifactory/microej-central-repository-release)
