@@ -23,7 +23,7 @@ For example, if your VEE Port provides the following Libraries::
       api("org.example:lib3:1.0.0")
    }
 
-the ``lib1`` library will be added to the runtime classpath of your project, and the ``lib2`` and ``lib3`` libraries will be added to both compile classpath and runtime classpath.
+the ``lib1`` library will be added to the runtime classpath of your project, and the ``lib2`` and ``lib3`` libraries will be added to both the compile classpath and the runtime classpath.
 
 .. note::
 
@@ -35,12 +35,13 @@ to build the runtime classpath of the testsuites, not to compile the project.
 
 .. warning::
 
-   It is important to note that a VEE Port allowing to resolve transitively its Libraries is required, so if your project uses:
+   It is important to note that a VEE Port supports transitivity only if it has been built with the SDK 6 with the version ``1.3.0`` minimum,
+   so it does not work in the following cases:
 
-   - a VEE Port built with SDK 6 ``1.2.0`` or older
-   - a VEE Port built with SDK 5
+   - VEE Port built with SDK 6 ``1.2.0`` or older
+   - VEE Port built with SDK 5
 
-   it is highly recommended to update your VEE Port to SDK 6 ``1.3.0`` minimum as the feature will be enabled by default in the next SDK 6 major version. 
+   It is highly recommended to update your VEE Port to SDK 6 ``1.3.0`` minimum as the feature will be enabled by default in the next SDK 6 major version. 
    This limitation does not concern VEE Ports available locally :ref:`in a directory <sdk_6_select_veeport_local_directory>` or 
    :ref:`as an archive <sdk_6_select_veeport_local_archive>`.
 
@@ -60,9 +61,9 @@ For example, if your project depends on a Kernel which defined the following dep
       api("org.example:lib2:1.0.0")
    }
 
-the ``lib1`` library will be added to the runtime classpath of your project, and the ``lib2`` library will be added to both compile classpath and runtime classpath.
+the ``lib1`` library will be added to the runtime classpath of your project, and the ``lib2`` library will be added to both the compile classpath and the runtime classpath.
 
-This behavior is common to any project applying `Java Library plugin <https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation>`__.
+This behavior is consistent with that of the `Gradle Java Library plugin <https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation>`__.
 However, it is important to note that the APIs of a Library defined with ``api`` in your Kernel will be exposed to Applications.
 
 To ensure that a dependency defined in a Kernel is not exposed to Applications by mistake, it is highly recommended to use ``implementation`` instead of ``api`` 
