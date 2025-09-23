@@ -34,6 +34,26 @@ specific configuration:
    -  ``QNX65``: BlackBerry QNX 6.5
    -  ``QNX70``: BlackBerry QNX 7.0
 
+.. _changelog-8.5.0:
+
+[8.5.0] - Unreleased
+--------------------
+
+Core Engine
+~~~~~~~~~~~
+
+Integration
+~~~~~~~~~~~
+
+- Fix Memory Map Scripts, which count the application code in the Core Engine category
+
+Simulator
+~~~~~~~~~
+
+SOAR
+~~~~
+
+
 
 .. _changelog-8.4.0:
 
