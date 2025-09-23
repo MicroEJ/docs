@@ -284,7 +284,7 @@ The following table describes these error codes.
    +-------------+-------------------------------------------------------------+
    | -13         | Fail to start the Application because the                   |
    |             | specified Managed Heap is too large or too small.           |
-   |             | See section :ref:`option_managed_heap`.                     |
+   |             | See section :ref:`option_managed_heap` & :ref:`limitations` |
    +-------------+-------------------------------------------------------------+
    | -14         | Invalid Application stack configuration. The                |
    |             | stack start or end is not eight-byte aligned, or stack      |

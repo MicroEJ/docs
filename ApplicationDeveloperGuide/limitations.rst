@@ -76,6 +76,9 @@ Please consult :ref:`architecture_changelog` for limitations changes on former v
    * - [Multi-Sandbox] Number of held monitors [4]_
      - 127 [3]_
      - 127 [3]_
+   * - Maximum Managed Heap Memory Size
+     - 67108860 bytes
+     - 67108860 bytes
    * - Time limit
      - 60 minutes
      - unlimited
