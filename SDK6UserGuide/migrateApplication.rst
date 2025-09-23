@@ -28,7 +28,7 @@ The SDK 5 build type defined in the ``module.ivy`` file with the ``ea:build`` ta
 For example, here is the block to add at the beginning of the file to migrate a ``build-microej-javalib`` SDK 5 module::
 
    plugins {
-       id("com.microej.gradle.addon-library") version "1.3.1"
+       id("com.microej.gradle.library") version "1.4.0"
    }
 
 The mapping between the main SDK 5 build types and Gradle plugins is:
@@ -39,7 +39,7 @@ The mapping between the main SDK 5 build types and Gradle plugins is:
    * - **MMM Build Type**
      - **Gradle Plugin**
    * - ``build-microej-javalib``
-     - ``com.microej.gradle.addon-library``
+     - ``com.microej.gradle.library``
    * - ``build-application``
      - ``com.microej.gradle.application``
    * - ``build-firmware-singleapp``
@@ -109,7 +109,7 @@ so the following dependency::
 
 will be converted to::
 
-   testImplementation("ej.library.test:junit:1.11.0")
+   testImplementation("ej.library.test:junit:1.12.0")
 
 Also note that this will not resolve snapshot builds since versions are explicit in SDK 6, see :ref:`this chapter <sdk_6_add_dependency_version>` for more details.
 To resolve both snapshot and release versions, use ``[1.0.0-RC,1.0.0]`` instead of ``1.0.0``.
@@ -140,7 +140,7 @@ Therefore, the SDK 6 requires to explicitly configure the testsuites to execute.
                   dependencies {
                      implementation(project())
                      implementation("ej.api:edc:1.3.5")
-                     implementation("ej.library.test:junit:1.11.0")
+                     implementation("ej.library.test:junit:1.12.0")
                      implementation("org.junit.platform:junit-platform-launcher:1.8.2")
                   }
                }
@@ -323,7 +323,7 @@ And here the migration from a ``module.ivy`` file to a ``build.gradle.kts`` file
    :caption: build.gradle.kts
 
    plugins {
-       id("com.microej.gradle.application") version "1.3.1"
+       id("com.microej.gradle.application") version "1.4.0"
    }
 
    group = "com.mycompany"
@@ -333,7 +333,7 @@ And here the migration from a ``module.ivy`` file to a ``build.gradle.kts`` file
       implementation("ej.api:edc:1.3.3")
       implementation("ej.api:kf:1.6.1")
 
-      testImplementation("ej.library.test:junit:1.11.0")
+      testImplementation("ej.library.test:junit:1.12.0")
 
       microejVee("com.microej.platform.esp32.esp-wrover-kit-v41:HDAHT:1.8.2")
    }

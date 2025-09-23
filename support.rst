@@ -17,7 +17,7 @@ In both cases, please provide as much information as possible on your installed 
    * - **Delivery**
      - **Name**
    * - MICROEJ SDK
-     - **SDK 6**: Gradle plugin version **1.3.1** (see :ref:`sdk_6_changelog`)
+     - **SDK 6**: Gradle plugin version **1.4.0** (see :ref:`sdk_6_changelog`)
            
        **SDK 5**: SDK Distribution **24.01** / SDK Version **5.8.2** (see :ref:`get_sdk_version`)
    * - MicroEJ Architecture 
