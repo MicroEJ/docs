@@ -24,7 +24,7 @@ you can define the Kernel by declaring a module dependency in the ``build.gradle
 Kernel project inside a multi-project
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When the Kernel project is in the same multi-project than the component which needs it (an Application for example), 
+When the Kernel project is in the same multi-project as the component that depends on it (an Application for example), 
 the Kernel project should be declared as a project dependency.
 
 For example if the multi-project contains an Application subproject named ``my-app`` and a Kernel subproject called ``my-kernel``,
@@ -52,11 +52,11 @@ and the Executable will be built before building the Application Feature (with t
 Local Kernel project outside a multi-project
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When the Application or the Library which needs the Kernel is not in the same multi-project than the Kernel, 
-the Kernel project can be imported thanks to the `Gradle Composite Build <https://docs.gradle.org/current/userguide/composite_builds.html>`_ feature.
+When the Application or the Library depending on the Kernel is not in the same multi-project as the Kernel, 
+the Kernel project can be imported using the `Gradle Composite Build <https://docs.gradle.org/current/userguide/composite_builds.html>`_ feature.
 
-This allows to consider the Kernel project as part of the Application project, 
-so all changes done to the Kernel are automatically considered when building or running the Application.
+This allows the Kernel project to be considered part of the Application project, 
+so all changes done to the Kernel are automatically reflected when building or running the Application.
 
 This is done by adding the following line in the ``settings.gradle.kts`` file of the Application project::
 
@@ -70,7 +70,7 @@ Then declaring the Kernel as a dependency in the ``build.gradle.kts`` file of th
 
     }
 
-The dependency must use the module notation (``"group:name:version"``), where the group and name match with the ones declared in the Kernel project.
+The dependency must use the module notation (``"group:name:version"``), where the group and name match with the ones declared in the Kernel project (the version is ignored).
 The group is defined in the ``build.gradle.kts`` file of the ``my-kernel`` project by the ``group`` property.
 To find the name of the Kernel project, you can execute the ``projects`` task on the multi-project to display all its subprojects, for example::
 

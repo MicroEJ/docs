@@ -198,7 +198,7 @@ Resolve a VEE Port transitively
 
 .. warning::
 
-   The transitive resolution of a VEE Port is not supported for VEE Ports built with SDK 5 or SDK 6 ``1.2.0`` or older provided 
+   The transitive resolution of a VEE Port is not supported for VEE Ports built with SDK 5 or SDK 6 ``1.2.0`` or earlier provided 
    as :ref:`module <sdk_6_select_veeport_module>` or :ref:`project <sdk_6_select_veeport_in_multiproject>`.
    While this feature is optional for now, it will be enabled by default in the next SDK 6 major version, so it is highly recommended to update your VEE Port if necessary.
 
