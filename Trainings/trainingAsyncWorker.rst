@@ -32,7 +32,7 @@ Unit 1: Async Worker Overview
 
 .. |async_worker_slides| raw:: html
 
-   <a href="https://repository.microej.com/packages/training/DEV-M0127-PRE-MicroEJ_Async_Worker_1.0.pdf" target="_blank">Slides: Async Worker Overview</a>
+   <a href="https://repository.microej.com/packages/training/async_worker/DEV-M0127-PRE-MicroEJ_Async_Worker_1.1_20250922.pdf" target="_blank">Slides: Async Worker Overview</a>
 
 - |async_worker_slides|
 
