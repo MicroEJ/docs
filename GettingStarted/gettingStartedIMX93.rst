@@ -1,12 +1,12 @@
 .. _sdk_6_getting_started_imx93:
 
-i.MX93 Evaluation Kit
-==========================
+i.MX93
+======
 
 During this Getting Started, you will learn to:
 
-* Run an Application on the i.MX93 Evaluation Kit Virtual Device.
-* Run the same Application on your i.MX93 Evaluation Kit.
+* Run an Application on the i.MX93 Virtual Device.
+* Run the same Application on your i.MX93 Evaluation Kit or FRDM i.X93 Development Board.
 
 If you need to become more familiar with MicroEJ, please visit `Discover MicroEJ <https://developer.microej.com/discover-microej/>`__ to understand the principles of our technology.
 
@@ -29,13 +29,15 @@ The second part consists in running the same demo application on your device. Fo
 
 * An i.MX93 Evaluation Kit, available `here <https://www.nxp.com/design/design-center/development-boards/i-mx-evaluation-and-development-boards/i-mx-93-evaluation-kit:i.MX93EVK>`__.
 
+* Or a FRDM i.MX93 Development Board, available `here <https://www.nxp.com/design/design-center/development-boards-and-designs/frdm-i-mx-93-development-board:FRDM-IMX93>`__.
+
 * An HDMI display with touchscreen connected with an `IMX-MIPI-HDMI adapter <https://www.nxp.com/part/IMX-MIPI-HDMI>`__.
 
    * This getting started has been tested with a `MageDok T080A <https://store.magedok.com/collections/portable-monitors/products/8-inch-1280-720-resolution-touch-monitor-t080a>`_.
 
 * A prebuild Yocto Linux image, with all necessary linux packages preinstalled.
 
-* A Yocto SDK, to cross compile an sample application.
+* A Yocto SDK, to cross compile a sample application.
 
 .. _sdk_6_getting_started_imx93_environment_setup:
 
@@ -131,7 +133,7 @@ In the Gradle build file ``build.gradle.kts``, replace the VEE dependency ``micr
 .. code-block::
 
    dependencies {
-      microejVee("com.microej.veeport.imx93:vee-port:3.0.2")
+      microejVee("com.microej.veeport.imx93:vee-port:3.1.0")
    }
 
 For more information about how to select a VEE Port please refer to the following section: :ref:`sdk_6_select_veeport`.
@@ -211,22 +213,44 @@ The Executable is built using a Yocto SDK. It contains the following:
 
 To install the Yocto SDK, use the following commands in WSL or Linux:
 
-.. code-block::
+.. tabs::
 
-   $ curl -O https://repository.microej.com/packages/yocto/i.MX93EVK/2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh
-   $ chmod +x 2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh
-   $ ./2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh
-   MicroEJ: 32-bit userspace + 64-bit kernel SDK installer version nodistro.0
-   ==========================================================================
-   Enter target directory for SDK (default: /usr/local/oecore-x86_64): 
-   You are about to install the SDK to "/usr/local/oecore-x86_64". Proceed [Y/n]? Y
-   [sudo] password for xxxxx:
-   Extracting SDK.................................................................................done
-   Setting it up...done
-   SDK has been successfully set up and is ready to be used.
-   Each time you wish to use the SDK in a new shell session, you need to source the environment setup script e.g.
-   $ . /usr/local/oecore-x86_64/environment-setup-armv7at2hf-neon-vfpv4-oemllib32-linux-gnueabi
-   $ . /usr/local/oecore-x86_64/environment-setup-cortexa55-oe-linux
+   .. tab:: i.MX93 EVK
+
+      .. code-block::
+
+         $ curl -O https://repository.microej.com/packages/yocto/i.MX93EVK/2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh
+         $ chmod +x 2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh
+         $ ./2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh
+         MicroEJ: 32-bit userspace + 64-bit kernel SDK installer version nodistro.0
+         ==========================================================================
+         Enter target directory for SDK (default: /usr/local/oecore-x86_64): 
+         You are about to install the SDK to "/usr/local/oecore-x86_64". Proceed [Y/n]? Y
+         Extracting SDK.................................................................................done
+         Setting it up...done
+         SDK has been successfully set up and is ready to be used.
+         Each time you wish to use the SDK in a new shell session, you need to source the environment setup script e.g.
+         $ . /usr/local/oecore-x86_64/environment-setup-armv7at2hf-neon-vfpv4-oemllib32-linux-gnueabi
+         $ . /usr/local/oecore-x86_64/environment-setup-cortexa55-oe-linux
+
+   .. tab:: FRDM i.MX93
+
+      .. code-block::
+
+         $ curl -O https://repository.microej.com/packages/yocto/i.MX93FRDM/20250731_1.0.0_fsl-imx-xwayland-glibc-x86_64-core-image-microej-armv8a-imx93frdm-toolchain-6.6-scarthgap.sh
+         $ chmod +x 20250731_1.0.0_fsl-imx-xwayland-glibc-x86_64-core-image-microej-armv8a-imx93frdm-toolchain-6.6-scarthgap.sh
+         $ ./20250731_1.0.0_fsl-imx-xwayland-glibc-x86_64-core-image-microej-armv8a-imx93frdm-toolchain-6.6-scarthgap.sh
+         NXP i.MX Release Distro SDK installer version 6.6-scarthgap
+         ===========================================================
+         Enter target directory for SDK (default: /usr/local/oecore-x86_64): 
+         You are about to install the SDK to "/opt/fsl-imx-xwayland/6.6-scarthgap". Proceed [Y/n]? Y
+         Extracting SDK.................................................................................done
+         Setting it up...done
+         SDK has been successfully set up and is ready to be used.
+         Each time you wish to use the SDK in a new shell session, you need to source the environment setup script e.g.
+         $ . /opt/fsl-imx-xwayland/6.6-scarthgap2/environment-setup-armv7at2hf-neon-pokymllib32-linux-gnueabi
+         $ . /opt/fsl-imx-xwayland/6.6-scarthgap2/environment-setup-armv8a-poky-linux
+
 
 The installation path can then be used to build the VEE Executable.
 
@@ -242,7 +266,9 @@ Some additionnal packages will be required in order to build an executable. Run 
 Flash the image on an SD card
 """""""""""""""""""""""""""""
 
-The Linux image is available here: `Yocto WIC Image for iMX93 <https://repository.microej.com/packages/yocto/i.MX93EVK/2024-05-24-IMX93-lib32-core-image-microej-microej-imx93-1.0.2.wic.gz>`_
+The Linux images are available here:
+- `Yocto WIC Image for iMX93 EVK  <https://repository.microej.com/packages/yocto/i.MX93EVK/2024-05-24-IMX93-lib32-core-image-microej-microej-imx93-1.0.2.wic.gz>`_
+- `Yocto WIC Image for FRDM iMX93 <https://repository.microej.com/packages/yocto/i.MX93FRDM/20250731_1.0.0_core-image-microej-imx93frdm.rootfs.wic.zst>`_
 
 For this getting started we use a Linux image flashed on an SD card.
 
@@ -272,6 +298,10 @@ To flash the image on Windows, do the following:
 
 Hardware Setup
 """"""""""""""
+
+.. tabs::
+
+   .. tab:: i.MX93 EVK
 
       .. figure:: images/iMX93/getting-started-setup.png
          :alt: Setup
@@ -304,6 +334,40 @@ The serial port is used to connect to a shell, it uses the following parameters:
      - XON/XOFF
 
 To connect to the shell enter the login ``root``.
+
+   .. tab:: FRDM i.MX93
+
+      .. figure:: images/iMX93/getting-started-setup.png
+         :alt: Setup
+         :align: center
+         :scale: 70%
+
+      To setup the hardware you will need to connect the following on the EVK:
+
+      * A USB C cable for the power (provided with the EVK).
+      * A USB C cable for the serial port.
+      * A USB C cable for the touchscreen device.
+      * A RJ45 cable to access the network.
+      * An HDMI cable connected to the IMX-HDMI-MIPI adapter.
+
+      The serial port is used to connect to a shell, it uses the following parameters:
+
+      .. list-table::
+         :header-rows: 1
+         :widths: 10 10 10 10 10
+
+         * - Baudrate
+         - Data bits
+         - Parity bits
+         - Stop bits
+         - Flow control
+         * - 115200
+         - 8
+         - None
+         - 1
+         - XON/XOFF
+
+      To connect to the shell enter the login ``root``.
 
 Configure boot
 ++++++++++++++
