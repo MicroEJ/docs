@@ -308,32 +308,32 @@ Hardware Setup
          :align: center
          :scale: 70%
 
-To setup the hardware you will need to connect the following on the EVK:
+      To setup the hardware you will need to connect the following on the EVK:
 
-* A USB C cable for the power (provided with the EVK).
-* A USB C cable for the serial port.
-* A USB C cable for the touchscreen device.
-* A RJ45 cable to access the network.
-* An HDMI cable connected to the IMX-HDMI-MIPI adapter.
+      * A USB C cable for the power (provided with the EVK).
+      * A USB C cable for the serial port.
+      * A USB C cable for the touchscreen device.
+      * A RJ45 cable to access the network.
+      * An HDMI cable connected to the IMX-HDMI-MIPI adapter.
 
-The serial port is used to connect to a shell, it uses the following parameters:
+      The serial port is used to connect to a shell, it uses the following parameters:
 
-.. list-table::
-   :header-rows: 1
-   :widths: 10 10 10 10 10
+      .. list-table::
+         :header-rows: 1
+         :widths: 10 10 10 10 10
 
-   * - Baudrate
-     - Data bits
-     - Parity bits
-     - Stop bits
-     - Flow control
-   * - 115200
-     - 8
-     - None
-     - 1
-     - XON/XOFF
+         * - Baudrate
+         - Data bits
+         - Parity bits
+         - Stop bits
+         - Flow control
+         * - 115200
+         - 8
+         - None
+         - 1
+         - XON/XOFF
 
-To connect to the shell enter the login ``root``.
+      To connect to the shell enter the login ``root``.
 
    .. tab:: FRDM i.MX93
 
