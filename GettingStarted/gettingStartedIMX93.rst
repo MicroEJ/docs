@@ -378,6 +378,20 @@ To change the boot mode to micro SD, set the DIP switch ``BMODE`` to ``0100``, i
 Insert the flashed SD card and boot the device. After a few seconds, the display will show the IMX93 Getting Started Welcome page.
 If no display is attached, information such as device IP address and documentation link will also be printed in the logs.
 
+Touchscreen calibration
++++++++++++++++++++++++
+
+The touch screen needs to be calibrated before using the application.
+
+This can be done using the `ts_calibrate` tool provided by `tslib <https://github.com/libts/tslib>`_ on linux.
+
+Open a console on the target (SSH or serial), start the calibration tool and follow the instructions on your device screen:
+
+.. code-block ::
+
+   EXPORT
+   ts_calibrate
+
 LVDS display support
 ++++++++++++++++++++
 
