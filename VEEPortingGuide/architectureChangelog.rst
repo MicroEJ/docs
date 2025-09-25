@@ -41,7 +41,7 @@ specific configuration:
 
 Core Engine
 ~~~~~~~~~~~
-- [Linux] - Added the ability to dynamically configure the managed heap memory at start time.
+-  Added the ability to dynamically configure the Managed/Immortals Heap memory at Core Engine start time.
 
 Foundation Libraries
 ~~~~~~~~~~~~~~~~~~~~
