@@ -323,15 +323,15 @@ Hardware Setup
          :widths: 10 10 10 10 10
 
          * - Baudrate
-         - Data bits
-         - Parity bits
-         - Stop bits
-         - Flow control
+           - Data bits
+           - Parity bits
+           - Stop bits
+           - Flow control
          * - 115200
-         - 8
-         - None
-         - 1
-         - XON/XOFF
+           - 8
+           - None
+           - 1
+           - XON/XOFF
 
       To connect to the shell enter the login ``root``.
 
@@ -357,15 +357,15 @@ Hardware Setup
          :widths: 10 10 10 10 10
 
          * - Baudrate
-         - Data bits
-         - Parity bits
-         - Stop bits
-         - Flow control
+           - Data bits
+           - Parity bits
+           - Stop bits
+           - Flow control
          * - 115200
-         - 8
-         - None
-         - 1
-         - XON/XOFF
+           - 8
+           - None
+           - 1
+           - XON/XOFF
 
       To connect to the shell enter the login ``root``.
 
