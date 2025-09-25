@@ -368,7 +368,9 @@ Open a console on the target (SSH or serial), start the calibration tool and fol
 
 .. code-block ::
 
-   EXPORT
+   export TSLIB_TSDEVICE=/dev/input/touchscreen0
+   export TSLIB_CONFFILE=/etc/ts.conf
+   export TSLIB_CALIBFILE=/etc/ts.calib
    ts_calibrate
 
 LVDS display support
