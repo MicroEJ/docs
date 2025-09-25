@@ -213,44 +213,22 @@ The Executable is built using a Yocto SDK. It contains the following:
 
 To install the Yocto SDK, use the following commands in WSL or Linux:
 
-.. tabs::
+.. code-block::
 
-   .. tab:: i.MX93 EVK
-
-      .. code-block::
-
-         $ curl -O https://repository.microej.com/packages/yocto/i.MX93EVK/2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh
-         $ chmod +x 2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh
-         $ ./2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh
-         MicroEJ: 32-bit userspace + 64-bit kernel SDK installer version nodistro.0
-         ==========================================================================
-         Enter target directory for SDK (default: /usr/local/oecore-x86_64): 
-         You are about to install the SDK to "/usr/local/oecore-x86_64". Proceed [Y/n]? Y
-         Extracting SDK.................................................................................done
-         Setting it up...done
-         SDK has been successfully set up and is ready to be used.
-         Each time you wish to use the SDK in a new shell session, you need to source the environment setup script e.g.
-         $ . /usr/local/oecore-x86_64/environment-setup-armv7at2hf-neon-vfpv4-oemllib32-linux-gnueabi
-         $ . /usr/local/oecore-x86_64/environment-setup-cortexa55-oe-linux
-
-   .. tab:: FRDM i.MX93
-
-      .. code-block::
-
-         $ curl -O https://repository.microej.com/packages/yocto/i.MX93FRDM/20250731_1.0.0_fsl-imx-xwayland-glibc-x86_64-core-image-microej-armv8a-imx93frdm-toolchain-6.6-scarthgap.sh
-         $ chmod +x 20250731_1.0.0_fsl-imx-xwayland-glibc-x86_64-core-image-microej-armv8a-imx93frdm-toolchain-6.6-scarthgap.sh
-         $ ./20250731_1.0.0_fsl-imx-xwayland-glibc-x86_64-core-image-microej-armv8a-imx93frdm-toolchain-6.6-scarthgap.sh
-         NXP i.MX Release Distro SDK installer version 6.6-scarthgap
-         ===========================================================
-         Enter target directory for SDK (default: /usr/local/oecore-x86_64): 
-         You are about to install the SDK to "/opt/fsl-imx-xwayland/6.6-scarthgap". Proceed [Y/n]? Y
-         Extracting SDK.................................................................................done
-         Setting it up...done
-         SDK has been successfully set up and is ready to be used.
-         Each time you wish to use the SDK in a new shell session, you need to source the environment setup script e.g.
-         $ . /opt/fsl-imx-xwayland/6.6-scarthgap2/environment-setup-armv7at2hf-neon-pokymllib32-linux-gnueabi
-         $ . /opt/fsl-imx-xwayland/6.6-scarthgap2/environment-setup-armv8a-poky-linux
-
+   $ curl -O https://repository.microej.com/packages/yocto/i.MX93EVK/2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh
+   $ chmod +x 2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh
+   $ ./2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh
+   MicroEJ: 32-bit userspace + 64-bit kernel SDK installer version nodistro.0
+   ==========================================================================
+   Enter target directory for SDK (default: /usr/local/oecore-x86_64): 
+   You are about to install the SDK to "/usr/local/oecore-x86_64". Proceed [Y/n]? Y
+   [sudo] password for xxxxx:
+   Extracting SDK.................................................................................done
+   Setting it up...done
+   SDK has been successfully set up and is ready to be used.
+   Each time you wish to use the SDK in a new shell session, you need to source the environment setup script e.g.
+   $ . /usr/local/oecore-x86_64/environment-setup-armv7at2hf-neon-vfpv4-oemllib32-linux-gnueabi
+   $ . /usr/local/oecore-x86_64/environment-setup-cortexa55-oe-linux
 
 The installation path can then be used to build the VEE Executable.
 
