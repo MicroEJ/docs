@@ -245,8 +245,9 @@ Flash the image on an SD card
 """""""""""""""""""""""""""""
 
 The Linux images are available here:
-- `Yocto WIC Image for iMX93 EVK  <https://repository.microej.com/packages/yocto/i.MX93EVK/2024-05-24-IMX93-lib32-core-image-microej-microej-imx93-1.0.2.wic.gz>`_
-- `Yocto WIC Image for FRDM iMX93 <https://repository.microej.com/packages/yocto/i.MX93FRDM/20250731_1.0.0_core-image-microej-imx93frdm.rootfs.wic.zst>`_
+
+* `Yocto WIC Image for iMX93 EVK  <https://repository.microej.com/packages/yocto/i.MX93EVK/2024-05-24-IMX93-lib32-core-image-microej-microej-imx93-1.0.2.wic.gz>`_
+* `Yocto WIC Image for FRDM iMX93 <https://repository.microej.com/packages/yocto/i.MX93FRDM/20250731_1.0.0_core-image-microej-imx93frdm.rootfs.wic.zst>`_
 
 For this getting started we use a Linux image flashed on an SD card.
 
