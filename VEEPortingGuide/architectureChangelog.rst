@@ -51,6 +51,9 @@ Integration
 
 - Fixed Memory Map Scripts, which count the application code in the Core Engine category
 
+-  Added the ability to dynamically configure the Managed Heap memory at Core Engine start time.
+-  Added the ability to dynamically configure the Immortals Heap memory at Core Engine start time.
+-  Optimized the FSO build time.
 
 Foundation Libraries
 ~~~~~~~~~~~~~~~~~~~~
