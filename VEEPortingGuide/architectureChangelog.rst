@@ -34,6 +34,19 @@ specific configuration:
    -  ``QNX65``: BlackBerry QNX 6.5
    -  ``QNX70``: BlackBerry QNX 7.0
 
+.. _changelog-8.5.0:
+
+[8.5.0] - [unreleased]
+----------------------
+
+Foundation Libraries
+~~~~~~~~~~~~~~~~~~~~
+
+- Fixed, in ``KF``, calling `Kernel.install(java.io.InputStream)`_ now directly throws `OutOfMemoryError`_ and `StackOverflowError`_ exceptions instead of previously being wrapped in `ej.kf.InvalidFormatException`_.
+
+.. _ej.kf.InvalidFormatException: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/InvalidFormatException.html
+.. _StackOverflowError: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/StackOverflowError.html
+
 
 .. _changelog-8.4.0:
 
