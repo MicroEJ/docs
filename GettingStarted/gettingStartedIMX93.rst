@@ -180,14 +180,14 @@ Well done!
 
 Now you know how to run an application on a Virtual Device.
 
-If you want to learn how to run an application on your i.MX93 Evaluation Kit, you can continue this Getting Started: :ref:`Run an Application on i.MX93 Evaluation Kit <sdk_6_getting_started_imx93_run_on_device>`.
+If you want to learn how to run an application on your i.MX93, you can continue this Getting Started: :ref:`Run an Application on i.MX93 <sdk_6_getting_started_imx93_run_on_device>`.
 
 Otherwise, learn how to :ref:`Modify the Java Application <sdk_6_getting_started_imx93_modify_java_application>`.
 
 .. _sdk_6_getting_started_imx93_run_on_device:
 
-Run an Application on i.MX93 Evaluation Kit
--------------------------------------------
+Run an Application on i.MX93
+----------------------------
 
 To deploy :guilabel:`Example-Java-Widget` application on your board, you will have to:
 
@@ -199,7 +199,7 @@ To deploy :guilabel:`Example-Java-Widget` application on your board, you will ha
 Environment Setup
 ^^^^^^^^^^^^^^^^^
 
-This chapter takes approximately one hour and will take you through the steps to build a VEE Executable and set up the evaluation kit.
+This chapter takes approximately one hour and will take you through the steps to build a VEE Executable and set up the device.
 
 Install the Yocto SDK
 """""""""""""""""""""
@@ -373,8 +373,8 @@ Open a console on the target (SSH or serial), start the calibration tool and fol
    export TSLIB_CALIBFILE=/etc/ts.calib
    ts_calibrate
 
-LVDS display support
-++++++++++++++++++++
+LVDS display support on i.MX93 Evaluation Kit
++++++++++++++++++++++++++++++++++++++++++++++
 
 This Getting Started has been tested with an HDMI display with a 1280x720 resolution.
 If you want to use the official display instead (the `DY1212W-4856 <https://www.nxp.com/design/design-center/development-boards-and-designs/dy1212w-4856-tft-lcd-panel-with-lvds-interface:DY1212W-4856>`_)
@@ -394,8 +394,8 @@ you will need to reconfigure the device tree:
 
 Congratulations! You have finished the setup of your environment. You are now ready to discover how to build and run a MicroEJ application.
 
-Build the Executable for i.MX93 Evaluation Kit
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Build the Executable for i.MX93
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To build the Executable of the :guilabel:`Example-Java-Widget` Application, the SDK provides the :guilabel:`buildExecutable` Gradle task.
 
@@ -445,10 +445,10 @@ The Gradle task deploys the Application in the BSP and then builds the BSP using
 
 The :guilabel:`Example-Java-Widget` application is built and ready to be flashed on i.MX93 Evaluation Kit once the hardware setup is completed.
 
-Run the Application on the i.MX93 Evaluation Kit
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Run the Application on the i.MX93
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To run the :guilabel:`Example-Java-Widget` Application on i.MX93 Evaluation Kit, the application provides the Gradle :guilabel:`runOnDevice` task.
+To run the :guilabel:`Example-Java-Widget` Application on i.MX93, the application provides the Gradle :guilabel:`runOnDevice` task.
 
 .. note::
   
@@ -460,7 +460,7 @@ To run the :guilabel:`Example-Java-Widget` Application on i.MX93 Evaluation Kit,
   * Fill in your variables in ``Environment variables``, each one separated by a semicolon:
 
     * ``SSH_USER=root``
-    * ``SSH_HOSTNAME``: IP address of the i.MX93 Evaluation Kit.
+    * ``SSH_HOSTNAME``: IP address of the i.MX93.
     * ``APP_SDK_INSTALL``: Path to the Yocto SDK (by default ``/usr/local/oecore-x86_64/``).
     * ``WSL_DISTRIBUTION_NAME``: Name of the WSL distribution if using Windows (by default ``Ubuntu``).
 
