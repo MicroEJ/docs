@@ -41,7 +41,16 @@ specific configuration:
 
 Core Engine
 ~~~~~~~~~~~
--  Added the ability to dynamically configure the Managed/Immortals Heap memory at Core Engine start time.
+
+- Added the ability to dynamically configure the Managed/Immortals Heap memory at Core Engine start time.
+- Fixed Math.nextAfter(float start, double direction), returns start if direction is very close to start.
+
+
+Integration
+~~~~~~~~~~~
+
+- Fixed Memory Map Scripts, which count the application code in the Core Engine category
+
 
 Foundation Libraries
 ~~~~~~~~~~~~~~~~~~~~
