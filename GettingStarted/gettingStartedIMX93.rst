@@ -1,12 +1,12 @@
 .. _sdk_6_getting_started_imx93:
 
-i.MX93 Evaluation Kit
-==========================
+i.MX93
+======
 
 During this Getting Started, you will learn to:
 
-* Run an Application on the i.MX93 Evaluation Kit Virtual Device.
-* Run the same Application on your i.MX93 Evaluation Kit.
+* Run an Application on the i.MX93 Virtual Device.
+* Run the same Application on your i.MX93 Evaluation Kit or FRDM i.X93 Development Board.
 
 If you need to become more familiar with MicroEJ, please visit `Discover MicroEJ <https://developer.microej.com/discover-microej/>`__ to understand the principles of our technology.
 
@@ -29,13 +29,15 @@ The second part consists in running the same demo application on your device. Fo
 
 * An i.MX93 Evaluation Kit, available `here <https://www.nxp.com/design/design-center/development-boards/i-mx-evaluation-and-development-boards/i-mx-93-evaluation-kit:i.MX93EVK>`__.
 
+* Or a FRDM i.MX93 Development Board, available `here <https://www.nxp.com/design/design-center/development-boards-and-designs/frdm-i-mx-93-development-board:FRDM-IMX93>`__.
+
 * An HDMI display with touchscreen connected with an `IMX-MIPI-HDMI adapter <https://www.nxp.com/part/IMX-MIPI-HDMI>`__.
 
    * This getting started has been tested with a `MageDok T080A <https://store.magedok.com/collections/portable-monitors/products/8-inch-1280-720-resolution-touch-monitor-t080a>`_.
 
 * A prebuild Yocto Linux image, with all necessary linux packages preinstalled.
 
-* A Yocto SDK, to cross compile an sample application.
+* A Yocto SDK, to cross compile a sample application.
 
 .. _sdk_6_getting_started_imx93_environment_setup:
 
@@ -131,7 +133,7 @@ In the Gradle build file ``build.gradle.kts``, replace the VEE dependency ``micr
 .. code-block::
 
    dependencies {
-      microejVee("com.microej.veeport.imx93:vee-port:3.0.2")
+      microejVee("com.microej.veeport.imx93:vee-port:3.1.0")
    }
 
 For more information about how to select a VEE Port please refer to the following section: :ref:`sdk_6_select_veeport`.
@@ -178,14 +180,14 @@ Well done!
 
 Now you know how to run an application on a Virtual Device.
 
-If you want to learn how to run an application on your i.MX93 Evaluation Kit, you can continue this Getting Started: :ref:`Run an Application on i.MX93 Evaluation Kit <sdk_6_getting_started_imx93_run_on_device>`.
+If you want to learn how to run an application on your i.MX93, you can continue this Getting Started: :ref:`Run an Application on i.MX93 <sdk_6_getting_started_imx93_run_on_device>`.
 
 Otherwise, learn how to :ref:`Modify the Java Application <sdk_6_getting_started_imx93_modify_java_application>`.
 
 .. _sdk_6_getting_started_imx93_run_on_device:
 
-Run an Application on i.MX93 Evaluation Kit
--------------------------------------------
+Run an Application on i.MX93
+----------------------------
 
 To deploy :guilabel:`Example-Java-Widget` application on your board, you will have to:
 
@@ -197,7 +199,7 @@ To deploy :guilabel:`Example-Java-Widget` application on your board, you will ha
 Environment Setup
 ^^^^^^^^^^^^^^^^^
 
-This chapter takes approximately one hour and will take you through the steps to build a VEE Executable and set up the evaluation kit.
+This chapter takes approximately one hour and will take you through the steps to build a VEE Executable and set up the device.
 
 Install the Yocto SDK
 """""""""""""""""""""
@@ -242,7 +244,10 @@ Some additionnal packages will be required in order to build an executable. Run 
 Flash the image on an SD card
 """""""""""""""""""""""""""""
 
-The Linux image is available here: `Yocto WIC Image for iMX93 <https://repository.microej.com/packages/yocto/i.MX93EVK/2024-05-24-IMX93-lib32-core-image-microej-microej-imx93-1.0.2.wic.gz>`_
+The Linux images are available here:
+
+* `Yocto WIC Image for iMX93 EVK  <https://repository.microej.com/packages/yocto/i.MX93EVK/2024-05-24-IMX93-lib32-core-image-microej-microej-imx93-1.0.2.wic.gz>`_
+* `Yocto WIC Image for FRDM iMX93 <https://repository.microej.com/packages/yocto/i.MX93FRDM/20250731_1.0.0_core-image-microej-imx93frdm.rootfs.wic.zst>`_
 
 For this getting started we use a Linux image flashed on an SD card.
 
@@ -273,37 +278,75 @@ To flash the image on Windows, do the following:
 Hardware Setup
 """"""""""""""
 
+.. tabs::
+
+   .. tab:: i.MX93 EVK
+
       .. figure:: images/iMX93/getting-started-setup.png
          :alt: Setup
          :align: center
          :scale: 70%
 
-To setup the hardware you will need to connect the following on the EVK:
+      To setup the hardware you will need to connect the following on the EVK:
 
-* A USB C cable for the power (provided with the EVK).
-* A USB C cable for the serial port.
-* A USB C cable for the touchscreen device.
-* A RJ45 cable to access the network.
-* An HDMI cable connected to the IMX-HDMI-MIPI adapter.
+      * A USB C cable for the power (provided with the EVK).
+      * A USB C cable for the serial port.
+      * A USB C cable for the touchscreen device.
+      * A RJ45 cable to access the network.
+      * An HDMI cable connected to the IMX-HDMI-MIPI adapter.
 
-The serial port is used to connect to a shell, it uses the following parameters:
+      The serial port is used to connect to a shell, it uses the following parameters:
 
-.. list-table::
-   :header-rows: 1
-   :widths: 10 10 10 10 10
+      .. list-table::
+         :header-rows: 1
+         :widths: 10 10 10 10 10
 
-   * - Baudrate
-     - Data bits
-     - Parity bits
-     - Stop bits
-     - Flow control
-   * - 115200
-     - 8
-     - None
-     - 1
-     - XON/XOFF
+         * - Baudrate
+           - Data bits
+           - Parity bits
+           - Stop bits
+           - Flow control
+         * - 115200
+           - 8
+           - None
+           - 1
+           - XON/XOFF
 
-To connect to the shell enter the login ``root``.
+      To connect to the shell enter the login ``root``.
+
+   .. tab:: FRDM i.MX93
+
+      .. figure:: images/iMX93/getting-started-setup-frdm.png
+         :alt: Setup
+         :align: center
+         :scale: 70%
+
+      To setup the hardware you will need to connect the following on the EVK:
+
+      * A USB C cable to the PWR input (P1)
+      * A USB C cable to the DBG port (P16)
+      * A USB C, or USB A cable for the touchscreen device (P2 or P17).
+      * A RJ45 cable to access the network.
+      * An HDMI cable.
+
+      The serial port is used to connect to a shell, it uses the following parameters:
+
+      .. list-table::
+         :header-rows: 1
+         :widths: 10 10 10 10 10
+
+         * - Baudrate
+           - Data bits
+           - Parity bits
+           - Stop bits
+           - Flow control
+         * - 115200
+           - 8
+           - None
+           - 1
+           - XON/XOFF
+
+      To connect to the shell enter the login ``root``.
 
 Configure boot
 ++++++++++++++
@@ -314,8 +357,24 @@ To change the boot mode to micro SD, set the DIP switch ``BMODE`` to ``0100``, i
 Insert the flashed SD card and boot the device. After a few seconds, the display will show the IMX93 Getting Started Welcome page.
 If no display is attached, information such as device IP address and documentation link will also be printed in the logs.
 
-LVDS display support
-++++++++++++++++++++
+Touchscreen calibration
++++++++++++++++++++++++
+
+The touch screen needs to be calibrated before using the application.
+
+This can be done using the `ts_calibrate` tool provided by `tslib <https://github.com/libts/tslib>`_ on linux.
+
+Open a console on the target (SSH or serial), start the calibration tool and follow the instructions on your device screen:
+
+.. code-block ::
+
+   export TSLIB_TSDEVICE=/dev/input/touchscreen0
+   export TSLIB_CONFFILE=/etc/ts.conf
+   export TSLIB_CALIBFILE=/etc/ts.calib
+   ts_calibrate
+
+LVDS display support on i.MX93 Evaluation Kit
++++++++++++++++++++++++++++++++++++++++++++++
 
 This Getting Started has been tested with an HDMI display with a 1280x720 resolution.
 If you want to use the official display instead (the `DY1212W-4856 <https://www.nxp.com/design/design-center/development-boards-and-designs/dy1212w-4856-tft-lcd-panel-with-lvds-interface:DY1212W-4856>`_)
@@ -335,8 +394,8 @@ you will need to reconfigure the device tree:
 
 Congratulations! You have finished the setup of your environment. You are now ready to discover how to build and run a MicroEJ application.
 
-Build the Executable for i.MX93 Evaluation Kit
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Build the Executable for i.MX93
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To build the Executable of the :guilabel:`Example-Java-Widget` Application, the SDK provides the :guilabel:`buildExecutable` Gradle task.
 
@@ -386,10 +445,10 @@ The Gradle task deploys the Application in the BSP and then builds the BSP using
 
 The :guilabel:`Example-Java-Widget` application is built and ready to be flashed on i.MX93 Evaluation Kit once the hardware setup is completed.
 
-Run the Application on the i.MX93 Evaluation Kit
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Run the Application on the i.MX93
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To run the :guilabel:`Example-Java-Widget` Application on i.MX93 Evaluation Kit, the application provides the Gradle :guilabel:`runOnDevice` task.
+To run the :guilabel:`Example-Java-Widget` Application on i.MX93, the application provides the Gradle :guilabel:`runOnDevice` task.
 
 .. note::
   
@@ -401,7 +460,7 @@ To run the :guilabel:`Example-Java-Widget` Application on i.MX93 Evaluation Kit,
   * Fill in your variables in ``Environment variables``, each one separated by a semicolon:
 
     * ``SSH_USER=root``
-    * ``SSH_HOSTNAME``: IP address of the i.MX93 Evaluation Kit.
+    * ``SSH_HOSTNAME``: IP address of the i.MX93.
     * ``APP_SDK_INSTALL``: Path to the Yocto SDK (by default ``/usr/local/oecore-x86_64/``).
     * ``WSL_DISTRIBUTION_NAME``: Name of the WSL distribution if using Windows (by default ``Ubuntu``).
 
