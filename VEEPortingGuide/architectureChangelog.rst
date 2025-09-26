@@ -39,14 +39,38 @@ specific configuration:
 [8.5.0] - [unreleased]
 ----------------------
 
+Core Engine
+~~~~~~~~~~~
+
+- Added the ability to dynamically configure the Managed/Immortals Heap memory at Core Engine start time.
+- Fixed Math.nextAfter(float start, double direction), returns start if direction is very close to start.
+
+
+Integration
+~~~~~~~~~~~
+
+- Fixed Memory Map Scripts, which count the application code in the Core Engine category
+
+-  Added the ability to dynamically configure the Managed Heap memory at Core Engine start time.
+-  Added the ability to dynamically configure the Immortals Heap memory at Core Engine start time.
+-  Optimized the FSO build time.
+
 Foundation Libraries
 ~~~~~~~~~~~~~~~~~~~~
 
 - Fixed, in ``KF``, calling `Kernel.install(java.io.InputStream)`_ now directly throws `OutOfMemoryError`_ and `StackOverflowError`_ exceptions instead of previously being wrapped in `ej.kf.InvalidFormatException`_.
+- [Cortex-M] - Fixed incorrect handling of `NaN` and `Infinity` inputs in `Math.cos()`, `Math.sin()`, `Math.tan()`, `Math.acos()`, and `Math.asin()` in EDC when the underlying C Math library does not process these values properly (introduced in version 8.4.0).
+- Fixed incorrect output of `NaN` when calling `Math.ulp()` with positive `Infinity`.
+- Fixed `TimerTask` scheduling issues when using a `Date` and a `ej.bon.Timer` to scheduled the task.
+- [Cortex-M] - Fixed `ByteArray.readXXX()` potentialy returning an incorrect value.
 
 .. _ej.kf.InvalidFormatException: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/InvalidFormatException.html
 .. _StackOverflowError: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/StackOverflowError.html
 
+SOAR
+~~~~
+
+- Fixed a potential crash when using a sdk6 foundation in a sdk6 version 1.3.0 and under (found with microai).
 
 .. _changelog-8.4.0:
 
