@@ -118,6 +118,8 @@ Option(text): Managed Heap size (in bytes)
 
 *Default value*: ``65536``
 
+*Maximum value*: ``67108860`` (see :ref:`limitations`)
+
 *Description*:
 
 Specifies the Managed Heap size in bytes.

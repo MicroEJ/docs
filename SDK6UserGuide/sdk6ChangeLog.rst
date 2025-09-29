@@ -3,6 +3,44 @@
 Changelog
 ---------
 
+.. _changelog-1.4.0:
+
+[1.4.0] - 2025-09-18
+~~~~~~~~~~~~~~~~~~~~
+
+Added
+"""""
+
+- Support the addition of LSC files in a Library to extend the Linking process.
+- Add the plugin ``com.microej.gradle.library`` to build an Add-On Library or a Foundation Library and deprecate
+  ``com.microej.gradle.addon-library``.
+- Fetch the transitive dependencies of a ``microejVee`` dependency (enabled with the project property
+  ``feature.vee.transitivity.enabled``).
+- Add the support for the system property ``microej.launch.jvmargs`` to specify JVM arguments to the JVM running Ant
+  scripts.
+- Build and publish the aggregated javadoc of a VEE Port (SDK 6 Libraries only).
+
+Changed
+"""""""
+
+- Remove useless usage of ``useJUnitJupiter`` when configuring a testsuite.
+- Replace usage of deprecated Gradle APIs to prepare the support for Gradle 9.
+- Update the stackTraceReader to version ``3.2.0`` to support Managed C stack traces.
+
+Fixed
+"""""
+
+- Fail to publish to Maven Local repository.
+- No publication of the Feature file when no change in the project.
+- Virtual Device options are not loaded correctly.
+- Test log in case of no failure or success tag encountered.
+- Do not rebuild Kernel Executable if not necessary when building a Feature.
+- Properties defined in partial KF file in Application projects are not considered.
+- ``microej.testsuite.retry.count`` property not always taken into account.
+- Retried tests not correctly reported in HTML report.
+- Eclipse reports ``java.lang.invoke.MethodHandles`` not found in build path when lambdas are enabled.
+- ``ShrinkRuntimeEnvironmentTask`` fails when kernel is in a multiproject and has an ``includeBuild`` dependency.
+
 .. _changelog-1.3.1:
 
 [1.3.1] - 2025-07-11

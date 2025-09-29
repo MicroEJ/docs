@@ -62,7 +62,7 @@ For Beginners
                <div class="training_image_container">
                   <ul class="training_image_list">
                      <li class="training_course_number">Course</li>
-                     <li class="training_duration">8h</li>
+                     <li class="training_duration">5h</li>
                   </ul>
                   <img src="../_static/images/training/training_debug.jpg" alt="Debug Tools">
                </div>
@@ -366,6 +366,7 @@ Graphical User Interface
    :hidden:
 
    trainingGuiRaster
+   trainingGuiDevelopmentTools
    trainingGrayscaleDisplayConsiderations
    trainingDebugGUIFreeze
 
@@ -392,6 +393,23 @@ Graphical User Interface
          </div>
 
          <div class="training_item">
+            <a class="training_link" href="trainingGuiDevelopmentTools.html">
+               <div class="training_image_container">
+                  <ul class="training_image_list">
+                     <li class="training_course_number">Course</li>
+                     <li class="training_duration">3h</li>
+                  </ul>
+                  <img src="../_static/images/training/training_ui_devtools.jpg" alt="Mastering GUI Development Tools">
+               </div>
+               <h3 class="training_title">Mastering GUI Development Tools</h3>
+               <p class="training_description">This training describes the available GUI tools provided by MICROEJ SDK
+                        to accelerate and hone your UI and UX development.
+               </p>
+               <a class="training_learn_more_link" href="trainingGUIDevelopmentTools.html">Learn more</a>
+            </a>
+         </div>
+
+         <div class="training_item">
             <a class="training_link" href="trainingDebugGUIFreeze.html">
                <div class="training_image_container">
                   <ul class="training_image_list">
@@ -406,7 +424,7 @@ Graphical User Interface
                </p>
                <a class="training_learn_more_link" href="trainingDebugGUIFreeze.html">Learn more</a>
             </a>
-            </div>
+         </div>
 
          <div class="training_item">
             <a class="training_link" href="trainingGrayscaleDisplayConsiderations.html">

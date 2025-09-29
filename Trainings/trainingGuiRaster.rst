@@ -55,11 +55,8 @@ Unit 1: Coding Challenges
 This project contains coding challenges to learn the basics of UI development with MicroEJ.
 The training is divided into multiple steps, each helping the user create the views of a smartwatch.
 
-- `Slides: Tutorial-UI Training Manual <https://github.com/MicroEJ/Tutorial-UI/blob/step/1/doc/UI-training-manual.pdf>`_ (for MICROEJ SDK 6)
+- `Slides: Tutorial-UI Training Manual <https://repository.microej.com/packages/training/gui_raster/DEV-J0215-PRE-UI-training-manual_1.3.0_20250219.pdf>`_ (for MICROEJ SDK 6)
 - `Resources <https://github.com/MicroEJ/Tutorial-UI>`_
-
-.. warning::
-    Training slides are provided on GitHub. Download the document to visualize it entirely.
 
 Unit 2: GUI Validation
 ----------------------
@@ -70,7 +67,7 @@ the technics to properly implement, debug and automatically test a GUI applicati
 - :ref:`tutorials_debug_gui_performances`
 
 ..
-   | Copyright 2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2024-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
