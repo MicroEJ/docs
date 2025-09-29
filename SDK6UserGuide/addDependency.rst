@@ -113,50 +113,6 @@ more information on repositories configuration.
 It is important to note that the declaration order of the repositories matters.
 Gradle requests the repositories in the order they are declared and stops as soon as it finds a matching version.
 
-
-Get Library Sources
--------------------------
-
-All libraries included in MicroEJ SDK are provided with their source code and resources. But they are not automatically downloaded, in IntelliJ IDEA/Android Studio, when you add a dependency to your project.
-To automatically download the sources of a library, you can activate the Gradle sources download option in your IDE.
-
-.. tabs::
-
-   .. tab:: IntelliJ IDEA
-
-      Follow these steps to activate the sources download option in IntelliJ IDEA:
-
-        - In IntelliJ IDEA, open the Settings window (menu :guilabel:`File` > :guilabel:`Settings...` on Windows and Linux, menu :guilabel:`Android Studio` > :guilabel:`Settings...` on macOS).
-        - Go to :guilabel:`Advanced Settings` menu.
-        - Enable the :guilabel:`Download Sources` option.
-
-          .. figure:: images/intellij-download-sources.png
-            :alt: Download sources in IntelliJ IDEA
-            :align: center
-            :scale: 70%
-
-            Download sources in IntelliJ IDEA
-
-        - The next project sync will now download the sources of the libraries used in the project.
-
-
-   .. tab:: Android Studio
-
-      Follow these steps to activate the sources download option in Android Studio:
-
-        - In Android Studio, open the Settings window (menu :guilabel:`File` > :guilabel:`Settings...` on Windows and Linux, menu :guilabel:`Android Studio` > :guilabel:`Settings...` on macOS).
-        - Go to :guilabel:`Advanced Settings` menu.
-        - Enable the :guilabel:`Download Sources` option.
-
-          .. figure:: images/android-studio-download-sources.png
-            :alt: Download sources in Android Studio
-            :align: center
-            :scale: 70%
-
-            Download sources in Android Studio
-
-        - The next project sync will now download the sources of the libraries used in the project.
-
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 

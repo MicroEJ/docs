@@ -481,6 +481,55 @@ To resolve this, adjust the JVM memory configuration by setting the JVM options 
 
 	./gradlew buildExecutable -Dmicroej.launch.jvmargs="-Xmx1024m -Xms512m"
 
+
+Get Library Sources
+-------------------------
+
+All libraries included in MicroEJ SDK are provided with their source code and resources. But they are not automatically downloaded, in IntelliJ IDEA/Android Studio, when you add a dependency to your project.
+To automatically download the sources of a library, you can activate the Gradle sources download option in your IDE.
+
+.. tabs::
+
+   .. tab:: IntelliJ IDEA
+
+      Follow these steps to activate the sources download option in IntelliJ IDEA:
+
+        - In IntelliJ IDEA, open the Settings window (menu :guilabel:`File` > :guilabel:`Settings...` on Windows and Linux, menu :guilabel:`Android Studio` > :guilabel:`Settings...` on macOS).
+        - Go to :guilabel:`Advanced Settings` menu.
+        - Enable the :guilabel:`Download Sources` option.
+
+          .. figure:: images/intellij-download-sources.png
+            :alt: Download sources in IntelliJ IDEA
+            :align: center
+            :scale: 70%
+
+            Download sources in IntelliJ IDEA
+
+        - The next project sync will now download the sources of the libraries used in the project.
+
+
+   .. tab:: Android Studio
+
+      Follow these steps to activate the sources download option in Android Studio:
+
+        - In Android Studio, open the Settings window (menu :guilabel:`File` > :guilabel:`Settings...` on Windows and Linux, menu :guilabel:`Android Studio` > :guilabel:`Settings...` on macOS).
+        - Go to :guilabel:`Advanced Settings` menu.
+        - Enable the :guilabel:`Download Sources` option.
+
+          .. figure:: images/android-studio-download-sources.png
+            :alt: Download sources in Android Studio
+            :align: center
+            :scale: 70%
+
+            Download sources in Android Studio
+
+        - The next project sync will now download the sources of the libraries used in the project.
+
+
+   .. tab:: Eclipse
+
+      Eclipse fetches the sources of the libraries automatically when you add a dependency to your project.
+
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
