@@ -94,8 +94,7 @@ functions is that their names match the ``LLMJVM_IMPL_*`` pattern.
 LLMJVM_impl.h
 -------------
 
-Defines the set of functions that the BSP must implement to launch
-and schedule the Core Engine
+Set of functions that the BSP must implement to launch and schedule the Core Engine
 
 .. doxygenfile:: LLMJVM_impl.h
    :sections: define enum innerclass public-attrib func
@@ -104,8 +103,7 @@ and schedule the Core Engine
 LLMJVM.h
 --------
 
-Defines the set of functions provided by Core Engine that can be
-called by the BSP
+Set of functions provided by Core Engine that can be called by the BSP
 
 .. doxygenfile:: LLMJVM.h
    :sections: define enum innerclass public-attrib func
@@ -113,7 +111,7 @@ called by the BSP
 LLBSP_impl.h
 ------------
 
-Defines the set of extra functions that the BSP must implement.
+Set of extra functions that the BSP must implement.
 
 .. doxygenfile:: LLBSP_impl.h
    :sections: define enum innerclass public-attrib func
@@ -134,8 +132,7 @@ their names match the ``LLKERNEL_IMPL_*`` pattern.
 LLKERNEL_impl.h
 ---------------
 
-Defines the set of functions that the BSP must implement to manage
-memory allocation of dynamically installed Applications.
+Set of functions that the BSP must implement to manage memory allocation of dynamically installed Applications.
 
 .. doxygenfile:: LLKERNEL_impl.h
    :sections: define enum innerclass public-attrib func
@@ -144,8 +141,7 @@ memory allocation of dynamically installed Applications.
 LLKERNEL.h
 ----------
 
-Defines the set of functions provided by the Core Engine that can be
-called by the BSP.
+Set of functions provided by the Core Engine that can be called by the BSP.
 
 .. doxygenfile:: LLKERNEL.h
    :sections: enum innerclass public-attrib func
@@ -1178,8 +1174,7 @@ functions is that their names match the ``LLTRACE_IMPL_*`` pattern described in 
 LLTRACE_impl.h
 ---------------
 
-Defines the set of functions that the BSP must implement to launch
-and schedule the Core Engine.
+Set of functions that the BSP must implement to launch and schedule the Core Engine.
 
 .. doxygenfile:: LLTRACE_impl.h
    :sections: define enum innerclass public-attrib func
@@ -1190,8 +1185,7 @@ and schedule the Core Engine.
 LLTRACE.h
 ---------
 
-Defines the set of functions provided by Core Engine that can be
-called by the BSP to generate event traces.
+Set of functions provided by Core Engine that can be called by the BSP to generate event traces.
 
 .. doxygenfile:: LLTRACE.h
    :sections: define enum innerclass public-attrib func
@@ -1218,7 +1212,7 @@ functions is that their names match the ``LLMJVM_MONITOR_IMPL_*`` pattern.
 LLMJVM_MONITOR_impl.h
 ---------------------
 
-Defines the set of functions that the BSP must implement to enable trace recording from Core Engine events.
+Set of functions that the BSP must implement to enable trace recording from Core Engine events.
 
 .. doxygenfile:: LLMJVM_MONITOR_impl.h
    :sections: define enum innerclass public-attrib func
@@ -1227,8 +1221,7 @@ Defines the set of functions that the BSP must implement to enable trace recordi
 MJVM_MONITOR.h
 --------------
 
-Defines the set of functions provided by Core Engine Monitoring that can be
-called by the BSP.
+Set of functions provided by Core Engine Monitoring that can be called by the BSP.
 
 .. doxygenfile:: MJVM_MONITOR.h
    :sections: define enum innerclass public-attrib func
@@ -1237,7 +1230,7 @@ called by the BSP.
 MJVM_MONITOR_types.h
 --------------------
 
-Defines types and macros used in the ``LLMJVM_MONITOR`` ``MJVM_MONITOR`` APIs.
+Types and macros used in the ``LLMJVM_MONITOR`` ``MJVM_MONITOR`` APIs.
 
 .. doxygenfile:: MJVM_MONITOR_types.h
    :sections: define enum innerclass public-attrib func
