@@ -24,6 +24,7 @@ build:
   jobs:
     pre_build:
       # Build the LLAPI Doxygen used in the documentation.
+      # Mandatory here because the linkcheck target requires the LLAPI Doxygen to be generated.
       - make llapi_doxygen
       - make linkcheck
       # Clean to force sources to be read again during html build

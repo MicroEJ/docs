@@ -66,6 +66,10 @@ llapi_doxygen:
 
 .PHONY: html
 html:
+	cd ./$(DOXYGENDIR) && doxygen microej_doxygen_config && cd ../
+	@echo
+	@echo "LLAPI Doxygen build finished. The LLAPI XML Doxygen is in $(DOXYGENDIR)/xml."
+	@echo "Now build of the HTML pages."
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."

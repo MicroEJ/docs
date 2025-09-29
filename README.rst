@@ -20,17 +20,19 @@ First, you will need to install the documentation dependencies locally::
 
     pip install -r requirements.txt
 
-Second, you will need to generate the LLAPI Doxygen documentation locally::
-
-    make llapi_doxygen
-
-With dependencies installed and LLAPI Doxygen generated, you can build the HTML docs::
+With dependencies installed, you can generate the LLAPI Doxygen and build the HTML docs::
 
     make html
+
+To only perform the LLAPI Doxygen build::
+
+    make llapi_doxygen
 
 To perform a link check for all links and references::
 
     make linkcheck
+
+Please ensure that the LLAPI Doxygen has been generated before trying a ``linkcheck``.
 
 Warning Processing
 ~~~~~~~~~~~~~~~~~~
