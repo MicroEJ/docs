@@ -38,12 +38,12 @@ Example
 
 .. code-block:: java
 
-   package example;
+   package com.mycompany;
 
    import java.io.IOException;
 
    /**
-    * Abstract class providing a native method to access sensor value.
+    * Class providing a native method to access sensor value.
     * This method will be executed out of the Core Engine.
     */
    public abstract class Sensor {
@@ -51,29 +51,19 @@ Example
        public static final int ERROR = -1;
 
        public int getValue() throws IOException {
-           int sensorID = getSensorID();
-           int value = getSensorValue(sensorID);
+           int value = getSensorValue();
            if (value == ERROR) {
                throw new IOException("Unsupported sensor");
            }
            return value;
        }
 
-       protected abstract int getSensorID();
-
-       public static native int getSensorValue(int sensorID);
+       public static native int getSensorValue();
    }
 
-   class Potentiometer extends Sensor {
-       
-       protected int getSensorID() {
-           return Constants.POTENTIOMETER_ID; // POTENTIOMETER_ID is a static final
-       }
-   }
-
-To implement the native method ``getSensorValue(int sensorID)``, you
+To implement the native method ``getSensorValue()``, you
 need to create a MicroEJ mock project containing the same ``Sensor``
-class on the same ``example`` package.
+class on the same ``com.mycompany`` package.
 
 To create a new MicroEJ mock project:
 
@@ -96,7 +86,7 @@ project:
 
 .. code-block:: java
 
-   package example;
+   package com.mycompany;
 
    import java.util.Random;
 
@@ -109,23 +99,16 @@ project:
        /**
         * Constants
         */
-       private static final int SENSOR_ERROR = -1;
-       private static final int POTENTIOMETER_ID = 3;
-       
        private static final Random RANDOM = new Random();
        
        /**
         * Implementation of native method "getSensorValue()"
         * 
-        * @param sensorID Sensor ID
         * @return Simulated sensor value
         */
-       public static int getSensorValue(int sensorID) {
-           if( sensorID == POTENTIOMETER_ID ) {
-               // For the simulation, Mock returns a random value
-               return RANDOM.nextInt();
-           }
-           return SENSOR_ERROR;
+       public static int getSensorValue() {
+            // For the simulation, Mock returns a random value
+            return RANDOM.nextInt();
        }
        
    }

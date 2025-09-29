@@ -481,6 +481,19 @@ To resolve this, adjust the JVM memory configuration by setting the JVM options 
 
 	./gradlew buildExecutable -Dmicroej.launch.jvmargs="-Xmx1024m -Xms512m"
 
+.. _sdk_6_no_architecture_defined_error:
+
+No Architecture Defined Error
+-----------------------------
+
+The following error may be raised when building a project::
+
+	Execution failed for task ':loadVee'.
+  	> No Architecture defined. An Architecture can be provided by declaring adependency with the `microejArchitecture` configuration (e.g. `microejArchitecture("com.mycompany:myArchitecture:M.m.p")').
+
+This can happen when a VEE Port built with SDK 6 ``1.3.0`` or higher is provided to a project using an older version of the SDK 6.
+To resolve this, update your project to use SDK 6 version ``1.2.0`` minimum.
+
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 

@@ -59,13 +59,13 @@ This demo showcases the communication between Sandboxed Applications using the S
 
 .. tabs::
 
-   .. tab:: MICROEJ SDK 5
-
-      - `Demo Sandboxed Application <https://github.com/MicroEJ/Demo-Sandboxed-Applications/tree/1.0.0>`__   
-      
    .. tab:: MICROEJ SDK 6
+
+      - `Demo Sandboxed Application <https://github.com/MicroEJ/Demo-Sandboxed-Applications/tree/2.0.0>`__   
       
-      Coming soon!
+   .. tab:: MICROEJ SDK 5
+      
+      - `Demo Sandboxed Application <https://github.com/MicroEJ/Demo-Sandboxed-Applications/tree/1.0.0>`__  
 
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 
