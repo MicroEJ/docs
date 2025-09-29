@@ -95,8 +95,25 @@ Tools
 
 .. _changelog-8.4.0:
 
+[8.5.0] - [unreleased]
+----------------------
+
+
+SOAR
+~~~~
+
+- Added an appropriate error message when trying to use :ref:`wasi.threads` with missing properties or incompatible WASM executable.
+- Fixed a potential crash  when declaring a WASM annotated method that isn't static.
+
+Tools
+~~~~~
+
+- Added Support for WASM line numbers for the :ref:`sdk6.section.stacktrace.reader.tool`.
+
 [8.4.0] - 2025-05-28
 --------------------
+
+This Architecture version update introduces the support for :ref:`c_language`.
 
 Core Engine
 ~~~~~~~~~~~
