@@ -90,28 +90,12 @@ The Low Level Core Engine API, the ``LLMJVM`` API, relies on
 functions that need to be implemented. The naming convention for such
 functions is that their names match the ``LLMJVM_IMPL_*`` pattern.
 
-Header Files
-------------
 
-Three C header files are provided:
+LLMJVM_impl.h
+-------------
 
--  LLMJVM_impl.h
-
-   Defines the set of functions that the BSP must implement to launch
-   and schedule the Core Engine
-
--  LLMJVM.h
-
-   Defines the set of functions provided by Core Engine that can be
-   called by the BSP
-
--  LLBSP_impl.h
-
-   Defines the set of extra functions that the BSP must implement.
-
-
-Defines and functions in LLMJVM_impl.h
---------------------------------------
+Defines the set of functions that the BSP must implement to launch
+and schedule the Core Engine
 
 .. doxygenfile:: LLMJVM_impl.h
    :sections: define func
@@ -120,11 +104,16 @@ Defines and functions in LLMJVM_impl.h
 LLMJVM.h
 --------
 
+Defines the set of functions provided by Core Engine that can be
+called by the BSP
+
 .. doxygenfile:: LLMJVM.h
    :sections: define func
 
-Functions in LLBSP_impl.h
--------------------------
+LLBSP_impl.h
+------------
+
+Defines the set of extra functions that the BSP must implement.
 
 .. doxygenfile:: LLBSP_impl.h
    :sections: func
@@ -142,23 +131,11 @@ The Low Level Kernel API, the ``LLKERNEL`` API, relies on functions that
 need to be implemented. The naming convention for such functions is that
 their names match the ``LLKERNEL_IMPL_*`` pattern.
 
-Header Files
-------------
+LLKERNEL_impl.h
+---------------
 
-Two C header files are provided:
-
--  LLKERNEL_impl.h
-
-   Defines the set of functions that the BSP must implement to manage
-   memory allocation of dynamically installed Applications.
-
--  LLKERNEL.h
-
-   Defines the set of functions provided by the Core Engine that can be
-   called by the BSP.
-
-Defines and functions in LLKERNEL_impl.h
-----------------------------------------
+Defines the set of functions that the BSP must implement to manage
+memory allocation of dynamically installed Applications.
 
 .. doxygenfile:: LLKERNEL_impl.h
    :sections: define func
@@ -166,6 +143,9 @@ Defines and functions in LLKERNEL_impl.h
 
 LLKERNEL.h
 ----------
+
+Defines the set of functions provided by the Core Engine that can be
+called by the BSP.
 
 .. doxygenfile:: LLKERNEL.h
    :sections: func
@@ -1195,24 +1175,11 @@ The Low Level Trace API ``LLTRACE`` relies on functions that need to be implemen
 functions is that their names match the ``LLTRACE_IMPL_*`` pattern described in the file ``LLTRACE_impl.h``.
 
 
-Header Files
-------------
+LLTRACE_impl.h
+---------------
 
-Two C header files are provided:
-
--  LLTRACE_impl.h
-
-   Defines the set of functions that the BSP must implement to launch
-   and schedule the Core Engine.
-
--  LLTRACE.h
-
-   Defines the set of functions provided by Core Engine that can be
-   called by the BSP to generate event traces.
-
-
-Functions in LLTRACE_impl.h
----------------------------
+Defines the set of functions that the BSP must implement to launch
+and schedule the Core Engine.
 
 .. doxygenfile:: LLTRACE_impl.h
    :sections: func
@@ -1220,8 +1187,11 @@ Functions in LLTRACE_impl.h
 
 .. _lltrace_h_section:
 
-Functions in LLTRACE.h
-----------------------
+LLTRACE.h
+---------
+
+Defines the set of functions provided by Core Engine that can be
+called by the BSP to generate event traces.
 
 .. doxygenfile:: LLTRACE.h
    :sections: func
@@ -1245,41 +1215,29 @@ The Low Level Core Engine Monitoring API, the ``LLMJVM_MONITOR`` API, relies on
 functions that need to be implemented. The naming convention for such
 functions is that their names match the ``LLMJVM_MONITOR_IMPL_*`` pattern.
 
-Header Files
-------------
+LLMJVM_MONITOR_impl.h
+---------------------
 
-Three C header files are provided:
-
--  LLMJVM_MONITOR_impl.h
-
-   Defines the set of functions that the BSP must implement to enable trace recording from Core Engine events.
-
--  MJVM_MONITOR.h
-
-   Defines the set of functions provided by Core Engine Monitoring that can be
-   called by the BSP.
-
--  MJVM_MONITOR_types.h
-
-   Defines types and macros used in the ``LLMJVM_MONITOR`` ``MJVM_MONITOR`` APIs.
-
-
-Functions in LLMJVM_MONITOR_impl.h
-----------------------------------
+Defines the set of functions that the BSP must implement to enable trace recording from Core Engine events.
 
 .. doxygenfile:: LLMJVM_MONITOR_impl.h
    :sections: func
 
 
-Functions in MJVM_MONITOR.h
----------------------------
+MJVM_MONITOR.h
+--------------
+
+Defines the set of functions provided by Core Engine Monitoring that can be
+called by the BSP.
 
 .. doxygenfile:: MJVM_MONITOR.h
    :sections: func
 
 
-Types and macros defined in MJVM_MONITOR_types.h
-------------------------------------------------
+MJVM_MONITOR_types.h
+--------------------
+
+Defines types and macros used in the ``LLMJVM_MONITOR`` ``MJVM_MONITOR`` APIs.
 
 .. doxygenfile:: MJVM_MONITOR_types.h
    :sections: define enum innerclass public-attrib
