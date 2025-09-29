@@ -1,4 +1,4 @@
-# Copyright 2008-2024, MicroEJ Corp. Content in this space is free for read and redistribute. Except if otherwise stated, modification is subject to MicroEJ Corp prior approval. 
+# Copyright 2008-2025, MicroEJ Corp. Content in this space is free for read and redistribute. Except if otherwise stated, modification is subject to MicroEJ Corp prior approval.
 # MicroEJ is a trademark of MicroEJ Corp. All other trademarks and copyrights are the property of their respective owners.
 
 import os
@@ -29,7 +29,16 @@ extensions = [
     'sphinx_tabs.tabs',
     'sphinx_toolbox.collapse',
     'sphinxext.remoteliteralinclude',
+    'breathe'
 ]
+
+
+# Breathe options for C doxygen documentation integration
+# Breathe documentation https://breathe.readthedocs.io/en/latest/index.html
+breathe_projects = {'llapi_doxygen': '_llapi_doxygen/xml'}
+breathe_default_project = 'llapi_doxygen'
+breathe_show_define_initializer=True
+breathe_show_enumvalue_initializer=True
 
 remoteliteralinclude_retry_time = 1.0
 remoteliteralinclude_max_retry_time = 180.0
@@ -50,6 +59,7 @@ if 'READTHEDOCS' in os.environ:
 exclude_patterns = [
     '_build',
     '_tools',
+    '_llapi_doxygen',
     'README.rst',
     'section*.rst',
     '**/section*.rst',
