@@ -263,6 +263,9 @@ Both of these functions are described in greater details in ``vee/inc/LLMJVM_CON
 and can be implemented in any BSP source file as long as it includes ``vee/inc/LLMJVM_CONF_impl.h``.
 These methods will then be called during the call to ``SNI_createVM()``.
 
+.. note:: 
+   When using this option and trying to use the :ref:`sdk6_heapdumper`, you must :ref:`Generating a VEE memory dump script<generate_vee_memory_dump_script>` to use it.
+
 
 .. _core_engine_error_codes:
 
