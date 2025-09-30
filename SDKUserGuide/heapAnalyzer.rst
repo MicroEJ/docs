@@ -167,7 +167,8 @@ To simplify the dump commands, consider:
 - Dumping the entire memory where MicroEJ runtime and code sections are linked.
 - Generating the :ref:`VEE memory dump script <generate_vee_memory_dump_script>` to dump all required sections.
 
-.. note:: If the heap is ref::`dynamically configured at Core Engine startup<dynamic_heap_config>`, the correct method for retrieving a ``.hex`` file is by ref::`Generating a VEE memory dump script<generate_vee_memory_dump_script>`.
+.. note:: 
+   If the heap is :ref:`dynamically configured at Core Engine startup<dynamic_heap_config>`, the correct method for retrieving a ``.hex`` file is by :ref:`Generating a VEE memory dump script<generate_vee_memory_dump_script>`.
 
 
 Convert ``.hex`` dump to ``.heap`` dump
