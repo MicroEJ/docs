@@ -73,6 +73,12 @@ SOAR
 
 - Fixed a potential crash when using a sdk6 foundation in a sdk6 version 1.3.0 and under (found with microai).
 
+Tools
+~~~~~
+
+- elf util: fix UpdateSection task used by KF Testsuite to support Portable Independent Executable when ASLR is enabled
+
+
 .. _changelog-8.4.0:
 
 [8.4.0] - 2025-05-28
