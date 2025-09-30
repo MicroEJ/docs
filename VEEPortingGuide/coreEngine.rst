@@ -244,6 +244,26 @@ to the Application:
 
 .. _java.lang.System.currentTimeMillis(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#currentTimeMillis--
 
+.. _dynamic_heap_config:
+
+Configuring Memory Dynamically
+------------------------------
+
+Additionally to using the :ref:`Heap size configuration<option_managed_heap>` :ref:`properties<sdk_6_define_option>`, 
+an enginer can use the Core Engine configuration Low Level API (Located in the ``vee/inc/LLMJVM_CONF_impl.h`` folder of your VEEPort) to interact with the
+initialization of the Managed Heap and the Immortals Heap at the start of the Core Engine rather than at compilation time using :ref:`properties<sdk_6_define_option>`. 
+This allows to dynamically decide the memory footprint an app will use without rebuilding it.
+These two callbacks are optional, as the Core Engine provides a default implementation based on the use of properties.
+These callbacks are : 
+
+- ``LLMJVM_CONF_impl_get_managed_heap_memory`` Which provides a memory region for the managed heap to the Core Engine. 
+- ``LLMJVM_CONF_impl_get_immortals_heap_memory`` Which provides a memory region for the Immortals heap to the Core Engine.
+
+Both of these functions are described in greater details in ``vee/inc/LLMJVM_CONF_impl.h``,
+and can be implemented in any BSP source file as long as it includes ``vee/inc/LLMJVM_CONF_impl.h``.
+These methods will then be called during the call to ``SNI_createVM()``.
+
+
 .. _core_engine_error_codes:
 
 Error Codes
