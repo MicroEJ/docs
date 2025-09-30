@@ -191,6 +191,9 @@ If you are in a Multi-Sandbox context, the following sections must be dumped add
 
                   cat 1_java_heap.hex 9_installed_features.hex > memory.hex
 
+
+.. note:: If the heap is ref::`dynamically configured at Core Engine startup<dynamic_heap_config>`, the correct method for retrieving a ``.hex`` file is by ref::`Generating a VEE memory dump script<generate_vee_memory_dump_script>`.
+
 .. _sdk6_heapdumper_extract_heap:
 
 Extract the Heap dump from the ``.hex`` file
