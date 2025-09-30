@@ -357,6 +357,12 @@ The following table describes these error codes.
    | -25         | The function ``LLMJVM_IMPL_shutdown`` defined in the        |
    |             | Abstraction Layer implementation returns an error.          |
    +-------------+-------------------------------------------------------------+
+   | -28         | The function ``LLMJVM_CONF_impl_get_managed_heap_memory``   |
+   |             | returns an error.                                           |
+   +-------------+-------------------------------------------------------------+
+   | -29         | The function ``LLMJVM_CONF_impl_get_immortals_heap_memory`` |
+   |             | returns an error.                                           |
+   +-------------+-------------------------------------------------------------+
 
 
 Example
