@@ -156,7 +156,7 @@ In a Multi-Sandbox context, additionally dump the following sections:
    
       dump ihex memory &java_features_dynamic_start &java_features_dynamic_end
 
-- Installed features sections specific to your VEE Port, depending on the `LLKERNEL implementation <LLKF-API-SECTION>`:
+- Installed features sections specific to your VEE Port, depending on the :ref:`LLKERNEL implementation<LLKF-API-SECTION>`:
   
   .. code-block:: console
    
