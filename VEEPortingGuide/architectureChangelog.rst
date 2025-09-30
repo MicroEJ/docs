@@ -44,6 +44,7 @@ Core Engine
 
 - Added the ability to dynamically configure the Managed/Immortals Heap memory at Core Engine start time.
 - Fixed Math.nextAfter(float start, double direction), returns start if direction is very close to start.
+- Fixed Remove direct access to errno in ``microejruntime.a``
 
 
 Integration
