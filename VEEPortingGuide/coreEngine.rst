@@ -263,10 +263,6 @@ Both of these functions are described in greater details in ``vee/inc/LLMJVM_CON
 and can be implemented in any BSP source file as long as it includes ``vee/inc/LLMJVM_CONF_impl.h``.
 These methods will then be called during the call to ``SNI_createVM()``.
 
-.. note:: 
-   When using this option and trying to use the :ref:`sdk6_heapdumper`, you must :ref:`Generating a VEE memory dump script<generate_vee_memory_dump_script>` to use it.
-
-
 .. _core_engine_error_codes:
 
 Error Codes
@@ -353,6 +349,11 @@ The following table describes these error codes.
    +-------------+-------------------------------------------------------------+
    | -24         | The function ``LLMJVM_IMPL_vmTaskStarted`` defined in the   |
    |             | Abstraction Layer implementation returns an error.          |
+   +-------------+-------------------------------------------------------------+
+   | -26         | The when the GC mark stack size is too small                |
+   +-------------+-------------------------------------------------------------+
+   | -27         | The application object file has not been correctly linked   |
+   |             | by the third-party linker.                                  |
    +-------------+-------------------------------------------------------------+
    | -25         | The function ``LLMJVM_IMPL_shutdown`` defined in the        |
    |             | Abstraction Layer implementation returns an error.          |
