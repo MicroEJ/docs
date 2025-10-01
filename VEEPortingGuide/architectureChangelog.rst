@@ -39,6 +39,9 @@ specific configuration:
 [8.5.0] - [unreleased]
 ----------------------
 
+This Architecture version update changes the minimum required Java version to Java 11.
+
+
 Core Engine
 ~~~~~~~~~~~
 
