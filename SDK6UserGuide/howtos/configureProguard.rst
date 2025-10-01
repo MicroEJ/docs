@@ -3,9 +3,16 @@
 How To Use Proguard
 ===================
 
-`ProGuard <https://www.guardsquare.com/en/products/proguard>`_ is a tool that shrinks, optimizes, and obfuscates Java code.
+`ProGuard <https://www.guardsquare.com/en/products/proguard>`_ is a tool that shrinks, optimizes, and obfuscates Java code. 
+It can be executed as a task using the official `Proguard Gradle plugin <https://www.guardsquare.com/manual/setup/gradle>`_.
 
-To use Proguard in your project, add the following code in the ``build.gradle.kts``:
+The code below registers a Proguard task that is executed before the publication of a module.
+To use it, insert the snippet into your ``build.gradle.kts`` file.
+
+.. note::
+
+    In this example, the ``javadoc`` and ``sourcesJar`` tasks are set to only include the classes listed with ``-keep`` in the ``module.pro`` file.
+    This avoids publishing Javadoc and sources for the obfuscated classes.
 
 .. code-block:: java
 
@@ -66,15 +73,10 @@ To use Proguard in your project, add the following code in the ``build.gradle.kt
     // Executes the Proguard task before publication
     tasks.named("generateMetadataFileForMicroejPublication") { dependsOn("proguard") }
 
-This code registers a Proguard task that executes when the module is published.
+To run Proguard on the project, you can either call ``./gradlew proguard`` directly or publish the module with ``./gradlew publish``.
 
 The Proguard configuration is defined in a file named ``module.pro`` at the root of the project.
 See the `ProGuard manual <https://www.guardsquare.com/manual/configuration/usage>`_ for all available options.
-
-.. note::
-
-    In this example, the ``javadoc`` and ``sourcesJar`` tasks are set to only include the classes listed with ``-keep`` in the ``module.pro`` file.
-    This avoids publishing Javadoc and sources for the obfuscated classes.
 
 
 ..
