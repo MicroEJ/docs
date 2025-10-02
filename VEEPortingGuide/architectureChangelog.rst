@@ -50,15 +50,6 @@ Core Engine
 - Fixed Remove direct access to errno in ``microejruntime.a``
 
 
-Integration
-~~~~~~~~~~~
-
-- Fixed Memory Map Scripts, which count the application code in the Core Engine category
-
--  Added the ability to dynamically configure the Managed Heap memory at Core Engine start time.
--  Added the ability to dynamically configure the Immortals Heap memory at Core Engine start time.
--  Optimized the FSO build time.
-
 Foundation Libraries
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -71,6 +62,15 @@ Foundation Libraries
 .. _ej.kf.InvalidFormatException: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/InvalidFormatException.html
 .. _StackOverflowError: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/StackOverflowError.html
 
+
+Integration
+~~~~~~~~~~~
+
+- Added the ability to dynamically configure the Managed Heap memory at Core Engine start time.
+- Added the ability to dynamically configure the Immortals Heap memory at Core Engine start time.
+- Optimized the FSO build time.
+- Fixed Memory Map Scripts, which count the application code in the Core Engine category
+
 SOAR
 ~~~~
 
@@ -79,7 +79,7 @@ SOAR
 Tools
 ~~~~~
 
-- elf util: fix UpdateSection task used by KF Testsuite to support Portable Independent Executable when ASLR is enabled
+- Fixed in elf util: UpdateSection task used by KF Testsuite to support Portable Independent Executable when ASLR is enabled
 
 
 .. _changelog-8.4.0:
