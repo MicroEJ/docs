@@ -148,24 +148,9 @@ If you are in a Mono-Sandbox context and do not use :ref:`dynamic Heap configura
 
 You now have the ``.hex`` file and need to extract the Heap dump.
 
-Otherwise, additionally dump the following sections:
+- Otherwise, dump all MICROEJ VEE heaps. See :ref:`VEE memory dump <generate_vee_memory_dump_script>` for how to generate a script for your debugger that dumps all required sections.
 
-- Installed features table:
-  
-  .. code-block:: console
-   
-      dump ihex memory &java_features_dynamic_start &java_features_dynamic_end
-
-- Installed features sections specific to your VEE Port, depending on the :ref:`LLKERNEL implementation<LLKF-API-SECTION>`:
-  
-  .. code-block:: console
-   
-      dump ihex memory <installed_features_start_address> <installed_features_end_address>
-
-To simplify the dump commands, consider:
-
-- Dumping the entire memory where MicroEJ runtime and code sections are linked.
-- Generating the :ref:`VEE memory dump script <generate_vee_memory_dump_script>` to dump all required sections.
+You then have to merge all ``.hex`` files into a single one for the next step.
 
 
 Convert ``.hex`` dump to ``.heap`` dump
