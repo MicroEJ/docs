@@ -151,9 +151,9 @@ Otherwise, you must:
 - generate the :ref:`VEE memory dump script <generate_vee_memory_dump_script>` which will dump all the required sections.
 - :ref:`dump_vee_memory`
 - Depending on if you are using a Mono-Sandbox or a Multi-Sandbox :
-   - In a Mono-Sandbox context, use ``1_java_heap.hex``.
+   - In a Mono-Sandbox context , use ``{N}_java_heap.hex``.
 
-In a Multi-Sandbox context, merge (at least) ``{N}_java_heap.hex`` and ``{N}_installed_features.hex`` with:
+In a Multi-Sandbox context that does not use :ref:`dynamic Heap configuration<dynamic_heap_config>`, merge (at least) ``{N}_java_heap.hex`` and ``{N}_installed_features.hex`` with:
 
       .. tabs::
 
@@ -174,6 +174,30 @@ In a Multi-Sandbox context, merge (at least) ``{N}_java_heap.hex`` and ``{N}_ins
             .. code-block:: bash
 
                cat {N}_java_heap.hex {N}_installed_features.hex > memory.hex
+
+
+If you are using :ref:`dynamic Heap configuration<dynamic_heap_config>` you have to merge all ``.hex`` files  with:
+
+      .. tabs::
+
+         .. tab:: Command Prompt
+
+            .. code-block:: bat
+
+               copy /b *.hex memory.hex
+
+         .. tab:: PowerShell
+
+            .. code-block:: powershell
+
+               Get-ChildItem *.hex | Get-Content -Raw | Set-Content -NoNewline memory.hex
+
+         .. tab:: Bash
+
+            .. code-block:: bash
+
+               cat *.hex > memory.hex
+
 
 You now have a single ``.hex`` file and can continue to the next section.
 
