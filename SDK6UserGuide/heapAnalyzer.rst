@@ -161,19 +161,19 @@ In a Multi-Sandbox context, merge (at least) ``{N}_java_heap.hex`` and ``{N}_ins
 
             .. code-block:: bat
 
-copy /b {N}_java_heap.hex + {N}_installed_features.hex memory.hex
+               copy /b {N}_java_heap.hex + {N}_installed_features.hex memory.hex
 
          .. tab:: PowerShell
 
             .. code-block:: powershell
 
-Get-Content {N}_java_heap.hex, {N}_installed_features.hex | Set-Content memory.hex
+               Get-Content {N}_java_heap.hex, {N}_installed_features.hex | Set-Content memory.hex
 
          .. tab:: Bash
 
             .. code-block:: bash
 
-cat {N}_java_heap.hex {N}_installed_features.hex > memory.hex
+               cat {N}_java_heap.hex {N}_installed_features.hex > memory.hex
 
 You now have a single ``.hex`` file and can continue to the next section.
 
