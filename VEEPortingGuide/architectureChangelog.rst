@@ -76,6 +76,7 @@ SOAR
 ~~~~
 
 - Fixed a potential crash when using a sdk6 foundation in a sdk6 version 1.3.0 and under (found with microai).
+- Fixed a potential issue where SOAR could report an 'unknown field' error for a field that exists.
 
 Tools
 ~~~~~
