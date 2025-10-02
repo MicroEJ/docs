@@ -29,13 +29,14 @@ Let's have a look at the mostly used configurations:
 - **testImplementation** (from Gradle Java plugin) : Dependencies used by the test classes of the project.
   This configuration extends the **implementation** configuration, so it inherits from all the dependencies declared with the **implementation** configuration.
 - **microejVee** : VEE Port, Virtual Device or Kernel used by the project for build and test.
+- **testMicroejVee** : VEE Port, Virtual Device or Kernel used by the project for test only.
 
 Here is an example of dependencies declaration for a project::
 
    dependencies {
       implementation("ej.library.runtime:basictool:1.7.0")
 
-      testImplementation("ej.library.test:junit:1.7.1")
+      testImplementation("ej.library.test:junit:1.12.0")
 
       microejVee("com.microej.platform.esp32.esp-wrover-kit-v41:HDAHT:1.8.0")
    }
@@ -67,7 +68,9 @@ The version declared in the dependencies of a build file are explicit:
    or a snapshot version (e.g., ``1.0.0-RCxxx``) otherwise. 
    This is not the case anymore in the SDK 6.
 
-Version check
+.. _sdk_6_dependency_version_check:
+
+Version Check
 ^^^^^^^^^^^^^
 
 In order to reduce the risk of mistakes, a check is done during the resolution process on the declared dependencies versions.
@@ -88,13 +91,13 @@ the following error is raised:
   Execution failed for task ':dependencies'.
   > The version of the dependency "ej.api:edc" is not correct: "x1.3.5". It must start with digits, followed by a dot.
 
-It is possible to disable this check by setting the ``versionsCheckEnabled`` 
+It is possible to disable this check by setting the ``dependenciesVersionsCheckEnabled`` 
 property of the ``microej`` configuration block to ``false`` in the project build file:
 
 .. code-block:: java
 
   microej {
-    versionsCheckEnabled = false
+    dependenciesVersionsCheckEnabled = false
   }
 
 
@@ -111,7 +114,7 @@ It is important to note that the declaration order of the repositories matters.
 Gradle requests the repositories in the order they are declared and stops as soon as it finds a matching version.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

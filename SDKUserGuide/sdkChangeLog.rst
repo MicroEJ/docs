@@ -177,6 +177,39 @@ SDK Distribution Changelog
 SDK Changelog
 -------------
 
+.. _changelog-5.9.0:
+
+[5.9.0] - 2024-07-23
+~~~~~~~~~~~~~~~~~~~~
+
+General
+"""""""
+
+- Hide MicroEJ project wizards when SDK 5 is installed in an Eclipse distribution including SDK 6 plugins.
+
+MicroEJ Module Manager
+""""""""""""""""""""""
+
+General
+^^^^^^^
+
+- Upgraded Testsuite Engine to version 5.8.1 to separate test cases in the testsuite reports and escape console output in HTML report to prevent code injection.
+
+Build Types
+^^^^^^^^^^^
+
+- Set default Java test compile version to 1.8 for ``build-std-javalib`` and ``build-microej-mock`` build types.
+
+- New build types added:
+
+  - build-application#9.3.0
+  - build-firmware-singleapp#2.4.0
+  - build-microej-javaimpl#5.3.0
+  - build-microej-javalib#6.3.0
+  - build-microej-mock#2.2.1
+  - build-microej-testsuite#4.3.0
+  - build-std-javalib#3.3.1
+
 .. _changelog-5.8.2:
 
 [5.8.2] - 2024-01-31
@@ -1142,7 +1175,7 @@ General
    minimum required version of SDK (``sdk.min.version``
    property)
 -  Updated ``New Standalone Application Project`` wizard to
-   generate a single-app firmware skeleton
+   generate a Mono-Sandbox Executable skeleton
 -  Updated Virtual Device Builder to manage Sandboxed
    Applications (compatible with Architectures Products ``*_7.10.0`` or
    newer)
@@ -1183,7 +1216,7 @@ Build Types
    (``architecture.properties``)
 -  Updated Virtual Device Builder to generate with ``.vde``
    extension
--  Updated Multi-app Firmware Builder to embed (Sim/Emb)
+-  Updated Multi-Sandbox Executable Builder to embed (Sim/Emb)
    specific modules (Add-On libraries and pre-installed Applications)
 -  Fixed ``build-microej-ri`` v1.2.1 missing dependencies
    (embedded in SDK 4.1.5)
@@ -1200,6 +1233,28 @@ Skeletons
 -------------------
 Build Types per SDK
 -------------------
+
+- SDK 5.9.0
+
+  - build-addon-processor#2.2.0
+  - build-application#9.3.0
+  - build-artifact-repository#3.4.0
+  - build-custom#2.2.0
+  - build-firmware-customizer#3.2.0
+  - build-firmware-multiapp#8.2.0
+  - build-firmware-singleapp#2.4.0
+  - build-izpack#3.3.0
+  - build-microej-extension#2.2.0
+  - build-microej-javaapi#5.2.0
+  - build-microej-javaimpl#5.3.0
+  - build-microej-javalib#6.3.0
+  - build-microej-mock#2.2.1
+  - build-microej-ri#3.2.0
+  - build-microej-testsuite#4.3.0
+  - build-product-java#2.2.0
+  - build-runtime-api#4.1.0
+  - build-std-javalib#3.3.1
+  - microej-meta-build#3.0.0
 
 - SDK 5.8.2
 
@@ -1423,7 +1478,7 @@ Build Types per SDK
 
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

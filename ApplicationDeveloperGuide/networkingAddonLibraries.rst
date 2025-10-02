@@ -62,50 +62,6 @@ IoT Libraries
       -  - `WebSocket client README <https://repository.microej.com/modules/ej/library/iot/websocket/2.0.0/README-2.0.0.md>`_
          - `WebSocket client Example <https://github.com/MicroEJ/Example-IOT/tree/master/ssl-websocket>`_  
 
-
-Data Serialization Libraries
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. list-table::
-   :header-rows: 1
-   :widths: 10 30 10 20 20
-
-   *  -  Name
-      -  Description
-      -  Module Link
-      -  API Link
-      -  Use
-
-   *  -  ``CBOR``
-      -  Concise Binary Object Representation (CBOR) encoder and decoder (RFC 7049).
-      -  `cbor <https://repository.microej.com/modules/ej/library/iot/cbor/>`_
-      -  - `CborEncoder class <https://repository.microej.com/javadoc/microej_5.x/apis/ej/cbor/CborEncoder.html>`_
-         - `CborDecoder class <https://repository.microej.com/javadoc/microej_5.x/apis/ej/cbor/CborDecoder.html>`_
-      -  - :ref:`CBOR Tutorial <tutorial_cbor>`
-
-   *  -  ``JSON``
-      -  JavaScript Object Notation (JSON) encoder and decoder.
-      -  `json <https://repository.microej.com/modules/ej/library/iot/json/>`_
-      -  - `JSONObject class <https://repository.microej.com/javadoc/microej_5.x/apis/org/json/me/JSONObject.html>`_ (decoder)
-         - `JSONWriter class <https://repository.microej.com/javadoc/microej_5.x/apis/org/json/me/JSONWriter.html>`_ (encoder)
-      -  - `README <https://repository.microej.com/modules/ej/library/iot/json/1.0.0/README-1.0.0.md>`_
-         - :ref:`JSON Tutorial <tutorial_json>`
-
-   *  -  ``Protocol Buffers``
-      -  Google Protocol Buffers 3 encoder and decoder, supporting files compiled by ``protoc`` with lite plugin.
-      -  `protobuf3 <https://repository.microej.com/modules/com/google/protobuf3/>`_
-      -  - `CodedInputStream class <https://repository.microej.com/javadoc/microej_5.x/apis/com/google/protobuf/CodedInputStream.html>`_ (decoder)
-         - `CodedOutputStream class <https://repository.microej.com/javadoc/microej_5.x/apis/com/google/protobuf/CodedOutputStream.html>`_ (encoder)
-      -  - `Protobuf3 Example <https://github.com/MicroEJ/Demo-Protobuf3>`_
-
-   *  -  ``XML``
-      -  eXtensible Markup Language encoder and decoder (`kXML 3 <http://kxml.sourceforge.net/about.shtml>`_).
-      -  `kxml2 <https://repository.microej.com/modules/org/kxml2/kxml2/>`_
-      -  - `XmlPullParser class <https://repository.microej.com/javadoc/microej_5.x/apis/org/xmlpull/v1/XmlPullParser.html>`_ (decoder)
-         - `XmlSerializer class <https://repository.microej.com/javadoc/microej_5.x/apis/org/xmlpull/v1/XmlSerializer.html>`_ (encoder)
-      - - :ref:`XML Tutorial <tutorial_xml>`
-
-
 Cloud Agent Libraries
 ~~~~~~~~~~~~~~~~~~~~~
 
@@ -124,12 +80,8 @@ Cloud Agent Libraries
       -  - `AWS IoT Core README <https://repository.microej.com/modules/ej/library/iot/aws-iot/2.0.0/README-2.0.0.md>`_
          - `AWS IoT Core Example <https://github.com/MicroEJ/AWS>`_
 
-   *  -  ``Google Cloud Platform Iot Core``
-      -  Google Cloud Platform Iot Core client.
-      -  `gcp-iotcore <https://forge.microej.com/artifactory/microej-developer-repository-release/googlecloud/iotcore/>`_
-      -  - `Google Cloud Platform Getting Started <https://developer.microej.com/features/iot-connectivity/get-started-google-cloud-iot-core-connectivity/>`_
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free
    for read and redistribute. Except if otherwise stated, modification
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and

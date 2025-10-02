@@ -20,7 +20,7 @@ Functional Description
 ======================
 
 The Input module implements the MicroUI ``int``-based event generators' framework.
-``LLUI_INPUT`` specifies the Abstraction Layer APIs that send events to the Java world.
+``LLUI_INPUT`` specifies the Abstraction Layer APIs that send events to the Managed world.
 
 Drivers for input devices must generate events that are sent, via a MicroUI `Event Generator`_, to the application.
 An event generator accepts notifications from devices, and generates an event in a standard format that can be handled by the application.
@@ -538,8 +538,8 @@ The following steps describe how the dump is performed:
 An implementation is available on the :ref:`MicroUI C module<section_ui_releasenotes_cmodule>`.
 This logger is constituted with two files:
 
-* ``LLUI_INPUT_LOG_impl.c``: this file holds some metadata for each event. When the event engine calls ``LLUI_INPUT_IMPL_log_dump()``, the logger retrieves the event metadata and calls ``microui_event_decoder.c`` functions. To enable this logger, set the define ``MICROUIEVENTDECODER_ENABLED`` in ``microui_event_decoder_conf.h``.
-* ``microui_event_decoder.c``: this file describes the MicroUI events. It has to be customized with the MicroUI event generators identifiers. See ``microui_event_decoder_conf.h``.
+* ``LLUI_INPUT_LOG_impl.c``: this file holds some metadata for each event. When the event engine calls ``LLUI_INPUT_IMPL_log_dump()``, the logger retrieves the event metadata and calls ``microui_event_decoder.c`` functions. To enable this logger, set the define ``UI_FEATURE_EVENT_DECODER`` in ``ui_configuration.h``.
+* ``microui_event_decoder.c``: this file describes the MicroUI events. It has to be customized with the MicroUI event generators identifiers. See ``ui_configuration.h``.
 
 Example of a dump:
 
@@ -620,7 +620,7 @@ Use
 The MicroUI Input APIs are available in the classes of packages ``ej.microui.event`` and ``ej.microui.event.generator``.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

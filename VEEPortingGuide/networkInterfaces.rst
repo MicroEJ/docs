@@ -21,29 +21,47 @@ Installation
 
 The Network :ref:`Pack <pack_overview>` module must be installed in your VEE Port.
 
-In the Platform configuration project, (``-configuration`` suffix), add
-the following dependency to the :ref:`module.ivy <mmm_module_description>` file:
+.. tabs::
 
-::
+   .. tab:: SDK 6 (build.gradle.kts)
 
-	<dependency org="com.microej.pack.ecom-network" name="ecom-network-pack" rev="1.0.0" />
+      .. code-block:: kotlin
 
-The Platform project must be rebuilt (:ref:`platform_build`).
+         microejPack("com.microej.pack.ecom-network:ecom-network-pack:1.0.0")
+
+   .. tab:: SDK 5 (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="com.microej.pack.ecom-network" name="ecom-network-pack" rev="1.0.0" />
+
+      Then the VEE Port project must be rebuilt (:ref:`platform_build`).
+
 
 Use
 ===
 
-The `Network API Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` file of the 
-Application project:
+The `Network API Module`_ module must be added to the Application project build file to use the Network library:
 
-::
+.. tabs::
 
-	<dependency org="ej.api" name="ecom-network" rev="2.1.1"/>
+   .. tab:: SDK 6 (build.gradle.kts)
+
+      .. code-block:: kotlin
+
+         implementation("ej.api:ecom-network:2.1.1")
+
+   .. tab:: SDK 5 (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="ej.api" name="ecom-network" rev="2.1.1"/>
+         
 
 .. _Network API Module: https://repository.microej.com/modules/ej/api/ecom-network/
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

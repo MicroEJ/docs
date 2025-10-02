@@ -1,7 +1,7 @@
 .. _chapter.nls:
 
-Native Language Support
-=======================
+Native Language Support (NLS)
+=============================
 
 Introduction
 ------------
@@ -57,6 +57,8 @@ And here is an example of an Android String resource:
 .. hint::
 
    The Android String resources `string arrays <https://developer.android.com/guide/topics/resources/string-resource#StringArray>`_ feature is also supported.
+
+.. _section.nls.list_files:
 
 NLS List Files
 --------------
@@ -141,32 +143,92 @@ However, you can also pick this locale to default to yourself, by adding a ``com
 Plural Forms
 ------------
 
-Version 4.0.0 of the `NLS module`_ and version 3.0.0 of the `binary-nls`_ module introduce the support of GNU gettext's plural form feature in PO files.
+The version 4.0.0 of the `NLS module`_ and version 3.0.0 of the `binary-nls`_ module introduce the support of `GNU gettext's plural forms`_ feature in PO files.
+The version 3.2.0 of `binary-nls`_ adds support of plural forms for Android String resources `quantity strings <https://developer.android.com/guide/topics/resources/string-resource#Plurals>`_.
 
-.. warning:: This feature concerns only the PO files, not the Android String resources `quantity strings <https://developer.android.com/guide/topics/resources/string-resource#Plurals>`_ .
+This feature allows the localizations to define plural forms and adapt the localized messages based on a numeric value using `ej.nls.NLS.getMessage(id, count)`_:
 
-This allows usage of ``Plural-Forms`` header entries and several ``msgstr`` 's per ``msgid`` (referred to as plural forms) `as specified by gettext`_; you can then retrieve the correct message in a locale for a given count of things by using the `ej.nls.NLS.getMessage()`_ methods that take in this count value as an argument.
+   .. code-block:: java
 
-If a message for a given ``msgid`` has a ``msgid_plural`` and plural forms in a PO file for an interface declared in an NLS list file, it must also have plural forms in all other PO files for this interface.
+      int count;
+      String localizedMessagePlural = MyLabels.NLS.getMessage(MyLabels.MyMessageId, count);
+
+The mapping of ``count`` to a quantity depends on the locale. The `binary-nls`_ plural engine is based on `GNU gettext's plural forms`_.
+Each localization file (PO or XML) that makes use of plural forms must specify the plural rule for the associated locale.
+The rule is defined in `GNU gettext's plural forms`_ format. See the manual (previous link) to get the plural forms for many languages.
+
+.. tabs::
+
+   .. tab:: GNU gettext (PO)
+
+      First, set the plural rule using the ``Plural-Forms`` header entry. Then, for each ``msgid``, set the ``msgstr`` for all plural forms.
+
+      .. code-block:: po
+
+         "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;"
+
+         msgid "One file removed"
+         msgid_plural "%d files removed"
+         msgstr[0] "%d slika je uklonjena"
+         msgstr[1] "%d datoteke uklonjenih"
+         msgstr[2] "%d slika uklonjenih"
+
+   .. tab:: Android String resources (XML)
+
+      `binary-nls`_ maps a quantity to a plural form index and then makes use of a plural rule similar to that found
+      in PO files to map the ``count`` to the localized message for the associated quantity.
+      This rule must be added to your XML file with a custom ``<ej-plural-rule>`` element.
+      For example, the plural rule for French could look like this:
+
+      .. code-block:: xml
+
+         <resources>
+             <ej-plural-rule nplurals="3">
+                 (n > 1) ? 0 : 1
+             </ej-plural-rule>
+
+             <plurals name="Plural forms">
+                 <item quantity="one">%d fruit</item>
+                 <item quantity="many">%d fruits</item>
+                 <item quantity="other">%d fruits</item>
+             </plurals>
+         </resources>
+
+      The ``nplurals`` attribute must be set to the number of quantity keys supported by the locale language,
+      as defined in `Unicode CLDR Language Plural Rules`_ (for cardinal type).
+      The returned index corresponds to the index of supported quantities, in order from the list ``zero``, ``one``, ``two``, ``few``, ``many``, and ``other``.
+      For example, in French, ``one``, ``many`` and ``other`` are supported, and they are indexed by, respectively, ``0``, ``1``, and ``2`` (and ``nplurals`` must be set to ``3``).
+
+
+.. note::
+
+    If a locale defines plural forms for a message, all other locales for the same NLS interface must provide the plural forms for this message.
+
+.. note::
+
+   The plural rule can only be set at build time. When updating NLS locale data using `nls_external_resource`_, only the localized messages can be updated.
+   It assumes that the plural rule used is the same as when the application was built.
 
 .. note::
 
    Please note that one significant difference with gettext's implementation is that the expression described in the ``plural`` field of the ``Plural-Forms`` header must be a valid **Java** expression returning an ``int``, as opposed to a C expression. A usual case in which this makes a difference is for expressions that rely on boolean values being evaluated as zero or one in C, such as in: 
 
-   .. code-block::
+   .. code-block:: po
 
       "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
    This expression will not work with our implementation as Java does not interpret booleans as integers. An easy way to convert this expression would be:
 
-   .. code-block::
+   .. code-block:: po
 
       "Plural-Forms: nplurals=2; plural=n != 1 ? 1 : 0;\n"
 
-   Also note that the validity of these provided expressions is not entirely checked. Providing an expression that is not valid Java or that would return an invalid plural form index would cause errors at runtime or even in the Java files generated by the Add-On Processor.
+   Also note that the validity of these provided expressions is not entirely checked. Providing an expression that is not valid Java code or that would return an invalid plural form index would cause errors at runtime or even in the Java files generated by the Add-On Processor.
 
 .. _NLS module: https://repository.microej.com/modules/ej/library/runtime/nls/
-.. _as specified by gettext: https://www.gnu.org/software/gettext/manual/html_node/Plural-forms.html
+.. _GNU gettext's plural forms: https://www.gnu.org/software/gettext/manual/html_node/Plural-forms.html
+.. _ej.nls.NLS.getMessage(id, count): https://repository.microej.com/javadoc/microej_5.x/apis/ej/nls/NLS.html#getMessage-int-int-
+.. _Unicode CLDR Language Plural Rules: https://www.unicode.org/cldr/charts/47/supplemental/language_plural_rules.html
 
 Missing Translations
 --------------------
@@ -875,6 +937,172 @@ Unless it is also referenced by an ``.externresources.list`` in which case the S
 
 This resource is loaded as soon as the BinaryNLS instance is created, in the clinit of the generated NLS interface (see :ref:`Principle <section.nls.principle>`).
 
+.. _nls_external_resource:
+
+External Resource
+-----------------
+
+When the resource is also referenced by a ``.nls.externresources.list`` file (cf. :ref:`section.nls.list_files`),
+it can be loaded as External Resource in order to be loaded from an external memory (e.g. from a FileSystem).
+
+.. note::
+ 
+ This mode requires to setup the :ref:`External Resources Loader<section_externalresourceloader>` in the VEE Port.
+
+Usage
+^^^^^
+
+The procedure below assumes that the application already has localization source files named ``HelloWorldMessages*.po``
+referenced as internal resources in a ``.nls.list`` file. 
+The localization source files are declared as follows in the ``.nls.list`` file: ``com.microej.example.nls.generated.HelloWorldMessages``.
+
+The procedure below explains how to declare those translations as an External Resource:
+
+- Create a ``.nls.externresources.list`` file next to the ``.nls.list`` file,
+- Add the path to the generated External Resource. This path can be deduced from the declaration done in the
+  ``.nls.list`` file, for example:
+  
+  Content of the ``.nls.list`` file:
+
+  .. code::
+
+    com.microej.example.nls.generated.HelloWorldMessages
+
+  Path to add in the ``.nls.externresources.list`` file:
+
+  .. code::
+
+    /com/microej/example/nls/generated/HelloWorldMessages.nls
+   
+  This path can also be found in the application build folder once the application has been built for the device 
+  (e.g. ``build/adp/src-adpgenerated/binarynls/java/com/microej/exercises/generated/HelloWorldMessages.nls.resources.list``).
+  
+- Build the application for the device,
+- Open the :ref:`soar_map_file` file to check that the translations are not embedded anymore in the application binary.
+  The ``xxx_HelloWorldMessages_*.nls`` lines **must** not appear anymore in the ``ApplicationResources`` section.
+- The resource containing translations is now located in the :ref:`External Resources Folder <external_resources_folder>`
+  (e.g. ``build/application/object/externalResources/com/microej/exercises/generated/HelloWorldMessages.nls``).
+  This resource must be embedded on the target and loaded using the External Resources Loader.
+  For more information, refer to the :ref:`External Resources Loader Use section <external_resources_folder.use>`.
+
+When using a resource referenced as External Resource,
+the application is not guaranteed to access it at startup (external memory failure, corruption, ...).
+
+The application can be configured to fallback on a default resource embedded in the Application binary.
+This resource can be a "lighter" version of the one loaded using the External Resources Loader (e.g. only embed the English language).
+
+Fallback on Default Resource
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The procedure below assumes that the application already has localization source files named 
+``HelloWorldMessages*.po`` that are referenced as External Resource.
+
+The procedure below explains how to setup the fallback on a default resource embedding the ``en_US`` locale only:
+
+- Create a new localization source file in the ``src/main/resources`` folder (e.g. ``HelloWorldMessagesDefault_en_US.po``).
+  This file should contain the same translations as ``HelloWorldMessages_en_US.po``,
+- Declare it in the ``*.nls.list`` file (e.g. ``com.microej.example.nls.generated.HelloWorldMessagesDefault``),
+- Create a new class that implements the ``NLS`` interface (e.g. ``DefaultNLS``),
+- Implement every method, wrapping on ``HelloWorldMessagesDefault``:
+
+.. code-block:: java
+
+	public class DefaultNLS implements NLS {
+	
+		@Override
+		public String[] getAvailableLocales() {
+			return HelloWorldMessagesDefault.NLS.getAvailableLocales();
+		}
+	
+		@Override
+		public String getDisplayName(String locale) {
+			return HelloWorldMessagesDefault.NLS.getDisplayName(locale);
+		}
+		...
+
+- Set the ``DefaultNLS`` class as the default NLS implementation:
+
+  - Create a ``*.properties.list`` file in the ``src/main/resources`` folder (if not already created),
+  - Add the following property in this file: ``com.microej.binarynls.defaultImplementation=[FULLY QUALIFIED NAME TO DEFAULT IMPLEMENTATION CLASS]``
+    (e.g. ``com.microej.binarynls.defaultImplementation=com.microej.example.nls.DefaultNLS``).
+
+- Declare ``DefaultNLS`` as a :ref:`Required type <section.classpath.elements.types>`:
+
+   - Create a ``*.types.list`` file in the ``src/main/resources`` folder (if not already created),
+   - Add the fully qualified name of the class (e.g. ``com.microej.example.nls.DefaultNLS``).
+
+To guarantee the proper application operation, the default translations (``HelloWorldMessagesDefault``) 
+must be consistent with the translations embedded in External Memory (``HelloWorldMessages``).
+In other words, they must contain the exact same set of messages.
+
+- Add the following code in the ``Main`` class to perform the consistency check at startup:
+
+.. code-block:: java
+
+	static {
+		if (HelloWorldMessagesDefault.KeysCRC32 != HelloWorldMessages.KeysCRC32) {
+			throw new RuntimeException(
+					"CRC check fail between default and fallback translations. Make sure PO files are aligned.");
+		}
+	}
+
+.. warning:: This implementation only checks the consistency of ``msgid``, it does not check the content of ``msgstr``. PO files should be checked carefully to avoid deviation between translations.
+
+The logs below are showing the expected behavior when the resource can be loaded or can't be loaded from External Memory:
+
+.. tabs::
+
+   .. tab:: Resource Loaded from External Memory
+
+      .. code-block:: console
+
+         MicroEJ START
+         Available locales:
+         - en_US
+         - es_FR
+         - fr_FR
+         Saying:
+         English (US) (en_US)
+         - Hello, World
+         - What's up?
+         Español (es_FR)
+         - Hola, Mundo
+         - ¿ Qué tal ?
+         Français (fr_FR)
+         - Bonjour, Le Monde
+         - Ça va ?
+         MicroEJ END (exit code = 0)
+
+   .. tab:: Fallback on Default Resource (External Memory failure)
+
+      .. code-block:: console
+
+         MicroEJ START
+         NLS-PO:I=6
+         Exception in thread "main" java.io.IOException: NLS-PO:S=1
+             at java.lang.System.getStackTrace(Unknown Source)
+             at java.lang.Throwable.fillInStackTrace(Throwable.java:82)
+             at java.lang.Throwable.<init>(Throwable.java:37)
+             at java.lang.Exception.<init>(Exception.java:18)
+             at java.io.IOException.<init>(IOException.java:18)
+             at com.microej.nls.BinaryNLS.loadBinFile(BinaryNLS.java:385)
+             at com.microej.nls.BinaryNLS.<init>(BinaryNLS.java:203)
+             at com.microej.nls.BinaryNLS.newBinaryNLSInternal(BinaryNLS.java:161)
+             at com.microej.nls.BinaryNLS.newBinaryNLS(BinaryNLS.java:155)
+             at com.microej.example.nls.generated.HelloWorldMessages.<clinit>(HelloWorldMessages.java:19)
+             at java.lang.Thread.execClinit(Unknown Source)
+             at java.lang.Thread.clinitWrapper(Thread.java:483)
+             at java.lang.Thread.callWrapper(Thread.java:449)
+ 
+         Available locales:
+         - en_US
+         Saying:
+         English (US) (en_US)
+         - Hello, World
+         - What's up?
+         MicroEJ END (exit code = 0)
+
+
 .. _section.nls.limitations:
 
 Limitations
@@ -893,8 +1121,8 @@ close this resource, before it can potentially be modified depending on the exte
 
 .. _chapter.microej.nlsExternalLoader:
 
-NLS External Loader Tool
-------------------------
+Virtual Device PO Loader Tool
+-----------------------------
 
 The `NLS External Loader`_ tool allows to update the PO files of an application executed on a Virtual Device without rebuilding it.
 PO files can be dropped in a given location in the Virtual Device folders to dynamically replace the language strings packaged in the application.
@@ -915,7 +1143,7 @@ To enable the NLS External Loader in the Virtual Device, add the following depen
 
       .. code-block:: java
 
-         implementation("com.microej.tool:nls-po-external-loader:3.0.0")
+         microejTool("com.microej.tool:nls-po-external-loader:3.0.0")
 
    .. tab:: MMM (module.ivy)
 
@@ -1002,7 +1230,7 @@ A new dependency must be added to Firmware project dependencies to enable this i
 
       .. code-block:: java
 
-         implementation("com.microej.tool:nls-po-crowdin:1.0.0")
+         microejTool("com.microej.tool:nls-po-crowdin:1.0.0")
 
    .. tab:: MMM (module.ivy)
 
@@ -1024,7 +1252,7 @@ therefore the new translations are applied after the next Virtual Device restart
 .. _Crowdin: https://repository.microej.com/modules/com/microej/tool/nls-po-crowdin/
 
 ..
-   | Copyright 2020-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2020-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

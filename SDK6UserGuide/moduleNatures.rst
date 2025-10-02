@@ -15,9 +15,11 @@ This page describes the most common module natures as follows:
 Add-On Library
 --------------
 
-**Plugin Name**: ``com.microej.gradle.addon-library``
+**Plugin Name**: ``com.microej.gradle.library``
 
 **Documentation**: :ref:`libraries`
+
+**Template**: `Add-On Library Project Template <https://github.com/MicroEJ/Tool-Project-Template-Add-On-Library/tree/1.5.1>`__
 
 **Tasks**:
 
@@ -26,7 +28,6 @@ This plugin adds the following tasks to your project:
 - tasks of the `Gradle Java plugin <https://docs.gradle.org/current/userguide/java_plugin.html>`__
 - :ref:`sdk6_module_natures.tasks.adp`
 - :ref:`sdk6_module_natures.tasks.loadVee`
-- :ref:`sdk6_module_natures.tasks.runOnSimulator`
 - :ref:`sdk6_module_natures.tasks.checkModule`
 - :ref:`sdk6_module_natures.tasks.execTool`
 
@@ -36,7 +37,6 @@ This plugin adds the following tasks to your project:
 
 This module nature inherits from the configuration of all its tasks.
 
-
 .. _sdk6_module_natures.application:
 
 Application
@@ -44,7 +44,9 @@ Application
 
 **Plugin Name**: ``com.microej.gradle.application``
 
-**Documentation**: :ref:`standalone_application`
+**Documentation**: :ref:`standalone_application`, :ref:`sandboxed_application`, :ref:`kernel-developer-guide`
+
+**Template**: `Application Project Template <https://github.com/MicroEJ/Tool-Project-Template-Application/tree/1.5.1>`__
 
 **Tasks**:
 
@@ -65,16 +67,19 @@ This plugin adds the following tasks to your project:
 - :ref:`sdk6_module_natures.tasks.execTool`
 - :ref:`sdk6_module_natures.tasks.generateApplicationWrapper`
 - :ref:`sdk6_module_natures.tasks.compileWrapperJava`
+- :ref:`sdk6_module_natures.tasks.buildFeatureFromWPK`
+- :ref:`sdk6_module_natures.tasks.shrinkRuntimeEnvironment`
 
 .. graphviz:: graphApplicationModule.dot
 
+.. _sdk6_module_natures.jse_lib:
 
-.. _sdk6_module_natures.j2se_lib:
+Java SE Library
+---------------
 
-J2SE Library
-------------
+**Plugin Name**: ``com.microej.gradle.jse-library``
 
-**Plugin Name**: ``com.microej.gradle.j2se-library``
+**Template**: `Java SE Library Template <https://github.com/MicroEJ/Tool-Project-Template-JavaSE-Library/tree/1.4.1>`__
 
 **Tasks**:
 
@@ -83,12 +88,11 @@ This plugin adds the following tasks to your project:
 - tasks of the `Gradle Java plugin <https://docs.gradle.org/current/userguide/java_plugin.html>`__
 - :ref:`sdk6_module_natures.tasks.checkModule`
 
-.. graphviz:: graphJ2seLibraryModule.dot
+.. graphviz:: graphJavaSeLibraryModule.dot
 
 **Configuration**:
 
 This module nature inherits from the configuration of all its tasks.
-
 
 .. _sdk6_module_natures.mock:
 
@@ -96,6 +100,10 @@ Mock
 ----
 
 **Plugin Name**: ``com.microej.gradle.mock``
+
+**Documentation**: :ref:`mock`
+
+**Template**: `Mock Project Template <https://github.com/MicroEJ/Tool-Project-Template-Mock/tree/1.5.1>`__
 
 **Tasks**:
 
@@ -106,6 +114,61 @@ This plugin adds the following tasks to your project:
 - :ref:`sdk6_module_natures.tasks.buildMockRip`
 
 .. graphviz:: graphMockModule.dot
+
+**Configuration**:
+
+This module nature inherits from the configuration of all its tasks.
+
+.. _sdk6_module_natures.runtime-environment:
+
+Runtime Environment
+-------------------
+
+**Plugin Name**: ``com.microej.gradle.runtime-environment``
+
+**Documentation**: :ref:`runtime_environment`
+
+**Template**: `Runtime Environment Template <https://github.com/MicroEJ/Tool-Project-Template-Runtime-Environment/tree/1.4.1>`__
+
+**Tasks**:
+
+This plugin adds the following tasks to your project:
+
+- tasks of the `Gradle Java plugin <https://docs.gradle.org/current/userguide/java_plugin.html>`__
+- :ref:`sdk6_module_natures.tasks.checkModule`
+- :ref:`sdk6_module_natures.tasks.shrinkRuntimeEnvironment`
+- :ref:`sdk6_module_natures.tasks.compileRuntimeEnvironment`
+- :ref:`sdk6_module_natures.tasks.builRuntimeEnvironmentJar`
+
+.. graphviz:: graphRuntimeEnvironmentModule.dot
+
+**Configuration**:
+
+This module nature inherits from the configuration of all its tasks.
+
+.. _sdk6_module_natures.veeport:
+
+VEE Port
+--------
+
+**Plugin Name**: ``com.microej.gradle.veeport``
+
+**Documentation**: :ref:`vee-porting-guide`
+
+**Template**: `VEE Port Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.4.0>`__
+
+**Tasks**:
+
+This plugin adds the following tasks to your project:
+
+- :ref:`sdk6_module_natures.tasks.checkModule`
+- :ref:`sdk6_module_natures.tasks.buildVeePort`
+- :ref:`sdk6_module_natures.tasks.buildVeePortConfiguration`
+- :ref:`sdk6_module_natures.tasks.extractLibrariesSources`
+- :ref:`sdk6_module_natures.tasks.javadoc`
+- :ref:`sdk6_module_natures.tasks.javadocJar`
+
+.. graphviz:: graphVeePortModule.dot
 
 **Configuration**:
 
@@ -189,7 +252,6 @@ runOnSimulator
 
 This task is used by the following module natures:
 
-- :ref:`sdk6_module_natures.addon_lib`
 - :ref:`sdk6_module_natures.application`
 
 **Configuration**:
@@ -233,6 +295,8 @@ This task is used by the following module natures:
 
 - :ref:`sdk6_module_natures.addon_lib`
 - :ref:`sdk6_module_natures.application`
+- :ref:`sdk6_module_natures.mock`
+- :ref:`sdk6_module_natures.runtime-environment`
 
 **Configuration**:
 
@@ -256,6 +320,9 @@ This task provides the following properties that can be defined in the ``microej
      - Comma-separated list of the names of the checkers to exclude. 
        Only one property of ``checkers`` and ``skippedCheckers`` can be defined.
      - ``""``
+   * - ``checkersRootDir``
+     - Path of the directory to use as root directory for the checkers.
+     - Project directory.
 
 For example:
 
@@ -401,12 +468,12 @@ buildFeature
 - The Kernel Virtual Device 
 - The folder containing the Kernel Executable file (``build/kernelExecutable``)
 - The project classpath
-- The path of the folder where the Feature file must be generated (``build/feature/application``)
+- The path of the folder where the Feature file must be generated (``build/application/feature``)
 
 **Outputs**:
 
-- The generated Feature file (``build/feature/application/application.fo``)
-- The Zip file containing the generated build files (``build/"libs/<application_name>-feature.zip"``)
+- The generated Feature file (``build/application/feature/application.fo``)
+- The Zip file containing the generated build files (``build/libs/<application_name>-buildFiles.zip``)
 
 **Module Natures**:
 
@@ -424,7 +491,7 @@ runOnDevice
 **Inputs**:
 
 - The extracted VEE Port folder
-- The folder containing the Executable file (``build/executable/application``)
+- The folder containing the Executable file (``build/application/executable``)
 - The configuration file with all the properties set to launch the build of the Executable (``build/properties/target.properties``)
 
 **Module Natures**:
@@ -467,6 +534,19 @@ execTool
 - The configuration file with all the properties set to launch the application (``build/properties/target.properties``)
 - The folder containing the application configuration (``configuration``)
 
+**Options**:
+
+
+.. list-table::
+   :widths: 25 25
+
+   * - **Option**
+     - **Description**
+   * - ``name``
+     - ``Name of the Tool.``
+   * - ``toolProperty``
+     - ``Option of the Tool.``
+
 **Module Natures**:
 
 This task is used by the following module natures:
@@ -490,7 +570,8 @@ generateApplicationWrapper
 **Outputs**:
 
 - The directory in which the Wrapper Java class has been generated (``build/generated/microej-app-wrapper/java``)
-- The directory in which the Wrapper resources have been generated (``build/generated/microej-app-wrapper/resources``)
+- The directory in which the Wrapper Kernel resources have been generated (``build/generated/microej-app-wrapper/kernel-resources``)
+- The directory in which the Wrapper Feature resources have been generated (``build/generated/microej-app-wrapper/feature-resources``)
 
 **Module Natures**:
 
@@ -523,6 +604,215 @@ This task is used by the following module natures:
 
 The ``compileWrapperJava`` task is used internally by the SDK and it is not intended to be executed by the user.
 
+.. _sdk6_module_natures.tasks.shrinkRuntimeEnvironment:
+
+shrinkRuntimeEnvironment
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Description**: Shrinks the Java source files according to the provided :ref:`Kernel APIs <kernel.api>`.
+
+**Inputs**:
+
+- Project Kernel API (``src/main/resources/kernel.api``)
+- Project Java sources (``src/main/java``)
+- The Kernel API files of the Runtime classpath.
+
+**Outputs**:
+
+- The directory in which shrunk Java sources are generated (``build/runtimeEnvironment/shrunkSources``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.runtime-environment`
+- :ref:`sdk6_module_natures.application`
+
+The ``shrinkRuntimeEnvironment`` task is used internally by the SDK and it is not intended to be executed by the user.
+
+.. _sdk6_module_natures.tasks.compileRuntimeEnvironment:
+
+compileRuntimeEnvironment
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Description**: Compiles the Runtime Environment :ref:`Kernel APIs <kernel.api>`.
+
+**Inputs**:
+
+- The directory in which shrunk Java sources are generated (``build/runtimeEnvironment/shrunkSources``)
+- The project classpath
+
+**Outputs**:
+
+- The directory in which shrunk Java classes are generated (``build/runtimeEnvironment/shrunkClasses``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.runtime-environment`
+
+The ``compileRuntimeEnvironment`` task is used internally by the SDK and it is not intended to be executed by the user.
+
+.. _sdk6_module_natures.tasks.builRuntimeEnvironmentJar:
+
+buildRuntimeEnvironmentJar
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Description**: Builds the Runtime Environment Jar file.
+
+**Inputs**:
+
+- The directory in which shrunk Java classes are generated (``build/runtimeEnvironment/shrunkClasses``)
+
+**Outputs**:
+
+- The Jar file of the Runtime Environment (``build/libs/<project_name>-<project_version>-runtime-environment.jar``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.runtime-environment`
+
+The ``buildRuntimeEnvironmentJar`` task is used internally by the SDK and it is not intended to be executed by the user.
+
+.. _sdk6_module_natures.tasks.buildFeatureFromWPK:
+
+buildFeatureFromWPK
+^^^^^^^^^^^^^^^^^^^
+
+**Description**: Builds the Feature binary file from a dependent Application.
+
+**Inputs**:
+
+- The Kernel Virtual Device 
+- The folder containing the Kernel Executable file (``build/kernelExecutable``)
+- The WPK of the dependent Application
+- The path of the folder where the Feature file must be generated (``build/application/wpkFeature``)
+
+**Outputs**:
+
+- The generated Feature file (``build/application/wpkFeature/application.fo``)
+- The Zip file containing the generated build files (``build/libs/wpkFeature-buildFiles.zip``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.application`
+
+.. _sdk6_module_natures.tasks.buildVeePort:
+
+buildVeePort
+^^^^^^^^^^^^
+
+**Description**: Builds the VEE Port.
+
+**Inputs**:
+
+- The project configuration file (``configuration.properties``)
+- The project dropins folder
+- The project microui folder (``extensions/microui``)
+- The project classpath which contains the Architecture, Packs, Mocks, Front Panels, Tools and Libraries
+
+**Outputs**:
+
+- The Zip file of the VEE Port (``build/veePort.zip``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.veeport`
+
+.. _sdk6_module_natures.tasks.buildVeePortConfiguration:
+
+buildVeePortConfiguration
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Description**: Zips the VEE Port Configuration.
+
+**Inputs**:
+
+- The project configuration file (``configuration.properties``)
+- The project dropins folder
+- The project microui folder (``extensions/microui``)
+- The project classpath which contains the Architecture, Packs, Mocks, Front Panels, Tools and Libraries
+
+**Outputs**:
+
+- The Zip file of the VEE Port Configuration (``build/<project_name>.zip``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.veeport`
+
+.. _sdk6_module_natures.tasks.extractLibrariesSources:
+
+extractLibrariesSources
+^^^^^^^^^^^^^^^^^^^^^^^
+
+**Description**: Extracts all Libraries source Jars to generate the Javadoc of the VEE Port.
+
+**Inputs**:
+
+- The VEE Port's Libraries exposed to the consumer
+
+**Outputs**:
+
+- The directory containing the sources of all provided Libraries (``build/librariesSources``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.veeport`
+
+.. _sdk6_module_natures.tasks.javadoc:
+
+javadoc
+^^^^^^^
+
+**Description**: Generates VEE Port aggregated javadoc.
+
+**Inputs**:
+
+- The directory containing the sources of all provided Libraries (``build/librariesSources``)
+
+**Outputs**:
+
+- The directory containing the aggregated javadoc (``build/docs/javadoc``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.veeport`
+
+.. _sdk6_module_natures.tasks.javadocJar:
+
+javadocJar
+^^^^^^^^^^
+
+**Description**: Assembles a jar archive containing the aggregated javadoc.
+
+**Inputs**:
+
+- The directory containing the aggregated javadoc (``build/docs/javadoc``)
+
+**Outputs**:
+
+- The directory containing the Jar file of the aggregated javadoc (``build/libs``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.veeport`
+
 .. _gradle_global_build_options:
 
 Global Properties
@@ -550,7 +840,7 @@ For example:
   }
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

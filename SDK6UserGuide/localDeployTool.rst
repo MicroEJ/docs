@@ -7,12 +7,13 @@ Local Deployment Socket
 Principle
 =========
 
-The Local Deployment Socket is a tool that allows to transfer a Sandboxed Application on the device over a network connection.
+The Local Deployment Socket is a tool that allows to transfer an Application on the device over a network connection.
 
 Functional Description
 ======================
 
-The Local Deployment Socket builds the Sandboxed Application ``.fo`` and upload it on the device identified by its IP address. On the device, it is the job of the Kernel Application that receives the ``.fo`` to install and to run the Sandboxed Application.
+The Local Deployment Socket builds the Application Feature file (``.fo``) and upload it on the device identified by its IP address. 
+On the device, it is the job of the Kernel Application that receives the Feature file to install and to run the Application.
 
 Use
 ===
@@ -20,11 +21,17 @@ Use
 .. code:: console
 
     ./gradlew execTool --name=localDeploymentSocket \
-      --toolProperty="application.main.class=com.mycompany.MyFeature" \
-      --toolProperty="board.server.host=10.0.0.171" \
-      --toolProperty="board.server.port=4000" \
-      --toolProperty="board.timeout=120000" \
-      --toolProperty="use.storage=true"
+      --toolProperty=application.main.class="com.mycompany.MyFeature" \
+      --toolProperty=kernel.filename="[path_to_application.out]" \
+      --toolProperty=board.server.host="10.0.0.171" \
+      --toolProperty=board.server.port="4000" \
+      --toolProperty=board.timeout="120000" \
+      --toolProperty=use.storage="true"
+
+.. note::
+
+   It is also possible to create a custom task of type ``ExecToolTask`` dedicated to the Local Deployment Socket. 
+   Refer to the :ref:`sdk_6_create_cutom_exectool_task` chapter for more information.
 
 Options
 =======
@@ -38,7 +45,18 @@ Option: Application Feature Class
 
 *Description*:
 
-Specify the entry-point as the full qualified name of the Feature Application to deploy.
+Specify the entry-point as the full qualified name of the Application to deploy.
+
+Option: Kernel Executable
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+*Option Name*: ``kernel.filename``
+
+*Required?*: Yes
+
+*Description*:
+
+Specify the Kernel Executable to use for building the Application Feature file.
 
 Option: Server Host
 ^^^^^^^^^^^^^^^^^^^
@@ -86,7 +104,7 @@ A boolean describing whether to use the storage to store the Application or not.
 Refer to the Kernel documentation to find out the correct setting.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

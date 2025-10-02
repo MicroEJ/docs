@@ -8,6 +8,11 @@ Core Engine
 The Core Engine is the core component of the Architecture.
 It executes at runtime the Application code.
 
+.. note::
+
+   In the following explanations, the term `task` refers to native tasks scheduled by the underlying OS or RTOS, 
+   while `thread` refers to MicroEJ threads scheduled by the Core Engine.
+
 Block Diagram
 =============
 
@@ -43,18 +48,38 @@ The remaining steps are performed within the C third-party IDE.
    Core Engine library and a third-party BSP (OS, drivers, etc.). This
    step requires a third-party linker provided by a C toolchain.
 
-
 Architecture
 ============
 
 The Core Engine and its components have been compiled for one
 specific CPU architecture and for use with a specific C compiler.
 
-The Core Engine implements a :ref:`green thread architecture <runtime_gt>`. It runs in a single RTOS task. 
+Refer to the chapter :ref:`architectures_toolchains` for list of supported Architectures and the details of ABI and compiler options.
 
-In the following explanations the term "RTOS
-task" refers to the tasks scheduled by the underlying OS; and the term
-"MicroEJ thread" refers to the Java threads scheduled by the Core Engine.
+.. _core_engine_threading_integration:
+
+Threading Integration
+=====================
+
+The Core Engine implements a :ref:`green thread model <runtime_gt>`. It runs in a single task. 
+
+Green threads are threads that are internally managed by the Core Engine
+instead of being natively managed by the underlying
+OS/RTOS scheduler. 
+The Core Engine defines a multi-threaded environment without relying on
+any native OS capabilities.
+
+Therefore, the whole Managed world runs in one single task, within
+which the Core Engine re-creates a layer of (green) threads.
+One immediate advantage is that the Java-world CPU consumption is fully
+controlled by the task it is running in, allowing embedded
+engineers to easily arbitrate between the different parts of their
+application. In particular in an open-to-third-parties framework, the
+maximum CPU time given to the Managed world is fully under control at no
+risk, whatever the number and/or the activities of the threads.
+
+The next illustration shows 4 tasks, with the last one running the Core Engine with 2 threads. 
+When the last task is scheduled by the underlying OS, the Core Engine executes and schedules the threads.
 
 .. figure:: images/mjvm_gt.png
    :alt: A Green Threads Architecture Example
@@ -64,7 +89,7 @@ task" refers to the tasks scheduled by the underlying OS; and the term
 
 The activity of the Core Engine is defined by the Application. When
 the Application is blocked (i.e., when all the MicroEJ threads
-sleep), the RTOS task running the Core Engine sleeps.
+sleep), the task running the Core Engine sleeps.
 
 .. _core_engine_capabilities:
 
@@ -87,9 +112,9 @@ All the Core Engine capabilities may not be available on all
 architectures. Refer to section :ref:`appendix_matrixcapabilities`
 for more details.
 
-To select the Core Engine capability, create the property file ``mjvm/mjvm.properties``
-in the Platform configuration project and define the property ``com.microej.runtime.capability`` 
-with one of the following values:
+To select the Core Engine capability, define the property ``com.microej.runtime.capability``
+in the ``configuration.properties`` file (SDK 6) or in the ``mjvm/mjvm.properties`` file (SDK 5) 
+of the VEE Port project, with one of the following values:
 
 - ``mono`` for Mono-Sandbox (default value)
 
@@ -107,7 +132,7 @@ Implementation
 
 The Core Engine implements the :ref:`[SNI] specification <runtime_sni>`. 
 It is created and initialized with the C function ``SNI_createVM``.
-Then it is started and executed in the current RTOS task by calling ``SNI_startVM``.
+Then it is started and executed in the current task by calling ``SNI_startVM``.
 The function ``SNI_startVM`` returns when the Application exits or if
 an error occurs (see section :ref:`core_engine_error_codes`).
 The function ``SNI_destroyVM`` handles the Core Engine termination 
@@ -126,7 +151,7 @@ Initialization
 --------------
 
 The Low Level Core Engine API deals with two objects: the
-structure that represents the Core Engine, and the RTOS task that runs the
+structure that represents the Core Engine, and the task that runs the
 Core Engine. Two callbacks allow engineers to interact with the
 initialization of both objects:
 
@@ -134,7 +159,7 @@ initialization of both objects:
    the Core Engine is initialized.
 
 -  ``LLMJVM_IMPL_vmTaskStarted``: Called when the Core Engine starts its
-   execution. This function is called within the RTOS task of the
+   execution. This function is called within the task of the
    Core Engine.
 
 Scheduling
@@ -179,9 +204,9 @@ Idle Mode
 ---------
 
 When the Core Engine has no activity to execute, it calls the
-``LLMJVM_IMPL_idleVM`` function, which is assumed to put the Core Engine RTOS task
+``LLMJVM_IMPL_idleVM`` function, which is assumed to put the Core Engine task
 into a sleep state. ``LLMJVM_IMPL_wakeupVM`` is called
-to wake up the Core Engine RTOS task. When the Core Engine RTOS task really starts to
+to wake up the Core Engine task. When the Core Engine task really starts to
 execute again, it calls the ``LLMJVM_IMPL_ackWakeup`` function to
 acknowledge the restart of its activity.
 
@@ -252,14 +277,14 @@ The following table describes these error codes.
    +-------------+-------------------------------------------------------------+
    | -5          | Not enough resources to start the very first MicroEJ        |
    |             | thread that executes ``main`` method. See section           |
-   |             | :ref:`option_java_heap`.                                    |
+   |             | :ref:`option_managed_heap`.                                 |
    +-------------+-------------------------------------------------------------+
    | -12         | Number of threads limitation reached. See sections          |
    |             | :ref:`limitations` and :ref:`option_number_of_threads`.     |
    +-------------+-------------------------------------------------------------+
    | -13         | Fail to start the Application because the                   |
-   |             | specified managed heap is too large or too small.           |
-   |             | See section :ref:`option_java_heap`.                        |
+   |             | specified Managed Heap is too large or too small.           |
+   |             | See section :ref:`option_managed_heap` & :ref:`limitations` |
    +-------------+-------------------------------------------------------------+
    | -14         | Invalid Application stack configuration. The                |
    |             | stack start or end is not eight-byte aligned, or stack      |
@@ -278,7 +303,7 @@ The following table describes these error codes.
    |             |                                                             |
    |             | - ``SNI_createVM`` called several times.                    |
    +-------------+-------------------------------------------------------------+
-   | -18         | The memory used for the managed heap or immortal heap       |
+   | -18         | The memory used for the Managed Heap or Immortals Heap      |
    |             | does not work properly. Read/Write memory checks            |
    |             | failed. This may be caused by an invalid external RAM       |
    |             | configuration. Verify ``_java_heap`` and                    |
@@ -316,7 +341,7 @@ Example
 
 The following example shows how to create and launch the Core
 Engine from the C world. This function (``microej_main``) should be called
-from a dedicated RTOS task.
+from a dedicated task.
 
 .. code:: c
 
@@ -413,16 +438,21 @@ To restart the application, call again the ``SNI_startVM`` function (see the fol
 
    Please note that while the Core Engine supports restart, :ref:`MicroUI <section_microui>` does not. 
    Attempting to restart the Application on a VEE Port with UI support may result in undefined behavior.
-     
+
+
+.. note::
+
+   Please note that ``SNI_createVM`` and ``SNI_destroyVM`` should only be called once. 
+   When restarting the Core Engine, don't call ``SNI_createVM`` or ``SNI_destroyVM`` before calling ``SNI_startVM`` again.
 
 .. _vm_dump:
 
-Dump the States of the Core Engine
-----------------------------------
+Dump the State of the Core Engine
+---------------------------------
 
 The internal Core Engine function called ``LLMJVM_dump`` allows
 you to dump the state of all MicroEJ threads: name, priority, stack
-trace, etc. This function must only be called from the MicroJvm virtual machine thread context and only from a native function or callback.
+trace, etc. This function must only be called from the Core Engine thread context and only from a native function or callback.
 Calling this function from another context may lead to undefined behavior and should be done only for debug purpose.
 
 This is an example of a dump:
@@ -510,7 +540,7 @@ This is an example of a dump:
       --------------------------------------------------------------------------------
       ================================================================================
 
-See :ref:`stack_trace_reader` for additional info related to working with VM dumps.
+See Stack Trace Reader documentation for :ref:`SDK 6 <sdk6.section.stacktrace.reader.tool>` or :ref:`SDK 5 <stack_trace_reader>` for additional info related to working with Core Engine dumps.
 
 .. _vm_dump_fault_handler:
 
@@ -518,24 +548,42 @@ Dump The State Of All MicroEJ Threads From A Fault Handler
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 It is recommended to call the ``LLMJVM_dump`` API as a last resort in a fault handler.
-Calling ``LLMJVM_dump`` is undefined if the VM is not paused.
+Calling ``LLMJVM_dump`` is undefined if the Core Engine is not paused.
 The call to ``LLMJVM_dump`` MUST be done last in the fault handler.
 
 .. _vm_dump_debugger:
 
-Trigger VM Dump From Debugger
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Trigger Core Engine Dump From Debugger
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+To trigger a Core Engine dump manually from the debugger, you need to set the PC (Program Counter) register 
+to the physical memory address of the ``LLMJVM_dump`` function.
 
-To trigger a VM dump from the debugger, set the PC register to the ``LLMJVM_dump`` physical memory address.
+Follow these steps:
 
-The symbol for the ``LLMJVM_dump`` API is defined in the header file ``LLMJVM.h``.
-Search for this symbol in the appropriate C toolchain ``.map`` file.
+1. **Ensure LLMJVM_dump is not optimized out**
+
+   Explicitly reference the ``LLMJVM_dump`` function in your BSP code. It is declared in the ``LLMJVM.h`` header file.
+
+   .. note::
+
+      If the function is not used anywhere, linker optimization may remove it, making it unavailable in the final binary.
+
+2. **Locate the symbol in the map file**
+
+   Search for the symbol ``__icetea__virtual__com_is2t_microjvm_IGreenThreadMicroJvm___dump`` in your C toolchain’s ``.map`` file. 
+   This will give you the runtime memory address of the function.
+
+3. **Trigger the dump via the debugger**
+
+   In your debugger, set the **PC register** to the retrieved address. Then, resume execution to trigger the dump.
+
 
 .. note::
 
-   ``LLMJVM_dump`` (in ``LLMJVM.h``) needs to be called explicitly.
-   A linker optimization may remove the symbol if it is not used anywhere in the code.
+   ``LLMJVM_dump`` is an alias defined in ``intern/LLMJVM.h`` header file. 
+   If you cannot find the symbol listed above, 
+   check the macro definition in that header file to determine the actual function name being referenced and exported.
 
 Requirements:
 
@@ -547,38 +595,46 @@ Requirements:
 Check Internal Structure Integrity
 ----------------------------------
 
-The internal Core Engine function called ``LLMJVM_checkIntegrity`` checks the internal structure integrity of the MicroJvm virtual machine and returns its checksum.
+The internal Core Engine function called ``LLMJVM_checkIntegrity`` checks the internal structure integrity of the Core Engine and returns its checksum.
 
 - If an integrity error is detected, the ``LLMJVM_on_CheckIntegrity_error`` hook is called and this method returns ``0``.
 - If no integrity error is detected, a non-zero checksum is returned.
 
-This function must only be called from the MicroJvm virtual machine thread context and only from a native function or callback.
-Calling this function multiple times in a native function must always produce the same checksum.
-If the checksums returned are different, a corruption must have occurred.
+This function must only be called from the Core Engine thread context and only from a native function or callback.
+Calling this function multiple times in a native function should always produce the same checksum.
+If the returned checksums are different, a corruption must have occurred.
 
-Please note that returning a non-zero checksum does not mean the MicroJvm virtual machine data has not been corrupted,
-as it is not possible for the MicroJvm virtual machine to detect the complete memory integrity.
+Please note that returning a non-zero checksum does not mean the Core Engine data has not been corrupted,
+as it is not possible for the Core Engine to detect the complete memory integrity.
 
-MicroJvm virtual machine internal structures allowed to be modified by a native function are not taken into account for the checksum computation.
-The internal structures allowed are:
+The internal structures of the Core Engine that can be altered legitimately by a native function do not impact the checksum calculation. 
+The following internal structures may be modified without affecting the checksum:
 
 - basetype fields in Java objects or content of Java arrays of base type,
-- internal structures modified by a ``LLMJVM`` function call (e.g. set a pending Java exception, suspend or resume the Java thread, register a resource, ...).
+- internal structures modified by a ``LLMJVM`` function call (e.g., set a pending Java exception, suspend or resume the thread, register a resource, ...).
 
-This function affects performance and should only be used for debug purpose.
+This function affects the performances and should only be used for debug purpose.
 A typical use of this API is to verify that a native implementation does not corrupt the internal structures:
 
-.. code-block:: java
+.. code-block:: c
 
-   void Java_com_mycompany_MyClass_myNativeFunction(void) {
-   		int32_t crcBefore = LLMJVM_checkIntegrity();
-   		myNativeFunctionDo();
+    #include <stdio.h>
+    #include "LLMJVM.h"
+    
+    void Java_com_mycompany_MyClass_myNativeFunction(void) {
+        int32_t crcBefore = LLMJVM_checkIntegrity();
+        myNativeFunctionDo();
         int32_t crcAfter = LLMJVM_checkIntegrity();
         if(crcBefore != crcAfter){
-        	// Corrupted MicroJVM virtual machine internal structures
-        	while(1);
+            // Corrupted Core Engine internal structures
+            while(1);
         }
-   }
+    }
+    
+    // Hook called by the Core Engine when an integrity error is detected
+    void LLMJVM_on_CheckIntegrity_error(uint32_t errorCode, void* errorAddress) {
+        printf("Integrity error detected at address %p (error code: %d)\n", errorAddress, errorCode);
+    }
 
 
 Generic Output
@@ -614,7 +670,7 @@ Starting from :ref:`Architecture 8.0.0 <changelog-8.0.0>`, sections have been re
             +================================+===================================+=============+============+
             | ``.bss.microej.heap``          | Application heap                  | RW          | 4          |
             +--------------------------------+-----------------------------------+-------------+------------+
-            | ``.bss.microej.immortals``     | Application immortal heap         | RW          | 4          |
+            | ``.bss.microej.immortals``     | Application Immortals Heap        | RW          | 4          |
             |                                |                                   |             |            |
             +--------------------------------+-----------------------------------+-------------+------------+
             | ``.bss.microej.stacks``        | Application threads stack         | RW [1]_     | 8          |
@@ -653,7 +709,7 @@ Starting from :ref:`Architecture 8.0.0 <changelog-8.0.0>`, sections have been re
             +=============================+=============================+=============+============+
             | ``_java_heap``              | Application heap            | RW          | 4          |
             +-----------------------------+-----------------------------+-------------+------------+
-            | ``_java_immortals``         | Application immortal heap   | RW          | 4          |
+            | ``_java_immortals``         | Application Immortals Heap  | RW          | 4          |
             |                             |                             |             |            |
             +-----------------------------+-----------------------------+-------------+------------+
             | ``.bss.vm.stacks.java``     | Application threads stack   | RW [1]_     | 8          |
@@ -722,7 +778,7 @@ The memory consumption of main Core Engine runtime elements are described in :re
    +-----------+-----------+-----------------+-----------------+-----------------+
    | Thread    | RW        | 168             | 192 (+24)       | 168             |
    +-----------+-----------+-----------------+-----------------+-----------------+
-   | Stack     | RW        | 12              | 20 (+8)         | 12              |
+   | Call      | RW        | 12              | 20 (+8)         | 12              |
    | Frame     |           |                 |                 |                 |
    | Header    |           |                 |                 |                 |
    +-----------+-----------+-----------------+-----------------+-----------------+
@@ -737,7 +793,7 @@ The memory consumption of main Core Engine runtime elements are described in :re
 	To get the full size of an Object, search for the type in the :ref:`SOAR Information File <soar_info_file>` and read the attribute ``instancesize`` (this includes the Object header). 
 
 .. note::
-	To get the full size of a Stack Frame, search for the method in the :ref:`SOAR Information File <soar_info_file>` and read the attribute ``stacksize`` (this includes the Stack Frame header). 
+	To get the full size of a call frame, search for the method in the :ref:`SOAR Information File <soar_info_file>` and read the attribute ``stacksize`` (this includes the call frame header). 
 
 Use
 ===
@@ -745,7 +801,7 @@ Use
 Refer to the :ref:`MicroEJ Runtime <runtime_core_libraries>` documentation.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

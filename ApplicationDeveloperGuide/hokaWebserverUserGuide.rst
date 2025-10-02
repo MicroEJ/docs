@@ -503,7 +503,7 @@ Note that ``host`` and ``host/`` will link to the same request handler whatever 
 
 Development Mode
 ----------------
-Development mode can be activated by calling ``HttpServer#builder()#developmentMode()```.
+Development mode can be activated by calling ``HttpServer#builder()#developmentMode()``.
 
 This will tell the HOKA server to send the exception stack trace to the client.
 
@@ -657,7 +657,7 @@ The server can be configured by creating a property file in `src/main/resources`
               #hoka.buffer.size=4096
 
 ..
-   | Copyright 2019-2024, MicroEJ Corp. Content in this space is free
+   | Copyright 2019-2025, MicroEJ Corp. Content in this space is free
    for read and redistribute. Except if otherwise stated, modification
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and

@@ -29,7 +29,7 @@ Please follow the steps described at `<https://developer.microej.com/central-rep
 Licensing
 ---------
 
-The Central Repository is a set of modules distributed under various software licenses, including the :ref:`sdk_eula` for some of them.
+The Central Repository is a set of modules distributed under various software licenses, including the :ref:`sdk_eula` and the :ref:`commercial_component_license` for some of them.
 Please consult the ``LICENSE.txt`` file attached to each module.
 
 Changelog
@@ -118,7 +118,7 @@ The following table describes how are organized the :ref:`modules natures <modul
      - Add-On Library
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

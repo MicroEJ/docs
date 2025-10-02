@@ -9,3 +9,6 @@ __pycache__/
 /_tools/wbe-gen/architecture/
 _tools/wbe-gen/jars/
 VEEPortingGuide/images/~$ui_overview2.pptx
+.DS_Store
+# XML output of the LLAPI Doxygen
+/_llapi_doxygen/xml/

@@ -8,7 +8,7 @@ Event Queue
 Principle
 =========
 
-The Event Queue Foundation Library provides an asynchronous communication interface between the native world and the Java world based on events.
+The Event Queue Foundation Library provides an asynchronous communication interface between the native world and the Managed world based on events.
 
 
 Functional Description
@@ -18,7 +18,7 @@ Functional Description
 Overview
 --------
 
-The Event Queue Foundation Library allows users to send events from the native world to the Java world. It is composed of a Java API that provides mechanisms to register specific event notifications and a C API that allows someone to send events in the queue.
+The Event Queue Foundation Library allows users to send events from the native world to the Managed world. It is composed of a Java API that provides mechanisms to register specific event notifications and a C API that allows someone to send events in the queue.
 
 .. figure:: images/event-queue-overview.png
    :alt: Event Queue Overview
@@ -36,7 +36,7 @@ Then the Event Pump automatically retrieves new events pushed in the FIFO and no
 Architecture
 ------------
 
-The Event Queue Foundation Library uses a dedicated Java thread to forward and process events. Application event listener's calls are done in the context of the Event Queue thread. 
+The Event Queue Foundation Library uses a dedicated thread to forward and process events. Application event listener's calls are done in the context of the Event Queue thread. 
 
 .. figure:: images/event-queue-architecture.png
    :alt: Event Queue Architecture
@@ -46,7 +46,7 @@ The Event Queue Foundation Library uses a dedicated Java thread to forward and p
    Event Queue Architecture
 
 
-Events reading operations are done using the SNI mechanism. Event Queue Java thread is suspended when the events FIFO is empty and resumed when a new event is sent.
+Events reading operations are done using the SNI mechanism. Event Queue thread is suspended when the events FIFO is empty and resumed when a new event is sent.
 
 .. note:: 
 
@@ -101,7 +101,7 @@ It contains two methods that are used to handle standard and extended events.
 Before registering your listener, you must get a valid unique type using the ``getNewType()`` method from the ``EventQueue`` class.
 Then you can register your listener using the ``registerListener(EventQueueListener listener, int type)`` method from the ``EventQueue`` class.
 
-The unique type your listener uses could be stored on the Java world and passed/stored to the C world.
+The unique type your listener uses could be stored on the Managed world and passed/stored to the C world.
 One way to do it is to create a native method that sends the event type to the C world during the initialization phase.
 
 To set the default listener, you must use ``EventQueue.setDefaultListener(EventQueueListener listener)``.
@@ -164,7 +164,7 @@ For example:
 
 .. code-block:: c
 
-   // Assuming that event_type has been passed from the Java world through a native method after registering your listener.
+   // Assuming that event_type has been passed from the Managed world through a native method after registering your listener.
    int type = event_type;
    int data = 12;
 
@@ -182,7 +182,7 @@ For example:
 
    EventQueue eventQueue = EventQueue.getInstance();
 
-   // Assuming that eventType has been stored in the Java world when you registered the listener.
+   // Assuming that eventType has been stored in the Managed world when you registered the listener.
    int type = eventType;
    int data = 12;
 
@@ -288,7 +288,7 @@ For example:
       int z;
    }
 
-   // Assuming that event_type has been passed from the Java world through a native method after registering your listener.
+   // Assuming that event_type has been passed from the Managed world through a native method after registering your listener.
    int type = event_type;
 
    struct accelerometer_data data;
@@ -310,7 +310,7 @@ For example:
 
    EventQueue eventQueue = EventQueue.getInstance();
 
-   // Assuming that eventType has been stored in the Java world when you registered the listener.
+   // Assuming that eventType has been stored in the Managed world when you registered the listener.
    int type = eventType;
 
    // Array of 3 integers. Each integer is stored in 4 bytes.
@@ -371,9 +371,20 @@ To simulate event that are normally sent through the C API, use the Event Queue 
 
 The Event Queue Mock API dependency must be added to the project build file of your MicroEJ Mock project.
 
-.. code-block:: xml
 
-   <dependency org="com.microej.pack.event" name="event-pack" rev="2.0.0" conf="provided->mockAPI"/>
+.. tabs::
+
+   .. tab:: Gradle (build.gradle.kts)
+
+      .. code-block:: kotlin
+
+         implementation(group="com.microej.pack.event", name="event-pack", version="2.2.0", configuration="mockAPI")
+
+   .. tab:: MMM (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="com.microej.pack.event" name="event-pack" rev="2.2.0" conf="provided->mockAPI"/>
 
 It provides two methods: 
 
@@ -402,20 +413,30 @@ Application project to use the Event Queue Foundation Library.
 
       .. code-block:: kotlin
 
-         implementation("ej.api:event:2.0.0")
+         implementation("ej.api:event:2.1.0")
 
    .. tab:: MMM (module.ivy)
 
       .. code-block:: xml
 
-         <dependency org="ej.api" name="event" rev="2.0.0"/>
+         <dependency org="ej.api" name="event" rev="2.1.0"/>
 
 To use this API, your VEE Port must implement a compatible version. 
 Please refer to the :ref:`VEE Porting Guide <pack_event>` to port the Event Queue for your project.
 
+Configuration
+-------------
+
+The :ref:`Event Queue Pack <pack_event>` can be configured by defining the following :ref:`Application Options <application_options>`:
+
+
+- ``event.thread.name``: defines the name of the Event Queue thread. Its default value is ``EventQueue``.
+- ``event.thread.priority``: defines the priority of the Event Queue thread. Its value must be between `Thread.MIN_PRIORITY <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Thread.html#MIN_PRIORITY>`_ and `Thread.MAX_PRIORITY <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Thread.html#MAX_PRIORITY>`_, and its default value is `Thread.NORM_PRIORITY <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Thread.html#NORM_PRIORITY>`_.
+- ``event.thread.daemon``: defines whether the Event Queue thread is a `daemon thread <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Thread.html#setDaemon-boolean->`_. Its default value is ``false``.
+
 .. _Event Queue API Module: https://forge.microej.com/artifactory/microej-developer-repository-release/ej/api/event/
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

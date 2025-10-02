@@ -4,14 +4,12 @@
 Bluetooth
 =========
 
-
 Principle
 =========
 
 The Bluetooth Foundation Library defines a low-level Bluetooth framework for embedded
 devices. It allows you to manage abstract Bluetooth connections without
 worrying about the native underlying Bluetooth kind.
-
 
 Functional Description
 ======================
@@ -21,12 +19,6 @@ Adapter/Connection/Service/Characteristic/Descriptor/etc abstraction.
 The Bluetooth implementation made for each MicroEJ
 Platform is responsible for surfacing the native Bluetooth specific
 behavior.
-
-
-Overview
-========
-
-The Bluetooth Foundation Library provides a way to manage and configure Bluetooth module.
 
 Dependencies
 ============
@@ -40,16 +32,22 @@ Dependencies
 Installation
 ============
 
-The Bluetooth :ref:`Pack <pack_overview>` module must be installed in your VEE Port.
+Bluetooth is an additional module. 
+To enable it, the Bluetooth :ref:`Pack <pack_overview>` module must be installed in your VEE Port:
 
-In the Platform configuration project, (``-configuration`` suffix), add
-the following dependency to the :ref:`module.ivy <mmm_module_description>` file:
+.. tabs::
 
-::
+   .. tab:: SDK 6 (build.gradle.kts)
 
-	<dependency org="com.microej.pack.bluetooth" name="bluetooth-pack" rev="2.2.1" />
+      .. code-block:: kotlin
 
-The Platform project must be rebuilt (:ref:`platform_build`).
+         microejPack("com.microej.pack.bluetooth:bluetooth-pack:2.4.1")
+
+   .. tab:: SDK 5 (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="com.microej.pack.bluetooth" name="bluetooth-pack" rev="2.4.1" />
 
 Use
 ===
@@ -57,7 +55,7 @@ Use
 See :ref:`Bluetooth API <bluetooth_api_usage>` chapter in Application Developer Guide.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

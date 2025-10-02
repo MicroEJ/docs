@@ -18,10 +18,6 @@ Used with your favorite IDE (Eclipse or IntelliJ IDEA), it provides a complete d
 
    MicroEJ Application Development Overview
 
-.. note::
-  The SDK 6 is limited to the build, test and simulation of Applications and Add-On Libraries (see :ref:`sdk_6_limitations` for more information).
-  If you need other features, such as creating a VEE Port, you have to use :ref:`the SDK 5 <sdk_user_guide>`.
-
 The SDK is composed of the following main elements:
 
 - **Gradle plugins**, the plugins to compile and package MicroEJ modules with `Gradle <https://gradle.org/>`__, a popular module and build manager.
@@ -43,9 +39,9 @@ The SDK is licensed under the :ref:`SDK End User License Agreement (EULA) <sdk6_
    :hidden:
    :maxdepth: 1
 
-   gettingStarted
    install
    licenses
+   licenses_sentinel
    limitations
    createProject
    importProject
@@ -60,9 +56,10 @@ The SDK is licensed under the :ref:`SDK End User License Agreement (EULA) <sdk6_
    testProject
    publishProject
    tools
+   veePort
    manageVersion
    manageResolutionConflicts
-   migrateMMMProject
+   migrate
    moduleNatures
    troubleshooting
    tutorials/index
@@ -72,7 +69,7 @@ The SDK is licensed under the :ref:`SDK End User License Agreement (EULA) <sdk6_
    sdk6MigrationNotes
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

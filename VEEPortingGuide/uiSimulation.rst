@@ -6,7 +6,6 @@
 Simulation
 ==========
 
-
 Principle
 =========
 
@@ -21,57 +20,70 @@ The mock interacts with the user's computer in two ways:
 
 .. note:: This chapter completes the notions described in :ref:`section_frontpanel` chapter.
 
+.. _section_frontpanel_ui_dependencies:
+
 Module Dependencies
 ===================
 
 The Front Panel project is a regular MicroEJ Module project.
-Its module.ivy file should look like this example:
-
-.. code-block:: xml
-
-   <ivy-module version="2.0" xmlns:ea="http://www.easyant.org" xmlns:ej="https://developer.microej.com" ej:version="2.0.0">
-      <info organisation="com.mycompany" module="examplePanel" status="integration" revision="1.0.0"/>
-
-      <configurations defaultconfmapping="default->default;provided->provided">
-         <conf name="default" visibility="public" description="Runtime dependencies to other artifacts"/>
-         <conf name="provided" visibility="public" description="Compile-time dependencies to APIs provided by the platform"/>
-      </configurations>
-      
-      <dependencies>
-         <dependency org="ej.tool.frontpanel" name="framework" rev="1.1.1"/>
-         <dependency org="ej.tool.frontpanel" name="widget" rev="4.0.0"/>
-      </dependencies>
-   </ivy-module>
-
-
 By default, the project depends on the Front Panel Framework which only contains the Front Panel core classes and which does not provide any Front Panel Widgets (see :ref:`section_frontpanel_dependencies`).
 To add interactive Front Panel Widgets (typically a simulated display and input devices), add the library that provides compatible Front Panel Widgets with the Graphics Engine: 
 
-.. code-block:: xml
+.. tabs::
 
-   <dependency org="ej.tool.frontpanel" name="widget" rev="4.0.0"/>
+   .. tab:: SDK 6
 
-.. note:: The life cycle of this library is different than the UI pack's one, see :ref:`section_ui_releasenotes_frontpanel`.
+      The Front Panel project is a regular Gradle project. Its dependencies in ``build.gradle.kts`` file should look like this example:
 
-Source code for Front Panel Widgets is available by expanding the library from the project view.
+      .. code-block:: kotlin       
 
-.. figure:: images/fpwidgets.png
-   :alt: Front Panel Widgets
-   :align: center
+         dependencies {
+            implementation("ej.tool.frontpanel:widget:[Front Panel Widgets version]")
+         }
 
-   Front Panel Widgets
+   .. tab:: SDK 5
+
+      The Front Panel project is a regular MicroEJ Module project. Its dependencies in ``module.ivy`` file should look like this example:
+
+      .. code-block:: xml
+         
+         <dependencies>
+            <dependency org="ej.tool.frontpanel" name="widget" rev="[Front Panel Widgets version]"/>
+         </dependencies>
+
+
+.. note:: The life cycle of this library is different than the UI pack's one, see :ref:`section_ui_releasenotes_frontpanel`. The latest version of the Front Panel Widgets is |FPWIDGETSVERSION|.
 
 To implement UI Pack extensions for the simulator (custom widgets compatible with the Graphics Engine, custom drawings, etc.), add the Front Panel extension API from the UI Pack (set the version used by the VEE Port):
 
-.. code-block:: xml
+.. tabs::
 
-   <dependencies>
-      <dependency org="com.microej.pack.ui" name="ui-pack" rev="[UI Pack version]">
-         <artifact name="frontpanel" type="jar"/>
-      </dependency>
-   </dependencies>
+   .. tab:: SDK 6
 
-.. warning:: This extension is built for each UI Pack version. By consequence, a Front Panel project is done for a VEE Port built with the same UI Pack. When the UI Pack mismatch, some errors may occur during the Front Panel project export step, during the VEE Port build, and/or during the application runtime. The latest current pack version is |UIPACKVERSION|.
+      The Front Panel project is a regular Gradle project. Its dependencies in ``build.gradle.kts`` file should look like this example:
+
+      .. code-block:: kotlin       
+
+         dependencies {
+            implementation("com.microej.pack.ui:ui-pack:[UI Pack version]") {
+               artifact {
+                     name = "frontpanel"
+                     extension = "jar"
+               }
+            }
+         }
+
+   .. tab:: SDK 5
+
+      The Front Panel project is a regular MicroEJ Module project. Its dependencies in ``module.ivy`` file should look like this example:
+
+      .. code-block:: xml
+         
+         <dependency org="com.microej.pack.ui" name="ui-pack" rev="[UI Pack version]">
+            <artifact name="frontpanel" type="jar"/>
+         </dependency>
+
+.. warning:: This extension is built for each UI Pack version. By consequence, a Front Panel project is done for a VEE Port built with the same UI Pack. When the UI Pack mismatch, some errors may occur during the Front Panel project export step, during the VEE Port build, and/or during the application runtime. The latest version of the UI Pack is |UIPACKVERSION|.
 
 MicroUI Implementation
 ======================
@@ -320,13 +332,25 @@ The properties file can additional properties:
    provided by the hardware (see :ref:`fp_ui_decoder`). Use comma (',') to specify several decoders among this list: bmp, jpg, jpeg, gif, png. If empty or unspecified,
    no image decoder is added.
 
+   .. tabs::
+
+      .. tab:: SDK 6
+
+         In SDK 6, the configuration is done in the properties file ``vee-port/configuration.properties`` of the VEE Port project.
+         
+         Define the property using the ``com.microej.pack.frontpanel`` prefix: ``com.microej.pack.frontpanel.hardwareImageDecoders.list=jpg,bmp,png``
+
+      .. tab:: SDK 5
+
+         In SDK 5, set the ``hardwareImageDecoders.list`` property in the properties file ``frontpanel/frontpanel.properties``.
+
 Use
 ===
 
 Launch a MicroUI application on the Simulator to run the Front Panel.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

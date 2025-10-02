@@ -29,13 +29,24 @@ The different ways to add a modules repository are:
 
   The repositories defined here are fetched **after** the ones defined in the Gradle init script.
 
-  For a multi-project, the repositories must be declared in a ``build.gradle.kts`` file located in the root folder 
-  to make them available in all the subprojects.
+  For a multi-project, the repositories must be declared in a ``build.gradle.kts`` file located in the root folder, 
+  inside a ``subprojects`` block (or ``allprojects`` depending on your needs), to make them available in all the subprojects:
+
+  .. code-block:: kotlin
+
+    subprojects {
+      repositories {
+        maven {
+          name = "myModulesRepository"
+          url = uri("https://my.company/my-modules-repository")
+        }
+      }
+    }
 
 - update the Gradle Init Script to add, replace or delete a repository.
   The version of this script provided in the installation process is a recommended version to be applied to quickly setup an environment.
   However, it can be modified to adapt it to your need, especially for the list of repositories.
-  The modules repositories are defined in the block ``settingsEvaluated > allprojects > repositories``, 
+  The modules repositories are defined in the block ``settingsEvaluated > dependencyResolutionManagement > repositories``, 
   and are applied to all the Gradle builds executed on the machine.
 
 
@@ -62,11 +73,11 @@ The different ways to add a plugins repository are:
 - update the Gradle Init Script to add, replace or delete a repository.
   The version of this script provided in the installation process is a recommended version to be applied to quickly setup an environment.
   However, it can be modified to adapt it to your need, especially for the list of repositories.
-  The plugins repositories are defined in the block ``settingsEvaluated > allprojects > pluginManagement > repositories``, 
+  The plugins repositories are defined in the block ``settingsEvaluated > dependencyResolutionManagement > pluginManagement > repositories``, 
   and are applied to all the Gradle builds executed on the machine.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

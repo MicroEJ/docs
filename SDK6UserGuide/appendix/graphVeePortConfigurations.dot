@@ -1,0 +1,50 @@
+digraph mygraph {
+    rankdir="BT";
+    bgcolor="transparent"
+    fontname="Helvetica,Arial,sans-serif"
+    node [
+        shape = box
+        width = 1.5
+        color = "#7dc5dc"
+        style = filled
+        fontname="Helvetica,Arial,sans-serif"
+    ]
+    edge [fontname="Helvetica,Arial,sans-serif"]
+    "microejArchitecture" [fillcolor = "#41f753"]
+    "microejPack" [fillcolor = "#41f753"]
+    "microejMock" [fillcolor = "#41f753"]
+    "microejFrontPanel" [fillcolor = "#41f753"]
+    "microejTool" [fillcolor = "#41f753"]
+    "api" [fillcolor = "#41f753"]
+    "implementation" [fillcolor = "#41f753"]
+
+    "microejArchitectureClasspath" [fillcolor = "#b0d6d3"]
+    "microejPackClasspath" [fillcolor = "#b0d6d3"]
+    "microejMockClasspath" [fillcolor = "#b0d6d3"]
+    "microejFrontPanelClasspath" [fillcolor = "#b0d6d3"]
+    "microejToolClasspath" [fillcolor = "#b0d6d3"]
+    "veeApiClasspath" [fillcolor = "#b0d6d3"]
+    "veeImplementationClasspath" [fillcolor = "#b0d6d3"]
+    "veeCompileClasspath" [fillcolor = "#b0d6d3"]
+    "veeRuntimeClasspath" [fillcolor = "#b0d6d3"]
+
+    "microejArchitectureClasspath" -> "microejArchitecture"
+    "microejPackClasspath" -> "microejPack"
+    "microejMockClasspath" -> "microejMock"
+    "microejFrontPanelClasspath" -> "microejFrontPanel"
+    "microejToolClasspath" -> "microejTool"
+    "implementation" -> "api"
+    "veeApiClasspath" -> "api"
+    "veeImplementationClasspath" -> "implementation"
+    "veeCompileClasspath" -> "api"
+    "veeRuntimeClasspath" -> "implementation"
+    "buildVeePort and buildVeePortConfiguration" -> "microejArchitectureClasspath" [ label="uses" ]
+    "buildVeePort and buildVeePortConfiguration" -> "microejPackClasspath" [ label="uses" ]
+    "buildVeePort and buildVeePortConfiguration" -> "microejMockClasspath" [ label="uses" ]
+    "buildVeePort and buildVeePortConfiguration" -> "microejFrontPanelClasspath" [ label="uses" ]
+    "buildVeePort and buildVeePortConfiguration" -> "microejToolClasspath" [ label="uses" ]
+    "buildVeePort and buildVeePortConfiguration" -> "veeApiClasspath" [ label="uses" ]
+    "buildVeePort and buildVeePortConfiguration" -> "veeImplementationClasspath" [ label="uses" ]
+    "extractLibrariesSources" -> "veeCompileClasspath" [ label="uses" ]
+    "javadoc" -> "veeRuntimeClasspath" [ label="uses" ]
+}

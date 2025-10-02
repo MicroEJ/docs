@@ -104,13 +104,24 @@ See :ref:`mmm` for more information.
 
 The dependencies must contain at least a module containing the ``ej.kf.FeatureEntryPoint`` class, for example the KF library:
 
-.. code:: xml
+.. tabs::
 
-    <dependency org="ej.api" name="kf" rev="1.6.1" />
+   .. tab:: SDK 6
+
+      .. code-block:: java
+
+         implementation("ej.api:kf:1.7.0")
+
+   .. tab:: SDK 5
+
+      .. code-block:: xml
+
+         <dependency org="ej.api" name="kf" rev="1.7.0" />
+  
 
 
 ..
-   | Copyright 2022-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2022-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

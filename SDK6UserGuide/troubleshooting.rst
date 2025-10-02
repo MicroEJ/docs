@@ -53,26 +53,68 @@ The solution is to use a JDK 11 or a higher LTS version (``11``, ``17`` or ``21`
 
   Alternatively, you can set the ``JAVA_HOME`` environment variable to point to the installation directory of the JDK.
 
-- For Android Studio and IntelliJ IDEA, go to :guilabel:`File` > :guilabel:`Settings...` > :guilabel:`Build, Execution, Deployment` > :guilabel:`Build Tools` > :guilabel:`Gradle`,
+- For IntelliJ IDEA and Android Studio, go to :guilabel:`File` > :guilabel:`Settings...` > :guilabel:`Build, Execution, Deployment` > :guilabel:`Build Tools` > :guilabel:`Gradle`,
   and make sure the selected :guilabel:`Gradle JVM` is a supported JDK version:
 
 	.. figure:: images/intellij-project-jdk.png
-		:alt: Project JDK in Android Studio and IntelliJ IDEA
+		:alt: Project JDK in IntelliJ IDEA and Android Studio
 		:align: center
 		:scale: 70%
 
-		Project JDK in Android Studio and IntelliJ IDEA
+		Project JDK in IntelliJ IDEA and Android Studio
 
 
-Unresolved Dependency
----------------------
+Unresolved Dependency When No Repository
+----------------------------------------
 
 If this kind of message appears when resolving plugins or modules dependencies:
 
 .. code:: console
 
-   * What went wrong:
-   Plugin [id: 'com.microej.gradle.application', version: '0.17.0'] was not found in any of the following sources:
+	* What went wrong:
+	Plugin [id: 'com.microej.gradle.application', version: '1.4.0'] was not found in any of the following sources:
+
+	- Gradle Core Plugins (plugin is not in 'org.gradle' namespace)
+	- Included Builds (No included builds contain this plugin)
+	- Plugin Repositories (could not resolve plugin artifact 'com.microej.gradle.application:com.microej.gradle.application.gradle.plugin:1.1.0')
+	Searched in the following repositories:
+		Gradle Central Plugin Repository
+
+or this kind:
+
+.. code:: console
+
+	* What went wrong:
+	Execution failed for task ':compileJava'.
+	> Could not resolve all files for configuration ':compileClasspath'.
+	> Cannot resolve external dependency ej.api:edc:1.3.7 because no repositories are defined.
+		Required by:
+			root project :
+
+It means that no module or plugin repository has been defined. 
+Make sure that the repositories have been configured as described in the :ref:`sdk_6_configure_repositories` section.
+In particular, make sure that the Gradle Init script is in the ``.gradle/init.d`` folder in the Gradle User Home folder.
+The Gradle User Home folder is defined by default to the OS User Home folder, 
+and can be changed by setting the ``GRADLE_USER_HOME`` environment variable 
+or in the IDE settings (see `Intellij IDEA documentation <https://www.jetbrains.com/help/idea/gradle-settings.html>`__).
+
+Unresolved Dependency in Repositories
+-------------------------------------
+
+If this kind of message appears when resolving plugins or modules dependencies:
+
+.. code:: console
+
+	* What went wrong:
+	Plugin [id: 'com.microej.gradle.application', version: '1.4.0'] was not found in any of the following sources:
+
+	- Gradle Core Plugins (plugin is not in 'org.gradle' namespace)
+	- Included Builds (No included builds contain this plugin)
+	- Plugin Repositories (could not resolve plugin artifact 'com.microej.gradle.application:com.microej.gradle.application.gradle.plugin:1.4.0')
+	Searched in the following repositories:
+		microEJCentral(https://repository.microej.com/modules)
+		microEJForgeCentral(https://forge.microej.com/artifactory/microej-central-repository-release)
+		microEJForgeDeveloper(https://forge.microej.com/artifactory/microej-developer-repository-release)
 
 or this kind:
 
@@ -91,7 +133,7 @@ or this kind:
             project :
 
 
-First, check that either the requested plugin or module exists in your repository.
+First, check that either the requested plugin or module exists in the listed repositories.
 
 - If the plugin or module does not exist, 
   
@@ -255,7 +297,7 @@ This feature can be disabled for a build by passing the ``--no-watch-fs`` option
 
 	./gradlew build --no-watch-fs
 
-or for all builds by setting the following property in the ``$USER_HOME/.gradle/gradle.properties`` file::
+or for all builds by setting the following property in the ``<USER_HOME>/.gradle/gradle.properties`` file::
 	
 	org.gradle.vfs.watch=false
 
@@ -314,8 +356,146 @@ and unchecking the option :guilabel:`Unreachable code` in :guilabel:`Java` > :gu
 
 You can also disable unreachable code detection locally by using ``@SuppressWarnings("UnreachableCode")`` on the method or on the class.
 
+Resolution Conflict with Testsuite Dependencies 
+-----------------------------------------------
+
+When a project and its testsuite depend on different versions of the same dependency, 
+the build of the project can fail with the following message::
+
+	Execution failed for task ':adp'.
+	> Conflict(s) with a direct dependency for the following module(s):
+	- ej.api:kf : the resolved version is 1.7.0 whereas the direct dependency version is 1.4.4
+
+To fix this issue, you must update the dependency of your testsuite to use the same version as the project dependency::
+
+	dependencies {
+		implementation("ej.api:edc:1.3.7")
+		implementation("ej.api:kf:1.7.0")
+	}
+
+	testing {
+		suites {
+			val test by getting(JvmTestSuite::class) {
+				microej.useMicroejTestEngine(this)
+
+				dependencies {
+					implementation(project())
+					implementation("ej.api:edc:1.3.7")
+					implementation("ej.api:kf:1.7.0")
+					implementation("ej.library.test:junit:1.12.0")
+					implementation("org.junit.platform:junit-platform-launcher:1.8.2")
+				}
+			}
+		}
+	}
+
+.. _sdk_6_disable_k2:
+
+Gradle Build Files (`*.kts`) Errors in IntelliJ IDEA
+----------------------------------------------------
+
+Since version ``2025.1``, the new Kotlin K2 compiler is enabled by default to compile Gradle build scripts. For now, it requires a JDK in project's classpath in order to
+interpret the build file successfully. MicroEJ projects do not have JDK in classpath, the Gradle build scripts are thus fully marked in red with the following errors::
+
+	Cannot access 'Comparable' which is a supertype of 'KotlinBuildScript'. Check your module classpath for missing or conflicting dependencies.
+	Cannot access 'Object' which is a supertype of 'KotlinBuildScript'. Check your module classpath for missing or conflicting dependencies.
+
+To fix this, you need to
+
+  - uncheck :guilabel:`Enable K2` in :guilabel:`Settings...` > :guilabel:`Languages & Frameworks` > :guilabel:`Kotlin`
+
+	.. figure:: images/intellij_disable_K2.png
+		:alt: Disable K2 in IntelliJ IDEA
+		:align: center
+		:scale: 70%
+
+		Disable K2 in IntelliJ IDEA
+
+	- Invalidate caches from :guilabel:`Files` > :guilabel:`Invalidate Caches...` and check all the checkboxes as shown below, and click on :guilabel:`Invalidate and Restart`
+
+	.. figure:: images/intellij_invalidate_caches.png
+		:alt: Invalidate all the caches
+		:align: center
+		:scale: 70%
+
+		Invalidate all the caches
+
+.. _sdk_6_fetch_architecture_prod:
+
+Fail to fetch the ``prod`` version of an Architecture
+-----------------------------------------------------
+
+Fetching the ``prod`` version of an Architecture may raise the following error::
+
+   > Could not find flopi4G25-8.3.0-prod.xpf (com.microej.architecture.CM4.CM4hardfp_GCC48:flopi4G25:8.4.0).
+     Searched in the following locations:
+         https://repository.microej.com/modules/com/microej/architecture/CM4/CM4hardfp_GCC48/flopi4G25/8.4.0/flopi4G25-8.4.0-prod.xpf
+
+This happens when a module repository containing only the ``eval`` version of the Architecture is declared before the module repository containing the ``prod`` version.
+This is typically the case with the `MicroEJ Central Repository <https://developer.microej.com/central-repository/>`__ which contains only the ``eval`` versions of the public Architecture. 
+If the ``prod`` version is deployed in another repository declared after the MicroEJ Central Repository, the above error is raised.
+
+To fix this, declare the repository containing the ``prod`` version before the one containing the ``eval`` version.
+Refer to :ref:`sdk_6_howto_gradle_add_repository` for more details on how to declare module repositories.
+
+.. _sdk_6_missing_compilation_capability:
+
+Missing Compilation Capability
+------------------------------
+
+During the build of a project (precisely the Java compilation phase), the following error may be raised::
+
+	* What went wrong:
+	Execution failed for task ':compileJava'.
+	> Error while evaluating property 'javaCompiler' of task ':compileJava'.
+		> Failed to calculate the value of task ':compileJava' property 'javaCompiler'.
+			> Toolchain installation 'C:\Program Files (x86)\Eclipse Adoptium\jre-11.0.28.6-hotspot' does not provide the required capabilities: [JAVA_COMPILER]
+
+This means that the Java installation used by Gradle is not a JDK but a JRE, whereas Gradle and the SDK require a JDK.
+Therefore, the solution is to install and configure a JDK.
+Refer to :ref:`sdk_6_check_jdk` for more information.
+
+.. _sdk_6_vee_launch_jvm_configuration_errors:
+
+Build Errors from JVM Memory Misconfiguration
+---------------------------------------------
+
+Below are two examples of error messages that can be raised when the JVM used to launch the VEE scripts is not configured properly.
+The ouput may vary depending on the Gradle task being executed but the errors share the same root cause.
+
+When :ref:`building an executable <sdk_6_build_executable>`::
+
+	=============== [ Launching SOAR ] ===============
+  	1 : ERROR :
+  	[M2] - OutOfMemory error. Try to increase heap space using JVM option '-Xmx' (e.g. '-Xmx4096M')
+  	Terminated with errors
+
+When :ref:`running on simulator <sdk_6_run_on_simulator>`::
+
+	=============== [ Launching on Simulator ] ===============
+	"Internal limits reached. Please contact support@microej.com"
+
+These errors are typically seen when running ``gradlew buildExecutable`` or ``gradlew runOnSimulator`` if the forked JVM is started with insufficient heap.
+
+To resolve this, adjust the JVM memory configuration by setting the JVM options accordingly with the property ``microej.launch.jvmargs``, for example::
+
+	./gradlew buildExecutable -Dmicroej.launch.jvmargs="-Xmx1024m -Xms512m"
+
+.. _sdk_6_no_architecture_defined_error:
+
+No Architecture Defined Error
+-----------------------------
+
+The following error may be raised when building a project::
+
+	Execution failed for task ':loadVee'.
+  	> No Architecture defined. An Architecture can be provided by declaring adependency with the `microejArchitecture` configuration (e.g. `microejArchitecture("com.mycompany:myArchitecture:M.m.p")').
+
+This can happen when a VEE Port built with SDK 6 ``1.3.0`` or higher is provided to a project using an older version of the SDK 6.
+To resolve this, update your project to use SDK 6 version ``1.2.0`` minimum.
+
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

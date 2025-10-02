@@ -4,9 +4,9 @@
 MicroEJ Architecture
 ====================
 
-MicroEJ Architecture features the MicroEJ Core Engine built for a specific instructions set (ISA) and compiler.
+MicroEJ Architecture features the Core Engine built for a specific instructions set (ISA) and compiler.
 
-The MicroEJ Core Engine is a tiny and fast runtime associated with a Scheduler and a Garbage Collector. 
+The Core Engine is a tiny and fast runtime associated with a Scheduler and a Garbage Collector. 
 
 MicroEJ Architecture provides implementations of the following Foundation Libraries :
 
@@ -30,7 +30,7 @@ Three Low Level APIs allow the MicroEJ Architecture to link with (and port
 to) external code, such as any kind of RTOS or legacy C libraries: 
 
 -  Simple Native Interface (see :ref:`[SNI] <runtime_sni>`)
--  Low Level MicroEJ Core Engine (see :ref:`LLMJVM <LLMJVM-API-SECTION>`)
+-  Low Level Core Engine (see :ref:`LLMJVM <LLMJVM-API-SECTION>`)
 -  Low Level Shielded Plug (see :ref:`LLSP <LLSP-API-SECTION>`)
 
 For further information on Architecture installation and releases, you can check these chapters:
@@ -41,9 +41,10 @@ For further information on Architecture installation and releases, you can check
    architectureNamingConvention
    architectureChangelog
    architectureReleaseNotes
+   architectureDefaultApplication
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

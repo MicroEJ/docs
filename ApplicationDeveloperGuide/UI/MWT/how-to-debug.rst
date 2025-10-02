@@ -36,6 +36,64 @@ Here is an example of a ``xxx.constants.list`` file with the result in an applic
 
 .. note:: Available since MWT 3.3.0.
 
+Enabling Traces for System View
+-------------------------------
+
+MWT logs some keypoints when traces are enabled (see :ref:`event-tracing`).
+
+Here is the list of the logs:
+
+* The creation of a widget. A unique ID is associated to the widget at this moment that will be used in the other traces all along its lifetime.
+* The creation of a desktop. A unique ID is associated to the desktop at this moment that will be used in the other traces all along its lifetime.
+* The request to show a desktop.
+* The request to layout a widget.
+* The request to layout a desktop.
+* The request to render a widget. The region of the rendering request is available in the trace.
+* The request to render a desktop.
+* The update of the style of a widget. There is another trace for the end of the cascading update of containers.
+* The compute of the optimal size of a widget. There is another trace for the end of the cascading compute of containers.
+* The lay out of a widget. There is another trace for the end of the cascading lay out of containers.
+* The rendering of a widget. There is another trace for the end of the cascading rendering of containers.
+* When a widget is shown.
+* When a widget is hidden.
+* When a desktop is shown.
+* When a desktop is hidden.
+* When a widget is attached.
+* When a widget is detached.
+
+It is possible to print more information about the created widgets and desktops (to associate the ID with an actual object).
+It can be activated by setting the :ref:`Application Option <application_options>` named ``ej.mwt.debug.log.trace.enabled`` to ``true``.
+
+The traces can be seen in SystemView.
+For the traces to be more human-readable, the file ``SYSVIEW_MWT.txt`` must be put in SystemView installation folder (e.g. ``SEGGER/SystemView_V252a/Description/``).
+This file can be found in the ``resources`` folder of the jar of MWT.
+Otherwise, it can be created manually with the following content:
+
+.. code-block::
+
+    NamedType UIDestination  *="[dest=0x%x]"
+
+    0   MWT_CreateWidget            (MWT) Create a widget (ID = %u, type = %x)
+    1   MWT_CreateDesktop           (MWT) Create a desktop (ID = %u, type = %x)
+    2   MWT_RequestShowDesktop      (MWT) Request to show a desktop (ID = %u)
+    3   MWT_RequestLayout           (MWT) Request to layout a widget (ID = %u)
+    4   MWT_RequestLayoutDesktop    (MWT) Request to layout a desktop (ID = %u)
+    5   MWT_RequestRender           (MWT) Request to render a widget (ID = %u %u,%u %ux%u)
+    6   MWT_RequestRenderDesktop    (MWT) Request to render a desktop (ID = %u)
+    7   MWT_UpdateStyle             (MWT) Update the style of a widget (ID = %u)                                | (MWT) Widget style updated (ID = %u)
+    8   MWT_ComputeOptimalSize      (MWT) Compute the optimal size of a widget (ID = %u %ux%u)                  | (MWT) Widget size computed (ID = %u)
+    9   MWT_Layout                  (MWT) Lay out a widget (ID = %u %u,%u %ux%u)                                | (MWT) Widget layout done (ID = %u)
+    # // region seen as a container (use a START event)
+    10  MWT_Render                  (MWT) %UIDestination Render a widget (ID = %u) region=(%u,%u)(%ux%u)        | (MWT) Widget render done (ID = %u)
+    11  MWT_OnShown                 (MWT) A widget is shown (ID = %u)
+    12  MWT_OnHidden                (MWT) A widget is hidden (ID = %u)
+    13  MWT_OnShownDesktop          (MWT) A desktop is shown (ID = %u)
+    14  MWT_OnHiddenDesktop         (MWT) A desktop is hidden (ID = %u)
+    15  MWT_OnAttached              (MWT) A widget is attached (ID = %u)
+    16  MWT_OnDetached              (MWT) A widget is detached (ID = %u)
+
+.. note:: Available since MWT 3.6.0.
+
 Monitoring the Render Operations
 --------------------------------
 
@@ -127,8 +185,243 @@ Here is an example of a ``xxx.constants.list`` file with the result in an applic
 
 .. note:: Available since MWT 3.5.0 & Widget 5.0.0.
 
+.. _mwt_how_to_debug_source_rule:
+
+Finding which Rule Originates the Attributes of a Widget's Style
+----------------------------------------------------------------
+
+The method `CascadingStylesheet.getStyleSources()`_ is able to retrieve the selectors used to create a Style (that has been originated from a CascadingStylesheet).
+It requires to set the constant ``ej.mwt.debug.cascadingstyle.enabled`` to ``true``.
+
+The result of this method is an array containing 16 selectors: one for each parameter of the style.
+The indices for each style entry are available as constants in the ``CascadingStylesheet`` class.
+For each entry, the selector belongs to the rule selected to fill the matching parameter (thus set by `getSelectorStyle()`_).
+A ``null`` entry means that the parameter is from the default style (thus set by `getDefaultStyle()`_).
+
+This feature is used in the :ref:`HierarchyInspector <widget_library_debug_utilities_hierarchy>` of the Widget library.
+
+.. warning:: Beware that enabling that feature may downgrade the performances (more time to compute a style and more Managed Heap used).
+
+.. note:: Available since MWT 3.6.0.
+
+.. _CascadingStylesheet.getStyleSources(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/stylesheet/cascading/CascadingStylesheet.html#getStyleSources-ej.mwt.style.Style-
+.. _getDefaultStyle(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/stylesheet/cascading/CascadingStylesheet.html#getDefaultStyle--
+.. _getSelectorStyle(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/stylesheet/cascading/CascadingStylesheet.html#getSelectorStyle-ej.mwt.stylesheet.selector.Selector-
+
+Detecting Text Overflow
+-----------------------
+
+Widgets that display a text may experience text overflow when the strings are too long to fit into the available area.
+It can be the case, for example, in applications that support multiple languages because widgets have to deal with texts of different lengths.
+
+This document presents a solution to detect such text overflows.
+
+
+Instrumenting the Widget
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+The goal is to check whether the text to be displayed is within the content bounds of the widget. A way to test this is to extend or modify the widget.
+In this article, the widget ``MyLabel`` will extend the type `Label`_ from the Widget library, which displays a text:
+
+.. code-block:: java
+    :emphasize-lines: 3
+
+    import ej.widget.basic.Label;
+
+    public class MyLabel extends Label {
+
+        public MyLabel(String text) {
+            super(text);
+        }
+    }
+
+
+.. _Label: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/basic/Label.html
+
+Overriding the onLaidOut() Method
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+Once the position and size of a wigdet are set during the lay out process, the `onLaidOut()`_ method is called to notify the widget.
+Overriding `onLaidOut()`_ of class ``MyLabel`` is a good place to check whether the text overflows or not.
+
+For example, the following snippet compares the text width with the available width: it will print a message if an overflow is detected.
+
+.. code-block:: java
+    :emphasize-lines: 12,13,14
+
+    @Override
+    protected void onLaidOut() {
+        super.onLaidOut();
+        
+        // compute the width of the text with the specified font
+        final Font font = getStyle().getFont();
+        final String text = getText();
+        final int textWidth = font.stringWidth(text);
+        
+        // compare to the width available for the content of the widget
+        final int contentWidth = getContentBounds().getWidth();
+        if (textWidth > contentWidth) {
+            System.out.println("Overflow detected:\n > Text: \"" + text + "\"\n > Width = " + textWidth + " px (available: " + contentWidth + " px)");
+        }
+    }
+
+.. _onLaidOut(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#onLaidOut--
+
+Testing
+~~~~~~~
+
+Here is a case where the widget size is set manually to be a little shorter than the text width:
+  
+.. code-block:: java
+    :emphasize-lines: 6
+
+    public static void main(String[] args) {
+        MicroUI.start();
+        Desktop desktop = new Desktop();
+        Canvas canvas = new Canvas();
+        // add a label with an arbitrary fixed width of 25 pixels (which is too short)
+        canvas.addChild(new MyLabel("Some text"), 20, 20, 25, 10);
+        desktop.setWidget(canvas);
+        desktop.requestShow();
+    }
+
+.. image:: images/tuto_microej_bounds_check.png
+    :alt: Text overflow example
+    :align: center
+
+The text is cropped and the console logs that a text overflow has been detected:
+
+.. code-block:: console
+
+    =============== [ Initialization Stage ] ===============
+    =============== [ Converting fonts ] ===============
+    =============== [ Converting images ] ===============
+    =============== [ Launching on Simulator ] ===============
+    Overflow detected:
+     > Text: "Some text"
+     > Width = 47 px (available: 25 px)
+
+
+Improving the Detection
+~~~~~~~~~~~~~~~~~~~~~~~
+
+To ease the correction process, it is best to add some additional debug information to locate the issue. 
+Let's extract the text overflow detection into a helper class, so that it is available for all classes across the application.
+
+The following snippet:
+ 
+* extracts the text overflow detection into the class ``MyTextHelper``.
+* prints the part of the text that is displayed.
+* prints the path to the widget in the widget tree to help the tester locate the affected widget in the GUI.
+
+.. code-block:: java
+    :emphasize-lines: 13,30
+
+    public class MyLabel extends Label {
+
+        public MyLabel(String text) {
+            super(text);
+        }
+
+        @Override
+        protected void onLaidOut() {
+            super.onLaidOut();
+
+            final Font font = getStyle().getFont();
+            final String text = getText();
+            MyTextHelper.checkTextOverflow(this, text, font);
+        }
+    }
+
+    public class MyTextHelper {
+
+        /**
+        * Checks whether the given text overflows for the specified widget and font. In the case where an overflow is
+        * detected, the method prints a message that details the error.
+        *
+        * @param widget
+        *            the widget that displays the text.
+        * @param text
+        *            the text to display.
+        * @param font
+        *            the font used for drawing the text.
+        */
+        public static void checkTextOverflow(final Widget widget, final String text, final Font font) {
+            final int textWidth = font.stringWidth(text);
+            final int contentWidth = widget.getContentBounds().getWidth();
+
+            if (textWidth > contentWidth) {
+                String displayedText = buildDisplayedText(text, font, contentWidth);
+                String widgetPath = buildWidgetPath(widget);
+                System.out.println(
+                        "Overflow detected:\n > Text: \"" + text + "\"\n > Width = " + textWidth + " px (available: "
+                                + contentWidth + " px) \n > Displayed: \"" + displayedText + "\"\n > Path : " + widgetPath);
+            }
+        }
+
+        private static String buildDisplayedText(String text, Font font, int width) {
+            for (int i = text.length() - 1; i > 0; i--) {
+                if (font.substringWidth(text, 0, i) <= width) {
+                    return text.substring(0, i);
+                }
+            }
+
+            return "";
+        }
+
+        private static String buildWidgetPath(Widget widget) {
+            StringBuilder builder = new StringBuilder();
+
+            Widget ancestor = widget;
+            do {
+                builder.insert(0, " > " + ancestor.getClass().getSimpleName());
+                ancestor = ancestor.getParent();
+            } while (ancestor != null);
+            builder.insert(0, widget.getDesktop().getClass().getSimpleName());
+
+            return builder.toString();
+        }
+    }
+
+When the application is launched again, the console shows more information about the text overflow:
+
+.. code-block:: console
+
+    =============== [ Initialization Stage ] ===============
+    =============== [ Converting fonts ] ===============
+    =============== [ Converting images ] ===============
+    =============== [ Launching on Simulator ] ===============
+    Overflow detected:
+     > Text: "Some text"
+     > Width = 47 px (available: 25 px) 
+     > Displayed: "Some"
+     > Path : Desktop > Canvas > MyLabel
+
+
+To keep control over the extra verbosity and code size, one option is to use :ref:`BON constants <section.classpath.elements.constants>` to enable/disable this debug code at will.
+In the following snippet, when the constant ``com.mycompany.check.text.overflow`` is set to ``false``, the debug code will not be embedded in the application.
+
+.. code-block:: java
+    :emphasize-lines: 2
+
+    public static void checkTextOverflow(final Widget widget, final String text, final Font font) {
+        if (Constants.getBoolean("com.mycompany.check.text.overflow")) {
+            final int textWidth = font.stringWidth(text);
+            final int contentWidth = widget.getContentBounds().getWidth();
+
+            if (textWidth > contentWidth) {
+                String displayedText = buildDisplayedText(text, font, contentWidth);
+                String widgetPath = buildWidgetPath(widget);
+                System.out.println(
+                        "Overflow detected:\n > Text: \"" + text + "\"\n > Width = " + textWidth + " px (available: "
+                                + contentWidth + " px) \n > Displayed: \"" + displayedText + "\"\n > Path : " + widgetPath);
+            }
+        }
+    }
+
+
 ..
-   | Copyright 2021-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2021-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

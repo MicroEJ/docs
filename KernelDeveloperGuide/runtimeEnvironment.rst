@@ -7,8 +7,12 @@ Runtime Environment
 Principle
 ---------
 
-A Runtime Environment is a :ref:`module nature <module_natures>` for defining the set of APIs available to an Application developer on a Kernel.
+A Runtime Environment is a module nature for defining the set of APIs available to an Application developer on a Kernel.
 It is built by aggregating a set of :ref:`Kernel APIs <kernel.api>`.
+
+Depending on the SDK that you are using, 
+refer to the :ref:`SDK 6 module nature <sdk6_module_natures>` page or to the :ref:`SDK 5 module nature <module_natures>` page for 
+more information about Runtime Environment module nature. 
 
 Building a Runtime Environment is one of the 2 solutions to define the APIs of a Kernel, as described in the section :ref:`define_apis`.
 Having the set of APIs named and versioned in a Runtime Environment allows to maintain, share and document it outside of a specific Kernel implementation.
@@ -30,47 +34,89 @@ The following figure shows the overall build flow:
 Create a new Runtime Environment Module
 ---------------------------------------
 
-A Runtime Environment :ref:`module project <mmm_module_skeleton>` is created with the ``runtime-api`` skeleton.
+.. tabs::
 
-.. code:: xml
+   .. tab:: SDK 6
 
-   <info organisation="com.mycompany" module="myruntimeapi" status="integration" revision="1.0.0">
-      <ea:build organisation="com.is2t.easyant.buildtypes" module="build-runtime-api" revision="4.0.+">
-      </ea:build>
-   </info>
+      A Runtime Environment :ref:`Gradle project <sdk_6_create_project>` is created with the ``com.microej.gradle.runtime-environment`` plugin.
+
+      .. code:: java
+
+         plugins {
+            id("com.microej.gradle.runtime-environment") version "1.4.0"
+         }   
+
+   .. tab:: SDK 5
+
+      A Runtime Environment :ref:`module project <mmm_module_skeleton>` is created with the ``runtime-api`` skeleton.
+
+      .. code:: xml
+
+         <info organisation="com.mycompany" module="myruntimeapi" status="integration" revision="1.0.0">
+            <ea:build organisation="com.is2t.easyant.buildtypes" module="build-runtime-api" revision="4.0.+">
+            </ea:build>
+         </info>
 
 Kernel APIs as Dependencies
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Kernel APIs can be declared as dependencies of the module.
 For example, the following dependencies declare a Runtime Environment that aggregates all classes, methods and fields
-defined by ``EDC``, ``KF``, ``BON``, ``MicroUI`` Kernel APIs modules.
+defined by ``EDC``, ``KF``, ``BON``, ``MicroUI`` and ``BasicTool`` Kernel APIs modules.
 
-.. code:: xml
+.. tabs::
 
-   <dependencies>
-      <dependency org="com.microej.kernelapi" name="edc" rev="1.0.6"/>
-      <dependency org="com.microej.kernelapi" name="kf" rev="2.0.3"/>
-      <dependency org="com.microej.kernelapi" name="bon" rev="1.1.1"/>
-      <dependency org="com.microej.kernelapi" name="microui" rev="3.1.0"/>
-   </dependencies>
+   .. tab:: SDK 6
 
-The libraries modules are fetched transitively from the Kernel APIs dependencies.
-For example, the dependency ``com.microej.kernelapi#edc;1.0.6`` fetches the library `ej.api#edc;1.2.3`_.
+      .. code:: java
 
-It is also possible to force the version of the libraries to use by declaring them as direct dependencies.
-This is typically used to get a latest version of the library with improvements such as Javadoc fixes or Null Analysis annotations.
-In this example:
+         dependencies {
+            implementation("com.microej.kernelapi:edc:1.2.0")
+            api("ej.api:edc:1.3.4")
+            implementation("com.microej.kernelapi:kf:2.1.0")
+            api("ej.api:kf:1.5.1")
+            implementation("com.microej.kernelapi:bon:1.4.0")
+            api("ej.api:bon:1.4.0")
+            implementation("com.microej.kernelapi:microui:3.6.0")
+            api("ej.api:microui:3.6.0")
+            implementation("com.microej.kernelapi:basictool:1.4.0")
+            api("ej.library.runtime:basictool:1.7.0")
+         }
 
-.. code:: xml
+      .. warning::
 
-   <dependencies>
-      <dependency org="com.microej.kernelapi" name="edc" rev="1.0.6"/>
+         - Unlike SDK 5 (MMM), Kernel API dependencies are not transitively fetched with SDK 6. 
+           Therefore, they must be explicitly added.
+         - The Libraries dependencies must be declared with `api` (as shown in the example above) to be consumable by the Kernel.
+
+   .. tab:: SDK 5
+
+      .. code:: xml
+
+         <dependencies>
+            <dependency org="com.microej.kernelapi" name="edc" rev="1.0.6"/>
+            <dependency org="com.microej.kernelapi" name="kf" rev="2.0.3"/>
+            <dependency org="com.microej.kernelapi" name="bon" rev="1.1.1"/>
+            <dependency org="com.microej.kernelapi" name="microui" rev="3.1.0"/>
+            <dependency org="com.microej.kernelapi" name="basictool" rev="1.7.0"/>
+         </dependencies>
+
+      The libraries modules are fetched transitively from the Kernel APIs dependencies.
+      For example, the dependency ``com.microej.kernelapi#edc;1.0.6`` fetches the library `ej.api#edc;1.2.3`_.
+
+      It is also possible to force the version of the libraries to use by declaring them as direct dependencies.
+      This is typically used to get a latest version of the library with improvements such as Javadoc fixes or Null Analysis annotations.
+      In this example:
+
+      .. code:: xml
+
+         <dependencies>
+            <dependency org="com.microej.kernelapi" name="edc" rev="1.0.6"/>
       
-      <dependency org="ej.api" name="edc" rev="1.3.4"/>
-   </dependencies>
+            <dependency org="ej.api" name="edc" rev="1.3.4"/>
+         </dependencies>
 
-The Runtime Environment uses the version ``1.3.4`` of the EDC library instead of the version ``1.2.3`` fetched transitively by the dependency ``com.microej.kernelapi#edc;1.0.6``.
+      The Runtime Environment uses the version ``1.3.4`` of the EDC library instead of the version ``1.2.3`` fetched transitively by the dependency ``com.microej.kernelapi#edc;1.0.6``.
 
 .. _ej.api#edc;1.2.3: https://repository.microej.com/modules/ej/api/edc/1.2.3/
 
@@ -82,6 +128,9 @@ The file must be named ``kernel.api`` and stored in the ``src/main/resources`` f
 
 Add Add-On Processors
 ~~~~~~~~~~~~~~~~~~~~~
+
+.. note::
+   This feature is available for SDK 5 only.
 
 When the Runtime Environment includes an Add-On Library which uses an Add-On Processor, this Add-On Processor must be declared as a direct dependency in the Runtime Environment.
 
@@ -148,11 +197,23 @@ The Runtime Environment dependency must be declared in the Application project a
 
    .. tab:: SDK 6
 
-      microejRuntimeApi("com.mycompany:myruntimeapi:1.0.0")
+      For an Application:
+
+      .. code:: java
+
+         microejRuntimeEnvironment("com.mycompany:myruntime-environment:1.0.0")
+
+      For a Kernel Application:
+
+      .. code:: java
+
+         implementation("com.mycompany:myruntime-environment:1.0.0")      
 
    .. tab:: SDK 5
 
-      <dependency org="com.mycompany" name="myruntimeapi" rev="1.0.0" conf="provided->runtimeapi"/>
+      .. code-block:: xml
+
+         <dependency org="com.mycompany" name="myruntime-environment" rev="1.0.0" conf="provided->runtimeapi"/>
 
 .. note::
 
@@ -162,6 +223,9 @@ The Runtime Environment dependency must be declared in the Application project a
 
 Extend a Runtime Environment
 ----------------------------
+
+.. note::
+   This feature is available for SDK 5 only.
 
 In a Kernel, Foundation and Add-On libraries can be extended by adding new methods to their existing classes.
 For example, it allows to add new methods to the class `java.lang.String`_ of the module `ej.api#edc`_.
@@ -232,7 +296,7 @@ The extension must be applied in 2 locations:
 .. _com.microej.library.runtime#string-format: https://repository.microej.com/modules/com/microej/library/runtime/string-format/
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

@@ -8,7 +8,7 @@ Licenses
 SDK EULA
 --------
 
-MICROEJ SDK is licensed under the SDK End User License Agreement (EULA). The following figure shows a detailed view of the elements.
+MICROEJ SDK is licensed under the `SDK End User License Agreement (EULA) <https://repository.microej.com/licenses/sdk/LAW-0011-LCS-MicroEJ_SDK-EULA-v3.1C.txt>`_. The following figure shows a detailed view of the elements.
 
 .. figure:: images/sdk_6_content.png
    :alt: SDK Detailed View
@@ -16,6 +16,16 @@ MICROEJ SDK is licensed under the SDK End User License Agreement (EULA). The fol
    :scale: 100%
 
    SDK Detailed View
+
+.. _commercial_component_license:
+
+Commercial Component License
+----------------------------
+
+One of the main features of MICROEJ SDK is to download, install and link modules with MICROEJ VEE to produce a binary Executable for a target device.
+Modules provided by MicroEJ Corp. are hosted in various :ref:`repositories <module_repositories>`, each distributed under specific license terms detailed in its respective ``LICENSE.txt`` file.
+Some of these modules are licensed under the `Commercial Component License <https://repository.microej.com/licenses/sdk/LAW-0988-LCS-CommercialComponents-1.1-A.txt>`_.
+The Commercial Component license extends the SDK EULA terms by adding specific requirements and restrictions related to production deployment.
 
 .. _sdk6_license_manager:
 
@@ -57,35 +67,37 @@ SDK EULA Acceptation
 --------------------
 
 The use of MICROEJ SDK 6 requires to accept the :ref:`sdk6_eula`.
-If the license is not accepted, the following message is displayed when executing a Gradle task:
+If the SDK EULA is not accepted, the following message is displayed when executing a Gradle task:
 
 .. code:: text
 
   > The MICROEJ SDK End-User License Agreement (EULA) must be accepted before it can start.
     The license terms for this product can be downloaded from
-    https://repository.microej.com/licenses/sdk/LAW-0011-LCS-MicroEJ_SDK-EULA-v3.1B.txt
-    You can accept the EULA by specifying the -Daccept-microej-sdk-eula-v3-1b=YES command line option,
-    or setting the system property systemProp.accept-microej-sdk-eula-v3-1b=YES in a gradle.properties file,
-    or setting the ACCEPT_MICROEJ_SDK_EULA_V3_1B=YES environment variable.
+    https://repository.microej.com/licenses/sdk/LAW-0011-LCS-MicroEJ_SDK-EULA-v3.1C.txt
+    You can accept the EULA by setting the system property systemProp.accept-microej-sdk-eula-v3-1c=YES in a gradle.properties file
+          - in your Gradle User Home folder (<USER_HOME>/.gradle/),
+          - or in the root folder of your project,
+    or specifying the -Daccept-microej-sdk-eula-v3-1c=YES command line option, 
+    or setting the ACCEPT_MICROEJ_SDK_EULA_V3_1C=YES environment variable.
 
-As mentioned in the message, there are several ways to accept the EULA:
+As mentioned in the message, there are several ways to accept the SDK EULA:
 
-- define the ``accept-microej-sdk-eula-v3-1b`` system property in the command line:
-
-   .. code:: console
-      
-      ./gradlew build -Daccept-microej-sdk-eula-v3-1b=YES
-
-- define the ``accept-microej-sdk-eula-v3-1b`` system property in a ``gradle.properties`` file with the ``systemProp.`` prefix:
+- define the ``accept-microej-sdk-eula-v3-1c`` system property in a ``gradle.properties`` file with the ``systemProp.`` prefix:
 
    .. code:: properties
 
-      systemProp.accept-microej-sdk-eula-v3-1b=YES
+      systemProp.accept-microej-sdk-eula-v3-1c=YES
 
-  This can be in the ``gradle.properties`` of your Gradle User Home folder (located by default at ``$USER_HOME/.gradle/gradle.properties``),
+  This can be in the ``gradle.properties`` of your Gradle User Home folder (located by default at ``<USER_HOME>/.gradle/gradle.properties``),
   or in the ``gradle.properties`` file at the root of your project for example.
 
-- set the ``ACCEPT_MICROEJ_SDK_EULA_V3_1B`` environment variable to ``YES``.
+- define the ``accept-microej-sdk-eula-v3-1c`` system property in the command line:
+
+   .. code:: console
+      
+      ./gradlew build -Daccept-microej-sdk-eula-v3-1c=YES
+
+- set the ``ACCEPT_MICROEJ_SDK_EULA_V3_1C`` environment variable to ``YES``.
 
 .. _sdk6_evaluation_license:
 
@@ -135,6 +147,59 @@ The license key zip file must be simply dropped to the ``~/.microej/licenses/`` 
    :align: center
 
    MicroEJ Shared Licenses Directory
+
+.. _sdk6_evaluation_license_check:
+
+Check Activation
+~~~~~~~~~~~~~~~~
+
+This section contains instructions that will allow you to verify that your Evaluation license has been properly installed.
+
+.. note::
+   
+   The command line tool requires :ref:`Architecture 8.3.0 <changelog-8.3.0>` or higher. 
+
+To get more details on installed Evaluation licenses, proceed with the following steps:
+
+#. Open a terminal.
+#. Change directory to an Evaluation VEE Port.
+#. Execute the command:
+   
+   .. code:: console
+
+      java -Djava.library.path=resources/os/[OS_NAME] -jar licenseManager/licenseManagerKeyHardware.jar
+
+   with ``OS_NAME`` set to ``Windows64`` for Windows OS, ``Linux64`` for Linux OS, ``Mac`` for macOS x86_64 (Intel chip) or ``MacA64`` for macOS aarch64 (M1 chip).
+
+   You should get something similar to the following output:
+   
+   .. code:: console
+
+      [DEBUG] ===== MicroEJ Evaluation License Debug Tool =====
+      [DEBUG] => UID: 39B7C108972A5C36.
+      [DEBUG] => Please specify a license directory containing 'keysHardware.txt'
+
+   This step is sufficient if you want to check the machine's UID. 
+   For an analysis of the available licenses, proceed with the following steps.
+
+#. :ref:`Build your Executable <sdk_6_build_executable>` with verbose mode enabled.
+#. Retrieve in the logs the path to the licenses directory by searching for ``-Dlicenses.working.dir=[path_to_license_dir]``.
+#. Execute the same command than before with the path to the licenses directory as argument:
+   
+   .. code:: console
+
+      java -Djava.library.path=resources/os/[OS_NAME] -jar licenseManager/licenseManagerKeyHardware.jar [path_to_license_dir]
+
+   You should get something similar to the following output:
+
+   .. code:: console
+
+      [DEBUG] ===== MicroEJ Evaluation License Debug Tool =====
+      [DEBUG] => UID: 39B7C108972A5C36.
+      [DEBUG] => Detected MicroEJ License HQB48-VCQDQ-I7QDL-IAZUF - valid until YYYY-MM-DD.
+      [DEBUG] ===== SUCCESS =====
+
+   Now the list of detected licenses and their validity are dumped.
 
 .. _sdk6_evaluation_license_troubleshooting:
 
@@ -252,11 +317,21 @@ To get more details on connected USB dongle(s), run the debug tool as following:
 #. Change directory to a Production VEE Port.
 #. Execute the command:
    
-   .. code:: console
+.. tabs::
 
-      java -Djava.library.path=resources/os/[OS_NAME] -jar licenseManager/licenseManagerUsbDongle.jar
+   .. tab:: Architecture v8.1.0 or higher
+   
+      .. code:: console
 
-   with ``OS_NAME`` set to ``Windows64`` for Windows OS, ``Linux64`` for Linux OS, ``Mac`` for macOS x86_64 (Intel chip) or ``MacA64`` for macOS aarch64 (M1 chip).
+            java -Djava.library.path=resources/os/[OS_NAME] -jar licenseManager/licenseManagerProduct.jar
+
+   .. tab:: Architecture v8.0.0 or lower 
+
+      .. code:: console
+
+            java -Djava.library.path=resources/os/[OS_NAME] -jar licenseManager/licenseManagerUsbDongle.jar
+
+with ``OS_NAME`` set to ``Windows64`` for Windows OS, ``Linux64`` for Linux OS, ``Mac`` for macOS x86_64 (Intel chip) or ``MacA64`` for macOS aarch64 (Apple Silicon chip).
 
 If your USB dongle has been properly activated, you should get the following output:
    
@@ -333,11 +408,11 @@ USB Dongle with WSL
 .. note::
    The following steps have been tested on WSL2 with Ubuntu 22.04.2 LTS.
 
-To use a USB dongle with WSL, you first need to install `usbipd` following the steps described in `Microsoft WSL documentation <https://learn.microsoft.com/fr-fr/windows/wsl/connect-usb#install-the-usbipd-win-project>`__:
+To use a USB dongle with WSL, you first need to install `usbipd` following the steps described in `Microsoft WSL documentation <https://learn.microsoft.com/en-us/windows/wsl/connect-usb#install-the-usbipd-win-project>`__:
 
-First, check that WSL2 is installed on your system. If not, install it or update it following `Microsoft Documentation <https://learn.microsoft.com/fr-fr/windows/wsl/install>`__
+First, check that WSL2 is installed on your system. If not, install it or update it following `Microsoft Documentation <https://learn.microsoft.com/en-us/windows/wsl/install>`__
 
-Then, you need install usbipd-win on Windows from `usbipd-win Github repository <https://github.com/dorssel/usbipd-win/releases>`__.
+Then, you need install usbipd-win v4.0.0 or higher on Windows from `usbipd-win Github repository <https://github.com/dorssel/usbipd-win/releases>`__.
 
 And then, install usbipd and update hardware database inside you WSL installation:
 
@@ -350,21 +425,61 @@ Add the udev rule described in :ref:`production_license_linux`, and restart udev
 
    .. code-block:: console
 
-      /etc/init.d/udev restart
+      sudo /etc/init.d/udev restart
 
-You then need to unplug and plug your dongle again before attaching the dongle to WSL from powershell:
+Ensure your USB dongle is plugged, then start a PowerShell terminal in administrator mode.
 
-  .. code-block:: console
-
-      usbipd.exe wsl attach --busid <BUSID>
-
-The ``<BUSID>`` can be obtainted with the following powershell command:
+List the connected devices with the following command:
 
   .. code-block:: console
 
-      usbipd wsl list
+      usbipd.exe list
+
+You should see your USB dongle connected with ``VID:PID==096e:0006``:
+
+.. code-block:: console   
+   :emphasize-lines: 9
+
+      PS C:\Users\user> usbipd list
+      Connected:
+      BUSID  VID:PID    DEVICE                                                        STATE
+      2-6    0c45:674c  Integrated Webcam, Integrated IR Webcam, USB DFU              Not shared
+      2-8    0a5c:5843  Dell ControlVault w/ Fingerprint Touch Sensor, Microsoft ...  Not shared
+      2-10   8087:0033  Intel(R) Wireless Bluetooth(R)                                Not shared
+      3-1    0bda:8153  Realtek USB GbE Family Controller                             Not shared
+      4-6    413c:c010  Dell DA310                                                    Not shared
+      6-4    096e:0006  USB Input Device                                              Not shared
+      6-6    046d:0819  USB Video Device, USB Audio Device                            Not shared
+      7-1    045e:0084  USB Input Device                                              Not shared
+      7-2    04d9:1400  USB Input Device                                              Not shared
+      7-3    10d5:55a2  USB Input Device                                              Not shared
+
+Here the ``BUSID`` is ``6-4``.
+
+Bind and attach the dongle to WSL:
+
+  .. code-block:: console
+
+      usbipd.exe bind --busid <BUSID>
+      usbipd.exe attach --wsl  --busid <BUSID>
+
+Open a bash terminal in your WSL instance, and check the USB dongle is successfully mounted with the following command:
+
+  .. code-block:: console
+
+      lsusb
+
+You should see your USB dongle connected with ``ID 096e:0006``:
+
+.. code-block:: console
+   :emphasize-lines: 2
+
+      Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+      Bus 001 Device 002: ID 096e:0006 Feitian Technologies, Inc. HID Dongle (for OEMs - manufacturer string is "OEM")
+      Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 
 .. note::
+
       You'll need to follow these steps each time you system is rebooted or the dongle is plugged/unplugged.
 
 .. _sdk6_production_license_troubleshooting:
@@ -412,17 +527,17 @@ and add the USB dongle in the :guilabel:`USB Devices Filters` list.
 WSL Troubleshooting
 """""""""""""""""""
 
-Check that your dongle is attached to WSL from Powershell:
+Check that your dongle is attached to WSL from PowerShell:
 
   .. code-block:: console
 
-      usbipd wsl list
+      usbipd.exe list
 
 You should have a  line saying ``Attached - Ubuntu``:
 
   .. code-block:: console
 
-      PS C:\Users\sdkuser> usbipd.exe wsl list
+      PS C:\Users\sdkuser> usbipd.exe list
       BUSID  VID:PID    DEVICE                                                        STATE
       2-1    096e:0006  USB Input Device                                              Attached - Ubuntu
       2-6    0c45:6a10  Integrated Webcam                                             Not attached
@@ -430,7 +545,7 @@ You should have a  line saying ``Attached - Ubuntu``:
       3-1    045e:0823  USB Input Device                                              Not attached
       3-4    046d:c31c  USB Input Device                                              Not attached
 
-In you WSL console, the dongle must also be recognized. Ckeck by using ``lsusb```:
+In you WSL console, the dongle must also be recognized. Ckeck by using ``lsusb``:
 
    .. code-block:: console
 
@@ -442,7 +557,7 @@ In you WSL console, the dongle must also be recognized. Ckeck by using ``lsusb``
 This might not be sufficient. If you're still facing license issues, restart udev, abd attach your dongle to WSL once again.
 
 .. note::
-   Hibernation may have unattached your dongle. Reload udev, unplug/plug your dongle and attach it from powershell.
+   Hibernation may have unattached your dongle. Reload udev, unplug/plug your dongle and attach it from PowerShell.
 
 Remote USB Dongle Connection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -454,7 +569,7 @@ There are many hardware and software solutions available on the market. Among ot
 Please contact :ref:`our support team <get_support>` for more details.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

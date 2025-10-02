@@ -1,4 +1,4 @@
-# Copyright 2008-2024, MicroEJ Corp. Content in this space is free for read and redistribute. Except if otherwise stated, modification is subject to MicroEJ Corp prior approval. 
+# Copyright 2008-2025, MicroEJ Corp. Content in this space is free for read and redistribute. Except if otherwise stated, modification is subject to MicroEJ Corp prior approval.
 # MicroEJ is a trademark of MicroEJ Corp. All other trademarks and copyrights are the property of their respective owners.
 
 version: 2
@@ -12,6 +12,7 @@ formats:
 
 sphinx:
   fail_on_warning: true
+  configuration: conf.py
 
 build:
   os: "ubuntu-20.04"
@@ -19,6 +20,13 @@ build:
     python: "3.10"
   apt_packages:
     - graphviz
+    - doxygen
   jobs:
     pre_build:
+      # Build the LLAPI Doxygen used in the documentation.
+      # Mandatory here because the linkcheck target requires the LLAPI Doxygen to be generated.
+      - make llapi_doxygen
       - make linkcheck
+      # Clean to force sources to be read again during html build
+      # See custom prolog injection in 'conf.py' using 'source-read' extension
+      - make clean

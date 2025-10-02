@@ -1,8 +1,187 @@
+.. include:: uiReplaces.rst
+
 .. _section_vg_changelog:
 
 =========
 Changelog
 =========
+
+[1.7.2] - 2025-09-15
+====================
+
+MicroVG
+"""""""
+
+**Fixed**
+
+* Include ``SYSVIEW_MicroVG.txt`` in the library jar file (similarly to MicroUI library).
+  
+Front Panel
+"""""""""""
+
+**Fixed**
+
+* Fix the drawing of gradient in a BufferedVectorImage.
+
+Vector Image Converter
+""""""""""""""""""""""
+
+**Fixed**
+
+* Fix the generation of RAW vector images when building a feature.
+
+C Module MicroVG
+""""""""""""""""
+
+**Fixed**
+
+* Fix the usage of ``LLTRACE_impl.h`` with the Architecture 8.x.
+* Fix the default options in ``vg_conguration.h``: some options are disabled by default. 
+
+C Module VGLite
+""""""""""""""""
+
+**Fixed**
+
+* Fix the initialization of the ``BufferedVectorImage`` support.
+* Fix the drawing of a filtered image with opacity.
+
+C Module NemaVG
+"""""""""""""""
+
+**Fixed**
+
+* Fix the initialization of the ``BufferedVectorImage`` support.
+* Fix the invalid include directive to ``display.h`` (now requires the defines ``RESX`` and ``RESY``).
+* Fix the drawing of a filtered image with opacity.
+* Fix the rendering of some texts on a ``BufferedVectorImage`` (invalid bounding box).
+
+[1.7.1] - 2025-04-09
+====================
+
+Front Panel
+"""""""""""
+
+**Fixed**
+
+- Fix the drawing bounds of the BufferedVectorImage's elements.
+- Fix the drawing of a BufferedVectorImage outside the destination's clip.
+- Fix the drawing of the BufferedVectorImage's elements which are outside the BufferedVectorImage's clip.
+- Fix the drawing of gradient paths with zero or one color. 
+- Fix the management of transparent gradients for the NemaVG GPU.
+
+C Module MicroVG
+""""""""""""""""
+
+**Fixed**
+
+- Fix the dependency to Freetype (MicroUI Font drawings with vector fonts).
+
+C Module VGLite
+"""""""""""""""
+
+**Fixed**
+
+- Fix the drawing of a BufferedVectorImage when applying a rotation.
+- Fix the drawing bounds of the BufferedVectorImage's elements.
+- Fix the use of clip when drawing a BufferedVectorImage that contains vector images.
+- Fix the clip when drawing a vector image in a BufferedVectorImage.
+- Fix the drawing of gradient paths with zero or one color.
+
+**Removed**
+
+- Remove useless and invalid external field declaration.
+- Remove dependency to a specific version of Freetype: the C module Freetype must be fetched independently.
+
+C Module NemaVG
+"""""""""""""""
+
+**Fixed**
+
+- Fix the drawing of a BufferedVectorImage when applying a rotation.
+- Fix the drawing bounds of the BufferedVectorImage's elements.
+- Fix the use of clip when drawing a BufferedVectorImagee that contains vector images.
+- Fix the clip when drawing a vector image in a BufferedVectorImage.
+- Fix the drawing of gradient paths with zero or one color.
+
+[1.7.0] - 2024-10-09
+====================
+
+UI Pack
+"""""""
+
+**Changed**
+
+* Compatible with UI Pack 14.1.1 (Font extensibility).
+
+MicroVG
+"""""""
+
+* Implement `MicroVG API 1.5`_.
+
+C Module FreeType
+"""""""""""""""""
+
+**Changed**
+
+* Upgrade FreeType from the version 2.11.0 (2021-07-18) to the version 2.13.3 (2024-08-11).
+* Separate the original FreeType files from MicroEJ's files.
+* Use the original FreeType directory layout.
+* Add a patch file to override FreeType's memory management without modifying the original file.
+
+C Module HarfBuzz
+"""""""""""""""""
+
+**Changed**
+
+* Upgrade HarfBuzz from the version 4.2.1 (2022-04-24) to the version 10.0.1 (2024-09-24).
+* Separate the original HarfBuzz files from MicroEJ's files.
+
+[1.6.0] - 2024-07-19
+====================
+
+MicroVG
+"""""""
+
+**Added**
+
+* Allow the ``nema`` value for the MicroVG implementation (see :ref:`section_microvg_installation`).
+
+**Changed**
+
+* Compatible with UI Pack 14.0.1.
+
+Front Panel
+"""""""""""
+
+**Added**
+
+* Support ``nema`` image format and limitations (blend modes ``SCREEN`` and ``MULTIPLY`` are not supported).
+
+LLAPIs
+""""""
+
+**Added**
+
+* Add the LLAPI ``LLVG_MATRIX_IMPL_transformPoint``.
+* Add the new type ``MICROVG_Image``.
+
+**Changed**
+
+* Change the semantic of the LLAPI ``LLVG_GRADIENT_IMPL_initializeGradient``: the positions array cannot be ``NULL``.
+* Add ``const`` modifiers for parameters of the following functions:
+
+    * ``LLVG_GRADIENT_IMPL_initializeGradient``,
+    * ``LLVG_MATRIX_IMPL_copy``,
+    * ``LLVG_MATRIX_IMPL_multiply``,
+    * ``LLVG_MATRIX_IMPL_setConcat``,
+    * ``LLVG_MATRIX_IMPL_concatenate``,
+    * ``LLVG_MATRIX_IMPL_postConcat``.
+
+* Use the new type ``MICROVG_Image`` in the signature of the following functions:
+
+    * ``LLVG_BVI_IMPL_map_context``,
+    * ``LLVG_PAINTER_IMPL_drawImage``.
 
 [1.5.1] - 2024-04-11
 ====================
@@ -114,7 +293,7 @@ C Module VGLite
 **Fixed**
 
 * Fix some comments.
-* Fix the dynamic path drawing on i.MX RT1170 Evaluation Kit (use the same quality of paths as vector images). 
+* Fix the dynamic path drawing on i.MX RT1170 Evaluation Kit (use the same quality of paths as vector images).
 * Fix the path drawing on i.MX RT1170 Evaluation Kit (disable the color pre-multiplication).
 * Fix the rendering of some blending modes on i.MX RT1170 Evaluation Kit by disabling the GPU pre-multiplication when required.
 
@@ -126,7 +305,7 @@ MicroVG
 
 **Fixed**
 
-* Fix the path command "move relative". 
+* Fix the path command "move relative".
 
 C Module VGLite
 """""""""""""""
@@ -142,6 +321,9 @@ C Module VGLite
 
 [1.4.0] - 2023-07-21
 ====================
+
+UI Pack
+"""""""
 
 **Fixed**
 
@@ -159,8 +341,6 @@ MicroVG
 **Changed**
 
 * Compatible with `MicroVG API 1.4`_.
-
-.. _MicroVG API 1.4: https://repository.microej.com/modules/ej/api/microvg/1.4.0/
 
 **Fixed**
 
@@ -236,7 +416,7 @@ C Module MicroVG
 **Removed**
 
 * Remove the useless implementation of `LLVG_PATH_IMPL_mergePaths` (useless since VG Pack 1.2).
-* Remove partial Freetype implementation that manipulates the font's glyphs as bitmaps (not compatible anymore with VG pack 1.3.0).  
+* Remove partial Freetype implementation that manipulates the font's glyphs as bitmaps (not compatible anymore with VG pack 1.3.0).
 
 C Module VGLite
 """""""""""""""
@@ -290,8 +470,8 @@ MicroVG
 **Changed**
 
 * Compatible with `MicroVG API 1.2`_.
-* Change the VectorImage internal format: *raw* format instead of *immutables* format. 
- 
+* Change the VectorImage internal format: *raw* format instead of *immutables* format.
+
 .. _MicroVG API 1.2: https://repository.microej.com/modules/ej/api/microvg/1.2.0/
 
 Front Panel
@@ -299,7 +479,7 @@ Front Panel
 
 **Fixed**
 
-* Fix the redirection of fillEllipseArc to the right software algorithm. 
+* Fix the redirection of fillEllipseArc to the right software algorithm.
 
 Vector Image Converter
 """"""""""""""""""""""
@@ -313,12 +493,12 @@ C Module MicroVG
 
 **Added**
 
-* Add ``LLVG_MATRIX_IMPL_multiply(c,a,b)`` (C = AxB): faster than ``setConcat`` when destination and source target the same matrix.  
+* Add ``LLVG_MATRIX_IMPL_multiply(c,a,b)`` (C = AxB): faster than ``setConcat`` when destination and source target the same matrix.
 * Add an entry point to initialize the path engine on startup.
 
 **Changed**
 
-* Prevent a copy in a temp matrix when calling ``postXXX`` functions. 
+* Prevent a copy in a temp matrix when calling ``postXXX`` functions.
 
 **Fixed**
 
@@ -337,12 +517,12 @@ C Module VGLite
 
 * Reduce the gradient footprint in ``BufferedVectorImage``.
 * Harmonize the use of ``vg_drawer.h`` functions (instead of ``VG_DRAWER_drawer_t`` functions) in ``BufferedVectorImage``.
-* Use the global fields *VGLite paths* instead of functions fields (prevent dynamic allocation on task stack). 
+* Use the global fields *VGLite paths* instead of functions fields (prevent dynamic allocation on task stack).
 
 **Fixed**
 
-* Fix the drawing of a text in a ``BufferedVectorImage``: do not wake-up the GPU. 
-* Fix the constants used in ``get_command_parameter_number()`` function (no side-effect).  
+* Fix the drawing of a text in a ``BufferedVectorImage``: do not wake-up the GPU.
+* Fix the constants used in ``get_command_parameter_number()`` function (no side-effect).
 
 [1.1.1] - 2022-09-05
 ====================
@@ -361,7 +541,7 @@ MicroVG
 
 * Compatible with `MicroVG API 1.1`_.
 * Change color animation interpolation (match Android formula).
-   
+
 **Fixed**
 
 * Fix NullPointerException while sorting TranslateXY VectorDrawableObjectAnimator in vectorimage-converter.
@@ -370,12 +550,12 @@ MicroVG
 
 LLAPIs
 """"""
-   
+
 **Added**
 
 * Add LLAPI to close a font: ``LLVG_FONT_IMPL_dispose()``.
 
-**Changed** 
+**Changed**
 
 * Manage the font :ref:`complex layout <section_vg_font_complex>`.
 * Returns an error code when drawing something.
@@ -385,8 +565,8 @@ C Module MicroVG
 
 **Added**
 
-* Add ``microvg_configuration.h`` versionning.
-* Add an option to load a VectorFont from the external resources. 
+* Add ``microvg_configuration.h`` versioning.
+* Add an option to load a VectorFont from the external resources.
 * Add an option to select the text layouter between FreeType and Harfbuzz.
 * Add a function to apply an opacity on a color.
 * Add the text layout.
@@ -401,16 +581,16 @@ C Module VGLite
 **Added**
 
 * Add the ``BufferedVectorImage`` feature (BVI).
- 
+
 **Changed**
 
 * Manage the closed fonts.
 * Move ``ftvglite.c`` and ``ftvglite.h`` to C Module FreeType.
-* Extract text layout to C Module MicroVG.  
+* Extract text layout to C Module MicroVG.
 * Get fill rule configuration from each glyph ``FT_Outline->flags`` instead of defaulting it to ``VG_LITE_FILL_EVEN_ODD``.
 * Use the MicroUI over VGLite's Vectorial Drawer mechanism.
 * Join character bboxes at baseline for ``drawStringOnCircle``.
-  
+
 [1.0.1] - 2022-05-16
 ====================
 
@@ -437,8 +617,8 @@ MicroVG
 * Compatible with MicroVG API 1.0.0.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
-   for read and redistribute. Except if otherwise stated, modification 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free
+   for read and redistribute. Except if otherwise stated, modification
    is subject to MicroEJ Corp prior approval.
-   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and
    copyrights are the property of their respective owners.

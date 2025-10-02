@@ -138,13 +138,13 @@ The following attributes are optional:
      - The name of the current tested product.
      - ``TestSuite``
    * - ``jvm``
-     - The location of your Java VM to start the test suite (the
+     - The location of your Java SE VM to start the test suite (the
        ``harnessScript`` is called as is:  ``[jvm] [...] -buildfile
        [harnessScript]``).
      - ``java.home`` location if the property is set, ``java``
        otherwise.
    * - ``jvmargs``
-     - The arguments to pass to the Java VM started for each test.
+     - The arguments to pass to the Java SE VM started for each test.
      - None.
    * - ``testsuiteReportFileProperty``
      - The name of the Ant property in which the path of the final
@@ -418,7 +418,7 @@ engine in the custom properties file of a test.
    global timeout defined for the MicroEJ Test Suite is used.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

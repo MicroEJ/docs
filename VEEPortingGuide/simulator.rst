@@ -1,10 +1,12 @@
+.. _simulator_principle:
+
 Principle
 =========
 
 The MicroEJ Platform provides an accurate MicroEJ Simulator that runs on
 workstations. Applications execute in an almost identical manner on both
 the workstation and on target devices. The MicroEJ Simulator features IO
-simulation, JDWP debug coupled with Eclipse, accurate Java heap dump,
+simulation, JDWP debug coupled with Eclipse, accurate Managed Heap dump,
 and an accurate Java scheduling policy (the same as the embedded one). [1]_
 
 
@@ -69,7 +71,7 @@ This will create a launch configuration configured for the Simulator,
 and will run it.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

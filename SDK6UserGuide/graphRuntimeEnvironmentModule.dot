@@ -1,0 +1,45 @@
+digraph mygraph {
+    rankdir="RL";
+    bgcolor="transparent"
+    fontname="Helvetica,Arial,sans-serif"
+    node [
+        shape = box
+        width = 1.5
+        color = "#7dc5dc"
+        style = filled
+        fontname="Helvetica,Arial,sans-serif"
+    ]
+    edge [fontname="Helvetica,Arial,sans-serif"]
+    "checkModule" [fillcolor = "#f76241"]
+    "buildRuntimeEnvironmentJar" [fillcolor = "#f76241"]
+    "compileRuntimeEnvironment" [fillcolor = "#f76241"]
+    "shrinkRuntimeEnvironment" [fillcolor = "#f76241"]
+    "build" -> "assemble"
+    "build" -> "check"
+    "build" -> "buildRuntimeEnvironmentJar"
+    "assemble" -> "jar"
+    "assemble" -> "javadocJar"
+    "assemble" -> "sourcesJar"
+    "javadocJar" -> "javadoc"
+    "javadoc" -> "shrinkRuntimeEnvironment"
+    "sourcesJar" -> "shrinkRuntimeEnvironment"
+    "buildRuntimeEnvironmentJar" -> "compileRuntimeEnvironment"
+    "compileRuntimeEnvironment" -> "shrinkRuntimeEnvironment"
+    "jar" -> "classes"
+    "classes" -> "compileJava"
+    "classes" -> "processResources"
+    "check" -> "test"
+    "test" -> "testClasses"
+    "test" -> "classes"
+    "testClasses" -> "compileTestJava"
+    "testClasses" -> "processTestResources"
+    "checkModule" -> "assemble"
+
+    subgraph cluster_legend {
+        label="Legend";
+        microej [fillcolor="#f76241" label="MicroEJ task"];
+        java [fillcolor="#7dc5dc" label="Java plugin or Base plugin task"];
+        microej -> java [style=invis];
+        java -> microej [style=invis];
+    }
+}

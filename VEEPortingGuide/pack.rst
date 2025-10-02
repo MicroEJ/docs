@@ -5,18 +5,21 @@ MicroEJ Packs
 =============
 
 Overview
-============
+========
 
 On top of a MicroEJ Architecture can be imported MicroEJ Packs which provide additional features such as:
 
 -  :ref:`Serial Communications <pack_ecom_comm>`,
 -  :ref:`Graphical User Interface <pack_gui>`,
 -  :ref:`Networking <pack_net>`,
+-  :ref:`Bluetooth <pack_bluetooth>`,
+-  :ref:`Audio <pack_audio>`,
+-  :ref:`MicroAI <pack_microai>`,
 -  :ref:`File System <pack_fs>`,
 -  etc.
 
-Each MicroEJ Pack is optional and can be selected on demand during the
-:ref:`MicroEJ Platform configuration <platform_configuration_creation>` step.
+Each MicroEJ Pack is optional and can be selected on demand in the VEE Port configuration.
+Refer to :ref:`SDK 6 <sdk_6_veeport_pack_import>` or :ref:`SDK 5 <platform_configuration_creation>` documentation to learn how to do it.
 
 Naming Convention
 =================
@@ -26,7 +29,7 @@ MicroEJ Packs are distributed in two packages:
 - MicroEJ Architecture Specific Pack under the `com/microej/architecture/*`_ organization.
 - MicroEJ Generic Pack under the `com/microej/pack/*`_ organization.
 
-See :ref:`pack_import` for usage.
+See the Pack Import documentation for :ref:`SDK 6 <sdk_6_veeport_pack_import>` or :ref:`SDK 5 <pack_import>` for usage.
 
 .. _com/microej/architecture/*: https://repository.microej.com/modules/com/microej/architecture
 .. _com/microej/pack/*: https://repository.microej.com/modules/com/microej/pack/
@@ -83,7 +86,7 @@ Legacy Generic Pack
 ~~~~~~~~~~~~~~~~~~~
 
 Legacy MicroEJ Generic Packs files end with the ``.xpfp`` extension.
-These Packs contain one or more Platform modules. See :ref:`platform_module_configuration` for their configuration.  
+These Packs contain one or more VEE Port modules.
 They are classified using the following naming convention:
 
 ::
@@ -98,7 +101,7 @@ available at https://repository.microej.com/modules/com/microej/pack/net/9.2.3/n
 
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

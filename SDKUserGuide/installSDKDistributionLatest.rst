@@ -80,6 +80,27 @@ Install SDK Distribution
 
 - Click on the :guilabel:`OK` button to confirm the installation path.
 
+.. warning::
+
+   .. collapse:: Click here if you install SDK 5 on MacOS.
+
+      On MacOS, the path may duplicate the last directory if you opened it in the File Selection Dialog instead of selecting it.
+
+      .. figure:: images/installation_process/SDK24_01/installation_path_screen_osx_1.png
+         :alt: Installation path screen
+         :align: center
+         :scale: 50%
+
+         Duplicated directory in path on MacOS
+
+      .. figure:: images/installation_process/SDK24_01/installation_path_screen_osx_2.png
+         :alt: Installation path screen
+         :align: center
+         :scale: 50%
+
+         Error when path is not a valid JDK path
+
+      Be sure the path points to JDK root dir, and not to ``Contents/Home``, and click next.
 
 .. figure:: images/installation_process/SDK22_06/installation_validation_screen.png
    :alt: Confirm path screen
@@ -113,11 +134,33 @@ Install SDK Distribution
 
 The SDK Distribution is now installed on your computer. You can launch it from your application launcher or by executing the :guilabel:`MicroEJ` executable in the installation path.
 
+.. warning::
+
+   .. collapse:: Click here if SDK 5 fails to start on MacOS.
+
+      SDK 5 fails to start after installation because the JVM classpath has not been correctly set in configuration file.
+      To fix it, you need to 
+      
+      - browse SDK 5 files by selecting :guilabel:`Show Package Contents` in the right click menu of :guilabel:`MicroEJ-SDK-24.01.app`.
+
+      .. figure:: images/installation_process/SDK24_01/installation_path_screen_osx_3.png
+         :alt: Installation path screen
+         :align: center
+
+         Show Package Contents of MicroEJ-SDK-24.01.app
+
+      - edit ``Contents/Eclipse/eclipse.ini`` and add ``Contents/Home`` to the path defined for the ``-vm`` argument. For instance 
+      
+      .. code::
+
+         -vm
+         /Library/Java/JavaVirtualMachines/temurin-11.jdk/Contents/Home/bin  
+
 Once the SDK is started, it is recommended to check if updates are available (see :ref:`sdk_update` section).
 If your are running SDK on Windows OS, it is also strongly recommended to configure :ref:`Windows defender exclusion rules <sdk_install_troubleshooting_windows>`.
 
 ..
-   | Copyright 2021-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2021-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

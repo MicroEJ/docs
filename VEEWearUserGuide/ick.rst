@@ -13,7 +13,7 @@ Software Architecture
 ---------------------
 
 The iOS Compatibility Kit provides a JDK which can be used to compile and run Java code on iOS.
-The code of the MicroEJ Application and of the libraries it depends on is executed on a Java VM started by the iOS app.
+The code of the MicroEJ Application and of the libraries it depends on is executed on a Java SE VM started by the iOS app.
 
 The JDK runtime includes JavaFX to be able to display Applications which use :ref:`section_app_microui` or :ref:`section_app_microvg`.
 
@@ -40,7 +40,7 @@ Evaluation
 The iOS Compatibility Kit is available on demand. You can contact :ref:`MicroEJ Support<get_support>` to evaluate this solution.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

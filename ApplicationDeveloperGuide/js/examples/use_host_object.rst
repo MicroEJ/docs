@@ -8,7 +8,7 @@ Create a JavaScript API from Java
 
     It is also recommended to follow the :ref:`js.getting_started` page and/or the :ref:`js.examples.simple_app` example before.
 
-In this example a JavaScript API is exposed from Java.
+In this example a JavaScript API is exposed from Java code.
 This can be useful when a specific API must be defined in JavaScript or when adapting an existing Java API to a JavaScript API.
 
 Create a class ``MyApiHostObject`` (``src/main/java/com/mycompany/MyApiHostObject.java``):
@@ -70,10 +70,10 @@ Finally, build and execute the application with the :ref:`MMM CLI <mmm_build_kit
 
 The length of the string ``Hello World!`` (12) should be displayed.
 
-For more information about communication between Java and JavaScript please refer to the :ref:`js.java` page.
+For more information about communication between Java code and JavaScript code please refer to the :ref:`js.java` page.
 
 ..
-   | Copyright 2021-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2021-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

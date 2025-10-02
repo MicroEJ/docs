@@ -4,7 +4,7 @@
  JavaScript
 ============
 
-MicroEJ allows to develop parts of an application in JavaScript. Basically, a MicroEJ Application boots in Java, then it initializes the JavaScript runtime to run a mix of Java and JavaScript code.
+MicroEJ allows to develop parts of an application in JavaScript. Basically, a MicroEJ Application boots in Java code, then it initializes the JavaScript runtime to run a mix of Java code and JavaScript code.
 
 
 .. figure:: images/js_runtime.png
@@ -34,7 +34,7 @@ You can start playing with it by following the :ref:`Getting Started <js.getting
    internals
 
 ..
-   | Copyright 2020-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2020-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

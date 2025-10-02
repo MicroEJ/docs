@@ -10,7 +10,7 @@ There are different types of tests:
 
 - Test on the Simulator
 - Test on a device
-- Test on a J2SE VM
+- Test on a Java SE VM
 
 Each type of test is detailed in the next sections.
 
@@ -58,8 +58,10 @@ but without requiring the board.
 This solution is therefore less constraining and more portable than testing on the board.
 
 
+.. _sdk_6_testsuite_configuration:
+
 Configure the Testsuite
-~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^
 
 The configuration of the testsuites of a project must be defined inside the following block in the ``build.gradle.kts`` file:
 
@@ -73,8 +75,7 @@ The configuration of the testsuites of a project must be defined inside the foll
             dependencies { // (4)
                 implementation(project())
                 implementation("ej.api:edc:1.3.5")
-                implementation("ej.library.test:junit:1.7.1")
-                implementation("org.junit.platform:junit-platform-launcher:1.8.2")
+                implementation("ej.library.test:junit:1.12.0")
             }
          }
       }
@@ -88,11 +89,51 @@ This piece of configuration is the minimum configuration required to define a te
   Simulator.
 - ``(4)``: adds the dependencies required by the tests. The first line declares a dependency to the code of the project.
   The second line declares a dependency on the ``edc`` Library. The third line declares a dependency to the JUnit API used 
-  to annotate Java Test classes. Finally the fourth line declares a dependency to a required JUnit library.
+  to annotate Java Test classes.
 
+.. warning::
+
+   With SDK 6 prior to ``1.1.0``, ``junit-platform-launcher`` must be added as a test dependency::
+
+      implementation("org.junit.platform:junit-platform-launcher:1.8.2")
+
+.. _sdk_6_testsuite_vee_configuration:
+
+Configure the VEE
+^^^^^^^^^^^^^^^^^
+
+The VEE used to execute the tests must be declared in the project dependencies,
+with the ``microejVee`` or the ``testMicroejVee`` configuration (refer to :ref:`sdk_6_select_veeport` for more details on the selection capabilities).
+A VEE declared with the ``microejVee`` configuration is used to run the Application, as well as to execute the testsuites.
+The ``microejVee`` is generally used in Application projects, since the tests should run on the same Application target VEE::
+
+   dependencies {
+       ...
+       microejVee("com.mycompany:vee-port:1.0.0")
+   }
+
+A VEE declared with the ``testMicroejVee`` configuration is used only for the testsuites.
+It is recommended in Library projects, since they don't need a VEE to run, the VEE is scoped for the tests only::
+
+   dependencies {
+       ...
+       testMicroejVee("com.mycompany:vee-port:1.0.0")
+   }
+
+As a summary, the rules are:
+
+- Only one VEE must be declared globally.
+- If the VEE is declared with ``microejVee``, it is used to run the Application (if it is an Application) and to execute the tests.
+- If the VEE is declared with ``testMicroejVee``, it is only used to execute the tests.
+
+.. warning::
+
+   Declaring a VEE in project dependencies only applies to the current project. 
+   By default the transitive resolution of the VEE is disabled but you can enable it with the project property ``feature.vee.transitivity.enabled``.
+   For more information, refer to :ref:`sdk_6_vee_port_transitivity`.
 
 Create a Test Class
-~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^
 
 The SDK provides a JUnit library containing the subset of the supported JUnit API: ``ej.library.test:junit``.
 Before creating the Test class, make sure this library is declared in the testsuite dependencies:
@@ -104,7 +145,7 @@ Before creating the Test class, make sure this library is declared in the testsu
          val test by getting(JvmTestSuite::class) {
             ...
             dependencies {
-               implementation("ej.library.test:junit:1.7.1")
+               implementation("ej.library.test:junit:1.12.0")
             }
             ...
          }
@@ -116,7 +157,7 @@ This can be done manually or with IDE menu:
   
 .. tabs::
 
-   .. tab:: Android Studio / IntelliJ IDEA
+   .. tab:: IntelliJ IDEA / Android Studio
 
       - right-click on the ``src/test/java`` folder.
       - select :guilabel:`New` > :guilabel:`Java Class`, then press ``Alt`` + ``Insert`` and select ``Test Method``.
@@ -136,16 +177,8 @@ This can be done manually or with IDE menu:
    Gradle allows to define alternative folders for test sources but it would require additional configuration, 
    so it is recommended to stick with the ``src/test/java`` folder.
 
-
-Setup a VEE Port
-~~~~~~~~~~~~~~~~
-
-Before running tests, at least one target VEE Port must be configured using one of the methods described in the :ref:`sdk_6_select_veeport` page.
-If several VEE Ports are defined, the testsuite is executed on each of them.
-
-
 Execute the Tests
-~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^
 
 Once the testsuite is configured, it can be run thanks to the ``test`` Gradle task.
 This task is bound to the ``check`` and the ``build`` Gradle lifecycle tasks,
@@ -153,29 +186,76 @@ which means that the tests are also executed when launching one of these tasks.
 
 .. tabs::
 
-   .. tab:: Android Studio / IntelliJ IDEA
+   .. tab:: IntelliJ IDEA / Android Studio
 
-      In order to execute the testsuite from Android Studio or IntelliJ IDEA, double-click on the task in the Gradle tasks view:
+      In order to execute the testsuite from IntelliJ IDEA or Android Studio, double-click on the task in the Gradle tasks view:
 
-      .. image:: images/intellij-test-gradle-project.png
+      .. figure:: images/intellij-test-gradle-project.png
          :width: 30%
          :align: center
+
+         Run Gradle ``test`` task from IntelliJ IDEA / Android Studio
 
    .. tab:: Eclipse
 
       In order to execute the testsuite from Eclipse, double-click on the task in the Gradle tasks view:
 
-      .. image:: images/eclipse-test-gradle-project.png
-         :width: 50%
+      .. figure:: images/eclipse-test-gradle-project.png
+         :width: 30%
          :align: center
+
+         Run Gradle ``test`` task from Eclipse
+
+
+      .. warning::
+
+         By right-clicking on a test class file, the menu proposes :guilabel:`Gradle Test` and :guilabel:`JUnit Test` in the :guilabel:`Run As` entry.
+
+         .. figure:: images/eclipse_run_as_gradle_test.png
+            :width: 40%
+            :align: center
+
+            Run test as Gradle test in a class right-click menu
+
+         Always use the :guilabel:`Run` > :guilabel:`Gradle Test` entry.
 
    .. tab:: Visual Studio Code
 
       In order to execute the testsuite from VS Code, double-click on the task in the Gradle tasks view:
 
-      .. image:: images/vscode-test-gradle-project.png
+      .. figure:: images/vscode-test-gradle-project.png
          :width: 25%
          :align: center
+
+         Run Gradle ``test`` task from Visual Studio Code
+
+
+      .. warning::
+
+         Test start buttons (represented as green triangle) may appear on the left side of class and method definitions.
+         
+         .. figure:: images/vscode_run_test.png
+            :width: 30%
+            :align: center
+
+            Green triangles are test start buttons
+
+         Running tests from these buttons may fail because they do not use the Gradle Runner by default. To run a test with Gradle, right-click on the green triangle
+         and select :guilabel:`Execute Using Profile...`
+
+         .. figure:: images/vscode_execute_using_profile.png
+            :width: 30%
+            :align: center
+
+            Right-click menu on test start buttons
+
+         and then select :guilabel:`Delegate Test to Gradle`.
+
+         .. figure:: images/vscode_delegate_test_to_gradle.png
+            :width: 30%
+            :align: center
+
+            Run test class or test method with Gradle
 
    .. tab:: Command Line Interface
 
@@ -186,7 +266,7 @@ which means that the tests are also executed when launching one of these tasks.
 .. _sdk_6_test_generate_code_coverage:
 
 Generate Code Coverage
-~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^
 
 To generate the Code Coverage files (``.cc``) for each test, configure the test suite as follows:
 
@@ -203,6 +283,7 @@ To generate the Code Coverage files (``.cc``) for each test, configure the test 
                   testTask.configure {
                      doFirst {
                         systemProperties["microej.testsuite.properties.s3.cc.activated"] = "true"
+                        systemProperties["microej.testsuite.properties.s3.cc.thread.period"] = "15"
                      }
                   }
                }
@@ -214,7 +295,7 @@ To generate the Code Coverage files (``.cc``) for each test, configure the test 
 Then, to generate an HTML report, see :ref:`sdk6.section.code_coverage_analyzer`.
 
 Filter the Tests
-~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^
 
 Gradle automatically executes all the tests located in the test source folder.
 If you want to execute only a subset of these tests, Gradle provides 2 solutions:
@@ -250,11 +331,17 @@ Other methods are available for test filtering, such as ``excludeTestsMatching``
 Refer to the `TestFilter <https://docs.gradle.org/current/javadoc/org/gradle/api/tasks/testing/TestFilter.html>`__
 documentation for the complete list of available filtering methods.
 
-As mentionned earlier, Gradle allows to filter the tests from the command line directly, thanks to the ``--tests`` option::
+Gradle also allows to filter the tests from the command line directly, thanks to the ``--tests`` option.
+For example, to execute only the tests from the class ``MyTestClass``, run this command::
 
    ./gradlew test --tests MyTestClass
 
-This can be convenient to quickly execute one test for example, without requiring a change in the build script file.
+This can be convenient to quickly execute one test, without requiring a change in the build script file.
+
+.. note::
+   The test class referenced by the ``--tests`` option is executed only if it is not excluded in the test 
+   configuration in the ``build.gradle.kts`` file. Therefore, make sure to adpat your test configuration 
+   when using this option.
 
 Refer to the Gradle `Test filtering <https://docs.gradle.org/current/userguide/java_testing.html#test_filtering>`__
 documentation for more details on how to filter the tests and on the available patterns.
@@ -263,6 +350,103 @@ documentation for more details on how to filter the tests and on the available p
 
    At the moment, only class-level filtering is supported. 
    This means that, for instance, it is not possible to run a single test method within a test class.
+
+
+Debug the Tests on Simulator
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A test can be executed on the Simulator in debug mode by setting the testsuite property ``execution.mode`` to ``debug`` 
+when executing the ``test`` task::
+
+   ./gradlew test --tests MyTest -Dmicroej.testsuite.properties.execution.mode="debug" -Dmicroej.testsuite.properties.debug.port="12000"
+
+Once started, the Simulator waits for the connection of a debugger.
+
+If you want to connect the IDE debugger:
+
+.. tabs::
+
+   .. tab:: IntelliJ IDEA / Android Studio
+
+      .. warning::
+         IntelliJ IDEA and Android Studio need an Architecture 8.1 or higher for debug mode.
+
+      - Add a breakpoint in your Application code.
+      - Click on :guilabel:`Run` > :guilabel:`Edit Configurations...`.
+      - Click on :guilabel:`+` button (:guilabel:`Add New Configuration`).
+      - Select :guilabel:`Remote JVM Debug`.
+      - Click on the :guilabel:`New launch configuration` button.
+      - Give a name to the launcher in the :guilabel:`Name` field.
+      - Set the debug host and port.
+      - Click on the :guilabel:`Debug` button.
+
+   .. tab:: Eclipse
+
+      - Add a breakpoint in your Application code.
+      - Click on :guilabel:`Run` > :guilabel:`Debug Configurations...`.
+      - Select :guilabel:`Remote Java Application`.
+      - Click on the :guilabel:`New launch configuration` button.
+      - Give a name to the launcher in the :guilabel:`Name` field.
+      - Set the debug host and port.
+      - Click on the :guilabel:`Debug` button.
+
+   .. tab:: Visual Studio Code
+
+      .. warning::
+         VS Code needs an Architecture 8.1 or higher for debug mode.
+
+      - Add a breakpoint in your Application code.
+
+         .. figure:: images/vscode-add-breakpoint.png
+            :alt: VS Code add a breakpoint
+            :align: center
+            :scale: 70%
+
+      - Click on the :guilabel:`Run and Debug (Ctrl+Shift+D)` icon on the right panel.
+      - Click on ``create a launch.json file`` in the opened panel.
+      
+         .. figure:: images/vscode-open-debug-launcher.png
+            :alt: VS Code open debug launchers
+            :align: center
+            :scale: 70%
+
+      - Click on the ``Java`` entry proposed in the search field.
+
+         .. figure:: images/vscode-select-java-debug.png
+            :alt: VS Code select Java debug
+            :align: center
+            :scale: 70%
+
+      - Click on :guilabel:`Add Configuration` button
+      - Select ``{} Java: Attach to Remote Program`` entry in the popup list.
+
+         .. figure:: images/vscode-add-attach-remote-configuration.png
+            :alt: VS Code add attach remote debug configuration
+            :align: center
+            :scale: 70%
+
+      - Set ``localhost`` as ``hostName`` and  the ``port`` (default is ``1200``) in the generated json.
+
+         .. figure:: images/vscode-configure-remote-debug.png
+            :alt: VS Code configure remote debug in json
+            :align: center
+            :scale: 70%
+
+      - Select ``Attach to Remote Program`` in the selection box of the launcher.
+
+         .. figure:: images/vscode-attach-remote-program.png
+            :alt: VS Code run debug
+            :align: center
+            :scale: 70%
+
+      - Click on the ``Start`` button
+
+         .. figure:: images/vscode-stopped-on-breakpoint.png
+            :alt: VS Code stopped on breakpoint
+            :align: center
+            :scale: 70%
+
+The debugger should connect to the Simulator and you should be able to debug your test.
 
 
 .. _sdk_6_testsuite_on_device:
@@ -276,7 +460,7 @@ This requires to:
 - Have a VEE Port which implements the :ref:`BSP Connection <bsp_connection>`.
 - Have a device connected to your workstation both for programming the Executable and getting the output traces. 
   Consult your VEE Port specific documentation for setup.
-- Start the :ref:`tool_serial_to_socket` tool if the VEE Port does not redirect execution traces.
+- Start the :ref:`sdk6_tool_serial_to_socket` tool if the VEE Port does not redirect execution traces.
 
 The configuration is similar to the one used to execute a testsuite on the Simulator.
 
@@ -309,11 +493,13 @@ The configuration is similar to the one used to execute a testsuite on the Simul
                               // Enable the build of the Executable
                               "microej.testsuite.properties.deploy.bsp.microejscript" to "true",
                               "microej.testsuite.properties.microejtool.deploy.name" to "deployToolBSPRun",
-                              // Tell the testsuite engine that the VEE Port Run script redirects execution traces
-                              "microej.testsuite.properties.launch.test.trace.file" to "true",
+                              
                               // Configure the TCP/IP address and port if the VEE Port Run script does not redirect execution traces
                               "microej.testsuite.properties.testsuite.trace.ip" to "localhost",
-                              "microej.testsuite.properties.testsuite.trace.port" to "5555"
+                              "microej.testsuite.properties.testsuite.trace.port" to "5555",
+                              // Tell the testsuite engine that the VEE Port Run script redirects execution traces.
+                              // Uncomment this line and comment the 2 lines above if the VEE Port supports it.
+                              //"microej.testsuite.properties.launch.test.trace.file" to "true"
                            )
                      }
                   }
@@ -327,14 +513,14 @@ The properties are:
 - ``microej.testsuite.properties.microejtool.deploy.name``: name of the tool used to deploy the Executable to the board. It is required.
   It is generally set to ``deployToolBSPRun``.
 - ``microej.testsuite.properties.launch.test.trace.file``: enables the redirection of the traces in file. If the VEE Port does not have this capability, 
-  the :ref:`tool_serial_to_socket` tool must be used to redirect the traces to a socket.
-- ``microej.testsuite.properties.testsuite.trace.ip``: TCP/IP address used by the :ref:`tool_serial_to_socket` tool to redirect traces from the board.
+  the :ref:`sdk6_tool_serial_to_socket` tool must be used to redirect the traces to a socket.
+- ``microej.testsuite.properties.testsuite.trace.ip``: TCP/IP address used by the :ref:`sdk6_tool_serial_to_socket` tool to redirect traces from the board.
   This property is only required if the VEE Port does not redirect execution traces.
-- ``microej.testsuite.properties.testsuite.trace.port``: TCP/IP port used by the :ref:`tool_serial_to_socket` tool to redirect traces from the board.
+- ``microej.testsuite.properties.testsuite.trace.port``: TCP/IP port used by the :ref:`sdk6_tool_serial_to_socket` tool to redirect traces from the board.
   This property is only required if the VEE Port does not redirect execution traces.
 
 Any other property can be passed to the Test Engine by prefixing it by ``microej.testsuite.properties.``.
-For example, to set the the Immortal heap size:
+For example, to set the the Immortals Heap size:
 
 .. code-block::
 
@@ -344,16 +530,16 @@ For example, to set the the Immortal heap size:
    )
 
 
-.. _sdk_6_testsuite_on_j2se:
+.. _sdk_6_testsuite_on_jse:
 
-Test on J2SE VM
----------------
+Test on Java SE VM
+------------------
 
-The SDK allows to run tests on a J2SE VM.
+The SDK allows to run tests on a Java SE VM.
 This can be useful, for example, when the usage of mock libraries like ``Mockito`` is 
-needed (this kind of library is not supported by the MicroEJ VM).
+needed (this kind of library is not supported by the MicroEJ Core Engine).
 
-There is nothing specific related to MicroEJ to run tests on a J2SE VM.
+There is nothing specific related to MicroEJ to run tests on a Java SE VM.
 Follow the `Gradle documentation <https://docs.gradle.org/current/userguide/jvm_test_suite_plugin.html>`__ to setup such tests.
 As an example, here is a typical configuration to execute the tests located in the ``src/test/java`` folder:
 
@@ -406,24 +592,63 @@ Then you can use it in your test classes:
       }
    }
 
+.. _sdk_6_testsuite_reports:
+
 Test Suite Reports
 ------------------
 
-Once a testsuite is completed, the JUnit XML report is generated in the module project location ``build/testsuite/output/<date>/testsuite-report.xml``.
+.. tabs::
 
-  .. figure:: ../SDKUserGuide/images/testsuiteReportXMLExample.png
-     :alt: Example of MicroEJ Test Suite XML Report
-     
-     Example of MicroEJ Test Suite XML Report
-  
-  XML report file can also be opened In Eclipse in the JUnit View. 
-  Right-click on the file > :guilabel:`Open With` >  :guilabel:`JUnit View`:
+    .. group-tab:: SDK 6 1.1.0 and higher
 
-  .. figure:: ../SDKUserGuide/images/testsuiteReportXMLExampleJunitView.png
-     :alt: Example of MicroEJ Test Suite XML Report in JUnit View
-     
-     Example of MicroEJ Test Suite XML Report in JUnit View
+        Once a testsuite is completed, the JUnit HTML report is generated in the module project location ``build/reports/tests/<testsuite>/index.html``.
 
+        .. figure:: ../SDK6UserGuide/images/junitHtmlReport.png
+           :alt: Example of JUnit HTML Report
+
+           Example of JUnit HTML Report
+
+    .. group-tab:: SDK 6 1.0.0 and below
+
+        Once a testsuite is completed, the JUnit XML report is generated in the module project location ``build/testsuite/output/<date>/testsuite-report.xml``.
+
+        .. figure:: ../SDKUserGuide/images/testsuiteReportXMLExample.png
+           :alt: Example of MicroEJ Test Suite XML Report
+
+           Example of MicroEJ Test Suite XML Report
+
+        XML report file can also be opened In Eclipse in the JUnit View.
+        Right-click on the file > :guilabel:`Open With` >  :guilabel:`JUnit View`:
+
+        .. figure:: ../SDKUserGuide/images/testsuiteReportXMLExampleJunitView.png
+           :alt: Example of MicroEJ Test Suite XML Report in JUnit View
+
+           Example of MicroEJ Test Suite XML Report in JUnit View
+
+.. _sdk_6_publish_testsuite_reports:
+
+Publish Test Suite Reports
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Starting from SDK 6 ``1.2.0``, it is possible to publish an archive file containing all testsuite reports of a project.
+By default, the tests are not executed when publishing a project, so you must explicitly run your testsuite to publish the reports::
+
+   ./gradlew test publish
+
+The published archive file contains the HTML and XML reports of all testsuites that have been executed.
+If your project contains :ref:`multiple testsuites <sdk_6_mixing_testsuites>`, you must execute each testsuite whose report must be published::
+
+   ./gradlew testOnSim testOnJavaSE publish
+
+You can also bind the ``check`` task to all your testsuites in the ``build.gradle.kts`` file of your project::
+
+   tasks.named("check") {
+       dependsOn("testOnSim", "testOnJavaSE")
+   }
+
+and execute the ``check`` task when publishing the project::
+
+   ./gradlew check publish
 
 .. _sdk_6_mixing_testsuites:
 
@@ -437,7 +662,7 @@ Configuring multiple testsuites is almost only a matter of aggregating the tests
 as described in the `Gradle documentation <https://docs.gradle.org/current/userguide/jvm_test_suite_plugin.html#sec:declare_an_additional_test_suite>`__.
 
 Mixing tests on the Simulator and on a device
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you need to define a testsuite to run on the Simulator and a testsuite to run on a device, 
 the only point to take care is related to the tests source location, because:
@@ -464,8 +689,7 @@ Therefore:
 
             dependencies {
                implementation(project())
-               implementation("ej.library.test:junit:1.7.1")
-               implementation("org.junit.platform:junit-platform-launcher:1.8.2")
+               implementation("ej.library.test:junit:1.12.0")
             }
          }
 
@@ -474,17 +698,16 @@ Therefore:
 
             sources {
                java {
-                  setSrcDirs(listOf("src/test/java"))
+                  setSrcDirs(listOf(sourceSets.getByName(SourceSet.TEST_SOURCE_SET_NAME).java))
                }
                resources {
-                  setSrcDirs(listOf("src/test/resources"))
+                  setSrcDirs(listOf(sourceSets.getByName(SourceSet.TEST_SOURCE_SET_NAME).resources))
                }
             }
 
             dependencies {
                implementation(project())
-               implementation("ej.library.test:junit:1.7.1")
-               implementation("org.junit.platform:junit-platform-launcher:1.8.2")
+               implementation("ej.library.test:junit:1.12.0")
             }
 
             targets {
@@ -552,10 +775,10 @@ Then you use the test filtering capabilities to configure which package to run i
       }
    }
 
-Mixing tests on the Simulator and on a J2SE VM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Mixing tests on the Simulator and on a Java SE VM
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Defining tests on the Simulator and on a J2SE VM is only a matter of aggregating the configuration of each testsuite:
+Defining tests on the Simulator and on a Java SE VM is only a matter of aggregating the configuration of each testsuite:
 
 .. code-block::
 
@@ -566,7 +789,7 @@ Defining tests on the Simulator and on a J2SE VM is only a matter of aggregating
             ...
          }
 
-         val testOnJ2SE by registering(JvmTestSuite::class) {
+         val testOnJavaSE by registering(JvmTestSuite::class) {
             useJUnitJupiter()
 
             dependencies {
@@ -581,7 +804,7 @@ Defining tests on the Simulator and on a J2SE VM is only a matter of aggregating
 As explained in the previous section, it is recommended to use the built-in ``test`` testsuite for the tests on the Simulator
 since it avoids adding confguration to change the tests sources folder. 
 With this configuration, tests on the Simulator are located in the ``src/test/java`` folder, 
-and tests on a J2SE VM are located in the ``src/testOnJ2SE/java`` folder.
+and tests on a Java SE VM are located in the ``src/testOnJavaSe/java`` folder.
 
 .. _sdk_6_testsuite_engine_options:
 
@@ -634,7 +857,7 @@ The following configuration parameters are available:
      - The time in seconds before a test is considered as failed. Set it to ``0`` to disable the timeout.
      - ``60``
    * - ``microej.testsuite.jvmArgs``
-     - The arguments to pass to the Java VM started for each test.
+     - The arguments to pass to the Java SE VM started for each test.
      - Not set
    * - ``microej.testsuite.lockPort``
      - The localhost port used by the framework to synchronize its execution with other frameworks on same computer.
@@ -655,8 +878,17 @@ The following configuration parameters are available:
      - Not set
    * - ``microej.testsuite.verbose.level``
      - Verbose level of the testsuite output. Available values are ``error``, ``warning``, ``info``, ``verbose`` and ``debug``.
-     - ``info``
 
+       .. deprecated:: 1.2.0
+
+          The testsuite verbose level follows Gradle log level.
+
+     - ``info``
+   * - ``microej.testsuite.status.pattern``
+     - **since `1.3.0`** Pattern to change test passed (default is ``.:[|PASSED|]:.``) and failed (default is ``.:[|FAILED|]:.``) tags in testsuite logs.
+       These tags are catched by the testsuite engine to determine if a test has passed or failed.
+       The ``{}`` placeholder in the pattern will be replaced by ``PASSED`` or ``FAILED`` respectively in order to discriminate these tags from other test logs.
+     - ``.:[|{}|]:.``
 
 .. _sdk_6_testsuite_application_options:
 
@@ -667,7 +899,7 @@ Inject Application Options
 They can be defined globally, to be applied on all tests, or specifically to a test.
 
 Inject Application Options Globally
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In order to define an Application Option globally, 
 it must be prefixed by ``microej.testsuite.properties.`` and passed as a System Property,
@@ -705,17 +937,57 @@ For example, to inject the property ``core.memory.immortal.size``:
       }
 
 Inject Application Options For a Specific Test
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In order to define an Application Option for a specific test, 
-it must set in a file with the same name as the generated test case file, 
-but with the ``.properties`` extension instead of the ``.java`` extension. 
+it must be set in a file with the same name as the test case file,
+but with the ``.properties`` extension instead of the ``.java`` extension.
 The file must be put in the ``src/test/resources`` folder and within the same package than the test file.
-For example, to inject a Application Option for the test class ``com.mycompany.MyTest``, 
-it must be set in a file named ``src/test/resources/com.mycompany/MyTest.properties``.
+
+For example, to inject an Application Option for the test class ``MyTest`` located in the ``com.mycompany`` package, 
+a ``MyTest.properties`` file must be created. Its path must be: ``src/test/resources/com/mycompany/MyTest.properties``.
+
+Application Options defined in this file do not require the ``microej.testsuite.properties.`` prefix.
+
+.. note::
+   If the testsuite is configured to execute main classes (thanks to the parameter ``TestMode.MAIN``)::
+
+      microej.useMicroejTestEngine(this, TestTarget.SIM, TestMode.MAIN)
+   
+   the properties file must be named after the main class. 
+   If the main class has been generated from a JUnit test class, its class name is prefixed by ``_AllTests_``.
+
+
+Test Suite Advanced Configuration
+---------------------------------
+
+.. _sdk_6_vee_configuration_by_testsuite:
+
+Configure a VEE by Test Suite
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The VEE declared in the project dependencies with the ``microejVee`` or the ``testMicroejVee`` configuration 
+(refer to :ref:`sdk_6_testsuite_vee_configuration` for more details) is used to execute all test suites. 
+If your project contains a test suite other than the built-in ``test`` test suite, 
+it is also possible to run the test suite on a dedicated VEE. To define a VEE for your custom testsuite, you must:
+
+- Create a new ``<testsuite_name>MicroejVee`` configuration depending on your test suite name in the ``build.gradle.kts`` file of your project. For example::
+
+   configurations.create("testOnDeviceMicroejVee") {
+       isCanBeConsumed = false
+       isCanBeResolved = false
+       isTransitive = false
+   }
+
+- Declare the VEE in the project dependencies with your new configuration::
+
+   dependencies {
+       ...
+       "testOnDeviceMicroejVee"("com.mycompany:vee-port:1.0.0")
+   }
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

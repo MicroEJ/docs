@@ -18,7 +18,7 @@ Once these prerequisites are fulfilled, the Virtual Device can be built:
 
 .. tabs::
 
-   .. tab:: Android Studio / IntelliJ IDEA
+   .. tab:: IntelliJ IDEA / Android Studio
 
       By double-clicking on the ``buildVirtualDevice`` task in the Gradle tasks view:
 
@@ -72,11 +72,25 @@ When building a Virtual Device for a Kernel, Applications can be pre-installed i
 These Applications can be loaded and started when the Kernel starts for example.
 
 To install an Application in a Virtual Device for a Kernel, 
-you must declare the Application as a dependency of the project in the build file, with the ``microejApplication`` configuration::
+you must declare the Application as a dependency of the project:
+
+- When the Application is published in an artifact repository, you can use it by declaring a Module dependency::
 
    dependencies {
       microejApplication("com.mycompany:myapp:1.0.0")
-   }
+   }  
+
+- When the Application is a subproject of a multi-project, you can use it by declaring a Project dependency in the ``build.gradle.kts`` file, with the ``microejApplication`` configuration::
+
+   dependencies {
+      microejApplication(project(":myApplication"))
+   }  
+
+- You can also use the Application WPK file directly by declaring a File dependency in the ``build.gradle.kts`` file, with the ``microejApplication`` configuration::
+
+   dependencies {
+      microejApplication(files("C:\\path\\to\\my\\application.wpk"))
+   }     
 
 .. warning::
    - Only modules with the :ref:`Application Module Nature <sdk6_module_natures.application>` can be declared this 
@@ -99,7 +113,7 @@ This can be done by declaring :ref:`Kernel APIs <kernel.api>` as a dependency in
       implementation("com.microej.kernelapi:edc:1.2.0")
    }
 
-.. _sdk_6_buildVirtualDevice_add_runtime_api:
+.. _sdk_6_buildVirtualDevice_add_runtime_environment:
 
 Add a Runtime Environment in a Virtual Device
 ---------------------------------------------
@@ -108,7 +122,7 @@ When building a Virtual Device for a Kernel, the set of classes, methods and sta
 by all applications can be defined by declaring a :ref:`runtime_environment` as a dependency in the build file::
 
    dependencies {
-      microejRuntimeApi("com.mycompany:myruntimeapi:1.0.0")
+      microejRuntimeEnvironment("com.mycompany:myruntime-environment:1.0.0")
    }
 
 The transitive dependencies of the Runtime Environment are then embedded in the Virtual Device.
@@ -126,21 +140,22 @@ add the following dependency to the build file of the project::
       microejTool("com.microej.tool.kernel:localdeploy-extension:1.0.0")
    }
 
-.. _sdk_6_skip_virtual_device_build:
+.. _sdk_6_trigger_virtual_device_build:
 
-Skip Virtual Device Build by Default
-------------------------------------
+Trigger Virtual Device Build by Default
+---------------------------------------
 
-The Virtual Device of an Application is part of the artifacts that are automatically :ref:`built and published <sdk_6_publish_project>`.
-If you don't want to build and publish the Virtual Device, the ``produceVirtualDeviceDuringBuild(false)`` method 
-can be added in the ``microej`` configuration block of the Gradle build file of the project::
+The Virtual Device of an Application is not built and published by default (when launching a ``./gradlew build`` or 
+a ``./gradlew publish`` for example).
+This default behavior can be changed by adding the ``produceVirtualDeviceDuringBuild()`` method 
+in the ``microej`` configuration block of the Gradle build file of the project::
 
    microej {
-     produceVirtualDeviceDuringBuild(false)
+     produceVirtualDeviceDuringBuild()
    }
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

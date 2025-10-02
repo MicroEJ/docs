@@ -76,7 +76,7 @@ To do that the Image Generator provides some services to implement.
 This chapter explain how to create and include this extension in the VEE Port.
 Next chapters explain the aim of each service.
 
-1. Create a ``std-javalib`` project. The module name must start with the prefix ``imageGenerator`` (for instance ``imageGeneratorMyPlatform``).
+1. Create a ``std-javalib`` project. The module name must start with the prefix ``imageGenerator`` (for instance ``imageGeneratorMyVEEPort``).
 2. Add the dependency:
 
    .. code-block:: xml
@@ -85,13 +85,13 @@ Next chapters explain the aim of each service.
          <artifact name="imageGenerator" type="jar"/>
       </dependency>
 
-   Where ``x.y.z`` is the UI pack version used to build the VEE Port (minimum ``13.0.0``). The ``module.ivy`` should look like:
+   Where ``x.y.z`` is the UI Pack version used to build the VEE Port (minimum ``13.0.0``). The ``module.ivy`` should look like:
 
    .. code-block:: xml
 
       <ivy-module version="2.0" xmlns:ea="http://www.easyant.org" xmlns:m="http://www.easyant.org/ivy/maven" xmlns:ej="https://developer.microej.com" ej:version="2.0.0">
 
-         <info organisation="com.microej.microui" module="imageGeneratorMyPlatform" status="integration" revision="1.0.0">      
+         <info organisation="com.microej.microui" module="imageGeneratorMyVEEPort" status="integration" revision="1.0.0">      
             <ea:build organisation="com.is2t.easyant.buildtypes" module="build-std-javalib" revision="2.+"/>
          </info>
          
@@ -114,9 +114,9 @@ Next chapters explain the aim of each service.
       </ivy-module>
 
 3. Create the folder ``META-INF/services`` in source folder ``src/main/resources`` (this folder will be filled in later).
-4. When a service is added (see next chapters), build the easyant project.
-5. Copy the generated jar: ``target~/artifacts/imageGeneratorMyPlatform.jar`` in the VEE Port configuration project folder: ``MyPlatform-configuration/dropins/tools/``
-6. Rebuild the platform.
+4. When a service is added (see next chapters), build the project.
+5. Copy the generated jar: ``target~/artifacts/imageGeneratorMyVEEPort.jar`` in the VEE Port configuration project folder: ``MyVEEPort-configuration/dropins/tools/``
+6. Rebuild the VEE Port.
 
 .. _section_image_generator_test_extension_project:
 
@@ -295,22 +295,31 @@ When no option is specified, the image is not converted and embedded as well.
 
       image1:XXX
 
-Linker File
-===========
+Link
+====
 
-In addition to images binary files, the Image Generator module generates a linker file (``*.lscf``).
-This linker file declares an image section called ``.rodata.images``.
-This section follows the next rules:
+.. tabs::
 
-* The files are always listed in same order between two application builds.
-* The section is aligned on the value specified by the Display module property ``imageBuffer.memoryAlignment`` (32 bits by default).
-* Each file is aligned on section alignment value.
+   .. tab:: Architecture 8
+
+      Each image listed in an ``.images.list`` file (generated or not) is embedded by the application like a  :ref:`resource<section.classpath.elements.raw_resources>`.
+      An image is aligned in memory on the value specified by the Display module property ``imageBuffer.memoryAlignment`` (32 bits by default).
+     
+   .. tab:: Architecture 7
+
+      In addition to images binary files, the Image Generator module generates a linker file (``*.lscf``).
+      This linker file declares an image section called ``.rodata.images``.
+      This section follows the next rules:
+
+        * The files are always listed in same order between two application builds.
+        * The section is aligned on the value specified by the Display module property ``imageBuffer.memoryAlignment`` (32 bits by default).
+        * Each file is aligned on section alignment value.
 
 External Resources
 ==================
 
 The Image Generator manages two configuration files when the External Resources Loader is enabled.
-The first configuration file lists the images which will be stored as internal resources with the MicroEJ Application.
+The first configuration file lists the images which will be stored as internal resources within the MicroEJ Application.
 The second file lists the images the Image Generator must convert and store in the External Resource Loader output directory.
 It is the BSP's responsibility to load the converted images into an external memory.
 
@@ -344,7 +353,7 @@ configuration file.
 .. _ej.microui.display.Image: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

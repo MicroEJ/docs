@@ -9,14 +9,14 @@ Principle
 
 Several C modules implement the VG Pack's Abstraction Layer APIs.
 Some are generic, and some are VEE Port dependent (more precisely: GPU dependent).
-The generic modules provide header files to be extended by the specific modules. 
+The generic modules provide header files to be extended by the specific modules.
 The generic C modules are available on the :ref:`central_repository` and the specific C modules on the :ref:`developer_repository`.
 
 The following picture illustrates the available C modules and their relations for an implementation that uses:
 
 * FreeType library for the font renderer and the font layouter in simple layout mode.
-* Harfbuzz library for the font layouter in complex layout mode.
-* Vivante VGLite library for the drawing of vector paths
+* HarfBuzz library for the font layouter in complex layout mode.
+* *GPU* library symbolizes the library for the drawing of vector paths over a GPU.
 
 The following chapters explain the aim and relations of each C module.
 
@@ -34,14 +34,6 @@ UI Pack & MicroUI C Modules
 
 The UI Pack provides a header file to implement the MicroUI drawings: ``LLUI_PAINTER_impl.h``.
 See :ref:`section_ui_cco` chapter to have more information.
-
-Library: Vivante VGLite
-=======================
-
-This library is the official Vivante VGLite library.
-The C modules use its header files to target the GPU.
-
-.. note:: The library must be patched to be compatible with the C module "MicroUI over VGLite". Consult the C module's ReadMe file for more information.
 
 VG Pack
 =======
@@ -65,11 +57,11 @@ C Module: MicroVG
 Description
 -----------
 
-This generic C module provides an implementation of MicroVG concepts: matrix, path, linear gradient and font; respectively ``LLVG_MATRIX_impl.c``, ``LLVG_PATH_impl.c``, ``LLVG_GRADIENT_impl.c`` and ``LLVG_FONT_freetype.c``.
+This generic C module provides an implementation of MicroVG concepts: matrix, path, gradient and font; respectively ``LLVG_MATRIX_impl.c``, ``LLVG_PATH_impl_single.c``/``LLVG_PATH_impl_dual.c``, ``LLVG_GRADIENT_impl_stub.c`` and ``LLVG_FONT_impl_freetype.c``.
 
 * Matrix (see Matrix module's :ref:`section_vg_matrix_llapi`): a basic software implementation.
-* Path (see Path module's :ref:`section_vg_path_llapi`): a generic implementation that manages the command buffer's life cycle and dispatches the command encoding to a 3rd-party header file ``microvg_path.h``.
-* Gradient (see Gradient module's :ref:`section_vg_gradient_llapi`): a generic implementation that manages the gradient buffer's life cycle and dispatches the gradient encoding to a 3rd-party header file ``microvg_gradient.h``.
+* Path (see Path module's :ref:`section_vg_path_llapi`): a generic implementation that manages the command buffer's life cycle and dispatches the command encoding to a 3rd-party header file ``vg_path.h``.
+* Gradient (see Gradient module's :ref:`section_vg_gradient_llapi`): a generic minimal implementation that only handles a single color (resulting in filling paths with a solid color). To fully handle linear gradients, the API from ``LLVG_GRADIENT_impl.h`` must be implemented.
 * Font (see Font module's :ref:`section_vg_font_llapi`): an implementation of vector font over FreeType: open font file and retrieve font's characteristics.
 * The MicroVG painter native functions are implemented in ``LLVG_PAINTER_impl.c`` and the drawings are redirected to ``vg_drawing.h``.
 * Image management is too specific to the GPU and is not implemented in this C module.
@@ -84,14 +76,17 @@ Dependencies
 This generic C module requires some specific modules:
 
 * Path and Gradient require a C module specific to a VEE Port (to a GPU format).
-* Font requires the FreeType library and optionally the Harfbuzz library to manage the :ref:`complex layout <section_vg_font_complex>`.
+* Font requires the FreeType library and optionally the HarfBuzz library to manage the :ref:`complex layout <section_vg_font_complex>`.
 
 Usage
 -----
 
-1. This C module transitively fetches the :ref:`C Module for MicroUI<section_ui_cco>`, follow its implementation rules.
+1. Install the :ref:`C Module for MicroUI<section_ui_cco>` and follow its implementation rules.
 2. Add all C files in the BSP project.
-3. Configure the option in the header file ``microvg_configuration.h``.
+3. Configure the options in the header file ``vg_configuration.h``.
+4. To optionally use the `ej.microvg.BufferedVectorImage`_, the support of :ref:`custom image format<section_buffered_image_format_custom>` is required. As described :ref:`here<section_buffered_image_c_multi>`, set the define ``UI_GC_SUPPORTED_FORMATS`` to ``2`` or more in ``ui_configuration.h``.
+5. To optionally use a MicroVG vector font `ej.microvg.VectorFont`_ in the MicroUI drawings (for instance `ej.microui.display.Painter.drawString()`_ ), the support of :ref:`custom font format<section_font_drawer_custom_format>` is required. As described :ref:`here<section_font_drawer_custom>`, set the define ``UI_FEATURE_FONT_CUSTOM_FORMATS`` in ``ui_configuration.h``.
+6. Select one of the GPU implementations (see next chapters).
 
 .. _section_vg_c_module_freetype:
 
@@ -105,18 +100,18 @@ The FreeType library compatible with MicroEJ is packaged in a C module on the :r
 
 .. _com.microej.clibrary.thirdparty#freetype: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/thirdparty/freetype/
 
-This C module provides a fork of FreeType 2.11.0.
+This C module provides a fork of FreeType 2.13.3.
 
 Memory Heap Configuration
 -------------------------
 
 The FreeType library requires a memory Heap for FreeType internal objects allocated when a font file is loaded (see https://freetype.org/freetype2/docs/design/design-4.html).
-The size of this heap depends on the number of fonts loaded in parallel and on the fonts themselves. 
-This size is defined by ``VG_FEATURE_FREETYPE_HEAP_SIZE`` in ``microvg_configuration.h``.
+The size of this heap depends on the number of fonts loaded in parallel and on the fonts themselves.
+This size is defined by ``VG_FEATURE_FREETYPE_HEAP_SIZE`` in ``vg_configuration.h``.
 
 All fonts do not require the same heap size. FreeType heap usage can be monitored using the following configurations:
 
-* ``MICROVG_MONITOR_HEAP`` defined in ``microvg_helper.h``
+* ``MICROVG_MONITOR_HEAP`` defined in ``vg_helper.h``
 * ``MEJ_LOG_MICROVG`` and ``MEJ_LOG_INFO_LEVEL`` defined in ``mej_log.h``
 
 Principle
@@ -146,22 +141,24 @@ Principle
    * Any resource associated with the font is released.
    * At this point, any attempt to use the font will result in an exception.
 
-Library: Harfbuzz
+.. _section_vg_c_module_harfbuzz:
+
+Library: HarfBuzz
 =================
 
-The library Harfbuzz compatible with MicroEJ is packaged in a C module on the :ref:`developer_repository`: `com.microej.clibrary.thirdparty#harfbuzz`_.
+The library HarfBuzz compatible with MicroEJ is packaged in a C module on the :ref:`developer_repository`: `com.microej.clibrary.thirdparty#harfbuzz`_.
 
 .. _com.microej.clibrary.thirdparty#harfbuzz: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/thirdparty/harfbuzz/
 
-This C module provides a fork of Harfbuzz 4.2.1.
+This C module provides HarfBuzz 10.0.1 with build scripts patched and additional source files.
 
-The Harfbuzz library requires a memory Heap for Harfbuzz internal objects allocated when a font file is loaded. 
-The size of this heap depends on the number of fonts loaded in parallel and on the fonts themselves. 
-This size is defined by ``VG_FEATURE_HARFBUZZ_HEAP_SIZE_HEAP`` in ``microvg_configuration.h``.
+The HarfBuzz library requires a memory Heap for HarfBuzz internal objects allocated when a font file is loaded.
+The size of this heap depends on the number of fonts loaded in parallel and on the fonts themselves.
+This size is defined by ``VG_FEATURE_HARFBUZZ_HEAP_SIZE_HEAP`` in ``vg_configuration.h``.
 
-All fonts do not require the same heap size. The ``MICROVG_MONITOR_HEAP`` define in ``microvg_helper.h`` and ``MEJ_LOG_MICROVG`` and ``MEJ_LOG_INFO_LEVEL`` defines in ``mej_log.h`` can be used to monitor the Harfbuzz heap evolution.
+All fonts do not require the same heap size. The ``MICROVG_MONITOR_HEAP`` define in ``vg_helper.h`` and ``MEJ_LOG_MICROVG`` and ``MEJ_LOG_INFO_LEVEL`` defines in ``mej_log.h`` can be used to monitor the HarfBuzz heap evolution.
 
-FreeType and Harfbuzz libraries are not sharing the same heap, but this could easilly be done by updating ``ft_system.c`` and ``hb-alloc.c`` files.
+FreeType and HarfBuzz libraries are not sharing the same heap, but this could easilly be done by updating ``ft_system.c`` and ``hb-alloc.c`` files.
 
 .. _section_vg_c_module_microvg_vglite:
 
@@ -173,8 +170,11 @@ Overview
 
 This C module is a specific implementation of the VG Pack drawings over the official Vivante VGLite library (that targets some GPU with vector graphics acceleration):
 
-* It implements the MicroVG API ``vg_drawing.h`` in ``vg_drawing_vglite.c`` and ``LLVG_PAINTER_FONT_freetype_vglite.c``.
-* It implements the MicroVG Image management (draw a compile-time image, create a BufferedVectorImage, etc.): ``LLVG_RAW_impl.c``. 
+* It implements the MicroVG API ``LLVG_impl.h`` in ``LLVG_impl_vglite.c``.
+* It implements the MicroVG API ``LLVG_GRADIENT_impl.h`` in ``LLVG_GRADIENT_impl_vglite.c``.
+* It implements the MicroVG API ``vg_drawing.h`` in ``vg_drawing_vglite.c``.
+* It implements the MicroVG API ``vg_path.h`` in ``vg_path_vglite.c``.
+* It implements the MicroVG Image management (draw a compile-time image, create a BufferedVectorImage, etc.) in ``vg_drawing_vglite_image.c``.
 * It provides an implementation of MicroVG drawings to the MicroVG BufferedVectorImage: ``vg_drawing_bvi.c``.
 * It also implements MicroUI drawings to the MicroVG BufferedVectorImage: ``ui_drawing_bvi.c``.
 
@@ -187,13 +187,53 @@ The implementation requires:
 
 This C module is available on the :ref:`developer_repository`: `com.microej.clibrary.llimpl#microvg-vglite`_.
 
+.. warning:: The library must be patched to be compatible with the C module "MicroUI over VGLite". Consult the C module's ReadMe file for more information.
+
 Usage
 -----
 
-1. This C module transitively fetches the :ref:`C Module for MicroUI for VGLite<section_ui_cco>`, follow its implementation rules.
-2. Add all C files in the BSP project.
+1. Install the :ref:`C Module for MicroUI for VGLite<section_ui_cco>` and follow its implementation rules.
+2. Install the :ref:`C Module for MicroVG<section_vg_c_module_microvg>` and follow its implementation rules.
+3. Add all C files in the BSP project.
+4. Check the port by running the ``vg`` validation as described in the `VEE Port project template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/>`_
 
 .. _com.microej.clibrary.llimpl#microvg-vglite: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-vglite/
+
+
+.. _section_vg_c_module_microvg_nema:
+
+C Module: MicroVG Over NemaVG
+=============================
+
+Overview
+--------
+
+This C module is a specific implementation of the VG Pack drawings over the official Think Silicon Nema VG library (that targets some GPU with vector graphics acceleration):
+
+* It implements the MicroVG API ``vg_drawing.h`` in ``vg_drawing_nema.c``.
+* It implements the MicroVG Image management (draw a compile-time image, create a BufferedVectorImage, etc.): ``vg_drawing_nema_image.c``.
+* It provides an implementation of MicroVG drawings to the MicroVG BufferedVectorImage: ``vg_drawing_bvi.c``.
+* It also implements MicroUI drawings to the MicroVG BufferedVectorImage: ``ui_drawing_bvi.c``.
+
+The implementation requires:
+
+* the concepts of the C module MicroVG,
+* the concepts of the C module MicroUI over NemaVG,
+* the FreeType library,
+* the Think Silicon NemaVG library.
+
+This C module is available on the :ref:`developer_repository`: `com.microej.clibrary.llimpl#microvg-nema`_.
+
+Usage
+-----
+
+1. Install the :ref:`C Module for MicroUI for NemaGFX<section_ui_cco>` and follow its implementation rules.
+2. Install the :ref:`C Module for MicroVG<section_vg_c_module_microvg>` and follow its implementation rules.
+3. Add all C files in the BSP project.
+4. Check the port by running the ``vg`` validation as described in the `VEE Port project template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/>`_
+5. Add the defines ``RESX`` (== LCD width) and ``RESY`` (== LCD height) in ``vg/inc/vg_configuration.h`` or in the C project global options (used to initialize the Nema VG library, see ``nema_vg_init()``).
+
+.. _com.microej.clibrary.llimpl#microvg-nema: https://forge.microej.com/ui/native/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-nemavg/
 
 Compatibility
 =============
@@ -201,12 +241,15 @@ Compatibility
 The compatibility between the components (Packs, C modules, and Libraries) is described in the :ref:`section_vg_releasenotes`.
 
 
+.. _ej.microui.display.Painter.drawString(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Painter.html#drawString-ej.microui.display.GraphicsContext-java.lang.String-ej.microui.display.Font-int-int-
+.. _ej.microvg.BufferedVectorImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/BufferedVectorImage.html
+.. _ej.microvg.VectorFont: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html
 .. _ej.microvg.VectorFont.loadFont(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html#loadFont-java.lang.String-
 .. _ej.microvg.VectorFont.close(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html#close--
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
-   for read and redistribute. Except if otherwise stated, modification 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free
+   for read and redistribute. Except if otherwise stated, modification
    is subject to MicroEJ Corp prior approval.
-   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and
    copyrights are the property of their respective owners.

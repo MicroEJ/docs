@@ -9,13 +9,13 @@ To use the MicroUI Foundation Library, add `MicroUI API module`_ to the project 
 
       .. code-block:: java
 
-         implementation("ej.api:microui:3.1.0")
+         implementation("ej.api:microui:3.6.0")
 
    .. tab:: MMM (module.ivy)
 
       .. code-block:: xml
 
-         <dependency org="ej.api" name="microui" rev="3.1.0"/>
+         <dependency org="ej.api" name="microui" rev="3.6.0"/>
 	
 
 Drawing Foundation Library extends MicroUI drawing APIs [#note_microui_2]_ with more complex ones such as:
@@ -32,13 +32,13 @@ To use the Drawing Foundation Library, add `Drawing API module`_ to the project 
 
       .. code-block:: java
 
-         implementation("ej.api:drawing:1.0.3")
+         implementation("ej.api:drawing:1.0.4")
 
    .. tab:: MMM (module.ivy)
 
       .. code-block:: xml
 
-         <dependency org="ej.api" name="drawing" rev="1.0.3"/>
+         <dependency org="ej.api" name="drawing" rev="1.0.4"/>
 
 
 .. [#note_microui_2] These APIs were formerly included in MicroUI ``2.x``
@@ -47,7 +47,7 @@ To use the Drawing Foundation Library, add `Drawing API module`_ to the project 
 .. _Drawing API module: https://repository.microej.com/modules/ej/api/drawing/
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

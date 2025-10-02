@@ -30,7 +30,7 @@ A matrix is a 3x3 matrix, and its elements are encoded in ``float`` (32-bit valu
 * matrix_memory[7] = matrix[2][1];
 * matrix_memory[8] = matrix[2][2];
 
-The buffer where the matrix is encoded is stored in the Java heap. 
+The buffer where the matrix is encoded is stored in the Managed Heap. 
 
 .. _Matrix: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/Matrix.html
 
@@ -58,7 +58,7 @@ Use
 The MicroVG Matrix APIs are available in the class ``ej.microvg.`` `Matrix`_.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

@@ -43,33 +43,86 @@ Dependencies
 Installation
 ============
 
-The Net Pack bundles several libraries: Net, SSL & Security.
+NET is an additional module. 
+To enable it, the Net :ref:`Pack <pack_overview>` (which bundles several libraries: Net, SSL & Security) must be installed in your VEE Port:
 
-Refer to the chapter :ref:`pack_import` to integrate a specific version of the Net Pack:
+.. tabs::
 
-.. code-block:: xml
-   :emphasize-lines: 2
+   .. tab:: SDK 6 (build.gradle.kts)
 
-   <dependencies>
-       <dependency org="com.microej.pack.net" name="net-pack" rev="11.0.2"/>
-   </dependencies>
+      .. code-block:: kotlin
 
-Then, using the VEE Port Editor (see :ref:`platform_module_configuration`), enable the Net library (API, Impl & Mock):
+         microejPack("com.microej.pack.net:net-pack:11.0.2")
 
-.. figure:: images/net-ssl_modules.*
-   :alt: Net Pack Modules
+   .. tab:: SDK 5 (module.ivy)
 
-   Net Pack Modules
+      .. code-block:: xml
+
+         <dependency org="com.microej.pack.net" name="net-pack" rev="11.0.2"/>
+
+
+      Then, using the VEE Port Editor (see :ref:`platform_module_configuration`), enable the Net library (API, Impl & Mock):
+
+      .. figure:: images/net-ssl_modules.*
+         :alt: Net Pack Modules
+
+         Net Pack Modules
+
+Initialization
+==============
+
+When porting the Net library the initialize function shall make sure the underlying network stack is initialized.
+The entry point for this initialization is the following native function: ``LLNET_CHANNEL_impl_initialize``:
+
+.. code-block:: c
+
+   /**
+    * @brief Initializes the TCP/IP stack components.
+    *
+    * @note Throws NativeIOException on error.
+    *
+    * @see LLNET_ERRORS.h header file for error codes.
+    */
+   void LLNET_CHANNEL_IMPL_initialize(void);
+
+It is called during the `initialization phase <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/bon.html#runtime-phases>`_ of the Net library so it will run before the application starts.
+
+In most of the VEE Ports a macro ``llnet_init()`` is provided to call any specific code required before using the network:
+
+.. code-block:: c
+
+   // ...
+
+   #include "LLNET_configuration.h" // Macro is defined in this header.
+   #include "LLNET_CHANNEL_impl.h"
+
+   void LLNET_CHANNEL_IMPL_initialize(void) {
+      llnet_init(); // Custom initialization here.
+      // ...
+   }
+
+   // ...
+
+An example of how the network is initialized with the same requirements can be found `here <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk/blob/0bc78b3864da4d51c1a0b638f060cafe319d5779/bsp/vee/port/net/src/lwip_util.c>`_ in the NXP VEE Port for i.MX RT1170 EVK.
 
 Use
 ===
 
-The `Net API Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
-Application project to use the Net library.
+The `Net API Module`_ must be added to the Application project build file to use the NET library:
 
-::
+.. tabs::
 
-   <dependency org="ej.api" name="net" rev="1.1.4"/>
+   .. tab:: SDK 6 (build.gradle.kts)
+
+      .. code-block:: kotlin
+
+         implementation("ej.api:net:1.1.4")
+
+   .. tab:: SDK 5 (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="ej.api" name="net" rev="1.1.4"/>
 
 This library provides a set of options. Refer to the chapter
 :ref:`application_options` which lists all available options.
@@ -77,7 +130,7 @@ This library provides a set of options. Refer to the chapter
 .. _Net API Module: https://repository.microej.com/modules/ej/api/net/
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

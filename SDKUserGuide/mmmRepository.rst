@@ -41,7 +41,7 @@ provided by default in MicroEJ SDK configuration, which is connected to :ref:`Mi
 
    <ea:property name="bar.populate.from.resolver" value="MicroEJChainResolver"/>
 
-The ``MicroEJChainResolver`` is a URL resolver defined in ``$USER_HOME\.microej\microej-ivysettings-[VERSION].xml`` that points to MicroEJ Central Repository.
+The ``MicroEJChainResolver`` is a URL resolver defined in ``<USER_HOME>\.microej\microej-ivysettings-[VERSION].xml`` that points to MicroEJ Central Repository.
 
 .. _module_repository_consistency:
 
@@ -206,7 +206,7 @@ To configure MicroEJ SDK to import dependencies from a local module repository, 
 The import may take some time. The module repository is unzipped in the folder ``${user.dir}/.microej/repositories``, and the settings are updated. 
 
 ..
-   | Copyright 2020-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2020-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

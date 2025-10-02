@@ -51,7 +51,7 @@ Once these prerequisites are fulfilled, the Executable can be built:
 
           $ ./gradlew buildExecutable
 
-In case of :ref:`Full BSP Connection <bsp_connection>`, the Executable file is generated in the ``build/output/application`` folder of the project.
+In case of :ref:`Full BSP Connection <bsp_connection>`, the Executable file is generated in the ``build/application/executable`` folder of the project.
 
 .. _sdk_6_trigger_executable_build:
 
@@ -68,7 +68,7 @@ in the ``microej`` configuration block of the Gradle build file of the project::
    }
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

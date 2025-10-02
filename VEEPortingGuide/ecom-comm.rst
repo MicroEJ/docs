@@ -85,7 +85,7 @@ Five C header files are provided:
    by the driver (or other C code) when using a Custom connection
 
 The ECOM Comm drivers are implemented using standard LLAPI features. The
-diagram below shows an example of the objects (both Java and C) that
+diagram below shows an example of the objects (both Java and C code) that
 exist to support a Buffered connection.
 
 .. figure:: images/architecture.*
@@ -277,7 +277,7 @@ stack as soon as the ``LLCOMM_initialize`` function is called.
 Connections added during the call of the ``LLCOMM_impl_initialize``
 function are static connections. A static connection is registered to
 the ECOM registry and cannot be removed. When a connection is
-dynamically added outside the MicroJVM task context, a suitable
+dynamically added outside the Core Engine task context, a suitable
 reentrant synchronization mechanism must be implemented (see
 ``LLCOMM_IMPL_syncConnectionsEnter`` and
 ``LLCOMM_IMPL_syncConnectionsExit``).
@@ -310,7 +310,7 @@ and receiving data. The ECOM Comm C module will fill the transmit
 buffer, and get bytes from the receive buffer. There is no flow control.
 
 When the transmit buffer is full, an attempt to write more bytes from
-the MicroEJ Application will block the Java thread trying to write,
+the MicroEJ Application will block the thread trying to write,
 until some characters are sent on the serial line and space in the
 buffer is available again.
 
@@ -378,7 +378,7 @@ driver has to define a strategy to store received bytes that were not
 handed to the C module yet. This could be a fixed or variable side FIFO,
 the older received but unread bytes may be dropped, or a more complex
 priority arbitration could be set up. On the transmit side, if the
-driver does not do any buffering, the Java thread waiting to send
+driver does not do any buffering, the thread waiting to send
 something will be blocked and wait for the UART to send all the data.
 
 In Custom mode flow control (eg. RTS/CTS or XON/XOFF) can be used to
@@ -525,7 +525,7 @@ This library provides a set of options. Refer to the chapter
 .. _ECOM Comm API Module: https://repository.microej.com/modules/ej/api/ecom-comm/
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

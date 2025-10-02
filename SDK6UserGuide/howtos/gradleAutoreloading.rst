@@ -11,30 +11,30 @@ It is also possible to configure your IDE to automatically reload your Gradle pr
 
 .. tabs::
 
-   .. tab:: Android Studio / IntelliJ IDEA
+   .. tab:: IntelliJ IDEA / Android Studio
 
-      The auto-reload of a Gradle project with Android Studio / IntelliJ IDEA can be enabled as follows:
+      The auto-reload of a Gradle project with IntelliJ IDEA / Android Studio can be enabled as follows:
       
       - Click on :guilabel:`File` > :guilabel:`Settings...`.
       - Go to  :guilabel:`Build, Execution, Deployment` > :guilabel:`Build Tools`.
       - Check the :guilabel:`Reload changes in the build scripts` option and check the :guilabel:`Any changes` option.
 
       .. figure:: images/intellij-autoreload.png
-         :alt: auto-reload option in Android Studio / IntelliJ IDEA
+         :alt: auto-reload option in IntelliJ IDEA / Android Studio
          :align: center
          :scale: 70%
       
-         Auto-reload option in Android Studio / IntelliJ IDEA
+         Auto-reload option in IntelliJ IDEA / Android Studio
       
       - Go to :guilabel:`Languages & Frameworks` > :guilabel:`Kotlin` > :guilabel:`Kotlin Scripting`.
       - Check all the :guilabel:`Auto Reload` options.
 
       .. figure:: images/intellij-kotlin-autoreload.png
-         :alt: auto-reload Kotlin option in Android Studio / IntelliJ IDEA
+         :alt: auto-reload Kotlin option in IntelliJ IDEA / Android Studio
          :align: center
          :scale: 70%
       
-         Auto-reload Kotlin option in Android Studio / IntelliJ IDEA
+         Auto-reload Kotlin option in IntelliJ IDEA / Android Studio
 
    .. tab:: Eclipse
 
@@ -54,7 +54,7 @@ It is also possible to configure your IDE to automatically reload your Gradle pr
 
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

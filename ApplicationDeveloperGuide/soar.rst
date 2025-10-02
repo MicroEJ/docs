@@ -33,7 +33,7 @@ Class Initialization Code
 -------------------------
 
 SOAR complies with the deterministic class initialization (``<clinit>``)
-order specified in :ref:`[BON] specification <runtime_bon>`. The application is statically analyzed from
+order specified in :ref:`[BON] specification <bon-startup>`. The application is statically analyzed from
 its entry points in order to generate a clinit dependency graph. The
 computed clinit sequence is the result of the topological sort of the
 dependency graph. An error is thrown if the clinit dependency graph
@@ -91,7 +91,7 @@ SOAR automatically optimizes a virtual method call to a direct method call if th
 Method Inlining
 ---------------
 
-Method inlining consists of replacing a direct method call with the content of the method. This avoids the creation of a new stack frame context, which can be slower than executing the code itself.
+Method inlining consists of replacing a direct method call with the content of the method. This avoids the creation of a new call frame, which can be slower than executing the code itself.
 Method inlining is transitively applied from leaf to root methods.
 
 The following method code patterns are inlined:
@@ -148,8 +148,43 @@ If you wish to integrate an alternative implementation, contact `our support tea
    The Binary Code Verifier is enabled by default when building a Sandboxed Application, and disabled by default when building a Standalone Application.
    See :ref:`option_enable_bytecode_verifier` for more details.
 
+Enable SOAR Verbose Logs
+------------------------
+
+SOAR logs can be enabled by setting the ``execution.verbose`` Application Option to ``true``.
+As for :ref:`Application Options <application_options>`, with SDK 6 the system property must be prefixed with ``microej.option``.
+
+For instance, to enable SOAR logs from command line::
+
+    -Dmicroej.option.execution.verbose=true
+
+or from ``gradle.properties`` file::
+
+   systemProp.microej.option.execution.verbose=true
+
+You should see SOAR logs on tasks ``buildExecutable``, ``buildFeature`` and ``buildFeatureFromWPK``.
+For instance::
+
+   ...
+   [SOAR-L] Loaded classpath entry /projectpath/build/classes/java/main
+   [SOAR-L] Loaded Feature Main from file /projectpath/build/generated/microej-app-wrapper/feature-resources/feature.kf
+   [SOAR-L] Added type org.example.project.MainWrapper to be loaded (type is referenced by the file /projectpath/build/generated/microej-app-wrapper/feature-resources/feature.kf)
+   [SOAR-L] Added immutables entry com.is2t.microui.fonts.data (type is referenced by the option 'rootImmutables')
+   [SOAR-L] Try the load of com.is2t.microui.fonts.data from directory /projectpath/build/classes/java/main
+   ...
+   [SOAR-S] Selected type org.example.project.MainWrapper
+   [SOAR-S] Selected method org.example.project.MainWrapper.start()void
+   [SOAR-S] Selected immutable 'ej.microui.fonts.list'
+   [SOAR-S] Generated map file to /projectpath/build/application/feature/feature/application.selectormap
+   [SOAR-S] Generated shared object file to /projectpath/build/application/feature/feature/application.so
+   INFO: Generated Kernel metadata file to /Users/bguedas/tmp/projects/test_junit/build/kernelExecutable/kernel.kdat
+   [SOAR-O] Generated file to /projectpath/build/application/feature/feature/application.optimizermap
+   [SOAR-O] Generated file to /projectpath/build/application/feature/feature/application.map
+   [SOAR-O] Generated object file to /projectpath/build/application/feature/feature/application.o
+   ...
+
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

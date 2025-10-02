@@ -34,6 +34,172 @@ specific configuration:
    -  ``QNX65``: BlackBerry QNX 6.5
    -  ``QNX70``: BlackBerry QNX 7.0
 
+
+.. _changelog-8.4.0:
+
+[8.4.0] - 2025-05-28
+--------------------
+
+Core Engine
+~~~~~~~~~~~
+
+- Updated :ref:`External Resources Loader<section_externalresourceloader>` implementation to use SNI 1.4 which removes allocations to the Immortals Heap.
+- Fixed an issue where ``LLMJVM_MONITOR_IMPL_on_thread_state_changed()`` was not called when a thread was preempted by another thread due to higher priority or round-robin scheduling.
+- [Multi] - Increased the :ref:`limitation <limitations>` on the maximum number of threads from 63 to 127.
+
+Integration
+~~~~~~~~~~~
+
+- Added Memory Map Scripts for new Foundation Libraries: ``Audio``, ``EventQueue``, ``Metrology``, ``MicroAI`` and new Add-On Libraries: ``AppConnect``, ``ConnectivityManager``, ``Eclasspath Time``,  ``Facer``, ``Hoka``, ``KFUtil``, ``Layout``, ``Message``, ``NETUtil``, ``Property``, ``Protobuf``, ``Script``, ``Storage``.
+- Updated Memory Map Scripts for the latest versions of Foundation Libraries: ``FS``, ``Security``, and Add-On Libraries: ``Eclasspath Executor``, ``Eclasspath IO``.
+- Fixed incorrect assignment of some ``.bss``, ``.text``, and ``.rodata`` sections in Memory Map Scripts; these were previously placed in the default ``BSP`` category.
+
+Simulator
+~~~~~~~~~
+
+- Added :ref:`Mock event tracing <mock_event_tracing>`.
+- Added, in Front Panel, the ability to resize the window, an options toolbar, and a status bar (see :ref:`frontpanel_overview`).
+- Fixed, in Front Panel, synchronization on the widget display accesses and rendering of the widgets other than display.
+- Fixed initialization of an empty Immortals Heap when :ref:`option_immortal_heap` is set to 0.
+- Fixed the implementation of `Tracer.isTraceStarted()`_ that could return ``true`` when trace recording is not yet enabled in some cases.
+- Fixed `InputStream.reset()`_ method on a :ref:`Resource <chapter.microej.applicationResources>` that could throw an unexpected `IOException`_ after the end of stream is reached.
+- Fixed Front Panel not starting at boot. It was previously only displayed after the `MicroUI.start()`_ call.
+
+.. _MicroUI.start() : https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/MicroUI.html#start--
+
+
+SOAR
+~~~~
+
+- Added an appropriate error message when a resources list file contains an invalid resource declaration.
+- Increased the maximum number of blocks allowed in a method to prevent the ``[M200] - Maximum number of blocks reached`` error.
+
+
+.. _Tracer.isTraceStarted() : https://repository.microej.com/javadoc/microej_5.x/apis/ej/trace/Tracer.html#isTraceStarted--
+.. _InputStream.reset() : https://repository.microej.com/javadoc/microej_5.x/apis/java/io/InputStream.html#reset--
+
+.. _changelog-8.3.0:
+
+[8.3.0] - 2024-12-24
+--------------------
+
+Foundation Libraries
+~~~~~~~~~~~~~~~~~~~~
+
+- Fixed, in ``EDC``, implementation of `java.util.WeakHashMap.put()`_ which could lead to a memory leak when new elements are added but never accessed.
+- Fixed, in ``EDC``, :ref:`Enable SecurityManager checks option <option_enable_security_manager>` was not disabled by default.
+
+Integration
+~~~~~~~~~~~
+
+- Added the declaration of :ref:`section.classpath.elements.constants` as :ref:`Application Options <application_options>`.
+- Updated Architecture End User License Agreement to version ``SDK 3.1-c``.
+- Fixed :ref:`Front Panel File option <section_frontpanel_multiple_fp_files>` option was not taken into account on VEE Ports that do not depend on UI Pack.
+- Fixed an issue where Sentinel licenses were not displayed in the License Manager in some cases.
+- Removed warning messages related to missing :ref:`GC mark stack size option <option_gc_stack_size>` when building on Device.
+
+Simulator
+~~~~~~~~~
+
+- Added the capability to define :ref:`Mock Options <mock_option>`.
+- Added a check to verify compatibility with the expected MicroEJ classfile version (``1.7``).
+- Fixed invalid mentions of ``SNI.closeOnGC()`` instead of ``NativeResource.closeOnGC()`` in the HILEngine Javadoc.
+- Fixed potential crash when calling `Kernel.clone()`_ in a project that does not define a ``kernel.kf`` file.
+- Fixed potential crash when booting a GUI Application on a Multi-Sandbox VEE Port.
+
+SOAR
+~~~~
+
+- Added a check to verify compatibility with the expected MicroEJ classfile version (``1.7``).
+- Fixed precedence of a :ref:`System Property <system_properties>` declared as an :ref:`Application Option <application_options>` to take priority over one defined in the classpath.
+
+Tools
+~~~~~
+
+- Updated License Manager (Evaluation) to debug installed license from command line (see :ref:`sdk6_evaluation_license_check`).
+
+.. _Kernel.clone(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#clone-T-ej.kf.Module-
+
+.. _changelog-8.2.0:
+
+[8.2.0] - 2024-09-19
+--------------------
+
+Core Engine
+~~~~~~~~~~~
+
+- [Multi] - Increased execution quota precision
+- [Multi] - Added function ``LLKERNEL_quantaConsumed(int32_t quanta)`` in ``LLKERNEL.h``, allowing a native function to increment the quantum counter of the current execution context.
+- [Multi] - Fixed watchdog which prevents the Core Engine to stop because of a pending thread.
+- [Multi] - Added new functions to Low Level API ``LLMJVM_MONITOR_impl.h`` for CPU Control monitoring
+
+   -  ``void LLMJVM_MONITOR_IMPL_on_quota_reset(int32_t context_id, int32_t quota)``: called by the Core Engine when the quota for an execution context is updated.
+   -  ``void LLMJVM_MONITOR_IMPL_on_quota_reached(int32_t context_id)``: called by the Core Engine when the quota for an execution context has been reached.
+   -  ``void LLMJVM_MONITOR_IMPL_on_quantum_counters_reset()``: called by the Core Engine when all the quantum counters are reset to zero.
+   -  ``void LLMJVM_MONITOR_IMPL_on_thread_added_to_context(int32_t thread_id, int32_t context_id)``: called by the Core Engine when a thread is added to an execution context.
+
+Integration
+~~~~~~~~~~~
+
+- Added Architecture tools compatibility with SDKs running on JDK 17 and JDK 21.
+- Fixed message to correctly display the BSP location, ensuring compatibility with both SDK 5 and SDK 6.
+
+Simulator
+~~~~~~~~~
+
+- [Multi] - Fixed, in ``KF``, wrong assertion thrown when starting a Kernel on the Simulator with a pre-installed Application, occurring only when :ref:`assertions were enabled on Simulator <enable_assertions_sim>`.
+
+.. _changelog-8.1.1:
+
+[8.1.1] - 2024-06-17
+--------------------
+
+Core Engine
+~~~~~~~~~~~
+
+- [Multi] - Fixed call to ``LLKERNEL_IMPL_freeFeature(int32_t handle)`` with handle ``0`` when an FO file is corrupted or not compatible with the Core Engine.
+
+Foundation Libraries
+~~~~~~~~~~~~~~~~~~~~
+
+- Fixed unexpected `java.lang.NullPointerException`_ when a runtime exception or a native exception occurs in a try-with-resources block, and the method `AutoCloseable.close()`_ throws an exception.
+- Fixed `Throwable.getSuppressed()`_ which exposes a private mutable member.
+- Fixed `Throwable.printStackTrace()`_ which does not print suppressed exceptions.
+- Fixed `Throwable.printStackTrace()`_ which erroneously printed the thread name.
+
+.. _AutoCloseable.close(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/AutoCloseable.html#close--
+.. _Throwable.getSuppressed(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Throwable.html#getSuppressed--
+.. _Throwable.printStackTrace(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Throwable.html#printStackTrace--
+
+Integration
+~~~~~~~~~~~
+
+- [ESP32] Fixed copy of ``microejapp.s`` into the C project.
+- Fixed properties defined in VEE Port ``release.properties`` file not passed to the SOAR.
+- Fixed Virtual Device that could not override HIL options for debugging the Mock.
+- Fixed build and run scripts end-of-line (EOL) characters if a Linux VEE port is built on Windows.
+- Removed warning messages related to missing HIL debug options when running the Simulator.
+
+Simulator
+~~~~~~~~~
+
+- Fixed breakpoint not taken into account by IntelliJ Idea's debugger when a class is not loaded during the startup.
+- Fixed boostrap thread which could be visible in the thread list when debugging.
+- Fixed debugger error when clinit code takes time to execute.
+- Fixed debugger stuck when stepping over another breakpoint in Eclipse.
+- Fixed missing traces when debug logs are activated.
+
+SOAR
+~~~~
+
+- [Multi] - Fixed the 64 KB size limitation for Java Strings section that caused an ``AssertionError`` in the SOAR when building a Sandboxed Application.
+
+
+Tools
+~~~~~
+
+- Fixed Resource Buffer Generator that keeps a lock on input files and prevents them from being deleted.
+
 .. _changelog-8.1.0:
 
 [8.1.0] - 2023-12-22
@@ -62,7 +228,7 @@ Core Engine
 
 - Added option :ref:`com.microej.runtime.core.gc.markstack.levels.max <option_gc_stack_size>` to configure the maximum number of elements of the Garbage Collector's mark stack.
 - In ``sni.h``, clarified the behavior of ``SNI_createVM()``, ``SNI_startVM()``, and ``SNI_destroyVM()`` when restarting the Core Engine. See also the :ref:`Core Engine implementation <core_engine_implementation>` section.
-- Fixed missing default initialization of the options :ref:`core.memory.javaheap.size <option_java_heap>` and :ref:`core.memory.immortal.size <option_immortal_heap>`.
+- Fixed missing default initialization of the options :ref:`core.memory.javaheap.size <option_managed_heap>` and :ref:`core.memory.immortal.size <option_immortal_heap>`.
 - [Multi] - Added a check when ``LLKERNEL_IMPL_getFeatureHandle()`` returns ``0``. Corresponding error code is ``LLKERNEL_FEATURE_INIT_ERROR_NULL_HANDLE``.
 - [Multi] - Removed Feature installation in RAM (legacy :ref:`In-Place Installation mode <feature_inplace_installation>`). See :ref:`architecture8_migration_llkernel`.
 - [Multi] - Updated :ref:`Feature installation boot sequence <feature_persistency>`: all Feature handles are now retrieved prior to initializing them.
@@ -222,7 +388,7 @@ Simulator
 - Added support for mark/reset on an InputStream returned by `Class.getResourceAsStream()`_.
 - Fixed "Internal limits" error in HIL engine when too many array arguments are used at the same time by one or several native methods.
 - Fixed slow reading with an array of bytes of the input stream returned by `Class.getResourceAsStream(String)`_.
-- Fixed configuration of the Java heap size using :ref:`option_java_heap`. The legacy ``core.memory.javaheapsum.size`` option is not more supported.
+- Fixed configuration of the Managed Heap size using :ref:`option_managed_heap`. The legacy ``core.memory.javaheapsum.size`` option is not more supported.
 - Fixed :ref:`option_immortal_heap` default value when running a Standalone Application using MMM.
 - Fixed stop of the HIL Engine if Simulator was terminated before the connection is established.
 - Fixed load of the Mock classes in the classpath order (left-to-right).
@@ -390,7 +556,7 @@ Integration
 Simulator
 ~~~~~~~~~
 
--  Added class file major version check (<=51). Classes must be compiled for Java 7 or lower. Set the options property ``S3.DisableClassFileVersionCheck`` to ``false`` to disable this verification.
+-  Added class file major version check (<=51). Classes must be compiled for Java 7 or lower.
 -  Added native method signature in the stack trace of the `UnsatisfiedLinkError`_ thrown when a native method is missing.
 -  Fixed HIL engine method ``NativeInterface.getResourceContent()`` that generates a runtime error in the Simulator.
 -  Fixed error "Internal limits reached ... S3 internal heap is full" when repeatedly loading a resource that is available in the classpath but not referenced in a ``.resources.list`` file.
@@ -489,7 +655,7 @@ Core Engine
 -  Added automatic heap consumption fing when option ``com.microej.runtime.debug.heap.monitoring.enabled`` is set to ``true``
 -  Fixed some parts of ``LLMJVM_checkIntegrity()`` code were embedded even if not called
 -  [Multi] - Fixed potential crash during the call of
-   ``LLMJVM_checkIntegrity()`` when analyzing a corrupted Java stack (make
+   ``LLMJVM_checkIntegrity()`` when analyzing a corrupted stack (make
    this function robust to object references with an invalid memory
    address)
 
@@ -608,7 +774,7 @@ Tools
 SOAR
 ~~~~
 
--  [Multi] - Fixed potential VM crash when declaring a Proxy class which
+-  [Multi] - Fixed potential Core Engine crash when declaring a Proxy class which
    is ``abstract``.
 
 .. _section-1:
@@ -1062,7 +1228,7 @@ Core Engine
    -  Total number of created threads
    -  Maximum number of stack blocks used
    -  Current number of stack blocks used
-   -  Objects referenced by each stack frame: address, type, length (in
+   -  Objects referenced by each call frame: address, type, length (in
       case of arrays), string content (in case of String objects)
    -  [Multi] - Kernel stale references with the name of the Feature
       stopped
@@ -1125,7 +1291,7 @@ SOAR
 ~~~~
 
 -  Added a new option ``core.memory.oome.nb.frames`` to configure the
-   maximum number of stack frames that can be dumped when an internal
+   maximum number of call frames that can be dumped when an internal
    `OutOfMemoryError`_
    is thrown by Core Engine
 
@@ -1313,16 +1479,7 @@ SOAR
    -  *WARNING: Current limitation: the ``if`` statement cannot wrap or
       be nested in a ``try-catch-finally`` statement*
 
--  Added an option for grouping all the methods by type in a single ELF
-   section
-
-   -  ``com.microej.soar.groupMethodsByType.enabled`` (``false`` by
-      default)
-   -  *WARNING: this option avoids to reach the maximum number of ELF
-      sections (65536) when building a large application, but affects
-      the application code size (especially inline methods are embedded
-      even if they are not used)*
-
+-  Added :ref:`enable_group_methods` for grouping all the methods by type in a single ELF section
 -  Added an error message when ``microejapp.o`` cannot be generated
    because the maximum number of ELF sections (65536) is reached
 
@@ -1332,7 +1489,7 @@ Tools
 ~~~~~
 
 -  Updated License Manager (Production) to debug dongle recognition
-   issues from command line (see :ref:`production_license_check_cli`).
+   issues from command line (see :ref:`sdk6_production_license_check`).
 -  Updated License Manager (Production) to support dongle recognition
    on macOS ``10.14`` (Mojave)
 -  Fixed ELF To Map to produce correct sizes from an executable
@@ -1427,7 +1584,7 @@ Simulator
 ~~~~~~~~~
 
 -  Added ``Embed all types names`` option for Simulation
--  Added memory size simulation for Java Heap and Immortal Heap
+-  Added memory size simulation for Managed Heap and Immortals Heap
    (Enabling ``Use target characteristics`` option is no more required)
 -  Added Kernel & Features semantic, as defined in the ``KF-1.4``
    specification
@@ -1498,7 +1655,7 @@ Core Engine
 ~~~~~~~~~~~
 
 -  Fixed `OutOfMemoryError`_
-   thrown when allocating an object of the size of free memory in immortals heap
+   thrown when allocating an object of the size of free memory in Immortals Heap
 
 .. _soar-6:
 
@@ -2058,7 +2215,7 @@ SOAR
 
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

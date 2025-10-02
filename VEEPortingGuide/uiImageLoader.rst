@@ -22,7 +22,7 @@ Functional Description
 ======================
 
 1. The application is using one of three ways to create a MicroUI Image object.
-2. The Image Loader creates the image according the MicroUI API, image location, image input format and image output format to be compatible with Image Renderer.
+2. The Image Loader creates the image according to the MicroUI API, image location, image input format and image output format to be compatible with Image Renderer.
 3. When the application closes the image, the Image Loader frees the RAM memory.
 
 .. _section_image_loader_memory:
@@ -148,7 +148,7 @@ The implementation must respect the following rules:
 
 -  Allocates the RAW image data calling the function
    ``LLUI_DISPLAY_allocateImageBuffer``. This function will allocates
-   the RAW image data space in the display working buffer according the
+   the RAW image data space in the display working buffer according to the
    RAW image format and size.
 
 -  Decodes the image in the allocated buffer.
@@ -175,7 +175,7 @@ When an image has not been pre-processed (see :ref:`section_image_generator`), t
 .. _ej.microui.display.Image: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

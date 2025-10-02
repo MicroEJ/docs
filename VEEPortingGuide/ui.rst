@@ -13,7 +13,7 @@ Graphical User Interface
    * If you are using the former Graphical User Interface version ``2`` provided by MicroEJ UI Pack version up to ``12.1.x``, please refer to this `MicroEJ Documentation Archive <https://docs.microej.com/_/downloads/en/20201009/pdf/>`__. 
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
 
     uiIntroduction
     uiPort
@@ -34,7 +34,7 @@ Graphical User Interface
     uiMigrationGuide
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

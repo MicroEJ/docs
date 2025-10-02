@@ -48,7 +48,7 @@ Available APIs and Features
 * Supported Resources
 
   * Images
-  * Fonts (EJF, TTF, OTF)
+  * Fonts (FNT, EJF, TTF, OTF)
   * Android Vector Drawables (AVD)
   * SVG
   * NLS (including Android XML and PO formats)
@@ -59,7 +59,7 @@ Available APIs and Features
 
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

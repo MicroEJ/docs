@@ -189,7 +189,7 @@ Only font files with CPAL/COLR tables are supported.
 
 Font files with CBDT/CBLC tables are not supported.
 
-To add colored emojis to a font, see the tutorial :ref:`tutorial_append_emojis`.
+To add colored emojis to a font, see the tutorial :ref:`how_to_add_emoji_to_vector_font`.
 
  
 .. _metrics_and_text_positioning:
@@ -393,11 +393,11 @@ The management of this kind of font may be different than the *internal* images 
 For more details about the external font management, refers to the VEE Port Guide chapter :ref:`section_vg_font_external`.
 
 
-.. _VectorFont: https://repository.microej.com/javadoc/microej_5.x/apis/
+.. _VectorFont: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html
 .. _ej.microvg.VectorFont.loadFont(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html#loadFont-java.lang.String-
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

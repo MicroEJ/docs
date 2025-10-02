@@ -43,6 +43,7 @@ After :ref:`building <mmm_module_build>` the Standalone Application, the publish
 
    Published Standalone Application Module Files
 
+.. _soar_map_file:
 
 The SOAR Map File
 ~~~~~~~~~~~~~~~~~
@@ -230,7 +231,7 @@ Each of these files can be opened with an XML editor. The following table descri
           - ``selected_static_fields``
           - ``soar/<main class>.xml``
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

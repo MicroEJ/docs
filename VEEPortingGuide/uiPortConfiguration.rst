@@ -1,3 +1,5 @@
+.. include:: uiReplaces.rst
+
 .. _ui_port_conf:
 
 =====================
@@ -7,11 +9,16 @@ UI Port Configuration
 Principle
 =========
 
-The first step is to update the :ref:`VEE Port Configuration project <platform_configuration_creation>` (often named ``xxx-configuration``): this project holds the :ref:`mmm_module_description` (``module.ivy``).
+The first step is to update the VEE Port project: this project holds the build descriptor file (``build.gradle.kts`` in SDK 6, ``module.ivy`` in SDK 5).
 This update is done in several steps, described in the sections below.
 Some steps are optional, depending on the capabilities of the hardware.
 
-.. warning:: This chapter assumes that a valid VEE Port has been created (as described in the chapter :ref:`new_platform_creation`).
+.. warning:: 
+   
+   This chapter assumes that a valid VEE Port has been created, as described in the chapter 
+   
+   - :ref:`sdk_6_veeport_create` in SDK 6
+   - :ref:`new_platform_creation` in SDK 5
 
 UI Pack Selection
 =================
@@ -23,13 +30,28 @@ The :ref:`MicroEJ Central Repository <central_repository>` provides UI Packs for
 Refer to the chapter :ref:`pack_import` to add the required UI Pack.
 As an example, the module dependency to add for a Cortex-M4 and GCC toolchain would be:
 
-.. code-block:: xml
-   :emphasize-lines: 3
+.. tabs::
 
-   <dependencies>
-       <!-- MicroEJ Architecture Specific Pack -->
-       <dependency org="com.microej.architecture.CM4.CM4hardfp_GCC48" name="flopi4G25-ui-pack" rev="13.5.1"/>
-   </dependencies>
+   .. tab:: SDK 6 (build.gradle.kts)
+
+      .. code-block:: kotlin
+         :emphasize-lines: 2
+
+         dependencies {
+            microejPack("com.microej.architecture.CM4.CM4hardfp_GCC48:flopi4G25-ui-pack:[UI Pack version]")
+         }
+
+   .. tab:: SDK 5 (module.ivy)
+
+      .. code-block:: xml
+         :emphasize-lines: 3
+
+         <dependencies>
+            <!-- MicroEJ Architecture Specific Pack -->
+            <dependency org="com.microej.architecture.CM4.CM4hardfp_GCC48" name="flopi4G25-ui-pack" rev="[UI Pack version]"/>
+         </dependencies>
+
+.. note:: The latest version of the UI Pack is |UIPACKVERSION|.
 
 UI Pack Modules
 ===============
@@ -53,7 +75,11 @@ MicroUI is a Foundation Library that defines a Low Level UI framework (refer to 
 The **mandatory** module MicroUI (it must be checked in the VEE Port configuration file) provides the MicroUI implementation library.
 It requires a static initialization step to specify what MicroUI features are available for the application layer:
 
-1. Create the file ``[VEE Port Configuration project]/microui/microui.xml`` 
+1. Create the file 
+   
+   - ``[VEE Port project]/extensions/microui/microui.xml`` in SDK 6
+   - ``[VEE Port Configuration project]/microui/microui.xml`` in SDK 5
+
 2. Edit the file as described here: :ref:`section_static_init`.
 
 .. code-block:: xml
@@ -113,7 +139,7 @@ Module Font Generator
 .. note:: This chapter only applies when the device has a display.
 
 This module allows for embedding the MicroEJ bitmap fonts of the application.
-The application's fonts (EJF files) are decoded and stored in a binary format compatible with the Graphics Engine.
+The application's fonts are decoded and stored in a binary format compatible with the Graphics Engine.
 Refer to the chapter :ref:`section_fontgen` to have more information.
 
 This module is optional: when not selected, the application cannot embed fonts compatible with the Graphics Engine.
@@ -168,17 +194,34 @@ The hardware constraints (display, bus, memory, etc.) may drive the configuratio
 Configuration
 -------------
 
-In the VEE Port Configuration project, create and fill the file ``display.properties``:
+.. tabs::
 
-1. Create the file ``[VEE Port Configuration project]/display/display.properties`` 
-2. Fill the file as described here: :ref:`section_display_installation`, according to the pixel format and the display constraints.
+   .. tab:: SDK 6
 
-.. code-block:: java
+      In the ``configuration.properties`` file of the VEE Port project, 
+      fill the file as described here: :ref:`section_display_installation`, according to the pixel format and the display constraints.
 
-   bpp=rgb565
-   imageBuffer.memoryAlignment=32
-   memoryLayout=line
-   byteLayout=line
+      .. code-block:: java
+
+         com.microej.runtime.display.bpp=rgb565
+         com.microej.runtime.display.imageBuffer.memoryAlignment=32
+         com.microej.runtime.display.memoryLayout=line
+         com.microej.runtime.display.byteLayout=line
+
+   .. tab:: SDK 5
+
+      In the VEE Port Configuration project:
+
+      1. Create the file ``[VEE Port Configuration project]/display/display.properties`` 
+      2. Fill the file as described here: :ref:`section_display_installation`, according to the pixel format and the display constraints.
+
+      .. code-block:: java
+
+         bpp=rgb565
+         imageBuffer.memoryAlignment=32
+         memoryLayout=line
+         byteLayout=line
+
 
 VEE Port Build
 ==============
@@ -188,7 +231,7 @@ Once modules are selected and configured, the VEE Port can be built again; see :
 .. note: When a module is removed, added, or re-configured, the VEE Port must be built again.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

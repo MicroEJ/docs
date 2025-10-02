@@ -39,8 +39,19 @@ No dependency.
 Installation
 ============
 
-This is an additional tool. In the platform configuration file, check
-:guilabel:`Java to C Interface` > :guilabel:`MicroEJ Java H` to install the tool.
+.. tabs::
+
+   .. tab:: SDK 6
+
+      In SDK 6, the MicroEJ Java H tool is enabled by default.
+      It can be disabled in the VEE Port configuration file, by adding the following property::
+
+         com.microej.runtime.extensible.MicroEJavah.enabled=false
+
+   .. tab:: SDK 5  
+
+      This is an additional tool. In the VEE Port configuration file, check
+      :guilabel:`Java to C Interface` > :guilabel:`MicroEJ Java H` to install the tool.
 
 
 Use
@@ -49,7 +60,7 @@ Use
 This chapter explains the MicroEJ tool options.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

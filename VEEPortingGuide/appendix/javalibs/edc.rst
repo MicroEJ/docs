@@ -38,11 +38,11 @@ is issued, where ``<messageId>`` meaning is defined in the following table:
    * - -4
      - No native stack found to execute the Java native method.
    * - -3
-     - Maximum stack size for a thread has been reached. Increase the maximum size of the thread stack parameter.
+     - Maximum stack size for a thread has been reached. See :ref:`runtime_threads_and_stacks`.
    * - -2
-     - No Java stack block could be allocated with the given size. Increase the Java stack block size.
+     - No stack block could be allocated with the given size. See :ref:`runtime_threads_and_stacks`.
    * - -1
-     - The Java stack space is full. Increase the Java stack size or the number of Java stack blocks.
+     - The stack space is full. See :ref:`runtime_threads_and_stacks`.
    * - 1
      - A closed stream is being written/read.
    * - 2 
@@ -94,7 +94,7 @@ The error codes returned by ``SNI_startVM()`` are defined in the section
 .. _System.exit(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#exit-int-
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

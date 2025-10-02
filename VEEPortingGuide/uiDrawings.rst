@@ -85,7 +85,7 @@ The :ref:`MicroUI C module<section_ui_releasenotes_cmodule>` is designed to simp
 * flash footprint is reduced (no extra table to manage several destination formats and several sources),
 * functions indirections are limited (the software drawing algorithm is called as faster as possible).
 
-The following graph illustrates the steps to perform a shape drawing (not an image):
+The following diagram illustrates the steps to perform a shape drawing (not an image):
 
 .. graphviz:: :align: center
 
@@ -154,14 +154,14 @@ This pointer must be cast in a ``SNI_callback``.
 
    #define UI_DRAWING_DEFAULT_drawLine UI_DRAWING_drawLine
 
-The function name is set thanks to a ``define``.
+The function name is set with preprocessor macros.
 This name redirection is useful when the VEE Port features multiple destination formats (not the use-case here).
 
 **UI_DRAWING_DEFAULT_drawLine** (available in MicroUI C Module)
 
 .. code-block:: c
 
-   // Use the preprocessor 'weak'
+   // Use the compiler's 'weak' attribute
    __weak DRAWING_Status UI_DRAWING_DEFAULT_drawLine(MICROUI_GraphicsContext* gc, jint startX, jint startY, jint endX, jint endY) {
       // Default behavior: call the Graphics Engine's software algorithm
       return UI_DRAWING_SOFT_drawLine(gc, startX, startY, endX, endY);
@@ -189,7 +189,7 @@ The :ref:`MicroUI C module<section_ui_releasenotes_cmodule>` is designed to simp
 * flash footprint is reduced (no extra table to manage several destination formats and several sources),
 * functions indirections are limited (the drawing algorithm is called as faster as possible).
 
-The following graph illustrates the steps to perform a shape drawing (not an image):
+The following diagram illustrates the steps to perform a shape drawing (not an image):
 
 
 .. graphviz:: :align: center
@@ -258,7 +258,7 @@ Take the same example as the default implementation (draw a line): the BSP just 
 
    #define UI_DRAWING_GPU_drawLine UI_DRAWING_drawLine
 
-The function name should be set thanks to a ``define``.
+The function name should be set with preprocessor macros.
 This name redirection is useful when the VEE Port features multiple destination formats (not the use-case here).
 
 **UI_DRAWING_GPU_drawLine** (to write in the BSP)
@@ -303,7 +303,7 @@ Note the bottom-right coordinates might be smaller than the top-left (in x and/o
 The clip may be disabled (when the current drawing fits the clip); this allows to reduce runtime.
 See ``LLUI_DISPLAY_isClipEnabled()``.
 
-.. note:: Several clip functions are available in ``LLUI_DISPLAY.h`` to check if a drawing fits the clip.
+.. hint:: Several clip functions are available in ``LLUI_DISPLAY.h`` to check if a drawing fits the clip.
 
 Finally, after the drawing, the drawing function has to return the drawing status.
 Most of the time, the GPU performs *asynchronous* drawings: the drawing is started but not completed.
@@ -365,7 +365,7 @@ The :ref:`UI Pack extension <section_ui_simulation>` is designed to simplify the
 * Simply add the dependency to the UI Pack extension in the VEE Port Front Panel project.
 * Function indirections are limited (the software drawing algorithm is called as fast as possible).
 
-The following graph illustrates the steps to perform a shape drawing (not an image):
+The following diagram illustrates the steps to perform a shape drawing (not an image):
 
 .. graphviz:: :align: center
 
@@ -471,7 +471,7 @@ The :ref:`UI Pack extension <section_ui_simulation>` is designed to simplify the
    * Function indirections are limited (the drawing algorithm is called as fast as possible).
 * Register this drawer in place of the default display drawer.
 
-The following graph illustrates the steps to perform a shape drawing (not an image):
+The following diagram illustrates the steps to perform a shape drawing (not an image):
 
 .. graphviz:: :align: center
 
@@ -559,12 +559,12 @@ Let's use the same example as the previous section (draw line function): the Fro
 The Front Panel framework is running over AWT.
 The method ``gc.getImage()`` returns a ``ej.fp.Image``.
 It is the representation of a MicroUI Image in the Front Panel framework.
-The method ``gc.getImage().getRAWImage()`` returns the implementation of the Front Panel image on the J2SE framework: an `AWT BufferedImage`_. 
+The method ``gc.getImage().getRAWImage()`` returns the implementation of the Front Panel image on the Java SE framework: an `AWT BufferedImage`_. 
 The AWT graphics 2D can be retrieved from this buffered image.
 
 The MicroUI color (``gc.getRenderingColor()``) is converted to an AWT color.
 
-The method behavior is exactly the same as the embedded side; see:ref:`section_drawings_cco_custom`.
+The method behavior is exactly the same as the embedded side; see :ref:`section_drawings_cco_custom`.
 
 This newly created drawer must now replace the default display drawer.
 There are two possible ways to register it:
@@ -828,7 +828,7 @@ The front panel version of the previous example that reported an out-of-memory e
 
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

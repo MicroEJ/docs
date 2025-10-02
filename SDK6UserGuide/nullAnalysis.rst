@@ -11,7 +11,7 @@ All modern IDEs provide a Null Analysis tool which can detect such programming e
 Principle
 ---------
 
-The Null Analysis tool is based on Java annotations. 
+The Null Analysis tool is based on Java annotations.
 Each Java field, method parameter and method return value must be marked to indicate whether it can be ``null`` or not.
 
 Once the Java code is annotated, the IDE must be configured to enable Null Analysis detection.
@@ -24,7 +24,7 @@ MicroEJ defines its own annotations:
 
 - `@NonNullByDefault`_: Indicates that all fields, method return values or parameters can never be null in the annotated package or type.
   This rule can be overridden on each element by using the ``@Nullable`` annotation.
-  
+
 - `@Nullable`_: Indicates that a field, local variable, method return value or parameter can be null.
 
 - `@NonNull`_: Indicates that a field, local variable, method return value or parameter can never be null.
@@ -41,7 +41,7 @@ MicroEJ recommends to annotate the Java code as follows:
     package com.mycompany;
 
 - In each Java type, annotate all fields, methods return values and parameters that can be null with ``@Nullable``.
-  Usually, this information is already available as textual information in the field or method Javadoc comment. 
+  Usually, this information is already available as textual information in the field or method Javadoc comment.
   The following example of code shows where annotations must be placed:
 
   .. code:: java
@@ -62,10 +62,8 @@ MicroEJ recommends to annotate the Java code as follows:
 .. _@NonNullByDefault: https://repository.microej.com/javadoc/microej_5.x/apis/ej/annotation/NonNullByDefault.html
 .. _@Nullable: https://repository.microej.com/javadoc/microej_5.x/apis/ej/annotation/Nullable.html
 .. _@NonNull: https://repository.microej.com/javadoc/microej_5.x/apis/ej/annotation/NonNull.html
-.. _EDC-1.3.6: https://repository.microej.com/modules/ej/api/edc/1.3.6/
-.. _EDC 1.3.6 Changelog: https://repository.microej.com/modules/ej/api/edc/1.3.6/CHANGELOG-1.3.6.md
 
-IDE Configuration 
+IDE Configuration
 -----------------
 
 Requirements
@@ -83,9 +81,9 @@ Project configuration
 
 .. tabs::
 
-   .. tab:: Android Studio / IntelliJ IDEA
+   .. tab:: IntelliJ IDEA / Android Studio
 
-    Follow these steps to enable the Null Analysis tool in Android Studio and IntelliJ IDEA:
+    Follow these steps to enable the Null Analysis tool in IntelliJ IDEA and Android Studio:
 
     - Go to :guilabel:`File` > :guilabel:`Settings...`.
     - Go to :guilabel:`Editor` > :guilabel:`Inspections`.
@@ -123,7 +121,7 @@ Project configuration
            :alt: Nullable Annotation Configuration in IntelliJ IDEA and Android
            :align: center
            :scale: 100%
-    
+
     - Select the category :guilabel:`Java` > :guilabel:`Probable Bugs` > :guilabel:`Nullability problems` > :guilabel:`Return value is outside of declared range`.
     - Change the :guilabel:`Severity` field to :guilabel:`Error`.
 
@@ -132,7 +130,7 @@ Project configuration
            :align: center
            :scale: 100%
 
-    
+
     - Select the category :guilabel:`Java` > :guilabel:`Probable Bugs` > :guilabel:`Nullability and data flow problems`.
     - Change the :guilabel:`Severity` field to :guilabel:`Error`.
 
@@ -176,7 +174,7 @@ Project configuration
            :scale: 100%
 
       - Click on the :guilabel:`Configure...` link to configure MicroEJ annotations:
-        
+
         - ``ej.annotation.Nullable``
         - ``ej.annotation.NonNull``
         - ``ej.annotation.NonNullByDefault``
@@ -187,7 +185,7 @@ Project configuration
           :scale: 100%
 
       - In the :guilabel:`Annotations` section, check :guilabel:`Suppress optional errors with '@SuppressWarnings'` option:
-        
+
         .. figure:: images/null_analysis_project_configuration_suppress_warnings.png
           :alt: Null Analysis Eclipse Suppress Warnings Configuration
           :align: center
@@ -202,18 +200,18 @@ Project configuration
         :alt: Null Analysis Settings Folder
         :align: center
         :scale: 100%
-          
+
         Null Analysis Settings Folder
 
       .. warning::
 
-        You may lose information if your target module project already has custom parameterization or if it was created with another SDK version. 
+        You may lose information if your target module project already has custom parameterization or if it was created with another SDK version.
         In case of any doubt, please configure the options manually or merge with a text file comparator.
 
 Launching Null Analysis
 -----------------------
 
-While Eclipse automatically launches Null Analysis on the whole project and reports all the problems found, 
+While Eclipse automatically launches Null Analysis on the whole project and reports all the problems found,
 IntelliJ IDEA and Android Studio launch the Null Analysis only on the currently open file.
 In order to launch an Analysis of the full project:
 
@@ -227,7 +225,7 @@ Disabling Analysis for Test Folder
 
 .. tabs::
 
-   .. tab:: Android Studio / IntelliJ IDEA
+   .. tab:: IntelliJ IDEA / Android Studio
 
     The Analysis of the test folder can be disabled by unchecking the option ``Include test sources`` when launching a Code Inspection:
 
@@ -249,7 +247,7 @@ Disabling Analysis for Test Folder
           ...
           `eclipse-wtp`
         }
-    
+
     - Then add the following snippet of code:
 
       .. code-block:: java
@@ -275,27 +273,27 @@ Sharing Null Analysis IDE Configuration
 
 .. tabs::
 
-   .. tab:: Android Studio / IntelliJ IDEA
+   .. tab:: IntelliJ IDEA / Android Studio
 
     The configuration related to Null Analysis is located in the ``.idea/misc.xml`` and ``.idea/inspectionProfiles/*`` files.
     In order to share them, they must be committed in your project source reposiory.
-    For Git projects, if you decided to not commit the IDE configuration files, 
+    For Git projects, if you decided to not commit the IDE configuration files,
     these files can be excluded with the following lines in the ``.gitignore`` file::
 
       /.idea/*
       !/.idea/misc.xml
       !/.idea/inspectionProfiles/*
 
-      .. warning::
+    .. warning::
 
-        Android Studio and IntelliJ IDEA create a ``.gitignore`` file in the ``.idea`` folder.
-        You can remove it or adapt it to fit your needs.
+      IntelliJ IDEA and Android Studio create a ``.gitignore`` file in the ``.idea`` folder.
+      You can remove it or adapt it to fit your needs.
 
    .. tab:: Eclipse
 
     The configuration related to Null Analysis is located in the ``.settings/org.eclipse.jdt.core.prefs`` file.
     In order to share it, it must be committed in your project source reposiory.
-    For Git projects, if you decided to not commit the IDE configuration files, 
+    For Git projects, if you decided to not commit the IDE configuration files,
     these files can be excluded with the following lines in the ``.gitignore`` file::
 
       /.settings/*
@@ -305,18 +303,18 @@ Sharing Null Analysis IDE Configuration
 MicroEJ Libraries
 -----------------
 
-Many libraries available on :ref:`central_repository` are annotated with Null Analysis. 
+Many libraries available on :ref:`central_repository` are annotated with Null Analysis.
 If you are using a library which is not yet annotated, please contact :ref:`our support team <get_support>`.
 
 For the benefit of Null Analysis, some APIs have been slightly constrained compared to the Javadoc description.
 Here are some examples to illustrate the philosophy:
 
-- `System.getProperty(String key, String def)`_ does not accept a ``null`` default value, 
+- `System.getProperty(String key, String def)`_ does not accept a ``null`` default value,
   which allows to ensure the returned value is always non ``null``.
-- Collections of the Java Collections Framework that can hold ``null`` elements (e.g. `HashMap`_) do not accept ``null`` elements. 
+- Collections of the Java Collections Framework that can hold ``null`` elements (e.g. `HashMap`_) do not accept ``null`` elements.
   This allows APIs to return ``null`` (e.g. `HashMap.get(Object)`_) only when an element is not contained in the collection.
 
-Implementations are left unchanged and still comply with the Javadoc description whether the Null Analysis is enabled or not. 
+Implementations are left unchanged and still comply with the Javadoc description whether the Null Analysis is enabled or not.
 So if these additional constraints are not acceptable for your project, please disable Null Analysis.
 
 .. _System.getProperty(String key, String def): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#getProperty-java.lang.String-java.lang.String-
@@ -325,8 +323,8 @@ So if these additional constraints are not acceptable for your project, please d
 
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
-   for read and redistribute. Except if otherwise stated, modification 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free
+   for read and redistribute. Except if otherwise stated, modification
    is subject to MicroEJ Corp prior approval.
-   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and
    copyrights are the property of their respective owners.

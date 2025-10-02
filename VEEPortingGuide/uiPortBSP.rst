@@ -35,7 +35,7 @@ Before all, install the MicroUI C Module:
 
 1. Find the correct version of the C module according to the UI Pack version; see :ref:`section_ui_releasenotes_cmodule`.
 2. Unzip it in the BSP project.
-3. Add the mandatory files to the list of the BSP project's compiled files: ``LLDW_PAINTER_impl.c``, ``LLUI_PAINTER_impl.c``, ``ui_drawing_stub.c``, ``ui_drawing.c`` and ``ui_image_drawing.c``.
+3. Add the mandatory files to the list of the BSP project's compiled files: ``ui_image_drawing.c``, ``ui_drawing.c``, ``ui_rect_util.c``, ``LLUI_PAINTER_impl.c``, ``ui_display_brs_single.c``, ``LLDW_PAINTER_impl.c``, ``ui_display_brs.c``, ``ui_drawing_stub.c``, ``ui_display_brs_legacy.c`` and ``ui_display_brs_predraw.c``.
 4. Add the optional files in the BSP project (if their associated feature is used/needed): 
  
    - ``LLUI_DISPLAY_HEAP_impl.c``: to use another image heap allocator,
@@ -98,6 +98,12 @@ According to the LCD constraints (see :ref:`ui_port_conf`), some additional LLAP
 - ``LLUI_DISPLAY_IMPL_isColor``: the default implementation always returns ``true`` when the BPP is higher than 8; only useful as information for the application.
 - ``LLUI_DISPLAY_IMPL_getNumberOfColors``: the default implementation returns always ``1 << BPP``; only useful as information for the application.
 
+Display: Buffer Configuration
+=============================
+
+This configuration consists in declaring the available number of buffers where MicroUI can draw (back buffer) and the strategy to apply to update these buffers after a flush.
+Read and update the configuration file ``ui_configuration.h``; more details in the chapter :ref:`section_display`.
+
 Display: Optional Features
 ==========================
 
@@ -139,7 +145,10 @@ Test Suite
 The Port Qualification Toolkit (PQT) provides a UI test suite to validate the UI Port (see :ref:`vee_port_testsuite` to have more information).
 This test suite **must** be executed to validate the UI Port and after each modification on this UI Port (for instance, after changes to improve performances).
 
-The UI Port test suite is available here: https://github.com/MicroEJ/VEEPortQualificationTools/tree/master/tests/ui/ui3.
+The UI Port test suite is available here: 
+
+- SDK 5: https://github.com/MicroEJ/VEEPortQualificationTools/tree/master/tests/ui/ui3
+- SDK 6: https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.4.0/vee-port/validation/ui
 
 The test suite is constituted of two blocks:
 
@@ -159,7 +168,7 @@ Some other example projects are also available in MicroEJ GitHub and can be used
 
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

@@ -26,8 +26,8 @@ Option: Objects Heap Size
 *Description*:
 
 This memory area contains any kind of objects (regular, immortal and immutable objects). 
-If you get a ``java.lang.OutOfMemoryError`` exception but your Java Heap is not full, most likely you should augment this option.
-It must be greater than the sum of :ref:`Java Heap <option_java_heap>` and :ref:`Immortal Heap <option_immortal_heap>`.
+If you get a ``java.lang.OutOfMemoryError`` exception but your Managed Heap is not full, most likely you should augment this option.
+It must be greater than the sum of :ref:`Managed Heap <option_managed_heap>` and :ref:`Immortals Heap <option_immortal_heap>`.
 
 Option: System Chars Size
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -113,7 +113,7 @@ Option: Symbol Table Size
 This is the number of symbols that can be handled by the internal symbol table (any kind of names: class names, method names, ...).
 
 ..
-   | Copyright 2022-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2022-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

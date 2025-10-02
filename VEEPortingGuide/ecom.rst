@@ -81,7 +81,7 @@ A device registration listener is defined by implementing
 `ej.ecom.RegistrationListener`_. When a device is registered to or
 unregistered from the device manager, listeners registered for the
 device type are notified. The notification mechanism is done in a
-dedicated Java thread. The mechanism can be enabled or disabled (see
+dedicated thread. The mechanism can be enabled or disabled (see
 :ref:`application_options`).
 
 .. _ej.ecom.Device: https://repository.microej.com/javadoc/microej_5.x/apis/ej/ecom/Device.html
@@ -98,20 +98,40 @@ No dependency.
 Installation
 ============
 
-ECOM Foundation Library is an additional library. In the platform
-configuration file, check :guilabel:`Serial Communication` > :guilabel:`ECOM` to install
-the library.
+ECOM Foundation Library is an additional library. 
 
+.. tabs::
+
+   .. tab:: SDK 6
+
+      In the VEE Port build file, add a dependency to the ?? pack::
+
+         microejPack("com.microej.pack.??:??:??")
+
+   .. tab:: SDK 5      
+
+      In the VEE Port configuration file, check :guilabel:`Serial Communication` > :guilabel:`ECOM` to install the library and
+      its relative tools.
 
 Use
 ===
 
-The `ECOM API Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
-Application project to use the ECOM library.
+The `ECOM API Module`_ must be added to the Application project build file to use the ECOM library:
 
-::
+.. tabs::
 
-   <dependency org="ej.api" name="ecom" rev="1.1.4"/>
+   .. tab:: SDK 6 (build.gradle.kts)
+
+      .. code-block:: kotlin
+
+         implementation("ej.api:ecom:1.1.4")
+
+   .. tab:: SDK 5 (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="ej.api" name="ecom" rev="1.1.4"/>
+
 
 This Foundation Library is always required when developing a MicroEJ Application which
 communicates with some external devices. It is automatically embedded as
@@ -120,7 +140,7 @@ soon as a sub communication library is added in the classpath.
 .. _ECOM API Module: https://repository.microej.com/modules/ej/api/ecom/
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

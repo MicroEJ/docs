@@ -1,0 +1,15 @@
+pipeline {
+    agent {
+        docker { 
+            image 'eclipse-temurin:11-jdk' 
+            args '-e ACCEPT_MICROEJ_SDK_EULA_V3_1C=YES'
+        }
+    }
+    stages {
+        stage('Build and publish') {
+            steps {
+                sh './gradlew build publish -Penable.ivy.descriptor.default=false --init-script init.gradle.kts'
+            }
+        }
+    }
+}

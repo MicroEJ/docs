@@ -90,24 +90,31 @@ The Low Level Core Engine API, the ``LLMJVM`` API, relies on
 functions that need to be implemented. The naming convention for such
 functions is that their names match the ``LLMJVM_IMPL_*`` pattern.
 
-Header Files
+
+LLMJVM_impl.h
+-------------
+
+Set of functions that the BSP must implement to launch and schedule the Core Engine
+
+.. doxygenfile:: LLMJVM_impl.h
+   :sections: define enum innerclass public-attrib func
+
+
+LLMJVM.h
+--------
+
+Set of functions provided by Core Engine that can be called by the BSP
+
+.. doxygenfile:: LLMJVM.h
+   :sections: define enum innerclass public-attrib func
+
+LLBSP_impl.h
 ------------
 
-Three C header files are provided:
+Set of extra functions that the BSP must implement.
 
--  LLMJVM_impl.h
-
-   Defines the set of functions that the BSP must implement to launch
-   and schedule the virtual machine
-
--  LLMJVM.h
-
-   Defines the set of functions provided by virtual machine that can be
-   called by the BSP when using the virtual machine
-
--  LLBSP_impl.h
-
-   Defines the set of extra functions that the BSP must implement.
+.. doxygenfile:: LLBSP_impl.h
+   :sections: define enum innerclass public-attrib func
 
 
 .. _LLKF-API-SECTION:
@@ -122,15 +129,22 @@ The Low Level Kernel API, the ``LLKERNEL`` API, relies on functions that
 need to be implemented. The naming convention for such functions is that
 their names match the ``LLKERNEL_IMPL_*`` pattern.
 
-Header Files
-------------
+LLKERNEL_impl.h
+---------------
 
-One C header file is provided:
+Set of functions that the BSP must implement to manage memory allocation of dynamically installed Applications.
 
--  LLKERNEL_impl.h
+.. doxygenfile:: LLKERNEL_impl.h
+   :sections: define enum innerclass public-attrib func
 
-   Defines the set of functions that the BSP must implement to manage
-   memory allocation of dynamically installed Applications.
+
+LLKERNEL.h
+----------
+
+Set of functions provided by the Core Engine that can be called by the BSP.
+
+.. doxygenfile:: LLKERNEL.h
+   :sections: enum innerclass public-attrib func
 
 
 .. _LLSP-API-SECTION:
@@ -143,7 +157,7 @@ Naming Convention
 
 The Low Level Shielded Plug API, the ``LLSP`` API, relies on functions
 that need to be implemented. The naming convention for such functions is
-that their names match the ``LLSP_IMPL_*`` pattern.  
+that their names match the ``LLSP_IMPL_*`` pattern.  
 
 Header Files
 ------------
@@ -191,7 +205,7 @@ Naming Convention
 
 The Low Level API, the ``LLEXT_RES`` API, relies on functions that need
 to be implemented. The naming convention for such functions is that
-their names match the ``LLEXT_RES_IMPL_*`` pattern.  
+their names match the ``LLEXT_RES_IMPL_*`` pattern.  
 
 Header Files
 ------------
@@ -212,7 +226,7 @@ LLCOMM: Serial Communications
 Naming Convention
 -----------------
 
-The Low Level Comm API (LLCOMM), relies on functions that need to be
+The Low Level Comm API (LLCOMM), relies on functions that need to be
 implemented by engineers in a driver. The names of these functions match
 the ``LLCOM_BUFFERED_CONNECTION_IMPL_*`` or the
 ``LLCOM_CUSTOM_CONNECTION_IMPL_*``\ pattern.
@@ -263,7 +277,7 @@ engine, and it may be used to initialize the underlying devices and bind
 them to event generator IDs.
 
 ``LLUI_INPUT_IMPL_enterCriticalSection`` and
-``LLUI_INPUT_IMPL_exitCriticalSection``  need to provide the Input Engine with a
+``LLUI_INPUT_IMPL_exitCriticalSection``  need to provide the Input Engine with a
 critical section mechanism for synchronizing devices when sending events
 to the internal event queue. The mechanism used to implement the
 synchronization will depend on the VEE Port configuration (with or
@@ -280,7 +294,7 @@ Sending Events
 The ``LLUI_INPUT`` API provides two generic functions for a C driver to
 send data to its associated event generator:
 
--  ``LLUI_INPUT_sendEvent``:  Sends a 32-bit event to a specific event generator, specified by its ID. If the input buffer is full, the event is not added, and the function returns ``LLUI_INPUT_NOK``; otherwise it returns ``LLUI_INPUT_OK``.
+-  ``LLUI_INPUT_sendEvent``:  Sends a 32-bit event to a specific event generator, specified by its ID. If the input buffer is full, the event is not added, and the function returns ``LLUI_INPUT_NOK``; otherwise it returns ``LLUI_INPUT_OK``.
 
 -  ``LLUI_INPUT_sendEvents``: Sends a frame constituted by several 32-bit events to a specific event generator, specified by its ID. If the input buffer cannot receive the whole data, the frame is not added, and the function returns ``LLUI_INPUT_NOK``; otherwise it returns ``LLUI_INPUT_OK``.
 
@@ -384,7 +398,7 @@ LLUI_DISPLAY: Display
 Principle & Naming Convention
 -----------------------------
 
-The  Graphics Engine provides some Low Level APIs to connect a display driver. The file ``LLUI_DISPLAY_impl.h`` defines the API headers to be implemented. For the APIs themselves, the naming convention is that their names match the ``*_IMPL_*`` pattern when the functions need to be implemented:
+The  Graphics Engine provides some Low Level APIs to connect a display driver. The file ``LLUI_DISPLAY_impl.h`` defines the API headers to be implemented. For the APIs themselves, the naming convention is that their names match the ``*_IMPL_*`` pattern when the functions need to be implemented:
 
 * ``LLUI_DISPLAY_IMPL_initialize``
 * ``LLUI_DISPLAY_IMPL_binarySemaphoreTake``
@@ -411,7 +425,7 @@ Functions ``LLUI_DISPLAY_IMPL_imageHeapXXX`` allow to control the image buffers 
 Implementation of these LLAPIs is already available on the Central Repository (``LLUI_DISPLAY_HEAP_impl.c``). 
 This implementation is using a best fit allocator. 
 It can be updated to log the allocations, the remaining space, etc. 
-When no implementation is included in the BSP, the default Graphics Engine'a allocator (a best fit allocator) is used.
+When no implementation is included in the BSP, the default Graphics Engine's allocator (a best fit allocator) is used.
 
 .. _ResourceImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html
 .. _BufferedImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html
@@ -575,7 +589,7 @@ Creation
 The header file ``LLVG_PATH_impl.h`` allows to convert a MicroVG library format path in a buffer that represents the same vectorial path in the target specific format (generally GPU format).
 
 The first function called is ``LLVG_PATH_IMPL_initializePath``, which allows the implementation to initialize the path buffer.
-The buffer is allocated in the Java heap and its size is fixed by the MicroVG implementation.
+The buffer is allocated in the Managed Heap and its size is fixed by the MicroVG implementation.
 When the buffer is too small for the target specific format, the implementation has to return the expected buffer size instead of the keyword ``LLVG_SUCCESS``.
 
 The next steps consist in appending some commands in the path buffer.
@@ -636,7 +650,7 @@ Only one function has to be implemented: ``LLVG_GRADIENT_IMPL_initializeGradient
 It consists in encoding the MicroVG LinearGradient in a buffer that represents the linear gradient in target specific format (generally GPU format).  
 
 This function allows the implementation to initialize the gradient buffer.
-The buffer is allocated in the Java heap and its size is fixed by the MicroVG implementation.
+The buffer is allocated in the Managed Heap and its size is fixed by the MicroVG implementation.
 When the buffer is too small for the target specific format, the implementation has to return the expected buffer size instead of the keyword ``LLVG_SUCCESS``.
 
 .. _LLVG-FONT-API-SECTION:
@@ -795,7 +809,7 @@ LLECOM_NETWORK: Network Interfaces
 Naming Convention
 -----------------
 
-The Low Level Network Interfaces API (LLECOM_NETWORK), relies on functions that need to
+The Low Level Network Interfaces API (LLECOM_NETWORK), relies on functions that need to
 be implemented by engineers in a driver. The names of these functions
 match the ``LLECOM_NETWORK_IMPL_*`` pattern.
 
@@ -818,7 +832,7 @@ LLECOM_WIFI: Wi-Fi Management
 Naming Convention
 -----------------
 
-The Low Level Wi-FI API (LLECOM_WIFI), relies on functions that need to
+The Low Level Wi-FI API (LLECOM_WIFI), relies on functions that need to
 be implemented by engineers in a driver. The names of these functions
 match the ``LLECOM_WIFI_IMPL_*`` pattern.
 
@@ -840,19 +854,76 @@ LLBLUETOOTH: Bluetooth
 Naming Convention
 -----------------
 
-The Low Level Bluetooth API (LLBLUETOOTH), relies on functions that need to
+The Low Level Bluetooth API (LLBLUETOOTH), relies on functions that need to
 be implemented by engineers in a driver. The names of these functions
 match the ``LLBLUETOOTH_IMPL_*`` pattern.
 
 Header Files
 ------------
 
-One header file is provided:
+Two header files are provided:
+
+-  LLBLUETOOTH_defines.h
+
+   Defines constants and types which are used by the functions to implement.
 
 -  LLBLUETOOTH_impl.h
 
    Defines the set of functions that the BSP must implement to manage and configure
    and Bluetooth module.
+
+.. _LLAUDIO-API-SECTION:
+
+LLAUDIO: Audio
+==============
+
+Naming Convention
+-----------------
+
+The Low Level Audio API (LLAUDIO), relies on functions that need to
+be implemented by engineers in a driver. The names of these functions
+match the ``LLAUDIO_*_IMPL_*`` pattern.
+
+Header Files
+------------
+
+Three header files is provided:
+
+-  LLAUDIO_defines.h
+
+   Defines constants and types which are used by the functions to implement.
+
+-  LLAUDIO_RECORD_impl.h
+
+   Defines the set of functions that the BSP must implement for audio recording.
+
+-  LLAUDIO_TRACK_impl.h
+
+   Defines the set of functions that the BSP must implement for audio playback.
+
+.. _LLMICROAI-API-SECTION:
+
+LLML: MicroAI
+=============
+
+Naming Convention
+-----------------
+
+The Low Level MicroAI API (LLML), relies on functions that need to
+be implemented by engineers in a driver. The names of these functions
+match the ``LLML_IMPL_*`` pattern.
+
+Header Files
+------------
+
+One header file is provided:
+
+-  LLML_impl.h
+
+   Defines the set of functions that the BSP must implement to load a model file,
+   set the input data and read output data.
+   This API also implements a number of helper functions to get the model characteristics
+   such as tensor sizes, quantization parameters, etc...
 
 .. _LLEVENT-API-SECTION:
 
@@ -862,7 +933,7 @@ LLEVENT: Event Queue
 Naming Convention
 -----------------
 
-The Low Level Event Queue API (LLEVENT), relies on functions that need to
+The Low Level Event Queue API (LLEVENT), relies on functions that need to
 be implemented by engineers in a driver. The names of these functions
 match the ``LLEVENT_IMPL_*`` or ``LLEVENT_*`` pattern.
 
@@ -887,7 +958,7 @@ LLFS: File System
 Naming Convention
 -----------------
 
-The Low Level File System API (LLFS), relies on functions that need to
+The Low Level File System API (LLFS), relies on functions that need to
 be implemented by engineers in a driver. The names of these functions
 match the ``LLFS_IMPL_*`` and the ``LLFS_File_IMPL_*`` pattern.
 
@@ -908,6 +979,27 @@ Two C header files are provided:
    Defines a set of functions that the BSP must implement to do some I/O
    operations on files (open, read, write, close, etc.).
 
+.. _LLGNSS-API-SECTION:
+
+LLGNSS: GNSS (Global Navigation Satellite System)
+=================================================
+
+Naming Convention
+-----------------
+
+The Low Level GNSS API (LLGNSS), relies on functions that need to
+be implemented by engineers in a driver. The names of these functions
+match the ``LLGNSS_IMPL_*`` pattern.
+
+Header Files
+------------
+
+One header file is provided:
+
+-  LLGNSS_impl.h
+
+   Defines the set of functions that the BSP must implement to manage and configure
+   GNSS engine.
 
 .. _LLHAL-API-SECTION:
 
@@ -940,7 +1032,7 @@ LLDEVICE: Device Information
 Naming Convention
 -----------------
 
-The Low Level Device API (LLDEVICE), relies on functions that need to be
+The Low Level Device API (LLDEVICE), relies on functions that need to be
 implemented by engineers in a driver. The names of these functions match
 the ``LLDEVICE_IMPL_*`` pattern.
 
@@ -963,7 +1055,7 @@ LLWATCHDOG_TIMER: Watchdog Timer
 Naming Convention
 -----------------
 
-The Low Level Watchdog Timer API (LLWATCHDOG_TIMER), provides functions that allow the use of this API
+The Low Level Watchdog Timer API (LLWATCHDOG_TIMER), provides functions that allow the use of this API
 at the BSP level in C. The names of these functions match the ``LLWATCHDOG_TIMER_IMPL_*`` pattern.
 
 The Watchdog API is delivered with a Generic C implementation on which the VEE Port must
@@ -1061,8 +1153,91 @@ Several C header files are provided:
    to manage X509 certificates operations like getting the public key,
    extracting the issuer, etc.
 
+.. _LLTRACE-API-SECTION:
+
+LLTRACE: Trace
+==============
+
+Principle
+---------
+
+The :ref:`Trace module <event-tracing>` provides Low Level APIs to produce lightweight events for debugging and
+monitoring purposes. The file ``LLTRACE_impl.h``, which comes with the Core Engine, defines the API headers to be implemented.
+
+Naming Convention
+-----------------
+
+The Low Level Trace API ``LLTRACE`` relies on functions that need to be implemented. The naming convention for such
+functions is that their names match the ``LLTRACE_IMPL_*`` pattern described in the file ``LLTRACE_impl.h``.
+
+
+LLTRACE_impl.h
+---------------
+
+Set of functions that the BSP must implement to launch and schedule the Core Engine.
+
+.. doxygenfile:: LLTRACE_impl.h
+   :sections: define enum innerclass public-attrib func
+
+
+.. _lltrace_h_section:
+
+LLTRACE.h
+---------
+
+Set of functions provided by Core Engine that can be called by the BSP to generate event traces.
+
+.. doxygenfile:: LLTRACE.h
+   :sections: define enum innerclass public-attrib func
+
+
+.. _LLMJVM_MONITOR-API-SECTION:
+
+LLMJVM_MONITOR: Core Engine Monitoring
+======================================
+
+Principle
+---------
+
+The Core Engine Monitoring provides Low Level APIs to track the Core Engine behavior at runtime through events and sending task information.
+The file ``LLMJVM_MONITOR_impl.h``, which comes with the Core Engine, defines the API headers to be implemented.
+
+Naming Convention
+-----------------
+
+The Low Level Core Engine Monitoring API, the ``LLMJVM_MONITOR`` API, relies on
+functions that need to be implemented. The naming convention for such
+functions is that their names match the ``LLMJVM_MONITOR_IMPL_*`` pattern.
+
+LLMJVM_MONITOR_impl.h
+---------------------
+
+Set of functions that the BSP must implement to enable trace recording from Core Engine events.
+
+.. doxygenfile:: LLMJVM_MONITOR_impl.h
+   :sections: define enum innerclass public-attrib func
+
+
+MJVM_MONITOR.h
+--------------
+
+Set of functions provided by Core Engine Monitoring that can be called by the BSP.
+
+.. doxygenfile:: MJVM_MONITOR.h
+   :sections: define enum innerclass public-attrib func
+
+
+MJVM_MONITOR_types.h
+--------------------
+
+Types and macros used in the ``LLMJVM_MONITOR`` ``MJVM_MONITOR`` APIs.
+
+.. doxygenfile:: MJVM_MONITOR_types.h
+   :sections: define enum innerclass public-attrib func
+
+
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

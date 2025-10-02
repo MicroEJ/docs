@@ -44,7 +44,7 @@ It produces a ``.kdat`` file that will be used to link the Sandboxed Application
 
    Kernel Metadata Generator
 
-The ``.kdat`` file is optimized for size. When linking a Sandboxed Application ``.fso`` file, only the required metadata will be loaded in Java heap.
+The ``.kdat`` file is optimized for size. When linking a Sandboxed Application ``.fso`` file, only the required metadata will be loaded in Managed Heap.
 It will be loaded from a standard `InputStream`_,
 so that it can be stored to a memory that is not accessible from the CPU's address space.
 
@@ -120,7 +120,7 @@ Any other modifications will break the Feature portability. For example, the fol
 - Modify hierarchy of a type **declared** as Kernel API.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

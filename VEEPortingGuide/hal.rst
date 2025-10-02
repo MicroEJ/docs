@@ -145,24 +145,49 @@ Dependencies
 Installation
 ============
 
-HAL is an additional module. In the platform configuration file, check
-:guilabel:`HAL` to install the module.
+HAL is an additional module. 
+To enable it, the Audio :ref:`Pack <pack_overview>` module must be installed in your VEE Port:
+
+.. tabs::
+
+   .. tab:: SDK 6 (build.gradle.kts)
+
+      .. code-block:: kotlin
+
+         microejPack("com.microej.pack:hal:2.0.2")
+
+   .. tab:: SDK 5 (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="com.microej.pack" name="hal" rev="2.0.2"/>
+
+      Then, using the VEE Port Editor (see :ref:`platform_module_configuration`), enable the `HAL` library.
 
 
 Use
 ===
 
-The `HAL API Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
-Application project to use the HAL library.
+The `HAL API Module`_ must be added to the project build file to use the HAL library:
 
-::
+.. tabs::
 
-   <dependency org="ej.api" name="hal" rev="1.0.4"/>
+   .. tab:: SDK 6 (build.gradle.kts)
+
+      .. code-block:: kotlin
+
+         implementation("ej.api:hal:1.0.4")
+
+   .. tab:: SDK 5 (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="ej.api" name="hal" rev="1.0.4"/>
 
 .. _HAL API Module: https://forge.microej.com/artifactory/microej-developer-repository-release/ej/api/hal/
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

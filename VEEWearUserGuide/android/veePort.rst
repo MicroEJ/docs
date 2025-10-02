@@ -68,7 +68,7 @@ This section explains how to develop a custom Android Pack including an Android 
 
 .. note::
 
-	Currently, VEE Ports and their components can not be developed in :ref:`MicroEJ SDK 6 <sdk_6_limitations>`.
+	Currently, VEE Ports and their components can not be developed in :ref:`SDK 6 <sdk_6_limitations>`.
 	This means that Android Packs must be developed with :ref:`SDK 5 <sdk_user_guide>` and MMM, and cannot be developed with Android Studio and Gradle.
 
 Setting Android SDK Environment Variable
@@ -163,7 +163,7 @@ The Android Pack can be included in a VEE Port by declaring a dependency in the 
 		<dependency org="[ORGANIZATION]" name="custom-android-pack" rev="[VERSION]"/>
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

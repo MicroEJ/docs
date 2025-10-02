@@ -11,13 +11,13 @@ To use the MicroVG Foundation Library, add `MicroVG API module`_ to the project 
 
       .. code-block:: java
 
-         implementation("ej.api:microvg:1.2.0")
+         implementation("ej.api:microvg:1.5.0")
 
    .. tab:: MMM (module.ivy)
 
       .. code-block:: xml
 
-         <dependency org="ej.api" name="microvg" rev="1.2.0"/>
+         <dependency org="ej.api" name="microvg" rev="1.5.0"/>
 
 
 The MicroVG Library brings the following features:
@@ -37,7 +37,7 @@ The MicroVG Library brings the following features:
 .. _MicroVG API module: https://repository.microej.com/modules/ej/api/microvg/
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

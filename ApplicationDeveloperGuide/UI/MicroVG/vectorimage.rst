@@ -14,10 +14,13 @@ Images that must be processed by the image generator tool are declared in ``*.ve
 
 Currently accepted formats are : 
 
-- ``:VGF``: vglite compatible format with coordinates encoded as float numbers (32 bits).
-- ``:VG32``: vglite compatible format with coordinates encoded as signed int numbers (32 bits).
-- ``:VG16``: vglite compatible format with coordinates encoded as signed short numbers (16 bits).
-- ``:VG8``: vglite compatible format with coordinates encoded as signed char numbers (8 bits).
+- ``:VGF``: MicroVG compatible format with coordinates encoded as float numbers (32 bits).
+- ``:VG32``: MicroVG compatible format with coordinates encoded as signed int numbers (32 bits).
+- ``:VG16``: MicroVG compatible format with coordinates encoded as signed short numbers (16 bits).
+- ``:VG8``: MicroVG compatible format with coordinates encoded as signed char numbers (8 bits).
+
+.. note:: The ouput format may be adjusted by the MicroVG engine to fit the capabilities of the vectorial GPU.
+
 
 Example:
 
@@ -25,6 +28,8 @@ Example:
 
    /com/mycompany/MyImage1.svg:VGF
    /com/mycompany/androidVectorDrawable.xml:VG8
+
+.. warning:: In the case where the output format is not specified, the resource is embedded as is, as described in the Image Generator chapter :ref:`section_image_unspecified_output`. This use case is useful for loading an encoded VG image, as described in the :ref:`avd_loader` chapter.
 
 .. _ej.microvg.VectorImage.getImage(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorImage.html#getImage-java.lang.String-
 
@@ -211,6 +216,8 @@ The following example illustrates this feature.
 
    VectorGraphicsPainter.drawFilteredImage(g, image, matrix1, colorMatrix1);
 
+   imageFiltered.close();
+
 |midTable|
 
 .. figure:: images/drawImageFilter.png
@@ -239,7 +246,7 @@ The SVG format also supports the animation of vector graphics objects, but this 
 
 SVG files that need to be animated should be converted to Android Vector Drawable format with the Android Vector Asset tool and then animated manually or with a tool like `Shapeshifter <https://shapeshifter.design/>`_.
 
-.. warning:: A flaw in Eclipse Temurin™ JDK 8 causes animated vector images to render incorrectly on the Simulator. You should upgrade to Eclipse Temurin™ JDK 11 or use the JDK from Oracle instead.
+.. warning:: A flaw in Eclipse Temurin™ JDK 8 causes animated vector images to render incorrectly on the Simulator. You should upgrade to Eclipse Temurin™ JDK 11 instead.
 
 .. _ej.microvg.VectorGraphicsPainter.drawAnimatedImage(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html#drawAnimatedImage-ej.microui.display.GraphicsContext-ej.microvg.VectorImage-float-float-long-
 .. _ej.microvg.VectorGraphicsPainter.drawFilteredAnimatedImage(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html#drawFilteredAnimatedImage-ej.microui.display.GraphicsContext-ej.microvg.VectorImage-ej.microvg.Matrix-long-float:A-
@@ -900,7 +907,7 @@ The MicroVG library supports a subset of SVGTiny: https://www.w3.org/TR/SVGTiny1
 .. _ResourceVectorImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/ResourceVectorImage.html
   
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

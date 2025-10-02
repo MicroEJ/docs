@@ -3,6 +3,10 @@
 Sandboxed Application
 =====================
 
+.. figure:: images/sandboxed.png
+   :align: center
+   :scale: 75%
+
 .. toctree::
    :maxdepth: 2
    :hidden:
@@ -10,8 +14,7 @@ Sandboxed Application
    sandboxedAppFundamentalConcepts
    sandboxedAppSharedInterface
 
-A Sandboxed Application is an Application that can run over a Multi-Sandbox Executable.
-Sandboxed Applications can be linked statically to the Multi-Sandbox Executable or installed dynamically on the device.
+A Sandboxed Application is an Application that is partially linked, then deployed and executed over a Multi-Sandbox Executable.
 
 Typical use cases for a Sandboxed Application are:
 
@@ -30,9 +33,11 @@ The following figure shows the general process of building a Sandboxed Applicati
 
 Please refer to the :ref:`kernel-developer-guide` to learn more on writing Kernel Applications and building Multi-Sandbox Executable and Virtual Devices.
 
+.. include:: sandboxedAppAppConnect.rst
+
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
-   for read and redistribute. Except if otherwise stated, modification 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free
+   for read and redistribute. Except if otherwise stated, modification
    is subject to MicroEJ Corp prior approval.
-   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and
    copyrights are the property of their respective owners.

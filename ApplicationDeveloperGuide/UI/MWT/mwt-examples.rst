@@ -115,7 +115,7 @@ When the joystick directions (up, down, left, right) are pressed, the focus chan
 This example shows how to create and use an immutable stylesheet.
 
 The immutable stylesheet resolves the style for a widget with the same algorithm as the `cascading stylesheet <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/stylesheet/cascading/CascadingStylesheet.html>`_.
-The difference is that the immutable stylesheet is described in an immutable file instead of Java code. Therefore, the style objects are allocated in flash instead of the Java heap.
+The difference is that the immutable stylesheet is described in an immutable file instead of Java code. Therefore, the style objects are allocated in flash instead of the Managed Heap.
 
 |endTable|
 
@@ -332,7 +332,7 @@ The goal is to be able to migrate the application on the target device without m
    </td></table>
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

@@ -22,7 +22,7 @@ Use
 ===
 
 When the Executable file of an Application has been produced, 
-the Memory Map file is available at ``build/executable/application/SOAR.map``.
+the Memory Map file is available at ``build/application/object/soar/<main-class-full-name>.map``.
 
 .. figure:: images/memory-map-file.png
    :alt: Retrieve Map File
@@ -59,8 +59,33 @@ This view is useful in understanding why a symbol is embedded.
 
    Detailed View
 
+Troubleshooting
+===============
+
+Memory Map Analyzer may fail while opening a Memory Map file saying `Could not read this file`.
+
+
+.. figure:: images/memory_map_analyzer_couldnt_read.png
+   :alt: "Could not read this file" Error
+   :align: center
+   :scale: 80%
+
+   Error displayed when Memory Map file could not be read
+
+This may happen if the Memory Map Analyzer cannot find a VEE Port to interpret the Memory Map file.
+To workaround this, you can open your Memory Map file with a text editor and add the following line::
+
+   <property name="jpf.dir" value="/path/to/your/vee"/>
+
+If a line defining the ``jpf.dir`` already exists, check if the value corresponds to a valid path.
+
+.. note::
+
+   The path must be the directory of a built VEE Port. If you build a Kernel Application, the
+   VEE Port will be available in the ``build/vee`` directory of your Gradle project.
+
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

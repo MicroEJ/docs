@@ -12,7 +12,7 @@ The Multi-Sandbox capability of the Core Engine allows a
 main application (called Standalone Application) to install and execute
 at runtime additional applications (called Sandboxed Applications).
 
-The Core Engine implements the :ref:`[KF] specification <kf_specification>`. A Kernel is a
+The Core Engine implements the :ref:`kf_specification`. A Kernel is a
 Standalone Application generated on a Multi-Sandbox-enabled
 VEE Port. A Feature is a Sandboxed Application generated against a specific Kernel.
 
@@ -53,29 +53,53 @@ Installation
 ============
 
 Multi-Sandbox is an option disabled by default. 
-To enable the Multi-Sandbox capability of the Core Engine, set the property ``com.microej.runtime.capability`` to ``multi`` in ``mjvm/mjvm.properties`` file.
-See the example below:
+To enable the Multi-Sandbox capability of the Core Engine, set the property ``com.microej.runtime.capability`` to ``multi`` 
+in the VEE Port project:
 
-.. code-block::
+.. tabs::
 
-  com.microej.runtime.capability=multi
+   .. group-tab:: SDK 6
+
+      In the ``configuration.properties`` file::
+
+         com.microej.runtime.capability=multi
+
+   .. group-tab:: SDK 5
+
+      In the ``mjvm/mjvm.properties`` file of the VEE Port Configuration module::
+
+         com.microej.runtime.capability=multi
 
 
 .. note::
 
-   Before :ref:`Architecture 8.1.0 <changelog-8.1.0>`, to enable the Multi-Sandbox capability of the Core Engine,
+   In SDK 5, before :ref:`Architecture 8.1.0 <changelog-8.1.0>`, to enable the Multi-Sandbox capability of the Core Engine,
    select the :guilabel:`Multi Applications` module in the platform configuration file.
 
 
 Use
 ===
 
-The `KF API Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the 
-Application project to use :ref:`[KF] <kf_specification>` library.
+The `KF API Module`_ must be added to the build file of the 
+Application project to use :ref:`kf_specification` library.
 
-::
+.. tabs::
 
-   <dependency org="ej.api" name="kf" rev="1.4.4"/>
+   .. group-tab:: SDK 6
+
+      In the ``build.gradle.kts`` file:
+
+      .. code-block:: java
+
+         implementation("ej.api:kf:1.7.0")
+
+   .. group-tab:: SDK 5
+
+      In the ``module.ivy`` file:
+
+      .. code-block:: xml
+
+         <dependency org="ej.api" name="kf" rev="1.7.0" />
 
 This library provides a set of options. Refer to the chapter
 :ref:`application_options` which lists all available options.
@@ -124,8 +148,8 @@ The Code is divided into chunks. Each chunk is temporarily copied to RAM to be r
 
 A minimum amount of RAM is required:
 
-- A temporary buffer is allocated in the Java heap for reading bytes from the InputStream,
-- Metadata is allocated in the Java heap,
+- A temporary buffer is allocated in the Managed Heap for reading bytes from the InputStream,
+- Metadata is allocated in the Managed Heap,
 - Code chunk is temporarily copied in a memory area to be relocated (see more details below).
 
 .. figure:: images/multisandbox-link-overview.png
@@ -203,7 +227,7 @@ A small number will reduce the RAM consumption but will increase the ``.fo`` siz
 InputStream Transfer Buffer Size
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When calling the `Kernel.install(InputStream)`_ method, the Feature ``.fo`` bytes are read from the InputStream using a temporary byte array allocated in the Java Heap. 
+When calling the `Kernel.install(InputStream)`_ method, the Feature ``.fo`` bytes are read from the InputStream using a temporary byte array allocated in the Managed Heap. 
 The size of this array can be configured with the following option:
 
 **Option Name**: ``com.microej.runtime.kf.link.transferbuffer.size``
@@ -260,15 +284,15 @@ The following table summarizes the sections and their content:
      - **Target Memory Location**
    * - ``.soar.rel``
      - Metadata
-     - Java Heap
+     - Managed Heap
      - None
    * - ``.strtab``
      - Metadata
-     - Java Heap
+     - Managed Heap
      - None
    * - ``.symbtab``
      - Metadata
-     - Java Heap
+     - Managed Heap
      - None
    * - ``.bss.soar.feature``
      - RW Data
@@ -284,7 +308,7 @@ The following table summarizes the sections and their content:
      - Features ROM area
    * - ``.shstrtab``
      - Metadata
-     - Java Heap
+     - Managed Heap
      - None
 
 .. _feature_inplace_installation:
@@ -339,15 +363,24 @@ RAM Control
    This feature requires Architecture :ref:`8.1.0 <changelog-8.1.0>` or higher.
 
 In a Multi-Sandbox environment, RAM Control automatically stops less critical Features when a more critical Feature cannot allocate new objects. 
-See the `RAM Control: Feature Criticality` section of the :ref:`kf_specification` for more details.
+See the :ref:`kf_ram_control_feature_criticality` section of the :ref:`kf_specification` for more details.
 
 By default, RAM Control is disabled in the Core Engine. 
-To enable it, set the property ``com.microej.runtime.kf.ramcontrol.enabled`` to ``true`` when building the VEE Port. 
-This can be done by defining this property in the file ``mjvm/mjvm.properties`` of your VEE Port configuration project:
+To enable it, set the property ``com.microej.runtime.kf.ramcontrol.enabled`` to ``true`` in the VEE Port configuration:
 
-.. code-block::
+.. tabs::
 
-  com.microej.runtime.kf.ramcontrol.enabled=true
+   .. group-tab:: SDK 6
+
+      In the ``configuration.properties`` file::
+
+         com.microej.runtime.mjvm.com.microej.runtime.kf.ramcontrol.enabled=true
+
+   .. group-tab:: SDK 5
+
+      In the ``mjvm/mjvm.properties`` file of the VEE Port Configuration module::
+
+         com.microej.runtime.kf.ramcontrol.enabled=true
 
 When RAM Control is enabled, all Foundation Libraries must declare their native resources using SNI (see ``sni.h`` header file).
 This is necessary for the automatic release of native resources when the Core Engine abruptly stops a Feature to recover heap memory.
@@ -355,7 +388,7 @@ Foundation Libraries can no longer register native resources using the deprecate
 Attempting to do so will result in an exception being thrown.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

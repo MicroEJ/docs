@@ -3,6 +3,10 @@
 Standalone Application
 ######################
 
+.. figure:: images/standalone.png
+   :align: center
+   :scale: 75%
+
 Introduction
 ============
 
@@ -26,8 +30,8 @@ Standalone Application Options
 To run a Standalone Application on a VEE Port, a set of options
 must be defined. Options can be of different types:
 
-- Memory Allocation options (e.g., set the Java Heap size). These options are usually called link-time options.
-- Simulator & Debug options (e.g., enable periodic Java Heap dump).
+- Memory Allocation options (e.g., set the Managed Heap size). These options are usually called link-time options.
+- Simulator & Debug options (e.g., enable periodic Managed Heap dump).
 - Deployment options (e.g., copy ``microejapp.o`` to a suitable BSP location).
 - Foundation Library specific options (e.g., embed UTF-8 encoding).
 
@@ -45,6 +49,9 @@ Notice that some options may not be supported by your VEE Port, in the following
 Defining an Option with SDK 6
 =============================
 
+Using a Properties File
+-----------------------
+
 With the SDK 6, the Applications options can be defined in a properties file located in the ``configuration`` folder of the project.
 Usually, the options are defined in a file named ``common.properties``, 
 but all properties files located in this folder are loaded, no matter what their name is.
@@ -52,7 +59,26 @@ but all properties files located in this folder are loaded, no matter what their
 To set an option in a properties file, open the file in a text editor and add a line to set the desired option to the desired value, 
 for example::
    
-   soar.generate.classnames=false
+   soar.generate.classnames=true
+
+
+Using System Properties
+-----------------------
+
+Application options can be defined by System properties using the ``microej.option.*`` prefix.
+System properties can either be defined in command line using ``-D`` argument, or in ``gradle.properties`` file using ``systemProp.*`` prefix.
+For instance, in command line::
+
+    -Dmicroej.option.soar.generate.classnames=true
+
+or in ``gradle.properties`` file::
+
+   systemProp.microej.option.soar.generate.classnames=true
+
+See the :ref:`sdk_6_howto_gradle_system_property` for more information about System properties.
+
+.. note::
+   When Application options are also defined in properties from the ``configuration`` folder of the project, they will be overridden by System properties.
 
 .. _define_option:
 
@@ -112,7 +138,7 @@ The figure below shows the expected tree of the ``build`` folder:
 
 It is recommended to index the properties files to your version control system.
 
-To set an option in a properties file, open the file in a text editor and add a line to set the desired option to the desired value. For example: ``soar.generate.classnames=false``.
+To set an option in a properties file, open the file in a text editor and add a line to set the desired option to the desired value. For example: ``soar.generate.classnames=true``.
 
 To use the options declared in properties files in a launcher, perform the following steps:
 
@@ -146,7 +172,7 @@ In order to export options defined in a ``.launch`` file to a properties file, p
 .. include:: sectionArchitectureOptions.rst
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

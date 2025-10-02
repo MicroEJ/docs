@@ -622,7 +622,7 @@ This plugin defines the following build options:
      - ``60``  
    * - microej.testsuite.properties.[name]
      - Inject an :ref:`Application Option <application_options>` named ``[name]`` for all tests.       
-       For example, declaring the build option ``microej.testsuite.properties.core.memory.javaheap.size`` will configure the Java heap size of all tests.
+       For example, declaring the build option ``microej.testsuite.properties.core.memory.javaheap.size`` will configure the Managed Heap size of all tests.
      - Not applicable
    * - microej.testsuite.properties.launch.test.trace.file
      - Set this property to ``true`` if your :ref:`VEE Port Run script <bsp_connection_run_script>` redirects execution traces.
@@ -665,8 +665,8 @@ This plugin defines the following build options:
 
 .. _module_natures.plugins.unittests:
 
-J2SE Unit Tests
-^^^^^^^^^^^^^^^
+Java SE Unit Tests
+^^^^^^^^^^^^^^^^^^
 
 .. warning::
    
@@ -780,7 +780,7 @@ The following :ref:`mmm_build_options` are available in any module:
      - ``${basedir}/target~``
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

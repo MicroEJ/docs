@@ -42,13 +42,6 @@ Then, the execution of the Application depends on the VEE provided in the ``buil
 - If a VEE Port or a Mono-Sandbox Kernel has been provided, the ``MyClass`` main class of the Application is executed.
 - If a Multi-Sandbox Kernel has been provided, the Application is executed as a Feature of the Kernel.  
 
-In addition to the wrapper class, the following resource files are generated:
-
-- The Feature Definition Files (``feature.kf``, ``feature.cert``), if they do not already exist, to use your Application as a Sandboxed Application. 
-- The Kernel Definition Files (``kernel.kf``, ``kernel.cert``), if they do not already exist, to use your Application as a Kernel Application. 
-
-Refer to the :ref:`kf-feature-definition` section for more information about Feature and Kernel Definition Files.
-
 If your Application requires advanced features, it is also possible to :ref:`use a FeatureEntryPoint class as Application EntryPoint <sdk_6_howto_use_a_feature_entrypoint_class>`.
 In that case the created wrapper class is a class containing a ``public static void main(String[args])`` method that calls the
 ``start()`` method of your Application EntryPoint class:
@@ -63,10 +56,15 @@ In that case the created wrapper class is a class containing a ``public static v
        }    
    }
    
-and the Kernel and Feature Definition files are generated.
+In addition to the wrapper class, the following resource files are generated:
+
+- The Feature Definition Files (``feature.kf``, ``feature.cert``), to use your Application as a Sandboxed Application. 
+- The Kernel Definition Files (``kernel.kf``, ``kernel.cert``), to use your Application as a Kernel Application. 
+
+You can also define your own Feature and Kernel Definition files if needed, refer to the :ref:`kf-feature-definition` section for more information.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

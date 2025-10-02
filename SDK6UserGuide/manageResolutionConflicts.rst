@@ -25,13 +25,16 @@ The MicroEJ Gradle plugin adds the 2 following rules:
 
 |
 
-- The resolution fails when a direct dependency is resolved with a higher minor version than the one declared.
+- The resolution fails when a transitive dependency is resolved with a higher minor version than the one declared.
   For example, this dependency graph makes the build fails because the ``moduleA`` dependency is resolved in version ``1.1.0`` (the highest one), 
   which is higher than the direct declared version (``1.0.0``):
 
   .. graphviz:: graphDependencies02.dot
     :align: center
 
+.. note::
+
+  This rule is not applied if :ref:`the VEE Port transitive resolution <sdk_6_vee_port_transitivity>` is enabled.
 
 If you want to come back to the Gradle default behavior,
 these 2 rules can be disabled by setting the ``microejConflictResolutionRulesEnabled`` 
@@ -44,7 +47,7 @@ property of the ``microej`` configuration block to ``false`` in the project buil
   }
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

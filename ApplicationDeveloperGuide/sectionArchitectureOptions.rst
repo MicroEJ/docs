@@ -15,15 +15,41 @@ Option(checkbox): Embed all type names
 
 *Option Name*: ``soar.generate.classnames``
 
-*Default value*: ``true``
+*Default value*: ``false``
 
 *Description*:
 
 Embed the name of all types. When this option is disabled, only names of
-declared required types are embedded.
+declared :ref:`required types <section.classpath.elements.types>` are embedded. This option affects code size.
+
+.. _enable_group_methods:
+
+Option(checkbox): Group Methods by Type
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+*Option Name*: ``com.microej.soar.groupMethodsByType.enabled``
+
+*Default value*: ``false``
+
+*Description*:
+
+Group all embedded methods of a Java type in single ELF section in ``microejapp.o``. 
+This avoids to reach the following SOAR error while building a large application and the maximum number of ELF sections (65536) is reached.
+
+.. code-block:: console
+
+   1 : ELF ERROR
+      [M1] - Invalid value for U2 field. Overflow detected when writing 102092.
+
+
+.. warning::
+   
+   This option affects the application code size (especially inline methods are embedded even if they are not used).
 
 Group: Assertions
 -----------------
+
+.. _enable_assertions_sim:
 
 Option(checkbox): Execute assertions on Simulator
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -83,26 +109,28 @@ Category: Memory
 Group: Heaps
 ^^^^^^^^^^^^
 
-.. _option_java_heap:
+.. _option_managed_heap:
 
-Option(text): Java heap size (in bytes)
-"""""""""""""""""""""""""""""""""""""""
+Option(text): Managed Heap size (in bytes)
+""""""""""""""""""""""""""""""""""""""""""
 
 *Option Name*: ``core.memory.javaheap.size``
 
 *Default value*: ``65536``
 
+*Maximum value*: ``67108860`` (see :ref:`limitations`)
+
 *Description*:
 
-Specifies the Java heap size in bytes.
+Specifies the Managed Heap size in bytes.
 
-A Java heap contains live Java objects. An OutOfMemory error can occur if the
+A Managed Heap contains live objects. An OutOfMemory error can occur if the
 heap is too small.
 
 .. _option_immortal_heap:
 
-Option(text): Immortal heap size (in bytes)
-"""""""""""""""""""""""""""""""""""""""""""
+Option(text): Immortals Heap size (in bytes)
+""""""""""""""""""""""""""""""""""""""""""""
 
 *Option Name*: ``core.memory.immortal.size``
 
@@ -110,9 +138,9 @@ Option(text): Immortal heap size (in bytes)
 
 *Description*:
 
-Specifies the Immortal heap size in bytes.
+Specifies the Immortals Heap size in bytes.
 
-The Immortal heap contains allocated Immortal objects. An OutOfMemory error can
+The Immortals Heap contains allocated Immortal objects. An OutOfMemory error can
 occur if the heap is too small.
 
 Group: Threads
@@ -120,15 +148,8 @@ Group: Threads
 
 *Description*:
 
-This group allows the configuration of application and library thread(s). A
-thread needs a stack to run. This stack is allocated from a pool and this
-pool contains several blocks. Each block has the same size. At thread startup
-the thread uses only one block for its stack. When the first block is full it
-uses another block. The maximum number of blocks per thread must be
-specified. When the maximum number of blocks for a thread is reached or when
-there is no free block in the pool, a StackOverflow error is thrown. When a
-thread terminates all associated blocks are freed. These blocks can then be
-used by other threads.
+This group allows the configuration of application and library thread(s).
+See :ref:`runtime_threads_and_stacks` section for more details.
 
 .. _option_number_of_threads:
 
@@ -156,6 +177,8 @@ Option(text): Number of blocks in pool
 *Description*:
 
 Specifies the number of blocks in the stacks pool.
+
+.. _option_stack_block_size:
 
 Option(text): Block size (in bytes)
 """""""""""""""""""""""""""""""""""
@@ -284,6 +307,8 @@ Option(text): Timeout (s)
 
 It specifies the time the MicroEJ Simulator should wait before failing when
 it invokes native methods.
+
+.. _option_hil_maximum_frame_size:
 
 Option(text): Maximum frame size (bytes)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -775,24 +800,24 @@ Option(text): Maximum number of frames dumpers on OutOfMemoryError
 
 *Option Name*: ``core.memory.oome.nb.frames``
 
-*Default value*: ``5``
+*Default value*: ``1``
 
 *Description*:
 
-Specifies the maximum number of stack frames that can be dumped to the standard
+Specifies the maximum number of call frames that can be dumped to the standard
 output when Core Engine throws an OutOfMemoryError.
 
 .. _option_enable_heap_usage:
 
-Option(checkbox): Enable Java heap usage monitoring
-"""""""""""""""""""""""""""""""""""""""""""""""""""
+Option(checkbox): Enable Managed Heap usage monitoring
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 *Option Name*: ``com.microej.runtime.debug.heap.monitoring.enabled``
 
 *Default value*: ``false``
 
-Option(text): Java heap initial size
-""""""""""""""""""""""""""""""""""""
+Option(text): Managed Heap initial size
+"""""""""""""""""""""""""""""""""""""""
 
 *Option Name*: ``com.microej.runtime.debug.heap.monitoring.init.size``
 
@@ -800,7 +825,7 @@ Option(text): Java heap initial size
 
 *Description*:
 
-Specify the initial size (in bytes) of the Java Heap.
+Specify the initial size (in bytes) of the Managed Heap.
 
 Group: SOAR
 ^^^^^^^^^^^
@@ -1146,7 +1171,7 @@ Option(browse): Kernel
 
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

@@ -342,7 +342,7 @@ onto the device.
 The `Platform Qualification Tools`_ provides examples of Build Script
 and Run Script for various C TOOLCHAIN `here
 <https://github.com/MicroEJ/VEEPortQualificationTools/tree/master/framework/platform/scripts>`__. 
-:ref:`This tutorial <tutorial_create_platform_build_and_run_scripts>` also describes the steps to create 
+:ref:`This training <tutorial_create_platform_build_and_run_scripts>` also describes the steps to create 
 and use these scripts.
 
 On the STM32F746G-DISCO, the C TOOLCHAIN used is Keil uVision.
@@ -392,13 +392,13 @@ Going further
 
 Now that the Platform is connected to the BSP it can leverage
 the Java Test Suites provided by the `Platform Qualification Tools`_.
-See :ref:`tutorial_run_test_suite_on_device` for a step by step
+See :ref:`run_test_suite_on_device` documentation for a step by step
 explanation on how to do so.
 
 .. _Platform Qualification Tools: https://github.com/MicroEJ/VEEPortQualificationTools
 
 ..
-   | Copyright 2021-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2021-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

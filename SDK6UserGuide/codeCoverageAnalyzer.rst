@@ -46,11 +46,16 @@ hyperlinks to navigate into the report and source / bytecode level code.
 ::
 
    ./gradlew execTool --name=codeCoverageAnalyzer \
-       --toolProperty="cc.dir=/MODULE_PATH/build/output/com.company.Main/cc/" \
-       --toolProperty="cc.includes=com.company.*" \
-       --toolProperty="cc.excludes=" \
-       --toolProperty="cc.src.folders=/MODULE_PATH/src" \
-       --toolProperty="cc.html.dir=/MODULE_PATH/cc"
+       --toolProperty=cc.dir="/MODULE_PATH/build/output/com.company.Main/cc/" \
+       --toolProperty=cc.includes="com.company.*" \
+       --toolProperty=cc.excludes="" \
+       --toolProperty=cc.src.folders="/MODULE_PATH/src" \
+       --toolProperty=cc.html.dir="/MODULE_PATH/cc"
+
+.. note::
+
+   It is also possible to create a custom task of type ``ExecToolTask`` dedicated to the Code Coverage Analyzer. 
+   Refer to the :ref:`sdk_6_create_cutom_exectool_task` chapter for more information.
 
 Options
 =======
@@ -126,7 +131,7 @@ Examples:
 ``packageA.packageB.className``
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

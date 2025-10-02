@@ -8,7 +8,7 @@ optimized to fulfill embedded constraints. The final execution context
 is an embedded device that may not even have a file system. Files
 required by the application at runtime are not directly copied to the
 target device, they are compiled to produce the application binary code
-which will be executed by MicroEJ Core Engine.
+which will be executed by the Core Engine.
 
 As a part of the compile-time trimming process, all types not required
 by the embedded application are eliminated from the final binary.
@@ -138,7 +138,7 @@ qualified name (FQN) embedded. Its FQN can be retrieved using the stack
 trace reader tool (see :ref:`section.stacktrace.reader.tool`).
 
 Required Types are declared in MicroEJ Classpath using ``*.types.list``
-files. The file format is a standard Java properties file, each line
+files. The file format is a standard `Java properties file`_, each line
 listing the fully qualified name of a type. Example:
 
 ::
@@ -182,7 +182,7 @@ Raw Resources are declared in ``*.resources.list`` files (**and** in ``*.externr
   }
 
 
-The file format is a standard Java properties file, each line is a relative ``/``
+The file format is a standard `Java properties file`_, each line is a relative ``/``
 separated name of a file in MicroEJ Classpath to be embedded as a
 resource. Example:
 
@@ -205,7 +205,15 @@ Example:
    If a Resource is declared multiple times in the classpath, the alignment constraint with the highest value is used. 
    If the alignment constraints are specific to the target, it is recommended to only declare them in the Application project instead of libraries.
 
+If a resource filename contains a delimiter (such as a whitespace, ``:``, or ``=``), the delimiter must be escaped using the backslash ``\`` character in the ``*.resources.list`` file.
+Example:
+::
+
+   # The resource filename: "resource name contains whitespace.txt"
+   com/mycompany/resource\ name\ contains\ whitespace.txt
+
 .. _java.lang.Class.getResourceAsStream(String): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getResourceAsStream-java.lang.String-
+.. _Java properties file: https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Properties.html#load(java.io.Reader)
 
 .. _section.classpath.elements.immutables:
 
@@ -215,10 +223,9 @@ Immutable Objects
 Immutables objects are regular read-only objects that can be retrieved
 with a call to `ej.bon.Immutables.get(String)`_. Immutables objects are
 declared in files called *immutable objects data files*, which format is
-described in the :ref:`[BON] specification <runtime_bon>`.
+described in the :ref:`[BON] specification <immutable>`.
 Immutables objects data files are declared in MicroEJ Classpath using
-``*.immutables.list`` files. The file format is a standard Java
-properties file, each line is a ``/`` separated name of a relative file
+``*.immutables.list`` files. The file format is a standard `Java properties file`_, each line is a ``/`` separated name of a relative file
 in MicroEJ Classpath to be loaded as an Immutable objects data file.
 Example:
 
@@ -240,7 +247,7 @@ call to `System.getProperty(String)`_.
 System Properties are defined when building a :ref:`standalone_application`,
 by declaring ``*.properties.list`` files in MicroEJ Classpath. 
 
-The file format is a standard Java properties file. Example:
+The file format is a standard `Java properties file`_. Example:
 
 .. code-block:: xml
    :caption: Example of Contents of a MicroEJ Properties File
@@ -255,24 +262,26 @@ System Properties can also be defined using :ref:`application_options`. This
 can be done by setting the option with a specific
 prefix in their name:
 
--  Properties for both the MicroEJ Core Engine and the MicroEJ Simulator :
+-  Properties for both the Core Engine and the Simulator :
    name starts with ``microej.java.property.*``
 
--  Properties for the MicroEJ Simulator: name starts with
+-  Properties for the Simulator only: name starts with
    ``sim.java.property.*``
 
--  Properties for the MicroEJ Core Engine: name starts with
+-  Properties for the Core Engine only: name starts with
    ``emb.java.property.*``
 
 For example, to define the property ``myProp`` with the value
 ``theValue``, set the following option :
 
-.. code-block:: xml
+.. code-block:: 
    :caption: Example of MicroEJ System Property Definition as Application Option
 
    microej.java.property.myProp=theValue
 
-Option can also be set in the ``VM arguments`` field of the ``JRE`` tab of the launch using the -D option (e.g. ``-Dmicroej.java.property.myProp=theValue``).
+.. note::
+   
+   A System Property defined as an Application Option takes precedence over a System Property defined in the classpath.
 
 .. note::
 
@@ -284,10 +293,6 @@ Option can also be set in the ``VM arguments`` field of the ``JRE`` tab of the l
 
 Constants
 ---------
-
-.. note::
-   This feature require :ref:`[BON] <runtime_bon>` version ``1.4`` 
-   which is available in MicroEJ Runtime starting from MicroEJ Architecture version ``7.11.0``.
 
 Constants are key/value string pairs that can be accessed with a
 call to `ej.bon.Constants.get[Type](String)`_, where ``Type`` if one of:
@@ -304,13 +309,25 @@ call to `ej.bon.Constants.get[Type](String)`_, where ``Type`` if one of:
 - String.
 
 Constants are declared in MicroEJ Classpath ``*.constants.list`` files. The file format is a
-standard Java properties file. Example:
+standard `Java properties file`_. Example:
 
 .. code-block:: xml
    :caption: Example of Contents of a BON constants File
 
    # The following property is embedded as a constant
-   com.mycompany.myconstantkey=com.mycompany.myconstantvalue
+   myconstantkey=myconstantvalue
+
+Starting from :ref:`Architecture 8.3.0 <changelog-8.3.0>`, it is also possible to define a constant using the following :ref:`Application Option <application_options>`:
+
+.. code-block::
+   :caption: Example of declaration of a BON constant Application Option
+
+   microej.constant.myconstantkey=myconstantvalue
+
+.. note::
+   
+   A Constant defined as an Application Option takes precedence over a constant defined in the classpath.
+
 
 
 Constants are resolved at binary level without having to recompile the sources. 
@@ -320,7 +337,7 @@ At link time, constants are directly inlined at the place of
 
 The String key parameter must be resolved as an inlined String:
 
-- either a String literal ``"com.mycompany.myconstantkey"``
+- either a String literal ``"myconstantkey"``
 - or a ``static final String`` field resolved as a String constant
 
 The String value is converted to the desired type using conversion rules described by the :ref:`[BON] <runtime_bon>` API.
@@ -336,7 +353,7 @@ without having to recompile the sources.
 .. code-block:: java
    :caption: Example of ``if`` code removal using a BON boolean constant
 
-   if (Constants.getBoolean("com.mycompany.myconstantkey")) {
+   if (Constants.getBoolean("myconstantkey")) {
           System.out.println("this code and the constant string will be fully removed when the constant is resolved to 'false'")
    }
 
@@ -345,7 +362,7 @@ The following piece of code will not remove the code:
 
 .. code-block:: java
    
-   static final boolean MY_CONSTANT = Constants.getBoolean("com.mycompany.myconstantkey");
+   static final boolean MY_CONSTANT = Constants.getBoolean("myconstantkey");
 
    ...
 
@@ -360,7 +377,7 @@ The following piece of code will not remove the code:
    In particular, constants defined in the Kernel are not propagated to :ref:`Sandboxed Applications <sandboxed_application>`.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

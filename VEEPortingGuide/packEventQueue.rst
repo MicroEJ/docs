@@ -8,7 +8,7 @@ Event Queue
 Principle
 =========
 
-The Event Queue Foundation Library provides an asynchronous communication interface between the native world and the Java world based on events.
+The Event Queue Foundation Library provides an asynchronous communication interface between the native world and the Managed world based on events.
 Its functional architecture and usage are documented in the :ref:`Application Developer Guide <event_queue>`.
 
 Dependencies
@@ -22,16 +22,24 @@ Dependencies
 Installation
 ============
 
-The Event Queue :ref:`Pack <pack_overview>` module must be installed in your VEE Port.
+The Event Queue :ref:`Pack <pack_overview>` module must be installed in your VEE Port:
 
-In the VEE Port configuration project, add the following dependency to the :ref:`module.ivy <mmm_module_description>` file:
+.. tabs::
 
-::
+   .. tab:: SDK 6 (build.gradle.kts)
 
-   <dependency org="com.microej.pack.event" name="event-pack" rev="2.0.1" transitive="false"/>
+      .. code-block:: kotlin
+
+         microejPack("com.microej.pack.event:event-pack:2.2.0")
+
+   .. tab:: SDK 5 (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="com.microej.pack.event" name="event-pack" rev="2.2.0" transitive="false"/>
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

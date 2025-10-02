@@ -5,7 +5,7 @@ Installation
 
 This chapter will guide you through the installation process of the SDK Distribution on your workstation.
 
-If you want to evaluate MicroEJ, we recommend that you refer to the :ref:`getting_started` chapter, 
+If you want to evaluate MicroEJ, we recommend that you refer to the :ref:`sdk_6_getting_started` chapter, 
 which will guide you to install an SDK Distribution compatible with the Getting Started tutorials.
 
 Otherwise, follow the instructions of the :ref:`sdk_installation_latest` page to install the latest SDK Distribution compatible with your needs.
@@ -26,7 +26,7 @@ Otherwise, follow the instructions of the :ref:`sdk_installation_latest` page to
    
 
 ..
-   | Copyright 2021-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2021-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

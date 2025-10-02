@@ -29,7 +29,7 @@ The debugger proxy allows a postmortem debug from a snapshot of the memory (core
 Installation
 ============
 
-Download the VEE Debugger Proxy tool ``jdwp-server-[version].jar`` at https://forge.microej.com/artifactory/microej-sdk6-repository-release/com/microej/tool/jdwp-server/1.0.1/jdwp-server-1.0.1.jar .
+Download the VEE Debugger Proxy tool ``jdwp-server-[version].jar`` at https://forge.microej.com/artifactory/microej-sdk6-repository-release/com/microej/tool/jdwp-server/1.0.5/jdwp-server-1.0.5.jar .
 
 Debugging Executable for Linux or QNX target
 ============================================
@@ -221,6 +221,7 @@ Open a shell terminal on your workstation and run the following command:
 
 Open the SDK and run a :ref:`Remote Java Application Launch <debug_on_device>` to debug your code.
 
+
 .. note:: 
 
     If you have multiple ``*.hex`` files generated in the previous step, you can if you want merge them into a single ``*.hex`` file.
@@ -254,6 +255,14 @@ Open the SDK and run a :ref:`Remote Java Application Launch <debug_on_device>` t
 
     Now, use this single ``all.hex`` file as value to the Debugger Proxy option ``-Ddebugger.out.hex.path``
 
+Update the State of the Debugged Application
+--------------------------------------------
+
+While the VEE Debugger Proxy is active, you can debug a new application state without restarting it. 
+Simply replace the old memory dump files with the new ones, and the VEE Debugger Proxy will automatically reload the state. 
+After that, relaunch the :ref:`Remote Java Application Launch <debug_on_device>`.
+
+
 VEE Debugger Proxy Options Summary
 ==================================
 
@@ -268,12 +277,12 @@ VEE Debugger Proxy Options Summary
 Troubleshooting
 ===============
 
-You may encounter some command line issues if you try to run the proxy on Windows Powershell. 
+You may encounter some command line issues if you try to run the proxy on Windows PowerShell. 
 
 On Windows workstation, we recommend using ``CMD`` Command Prompt instead.
 
 ..
-   | Copyright 2022-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2022-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

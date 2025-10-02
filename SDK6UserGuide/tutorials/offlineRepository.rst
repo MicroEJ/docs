@@ -43,13 +43,13 @@ Now that the Offline Repository of the Gradle plugins has been retrieved, you ca
   fun RepositoryHandler.offlineMicroEjSdk() {
     val sdk6Uri = uri("C:\\sdk6-repository")
 
-    /* Offline MicroEJ SDK 6 repository for Maven/Gradle modules */
+    /* Offline SDK 6 repository for Maven/Gradle modules */
     maven {
       name = "offlineSDKRepositoryMaven"
       url = sdk6Uri
     }
    
-    /* Offline MicroEJ SDK 6 repository for Ivy modules */
+    /* Offline SDK 6 repository for Ivy modules */
     ivy {
       name = "offlineSDKRepositoryMaven"
       url = sdk6Uri
@@ -61,11 +61,11 @@ Now that the Offline Repository of the Gradle plugins has been retrieved, you ca
     }
   }
 
-- Add the previously created repository declaration inside the `repositories` block of both `allprojects` and `pluginManagement` blocks:
+- Add the previously created repository declaration inside the `repositories` block of both `dependencyResolutionManagement` and `pluginManagement` blocks:
 
 .. code:: java
 
-  allprojects {
+  dependencyResolutionManagement {
     repositories {
       ...
       offlineMicroEjSdk()
@@ -148,7 +148,7 @@ When the Offline Repository of the modules has been retrieved or created, you ca
   }
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

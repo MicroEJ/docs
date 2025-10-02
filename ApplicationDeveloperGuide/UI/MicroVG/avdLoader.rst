@@ -1,5 +1,7 @@
 .. include:: aliases.rst
 
+.. _avd_loader:
+
 Android Vector Drawable Loader
 ==============================
 
@@ -81,15 +83,24 @@ It defines a 100 x 100 image with two paths: the first one with a solid color fi
       </path>
    </vector>
 
-The library only supports a subset of the `Vector Drawable specification <https://developer.android.com/reference/android/graphics/drawable/VectorDrawable>`_, to optimize the CPU time and memory needed for parsing and interpreting Vector Drawables in resource-constrained embedded devices.
 If the input Vector Drawable does not comply with this format, the library will throw an exception.
 
 .. note::
 
-   The image generator tool provides a way to make a Vector Drawable compatible with the library.
+   To make a Vector Drawable compatible with the library, use the image generator tool to convert the AVD into a compatible version.
    See :ref:`this section <section.avdloader.convert>` for more information.
 
 
+Format Limitations
+~~~~~~~~~~~~~~~~~~
+
+The library only supports a subset of the `Vector Drawable specification <https://developer.android.com/reference/android/graphics/drawable/VectorDrawable>`_.
+
+The AVD Loader is designed to load AVDs at runtime on embedded devices.
+It minimizes Managed Heap usage and CPU time for XML parsing, Path creation, and adds little code to the final executable.
+The format is intentionally limited to reduce processing time and complexity while ensuring good performance, knowing that the :ref:`pre-processing step <section.avdloader.convert>` can convert any AVD into the compatible format. 
+
+Note that this limitation on the Android Vector Drawable format does not apply to AVDs loaded as :ref:`raw vector images <vectorimage_overview>`.
 
 Loading a Vector Drawable
 -------------------------
@@ -134,7 +145,7 @@ The resulting vector image can then be drawn on the display:
    The image must be provided as a raw resource of the application, either :ref:`internal or external <chapter.microej.applicationResources>`. For external resource loading, the BSP must implement the proper Abstraction Layer API (LLAPI), see :ref:`section_externalresourceloader` for more information on the implementation.
 
 .. warning::
-   The new image is a ``ResourceVectorImage``. In the current implementation, an image loaded with the ``AvdImageLoader`` is allocated in the Java heap. To release memory, the application must close the image and remove any references to it.
+   The new image is a ``ResourceVectorImage``. In the current implementation, an image loaded with the ``AvdImageLoader`` is allocated in the Managed Heap. To release memory, the application must close the image and remove any references to it.
 
 Limitations
 -----------
@@ -148,8 +159,8 @@ Advanced
 
 .. _section.avdloader.convert:
 
-Make a Vector Drawable compatible with the library
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Make a AVD Compatible with the Library
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To ensure that a Vector Drawable can be loaded by the AVD Loader library at runtime, the image generator tool can generate a compatible version of the drawable.
 
@@ -170,8 +181,8 @@ The processing does the following:
 * Pre-process the resource-consuming operations (e.g., transformations, stroking)
 
 
-Convert a SVG into a compatible Vector Drawable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Make a SVG Compatible with the Library
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 It is possible to convert a SVG into a compatible Vector Drawable using the platform tooling. Use the following command:
 
@@ -187,7 +198,7 @@ This processes the input SVG ``originalImage.svg`` and outputs a Vector Drawable
 Memory Usage
 ~~~~~~~~~~~~
 
-The loading of a Vector Drawable at runtime uses Java heap:
+The loading of a Vector Drawable at runtime uses Managed Heap:
 
 * for the working buffers and intermediate objects used during the loading phase. The XML parser is optimized to stream the data and uses as few heap as possible.
 * for the image data.
@@ -234,7 +245,7 @@ This error indicates that the file is not a compatible Vector Drawable, as speci
 
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

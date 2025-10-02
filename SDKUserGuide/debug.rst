@@ -41,8 +41,15 @@ To debug an application on device, first run the :ref:`MicroEJ debugger proxy <d
    MicroEJ Development Tools Overview of the Remote Java Application
 
 
-In the SDK, open the Debug perspective (:guilabel:`Window` > :guilabel:`Perspective` > :guilabel:`Open Perspective` > :guilabel:`Other...` > :guilabel:`Debug`) to show the current debugging process.
+- In the SDK, open the Debug perspective (:guilabel:`Window` > :guilabel:`Perspective` > :guilabel:`Open Perspective` > :guilabel:`Other...` > :guilabel:`Debug`) to show the current debugging process.
 
+- Click on the :guilabel:`Pause` icon to access the thread list, including their stack trace
+
+.. figure:: images/debugger_tool_bar_pause_button.png
+   :alt: MicroEJ Development Tools Overview of the Debugger on Board Toolbar
+   :align: center
+
+   MicroEJ Development Tools Overview of the Debugger on Board Toolbar
 
 .. figure:: images/debug3.png
    :alt: MicroEJ Development Tools Overview of the Debugger on Board
@@ -105,7 +112,7 @@ Foundation Library sources are directly included in the implementation file (JAR
 They are located in the following Platform folders:
 
 - :guilabel:`javaLibs` for generic Foundation Libraries (defaults).
-- :guilabel:`MICROJVM/javaLibs` for Foundation Libraries specific to the MicroEJ Core Engine.
+- :guilabel:`MICROJVM/javaLibs` for Foundation Libraries specific to the Core Engine.
 - :guilabel:`S3/javaLibs` for Foundation Libraries specific to the Simulator.
 
 .. figure:: images/foundation_library_implementation_folders.png
@@ -154,7 +161,7 @@ In the debug session the implementation sources will be now displayed.
       Foundation Library Read-Only Source Code
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

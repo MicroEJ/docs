@@ -17,7 +17,7 @@ Functional Description
 ======================
 
 The LED module implements the MicroUI `Leds`_ framework.
-``LLUI_LED`` specifies the Abstraction Layer APIs that receive orders from the Java world.
+``LLUI_LED`` specifies the Abstraction Layer APIs that receive orders from the Managed world.
 
 The Abstraction Layer APIs are the same for the LED which is connected to a ``GPIO`` (``0`` or ``1``), to a ``PWM``, to a bus (``I2C``, ``SPI``), etc.
 The BSP has the responsibility of interpreting the application parameter ``intensity``.
@@ -122,7 +122,7 @@ Use
 The MicroUI LEDs APIs are available in the class ``ej.microui.led.`` `Leds`_.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

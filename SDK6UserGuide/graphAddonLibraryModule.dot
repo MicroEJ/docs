@@ -13,31 +13,33 @@ digraph mygraph {
     "adp" [fillcolor = "#f76241"]
     "checkModule" [fillcolor = "#f76241"]
     "loadVee" [fillcolor = "#f76241"]
-    "runOnSimulator" [fillcolor = "#f76241"]
     "execTool" [fillcolor = "#f76241"]
+    "loadTestVee" [fillcolor = "#f76241"]
+    "stackTraceReader" [fillcolor = "#f76241"]
+    "build" -> "assemble"
     "build" -> "check"
-    "check" -> "test"
-    "test" -> "classes"
-    "test" -> "testClasses"
-    "test" -> "loadVee"
-    "testClasses" -> "compileTestJava"
-    "testClasses" -> "processTestResources"
-    "processResources" -> "adp"
-    "processTestResources" -> "adp"
-    "processTestResources" -> "classes"
-    "compileTestJava" -> "classes"
+    "assemble" -> "jar"
+    "assemble" -> "javadocJar"
+    "assemble" -> "sourcesJar"
+    "jar" -> "classes"
     "javadoc" -> "classes"
     "classes" -> "compileJava"
     "classes" -> "processResources"
-    "build" -> "assemble"
-    "assemble" -> "jar"
-    "uploadArchives" -> "jar"
-    "jar" -> "classes"
-    "runOnSimulator" -> "classes"
-    "runOnSimulator" -> "loadVee"
+    "compileJava" -> "adp"
+    "processResources" -> "adp"
+    "check" -> "test"
+    "test" -> "classes"
+    "test" -> "testClasses"
+    "test" -> "loadTestVee"
+    "testClasses" -> "compileTestJava"
+    "testClasses" -> "processTestResources"
+    "processTestResources" -> "adp"
+    "compileTestJava" -> "adp"
     "checkModule" -> "assemble"
-    "check" -> "checkModule"
+    "execTool" -> "compileJava"
+    "execTool" -> "processResources"
     "execTool" -> "loadVee"
+    "stackTraceReader" -> "loadTestVee"
 
     subgraph cluster_legend {
         label="Legend";

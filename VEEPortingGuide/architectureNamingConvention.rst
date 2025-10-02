@@ -18,10 +18,10 @@ MicroEJ Architecture files ends with the ``.xpf`` extension, and are classified 
 For example, MicroEJ Architecture versions for Arm® Cortex®-M4 microcontrollers compiled with GNU CC toolchain are available at
 https://repository.microej.com/modules/com/microej/architecture/CM4/CM4hardfp_GCC48/flopi4G25/.
 
-See :ref:`platform_configuration_creation` for usage.
+See the VEE Port Creation documentation for :ref:`SDK 6 <sdk_6_veeport_create>` or :ref:`SDK 5 <new_platform_creation>` for usage.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

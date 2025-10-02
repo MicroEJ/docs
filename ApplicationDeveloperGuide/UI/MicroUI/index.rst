@@ -5,10 +5,10 @@ MicroUI
 
 MicroUI Foundation Library provides access to a pixel-based display and inputs.
 
-The aim of this library is to enable the creation of user interface in Java by reifying hardware capabilities.
+The aim of this library is to enable the creation of user interface in Java code by reifying hardware capabilities.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    usage
    rendering
@@ -22,7 +22,7 @@ The aim of this library is to enable the creation of user interface in Java by r
    releaseNotes
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

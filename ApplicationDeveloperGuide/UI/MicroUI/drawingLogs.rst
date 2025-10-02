@@ -125,10 +125,10 @@ They are defined and documented in the class ``GraphicsContext``.
      - The system ran out of memory.
    * - ``DRAWING_LOG_CLIP_MODIFIED``
      - ``1 << 3``
-     - An undefined character was drawn.
+     - The VEE port modified clip values in the graphics context.
    * - ``DRAWING_LOG_MISSING_CHARACTER``
      - ``1 << 4``
-     - The VEE port modified clip values in the graphics context.
+     - An undefined character was drawn.
    * - ``DRAWING_LOG_LIBRARY_INCIDENT``
      - ``1 << 29``
      - An incident occurred in an underlying library.
@@ -145,7 +145,7 @@ New flag constants may be added in future versions of MicroUI.
 Also, their actual values may change, and the developer should not rely on them.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

@@ -6,7 +6,7 @@ Licenses
 SDK EULA
 --------
 
-MICROEJ SDK is licensed under the SDK End User License Agreement (EULA), which covers the following elements:
+MICROEJ SDK is licensed under the `SDK End User License Agreement (EULA) <https://repository.microej.com/licenses/sdk/LAW-0011-LCS-MicroEJ_SDK-EULA-v3.1C.txt>`_, which covers the following elements:
 
 - SDK Tools & Plugins packaged in the SDK `5.x` Version,
 - Architectures,
@@ -330,11 +330,21 @@ To get more details on connected USB dongle(s), run the debug tool as following:
 #. Change directory to a Production VEE Port.
 #. Execute the command:
    
-   .. code:: console
+.. tabs::
 
-      java -Djava.library.path=resources/os/[OS_NAME] -jar licenseManager/licenseManagerUsbDongle.jar
+   .. tab:: Architecture v8.1.0 or higher
+   
+      .. code:: console
 
-   with ``OS_NAME`` set to ``Windows64`` for Windows OS, ``Linux64`` for Linux OS, ``Mac`` for macOS x86_64 (Intel chip) or ``MacA64`` for macOS aarch64 (M1 chip).
+            java -Djava.library.path=resources/os/[OS_NAME] -jar licenseManager/licenseManagerProduct.jar
+
+   .. tab:: Architecture v8.0.0 or lower
+
+      .. code:: console
+
+            java -Djava.library.path=resources/os/[OS_NAME] -jar licenseManager/licenseManagerUsbDongle.jar
+
+with ``OS_NAME`` set to ``Windows64`` for Windows OS, ``Linux64`` for Linux OS, ``Mac`` for macOS x86_64 (Intel chip) or ``MacA64`` for macOS aarch64 (Apple Silicon chip).
 
 If your USB dongle has been properly activated, you should get the following output:
    
@@ -411,11 +421,11 @@ USB Dongle with WSL
 .. note::
    The following steps have been tested on WSL2 with Ubuntu 22.04.2 LTS.
 
-To use a USB dongle with WSL, you first need to install `usbipd` following the steps described in `Microsoft WSL documentation <https://learn.microsoft.com/fr-fr/windows/wsl/connect-usb#install-the-usbipd-win-project>`__:
+To use a USB dongle with WSL, you first need to install `usbipd` following the steps described in `Microsoft WSL documentation <https://learn.microsoft.com/en-us/windows/wsl/connect-usb#install-the-usbipd-win-project>`__:
 
-First, check that WSL2 is installed on your system. If not, install it or update it following `Microsoft Documentation <https://learn.microsoft.com/fr-fr/windows/wsl/install>`__
+First, check that WSL2 is installed on your system. If not, install it or update it following `Microsoft Documentation <https://learn.microsoft.com/en-us/windows/wsl/install>`__
 
-Then, you need install usbipd-win on Windows from `usbipd-win Github repository <https://github.com/dorssel/usbipd-win/releases>`__.
+Then, you need install usbipd-win v4.0.0 or higher on Windows from `usbipd-win Github repository <https://github.com/dorssel/usbipd-win/releases>`__.
 
 And then, install usbipd and update hardware database inside you WSL installation:
 
@@ -428,21 +438,61 @@ Add the udev rule described in :ref:`production_license_linux`, and restart udev
 
    .. code-block:: console
 
-      /etc/init.d/udev restart
+      sudo /etc/init.d/udev restart
 
-You then need to unplug and plug your dongle again before attaching the dongle to WSL from powershell:
+Ensure your USB dongle is plugged, then start a PowerShell terminal in administrator mode.
 
-  .. code-block:: console
-
-      usbipd.exe wsl attach --busid <BUSID>
-
-The ``<BUSID>`` can be obtainted with the following powershell command:
+List the connected devices with the following command:
 
   .. code-block:: console
 
-      usbipd wsl list
+      usbipd.exe list
+
+You should see your USB dongle connected with ``VID:PID==096e:0006``:
+
+.. code-block:: console   
+   :emphasize-lines: 9
+
+      PS C:\Users\user> usbipd list
+      Connected:
+      BUSID  VID:PID    DEVICE                                                        STATE
+      2-6    0c45:674c  Integrated Webcam, Integrated IR Webcam, USB DFU              Not shared
+      2-8    0a5c:5843  Dell ControlVault w/ Fingerprint Touch Sensor, Microsoft ...  Not shared
+      2-10   8087:0033  Intel(R) Wireless Bluetooth(R)                                Not shared
+      3-1    0bda:8153  Realtek USB GbE Family Controller                             Not shared
+      4-6    413c:c010  Dell DA310                                                    Not shared
+      6-4    096e:0006  USB Input Device                                              Not shared
+      6-6    046d:0819  USB Video Device, USB Audio Device                            Not shared
+      7-1    045e:0084  USB Input Device                                              Not shared
+      7-2    04d9:1400  USB Input Device                                              Not shared
+      7-3    10d5:55a2  USB Input Device                                              Not shared
+
+Here the ``BUSID`` is ``6-4``.
+
+Bind and attach the dongle to WSL:
+
+  .. code-block:: console
+
+      usbipd.exe bind --busid <BUSID>
+      usbipd.exe attach --wsl  --busid <BUSID>
+
+Open a bash terminal in your WSL instance, and check the USB dongle is successfully mounted with the following command:
+
+  .. code-block:: console
+
+      lsusb
+
+You should see your USB dongle connected with ``ID 096e:0006``:
+
+.. code-block:: console
+   :emphasize-lines: 2
+
+      Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+      Bus 001 Device 002: ID 096e:0006 Feitian Technologies, Inc. HID Dongle (for OEMs - manufacturer string is "OEM")
+      Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 
 .. note::
+
       You'll need to follow these steps each time you system is rebooted or the dongle is plugged/unplugged.
 
 .. _production_license_troubleshooting:
@@ -490,17 +540,17 @@ and add the USB dongle in the :guilabel:`USB Devices Filters` list.
 WSL Troubleshooting
 """""""""""""""""""
 
-Check that your dongle is attached to WSL from Powershell:
+Check that your dongle is attached to WSL from PowerShell:
 
   .. code-block:: console
 
-      usbipd wsl list
+      usbipd.exe list
 
 You should have a  line saying ``Attached - Ubuntu``:
 
   .. code-block:: console
 
-      PS C:\Users\sdkuser> usbipd.exe wsl list
+      PS C:\Users\sdkuser> usbipd.exe list
       BUSID  VID:PID    DEVICE                                                        STATE
       2-1    096e:0006  USB Input Device                                              Attached - Ubuntu
       2-6    0c45:6a10  Integrated Webcam                                             Not attached
@@ -508,7 +558,7 @@ You should have a  line saying ``Attached - Ubuntu``:
       3-1    045e:0823  USB Input Device                                              Not attached
       3-4    046d:c31c  USB Input Device                                              Not attached
 
-In you WSL console, the dongle must also be recognized. Ckeck by using ``lsusb```:
+In you WSL console, the dongle must also be recognized. Ckeck by using ``lsusb``:
 
    .. code-block:: console
 
@@ -520,7 +570,7 @@ In you WSL console, the dongle must also be recognized. Ckeck by using ``lsusb``
 This might not be sufficient. If you're still facing license issues, restart udev, abd attach your dongle to WSL once again.
 
 .. note::
-   Hibernation may have unattached your dongle. Reload udev, unplug/plug your dongle and attach it from powershell.
+   Hibernation may have unattached your dongle. Reload udev, unplug/plug your dongle and attach it from PowerShell.
 
 Dongle not detected in the licenses screen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -542,7 +592,7 @@ There are many hardware and software solutions available on the market. Among ot
 Please contact :ref:`our support team <get_support>` for more details.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

@@ -3,8 +3,7 @@
 MicroEJ Launch
 ==============
 
-The MicroEJ launch configuration sets up the 
-:ref:`MicroEJ Applications <concepts-microejapplications>` environment (main class, target, and Application options), and then
+The MicroEJ launch configuration sets up the Applications environment (main class, target, and Application options), and then
 launches a script for execution.
 
 Execution is done either on the Simulator or on the Device. In this latter case, it may depend on
@@ -117,7 +116,7 @@ Particularly, you can configure the :ref:`console encoding <set_console_encoding
 Refer to Eclipse help for more details on other available options.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

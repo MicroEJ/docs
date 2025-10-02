@@ -4,7 +4,7 @@ Manage Versioning
 =================
 
 The SDK 5 used a specific notation for the snapshot versions. 
-Instead of using the ``-SNAPSHOT`` prefix (e.g.,``1.0.0-SNAPSHOT``), 
+Instead of using the ``-SNAPSHOT`` prefix (e.g., ``1.0.0-SNAPSHOT``), 
 it used the ``-RCxxx`` prefix, where ``xxx`` is the timestamp (e.g., ``1.0.0-RC202212021535``).
 
 In order to be able to transition from SDK 5 to SDK 6 smoothly, it is recommended to continue to publish snapshot versions with the ``-RCxxx`` prefix.
@@ -22,7 +22,7 @@ This way, SDK 5 projects will be able to fetch modules published by the SDK 6.
 
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

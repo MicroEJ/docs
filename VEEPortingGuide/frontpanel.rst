@@ -48,61 +48,103 @@ The Front Panel Project
 Creating a Front Panel Project
 ------------------------------
 
-A Front Panel project is created using the New Front Panel Project
-wizard. Select:
+.. tabs::
 
-:guilabel:`New` > :guilabel:`Project...` > :guilabel:`MicroEJ` > :guilabel:`Front Panel Project`
+   .. tab:: SDK 6
 
-The wizard will appear:
+      A Front Panel project template is available as part of the `VEE Port project template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.4.0>`_.
+      Clone this template to create a Front Panel project.
 
-.. figure:: images/newfp.png
-   :alt: New Front Panel Project Wizard
-   :align: center
-   :width: 700px
-   :height: 500px
+   .. tab:: SDK 5
 
-   New Front Panel Project Wizard
+      A Front Panel project is created using the New Front Panel Project
+      wizard. Select:
 
-Enter the name for the new project.
+      :guilabel:`New` > :guilabel:`Project...` > :guilabel:`MicroEJ` > :guilabel:`Front Panel Project`
+
+      The wizard will appear:
+
+      .. figure:: images/newfp.png
+         :alt: New Front Panel Project Wizard
+         :align: center
+         :width: 700px
+         :height: 500px
+
+         New Front Panel Project Wizard
+
+      Enter the name for the new project.
 
 Project Contents
 ----------------
 
-.. figure:: images/project-content.png
-   :alt: Project Contents
-   :align: center
+.. tabs::
 
-   Project Contents
+   .. tab:: SDK 6
 
-A Front Panel project has the following structure and contents:
+      A Front Panel project has the following structure and contents:
 
-* The ``src/main/java`` folder is provided for the definition of Front Panel ``Widgets``. It is initially empty. The creation of these classes will be explained later.
-* The ``src/main/resources`` folder holds the file or files that define the contents and layout of the Front Panel, with a ``.fp`` extension (the fp file or files), plus images used to create the Front Panel. A newly created project will have a single fp file with the same name as the project, as shown above. The contents of fp files are detailed later in this  document.
-* The ``JRE System Library`` is referenced, because a Front Panel  project needs to support the writing of Java for the ``Listeners`` (and ``DisplayExtensions``).
-* The ``Modules Dependencies`` contains the libraries for the Front Panel simulation, the widgets it supports and the types needed to implement ``Listeners`` (and ``DisplayExtensions``).
-* The ``lib`` contains a local copy of ``Modules Dependencies``. 
+      * The ``src/main/java`` folder is provided for the definition of Front Panel ``Widgets``. It is initially empty. The creation of these classes will be explained later.
+      * The ``src/main/resources`` folder holds the file or files that define the contents and layout of the Front Panel, with a ``.fp`` extension (the fp file or files), plus images used to create the Front Panel. A newly created project will have a single fp file with the same name as the project, as shown above. The contents of fp files are detailed later in this  document.
+      * The ``build.gradle.kts`` file is the project build descriptor.
+
+   .. tab:: SDK 5
+
+      .. figure:: images/project-content.png
+         :alt: Project Contents
+         :align: center
+
+         Project Contents
+
+      A Front Panel project has the following structure and contents:
+
+      * The ``src/main/java`` folder is provided for the definition of Front Panel ``Widgets``. It is initially empty. The creation of these classes will be explained later.
+      * The ``src/main/resources`` folder holds the file or files that define the contents and layout of the Front Panel, with a ``.fp`` extension (the fp file or files), plus images used to create the Front Panel. A newly created project will have a single fp file with the same name as the project, as shown above. The contents of fp files are detailed later in this  document.
+      * The ``JRE System Library`` is referenced, because a Front Panel  project needs to support the writing of Java for the ``Listeners`` (and ``DisplayExtensions``).
+      * The ``Modules Dependencies`` contains the libraries for the Front Panel simulation, the widgets it supports and the types needed to implement ``Listeners`` (and ``DisplayExtensions``).
+      * The ``lib`` contains a local copy of ``Modules Dependencies``. 
 
 .. _section_frontpanel_dependencies:
 
 Module Dependencies
 ===================
 
-The Front Panel project is a regular MicroEJ Module project. Its ``module.ivy`` file should look like this example:
+.. tabs::
 
-.. code-block:: xml
-   
-   <ivy-module version="2.0" xmlns:ea="http://www.easyant.org" xmlns:ej="https://developer.microej.com" ej:version="2.0.0">
-      <info organisation="com.mycompany" module="examplePanel" status="integration" revision="1.0.0"/>
+   .. tab:: SDK 6
 
-      <configurations defaultconfmapping="default->default;provided->provided">
-         <conf name="default" visibility="public" description="Runtime dependencies to other artifacts"/>
-         <conf name="provided" visibility="public" description="Compile-time dependencies to APIs provided by the platform"/>
-      </configurations>
-      
-      <dependencies>
-    	   <dependency org="ej.tool.frontpanel" name="framework" rev="1.1.1"/>
-      </dependencies>
-   </ivy-module>
+      The Front Panel project is a regular Gradle project. Its ``build.gradle.kts`` file should look like this example:
+
+      .. code-block:: kotlin
+         
+         plugins {
+            id("com.microej.gradle.mock-frontpanel")
+         }
+
+         group = "com.mycompany"
+         version = "0.1.0-RC"
+
+         dependencies {
+            implementation("ej.tool.frontpanel:framework:1.1.1")
+         }
+
+   .. tab:: SDK 5
+
+      The Front Panel project is a regular MicroEJ Module project. Its ``module.ivy`` file should look like this example:
+
+      .. code-block:: xml
+         
+         <ivy-module version="2.0" xmlns:ea="http://www.easyant.org" xmlns:ej="https://developer.microej.com" ej:version="2.0.0">
+            <info organisation="com.mycompany" module="examplePanel" status="integration" revision="1.0.0"/>
+
+            <configurations defaultconfmapping="default->default;provided->provided">
+               <conf name="default" visibility="public" description="Runtime dependencies to other artifacts"/>
+               <conf name="provided" visibility="public" description="Compile-time dependencies to APIs provided by the platform"/>
+            </configurations>
+            
+            <dependencies>
+               <dependency org="ej.tool.frontpanel" name="framework" rev="1.1.1"/>
+            </dependencies>
+         </ivy-module>
 
 The `Front Panel Framework`_ contains the Front Panel core classes, mainly the ability to create your own Front Panel :ref:`section_frontpanel_widget` to simulate user interactions.
 
@@ -160,7 +202,8 @@ The file and tags specifications are available in chapter
 Editing Front Panel Files
 -------------------------
 
-To edit a ``.fp`` file, open it using the Eclipse XML editor (right-click on
+The ``.fp`` file is a standard XML file, so it can be edited with any XML Editor.
+For example in Eclipse, you can open it using the Eclipse XML editor (right-click on
 the ``.fp`` file, select :guilabel:`Open With` > :guilabel:`XML Editor`). This editor features
 syntax highlighting and checking, and content-assist based on the schema
 (XSD file) referenced in the fp file. This schema is a hidden file
@@ -169,9 +212,13 @@ the contents of the fp file each time it is saved and highlights
 problems in the Eclipse Problems view, and with markers on the fp file
 itself.
 
-A preview of the Front Panel can be obtained by opening the Front Panel
-Preview
-(:guilabel:`Window` > :guilabel:`Show View` > :guilabel:`Other...` > :guilabel:`MicroEJ` > :guilabel:`Front Panel Preview`).
+A preview of the Front Panel can be obtained by opening the Front Panel Preview.
+This tool is available in Eclipse only:
+
+- in SDK 5, it is installed by default.
+- in SDK 6, it must be installed by following the instructions on the :ref:`sdk6_microejtools` page.
+
+Once installed, open it in :guilabel:`Window` > :guilabel:`Show View` > :guilabel:`Other...` > :guilabel:`MicroEJ` > :guilabel:`Front Panel Preview`.
 
 The preview is updated each time the ``.fp`` file is saved.
 
@@ -370,6 +417,117 @@ area is delimited by the fully opaque pixels. Every pixel in the
 filter image which is not fully opaque is considered not part of the
 active area.
 
+Extension / Customization
+=========================
+
+Since UI Pack 14.3.0 it is also possible to extend the Front Panel window.
+
+There are several zones available for extension: the tool bar, the status bar and the sides of the device.
+It may be convenient for example to concentrate all the mocks into one window instead of several ones.
+
+The device widget can be retrieved using ``FrontPanel.getFrontPanel().getDeviceWidget()``.
+From this widget, it is possible to retrieve the extensible zones. 
+
+Tool Bar
+--------
+
+The `tool bar`_ can be retrieved with ``(javax.swing.JToolBar) ((javax.swing.JComponent) FrontPanel.getFrontPanel().getDeviceWidget()).getParent().getParent().getComponent(1)``.
+Then it is possible to add one or several `actions`_ using `JToolBar.add()`_.
+A good practice is to add a separator before adding the actions using `JToolBar.addSeparator()`_.
+
+For example:
+
+.. code:: Java
+
+   JToolBar toolBar = (JToolBar) ((JComponent) FrontPanel.getFrontPanel().getDeviceWidget()).getParent().getParent().getComponent(1);
+   ImageIcon myActionIcon = new ImageIcon(getClass().getClassLoader().getResource("myIcon.png"));
+   AbstractAction myAction = new AbstractAction(null, myActionIcon) {
+      private static final long serialVersionUID = 1L;
+
+      @Override
+      public void actionPerformed(ActionEvent e) {
+         // Execute my action.
+      }
+   };
+   toolBar.addSeparator();
+   toolBar.add(myAction);
+
+.. figure:: images/fp-toolbar-action.png
+   
+   An example of action in the toolbar with the MicroEJ mascot as icon.
+
+.. _actions: https://docs.oracle.com/javase/7/docs/api/javax/swing/Action.html
+.. _tool bar: https://docs.oracle.com/javase/7/docs/api/javax/swing/JToolBar.html
+.. _JToolBar.add(): https://docs.oracle.com/javase/7/docs/api/javax/swing/JToolBar.html#add(javax.swing.Action)
+.. _JToolBar.addSeparator(): https://docs.oracle.com/javase/7/docs/api/javax/swing/JToolBar.html#addSeparator()
+
+Status Bar
+----------
+
+The status bar can be retrieved with ``(javax.swing.JPanel) ((javax.swing.JComponent) FrontPanel.getFrontPanel().getDeviceWidget()).getParent().getParent().getComponent(2)``.
+
+The status bar contains 3 zones: one on the left, one on the center, one on the right.
+Each zone is a component included in the status bar and can be retrieved with its position, respectively ``0``, ``1`` and ``2``.
+In each zone, it is possible to add one or several `components`_.
+A good practice is to add a `separator`_ before adding the components.
+
+For example:
+
+.. code:: Java
+
+   JPanel statusBar = (JPanel) ((JComponent) FrontPanel.getFrontPanel().getDeviceWidget()).getParent().getParent().getComponent(2);
+   JPanel statusBarLeft = (JPanel) statusBar.getComponent(0);
+   JLabel myLabel = new JLabel("My information");
+   JSeparator mySeparator = new JSeparator(SwingConstants.VERTICAL);
+   Dimension myLabelPreferredSize = mySeparator.getPreferredSize();
+   myLabelPreferredSize.height = myLabel.getPreferredSize().height;
+   mySeparator.setPreferredSize(myLabelPreferredSize);
+   statusBarLeft.add(mySeparator);
+   statusBarLeft.add(myLabel);
+
+.. figure:: images/fp-statusbar-information.png
+   
+   An example of simple information in the status bar.
+
+.. _components: https://docs.oracle.com/javase/7/docs/api/javax/swing/JComponent.html
+.. _separator: https://docs.oracle.com/javase/7/docs/api/javax/swing/JSeparator.html
+
+Around the Device
+-----------------
+
+The panel containing the device can be retrieved with ``(java.swing.JPanel) ((javax.swing.JComponent) FrontPanel.getFrontPanel().getDeviceWidget()).getParent()``
+
+The panel uses a `border layout`_, the device being in the center.
+It is possible to add widgets around the device, on `north`_, `west`_, `east`_ or `south`_.
+
+For example:
+
+.. code:: Java
+
+   JPanel panel = (JPanel) ((JComponent) FrontPanel.getFrontPanel().getDeviceWidget()).getParent();
+   panel.add(new JLabel("My left label"), BorderLayout.WEST);
+   panel.add(new JLabel("My top label"), BorderLayout.NORTH);
+   panel.add(new JButton("My bottom button"), BorderLayout.SOUTH);
+   JPanel myPanel = new JPanel();
+   myPanel.setLayout(new BoxLayout(myPanel, BoxLayout.Y_AXIS));
+   panel.add(myPanel, BorderLayout.EAST);
+   myPanel.add(new JLabel("My controls"));
+   myPanel.add(new JButton("My first control"));
+
+   // Update the window to be resized to fit the new widgets.
+   JFrame frame = (JFrame) panel.getParent().getParent().getParent().getParent();
+   frame.pack();
+
+.. figure:: images/fp-controls.png
+   
+   An example of widgets around the device.
+
+.. _border layout: https://docs.oracle.com/javase/7/docs/api/java/awt/BorderLayout.html
+.. _center: https://docs.oracle.com/javase/7/docs/api/java/awt/BorderLayout#CENTER.html
+.. _north: https://docs.oracle.com/javase/7/docs/api/java/awt/BorderLayout#NORTH.html
+.. _south: https://docs.oracle.com/javase/7/docs/api/java/awt/BorderLayout#SOUTH.html
+.. _west: https://docs.oracle.com/javase/7/docs/api/java/awt/BorderLayout#WEST.html
+.. _east: https://docs.oracle.com/javase/7/docs/api/java/awt/BorderLayout#EAST.html
 
 .. _fp_installation:
 
@@ -423,7 +581,7 @@ Use
 Launch an application on the Simulator to run the Front Panel.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

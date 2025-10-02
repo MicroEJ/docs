@@ -125,15 +125,13 @@ The following text can be copied in a file called ``SYSVIEW_MicroVG.txt`` and co
    NamedType VGDraw 4=DRAW_STRING_ON_CIRCLE
    NamedType VGDraw 5=DRAW_STRING_ON_CIRCLE_GRADIENT
    NamedType VGDraw 6=DRAW_IMAGE
-   NamedType VGDraw 7=DRAW_VGLITE_PATH
-   NamedType VGDraw 8=UPLOAD_VGLITE_PATH
 
    0        VG_ImageEvent      (MicroVG) Execute image event %VGImage  | (MicroVG) Image event %VGImage done
    1        VG_FontEvent       (MicroVG) Execute font event %VGFont  | (MicroVG) Font event %VGFont done
    2        VG_DrawingEvent    (MicroVG) Execute drawing event %VGDraw  | (MicroVG) Drawing event %VGDraw done
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

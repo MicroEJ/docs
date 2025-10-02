@@ -11,6 +11,7 @@ The documentation build is based on `Sphinx <https://www.sphinx-doc.org/en/maste
 - Python 3.7 or higher,
 - Package installer for Python (`Pip <https://pip.pypa.io/en/stable/installation/>`_),
 - Graphviz (https://gitlab.com/graphviz/graphviz/-/releases).
+- `Doxygen <https://www.doxygen.nl/download.html>`_ the documentation generator tool (tested with versions ``1.8.17`` and ``1.9.4``)
 
 Building
 --------
@@ -19,13 +20,19 @@ First, you will need to install the documentation dependencies locally::
 
     pip install -r requirements.txt
 
-With dependencies installed, you can build the HTML docs::
+With dependencies installed, you can generate the LLAPI Doxygen and build the HTML docs::
 
     make html
+
+To only perform the LLAPI Doxygen build::
+
+    make llapi_doxygen
 
 To perform a link check for all links and references::
 
     make linkcheck
+
+Please ensure that the LLAPI Doxygen has been generated before trying a ``linkcheck``.
 
 Warning Processing
 ~~~~~~~~~~~~~~~~~~
@@ -61,7 +68,7 @@ Build memraid
 
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

@@ -12,23 +12,23 @@ digraph mygraph {
     edge [fontname="Helvetica,Arial,sans-serif"]
     "checkModule" [fillcolor = "#f76241"]
     "buildMockRip" [fillcolor = "#f76241"]
+    "build" -> "assemble"
     "build" -> "check"
+    "assemble" -> "buildMockRip"
+    "assemble" -> "javadocJar"
+    "assemble" -> "sourcesJar"
+    "buildMockRip" -> "jar"
+    "jar" -> "classes"
+    "classes" -> "compileJava"
+    "classes" -> "processResources"
+    "javadocJar" -> "javadoc"
+    "javadoc" -> "classes"
     "check" -> "test"
     "test" -> "classes"
     "test" -> "testClasses"
     "testClasses" -> "compileTestJava"
     "testClasses" -> "processTestResources"
-    "processTestResources" -> "classes"
-    "compileTestJava" -> "classes"
-    "javadoc" -> "classes"
-    "classes" -> "compileJava"
-    "classes" -> "processResources"
-    "build" -> "assemble"
-    "assemble" -> "jar"
-    "uploadArchives" -> "jar"
-    "jar" -> "classes"
     "checkModule" -> "assemble"
-    "buildMockRip" -> "jar"
 
     subgraph cluster_legend {
         label="Legend";

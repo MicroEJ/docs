@@ -190,6 +190,18 @@ Once a widget has consumed an event, it will be the only one to receive the next
    :alt: Pointer Event Dispatcher Flow
    :align: center
 
+Use case examples:
+
+- A button-like widget should not consume the press event since the user can drag the pointer after that.
+
+  - In a simple case, the user may release the pointer outside the bounds of the button, thus the button will not be clicked.
+  - Or the button may be included in a container that capture the drag events (and/or the release ones) to perform a scroll or a drag-and-drop for instance.
+
+- In the same way, a directed scroll (horizontal or vertical) should only start to consume pointer events once a swipe in the right direction is detected.
+  This way, 2 scrolls with opposite directions may be nested, each one handling one direction.
+
+By default, the reactive area of a widget is the boundaries of its content, plus its padding, plus its border (does not include the margin).
+
 A widget can redefine its reactive area by subclassing the `contains(int x, int y)`_ method. It is useful when a widget does not fill fully its bounds.
 
 .. Add an example such as a circular slider or an analog watchface.
@@ -369,7 +381,7 @@ A transition will look perfect if the partial buffer can hold all the lines to r
 Since the buffer holds a group of lines, a horizontal transition may not look the same as a vertical transition.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

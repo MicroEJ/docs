@@ -134,7 +134,7 @@ The next step is adding the module that contains the MicroEJ Application to the 
 
       .. note::
          If the MicroEJ Application has been created with the :ref:`SDK 5 <sdk_user_guide>` or lower, it is required to first migrate it to :ref:`SDK 6 <sdk_6_user_guide>`.
-         Read the comprehensive :ref:`Migration Guide <sdk_6_migrate_mmm_project>` before proceeding.
+         Read the comprehensive :ref:`Migration Guide <sdk_6_migrate_sdk5_project>` before proceeding.
 
       - Click on :guilabel:`File` > :guilabel:`New` > :guilabel:`Import Module...`.
       - Browse to the source directory of the Gradle project.
@@ -343,7 +343,7 @@ This means that you can refer to the dedicated documentation for this matter:
 - for Wear OS: refer to the official `Wear OS documentation <https://developer.android.com/training/wearables/get-started/creating#run-emulator>`_.
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

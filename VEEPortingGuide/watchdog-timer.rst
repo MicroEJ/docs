@@ -35,10 +35,10 @@ the Watchdog Timer API and the Watchdog timer.
 	:scale: 80%
 
 
-The particularity of this library is that it can be either used in Java, in C inside the BSP
+The particularity of this library is that it can be either used in Managed code or in native code inside the BSP
 or even both of them. The use of this library in the BSP in C is relevant when the user needs
-to monitor an item of the software system which is outside of the MicroEJ Virtual Machine. 
-The sequence diagram below shows a standard use of the Watchdog API in Java and in C.
+to monitor an item of the software system which is not executed by the Core Engine. 
+The sequence diagram below shows a standard use of the Watchdog API in Java code and in C code.
 
 
 .. figure:: images/watchdog_seq_diagram.png
@@ -81,31 +81,86 @@ the following dependencies to :ref:`module.ivy <mmm_module_description>` file:
 
 The Platform project must be rebuilt (:ref:`platform_build`).
 
+
+
+The Watchdog Timer :ref:`Pack <pack_overview>` module must be installed in your VEE Port:
+
+.. tabs::
+
+   .. group-tab:: SDK 6 (build.gradle.kts)
+
+      .. code-block:: kotlin
+
+         microejPack("com.microej.pack.watchdog-timer:watchdog-timer-pack:2.0.1")
+
+   .. group-tab:: SDK 5 (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="com.microej.pack.watchdog-timer" name="watchdog-timer-pack" rev="2.0.1" />
+
+As well as the C Component module:
+
+.. tabs::
+
+   .. group-tab:: SDK 6 (build.gradle.kts)
+
+      Install the `Watchdog Timer C Component module <https://repository.microej.com/modules/com/microej/clibrary/llimpl/watchdog-timer-generic/3.0.1/>`__ in your VEE Port.
+
+   .. group-tab:: SDK 5 (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="com.microej.clibrary.llimpl" name="watchdog-timer-generic" rev="3.0.1"/>
+
+      Then the VEE Port project must be rebuilt (:ref:`platform_build`).
+
+
 Then, you have to implement functions that match the ``LLWATCHDOG_TIMER_IMPL_*_action`` pattern
 which is required by the Watchdog C implementation.
 
 Use in an Application
 =====================
 
-The `WatchdogTimer API Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the
-Application project in order to allow access to the Watchdog library.
+The `WatchdogTimer API Module`_ must be added to the project build file to use the Watchdog library:
 
-::
+.. tabs::
 
-	<dependency org="ej.api" name="watchdog-timer" rev="2.0.0"/>
+   .. group-tab:: SDK 6 (build.gradle.kts)
+
+      .. code-block:: kotlin
+
+         implementation("ej.api:watchdog-timer:2.0.0")
+
+   .. group-tab:: SDK 5 (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="ej.api" name="watchdog-timer" rev="2.0.0"/>
 
 .. _WatchdogTimer API Module: https://repository.microej.com/modules/ej/api/watchdog-timer/
 
-Code example in Java
-====================
+Java Code Eexample 
+==================
 
 Here is an example that summarizes all features in a simple use case.
 The checkpoint is performed in a TimerTask scheduled to run every 5 seconds.
 To use TimerTask in your Java application, add the following `BON API`_ dependency:
 
-::
+.. tabs::
 
-	<dependency org="ej.api" name="bon" rev="1.4.0" />
+   .. group-tab:: SDK 6 (build.gradle.kts)
+
+      .. code-block:: kotlin
+
+         implementation("ej.api:bon:1.4.4")
+
+   .. group-tab:: SDK 5 (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="ej.api" name="bon" rev="1.4.4" />
+
 
 Then, you can use this example code:
 
@@ -172,9 +227,9 @@ section, you can use functions defined in ``LLWATCHDOG_TIMER_impl.h``.
 
 Note that compared to the Java API, you have to get error codes returned by functions
 to check if the function is executed correctly since you have no access to
-exceptions generated for the Java.
+exceptions generated for the Java code.
 
-The Watchdog Timer Low Level API provides a set of functions with the same usage as in Java.
+The Watchdog Timer Low Level API provides a set of functions with the same usage as in Java code.
 Here is the list of the watchdog Low Level API functions:
 
 .. code:: c
@@ -265,7 +320,7 @@ The checkpoint is performed in a FreeRTOS task scheduled to attest its activity 
 	}
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

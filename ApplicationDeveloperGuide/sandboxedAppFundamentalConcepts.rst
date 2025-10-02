@@ -3,7 +3,7 @@
 Fundamental Concepts
 ====================
 
-Multi-Sandboxing is based on the :ref:`the Kernel & Features Specification <kf_specification>` (KF).
+Multi-Sandboxing is based on the :ref:`kf_specification`.
 
 It allows an application code to be split between multiples parts: 
 
@@ -16,7 +16,7 @@ Some fundamental points:
 
 - The Kernel is mandatory. It is assumed to be reliable, trusted and cannot be modified.
 - A Feature is an application "extension" managed by the Kernel.
-- A Feature is fully controlled by the Kernel: it can be installed (dynamically or statically pre-installed), started, stopped and
+- A Feature is fully controlled by the Kernel: it can be installed, started, stopped and
   uninstalled at any time independent of the system state (particularly, a Feature never depends on
   another Feature to be stopped).
 - A Feature is optional, potentially not-trusted, maybe unreliable and
@@ -25,11 +25,11 @@ Some fundamental points:
 
 .. note::
 
-   You can go further by reading :ref:`the Kernel & Features Specification <kf_specification>`.
+   You can go further by reading the :ref:`kf_specification`.
 
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

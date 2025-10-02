@@ -8,11 +8,70 @@ Migration Notes
    When updating the plugin version, it is recommended to perform a ``clean`` on your project(s).
    For multi-projects, run the ``clean`` command on the root project.
 
+-------------------
+From 1.3.1 to 1.4.0
+-------------------
+
+The plugin ``com.microej.gradle.addon-library`` has been renamed to ``com.microej.gradle.library``.
+The previous name is still supported but it is deprecated and will be removed in the next major version.
+It is recommended to update your project now.
+
+-------------------
+From 1.0.0 to 1.1.0
+-------------------
+
+The following plugins have been removed:
+
+- plugin ``com.microej.gradle.j2se-library``, replaced by ``com.microej.gradle.jse-library``.
+- plugin ``com.microej.gradle.runtime-api``, replaced by ``com.microej.gradle.runtime-environment``.
+
+---------------------
+From 0.19.0 to 0.20.0
+---------------------
+
+This section applies if SDK 6 ``0.20.0`` is used on a project that was created using SDK 6 ``0.19.0`` 
+or lower.
+
+Minimum Gradle version
+~~~~~~~~~~~~~~~~~~~~~~
+
+The minimum required version of Gradle is now ``8.6.``.
+`Upgrade the Gradle Wrapper version <https://docs.gradle.org/current/userguide/gradle_wrapper.html#sec:upgrading_wrapper>`__ of your project.
+
+New SDK EULA
+~~~~~~~~~~~~
+
+A new SDK EULA must be approved before using the SDK (version ``3.1-C``).
+Refer to :ref:`sdk_6_eula_acceptation` page to learn how to approve it.
+
+Plugins and Configurations renaming
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The following plugins and configurations have been renamed:
+
+- plugin ``com.microej.gradle.j2se-library`` to ``com.microej.gradle.jse-library``.
+- plugin ``com.microej.gradle.runtime-api`` to ``com.microej.gradle.runtime-environment``.
+- configuration ``microejRuntimeApi`` to ``microejRuntimeEnvironment``.
+
+The previous plugins and configurations are still supported but are deprecated and will be removed in the next major version.
+It is recommended to update your project now.
+
+Virtual Device Build
+~~~~~~~~~~~~~~~~~~~~
+
+The Virtual Device of an Application is not built by default anymore when calling the ``build`` task.
+You can call the ``buildVirtualDevice`` task to build it, 
+or add the following code in your ``build.gradle.kts`` file to continue to build it when calling the ``build`` task::
+
+   microej {
+      produceVirtualDeviceDuringBuild()
+   }
+
 ---------------------
 From 0.15.0 to 0.16.0
 ---------------------
 
-This section applies if MicroEJ SDK 6 ``0.16.0`` is used on a project that was created using MicroEJ SDK 6 ``0.15.0`` 
+This section applies if SDK 6 ``0.16.0`` is used on a project that was created using SDK 6 ``0.15.0`` 
 or lower.
 
 Unification of Application EntryPoint
@@ -60,11 +119,29 @@ and set the property ``applicationEntryPoint`` to the Full Qualified Name of the
       applicationEntryPoint = "com.mycompany.MyFeature"
    }   
 
+Testsuite Execution
+~~~~~~~~~~~~~~~~~~~
+
+When upgrading from ``0.15.0`` to an higher version (up to ``1.0.0``), you may encounter the following error when executing a testsuite::
+
+   Preparing the execution of tests with the MicroEJ JUnit test engine
+
+   org.junit.platform.commons.JUnitException: TestEngine with ID 'microej-junit-test-engine' failed to execute tests
+      at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:113)
+      at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88)
+      ...
+   Caused by: com.microej.testengine.TestEngineException: More than one VEE Port have been provided to run the testsuite
+      at com.microej.testengine.MicroejTestEngine.execute(MicroejTestEngine.java:203)
+      at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:107)
+      ... 29 more
+
+Execute the ``clean`` task before executing the testsuite to solve this issue.
+
 ---------------------
 From 0.14.0 to 0.15.0
 ---------------------
 
-This section applies if MicroEJ SDK 6 ``0.15.0`` is used on a project that was created using MicroEJ SDK 6 ``0.14.0`` 
+This section applies if SDK 6 ``0.15.0`` is used on a project that was created using SDK 6 ``0.14.0`` 
 or lower.
 
 Unification of VEE dependency declaration
@@ -178,7 +255,7 @@ The ``veePortPaths`` property is defined as a list in order to provide multiple 
    }
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

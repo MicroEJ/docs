@@ -1,10 +1,10 @@
 
 .. _js.java:
 
-Communication Between Java and JS
-=================================
+Communication Between Java code and JavaScript Code
+===================================================
 
-The MicroEJ engine allows to communicate between Java and JavaScript: Java API can be used from JavaScript code and vice-versa.
+The MicroEJ engine allows to communicate between Java code and JavaScript code: Java API can be used from JavaScript code and vice-versa.
 
 .. _js.java.engine:
 
@@ -68,11 +68,11 @@ Here we instantiate a Java ``File`` object and check that it exists:
 .. _java.lang.System: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html
 .. _System.out.println(): https://repository.microej.com/javadoc/microej_5.x/apis/java/io/PrintStream.html#println--
 
-Implement JavaScript Functions in Java
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Implement JavaScript Functions in Java Code
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We can also implement JavaScript functions in Java by adding their 
-implementation to the global object from Java. For example, here is the code to 
+We can also implement JavaScript functions in Java code by adding their 
+implementation to the global object from Java code. For example, here is the code to 
 create a JavaScript function named ``javaPrint`` in the global scope:
 
 .. code-block:: java
@@ -80,7 +80,7 @@ create a JavaScript function named ``javaPrint`` in the global scope:
     JsRuntime.JS_GLOBAL_OBJECT.put("javaPrint", JsRuntime.createFunction(new JsClosure() {
 		@Override
 		public Object invoke(Object thisBinding, Object... arguments) {
-			System.out.println("Print from Java: " + arguments[0]);
+			System.out.println("Print from Java code: " + arguments[0]);
 			return null;
 		}
 	}), false);
@@ -198,7 +198,7 @@ possible for performance reasons. Otherwhise, `Double`_ type will be used.
     Prefer passing `Integer`_ values as argument to a job added to the JavaScript execution queue, or return ``Integer`` values when implementing a ``JsClosure`` instead of `Double`_ when possible.
 
 It is not possible to retrieve the returned value of a JavaScript function from 
-Java. For instance, consider the following JavaScript function:
+Java code. For instance, consider the following JavaScript function:
 
 .. code-block:: javascript
 
@@ -206,7 +206,7 @@ Java. For instance, consider the following JavaScript function:
         return a + b;
     }
 
-When calling this function from Java, we have no way to get the result back:
+When calling this function from Java code, we have no way to get the result back:
 
 .. code-block:: java
 
@@ -288,7 +288,7 @@ We can now pass the callback to the job. The Java code will wait on the
 .. _java.lang.String: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/String.html
 
 ..
-   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
