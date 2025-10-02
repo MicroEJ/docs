@@ -46,6 +46,7 @@ Core Engine
 ~~~~~~~~~~~
 
 - Added the ability to dynamically configure the Managed/Immortals Heap memory at Core Engine start time.
+- Optimized the Garbage Collector.
 - Fixed Math.nextAfter(float start, double direction), returns start if direction is very close to start.
 - Fixed Remove direct access to errno in ``microejruntime.a``
 
@@ -57,7 +58,7 @@ Foundation Libraries
 - [Cortex-M] - Fixed incorrect handling of `NaN` and `Infinity` inputs in `Math.cos()`, `Math.sin()`, `Math.tan()`, `Math.acos()`, and `Math.asin()` in EDC when the underlying C Math library does not process these values properly (introduced in version 8.4.0).
 - Fixed incorrect output of `NaN` when calling `Math.ulp()` with positive `Infinity`.
 - Fixed `TimerTask` scheduling issues when using a `Date` and a `ej.bon.Timer` to scheduled the task.
-- [Cortex-M] - Fixed `ByteArray.readXXX()` potentialy returning an incorrect value.
+- [Cortex-M] - Fixed `ByteArray.readXXX()` potentialy returning an incorrect value (introduced in version `8.3.0`).
 
 .. _ej.kf.InvalidFormatException: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/InvalidFormatException.html
 .. _StackOverflowError: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/StackOverflowError.html
@@ -69,7 +70,7 @@ Integration
 - Added the ability to dynamically configure the Managed Heap memory at Core Engine start time.
 - Added the ability to dynamically configure the Immortals Heap memory at Core Engine start time.
 - Optimized the FSO build time.
-- Fixed Memory Map Scripts, which count the application code in the Core Engine category
+- Fixed Memory Map Scripts, which counted the application code in the Core Engine category (introduced in version `8.4.0`).
 
 SOAR
 ~~~~
