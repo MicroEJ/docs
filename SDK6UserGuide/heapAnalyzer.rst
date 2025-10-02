@@ -153,7 +153,7 @@ Otherwise, you must:
 - Depending on if you are using a Mono-Sandbox or a Multi-Sandbox :
    - In a Mono-Sandbox context, use ``1_java_heap.hex``.
 
-   - In a Multi-Sandbox context, merge (at least) ``1_java_heap.hex`` and ``9_installed_features.hex`` with:
+In a Multi-Sandbox context, merge (at least) ``{N}_java_heap.hex`` and ``{N}_installed_features.hex`` with:
 
       .. tabs::
 
@@ -161,19 +161,19 @@ Otherwise, you must:
 
             .. code-block:: bat
 
-               copy /b 1_java_heap.hex + 9_installed_features.hex memory.hex
+               copy /b {N}_java_heap.hex + {N}_installed_features.hex memory.hex
 
          .. tab:: PowerShell
 
             .. code-block:: powershell
 
-               Get-Content 1_java_heap.hex, 9_installed_features.hex | Set-Content memory.hex
+               Get-Content {N}_java_heap.hex, {N}_installed_features.hex | Set-Content memory.hex
 
          .. tab:: Bash
 
             .. code-block:: bash
 
-               cat 1_java_heap.hex 9_installed_features.hex > memory.hex
+               cat {N}_java_heap.hex {N}_installed_features.hex > memory.hex
 
 You now have a single ``.hex`` file and can continue to the next section.
 
