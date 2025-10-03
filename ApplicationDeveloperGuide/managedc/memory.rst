@@ -29,7 +29,7 @@ The linear memory is available in the Java host as an array of bytes (``byte[]``
 
 .. note::
 
-  In :ref:`multisandbox` mode, the sum of the linear memory sizes allocated by all Wasm Modules in a Feature must be lower than :ref:`the Feature memory limit configured by the Kernel <kernel_ram_control_memory_limits>` (if any).
+  In :ref:`multisandbox` mode, the sum of the linear memory sizes allocated by all Wasm Modules in a Feature must be lower than :ref:`the Feature memory limit configured by the Kernel <ram_control>` (if any).
  
 
 .. _managedc.linear.memory.layout:
