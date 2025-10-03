@@ -350,13 +350,13 @@ The following table describes these error codes.
    | -24         | The function ``LLMJVM_IMPL_vmTaskStarted`` defined in the   |
    |             | Abstraction Layer implementation returns an error.          |
    +-------------+-------------------------------------------------------------+
-   | -26         | The when the GC mark stack size is too small                |
+   | -25         | The function ``LLMJVM_IMPL_shutdown`` defined in the        |
+   |             | Abstraction Layer implementation returns an error.          |
+   +-------------+-------------------------------------------------------------+
+   | -26         | The GC mark stack size is too small                         |
    +-------------+-------------------------------------------------------------+
    | -27         | The application object file has not been correctly linked   |
    |             | by the third-party linker.                                  |
-   +-------------+-------------------------------------------------------------+
-   | -25         | The function ``LLMJVM_IMPL_shutdown`` defined in the        |
-   |             | Abstraction Layer implementation returns an error.          |
    +-------------+-------------------------------------------------------------+
    | -28         | The function ``LLMJVM_CONF_impl_get_managed_heap_memory``   |
    |             | returns an error.                                           |
