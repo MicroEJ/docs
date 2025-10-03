@@ -55,9 +55,9 @@ Foundation Libraries
 ~~~~~~~~~~~~~~~~~~~~
 
 - Fixed, in ``KF``, calling `Kernel.install(java.io.InputStream)`_ now directly throws `OutOfMemoryError`_ and `StackOverflowError`_ exceptions instead of previously being wrapped in `ej.kf.InvalidFormatException`_.
-- [Cortex-M] - Fixed incorrect handling of `NaN` and `Infinity` inputs in `Math.cos()`, `Math.sin()`, `Math.tan()`, `Math.acos()`, and `Math.asin()` in EDC when the underlying C Math library does not process these values properly (introduced in version 8.4.0).
 - Fixed incorrect output of `NaN` when calling `Math.ulp()` with positive `Infinity`.
 - Fixed `TimerTask` scheduling issues when using a `Date` and a `ej.bon.Timer` to scheduled the task.
+- [Cortex-M] - Fixed incorrect handling of `NaN` and `Infinity` inputs in `Math.cos()`, `Math.sin()`, `Math.tan()`, `Math.acos()`, and `Math.asin()` in EDC when the underlying C Math library does not process these values properly (introduced in version 8.4.0).
 - [Cortex-M] - Fixed `ByteArray.readXXX()` potentialy returning an incorrect value (introduced in version `8.3.0`).
 
 .. _ej.kf.InvalidFormatException: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/InvalidFormatException.html
