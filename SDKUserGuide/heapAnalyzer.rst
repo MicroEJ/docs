@@ -148,9 +148,7 @@ If you are in a Mono-Sandbox context and do not use :ref:`dynamic Heap configura
 
 You now have the ``.hex`` file and need to extract the Heap dump.
 
-Otherwise:
-   - Dump the entire memory where MicroEJ runtime and code sections are linked.
-   - Generate the :ref:`VEE memory dump script <generate_vee_memory_dump_script>` to dump all required sections.
+- Otherwise, dump all MICROEJ VEE heaps. See :ref:`VEE memory dump <generate_vee_memory_dump_script>` for how to generate a script for your debugger that dumps all required sections.
 
 You then have to merge all ``.hex`` files into a single one for the next step.
 
