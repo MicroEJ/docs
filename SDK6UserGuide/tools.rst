@@ -31,6 +31,7 @@ The following sections describe the command line tools and their options:
    stackTraceReader
    codeCoverageAnalyzer
 
+.. _sdk6_microej_tools:
 
 **IDE tools**
 

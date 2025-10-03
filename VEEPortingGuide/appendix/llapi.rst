@@ -116,6 +116,16 @@ Set of extra functions that the BSP must implement.
 .. doxygenfile:: LLBSP_impl.h
    :sections: define enum innerclass public-attrib func
 
+.. _LLMJVM-API-SECTION-CONF:
+
+LLMJVM_CONF_impl.h
+------------------
+
+Set of functions that can be implemented to configure the Core Engine at startup.
+
+.. doxygenfile:: LLMJVM_CONF_impl.h
+   :sections: define enum innerclass public-attrib func
+
 
 .. _LLKF-API-SECTION:
 
