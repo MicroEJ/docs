@@ -249,19 +249,14 @@ to the Application:
 Configuring Memory Dynamically
 ------------------------------
 
-Additionally to using the :ref:`Heap size configuration<option_managed_heap>` :ref:`properties<sdk_6_define_option>`, 
-an enginer can use the Core Engine configuration Low Level API (Located in the ``vee/inc/LLMJVM_CONF_impl.h`` header of your VEEPort) to interact with the
-initialization of the Managed Heap and the Immortals Heap at the start of the Core Engine rather than at compilation time using :ref:`properties<sdk_6_define_option>`. 
-This allows to dynamically decide the memory footprint an app will use without rebuilding it.
-These two callbacks are optional, as the Core Engine provides a default implementation based on the use of properties.
-These callbacks are : 
+To configure the heaps sizes at startup time rather than at compile time (see :ref:`Heap size configuration<option_managed_heap>` Application options),
+implement the Core Engine configuration Low Level API (see ``LLMJVM_CONF_impl.h``).:
 
-``LLMJVM_CONF_impl_get_managed_heap_memory`` Which provides a memory region for the Managed Heap to the Core Engine. 
-- ``LLMJVM_CONF_impl_get_immortals_heap_memory`` Which provides a memory region for the Immortals Heap to the Core Engine.
+- ``LLMJVM_CONF_impl_get_managed_heap_memory()``: allocates the :ref:`Managed Heap<todo-link-managed-heap>`.
+- ``LLMJVM_CONF_impl_get_immortals_heap_memory()``: allocates the :ref:`Immortals Heap<todo-link-managed-heap>`.
 
-Both of these functions are described in greater details in ``vee/inc/LLMJVM_CONF_impl.h``,
-and can be implemented in any BSP source file as long as it includes ``vee/inc/LLMJVM_CONF_impl.h``.
-These methods will then be called during the call to ``SNI_createVM()``.
+The Core Engine provides a default implementation for those functions which returns memory sections statically allocated using the compile time heaps sizes configuration (& linker script for position).
+These functions are called by the Core Engine in ``SNI_createVM()``.
 
 .. _core_engine_error_codes:
 
