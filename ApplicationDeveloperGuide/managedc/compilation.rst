@@ -10,7 +10,7 @@ The supported toolchain for this process is `WASI SDK <https://github.com/WebAss
 Installing the Toolchain
 ------------------------
 
-Download the `WASI SDK version 20 or higher <https://github.com/WebAssembly/wasi-sdk/releases>`__ and extract it at the location of your choice on your machine.
+Download the `WASI SDK version 25 <https://github.com/WebAssembly/wasi-sdk/releases/tag/wasi-sdk-25>`__ and extract it at the location of your choice on your machine.
 This location will be referred to as ``[path_to_wasi_sdk]`` in the rest of this documentation.
 
 .. _managedc.compilation.file:
