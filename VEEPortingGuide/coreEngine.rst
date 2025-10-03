@@ -250,7 +250,7 @@ Configuring Memory Dynamically
 ------------------------------
 
 To configure the heaps sizes at the Core Engine startup time rather than at compile time (see :ref:`Managed Heap size configuration<option_managed_heap>` and :ref:`Immortals Heap size configuration<option_immortal_heap>` Application options),
-implement the Core Engine configuration Low Level API (see ``LLMJVM_CONF_impl.h``):
+implement the Core Engine configuration Low Level API (see :ref:`LLMJVM_CONF_impl.h<LLMJVM-API-SECTION-CONF>`):
 
 - ``LLMJVM_CONF_impl_get_managed_heap_memory()``: allocates the Managed Heap.
 - ``LLMJVM_CONF_impl_get_immortals_heap_memory()``: allocates the Immortals Heap.
