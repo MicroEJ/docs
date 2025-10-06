@@ -6,6 +6,79 @@
 Migration Guide
 ===============
 
+.. _section_ui_migrationguide_pack_14.5.0:
+
+From 14.4.2 to 14.5.0
+=====================
+
+.. _section_ui_migrationguide_pack_14.5.0_bsp:
+
+BSP
+"""
+
+The C Module's options configuration file ``ui_configuration.h`` must not be modified anymore.
+Before installing the new C Module: 
+
+* Create (if not already exists) the global `VEE Port configuration file`_.
+* Move your own configuration from ``ui_configuration.h`` to ``veeport_configuration.h``.
+* Install the `C Module MicroUI 14.5.0`_.
+
+The following options (see ``ui_configuration.h``) have now a value (not just commented/uncommented); check (and adjust) whether they are used outside the UI C Modules:
+
+* ``UI_FEATURE_ALLOCATOR``
+* ``UI_FEATURE_EVENT_DECODER``
+* ``UI_FEATURE_IMAGE_CUSTOM_FORMATS``
+* ``UI_FEATURE_FONT_CUSTOM_FORMATS``
+* ``UI_FEATURE_BRS_FLUSH_SINGLE_RECTANGLE``
+	
+.. _VEE Port configuration file: https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/master/bsp/vee/port/config
+
+BSP with DMA2D
+""""""""""""""
+
+* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.5.0_bsp`.
+
+The C Module's options configuration file ``ui_dma2d_configuration.h`` must not be modified anymore.
+Before installing the new C Module: 
+
+* Move your own configuration from ``ui_dma2d_configuration.h`` to ``veeport_configuration.h``.
+* Install the `C Module MicroUI over DMA2D to version 8.0.0`_.
+
+BSP with VGLite
+"""""""""""""""
+
+* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.5.0_bsp`.
+
+The C Module's options configuration file ``ui_vglite_configuration.h`` must not be modified anymore.
+Before installing the new C Module: 
+
+* Move your own configuration from ``ui_vglite_configuration.h`` to ``veeport_configuration.h``.
+* Install the `C Module MicroUI over VGLite to version 11.0.0`_.
+
+The following options (see ``ui_vglite_configuration.h``) have now a value (not just commented/uncommented); check (and adjust) whether they are used outside the UI C Modules:
+
+* ``VGLITE_USE_GPU_FOR_SIMPLE_DRAWINGS``
+* ``VGLITE_USE_GPU_FOR_RGB565_IMAGES``
+* ``VGLITE_USE_GPU_FOR_TRANSPARENT_IMAGES``
+* ``VGLITE_OPTION_TOGGLE_GPU``
+
+BSP with NemaGFX
+""""""""""""""""
+
+* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.5.0_bsp`.
+
+The C Module's options configuration file ``ui_nema_configuration.h`` must not be modified anymore.
+Before installing the new C Module: 
+
+* Move your own configuration from ``ui_nema_configuration.h`` to ``veeport_configuration.h``.
+* Install the `C Module MicroUI over NemaGFX to version 5.0.0`_.
+
+The following options (see ``ui_nema_configuration.h``) have now a value (not just commented/uncommented); check (and adjust) whether they are used outside the UI C Modules:
+
+* ``ENABLE_SIMPLE_LINES``
+* ``ENABLE_FADED_LINES``
+* ``ENABLE_IMAGE_ROTATION``
+
 .. _section_ui_migrationguide_pack_14.4.2:
 
 From 14.3.3 to 14.4.2
@@ -19,19 +92,30 @@ Front Panel
 
 .. _Front Panel Widgets 5.3.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/5.3.1/
 
+
+.. _section_ui_migrationguide_pack_14.4.2_bsp:
+
+BSP
+"""
+
+* Install the `C Module MicroUI 14.4.2`_.
+
 BSP with DMA2D
 """"""""""""""
 
+* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.4.2_bsp`.
 * Install the `C Module MicroUI over DMA2D to version 7.0.1`_.
     
 BSP with VGLite
 """""""""""""""
 
+* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.4.2_bsp`.
 * Install the `C Module MicroUI over VGLite to version 10.0.1`_.
 	
 BSP with NemaGFX
 """"""""""""""""
 
+* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.4.2_bsp`.
 * Install the `C Module MicroUI over NemaGFX to version 4.0.1`_.
 
 Application
