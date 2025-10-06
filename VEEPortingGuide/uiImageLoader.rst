@@ -161,13 +161,85 @@ The implementation must respect the following rules:
 
 -  Waiting the end of decoding step before returning.
 
-Callers
--------
+Abstraction Layer API
+---------------------
 
 The internal and external decoders are called by the Graphics Engine when the application invokes the MicroUI API `ej.microui.display.ResourceImage.loadImage()`_.
 They can also be explicitly called by any C task via the supplementary API ``LLUI_DISPLAY_decodeImage()``.
 
 .. important:: If the Abstraction Layer API ``LLUI_DISPLAY_decodeImage()`` is called outside of the Core Engine task (i.e., outside of a native Java context), synchronization functions with the Graphics Engine must be implemented (see :ref:`section_display_llapi_graphics_engine`).
+
+Like MicroUI, this API provides an instruction on the output format (see :ref:`section_image_raw`).
+This instruction may not be followed by the decoder, depending on the encoding capabilities of the decoder and the Graphics Engine.
+The default format of the decoder is then selected instead (depends on the decoder itself).
+
+.. note:: The caller can verify the RAW encoding by checking the ``format`` field of the ``MICROUI_Image``.
+
+Unlike the MicroUI API, which is limited to six output formats, the abstraction layer API allows for additional or compatible formats.
+Some formats may not be available at runtime (it is recommended to use the :ref:`section_image_generator` instead).
+The table below indicates whether the format instruction is adhered to, replaced by a compatible format, or replaced by the default format of the decoder.
+
++-----------------------------------+-----------------------------------+
+| Instruction                       | Output Format                     |
++===================================+===================================+
+| MICROUI_IMAGE_FORMAT_DISPLAY      | *default format*                  |
++-----------------------------------+-----------------------------------+
+| MICROUI_IMAGE_FORMAT_ARGB8888     | MICROUI_IMAGE_FORMAT_ARGB8888     |
++-----------------------------------+-----------------------------------+
+| MICROUI_IMAGE_FORMAT_ARGB1555     | MICROUI_IMAGE_FORMAT_ARGB1555     |
++-----------------------------------+-----------------------------------+
+| MICROUI_IMAGE_FORMAT_ARGB4444     | MICROUI_IMAGE_FORMAT_ARGB4444     |
++-----------------------------------+-----------------------------------+
+| MICROUI_IMAGE_FORMAT_ARGB8888_PRE | MICROUI_IMAGE_FORMAT_ARGB8888_PRE |
++-----------------------------------+-----------------------------------+
+| MICROUI_IMAGE_FORMAT_ARGB1555_PRE | MICROUI_IMAGE_FORMAT_ARGB1555_PRE |
++-----------------------------------+-----------------------------------+
+| MICROUI_IMAGE_FORMAT_ARGB4444_PRE | MICROUI_IMAGE_FORMAT_ARGB4444_PRE |
++-----------------------------------+-----------------------------------+
+| MICROUI_IMAGE_FORMAT_RGB888       | MICROUI_IMAGE_FORMAT_RGB888       |
++-----------------------------------+-----------------------------------+
+| MICROUI_IMAGE_FORMAT_RGB565       | MICROUI_IMAGE_FORMAT_RGB565       |
++-----------------------------------+-----------------------------------+
+| MICROUI_IMAGE_FORMAT_A1           | MICROUI_IMAGE_FORMAT_A8           |
++-----------------------------------+-----------------------------------+
+| MICROUI_IMAGE_FORMAT_A2           | MICROUI_IMAGE_FORMAT_A8           |
++-----------------------------------+-----------------------------------+
+| MICROUI_IMAGE_FORMAT_A4           | MICROUI_IMAGE_FORMAT_A8           |
++-----------------------------------+-----------------------------------+
+| MICROUI_IMAGE_FORMAT_A8           | MICROUI_IMAGE_FORMAT_A8           |
++-----------------------------------+-----------------------------------+
+| MICROUI_IMAGE_FORMAT_C1           | *default format*                  |
++-----------------------------------+-----------------------------------+
+| MICROUI_IMAGE_FORMAT_C2           | *default format*                  |
++-----------------------------------+-----------------------------------+
+| MICROUI_IMAGE_FORMAT_C4           | *default format*                  |
++-----------------------------------+-----------------------------------+
+| MICROUI_IMAGE_FORMAT_AC11         | *default format*                  |
++-----------------------------------+-----------------------------------+
+| MICROUI_IMAGE_FORMAT_AC22         | *default format*                  |
++-----------------------------------+-----------------------------------+
+| MICROUI_IMAGE_FORMAT_AC44         | *default format*                  |
++-----------------------------------+-----------------------------------+
+| MICROUI_IMAGE_FORMAT_LARGB8888    | *default format*                  |
++-----------------------------------+-----------------------------------+
+| MICROUI_IMAGE_FORMAT_UNDEFINED    | *default format*                  |
++-----------------------------------+-----------------------------------+
+| MICROUI_IMAGE_FORMAT_CUSTOM_7     | *default format*                  |
++-----------------------------------+-----------------------------------+
+| MICROUI_IMAGE_FORMAT_CUSTOM_6     | *default format*                  |
++-----------------------------------+-----------------------------------+
+| MICROUI_IMAGE_FORMAT_CUSTOM_5     | *default format*                  |
++-----------------------------------+-----------------------------------+
+| MICROUI_IMAGE_FORMAT_CUSTOM_4     | *default format*                  |
++-----------------------------------+-----------------------------------+
+| MICROUI_IMAGE_FORMAT_CUSTOM_3     | *default format*                  |
++-----------------------------------+-----------------------------------+
+| MICROUI_IMAGE_FORMAT_CUSTOM_2     | *default format*                  |
++-----------------------------------+-----------------------------------+
+| MICROUI_IMAGE_FORMAT_CUSTOM_1     | *default format*                  |
++-----------------------------------+-----------------------------------+
+| MICROUI_IMAGE_FORMAT_CUSTOM_0     | *default format*                  |
++-----------------------------------+-----------------------------------+
 
 .. _ej.microui.display.ResourceImage.loadImage(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#loadImage-java.lang.String-
 
