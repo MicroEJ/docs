@@ -41,7 +41,7 @@ In case you cannot get hands on your desired starter kit, please contact us, we 
        :ref:`i.MX RT1170 Evaluation Kit <sdk_6_getting_started_imxrt1170>`
    * - |logo_nxp|
      - |image_imx93|
-       :ref:`i.MX 93 Evaluation Kit <sdk_6_getting_started_imx93>`
+       :ref:`i.MX 93 Evaluation Kit & FRDM Board <sdk_6_getting_started_imx93>`
    * - |logo_st|
      - |image_stm32f7508|
        :ref:`STM32F7508-DK Discovery Kit <sdk_6_getting_started_stm32f7508>`
