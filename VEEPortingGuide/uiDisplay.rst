@@ -619,11 +619,23 @@ and blue[5]):
 
 1. Configure the VEE Port:
 
-   * Create or open the VEE Port configuration project file ``display/display.properties``: 
+   .. tabs::
 
-   .. code-block:: java 
+      .. tab:: SDK 6
 
-      bpp=16
+         In SDK 6, the configuration is done in the properties file ``configuration.properties`` of the VEE Port project:
+
+         .. code-block:: java 
+
+            com.microej.pack.display.bpp=16
+
+      .. tab:: SDK 5
+
+         In SDK 5, the configuration is done in the properties file ``display/display.properties``:
+
+         .. code-block:: java 
+
+            bpp=16
 
 2. Image Generator:
   
@@ -1723,8 +1735,8 @@ This configuration step is used to choose the kind of implementation (see :ref:`
    .. tab:: SDK 6
 
      In SDK 6, the configuration is done in the properties file ``configuration.properties`` of the VEE Port project.
-	  All the properties names listed below must be prefixed by ``com.microej.runtime.display.``.
-	  For example the ``bpp`` properties is defined by the ``com.microej.runtime.display.bpp`` property.
+	  All the properties names listed below must be prefixed by ``com.microej.pack.display.``.
+	  For example the ``bpp`` properties is defined by the ``com.microej.pack.display.bpp`` property.
 
    .. tab:: SDK 5
 

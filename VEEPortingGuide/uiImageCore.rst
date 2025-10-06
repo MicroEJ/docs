@@ -796,7 +796,7 @@ How to get the file:
 #. Perform some changes into the copied file (see after).
 #. Rebuild the VEE Port: the file in the `dropins` folder is copied in the VEE Port instead of the original one.
 
-.. warning:: When the display format in ``[VEE Port configuration project]/display/display.properties`` changes, the linker file suffix changes too. Perform again all the operations in the new file with the new suffix.
+.. warning:: When the display format changes (see :ref:`section_display_installation`), the linker file suffix changes too. Perform again all the operations in the new file with the new suffix.
 
 The linker file holds five tables, one for each use case, respectively ``IMAGE_UTILS_TABLE_COPY``, ``IMAGE_UTILS_TABLE_COPY_WITH_ALPHA``, ``IMAGE_UTILS_TABLE_DRAW``, ``IMAGE_UTILS_TABLE_SET`` and ``IMAGE_UTILS_TABLE_READ``.
 For each table, a comment describes how to remove an option (when possible) or how to replace an option by a generic function (if available).

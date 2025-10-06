@@ -203,10 +203,10 @@ Configuration
 
       .. code-block:: java
 
-         com.microej.runtime.display.bpp=rgb565
-         com.microej.runtime.display.imageBuffer.memoryAlignment=32
-         com.microej.runtime.display.memoryLayout=line
-         com.microej.runtime.display.byteLayout=line
+         com.microej.pack.display.bpp=rgb565
+         com.microej.pack.display.imageBuffer.memoryAlignment=32
+         com.microej.pack.display.memoryLayout=line
+         com.microej.pack.display.byteLayout=line
 
    .. tab:: SDK 5
 
