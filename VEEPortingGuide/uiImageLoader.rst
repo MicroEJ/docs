@@ -115,6 +115,9 @@ An image may be pre-processed (:ref:`section_image_generator`) and so already in
 Encoded Image
 =============
 
+Internal Decoders
+-----------------
+
 An image can be encoded (PNG, JPEG, etc.).
 In this case Image Loader asks to its Image Decoders module if a decoder is able to decode the image.
 The source image is not copied in RAM (expect for images stored as :ref:`section_image_external_memory`).
@@ -128,6 +131,9 @@ The UI extension provides two internal Image Decoders modules:
 
 * PNG Decoder: a full PNG decoder that implements the PNG format (``https://www.w3.org/Graphics/PNG`` ). Regular, interlaced, indexed (palette) compressions are handled.
 * BMP Monochrome Decoder: .bmp format files that embed only 1 bit per pixel can be decoded by this decoder.
+
+Additional Decoders
+-------------------
 
 .. _image_external_decoder:
 
@@ -154,6 +160,16 @@ The implementation must respect the following rules:
 -  Decodes the image in the allocated buffer.
 
 -  Waiting the end of decoding step before returning.
+
+Callers
+-------
+
+The internal and external decoders are called by the Graphics Engine when the application invokes the MicroUI API `ej.microui.display.ResourceImage.loadImage()`_.
+They can also be explicitly called by any C task via the supplementary API ``LLUI_DISPLAY_decodeImage()``.
+
+.. important:: If the Abstraction Layer API ``LLUI_DISPLAY_decodeImage()`` is called outside of the Core Engine task (i.e., outside of a native Java context), synchronization functions with the Graphics Engine must be implemented (see :ref:`section_display_llapi_graphics_engine`).
+
+.. _ej.microui.display.ResourceImage.loadImage(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#loadImage-java.lang.String-
 
 .. _section_decoder_installation:
 

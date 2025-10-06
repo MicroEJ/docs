@@ -1052,6 +1052,8 @@ The Abstraction Layer distinguishes between the display *virtual* size and the d
 
 .. note:: The *physical* size may not be configured; in that case, the Graphics Engine considers the *virtual* size os *physical* size.
 
+.. _section_display_llapi_semaphore:
+
 Semaphores
 ----------
 
@@ -1095,13 +1097,25 @@ The principle of implementing a MicroUI drawing function is described in the cha
 
 .. _Painter: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Painter.html
 
+.. _section_display_llapi_graphics_engine:
+
 Graphics Engine API
---------------------
+-------------------
 
 The Graphics Engine provides a set of functions to interact with the C archive.
 The functions allow the retrieval of some drawing characteristics, the synchronization of drawings between them, the notification of the end of flush and drawings, etc.
 
 The functions are available in ``LLUI_DISPLAY.h``.
+
+Most APIs are thread-safe, meaning that any C task can call the Graphics Engine APIs at any time.
+However, some functions need to be synchronized with MicroUI (and the Core Engine task), including ``allocateImageBuffer()``, ``freeImageBuffer()``, and ``decodeImage()``.
+
+.. note:: This list is not exhaustive; please refer to the C documentation for ``LLUI_DISPLAY_IMPL_lockJob()`` for the complete list.
+
+To facilitate this synchronization, the Graphics Engine provides optional supplementary Abstract Layer API: ``LLUI_DISPLAY_IMPL_lockJob()`` and ``LLUI_DISPLAY_IMPL_unlockJob()``.
+The implementation of these APIs simply involves using a binary semaphore.
+
+.. important::  This binary semaphore must not be shared with the :ref:`binary semaphores<section_display_llapi_semaphore>` given to the Graphics Engine during its initialization.
 
 Typical Implementations
 =======================
