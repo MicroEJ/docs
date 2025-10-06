@@ -27,10 +27,9 @@ The first part consists in running a demo application on the Virtual Device. All
 
 The second part consists in running the same demo application on your device. For that, you will need:
 
-* An i.MX93 Evaluation Kit, available `here <https://www.nxp.com/design/design-center/development-boards/i-mx-evaluation-and-development-boards/i-mx-93-evaluation-kit:i.MX93EVK>`__.
-
-* Or a FRDM i.MX93 Development Board, available `here <https://www.nxp.com/design/design-center/development-boards-and-designs/frdm-i-mx-93-development-board:FRDM-IMX93>`__.
-
+* One of these two Development Board: 
+   * i.MX93 Evaluation Kit, available `here <https://www.nxp.com/design/design-center/development-boards/i-mx-evaluation-and-development-boards/i-mx-93-evaluation-kit:i.MX93EVK>`__.
+   * FRDM i.MX93 Development Board, available `here <https://www.nxp.com/design/design-center/development-boards-and-designs/frdm-i-mx-93-development-board:FRDM-IMX93>`__.
 * An HDMI display with touchscreen connected with an `IMX-MIPI-HDMI adapter <https://www.nxp.com/part/IMX-MIPI-HDMI>`__.
 
    * This getting started has been tested with a `MageDok T080A <https://store.magedok.com/collections/portable-monitors/products/8-inch-1280-720-resolution-touch-monitor-t080a>`_.
@@ -321,7 +320,7 @@ Hardware Setup
          :align: center
          :scale: 70%
 
-      To setup the hardware you will need to connect the following on the EVK:
+      To setup the hardware you will need to connect the following on the Development Board:
 
       * A USB C cable to the PWR input (P1)
       * A USB C cable to the DBG port (P16)
