@@ -6,7 +6,7 @@ i.MX 93 Evaluation Kit & FRDM Board
 During this Getting Started, you will learn to:
 
 * Run an Application on the i.MX93 Virtual Device.
-* Run the same Application on your i.MX93 Evaluation Kit or FRDM i.X93 Development Board.
+* Run the same Application on your i.MX93 Evaluation Kit or FRDM i.MX93 Development Board.
 
 In case you are not familiar with MicroEJ, please visit `Discover MicroEJ <https://developer.microej.com/discover-microej/>`__ to understand the principles of our technology.
 
@@ -32,7 +32,7 @@ The second part consists of running the same demo application on your device. Fo
    * FRDM i.MX93 Development Board, available `here <https://www.nxp.com/design/design-center/development-boards-and-designs/frdm-i-mx-93-development-board:FRDM-IMX93>`__.
 * An HDMI display with a touchscreen connected with an `IMX-MIPI-HDMI adapter <https://www.nxp.com/part/IMX-MIPI-HDMI>`__.
 
-   * This getting started has been tested with a `MageDok T080A <https://store.magedok.com/collections/portable-monitors/products/8-inch-1280-720-resolution-touch-monitor-t080a>`_.
+   * This getting started has been tested with a 1280x720 HDMI display: `MageDok T080A <https://store.magedok.com/collections/portable-monitors/products/8-inch-1280-720-resolution-touch-monitor-t080a>`_.
 
 * A prebuilt Yocto Linux image, with all necessary Linux packages preinstalled.
 
@@ -246,8 +246,8 @@ Flash the image on an SD card
 
 The Linux images are available here:
 
-* `Yocto WIC Image for iMX93 EVK  <https://repository.microej.com/packages/yocto/i.MX93EVK/2024-05-24-IMX93-lib32-core-image-microej-microej-imx93-1.0.2.wic.gz>`_
 * `Yocto WIC Image for FRDM iMX93 <https://repository.microej.com/packages/yocto/i.MX93FRDM/20250731_1.0.0_core-image-microej-imx93frdm.rootfs.wic.zst>`_
+* `Yocto WIC Image for iMX93 EVK  <https://repository.microej.com/packages/yocto/i.MX93EVK/2024-05-24-IMX93-lib32-core-image-microej-microej-imx93-1.0.2.wic.gz>`_
 
 For this getting started we use a Linux image flashed on an SD card.
 
