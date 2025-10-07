@@ -373,25 +373,6 @@ Open a console on the target (SSH or serial), start the calibration tool and fol
    export TSLIB_CALIBFILE=/etc/ts.calib
    ts_calibrate
 
-LVDS display support on i.MX93 Evaluation Kit
-+++++++++++++++++++++++++++++++++++++++++++++
-
-This Getting Started has been tested with an HDMI display with a 1280x720 resolution.
-If you want to use the official display instead (the `DY1212W-4856 <https://www.nxp.com/design/design-center/development-boards-and-designs/dy1212w-4856-tft-lcd-panel-with-lvds-interface:DY1212W-4856>`_)
-you will need to reconfigure the device tree:
-
-* Boot your i.MX93 Evaluation Kit.
-* Stop the booting process to access the U-boot menu by pressing a key on the serial console.
-* In the U-boot menu, run the following commands:
-
-.. code-block ::
-
-   setenv fdtfile imx93-11x11-evk-boe-wxga-lvds-panel.dtb
-   saveenv
-   boot
-
-* After the boot has completed you can test the display with: ``modetest -M imx-drm -s 35@33:1280x800-60.03``.
-
 Congratulations! You have finished the setup of your environment. You are now ready to discover how to build and run a MicroEJ application.
 
 Build the Executable for i.MX93
