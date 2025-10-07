@@ -1,7 +1,7 @@
 .. _vee_port_programming_pratices:
 
-MicroEJ VEE Port Programming Practices
-======================================
+VEE Port Programming Practices
+==============================
 
 Description
 -----------

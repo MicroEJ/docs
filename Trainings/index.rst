@@ -225,7 +225,7 @@ For VEE Developers
    
    trainingVEEPortDevFromScratch
    trainingPQT
-   trainingMicroEJVEEPortProgrammingPractices
+   trainingVEEPortProgrammingPractices
    trainingDebugHardfault
    trainingAsyncWorker
 
@@ -269,7 +269,7 @@ For VEE Developers
          </div>
 
          <div class="training_item">
-            <a class="training_link" href="trainingMicroEJVEEPortProgrammingPractices.html">
+            <a class="training_link" href="trainingVEEPortProgrammingPractices.html">
                <div class="training_image_container">
                   <ul class="training_image_list">
                      <li class="training_course_number">Course</li>
@@ -277,10 +277,10 @@ For VEE Developers
                   </ul>
                   <img src="../_static/images/training/training_veeport_practices.jpg" alt="veeport_practices">
                </div>
-               <h3 class="training_title">MicroEJ VEE Port Programming Practices</h3>
+               <h3 class="training_title">VEE Port Programming Practices</h3>
                <p class="training_description">In this page, you will be linked to best practices for VEE Port development.
                </p>
-               <a class="training_learn_more_link" href="trainingMicroEJVEEPortProgrammingPractices.html">Learn more</a>
+               <a class="training_learn_more_link" href="trainingVEEPortProgrammingPractices.html">Learn more</a>
             </a>
          </div>
 
