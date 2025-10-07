@@ -280,20 +280,20 @@ Hardware Setup
 
 .. tabs::
 
-   .. tab:: i.MX93 EVK
+   .. tab:: FRDM i.MX93
 
-      .. figure:: images/iMX93/getting-started-setup.png
+      .. figure:: images/iMX93/getting-started-setup-frdm.png
          :alt: Setup
          :align: center
          :scale: 70%
 
-      To setup the hardware you will need to connect the following on the EVK:
+      To setup the hardware you will need to connect the following on the Development Board:
 
-      * A USB C cable for the power (provided with the EVK).
-      * A USB C cable for the serial port.
-      * A USB C cable for the touchscreen device.
+      * A USB C cable to the PWR input (P1)
+      * A USB C cable to the DBG port (P16)
+      * A USB C, or USB A cable for the touchscreen device (P2 or P17).
       * A RJ45 cable to access the network.
-      * An HDMI cable connected to the IMX-HDMI-MIPI adapter.
+      * An HDMI cable.
 
       The serial port is used to connect to a shell, it uses the following parameters:
 
@@ -314,20 +314,20 @@ Hardware Setup
 
       To connect to the shell enter the login ``root``.
 
-   .. tab:: FRDM i.MX93
+   .. tab:: i.MX93 EVK
 
-      .. figure:: images/iMX93/getting-started-setup-frdm.png
+      .. figure:: images/iMX93/getting-started-setup.png
          :alt: Setup
          :align: center
          :scale: 70%
 
-      To setup the hardware you will need to connect the following on the Development Board:
+      To setup the hardware you will need to connect the following on the EVK:
 
-      * A USB C cable to the PWR input (P1)
-      * A USB C cable to the DBG port (P16)
-      * A USB C, or USB A cable for the touchscreen device (P2 or P17).
+      * A USB C cable for the power (provided with the EVK).
+      * A USB C cable for the serial port.
+      * A USB C cable for the touchscreen device.
       * A RJ45 cable to access the network.
-      * An HDMI cable.
+      * An HDMI cable connected to the IMX-HDMI-MIPI adapter.
 
       The serial port is used to connect to a shell, it uses the following parameters:
 
