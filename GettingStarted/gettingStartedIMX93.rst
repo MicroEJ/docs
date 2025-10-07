@@ -8,35 +8,35 @@ During this Getting Started, you will learn to:
 * Run an Application on the i.MX93 Virtual Device.
 * Run the same Application on your i.MX93 Evaluation Kit or FRDM i.X93 Development Board.
 
-If you need to become more familiar with MicroEJ, please visit `Discover MicroEJ <https://developer.microej.com/discover-microej/>`__ to understand the principles of our technology.
+In case you are not familiar with MicroEJ, please visit `Discover MicroEJ <https://developer.microej.com/discover-microej/>`__ to understand the principles of our technology.
 
 Prerequisites
 -------------
 
 .. note::
   
-   This Getting Started has been tested on Windows 10 & 11 with a WSL distribution Ubuntu 22.04. Also note that examples used in this Getting Started could depend on older tools and libraries. Most notably our dependency manager plugin (using `Gradle <https://gradle.org/>`_) could be an older version.
+   This Getting Started has been tested on Windows 10 & 11 with a WSL distribution Ubuntu 22.04. Also note that the examples used in this Getting Started guide may depend on older tools and libraries. Notably, our dependency manager plugin (using `Gradle <https://gradle.org/>`_) may be an older version.
 
 This Getting Started is separated into two main parts.
 
-The first part consists in running a demo application on the Virtual Device. All you need is:
+The first part consists of running a demo application on the Virtual Device. All you need is:
 
 
-* An Internet connection to access Github repositories & :ref:`Module Repositories <module_repositories>`.
+* An Internet connection to access GitHub repositories & :ref:`Module Repositories <module_repositories>`.
 * MICROEJ SDK 6 (installed during :ref:`Environment Setup <sdk_6_getting_started_imx93_environment_setup>`).
 
-The second part consists in running the same demo application on your device. For that, you will need:
+The second part consists of running the same demo application on your device. For that, you will need:
 
-* One of these two Development Board: 
+* One of these two Development Boards: 
    * i.MX93 Evaluation Kit, available `here <https://www.nxp.com/design/design-center/development-boards/i-mx-evaluation-and-development-boards/i-mx-93-evaluation-kit:i.MX93EVK>`__.
    * FRDM i.MX93 Development Board, available `here <https://www.nxp.com/design/design-center/development-boards-and-designs/frdm-i-mx-93-development-board:FRDM-IMX93>`__.
-* An HDMI display with touchscreen connected with an `IMX-MIPI-HDMI adapter <https://www.nxp.com/part/IMX-MIPI-HDMI>`__.
+* An HDMI display with a touchscreen connected with an `IMX-MIPI-HDMI adapter <https://www.nxp.com/part/IMX-MIPI-HDMI>`__.
 
    * This getting started has been tested with a `MageDok T080A <https://store.magedok.com/collections/portable-monitors/products/8-inch-1280-720-resolution-touch-monitor-t080a>`_.
 
-* A prebuild Yocto Linux image, with all necessary linux packages preinstalled.
+* A prebuilt Yocto Linux image, with all necessary Linux packages preinstalled.
 
-* A Yocto SDK, to cross compile a sample application.
+* A Yocto SDK, to cross-compile a sample application.
 
 .. _sdk_6_getting_started_imx93_environment_setup:
 
@@ -46,13 +46,14 @@ Environment Setup
 To follow this Getting Started, you need to: 
 
 * Install MICROEJ SDK 6.
-* Get the Example-Java-Widget from Github.
+* Get the Example-Java-Widget from github.
 
 Install MICROEJ SDK 6
 ^^^^^^^^^^^^^^^^^^^^^
 
 Install MICROEJ SDK 6 by following the :ref:`sdk_6_install` instructions. 
-IntelliJ IDEA is used on this Getting Started, but feel free to use your favorite IDE.
+
+IntelliJ IDEA is used in this Getting Started, but feel free to use your favorite IDE.
 
 Get Example-Java-Widget
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -76,7 +77,7 @@ The first step is to import the :guilabel:`Example-Java-Widget` Application into
 
 .. note::
   
-   If you are using an IDE other than IntelliJ IDEA, please have a look at :ref:`sdk_6_import_project` section.
+   If you are using another IDE than IntelliJ IDEA, please have a look at :ref:`sdk_6_import_project` section.
 
 
 * If you are in the Welcome Screen, click on the :guilabel:`Open` button. Otherwise, click either on :guilabel:`File` > :guilabel:`Open...` or on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project From Existing Sources...`.
@@ -361,7 +362,7 @@ Touchscreen calibration
 
 The touch screen needs to be calibrated before using the application.
 
-This can be done using the `ts_calibrate` tool provided by `tslib <https://github.com/libts/tslib>`_ on linux.
+This can be done using the `ts_calibrate` tool provided by `tslib <https://github.com/libts/tslib>`_ on Linux.
 
 Open a console on the target (SSH or serial), start the calibration tool and follow the instructions on your device screen:
 
@@ -396,11 +397,11 @@ Congratulations! You have finished the setup of your environment. You are now re
 Build the Executable for i.MX93
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To build the Executable of the :guilabel:`Example-Java-Widget` Application, the SDK provides the :guilabel:`buildExecutable` Gradle task.
+In order to build the Executable of the :guilabel:`Example-Java-Widget` Application, the SDK provides the :guilabel:`buildExecutable` Gradle task.
 
 .. note::
   
-   If you are using an IDE other than IntelliJ IDEA, please have a look at the :ref:`sdk_6_build_executable` section.
+   If you are using another IDE than IntelliJ IDEA, please have a look at :ref:`sdk_6_build_executable` section.
    Come back to this page if you need to activate an Evaluation License.
 
 * Before using this task, you will have to configure some environment variables that depend on the OS you are using.
@@ -434,8 +435,7 @@ To build the Executable of the :guilabel:`Example-Java-Widget` Application, the 
 
 Request your Evaluation License:
 
-* You can request your Evaluation license by following the :ref:`evaluation_license_request_activation_key` instructions. You will be asked to fill in the machine UID you just copied.
-
+* Request your Evaluation license by following the :ref:`evaluation_license_request_activation_key` instructions. You will be asked to fill the machine UID field with the UID you copied before.
 * When you have received your activation key by email, drop it in the license directory by following the :ref:`evaluation_license_install_license_key` instructions (drop the license key zip file to the ``~/.microej/licenses/`` directory).
 
 Now your Evaluation license is installed, you can relaunch your application build by double-clicking on the :guilabel:`buildExecutable` task in the Gradle tasks view. It may take some time.
@@ -505,9 +505,9 @@ with
 Going Further
 -------------
 
-You have now successfully executed a MicroEJ application on an embedded device so what's next?
+You have now successfully executed a MicroEJ application on an embedded device, so what's next?
 
-If you are an application developer you can continue to explore MicroEJ's APIs and functionalities by running and studying our samples at GitHub:
+If you are an application developer, you can continue to explore MicroEJ's APIs and functionalities by running and studying our samples at GitHub:
 
 .. list-table::
    :widths: 33 33 33
@@ -516,7 +516,7 @@ If you are an application developer you can continue to explore MicroEJ's APIs a
      - Eclasspath
      - IoT
    * - This project gathers all the basic examples of the foundation libraries. 
-     - This project gather all the examples of eclasspath. 
+     - This project gathers all the examples of eclasspath. 
      - This project gathers simple applications using net libraries. 
    * - https://github.com/MicroEJ/Example-Foundation-Libraries
      - https://github.com/MicroEJ/Example-Eclasspath
@@ -524,14 +524,14 @@ If you are an application developer you can continue to explore MicroEJ's APIs a
 
 You can also learn how to build bigger and better applications by reading our :ref:`Application Developer Guide <application-developer-guide>`.
 
-If you are an embedded engineer you could look at our VEE port examples at `GitHub <https://github.com/microej?q=vee&type=all&language=&sort=>`_. And to learn how create custom VEE ports you can read our :ref:`VEE Porting Guide <vee-porting-guide>`.
+If you are an embedded engineer, you could look at our VEE port examples at `GitHub <https://github.com/microej?q=vee&type=all&language=&sort=>`__. And to learn how to create custom VEE Ports, you can read our :ref:`VEE Porting Guide <vee-porting-guide>`.
 
 You can also follow the :ref:`Kernel Developer Guide <kernel-developer-guide>` for more information on our multi-application framework or read about our powerful wearable solution called :ref:`VEE Wear <vee-wear>`.
 
-Last but not least you can choose to learn about specific topics by following one of our many :ref:`trainings` ranging from how to easily debug application to setting up a Continuous Integration process and a lot of things in between.
+Last but not least, you can choose to learn about specific topics by following one of our many :ref:`trainings` ranging from how to easily debug applications to setting up a Continuous Integration process and a lot of things in between.
 
 ..
-   | Copyright 2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2024-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
