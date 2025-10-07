@@ -273,7 +273,6 @@ For VEE Developers
                <div class="training_image_container">
                   <ul class="training_image_list">
                      <li class="training_course_number">Course</li>
-                     <li class="training_duration">30min</li>
                   </ul>
                   <img src="../_static/images/training/training_veeport_practices.jpg" alt="veeport_practices">
                </div>
