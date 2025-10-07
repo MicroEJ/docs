@@ -1,7 +1,7 @@
 .. _sdk_6_getting_started_imx93:
 
-i.MX 93 Evaluation Kit & FRDM Board
-===================================
+i.MX 93 FRDM & EVK Boards
+=========================
 
 During this Getting Started, you will learn to:
 
