@@ -67,10 +67,6 @@ All VEE Port source code examples can be found at `GitHub <https://github.com/Mi
 .. |image_rt1170| image:: images/Board-NXP_i.MX-RT1170-EK_100px.png
 .. |image_stm32f7508| image:: images/Board-ST_STM32F7508-DK_100px.png
 
-.. toctree::
-   :hidden:
-
-   gettingStartedIMXRT595
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
