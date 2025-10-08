@@ -29,11 +29,11 @@ The second part consists of running the same demo application on your device. Fo
 
 * One of these two Development Boards:
 
+   * FRDM i.MX93 Development Board, available `here <https://www.nxp.com/design/design-center/development-boards-and-designs/frdm-i-mx-93-development-board:FRDM-IMX93>`__.
    * i.MX93 Evaluation Kit, available `here <https://www.nxp.com/design/design-center/development-boards/i-mx-evaluation-and-development-boards/i-mx-93-evaluation-kit:i.MX93EVK>`__.
 
       * With an `IMX-MIPI-HDMI adapter <https://www.nxp.com/part/IMX-MIPI-HDMI>`__ to connect the HDMI display.
 
-   * FRDM i.MX93 Development Board, available `here <https://www.nxp.com/design/design-center/development-boards-and-designs/frdm-i-mx-93-development-board:FRDM-IMX93>`__.
 
 * An HDMI display with a touchscreen.
 
