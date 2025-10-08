@@ -986,6 +986,19 @@ it is also possible to run the test suite on a dedicated VEE. To define a VEE fo
        "testOnDeviceMicroejVee"("com.mycompany:vee-port:1.0.0")
    }
 
+
+Per-test resource embedding
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In many tests, you need to embed only a specific model or asset rather than all available resources.  
+You can achieve this by using the ``application.resources`` property to define a per-test resource list.
+
+Each path is relative to the resources folder root. Use a semicolon (`;`) to separate multiple resources.
+
+Here is a ``MyTest.properties`` example file (placed alongside the test class)::
+
+   application.resources = /samples/sample0.bmp; /samples/sample1.bmp; /samples/sample2.bmp
+
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
