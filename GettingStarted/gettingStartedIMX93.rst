@@ -34,6 +34,7 @@ The second part consists of running the same demo application on your device. Fo
    * FRDM i.MX93 Development Board, available `here <https://www.nxp.com/design/design-center/development-boards-and-designs/frdm-i-mx-93-development-board:FRDM-IMX93>`__.
 
 * An HDMI display with a touchscreen.
+
    * This getting started has been tested with a 1280x720 HDMI display: `MageDok T080A <https://store.magedok.com/collections/portable-monitors/products/8-inch-1280-720-resolution-touch-monitor-t080a>`_.
 
 * A prebuilt Yocto Linux image, with all necessary Linux packages preinstalled.
