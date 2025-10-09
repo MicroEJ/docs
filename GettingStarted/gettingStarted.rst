@@ -63,7 +63,7 @@ All VEE Port source code examples can be found at `GitHub <https://github.com/Mi
 
 .. |logo_st| image:: images/logo-st_100px.png
 
-.. |image_imx93| image:: images/Board-NXP_i.MX-93-EK_100px.png
+.. |image_imx93| image:: images/Board-NXP_i.MX-93-FRDM_100px.png
 .. |image_rt1170| image:: images/Board-NXP_i.MX-RT1170-EK_100px.png
 .. |image_stm32f7508| image:: images/Board-ST_STM32F7508-DK_100px.png
 
