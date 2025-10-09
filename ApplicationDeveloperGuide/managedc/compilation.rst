@@ -107,6 +107,26 @@ and omit embedding the :ref:`startup code <managedc.bind.start.function>` respon
 This configuration is particularly useful for building Wasm modules that embed only their own code, with all external dependencies defined by the Java host.
 
 
+.. _managedc.strip.debuginfo:
+
+Strip the Debug info sections
+-----------------------------
+
+When building a Wasm module from C or C++ source code, enabling debug information (for example, by compiling with the -g flag) instructs the compiler to embed additional metadata into the generated ``.wasm`` file.
+
+These debug sections usually contain symbol tables, source file references, and line number information that are useful for debugging purposes, such as producing stack traces. However, including this data increases the size of the final application.
+
+To reduce the size of the resulting application file, you can strip the debug information from the ``.wasm`` binary before using it. There are two recommended methods:
+
+.. code:: console
+
+    # Using LLVM tools
+    llvm-strip --strip-debug yourfile.wasm
+
+    # Using Binaryen
+    wasm-opt yourfile.wasm -o output.wasm --strip-debug
+
+
 ..
    | Copyright 2023-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
