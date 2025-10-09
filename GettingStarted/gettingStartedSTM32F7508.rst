@@ -84,6 +84,7 @@ that is available on the :ref:`developer_repository`.
 Open the ``microui.mvc/build.gradle.kts`` Gradle build file, replace the VEE dependency ``microejVEE`` with the STM32F7508 VEE Port, like this:
 
 .. code-block::
+
    dependencies {
       microejVee("com.microej.veeport.st.stm32f7508-dk:M5QNX_eval:2.3.0")
    }
