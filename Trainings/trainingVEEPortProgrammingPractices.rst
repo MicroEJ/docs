@@ -38,15 +38,19 @@ A Word about Security
 
 This paragraph serves as a quick overview, outlining the processes, design philosophies, and concrete mechanisms that should consider to ensure system integrity and security.
 Key enforcements should include:
+
 - code reviews (code should be created by several entities in collaboration to ensure quality, maintainability and security),
 - static analysis (use tools such as cppcheck),
 - threat modeling (what are you trying to protect, from whom, it could also be beneficial to do some penetration testing),
 - memory and thread separation (isolate your treatments, segregate your information based on need applicative or otherwise),
 - and cryptographic support (remove out-of-date standards, ensure proper storage of keys and certificates, ensure sensitive data is not transiting via easily accessible unsecured memories, etc.).
+
 You should also consider covering:
+
 - system-level concerns (boot, OTA updates, root of trust),
 - vulnerability reporting and mitigation strategies (CVEs management and vulnerability recovery, use SBOM tools for automatic detection),
 - and certification strategies (software-only, hardware-anchored, or full product certification).
+
 You should aim to guide developers and architects to integrating security practices throughout your codebase and ecosystem on a day-to-day basis.
 
 
