@@ -133,6 +133,9 @@ The Gradle project should now be imported into IntelliJ IDEA. Your workspace con
 Select the VEE Port
 ^^^^^^^^^^^^^^^^^^^
 
+For this getting started, we will use the `i.MX93 VEE Port module <https://forge.microej.com/ui/native/microej-developer-repository-release/com/microej/veeport/imx93/vee-port/>`__
+that is available on the :ref:`developer_repository`.
+
 In the Gradle build file ``build.gradle.kts``, replace the VEE dependency ``microejVEE`` with the i.MX93, like this:
 
 .. code-block::
