@@ -909,6 +909,14 @@ hereafter:
       - String version, that can retrieved using
         `Module.getVersion()`_
 
+Using SDK 6 1.5.0 or later, you can add or overwrite your ``.kf`` files properties in your ``build.gradle.kts`` file, for example in a feature::
+
+   microej {
+      kfProperties.put("name", "myFeature")
+      kfProperties.put("version", "1.5.0")
+      kfProperties.put("myProperty", "myValue")
+   }
+
 .. _kernelapi:
 
 Kernel API Definition
