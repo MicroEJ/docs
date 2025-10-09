@@ -75,6 +75,21 @@ The Gradle project should now be imported in Android Studio, your workspace cont
 
 .. _sdk_6_getting_started_stm32f7508dk_eula:
 
+Select the VEE Port
+^^^^^^^^^^^^^^^^^^^
+
+For this getting started, we will use the `STM32F7508 VEE Port module <https://forge.microej.com/ui/native/microej-developer-repository-release/com/microej/veeport/st/stm32f7508-dk/M5QNX_eval/>`__
+that is available on the :ref:`developer_repository`.
+
+Open the ``microui.mvc/build.gradle.kts`` Gradle build file, replace the VEE dependency ``microejVEE`` with the STM32F7508 VEE Port, like this:
+
+.. code-block::
+   dependencies {
+      microejVee("com.microej.veeport.st.stm32f7508-dk:M5QNX_eval:2.3.0")
+   }
+
+For more information about how to select a VEE Port please refer to the following section: :ref:`sdk_6_select_veeport`.
+
 Accept the MICROEJ SDK EULA
 ---------------------------
 
