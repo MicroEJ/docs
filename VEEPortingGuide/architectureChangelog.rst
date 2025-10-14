@@ -58,10 +58,11 @@ Foundation Libraries
 - Fixed `TimerTask` scheduling issues when using a `Date` with an `ej.bon.Timer` to schedule a task.
 - [Multi] - Fixed, calling `Kernel.install(java.io.InputStream)`_ now directly throws `OutOfMemoryError`_ and `StackOverflowError`_ exceptions instead of previously being wrapped in `ej.kf.InvalidFormatException`_.
 - [Cortex-M] - Fixed incorrect handling of `NaN` and `Infinity` inputs in `Math.cos()`, `Math.sin()`, `Math.tan()`, `Math.acos()`, and `Math.asin()`, when the underlying C Math library does not process these values properly (the issue was introduced in architecture version 8.4.0).
-- [Cortex-M] - Fixed `ByteArray.readXXX()` potentialy returning an incorrect value (the issue was introduced in architecture version `8.3.0`).
+- [Cortex-M] - Fixed `ej.bon.ByteArray.readXXX()`_ potentialy returning an incorrect value (the issue was introduced in architecture version :ref:`8.3.0 <changelog-8.3.0>`).
 
 .. _ej.kf.InvalidFormatException: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/InvalidFormatException.html
 .. _StackOverflowError: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/StackOverflowError.html
+.. _ej.bon.ByteArray.readXXX(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/ByteArray.html
 
 
 Integration
@@ -787,7 +788,7 @@ SOAR
    over
 -  Removed names of arrays of basetype unless ``soar.generate.classnames`` option is set to ``true``
 -  [Multi] - Fixed potential link exception when a Feature use one of the
-   ``ej_bon_ByteArray`` methods
+   `ej.bon.ByteArray`_ methods
    (e.g. ``ej.kf.InvalidFormatException: code=51:ON_ej_bon_ByteArray_method_readUnsignedByte_AB_I_I``)
 -  [Multi] - Fixed SOAR error (``Invalid SNI method``) when one of the
    `ej.bon.Constants.getXXX()`_ methods is declared in a ``kernel.api``
@@ -795,6 +796,7 @@ SOAR
    code.
 
 .. _Constants.getBoolean(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Constants.html#getBoolean-java.lang.String-
+.. _ej.bon.ByteArray: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/ByteArray.html
 .. _ej.bon.Constants.getXXX(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Constants.html
 
 Tools
