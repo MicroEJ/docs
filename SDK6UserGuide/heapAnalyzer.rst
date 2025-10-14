@@ -76,6 +76,7 @@ Heap Dumper
 -----------
 
 The Heap Dumper generates ``.heap`` files. There are two implementations:
+
 - the one integrated to the Simulator: it directly dumps ``.heap`` files from the Managed Heap. 
 - the Heap Dumper tool: it generates ``.heap`` files from ``.hex`` files that must be manually retrieved from the device.
 
