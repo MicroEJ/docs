@@ -39,7 +39,7 @@ specific configuration:
 [8.5.0] - 2025-10-09
 --------------------
 
-This Architecture version requires JDK11. See :ref:`check-your-jdk-version` for more details.
+This Architecture version requires JDK11. See :ref:`sdk_6_check_jdk` for more details.
 
 
 Core Engine
@@ -47,23 +47,33 @@ Core Engine
 
 - Added the ability to :ref:`dynamically configure the Managed Heap and Immortals Heap memory <dynamic_heap_config>` at Core Engine start time.
 - Optimized the Garbage Collector.
-- Fixed Math.nextAfter(float start, double direction), returns start if direction is very close to start.
+- Fixed `Math.nextAfter(float start, double direction)`_, returns start if direction is very close to start.
 - Fixed remove direct access to errno in ``microejruntime.a``.
+
+.. _Math.nextAfter(float start, double direction): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Math.html#nextAfter-float-double-
 
 
 Foundation Libraries
 ~~~~~~~~~~~~~~~~~~~~
 
-- Fixed incorrect output of `NaN` when calling `Math.ulp()` with positive `Infinity`.
-- Fixed, in ``BON``, Timer scheduling of tasks with a time parameter provided as a ``Date``. The date was previously interpreted as Platform time instead of Application time.```
+- Fixed incorrect output of `NaN` when calling `Math.ulp()`_ with positive `Infinity`.
+- Fixed, in ``BON``, `Timer` scheduling of `tasks`_ with a time parameter provided as a `Date`_. The date was previously interpreted as Platform time instead of Application time.
 - [Multi] - Fixed, calling `Kernel.install(java.io.InputStream)`_ now directly throws `OutOfMemoryError`_ and `StackOverflowError`_ exceptions instead of previously being wrapped in `ej.kf.InvalidFormatException`_.
-- [Cortex-M] - Fixed incorrect handling of `NaN` and `Infinity` inputs in `Math.cos()`, `Math.sin()`, `Math.tan()`, `Math.acos()`, and `Math.asin()`, when the underlying C Math library does not process these values properly (the issue was introduced in architecture version 8.4.0).
+- [Cortex-M] - Fixed incorrect handling of `NaN` and `Infinity` inputs in `Math.cos()`_, `Math.sin()`_, `Math.tan()`_, `Math.acos()`_, and `Math.asin()`_, when the underlying C Math library does not process these values properly (the issue was introduced in architecture version :ref:`8.4.0 <changelog-8.4.0>`).
 - [Cortex-M] - Fixed `ej.bon.ByteArray.readXXX()`_ potentialy returning an incorrect value (the issue was introduced in architecture version :ref:`8.3.0 <changelog-8.3.0>`).
 
+.. _Math.ulp(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Math.html#ulp-double-
+.. _Timer: https://repository.microej.com/javadoc/microej_5.x/apis_old/index.html?ej/bon/Timer.html
+.. _tasks: https://repository.microej.com/javadoc/microej_5.x/apis_old/index.html?ej/bon/TimerTask.html
+.. _Date: https://repository.microej.com/javadoc/microej_5.x/apis_old/index.html?java/util/Date.html
 .. _ej.kf.InvalidFormatException: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/InvalidFormatException.html
 .. _StackOverflowError: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/StackOverflowError.html
 .. _ej.bon.ByteArray.readXXX(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/ByteArray.html
-
+.. _Math.cos(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Math.html#cos-double-
+.. _Math.sin(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Math.html#sin-double-
+.. _Math.tan(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Math.html#tan-double-
+.. _Math.acos(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Math.html#acos-double-
+.. _Math.asin(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Math.html#asin-double-
 
 Integration
 ~~~~~~~~~~~

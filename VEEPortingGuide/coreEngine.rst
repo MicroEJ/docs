@@ -349,10 +349,11 @@ The following table describes these error codes.
    | -25         | The function ``LLMJVM_IMPL_shutdown`` defined in the        |
    |             | Abstraction Layer implementation returns an error.          |
    +-------------+-------------------------------------------------------------+
-   | -26         | The GC mark stack size is too small                         |
+   | -26         | The :ref:`GC mark stack size <option_gc_stack_size>`        |
+   |             |  is too small                                               |
    +-------------+-------------------------------------------------------------+
-   | -27         | The application object file (``microejapp.o``) is not compatible with the third-party linker.
-   |             | by the third-party linker.                                  |
+   | -27         | The application object file (``microejapp.o``) is not       |
+   |             | compatible with the third-party linker.                     |
    +-------------+-------------------------------------------------------------+
    | -28         | The function ``LLMJVM_CONF_impl_get_managed_heap_memory``   |
    |             | returns an error.                                           |
