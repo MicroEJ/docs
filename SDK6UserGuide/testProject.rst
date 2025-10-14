@@ -957,6 +957,14 @@ Application Options defined in this file do not require the ``microej.testsuite.
    the properties file must be named after the main class. 
    If the main class has been generated from a JUnit test class, its class name is prefixed by ``_AllTests_``.
 
+Inject Resources For a Specific Test
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To embed resources for a specific test (image, model, ...), set the ``application.resources`` property in the test properties file (See :ref:`Inject Application Options For a Specific Test`). For example:
+
+   application.resources=/samples/sample0.bmp;/samples/sample1.bmp;/samples/sample2.bmp
+
+Each path is relative to the resources folder root. Use a semicolon (`;`) to separate multiple resources.
 
 Test Suite Advanced Configuration
 ---------------------------------
@@ -985,19 +993,6 @@ it is also possible to run the test suite on a dedicated VEE. To define a VEE fo
        ...
        "testOnDeviceMicroejVee"("com.mycompany:vee-port:1.0.0")
    }
-
-
-Per-test resource embedding
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-In many tests, you need to embed only a specific model or asset rather than all available resources.  
-You can achieve this by using the ``application.resources`` property to define a per-test resource list.
-
-Each path is relative to the resources folder root. Use a semicolon (`;`) to separate multiple resources.
-
-Here is a ``MyTest.properties`` example file (placed alongside the test class)::
-
-   application.resources = /samples/sample0.bmp; /samples/sample1.bmp; /samples/sample2.bmp
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
