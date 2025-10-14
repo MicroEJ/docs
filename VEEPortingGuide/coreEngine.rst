@@ -249,13 +249,13 @@ to the Application:
 Configuring Memory Dynamically
 ------------------------------
 
-To configure the heaps sizes at the Core Engine startup time rather than at compile time (see :ref:`Managed Heap size configuration<option_managed_heap>` and :ref:`Immortals Heap size configuration<option_immortal_heap>` Application options),
+To configure the heaps sizes at the Core Engine startup time rather than at link time (see :ref:`Managed Heap size configuration<option_managed_heap>` and :ref:`Immortals Heap size configuration<option_immortal_heap>` Application options),
 implement the Core Engine configuration Low Level API (see :ref:`LLMJVM_CONF_impl.h<LLMJVM-API-SECTION-CONF>`):
 
 - ``LLMJVM_CONF_impl_get_managed_heap_memory()``: allocates the Managed Heap.
 - ``LLMJVM_CONF_impl_get_immortals_heap_memory()``: allocates the Immortals Heap.
 
-The Core Engine provides a default implementation for those functions which returns memory sections statically allocated using the compile time heaps sizes configuration (& linker script for position).
+The Core Engine provides a default implementation for those functions which returns memory sections statically allocated using the heaps sizes Application options and third-party linker script for position.
 If the default implementation is overridden, the heap configuration properties are ignored unless the custom implementation uses them.
 These functions are called by the Core Engine in ``SNI_createVM()``.
 
@@ -351,7 +351,7 @@ The following table describes these error codes.
    +-------------+-------------------------------------------------------------+
    | -26         | The GC mark stack size is too small                         |
    +-------------+-------------------------------------------------------------+
-   | -27         | The application object file has not been correctly linked   |
+   | -27         | The application object file (``microejapp.o``) is not compatible with the third-party linker.
    |             | by the third-party linker.                                  |
    +-------------+-------------------------------------------------------------+
    | -28         | The function ``LLMJVM_CONF_impl_get_managed_heap_memory``   |

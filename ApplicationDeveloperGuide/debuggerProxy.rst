@@ -155,7 +155,7 @@ Dump the memory of the running Executable
         .. note::
             You must use a version of IAR Workbench for which the ``vee-memory-dump.mac`` script file is generated.
 
-            A script file generated for IAR8 will not work on IAR Workbench 9.x.x and vice versa.
+            A script file generated for IAR 8.x will not work on IAR Workbench 9.x and vice versa.
 
         In IAR Embedded Workbench:
 

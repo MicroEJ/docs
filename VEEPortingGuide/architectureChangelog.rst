@@ -39,23 +39,23 @@ specific configuration:
 [8.5.0] - 2025-10-09
 --------------------
 
-This Architecture version update changes the minimum required Java version to Java 11.
+This Architecture version requires JDK11. See :ref:`check-your-jdk-version` for more details.
 
 
 Core Engine
 ~~~~~~~~~~~
 
-- Added the ability to dynamically configure the Managed/Immortals Heap memory at Core Engine start time.
+- Added the ability to :ref:`dynamically configure the Managed Heap and Immortals Heap memory <dynamic_heap_config>` at Core Engine start time.
 - Optimized the Garbage Collector.
 - Fixed Math.nextAfter(float start, double direction), returns start if direction is very close to start.
-- Fixed Remove direct access to errno in ``microejruntime.a``
+- Fixed remove direct access to errno in ``microejruntime.a``.
 
 
 Foundation Libraries
 ~~~~~~~~~~~~~~~~~~~~
 
 - Fixed incorrect output of `NaN` when calling `Math.ulp()` with positive `Infinity`.
-- Fixed `TimerTask` scheduling issues when using a `Date` with an `ej.bon.Timer` to schedule a task.
+- Fixed, in ``BON``, Timer scheduling of tasks with a time parameter provided as a ``Date``. The date was previously interpreted as Platform time instead of Application time.```
 - [Multi] - Fixed, calling `Kernel.install(java.io.InputStream)`_ now directly throws `OutOfMemoryError`_ and `StackOverflowError`_ exceptions instead of previously being wrapped in `ej.kf.InvalidFormatException`_.
 - [Cortex-M] - Fixed incorrect handling of `NaN` and `Infinity` inputs in `Math.cos()`, `Math.sin()`, `Math.tan()`, `Math.acos()`, and `Math.asin()`, when the underlying C Math library does not process these values properly (the issue was introduced in architecture version 8.4.0).
 - [Cortex-M] - Fixed `ej.bon.ByteArray.readXXX()`_ potentialy returning an incorrect value (the issue was introduced in architecture version :ref:`8.3.0 <changelog-8.3.0>`).
@@ -68,21 +68,18 @@ Foundation Libraries
 Integration
 ~~~~~~~~~~~
 
-- Added the ability to dynamically configure the Managed Heap memory at Core Engine start time.
-- Added the ability to dynamically configure the Immortals Heap memory at Core Engine start time.
-- Optimized the FSO build time.
 - Fixed Memory Map Scripts, which counted the application code in the Core Engine category (the issue was introduced in architecture version :ref:`8.4.0 <changelog-8.4.0>`).
 
 SOAR
 ~~~~
 
-- Fixed a potential crash occurring when using a SDK6 Foundation (present in versions up to SDK 1.3.0).
-- Fixed a potential issue where SOAR could report an 'unknown field' error for a field that exists.
+- Fixed a potential internal error occurring when building an Executable with SDK6 (present in versions up to :ref:`SDK 1.3.1 <changelog-1.3.1>`).
+- Fixed SOAR reporting an 'unknown field' error when a library uses a ``static`` field declared in another library as a ``static final`` field (previously interpreted as a constant).
 
 Tools
 ~~~~~
 
-- Fixed in elf util: UpdateSection task used by KF Testsuite to support Portable Independent Executable when ASLR is enabled
+- Fixed, in ELF Utils, ``UpdateSection`` task used by KF Testsuite to support Portable Independent Executable when ASLR is enabled.
 
 
 .. _changelog-8.4.0:
