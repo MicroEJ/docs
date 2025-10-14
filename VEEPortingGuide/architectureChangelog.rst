@@ -71,7 +71,7 @@ Integration
 - Added the ability to dynamically configure the Managed Heap memory at Core Engine start time.
 - Added the ability to dynamically configure the Immortals Heap memory at Core Engine start time.
 - Optimized the FSO build time.
-- Fixed Memory Map Scripts, which counted the application code in the Core Engine category (the issue was introduced in architecture version `8.4.0`).
+- Fixed Memory Map Scripts, which counted the application code in the Core Engine category (the issue was introduced in architecture version :ref:`8.4.0 <changelog-8.4.0>`).
 
 SOAR
 ~~~~
