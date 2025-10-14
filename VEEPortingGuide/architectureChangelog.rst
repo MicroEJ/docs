@@ -36,8 +36,8 @@ specific configuration:
 
 .. _changelog-8.5.0:
 
-[8.5.0] - [unreleased]
-----------------------
+[8.5.0] - 2025-10-09
+--------------------
 
 This Architecture version update changes the minimum required Java version to Java 11.
 
