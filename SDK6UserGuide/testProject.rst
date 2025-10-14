@@ -960,7 +960,7 @@ Application Options defined in this file do not require the ``microej.testsuite.
 Inject Resources For a Specific Test
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To embed resources for a specific test (image, model, ...), set the ``application.resources`` property in the test properties file (See :ref:`Inject Application Options For a Specific Test`). For example:
+To embed resources for a specific test (image, model, ...), set the ``application.resources`` property in the test properties file (See :ref:`Inject Application Options For a Specific Test`). For example::
 
    application.resources=/samples/sample0.bmp;/samples/sample1.bmp;/samples/sample2.bmp
 
