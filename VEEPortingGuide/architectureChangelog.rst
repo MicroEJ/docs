@@ -45,11 +45,11 @@ This Architecture version requires JDK11. See :ref:`sdk_6_check_jdk` for more de
 Core Engine
 ~~~~~~~~~~~
 
-- Added the ability to :ref:`dynamically configure the Managed Heap and Immortals Heap memory <dynamic_heap_config>` at Core Engine start time.
+- Added the ability to :ref:`dynamically configure the Managed Heap and Immortals Heap memory <dynamic_heap_config>` at Core Engine startup.
 - Optimized object allocation performance in cases of highly fragmented heaps.
-- Fixed `Math.nextAfter(float start, double direction)`_, returns start if direction is very close to start.
-- Fixed remove direct access to errno in ``microejruntime.a``.
-- Fixed `Feature.stop()`_, which could infinitely block the Core Engine in some cases.
+- Fixed `Math.nextAfter(float start, double direction)`_, which returned ``start`` when ``direction`` is very close to ``start``.
+- Removed direct access to ``errno`` in ``microejruntime.a`` to avoid toolchain or libc compatibility issues.
+- [Multi] - Fixed `Feature.stop()`_, which could infinitely block the Core Engine in some cases.
 
 .. _Math.nextAfter(float start, double direction): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Math.html#nextAfter-float-double-
 
@@ -57,10 +57,10 @@ Core Engine
 Foundation Libraries
 ~~~~~~~~~~~~~~~~~~~~
 
-- Fixed incorrect output of `NaN` when calling `Math.ulp()`_ with positive `Infinity`.
-- Fixed, in ``BON``, `Timer` scheduling of `tasks`_ with a time parameter provided as a `Date`_. The date was previously interpreted as Platform time instead of Application time.
-- [Multi] - Fixed, calling `Kernel.install(java.io.InputStream)`_ now directly throws `OutOfMemoryError`_ and `StackOverflowError`_ exceptions instead of previously being wrapped in `ej.kf.InvalidFormatException`_.
-- [Cortex-M] - Fixed incorrect handling of `NaN` and `Infinity` inputs in `Math.cos()`_, `Math.sin()`_, `Math.tan()`_, `Math.acos()`_, and `Math.asin()`_, when the underlying C Math library does not process these values properly (the issue was introduced in architecture version :ref:`8.4.0 <changelog-8.4.0>`).
+- Fixed `Math.ulp()`_ returning ``NaN`` instead of positive infinity when called with positive infinity.
+- Fixed, in ``BON``, ``Timer`` scheduling of `tasks`_ with a time parameter provided as a `Date`_. The date was previously interpreted as Platform time instead of Application time.
+- [Multi] - Fixed `Kernel.install(java.io.InputStream)`_ to directly throw `OutOfMemoryError`_ and `StackOverflowError`_ exceptions instead of wrapping them in `ej.kf.InvalidFormatException`_.
+- [Cortex-M] - Fixed incorrect handling of ``NaN`` and ``Infinity`` inputs in `Math.cos()`_, `Math.sin()`_, `Math.tan()`_, `Math.acos()`_, and `Math.asin()`_, when the underlying C Math library does not process these values properly (the issue was introduced in architecture version :ref:`8.4.0 <changelog-8.4.0>`).
 - [Cortex-M] - Fixed `ej.bon.ByteArray.readXXX()`_ potentialy returning an incorrect value (the issue was introduced in architecture version :ref:`8.3.0 <changelog-8.3.0>`).
 
 .. _Math.ulp(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Math.html#ulp-double-
@@ -84,7 +84,7 @@ Integration
 SOAR
 ~~~~
 
-- Fixed a potential internal error occurring when building an Executable with SDK6 (present in versions up to :ref:`SDK 1.3.1 <changelog-1.3.1>`).
+- Fixed a potential internal error occurring when building an Executable with SDK6 (present in versions up to :ref:`SDK6 1.3.1 <changelog-1.3.1>`).
 - Fixed SOAR reporting an 'unknown field' error when a library uses a ``static`` field declared in another library as a ``static final`` field (previously interpreted as a constant).
 
 Tools
