@@ -28,7 +28,7 @@ The first step is to create a VEE Port configuration project:
         - Click :guilabel:`File` > :guilabel:`New` > :guilabel:`Project from Version Control...`.
         - Select :guilabel:`Repository URL`.
         - Select :guilabel:`Git` as Version control.
-        - Fill the URL of the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.3.1>`__ Github Repository.
+        - Fill the URL of the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.4.0>`__ Github Repository.
         - Fill the Directory in which the Project Template must be cloned.
         - Click on :guilabel:`Clone` button.
 
@@ -63,7 +63,7 @@ The first step is to create a VEE Port configuration project:
         - Click :guilabel:`File` > :guilabel:`New` > :guilabel:`Project from Version Control...`.
         - Select :guilabel:`Repository URL`.
         - Select :guilabel:`Git` as Version control.
-        - Fill the URL of the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.3.1>`__ Github Repository.
+        - Fill the URL of the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.4.0>`__ Github Repository.
         - Fill the Directory in which the Project Template must be cloned.
         - Click on :guilabel:`Clone` button.
 
@@ -96,7 +96,7 @@ The first step is to create a VEE Port configuration project:
     .. tab:: Eclipse
             
         - Open a new terminal.
-        - Clone the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.3.1>`__ Github Repository::
+        - Clone the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.4.0>`__ Github Repository::
 
              git clone https://github.com/MicroEJ/Tool-Project-Template-VEEPort.git
       
@@ -151,7 +151,7 @@ The first step is to create a VEE Port configuration project:
 
             Command Palette in VS Code
       
-        - Fill the URI of the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.3.1>`__ Github Repository in the Search Bar.
+        - Fill the URI of the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.4.0>`__ Github Repository in the Search Bar.
         - Click on :guilabel:`Clone from URL`.
 
         .. figure:: images/vscode-search-bar-vee-port-template.png
@@ -183,7 +183,7 @@ The first step is to create a VEE Port configuration project:
 
     .. tab:: Command Line Interface
             
-        - Clone the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.3.1>`__ Github Repository::
+        - Clone the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.4.0>`__ Github Repository::
 
              git clone https://github.com/MicroEJ/Tool-Project-Template-VEEPort.git
       
@@ -361,7 +361,7 @@ Here are some examples::
     com.microej.runtime.ssl.enabled=false
 
 For a complete list of the properties allowing to enable/disable modules, 
-refer to the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/blob/1.3.1/vee-port/configuration.properties>`_.
+refer to the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/blob/1.4.0/vee-port/configuration.properties>`_.
 
 .. _sdk_6_veeport_pack_configuration:
 
@@ -432,7 +432,7 @@ VEE Port Publication
 Publishing a VEE Port in a repository allows to make it easily available to any project.
 
 To be able to publish a VEE Port, you have to make sure that the ``group`` and ``version`` properties are defined for the VEE Port subproject.
-If you have created your VEE Port project from `the template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.3.1>`__, they are defined in main ``build.gradle.kts`` file::
+If you have created your VEE Port project from `the template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.4.0>`__, they are defined in main ``build.gradle.kts`` file::
 
   allprojects {
     group = "com.mycompany.myboard"
@@ -456,6 +456,12 @@ by executing the ``publish`` task.
 An important point to notice is that publishing a VEE Port does not publish the built VEE Port, 
 it publishes all the configuration and dropins of the project, as well as the BSP when it is configured in Full Connection mode.
 The VEE Port is then built on the fly when it is required (when building the Executable of an Application for example).
+
+Aggregated Javadoc
+------------------
+
+Starting from SDK 6 ``1.4.0``, a Javadoc Jar file is automatically built and published when publishing the VEE Port. This file contains the aggregated javadoc of 
+all Libraries provided to the VEE Port with the ``api`` configuration. 
 
 BSP Publication Filtering
 -------------------------

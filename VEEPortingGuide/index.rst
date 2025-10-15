@@ -12,9 +12,11 @@ VEE Porting Guide
    bspConnection
    veePortQualification
    coreEngine
+   veePortTrace
    advanceTrace
    multiSandbox
    tinySandbox
+   libraries
    native
    externalResourceLoader
    serialCommunications

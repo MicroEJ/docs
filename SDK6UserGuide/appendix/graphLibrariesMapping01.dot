@@ -1,0 +1,16 @@
+digraph mygraph {
+    bgcolor="transparent"
+    fontname="Helvetica,Arial,sans-serif"
+    node [
+        shape = box
+        width = 1.5
+        color = "#7dc5dc"
+        style = filled
+        fontname="Helvetica,Arial,sans-serif"
+    ]
+    edge [fontname="Helvetica,Arial,sans-serif"]
+    "Application" -> "VEE Port"
+    "Application" -> "com.mycompany:my-foundation-lib-A:1.0.0"
+    "Application" -> "com.mycompany:my-foundation-lib-B:1.0.0"
+    "VEE Port" -> "com.mycompany:my-foundation-lib-A:1.0.0"
+}

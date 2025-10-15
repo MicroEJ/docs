@@ -75,7 +75,7 @@ The configuration of the testsuites of a project must be defined inside the foll
             dependencies { // (4)
                 implementation(project())
                 implementation("ej.api:edc:1.3.5")
-                implementation("ej.library.test:junit:1.11.0")
+                implementation("ej.library.test:junit:1.12.0")
             }
          }
       }
@@ -89,7 +89,7 @@ This piece of configuration is the minimum configuration required to define a te
   Simulator.
 - ``(4)``: adds the dependencies required by the tests. The first line declares a dependency to the code of the project.
   The second line declares a dependency on the ``edc`` Library. The third line declares a dependency to the JUnit API used 
-  to annotate Java Test classes. Finally the fourth line declares a dependency to a required JUnit library.
+  to annotate Java Test classes.
 
 .. warning::
 
@@ -129,9 +129,8 @@ As a summary, the rules are:
 .. warning::
 
    Declaring a VEE in project dependencies only applies to the current project. 
-   This configuration is not fetched transitively by consumer projects.
-   But it is highly recommended to scope the VEE to its usage since this behavior is aimed to change in a future version.
-   Especially when configuring the VEE to test a Library project, it is recommended to use ``testMicroejVee``.
+   By default the transitive resolution of the VEE is disabled but you can enable it with the project property ``feature.vee.transitivity.enabled``.
+   For more information, refer to :ref:`sdk_6_vee_port_transitivity`.
 
 Create a Test Class
 ^^^^^^^^^^^^^^^^^^^
@@ -146,7 +145,7 @@ Before creating the Test class, make sure this library is declared in the testsu
          val test by getting(JvmTestSuite::class) {
             ...
             dependencies {
-               implementation("ej.library.test:junit:1.11.0")
+               implementation("ej.library.test:junit:1.12.0")
             }
             ...
          }
@@ -690,7 +689,7 @@ Therefore:
 
             dependencies {
                implementation(project())
-               implementation("ej.library.test:junit:1.11.0")
+               implementation("ej.library.test:junit:1.12.0")
             }
          }
 
@@ -708,7 +707,7 @@ Therefore:
 
             dependencies {
                implementation(project())
-               implementation("ej.library.test:junit:1.11.0")
+               implementation("ej.library.test:junit:1.12.0")
             }
 
             targets {
@@ -886,7 +885,9 @@ The following configuration parameters are available:
 
      - ``info``
    * - ``microej.testsuite.status.pattern``
-     - **since `1.3.0`** Pattern to change test passed (default is ``.:[|PASSED|]:.``) and failed (default is ``.:[|FAILED|]:.``) tags in testsuite logs.
+     - **Requires SDK 6 1.3.0 and ej.library.test:junit:1.12.0 minimum.**
+     
+       Pattern of the test passed (default is ``.:[|PASSED|]:.``) and failed (default is ``.:[|FAILED|]:.``) tags in testsuite logs.
        These tags are catched by the testsuite engine to determine if a test has passed or failed.
        The ``{}`` placeholder in the pattern will be replaced by ``PASSED`` or ``FAILED`` respectively in order to discriminate these tags from other test logs.
      - ``.:[|{}|]:.``

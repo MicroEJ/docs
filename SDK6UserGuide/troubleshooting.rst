@@ -72,7 +72,7 @@ If this kind of message appears when resolving plugins or modules dependencies:
 .. code:: console
 
 	* What went wrong:
-	Plugin [id: 'com.microej.gradle.application', version: '1.3.1'] was not found in any of the following sources:
+	Plugin [id: 'com.microej.gradle.application', version: '1.4.0'] was not found in any of the following sources:
 
 	- Gradle Core Plugins (plugin is not in 'org.gradle' namespace)
 	- Included Builds (No included builds contain this plugin)
@@ -106,11 +106,11 @@ If this kind of message appears when resolving plugins or modules dependencies:
 .. code:: console
 
 	* What went wrong:
-	Plugin [id: 'com.microej.gradle.application', version: '1.3.1'] was not found in any of the following sources:
+	Plugin [id: 'com.microej.gradle.application', version: '1.4.0'] was not found in any of the following sources:
 
 	- Gradle Core Plugins (plugin is not in 'org.gradle' namespace)
 	- Included Builds (No included builds contain this plugin)
-	- Plugin Repositories (could not resolve plugin artifact 'com.microej.gradle.application:com.microej.gradle.application.gradle.plugin:1.3.1')
+	- Plugin Repositories (could not resolve plugin artifact 'com.microej.gradle.application:com.microej.gradle.application.gradle.plugin:1.4.0')
 	Searched in the following repositories:
 		microEJCentral(https://repository.microej.com/modules)
 		microEJForgeCentral(https://forge.microej.com/artifactory/microej-central-repository-release)
@@ -382,7 +382,7 @@ To fix this issue, you must update the dependency of your testsuite to use the s
 					implementation(project())
 					implementation("ej.api:edc:1.3.7")
 					implementation("ej.api:kf:1.7.0")
-					implementation("ej.library.test:junit:1.11.0")
+					implementation("ej.library.test:junit:1.12.0")
 					implementation("org.junit.platform:junit-platform-launcher:1.8.2")
 				}
 			}
@@ -454,6 +454,45 @@ During the build of a project (precisely the Java compilation phase), the follow
 This means that the Java installation used by Gradle is not a JDK but a JRE, whereas Gradle and the SDK require a JDK.
 Therefore, the solution is to install and configure a JDK.
 Refer to :ref:`sdk_6_check_jdk` for more information.
+
+.. _sdk_6_vee_launch_jvm_configuration_errors:
+
+Build Errors from JVM Memory Misconfiguration
+---------------------------------------------
+
+Below are two examples of error messages that can be raised when the JVM used to launch the VEE scripts is not configured properly.
+The ouput may vary depending on the Gradle task being executed but the errors share the same root cause.
+
+When :ref:`building an executable <sdk_6_build_executable>`::
+
+	=============== [ Launching SOAR ] ===============
+  	1 : ERROR :
+  	[M2] - OutOfMemory error. Try to increase heap space using JVM option '-Xmx' (e.g. '-Xmx4096M')
+  	Terminated with errors
+
+When :ref:`running on simulator <sdk_6_run_on_simulator>`::
+
+	=============== [ Launching on Simulator ] ===============
+	"Internal limits reached. Please contact support@microej.com"
+
+These errors are typically seen when running ``gradlew buildExecutable`` or ``gradlew runOnSimulator`` if the forked JVM is started with insufficient heap.
+
+To resolve this, adjust the JVM memory configuration by setting the JVM options accordingly with the property ``microej.launch.jvmargs``, for example::
+
+	./gradlew buildExecutable -Dmicroej.launch.jvmargs="-Xmx1024m -Xms512m"
+
+.. _sdk_6_no_architecture_defined_error:
+
+No Architecture Defined Error
+-----------------------------
+
+The following error may be raised when building a project::
+
+	Execution failed for task ':loadVee'.
+  	> No Architecture defined. An Architecture can be provided by declaring adependency with the `microejArchitecture` configuration (e.g. `microejArchitecture("com.mycompany:myArchitecture:M.m.p")').
+
+This can happen when a VEE Port built with SDK 6 ``1.3.0`` or higher is provided to a project using an older version of the SDK 6.
+To resolve this, update your project to use SDK 6 version ``1.2.0`` minimum.
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 

@@ -32,7 +32,7 @@ Event Tracing can be accessed from two APIs:
          <dependency org="ej.api" name="trace" rev="1.1.0"/>
      
   
-- A C API, provided by the Foundation Library header file named ``LLTRACE_impl.h``.
+- A C API, provided by the Foundation Library header file named ``LLTRACE.h``.
 
 .. _Trace API module: https://repository.microej.com/modules/ej/api/trace/
 
@@ -46,16 +46,19 @@ Events are recorded if and only if:
 - the Core Engine trace system is enabled,
 - and trace recording is started.
 
-To enable the Core Engine trace system, set the :ref:`Application Option <application_options>` named ``core.trace.enabled`` to ``true`` (see also :ref:`launch configuration <architecture_options_group_trace>`).
+To enable the Core Engine trace system, set the :ref:`Application Option <application_options>` named ``core.trace.enabled`` to ``true`` (see also :ref:`launch configuration <architecture_options_group_trace>`). 
+The Trace system requires at last 16 bytes of Immortal heap (see :ref:`Immortals Heap size <option_immortal_heap>`).
 
 Then, multiple ways are available to start and stop the trace recording:
   
 - by setting the :ref:`Application Option <application_options>` named ``core.trace.autostart`` to ``true`` to automatically start at startup (see also :ref:`launch configuration <architecture_options_group_trace>`),
 - using the Java API methods `ej.trace.Tracer.startTrace()`_ and `ej.trace.Tracer.stopTrace()`_,
-- using the C API functions ``LLTRACE_IMPL_start(void)`` and ``LLTRACE_IMPL_stop(void)``.
+- using the C API functions ``LLTRACE_start(void)`` and ``LLTRACE_stop(void)``.
 
 .. _ej.trace.Tracer.startTrace(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/trace/Tracer.html#startTrace--
 .. _ej.trace.Tracer.stopTrace(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/trace/Tracer.html#stopTrace--
+
+.. _section_event_trace_java_usage:
 
 Java API Usage
 ==============
@@ -150,19 +153,8 @@ Examples:
 VEE Port Implementation
 =======================
 
-By default, when enabled, the Trace API displays a message in the standard output for every ``recordEvent(...)`` and ``recordEventEnd(...)`` method calls. 
+More information about the existing implementations and how to implement the required natives are available in the section :ref:`Event Tracing <vee-event-tracing>` of the VEEPorting Guide chapter.
 
-It does not print a timestamp when displaying the trace message because it can drastically affect execution performances.
-It only prints the ID of the recorded event followed by the values given in parameters.
-
-A VEE Port can connect its own implementation by overriding the functions defined in the ``LLTRACE_impl.h`` file.
-
-MicroEJ Corp. provides an implementation that redirects the events to :ref:`systemview` tool, 
-the real-time recording and visualization tool from `Segger <https://www.segger.com/>`_. It is perfect for a finer understanding of the runtime behavior by showing events sequence and duration.
-
-A implementation example for the `NXP OM13098 development board <https://www.nxp.com/design/design-center/software/development-software/mcuxpresso-software-and-tools-/lpcxpresso-boards/lpcxpresso54628-development-board:OM13098>`_ with SystemView support is available `here <https://developer.microej.com/packages/referenceimplementations/U3OER/2.0.1/OM13098-U3OER-fullPackaging-eval-2.0.1.zip>`__.
-
-Please contact :ref:`our support team <get_support>` for more information about how to integrate this module.
 
 Advanced Event Tracing
 ======================

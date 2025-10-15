@@ -231,6 +231,7 @@ Usage
 2. Install the :ref:`C Module for MicroVG<section_vg_c_module_microvg>` and follow its implementation rules.
 3. Add all C files in the BSP project.
 4. Check the port by running the ``vg`` validation as described in the `VEE Port project template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/>`_
+5. Add the defines ``RESX`` (== LCD width) and ``RESY`` (== LCD height) in ``vg/inc/vg_configuration.h`` or in the C project global options (used to initialize the Nema VG library, see ``nema_vg_init()``).
 
 .. _com.microej.clibrary.llimpl#microvg-nema: https://forge.microej.com/ui/native/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-nemavg/
 

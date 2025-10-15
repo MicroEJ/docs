@@ -14,7 +14,7 @@ Edit your ``build.grate.kts`` file to declare the `Gradle Versions Plugin <https
 the `MicroEJ plugin <sdk_6_create_project_configure_project>`__::
 
     plugins {
-        id("com.microej.gradle.application") version "1.3.1"
+        id("com.microej.gradle.application") version "1.4.0"
         id("com.github.ben-manes.versions") version "0.51.0"
     }
 
@@ -104,7 +104,7 @@ Here is an example of report::
     - ej.library.ui:widget [5.2.0 <- 4.2.0]
 
     The following dependencies have later milestone versions:
-    - com.microej.gradle.application:com.microej.gradle.application.gradle.plugin [0.15.0 -> 1.3.1]
+    - com.microej.gradle.application:com.microej.gradle.application.gradle.plugin [0.15.0 -> 1.4.0]
     - com.microej.test:junit-test-engine [0.2.2 -> 0.3.0]
     - ej.api:drawing [1.0.2 -> 1.0.5]
     - ej.api:edc [1.3.5 -> 1.3.7]
@@ -112,7 +112,7 @@ Here is an example of report::
     - ej.library.eclasspath:collections [1.4.0 -> 1.4.2]
     - ej.library.runtime:basictool [1.5.0 -> 1.7.0]
     - ej.library.runtime:service [1.1.1 -> 1.2.0]
-    - ej.library.test:junit [1.7.1 -> 1.11.0]
+    - ej.library.test:junit [1.7.1 -> 1.12.0]
 
     Gradle release-candidate updates:
     - Gradle: [8.3 -> 8.13]

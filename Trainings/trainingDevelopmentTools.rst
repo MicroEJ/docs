@@ -38,12 +38,12 @@ Unit 2: MicroEJ Development Tools Overview
 
 .. |development_tools_sdk6_rt1170_slides| raw:: html
 
-   <a href="https://repository.microej.com/packages/training/microej_development_tools/DEV-M0127-PRE-MicroEJ-Development-Tools-SDK6-NXP-i.MXRT1170-3.0_20250317.pdf" target="_blank">Slides: MICROEJ SDK Development Tools</a>
+   <a href="https://repository.microej.com/packages/training/microej_development_tools/DEV-M0127-PRE-MicroEJ-Development-Tools-SDK6-NXP-i.MXRT1170-3.4_20250922.pdf" target="_blank">Slides: MICROEJ SDK Development Tools</a>
 
 This training is provided as a PDF, along with a downloadable ``.zip`` package of resources:
 
 - |development_tools_sdk6_rt1170_slides| (for MICROEJ SDK 6)
-- :download:`Resources <https://repository.microej.com/packages/training/microej_development_tools/microej-development-tools_0f5cf862_20250317.zip>`
+- :download:`Resources <https://repository.microej.com/packages/training/microej_development_tools/microej-development-tools_f265ff4e_20250922.zip>`
 
 ..
    | Copyright 2021-2025, MicroEJ Corp. Content in this space is free 

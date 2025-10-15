@@ -295,101 +295,68 @@ Each type has its own Gradle plugin and configuration options.
 Refer to the module type you want to build to configure your project:
 
 - :ref:`Application <sdk_6_create_project_configure_application>`
-- :ref:`Add-On Library <sdk_6_create_project_configure_addon_library>`
+- :ref:`Library <sdk_6_create_project_configure_library>`
 - :ref:`Mock <sdk_6_create_project_configure_mock>`
 - :ref:`Java SE Library <sdk_6_create_project_configure_jse_library>`
 - :ref:`Runtime Environment <sdk_6_create_project_configure_runtime_environment>`
 
+Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
 
 .. _sdk_6_create_project_configure_application:
 
 Application Project
 ~~~~~~~~~~~~~~~~~~~
 
-- Add the ``com.microej.gradle.application`` plugin in the ``build.gradle.kts`` file::
+The required configuration elements to define for an Application Project are:
 
-    plugins {
-        id("com.microej.gradle.application") version "1.3.1"
-    }
-
-  .. note::
-    The ``java`` plugin must not be added since it is automatically applied by the MicroEJ plugin.
-
-- Create the Java main class in the ``src/main/java`` folder.
-- Define the property ``applicationEntryPoint`` in the ``microej`` configuration block of the ``build.gradle.kts`` file.
+- The Application Entry Point. It is defined by the ``applicationEntryPoint`` property in the ``microej`` configuration block of the ``build.gradle.kts`` file.
   It must be set to the Full Qualified Name of the Application main class, for example::
 
    microej {
      applicationEntryPoint = "com.mycompany.Main"
    }
 
-Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
+  The Project Wizards define a default value, adapt it if you change the main class of your Application.
+- The VEE to use to build and run the Application. It is defined using to the ``microejVee`` configuration in the ``dependencies`` block of the ``build.gradle.kts`` file::
 
-.. _sdk_6_create_project_configure_addon_library:
+   dependencies {
+      microejVee("com.mycompany:vee-port:1.0.0")
+   }
 
-Add-On Library Project
-~~~~~~~~~~~~~~~~~~~~~~
+  Refer to the :ref:`sdk_6_select_veeport` page to learn more about the different ways to define the VEE.
 
-- Add the ``com.microej.gradle.addon-library`` plugin in the build script::
+Refer to the :ref:`application-developer-guide` to learn more on Applications.
 
-    plugins {
-        id("com.microej.gradle.addon-library") version "1.3.1"
-    }
+.. _sdk_6_create_project_configure_library:
 
-  .. note::
-    The ``java`` plugin must not be added since it is automatically applied by the MicroEJ plugin.
+Library Project
+~~~~~~~~~~~~~~~
 
-Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
+A Library project does not require any specific configuration.
+Refer to the :ref:`libraries` and :ref:`Foundation Libraries <foundation_libraries>` pages to learn more on Libraries.
 
 .. _sdk_6_create_project_configure_mock:
 
 Mock
 ~~~~
 
-- Add the ``com.microej.gradle.mock`` plugin in the build script::
-
-    plugins {
-        id("com.microej.gradle.mock") version "1.3.1"
-    }
-
-  .. note::
-    The ``java`` plugin must not be added since it is automatically applied by the MicroEJ plugin.
-
-Refer to the :ref:`VEE Porting Guide Mock chapter <mock>` for how to develop a Mock.
-
-Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
+A Mock project does not require any specific configuration. 
+Refer to the :ref:`VEE Porting Guide Mock chapter <mock>` page to learn more on how to develop a Mock.
 
 .. _sdk_6_create_project_configure_jse_library:
 
 Java SE Library Project
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-- Add the ``com.microej.gradle.jse-library`` plugin in the build script::
-
-    plugins {
-        id("com.microej.gradle.jse-library") version "1.3.1"
-    }
-
-  .. note::
-    The ``java`` plugin must not be added since it is automatically applied by the MicroEJ plugin.
-
-Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
+A Java SE Library project does not require any specific configuration.
 
 .. _sdk_6_create_project_configure_runtime_environment:
 
 Runtime Environment Project
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Add the ``com.microej.gradle.runtime-environment`` plugin in the build script::
-
-    plugins {
-        id("com.microej.gradle.runtime-environment") version "1.3.1"
-    }
-
-  .. note::
-    The ``java`` plugin must not be added since it is automatically applied by the MicroEJ plugin.
-
-Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
+A Runtime Environment project does not require any specific configuration.
+Refer to the :ref:`runtime_environment` page to learn more on how to develop a Runtime Environment.
 
 .. _sdk_6_create_subproject_in_existing_project:
 

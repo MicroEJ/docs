@@ -22,6 +22,8 @@ How-to Guides
    disableIvyDescriptorPublication
    checkDependenciesVersions
    createCustomExecToolTask
+   passJvmArgsToVeeLaunchScripts
+   configureProguard
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
