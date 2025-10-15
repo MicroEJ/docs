@@ -182,7 +182,6 @@ In an Application project
                     at java.lang.Thread.runWrapper(Thread.java:464)
                     at java.lang.Thread.callWrapper(Thread.java:449)
 
-
 Custom Executable File Location
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -203,6 +202,27 @@ Custom Executable File Location
             --toolProperty=proxy.connection.connection.type="console" \
             --toolProperty=application.file="../../application/executable/application.out" \
             --toolProperty=additional.application.files="" \
+            --console plain
+
+In a Multi-Sandboxed Application project
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. tabs::
+
+    .. group-tab:: SDK 6 1.5.0 and higher
+
+        Using SDK 6 1.5.0 or higher, the Stack Trace Reader tool can decode stack traces of Multi-Sandboxed Applications. You can still define the additional application files using the property::
+
+        ./gradlew stackTraceReader -D"additional.application.files"="/path/to/my/app1.fodbg,/path/to/my/app2.fodbg"
+
+    .. group-tab:: SDK 6 1.4.0 and below
+
+        If you want to decode a stack trace of a Multi-Sandboxed Application, you must set the ``additional.application.files`` System Property to define the list of the additional application files (``.fodbg`` files) separated by commas::
+
+            ./gradlew execTool --name=stackTraceDecrypter \
+            --toolProperty=proxy.connection.connection.type="console" \
+            --toolProperty=application.file="./application.out" \
+            --toolProperty=additional.application.files="/path/to/my/app.fodbg" \
             --console plain
 
 .. _sdk6.section.stacktrace.reader.tool.configure:
