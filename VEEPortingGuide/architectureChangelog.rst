@@ -46,7 +46,7 @@ Core Engine
 ~~~~~~~~~~~
 
 - Added the ability to :ref:`dynamically configure the Managed Heap and Immortals Heap memory <dynamic_heap_config>` at Core Engine start time.
-- Optimized the Garbage Collector.
+- Optimized object allocation performance in cases of highly fragmented heaps.
 - Fixed `Math.nextAfter(float start, double direction)`_, returns start if direction is very close to start.
 - Fixed remove direct access to errno in ``microejruntime.a``.
 
