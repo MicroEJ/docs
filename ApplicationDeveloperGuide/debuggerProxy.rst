@@ -142,68 +142,72 @@ A script file named ``vee-memory-dump.mac`` (for IAR) or ``vee-memory-dump.gdb``
 
 You can now use this script to dump the memory of the running Executable.
 
+.. _dump_vee_memory:
+
 Dump the memory of the running Executable
 -----------------------------------------
 
-With IAR Debugger
-~~~~~~~~~~~~~~~~~
 
-.. note::
-    You must use a version of IAR Workbench for which the ``vee-memory-dump.mac`` script file is generated.
+.. tabs::
 
-    A script file generated for IAR8 will not work on IAR Workbench 9.x.x and vice versa.
-  
-In IAR Embedded Workbench:
+    .. tab:: IAR Debugger
 
-- Register the generated ``vee-memory-dump.mac`` script file in the debugger project option:
-  
-   #. Open the Debugger Project option window by clicking on ``Project > Options... > Debugger > Setup``
-   #. Check the option ``Use macro file(s)`` and browse to the generated ``vee-memory-dump.mac`` file.
-   #. Click on ``OK`` to confirm.
-    
-   .. figure:: images/iar-cspy1.png
-      :alt: IAR Embedded Workbench Debugger Project Option
-      :align: center
+        .. note::
+            You must use a version of IAR Workbench for which the ``vee-memory-dump.mac`` script file is generated.
 
-      IAR Debugger Project Option
+            A script file generated for IAR 8.x will not work on IAR Workbench 9.x and vice versa.
 
-- Add the macro ``dumpMemories()`` as an action expression to a code breakpoint:
+        In IAR Embedded Workbench:
 
-   #. Open IAR Breakpoints window by clicking on ``View > Breakpoints``
-   #. Right click on IAR Breakpoints window and select ``New Breakpoint > Code``
-   #. In the ``Expression`` text field, enter  ``dumpMemories()`` and click on ``OK``
+        - Register the generated ``vee-memory-dump.mac`` script file in the debugger project option:
 
-   .. figure:: images/iar-cspy2.png
-      :alt: IAR Breakpoint editor
-      :align: center
+           #. Open the Debugger Project option window by clicking on ``Project > Options... > Debugger > Setup``
+           #. Check the option ``Use macro file(s)`` and browse to the generated ``vee-memory-dump.mac`` file.
+           #. Click on ``OK`` to confirm.
 
-      IAR Breakpoint editor
+           .. figure:: images/iar-cspy1.png
+              :alt: IAR Embedded Workbench Debugger Project Option
+              :align: center
 
-When the IAR Debugger hits the specified breakpoint, the ``dumpMemories()`` macro function is executed and the memory is dumped into ``*.hex`` files.
+              IAR Debugger Project Option
 
-The ``*.hex`` files are generated in the same directory as the ``vee-memory-dump.mac`` file.
+        - Add the macro ``dumpMemories()`` as an action expression to a code breakpoint:
 
-With GNU Debugger (GDB)
-~~~~~~~~~~~~~~~~~~~~~~~
+           #. Open IAR Breakpoints window by clicking on ``View > Breakpoints``
+           #. Right click on IAR Breakpoints window and select ``New Breakpoint > Code``
+           #. In the ``Expression`` text field, enter  ``dumpMemories()`` and click on ``OK``
 
-In your GDB console:
+           .. figure:: images/iar-cspy2.png
+              :alt: IAR Breakpoint editor
+              :align: center
 
-- Create a breakpoint at a specific safe point (Core Engine hooks or native function)
+              IAR Breakpoint editor
 
-.. code-block:: sh
+        When the IAR Debugger hits the specified breakpoint, the ``dumpMemories()`` macro function is executed and the memory is dumped into ``*.hex`` files.
 
-    # E.g. Add breakpoint at LLMJVM_on_Runtime_gc_done hook
-    break LLMJVM_on_Runtime_gc_done
-    run
+        The ``*.hex`` files are generated in the same directory as the ``vee-memory-dump.mac`` file.
 
-- When the running Executable stops at the Breakpoint, run the ``vee-memory-dump.gdb`` script file to dump the memory.
+    .. tab:: GNU Debugger (GDB)
 
-.. code-block:: sh
+        In your GDB console:
 
-    # E.g. Run the GDB memory dump script
-    source [/path/to]/vee-memory-dump.gdb
+        - Create a breakpoint at a specific safe point (Core Engine hooks or native function)
 
-The memory is dumped into ``*.hex`` files in the same directory as the ``vee-memory-dump.gdb`` file.
+        .. code-block:: sh
+        
+            # E.g. Add breakpoint at LLMJVM_on_Runtime_gc_done hook
+            break LLMJVM_on_Runtime_gc_done
+            run
+
+        - When the running Executable stops at the Breakpoint, run the ``vee-memory-dump.gdb`` script file to dump the memory.
+
+        .. code-block:: sh
+        
+            # E.g. Run the GDB memory dump script
+            source [/path/to]/vee-memory-dump.gdb
+
+        The memory is dumped into ``*.hex`` files in the same directory as the ``vee-memory-dump.gdb`` file.
+
 
 Start the VEE Debugger Proxy
 ----------------------------
