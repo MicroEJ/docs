@@ -49,6 +49,7 @@ Core Engine
 - Optimized object allocation performance in cases of highly fragmented heaps.
 - Fixed `Math.nextAfter(float start, double direction)`_, returns start if direction is very close to start.
 - Fixed remove direct access to errno in ``microejruntime.a``.
+- Fixed `Feature.stop()`_, which could infinitely block the Core Engine in some cases.
 
 .. _Math.nextAfter(float start, double direction): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Math.html#nextAfter-float-double-
 
