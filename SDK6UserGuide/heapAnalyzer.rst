@@ -76,6 +76,7 @@ Heap Dumper
 -----------
 
 The Heap Dumper generates ``.heap`` files. There are two implementations:
+
 - the one integrated to the Simulator: it directly dumps ``.heap`` files from the Managed Heap. 
 - the Heap Dumper tool: it generates ``.heap`` files from ``.hex`` files that must be manually retrieved from the device.
 
@@ -134,8 +135,9 @@ In order to generate a Heap dump of an Application running on a device:
 Retrieve the ``.hex`` file from the device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you are in a Mono-Sandbox context, you only have to dump the Core Engine heap section.
-Here is an example of GDB commands:
+If you are in a Mono-Sandbox context and do not use :ref:`dynamic Heap configuration<dynamic_heap_config>`:
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+You only have to dump the Core Engine heap section. Here is an example of GDB commands:
   
   .. code-block:: console
       
@@ -144,52 +146,37 @@ Here is an example of GDB commands:
       continue
       dump ihex memory heap.hex &_java_heap_start &_java_heap_end
 
-You now have the ``.hex`` file and need to extract the Heap dump.
 
-If you are in a Multi-Sandbox context, the following sections must be dumped additionally:
+Otherwise, you must:
+""""""""""""""""""""
+- generate the :ref:`VEE memory dump script <generate_vee_memory_dump_script>` which will dump all the required sections.
+- :ref:`dump_vee_memory`
+- Depending on if you are using a Mono-Sandbox or a Multi-Sandbox :
+   - In a Mono-Sandbox context and not using :ref:`dynamic Heap configuration<dynamic_heap_config>`, use ``{N}_java_heap.hex``.
+   - If you are in a Multi-Sandbox context or using :ref:`dynamic Heap configuration<dynamic_heap_config>` you have to merge all ``.hex`` files  with:
 
-- the installed features table.
-  
-  .. code-block:: console
-   
-      dump ihex memory &java_features_dynamic_start &java_features_dynamic_end
+      .. tabs::
 
-- the installed features sections. These are specific to your VEE Port, depending on the `LLKERNEL implementation <LLKF-API-SECTION>`.
-  
-  .. code-block:: console
-   
-      dump ihex memory <installed features_start_adress> <installed features_end_adress>
+         .. tab:: Command Prompt
 
-  To simplify the dump commands, you can also consider the following options :
+            .. code-block:: bat
 
-  - either dump the entire memory where microej runtime and code sections are linked,
-  - or generate the :ref:`VEE memory dump script <generate_vee_memory_dump_script>` which will dump all the required sections instead.
+               copy /b *.hex memory.hex
 
-    .. note::
+         .. tab:: PowerShell
 
-       In a Mono-Sandbox context, use ``1_java_heap.hex``.
+            .. code-block:: powershell
 
-       In a Multi-Sandbox context, merge (at least) ``1_java_heap.hex`` and ``9_installed_features.hex`` with:
+               Get-ChildItem *.hex | Get-Content -Raw | Set-Content -NoNewline memory.hex
 
-         .. tabs::
+         .. tab:: Bash
 
-            .. tab:: Command Prompt
+            .. code-block:: bash
 
-               .. code-block:: bat
+               cat *.hex > memory.hex
 
-                  copy /b 1_java_heap.hex + 9_installed_features.hex memory.hex
 
-            .. tab:: PowerShell
-
-               .. code-block:: powershell
-
-                  Get-Content 1_java_heap.hex, 9_installed_features.hex | Set-Content memory.hex
-
-            .. tab:: Bash
-
-               .. code-block:: bash
-
-                  cat 1_java_heap.hex 9_installed_features.hex > memory.hex
+You now have a single ``.hex`` file and can continue to the next section.
 
 .. _sdk6_heapdumper_extract_heap:
 
@@ -254,7 +241,7 @@ You can find the list of available options below:
 Heap Viewer
 -----------
 
-To open the Heap Viewer tool, select a heap dump XML file in the :guilabel:`Package Explorer`, 
+To open the Heap Viewer tool (:ref:`Included in MicroEJ Tools<sdk6_microej_tools>`), select a heap dump XML file in the :guilabel:`Package Explorer`, 
 right-click on it and select :guilabel:`Open With` > :guilabel:`Heap Viewer`
 
 Alternatively, right-click on it and select :guilabel:`Heap Analyzer` > :guilabel:`Open heap viewer`.

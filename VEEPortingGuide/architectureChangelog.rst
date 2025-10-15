@@ -34,6 +34,64 @@ specific configuration:
    -  ``QNX65``: BlackBerry QNX 6.5
    -  ``QNX70``: BlackBerry QNX 7.0
 
+.. _changelog-8.5.0:
+
+[8.5.0] - 2025-10-09
+--------------------
+
+This Architecture version requires JDK11. See :ref:`sdk_6_check_jdk` for more details.
+
+
+Core Engine
+~~~~~~~~~~~
+
+- Added the ability to :ref:`dynamically configure the Managed Heap and Immortals Heap memory <dynamic_heap_config>` at Core Engine startup.
+- Optimized object allocation performance in cases of highly fragmented heaps.
+- Fixed `Math.nextAfter(float start, double direction)`_, which returned ``start`` when ``direction`` is very close to ``start``.
+- Removed direct access to ``errno`` in ``microejruntime.a`` to avoid toolchain or libc compatibility issues.
+- [Multi] - Fixed `Feature.stop()`_, which could infinitely block the Core Engine in some cases.
+
+.. _Math.nextAfter(float start, double direction): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Math.html#nextAfter-float-double-
+
+
+Foundation Libraries
+~~~~~~~~~~~~~~~~~~~~
+
+- Fixed `Math.ulp()`_ returning ``NaN`` instead of positive infinity when called with positive infinity.
+- Fixed, in ``BON``, ``Timer`` scheduling of `tasks`_ with a time parameter provided as a `Date`_. The date was previously interpreted as Platform time instead of Application time.
+- [Multi] - Fixed `Kernel.install(java.io.InputStream)`_ to directly throw `OutOfMemoryError`_ and `StackOverflowError`_ exceptions instead of wrapping them in `ej.kf.InvalidFormatException`_.
+- [Cortex-M] - Fixed incorrect handling of ``NaN`` and ``Infinity`` inputs in `Math.cos()`_, `Math.sin()`_, `Math.tan()`_, `Math.acos()`_, and `Math.asin()`_, when the underlying C Math library does not process these values properly (the issue was introduced in architecture version :ref:`8.4.0 <changelog-8.4.0>`).
+- [Cortex-M] - Fixed `ej.bon.ByteArray.readXXX()`_ potentialy returning an incorrect value (the issue was introduced in architecture version :ref:`8.3.0 <changelog-8.3.0>`).
+
+.. _Math.ulp(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Math.html#ulp-double-
+.. _Timer: https://repository.microej.com/javadoc/microej_5.x/apis_old/index.html?ej/bon/Timer.html
+.. _tasks: https://repository.microej.com/javadoc/microej_5.x/apis_old/index.html?ej/bon/TimerTask.html
+.. _Date: https://repository.microej.com/javadoc/microej_5.x/apis_old/index.html?java/util/Date.html
+.. _ej.kf.InvalidFormatException: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/InvalidFormatException.html
+.. _StackOverflowError: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/StackOverflowError.html
+.. _ej.bon.ByteArray.readXXX(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/ByteArray.html
+.. _Math.cos(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Math.html#cos-double-
+.. _Math.sin(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Math.html#sin-double-
+.. _Math.tan(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Math.html#tan-double-
+.. _Math.acos(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Math.html#acos-double-
+.. _Math.asin(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Math.html#asin-double-
+
+Integration
+~~~~~~~~~~~
+
+- Fixed Memory Map Scripts, which counted the application code in the Core Engine category (the issue was introduced in architecture version :ref:`8.4.0 <changelog-8.4.0>`).
+
+SOAR
+~~~~
+
+- Fixed a potential internal error occurring when building an Executable with SDK6 (present in versions up to :ref:`SDK6 1.3.1 <changelog-1.3.1>`).
+- Fixed SOAR reporting an 'unknown field' error when a library uses a ``static`` field declared in another library as a ``static final`` field (previously interpreted as a constant).
+
+Tools
+~~~~~
+
+- Fixed, in ELF Utils, ``UpdateSection`` task used by KF Testsuite to support Portable Independent Executable when ASLR is enabled.
+
 
 .. _changelog-8.4.0:
 
@@ -738,7 +796,7 @@ SOAR
    over
 -  Removed names of arrays of basetype unless ``soar.generate.classnames`` option is set to ``true``
 -  [Multi] - Fixed potential link exception when a Feature use one of the
-   ``ej_bon_ByteArray`` methods
+   `ej.bon.ByteArray`_ methods
    (e.g. ``ej.kf.InvalidFormatException: code=51:ON_ej_bon_ByteArray_method_readUnsignedByte_AB_I_I``)
 -  [Multi] - Fixed SOAR error (``Invalid SNI method``) when one of the
    `ej.bon.Constants.getXXX()`_ methods is declared in a ``kernel.api``
@@ -746,6 +804,7 @@ SOAR
    code.
 
 .. _Constants.getBoolean(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Constants.html#getBoolean-java.lang.String-
+.. _ej.bon.ByteArray: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/ByteArray.html
 .. _ej.bon.Constants.getXXX(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Constants.html
 
 Tools

@@ -938,6 +938,8 @@ For example, to inject the property ``core.memory.immortal.size``:
          }
       }
 
+.. _sdk_6_inject_application_options:
+
 Inject Application Options For a Specific Test
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -959,6 +961,14 @@ Application Options defined in this file do not require the ``microej.testsuite.
    the properties file must be named after the main class. 
    If the main class has been generated from a JUnit test class, its class name is prefixed by ``_AllTests_``.
 
+Inject Resources For a Specific Test
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To embed resources for a specific test (image, model, ...), set the ``application.resources`` property in the test properties file (See :ref:`sdk_6_inject_application_options`). For example::
+
+   application.resources=/samples/sample0.bmp;/samples/sample1.bmp;/samples/sample2.bmp
+
+Each path is relative to the resources folder root. Use a semicolon (`;`) to separate multiple resources.
 
 Test Suite Advanced Configuration
 ---------------------------------
