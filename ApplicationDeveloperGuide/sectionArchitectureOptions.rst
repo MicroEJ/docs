@@ -127,6 +127,8 @@ Specifies the Managed Heap size in bytes.
 A Managed Heap contains live objects. An OutOfMemory error can occur if the
 heap is too small.
 
+.. note:: The Managed heap can also be allocated (and sized) dynamically (see :ref:`dynamic_heap_config`), in which case this option is ignored.
+
 .. _option_immortal_heap:
 
 Option(text): Immortals Heap size (in bytes)
@@ -140,8 +142,10 @@ Option(text): Immortals Heap size (in bytes)
 
 Specifies the Immortals Heap size in bytes.
 
-The Immortals Heap contains allocated Immortal objects. An OutOfMemory error can
+The Immortals Heap contains the allocated Immortal objects. An OutOfMemory error can
 occur if the heap is too small.
+
+.. note:: The Immortals heap can also be allocated (and sized) dynamically (see :ref:`dynamic_heap_config`), in which case this option is ignored.
 
 Group: Threads
 ^^^^^^^^^^^^^^

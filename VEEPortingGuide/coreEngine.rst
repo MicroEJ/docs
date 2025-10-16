@@ -244,6 +244,21 @@ to the Application:
 
 .. _java.lang.System.currentTimeMillis(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#currentTimeMillis--
 
+.. _dynamic_heap_config:
+
+Configuring Memory Dynamically
+------------------------------
+
+To configure the heaps sizes at the Core Engine startup time rather than at link time (see :ref:`Managed Heap size configuration<option_managed_heap>` and :ref:`Immortals Heap size configuration<option_immortal_heap>` Application options),
+implement the Core Engine configuration Low Level API (see :ref:`LLMJVM_CONF_impl.h<LLMJVM-API-SECTION-CONF>`):
+
+- ``LLMJVM_CONF_impl_get_managed_heap_memory()``: allocates the Managed Heap.
+- ``LLMJVM_CONF_impl_get_immortals_heap_memory()``: allocates the Immortals Heap.
+
+The Core Engine provides a default implementation for those functions which returns memory sections statically allocated using the heaps sizes Application options and third-party linker script for position.
+If the default implementation is overridden, the heap configuration properties are ignored unless the custom implementation uses them.
+These functions are called by the Core Engine in ``SNI_createVM()``.
+
 .. _core_engine_error_codes:
 
 Error Codes
@@ -333,6 +348,18 @@ The following table describes these error codes.
    +-------------+-------------------------------------------------------------+
    | -25         | The function ``LLMJVM_IMPL_shutdown`` defined in the        |
    |             | Abstraction Layer implementation returns an error.          |
+   +-------------+-------------------------------------------------------------+
+   | -26         | The :ref:`GC mark stack size <option_gc_stack_size>`        |
+   |             |  is too small                                               |
+   +-------------+-------------------------------------------------------------+
+   | -27         | The application object file (``microejapp.o``) is not       |
+   |             | compatible with the third-party linker.                     |
+   +-------------+-------------------------------------------------------------+
+   | -28         | The function ``LLMJVM_CONF_impl_get_managed_heap_memory``   |
+   |             | returns an error.                                           |
+   +-------------+-------------------------------------------------------------+
+   | -29         | The function ``LLMJVM_CONF_impl_get_immortals_heap_memory`` |
+   |             | returns an error.                                           |
    +-------------+-------------------------------------------------------------+
 
 

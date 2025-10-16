@@ -137,7 +137,7 @@ To generate a Heap dump of an application running on a device:
 Retrieve the ``.hex`` file from the device
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you are in a Mono-Sandbox context, you only need to dump the Core Engine heap section. Example GDB commands:
+If you are in a Mono-Sandbox context and do not use :ref:`dynamic Heap configuration<dynamic_heap_config>`, you only need to dump the Core Engine heap section. Example GDB commands:
 
 .. code-block:: console
       
@@ -148,24 +148,10 @@ If you are in a Mono-Sandbox context, you only need to dump the Core Engine heap
 
 You now have the ``.hex`` file and need to extract the Heap dump.
 
-In a Multi-Sandbox context, additionally dump the following sections:
+- Otherwise, dump all MICROEJ VEE memories. See :ref:`VEE memory dump <generate_vee_memory_dump_script>` for how to generate a script for your debugger that dumps all required sections.
 
-- Installed features table:
-  
-  .. code-block:: console
-   
-      dump ihex memory &java_features_dynamic_start &java_features_dynamic_end
+You then have to merge all ``.hex`` files into a single one for the next step.
 
-- Installed features sections specific to your VEE Port, depending on the `LLKERNEL implementation <LLKF-API-SECTION>`:
-  
-  .. code-block:: console
-   
-      dump ihex memory <installed_features_start_address> <installed_features_end_address>
-
-To simplify the dump commands, consider:
-
-- Dumping the entire memory where MicroEJ runtime and code sections are linked.
-- Generating the :ref:`VEE memory dump script <generate_vee_memory_dump_script>` to dump all required sections.
 
 Convert ``.hex`` dump to ``.heap`` dump
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
