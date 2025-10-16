@@ -6,12 +6,12 @@
 Migration Guide
 ===============
 
-.. _section_ui_migrationguide_pack_14.5.0:
+.. _section_ui_migrationguide_pack_14.5.1:
 
-From 14.4.2 to 14.5.0
+From 14.4.2 to 14.5.1
 =====================
 
-.. _section_ui_migrationguide_pack_14.5.0_bsp:
+.. _section_ui_migrationguide_pack_14.5.1_bsp:
 
 BSP
 """
@@ -21,7 +21,7 @@ Before installing the new C Module:
 
 * Create (if not already exists) the global `VEE Port configuration file`_.
 * Move your own configuration from ``ui_configuration.h`` to ``veeport_configuration.h``.
-* Install the `C Module MicroUI 14.5.0`_.
+* Install the `C Module MicroUI 14.5.1`_.
 
 The following options (see ``ui_configuration.h``) have now a value (not just commented/uncommented); check (and adjust) whether they are used outside the UI C Modules:
 
@@ -36,7 +36,7 @@ The following options (see ``ui_configuration.h``) have now a value (not just co
 BSP with DMA2D
 """"""""""""""
 
-* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.5.0_bsp`.
+* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.5.1_bsp`.
 
 The C Module's options configuration file ``ui_dma2d_configuration.h`` must not be modified anymore.
 Before installing the new C Module: 
@@ -47,7 +47,7 @@ Before installing the new C Module:
 BSP with VGLite
 """""""""""""""
 
-* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.5.0_bsp`.
+* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.5.1_bsp`.
 
 The C Module's options configuration file ``ui_vglite_configuration.h`` must not be modified anymore.
 Before installing the new C Module: 
@@ -65,7 +65,7 @@ The following options (see ``ui_vglite_configuration.h``) have now a value (not 
 BSP with NemaGFX
 """"""""""""""""
 
-* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.5.0_bsp`.
+* **Prerequisite:** follow the migration steps of :ref:`section_ui_migrationguide_pack_14.5.1_bsp`.
 
 The C Module's options configuration file ``ui_nema_configuration.h`` must not be modified anymore.
 Before installing the new C Module: 

@@ -6,9 +6,9 @@
 Changelog
 =========
 
-.. _section_ui_changelog_14_5_0:
+.. _section_ui_changelog_14_5_1:
 
-[14.5.0] - 2025-10-07
+[14.5.1] - 2025-10-13
 =====================
 
 MicroUI
