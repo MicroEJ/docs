@@ -230,6 +230,49 @@ UI Pack
      - `1.0.0 <https://repository.microej.com/modules/com/microej/pack/ui/ui-testsuite/1.0.0/>`__
 
 
+.. _test_suite_versioning_vg:
+
+VG Pack
+-------
+
+.. list-table:: MicroVG API Implementation and Validation
+   :widths: 20 10 10
+
+   * - VG Pack
+     - MicroVG API
+     - Java Test Suite
+   * - 1.7.2
+     - `1.5.2 <https://repository.microej.com/modules/ej/api/microvg/1.5.2/>`__
+     - `4.2.0 <https://repository.microej.com/modules/com/microej/pack/vg/vg-testsuite/4.2.0/>`__
+   * - 1.7.1
+     - `1.5.1 <https://repository.microej.com/modules/ej/api/microvg/1.5.1/>`__
+     - `4.1.0 <https://repository.microej.com/modules/com/microej/pack/vg/vg-testsuite/4.1.0/>`__
+   * - 1.7.0
+     - `1.5.0 <https://repository.microej.com/modules/ej/api/microvg/1.5.0/>`__
+     - `4.0.0 <https://repository.microej.com/modules/com/microej/pack/vg/vg-testsuite/4.0.0/>`__
+   * - 1.6.0
+     - `1.4.0 <https://repository.microej.com/modules/ej/api/microvg/1.4.0/>`__
+     - `3.0.0 <https://repository.microej.com/modules/com/microej/pack/vg/vg-testsuite/3.0.0/>`__
+   * - 1.5.1
+     - `1.4.0 <https://repository.microej.com/modules/ej/api/microvg/1.4.0/>`__
+     - `2.7.0 <https://repository.microej.com/modules/com/microej/pack/vg/vg-testsuite/2.7.0/>`__
+   * - 1.5.0
+     - `1.4.0 <https://repository.microej.com/modules/ej/api/microvg/1.4.0/>`__
+     - `2.6.0 <https://repository.microej.com/modules/com/microej/pack/vg/vg-testsuite/2.6.0/>`__
+   * - 1.4.2
+     - `1.4.0 <https://repository.microej.com/modules/ej/api/microvg/1.4.0/>`__
+     - `2.5.0 <https://repository.microej.com/modules/com/microej/pack/vg/vg-testsuite/2.5.0/>`__
+   * - 1.4.1
+     - `1.4.0 <https://repository.microej.com/modules/ej/api/microvg/1.4.0/>`__
+     - `2.4.0 <https://repository.microej.com/modules/com/microej/pack/vg/vg-testsuite/2.4.0/>`__
+   * - 1.4.0
+     - `1.4.0 <https://repository.microej.com/modules/ej/api/microvg/1.4.0/>`__
+     - `2.3.0 <https://repository.microej.com/modules/com/microej/pack/vg/vg-testsuite/2.3.0/>`__
+   * - 1.3.0
+     - `1.3.0 <https://repository.microej.com/modules/ej/api/microvg/1.3.0/>`__
+     - `2.2.0 <https://repository.microej.com/modules/com/microej/pack/vg/vg-testsuite/2.2.0/>`__
+
+
 .. _test_suite_versioning_fs:
 
 FS Pack
