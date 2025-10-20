@@ -196,9 +196,15 @@ Additionally, the file becomes compatible with the VEE Port constraints.
 
 If the only constraint is the pixels array alignment, the Image Generator extension is not useful:
 
-1. Open VEE Port configuration file ``display/display.properties``.
-2. Add the property ``imageBuffer.memoryAlignment``.
-3. Build again the VEE Port.
+.. tabs::
+
+   .. tab:: SDK 6
+
+      Add the property ``com.microej.pack.imageBuffer.memoryAlignment`` in the properties file ``configuration.properties`` of the VEE Port project.
+
+   .. tab:: SDK 5
+
+      Add the property ``imageBuffer.memoryAlignment`` in the properties file ``display/display.properties`` of the VEE Port project.
 
 This alignment will be used by the Image Generator and also by the Image Loader.
 
