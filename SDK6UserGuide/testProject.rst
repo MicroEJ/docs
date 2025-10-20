@@ -966,7 +966,7 @@ Inject Resources For a Specific Test
 
 To embed resources for a specific test (image, model, ...), set the ``application.resources`` property in the test properties file (See :ref:`sdk_6_inject_application_options`). For example::
 
-   application.resources=/samples/sample0.bmp;/samples/sample1.bmp;/samples/sample2.bmp
+   application.resources=/samples/sample0.txt;/samples/sample1.json;/samples/sample2.bin
 
 Each path is relative to the resources folder root. Use a semicolon (`;`) to separate multiple resources.
 
