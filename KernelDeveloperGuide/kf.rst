@@ -1005,7 +1005,20 @@ Kernel and Features identification is based on a `X509 certificate <https://tool
 The 6 first fields defined by RFC 2253 (``CN``: commonName,  ``L``: localityName,  ``ST``: stateOrProvinceName,  ``O``: organizationName,  ``OU``: organizationalUnitName,  ``C``: countryName) can be read by calling
 ``ej.kf.Module.getProvider().getValue(...)``.
 
-The certificate file must be configured as following:
+With SDK 6, these fields can be configured in the ``build.gradle.kts`` file of the project, in the `microej > applicationCertificate` block. The certificate is automatically generated with the given values. Here is an example with all the available fields and their default value::
+
+   microej {
+      applicationCertificate {
+         commonName = "myFeature"
+         organizationalUnitName = "myCompanyUnit"
+         organizationName = "myCompany"
+         localityName = "myLocality"
+         stateOrProvinceName = "myStateOrProvince"
+         countryName = "myCountry"
+      }
+   }
+
+The certificate file must be configured as follows::
 
 -  placed beside the related ``[name].kf`` file.
 
@@ -1015,6 +1028,9 @@ The certificate file must be configured as following:
    encoding. If the certificate is provided in Base64 encoding, it
    must be bounded at the beginning by ``-----BEGIN CERTIFICATE-----``,
    and must be bounded at the end by ``-----END CERTIFICATE-----``. 
+
+
+To be noted that dropping the certificate file in the project sources is the only available solution with SDK 5.
 
 .. _sharedinterfacefileformat:
 
