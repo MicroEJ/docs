@@ -212,7 +212,7 @@ Once your favorite IDE is installed, plugins must be installed to develop MicroE
          
             Eclipse Plugin Installation - Marketplace
             
-         - Click on the :guilabel:`Install` button.
+         - Click on the :guilabel:`Install` button of the ``MicroEJ`` plugin.
          - Accept the license agreement and click on the :guilabel:`Finish` button.
          - In the upcoming :guilabel:`Trust Authorities` window, check the ``https://repository.microej.com`` item and click on the :guilabel:`Trust Selected` button.
             
