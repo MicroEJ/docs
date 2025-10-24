@@ -153,8 +153,8 @@ To use Managed C in your Application, follow these steps:
 
    .. code:: bash
    
-      [path_to_wasi_sdk]/bin/clang -Wl,--no-entry -Wl,--stack-first -Wl,--allow-undefined -z stack-size=4096 -mcpu=mvp -O3 -Wl,--export=factorial src/main/c/example.c -o src/main/resources/example.wasm
-
+      [path_to_wasi_sdk]/bin/clang -nostdlib -mcpu=mvp -O3 -z stack-size=4096 -Wl,--no-entry -Wl,--stack-first  -Wl,--export=__heap_base -Wl,--allow-undefined -Wl,--export=factorial src/main/c/example.c -o src/main/resources/example.wasm
+   
    .. note::
          
          To call a Managed C function from Java code, you need to export it using the ``-Wl,--export=[function_name]`` `linker option <https://lld.llvm.org/WebAssembly.html#exports>`_.
