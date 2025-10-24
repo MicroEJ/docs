@@ -57,6 +57,7 @@ The SDK is licensed under the :ref:`SDK End User License Agreement (EULA) <sdk6_
    publishProject
    tools
    veePort
+   moduleRepository
    manageVersion
    manageResolutionConflicts
    migrate

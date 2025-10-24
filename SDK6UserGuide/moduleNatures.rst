@@ -174,6 +174,28 @@ This plugin adds the following tasks to your project:
 
 This module nature inherits from the configuration of all its tasks.
 
+.. _sdk6_module_natures.module-repository:
+
+Module Repository
+-----------------
+
+**Plugin Name**: ``com.microej.gradle.module-repository``
+
+**Documentation**: :ref:`sdk6_module_repository`
+
+**Tasks**:
+
+This plugin adds the following tasks to your project:
+
+- :ref:`sdk6_module_natures.tasks.checkModule`
+- :ref:`sdk6_module_natures.tasks.buildModuleRepository`
+
+.. graphviz:: graphModuleRepositoryModule.dot
+
+**Configuration**:
+
+This module nature inherits from the configuration of all its tasks.
+
 .. _sdk6_module_natures.tasks:
 
 Tasks
@@ -297,6 +319,8 @@ This task is used by the following module natures:
 - :ref:`sdk6_module_natures.application`
 - :ref:`sdk6_module_natures.mock`
 - :ref:`sdk6_module_natures.runtime-environment`
+- :ref:`sdk6_module_natures.veeport`
+- :ref:`sdk6_module_natures.module-repository`
 
 **Configuration**:
 
@@ -812,6 +836,27 @@ javadocJar
 This task is used by the following module natures:
 
 - :ref:`sdk6_module_natures.veeport`
+
+.. _sdk6_module_natures.tasks.buildModuleRepository:
+
+buildModuleRepository
+^^^^^^^^^^^^^^^^^^^^^
+
+**Description**: Builds the Module Repository.
+
+**Inputs**:
+
+- The dependencies of the project.
+
+**Outputs**:
+
+- The archive file containing the Module Repository (``build/module_repository.zip``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.module-repository`
 
 .. _gradle_global_build_options:
 
