@@ -81,7 +81,6 @@ This variant is used to fetch the WPK of an Application when a dependency is dec
 It is configured with the following attributes:
 
 - the custom ``com.microej.artifact.element`` attribute, set to ``application-wpk``
-- the standard ``LibraryElement`` attribute, set to ``microej-wpk``
 
 microejExecutable
 """""""""""""""""
@@ -90,7 +89,6 @@ This variant is used to fetch the Executable of an Application when a dependency
 It is configured with the following attributes:
 
 - the custom ``com.microej.artifact.element`` attribute, set to ``executable``
-- the standard ``LibraryElement`` attribute, set to ``microej-executable``
 
 microejExecutableBuildFiles
 """""""""""""""""""""""""""
@@ -107,7 +105,6 @@ This variant is used to fetch the Virtual Device of an Application when a depend
 It is configured with the following attributes:
 
 - the custom ``com.microej.artifact.element`` attribute, set to ``virtual-device``
-- the standard ``LibraryElement`` attribute, set to ``microej-vee-port``
 
 microejFeatureBuildFiles
 """"""""""""""""""""""""
@@ -129,7 +126,6 @@ This variant is used to fetch the RIP of a Mock when a dependency is declared wi
 It is configured with the following attributes:
 
 - the custom ``com.microej.veeport.artifact.usage`` attribute, set to ``default``
-- the standard ``LibraryElement`` attribute, set to ``microej-rip``
 
 Runtime Environment
 ^^^^^^^^^^^^^^^^^^^
@@ -143,7 +139,6 @@ This variant is used to fetch the Runtime Environment Jar when a dependency is d
 It is configured with the following attributes:
 
 - the custom ``com.microej.artifact.element`` attribute, set to ``runtime-environment-api``
-- the standard ``LibraryElement`` attribute, set to ``microej-runtime-environment``
 
 VEE Port
 ^^^^^^^^
@@ -157,7 +152,6 @@ This variant is used to fetch the VEE Port when it is declared with the ``microe
 It is configured with the following attributes:
 
 - the custom ``com.microej.veeport.artifact.usage`` attribute, set to ``default``
-- the standard ``LibraryElement`` attribute, set to ``microej-vee-port``
 
 apiElements
 """""""""""
@@ -227,11 +221,6 @@ producer did not define a variant with the attribute set to the same value.
 
 For example, this is the case for the Mocks built with SDK 6 ``1.2.0`` or higher that are published with the custom ``com.microej.veeport.artifact.usage`` attribute. This attribute is optional,
 so when building a VEE Port from an Application, the VEE Port and all its dependencies other than Mocks are correctly fetched without having to define a compatiblity rule.
-
-.. warning::
-   Starting from SDK 6 ``1.3.0``, both a custom attribute and a standard attribute are used when resolving a MicroEJ dependency. 
-   The standard attribute is still defined to ensure that modules built with SDK 6 ``1.2.0`` and below can be fetched by projects built with SDK 6 ``1.3.0`` or higher. 
-   However, this attribute will be removed in the next major version, so it is highly recommended to update your project to use latest SDK 6 plugins.
 
 For more information about variants and attributes, refer to `the official documentation <https://docs.gradle.org/current/userguide/variant_attributes.html>`__.   
 
