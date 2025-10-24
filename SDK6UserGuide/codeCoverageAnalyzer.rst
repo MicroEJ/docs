@@ -48,8 +48,8 @@ hyperlinks to navigate into the report and source / bytecode level code.
    ./gradlew execTool --name=codeCoverageAnalyzer \
        --toolProperty=cc.dir="/MODULE_PATH/build/output/com.company.Main/cc/" \
        --toolProperty=cc.includes="com.company.*" \
-       --toolProperty=cc.excludes="" \
-       --toolProperty=cc.src.folders="/MODULE_PATH/src" \
+       --toolProperty=cc.excludes="com.company.MainWrapper" \
+       --toolProperty=cc.src.folders="/MODULE_PATH/src/main/java" \
        --toolProperty=cc.html.dir="/MODULE_PATH/cc"
 
 .. note::
