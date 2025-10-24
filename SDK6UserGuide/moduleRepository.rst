@@ -148,17 +148,43 @@ Alternatively, you can explicitly declare the transitive dependencies of the mod
         microejModule("ej.api:bon:1.4.0")
     }
 
-By default, the consistency checker and all checkers supported by the :ref:`sdk6_module_natures.tasks.checkModule` task are executed on a 
-the dependencies of a Module Repository project. The checkers can be disabled if needed, for example::
+By default, the consistency checker and all other checkers supported by the :ref:`sdk6_module_natures.tasks.checkModule` task are executed on all 
+dependencies of a Module Repository project. The checkers can be enabled or disabled on some dependencies by defining 
+the following properties in the ``microej`` extension:
+
+.. list-table:: 
+   :widths: 25 65 15
+   :header-rows: 1
+
+   * - Name
+     - Description
+     - Default
+   * - ``dependenciesCheckers``
+     - A map containing a dependency as key and a comma-separated list of the names of the checkers to execute as value. 
+       An empty map means that all checkers are executed.
+     - Empty Map.
+   * - ``dependenciesSkippedCheckers``
+     - A map containing a dependency as key and a comma-separated list of the names of the checkers to exclude as value. 
+       Ignored if the dependency is also a key of the Map property ``dependenciesCheckers``.
+     - Empty Map.
+
+For example::
 
     microej {
-        skippedCheckers.set("retrieve, license")
+        dependenciesSkippedCheckers.set(mapOf(
+            "ej.library.runtime:basictool:1.8.0" to "readme,license,changelog", 
+            "ej.api:edc:1.3.3" to "changelog,retrieve"))
     }
 
 .. note::
 
-   Enabling or disabling a checker is done on all dependencies, it is currently not possible to enable or not a checker on a single module.
+   The properties provided by the :ref:`sdk6_module_natures.tasks.checkModule` task can also be used but they are applied on the project 
+   itself, not its dependencies. For example the Readme checker is skipped on the project but it is executed on the dependencies if the following 
+   property is defined::
 
+    microej {
+        skippedCheckers.set("readme")
+    }
 
 .. _sdk_6_build_module_repository:
 
