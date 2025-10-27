@@ -13,7 +13,6 @@ How-to Guides
    gradleAddRepository
    gradleMultiRepositories
    resolveInIDE
-   installSnapshotPlugins
    buildProject
    buildAndDeployObjectFiles
    buildExecutableWithMultipleVeePorts

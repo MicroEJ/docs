@@ -160,8 +160,6 @@ Once your favorite IDE is installed, plugins must be installed to develop MicroE
 
       - Click on the :guilabel:`Restart IDE` button.
 
-      To install the snapshot version of the MicroEJ plugin, please refer to :ref:`sdk_6_install_plugin_snapshot`.
-
       .. warning::
 
          If the whole Gradle build file is red (in error), check that K2 is disabled and invalidate the caches. See :ref:`sdk_6_disable_k2` for more details.
