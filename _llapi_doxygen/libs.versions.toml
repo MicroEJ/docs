@@ -4,7 +4,7 @@
 
 [libraries]
 # Core Engine
-architecture =          { version = "8.4.0" }
+architecture =          { version = "8.5.0" }
 
 # Other MicroEJ Libraries and APIs
 
