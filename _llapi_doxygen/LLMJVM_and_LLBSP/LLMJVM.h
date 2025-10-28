@@ -120,9 +120,21 @@
 #define LLMJVM_E_INV_GC_MARK_STACK_SIZE (-26)
 
 /**
- * Exit code returned the application object file has not been correclty linked by the third-party linker.
+ * Exit code returned when the application object file has not been correctly linked by the third-party linker.
  */
 #define LLMJVM_E_INV_LINK (-27)
+
+/**
+ * Exit code returned when <code>LLMJVM_CONF_impl_get_managed_heap_memory</code> function returns an error when 
+ * trying to configure a managed heap.
+ */
+#define LLMJVM_E_INV_MANAGED_HEAP_CONFIG (-28)
+
+/**
+ * Exit code returned when <code>LLMJVM_CONF_impl_get_immortals_heap_memory</code> function returns an error when
+ * trying to configure immortals heap.
+ */
+#define LLMJVM_E_INV_IMMORTALS_HEAP_CONFIG (-29)
 
 /**
  * Error code returned when an error occurred.
@@ -254,7 +266,7 @@ uint8_t LLMJVM_isImmortalArray(void* sniJavaArray);
  * <code>throws IOException</code>).
  * If the native method declaration is not compatible with <code>NativeIOException</code>
  * (i.e., the throws clause does not specify <code>NativeIOException</code> or one of its
- * superclasses) then a <code>NativeException</code> is thrown instead.
+ * superclasses) then a code>NativeException</code> is thrown instead.
  * <p>
  * If an SNI callback must be executed after the end of the current native method then it
  * will be executed first and then the exception will be thrown.
