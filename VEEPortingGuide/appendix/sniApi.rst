@@ -2,7 +2,7 @@
 SNI API
 =======
 
-This chapter describes the SNI (Simple Native Interface) API. For more information on SNI specification, see :ref:`<native_mechanisms>` documentation.
+This chapter describes the SNI (Simple Native Interface) API. For more information on SNI specification, see :ref:`native_mechanisms` documentation.
 
 sni.h
 =====

@@ -563,6 +563,8 @@ Polymorphism, Inheritance, and Interfaces
 
 - The SOAR tries to make method calls direct as much as it can, see :ref:`soar_method_devirtualization` for more information.
 
+.. _improve_code_quality_exceptions:
+
 Exceptions
 ^^^^^^^^^^
 Here are in no particular order best pratices around managing exceptions in Java:
@@ -616,6 +618,8 @@ Here are in no particular order best pratices around managing exceptions in Java
 - Automatically close resources using try-with-resources.
 
 - For more information on Exception as well as a hierarchy of common exceptions please read `this article <https://rollbar.com/blog/java-exceptions-hierarchy-explained/#>`_.
+
+- For information on how errors are handled in the native functions, please refer to :ref:`vee_port_programming_pratices_errors` chapter.
 
 Data Encapsulation and Fields
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
