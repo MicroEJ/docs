@@ -4,6 +4,7 @@ Appendices
 .. toctree::
     :maxdepth: 2
 
+    sniApi
     llapi
     javalibs/index
     tools/index
