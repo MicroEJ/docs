@@ -83,13 +83,6 @@ this implementation.
 LLMJVM: Core Engine
 ===================
 
-Naming Convention
------------------
-
-The Low Level Core Engine API, the ``LLMJVM`` API, relies on
-functions that need to be implemented. The naming convention for such
-functions is that their names match the ``LLMJVM_IMPL_*`` pattern.
-
 
 LLMJVM_impl.h
 -------------
@@ -132,12 +125,6 @@ Set of functions that can be implemented to configure the Core Engine at startup
 LLKERNEL: Multi-Sandbox
 =======================
 
-Naming Convention
------------------
-
-The Low Level Kernel API, the ``LLKERNEL`` API, relies on functions that
-need to be implemented. The naming convention for such functions is that
-their names match the ``LLKERNEL_IMPL_*`` pattern.
 
 LLKERNEL_impl.h
 ---------------
@@ -162,12 +149,6 @@ Set of functions provided by the Core Engine that can be called by the BSP.
 LLSP: Shielded Plug
 ===================
 
-Naming Convention
------------------
-
-The Low Level Shielded Plug API, the ``LLSP`` API, relies on functions
-that need to be implemented. The naming convention for such functions is
-that their names match the ``LLSP_IMPL_*`` pattern.  
 
 Header Files
 ------------
@@ -210,12 +191,6 @@ External Resource Loader uses the LLAPI EXT_RES to let the BSP loads or
 not the expected resource. The implementation has to be able to load
 several files in parallel.
 
-Naming Convention
------------------
-
-The Low Level API, the ``LLEXT_RES`` API, relies on functions that need
-to be implemented. The naming convention for such functions is that
-their names match the ``LLEXT_RES_IMPL_*`` pattern.  
 
 Header Files
 ------------
@@ -233,13 +208,6 @@ One header file is provided:
 LLCOMM: Serial Communications
 =============================
 
-Naming Convention
------------------
-
-The Low Level Comm API (LLCOMM), relies on functions that need to be
-implemented by engineers in a driver. The names of these functions match
-the ``LLCOM_BUFFERED_CONNECTION_IMPL_*`` or the
-``LLCOM_CUSTOM_CONNECTION_IMPL_*``\ pattern.
 
 Header Files
 ------------
@@ -405,19 +373,6 @@ When no implementation is included in the BSP, the call to ``LLUI_INPUT_dump()``
 LLUI_DISPLAY: Display
 =====================
 
-Principle & Naming Convention
------------------------------
-
-The  Graphics Engine provides some Low Level APIs to connect a display driver. The file ``LLUI_DISPLAY_impl.h`` defines the API headers to be implemented. For the APIs themselves, the naming convention is that their names match the ``*_IMPL_*`` pattern when the functions need to be implemented:
-
-* ``LLUI_DISPLAY_IMPL_initialize``
-* ``LLUI_DISPLAY_IMPL_binarySemaphoreTake``
-* ``LLUI_DISPLAY_IMPL_binarySemaphoreGive``
-* ``LLUI_DISPLAY_IMPL_flush``
-
-Some additional Low Level APIs allow you to connect display extra features. These Low Level APIs are not required. When they are not implemented, a default implementation is used (weak function). It concerns backlight, contrast, etc.
-
-This describes succinctly some ``LLUI_DISPLAY_IMPL`` functions. Please refer to documentation inside header files to have more information. 
 
 Initialization
 --------------
@@ -515,11 +470,6 @@ Principle
 
 The LEDs engine provides Low Level APIs for connecting LED drivers. The file ``LLUI_LED_impl.h``, which comes with the LEDs engine, defines the API headers to be implemented.
 
-Naming Convention
------------------
-
-The Low Level APIs rely on functions that must be implemented. The naming convention for such functions is that their names match the ``*_IMPL_*`` pattern.
-
 Initialization
 --------------
 
@@ -541,10 +491,6 @@ Principle
 
 The :ref:`VG Pack <pack_vg>` provides a Low Level API for initializing the Vector Graphics engine. The file ``LLVG_impl.h``, which comes with the VG Pack, defines the API headers to be implemented.
 
-Naming Convention
------------------
-
-The Low Level APIs rely on functions that must be implemented. The naming convention for such functions is that their names match the ``*_IMPL_*`` pattern.
 
 Initialization
 --------------
@@ -562,10 +508,6 @@ Principle
 
 The :ref:`Matrix module <section_vg_matrix>` provides Low Level APIs for manipulating matrices. The file ``LLVG_MATRIX_impl.h``, which comes with the Matrix module, defines the API headers to be implemented.
 
-Naming Convention
------------------
-
-The Low Level APIs rely on functions that must be implemented. The naming convention for such functions is that their names match the ``*_IMPL_*`` pattern.
 
 Implementation
 --------------
@@ -588,10 +530,6 @@ Principle
 The :ref:`Path module <section_vg_path>` provides Low Level APIs for creating paths in target specific format. The file ``LLVG_PATH_impl.h``, which comes with the Path module, defines the API headers to be implemented.
 The file ``LLVG_PAINTER_impl.h`` defines the API headers to be implemented to draw the paths (with a color or a gradient).
 
-Naming Convention
------------------
-
-The Low Level APIs rely on functions that must be implemented. The naming convention for such functions is that their names match the ``*_IMPL_*`` pattern.
 
 Creation
 --------
@@ -648,10 +586,6 @@ Principle
 
 The :ref:`Gradient module <section_vg_gradient>` provides Low Level APIs for creating linear gradients in target specific format. The file ``LLVG_GRADIENT_impl.h``, which comes with the Gradient module, defines the API headers to be implemented.
 
-Naming Convention
------------------
-
-The Low Level APIs rely on functions that must be implemented. The naming convention for such functions is that their names match the ``*_IMPL_*`` pattern.
 
 Implementation
 --------------
@@ -673,10 +607,6 @@ Principle
 
 The :ref:`Font module <section_vg_font>` provides Low Level APIs for decoding fonts (``LLVG_FONT_impl.h``) and rendering texts (``LLVG_PAINTER_impl.h``). Both header files, which come with the Font module, define the API headers to be implemented.
 
-Naming Convention
------------------
-
-The Low Level APIs rely on functions that must be implemented. The naming convention for such functions is that their names match the ``*_IMPL_*`` pattern.
 
 Initialization
 --------------
@@ -718,12 +648,6 @@ Like MicroUI Painter natives, the implementation has to :ref:`synchronize the dr
 LLNET: Network
 ==============
 
-Naming Convention
------------------
-
-The Low Level API, the ``LLNET`` API, relies on functions that need to
-be implemented. The naming convention for such functions is that their
-names match the ``LLNET_IMPL_*`` pattern.
 
 Header Files
 ------------
@@ -777,12 +701,6 @@ Several header files are provided:
 LLNET_SSL: SSL
 ==============
 
-Naming Convention
------------------
-
-The Low Level API, the ``LLNET_SSL`` API, relies on functions that need
-to be implemented. The naming convention for such functions is that
-their names match the ``LLNET_SSL_*`` pattern.
 
 Header Files
 ------------
@@ -816,12 +734,6 @@ Three header files are provided:
 LLECOM_NETWORK: Network Interfaces
 ==================================
 
-Naming Convention
------------------
-
-The Low Level Network Interfaces API (LLECOM_NETWORK), relies on functions that need to
-be implemented by engineers in a driver. The names of these functions
-match the ``LLECOM_NETWORK_IMPL_*`` pattern.
 
 Header Files
 ------------
@@ -839,12 +751,6 @@ One header file is provided:
 LLECOM_WIFI: Wi-Fi Management
 =============================
 
-Naming Convention
------------------
-
-The Low Level Wi-FI API (LLECOM_WIFI), relies on functions that need to
-be implemented by engineers in a driver. The names of these functions
-match the ``LLECOM_WIFI_IMPL_*`` pattern.
 
 Header Files
 ------------
@@ -861,12 +767,6 @@ One header file is provided:
 LLBLUETOOTH: Bluetooth
 ======================
 
-Naming Convention
------------------
-
-The Low Level Bluetooth API (LLBLUETOOTH), relies on functions that need to
-be implemented by engineers in a driver. The names of these functions
-match the ``LLBLUETOOTH_IMPL_*`` pattern.
 
 Header Files
 ------------
@@ -887,12 +787,6 @@ Two header files are provided:
 LLAUDIO: Audio
 ==============
 
-Naming Convention
------------------
-
-The Low Level Audio API (LLAUDIO), relies on functions that need to
-be implemented by engineers in a driver. The names of these functions
-match the ``LLAUDIO_*_IMPL_*`` pattern.
 
 Header Files
 ------------
@@ -916,12 +810,6 @@ Three header files is provided:
 LLML: MicroAI
 =============
 
-Naming Convention
------------------
-
-The Low Level MicroAI API (LLML), relies on functions that need to
-be implemented by engineers in a driver. The names of these functions
-match the ``LLML_IMPL_*`` pattern.
 
 Header Files
 ------------
@@ -940,12 +828,6 @@ One header file is provided:
 LLEVENT: Event Queue
 ====================
 
-Naming Convention
------------------
-
-The Low Level Event Queue API (LLEVENT), relies on functions that need to
-be implemented by engineers in a driver. The names of these functions
-match the ``LLEVENT_IMPL_*`` or ``LLEVENT_*`` pattern.
 
 Header Files
 ------------
@@ -965,12 +847,6 @@ Two header files are provided:
 LLFS: File System
 =================
 
-Naming Convention
------------------
-
-The Low Level File System API (LLFS), relies on functions that need to
-be implemented by engineers in a driver. The names of these functions
-match the ``LLFS_IMPL_*`` and the ``LLFS_File_IMPL_*`` pattern.
 
 Header Files
 ------------
@@ -994,12 +870,6 @@ Two C header files are provided:
 LLGNSS: GNSS (Global Navigation Satellite System)
 =================================================
 
-Naming Convention
------------------
-
-The Low Level GNSS API (LLGNSS), relies on functions that need to
-be implemented by engineers in a driver. The names of these functions
-match the ``LLGNSS_IMPL_*`` pattern.
 
 Header Files
 ------------
@@ -1016,12 +886,6 @@ One header file is provided:
 LLHAL: Hardware Abstraction Layer
 =================================
 
-Naming Convention
------------------
-
-The Low Level API, the ``LLHAL`` API, relies on functions that need to
-be implemented. The naming convention for such functions is that their
-names match the ``LLHAL_IMPL_*`` pattern.
 
 Header Files
 ------------
@@ -1039,12 +903,6 @@ One header file is provided:
 LLDEVICE: Device Information
 ============================
 
-Naming Convention
------------------
-
-The Low Level Device API (LLDEVICE), relies on functions that need to be
-implemented by engineers in a driver. The names of these functions match
-the ``LLDEVICE_IMPL_*`` pattern.
 
 Header Files
 ------------
@@ -1062,15 +920,6 @@ One C header file is provided:
 LLWATCHDOG_TIMER: Watchdog Timer
 ================================
 
-Naming Convention
------------------
-
-The Low Level Watchdog Timer API (LLWATCHDOG_TIMER), provides functions that allow the use of this API
-at the BSP level in C. The names of these functions match the ``LLWATCHDOG_TIMER_IMPL_*`` pattern.
-
-The Watchdog API is delivered with a Generic C implementation on which the VEE Port must
-depend. This implementation relies on functions that need to be implemented by engineers in a driver.
-The name of these functions match the ``LLWATCHDOG_TIMER_IMPL_*_action`` pattern.
 
 Header Files
 ------------
@@ -1093,11 +942,6 @@ This C header file contains functions to implement:
 LLSEC: Security
 ===============
 
-Naming Convention
------------------
-
-The Low Level Security API (LLSEC) provides functions that allow the use of this API at the
-BSP level in C. The names of these functions match the ``LLSEC_*_IMPL_*`` pattern.
 
 Header Files
 ------------
@@ -1174,12 +1018,6 @@ Principle
 The :ref:`Trace module <event-tracing>` provides Low Level APIs to produce lightweight events for debugging and
 monitoring purposes. The file ``LLTRACE_impl.h``, which comes with the Core Engine, defines the API headers to be implemented.
 
-Naming Convention
------------------
-
-The Low Level Trace API ``LLTRACE`` relies on functions that need to be implemented. The naming convention for such
-functions is that their names match the ``LLTRACE_IMPL_*`` pattern described in the file ``LLTRACE_impl.h``.
-
 
 LLTRACE_impl.h
 ---------------
@@ -1212,12 +1050,6 @@ Principle
 The Core Engine Monitoring provides Low Level APIs to track the Core Engine behavior at runtime through events and sending task information.
 The file ``LLMJVM_MONITOR_impl.h``, which comes with the Core Engine, defines the API headers to be implemented.
 
-Naming Convention
------------------
-
-The Low Level Core Engine Monitoring API, the ``LLMJVM_MONITOR`` API, relies on
-functions that need to be implemented. The naming convention for such
-functions is that their names match the ``LLMJVM_MONITOR_IMPL_*`` pattern.
 
 LLMJVM_MONITOR_impl.h
 ---------------------
