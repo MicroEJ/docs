@@ -7,7 +7,7 @@ This chapter describes the SNI (Simple Native Interface) API. For more informati
 sni.h
 =====
 
-.. doxygenfile:: LLMJVM_impl.h
+.. doxygenfile:: sni.h
    :sections: define enum innerclass public-attrib func
 
 ..
