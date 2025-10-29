@@ -383,6 +383,28 @@
   color: #cf4520;
 }
 
+.actions {
+  text-align: center;
+  margin: 40px 0 50px 0;
+}
+
+.actions .btn-action {
+  background: #f76241;
+  color: #ffffff;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  text-transform:uppercase;
+  padding: 15px 35px;
+  border-radius: 30px;
+  transition: all 0.2s ease;
+  box-shadow: none;
+}
+
+.actions .btn-action:hover {
+  color: #333333
+}
+
 footer .btn {
   font-size: 14px;
   font-weight: 400;
