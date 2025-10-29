@@ -915,7 +915,7 @@ hereafter:
 
     .. group-tab:: SDK 6 1.5.0 and above
 
-      Using SDK 6 1.5.0 and above, ``.kf`` files are automatically generated and can be customized properties in your ``build.gradle.kts`` file, for example in a feature::
+      Using SDK 6 1.5.0 and above, ``.kf`` files are automatically generated. The properties can be customized in your ``build.gradle.kts`` file, for example in a feature::
 
          microej {
             applicationName = "myFeature"
@@ -924,11 +924,11 @@ hereafter:
 
     .. group-tab:: SDK 6 1.4.0 and below
 
-      Using SDK 6 1.4.0 and below, ``.kf`` files are automatically generated and its properties can be changed by modifying the ``.kf`` files in the ``src/main/resources`` folder of the project.
+      Using SDK 6 1.4.0 and below, ``.kf`` files are automatically generated. Their properties can be changed by creating the ``.kf`` files in the ``src/main/resources`` folder of the project.
 
     .. group-tab:: SDK 5
 
-      Using SDK 5, ``.kf`` files are located in the ``src/main/resources`` folder of the project and its properties can be changed by modifying them in the files.
+      Using SDK 5, ``.kf`` files are located in the ``src/main/resources`` folder of the project and can be modified if needed.
 
 .. _kernelapi:
 
