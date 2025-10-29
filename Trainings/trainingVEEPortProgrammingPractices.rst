@@ -53,6 +53,21 @@ for your own VEE Port development, it is recommended to read the following links
 
 - https://partner-security.withgoogle.com/docs/iot_requirements
 
+Abstraction Layers Developement
+-------------------------------
+
+Error Handling in Native Methods
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This section describes best practices for handling errors in native methods.
+
+The SNI interface provides two functions to report errors to Managed Code:
+
+- ``SNI_throwNativeException`` should be used for invalid requests (for example, a negative size array, more generally anything that is outside the validity domain of the method). It should be considered equivalent to the C assert.
+- ``SNI_throwIONativeException`` should be used when an error must be handled by the Managed Code implementation. The LLAPI may specify a specific error code if differentiated treatment is expected. If no error code is specified, SNI_ERROR (-1) should be returned. If an implementation-specific error occurs, it should be returned, preferably as LOG or as a formatted string (strerror(), library-specific function), in the exception string.
+
+The return code of the native function could also be used to report an error, but this is not a good practice because the Managed Code developer would have less information about the cause of the error (no error string).
+
 
 ..
    | Copyright 2025, MicroEJ Corp. Content in this space is free
