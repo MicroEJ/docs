@@ -61,7 +61,15 @@ In addition to the wrapper class, the following resource files are generated:
 - The Feature Definition Files (``feature.kf``, ``feature.cert``), to use your Application as a Sandboxed Application. 
 - The Kernel Definition Files (``kernel.kf``, ``kernel.cert``), to use your Application as a Kernel Application. 
 
-You can also define your own Feature and Kernel Definition files if needed, refer to the :ref:`kf-feature-definition` section for more information.
+.. tabs::
+
+   .. group-tab:: SDK 6 1.5.0 and above
+
+      Using SDK 6 1.5.0 and above, properties can be modified in the ``build.gradle.kts`` file of your project, refer to the :ref:`kf-feature-declaration` section for more information.
+
+   .. group-tab:: SDK 6 1.4.0 and below
+
+      Using SDK 6 1.4.0 and below, you can also define your own Feature and Kernel Definition files if needed, refer to the :ref:`kf-feature-definition` section for more information.
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
