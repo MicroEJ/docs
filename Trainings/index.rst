@@ -217,8 +217,8 @@ For Application Developers
 
          </div>
 
-For VEE Developers
-==================
+For VEE Port Developers
+=======================
 
 .. toctree::
    :hidden:
