@@ -300,6 +300,9 @@ Hardware Setup
       * A RJ45 cable to access the network.
       * An HDMI cable.
 
+      By default, the i.MX93 evaluation kit will boot from the eMMC.
+      To change the boot mode to micro SD, set the DIP switch ``SW1 [3-0]`` to ``0011``.
+
       The serial port is used to connect to a shell, it uses the following parameters:
 
       .. list-table::
@@ -334,6 +337,9 @@ Hardware Setup
       * A RJ45 cable to access the network.
       * An HDMI cable connected to the IMX-HDMI-MIPI adapter.
 
+      By default, the FRDM i.MX93 evaluation kit will boot from the eMMC.
+      To change the boot mode to micro SD, set the DIP switch ``BMODE`` to ``0100``, i.e. SW1301-2 set to ``1``.
+
       The serial port is used to connect to a shell, it uses the following parameters:
 
       .. list-table::
@@ -352,15 +358,6 @@ Hardware Setup
            - XON/XOFF
 
       To connect to the shell enter the login ``root``.
-
-Configure boot
-++++++++++++++
-
-By default, the i.MX93 evaluation kit will boot from the eMMC.
-To change the boot mode to micro SD, set the DIP switch ``BMODE`` to ``0100``, i.e. SW1301-2 set to ``1``.
-
-Insert the flashed SD card and boot the device. After a few seconds, the display will show the IMX93 Getting Started Welcome page.
-If no display is attached, information such as device IP address and documentation link will also be printed in the logs.
 
 Touchscreen calibration
 +++++++++++++++++++++++
