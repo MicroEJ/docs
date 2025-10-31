@@ -13,7 +13,6 @@ How-to Guides
    gradleAddRepository
    gradleMultiRepositories
    resolveInIDE
-   installSnapshotPlugins
    buildProject
    buildAndDeployObjectFiles
    buildExecutableWithMultipleVeePorts
@@ -23,6 +22,7 @@ How-to Guides
    checkDependenciesVersions
    createCustomExecToolTask
    passJvmArgsToVeeLaunchScripts
+   configureProguard
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 

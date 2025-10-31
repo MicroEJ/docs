@@ -35,13 +35,12 @@ to build the runtime classpath of the testsuites, not to compile the project.
 
 .. warning::
 
-   It is important to note that a VEE Port supports transitivity only if it has been built with the SDK 6 with the version ``1.3.0`` minimum,
-   so it does not work in the following cases:
+   It is important to note that a VEE Port built with SDK 6 ``1.3.0`` minimum is required to use transitivity, the following VEE Ports are not supported:
 
-   - VEE Port built with SDK 6 ``1.2.0`` or older
-   - VEE Port built with SDK 5
+   - VEE Ports built with SDK 6 ``1.2.0`` or older
+   - VEE Ports built with SDK 5
 
-   It is highly recommended to update your VEE Port to SDK 6 ``1.3.0`` minimum as the feature will be enabled by default in the next SDK 6 major version. 
+   It is highly recommended to update your VEE Port to SDK 6 ``1.3.0`` minimum if needed, as the feature will be enabled by default in the next SDK 6 major version. 
    This limitation does not concern VEE Ports available locally :ref:`in a directory <sdk_6_select_veeport_local_directory>` or 
    :ref:`as an archive <sdk_6_select_veeport_local_archive>`.
 
@@ -75,12 +74,12 @@ to build the runtime classpath of the testsuites, but they are not used to compi
 
 .. warning::
 
-   It is important to note that a Kernel allowing to publish its Runtime Environment and to resolve transitively its Libraries is required, so if your project uses:
+   It is important to note that a Kernel built with SDK 6 ``1.3.0`` minimum is required to use transitivity, the following Kernels are not supported:
 
-   - a Kernel built with SDK 6 ``1.2.0`` or older
-   - a Kernel built with SDK 5
+   - Kernels built with SDK 6 ``1.2.0`` or older
+   - Kernels built with SDK 5
 
-   it is highly recommended to update your Kernel to SDK 6 ``1.3.0`` minimum as the feature will be enabled by default in the next SDK 6 major version. 
+   It is highly recommended to update your Kernel to SDK 6 ``1.3.0`` minimum if needed, as the feature will be enabled by default in the next SDK 6 major version. 
    This limitation does not concern Kernels :ref:`available locally <sdk_6_select_local_kernel>`.
 
 ..

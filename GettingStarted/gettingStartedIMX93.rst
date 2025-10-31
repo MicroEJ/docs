@@ -1,41 +1,47 @@
 .. _sdk_6_getting_started_imx93:
 
-i.MX93 Evaluation Kit
-==========================
+i.MX 93 FRDM & EVK Boards
+=========================
 
 During this Getting Started, you will learn to:
 
-* Run an Application on the i.MX93 Evaluation Kit Virtual Device.
-* Run the same Application on your i.MX93 Evaluation Kit.
+* Run an Application on the i.MX93 Virtual Device.
+* Run the same Application on your FRDM i.MX93 Development Board or i.MX93 Evaluation Kit.
 
-If you need to become more familiar with MicroEJ, please visit `Discover MicroEJ <https://developer.microej.com/discover-microej/>`__ to understand the principles of our technology.
+In case you are not familiar with MicroEJ, please visit `Discover MicroEJ <https://developer.microej.com/discover-microej/>`__ to understand the principles of our technology.
 
 Prerequisites
 -------------
 
 .. note::
   
-   This Getting Started has been tested on Windows 10 & 11 with a WSL distribution Ubuntu 22.04. Also note that examples used in this Getting Started could depend on older tools and libraries. Most notably our dependency manager plugin (using `Gradle <https://gradle.org/>`_) could be an older version.
+   This Getting Started has been tested on Windows 10 & 11 with a WSL distribution Ubuntu 22.04. Also note that the examples used in this Getting Started guide may depend on older tools and libraries. Notably, our dependency manager plugin (using `Gradle <https://gradle.org/>`_) may be an older version.
 
 This Getting Started is separated into two main parts.
 
-The first part consists in running a demo application on the Virtual Device. All you need is:
+The first part consists of running a demo application on the Virtual Device. All you need is:
 
 
-* An Internet connection to access Github repositories & :ref:`Module Repositories <module_repositories>`.
+* An Internet connection to access GitHub repositories & :ref:`Module Repositories <module_repositories>`.
 * MICROEJ SDK 6 (installed during :ref:`Environment Setup <sdk_6_getting_started_imx93_environment_setup>`).
 
-The second part consists in running the same demo application on your device. For that, you will need:
+The second part consists of running the same demo application on your device. For that, you will need:
 
-* An i.MX93 Evaluation Kit, available `here <https://www.nxp.com/design/design-center/development-boards/i-mx-evaluation-and-development-boards/i-mx-93-evaluation-kit:i.MX93EVK>`__.
+* One of these two Development Boards:
 
-* An HDMI display with touchscreen connected with an `IMX-MIPI-HDMI adapter <https://www.nxp.com/part/IMX-MIPI-HDMI>`__.
+   * FRDM i.MX93 Development Board, available `here <https://www.nxp.com/design/design-center/development-boards-and-designs/frdm-i-mx-93-development-board:FRDM-IMX93>`__.
+   * i.MX93 Evaluation Kit, available `here <https://www.nxp.com/design/design-center/development-boards/i-mx-evaluation-and-development-boards/i-mx-93-evaluation-kit:i.MX93EVK>`__.
 
-   * This getting started has been tested with a `MageDok T080A <https://store.magedok.com/collections/portable-monitors/products/8-inch-1280-720-resolution-touch-monitor-t080a>`_.
+      * With an `IMX-MIPI-HDMI adapter <https://www.nxp.com/part/IMX-MIPI-HDMI>`__ to connect the HDMI display.
 
-* A prebuild Yocto Linux image, with all necessary linux packages preinstalled.
 
-* A Yocto SDK, to cross compile an sample application.
+* An HDMI display with a touchscreen.
+
+   * This getting started has been tested with a 1280x720 HDMI display: `MageDok T080A <https://store.magedok.com/collections/portable-monitors/products/8-inch-1280-720-resolution-touch-monitor-t080a>`_.
+
+* A prebuilt Yocto Linux image, with all necessary Linux packages preinstalled.
+
+* A Yocto SDK, to cross-compile a sample application.
 
 .. _sdk_6_getting_started_imx93_environment_setup:
 
@@ -45,13 +51,14 @@ Environment Setup
 To follow this Getting Started, you need to: 
 
 * Install MICROEJ SDK 6.
-* Get the Example-Java-Widget from Github.
+* Get the Example-Java-Widget from github.
 
 Install MICROEJ SDK 6
 ^^^^^^^^^^^^^^^^^^^^^
 
 Install MICROEJ SDK 6 by following the :ref:`sdk_6_install` instructions. 
-IntelliJ IDEA is used on this Getting Started, but feel free to use your favorite IDE.
+
+IntelliJ IDEA is used in this Getting Started, but feel free to use your favorite IDE.
 
 Get Example-Java-Widget
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -75,7 +82,7 @@ The first step is to import the :guilabel:`Example-Java-Widget` Application into
 
 .. note::
   
-   If you are using an IDE other than IntelliJ IDEA, please have a look at :ref:`sdk_6_import_project` section.
+   If you are using another IDE than IntelliJ IDEA, please have a look at :ref:`sdk_6_import_project` section.
 
 
 * If you are in the Welcome Screen, click on the :guilabel:`Open` button. Otherwise, click either on :guilabel:`File` > :guilabel:`Open...` or on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project From Existing Sources...`.
@@ -131,7 +138,7 @@ In the Gradle build file ``build.gradle.kts``, replace the VEE dependency ``micr
 .. code-block::
 
    dependencies {
-      microejVee("com.microej.veeport.imx93:vee-port:3.0.2")
+      microejVee("com.microej.veeport.imx93:vee-port:3.1.0")
    }
 
 For more information about how to select a VEE Port please refer to the following section: :ref:`sdk_6_select_veeport`.
@@ -178,14 +185,14 @@ Well done!
 
 Now you know how to run an application on a Virtual Device.
 
-If you want to learn how to run an application on your i.MX93 Evaluation Kit, you can continue this Getting Started: :ref:`Run an Application on i.MX93 Evaluation Kit <sdk_6_getting_started_imx93_run_on_device>`.
+If you want to learn how to run an application on your i.MX93, you can continue this Getting Started: :ref:`Run an Application on i.MX93 <sdk_6_getting_started_imx93_run_on_device>`.
 
 Otherwise, learn how to :ref:`Modify the Java Application <sdk_6_getting_started_imx93_modify_java_application>`.
 
 .. _sdk_6_getting_started_imx93_run_on_device:
 
-Run an Application on i.MX93 Evaluation Kit
--------------------------------------------
+Run an Application on i.MX93
+----------------------------
 
 To deploy :guilabel:`Example-Java-Widget` application on your board, you will have to:
 
@@ -197,7 +204,7 @@ To deploy :guilabel:`Example-Java-Widget` application on your board, you will ha
 Environment Setup
 ^^^^^^^^^^^^^^^^^
 
-This chapter takes approximately one hour and will take you through the steps to build a VEE Executable and set up the evaluation kit.
+This chapter takes approximately one hour and will take you through the steps to build a VEE Executable and set up the device.
 
 Install the Yocto SDK
 """""""""""""""""""""
@@ -242,7 +249,10 @@ Some additionnal packages will be required in order to build an executable. Run 
 Flash the image on an SD card
 """""""""""""""""""""""""""""
 
-The Linux image is available here: `Yocto WIC Image for iMX93 <https://repository.microej.com/packages/yocto/i.MX93EVK/2024-05-24-IMX93-lib32-core-image-microej-microej-imx93-1.0.2.wic.gz>`_
+The Linux images are available here:
+
+* `Yocto WIC Image for FRDM iMX93 <https://repository.microej.com/packages/yocto/i.MX93FRDM/20250731_1.0.0_core-image-microej-imx93frdm.rootfs.wic.zst>`_
+* `Yocto WIC Image for iMX93 EVK  <https://repository.microej.com/packages/yocto/i.MX93EVK/2024-05-24-IMX93-lib32-core-image-microej-microej-imx93-1.0.2.wic.gz>`_
 
 For this getting started we use a Linux image flashed on an SD card.
 
@@ -273,37 +283,75 @@ To flash the image on Windows, do the following:
 Hardware Setup
 """"""""""""""
 
+.. tabs::
+
+   .. tab:: FRDM i.MX93
+
+      .. figure:: images/iMX93/getting-started-setup-frdm.png
+         :alt: Setup
+         :align: center
+         :scale: 70%
+
+      To setup the hardware you will need to connect the following on the Development Board:
+
+      * A USB C cable to the PWR input (P1)
+      * A USB C cable to the DBG port (P16)
+      * A USB C, or USB A cable for the touchscreen device (P2 or P17).
+      * A RJ45 cable to access the network.
+      * An HDMI cable.
+
+      The serial port is used to connect to a shell, it uses the following parameters:
+
+      .. list-table::
+         :header-rows: 1
+         :widths: 10 10 10 10 10
+
+         * - Baudrate
+           - Data bits
+           - Parity bits
+           - Stop bits
+           - Flow control
+         * - 115200
+           - 8
+           - None
+           - 1
+           - XON/XOFF
+
+      To connect to the shell enter the login ``root``.
+
+   .. tab:: i.MX93 EVK
+
       .. figure:: images/iMX93/getting-started-setup.png
          :alt: Setup
          :align: center
          :scale: 70%
 
-To setup the hardware you will need to connect the following on the EVK:
+      To setup the hardware you will need to connect the following on the EVK:
 
-* A USB C cable for the power (provided with the EVK).
-* A USB C cable for the serial port.
-* A USB C cable for the touchscreen device.
-* A RJ45 cable to access the network.
-* An HDMI cable connected to the IMX-HDMI-MIPI adapter.
+      * A USB C cable for the power (provided with the EVK).
+      * A USB C cable for the serial port.
+      * A USB C cable for the touchscreen device.
+      * A RJ45 cable to access the network.
+      * An HDMI cable connected to the IMX-HDMI-MIPI adapter.
 
-The serial port is used to connect to a shell, it uses the following parameters:
+      The serial port is used to connect to a shell, it uses the following parameters:
 
-.. list-table::
-   :header-rows: 1
-   :widths: 10 10 10 10 10
+      .. list-table::
+         :header-rows: 1
+         :widths: 10 10 10 10 10
 
-   * - Baudrate
-     - Data bits
-     - Parity bits
-     - Stop bits
-     - Flow control
-   * - 115200
-     - 8
-     - None
-     - 1
-     - XON/XOFF
+         * - Baudrate
+           - Data bits
+           - Parity bits
+           - Stop bits
+           - Flow control
+         * - 115200
+           - 8
+           - None
+           - 1
+           - XON/XOFF
 
-To connect to the shell enter the login ``root``.
+      To connect to the shell enter the login ``root``.
 
 Configure boot
 ++++++++++++++
@@ -314,35 +362,32 @@ To change the boot mode to micro SD, set the DIP switch ``BMODE`` to ``0100``, i
 Insert the flashed SD card and boot the device. After a few seconds, the display will show the IMX93 Getting Started Welcome page.
 If no display is attached, information such as device IP address and documentation link will also be printed in the logs.
 
-LVDS display support
-++++++++++++++++++++
+Touchscreen calibration
++++++++++++++++++++++++
 
-This Getting Started has been tested with an HDMI display with a 1280x720 resolution.
-If you want to use the official display instead (the `DY1212W-4856 <https://www.nxp.com/design/design-center/development-boards-and-designs/dy1212w-4856-tft-lcd-panel-with-lvds-interface:DY1212W-4856>`_)
-you will need to reconfigure the device tree:
+The touch screen needs to be calibrated before using the application.
 
-* Boot your i.MX93 Evaluation Kit.
-* Stop the booting process to access the U-boot menu by pressing a key on the serial console.
-* In the U-boot menu, run the following commands:
+This can be done using the `ts_calibrate` tool provided by `tslib <https://github.com/libts/tslib>`_ on Linux.
+
+Open a console on the target (SSH or serial), start the calibration tool and follow the instructions on your device screen:
 
 .. code-block ::
 
-   setenv fdtfile imx93-11x11-evk-boe-wxga-lvds-panel.dtb
-   saveenv
-   boot
-
-* After the boot has completed you can test the display with: ``modetest -M imx-drm -s 35@33:1280x800-60.03``.
+   export TSLIB_TSDEVICE=/dev/input/touchscreen0
+   export TSLIB_CONFFILE=/etc/ts.conf
+   export TSLIB_CALIBFILE=/etc/ts.calib
+   ts_calibrate
 
 Congratulations! You have finished the setup of your environment. You are now ready to discover how to build and run a MicroEJ application.
 
-Build the Executable for i.MX93 Evaluation Kit
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Build the Executable for i.MX93
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To build the Executable of the :guilabel:`Example-Java-Widget` Application, the SDK provides the :guilabel:`buildExecutable` Gradle task.
+In order to build the Executable of the :guilabel:`Example-Java-Widget` Application, the SDK provides the :guilabel:`buildExecutable` Gradle task.
 
 .. note::
   
-   If you are using an IDE other than IntelliJ IDEA, please have a look at the :ref:`sdk_6_build_executable` section.
+   If you are using another IDE than IntelliJ IDEA, please have a look at :ref:`sdk_6_build_executable` section.
    Come back to this page if you need to activate an Evaluation License.
 
 * Before using this task, you will have to configure some environment variables that depend on the OS you are using.
@@ -376,8 +421,7 @@ To build the Executable of the :guilabel:`Example-Java-Widget` Application, the 
 
 Request your Evaluation License:
 
-* You can request your Evaluation license by following the :ref:`evaluation_license_request_activation_key` instructions. You will be asked to fill in the machine UID you just copied.
-
+* Request your Evaluation license by following the :ref:`evaluation_license_request_activation_key` instructions. You will be asked to fill the machine UID field with the UID you copied before.
 * When you have received your activation key by email, drop it in the license directory by following the :ref:`evaluation_license_install_license_key` instructions (drop the license key zip file to the ``~/.microej/licenses/`` directory).
 
 Now your Evaluation license is installed, you can relaunch your application build by double-clicking on the :guilabel:`buildExecutable` task in the Gradle tasks view. It may take some time.
@@ -386,10 +430,10 @@ The Gradle task deploys the Application in the BSP and then builds the BSP using
 
 The :guilabel:`Example-Java-Widget` application is built and ready to be flashed on i.MX93 Evaluation Kit once the hardware setup is completed.
 
-Run the Application on the i.MX93 Evaluation Kit
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Run the Application on the i.MX93
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To run the :guilabel:`Example-Java-Widget` Application on i.MX93 Evaluation Kit, the application provides the Gradle :guilabel:`runOnDevice` task.
+To run the :guilabel:`Example-Java-Widget` Application on i.MX93, the application provides the Gradle :guilabel:`runOnDevice` task.
 
 .. note::
   
@@ -401,7 +445,7 @@ To run the :guilabel:`Example-Java-Widget` Application on i.MX93 Evaluation Kit,
   * Fill in your variables in ``Environment variables``, each one separated by a semicolon:
 
     * ``SSH_USER=root``
-    * ``SSH_HOSTNAME``: IP address of the i.MX93 Evaluation Kit.
+    * ``SSH_HOSTNAME``: IP address of the i.MX93.
     * ``APP_SDK_INSTALL``: Path to the Yocto SDK (by default ``/usr/local/oecore-x86_64/``).
     * ``WSL_DISTRIBUTION_NAME``: Name of the WSL distribution if using Windows (by default ``Ubuntu``).
 
@@ -447,9 +491,9 @@ with
 Going Further
 -------------
 
-You have now successfully executed a MicroEJ application on an embedded device so what's next?
+You have now successfully executed a MicroEJ application on an embedded device, so what's next?
 
-If you are an application developer you can continue to explore MicroEJ's APIs and functionalities by running and studying our samples at GitHub:
+If you are an application developer, you can continue to explore MicroEJ's APIs and functionalities by running and studying our samples at GitHub:
 
 .. list-table::
    :widths: 33 33 33
@@ -458,7 +502,7 @@ If you are an application developer you can continue to explore MicroEJ's APIs a
      - Eclasspath
      - IoT
    * - This project gathers all the basic examples of the foundation libraries. 
-     - This project gather all the examples of eclasspath. 
+     - This project gathers all the examples of eclasspath. 
      - This project gathers simple applications using net libraries. 
    * - https://github.com/MicroEJ/Example-Foundation-Libraries
      - https://github.com/MicroEJ/Example-Eclasspath
@@ -466,14 +510,14 @@ If you are an application developer you can continue to explore MicroEJ's APIs a
 
 You can also learn how to build bigger and better applications by reading our :ref:`Application Developer Guide <application-developer-guide>`.
 
-If you are an embedded engineer you could look at our VEE port examples at `GitHub <https://github.com/microej?q=vee&type=all&language=&sort=>`_. And to learn how create custom VEE ports you can read our :ref:`VEE Porting Guide <vee-porting-guide>`.
+If you are an embedded engineer, you could look at our VEE port examples at `GitHub <https://github.com/microej?q=vee&type=all&language=&sort=>`__. And to learn how to create custom VEE Ports, you can read our :ref:`VEE Porting Guide <vee-porting-guide>`.
 
 You can also follow the :ref:`Kernel Developer Guide <kernel-developer-guide>` for more information on our multi-application framework or read about our powerful wearable solution called :ref:`VEE Wear <vee-wear>`.
 
-Last but not least you can choose to learn about specific topics by following one of our many :ref:`trainings` ranging from how to easily debug application to setting up a Continuous Integration process and a lot of things in between.
+Last but not least, you can choose to learn about specific topics by following one of our many :ref:`trainings` ranging from how to easily debug applications to setting up a Continuous Integration process and a lot of things in between.
 
 ..
-   | Copyright 2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2024-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

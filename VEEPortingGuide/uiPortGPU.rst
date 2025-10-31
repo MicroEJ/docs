@@ -103,7 +103,26 @@ These constraints affect the compile-time images (Image Generator) and the runti
 Address Alignment
 -----------------
 
-In the VEE Port Configuration project, specify the property ``imageBuffer.memoryAlignment`` in the ``display.properties`` file.
+In the VEE Port Configuration project, specify the property ``imageBuffer.memoryAlignment``:
+
+.. tabs::
+
+   .. tab:: SDK 6
+
+      In SDK 6, the configuration is done in the properties file ``configuration.properties`` of the VEE Port project:
+
+      .. code-block:: java 
+
+         com.microej.pack.imageBuffer.memoryAlignment=16
+
+   .. tab:: SDK 5
+
+      In SDK 5, the configuration is done in the properties file ``display/display.properties``:
+
+      .. code-block:: java 
+
+         imageBuffer.memoryAlignment=16
+
 The value is the alignment in bits.
 This value will be taken into account by the compile-time images (Image Generator) and the runtime images.
 
@@ -113,7 +132,6 @@ Stride (Compile-time Images)
 ----------------------------
 
 The stride is dynamic, often depending on the image format and width.
-Consequently, the stride cannot be set as a property in the ``display.properties`` file for example.
 
 For the compile-time images (Image Generator), a specific extension of the ImageGenerator is required.
 

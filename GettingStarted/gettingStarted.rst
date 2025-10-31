@@ -41,7 +41,7 @@ In case you cannot get hands on your desired starter kit, please contact us, we 
        :ref:`i.MX RT1170 Evaluation Kit <sdk_6_getting_started_imxrt1170>`
    * - |logo_nxp|
      - |image_imx93|
-       :ref:`i.MX 93 Evaluation Kit <sdk_6_getting_started_imx93>`
+       :ref:`i.MX 93 FRDM & EVK Boards <sdk_6_getting_started_imx93>`
    * - |logo_st|
      - |image_stm32f7508|
        :ref:`STM32F7508-DK Discovery Kit <sdk_6_getting_started_stm32f7508>`
@@ -56,31 +56,17 @@ In case you cannot get hands on your desired starter kit, please contact us, we 
 VEE Port Examples
 -----------------
 
-These VEE ports are provided as-is. They can include libraries that are not the latest version. Choose your VEE port by clicking on the links below.
-
-.. list-table::
-   :widths: 50 50
-   :header-rows: 0
-
-   * - |logo_nxp|
-     - |image_rt595|
-       :ref:`i.MX RT595 Evaluation Kit <sdk_6_getting_started_imxrt595>`
-
+These VEE ports are provided as-is. They can include libraries that are not the latest version.
 All VEE Port source code examples can be found at `GitHub <https://github.com/MicroEJ/?q=VEE&type=all&language=&sort=>`_.
 
 .. |logo_nxp| image:: images/logo-nxp_100px.png
 
 .. |logo_st| image:: images/logo-st_100px.png
 
-.. |image_rt595| image:: images/Board-NXP_i.MX-RT595-EK_100px.png
-.. |image_imx93| image:: images/Board-NXP_i.MX-93-EK_100px.png
+.. |image_imx93| image:: images/Board-NXP_i.MX-93-FRDM_100px.png
 .. |image_rt1170| image:: images/Board-NXP_i.MX-RT1170-EK_100px.png
 .. |image_stm32f7508| image:: images/Board-ST_STM32F7508-DK_100px.png
 
-.. toctree::
-   :hidden:
-
-   gettingStartedIMXRT595
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 

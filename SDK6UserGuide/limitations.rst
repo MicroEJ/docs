@@ -5,7 +5,7 @@ Scope and Limitations
 
 The SDK 6 covers all the SDK 5 features, except:
 
-- Build of Foundation Libraries, Packs and Offline Repositories.
+- Build of Offline Repositories.
 - Launch of some MicroEJ tools, such as the Kernel Metadata Generator.
 
 If you need these features, you have to use :ref:`the SDK 5 <sdk_user_guide>`.

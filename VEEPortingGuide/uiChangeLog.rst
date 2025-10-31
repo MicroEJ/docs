@@ -6,6 +6,71 @@
 Changelog
 =========
 
+.. _section_ui_changelog_14_5_1:
+
+[14.5.1] - 2025-10-13
+=====================
+
+MicroUI
+"""""""
+
+**Fixed**
+
+- Fix ``Image.get()`` and ``Image.canGet()`` of external RAW images: the images must respect the memory constraints (byte addressable, alignment).
+- Fix the loading of external RAW images that does not respect the GPU memory constraints.
+- Fix the reading in the back buffer: it could read in the wrong buffer after a fast GPU draw after a flush.
+
+LLAPIs
+""""""
+
+**Added**
+
+- Add the API ``LLUI_DISPLAY_IMPL_[un]lockJob()`` to enable the use of re-entrant functions in a task other than the MicroJvm virtual machine task.
+- Add the API ``LLUI_DISPLAY_decodeImage()`` to decode an image from the native world.
+- Add the API ``LLUI_DISPLAY_isMutable()`` that tells if an image is mutable or not.
+- Add the API ``LLUI_DISPLAY_getAddress()`` that gives the absolute address of an image.
+- Add the API ``LLUI_DISPLAY_getSize()`` that gives the image size in bytes.
+
+C Module MicroUI
+""""""""""""""""
+
+**Changed**
+
+- Use the include directive ``#include "veeport_configuration.h"`` to configure the UI configuration (``ui_configuration.h``).
+
+**Fixed**
+
+- Fix the log identifiers of the Drawing library.
+
+C Module DMA2D
+""""""""""""""
+
+**Changed**
+
+- Use the include directive ``#include "veeport_configuration.h"`` to configure the DMA2D configuration (``ui_dma2d_configuration.h``).
+
+C Module VGLite
+""""""""""""""""
+
+**Changed**
+
+- Use the include directive ``#include "veeport_configuration.h"`` to configure the VGLite configuration (``ui_vglite_configuration.h``).
+
+**Fixed**
+
+- Fix the use of the VGLite option ``VG_BLIT_WORKAROUND``: it must be ``0`` or undefined to avoid UI testsuite issues.
+
+C Module NemaGFX
+""""""""""""""""
+
+**Changed**
+
+- Use the include directive ``#include "veeport_configuration.h"`` to configure the NemaGFX configuration (``ui_nema_configuration.h``)..
+
+**Fixed**
+
+- Fix the useless include directive.
+
 .. _section_ui_changelog_14_4_2:
 
 [14.4.2] - 2025-05-20
