@@ -355,10 +355,10 @@ documentation for more details on how to filter the tests and on the available p
 Debug the Tests on Simulator
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A test can be executed on the Simulator in debug mode by setting the testsuite property ``execution.mode`` to ``debug`` 
+A test can be executed on the Simulator in debug mode by setting the property ``debug.mode`` to ``true`` 
 when executing the ``test`` task::
 
-   ./gradlew test --tests MyTest -Dmicroej.testsuite.properties.execution.mode="debug" -Dmicroej.testsuite.properties.debug.port="12000"
+   ./gradlew test --tests MyTest -P"debug.mode"=true -P"debug.port"=12000
 
 Once started, the Simulator waits for the connection of a debugger.
 
@@ -885,7 +885,9 @@ The following configuration parameters are available:
 
      - ``info``
    * - ``microej.testsuite.status.pattern``
-     - **since `1.3.0`** Pattern to change test passed (default is ``.:[|PASSED|]:.``) and failed (default is ``.:[|FAILED|]:.``) tags in testsuite logs.
+     - **Requires SDK 6 1.3.0 and ej.library.test:junit:1.12.0 minimum.**
+     
+       Pattern of the test passed (default is ``.:[|PASSED|]:.``) and failed (default is ``.:[|FAILED|]:.``) tags in testsuite logs.
        These tags are catched by the testsuite engine to determine if a test has passed or failed.
        The ``{}`` placeholder in the pattern will be replaced by ``PASSED`` or ``FAILED`` respectively in order to discriminate these tags from other test logs.
      - ``.:[|{}|]:.``
@@ -936,6 +938,8 @@ For example, to inject the property ``core.memory.immortal.size``:
          }
       }
 
+.. _sdk_6_inject_application_options:
+
 Inject Application Options For a Specific Test
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -957,6 +961,14 @@ Application Options defined in this file do not require the ``microej.testsuite.
    the properties file must be named after the main class. 
    If the main class has been generated from a JUnit test class, its class name is prefixed by ``_AllTests_``.
 
+Inject Resources For a Specific Test
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To embed resources for a specific test (image, model, ...), set the ``application.resources`` property in the test properties file (See :ref:`sdk_6_inject_application_options`). For example::
+
+   application.resources=/samples/sample0.txt;/samples/sample1.json;/samples/sample2.bin
+
+Each path is relative to the resources folder root. Use a semicolon (`;`) to separate multiple resources.
 
 Test Suite Advanced Configuration
 ---------------------------------

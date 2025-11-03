@@ -28,8 +28,6 @@ Machine Learning Model Format
 
 MicroAI API is designed to be **framework-agnostic**, meaning it does not rely on a specific Machine Learning framework like TensorFlow or ONNX.
 
-The Machine Learning framework is integrated at the VEE Port level, as a C/C++ library.
-
 The Application is responsible of loading the model file. 
 Therefore, before developing an Application with MicroAI, check which model file formats are supported by your target VEE Port.
 

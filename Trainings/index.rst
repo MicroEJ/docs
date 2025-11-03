@@ -225,6 +225,7 @@ For VEE Developers
    
    trainingVEEPortDevFromScratch
    trainingPQT
+   trainingVEEPortProgrammingPractices
    trainingDebugHardfault
    trainingAsyncWorker
 
@@ -264,6 +265,21 @@ For VEE Developers
                of MICROEJ VEE on a device using PQT (Port Qualification Tools).
                </p>
                <a class="training_learn_more_link" href="trainingPQT.html">Learn more</a>
+            </a>
+         </div>
+
+         <div class="training_item">
+            <a class="training_link" href="trainingVEEPortProgrammingPractices.html">
+               <div class="training_image_container">
+                  <ul class="training_image_list">
+                     <li class="training_course_number">Course</li>
+                  </ul>
+                  <img src="../_static/images/training/training_veeport_practices.jpg" alt="veeport_practices">
+               </div>
+               <h3 class="training_title">VEE Port Programming Practices</h3>
+               <p class="training_description">In this page, you will be linked to best practices for VEE Port development.
+               </p>
+               <a class="training_learn_more_link" href="trainingVEEPortProgrammingPractices.html">Learn more</a>
             </a>
          </div>
 
