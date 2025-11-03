@@ -189,6 +189,7 @@ This plugin adds the following tasks to your project:
 
 - :ref:`sdk6_module_natures.tasks.checkModule`
 - :ref:`sdk6_module_natures.tasks.buildModuleRepository`
+- :ref:`sdk6_module_natures.tasks.checkModuleRepository`
 
 .. graphviz:: graphModuleRepositoryModule.dot
 
@@ -851,6 +852,24 @@ buildModuleRepository
 **Outputs**:
 
 - The archive file containing the Module Repository (``build/libs/<project_name>.zip``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.module-repository`
+
+.. _sdk6_module_natures.tasks.checkModuleRepository:
+
+checkModuleRepository
+^^^^^^^^^^^^^^^^^^^^^
+
+**Description**: Checks the consistency of a Module Repository.
+
+**Inputs**:
+
+- The Module Repository archive file.
+- The list of the dependencies to skip. If not set, the check is executed on all dependencies.
 
 **Module Natures**:
 
