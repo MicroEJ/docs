@@ -26,6 +26,13 @@ The SDK is composed of the following main elements:
 - **Architecture**, the software package that includes the MEJ32 port to a target instruction set and a C compiler, SOAR, core libraries and Simulator.
   See :ref:`architecture_overview` section for more details.
 
+.. raw:: html
+
+   <div class="actions">
+      <a class="btn-action" href="install.html">Install SDK 6</a>
+   </div>
+
+
 The SDK is licensed under the :ref:`SDK End User License Agreement (EULA) <sdk6_eula>`. The following figure shows a detailed view of the elements.
 
 .. figure:: images/sdk_6_content.png
