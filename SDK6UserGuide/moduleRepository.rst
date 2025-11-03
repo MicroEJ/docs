@@ -65,7 +65,7 @@ By default, a dependency is resolved transitively but it is possible to not fetc
     }
 
 When a dependency is not resolved transitively, you must explicitly declare its transitive dependencies in your project.
-To ensure that repository users won't have any resolution issues, a :ref:`sdk6_consistency_check` is enabled by default.
+To ensure that repository users won't have any resolution issues, a :ref:`sdk6_module_repository_check` is enabled by default.
 
 .. warning::
 
@@ -245,30 +245,30 @@ the versions of a Library can be provided with:
         microejModule("org.example:my-library:2.0.0")
     }
 
-.. _sdk6_consistency_check:
+.. _sdk6_module_repository_check:
 
-Consistency Check
------------------
+Module Repository Check
+-----------------------
 
-The Module Repository consistency check consists in verifying that each declared module can be fetched from the repository.
+The Module Repository check consists in verifying that each declared module can be fetched from the repository.
 Especially, it ensures that all module's transitive dependencies are also available.
 
 For example, if your project provides the ``basictool`` library with ``isTransitive = false``, the following error may be raised::
 
-    > The Artifact Checker found the following problems:
-          - [x] [retrieve] ej.library.runtime:basictool:1.8.0: Some dependencies are missing from the Module Repository
-          > Could not find ej.api:edc:1.3.3.
-             Searched in the following locations:
-               - <project_path>/build/tmp/checkModule/repository/ej/api/edc/1.3.3/edc-1.3.3.pom
-               - <project_path>/build/tmp/checkModule/repository/ej/api/edc/1.3.3/ivy-1.3.3.xml
-             Required by:
-                 root project : > ej.library.runtime:basictool:1.8.0
-          > Could not find ej.api:bon:1.4.0.
-             Searched in the following locations:
-               - <project_path>/build/tmp/checkModule/repository/ej/api/bon/1.4.0/bon-1.4.0.pom
-               - <project_path>/build/tmp/checkModule/repository/ej/api/bon/1.4.0/ivy-1.4.0.xml
-             Required by:
-               root project : > ej.library.runtime:basictool:1.8.0
+    > Module Repository check failed
+      Some dependencies are missing from the Module Repository
+        > Could not find ej.api:edc:1.3.3.
+            Searched in the following locations:
+                - <project_path>/build/tmp/checkModule/repository/ej/api/edc/1.3.3/edc-1.3.3.pom
+                - <project_path>/build/tmp/checkModule/repository/ej/api/edc/1.3.3/ivy-1.3.3.xml
+            Required by:
+                root project : > ej.library.runtime:basictool:1.8.0
+        > Could not find ej.api:bon:1.4.0.
+            Searched in the following locations:
+                - <project_path>/build/tmp/checkModule/repository/ej/api/bon/1.4.0/bon-1.4.0.pom
+                - <project_path>/build/tmp/checkModule/repository/ej/api/bon/1.4.0/ivy-1.4.0.xml
+            Required by:
+                root project : > ej.library.runtime:basictool:1.8.0
 
 To fix this issue, you must define the library with the transitivity enabled:
 
@@ -290,9 +290,45 @@ Alternatively, you can explicitly declare the transitive dependencies of the mod
         microejModule("ej.api:bon:1.4.0")
     }
 
-By default, the consistency checker and all other checkers supported by the :ref:`sdk6_module_natures.tasks.checkModule` task are executed on all 
-dependencies of a Module Repository project. The checkers can be enabled or disabled on specific dependencies by calling 
-the following methods when declaring the dependency:
+The Module Repository check can be run by executing the Gradle ``checkModuleRepository`` task::
+
+    ./gradlew checkModuleRepository
+
+This task is executed by default when :ref:`building a Module Repository <sdk_6_build_module_repository>`. 
+It is possible to disable it on specific dependencies by calling the ``microej.skipModuleRepositoryCheck`` method when declaring a dependency:
+
+.. code-block:: kotlin
+
+    dependencies {
+        microejModule("ej.library.runtime:basictool:1.8.0") {
+            isTransitive = false
+        }.let {
+            microej.skipModuleRepositoryCheck(it)
+        }
+    }
+
+.. note::
+
+   It is also possible to disable the Module Repository for a dependency in the ``microej`` block of the ``build.gradle.kts`` file:
+
+    .. code-block:: kotlin
+
+        microej {
+            skipModuleRepositoryCheck("ej.library.runtime:basictool:1.8.0")
+        }
+
+        dependencies {
+            microejModule("ej.library.runtime:basictool:1.8.0")
+        }
+        
+   But this solution requires duplicating the dependency and the related information is scattered throughout the ``build.gradle.kts`` file,
+   so it is recommended to disable the check in the dependency's declaration.
+
+If you don't want to check the Module Repository project, you can also :ref:`skip the task <sdk_6_howto_gradle_skip_task>`.
+
+The checkers supported by the :ref:`sdk6_module_natures.tasks.checkModule` task are also executed on all 
+dependencies of a Module Repository project by default. The checkers can be enabled or disabled on specific dependencies by calling 
+the following methods when declaring a dependency:
 
 .. list-table:: 
    :widths: 25 65
@@ -300,10 +336,10 @@ the following methods when declaring the dependency:
 
    * - Name
      - Description
-   * - ``runCheckers``
+   * - ``microej.runCheckers``
      - This method takes a dependency and a comma-separated list of the names of the checkers to execute as parameters. 
        All checkers are executed by default.
-   * - ``skipCheckers``
+   * - ``microej.skipCheckers``
      - This method takes a dependency and a comma-separated list of the names of the checkers to exclude as parameters. 
        Ignored if the dependency is also used as parameter of the ``runCheckers`` method.
 
