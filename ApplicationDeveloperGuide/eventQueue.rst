@@ -98,8 +98,8 @@ It will call the default listener if no listener corresponds to the event type.
 You can create your Event Queue listener by implementing the ``EventQueueListener`` interface.
 It contains two methods that are used to handle standard and extended events. 
 
-Before registering your listener, you must get a valid unique type using the ``getNewType()`` method from the ``EventQueue`` class.
-Then you can register your listener using the ``registerListener(EventQueueListener listener, int type)`` method from the ``EventQueue`` class.
+You can register your listener using the ``registerListener(EventQueueListener listener)`` method from the ``EventQueue`` class.
+Internally, the Event Queue maintains a FIFO-based counter that sequentially allocates type IDs to registered listeners.
 
 The unique type your listener uses could be stored on the Managed world and passed/stored to the C world.
 One way to do it is to create a native method that sends the event type to the C world during the initialization phase.
@@ -115,21 +115,18 @@ For example:
    public static void main(String[] args) throws InterruptedException {
       EventQueue eventQueue = EventQueue.getInstance();
 
-      // Get the unique type to register your listener.
-      // eventType must be stored if you want to offer an event from the Java API.
-      eventType = eventQueue.getNewType();
-
       // Create and register a listener.
-      eventQueue.registerListener(new ExampleListener(), eventType);
+      // eventType must be stored if you want to offer an event from the Java API.
+      eventType = eventQueue.registerListener(new ExampleListener());
 
       // Send eventType to the C world.
       initialize(eventType);
    }
 
    /**
-   * This native method will take the event type as an entry and store it in the C world. 
+   * This native method will take the event type as an entry and store it in the C world.
    */ 
-   public static native void initialize(int type);
+   public static native void setupNativeEventType(int type);
 
 
 Standard event
@@ -202,9 +199,8 @@ For example:
 .. code-block:: java
 
    EventQueue queue = EventQueue.getInstance();
-   int type = queue.getNewType();
-   initialize(type);
-   queue.registerListener(type, new EventQueueListener() {
+   int type = queue.registerListener(new EventQueueListener() {
+
       @Override
       public void handleEvent(int type, int data) {
          System.out.println("My data is equal to: " + data);
@@ -214,6 +210,7 @@ For example:
          throw new RuntimeException();
       }
    });
+   setupNativeEventType(type);
 
 
 Extended event
@@ -341,9 +338,7 @@ For example:
 .. code-block:: java
 
    EventQueue queue = EventQueue.getInstance();
-   int type = queue.getNewType();
-   initialize(type);
-   queue.registerListener(type, new EventQueueListener() {
+   int type = queue.registerListener(type, new EventQueueListener() {
       @Override
       public void handleEvent(int type, int data) {
          throw new RuntimeException();
@@ -363,6 +358,7 @@ For example:
          System.out.println("Accelerometer values: X = " + x + ", Y = " + y + ", Z = " + z + ".");
       }
    });
+   setupNativeEventType(type);
 
 Mock the Event Queue
 --------------------
@@ -378,7 +374,7 @@ The Event Queue Mock API dependency must be added to the project build file of y
 
       .. code-block:: kotlin
 
-         implementation(group="com.microej.pack.event", name="event-pack", version="2.2.0", configuration="mockAPI")
+         implementation("com.microej.pack.event:event-mock-api:3.0.1")
 
    .. tab:: MMM (module.ivy)
 
@@ -413,7 +409,7 @@ Application project to use the Event Queue Foundation Library.
 
       .. code-block:: kotlin
 
-         implementation("ej.api:event:2.1.0")
+         implementation("ej.api:event:3.0.1")
 
    .. tab:: MMM (module.ivy)
 
