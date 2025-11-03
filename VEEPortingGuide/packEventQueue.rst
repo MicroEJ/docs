@@ -26,13 +26,28 @@ The Event Queue :ref:`Pack <pack_overview>` module must be installed in your VEE
 
 .. tabs::
 
-   .. tab:: SDK 6 (build.gradle.kts)
+   .. group-tab:: SDK 6 (build.gradle.kts)
+
+      For Event Queue 2.3.0 and higher:
+
+      .. code-block:: kotlin
+         microejPack("ej.api:event:2.3.0")
+      |
+      For Event Queue 2.2.0 and lower:
 
       .. code-block:: kotlin
 
-         microejPack("com.microej.pack.event:event-pack:2.2.0")
+         microejPack(group="com.microej.pack.event", name="event-pack", version="2.2.0", configuration="mockAPI")
 
-   .. tab:: SDK 5 (module.ivy)
+   .. group-tab:: SDK 5 (module.ivy)
+
+      For Event Queue 2.3.0 and higher:
+
+      .. code-block:: xml
+         Not Supported
+      |
+
+      For Event Queue 2.2.0 and lower:
 
       .. code-block:: xml
 
