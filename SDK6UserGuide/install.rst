@@ -3,7 +3,16 @@
 Installation
 ============
 
-This chapter will guide you through the installation process of the SDK on your workstation.
+This chapter will guide you through the installation process of the SDK on your workstation 
+to start writing applications for MicroEJ-ready devices and running them on a virtual (simulated) or real device.
+The SDK is mainly composed of Gradle Plugins and IDE Plugins, 
+so the installation process will explain how to perform the following actions: 
+
+- Install a JDK (if no compatible version is installed on the workstation).
+- Configure the Gradle repositories (to automatically download the Gradle plugins).
+- Accept the SDK EULA.
+- Install an IDE and the MicroEJ plugin.
+
 First check the System Requirements before proceeding.
 
 .. _sdk_6_system_requirements:
