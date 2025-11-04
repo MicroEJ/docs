@@ -454,7 +454,7 @@ Configuration
 -------------
 
 The :ref:`Event Queue Pack <pack_event>` can be configured by defining the following properties as
-:ref:`Constants <section.classpath.elements.constants>`` in SDK 6 and as :ref:`Application Options <application_options>` in SDK 5:
+:ref:`Constants <section.classpath.elements.constants>` in SDK 6 and as :ref:`Application Options <application_options>` in SDK 5:
 
 
 - ``event.thread.name``: defines the name of the Event Queue thread. Its default value is ``EventQueue``.
