@@ -31,8 +31,11 @@ The Event Queue :ref:`Pack <pack_overview>` module must be installed in your VEE
       For Event Queue 2.3.0 and higher:
 
       .. code-block:: kotlin
+
          microejPack("ej.api:event:2.3.0")
+
       |
+
       For Event Queue 2.2.0 and lower:
 
       .. code-block:: kotlin
@@ -44,7 +47,9 @@ The Event Queue :ref:`Pack <pack_overview>` module must be installed in your VEE
       For Event Queue 2.3.0 and higher:
 
       .. code-block:: xml
+
          Not Supported
+
       |
 
       For Event Queue 2.2.0 and lower:
