@@ -9,6 +9,7 @@ MicroEJ Foundation Libraries
     kf
     ecom
     ecom-comm
+    event
     microui
     fs
     gnss
