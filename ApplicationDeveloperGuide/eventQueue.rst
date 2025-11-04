@@ -375,8 +375,11 @@ The Event Queue Mock API dependency must be added to the project build file of y
       For Event Queue 3.0.1 and higher:
 
       .. code-block:: kotlin
+
          implementation("com.microej.pack.event:event-mock-api:3.0.1")
+
       |
+
       For Event Queue 2.2.0 and lower:
 
       .. code-block:: kotlin
@@ -388,8 +391,11 @@ The Event Queue Mock API dependency must be added to the project build file of y
       For Event Queue 2.3.0 and higher:
 
       .. code-block:: xml
+
          Not Supported
+
       |
+
       For Event Queue 2.2.0 and lower:
 
       .. code-block:: xml
@@ -427,11 +433,14 @@ Application project to use the Event Queue Foundation Library.
 
    .. group-tab:: SDK 5 (module.ivy)
 
-   For Event Queue 2.3.0 and higher:
+      For Event Queue 2.3.0 and higher:
 
       .. code-block:: xml
+
          Not Supported
+
       |
+
       For Event Queue 2.1.0 and lower:
 
       .. code-block:: xml
