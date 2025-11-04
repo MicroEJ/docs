@@ -450,6 +450,11 @@ Application project to use the Event Queue Foundation Library.
 To use this API, your VEE Port must implement a compatible version. 
 Please refer to the :ref:`VEE Porting Guide <pack_event>` to port the Event Queue for your project.
 
+.. warning::
+
+    The Event Queue library is not designed to be :ref:`Multi-Sandbox enabled <multiapps.enabled.libraries>`.
+    Therefore, a Kernel must not expose its APIs to Features.
+
 Configuration
 -------------
 
