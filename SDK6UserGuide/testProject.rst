@@ -294,6 +294,8 @@ To generate the Code Coverage files (``.cc``) for each test, configure the test 
 
 Then, to generate an HTML report, see :ref:`sdk6.section.code_coverage_analyzer`.
 
+.. _sdk_6_test_filter:
+
 Filter the Tests
 ^^^^^^^^^^^^^^^^
 
