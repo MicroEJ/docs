@@ -421,7 +421,7 @@ Graphical User Interface
                <p class="training_description">This training describes the available GUI tools provided by MICROEJ SDK
                         to accelerate and hone your UI and UX development.
                </p>
-               <a class="training_learn_more_link" href="trainingGUIDevelopmentTools.html">Learn more</a>
+               <a class="training_learn_more_link" href="trainingGuiDevelopmentTools.html">Learn more</a>
             </a>
          </div>
 
