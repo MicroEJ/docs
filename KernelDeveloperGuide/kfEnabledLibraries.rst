@@ -289,6 +289,12 @@ when a Feature is stopped.
 
 .. _ej.ecom.io.CommConnection: https://repository.microej.com/javadoc/microej_5.x/apis/ej/ecom/io/CommConnection.html
 
+Event Queue
+~~~~~~~~~~~
+
+The :ref:`Event Queue library <event_queue>` is not designed to be Multi-Sandbox enabled.
+Therefore, a Kernel must not expose its APIs to Features.
+
 FS
 ~~
 
