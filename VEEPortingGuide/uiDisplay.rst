@@ -325,17 +325,15 @@ Transmit and Swap Buffer
 Serial Connection
 """""""""""""""""
 
-When the time to transmit the data from the back buffer to the front buffer is :ref:`too long <section_display_single_serial>`, a second buffer can be allocated in the MCU memory.
-The application can use this buffer while the first buffer is transmitted.
-This allows to anticipate the drawings even if the first drawings are not fully transmitted.
-This is the notion of **transmit and swap buffer**.
-The buffers are usually called **back buffer 1** and **back buffer 2** (the display module's buffer is the **front buffer**).
+To accelerate the UI pipeline, the Graphics Engine needs to start the rendering of a next frame before the current frame is fully transmitted to the front buffer.
+This can be done by adding a second buffer (allocated in MCU memory) to the :ref:`Single Buffer <section_display_single_serial>` policy.
+The buffers can be referenced as **back buffer 1** and **back buffer 2** while the display module's buffer is the **front buffer**.
 
-The *flush* step consists in transmitting the back buffer data to the display module memory **and** swapping both back buffers:
+The *flush* step consists in transmitting the back buffer data to the display module memory and swapping both back buffers.
+Basically:
 
-* The back buffer 1 is used as *transmission* buffer.
-* The back buffer 2 is not used: the application can immediately draw into it without waiting for the back buffer 1 to be transmitted.
-* At the end of the drawings in the back buffer 2, the back buffer 2 takes the role of the *transmission* buffer, and the back buffer 1 is free.
+* A transfer is initiated from the active back buffer to the front buffer.
+* The back buffers are "swapped": the pointer to the back buffer for drawing is changed between back buffer 1 & 2.
 
 .. figure:: images/ui_display_transmitswap_serial.*
    :alt: Transmit and Swap (serial)
@@ -344,19 +342,24 @@ The *flush* step consists in transmitting the back buffer data to the display mo
 
    Transmit and Swap (serial)
 
+.. note::
+
+   To render the next frame on a different buffer, it may be needed to first restore the content of the new active back buffer.
+   This is described in :ref:`section_brs`. This "Transmit & Swap (serial)" policy is best combined with the :ref:`section_brs_predraw`.
+   See details on the optimizations in :ref:`Predraw applied to Transmit & Swap <section_brs_predraw_transmitswap>`.`
+
 Parallel Connection
 """""""""""""""""""
 
-When the time to copy the data from the back buffer to the front buffer is :ref:`too long <section_display_single_parallel>`, a third buffer can be allocated in the MCU memory.
-This buffer can be used by the application during the copy of the first buffer.
-This allows to anticipate the drawings even if the first drawings still need to be entirely copied.
-This is the notion of **transmit and swap buffer**.
-The buffers are usually called **back buffer 1** and **back buffer 2** (the third buffer is the **front buffer**).
-The *flush* step consists in copying the back buffer data to the front buffer **and** swapping both back buffers.
+To accelerate the UI pipeline, the Graphics Engine needs to start the rendering of a next frame before the current frame is fully transmitted to the front buffer.
+This can be done by adding a second back buffer (a third buffer allocated in MCU memory) to the :ref:`Single Buffer <section_display_single_parallel>` policy.
+The buffers can be referenced as **back buffer 1**, **back buffer 2** & **front buffer**.
 
-* The back buffer 1 is used as *copying* buffer.
-* The back buffer 2 is not used: the application can immediately draw into it without waiting for the back buffer 1 to be copied.
-* At the end of the drawings in the back buffer 2, the back buffer 2 takes the role of the *copying* buffer, and the back buffer 1 is free.
+The *flush* step consists in copying the active back buffer data to the front buffer and swapping both back buffers.
+Basically:
+
+* A copy is initiated from the active back buffer to the front buffer.
+* The back buffers are "swapped": the pointer to the back buffer for drawing is changed between back buffer 1 & 2.
 
 .. figure:: images/ui_display_transmitswap_parallel.*
    :alt: Transmit and Swap (parallel)
@@ -365,6 +368,18 @@ The *flush* step consists in copying the back buffer data to the front buffer **
 
    Transmit and Swap (parallel)
 
+.. note::
+
+   To render the next frame on a different buffer, it may be needed to first restore the content of the new active back buffer.
+   This is described in :ref:`section_brs`. This "Transmit & Swap (parallel)" policy is best combined with the :ref:`section_brs_predraw`.
+   See details on the optimizations in :ref:`Predraw applied to Transmit & Swap <section_brs_predraw_transmitswap>`.`
+
+.. I am not sure to understand here: to restore, we would need to perform a copy between the two back buffers. This can only be 
+   useful if this copy is significantly faster than the copy to the frame buffer, right?
+   Based on Decision Tree, it seems this is only recommended if display cannot change it's source address & there is enough space for a third buffer.
+   I wonder if we should mention that (if I understand correctly), for the cost of a third buffer in memory, peak performances could be slightly improved with this policy.
+   Although I feel like this is optimistic & it would actually decrease the performances (because of the additional "restore") in many cases.
+   Am I missing something?
 
 .. _section_display_partial:
 
