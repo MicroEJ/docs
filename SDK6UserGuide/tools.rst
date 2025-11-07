@@ -65,6 +65,7 @@ The following sections describe the IDE tools and their options:
    ../ApplicationDeveloperGuide/UI/MicroUI/fontDesigner
    localDeployTool
    serialToSocketTransmitter
+   kernelApiGenerator
    nullAnalysis
 
 ..
