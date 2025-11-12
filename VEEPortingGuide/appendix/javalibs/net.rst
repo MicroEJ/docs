@@ -67,7 +67,7 @@ is issued, where ``<messageId>`` meaning is defined in the next table:
    +-------------+--------------------------------------------------------+
    | -27         | Native file descriptor already initialized.            |
    +-------------+--------------------------------------------------------+
-   | -28         | Socket Closed.                                         |
+   | -28         | Socket closed.                                         |
    +-------------+--------------------------------------------------------+
    | -29         | Wrong native MAC address size returned.                |
    +-------------+--------------------------------------------------------+
