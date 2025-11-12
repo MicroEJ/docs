@@ -1,8 +1,12 @@
+.. |ARCHITECTURE_VERSION| replace:: 8.5.0
+
 =======
 SNI API
 =======
 
 This chapter describes the SNI (Simple Native Interface) API. For more information on SNI specification, see :ref:`native_mechanisms` documentation.
+
+The following API corresponds to architecture version |ARCHITECTURE_VERSION|.
 
 sni.h
 =====
