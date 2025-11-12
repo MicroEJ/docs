@@ -224,13 +224,19 @@ This can be done by extracting the Testsuite sources in the validation project.
 For example for the FS Testsuite, follow these steps:
 
 - In the validation project (``vee-port/validation/fs``), create the ``src/test/java`` folder if it does not exist.
-- Get the Testsuite JAR from ``vee-port/validation/fs/build/testVee/javaLibs/fs-testsuite-1.0.jar`` (the Testsuite 
-  must be executed once before to have this folder) and extract it into the ``src/test/java`` folder previously created.
+- Get the Testsuite RIP file. It is available in the MicroEJ Central Repository. 
+  For example, for the FS Testsuite ``com.microej.pack.fs:fs-testsuite:3.0.8``, 
+  the RIP file is located `here <https://repository.microej.com/modules/com/microej/pack/fs/fs-testsuite/3.0.8/fs-testsuite-3.0.8.rip>`__.
+- Extrat the RIP file in the temporary folder of your choice.
+- Locate the Testsuite JAR from the ``javaLibs`` folder to this RIP file. It is named ``fs-testsuite-x.y.jar``.
+- Extract it into the ``src/test/java`` folder previously created.
 - Remove all the ``.class`` to keep only the ``.java`` files.
 - In the ``build.gradle.kts`` file of the validation, remove the dependency to the FS Testsuite module (``implementation(libs.testsuite.fs)``).
 - Add the missing dependency to make everything compile successfully:
 
-   - Add the dependency ``implementation("com.is2t.libraries:checkHelper:1.3.0")``.
+   - Copy all the other JAR files from the ``javaLibs`` RIP folder into the folder ``vee-port/validation/fs`` and add them as file dependencies in the dependencies.
+     The FS Testsuite contains only the ``checkHelper.jar`` file. 
+     It must be copied into the folder ``vee-port/validation/fs`` and the following line must be added: ``implementation(files(layout.projectDirectory.file("checkHelper.jar"))``.
    - Copy the JAR ``vee-port/validation/fs/build/testVee/javaLibs/resourcemanager-1.0.jar`` into the folder ``vee-port/validation/fs``,
      then add the dependency ``implementation(files(layout.projectDirectory.file("resourcemanager-1.0.jar")))``.
 
