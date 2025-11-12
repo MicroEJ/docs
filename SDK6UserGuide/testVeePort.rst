@@ -176,6 +176,16 @@ The following image shows the test suite report fully passed:
 
 .. image:: ./images/testsuite_fs_all_tests_passed.png
 
+If at least one test fails, the build fails and the report displays the list of failed tests:
+
+.. image:: ./images/testsuite_fs_tests_failed.png
+
+You can click on a failing test, then on the Standard Output tab to get its full logs:
+
+.. image:: ./images/testsuite_fs_tests_failed_logs.png
+
+Refer to :ref:`this chapter <sdk_6_veeport_test_decrypt_stacktrace>` to decrypt the stack traces.
+
 Rerun Tests
 -----------
 
@@ -244,6 +254,8 @@ For example for the FS Testsuite, follow these steps:
 - Launch the test again with::
 
    ./gradlew test
+
+.. _sdk_6_veeport_test_decrypt_stacktrace:
 
 Decrypt a Stack Trace in a Test
 -------------------------------
