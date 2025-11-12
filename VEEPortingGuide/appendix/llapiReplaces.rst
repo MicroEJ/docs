@@ -1,0 +1,1 @@
+.. |ARCHITECTURE_VERSION| replace:: 8.5.0

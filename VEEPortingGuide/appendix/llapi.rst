@@ -1,5 +1,7 @@
 .. _LLAPI-CHAPTER:
 
+.. include:: llapiReplaces.rst
+
 =============
 Low Level API
 =============
@@ -83,6 +85,8 @@ this implementation.
 LLMJVM: Core Engine
 ===================
 
+The following API corresponds to architecture version |ARCHITECTURE_VERSION|.
+
 
 LLMJVM_impl.h
 -------------
@@ -124,6 +128,8 @@ Set of functions that can be implemented to configure the Core Engine at startup
 
 LLKERNEL: Multi-Sandbox
 =======================
+
+The following API corresponds to architecture version |ARCHITECTURE_VERSION|.
 
 
 LLKERNEL_impl.h
@@ -1011,6 +1017,8 @@ Several C header files are provided:
 
 LLTRACE: Trace
 ==============
+
+The following API corresponds to architecture version |ARCHITECTURE_VERSION|.
 
 Principle
 ---------
