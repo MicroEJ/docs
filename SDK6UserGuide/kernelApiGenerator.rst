@@ -42,7 +42,7 @@ Java classpath
 
 *Default value*: No default value, this option is required.
 
-*Description*: List of the paths of the JAR files or folders containing Java class files, for example ``C:/folder1/lib.jar;C:/folder2``.
+*Description*: List of the absolute paths of the JAR files or folders containing Java class files, for example ``C:/folder1/lib.jar;C:/folder2``.
 
 
 
