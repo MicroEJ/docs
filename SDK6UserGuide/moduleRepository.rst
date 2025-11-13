@@ -245,6 +245,21 @@ the versions of a Library can be provided with:
         microejModule("org.example:my-library:2.0.0")
     }
 
+.. _sdk_6_include_ivy_descriptors:
+
+Include the Ivy Descriptor of a Module
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Most SDK 6 modules are published with an Ivy descriptor file to ensure that they can be consumed by SDK 5 projects.
+By default, this file is not included in a Module Repository, but it is possible to add it by calling the ``withDependenciesIvyDescriptor`` method in 
+the ``microej`` block of the ``build.gradle.kts`` file:
+
+.. code-block:: kotlin
+
+    microej {
+        withDependenciesIvyDescriptor()
+    }
+
 .. _sdk6_module_repository_check:
 
 Module Repository Check
@@ -405,10 +420,15 @@ The Module Repository can be built by executing the Gradle ``buildModuleReposito
 
 The repository is generated in ``build/libs/<project_name>.zip``.
 
-.. _sdk6_use_module_repository:
+.. _sdk6_use_offline_module_repository:
 
-Use the Module Repository
--------------------------
+Use an Offline Module Repository
+--------------------------------
+
+.. warning::
+
+   An SDK 6 Offline Module Repository can not be used by SDK 5 projects. If you need to build an Offline Repository for SDK 5 projects, 
+   refer to :ref:`module_repository`.
 
 When the Module Repository has been created, you can configure your projects to use it:
 
@@ -439,11 +459,6 @@ When the Module Repository has been created, you can configure your projects to 
     ...
 
   }
-
-.. warning::
-
-   A Module Repository built with SDK 6 can be used by SDK 6 projects only. If you need to build a Module Repository for SDK 5 projects, 
-   refer to :ref:`module_repository`.
 
 ..
    | Copyright 2020-2025, MicroEJ Corp. Content in this space is free 
