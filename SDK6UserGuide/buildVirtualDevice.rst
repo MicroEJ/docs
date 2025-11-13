@@ -63,6 +63,41 @@ When the build is completed, the Virtual Device is available in the ``build/virt
 
 The Virtual Device can then be used to :ref:`run an Application on the Simulator <sdk_6_run_on_simulator>` for example.
 
+.. _sdk_6_buildVirtualDevice_embed_jdk:
+
+Embed JDKs in a Virtual Device
+------------------------------
+
+The Virtual Device can embed its own JDK, 
+so it can run out of the box without requiring a JDK to be installed on the target system.
+This feature is disabled by default and can be enabled by setting the ``microej > virtualDevice > includeJdks`` 
+property to ``true`` in the ``build.gradle.kts`` file of the project::
+
+   microej {
+      virtualDevice {
+         includeJdks = true
+         jdkWindowsX64Url = "https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.26%2B4/OpenJDK11U-jdk_x64_windows_hotspot_11.0.26_4.zip"
+         jdkLinuxX64Url = "https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.29%2B7/OpenJDK11U-jdk_x64_linux_hotspot_11.0.29_7.tar.gz"
+      }
+   }
+
+As shown in the sample above, the URLs of the JDKs to download and embed must be defined for each OS/Architecture you want to support.
+The JDK URLs can be specified for the 3 OSes ``Windows``, ``Linux`` and ``macOs``, and the 2 Architectures ``x64`` and ``Aarch64``, thanks to the following properties:
+
+- ``jdkWindowsX64Url``: ``Windows`` on ``x64``
+- ``jdkWindowsAarch64Url``: ``Windows`` on ``Aarch64``
+- ``jdkLinuxX64Url``: ``Linux`` on ``x64``
+- ``jdkLinuxAarch64Url``: ``Linux`` on ``Aarch64``
+- ``jdkMacOsX64Url``: ``macOs`` on ``x64``
+- ``jdkMacOsAarch64Url``: ``macOs`` on ``Aarch64``
+
+It's worth mentioning that only ``.zip`` and ``.tar.gz`` files are supported.
+
+.. warning::
+
+   Embedding JDKs in the Virtual Device makes its usage easier but comes with a cost in term of size.
+   Each JDK adds several dozen of MB, that can lead to a quite big Virtual Device Archive.
+
 .. _sdk_6_buildVirtualDevice_add_application:
 
 Add a Pre-Installed Application in a Virtual Device
