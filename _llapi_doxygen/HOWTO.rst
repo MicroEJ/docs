@@ -21,6 +21,12 @@ Generation
 - Run the command ``doxygen microej_doxygen_config``
 
 
+Update
+------
+
+When updating the versions of *.h files, don't forget to also update the architecture and/or library versions on top of ``llapi.rst`` and ``sniApi.rst`` in ``VEEPortingGuide/appendix`` folder.
+
+
 ..
    | Copyright 2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
