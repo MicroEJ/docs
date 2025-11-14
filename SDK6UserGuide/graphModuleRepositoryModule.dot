@@ -12,9 +12,11 @@ digraph mygraph {
     edge [fontname="Helvetica,Arial,sans-serif"]
     "checkModule" [fillcolor = "#f76241"]
     "buildModuleRepository" [fillcolor = "#f76241"]
+    "checkModuleRepository" [fillcolor = "#f76241"]
     "build" -> "check"
     "build" -> "assemble"
     "assemble" -> "buildModuleRepository"
+    "checkModuleRepository" -> "buildModuleRepository"
     "checkModule" -> "assemble"
 
     subgraph cluster_legend {

@@ -189,6 +189,7 @@ This plugin adds the following tasks to your project:
 
 - :ref:`sdk6_module_natures.tasks.checkModule`
 - :ref:`sdk6_module_natures.tasks.buildModuleRepository`
+- :ref:`sdk6_module_natures.tasks.checkModuleRepository`
 
 .. graphviz:: graphModuleRepositoryModule.dot
 
@@ -851,6 +852,46 @@ buildModuleRepository
 **Outputs**:
 
 - The archive file containing the Module Repository (``build/libs/<project_name>.zip``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.module-repository`
+
+.. _sdk6_module_natures.tasks.checkModuleRepository:
+
+checkModuleRepository
+^^^^^^^^^^^^^^^^^^^^^
+
+**Description**: Checks the consistency of a Module Repository.
+
+**Inputs**:
+
+- The Module Repository archive file.
+- The list of the dependencies to skip. If not set, the check is executed on all dependencies.
+
+**Configuration**:
+
+This task provides the following property that can be defined in the ``microej`` extension:
+
+.. list-table:: 
+   :widths: 25 65 15
+   :header-rows: 1
+
+   * - Name
+     - Description
+     - Default
+   * - ``moduleRepositoryCheckSkippedDependencies``
+     - List of the dependencies on which the Module Repository check must not be executed. 
+       An empty list means that the checker is executed on all dependencies.
+     - Empty List.
+
+For example::
+
+    microej {
+        moduleRepositoryCheckSkippedDependencies = listOf("ej.api:edc:1.3.3", "ej.api:bon:1.4.0")
+    }
 
 **Module Natures**:
 
