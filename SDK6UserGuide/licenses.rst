@@ -210,7 +210,7 @@ When a license is about to expire, a warning message is displayed when building 
   [WARNING] Your license XXXXX-XXXXX-XXXXX-XXXXX will expire in 20 days.
   ======================================================================
 
-By default the warning is displayed starting 20 days before the expiration date (30 days for production licenses), but this value can be changed in the `build.gradle.kts` of your project::
+By default the warning is displayed starting 20 days before the expiration date for Evaluation licenses and 30 days for Production licenses. These values can be changed in the ``build.gradle.kts`` of your project::
 
    microej {
       daysBeforeEvaluationLicenseExpirationMessage = 20
