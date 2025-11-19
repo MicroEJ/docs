@@ -1,4 +1,4 @@
-settingsEvaluated {
+beforeSettings {
 
    val userHome = System.getProperty("user.home")
 
