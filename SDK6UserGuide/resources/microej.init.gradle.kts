@@ -80,22 +80,23 @@ beforeSettings {
              }
          }
       }
-
-      /**
-       * Publish repositories
-       */
-      pluginManager.withPlugin("maven-publish") {
-         configure<PublishingExtension> {
-            repositories {
-               maven {
-                  name = "localRepository"
-                  url = uri("${userHome}/.microej/repository")
-               }
-            }
-         }
-      }
    }
 
+   allprojects {
+        /**
+        * Publish repositories
+        */
+        pluginManager.withPlugin("maven-publish") {
+            configure<PublishingExtension> {
+                repositories {
+                    maven {
+                        name = "localRepository"
+                        url = uri("${userHome}/.microej/repository")
+                    }
+                }
+            }
+        }
+   }
 
    /**
     * Plugins repositories
