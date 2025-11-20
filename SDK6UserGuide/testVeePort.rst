@@ -191,9 +191,9 @@ Rerun Tests
 
 When nothing has changed in the VEE Port or Testsuite project, 
 running again the ``test`` task does not have any effect since the task is considered ``UP-TO-DATE`` by Gradle.
-If you want to force a new execution of the tests in this case, you can use the option ``--rerun``::
+If you want to force a new execution of the tests in this case, you can use the option ``--rerun-tasks``::
 
-   ./gradlew :vee-port:validation:fs:test --rerun
+   ./gradlew :vee-port:validation:fs:test --rerun-tasks
 
 You can also filter the tests to execute, either in the ``build.gradle.kts`` file or 
 with the ``--tests`` options, as described in :ref:`sdk_6_test_filter`.
