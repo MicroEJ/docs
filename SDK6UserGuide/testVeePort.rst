@@ -201,6 +201,11 @@ with the ``--tests`` options, as described in :ref:`sdk_6_test_filter`.
 Debug Tests on Simulator
 ------------------------
 
+.. warning::
+
+   The properties documented in this section (``debug.mode`` and ``debug.port``) are available only from version ``1.4.0`` of the SDK 6, 
+   so make sure to use this version at least.
+
 Tests can be debugged when running on the Simulator by following these steps:
 
 - Make sure the Testsuite is configured to run on the Simulator by checking that 
