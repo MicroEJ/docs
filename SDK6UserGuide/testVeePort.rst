@@ -237,7 +237,7 @@ For example for the FS Testsuite, follow these steps:
 - Get the Testsuite RIP file. It is available in the MicroEJ Central Repository. 
   For example, for the FS Testsuite ``com.microej.pack.fs:fs-testsuite:3.0.8``, 
   the RIP file is located `here <https://repository.microej.com/modules/com/microej/pack/fs/fs-testsuite/3.0.8/fs-testsuite-3.0.8.rip>`__.
-- Extrat the RIP file in the temporary folder of your choice.
+- Extract the RIP file in the temporary folder of your choice.
 - Locate the Testsuite JAR from the ``javaLibs`` folder to this RIP file. It is named ``fs-testsuite-x.y.jar``.
 - Extract it into the ``src/test/java`` folder previously created.
 - Remove all the ``.class`` to keep only the ``.java`` files.
@@ -248,7 +248,7 @@ For example for the FS Testsuite, follow these steps:
      The FS Testsuite contains only the ``checkHelper.jar`` file. 
      It must be copied into the folder ``vee-port/validation/fs`` and the following line must be added: ``implementation(files(layout.projectDirectory.file("checkHelper.jar"))``.
    - Copy the JAR ``vee-port/validation/fs/build/testVee/javaLibs/resourcemanager-1.0.jar`` into the folder ``vee-port/validation/fs``,
-     then add the dependency ``implementation(files(layout.projectDirectory.file("resourcemanager-1.0.jar")))``.
+     then add the dependency ``implementation(files(layout.projectDirectory.file("resourcemanager-1.0.jar"))``.
 
 - Update the Test class according to your need.
 - Launch the test again with::
@@ -267,7 +267,7 @@ For example, if a stack trace is displayed when executing the test ``com.microej
 the Executable is located at ``build/testsuite/output/20251110-1655-36/bin/com.microej.fs.tests.scenarios.TestFileProperties/application.out``,
 so the stack trace can be decrypted by executing the following command::
 
-   ./gradlew :vee-port:validation:fs:stackTraceReader -D""application.file"=".../vee-port/validation/fs/build/testsuite/output/20251110-1655-36/bin/com.microej.fs.tests.scenarios.TestFileProperties/application.out"
+   ./gradlew :vee-port:validation:fs:stackTraceReader -D"application.file"="build/testsuite/output/20251110-1655-36/bin/com.microej.fs.tests.scenarios.TestFileProperties/application.out"
 
 Then pasting the encrypted stack trace when the ``[INFO] Paste the MicroEJ core engine stack trace here`` appears.
 
