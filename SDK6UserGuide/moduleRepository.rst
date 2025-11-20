@@ -17,29 +17,195 @@ which is itself built by MicroEJ Corp. as a Module Repository.
 
 .. _sdk_6_create_module_repository_project:
 
-Create a Repository Project
----------------------------
+Create a Module Repository Project
+----------------------------------
 
 A Module Repository project can be created as follows:
 
-- Open a new Terminal.
-- Create a new ``module-repository`` folder in the directory of your choice and go into this folder: ``cd module-repository``.
-- Run ``gradle init`` command.
-- Select ``Basic`` as type of build to generate.
-- Enter the project's name of your choice.
-- Select ``Kotlin`` as build script DSL.
-- Enter ``no`` when asked to generate build using new APIs and behavior.
-- Once the project is created, you can :ref:`import it <sdk_6_import_project>` in the IDE of your choice.
-- In the ``build.gradle.kts`` file of the project, apply the ``module-repository`` plugin and define the group and the version of the project:
+.. tabs::
 
-.. code-block:: kotlin
+    .. tab:: IntelliJ IDEA
+       
+        - Click :guilabel:`File` > :guilabel:`New` > :guilabel:`Project from Version Control...`.
+        - Select :guilabel:`Repository URL`.
+        - Select :guilabel:`Git` as Version control.
+        - Fill the URL of the `Module Repository Project Template <https://github.com/MicroEJ/Tool-Project-Template-Module-Repository>`__ Github Repository.
+        - Fill the Directory in which the Project Template must be cloned.
+        - Click on :guilabel:`Clone` button.
 
-    plugins {
-        id("com.microej.gradle.module-repository") version "1.5.0"
-    }
+        .. figure:: images/intellij-version-control-module-repo.png
+            :alt: Version Control Window in IntelliJ IDEA
+            :align: center
+            :scale: 70%
 
-    group = "org.example"
-    version = "0.1.0-RC"
+            Version Control Window in IntelliJ IDEA
+      
+        - When the Gradle project is loaded, rename the project and change its group and version in the ``build.gradle.kts`` build script.
+        - Select :guilabel:`View` > :guilabel:`Tool Windows` > :guilabel:`Terminal`.
+        - In the integrated terminal, run the following command at the root of the project to remove the Git Repository:
+
+          .. tabs::
+
+             .. tab:: Windows
+
+                .. code-block:: java
+
+                  rm -r -Force .git*
+
+
+             .. tab:: Linux/macOS
+
+                .. code-block:: java
+
+                  rm -rf .git*
+
+    .. tab:: Android Studio
+       
+        - Click :guilabel:`File` > :guilabel:`New` > :guilabel:`Project from Version Control...`.
+        - Select :guilabel:`Repository URL`.
+        - Select :guilabel:`Git` as Version control.
+        - Fill the URL of the `Module Repository Project Template <https://github.com/MicroEJ/Tool-Project-Template-Module-Repository>`__ Github Repository.
+        - Fill the Directory in which the Project Template must be cloned.
+        - Click on :guilabel:`Clone` button.
+
+        .. figure:: images/android-studio-version-control-module-repo.png
+            :alt: Version Control Window in Android Studio
+            :align: center
+            :scale: 70%
+
+            Version Control Window in Android Studio
+      
+        - When the Gradle project is loaded, rename the project and change its group and version in the ``build.gradle.kts`` build script.
+        - Select :guilabel:`View` > :guilabel:`Tool Windows` > :guilabel:`Terminal`.
+        - In the integrated terminal, run the following command at the root of the project to remove the Git Repository:
+
+          .. tabs::
+
+             .. tab:: Windows
+
+                .. code-block:: java
+
+                  rm -r -Force .git*
+
+
+             .. tab:: Linux/macOS
+
+                .. code-block:: java
+
+                  rm -rf .git*
+
+    .. tab:: Eclipse
+            
+        - Open a new terminal.
+        - Clone the `Module Repository Project Template <https://github.com/MicroEJ/Tool-Project-Template-Module-Repository>`__ Github Repository::
+
+             git clone https://github.com/MicroEJ/Tool-Project-Template-Module-Repository.git
+      
+        - Remove the Git Repository from the project:
+
+          .. tabs::
+
+             .. tab:: Windows
+
+                .. code-block:: java
+
+                  rm -r -Force .git*
+
+
+             .. tab:: Linux/macOS
+
+                .. code-block:: java
+
+                  rm -rf .git*
+
+        - Rename the project and change its group and version in the ``build.gradle.kts`` build script.
+        - In Eclipse, click on :guilabel:`File` > :guilabel:`Import...`.
+        - Select the project type :guilabel:`Gradle` > :guilabel:`Existing Gradle Project` and click on the :guilabel:`Next` button.
+
+        .. figure:: images/eclipse-import-gradle-project-01.png
+            :alt: Project Type Selection in Eclipse
+            :align: center
+            :scale: 70%
+
+            Project Type Selection in Eclipse
+
+        - Select the root directory of the project.
+
+        .. figure:: images/eclipse-import-gradle-project-02.png
+            :alt: Project root folder in Eclipse
+            :align: center
+            :scale: 70%
+
+            Project root folder in Eclipse
+
+        - Click on the :guilabel:`Next` button and finally on the :guilabel:`Finish` button.
+
+    .. tab:: Visual Studio Code
+       
+        - Select :guilabel:`View` > :guilabel:`Command Palette...`.
+        - Run the ``Git: Clone`` command in the Command Palette.
+
+        .. figure:: images/vscode-command-palette.png
+            :alt: Command Palette in VS Code
+            :align: center
+            :scale: 70%
+
+            Command Palette in VS Code
+      
+        - Fill the URI of the `Module Repository Project Template <https://github.com/MicroEJ/Tool-Project-Template-Module-Repository>`__ Github Repository in the Search Bar.
+        - Click on :guilabel:`Clone from URL`.
+
+        .. figure:: images/vscode-search-bar-module-repo-template.png
+            :alt: Search Bar in VS Code
+            :align: center
+            :scale: 70%
+
+            Search Bar in VS Code
+      
+        - In the upcoming popup, choose a folder and click on the ``Select as Repository Destination`` button.
+        - When the Gradle project is loaded, rename the project and change its group and version in the ``build.gradle.kts`` build script.
+        - Select :guilabel:`Terminal` > :guilabel:`New Terminal`.
+        - In the integrated terminal, run the following command at the root of the project to remove the Git Repository:
+
+          .. tabs::
+
+             .. tab:: Windows
+
+                .. code-block:: java
+
+                  rm -r -Force .git*
+
+
+             .. tab:: Linux/macOS
+
+                .. code-block:: java
+
+                  rm -rf .git*
+
+    .. tab:: Command Line Interface
+            
+        - Clone the `Module Repository Project Template <https://github.com/MicroEJ/Tool-Project-Template-Module-Repository>`__ Github Repository::
+
+             git clone https://github.com/MicroEJ/Tool-Project-Template-Module-Repository.git
+      
+        - Remove the Git Repository from the project:
+
+          .. tabs::
+
+             .. tab:: Windows
+
+                .. code-block:: java
+
+                  rm -r -Force .git*
+
+
+             .. tab:: Linux/macOS
+
+                .. code-block:: java
+
+                  rm -rf .git*
+
+        - Rename the project and change its group and version in the ``build.gradle.kts`` build script.
 
 .. _sdk_6_include_modules:
 
