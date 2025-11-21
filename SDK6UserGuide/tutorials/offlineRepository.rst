@@ -10,9 +10,9 @@ All these artifacts must be available in artifact repositories.
 MicroEJ provides them as online repositories which can be used directly, 
 thanks to the configuration described in the :ref:`sdk_6_configure_repositories` section.
 However, it is not always possible to rely on these online repositories.
-Gradle allows to use repositories packaged as a set of local folders and files, called Offline Repositories.
+Gradle allows to use repositories packaged as a set of local folders and files, called Offline Module Repositories.
 
-This tutorial explains how to create and use Offline Repositories for your MicroEJ project.
+This tutorial explains how to create and use Offline Module Repositories for your MicroEJ project.
 
 Offline Repository for the Gradle Plugins
 -----------------------------------------
@@ -82,70 +82,84 @@ Now that the Offline Repository of the Gradle plugins has been retrieved, you ca
   }
 
 
-Offline Repository for the Modules
-----------------------------------
+Offline Module Repository
+-------------------------
 
-There are 2 ways to create an Offline Repository containing the required modules:
+There are 2 ways to create an Offline Module Repository containing the required modules:
 
 - download an existing online repository.
-- create a SDK 5 offline repository project to create a custom repository.
+- create an offline module repository project to create a custom repository.
 
 Download an existing online repository
 ######################################
 
-A quick way to get an Offline Repository for the modules is to download an existing online repository.
+A quick way to get an Offline Module Repository for the modules is to download an existing online repository.
 MicroEJ provides several :ref:`module repositories <module_repositories>`, the main one being the :ref:`Central Repository <central_repository>`.
 
 If this online repository, or another one, contains all the module required for your project, download it. 
 For example for the Central Repository, go to `its location <https://forge.microej.com/ui/repos/tree/General/microej-central-repository-release>`__ 
 and click on the :guilabel:`Download` button.
 
-Now go to :ref:`this section <sdk_6_use-offline-modules-repository>` to configure your project to use it.
+Now go to :ref:`this section <sdk_6_use-offline-module-repository>` to configure your project to use it.
 
-Custom Offline Repository
-#########################
+Custom Offline Module Repository
+################################
 
-If you need a custom Offline Repository (for example because the available online repositories 
+If you need a custom Offline Module Repository (for example because the available online repositories 
 does not contain all the modules required by your project, or you want to control exactly what contains the repository),
 you can create your own.
-This can be done only with SDK 5 for the moment, so refer to :ref:`this page <module_repository>`.
+Refer to :ref:`this page <sdk6_module_repository>`.
 
-Once done, go to :ref:`this section <sdk_6_use-offline-modules-repository>` to configure your project to use it.
+Once done, go to :ref:`this section <sdk_6_use-offline-module-repository>` to configure your project to use it.
 
-.. _sdk_6_use-offline-modules-repository:
+.. _sdk_6_use-offline-module-repository:
 
-Use an Offline Modules Repository
+Use an Offline Module Repository
 #################################
 
-When the Offline Repository of the modules has been retrieved or created, you can configure your projects to use it:
+When the Offline Module Repository of the modules has been retrieved or created, you can configure your projects to use it:
 
-- Unzip the Offline Repository archive at the location of your choice, for example in the ``C:\modules-repository`` folder.
-- Add the following repositories declaration in :ref:`your repositories configuration script <sdk_6_configure_repositories>`, 
-  inside the ``repositories`` block:
+- Unzip the Offline Module Repository archive at the location of your choice, for example in the ``C:\module-repository`` folder.
+- Depending on the SDK used to build the repository, add it to your project as follows:
+    
+.. tabs::
 
-.. code:: java
+  .. tab:: SDK 6
 
-  repositories {
+    Add the following line in the ``build.gradle.kts`` file of your project to declare the repository:
+  
+    .. code:: java
 
-    ...
+      apply(file("C:\\module-repository\\module-repository.gradle.kts"))
 
-    maven {
-        name = "offlineModulesRepositoryMaven"
-        url = uri("C:\\modules-repository")
-    }
-    ivy {
-        name = "offlineModulesRepositoryIvy"
-        url = uri("C:\\modules-repository")
-        patternLayout {
-            artifact("[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier])(.[ext])")
-            ivy("[organisation]/[module]/[revision]/ivy-[revision].xml")
-            setM2compatible(true)
+  .. tab:: SDK 5
+
+    Add the following repositories declaration in :ref:`your repositories configuration script <sdk_6_configure_repositories>`, 
+    inside the ``repositories`` block:
+  
+    .. code:: java
+
+      repositories {
+
+        ...
+
+        maven {
+            name = "offlineModulesRepositoryMaven"
+            url = uri("C:\\modules-repository")
         }
-    }
+        ivy {
+            name = "offlineModulesRepositoryIvy"
+            url = uri("C:\\modules-repository")
+            patternLayout {
+                artifact("[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier])(.[ext])")
+                ivy("[organisation]/[module]/[revision]/ivy-[revision].xml")
+                setM2compatible(true)
+            }
+        }
 
-    ...
-
-  }
+        ...
+      
+      }
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 

@@ -205,32 +205,11 @@ Use the Module Repository
 When the Module Repository has been created, you can configure your projects to use it:
 
 - Unzip the Module Repository archive at the location of your choice, for example in the ``C:\module-repository`` folder.
-- Add the following repositories declaration in :ref:`your repositories configuration script <sdk_6_configure_repositories>`, 
-  inside the ``repositories`` block:
+- Apply the ``module-repository.gradle.kts`` script found in the Module Repository unzipped folder in the ``build.gradle.kts`` file of your project to declare the repository:
 
 .. code:: java
 
-  repositories {
-
-    ...
-
-    maven {
-        name = "moduleRepositoryMaven"
-        url = uri("C:\\module-repository")
-    }
-    ivy {
-        name = "moduleRepositoryIvy"
-        url = uri("C:\\module-repository")
-        patternLayout {
-            artifact("[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier])(.[ext])")
-            ivy("[organisation]/[module]/[revision]/ivy-[revision].xml")
-            setM2compatible(true)
-        }
-    }
-
-    ...
-
-  }
+  apply(file("C:\\module-repository\\module-repository.gradle.kts"))
 
 .. warning::
 
