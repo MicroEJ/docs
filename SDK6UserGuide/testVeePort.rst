@@ -261,7 +261,7 @@ This can be done by extracting the Testsuite sources in the validation project (
 
    .. tabs::
 
-      .. tab:: JUnit (Event, Security, UI, Audio, Ecom-Wifi, External Resource Loader, GNSS, VG, Watchdog Timer)
+      .. tab:: JUnit (All Testsuites except FS, NET and SSL)
 
          - Remove all classes starting by ``_AllTests_`` and ``_SingleTest_``, as well as the class ``_AllTestClasses``.
          - In the ``build.gradle.kts`` file, make sure that the call to ``microej.useMicroejTestEngine`` uses the following arguments::
