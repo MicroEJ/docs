@@ -183,6 +183,8 @@ Module Repository
 
 **Documentation**: :ref:`sdk6_module_repository`
 
+**Template**: `Module Repository Project Template <https://github.com/MicroEJ/Tool-Project-Template-Module-Repository>`__
+
 **Tasks**:
 
 This plugin adds the following tasks to your project:
