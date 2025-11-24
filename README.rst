@@ -58,7 +58,7 @@ MicroEJ Sphinx extension
 HowTo
 ~~~~~
 
-Build memraid
+Build mermaid
 -------------
 
 - Go to https://mermaid.live
