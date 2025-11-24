@@ -231,29 +231,52 @@ Tests can be debugged when running on the Simulator by following these steps:
 
 The debugger should connect to the Simulator and you should be able to debug your Testsuite.
 
-Update Test Class of the Testsuite
-----------------------------------
+Update Test Class of the Testsuite on Device
+--------------------------------------------
 
 To help troubleshooting a problem in a Testsuite, it can be convienent to update a Test class.
-This can be done by extracting the Testsuite sources in the validation project.
-For example for the FS Testsuite, follow these steps:
+This can be done by extracting the Testsuite sources in the validation project (each step will mention how to apply it for the FS Testsuite):
 
-- In the validation project (``vee-port/validation/fs``), create the ``src/test/java`` folder if it does not exist.
+- In the validation project (``vee-port/validation/fs``), create the ``src/test/java`` and the ``src/test/resources`` folders if they do not exist.
 - Get the Testsuite RIP file. It is available in the MicroEJ Central Repository. 
   For example, for the FS Testsuite ``com.microej.pack.fs:fs-testsuite:3.0.8``, 
   the RIP file is located `here <https://repository.microej.com/modules/com/microej/pack/fs/fs-testsuite/3.0.8/fs-testsuite-3.0.8.rip>`__.
 - Extract the RIP file in the temporary folder of your choice.
-- Locate the Testsuite JAR from the ``javaLibs`` folder to this RIP file. It is named ``fs-testsuite-x.y.jar``.
-- Extract it into the ``src/test/java`` folder previously created.
-- Remove all the ``.class`` to keep only the ``.java`` files.
-- In the ``build.gradle.kts`` file of the validation, remove the dependency to the FS Testsuite module (``implementation(libs.testsuite.fs)``).
+- Locate the Testsuite JAR from the ``javaLibs`` folder to this RIP file. It is named ``fs-testsuite-x.y.jar`` for the FS Testsuite.
+- Extract the Java sources files into the ``src/test/java`` folder (do not copy the ``.class`` files) 
+  and all other files in the  ``src/test/resources`` folder.
 - Add the missing dependency to make everything compile successfully:
 
-   - Copy all the other JAR files from the ``javaLibs`` RIP folder into the folder ``vee-port/validation/fs`` and add them as file dependencies in the dependencies.
+   - Copy all the other JAR files from the ``javaLibs`` RIP folder into the validation project folder 
+     and add them as file dependencies in the dependencies.
      The FS Testsuite contains only the ``checkHelper.jar`` file. 
      It must be copied into the folder ``vee-port/validation/fs`` and the following line must be added: ``implementation(files(layout.projectDirectory.file("checkHelper.jar"))``.
-   - Copy the JAR ``vee-port/validation/fs/build/testVee/javaLibs/resourcemanager-1.0.jar`` into the folder ``vee-port/validation/fs``,
-     then add the dependency ``implementation(files(layout.projectDirectory.file("resourcemanager-1.0.jar"))``.
+   - Add the following snippet of code in the ``build.gradle.kts`` file::
+
+      tasks.withType<com.microej.gradle.tasks.LoadVeeTask> {
+         testsuitesClasspath.setFrom(configurations.create(name + "EmptyClasspath"))
+      }
+
+   - Then follow the steps related to the testsuite type:
+
+   .. tabs::
+
+      .. tab:: JUnit (Event, Security, UI, Audio, Ecom-Wifi, External Resource Loader, GNSS, VG, Watchdog Timer)
+
+         - Remove all classes starting by ``_AllTests_`` and ``_SingleTest_``, as well as the class ``_AllTestClasses``.
+         - In the ``build.gradle.kts`` file, make sure that the call to ``microej.useMicroejTestEngine`` uses the following arguments::
+
+            microej.useMicroejTestEngine(this, TestTarget.EMB, TestMode.JUNIT)
+
+      .. tab:: Main (FS, NET, SSL)
+
+         - In the ``build.gradle.kts`` file, make sure that the call to ``microej.useMicroejTestEngine`` uses the following arguments::
+
+            microej.useMicroejTestEngine(this, TestTarget.EMB, TestMode.MAIN)
+
+         - For the FS testsuite, copy the JAR ``vee-port/validation/fs/build/testVee/javaLibs/resourcemanager-1.0.jar`` into the folder ``vee-port/validation/fs``,
+           then add the dependency ``implementation(files(layout.projectDirectory.file("resourcemanager-1.0.jar"))``.
+         
 
 - Update the Test class according to your need.
 - Launch the test again with::
