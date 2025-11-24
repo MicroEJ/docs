@@ -5,7 +5,7 @@ Scope and Limitations
 
 The SDK 6 covers all the SDK 5 features, except:
 
-- Build of Offline Repositories.
+- Build of Add-On Processors.
 - Launch of some MicroEJ tools, such as the Kernel Metadata Generator.
 
 If you need these features, you have to use :ref:`the SDK 5 <sdk_user_guide>`.
@@ -13,10 +13,11 @@ If you need these features, you have to use :ref:`the SDK 5 <sdk_user_guide>`.
 It is also important to note the following SDK 5 / SDK 6 compatibility rules:
 
 - Libraries produced with SDK 6 can be fetched by SDK 5 projects.
-- SDK 6 VEE Port cannot be used by SDK 5 Applications and Libraries.
+- Using SDK 6 VEE Port in SDK 5 Applications and Libraries is unsupported.
 - Architecture 8.1 is recommended to have full support on the SDK 6 features (especially to Debug with IntelliJ IDEA and Android Studio).
 - SDK 6 Virtual Device cannot be used by SDK 5 Applications.
 - SDK 5 Virtual Device cannot be used to build the Virtual Device of a SDK 6 Application (augmented Virtual Device).
+- Using SDK 6 Module Repository in SDK 5 Projects is unsupported.
 
 When :ref:`the VEE Port transitive resolution <sdk_6_vee_port_transitivity>` is enabled, 
 the VEE Ports and Kernels built with SDK 6 prior to ``1.3.0`` or SDK 5 are not supported, except if they are available locally in a directory or as an archive. 

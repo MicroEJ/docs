@@ -591,11 +591,6 @@ The repository is generated in ``build/libs/<project_name>.zip``.
 Use an Offline Module Repository
 --------------------------------
 
-.. warning::
-
-   An SDK 6 Offline Module Repository can not be used by SDK 5 projects. If you need to build an Offline Repository for SDK 5 projects, 
-   refer to :ref:`module_repository`.
-
 When the Module Repository has been created, you can configure your projects to use it:
 
 - Unzip the Module Repository archive at the location of your choice, for example in the ``C:\module-repository`` folder.
