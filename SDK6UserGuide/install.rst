@@ -246,7 +246,7 @@ Once your favorite IDE is installed, plugins must be installed to develop MicroE
       MicroEJ does not provide a dedicated extension for VS Code, but Microsoft provides a extension that brings a useful collection of extensions for Java
       called `Extension Pack for Java <https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack>`__. To install this extension:
 
-      - In Visual Studio Code, open the :guilabel:`Extensions` tab (Ctrl+Shift+X)
+      - In Visual Studio Code, open the :guilabel:`Extensions` tab (Ctrl+Shift+X).
       - In the search field, type ``extension pack for Java``:
 
       .. figure:: images/vscode_java_extensions.png
@@ -256,33 +256,7 @@ Once your favorite IDE is installed, plugins must be installed to develop MicroE
          
             VS Code Java Extensions Installation
 
-      - Click on the :guilabel:`Install` button of the extension
-
-      This extension is compatible with MicroEJ development, but requires a specific version to be fully functional.
-      Follow these steps to setup Visual Studio Code:
-
-      - Go to the ``Installed`` extensions.
-      - Right-click on the ``Language Support for Java(TM) by Red Hat`` extension.
-      - Click on ``Install Specific Version ...``.
-
-         .. figure:: images/vs-code-install-specific-version.png
-            :alt: Visual Studio Code - Install specific extension version
-            :align: center
-            :scale: 70%
-
-      - Select version ``1.32.0``.
-      - Once installed, click on the ``Restart Extensions`` button.
-      - If you already opened a Java project in your IDE:
-      
-         - Click on the Java status in the bottom bar.
-
-            .. figure:: images/vs-code-java-status.png
-               :alt: Visual Studio Code - Java status
-               :align: center
-               :scale: 70%
-
-         - Select the ``Clean Workspace Cache ...`` action in the upcoming menu.
-         - In the upcoming popup in the bottom-right corner, click on the ``Reload and delete`` button.
+      - Click on the :guilabel:`Install` button of the extension.
 
       .. warning::
          Unlike other supported IDEs (Android Studio/IntelliJ IDEA/Eclipse), there is no MicroEJ plugin which removes
