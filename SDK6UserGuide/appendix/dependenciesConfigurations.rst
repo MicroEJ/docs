@@ -32,6 +32,7 @@ The MicroEJ Gradle plugins also define dependency configurations for internal us
     - ``microejFullRuntimeClasspath``, used by the :ref:`sdk6_module_natures.tasks.runOnSimulator` and :ref:`sdk6_module_natures.tasks.buildApplicationObjectFile` tasks
     - ``microejVeeFullClasspath``, used by the :ref:`sdk6_module_natures.tasks.loadVee` task
     - ``microejVeeRuntimeClasspath``, used by the :ref:`sdk6_module_natures.application` plugin
+    - ``microejMockClasspath``, used by the :ref:`sdk6_module_natures.addon_lib` plugin
 
 .. _gradle_veeport_project_dependencies_configurations:
 
