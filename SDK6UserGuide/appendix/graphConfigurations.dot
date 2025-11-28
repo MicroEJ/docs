@@ -14,12 +14,14 @@ digraph mygraph {
     "microejApplication" [fillcolor = "#41f753"]
     "microejTool" [fillcolor = "#41f753"]
     "microejRuntimeEnvironment" [fillcolor = "#41f753"]
+    "microejMock" [fillcolor = "#41f753"]
     "microejApplicationClasspath" [fillcolor = "#b0d6d3"]
     "microejVeeClasspath" [fillcolor = "#b0d6d3"]
     "microejKernelExecutableClasspath" [fillcolor = "#b0d6d3"]
     "virtualDeviceToolClasspath" [fillcolor = "#b0d6d3"]
     "microejRuntimeEnvironmentCompileClasspath" [fillcolor = "#b0d6d3"]
     "microejRuntimeEnvironmentRuntimeClasspath" [fillcolor = "#b0d6d3"]
+    "microejMockRuntimeClasspath" [fillcolor = "#b0d6d3"]
 
     "loadVee" -> "microejVeeClasspath" [ label="uses" ]
     "microejVeeClasspath" -> "microejVee"
@@ -37,4 +39,8 @@ digraph mygraph {
     "buildVirtualDevice" -> "microejRuntimeEnvironmentRuntimeClasspath" [ label="uses" ]
     "buildApplicationObjectFile" -> "microejRuntimeEnvironmentRuntimeClasspath" [ label="uses" ]
     "buildExecutable" -> "microejRuntimeEnvironmentRuntimeClasspath" [ label="uses" ]
+    "microejMockRuntimeClasspath" -> "microejMock"
+    "buildVirtualDevice" -> "microejMockRuntimeClasspath" [ label="uses" ]
+    "runOnSimulator" -> "microejMockRuntimeClasspath" [ label="uses" ]
+    "test" -> "microejMockRuntimeClasspath" [ label="uses" ]
 }
