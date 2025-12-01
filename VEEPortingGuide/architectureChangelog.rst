@@ -84,31 +84,19 @@ Integration
 SOAR
 ~~~~
 
+- Added checks to ensure :ref:`wasi.threads` is enabled when Wasm modules are linked with WASI Threads support, and conversely disabled when they are not.
+- Fixed a potential crash when declaring a non-static WASM annotated method.
 - Fixed a potential internal error occurring when building an Executable with SDK6 (present in versions up to :ref:`SDK6 1.3.1 <changelog-1.3.1>`).
 - Fixed SOAR reporting an 'unknown field' error when a library uses a ``static`` field declared in another library as a ``static final`` field (previously interpreted as a constant).
 
 Tools
 ~~~~~
 
+- Added support for Managed C line numbers in stack traces using the :ref:`sdk6.section.stacktrace.reader.tool`.
 - Fixed, in ELF Utils, ``UpdateSection`` task used by KF Testsuite to support Portable Independent Executable when ASLR is enabled.
 
 
 .. _changelog-8.4.0:
-
-[8.5.0] - [unreleased]
-----------------------
-
-
-SOAR
-~~~~
-
-- Added checks to ensure :ref:``wasi.threads`` is enabled when Wasm modules have been linked with WASI Threads support, and conversely, that it is disabled when modules have not been linked with WASI Threads.
-- Fixed a potential crash when declaring a WASM annotated method that isn't static.
-
-Tools
-~~~~~
-
-- Added support for Managed C line numbers in stack traces using the :ref:`sdk6.section.stacktrace.reader.tool`.
 
 [8.4.0] - 2025-05-28
 --------------------
