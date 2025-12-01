@@ -102,13 +102,13 @@ Tools
 SOAR
 ~~~~
 
-- Added an appropriate error message when trying to use :ref:`wasi.threads` with missing properties or incompatible WASM executable.
-- Fixed a potential crash  when declaring a WASM annotated method that isn't static.
+- Added checks to ensure :ref:``wasi.threads`` is enabled when Wasm modules have been linked with WASI Threads support, and conversely, that it is disabled when modules have not been linked with WASI Threads.
+- Fixed a potential crash when declaring a WASM annotated method that isn't static.
 
 Tools
 ~~~~~
 
-- Added Support for WASM line numbers for the :ref:`sdk6.section.stacktrace.reader.tool`.
+- Added support for Managed C line numbers in stack traces using the :ref:`sdk6.section.stacktrace.reader.tool`.
 
 [8.4.0] - 2025-05-28
 --------------------
