@@ -49,6 +49,25 @@ The following graph describes the dependency configurations. Use this legend to 
 
 .. graphviz:: graphVeePortConfigurations.dot
 
+.. _gradle_module_repository_project_dependencies_configurations:
+
+Dependencies Configurations in a Module Repository Project
+----------------------------------------------------------
+
+This section describes all the dependency configurations added to your Module Repository project by the MicroEJ Gradle plugins.
+
+The following graph describes the dependency configurations. Use this legend to interpret the colors:
+
+    - Green background: Dependencies can be declared against this configuration
+    - Gray background: This configuration is for consumption by tasks only
+    - Blue background: The tasks
+
+.. graphviz:: graphModuleRepositoryConfigurations.dot
+
+
+For each dependency defined with ``microejModule``, a configuration ``microejModuleClasspath<group:name:version>``, where ``<group:name:version>`` is the group, name 
+and version of the dependency, is created to ensure that each dependency has its own resolution graph.
+
 .. _gradle_variants:
 
 Variants
@@ -69,6 +88,14 @@ This variant is used to fetch a Library and its dependencies when it is declared
 It is configured with the following attribute:
 
 - the custom ``com.microej.veeport.artifact.usage`` attribute, set to ``default``
+
+additionalElements
+""""""""""""""""""
+
+This variant is used to publish the README, CHANGELOG and License files of the project.
+It is configured with the following attribute:
+
+- the custom ``com.microej.artifact.element`` attribute, set to ``additional-files``
 
 Application
 ^^^^^^^^^^^
@@ -115,6 +142,14 @@ It is configured with the following attribute:
 
 - the custom ``com.microej.artifact.element`` attribute, set to ``feature-build-files``
 
+additionalElements
+""""""""""""""""""
+
+This variant is used to publish the README, CHANGELOG and License files of the project.
+It is configured with the following attribute:
+
+- the custom ``com.microej.artifact.element`` attribute, set to ``additional-files``
+
 Mock
 ^^^^
 
@@ -127,6 +162,14 @@ This variant is used to fetch the RIP of a Mock when a dependency is declared wi
 It is configured with the following attributes:
 
 - the custom ``com.microej.veeport.artifact.usage`` attribute, set to ``default``
+
+additionalElements
+""""""""""""""""""
+
+This variant is used to publish the README, CHANGELOG and License files of the project.
+It is configured with the following attribute:
+
+- the custom ``com.microej.artifact.element`` attribute, set to ``additional-files``
 
 Runtime Environment
 ^^^^^^^^^^^^^^^^^^^
@@ -141,6 +184,14 @@ It is configured with the following attributes:
 
 - the custom ``com.microej.artifact.element`` attribute, set to ``runtime-environment-api``
 
+additionalElements
+""""""""""""""""""
+
+This variant is used to publish the README, CHANGELOG and License files of the project.
+It is configured with the following attribute:
+
+- the custom ``com.microej.artifact.element`` attribute, set to ``additional-files``
+
 VEE Port
 ^^^^^^^^
 
@@ -153,6 +204,7 @@ This variant is used to fetch the VEE Port when it is declared with the ``microe
 It is configured with the following attributes:
 
 - the custom ``com.microej.veeport.artifact.usage`` attribute, set to ``default``
+- the standard ``Usage`` attribute, set to ``java-runtime``
 
 apiElements
 """""""""""
@@ -160,6 +212,9 @@ apiElements
 This variant is used to fetch the Libraries provided by the VEE Port when it is declared with the ``microejVee`` configuration in your project.
 It is configured with the following attributes:
 
+- the standard ``Category`` attribute, set to ``library``
+- the standard ``BUNDLING`` attribute, set to ``external``
+- the standard ``LIBRARY_ELEMENTS`` attribute, set to ``jar``
 - the standard ``Usage`` attribute, set to ``java-api``
 
 runtimeElements
@@ -168,6 +223,9 @@ runtimeElements
 This variant is used to fetch the Libraries provided by the VEE Port when it is declared with the ``microejVee`` configuration in your project.
 It is configured with the following attributes:
 
+- the standard ``Category`` attribute, set to ``library``
+- the standard ``BUNDLING`` attribute, set to ``external``
+- the standard ``LIBRARY_ELEMENTS`` attribute, set to ``jar``
 - the standard ``Usage`` attribute, set to ``java-runtime``
 
 javadocElements
@@ -179,21 +237,71 @@ It is configured with the following attributes:
 - the standard ``Category`` attribute, set to ``documentation``
 - the standard ``Bundling`` attribute, set to ``external``
 - the standard ``DocType`` attribute, set to ``javadoc``
+- the standard ``Usage`` attribute, set to ``java-runtime``
+
+additionalElements
+""""""""""""""""""
+
+This variant is used to publish the README, CHANGELOG and License files of the project.
+It is configured with the following attribute:
+
+- the custom ``com.microej.artifact.element`` attribute, set to ``additional-files``
+
+Module Repository
+^^^^^^^^^^^^^^^^^
+
+The :ref:`sdk6_module_natures.module-repository` plugin defines the following variants: 
+
+microejModuleRepository
+"""""""""""""""""""""""
+
+This variant is used to publish the Module Repository archive file.
+It is configured with the following attributes:
+
+- the custom ``com.microej.veeport.artifact.usage`` attribute, set to ``module-repository``
+- the standard ``Usage`` attribute, set to ``java-runtime``
+
+additionalElements
+""""""""""""""""""
+
+This variant is used to publish the README, CHANGELOG and License files of the project.
+It is configured with the following attribute:
+
+- the custom ``com.microej.artifact.element`` attribute, set to ``additional-files``
 
 .. _gradle_variants_attributes:
 
 Attributes of a Variant
 -----------------------
 
-An attribute allows Gradle to select the right variant depending on the consumer's requirements. They are two types of attributes: standard attributes and custom attributes.
+An attribute allows Gradle to select the right variant depending on the consumer's requirements. They are two types of attributes: standard attributes and custom attributes. 
+For more information about variants and attributes, refer to `the official documentation <https://docs.gradle.org/current/userguide/variant_attributes.html>`__.   
+
 
 Standard Attributes
 ^^^^^^^^^^^^^^^^^^^
 
 The standard attributes are defined by Gradle. Such an attribute is mandatory so the resolution of a dependency will fail if 
-the producer did not define a variant with the attribute set to the same value. 
-For example, if a VEE Port is defined using the ``implementation`` configuration, the build fails because the consumer wants a Jar but 
-the VEE Port defines the ``LibraryElement`` attribute to ``microej-vee-port``:
+the producer did not define a variant with the attribute set to the same value. All standard attributes are listed in the `official documentation <https://docs.gradle.org/current/userguide/variant_attributes.html#sec:standard-attributes>`__.
+
+For example, a VEE Port built with SDK 6 ``1.2.0`` or older is published with a single ``microejVeePort`` variant configured with the following attributes:
+
+- the standard ``Category`` attribute, set to ``library``
+- the standard ``Bundling`` attribute, set to ``embedded``
+- the standard ``jvm.version`` attribute, set to ``7``
+- the standard ``Libraryelements`` attribute, set to ``microej-vee-port``
+- the standard ``Usage`` attribute, set to ``java-runtime``
+
+When the VEE Port is declared as dependency with the ``implementation`` configuration, the following attributes are expected at runtime:
+
+- the standard ``Category`` attribute, set to ``library``
+- the standard ``Bundling`` attribute, set to ``external``
+- the standard ``jvm.environment`` attribute, set to ``standard-jvm``
+- the standard ``jvm.version`` attribute, set to ``11``
+- the standard ``Libraryelements`` attribute, set to ``jar``
+- the standard ``Usage`` attribute, set to ``java-runtime``
+
+So the resolution fails because the ``microejVeePort`` variant of the VEE Port is incompatible:
 
 .. code:: console
 
@@ -208,22 +316,162 @@ the VEE Port defines the ``LibraryElement`` attribute to ``microej-vee-port``:
                   - Doesn't say anything about its target Java environment (preferred optimized for standard JVMs)
 
 
-If no variant matches the consumer's requirements, Gradle can select a compatible variant. 
-To make a variant compatible, the consumer must define a `compatibility rule <https://docs.gradle.org/current/userguide/variant_attributes.html#sec:abm-compatibility-rules>`__.
-
-For example, this is the case for the Mocks built with SDK 6 ``1.1.0`` or below that are published with the ``LibraryElement`` attribute set to ``microej-rip``.
-To build a VEE Port from an Application, a compatibility rule is required to ensure that the fetch of the VEE Port and its dependencies other than Mocks does not fail.
+If no variant matches the consumer's requirements, it is possible to make a variant compatible by defining a `compatibility rule <https://docs.gradle.org/current/userguide/variant_attributes.html#sec:abm-compatibility-rules>`__.
 
 Custom Attributes
 ^^^^^^^^^^^^^^^^^
 
-The custom attributes are defined by the user. These attributes are optional, so when resolving a dependency Gradle selects the default variant of the dependency if the 
-producer did not define a variant with the attribute set to the same value. 
+The custom attributes are defined by the user and are optional. When such attributes are used, the dependency resolution may differ depending on if the consumer defines them 
+with standard attributes or not:
 
-For example, this is the case for the Mocks built with SDK 6 ``1.2.0`` or higher that are published with the custom ``com.microej.veeport.artifact.usage`` attribute. This attribute is optional,
-so when building a VEE Port from an Application, the VEE Port and all its dependencies other than Mocks are correctly fetched without having to define a compatiblity rule.
+If the consumer specifies custom attributes only, the variant is selected as follows:
 
-For more information about variants and attributes, refer to `the official documentation <https://docs.gradle.org/current/userguide/variant_attributes.html>`__.   
+- If a variant is configured with the same custom attributes, Gradle selects it. 
+- If no variant is compatible with the custom attributes, Gradle selects a runtime variant among the ones configured with standard attributes. For Java modules, 
+  the variant selected by default is ``runtimeElements``.
+- If there is no variant with standard attributes, the resolution fails.
+
+If the consumer specifies custom and standard attributes, the variant is selected as follows: 
+
+- If a variant is configured with the same custom and standard attributes, Gradle selects it. 
+- If no variant is configured with the custom attributes:
+
+    - If a variant is configured with the same standard attributes, Gradle selects it.
+    - If there is no variant with same standard attributes, the resolution fails.  
+- If no variant is configured with the same standard attributes, the resolution fails.
+- If multiple variants are compatible, the resolution fails.
+
+For example a Mock is published with the following variants:
+
+.. code-block:: kotlin
+
+    "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 11,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 11,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+    },
+    {
+      "name": "additionalElements",
+      "attributes": {
+        "com.microej.artifact.element": "additional-files"
+      },
+    {
+      "name": "microejMockRip",
+      "attributes": {
+        "com.microej.veeport.artifact.usage": "default"
+      }
+    }
+  ]
+
+So if it is declared as dependency with a custom attribute not defined by the producer:
+
+.. code-block:: kotlin
+
+
+    val myAttribute = Attribute.of("com.example.my-attribute", String::class.java)
+    dependencies {
+        microejModule("org.example:my-mock:1.0.0") {
+            attributes {
+                attribute(myAttribute, "special-value")
+            }
+        }
+    }
+
+the standard ``runtimeElements`` variant is selected and the Jar file of the Mock is fetched. However, if a Mock dependency is configured with a custom attribute and a standard variant:
+
+.. code-block:: kotlin
+
+
+    val myAttribute = Attribute.of("com.example.my-attribute", String::class.java)
+    dependencies {
+        microejModule("org.example:my-mock:1.0.0") {
+            attributes {
+                attribute(myAttribute, "special-value")
+                attribute(LibraryElements.LIBRARY_ELEMENTS_ATTRIBUTE, objects.named(LibraryElements::class.java,  LibraryElements.OBJECTS))
+            }
+        }
+    }
+
+the resolution fails because Gradle does not know which variant must be selected:
+
+.. code:: console
+
+   > Could not resolve all dependencies for configuration ':microejMockRuntimeClasspath'.
+   > Could not resolve org.example:my-mock:1.0.0.
+     Required by:
+         root project :
+      > The consumer was configured to find a component, with the library elements 'objects', as well as attribute 'com.example.my-attribute' with value 'special-value'. However we cannot choose between the following variants of org.example:my-mock:1.0.0:
+          - additionalElements
+          - javadocElements
+          - microejMockRip
+          - sourcesElements
+        All of them match the consumer attributes:
+          - Variant 'additionalElements' capability 'org.example:my-mock:1.0.0':
+              - Unmatched attributes:
+                  - Doesn't say anything about com.example.my-attribute (required 'special-value')
+                  - Doesn't say anything about its elements (required them with the library elements 'objects')
+                  - Provides attribute 'com.microej.artifact.element' with value 'additional-files' but the consumer didn't ask for it
+                  - Provides release status but the consumer didn't ask for it
+          - Variant 'javadocElements' capability 'org.example:my-mock:1.0.0':
+              - Unmatched attributes:
+                  - Doesn't say anything about com.example.my-attribute (required 'special-value')
+                  - Doesn't say anything about its elements (required them with the library elements 'objects')
+                  - Provides documentation but the consumer didn't ask for it
+                  - Provides its dependencies declared externally but the consumer didn't ask for it
+                  - Provides javadocs but the consumer didn't ask for it
+                  - Provides release status but the consumer didn't ask for it
+                  - Provides runtime but the consumer didn't ask for it
+          - Variant 'microejMockRip' capability 'org.example:my-mock:1.0.0':
+              - Unmatched attributes:
+                  - Doesn't say anything about com.example.my-attribute (required 'special-value')
+                  - Doesn't say anything about its elements (required them with the library elements 'objects')
+                  - Provides attribute 'com.microej.veeport.artifact.usage' with value 'default' but the consumer didn't ask for it
+                  - Provides release status but the consumer didn't ask for it
+          - Variant 'sourcesElements' capability 'org.example:my-mock:1.0.0':
+              - Unmatched attributes:
+                  - Doesn't say anything about com.example.my-attribute (required 'special-value')
+                  - Doesn't say anything about its elements (required them with the library elements 'objects')
+                  - Provides documentation but the consumer didn't ask for it
+                  - Provides its dependencies declared externally but the consumer didn't ask for it
+                  - Provides release status but the consumer didn't ask for it
+                  - Provides runtime but the consumer didn't ask for it
+                  - Provides sources but the consumer didn't ask for it
+
+If no variant matches the consumer's requirements, it is possible to make a variant compatible by defining a `compatibility rule <https://docs.gradle.org/current/userguide/variant_attributes.html#sec:abm-compatibility-rules>`__.
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
