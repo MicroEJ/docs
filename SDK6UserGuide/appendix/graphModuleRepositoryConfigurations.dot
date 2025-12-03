@@ -1,0 +1,28 @@
+digraph mygraph {
+    rankdir="BT";
+    bgcolor="transparent"
+    fontname="Helvetica,Arial,sans-serif"
+    node [
+        shape = box
+        width = 1.5
+        color = "#7dc5dc"
+        style = filled
+        fontname="Helvetica,Arial,sans-serif"
+    ]
+    edge [fontname="Helvetica,Arial,sans-serif"]
+    "microejModule" [fillcolor = "#41f753"]
+
+    "microejModuleClasspathorg.example:lib:1.0.0" [fillcolor = "#b0d6d3"]
+    "microejModuleClasspathorg.example:lib:2.0.0" [fillcolor = "#b0d6d3"]
+    "microejModuleClasspathcom.mycompany:vee-port:1.0.0" [fillcolor = "#b0d6d3"]
+    "microejModuleClasspathcom.example.tool:my-tool:1.2.0" [fillcolor = "#b0d6d3"]
+
+    "microejModuleClasspathorg.example:lib:1.0.0" -> "microejModule"
+    "microejModuleClasspathorg.example:lib:2.0.0" -> "microejModule"
+    "microejModuleClasspathcom.mycompany:vee-port:1.0.0" -> "microejModule"
+    "microejModuleClasspathcom.example.tool:my-tool:1.2.0" -> "microejModule"
+    "buildModuleRepository" -> "microejModuleClasspathorg.example:lib:1.0.0" [ label="uses" ]
+    "buildModuleRepository" -> "microejModuleClasspathorg.example:lib:2.0.0" [ label="uses" ]
+    "buildModuleRepository" -> "microejModuleClasspathcom.mycompany:vee-port:1.0.0" [ label="uses" ]
+    "buildModuleRepository" -> "microejModuleClasspathcom.example.tool:my-tool:1.2.0" [ label="uses" ]
+}
