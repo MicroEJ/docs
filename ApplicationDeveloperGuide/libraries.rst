@@ -34,6 +34,7 @@ To consult its libraries APIs documentation, please visit `<https://developer.mi
    eventQueue
    gnss
    js/index
+   storage
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
