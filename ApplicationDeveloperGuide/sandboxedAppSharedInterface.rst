@@ -123,6 +123,8 @@ following pattern:
    package mypackage;
 
    public class MyInterfaceProxy extends Proxy<MyInterface> implements MyInterface {
+       
+       // Use the "invoke()" method for "void" returns. 
        @Override
        public void foo(){
            try {
@@ -134,6 +136,28 @@ following pattern:
                // Logging traces for debug can also be added here.
            }
        }
+
+      // Use the "invokeRef()" method when returning an object reference.
+      @Override
+      public String getName() {
+         try {
+            return (String) invokeRef();
+         } catch (Throwable e) {
+            e.printStackTrace();
+            return MyInterface.UNKNOWN_NAME;
+         }
+      }
+
+      // Use the "invokeInt()" method when returning an "int" basetype.
+      @Override
+      public int getValue() {
+         try {
+            return invokeInt();
+         } catch (Throwable e) {
+            e.printStackTrace();
+            return -1;
+         }
+      }
    }
 
 Each implemented method of the proxy class is responsible for performing
@@ -188,6 +212,7 @@ example:
        public void foo() {
            System.out.println("Hello world!");
        }
+       ...
    };
 
 In order to share the instance with other applications, the provider application must register the instance with some registry owned by the Kernel (see :ref:`Communication between Kernel and Feature <kernel_service_registry>` for details) like so:
@@ -304,7 +329,9 @@ abruptly stopped and an `java.lang.IllegalAccessError`_ is thrown by the
 .. _java.lang.IllegalAccessError: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/IllegalAccessError.html
 
 The list of Kernel types that can be transferred is Kernel specific, so you have to consult your Kernel specification.
-The table below lists some well-known types that your Kernel likely can allow to be transferred through a Shared Interface, along with their behaviors. [#1]_.
+For these types to be transferable, a dedicated :ref:`Kernel Type Converter <kernel_type_converter>` must have been registered in the Kernel.
+
+The table below lists some well-known types that your Kernel likely can allow to be transferred through a Shared Interface, along with their behaviors:
 
 .. list-table:: Transfer Rules for well-known Kernel Types
    :header-rows: 1
@@ -337,8 +364,6 @@ The table below lists some well-known types that your Kernel likely can allow to
       - Clone by copy with recursive element conversion
    -  - `java.util.Map<K,V> <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/Map.html>`_
       - Clone by copy with recursive keys and values conversion
-
-.. [#1] For these types to be transferable, a dedicated :ref:`Kernel Type Converter <kernel_type_converter>` must have been registered in the Kernel.
 
 .. _section.proxy.implementation:
 

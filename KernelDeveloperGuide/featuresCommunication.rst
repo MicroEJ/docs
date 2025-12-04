@@ -303,6 +303,47 @@ The table below shows some converters defined in the `com.microej.library.util#k
       - `MapConverter <https://repository.microej.com/javadoc/microej_5.x/apis/com/microej/kf/util/MapConverter.html>`_
       - Clone by copy with recursive keys and values conversion
 
+
+Implement a Kernel Type Converter
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To make a type transferable, create a converter for this type by implementing the
+`ej.kf.Converter <https://repository.microej.com/javadoc/microej_5.x/apis/index.html?ej/kf/Converter.html>`_ interface.
+
+A converter is free to decide the kind of conversion to apply, depending on the managed type. 
+For example, a converter for immutables instances of types such as ``String`` will most likely return a copy (clone),
+whereas a converter for instances of types such as ``InputStream`` will most likely return a wrapper on the original object. 
+
+The example below shows how the ``String`` converter is implemented:
+
+.. code-block:: java
+
+   import ej.kf.Converter;
+   import ej.kf.Feature;
+   import ej.kf.Kernel;
+
+   /**
+   * A {@link Converter} for {@link String}. This converter creates a clone of the original {@link String}.
+   */
+   public class StringConverter implements Converter<String> {
+
+      @Override
+      public String convert(String arg0, Feature targetOwner) throws IllegalAccessError {
+         try {
+               return Kernel.clone(arg0, targetOwner);
+         } catch (CloneNotSupportedException e) {
+               // should not occur
+               throw new AssertionError();
+         }
+      }
+
+      @Override
+      public Class<String> getType() {
+         return String.class;
+      }
+
+   }
+
 .. _Converter: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Converter.html
 .. _Kernel.addConverter(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#addConverter-ej.kf.Converter-
 .. _com.microej.library.util#kf-util: https://repository.microej.com/modules/com/microej/library/util/kf-util/
