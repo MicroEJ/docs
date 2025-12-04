@@ -25,6 +25,9 @@ native world:
    In the following explanations, the term `task` refers to native tasks scheduled by the underlying OS or RTOS, 
    while `thread` refers to MicroEJ threads scheduled by the Core Engine.
 
+The sections below also mention some functions from the SNI native API.
+See here for the complete SNI Native API reference: :ref:`section.reference.api.sni.native`.
+
 Specification Summary
 ---------------------
 
