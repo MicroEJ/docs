@@ -415,22 +415,23 @@ Examples of Java native methods and their counterpart C functions:
 
    class Hello {
 
-   public static native void nativ01(int i);
-   public static native void nativ02(boolean b, int[] i);
-   public static native void nativ_03();
-   public static native void nativ04();
-   public static native void nativ04(long l, double d);
-   public static native void nativ04(int[] ia, int ib, char[] ca);
+       public static native void nativ01(int i);
+       public static native void nativ02(boolean b, int[] i);
+       public static native void nativ_03();
+       public static native void nativ04();
+       public static native void nativ04(long l, double d);
+       public static native void nativ04(int[] ia, int ib, char[] ca);
+
    }
 
 .. code-block:: c
 
-   void Java_example_sni_impl_Hello_nativ01( jint i); 
-   void Java_example_sni_impl_Hello_nativ02( jboolean b, jint* i); 
-   void Java_example_sni_impl_Hello_nativ_103(); 
-   void Java_example_sni_impl_Hello_nativ04(); 
-   void Java_example_sni_impl_Hello_nativ04__JD( jlong l, jdouble d); 
-   void Java_example_sni_impl_Hello_nativ04___3II_3C( jint* ia, jint ib, jchar* ca); 
+   void Java_example_sni_impl_Hello_nativ01(jint i);
+   void Java_example_sni_impl_Hello_nativ02(jboolean b, jint* i);
+   void Java_example_sni_impl_Hello_nativ_103();
+   void Java_example_sni_impl_Hello_nativ04();
+   void Java_example_sni_impl_Hello_nativ04__JD(jlong l, jdouble d);
+   void Java_example_sni_impl_Hello_nativ04___3II_3C(jint* ia, jint ib, jchar* ca);
 
 Parameters Constraints
 ----------------------
@@ -490,7 +491,153 @@ The following illustration shows a typical example of Core Engine startup code.
       }
    }
 
+Typical use cases
+=================
 
+A typical SNI use case is for the Managed Code to maitain a reference to a C object (typically a pointer to a struct).
+
+For example, here is a struct:
+
+.. code-block:: c
+
+   typedef struct point {
+       int id;
+       char[MAX_NAME_LENGTH] name;
+       int[2] coordinates;
+   } point_t;
+
+To keep a reference to an instance of the struct, we typically use a handle: a 32-bit pointer stored as a ``jint``.
+Then, the handle is passed as a parameter to the different native methods that will use the object, either to manipulate directly the struct,
+or pass it as a parameter to another C (library) function.
+
+.. code-block:: java
+
+   package example.sni;
+
+   class Point implements AutoCloseable {
+
+       private final int handle;
+
+       Point() {
+           this.handle = PointNatives.createPoint();
+       }
+
+       int getId() {
+           return PointNatives.getPointId(handle);
+       }
+
+       void setId(int id) {
+           PointNatives.setPointId(handle, id);
+       }
+
+       String getName() {
+           byte[] buffer = new byte[MAX_NAME_LENGTH];
+           PointNatives.getPointName(handle, buffer);
+           return SNI.toJavaString(buffer);
+       }
+
+       void setName(String name) {
+           if (name.length() > PointNatives.MAX_NAME_LENGTH) {
+               throw new IllegalArgumentException();
+           }
+           PointNatives.setPointName(handle, SNI.toCString(name));
+       }
+
+       int[] getCoordinates() {
+           int[] coordinates = new byte[2];
+           coordinates[0] = PointNatives.getCoordinate(handle, 0);
+           coordinates[1] = PointNatives.getCoordinate(handle, 1);
+           return coordinates;
+       }
+
+       void setCoordinates(int[] coordinates) {
+           PointNatives.setCoordinate(handle, 0, coordinates[0]);
+           PointNatives.setCoordinate(handle, 1, coordinates[1]);
+       }
+
+       void close() {
+           PointNatives.deletePoint(handle);
+       }
+
+   }
+
+   class PointNatives {
+
+       static final int MAX_NAME_LENGTH = Constants.getInt("example.sni.point.name.max.length");
+
+       static native int createPoint();
+       static native void deletePoint(int handle);
+
+       // point->id
+       static native int getPointId(int handle);
+       static native void setPointId(int handle, int id);
+
+       // point->name
+       static native void getPointName(int handle, byte[] buffer); // buffer size: maximum name length, implementation must fill buffer with a null-terminated string (or full buffer)
+       static native void setPointName(int handle, byte[] name);
+
+       // point->coordinates
+       static native int getCoordinate(int handle, int index);
+       static native void setCoordinate(int handle, int index, int value);
+
+   }
+
+.. code-block:: c
+
+       #define point_create            Java_example_sni_PointNatives_createPoint
+       #define point_delete            Java_example_sni_PointNatives_deletePoint
+       #define point_get_id            Java_example_sni_PointNatives_getPointId
+       #define point_set_id            Java_example_sni_PointNatives_setPointId
+       #define point_get_name          Java_example_sni_PointNatives_getPointName
+       #define point_set_name          Java_example_sni_PointNatives_setPointName
+       #define point_get_coordinate    Java_example_sni_PointNatives_getCoordinate
+       #define point_set_coordinate    Java_example_sni_PointNatives_setCoordinate
+
+       static void point_close(void* point) {
+           free(point);
+       }
+
+       jint point_create() {
+           point_t* point = malloc(sizeof(point_t));
+           SNI_registerResource((void*) point, (SNI_closeFunction) point_close, NULL);
+           return (jint) point;
+       }
+       void point_delete(jint handle) {
+           void* point = (void*) handle;
+           SNI_unregisterResource(point, (SNI_closeFunction) point_close);
+           point_close(point);
+       }
+       jint point_get_id(jint handle) {
+           point_t *point = (point_t*) handle;
+           return (jint) point->id;
+       }
+       void point_set_id(jint handle, jint id) {
+           point_t *point = (point_t*) handle;
+           point->id = (int) id;
+       }
+       void point_get_name(jint handle, jbyte* buffer) {
+           point_t *point = (point_t*) handle;
+           strncpy((char*) buffer, point->name, SNI_getArrayLength(buffer));
+       }
+       void point_set_name(jint handle, jbyte* name) {
+           point_t *point = (point_t*) handle;
+           if (SNI_getArrayLength(name) > MAX_NAME_LENGTH) {
+               SNI_throwNativeException(-1, "given name exceeds maximum length");
+           }
+           strncpy(point->name, (char*) name, MAX_NAME_LENGTH);
+       }
+       jint point_get_coordinate(jint handle, jint index){
+           point_t *point = (point_t*) handle;
+           return (jint) point->coordinates[(size_t)index];
+       }
+       void point_set_coordinate(jint handle, jint index, jint value) {
+           point_t *point = (point_t*) handle;
+           point->coordinates[(size_t)index] = (int) value;
+       }
+
+.. note::
+
+   For simplicity, this example does not include the usual error handling that real use cases will require.
 
 .. _IllegalArgumentException: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/IllegalArgumentException.html
 .. _Immortals.setImmortal(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Immortals.html#setImmortal-T-
