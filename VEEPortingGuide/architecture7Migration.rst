@@ -272,6 +272,14 @@ Make sure to update the module to the specified version or a newer release in yo
 - Add-On library ``eclasspath-logging`` version ``1.2.1``.
 - Testsuite ``FS`` version ``3.0.7``.
 
+Update Application Options
+--------------------------
+
+The following Application Options must be updated in the Applications configuration when upgrading to Architecture ``8.0.0``:
+
+- Replace the ``com.microej.soar.groupMethodsByType.enabled`` property by ``com.microej.soar.groupMethods.enabled``. 
+  See :ref:`enable_group_methods` for more details.
+
 ..
    | Copyright 2023-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 

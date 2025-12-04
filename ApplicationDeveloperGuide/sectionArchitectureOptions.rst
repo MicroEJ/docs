@@ -24,22 +24,42 @@ declared :ref:`required types <section.classpath.elements.types>` are embedded. 
 
 .. _enable_group_methods:
 
-Option(checkbox): Group Methods by Type
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Option(checkbox): Group Methods
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-*Option Name*: ``com.microej.soar.groupMethodsByType.enabled``
+.. tabs::
 
-*Default value*: ``false``
+   .. tab:: Architecture 8
 
-*Description*:
+      *Option Name*: ``com.microej.soar.groupMethods.enabled``
 
-Group all embedded methods of a Java type in single ELF section in ``microejapp.o``. 
-This avoids to reach the following SOAR error while building a large application and the maximum number of ELF sections (65536) is reached.
+      *Default value*: ``false``
 
-.. code-block:: console
+      *Description*:
 
-   1 : ELF ERROR
-      [M1] - Invalid value for U2 field. Overflow detected when writing 102092.
+      Group all embedded methods in single ELF section in ``microejapp.o``. 
+      This avoids to reach the following SOAR error while building a large application and the maximum number of ELF sections (65536) is reached.
+
+      .. code-block:: console
+
+         1 : ELF BINARY ERROR :
+            [M2] - Invalid value for 'Section index range [0,0xFF00[' field. Overflow detected when writing '101635'.
+
+   .. tab:: Architecture 7
+
+      *Option Name*: ``com.microej.soar.groupMethodsByType.enabled``
+
+      *Default value*: ``false``
+
+      *Description*:
+
+      Group all embedded methods of a Java type in single ELF section in ``microejapp.o``. 
+      This avoids to reach the following SOAR error while building a large application and the maximum number of ELF sections (65536) is reached.
+
+      .. code-block:: console
+
+         1 : ELF ERROR
+            [M1] - Invalid value for U2 field. Overflow detected when writing 102092.
 
 
 .. warning::
