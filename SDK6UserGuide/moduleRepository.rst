@@ -600,6 +600,16 @@ When the Module Repository has been created, you can configure your projects to 
 
   apply(file("C:\\module-repository\\module-repository.gradle.kts"))
 
+
+If your project is a multi-project, the ``module-repository.gradle.kts`` script must be applied in the ``build.gradle.kts`` file at the root of the multi-project to make the repository available 
+for all subprojects:
+
+.. code:: kotlin
+
+   allprojects {
+        apply(file("C:\\module-repository\\module-repository.gradle.kts"))
+   }
+
 ..
    | Copyright 2020-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
