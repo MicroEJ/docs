@@ -22,7 +22,7 @@ native world:
 
 .. note::
 
-   In the following explanations, the term `task` refers to native tasks scheduled by the underlying OS or RTOS, 
+   In the following explanations, the term `task` refers to native tasks scheduled by the underlying OS or RTOS,
    while `thread` refers to MicroEJ threads scheduled by the Core Engine.
 
 The sections below also mention some functions from the SNI native API.
@@ -44,7 +44,7 @@ First Example
 
 This first example shows how to declare and implement a Java native
 method using SNI. First the method has to be declared ``native`` in Java code:
-this states that the method is written in another language. 
+this states that the method is written in another language.
 
 .. code-block:: java
    :emphasize-lines: 24
@@ -76,7 +76,7 @@ this states that the method is written in another language.
    }
 
    class Potentiometer extends Sensor {
-       
+
        protected int getSensorID() {
            return Constants.POTENTIOMETER_ID; // POTENTIOMETER_ID is a static final
        }
@@ -90,12 +90,12 @@ Then, the implementation of the method is written in C language.
       // File providing an implementation of native method using a C function
       #include <sni.h>
       #include <potentiometer.h>
-      
+
       #define SENSOR_ERROR (-1)
       #define POTENTIOMETER_ID (3)
-      
+
       jint Java_example_Sensor_getSensorValue(jint sensor_id){
-      
+
           if (sensor_id == POTENTIOMETER_ID)
           {
               return get_potentiometer_value();
@@ -111,12 +111,12 @@ Calling C from Java
 
 When a Java native method executes, it executes its C counterpart
 function. This is done using the CPU budget of the task that has
-started the Core Engine. While the C function executes, no other Java methods executes 
+started the Core Engine. While the C function executes, no other Java methods executes
 and the Core Engine cannot schedule other threads.
-The Managed world “waits” for the C function to finish. 
+The Managed world “waits” for the C function to finish.
 
-The following illustration shows the execution a the Core Engine task. 
-``Green thread 3`` has called a native method that executes in C. 
+The following illustration shows the execution a the Core Engine task.
+``Green thread 3`` has called a native method that executes in C.
 All Java activities is suspended until the C execution has finished.
 
 .. figure:: images/sni_exec.png
@@ -167,7 +167,7 @@ Java And Native Separation
 The following illustration shows both Java code and C code
 accesses to shared objects in the immortal space, while also accessing
 their respective memory.
-In C code, non-immortal arrays can only be accessed within the local scope of a 
+In C code, non-immortal arrays can only be accessed within the local scope of a
 native function.
 
 .. _fig_sni-flow:
@@ -181,19 +181,19 @@ native function.
 Managed World to C World
 ========================
 
-C Function Call From Managed World 
+C Function Call From Managed World
 ----------------------------------
 
 The SNI specification allows the invocation of methods from Java to C: these
 methods must be declared ``static`` ``native`` methods, and the parameters must be
-base types or array of base types. 
+base types or array of base types.
 These native methods are used in Java code as standard Java methods.
 
 Example:
 
 .. code-block:: java
 
-   package example; 
+   package example;
    public class Foo{
 
       public void bar(){
@@ -229,43 +229,43 @@ file ``sni.h`` defines the C types that represent exactly the Java types.
    :widths: 4 6 5
    :align: center
 
-   - 
+   -
       - Java Type
       - Specification
       - C type
-   - 
+   -
       - void
       - No returned type
       - ``void``
-   - 
+   -
       - boolean
       - unsigned 8 bits
       - ``jboolean``
-   - 
+   -
       - byte
       - signed 8 bits
       - ``jbyte``
-   - 
+   -
       - char
       - unsigned 16 bits
       - ``jchar``
-   - 
+   -
       - short
       - signed 16 bits
       - ``jshort``
-   - 
+   -
       - int
       - signed 32 bits
       - ``jint``
-   - 
+   -
       - long
       - signed 64 bits
       - ``jlong``
-   - 
+   -
       - float
       - IEEE 754 single precision 32 bits
       - ``jfloat``
-   - 
+   -
       - double
       - IEEE 754 double precision 64 bits
       - ``jdouble``
@@ -372,31 +372,31 @@ The following table gives the descriptors of the Java types for arguments.
    :widths: 1 1
    :align: center
 
-   - 
+   -
       - Java type
       - SNI name
-   - 
+   -
       - boolean
       - Z
-   - 
+   -
       - byte
       - B
-   - 
+   -
       - char
       - C
-   - 
+   -
       - short
       - S
-   - 
+   -
       - int
       - I
-   - 
+   -
       - long
       - J
-   - 
+   -
       - float
       - F
-   - 
+   -
       - double
       - D
 
@@ -442,11 +442,13 @@ native functions:
 -  Only base types and array of base types are allowed in the parameters.
    No other objects can be passed: the native functions cannot access
    Java objects field nor methods.
--  When base type arrays are passed in parameters, they must have only one dimension. 
+-  When base type arrays are passed in parameters, they must have only one dimension.
    No multi dimension array are allowed (``int[][]`` is forbidden for example).
 -  Only base types are allowed as return type.
 
 This constraints are checked at link-time to ensure that they are respected.
+
+.. _section.sni.lifecycle:
 
 Startup
 =======
@@ -458,12 +460,12 @@ and to start the Core Engine within this task.
 SNI defines C functions to create a Managed world, to start it and to free it:
 
 -  ``void SNI_createVM(void)``: creates and initializes the Core Engine context.
--  ``int32_t SNI_startVM(void,int32_t,char)``: starts the Core Engine. 
+-  ``int32_t SNI_startVM(void,int32_t,char)``: starts the Core Engine.
    This function returns when the Java application ends.
 -  ``int32_t SNI_getExitCode(void vm)``: gets the Java application
    exit code, after ``SNI_startVM`` has successfully returned. This is
    the value passed by the application to `System.exit()`_ method.
--  ``void SNI_destroyVM(void vm)``: does nothing if the Core Engine is still running. 
+-  ``void SNI_destroyVM(void vm)``: does nothing if the Core Engine is still running.
    This function must be called in the task that created the Core Engine.
 
 The following illustration shows a typical example of Core Engine startup code.
@@ -475,7 +477,7 @@ The following illustration shows a typical example of Core Engine startup code.
       void* vm;
       int core_engine_error_code = -1;
       int32_t app_exit_code = 0;
-      
+
       vm = SNI_createVM();
       if (vm == NULL) {
          printf("MicroEJ initialization error.\n");
@@ -491,10 +493,47 @@ The following illustration shows a typical example of Core Engine startup code.
       }
    }
 
+Resources
+=========
+
+SNI also provides a mechanism to register native resources.
+
+This binds the native resource to the calling application so that the native resource is closed if the application is terminated.
+In the case of a Standalone Application (or if calling from the Kernel context in a Multi-Sandbox setup), this is when the Application (or Kernel) exits,
+before the Core Engine returns from ``SNI_startVM()`` (see :ref:`section.sni.lifecycle`).
+In the case of a Sandboxed Application, this is when the Application is being stopped (or when the Kernel exits).
+
+.. note::
+
+   The :ref:`Core Engine state dump <vm_dump>` lists the registered native resources.
+
+There is nothing to do on the native method declaration side (Managed Code) and this can therefore depend of a specific Abstraction Layer Implementation.
+In most cases, the library will also provide a "close" API (implemented with a "close" native method) so that the Application can explicitly close the native resource.
+Typically, the API will provide a class reifying this native resource which would implement ``AutoCloseable``.
+
+It is also possible to bind a native resource to a Managed object (typically a Java object) using `NativeResource.closeOnGC()`_. In this case,
+the native resource will also be closed when the bound object is Garbage-Collected (useful when the API does not expose any close function).
+
+See the API reference for :c:func:`SNI_registerResource()` and :c:func:`SNI_unregisterResource()`.
+
+Scoped Resources
+----------------
+
+SNI also provides scoped resources. In this case, the scope of the resource is the native call.
+It can be used to share a resource between a native function implementation and a callback (see :c:func:`SNI_suspendCurrentJavaThreadWithCallback()`).
+The resource will be closed when the native call returns (after the native function and the potential successive suspend/resume callbacks returns), or after
+the calling Application is terminated (before the suspended native call is completed).
+
+See the API reference for :c:func:`SNI_registerScopedResource()` and :c:func:`SNI_unregisterScopedResource()`.
+
+.. note::
+
+   Only 1 scoped resource registered at a time is supported per native call.
+
 Typical use cases
 =================
 
-A typical SNI use case is for the Managed Code to maitain a reference to a C object (typically a pointer to a struct).
+A typical SNI use case is for the Managed Code to maintain a reference to a C object (typically a pointer to a struct).
 
 For example, here is a struct:
 
@@ -507,12 +546,15 @@ For example, here is a struct:
    } point_t;
 
 To keep a reference to an instance of the struct, we typically use a handle: a 32-bit pointer stored as a ``jint``.
-Then, the handle is passed as a parameter to the different native methods that will use the object, either to manipulate directly the struct,
-or pass it as a parameter to another C (library) function.
+Then, the handle is passed as an argument to the different native methods that will use the object, either to manipulate directly the struct,
+or pass it as an argument to another C (library) function.
 
 .. code-block:: java
 
    package example.sni;
+
+   import ej.bon.Constants;
+   import ej.sni.SNI;
 
    class Point implements AutoCloseable {
 
@@ -523,16 +565,16 @@ or pass it as a parameter to another C (library) function.
        }
 
        int getId() {
-           return PointNatives.getPointId(handle);
+           return PointNatives.getPointId(this.handle);
        }
 
        void setId(int id) {
-           PointNatives.setPointId(handle, id);
+           PointNatives.setPointId(this.handle, id);
        }
 
        String getName() {
-           byte[] buffer = new byte[MAX_NAME_LENGTH];
-           PointNatives.getPointName(handle, buffer);
+           byte[] buffer = new byte[PointNatives.MAX_NAME_LENGTH];
+           PointNatives.getPointName(this.handle, buffer);
            return SNI.toJavaString(buffer);
        }
 
@@ -540,23 +582,24 @@ or pass it as a parameter to another C (library) function.
            if (name.length() > PointNatives.MAX_NAME_LENGTH) {
                throw new IllegalArgumentException();
            }
-           PointNatives.setPointName(handle, SNI.toCString(name));
+           PointNatives.setPointName(this.handle, SNI.toCString(name));
        }
 
        int[] getCoordinates() {
-           int[] coordinates = new byte[2];
-           coordinates[0] = PointNatives.getCoordinate(handle, 0);
-           coordinates[1] = PointNatives.getCoordinate(handle, 1);
+           int[] coordinates = new int[2];
+           coordinates[0] = PointNatives.getCoordinate(this.handle, 0);
+           coordinates[1] = PointNatives.getCoordinate(this.handle, 1);
            return coordinates;
        }
 
        void setCoordinates(int[] coordinates) {
-           PointNatives.setCoordinate(handle, 0, coordinates[0]);
-           PointNatives.setCoordinate(handle, 1, coordinates[1]);
+           PointNatives.setCoordinate(this.handle, 0, coordinates[0]);
+           PointNatives.setCoordinate(this.handle, 1, coordinates[1]);
        }
 
-       void close() {
-           PointNatives.deletePoint(handle);
+       @Override
+       public void close() {
+           PointNatives.deletePoint(this.handle);
        }
 
    }
@@ -566,18 +609,27 @@ or pass it as a parameter to another C (library) function.
        static final int MAX_NAME_LENGTH = Constants.getInt("example.sni.point.name.max.length");
 
        static native int createPoint();
+
        static native void deletePoint(int handle);
 
        // point->id
+
        static native int getPointId(int handle);
+
        static native void setPointId(int handle, int id);
 
        // point->name
-       static native void getPointName(int handle, byte[] buffer); // buffer size: maximum name length, implementation must fill buffer with a null-terminated string (or full buffer)
+
+       static native void getPointName(int handle, byte[] buffer); // buffer size: maximum name length, implementation must
+                                                                   // fill buffer with a null-terminated string (or full
+                                                                   // buffer)
+
        static native void setPointName(int handle, byte[] name);
 
        // point->coordinates
+
        static native int getCoordinate(int handle, int index);
+
        static native void setCoordinate(int handle, int index, int value);
 
    }
@@ -642,6 +694,7 @@ or pass it as a parameter to another C (library) function.
 .. _IllegalArgumentException: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/IllegalArgumentException.html
 .. _Immortals.setImmortal(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Immortals.html#setImmortal-T-
 .. _System.exit(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#exit-int-
+.. _NativeResource.closeOnGC(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/sni/NativeResource.html#closeOnGC-long-long-java.lang.Object-
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
