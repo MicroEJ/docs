@@ -230,13 +230,82 @@ By default, a dependency is resolved transitively but it is possible to not fetc
         }
     }
 
-When a dependency is not resolved transitively, you must explicitly declare its transitive dependencies in your project.
+When a dependency is not resolved transitively, you must either explicitly declare its transitive dependencies in your project, 
+or configure the Repository as a :ref:`Partial Repository <sdk_6_partial_repository>`.
 To ensure that repository users won't have any resolution issues, a :ref:`sdk6_module_repository_check` is enabled by default.
 
 .. warning::
 
    Only Module dependencies are supported in a Module Repository project. To add a module available as project or included build, 
    you must first publish it to be able to add it to the repository. 
+
+.. _sdk_6_partial_repository:
+
+Configure a Partial Repository
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A Partial Repository is a Repository which does not contain all the required modules. 
+It is designed to complete one or several other repositories.
+For example, if you decide to use the MicroEJ Central Repository in addition to your custom Module Repository, 
+you can include only the modules not available in the MicroEJ Central Repository.
+So if one module depends on ``edc``, you can declare it with:
+
+.. code-block:: kotlin
+
+    dependencies {
+        microejModule("com.mycompany:my-lib:1.0.0") {
+            isTransitive = false
+        }
+    }
+
+At resolution time, the ``my-lib`` dependency is resolved from the custom Module Repository and the ``edc`` library is resolved from the MicroEJ Central Repository.
+
+To configure your Module Repository as a Partial Repository, you must create a file named ``module-repository.gradle.kts`` at the root of the Module Repository project.
+This file must contain the list of repositories to use at resolution time. 
+So it should at least contain the custom Module Repository, and any additional Repository. 
+For example if you need to add the MicroEJ Central Repository, the file content should be:
+
+.. code-block:: kotlin
+
+    repositories {
+        // Custom Module Repository
+        maven {
+            name = "moduleRepositoryMaven"
+            url = uri(buildscript.sourceFile!!.parentFile)
+        }
+        ivy {
+            name = "moduleRepositoryIvy"
+            url = uri(buildscript.sourceFile!!.parentFile)
+            patternLayout {
+                artifact("[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier])(.[ext])")
+                ivy("[organisation]/[module]/[revision]/ivy-[revision].xml")
+                setM2compatible(true)
+            }
+        }
+
+        // MicroEJ Central Repository
+        maven {
+            name = "microEJCentral"
+            url = uri("https://repository.microej.com/modules")
+        }
+        ivy {
+            name = "microEJCentralIvy"
+            url = uri("https://repository.microej.com/modules")
+            patternLayout {
+                artifact("[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier])(.[ext])")
+                ivy("[organisation]/[module]/[revision]/ivy-[revision].xml")
+                setM2compatible(true)
+            }
+        }
+    }
+
+This file is directly packaged in the Module Repository archive, 
+so it is the one to apply in order to use the custom Module Repository, as explained in :ref:`sdk6_use_offline_module_repository`.
+It is also used to :ref:`check the Module Repository consistency <sdk6_use_offline_module_repository>`.
+
+.. warning::
+
+    Do not forget to declare the custom Module Repository, otherwise it won't be used at resolution time.
 
 .. _sdk_6_include_single_artifact:
 
