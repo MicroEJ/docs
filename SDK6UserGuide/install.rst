@@ -264,10 +264,26 @@ Once your favorite IDE is installed, plugins must be installed to develop MicroE
 
       - Click on the :guilabel:`Install` button of the extension.
 
-      .. warning::
-         Unlike other supported IDEs (Android Studio/IntelliJ IDEA/Eclipse), there is no MicroEJ plugin which removes
-         the JDK dependency. As a result, `IntelliSense <https://code.visualstudio.com/docs/editor/intellisense>`__ may propose classes and methods from the JDK which are
-         not present in your project dependencies.
+      Finally, to have an accurate code completion, you need to adjust two settings:
+
+      - Go to ``File > Preferences > Settings``.
+      - In the search bar, type ``java.gradle.buildServer.enabled`` and set it to ``off``:
+      
+      .. figure:: images/vscode_java_gradle_buildserver.png
+            :alt: VS Code Java Gradle Build Server Setting
+            :align: center
+            :scale: 70%
+         
+            VS Code Java Gradle Build Server Setting
+
+      - Then, in the search bar again, type ``java.configuration.updateBuildConfiguration`` and set it to ``automatic``:
+      
+      .. figure:: images/vscode_java_update_build_configuration.png
+            :alt: VS Code Java Update Build Configuration Setting
+            :align: center
+            :scale: 70%
+         
+            VS Code Java Update Build Configuration Setting
 
 
 ..
