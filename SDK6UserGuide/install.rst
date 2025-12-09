@@ -137,16 +137,6 @@ Once your favorite IDE is installed, plugins must be installed to develop MicroE
       
       - In IntelliJ IDEA, open the Settings window (menu :guilabel:`File` > :guilabel:`Settings...` on Windows and Linux, 
         menu :guilabel:`IntelliJ IDEA` > :guilabel:`Settings...` on macOS).
-      - Go to the :guilabel:`Languages & Frameworks` > :guilabel:`Kotlin` menu.
-      - Uncheck :guilabel:`Enable K2`.
-
-	      .. figure:: images/intellij_disable_K2.png
-		      :alt: Disable K2 in IntelliJ IDEA
-		      :align: center
-		      :scale: 70%
-
-		      Disable K2 in IntelliJ IDEA
-
       - Go to :guilabel:`Plugins` menu.
       - In the search field, type ``MicroEJ``:
       
@@ -171,7 +161,23 @@ Once your favorite IDE is installed, plugins must be installed to develop MicroE
 
       .. warning::
 
-         If the whole Gradle build file is red (in error), check that K2 is disabled and invalidate the caches. See :ref:`sdk_6_disable_k2` for more details.
+         Until version ``2025.2``, due to an IntelliJ IDEA bug, a lot of errors are raised in Gradle build files (``build.gradle.kts``).
+         It has been fixed in version ``2025.3``, so it is highly recommended to upgrade to this version.
+         If you cannot upgrade to this version, you should follow these steps to remove these errors:
+         
+         - In IntelliJ IDEA, open the Settings window (menu :guilabel:`File` > :guilabel:`Settings...` on Windows and Linux, 
+           menu :guilabel:`IntelliJ IDEA` > :guilabel:`Settings...` on macOS).
+         - Go to the :guilabel:`Languages & Frameworks` > :guilabel:`Kotlin` menu.
+         - Uncheck :guilabel:`Enable K2`.
+
+            .. figure:: images/intellij_disable_K2.png
+               :alt: Disable K2 in IntelliJ IDEA
+               :align: center
+               :scale: 70%
+
+               Disable K2 in IntelliJ IDEA
+         
+         - Go to :guilabel:`Files` > :guilabel:`Invalidate Caches...`, and click on :guilabel:`Invalidate and Restart`.
 
    .. tab:: Android Studio
 
