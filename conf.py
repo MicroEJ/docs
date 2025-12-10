@@ -120,6 +120,16 @@ linkcheck_ignore = [r'^(?!#|.*microej\.com|.*nxp\.com|.*facer\.io|.*github\.com\
 
 linkcheck_timeout = 20
 
+# Some servers block bots based on the User-Agent (like nxp)
+# Use custom user agent for these domains
+linkcheck_request_headers = {
+    "https://www.nxp.com/": {
+        "User-Agent": "curl/8.0",
+    },
+}
+
+# We use Sphinx's default User-Agent configuration, but it can be changed if needed
+#user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
 
 def setup(app):
     app.connect("source-read", add_custom_prolog)
