@@ -294,33 +294,18 @@ It is also possible to include several artifacts in the same dependency, for exa
 Include Production Architectures
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-By default, the Production version of an Architecture is not included in a Module Repository. If you want to include it,
-the ``microej.withArchitectureProductionVersion`` method must be called when declaring the Architecture as dependency:
+By default, the Production version of an Architecture is not included in a Module Repository.
+You can specify to include the Production Architecture in the ``microej`` block of the ``build.gradle.kts`` file:
 
 .. code-block:: kotlin
 
-    dependencies {
-        microejModule("com.microej.architecture.CM4.CM4hardfp_GCC48:flopi4G25:8.2.0")?.let {
-            microej.withArchitectureProductionVersion(it)
-        }
+    microej {
+        withArchitectureProductionVersion("com.microej.architecture.CM4.CM4hardfp_GCC48:flopi4G25:8.2.0")
     }
 
-.. note::
-
-   It is also possible to include the Production Architecture in the ``microej`` block of the ``build.gradle.kts`` file:
-
-    .. code-block:: kotlin
-
-        microej {
-            withArchitectureProductionVersion("com.microej.architecture.CM4.CM4hardfp_GCC48:flopi4G25:8.2.0")
-        }
-
-        dependencies {
-            microejModule("com.microej.architecture.CM4.CM4hardfp_GCC48:flopi4G25:8.2.0")
-        }
-        
-   But this solution requires duplicating the dependency and the related information is scattered throughout the ``build.gradle.kts`` file,
-   so it is recommended to include the Production Architecture in the dependency's declaration.
+    dependencies {
+        microejModule("com.microej.architecture.CM4.CM4hardfp_GCC48:flopi4G25:8.2.0")
+    }
 
 .. _sdk_6_exclude_artifacts:
 
@@ -328,47 +313,20 @@ Exclude Artifacts
 ~~~~~~~~~~~~~~~~~
 
 When a module is added as dependency of a Module Repository project, it is possible to define a list of its artifacts that must be excluded from the Repository.
-To exclude artifacts, the ``microej.excludeArtifacts`` method must be called when declaring the dependency. For example, 
-the sources and javadoc Jar files of an Application can be excluded as follows:
+You can specify the artifacts to exclude in the ``microej`` block of the ``build.gradle.kts`` file.
+For example, the sources and javadoc Jar files of an Application can be excluded as follows:
 
 .. code-block:: kotlin
 
-    dependencies {
-        microejModule("org.example:my-app:1.0.0")?.let {
-            microej.excludeArtifacts(it, "sources,javadoc")
-        }
+    microej {
+        excludeArtifacts("org.example:my-app:1.0.0", "sources,javadoc")
     }
 
-For dependencies which are not resolved transitively, the ``microej.excludeArtifacts`` method is called after the dependency's block:
-
-.. code-block:: kotlin
-
     dependencies {
-        microejModule("org.example:my-app:1.0.0") {
-            isTransitive = false
-        }.let {
-            microej.excludeArtifacts(it, "sources,javadoc")
-        }
+        microejModule("org.example:my-app:1.0.0")
     }
 
-.. note::
-
-   It is also possible to exclude the artifacts of a dependency in the ``microej`` block of the ``build.gradle.kts`` file:
-
-    .. code-block:: kotlin
-
-        microej {
-            excludeArtifacts("org.example:my-app:1.0.0", "sources,javadoc")
-        }
-
-        dependencies {
-            microejModule("org.example:my-app:1.0.0")
-        }
-        
-   But this solution requires duplicating the dependency and the related information is scattered throughout the ``build.gradle.kts`` file,
-   so it is recommended to exclude the artifacts in the dependency's declaration.
-
-The following artifacts can be excluded from the Module Repository using the ``microej.excludeArtifacts`` method:
+The following artifacts can be excluded from the Module Repository using the ``excludeArtifacts`` method:
 
 .. list-table:: 
    :widths: 25 65
@@ -391,7 +349,7 @@ The following artifacts can be excluded from the Module Repository using the ``m
    * - ``evaluation-architecture``
      - Exclude the Evaluation version of an Architecture.
 
-Other types of artifacts cannot be excluded using the ``microej.excludeArtifacts`` method. If you want to exclude a specific artifact of a dependency, 
+Other types of artifacts cannot be excluded using the ``excludeArtifacts`` method. If you want to exclude a specific artifact of a dependency, 
 you must explicitly declare all artifacts of the dependency which must be :ref:`included in the Repository<sdk_6_include_single_artifact>`.
 
 .. _sdk_6_include_multiple_module_versions:
@@ -476,34 +434,17 @@ The Module Repository check can be run by executing the Gradle ``checkModuleRepo
     ./gradlew checkModuleRepository
 
 This task is executed by default when :ref:`building a Module Repository <sdk_6_build_module_repository>`. 
-It is possible to disable it on specific dependencies by calling the ``microej.skipModuleRepositoryCheck`` method when declaring a dependency:
+It is also possible to disable the Module Repository for a dependency in the ``microej`` block of the ``build.gradle.kts`` file:
 
 .. code-block:: kotlin
 
-    dependencies {
-        microejModule("ej.library.runtime:basictool:1.8.0") {
-            isTransitive = false
-        }.let {
-            microej.skipModuleRepositoryCheck(it)
-        }
+    microej {
+        skipModuleRepositoryCheck("ej.library.runtime:basictool:1.8.0")
     }
 
-.. note::
-
-   It is also possible to disable the Module Repository for a dependency in the ``microej`` block of the ``build.gradle.kts`` file:
-
-    .. code-block:: kotlin
-
-        microej {
-            skipModuleRepositoryCheck("ej.library.runtime:basictool:1.8.0")
-        }
-
-        dependencies {
-            microejModule("ej.library.runtime:basictool:1.8.0")
-        }
-        
-   But this solution requires duplicating the dependency and the related information is scattered throughout the ``build.gradle.kts`` file,
-   so it is recommended to disable the check in the dependency's declaration.
+    dependencies {
+        microejModule("ej.library.runtime:basictool:1.8.0")
+    }
 
 If you don't want to check the Module Repository project, you can also :ref:`skip the task <sdk_6_howto_gradle_skip_task>`.
 
@@ -524,48 +465,18 @@ the following methods when declaring a dependency:
      - This method takes a dependency and a comma-separated list of the names of the checkers to exclude as parameters. 
        Ignored if the dependency is also used as parameter of the ``runCheckers`` method.
 
+It is possible to enable or disable the checkers of a dependency in the ``microej`` block of the ``build.gradle.kts`` file.
 For example:
-
+   
 .. code-block:: kotlin
-    
-    dependencies {
-        microejModule("ej.library.runtime:basictool:1.8.0")?.let {
-            microej.runCheckers(it, "readme,license,changelog")
-        }
-        microejModule("ej.api:edc:1.3.3")?.let {
-            microej.skipCheckers(it, "changelog,retrieve")
-        }
+
+    microej {
+        skipCheckers("ej.library.runtime:basictool:1.8.0", "readme,license,changelog")
     }
 
-For dependencies which are not resolved transitively, the methods are called after the dependency's block:
-
-.. code-block:: kotlin
-    
     dependencies {
-        microejModule("ej.library.runtime:basictool:1.8.0") {
-            isTransitive = false
-        }.let {
-            microej.runCheckers(it, "readme,license,changelog")
-        }
+        microejModule("ej.library.runtime:basictool:1.8.0")
     }
-
-.. note::
-
-   It is also possible to enable or disable the checkers of a dependency in the ``microej`` block of the ``build.gradle.kts`` file:
-
-    .. code-block:: kotlin
-
-        microej {
-            skipCheckers("ej.library.runtime:basictool:1.8.0", "readme,license,changelog")
-        }
-
-        dependencies {
-            microejModule("ej.library.runtime:basictool:1.8.0")
-        }
-        
-   But this solution requires duplicating the dependency and the related information is scattered throughout the ``build.gradle.kts`` file,
-   so it is recommended to configure the checkers in the dependency's declaration.
-
 
 The properties provided by the :ref:`sdk6_module_natures.tasks.checkModule` task can also be used but they are applied on the project 
 itself, not its dependencies. For example, the Readme checker is skipped on the project but it is executed on the dependencies if the following 
