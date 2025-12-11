@@ -49,7 +49,7 @@ for developing a Sandboxed Application and deploying it easily on your Device.
 Additionally, this project serves as a starting point for Kernel developers to learn and demonstrate 
 most of the Multi-Sandboxing capabilities of the MicroEJ technology.
 
-To complete this unit, follow the steps of the `Kernel GREEN REAMDE on GitHub <https://github.com/MicroEJ/Kernel-GREEN>`_.
+To complete this unit, follow the steps of the `Kernel GREEN README on GitHub <https://github.com/MicroEJ/Kernel-GREEN>`_.
 
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 
