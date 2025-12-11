@@ -574,21 +574,17 @@ Use an Offline Module Repository
 When the Module Repository has been created, you can configure your projects to use it:
 
 - Unzip the Module Repository archive at the location of your choice, for example in the ``C:\module-repository`` folder.
-- Apply the ``module-repository.gradle.kts`` script found in the Module Repository unzipped folder in the ``build.gradle.kts`` file of your project to declare the repository:
+- Apply the ``module-repository.gradle.kts`` script found in the Module Repository unzipped folder in the ``settings.gradle.kts`` file of your project to declare the repository:
 
 .. code:: kotlin
 
-  apply(file("C:\\module-repository\\module-repository.gradle.kts"))
+    apply(file("C:\\module-repository\\module-repository.gradle.kts"))
 
 
-If your project is a multi-project, the ``module-repository.gradle.kts`` script must be applied in the ``build.gradle.kts`` file at the root of the multi-project to make the repository available 
-for all subprojects:
+.. warning::
 
-.. code:: kotlin
+    This line must be inserted at the start of the file, before including projects, and before using any plugins that depend on repositories.
 
-   allprojects {
-        apply(file("C:\\module-repository\\module-repository.gradle.kts"))
-   }
 
 ..
    | Copyright 2020-2025, MicroEJ Corp. Content in this space is free 
