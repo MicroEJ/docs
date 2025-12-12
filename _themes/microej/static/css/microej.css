@@ -1725,3 +1725,7 @@ text-decoration: none;
   object-fit: contain;
   height: 150px !important; /* Fit training_image_container height */
 }
+
+code.xref {
+  text-decoration: underline;
+}
