@@ -267,37 +267,106 @@ For example if you need to add the MicroEJ Central Repository, the file content 
 
 .. code-block:: kotlin
 
-    repositories {
-        // Custom Module Repository
-        maven {
-            name = "moduleRepositoryMaven"
-            url = uri(buildscript.sourceFile!!.parentFile)
-        }
-        ivy {
-            name = "moduleRepositoryIvy"
-            url = uri(buildscript.sourceFile!!.parentFile)
-            patternLayout {
-                artifact("[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier])(.[ext])")
-                ivy("[organisation]/[module]/[revision]/ivy-[revision].xml")
-                setM2compatible(true)
+    dependencyResolutionManagement {
+        repositories {
+            // Custom Module Repository
+            maven {
+                name = "moduleRepositoryMaven"
+                url = uri(buildscript.sourceFile!!.parentFile)
             }
-        }
+            ivy {
+                name = "moduleRepositoryIvy"
+                url = uri(buildscript.sourceFile!!.parentFile)
+                patternLayout {
+                    artifact("[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier])(.[ext])")
+                    ivy("[organisation]/[module]/[revision]/ivy-[revision].xml")
+                    setM2compatible(true)
+                }
+            }
 
-        // MicroEJ Central Repository
-        maven {
-            name = "microEJCentral"
-            url = uri("https://repository.microej.com/modules")
-        }
-        ivy {
-            name = "microEJCentralIvy"
-            url = uri("https://repository.microej.com/modules")
-            patternLayout {
-                artifact("[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier])(.[ext])")
-                ivy("[organisation]/[module]/[revision]/ivy-[revision].xml")
-                setM2compatible(true)
+            // MicroEJ Central Repository
+            maven {
+                name = "microEJCentral"
+                url = uri("https://repository.microej.com/modules")
+            }
+            ivy {
+                name = "microEJCentralIvy"
+                url = uri("https://repository.microej.com/modules")
+                patternLayout {
+                    artifact("[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier])(.[ext])")
+                    ivy("[organisation]/[module]/[revision]/ivy-[revision].xml")
+                    setM2compatible(true)
+                }
+            }
+            // MicroEJ SDK 6 repository for Maven/Gradle modules
+            maven {
+                name = "microEJForgeSDK6"
+                url = uri("https://forge.microej.com/artifactory/microej-sdk6-repository-release/")
+            }
+            // MicroEJ SDK 6 repository for Ivy modules
+            ivy {
+                name = "microEJForgeSDK6Ivy"
+                url = uri("https://forge.microej.com/artifactory/microej-sdk6-repository-release/")
+                patternLayout {
+                    artifact("[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier])(.[ext])")
+                    ivy("[organisation]/[module]/[revision]/ivy-[revision].xml")
+                    setM2compatible(true)
+                }
             }
         }
     }
+
+    pluginManagement {
+        repositories {
+            // Custom Module Repository
+            maven {
+                name = "moduleRepositoryMaven"
+                url = uri(buildscript.sourceFile!!.parentFile)
+            }
+            ivy {
+                name = "moduleRepositoryIvy"
+                url = uri(buildscript.sourceFile!!.parentFile)
+                patternLayout {
+                    artifact("[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier])(.[ext])")
+                    ivy("[organisation]/[module]/[revision]/ivy-[revision].xml")
+                    setM2compatible(true)
+                }
+            }
+
+            // MicroEJ Central Repository
+            maven {
+                name = "microEJCentral"
+                url = uri("https://repository.microej.com/modules")
+            }
+            ivy {
+                name = "microEJCentralIvy"
+                url = uri("https://repository.microej.com/modules")
+                patternLayout {
+                    artifact("[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier])(.[ext])")
+                    ivy("[organisation]/[module]/[revision]/ivy-[revision].xml")
+                    setM2compatible(true)
+                }
+            }
+            // MicroEJ SDK 6 repository for Maven/Gradle modules
+            maven {
+                name = "microEJForgeSDK6"
+                url = uri("https://forge.microej.com/artifactory/microej-sdk6-repository-release/")
+            }
+            // MicroEJ SDK 6 repository for Ivy modules
+            ivy {
+                name = "microEJForgeSDK6Ivy"
+                url = uri("https://forge.microej.com/artifactory/microej-sdk6-repository-release/")
+                patternLayout {
+                    artifact("[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier])(.[ext])")
+                    ivy("[organisation]/[module]/[revision]/ivy-[revision].xml")
+                    setM2compatible(true)
+                }
+            }
+        }
+    }
+
+This sample also includes the repository for the SDK 6 modules. 
+It is required if you don't have declared it somewhere else (in your Gradle Init Scripts for example).
 
 This file is directly packaged in the Module Repository archive, 
 so it is the one to apply in order to use the custom Module Repository, as explained in :ref:`sdk6_use_offline_module_repository`.
@@ -574,21 +643,17 @@ Use an Offline Module Repository
 When the Module Repository has been created, you can configure your projects to use it:
 
 - Unzip the Module Repository archive at the location of your choice, for example in the ``C:\module-repository`` folder.
-- Apply the ``module-repository.gradle.kts`` script found in the Module Repository unzipped folder in the ``build.gradle.kts`` file of your project to declare the repository:
+- Apply the ``module-repository.gradle.kts`` script found in the Module Repository unzipped folder in the ``settings.gradle.kts`` file of your project to declare the repository:
 
 .. code:: kotlin
 
-  apply(file("C:\\module-repository\\module-repository.gradle.kts"))
+    apply(file("C:\\module-repository\\module-repository.gradle.kts"))
 
 
-If your project is a multi-project, the ``module-repository.gradle.kts`` script must be applied in the ``build.gradle.kts`` file at the root of the multi-project to make the repository available 
-for all subprojects:
+.. warning::
 
-.. code:: kotlin
+    This line must be inserted at the start of the file, before including projects, and before using any plugins that depend on repositories.
 
-   allprojects {
-        apply(file("C:\\module-repository\\module-repository.gradle.kts"))
-   }
 
 ..
    | Copyright 2020-2025, MicroEJ Corp. Content in this space is free 
