@@ -213,11 +213,11 @@ If you want to create a VEE Port project, refer to the :ref:`sdk_6_veeport_creat
       - Depending on the type of your project, fill the URI of the corresponding Github template repository in the Search Bar. 
         The available templates are:
       
-         - `Application Project Template <https://github.com/MicroEJ/Tool-Project-Template-Application/tree/1.5.1>`__
-         - `Add-On Library Project Template <https://github.com/MicroEJ/Tool-Project-Template-Add-On-Library/tree/1.5.1>`__
-         - `Mock Project Template <https://github.com/MicroEJ/Tool-Project-Template-Mock/tree/1.5.1>`__
-         - `Runtime Environment Template <https://github.com/MicroEJ/Tool-Project-Template-Runtime-Environment/tree/1.4.1>`__
-         - `Java SE Library Template <https://github.com/MicroEJ/Tool-Project-Template-JavaSE-Library/tree/1.4.1>`__
+         - `Application Project Template <https://github.com/MicroEJ/Tool-Project-Template-Application/tree/1.7.0>`__
+         - `Add-On Library Project Template <https://github.com/MicroEJ/Tool-Project-Template-Add-On-Library/tree/1.7.0>`__
+         - `Mock Project Template <https://github.com/MicroEJ/Tool-Project-Template-Mock/tree/1.7.0>`__
+         - `Runtime Environment Template <https://github.com/MicroEJ/Tool-Project-Template-Runtime-Environment/tree/1.6.0>`__
+         - `Java SE Library Template <https://github.com/MicroEJ/Tool-Project-Template-JavaSE-Library/tree/1.6.0>`__
       
       - Click on :guilabel:`Clone from URL`.
       
@@ -256,11 +256,11 @@ If you want to create a VEE Port project, refer to the :ref:`sdk_6_veeport_creat
       - Depending on the type of your project, retrieve the URI of the corresponding Github template repository. 
         The available templates are:
       
-         - `Application Project Template <https://github.com/MicroEJ/Tool-Project-Template-Application/tree/1.5.1>`__
-         - `Add-On Library Project Template <https://github.com/MicroEJ/Tool-Project-Template-Add-On-Library/tree/1.5.1>`__
-         - `Mock Project Template <https://github.com/MicroEJ/Tool-Project-Template-Mock/tree/1.5.1>`__
-         - `Runtime Environment Template <https://github.com/MicroEJ/Tool-Project-Template-Runtime-Environment/tree/1.4.1>`__
-         - `Java SE Library Template <https://github.com/MicroEJ/Tool-Project-Template-JavaSE-Library/tree/1.4.1>`__
+         - `Application Project Template <https://github.com/MicroEJ/Tool-Project-Template-Application/tree/1.7.0>`__
+         - `Add-On Library Project Template <https://github.com/MicroEJ/Tool-Project-Template-Add-On-Library/tree/1.7.0>`__
+         - `Mock Project Template <https://github.com/MicroEJ/Tool-Project-Template-Mock/tree/1.7.0>`__
+         - `Runtime Environment Template <https://github.com/MicroEJ/Tool-Project-Template-Runtime-Environment/tree/1.6.0>`__
+         - `Java SE Library Template <https://github.com/MicroEJ/Tool-Project-Template-JavaSE-Library/tree/1.6.0>`__
       
       - Clone the repository::
 

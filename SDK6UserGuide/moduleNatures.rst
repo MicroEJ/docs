@@ -19,7 +19,7 @@ Add-On Library
 
 **Documentation**: :ref:`libraries`
 
-**Template**: `Add-On Library Project Template <https://github.com/MicroEJ/Tool-Project-Template-Add-On-Library/tree/1.5.1>`__
+**Template**: `Add-On Library Project Template <https://github.com/MicroEJ/Tool-Project-Template-Add-On-Library/tree/1.7.0>`__
 
 **Tasks**:
 
@@ -46,7 +46,7 @@ Application
 
 **Documentation**: :ref:`standalone_application`, :ref:`sandboxed_application`, :ref:`kernel-developer-guide`
 
-**Template**: `Application Project Template <https://github.com/MicroEJ/Tool-Project-Template-Application/tree/1.5.1>`__
+**Template**: `Application Project Template <https://github.com/MicroEJ/Tool-Project-Template-Application/tree/1.7.0>`__
 
 **Tasks**:
 
@@ -79,7 +79,7 @@ Java SE Library
 
 **Plugin Name**: ``com.microej.gradle.jse-library``
 
-**Template**: `Java SE Library Template <https://github.com/MicroEJ/Tool-Project-Template-JavaSE-Library/tree/1.4.1>`__
+**Template**: `Java SE Library Template <https://github.com/MicroEJ/Tool-Project-Template-JavaSE-Library/tree/1.6.0>`__
 
 **Tasks**:
 
@@ -103,7 +103,7 @@ Mock
 
 **Documentation**: :ref:`mock`
 
-**Template**: `Mock Project Template <https://github.com/MicroEJ/Tool-Project-Template-Mock/tree/1.5.1>`__
+**Template**: `Mock Project Template <https://github.com/MicroEJ/Tool-Project-Template-Mock/tree/1.7.0>`__
 
 **Tasks**:
 
@@ -128,7 +128,7 @@ Runtime Environment
 
 **Documentation**: :ref:`runtime_environment`
 
-**Template**: `Runtime Environment Template <https://github.com/MicroEJ/Tool-Project-Template-Runtime-Environment/tree/1.4.1>`__
+**Template**: `Runtime Environment Template <https://github.com/MicroEJ/Tool-Project-Template-Runtime-Environment/tree/1.6.0>`__
 
 **Tasks**:
 
@@ -155,7 +155,7 @@ VEE Port
 
 **Documentation**: :ref:`vee-porting-guide`
 
-**Template**: `VEE Port Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.4.0>`__
+**Template**: `VEE Port Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.5.0>`__
 
 **Tasks**:
 
