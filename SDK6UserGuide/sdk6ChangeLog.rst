@@ -3,7 +3,7 @@
 Changelog
 ---------
 
-.. _changelog-1.4.0:
+.. _changelog-1.5.0:
 
 [1.5.0] - 2025-12-18
 ~~~~~~~~~~~~~~~~~~~~
@@ -61,6 +61,8 @@ Fixed
 - Foundation Library not retrieving its declared mock when running tests on simulator.
 - Eclipse and VS Code cannot resolve classes from runtime environment when defined as project dependency.
 - Dependency fetching issues because Addon Processors dependencies are not loaded in a dedicated classloader.
+
+.. _changelog-1.4.0:
 
 [1.4.0] - 2025-09-18
 ~~~~~~~~~~~~~~~~~~~~
