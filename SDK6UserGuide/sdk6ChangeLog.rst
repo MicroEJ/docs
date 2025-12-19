@@ -5,6 +5,63 @@ Changelog
 
 .. _changelog-1.4.0:
 
+[1.5.0] - 2025-12-18
+~~~~~~~~~~~~~~~~~~~~
+
+Added
+"""""
+
+- Support the build of Module Repository.
+- Add Consistency checker on the dependencies of a Module Repository project.
+- Support disabling checkers for a single dependency of a Module Repository project.
+- Support excluding artifacts of a dependency in a Module Repository.
+- Add ``withDependenciesIvyDescriptor`` method in ``microej`` block to include Ivy descriptors in a Module Repository.
+- Add a Gradle script ``module-repository.gradle.kts`` in the archive file of a Module Repository to simplify its
+  configuration in a project.
+- Support embedding JDKs in the generated Virtual Device of an Application project.
+- Support Stack Trace Reader for Multi-Sandboxed Applications.
+- Always build executable when running a testsuite on a device.
+- Support new Foundation Libraries format in Artifact Checker.
+- Add configuration properties to define Application SSL Certificate information.
+- Add ``applicationName`` and ``applicationVersion`` properties in ``microej`` block to configure KF metadata.
+- Add a warning message when the user's license is about to expire.
+- Consider the Application Options defined in the Application project when building a Feature.
+- Add the ``microejtool.deploy.name`` property to change the deployment script used by the ``runOnDevice`` task.
+- Check the license from the SDK instead of using the ``license-checker`` tool.
+
+Changed
+"""""""
+
+- Publish ``README.md``, ``CHANGELOG.md``, ``LICENSE.txt``, ``ASSEMBLY_EXCEPTION.txt`` and ``RELEASE_NOTES.md`` files as 
+  variants to improve their resolution.
+- Improve the resolution of dependencies by using custom attribute only instead of ``LibraryElements`` standard
+  attributes.
+- Change the default value of the ``name`` property in ``.kf`` files to the module name instead of the entrypoint class name.
+- Display a clear error message when building a Virtual Device with a Runtime Environment project with no version.
+- Improve error message when a Sandboxed Application is built with a Kernel with a different plugin version in a
+  multi-project.
+- Remove dependencies of the published Virtual Device variant of an Application to not fetch them when using
+  transitivity on ``microejVee`` dependencies.
+- Update variants of a VEE Port to improve its resolution.
+- Update ``retrolambda`` dependency to ``2.6.2``.
+
+Fixed
+"""""
+
+- Runtime Environment does not include sources of dependencies included with ``includeBuild``.
+- Application WPK does not contain all libraries provided as included build when Libraries have the same name.
+- Mock RIP does not include runtime dependencies.
+- Library projects build fails when Ivy descriptor file generation is disabled.
+- Hide javadoc errors of shrunk APIs when building a Kernel or a Runtime Environment.
+- Errors caused by the missing annotations when building a Kernel with EDC 1.3.6+.
+- Snapshot versions (``-RC``) are not suffixed with timestamp in ``.kf`` files.
+- Report initializationErrors and executionErrors when exception is thrown in ``@BeforeClass`` or ``@AfterClass`` in JUnit
+  tests.
+- Report test harness execution error as test failure.
+- Foundation Library not retrieving its declared mock when running tests on simulator.
+- Eclipse and VS Code cannot resolve classes from runtime environment when defined as project dependency.
+- Dependency fetching issues because Addon Processors dependencies are not loaded in a dedicated classloader.
+
 [1.4.0] - 2025-09-18
 ~~~~~~~~~~~~~~~~~~~~
 
