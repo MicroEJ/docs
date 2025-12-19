@@ -18,7 +18,7 @@ Import the Test Suite
 ---------------------
 
 It is assumed here that the VEE Port project already exists, 
-with the same structure as the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.4.0>`__, especially these folders and files::
+with the same structure as the `VEE Port Project Template <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/1.5.0>`__, especially these folders and files::
 
    |- vee-port/
    |   |- validation/
@@ -29,7 +29,7 @@ with the same structure as the `VEE Port Project Template <https://github.com/Mi
 The first step is to import the testsuite in the VEE Port project:
 
 - Clone or download the `VEE Port Project Template
-  <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/releases/tag/1.4.0>`__.
+  <https://github.com/MicroEJ/Tool-Project-Template-VEEPort/releases/tag/1.5.0>`__.
 - Copy the ``vee-port/validation/fs`` folder into the ``vee-port/validation`` folder of the VEE Port project.
 - Add the following line in the ``settings.gradle.kts`` root file::
 
