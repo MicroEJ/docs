@@ -3,10 +3,10 @@
 Debug Traces
 =============
 
-MicroVG logs several actions when traces are enabled. 
+MicroVG traces several actions when traces are enabled. 
 This chapter explains the trace identifiers.
 
-.. note:: The logs are only available on the Embedded VEE Port (not on the Simulator).
+.. note:: The traces are only available on the Embedded VEE Port (not on the Simulator).
 
 Trace format
 ------------
@@ -33,18 +33,51 @@ Trace identifiers
 
 The following tables describe some events data.
 
-.. table:: MicroVG Traces
+.. list-table:: MicroVG Traces
+   :widths: 10 60 30
+   :header-rows: 1
 
-   +-------------+---------------------------------------------+-----------------------------------------------+
-   | Event ID    | Description                                 | End of event                                  |
-   +=============+=============================================+===============================================+
-   | 0x0 (0)     | Image event ``%0%`` (see Image Type).       | End of ``%0%`` (see Image Type).              |
-   +-------------+---------------------------------------------+-----------------------------------------------+
-   | 0x1 (1)     | Font event ``%0%`` (see Font Type).         | End of ``%0%`` (see Font Type).               |
-   +-------------+---------------------------------------------+-----------------------------------------------+
-   | 0x2 (2)     | Drawing event ``%0%`` (see Drawing Type).   | End of ``%0%`` (see Drawing Type).            |
-   +-------------+---------------------------------------------+-----------------------------------------------+
-      
+   * - Event ID
+     - Description
+     - End of Event
+   * - 0x0 (0)
+     - Image event  ``%0%`` (see Image Type)
+     - End of ``%0%`` (see Image Type). 
+   * - 0x1 (1)
+     - Font event  ``%0%`` (see Font Type)
+     - End of ``%0%`` (see Font Type). 
+   * - 0x2 (2)
+     - Drawing ``%0%`` (see Drawing type)
+     - End of ``%0%`` (see Drawing Type). 
+   * - 0x3 (3)
+     - New image ``%0%`` (see Image Type)
+     - Image created, image identifier is ``%0%``.
+   * - 0x4 (4)
+     - New image characteristics: ``%0%`` (see New Image), identifier is ``%1%`` and size is ``%2%`` x ``%3%``. 
+     - 
+   * - 0xA (10)
+     - Draw Path dest ``%0%``, anchor= ``%1%``, ``%2%``
+     - Drawing status ``%0%`` (see Drawing Status)
+   * - 0xB (11)
+     - Draw Path with Gradient dest ``%0%``, anchor= ``%1%``, ``%2%``
+     - Drawing status ``%0%`` (see Drawing Status)
+   * - 0xC (12)
+     - Draw String dest ``%0%``, ``%1%`` characters, anchor= ``%2%``, ``%3%``
+     - Drawing status ``%0%`` (see Drawing Status)
+   * - 0xD (13)
+     - Draw String with Gradient dest ``%0%``, ``%1%`` characters, anchor= ``%2%``, ``%3%``
+     - Drawing status ``%0%`` (see Drawing Status)
+   * - 0xE (14)
+     - Draw String On Circle dest ``%0%``, ``%1%`` characters, anchor= ``%2%``, ``%3%``, radius= ``%4%``, direction= ``%5%`` (see Direction Type)
+     - Drawing status ``%0%`` (see Drawing Status)
+   * - 0xF (15)
+     - Draw String On Circle with Gradient dest ``%0%``, ``%1%`` characters, anchor= ``%2%``, ``%3%``, radius= ``%4%``, direction= ``%5%`` (see Direction Type)
+     - Drawing status ``%0%`` (see Drawing Status)
+   * - 0x10 (16)
+     - Draw Image dest ``%0%``, image= ``%1%``, anchor= ``%2%``, ``%3%``
+     - Drawing status ``%0%`` (see Drawing Status)
+
+
 .. table:: Image Type
 
    +-------------+----------------------------------------------------------------+
@@ -55,6 +88,26 @@ The following tables describe some events data.
    | 0x1 (1)     | Create BufferedVectorImage                                     |
    +-------------+----------------------------------------------------------------+
    | 0x2 (2)     | Close image                                                    |
+   +-------------+----------------------------------------------------------------+
+
+.. table:: New Image
+
+   +-------------+----------------------------------------------------------------+
+   | Event ID    | Description                                                    |
+   +=============+================================================================+
+   | 0x0 (0)     | Get image from RAW file                                        |
+   +-------------+----------------------------------------------------------------+
+   | 0x1 (1)     | Load image from RAW file                                       |
+   +-------------+----------------------------------------------------------------+
+   | 0x2 (2)     | Create BufferedVectorImage                                     |
+   +-------------+----------------------------------------------------------------+
+   | 0x3 (3)     | Build image                                                    |
+   +-------------+----------------------------------------------------------------+
+   | 0x4 (4)     | New filtered image from RAW image                              |
+   +-------------+----------------------------------------------------------------+
+   | 0x5 (5)     | New filtered image from BufferedVectorImage                    |
+   +-------------+----------------------------------------------------------------+
+   | 0x6 (6)     | New filtered image from builder image                          |
    +-------------+----------------------------------------------------------------+
 
 .. table:: Font Type
@@ -93,6 +146,27 @@ The following tables describe some events data.
    | 0x6 (6)     | Draw image                                 |
    +-------------+--------------------------------------------+
 
+.. table:: Direction Type
+
+   +-------------+--------------------------------------------+
+   | Event ID    | Description                                |
+   +=============+============================================+
+   | 0x0 (0)     | Clockwise                                  |
+   +-------------+--------------------------------------------+
+   | 0x1 (1)     | Anticlockwise                              |
+   +-------------+--------------------------------------------+
+
+.. table:: Drawing Status
+
+   +-------------+--------------------------------------------+
+   | Event ID    | Description                                |
+   +=============+============================================+
+   | 0x0 (0)     | Synchronous drawing done                   |
+   +-------------+--------------------------------------------+
+   | 0x1 (1)     | Asynchronous drawing delayed               |
+   +-------------+--------------------------------------------+
+
+
 SystemView Integration
 ----------------------
 
@@ -108,15 +182,55 @@ The following text can be copied in a file called ``SYSVIEW_MicroVG.txt`` and co
 
 .. code-block::
    
-   NamedType VGImage 0=LOAD_IMAGE
+   #
+   # SystemView Description File
+   #
+
+   #===========
+   # NamedTypes 
+   #===========
+
+   # ------------
+   # Image Events
+   # ------------
+
+   # Deprecated (kept for backward compatibility VG Pack < 1.8.0)
+   NamedType VGImage 0=OPEN_RAW_IMAGE
    NamedType VGImage 1=CREATE_IMAGE
    NamedType VGImage 2=CLOSE_IMAGE
+
+   NamedType VGNewImage 0=GET_RAW_IMAGE
+   NamedType VGNewImage 1=LOAD_RAW_IMAGE
+   NamedType VGNewImage 2=MUTABLE_IMAGE
+   NamedType VGNewImage 3=BUILDER_IMAGE
+   NamedType VGNewImage 4=FILTERED_IMAGE_FROM_RAW
+   NamedType VGNewImage 5=FILTERED_IMAGE_FROM_MUTABLE
+   NamedType VGNewImage 6=FILTERED_IMAGE_FROM_BUILDER
+
+   # -----------
+   # Font Events
+   # -----------
 
    NamedType VGFont 0=LOAD_FONT
    NamedType VGFont 1=FONT_BASELINE
    NamedType VGFont 2=FONT_HEIGHT
    NamedType VGFont 3=STRING_WIDTH
    NamedType VGFont 4=STRING_HEIGHT
+
+   # --------------
+   # Drawing Events
+   # --------------
+
+   NamedType VGString *="%u characters"
+   NamedType VGRadius *="radius=%u"
+   NamedType VGSource *="image=0x%x"
+
+   NamedType VGDirection 0="direction=clockwise"
+   NamedType VGDirection 1="direction=anticlockwise"
+
+   # ------------------
+   # Old Drawing Events
+   # ------------------
 
    NamedType VGDraw 0=DRAW_PATH
    NamedType VGDraw 1=DRAW_PATH_GRADIENT
@@ -126,9 +240,46 @@ The following text can be copied in a file called ``SYSVIEW_MicroVG.txt`` and co
    NamedType VGDraw 5=DRAW_STRING_ON_CIRCLE_GRADIENT
    NamedType VGDraw 6=DRAW_IMAGE
 
-   0        VG_ImageEvent      (MicroVG) Execute image event %VGImage  | (MicroVG) Image event %VGImage done
-   1        VG_FontEvent       (MicroVG) Execute font event %VGFont  | (MicroVG) Font event %VGFont done
-   2        VG_DrawingEvent    (MicroVG) Execute drawing event %VGDraw  | (MicroVG) Drawing event %VGDraw done
+   # -----------------
+   # UI Drawing Events
+   # -----------------
+
+   # Copy of MicroUI events (required by the Front Panel)
+   NamedType UIDrawAsync 0="Drawing operation done"
+   NamedType UIDrawAsync 1="Drawing operation delayed"
+   NamedType UIDestination *="dest=0x%x"
+
+   #=======
+   # Events
+   #=======
+
+   # ---------------
+   # MicroVG Library
+   # ---------------
+
+   # [0-9]: 10 events
+
+   # Deprecated (kept for backward compatibility VG Pack < 1.8.0)
+   0        VG_ImageEvent      type=%VGImage | type=%VGImage done
+   2        VG_DrawingEvent    type=%VGDraw  | type=%VGDraw done
+
+   1        VG_FontEvent       type=%VGFont  | type=%VGFont done
+   3        VG_NewImage        type=%VGNewImage | id=0x%x
+   4        VG_ImageData       type=%VGNewImage id=0x%x size=%u*%u
+
+   # ----------------
+   # MicroVG C Module
+   # ----------------
+
+   # [10-39]: 30 events
+
+   10       VG_DrawPathColor              %UIDestination anchor=%d,%d | %UIDrawAsync
+   11       VG_DrawPathGradient           %UIDestination anchor=%d,%d | %UIDrawAsync
+   12       VG_DrawStringColor            %UIDestination %VGString anchor=%d,%d | %UIDrawAsync
+   13       VG_DrawStringGradient         %UIDestination %VGString anchor=%d,%d | %UIDrawAsync
+   14       VG_DrawStringOnCircleColor    %UIDestination %VGString anchor=%d,%d %VGRadius %VGDirection | %UIDrawAsync
+   15       VG_DrawStringOnCircleGradient %UIDestination %VGString anchor=%d,%d %VGRadius %VGDirection | %UIDrawAsync
+   16       VG_DrawImage                  %UIDestination %VGSource anchor=%d,%d | %UIDrawAsync
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 

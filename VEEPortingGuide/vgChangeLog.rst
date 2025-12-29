@@ -6,6 +6,126 @@
 Changelog
 =========
 
+[1.8.0] - 2026-01-23
+====================
+
+UI Pack
+"""""""
+
+**Changed**
+
+* Compatible with UI Pack 14.4.1 (Trace management).
+
+.. note:: 
+    This pack fixes the memory leak that occurs when a feature is killed while a BufferedVectorImage, an external RAW image, or a filtered image is open.
+    To avoid potential side effects from the release of objects (images, fonts) retained by a feature during the killing of that feature, ensure that no third-party components (e.g., GPU) are using these objects at the time of the kill.
+    UI packs with versions higher than 14.5.1 provide the blocking API ``LLUI_DISPLAY_waitAsynchronousDrawingEnd()``.
+    This API is stubbed on the VG Pack for backward compatibility issues between VG Pack 1.8.0 and UI Packs [14.4.0, 14.5.1].
+    However, it is highly recommended to use a UI Pack version greater than 14.5.1.
+
+MicroVG
+"""""""
+
+**Changed**
+
+* Harmonize the trace events (SystemView description file ``SYSVIEW_MicroVG.txt`` is updated).
+
+**Fixed**
+
+* Fix the memory leak when a feature is killed whereas a BufferedVectorImage, an external RAW image or a filtered image is opened.
+* Fix the closing of a font that was opened twice, which caused both fonts (same object) to close simultaneously.
+* Fix the clearing of a BufferedVectorImage when its clip is null: the content was not deleted at all.
+
+**Removed**
+
+* Remove the cache of the vector fonts: each call to ``VectorFont.loadFont()`` creates a new instance.
+  
+Front Panel
+"""""""""""
+
+**Changed**
+
+* Trace the drawing functions like the embedded side.
+
+**Fixed**
+
+* Fix the ``nema`` image decoder: fill rule was not correctly decoded.
+
+C Module MicroVG
+"""""""""""""""" 
+
+**Added**
+
+* Add the implementation of the MicroVG native function ``LLVG_IMPL_initialize()``; the C Module *GPU* cannot implement this function anymore.
+
+**Changed**
+
+* Change the internal format (SNI context) of the Vector images (native methods are not backward compatible).
+* Move the image trace events from native side to library side.
+* Improve traces of drawing functions.
+* Change the type of the parameter ``glyph_idx`` in the function ``VG_HELPER_layout_load_glyph()``. 
+* Change the options configuration to follow the general rule of ``vg_conguration.h``: default values are ``0`` (means "disabled"):
+
+	* ``VG_FEATURE_FREETYPE_TTF``
+	* ``VG_FEATURE_FREETYPE_OTF``
+	* ``VG_FEATURE_FREETYPE_COLORED_EMOJI``
+	* ``VG_FEATURE_FONT_COMPLEX_LAYOUT``
+	* ``VG_FEATURE_FONT_EXTERNAL``
+	* ``VG_FEATURE_BUFFERED_VECTOR_IMAGE``
+
+**Removed**
+
+* Remove the function ``VG_HELPER_initialize()`` (replaced by implementation of the function ``LLVG_IMPL_initialize()``).
+* Remove the weak implementation of the function ``VG_DRAWING_initialize()``: the C Module *GPU* must initialize its components.
+* Remove the traces "image" (moved in MicroVG library).
+
+C Module VGLite
+"""""""""""""""
+
+**Changed**
+
+* Move the C Module initialization in the function ``VG_DRAWING_initialize()`` (specification of C Module MicroVG 8.0.0).
+
+**Fixed**
+
+* Fix the memory leak when a feature is killed whereas a BufferedVectorImage, an external RAW image or a filtered image is opened.
+
+**Removed**
+
+* Remove the file ``LLVG_impl_vglite.c``.
+* Remove the traces "image" (moved in MicroVG library).
+
+C Module NemaVG
+"""""""""""""""
+
+**Changed**
+
+* Move the C Module initialization in the function ``VG_DRAWING_initialize()`` (specification of  C Module MicroVG 8.0.0).
+
+**Fixed**
+
+* Fix the memory leak when a feature is killed whereas a BufferedVectorImage, an external RAW image or a filtered image is opened.
+
+**Removed**
+
+* Remove the file ``LLVG_impl_vglite.c``.
+* Remove the traces "image" (moved in MicroVG library).
+
+C Module FreeType
+"""""""""""""""""
+
+**Changed**
+
+* Make the C module compatible with the new option configuration of C module MicroVG 8.0.0.
+
+
+C Module HarfBuzz
+"""""""""""""""""
+
+**Changed**
+
+* Make the C module compatible with the new option configuration of C module MicroVG 8.0.0.
+
 [1.7.2] - 2025-09-15
 ====================
 
@@ -91,7 +211,7 @@ C Module VGLite
 **Removed**
 
 - Remove useless and invalid external field declaration.
-- Remove dependency to a specific version of Freetype: the C module Freetype must be fetched independently.
+- Remove dependency to a specific version of Freetype: the C Module Freetype must be fetched independently.
 
 C Module NemaVG
 """""""""""""""
@@ -334,7 +454,7 @@ MicroVG
 
 **Added**
 
-* Add SystemView event logs (feature available with `C Module MicroVG 3.0.1`_).
+* Add SystemView event traces (feature available with `C Module MicroVG 3.0.1`_).
 
 .. _C Module MicroVG 3.0.1: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microvg/3.0.1/
 
@@ -351,7 +471,7 @@ C Module MicroVG
 
 **Fixed**
 
-* Fix the SystemView log identifiers.
+* Fix the SystemView trace identifiers.
 * Fix the documentation of ``MICROVG_HELPER_get_utf()``.
 * Fix FreeType fonts closing twice.
 
@@ -365,7 +485,7 @@ C Module VGLite
 **Fixed**
 
 * Fix performing drawings when the clip is disabled.
-* Fix the SystemView log identifiers.
+* Fix the SystemView trace identifiers.
 * Remove the include of the unknown header file ``trace_vglite.h`` (require a re-build of FreeType library).
 
 [1.3.0] - 2023-05-10
