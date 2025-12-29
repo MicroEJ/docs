@@ -6,6 +6,101 @@
 Changelog
 =========
 
+[1.8.0] - Unreleased
+====================
+
+UI Pack
+"""""""
+
+**Changed**
+
+* Compatible with UI Pack 14.4.1 (Trace management).
+
+MicroVG
+"""""""
+
+**Changed**
+
+* Harmonize the trace events (SystemView description file ``SYSVIEW_MicroVG.txt`` is updated).
+  
+Front Panel
+"""""""""""
+
+**Changed**
+
+* Log the drawing function like the embedded side.
+
+**Fixed**
+
+* Fix the ``nema`` image decoder: fill rule was not correctly decoded.
+
+C Module MicroVG
+"""""""""""""""" 
+
+**Added**
+
+* Add the implementation of the MicroVG native function ``LLVG_IMPL_initialize()``; the C Module *GPU* cannot implement this function anymore.
+
+**Changed**
+
+* Change the internal format (SNI context) of the Vector images (native methods are not backward compatible).
+* Move the image trace events from native side to library side.
+* Improve logs of drawing functions.
+* Change the type of the parameter ``glyph_idx`` in the function ``VG_HELPER_layout_load_glyph()``. 
+* Change the options configuration to follow the general rule of ``vg_conguration.h``: default values are ``0`` (means "disabled"):
+
+	* ``VG_FEATURE_FREETYPE_TTF``
+	* ``VG_FEATURE_FREETYPE_OTF``
+	* ``VG_FEATURE_FREETYPE_COLORED_EMOJI``
+	* ``VG_FEATURE_FONT_COMPLEX_LAYOUT``
+	* ``VG_FEATURE_FONT_EXTERNAL``
+	* ``VG_FEATURE_BUFFERED_VECTOR_IMAGE``
+
+**Removed**
+
+* Remove the function ``VG_HELPER_initialize()`` (replaced by implementation of the function ``LLVG_IMPL_initialize()``).
+* Remove the weak implementation of the function ``VG_DRAWING_initialize()``: the C Module *GPU* must initialize its components.
+* Remove the traces "image" (moved in MicroVG library).
+
+C Module VGLite
+"""""""""""""""
+
+**Changed**
+
+* Move the C Module initialization in the function ``VG_DRAWING_initialize()`` (specification of  C Module MicroVG 8.0.0).
+
+**Removed**
+
+* Remove the file ``LLVG_impl_vglite.c``.
+* Remove the logs "image" (moved in MicroVG library).
+
+C Module NemaVG
+"""""""""""""""
+
+**Changed**
+
+* Move the C Module initialization in the function ``VG_DRAWING_initialize()`` (specification of  C Module MicroVG 8.0.0).
+
+**Removed**
+
+* Remove the file ``LLVG_impl_vglite.c``.
+* Remove the logs "image" (moved in MicroVG library).
+
+C Module FreeType
+"""""""""""""""""
+
+**Changed**
+
+* Make the C module compatible with the new option configuration of C module MicroVG 8.0.0.
+
+
+C Module HarfBuzz
+"""""""""""""""""
+
+**Changed**
+
+* Make the C module compatible with the new option configuration of C module MicroVG 8.0.0.
+
 [1.7.2] - 2025-09-15
 ====================
 

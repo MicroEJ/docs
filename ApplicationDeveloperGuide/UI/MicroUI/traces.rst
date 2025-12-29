@@ -66,7 +66,7 @@ The following tables describe some events data.
      - Create new image using ``%0%`` algorithm (see Create Image). 
      - Image created, image identifier is ``%0%``. 
    * - 0x6 (6) 
-     - New image characteristics ``%0%`` (see Image Type), identifier is ``%1%`` and memory size is ``%2%``. 
+     - New image characteristics:``%0%`` algorithm (see Create Image) ``%1%`` (see Image Type), identifier is ``%2%`` and size is ``%3%`` x ``%4%``. 
      - 
    * - 0xa (10) 
      - Flush start. Region (``%0%``, ``%1%``) (``%2%`` x ``%3%``). 
