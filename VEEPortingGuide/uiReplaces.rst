@@ -7,6 +7,9 @@
 .. |VGPACKVERSION| replace:: 1.8.0
 .. |MICROVGVERSION| replace:: 1.5.0
 
+.. |FREETYPEVERSION| replace:: 2.14.1
+.. |HARFBUZZVERSION| replace:: 12.3.0
+
 .. _MicroUI API 3.6.0: https://repository.microej.com/modules/ej/api/microui/3.6.0/
 .. _MicroUI API 3.5.0: https://repository.microej.com/modules/ej/api/microui/3.5.0/
 
