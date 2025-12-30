@@ -116,15 +116,16 @@ C Module FreeType
 
 **Changed**
 
-* Make the C module compatible with the new option configuration of C module MicroVG 8.0.0.
-
+* Upgrade FreeType from the version 2.13.3 (2024-08-11) to the version 2.14.1 (2025-09-11).
+* Make the C Module compatible with the new option configuration of C Module MicroVG 8.0.0.
 
 C Module HarfBuzz
 """""""""""""""""
 
 **Changed**
 
-* Make the C module compatible with the new option configuration of C module MicroVG 8.0.0.
+* Upgrade HarfBuzz from the version 10.0.1 (2024-09-24) to the version 12.3.0 (2025-12-27).
+* Make the C Module compatible with the new option configuration of C Module MicroVG 8.0.0.
 
 [1.7.2] - 2025-09-15
 ====================

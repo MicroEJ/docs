@@ -64,16 +64,14 @@ FreeType
 
 * **Prerequisite:** follow the migration steps of :ref:`section_vg_migrationguide_pack_1.8.0_bsp`.
 * Install the `C Module Freetype 5.0.0`_.
-
-*note*: in case of standalone library: include the folder of the configuration file ``vg_configuration.h`` in the include directives and rebuild the library.
+* In case of standalone library: include the folder of the configuration file ``vg_configuration.h`` in the include directives and rebuild the library.
 
 HarfBuzz
 """"""""
 
 * **Prerequisite:** follow the migration steps of :ref:`section_vg_migrationguide_pack_1.8.0_bsp`.
 * Install the `C Module Harfbuzz 4.0.0`_.
-
-*note*: need to rebuild the library; only the low-level Harfbuzz code (built with the BSP) has been updated.
+* Rebuild the library.
 
 From 1.7.1 to 1.7.2
 ===================

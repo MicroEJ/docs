@@ -1,3 +1,5 @@
+.. include:: uiReplaces.rst
+
 .. _section_vg_cco:
 
 =========
@@ -100,7 +102,7 @@ The FreeType library compatible with MicroEJ is packaged in a C module on the :r
 
 .. _com.microej.clibrary.thirdparty#freetype: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/thirdparty/freetype/
 
-This C module provides a fork of FreeType 2.13.3.
+This C module provides a fork of FreeType |FREETYPEVERSION|.
 
 Memory Heap Configuration
 -------------------------
@@ -150,7 +152,7 @@ The library HarfBuzz compatible with MicroEJ is packaged in a C module on the :r
 
 .. _com.microej.clibrary.thirdparty#harfbuzz: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/thirdparty/harfbuzz/
 
-This C module provides HarfBuzz 10.0.1 with build scripts patched and additional source files.
+This C module provides HarfBuzz |HARFBUZZVERSION| with build scripts patched and additional source files.
 
 The HarfBuzz library requires a memory Heap for HarfBuzz internal objects allocated when a font file is loaded.
 The size of this heap depends on the number of fonts loaded in parallel and on the fonts themselves.
