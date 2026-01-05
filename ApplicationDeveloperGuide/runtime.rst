@@ -46,6 +46,11 @@ or by adding it in the ``gradle.properties`` file of your project::
 
     java.lambdas.enabled=true
 
+.. warning::
+
+   Just like anonymous classes, each Java Lambda counts for one concrete class, so it could increase signicantly the number of concrete classes of your Application.
+   See the :ref:`limitations` page for the Architecture Limitations.
+
 .. _runtime_core_libraries:
 
 Core Libraries
