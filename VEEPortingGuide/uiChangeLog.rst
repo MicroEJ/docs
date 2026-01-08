@@ -245,7 +245,7 @@ C Module MicroUI
  
 **Changed**
 
-- Gather all logs identifiers and functions in ``ui_log.c``.
+- Gather all logs identifiers and functions in ``ui_log.h``.
 - Log all drawing parameters. 
 
 **Removed**
