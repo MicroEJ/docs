@@ -347,8 +347,9 @@ Ensure the application functionally realizes what is promised in its specificati
 
 The certification process ensures that applications meet quality standards, security requirements, and functional specifications before being made available to end users in the ecosystem.
 
-| Copyright 2026, MicroEJ Corp. Content in this space is free 
-for read and redistribute. Except if otherwise stated, modification 
-is subject to MicroEJ Corp prior approval.
-| MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
-copyrights are the property of their respective owners.
+..
+   | Copyright 2026, MicroEJ Corp. Content in this space is free
+   for read and redistribute. Except if otherwise stated, modification
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and
+   copyrights are the property of their respective owners.
