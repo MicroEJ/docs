@@ -900,6 +900,8 @@ You can receive a notification when the mark stack limit is reached by implement
       // It is recommended to either increase the GC mark stack size or reduce the object graph depth.
    }
 
+.. _option_kernel:
+
 Category: Kernel
 ^^^^^^^^^^^^^^^^
 
@@ -910,6 +912,8 @@ Category: Kernel
 
 Group: Threads
 """"""""""""""
+
+.. _option_feature_max_number_of_threads:
 
 Option(text): Maximum number of threads per Feature
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
