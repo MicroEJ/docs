@@ -7,6 +7,7 @@ Kernel Developer Guide
    :maxdepth: 3
 
    overview
+   kernelConsiderations
    kf
    kernelCreation
    kernelAPI

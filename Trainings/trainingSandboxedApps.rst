@@ -1,3 +1,5 @@
+.. _training_sandboxed_applications_imxrt1170:
+
 =================================
 Sandboxed Application Development
 =================================

@@ -17,6 +17,8 @@ Below are defined several terms that will be used throughout this page:
 - `Shared Services <https://repository.microej.com/javadoc/microej_5.x/apis/ej/service/package-summary.html>`_ is a MicroEJ helper module that eases sharing services within a Multi-Sandbox context; it provides generic APIs that can be re-implemented as needed.
 - Registry or Service Registry represents the actual implementation of Shared Services APIs. MicroEJ provides such registries for KF but custom registries can be implemented as needed.
 
+.. _chapter.communication.features.shared.services:
+
 Shared Services
 ---------------
 
