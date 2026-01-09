@@ -249,6 +249,7 @@ A small number will give more smooth execution for threads but a slowest install
 
 .. _Kernel.install(InputStream): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#install-java.io.InputStream-
 
+.. _feature_required_memory:
 
 Determining the Amount of Required Memory
 -----------------------------------------
