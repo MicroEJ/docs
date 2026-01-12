@@ -93,7 +93,8 @@ with the first character being a letter.
 
 .. warning::
     
-    The API does not guarantee thread safety for concurrent accesses to the same identifier.
+    The `Storage in RAM (Managed Heap) <https://repository.microej.com/modules/ej/library/runtime/storage/>`_ implementation is not thread-safe.
+
 
 Key Operations
 ~~~~~~~~~~~~~~
@@ -170,7 +171,7 @@ Code Example
     storage.remove(id3);
 
 ..
-   | Copyright 2025, MicroEJ Corp. Content in this space is free 
+   | Copyright 2025-2026, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
