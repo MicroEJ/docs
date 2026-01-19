@@ -79,6 +79,7 @@ beforeSettings {
                  setM2compatible(true)
              }
          }
+         mavenCentral()
       }
    }
 
@@ -163,6 +164,8 @@ beforeSettings {
                  setM2compatible(true)
              }
          }
+         mavenCentral()
+         gradlePluginPortal()
       }
    }
 }
