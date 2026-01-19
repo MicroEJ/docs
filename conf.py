@@ -29,7 +29,8 @@ extensions = [
     'sphinx_tabs.tabs',
     'sphinx_toolbox.collapse',
     'sphinxext.remoteliteralinclude',
-    'breathe'
+    'breathe',
+    'sphinx_design'
 ]
 
 

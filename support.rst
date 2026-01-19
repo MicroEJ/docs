@@ -3,9 +3,16 @@
 Get Support
 ===========
 
-If any questions, the best starting point is to consult the `MicroEJ Forum <https://forum.microej.com/>`_. 
+.. toctree::
+  :maxdepth: 1
+    
+    faq
+
+If any questions, the best starting point is to consult the `MicroEJ Forum <https://forum.microej.com/>`_
+or the :ref:`faq`.
 Feel free to create a new topic if there is no relevant content for your issue. 
 MicroEJ Corp. engineers are listening to the forum activity, so you can expect to get a quick reply.
+
 
 Otherwise, you can contact `our support team <https://www.microej.com/contact/#form_2>`_.
 
