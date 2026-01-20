@@ -16,9 +16,22 @@ This document assumes that the reader is familiar with:
 Glossary
 --------
 
-- ``XIP``: method of executing code directly from flash memory rather than copying it first from the flash to RAM and then executing the program from that RAM. 
-- ``OTA``: Over-the-Air (OTA) Update is a method for delivering firmware updates to remote devices using a network connection.
-- ``Application(s)``: short for ``Sandboxed Application``.
+.. glossary::
+
+  XIP
+    XIP stands for eXecute-In-Place. It refers to a processor’s ability to execute code directly from
+    a storage device (usually Flash memory) instead of copying it into RAM first.
+
+    To understand XIP, it's helpful to compare it to the "traditional" way systems used to work:
+
+    - Traditional (Shadowing): Flash → Copy to RAM → Execute from RAM.
+    - XIP: Flash → Execute directly.
+
+  OTA
+    Over-the-Air (OTA) Update is a method for delivering firmware updates to remote devices using a network connection.
+  
+  App(s) / Application(s)
+    Short for ``Sandboxed Application``.
 
 See also :ref:`chapter-glossary`.
 
@@ -28,6 +41,13 @@ Application Installation Flow
 This section outlines the considerations from application deployment to target memory installation.
 
 Get familiar with :ref:`feature_memory_installation` before moving on.
+
+The diagram below shows the available application installation and execution modes:
+
+.. figure:: png/application_xip_vs_shadowing.png
+   :alt: Application Differential Update
+   :align: center
+   :scale: 80%
 
 Communication Channel
 ~~~~~~~~~~~~~~~~~~~~~
@@ -109,7 +129,7 @@ The application is installed into RAM before execution. The following should be 
 - **RAM Kernel Working Buffer**: The kernel requires a dedicated working buffer to install the application file (``.fo``). 
   This buffers must be sized appropriately to handle the maximum number of concurrent applications.
   When an application is uninstalled, the dedicated kernel working buffer area will be freed.
-- **FileSystem Dimensioning for `.fo` Storage**: The file system must be properly sized to accommodate all application files (``.fo``) that will be stored on the device.
+- **FileSystem Dimensioning for .fo Storage**: The file system must be properly sized to accommodate all application files (``.fo``) that will be stored on the device.
 
 XIP Mode
 ^^^^^^^^
@@ -247,9 +267,23 @@ Limited Transfer Bandwidth
 
 In environments with constrained communication capabilities, the kernel must optimize data transfer.
 
-- **Compress the `.fo`**: The kernel can retrieved compressed applications files (.fo) to reduce bandwidth usage during transfers and decompress them during installation. 
-- **Binary Diff with Previous One (bsdiff)**: The kernel supports binary diff operations (using ``bsdiff``) to only transmit changes between application files (``.fo``) versions rather than full file transfers. This significantly reduces bandwidth requirements and speeds up deployment processes. 
+- **Compress the .fo**: The kernel can retrieved compressed applications files (``.fo``) to 
+  reduce bandwidth usage during transfers and decompress them during installation. 
+- **Binary Diff with Previous One (bsdiff)**: The kernel supports binary diff operations (using ``bsdiff``)
+  to only transmit changes between application files (``.fo``) versions rather than full file transfers.
+  This significantly reduces bandwidth requirements and speeds up deployment processes. 
   This mode assumes that the previous application file (``.fo``) has been stored on the device beforehand.
+
+The diagram below schematizes the flow when performing a differential application update (``.fo``).
+It assumes that:
+
+- A first version of the application has already been built and installed on the device (``V1.fo``).
+- ``V1.fo`` has been kept in memory on the device to perform the differential update.
+
+.. figure:: png/application_differential_update.png
+   :alt: Application Differential Update
+   :align: center
+   :scale: 80%
 
 Firmware Update
 ^^^^^^^^^^^^^^^
@@ -264,16 +298,18 @@ The kernel provides specialized features for application developers to facilitat
 
 **Extended Firmware for Developers**: The kernel includes a developer mode that provides extended functionality for application developers, including:
 
-- Local deployment capabilities for rapid testing and iteration
-- Advanced debug traces for detailed system monitoring
-- Kernel CLI (Command Line Interface) for direct system interaction and configuration [1]
+- Local deployment capabilities for rapid testing and iteration.
+- Advanced debug traces for detailed system monitoring.
+- Kernel CLI (Command Line Interface) for direct system interaction and configuration.
 
-This developer mode enables faster development cycles and more effective debugging while maintaining security for production deployments.
+This developer mode enables faster development cycles and more effective debugging while maintaining 
+security for production deployments.
 
 Qualification/Certification of Third-Party Applications
 -------------------------------------------------------
 
-In case of an open ecosystem, the Kernel ecosystem provider must define a process for accepting applications in its application store.
+In case of an open ecosystem, the Kernel ecosystem provider must define a process for accepting applications
+in its application store.
 
 IP Considerations
 ~~~~~~~~~~~~~~~~~
