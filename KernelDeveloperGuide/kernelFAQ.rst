@@ -8,10 +8,11 @@ Frequently asked questions during Kernel and Applications development.
 Glossary
 --------
 
-- **App**: Sandboxed Application.
-- **VEE**: Virtual Execution Environment.
-- **KF**: Kernel Framework.
-- **FO/FSO**: Feature Object / Feature Shared Object (Application binaries).
+.. glossary::
+
+  App(s)/Application(s)
+    Short for ``Sandboxed Application``.
+
 
 Security & Sandboxing
 ---------------------
@@ -54,8 +55,8 @@ Security & Sandboxing
 
 .. dropdown:: Is it possible to introduce app signatures for security?
     :animate: fade-in-slide-down
-
-    Yes, MicroEJ provides an app signature mechanism. After the build process, the application binary (``.fo``) is signed (the ``.fo``file is wrapped in a ``.fo.signed``file).
+    
+    Yes, MicroEJ provides an app signature mechanism. After the build process, the application binary (``.fo``) is signed (the ``.fo`` file is wrapped in a ``.fo.signed`` file).
  
     Once the application is available on the device, the ``.fo.signed`` authenticity is verified before installing it.
  
@@ -254,7 +255,7 @@ App Deployment & Compatibility
     Such resources are usually called "application metadata" and must be managed outside of the app image file. Often, this is done during a provisioning phase.
     If you need to access resources before a feature is started, consider using a provisioning phase or storing metadata in a separate location.
  
-    However, the ``Feature.getResourceAsStream("resource_path")``method allows access to
+    However, the ``Feature.getResourceAsStream("resource_path")`` method allows access to
     resources as soon as the app is installed (not yet started).
 
 .. dropdown:: How to access application metadata before installing it? (e.g. name, version, description)

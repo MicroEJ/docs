@@ -1729,3 +1729,40 @@ text-decoration: none;
 code.xref {
   text-decoration: underline;
 }
+
+/* Dropdown lists customization */
+
+/* Set normal font weight for dropdown container */
+.sd-dropdown {
+    font-weight: normal !important;
+}
+
+/* Customize dropdown title: normal weight and normal font size */
+.sd-summary-title {
+    font-weight: normal !important;
+    font-size: 18px !important;
+}
+
+/* Speed up the fade-in-slide-down animation when dropdown opens */
+details.sd-dropdown.sd-fade-in-slide-down[open] summary~* {
+    animation-duration: 0.15s !important;
+}
+
+/* Remove all borders and rounded corners from dropdown card */
+details.sd-dropdown.sd-card {
+    border: none !important;
+    border-radius: 0 !important;
+}
+
+/* When dropdown is closed: show only bottom border on header */
+details.sd-dropdown:not([open]) > .sd-card-header {
+    border: none !important;
+    border-bottom: 2px solid var(--sd-color-card-border) !important;
+    border-radius: 0 !important;
+}
+
+/* When dropdown is open: show bottom border on header */
+details.sd-dropdown[open].sd-card .sd-card-header {
+    border-bottom: 2px solid var(--sd-color-card-border) !important;
+    border-radius: 0 !important;
+}
