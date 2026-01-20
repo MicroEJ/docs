@@ -60,7 +60,7 @@ its dependencies.
 Get the i.MX RT1170 VEE Port project
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For this Getting Started, the `NXP i.MX RT1170 Evaluation Kit VEE Port <https://github.com/nxp-mcuxpresso/nxp-vee-imxrt1170-evk>`__ will be used. 
+For this Getting Started, the `NXP i.MX RT1170 Evaluation Kit VEE Port <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk>`__ will be used. 
 
 It contains the sources of the VEE Port which will be necessary to build and run applications on the simulator and on the device. The VEE Port also includes some applications samples which will be used in this Getting Started.
 
@@ -68,7 +68,7 @@ You can download the i.MX RT1170 VEE Port using the following commands::
    
    mkdir nxpvee-mimxrt1170-prj
    cd nxpvee-mimxrt1170-prj
-   west init -m https://github.com/nxp-mcuxpresso/nxp-vee-imxrt1170-evk .
+   west init -m https://github.com/MicroEJ/nxp-vee-imxrt1170-evk .
    west update
 
 
