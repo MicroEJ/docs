@@ -60,7 +60,7 @@ its dependencies.
 Get the i.MX RT1170 VEE Port project
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For this Getting Started, the `NXP i.MX RT1170 Evaluation Kit VEE Port <https://github.com/nxp-mcuxpresso/nxp-vee-imxrt1170-evk>`__ will be used. 
+For this Getting Started, the `NXP i.MX RT1170 Evaluation Kit VEE Port <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk>`__ will be used. 
 
 It contains the sources of the VEE Port which will be necessary to build and run applications on the simulator and on the device. The VEE Port also includes some applications samples which will be used in this Getting Started.
 
@@ -68,7 +68,7 @@ You can download the i.MX RT1170 VEE Port using the following commands::
    
    mkdir nxpvee-mimxrt1170-prj
    cd nxpvee-mimxrt1170-prj
-   west init -m https://github.com/nxp-mcuxpresso/nxp-vee-imxrt1170-evk .
+   west init -m https://github.com/MicroEJ/nxp-vee-imxrt1170-evk .
    west update
 
 
@@ -423,7 +423,7 @@ You can also follow the :ref:`Kernel Developer Guide <kernel-developer-guide>` f
 Last but not least, you can choose to learn about specific topics by following one of our many :ref:`trainings` ranging from how to easily debug applications to setting up a Continuous Integration process and a lot of things in between.
 
 ..
-   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2026, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
