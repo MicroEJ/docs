@@ -52,7 +52,7 @@ most of the Multi-Sandboxing capabilities of the MicroEJ technology.
 To complete this unit, follow the steps of the `Kernel GREEN README on GitHub <https://github.com/MicroEJ/Kernel-GREEN>`_.
 
 ..
-   | Copyright 2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2024-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
