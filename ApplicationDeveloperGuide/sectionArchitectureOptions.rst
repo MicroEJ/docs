@@ -247,6 +247,9 @@ This group specifies options for MicroEJ Simulator.
 Option(checkbox): Use target characteristics
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. warning::
+   This option is deprecated and only available in SDK 5. It is not supported in SDK 6.
+
 *Option Name*: ``s3.board.compliant``
 
 *Default value*: ``false``
