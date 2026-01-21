@@ -51,7 +51,7 @@ To create a ``Storage`` instance:
  
   .. code-block:: java
     
-    Storage myStorage = new Storage();
+    Storage myStorage = new StorageHeap();
 
 - **FileSystem Implementation:**
  
@@ -64,23 +64,25 @@ To create a ``Storage`` instance:
 Multi-Sandbox Specificities
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When working in a multi-sandbox environment, the ``Storage`` instance must be created in the Kernel.
+Typically, when working in a multi-sandbox environment, the Applications are not given direct access to the File System API.
+Instead, one or multiple ``StorageFS`` instances are created by the Kernel and shared with the Applications (storage sandboxing).
 
-This instance can then be shared using :ref:`Shared Services <kernel_service_registry>`, to make it
+Such a ``Storage`` instance can be shared using :ref:`Shared Services <kernel_service_registry>`, to make it
 available to Sandboxed Applications and other Kernel components:
 
-- Register the ``Storage`` instance:
+- In the Kernel, register the ``Storage`` instance to be shared among all the Applications:
   
   .. code-block:: java
 
     final ServiceRegistryKF serviceRegistry = (ServiceRegistryKF) ServiceFactory.getServiceRegistry();
-    serviceRegistry.register(Storage.class, myStorage, true);
+    serviceRegistry.register(Storage.class, new StorageFs("/shared/"), true);
 
-- Retrieve it using:
+- In an Application, retrieve this instance using:
 
   .. code-block:: java
     
     Storage storage = ServiceFactory.getService(Storage.class);
+    // use this instance to access the Storage entries in the /shared/ folder on the device file system.
   
 
 APIs
