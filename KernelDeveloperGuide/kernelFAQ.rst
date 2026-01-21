@@ -84,7 +84,8 @@ Security & Sandboxing
     Just like any data sent over the devices, the app must be encrypted before sent to the network and decrypted on the device.
     This is usually done automatically when the app is transferred using a protocol that natively supports encryption (e.g. SSL/HTTPS...).
     
-    Otherwise, this can be done on the device either in the BSP side or in Managed Code using the `crypto API's <https://repository.microej.com/javadoc/microej_5.x/apis/javax/crypto/package-summary.html>`_.
+    Otherwise, this can be done on the device either in the BSP side or in Managed Code using the 
+    `crypto API's <https://repository.microej.com/javadoc/microej_5.x/apis/javax/crypto/package-summary.html>`_.
 
 .. dropdown:: What is the recommended TLS architecture for applications: end-to-end encryption from the application to the cloud, or a segmented approach terminated at a network gateway?
     :animate: fade-in-slide-down
@@ -173,7 +174,8 @@ Scheduling & Resource Management
 
     Callbacks owned by an application and called from a Kernel thread use the Kernel thread's priority, but the execution is delegated to an application-owned thread to prevent issues.
     
-    For more fine-tuned scheduling, you can use the quota mechanism via `Feature.setExecutionQuota() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Feature.html#setExecutionQuota-long->`_.
+    For more fine-tuned scheduling, you can use the quota mechanism via
+    `Feature.setExecutionQuota() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Feature.html>`_.
 
 .. dropdown:: How are execution quotas incremented?
    :animate: fade-in-slide-down
@@ -222,7 +224,7 @@ App Deployment & Compatibility
     If the Kernel UIDs do not match or the Feature Portability requirements are not met, an exception is thrown,
     allowing the Kernel to handle the error programmatically (e.g., by logging the error, notifying a management server, deleting the incompatible app, ...).
     
-    You can find the list of possible exceptions in the `ej.kf.Kernel Javadoc <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#install-java.io.InputStream->`_.
+    You can find the list of possible exceptions in the `ej.kf.Kernel Javadoc <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html>`_.
 
 .. dropdown:: My Kernel already embeds the ``widget`` library as a Kernel API. I am writing an application and added a dependency on the ``widget`` library to use it. Will the code of the library be embedded into my app again?
     :animate: fade-in-slide-down
@@ -281,7 +283,8 @@ App Deployment & Compatibility
     That information can be overridden; refer to :ref:`kf-feature-declaration` for more information.
     
     The kernel can retrieve that information after application installation (before starting it),
-    using the the `Module.getVersion() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Module.html#getVersion-->`_ and `Module.getName() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Module.html#getName-->`_ APIs.
+    using the the `Module.getVersion() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Module.html>`_ 
+    and `Module.getName() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Module.html>`_ APIs.
 
 .. dropdown:: What is the process for verifying applications?
     :animate: fade-in-slide-down
