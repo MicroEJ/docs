@@ -116,6 +116,8 @@ By doing so the service instance is exposed in the Shared Registry.
    Use of extra APIs from ServiceRegistryKF to specify the registry is reserved for the Kernel
    and will throw an exception if used from a Feature context.
 
+.. _chapter.communication.features.get_service_instance:
+
 Get a Service
 ~~~~~~~~~~~~~
 

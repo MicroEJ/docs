@@ -83,7 +83,38 @@ available to Sandboxed Applications and other Kernel components:
     
     Storage storage = ServiceFactory.getService(Storage.class);
     // use this instance to access the Storage entries in the /shared/ folder on the device file system.
+
+The `Kernel-GREEN <https://github.com/MicroEJ/Kernel-GREEN/tree/master>`_ demonstrates how to implement
+storage sandboxing on a file system. 
+In this architecture, the Kernel and Sandboxed Applications store their data in separate directories, as illustrated below:
+
+.. code-block::
+
+    .
+    ├── apps
+    │   ├── myApp1/
+    │   │   └── ...
+    │   └── myApp2/
+    │       └── ...
+    └── kernel
+        └──...
+
+To achieve storage sandboxing:
+
+- Define a custom ``Storage`` implementation that ensures sandboxing: 
+  `SandboxedStorage.java <https://github.com/MicroEJ/Kernel-GREEN/blob/2.2.0/src/main/java/com/microej/kernel/green/storage/SandboxedStorage.java>`_,
+- Bind the ``ej.storage.Storage`` type to the actual service implementation type
+  that will be used for instantiation: ``com.microej.kernel.green.storage.SandboxedStorage``.
+  This binding is done using :ref:`system_properties` in
+  `kernel.properties.list <https://github.com/MicroEJ/Kernel-GREEN/blob/2.2.0/src/main/resources/kernel.properties.list#L75>`_.
   
+  .. note::
+  
+    A ``SandboxedStorage`` instance will be created each time the service is retrieved in a new context (i.e., from different applications, the kernel).
+    Refer to :ref:`chapter.communication.features.get_service_instance` for more information.
+
+- Define ``SandboxedStorage`` as a required type in  
+  `kernel.types.list <https://github.com/MicroEJ/Kernel-GREEN/blob/2.2.0/src/main/resources/kernel.types.list>`_.
 
 APIs
 ----
