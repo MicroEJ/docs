@@ -1,0 +1,212 @@
+Storage
+=======
+
+Introduction
+------------
+
+The `Storage <https://repository.microej.com/javadoc/microej_5.x/apis/index.html?ej/storage/Storage.html>`_ 
+interface provides a simple API to store, retrieve, and manage data entries using identifiers.
+The data entries can be seen as key/value pairs, with String keys and arbitrary serialized data as value (including binary).
+
+This abstraction is useful to adapt to the target environment and to the different storage requirements.
+The ``ej.library.runtime#storage`` library comes with a default implementation to
+store the data in RAM (Application Managed Heap) which is not persistent.
+
+We also provide the ``ej.library.runtime#storage-fs`` library which stores the data entries as files
+in a directory on the filesystem provided by :ref:`pack_fs`.
+
+It is especially designed to work in a Multi-Sandbox context where each Application is given access to a sandboxed storage, 
+or can access a storage shared across the different Applications. 
+Each storage being backed by a folder on a filesystem which could be created/removed on app installed/uninstalled for example.
+See more about this in :ref:`section.library.storage.multisandbox`.
+
+Usage
+-----
+
+The Storage library offers two implementations:
+
+- `Storage in RAM <https://repository.microej.com/modules/ej/library/runtime/storage/>`_:
+   - Data is stored in RAM, in the :ref:`Application Managed Heap <core_engine_link>` (no file system).
+   - Add the following line to the project build file:
+    
+    .. code-block:: kotlin
+       
+       implementation("ej.library.runtime:storage:1.2.0")
+
+- `Storage in a memory with a file system <https://repository.microej.com/modules/ej/library/runtime/storage-fs/>`_:
+   - Data is stored in a file system.
+   - Requires the :ref:`pack_fs` Pack to be available in the VEE Port.
+   - Add the following line to the project build file: 
+    
+    .. code-block:: kotlin
+       
+       implementation("ej.library.runtime:storage-fs:1.2.0")
+
+Initialization
+~~~~~~~~~~~~~~
+
+To create a ``Storage`` instance:
+
+- **RAM (Managed Heap) Implementation:**
+ 
+  .. code-block:: java
+    
+    Storage myStorage = new StorageHeap();
+
+- **FileSystem Implementation:**
+ 
+  .. code-block:: java
+    
+    Storage myStorage = new StorageFs("my_root_folder");
+  
+.. _section.library.storage.multisandbox:
+
+Multi-Sandbox Specificities
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Typically, when working in a multi-sandbox environment, the Applications are not given direct access to the File System API.
+Instead, one or multiple ``StorageFS`` instances are created by the Kernel and shared with the Applications (storage sandboxing).
+
+Such a ``Storage`` instance can be shared using :ref:`Shared Services <kernel_service_registry>`, to make it
+available to Sandboxed Applications and other Kernel components:
+
+- In the Kernel, register the ``Storage`` instance to be shared among all the Applications:
+  
+  .. code-block:: java
+
+    final ServiceRegistryKF serviceRegistry = (ServiceRegistryKF) ServiceFactory.getServiceRegistry();
+    serviceRegistry.register(Storage.class, new StorageFs("/shared/"), true);
+
+- In an Application, retrieve this instance using:
+
+  .. code-block:: java
+    
+    Storage storage = ServiceFactory.getService(Storage.class);
+    // use this instance to access the Storage entries in the /shared/ folder on the device file system.
+
+The `Kernel-GREEN <https://github.com/MicroEJ/Kernel-GREEN/tree/master>`_ demonstrates how to implement
+storage sandboxing on a file system. 
+In this architecture, the Kernel and Sandboxed Applications store their data in separate directories, as illustrated below:
+
+.. code-block::
+
+    .
+    ├── apps
+    │   ├── myApp1/
+    │   │   └── ...
+    │   └── myApp2/
+    │       └── ...
+    └── kernel
+        └──...
+
+To achieve storage sandboxing:
+
+- Define a custom ``Storage`` implementation that ensures sandboxing: 
+  `SandboxedStorage.java <https://github.com/MicroEJ/Kernel-GREEN/blob/2.2.0/src/main/java/com/microej/kernel/green/storage/SandboxedStorage.java>`_,
+- Bind the ``ej.storage.Storage`` type to the actual service implementation type
+  that will be used for instantiation: ``com.microej.kernel.green.storage.SandboxedStorage``.
+  This binding is done using :ref:`system_properties` in
+  `kernel.properties.list <https://github.com/MicroEJ/Kernel-GREEN/blob/2.2.0/src/main/resources/kernel.properties.list>`_.
+  
+  .. note::
+  
+    A ``SandboxedStorage`` instance will be created each time the service is retrieved in a new context (i.e., from different applications, the kernel).
+    Refer to :ref:`chapter.communication.features.get_service_instance` for more information.
+
+- Define ``SandboxedStorage`` as a required type in  
+  `kernel.types.list <https://github.com/MicroEJ/Kernel-GREEN/blob/2.2.0/src/main/resources/kernel.types.list>`_.
+
+APIs
+----
+
+The ``Storage`` interface defines operations for managing entries with unique identifiers.
+
+An identifier must be a valid string composed of letters, digits, underscores, hyphens, or dots, 
+with the first character being a letter.
+
+.. warning::
+    
+    The `Storage in RAM (Managed Heap) <https://repository.microej.com/modules/ej/library/runtime/storage/>`_ implementation is not thread-safe.
+
+
+Key Operations
+~~~~~~~~~~~~~~
+
+- ``store(id)``: Stores data for a given identifier.
+- ``append(id)``: Appends data to an existing entry.
+- ``exists(id)``: Checks if an entry exists.
+- ``getSize(id)``: Retrieves the size of an entry in bytes.
+- ``load(id)``: Loads data from a given identifier.
+- ``modify(id, offset)``: Modifies data at a specific offset within an entry.
+- ``move(id1, id2)``: Moves an entry from one identifier to another.
+- ``getIds()``: Retrieves all stored identifiers.
+- ``remove(id)``: Removes an entry with the specified identifier.
+
+Code Example
+~~~~~~~~~~~~
+
+.. code-block:: java
+
+    Storage storage = ServiceFactory.getService(Storage.class);
+    String id1 = "example.data";
+    String id2 = "example2.data";
+    String id3 = "example3.data";
+
+    // 1. Store data
+    try (OutputStream os = storage.store(id1)) {
+        os.write("Hello, MicroEJ Storage!".getBytes());
+    }
+
+    // 2. Append data
+    try (OutputStream os = storage.append(id1)) {
+        os.write(" This is appended data.".getBytes());
+    }
+
+    // 3. Check if an entry exists
+    boolean exists = storage.exists(id1);
+
+    // 4. Get the size of an entry
+    long size = storage.getSize(id1);
+
+    // 5. Load data
+    try (InputStream is = storage.load(id1)) {
+        byte[] buffer = new byte[1024];
+        int bytesRead;
+        while ((bytesRead = is.read(buffer)) != -1) {
+            System.out.print(new String(buffer, 0, bytesRead));
+        }
+    }
+
+    // 6. Modify data at a specific offset
+    try (OutputStream os = storage.modify(id1, 7)) {
+        os.write("Modified".getBytes());
+    }
+
+    // 7. Move an entry to a new ID
+    storage.move(id1, id2);
+    boolean exists1 = storage.exists(id1);
+    boolean exists2 = storage.exists(id2);
+
+    // 8. Get all stored IDs
+    String[] ids = storage.getIds();
+    for (String id : ids) {
+        System.out.println(id);
+    }
+
+    // 9. Remove an entry
+    storage.remove(id2);
+    boolean existsRemoved = storage.exists(id2);
+
+    // 10. Store and remove another entry
+    try (OutputStream os = storage.store(id3)) {
+        os.write("Temporary data".getBytes());
+    }
+    storage.remove(id3);
+
+..
+   | Copyright 2025-2026, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.
+
