@@ -36,28 +36,28 @@ In both cases, please provide as much information as possible on your installed 
 FAQ
 ---
 
-.. dropdown:: What are the minimum requirements for processor, memory, and RAM?
-    :animate: fade-in-slide-down
+What are the minimum requirements for processor, memory, and RAM?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    MicroEJ can run on MCUs such as Cortex M0+ through Cortex M7, as well as on application processors such as ARMv7 or ARMv8.
+MicroEJ can run on MCUs such as Cortex M0+ through Cortex M7, as well as on application processors such as ARMv7 or ARMv8.
 
-    MEJ32 requires only 30KB of code and 1KB of RAM. Typical memory usage is defined by the application.
-
-
-.. dropdown:: How does MicroEJ scale with multi-core CPUs?
-    :animate: fade-in-slide-down
-
-    MicroEJ supports heterogeneous multi-cores from Cortex-M0+ with RTOS to Cortex-A with Linux or QNX.
+MEJ32 requires only 30KB of code and 1KB of RAM. Typical memory usage is defined by the application.
 
 
-.. dropdown:: How are patches handled and how is the environment secured?
-    :animate: fade-in-slide-down
+How does MicroEJ scale with multi-core CPUs?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    The Core technology is rarely patched due to its maturity and extensive testing.
-    
-    We release new editions on a 9-12 month cadence, with bug fixes delivered quickly.
-    
-    We have a process for reporting vulnerabilities, and they are tracked and reported in our changelog.
+MicroEJ supports heterogeneous multi-cores from Cortex-M0+ with RTOS to Cortex-A with Linux or QNX.
+
+
+How are patches handled and how is the environment secured?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Core technology is rarely patched due to its maturity and extensive testing.
+
+We release new editions on a 9-12 month cadence, with bug fixes delivered quickly.
+
+We have a process for reporting vulnerabilities, and they are tracked and reported in our changelog.
 
 
 ..
