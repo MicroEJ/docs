@@ -76,11 +76,10 @@ In :guilabel:`Sentinel Keys` tab, you should see the successfully installed lice
 .. figure:: images/sentinel_rte_server_installed_license.png
    :scale: 90%
 
-- Go to :guilabel:`Configuration` > :guilabel:`Access from Remote Clients` and check `All licenses are accessible without need of identity`
-- Go to :guilabel:`Configuration` > :guilabel:`Detachable Licenses`, enabled `Automatic Detaching of Licenses` and set an `Allowed Offline Duration` of 4 hours.
+- Go to :guilabel:`Configuration` > :guilabel:`Access from Remote Clients` and check ``All licenses are accessible without need of identity``.
+- Go to :guilabel:`Configuration` > :guilabel:`Detachable Licenses`, enabled ``Automatic Detaching of Licenses`` and set an ``Allowed Offline Duration`` of 4 hours.
 
 .. figure:: images/sentinel_detached_config.png
-   :scale: 90%
 
 - Configure the host machine to open the IP port ``1947`` for TCP, UDP, TCP6, UDP6.
 - Optionally, you can set a printable name for the Sentinel Floating License Server that will be displayed on the Developer workstation license list.
