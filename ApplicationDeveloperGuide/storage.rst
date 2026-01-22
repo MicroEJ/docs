@@ -106,7 +106,7 @@ To achieve storage sandboxing:
 - Bind the ``ej.storage.Storage`` type to the actual service implementation type
   that will be used for instantiation: ``com.microej.kernel.green.storage.SandboxedStorage``.
   This binding is done using :ref:`system_properties` in
-  `kernel.properties.list <https://github.com/MicroEJ/Kernel-GREEN/blob/2.2.0/src/main/resources/kernel.properties.list#L75>`_.
+  `kernel.properties.list <https://github.com/MicroEJ/Kernel-GREEN/blob/2.2.0/src/main/resources/kernel.properties.list>`_.
   
   .. note::
   
