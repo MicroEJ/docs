@@ -76,8 +76,8 @@ In :guilabel:`Sentinel Keys` tab, you should see the successfully installed lice
 .. figure:: images/sentinel_rte_server_installed_license.png
    :scale: 90%
 
-- Go to :guilabel:`Configuration` > :guilabel:`Access from Remote Clients` and check ``All licenses are accessible without need of identity``.
-- Go to :guilabel:`Configuration` > :guilabel:`Detachable Licenses`, enabled ``Automatic Detaching of Licenses`` and set an ``Allowed Offline Duration`` of 4 hours.
+- Go to :guilabel:`Configuration` > :guilabel:`Access from Remote Clients` and check ``All licenses are accessible without need of identity``. Save your change with the :guilabel:`Submit` button.
+- Go to :guilabel:`Configuration` > :guilabel:`Detachable Licenses`, enabled ``Automatic Detaching of Licenses`` and set an ``Allowed Offline Duration`` of 4 hours. Save your changes with the :guilabel:`Submit` button.
 
 .. figure:: images/sentinel_detached_config.png
 
