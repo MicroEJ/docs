@@ -87,7 +87,7 @@ In an Application project
           The Executable file produced by the Application project is automatically used if it exists.
         - When the Executable of the Application project is built, execute the ``stackTraceReader`` task, either from your IDE, or as a command line::
 
-            ./gradlew stackTraceReader
+            ./gradlew stackTraceReader "--console=plain"
 
         - When the message ``[INFO] Paste the MicroEJ core engine stack trace here.`` is displayed, paste the encoded stacktrace into the console.
           The Stack Trace Reader immediately displays the decoded stack trace:
@@ -192,7 +192,7 @@ Custom Executable File Location
         If you want to decode a stack trace of a different Executable file than the Application project one, 
         you must set the ``application.file`` System Property to define the Executable file location::
 
-        ./gradlew stackTraceReader -D"application.file"="/path/to/my/application.out"
+        ./gradlew stackTraceReader -D"application.file"="/path/to/my/application.out" "--console=plain"
 
     .. group-tab:: SDK 6 1.0.0 and below
 
@@ -213,7 +213,7 @@ In a Multi-Sandboxed Application project
 
         Using SDK 6 1.5.0 or higher, the Stack Trace Reader tool can decode stack traces of Multi-Sandboxed Applications. You can still define the additional application files using the property::
 
-        ./gradlew stackTraceReader -D"additional.application.files"="/path/to/my/app1.fodbg,/path/to/my/app2.fodbg"
+        ./gradlew stackTraceReader -D"additional.application.files"="/path/to/my/app1.fodbg,/path/to/my/app2.fodbg" "--console=plain"
 
     .. group-tab:: SDK 6 1.4.0 and below
 
