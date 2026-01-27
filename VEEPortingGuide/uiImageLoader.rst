@@ -72,7 +72,7 @@ Configuration File
 
 Like internal resources, the Image Generator uses a :ref:`configuration file <section_image_generator_conffile>` (also called the "list file") for describing images that need to be processed.
 The list file must be specified in the application launcher (see :ref:`application_options`).
-However, all the files in the application classpath with the suffix ``.imagesext.list`` are automatically parsed by the Image Generator tool.
+However, all the files in the application classpath with the suffix ``.externimages.list`` (or ``.imagesext.list``) are automatically parsed by the Image Generator tool.
 
 Process
 -------
@@ -80,7 +80,7 @@ Process
 This chapter describes the steps to setup the loading of an external resource from the application:
 
 1. Add the image to the application project resources (typically in the source folder ``src/main/resources`` and in the package ``images``).
-2. Create / open the configuration file (e.g. ``application.imagesext.list``).
+2. Create / open the configuration file (e.g. ``application.externimages.list``).
 3. Add the relative path of the image and its output format (e.g. ``/images/myImage.png:RGB565`` see :ref:`section.ui.Images`).
 4. Build the application: the Image Generator converts the image in RAW format in the external resources folder (``[application_output_folder]/externalResources``).
 5. Deploy the external resources to the external memory (SDCard, flash, etc.) of the device.
@@ -97,7 +97,7 @@ Simulation
 ----------
 
 The Simulator automatically manages the external resources like internal resources.
-All images listed in ``*.imagesext.list`` files are copied in the external resources folder, and this folder is added to the Simulator's classpath.
+All images listed in ``*.externimages.list`` files are copied in the external resources folder, and this folder is added to the Simulator's classpath.
 
 .. _ResourceImage.loadImage(String): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#loadImage-java.lang.String-
 

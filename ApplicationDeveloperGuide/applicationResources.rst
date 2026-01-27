@@ -28,73 +28,52 @@ There are two ways to store resources:
    See :ref:`section_externalresourceloader` for more information on the implementation.
 
 All resources must be added in the project, usually in ``src/main/resources/...`` folder.
-All resources must be declared in the appropriate ``*.list`` files depending on the type (raw, image, font, NLS) and the storage location (internal or external).
+All resources must be declared in the appropriate ``*.list`` files depending on the type (raw, UI image, VG image, UI font, VG font, NLS) and the storage location (internal or external).
 The following figure summarized how to declare resources:
 
-.. graphviz::
+.. list-table:: Resources
+   :header-rows: 1
+   :widths: 20 10 70
 
-  digraph D {
-  
-  subgraph cluster_main {
-      init [shape=box, label="Add resource to project\lin src/main/resources/..." ]
-      type [shape=diamond, label="Type of resource?"]
-  
-      internalRaw [shape=diamond, label="internal?"]
-      internalImage [shape=diamond, label="internal?"]
-      internalFont [shape=diamond, label="internal?"]
-      internalNLS [shape=diamond, label="internal?"]
-  
-      rawList [shape=box, label="*.resources.list"]
-      rawExt [shape=box, label="*.resources.list +\l*.externresources.list"]
-      imagesList [shape=box, label="*.images.list"]
-      imagesExt [shape=box, label="*.imagesext.list"]
-      fontsList [shape=box, label="*.fonts.list"]
-      fontsExt [shape=box, label="*.fontsext.list"]
-      NLSList [shape=box, label="*.nls.list"]
-      NLSExt [shape=box, label="*.nls.list +\l*.externresources.list"]
-  
-      init -> type
-  
-      type -> internalRaw
-      subgraph cluster_Raw {
-          label ="Raw Resource"
-          internalRaw -> rawList [label="yes"]
-          internalRaw -> rawExt [label="no=external"]
-      }
-  
-      type -> internalImage
-      subgraph cluster_image {
-          label ="Image"
-          internalImage -> imagesList [label="yes"]
-          internalImage -> imagesExt [label="no=external"]
-      }
-  
-      type -> internalFont
-      subgraph cluster_font {
-          label ="Font"
-          internalFont -> fontsList [label="yes"]
-          internalFont -> fontsExt [label="no=external"]
-      }
-      type -> internalNLS
-      subgraph cluster_NLS {
-          label ="NLS"
-          internalNLS -> NLSList [label="yes"]
-          internalNLS -> NLSExt [label="no=external"]
-      }
-  }
-  
-  }
-
-For more details on how to use Application resources, refer to the following dedicated sections:
-
--  :ref:`Raw Resource <section.classpath.elements.raw_resources>`
-
--  :ref:`Image <section.ui.Images>`
-
--  :ref:`Font <section.ui.Fonts>`
-
--  :ref:`Internationalized String (Native Language Support) <chapter.nls>`
-
+   * - Resource type
+     - Location
+     - File(s) to update
+   * - :ref:`Raw Resource <section.classpath.elements.raw_resources>`
+     - internal
+     - ``*.resources.list``
+   * - 
+     - external
+     - ``*.resources.list`` **and** ``*.externresources.list``
+   * - :ref:`MicroUI Image <section.ui.Images>`
+     - internal
+     - ``*.images.list``
+   * - 
+     - external
+     - ``*.externimages.list`` **or** ``*.imagesext.list``  (deprecated)
+   * - :ref:`MicroVG Image <vectorimage_overview>`
+     - internal
+     - ``*.vectorimages.list``
+   * - 
+     - external
+     - ``*.externvectorimages.list``
+   * - :ref:`MicroUI Font <section.ui.fonts.list>`
+     - internal
+     - ``*.fonts.list``
+   * - 
+     - external
+     - ``*.fontsext.list``
+   * - :ref:`MicroVG Font <section_vector_fonts>`
+     - internal
+     - ``*.resources.list``
+   * - 
+     - external
+     - ``*.resources.list`` **and** ``*.externresources.list``
+   * - :ref:`Internationalized String (Native Language Support) <section.nls.list_files>`
+     - internal
+     - ``*.nls.list``
+   * - 
+     - external
+     - ``*.nls.list`` **and** ``*.externresources.list``
 
 ..
    | Copyright 2020-2025, MicroEJ Corp. Content in this space is free 
