@@ -24,7 +24,7 @@ Glossary
 
     To understand XIP, it's helpful to compare it to the "traditional" way systems used to work:
 
-    - Traditional (Shadowing): Flash → Copy to RAM → Execute from RAM.
+    - Copy-to-RAM (traditional): Flash → Copy to RAM → Execute from RAM.
     - XIP: Flash → Execute directly.
 
   OTA
@@ -44,7 +44,7 @@ Get familiar with :ref:`feature_memory_installation` before moving on.
 
 The diagram below shows the available application installation and execution modes:
 
-.. figure:: png/application_xip_vs_shadowing.png
+.. figure:: png/application_xip_vs_copy-to-ram.png
    :alt: Application Differential Update
    :align: center
    :scale: 80%
@@ -62,7 +62,7 @@ Application Code Location
 Applications are can be stored in different types of memory:
 
 - **Internal or External Flash (XIP)**: The application file (``.fo``) can be downloaded and installed directly at the execution location, in flash memory. It cannot be moved to another memory address after deployment. This approach is ideal for devices with limited RAM. In those conditions it is not necessary to store the application file (``.fo``) on the device.
-- **External Flash (Non-XIP or File System Based)**: The application file (``.fo``) is stored on a file system before being linked to its final execution location. This method allows a more dynamic application management but requires additional memory for copying code into RAM during execution. In those conditions the application file (``.fo``) must be kept on the device, to reinstall it when the Core Engine or the device restarts.
+- **External Flash (Non-XIP or File System Based)**: The application file (``.fo``) is stored on a file system before being linked to its final execution location. This method allows a more dynamic application management but requires additional memory for installing code into RAM during execution. In those conditions the application file (``.fo``) must be kept on the device, to reinstall it when the Core Engine or the device restarts.
 
 Application Code Execution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -70,14 +70,14 @@ Application Code Execution
 Applications may be executed directly from their install location if that memory is XIP, or installed into RAM for non-XIP memories:
 
 - **XIP - Execute in Place**: Direct execution from memory that supports execution in place, typically internal flash or ROM. This method is memory-efficient and fast since no copying step is required.
-- **In-Place Installation (RAM Copy)**: For non-XIP memories, the application is installed into RAM before execution, e.g., an app stored on an SD card might be installed into RAM before execution. This is necessary for external storage systems where direct execution is not supported.
+- **Copy-to-RAM based execution**: For non-XIP memories, the application is installed into RAM before execution, e.g., an app stored on an SD card might be installed into RAM before execution. This is necessary for external storage systems where direct execution is not supported.
 
 Application Compatibility
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 An Application is built over a Kernel (see :ref:`application_link`). The build output file of a Sandboxed Application against a Kernel is called a Feature, hence the ``f`` letter used in the extension name of the related files (``.fso`` and ``.fo`` files).
 
-- ``.fso``: application file which is a portable file that can be linked on any compatible Kernel (see :ref:`fso_compatibility`). A :ref:`Dynamic Linking On Device (.fso) <build_feature_on_device>` is required before installing the application. ``.fso`` is more suited for MPUs targets (required more RAM memory for the linking phase).
+- ``.fso``: application file which is a portable file that can be linked on any compatible Kernel (see :ref:`fso_compatibility`). A :ref:`Dynamic Linking On Device (.fso) <build_feature_on_device>` is required before installing the application. ``.fso`` is more suited for MPUs targets as it requires more RAM memory for the linking phase.
 - ``.fo``: application file specific to a Kernel, result of an :ref:`Off Board Build (.fo) <build_feature_off_board>`: it can only be installed on the Kernel it has been linked to.
 
 By default, ``.fo`` files are used in the Multi-Sandbox evaluation flow as they easier to manipulate. 
@@ -86,9 +86,14 @@ A firmware / Kernel update (the Kernel is part of the firmware) implies to run r
 
 .. warning::
 
-    Following a firmware update, when using :ref:`feature_portability` and ``XIP Execution`` mode, the applications previously installed in flash must be uninstalled and installed again from ``.fo`` files.
+    After a firmware update, applications installed in Flash memory (``XIP Execution``) must be reinstalled.
     
-    In those conditions, either store the previous ``.fo`` files locally or re-deploy them. ``.fo`` files can be compressed on the device to save memory space.
+    In this scenario, you must uninstall the existing applications and reinstall them using their corresponding ``.fo`` files. To prepare for this:
+    
+    - Keep a local copy of all ``.fo`` files, or
+    - Be ready to rebuild and redeploy them.
+    
+    Note that ``.fo`` files can be compressed on the device to reduce memory usage.
 
 Preinstalled Applications
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -106,14 +111,14 @@ To achieve that, either:
   - Deploy the required applications,
   - Dump the flash memory of the device using a probe to get the firmware with pre-installed applications.
 
-These applications are loaded during system boot and are subject to the typical application lifecycle management.
+These preinstalled applications are loaded during system boot and are subject to the typical application lifecycle management.
 
 Memory Layout
 -------------
 
 RAM and ROM memory layout considerations are critical aspects that must be defined during
 the firmware build process, specifically within the kernel and BSP (Board Support Package) configuration. 
-These configurations directly impact system performance, application execution capabilities, and overall resource utilization.
+These configurations directly impact system performance, application execution capabilities, and overall resources utilization.
 
 Proper memory layout planning requires careful analysis of both static and dynamic memory requirements across the entire system.
 
@@ -122,7 +127,7 @@ Application Code Location
 
 The resulting size of an installed application is smaller than the size of the ``.fo`` file, see :ref:`feature_required_memory`.
 
-In-Place Installation
+Copy-to-RAM Execution
 ^^^^^^^^^^^^^^^^^^^^^
 The application is installed into RAM before execution. The following should be considered:
 
@@ -131,8 +136,8 @@ The application is installed into RAM before execution. The following should be 
   When an application is uninstalled, the dedicated kernel working buffer area will be freed.
 - **FileSystem Dimensioning for .fo Storage**: The file system must be properly sized to accommodate all application files (``.fo``) that will be stored on the device.
 
-XIP Mode
-^^^^^^^^
+XIP
+^^^
 
 XIP (Execute In Place) mode allows applications to run directly from flash memory, 
 eliminating the need for RAM copying operations but requiring careful flash memory management.
@@ -141,7 +146,35 @@ eliminating the need for RAM copying operations but requiring careful flash memo
   These blocks should be dimensioned to ensure that installed applications fit within the allocated space. 
   The `Abstraction Layer Kernel Flash <https://github.com/MicroEJ/AbstractionLayer-KERNEL-FLASH/tree/master>`__ provides an example of flash layout implementation.
   The system can be configured with multiple sets of flash blocks of different 
-  sizes to optimize memory usage based on application requirements (e.g. 10x 10KB blocks, 5x 20KB blocks, 2x 50KB blocks).
+  sizes to optimize memory usage based on application requirements (e.g. 10x 10KB blocks, 5x 20KB blocks, 2x 50KB blocks):
+
+  .. code-block::
+
+      +========================+
+      |                        |
+      |    Kernel/Firmware     |
+      |                        |
+      +========================+
+      |   App Block 1 (10KB)   |
+      +------------------------+
+      |        ...             |
+      +------------------------+
+      |   App Block 11 (20KB)  |
+      |                        |
+      +------------------------+
+      |        ...             |
+      +------------------------+
+      |   App Block 16 (50KB)  |
+      |                        |
+      |                        |
+      +------------------------+
+      |        ...             |
+      +========================+
+      |                        |
+      |    Reserved/Other      |
+      |                        |
+      +========================+
+
 - **Flash Cycle Management**: Flash memory has a limited number of write/erase cycles.
   In case of regular updates, wear leveling should be considered and managed at the Kernel Abstraction Layer level.
 
@@ -152,7 +185,7 @@ Persistent storage is essential for maintaining application data, settings, and 
 
 A dedicated memory area should be allocated for this purpose.
 
-The Storage (TODO) library provides a key-value pair mechanism to easily store data on a FileSystem.
+The :ref:`chapter.storage` library provides a key-value pair mechanism to easily store data on a FileSystem.
 
 Heaps & Stacks
 ~~~~~~~~~~~~~~
@@ -180,7 +213,7 @@ Consider the following security requirements:
 * Is the App binary encrypted before deployment on target?
 * Is the App integrity verified when installing on target?
 * Is the App code signed?
-* Who sign the App (device manufacturer, App developer, device owner)?
+* Who signs the App (device manufacturer, App developer, device owner)?
 * Byte code verification using ``MicroEJ ByteCode Verifier``?
 
 Kernel
@@ -205,10 +238,10 @@ App Management
 
 Application management is a core function of the kernel that ensures proper resource allocation and system stability.
 
-- **Resource Allocation**: The kernel defines statically a set of :ref:`runtime policies using properties <option_kernel>`. 
+- **Resources Allocation**: The kernel defines statically a set of :ref:`runtime policies using properties <option_kernel>`. 
   Among them,  :ref:`how many threads an application can use at the maximum <option_feature_max_number_of_threads>` or
   :ref:`how many applications can run at the same time <option_maximum_number_of_dynamic_features>`.
-- **Resource Monitoring**: The kernel must detect when an application consumes too much resources (memory, CPU, etc.) to prevent system degradation. This monitoring capability is essential for maintaining system responsiveness and preventing applications from monopolizing system resources. See :ref:`resourceManager` for more information.
+- **Resources Monitoring**: The kernel must detect when an application consumes too much resources (memory, CPU, etc.) to prevent system degradation. This monitoring capability is essential for maintaining system responsiveness and preventing applications from monopolizing system resources. See :ref:`resourceManager` for more information.
 
 - **Life Cycle Management**: The kernel manages the complete application lifecycle including installation, execution, and uninstallation processes: 
 
@@ -218,27 +251,28 @@ Application management is a core function of the kernel that ensures proper reso
     - Only "trusted" ("system" apps) ones at startup: "system" applications may be prioritized for automatic startup to ensure core system functionality,
     - Custom policy: customers can implement custom policies for application startup based on their specific requirements.
   
-  - **Fail Safes**: The kernel must implement fail-safe mechanisms when applications fail to prevent system crashes or instability. These mechanisms might include automatic restarts, error logging, or graceful degradation of system functionality.
+  - **Fail-safe**: The kernel must implement fail-safe mechanisms when applications fail, to prevent system crashes or instability.
+    These mechanisms might include automatic restarts, error logging, or graceful degradation of system functionality.
+
+    An example is provided in `Kernel-GREEN KernelUncaughtExceptionHandler <https://github.com/MicroEJ/Kernel-GREEN/blob/2.2.0/src/main/java/com/microej/kernel/green/KernelUncaughtExceptionHandler.java>`_
+    where the failing application are stopped and uninstalled.
 
 - **Application Metadata**: Application metadata is crucial for system management and user interaction (description, icons, version, ...).
 
-    -   **Metadata Always Accessible**: Some metadata should be available regardless of application state:
+    - **Metadata always accessible**: Some metadata should be available regardless of application state.
+      They can be stored on remote servers for centralized management, or stored locally when network connectivity is lost.
 
-        -   On server associated with application ``.fo``: Metadata can be stored on remote servers for centralized management
-        -   On file system associated with application ``.fo``: Local storage options provide accessibility even when network connectivity is lost
-        -   In Flash for resident Apps: Permanent storage ensures metadata persistence for applications that are always resident in memory
-        -   Stored on file system "globally" or other custom policy: System-wide storage mechanisms allow for centralized metadata management
-    
-    -   **Metadata Accessible When application is Started Only**: Other metadata may only be available during application execution:
+    - **Metadata accessible ahen the application is installed or started**: Other metadata may only be available when the application is installed or started:
      
-        -   Get property: Applications can retrieve runtime properties when they are active,
-        -   Get resource as stream: Resources can be accessed through streaming interfaces during execution.
+        -   Get property: Applications can retrieve runtime properties when they are started,
+        -   Get resource as stream: Resources can be accessed using ``Feature.getResourceAsStream("resource_path")`` once the application is installed.
 
-- **App with UI or No UI (Agent)**: The kernel handles different types of applications based on their interface requirements:
+- **Application with UI or No UI**: The kernel handles different types of applications based on their interface requirements:
 
     - **Home Screen Management**: for applications with user interfaces, the kernel manages a home screen or dashboard that allows users to navigate between different applications.
     - **Screen Sharing**: multiple applications may share screen space simultaneously, requiring the kernel to manage display priorities and allocation.
-    - **Kernel-Reserved Screen Area**: some screen portions are reserved for kernel functions to ensure critical system information remains visible.
+      See :ref:`multiapps.enabled.libraries.microui.display.ownership` for more information.
+    - **Kernel-Reserved Screen Area**: some screen portions can be reserved for kernel functions to ensure critical system information remains visible.
 
 Communication Between Apps
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -251,7 +285,8 @@ Applications within the same kernel environment need mechanisms to communicate a
 .. warning::
 
     When working with :ref:`chapter.shared.interfaces`, :ref:`kernel_type_converter` must be considered.
-    When adding a new ``Converter`` to the Kernel: a firmware udpate is required, as long as a new application installation cycle.
+    
+    If a new ``Converter`` is added to the Kernel; a firmware udpate is required, as well as a new application installation cycle.
 
 
 Remote Device Management
@@ -259,7 +294,7 @@ Remote Device Management
 
 Remote management capabilities are essential for maintaining and updating applications in deployed systems.
 
-- **LWM2M or Other Services**: The kernel supports remote management protocols like LWM2M (Lightweight Machine-to-Machine) or other IoT management services for over-the-air updates and system monitoring. 
+- **LWM2M or other services**: The kernel supports remote management protocols like LWM2M (Lightweight Machine-to-Machine) or other IoT management services for over-the-air updates and system monitoring. 
   These protocols enable administrators to manage applications remotely, update firmware, and monitor system health without physical access to devices.
 
 Limited Transfer Bandwidth
@@ -274,7 +309,7 @@ In environments with constrained communication capabilities, the kernel must opt
   This significantly reduces bandwidth requirements and speeds up deployment processes. 
   This mode assumes that the previous application file (``.fo``) has been stored on the device beforehand.
 
-The diagram below schematizes the flow when performing a differential application update (``.fo``).
+The diagram below schematizes the flow when performing a differential application update.
 It assumes that:
 
 - A first version of the application has already been built and installed on the device (``V1.fo``).
@@ -294,12 +329,10 @@ Firmware Update
 Developer Mode
 ^^^^^^^^^^^^^^
 
-The kernel provides specialized features for application developers to facilitate development and debugging.
+The kernel should provide a developer mode that provides extended functionality for application developers, including:
 
-**Extended Firmware for Developers**: The kernel includes a developer mode that provides extended functionality for application developers, including:
-
-- Local deployment capabilities for rapid testing and iteration.
-- Advanced debug traces for detailed system monitoring.
+- Local deployment capabilities for rapid testing and iteration,
+- Advanced debug traces for detailed system monitoring,
 - Kernel CLI (Command Line Interface) for direct system interaction and configuration.
 
 This developer mode enables faster development cycles and more effective debugging while maintaining 
@@ -314,18 +347,18 @@ in its application store.
 IP Considerations
 ~~~~~~~~~~~~~~~~~
 
-To open applications development to 3rd parties, the Kernel ecosystem provider a Virtual Device of the Kernel.
+To open applications development to 3rd parties, the Kernel ecosystem provider must provide a Virtual Device of the Kernel.
 
-This Virtual Device allows to of 3rd parties developer to run applications on Simulator and deploy them on the device.
+This Virtual Device allows 3rd parties developers to run applications on Simulator and deploy them on the device.
 
-The Virtual Device is a package containing sources and a stripped version of the firmware:
+The Virtual Device is a package containing source code and a stripped version of the firmware:
 
-- **Simulator**: contains an obfuscated version of Kernel source code and pre-installed apps JARs, using ``Proguard``. 
+- **Sources**: contains an obfuscated version of Kernel source code and pre-installed apps JARs, using ``Proguard``. 
   This prevent reverse engineering of customer's Kernel managed code. 
   This is optional and the level of obfuscation is configurable by ``Proguard``. 
-  For example, some customers remove the sources but prefer to keep bytecode types / method names / line numbers as-is for simpler debug support.
+  For example, sources can be removed but bytecode types / method names / line numbers can be kept as-is for simpler debug support.
 - **Stripped firmware**: the device firmware is stripped using ``MicroEJ ELF stripper tool``, to only keep only entry symbols and
-  metadata required for building the ``.fo`` files (all code sections removed): prevent distribution of both MicroEJ and customer IPs.
+  metadata required for building the ``.fo`` files. All the code sections are removed to prevent distribution of both MicroEJ and customer IPs.
 
 Software Integrity
 ~~~~~~~~~~~~~~~~~~
