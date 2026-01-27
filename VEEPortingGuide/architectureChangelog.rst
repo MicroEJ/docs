@@ -34,6 +34,12 @@ specific configuration:
    -  ``QNX65``: BlackBerry QNX 6.5
    -  ``QNX70``: BlackBerry QNX 7.0
 
+
+.. _changelog-8.6.0:
+
+[8.6.0] - [unreleased]
+----------------------
+
 .. _changelog-8.5.0:
 
 [8.5.0] - 2025-10-09
