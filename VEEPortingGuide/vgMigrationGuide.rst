@@ -6,7 +6,7 @@
 Migration Guide
 ===============
 
-From 1.7.2 to 1.8.0
+From 1.7.2 to 1.8.1
 ===================
 
 VEE Port Configuration project
@@ -22,7 +22,7 @@ Each call to ``VectorFont.loadFont()`` creates a new instance of the font.
 Consequently, a font should not be loaded during rendering but rather in the initialization phase (for example, in the `attach` method of a widget).
 It is also essential to close the font when it is no longer in use (for example, in the `detach` method of a widget).
 
-.. _section_vg_migrationguide_pack_1.8.0_bsp:
+.. _section_vg_migrationguide_pack_1.8.1_bsp:
 
 BSP
 """
@@ -48,28 +48,28 @@ The following options (see ``vg_configuration.h``) have now a value (not just co
 BSP with VGLite
 """""""""""""""
 
-* **Prerequisite:** follow the migration steps of :ref:`section_vg_migrationguide_pack_1.8.0_bsp`.
+* **Prerequisite:** follow the migration steps of :ref:`section_vg_migrationguide_pack_1.8.1_bsp`.
 * Delete the file ``LLVG_impl_vglite.c``
 * Install the `C Module MicroVG over VGLite 10.0.0`_.
 
 BSP with NemaVG
 """""""""""""""
 
-* **Prerequisite:** follow the migration steps of :ref:`section_vg_migrationguide_pack_1.8.0_bsp`.
+* **Prerequisite:** follow the migration steps of :ref:`section_vg_migrationguide_pack_1.8.1_bsp`.
 * Delete the file ``LLVG_impl_nema.c``
 * Install the `C Module MicroVG over NemaVG 3.0.0`_.
 
 FreeType
 """"""""
 
-* **Prerequisite:** follow the migration steps of :ref:`section_vg_migrationguide_pack_1.8.0_bsp`.
+* **Prerequisite:** follow the migration steps of :ref:`section_vg_migrationguide_pack_1.8.1_bsp`.
 * Install the `C Module Freetype 5.0.0`_.
 * In case of standalone library: include the folder of the configuration file ``vg_configuration.h`` in the include directives and rebuild the library.
 
 HarfBuzz
 """"""""
 
-* **Prerequisite:** follow the migration steps of :ref:`section_vg_migrationguide_pack_1.8.0_bsp`.
+* **Prerequisite:** follow the migration steps of :ref:`section_vg_migrationguide_pack_1.8.1_bsp`.
 * Install the `C Module Harfbuzz 4.0.0`_.
 * Rebuild the library.
 

@@ -194,7 +194,7 @@ The following text can be copied in a file called ``SYSVIEW_MicroVG.txt`` and co
    # Image Events
    # ------------
 
-   # Deprecated (kept for backward compatibility VG Pack < 1.8.0)
+   # Deprecated (kept for backward compatibility VG Pack < 1.8.1)
    NamedType VGImage 0=OPEN_RAW_IMAGE
    NamedType VGImage 1=CREATE_IMAGE
    NamedType VGImage 2=CLOSE_IMAGE
@@ -259,7 +259,7 @@ The following text can be copied in a file called ``SYSVIEW_MicroVG.txt`` and co
 
    # [0-9]: 10 events
 
-   # Deprecated (kept for backward compatibility VG Pack < 1.8.0)
+   # Deprecated (kept for backward compatibility VG Pack < 1.8.1)
    0        VG_ImageEvent      type=%VGImage | type=%VGImage done
    2        VG_DrawingEvent    type=%VGDraw  | type=%VGDraw done
 

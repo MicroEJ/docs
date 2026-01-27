@@ -4,7 +4,7 @@
 .. |FPWIDGETSVERSION| replace:: 5.3.2
 .. |MICROUIVERSION| replace:: 3.6.1
 
-.. |VGPACKVERSION| replace:: 1.8.0
+.. |VGPACKVERSION| replace:: 1.8.1
 .. |MICROVGVERSION| replace:: 1.5.0
 
 .. |FREETYPEVERSION| replace:: 2.14.1
@@ -79,7 +79,7 @@
 .. _NXP i.MX RT500: https://www.nxp.com/products/processors-and-microcontrollers/arm-microcontrollers/i-mx-rt-crossover-mcus/i-mx-rt500-crossover-mcu-with-arm-cortex-m33-dsp-and-gpu-cores:i.MX-RT500
 
 .. XXX_TODO fix version
-.. _VG Pack 1.8.0: https://repository.microej.com/modules/com/microej/pack/vg/vg-pack/1.7.2/
+.. _VG Pack 1.8.1: https://repository.microej.com/modules/com/microej/pack/vg/vg-pack/1.7.2/
 .. _VG Pack 1.7.2: https://repository.microej.com/modules/com/microej/pack/vg/vg-pack/1.7.2/
 .. _VG Pack 1.7.1: https://repository.microej.com/modules/com/microej/pack/vg/vg-pack/1.7.1/
 .. _VG Pack 1.7.0: https://repository.microej.com/modules/com/microej/pack/vg/vg-pack/1.7.0/

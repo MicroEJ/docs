@@ -6,7 +6,7 @@
 Changelog
 =========
 
-[1.8.0] - 2026-01-23
+[1.8.1] - 2026-01-27
 ====================
 
 UI Pack
@@ -20,7 +20,7 @@ UI Pack
     This pack fixes the memory leak that occurs when a feature is killed while a BufferedVectorImage, an external RAW image, or a filtered image is open.
     To avoid potential side effects from the release of objects (images, fonts) retained by a feature during the killing of that feature, ensure that no third-party components (e.g., GPU) are using these objects at the time of the kill.
     UI packs with versions higher than 14.5.1 provide the blocking API ``LLUI_DISPLAY_waitAsynchronousDrawingEnd()``.
-    This API is stubbed on the VG Pack for backward compatibility issues between VG Pack 1.8.0 and UI Packs [14.4.0, 14.5.1].
+    This API is stubbed on the VG Pack for backward compatibility issues between VG Pack 1.8.1 and UI Packs [14.4.0, 14.5.1].
     However, it is highly recommended to use a UI Pack version greater than 14.5.1.
 
 MicroVG
