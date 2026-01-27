@@ -252,7 +252,17 @@ memory, devoted to the Managed world. The GC automatically frees dead Java
 objects, and defragments the memory in order to optimize RAM usage. This
 is done transparently while the Application keep running.
 
-See also :ref:`Garbage Collector options <options_gc>` for more details.
+Configuration Options
+~~~~~~~~~~~~~~~~~~~~~
+
+See :ref:`option_managed_heap` for specifying the Managed Heap size.
+
+See :ref:`Garbage Collector options <options_gc>` for advanced Garbage Collector configuration options.
+
+Heap Usage Monitoring
+~~~~~~~~~~~~~~~~~~~~~
+
+See :ref:`heap_usage_monitoring` section a detailed description of the available runtime APIs and tools used to monitor the Managed Heap.
 
 Death Notification
 ~~~~~~~~~~~~~~~~~~

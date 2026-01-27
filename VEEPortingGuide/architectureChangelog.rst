@@ -40,6 +40,12 @@ specific configuration:
 [8.6.0] - [unreleased]
 ----------------------
 
+Core Engine
+~~~~~~~~~~~
+
+- Updated `Runtime.freeMemory()`_ implementation to consider only live objects when computing free space. 
+  See :ref:`heap_usage_monitoring` for more details.
+
 .. _changelog-8.5.0:
 
 [8.5.0] - 2025-10-09
@@ -1754,10 +1760,11 @@ Core Engine
 ~~~~~~~~~~~
 
 -  Added a permanent hook ``LLMJVM_on_Runtime_gc_done`` called after an
-   explicit `java.lang.Runtime.gc()`_
+   explicit `Runtime.gc()`_
 -  Updated internal heap header for memory dump
 
-.. _java.lang.Runtime.gc(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Runtime.html#gc--
+.. _Runtime.gc(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Runtime.html#gc--
+.. _System.gc(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#gc--
 
 .. _soar-7:
 
@@ -2241,7 +2248,7 @@ Foundation Libraries
 Core Engine
 ~~~~~~~~~~~
 
--  Optimized `java.lang.Runtime.gc()`_ (removed useless heap compaction
+-  Optimized `Runtime.gc()`_ (removed useless heap compaction
    in some cases)
 
 .. _section-36:
