@@ -40,30 +40,29 @@ Here are the descriptions of the different notions related to heap usage:
 The Java class `java.lang.Runtime`_ 
 defines the following methods:
 
--  `gc()`_: 
-   Runs the garbage collector. 
+-  `Runtime.gc()`_: 
+   Runs the garbage collector. This is a blocking operation that reclaims all unreachable objects and defragments the Managed Heap.
    `System.gc()`_ 
    is an alternative means of invoking this method.
 
--  `freeMemory()`_: 
+-  `Runtime.freeMemory()`_: 
    Returns the amount of free memory in the heap. 
-   This value does not include unused objects eligible for garbage collection.
-   Calling the `gc()`_ 
-   method may result in increasing the value returned by this method.
+   Starting from :ref:`Architecture 8.6.0 <changelog-8.6.0>`, this method considers only live objects when computing free space. 
+   Therefore invoking `System.gc()`_ or `Runtime.gc()`_ prior to calling this method is no longer necessary to obtain an accurate free memory value.
 
--  `totalMemory()`_: 
+-  `Runtime.totalMemory()`_: 
    Returns the current size of the heap. 
    The value returned by this method may vary over time.
 
--  `maxMemory()`_: 
+-  `Runtime.maxMemory()`_: 
    Returns the maximum size of the heap.
 
 .. _java.lang.Runtime: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Runtime.html
-.. _gc(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Runtime.html#gc--
+.. _Runtime.gc(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Runtime.html#gc--
 .. _System.gc(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#gc--
-.. _freeMemory(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Runtime.html#freeMemory--
-.. _totalMemory(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Runtime.html#totalMemory--
-.. _maxMemory(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Runtime.html#maxMemory--
+.. _Runtime.freeMemory(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Runtime.html#freeMemory--
+.. _Runtime.totalMemory(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Runtime.html#totalMemory--
+.. _Runtime.maxMemory(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Runtime.html#maxMemory--
 
 Heap Usage Introspection
 ------------------------
@@ -76,19 +75,30 @@ all the unused objects and count only alive objects.
 The application can compute the current heap usage by executing the following 
 code:
 
-   .. code-block:: java
-   
-      Runtime runtime = Runtime.getRuntime(); // get Runtime instance
-      runtime.gc(); // Ensure unused objects are recycled
-      long heapUsage = runtime.totalMemory() - runtime.freeMemory();
+.. tabs::
+
+   .. tab:: Architecture 8.6.0 or higher
+
+      .. code-block:: java
+      
+         Runtime runtime = Runtime.getRuntime(); // get Runtime instance
+         long heapUsage = runtime.totalMemory() - runtime.freeMemory();
+
+   .. tab:: Architecture lower than 8.6.0
+
+      .. code-block:: java
+      
+         Runtime runtime = Runtime.getRuntime(); // get Runtime instance
+         runtime.gc(); // Ensure unused objects are recycled
+         long heapUsage = runtime.totalMemory() - runtime.freeMemory();
 
 This example gives the heap usage at a given point but not the maximum heap 
 usage of the application.
 
 .. note::
    When heap usage monitoring is disabled, the heap size is fixed, and so 
-   `totalMemory()`_ 
-   and `maxMemory()`_ 
+   `Runtime.totalMemory()`_ 
+   and `Runtime.maxMemory()`_ 
    return the same value.
 
 .. _Runtime: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Runtime.html
@@ -104,25 +114,25 @@ automatically by enabling heap usage monitoring.
 
 When this option is activated, an initial size for the heap must be specified, 
 and the Core Engine increases the heap size dynamically. 
-The value returned by `totalMemory()`_ 
+The value returned by `Runtime.totalMemory()`_ 
 is the current heap size. 
-`maxMemory()`_ 
+`Runtime.maxMemory()`_ 
 returns the maximum size of the heap. 
-A call to `gc()`_ 
+A call to `Runtime.gc()`_ 
 decreases the heap size to the higher value of either the heap usage or the 
 initial heap size.
 
-At any moment, `totalMemory()`_ 
+At any moment, `Runtime.totalMemory()`_ 
 returns the maximum heap usage of the current execution (assuming the maximum 
 heap usage is higher than the initial heap size, and 
-`gc()`_ 
+`Runtime.gc()`_ 
 has not been called).
 
 See the section :ref:`option_enable_heap_usage` to enable this option and 
 configure the initial heap size.
 
 Even if the heap size can vary during time, a memory section of 
-`maxMemory()`_ 
+`Runtime.maxMemory()`_ 
 bytes is allocated at link time or during the Core Engine startup. 
 No dynamic allocation is performed when increasing the heap size.
 
