@@ -4,7 +4,7 @@
 .. |VEE_PORT_VERSION| replace:: ``3.0.0``
 .. |VEE_PORT_LINK| replace:: `NXP i.MXRT1170 VEE Port <https://github.com/MicroEJ/nxp-vee-imxrt1170-evk>`__
 
-.. _training_kernel_green_imxrt1170:
+.. _training_getting_started_kernel_green_imxrt1170:
 
 =======================
 Get Started with Kernel
@@ -17,7 +17,7 @@ This Executable will be built from the
 |GREEN_KERNEL_SOURCES_LINK| sources.
 
 The Multi-Sandbox Executable built in this Getting Started can then be used to
-complete the :ref:`training_multisandbox_applications_imxrt1170` Getting Started.
+complete the :ref:`training_getting_started_sandboxed_applications_imxrt1170` Getting Started.
 
 During this Getting Started, you will learn how to:
 
@@ -54,7 +54,7 @@ To follow this training, you need:
 - A FAT32-formatted microSD card.
 - An Ethernet cable
 
-.. _training_kernel_green_imxrt1170_environment_setup:
+.. _training_getting_started_kernel_green_imxrt1170_environment_setup:
 
 Environment Setup
 -----------------
@@ -140,7 +140,7 @@ for more information about the Kernel configuration.
 Run the Kernel GREEN on NXP i.MXRT1170 Evaluation Kit
 -----------------------------------------------------
 
-Make sure to have completed all the :ref:`training_kernel_green_imxrt1170_environment_setup`
+Make sure to have completed all the :ref:`training_getting_started_kernel_green_imxrt1170_environment_setup`
 steps before going further.
 
 Build the Executable for the NXP i.MXRT1170 Evaluation Kit
@@ -218,14 +218,14 @@ If you want to learn how to run a Sandboxed Application on your Multi-Sandbox Ex
 Run a Sandboxed Application on your Multi-Sandbox Executable and Virtual Device
 -------------------------------------------------------------------------------
 
-Follow the :ref:`training_multisandbox_applications_imxrt1170_create_app`
+Follow the :ref:`training_getting_started_sandboxed_applications_imxrt1170_create_app`
 Getting Started to create and run a Sandboxed Application project on your 
 Multi-Sandbox Executable and Virtual Device.
 
 .. note::
 
    When it comes to selecting the Multi-Sandbox Executable and Virtual Device
-   (section :ref:`training_multisandbox_applications_imxrt1170_run_virtual_device`),
+   (section :ref:`training_getting_started_sandboxed_applications_imxrt1170_run_virtual_device`),
    follow this procedure:
 
    - Open the ``settings.gradle.kts`` files located at the root of your :guilabel:`MyApplication` project,
@@ -260,7 +260,7 @@ Multi-Sandbox Executable and Virtual Device.
             Make sure that the version corresponds to the version defined in your
             |GREEN_KERNEL_SOURCES_LINK| ``build.gradle.kts`` file.
 
-   - Come back to the :ref:`training_multisandbox_applications_imxrt1170_run_virtual_device` Getting Started.
+   - Come back to the :ref:`training_getting_started_sandboxed_applications_imxrt1170_run_virtual_device` Getting Started.
 
 Going Further
 -------------

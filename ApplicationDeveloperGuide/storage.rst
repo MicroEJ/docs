@@ -1,3 +1,5 @@
+.. _chapter.storage:
+
 Storage
 =======
 

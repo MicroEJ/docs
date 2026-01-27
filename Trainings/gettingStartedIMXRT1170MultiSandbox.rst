@@ -6,7 +6,7 @@
 .. |GREEN_KERNEL_DEPENDENCY| replace:: ``microejVee("com.microej.kernel:NXP-MIMXRT1170-3_0_0_GCC_GREEN:2.1.1")``
 .. |DEMO_SANDBOXED_APPS_VERSION| replace:: ``2.0.0``
 
-.. _training_multisandbox_applications_imxrt1170:
+.. _training_getting_started_sandboxed_applications_imxrt1170:
 
 =======================================
 Get Started with Sandboxed Applications
@@ -22,8 +22,8 @@ During this training, you will learn how
 to run Sandboxed Applications in Simulation using
 the Virtual Device and on NXP i.MXRT1170 Evaluation Kit:
 
-1. :ref:`training_multisandbox_applications_imxrt1170_run_demo_sandboxed_apps`.
-2. :ref:`Create Sandboxed Application and run it <training_multisandbox_applications_imxrt1170_create_app>`.
+1. :ref:`training_getting_started_sandboxed_applications_imxrt1170_run_demo_sandboxed_apps`.
+2. :ref:`Create Sandboxed Application and run it <training_getting_started_sandboxed_applications_imxrt1170_create_app>`.
 
 In case you are not familiar with MicroEJ, please visit `Discover MicroEJ <https://developer.microej.com/discover-microej/>`__ to understand the principles of our technology.
 
@@ -106,7 +106,7 @@ Download the Multi-Sandbox Executable: |MULTI_SANDBOX_EXECUTABLE_LINK|.
    
    The Multi-Sandbox Executable used in this documentation is built from the
    |GREEN_KERNEL_SOURCES_LINK| sources.
-   Refer to the :ref:`training_kernel_green_imxrt1170`
+   Refer to the :ref:`training_getting_started_kernel_green_imxrt1170`
    training to build your own Multi-Sandbox Executable.
 
    If you want more information about this Multi-Sandbox Executable,
@@ -145,7 +145,7 @@ Congratulations! The Multi-Sandbox Executable is running on the NXP i.MXRT1170 E
 Training Course
 ===============
 
-.. _training_multisandbox_applications_imxrt1170_run_demo_sandboxed_apps:
+.. _training_getting_started_sandboxed_applications_imxrt1170_run_demo_sandboxed_apps:
 
 Run the Demo-Sandboxed-Applications
 -----------------------------------
@@ -307,7 +307,7 @@ Now you know how to run Sandboxed Applications on a Multi-Sandbox Executable!
 The next step is about creating a Sandboxed Application project from scratch and
 running it on the Virtual Device and on the NXP i.MXRT1170 board.
 
-.. _training_multisandbox_applications_imxrt1170_create_app:
+.. _training_getting_started_sandboxed_applications_imxrt1170_create_app:
 
 Create and Run a Sandboxed Application
 --------------------------------------
@@ -343,7 +343,7 @@ Create a new Sandboxed Application project as follows in IntelliJ IDEA:
       :align: center
       :scale: 70%
 
-.. _training_multisandbox_applications_imxrt1170_run_virtual_device:
+.. _training_getting_started_sandboxed_applications_imxrt1170_run_virtual_device:
 
 Run the Sandboxed Application on the Virtual Device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

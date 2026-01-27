@@ -3,9 +3,11 @@
 Get Support
 ===========
 
-If any questions, the best starting point is to consult the `MicroEJ Forum <https://forum.microej.com/>`_. 
+If any questions, the best starting point is to consult the `MicroEJ Forum <https://forum.microej.com/>`_
+or the :ref:`faq`.
 Feel free to create a new topic if there is no relevant content for your issue. 
 MicroEJ Corp. engineers are listening to the forum activity, so you can expect to get a quick reply.
+
 
 Otherwise, you can contact `our support team <https://www.microej.com/contact/#form_2>`_.
 
@@ -29,8 +31,37 @@ In both cases, please provide as much information as possible on your installed 
    * - Host Operating System
      - Windows **11** (see :ref:`system-requirements`)
      
+.. _faq:
+
+FAQ
+---
+
+What are the minimum requirements for processor, memory, and RAM?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+MicroEJ can run on MCUs such as Cortex M0+ through Cortex M7, as well as on application processors such as ARMv7 or ARMv8.
+
+MEJ32 requires only 30KB of code and 1KB of RAM. Typical memory usage is defined by the application.
+
+
+How does MicroEJ scale with multi-core CPUs?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+MicroEJ supports heterogeneous multi-cores from Cortex-M0+ with RTOS to Cortex-A with Linux or QNX.
+
+
+How are patches handled and how is the environment secured?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Core technology is rarely patched due to its maturity and extensive testing.
+
+We release new editions on a 9-12 month cadence, with bug fixes delivered quickly.
+
+We have a process for reporting vulnerabilities, and they are tracked and reported in our changelog.
+
+
 ..
-   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2026, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

@@ -201,6 +201,7 @@ MicroUI
    If you are using the former MicroUI version ``2`` (provided by MicroEJ UI Pack version up to ``12.1.x``),
    please refer to this `MicroEJ Documentation Archive <https://docs.microej.com/_/downloads/en/20201009/pdf/>`_. 
 
+.. _multiapps.enabled.libraries.microui.display.ownership:
 
 Physical Display Ownership
 ^^^^^^^^^^^^^^^^^^^^^^^^^^

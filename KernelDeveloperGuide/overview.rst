@@ -137,7 +137,7 @@ Kernel implementations must cover the following topics:
 Getting started
 ---------------
 
-Get familiar with Kernel development by following the training :ref:`training_kernel_green_imxrt1170`.
+Get familiar with Kernel development by following the training :ref:`training_getting_started_kernel_green_imxrt1170`.
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
