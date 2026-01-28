@@ -132,6 +132,8 @@ EJF Font File
 
 Font files which end with the ``.ejf`` suffix are created using the Font Designer (see :ref:`section.tool.fontdesigner`).
 
+.. _section.ui.fonts.list:
+
 Usage
 -----
 

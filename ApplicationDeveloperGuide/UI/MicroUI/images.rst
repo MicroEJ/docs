@@ -18,7 +18,7 @@ The conversion can either be done:
 - At build-time, using the Image Generator.
 - At run-time, using the relevant decoder library.
 
-Immutable images are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.images.list`` files (**or** in ``*.imagesext.list`` for an external resource, see :ref:`section_external_images`).
+Immutable images are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.images.list`` files (**or** in ``*.externimages.list`` for an external resource, see :ref:`section_external_images`).
 
 .. graphviz::
 
@@ -26,7 +26,7 @@ Immutable images are declared in :ref:`Classpath<chapter.microej.classpath>` ``*
 
       internalImage [shape=diamond, label="internal?"]
       imagesList [shape=box, label="*.images.list"]
-      imagesExt [shape=box, label="*.imagesext.list"]
+      imagesExt [shape=box, label="*.externimages.list \lor *.imagesext.list"]
       subgraph cluster_image {
           label ="Image"
           internalImage -> imagesList [label="yes"]

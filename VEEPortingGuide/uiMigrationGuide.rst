@@ -19,7 +19,7 @@ BSP
 The C Module's options configuration file ``ui_configuration.h`` must not be modified anymore.
 Before installing the new C Module: 
 
-* Create (if not already exists) the global `VEE Port configuration file`_.
+* Create (if it doesn't exist already) the global `VEE Port configuration file`_.
 * Move your own configuration from ``ui_configuration.h`` to ``veeport_configuration.h``.
 * Install the `C Module MicroUI 14.5.1`_.
 

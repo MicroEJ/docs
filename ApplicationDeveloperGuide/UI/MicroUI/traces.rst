@@ -5,7 +5,7 @@
 Debug Traces
 =============
 
-MicroUI logs several actions when traces are enabled (see :ref:`event-tracing`). 
+MicroUI traces several actions when traces are enabled (see :ref:`event-tracing`). 
 This chapter explains the trace identifiers.
 
 Trace format
@@ -66,7 +66,7 @@ The following tables describe some events data.
      - Create new image using ``%0%`` algorithm (see Create Image). 
      - Image created, image identifier is ``%0%``. 
    * - 0x6 (6) 
-     - New image characteristics ``%0%`` (see Image Type), identifier is ``%1%`` and memory size is ``%2%``. 
+     - New image characteristics:``%0%`` algorithm (see Create Image) ``%1%`` (see Image Type), identifier is ``%2%`` and size is ``%3%`` x ``%4%``. 
      - 
    * - 0xa (10) 
      - Flush start. Region (``%0%``, ``%1%``) (``%2%`` x ``%3%``). 
@@ -510,10 +510,6 @@ Please note that SystemView requires a newline at the end of the file; otherwise
    #
    # SystemView Description File
    #
-   # Copyright 2019-2025 MicroEJ Corp. All rights reserved.
-   # This library is provided in source code for use, modification and test, subject to license terms.
-   # Any modification of the source code will break MicroEJ Corp. warranties on the whole library.
-
    #===========
    # NamedTypes 
    #===========
@@ -702,7 +698,7 @@ Please note that SystemView requires a newline at the end of the file; otherwise
    # MicroUI C Module
    # ----------------
 
-   # [40-139]: 100 events (see symbol CCO_MICROUI_NB_LOGS)
+   # [40-139]: 100 events
 
    # Deprecated (kept for backward compatibility UI Pack < 14.4.1)
    40       UI_Draw              %UIDrawAlgo  |  %UIDrawAsync
