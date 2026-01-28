@@ -163,15 +163,19 @@ Invalid SSL Certificate
 -----------------------
          
 If a dependency cannot be retrieved from a remote repository, this may be due to a missing or incorrect SSL certificate.
-It can be checked in the debug logs, by adding the ``--debug`` and ``-Djavax.net.debug=all`` arguments in the Gradle command line, for example::
+It can be checked in the debug logs, by adding the ``--debug`` argument in the Gradle command line, for example::
 
-  ./gradlew build --debug -Djavax.net.debug=all
+  ./gradlew build --debug
 
-If the SSL certificate is missing or incorrect, the following line should appear:
+If the logs show the SSL handshake start followed immediately by the Connection Shutdown:
 
   .. code:: console
 
-	PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+	2026-01-27T18:01:16.708+0100 [DEBUG] [org.apache.http.conn.ssl.SSLConnectionSocketFactory] Starting handshake
+	2026-01-27T18:01:16.749+0100 [DEBUG] [org.apache.http.impl.conn.DefaultManagedHttpClientConnection] http-outgoing-69: Shutdown connection
+	2026-01-27T18:01:16.749+0100 [DEBUG] [org.apache.http.impl.execchain.MainClientExec] Connection discarded
+
+it most likely means that the SSL certificate is missing or incorrect.
 
 This can be raised in several cases, such as:
 
@@ -495,7 +499,7 @@ This can happen when a VEE Port built with SDK 6 ``1.3.0`` or higher is provided
 To resolve this, update your project to use SDK 6 version ``1.2.0`` minimum.
 
 ..
-   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2026, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
