@@ -78,33 +78,28 @@
 .. _C Module RT500 7.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-mimxrt595-evk/7.0.0
 .. _NXP i.MX RT500: https://www.nxp.com/products/processors-and-microcontrollers/arm-microcontrollers/i-mx-rt-crossover-mcus/i-mx-rt500-crossover-mcu-with-arm-cortex-m33-dsp-and-gpu-cores:i.MX-RT500
 
-.. XXX_TODO fix version
-.. _VG Pack 1.8.1: https://repository.microej.com/modules/com/microej/pack/vg/vg-pack/1.7.2/
+.. _VG Pack 1.8.1: https://repository.microej.com/modules/com/microej/pack/vg/vg-pack/1.8.1/
 .. _VG Pack 1.7.2: https://repository.microej.com/modules/com/microej/pack/vg/vg-pack/1.7.2/
 .. _VG Pack 1.7.1: https://repository.microej.com/modules/com/microej/pack/vg/vg-pack/1.7.1/
 .. _VG Pack 1.7.0: https://repository.microej.com/modules/com/microej/pack/vg/vg-pack/1.7.0/
 .. _VG Pack 1.6.0: https://repository.microej.com/modules/com/microej/pack/vg/vg-pack/1.6.0/
 
-.. XXX_TODO fix version
-.. _C Module MicroVG 8.0.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microvg/7.0.2/
+.. _C Module MicroVG 8.0.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microvg/8.0.0/
 .. _C Module MicroVG 7.0.2: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microvg/7.0.2/
 
-.. XXX_TODO fix version
-.. _C Module MicroVG over VGLite 10.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-vglite/9.0.2/
+.. _C Module MicroVG over VGLite 10.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-vglite/10.0.0/
 .. _C Module MicroVG over VGLite 9.0.2: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-vglite/9.0.2/
 .. _C Module MicroVG over VGLite 9.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-vglite/9.0.1/
 .. _C Module MicroVG over VGLite 9.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-vglite/9.0.0/
 .. _C Module MicroVG over VGLite 8.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-vglite/8.0.1/
 
-.. XXX_TODO fix version
-.. _C Module MicroVG over NemaVG 3.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-nemavg/2.0.2/
+.. _C Module MicroVG over NemaVG 3.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-nemavg/3.0.0/
 .. _C Module MicroVG over NemaVG 2.0.2: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-nemavg/2.0.2/
 .. _C Module MicroVG over NemaVG 2.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-nemavg/2.0.1/
 .. _C Module MicroVG over NemaVG 2.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-nemavg/2.0.0/
 
-.. XXX_TODO fix versions
-.. _C Module Freetype 5.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/thirdparty/freetype/4.0.0
-.. _C Module Harfbuzz 4.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/thirdparty/harfbuzz/3.0.1
+.. _C Module Freetype 5.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/thirdparty/freetype/5.0.0
+.. _C Module Harfbuzz 4.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/thirdparty/harfbuzz/4.0.0
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free
