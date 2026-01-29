@@ -18,15 +18,6 @@ Glossary
 
 .. glossary::
 
-  XIP
-    XIP stands for eXecute-In-Place. It refers to a processor’s ability to execute code directly from
-    a storage device (usually Flash memory) instead of copying it into RAM first.
-
-    To understand XIP, it's helpful to compare it to the "traditional" way systems used to work:
-
-    - Copy-to-RAM (traditional): Flash → Copy to RAM → Execute from RAM.
-    - XIP: Flash → Execute directly.
-
   OTA
     Over-the-Air (OTA) Update is a method for delivering firmware updates to remote devices using a network connection.
   
@@ -56,21 +47,42 @@ Applications can be deployed using various communication channels such as BLE, m
 
 These channels must ensure secure data transmission and support the required bandwidth for applications deployment.
 
-Application Code Location
-~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Applications are can be stored in different types of memory:
+Application Code Storage and Execution Strategies
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Internal or External Flash (XIP)**: The application file (``.fo``) can be downloaded and installed directly at the execution location, in flash memory. It cannot be moved to another memory address after deployment. This approach is ideal for devices with limited RAM. In those conditions it is not necessary to store the application file (``.fo``) on the device.
-- **External Flash (Non-XIP or File System Based)**: The application file (``.fo``) is stored on a file system before being linked to its final execution location. This method allows a more dynamic application management but requires additional memory for installing code into RAM during execution. In those conditions the application file (``.fo``) must be kept on the device, to reinstall it when the Core Engine or the device restarts.
+Applications files (``.fo``) are managed differently depending on whether the hardware architecture supports
+**Execute-In-Place (XIP)** or requires **Copy-to-RAM execution**. 
+The choice between these two methods impacts boot time, memory overhead, and system flexibility.
 
-Application Code Execution
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Copy-to-RAM Mode (Non-XIP)
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Applications may be executed directly from their install location if that memory is XIP, or installed into RAM for non-XIP memories:
+In Copy-to-RAM mode, the application is stored in a non-volatile memory and executed from RAM memory.
 
-- **XIP - Execute in Place**: Direct execution from memory that supports execution in place, typically internal flash or ROM. This method is memory-efficient and fast since no copying step is required.
-- **Copy-to-RAM based execution**: For non-XIP memories, the application is installed into RAM before execution, e.g., an app stored on an SD card might be installed into RAM before execution. This is necessary for external storage systems where direct execution is not supported.
+This method is mandatory for systems with storage media that do not
+support direct CPU addressing (like SD cards, NAND Flash, or standard File Systems).
+
+- **Deployment:** The application file (``.fo``) is stored as a persistent blob on a file system.
+- **Execution:** Upon startup, the MicroEJ Core Engine allocates a block of **RAM** memory, 
+  and performs the application linking into it.
+- **Best For:** Systems with abundant RAM that require high-speed execution. 
+  Since RAM typically has lower latency and higher throughput than External Flash, code may run faster in this mode.
+- **Constraint:** The ``.fo`` file **must be kept** on the device's storage. 
+  Because RAM is volatile, the Core Engine must reinstall (re-copy) the application into RAM every time the device restarts.
+
+XIP (Execute-In-Place) Mode
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In XIP mode, the application is stored and executed directly from non-volatile memory
+(typically **Internal Flash** or **QSPI/OctoSPI External Flash**). This memory must be addressable by the CPU.
+
+- **Deployment:** The application is downloaded and installed directly at a fixed execution address in the Flash memory map.
+- **Execution:** The CPU fetches instructions directly from the Flash.
+  Because the code is never moved, the original ``.fo`` file does not need to be retained on a separate file system after installation.
+- **Best For:** Devices with strictly limited RAM or systems requiring "Instant-On" performance,
+  as there is no "copy-to-RAM" delay during the boot sequence.
+- **Constraint:** The code is linked to a specific physical address and cannot be relocated once installed.
 
 Application Compatibility
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -127,8 +139,8 @@ Application Code Location
 
 The resulting size of an installed application is smaller than the size of the ``.fo`` file, see :ref:`feature_required_memory`.
 
-Copy-to-RAM Execution
-^^^^^^^^^^^^^^^^^^^^^
+Copy-to-RAM Mode
+^^^^^^^^^^^^^^^^
 The application is installed into RAM before execution. The following should be considered:
 
 - **RAM Kernel Working Buffer**: The kernel requires a dedicated working buffer to install the application file (``.fo``). 
@@ -136,8 +148,8 @@ The application is installed into RAM before execution. The following should be 
   When an application is uninstalled, the dedicated kernel working buffer area will be freed.
 - **FileSystem Dimensioning for .fo Storage**: The file system must be properly sized to accommodate all application files (``.fo``) that will be stored on the device.
 
-XIP
-^^^
+XIP Mode
+^^^^^^^^
 
 XIP (Execute In Place) mode allows applications to run directly from flash memory, 
 eliminating the need for RAM copying operations but requiring careful flash memory management.
@@ -262,10 +274,11 @@ Application management is a core function of the kernel that ensures proper reso
     - **Metadata always accessible**: Some metadata should be available regardless of application state.
       They can be stored on remote servers for centralized management, or stored locally when network connectivity is lost.
 
-    - **Metadata accessible ahen the application is installed or started**: Other metadata may only be available when the application is installed or started:
+    - **Metadata accessible when the application is installed or started**: 
+      Other metadata may only be available when the application is installed or started:
      
-        -   Get property: Applications can retrieve runtime properties when they are started,
-        -   Get resource as stream: Resources can be accessed using ``Feature.getResourceAsStream("resource_path")`` once the application is installed.
+        -   Properties: Applications can retrieve runtime properties when they are started,
+        -   Resources: Application's resources can be accessed using ``Feature.getResourceAsStream("resource_path")`` once the application is installed.
 
 - **Application with UI or No UI**: The kernel handles different types of applications based on their interface requirements:
 
@@ -307,7 +320,7 @@ In environments with constrained communication capabilities, the kernel must opt
 - **Binary Diff with Previous One (bsdiff)**: The kernel supports binary diff operations (using ``bsdiff``)
   to only transmit changes between application files (``.fo``) versions rather than full file transfers.
   This significantly reduces bandwidth requirements and speeds up deployment processes. 
-  This mode assumes that the previous application file (``.fo``) has been stored on the device beforehand.
+  This mode assumes that the previous version of the application file (``.fo``) has been stored on the device beforehand.
 
 The diagram below schematizes the flow when performing a differential application update.
 It assumes that:
@@ -333,7 +346,8 @@ The kernel should provide a developer mode that provides extended functionality 
 
 - Local deployment capabilities for rapid testing and iteration,
 - Advanced debug traces for detailed system monitoring,
-- Kernel CLI (Command Line Interface) for direct system interaction and configuration.
+- Kernel CLI (Command Line Interface) for direct system interaction and configuration. 
+  As an example, refer to :ref:`sandboxed_application.appconnect`.
 
 This developer mode enables faster development cycles and more effective debugging while maintaining 
 security for production deployments.
@@ -365,8 +379,10 @@ Software Integrity
 
 Ensure the application is correct from a software perspective. This involves:
 
-- **Source Code Analysis**: Perform static analysis to detect potential vulnerabilities, code quality issues, or compliance violations,
-- **Binary Code Verification**: Validate that the application's binary code is authentic and has not been tampered with during deployment,
+- **Source Code Analysis**: Perform static analysis to detect potential vulnerabilities, code quality issues, or compliance violations.
+  For more information refer to :ref:`sonar_code_analysis`.
+- **Binary Code Verification**: Validate that the application's binary code is authentic and has not been tampered with during deployment.
+  This tool is provided by MicroEJ and can be enabled during application build.
 - **Integrity Checking**: Verify that the deployed application matches the original submitted version using cryptographic hashes or digital signatures.
 
 See the ``Security Chapter`` of :ref:`vee_port_programming_pratices` for more information.

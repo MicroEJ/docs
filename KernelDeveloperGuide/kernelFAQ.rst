@@ -13,20 +13,16 @@ Glossary
   App(s)/Application(s)
     Short for ``Sandboxed Application``.
 
+See also :ref:`chapter-glossary`.
 
 Security & Sandboxing
 ---------------------
 
-How do I ensure that apps written by 3rd party developers are secured from each other and from the main body of other device code, especially with no HW MMU to enforce memory protection?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+How is security managed?
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-MEJ32 container, with the KF extension enabled, prevents an app from accessing another app's assets 
-(objects, threads, code, resources, etc.). This is done by design.
-
-The two main rules that illustrate this are:
-
-- An app cannot access an object of another app; otherwise, an exception ``java.lang.IllegalAccessError`` is generated.
-- An app can only call its own code and the Runtime Environment APIs (methods) that are explicitly exposed by the Kernel.
+The managed code runs on a formally verified virtual processor (MEJ32), and the multi-sandboxed system isolates each app.
+A kernel manages app lifecycles and controls access to resources through a security manager.
 
 How is the code of apps secured from the rest of the device code?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -73,17 +69,11 @@ Most libraries provided by MicroEJ already implement a security checkpoint befor
 You can add your own security checks for custom APIs. See instructions in :ref:`securitymanager_permission_check`
 and :ref:`applicationSecurityPolicy`.
 
-How is security managed?
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The managed code runs on a formally verified virtual processor (MEJ32), and the multi-sandboxed system isolates each app.
-A kernel manages app lifecycles and controls access to resources through a security manager.
-
 How to prevent man-in-the-middle attacks during app deployment on the device?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Just like any data sent over the devices, the app must be encrypted before sent to the network and decrypted on the device.
-This is usually done automatically when the app is transferred using a protocol that natively supports encryption (e.g. SSL/HTTPS...).
+This is usually done automatically when the app is transferred using a protocol that natively supports encryption (e.g. TLS/HTTPS...).
 
 Otherwise, this can be done on the device either in the BSP side or in Managed Code using the 
 `crypto API's <https://repository.microej.com/javadoc/microej_5.x/apis/javax/crypto/package-summary.html>`_.
@@ -105,11 +95,22 @@ MEJ32 implements the KF specification, ensuring applications are fully isolated 
 Applications cannot keep direct references to objects owned by other Applications, allowing the Kernel to dynamically stop / uninstall an application.
 
 
+How do I ensure that apps written by 3rd party developers are secured from each other and from the main body of other device code, especially with no HW MMU to enforce memory protection?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+MEJ32 container, with the KF extension enabled, prevents an app from accessing another app's assets 
+(objects, threads, code, resources, etc.). This is done by design.
+
+The two main rules that illustrate this are:
+
+- An app cannot access an object of another app; otherwise, an exception ``java.lang.IllegalAccessError`` is generated.
+- An app can only call its own code and the Runtime Environment APIs (methods) that are explicitly exposed by the Kernel.
+
 Inter-App Communication & APIs
 ------------------------------
 
-What is the recommended method for calls (RPC / IPC) between applications?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+What is the recommended method for calls between applications? (RPC / IPC)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 MEJ32 provides a built-in mechanism called Shared Interfaces.
 
@@ -123,7 +124,8 @@ How can we recognize and differentiate installed applications?
 When the Kernel installs an Application, it returns a ``Feature`` object that represents the application execution context.
 The Kernel can keep a map between the Feature provenance/identification and the Feature object.
 
-In the Security Manager check method or any Kernel code, you can get the caller using ``Kernel.getContextOwner()``.
+In the Security Manager check method or any Kernel code, you can get the caller using ``Kernel.getContextOwner()``
+to set up Security policies depending on the application.
 
 Is there a way to extend Kernel APIs? (provide new APIs in new libraries dynamically)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -132,9 +134,11 @@ The Kernel APIs are fixed and cannot be extended directly. Updating a Kernel API
 
 Several options exist to mitigate that:
 
-1. Expose an "extendable" interface in the Kernel as a Kernel API.
-   Use a dedicated application that provides a service (a.k.a an implementation of this interface).
-   Use this service from other applications.
+1. Expose an "extendable" interface in the Kernel as a Kernel API:
+   
+   - Use a dedicated application that provides a service (a.k.a an implementation of this interface).
+   - Use this service from other applications.
+
 2. Provide App-to-App services using the :ref:`chapter.shared.interfaces` mechanism.
 
 
@@ -182,7 +186,8 @@ How are execution quotas incremented?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When execution counting is enabled, execution quotas are incremented at branching instructions
-(Method invocation, Method return, Object Allocation, Internal method back jumps (a.k.a Loops)). 
+(Method invocation, Method return, Object Allocation, Internal method back jumps (a.k.a Loops)).
+
 When the virtual machine steps into a native, the quota stops incrementing until 
 the native operations are complete and the native has been exited.
 
