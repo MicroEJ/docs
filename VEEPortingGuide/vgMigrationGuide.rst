@@ -6,6 +6,73 @@
 Migration Guide
 ===============
 
+From 1.7.2 to 1.8.1
+===================
+
+VEE Port Configuration project
+""""""""""""""""""""""""""""""
+
+* Update the UI Pack to version 14.4.1 or higher.
+
+Application
+"""""""""""
+
+The font cache has been removed.
+Each call to ``VectorFont.loadFont()`` creates a new instance of the font.
+Consequently, a font should not be loaded during rendering but rather in the initialization phase (for example, in the `attach` method of a widget).
+It is also essential to close the font when it is no longer in use (for example, in the `detach` method of a widget).
+
+.. _section_vg_migrationguide_pack_1.8.1_bsp:
+
+BSP
+"""
+
+The C Module's options configuration file ``vg_configuration.h`` must not be modified anymore.
+Before installing the new C Module: 
+
+* Create (if it doesn't exist already) the global `VEE Port configuration file`_.
+* Move your own configuration from ``vg_configuration.h`` to ``veeport_configuration.h``.
+* Install the `C Module MicroVG 8.0.0`_.
+
+The following options (see ``vg_configuration.h``) have now a value (not just commented/uncommented); check (and adjust) whether they are used outside the VG C Modules:
+
+* ``VG_FEATURE_FREETYPE_TTF``
+* ``VG_FEATURE_FREETYPE_OTF``
+* ``VG_FEATURE_FREETYPE_COLORED_EMOJI``
+* ``VG_FEATURE_FONT_COMPLEX_LAYOUT``
+* ``VG_FEATURE_FONT_EXTERNAL``
+* ``VG_FEATURE_BUFFERED_VECTOR_IMAGE``
+	
+.. _VEE Port configuration file: https://github.com/MicroEJ/Tool-Project-Template-VEEPort/tree/master/bsp/vee/port/config
+
+BSP with VGLite
+"""""""""""""""
+
+* **Prerequisite:** follow the migration steps of :ref:`section_vg_migrationguide_pack_1.8.1_bsp`.
+* Delete the file ``LLVG_impl_vglite.c``
+* Install the `C Module MicroVG over VGLite 10.0.0`_.
+
+BSP with NemaVG
+"""""""""""""""
+
+* **Prerequisite:** follow the migration steps of :ref:`section_vg_migrationguide_pack_1.8.1_bsp`.
+* Delete the file ``LLVG_impl_nema.c``
+* Install the `C Module MicroVG over NemaVG 3.0.0`_.
+
+FreeType
+""""""""
+
+* **Prerequisite:** follow the migration steps of :ref:`section_vg_migrationguide_pack_1.8.1_bsp`.
+* Install the `C Module Freetype 5.0.0`_.
+* In case of standalone library: include the folder of the configuration file ``vg_configuration.h`` in the include directives and rebuild the library.
+
+HarfBuzz
+""""""""
+
+* **Prerequisite:** follow the migration steps of :ref:`section_vg_migrationguide_pack_1.8.1_bsp`.
+* Install the `C Module Harfbuzz 4.0.0`_.
+* Rebuild the library.
+
 From 1.7.1 to 1.7.2
 ===================
 
@@ -75,7 +142,7 @@ Optionally, update the :ref:`C Module FreeType <section_vg_c_module_freetype>` t
 HarfBuzz
 """"""""
 
-Optionally, update the :ref:`C Module HarfBuzz <section_vg_c_module_harfbuzz>` to use HafBuzz version 10.0.1:
+Optionally, update the :ref:`C Module HarfBuzz <section_vg_c_module_harfbuzz>` to use HarfBuzz version 10.0.1:
 
 * Delete the directory ``thirdparty/harfbuzz``.
 * Remove ``thirdparty/harfbuzz/inc`` from your include path.

@@ -241,6 +241,9 @@ VG Pack
    * - VG Pack
      - MicroVG API
      - Java Test Suite
+   * - 1.8.1
+     - `1.5.2 <https://repository.microej.com/modules/ej/api/microvg/1.5.2/>`__
+     - `4.3.0 <https://repository.microej.com/modules/com/microej/pack/vg/vg-testsuite/4.3.0/>`__
    * - 1.7.2
      - `1.5.2 <https://repository.microej.com/modules/ej/api/microvg/1.5.2/>`__
      - `4.2.0 <https://repository.microej.com/modules/com/microej/pack/vg/vg-testsuite/4.2.0/>`__
