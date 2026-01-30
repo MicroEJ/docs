@@ -64,7 +64,17 @@ FreeType
 
 * **Prerequisite:** follow the migration steps of :ref:`section_vg_migrationguide_pack_1.8.1_bsp`.
 * Install the `C Module Freetype 5.0.0`_.
+* Update the file ``[...]/freetype/config/ftmodule.h``: 
+
+    * Replace ``#ifdef VG_FEATURE_FREETYPE_TTF`` by ``#if defined VG_FEATURE_FREETYPE_TTF && (VG_FEATURE_FREETYPE_TTF == 1)``
+    * Replace ``#ifdef VG_FEATURE_FREETYPE_OTF`` by ``#if defined VG_FEATURE_FREETYPE_OTF && (VG_FEATURE_FREETYPE_OTF == 1)``
+
 * In case of standalone library: include the folder of the configuration file ``vg_configuration.h`` in the include directives and rebuild the library.
+
+.. note:: The update of FreeType (from the version 2.13.3 to the version 2.14.1) is optional. In that case, update the files ``ft_ttf_wrapper.c``, ``ft_otf_wrapper.c`` and ``ftmodule.h``:
+
+    * Replace ``#ifdef VG_FEATURE_FREETYPE_TTF`` by ``#if defined VG_FEATURE_FREETYPE_TTF && (VG_FEATURE_FREETYPE_TTF == 1)``
+    * Replace ``#ifdef VG_FEATURE_FREETYPE_OTF`` by ``#if defined VG_FEATURE_FREETYPE_OTF && (VG_FEATURE_FREETYPE_OTF == 1)``
 
 HarfBuzz
 """"""""
@@ -72,6 +82,10 @@ HarfBuzz
 * **Prerequisite:** follow the migration steps of :ref:`section_vg_migrationguide_pack_1.8.1_bsp`.
 * Install the `C Module Harfbuzz 4.0.0`_.
 * Rebuild the library.
+
+.. note:: The update of HarfBuzz (from the version 10.0.1 to the version 12.3.0) is optional. In that case, update the file ``hb-alloc.c``:
+
+    * Replace ``#if defined(VG_FEATURE_FONT_COMPLEX_LAYOUT)`` by ``#if defined VG_FEATURE_FONT_COMPLEX_LAYOUT && (VG_FEATURE_FONT_COMPLEX_LAYOUT == 1)``
 
 From 1.7.1 to 1.7.2
 ===================
