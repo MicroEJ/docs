@@ -98,6 +98,8 @@
 .. _C Module MicroVG over NemaVG 2.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-nemavg/2.0.1/
 .. _C Module MicroVG over NemaVG 2.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-nemavg/2.0.0/
 
+.. TODO_XXX fix version
+.. _C Module Freetype 5.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/thirdparty/freetype/5.0.0
 .. _C Module Freetype 5.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/thirdparty/freetype/5.0.0
 .. _C Module Harfbuzz 4.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/thirdparty/harfbuzz/4.0.0
 
