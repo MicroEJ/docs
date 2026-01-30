@@ -494,6 +494,58 @@ The following error may be raised when building a project::
 This can happen when a VEE Port built with SDK 6 ``1.3.0`` or higher is provided to a project using an older version of the SDK 6.
 To resolve this, update your project to use SDK 6 version ``1.2.0`` minimum.
 
+Build Errors from JDK / Gradle Incompatibilities in VS Code
+-----------------------------------------------------------
+
+Gradle must be run with a compatible JDK version.
+If the Gradle/JDK compatibility matrix is not respected, project sync or builds may fail, and in VS Code the Java/Gradle integration often reports non-explicit errors, making the root cause difficult to identify.
+
+If you experience the following errors, first verify Gradle/JDK compatibility and either update the Gradle Wrapper or use a supported JDK before further troubleshooting.
+Please refer to the `Gradle Compatibility Matrix <https://docs.gradle.org/current/userguide/compatibility.html#java_runtime>`__ for more details.
+
+*JDK 25 with Gradle < 9.1.0*
+
+.. code-block:: text
+
+	* What went wrong:
+	25.0.1
+
+*JDK 24 and Gradle < 8.14.0*
+
+.. code-block:: text
+
+	* What went wrong:
+	Could not create task ':outgoingVariants'.
+	> Could not create task of type 'OutgoingVariantsReportTask'.
+		> Could not create an instance of type org.gradle.api.tasks.diagnostics.internal.configurations.ConfigurationReportsImpl.
+			> Could not create an instance of type org.gradle.api.reporting.internal.DefaultReportContainer.
+				> Type T not present
+
+*JDK 23 and Gradle < 8.10*
+
+.. code-block:: text
+
+	* What went wrong:
+	Could not open cp_init generic class cache for initialization script
+	BUG! exception in phase 'semantic analysis' in source unit '_BuildScript_' Unsupported class file major version 67
+	> Unsupported class file major version 67
+
+*JDK 22 and Gradle < 8.7*
+
+.. code-block:: text
+
+	* What went wrong:
+	BUG! exception in phase 'semantic analysis' in source unit '_BuildScript_' Unsupported class file major version 66
+	> Unsupported class file major version 66
+
+*JDK 11  and Gradle 9+*
+
+.. code-block:: text
+
+	* What went wrong:
+	[error] [gradle-server] Could not run build action using connection to Gradle distribution 'https://services.gradle.org/distributions/gradle-9.x.x-bin.zip'.
+
+
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
