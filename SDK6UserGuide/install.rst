@@ -285,6 +285,21 @@ Once your favorite IDE is installed, plugins must be installed to develop MicroE
          
             VS Code Java Update Build Configuration Setting
 
+      .. note::
+
+         The extension ship with an embedded JDK, which is used for UI-triggered Gradle builds (for example via the Gradle view or automatic project import).
+         In contrast, builds started from the Terminal (Git Bash, PowerShell, etc.) use the JDK pointed to by ``JAVA_HOME`` or the one found on the ``PATH``.
+         It is recommended to explicitly configure the JDK used by the VS Code Java extension, as this ensures that Gradle builds launched from the UI use the same JDK as the Terminal.
+
+         - Go to ``File > Preferences > Settings``.
+         - In the search bar, type ``java.import.gradle.java.home`` and set it to the path to the correct JDK
+
+         .. figure:: images/vscode-set-jdk.png
+            :alt: VS Code Java Update JDK Setting
+            :align: center
+            :scale: 70%
+         
+            VS Code Java Update JDK Setting
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free
