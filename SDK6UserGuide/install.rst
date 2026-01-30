@@ -80,8 +80,21 @@ the :ref:`Central <central_repository>` and :ref:`Developer <developer_repositor
 There are several ways to declare repositories.
 To get started, you can declare them globally to make them available in all your projects:
 
-- Create the folder ``<USER_HOME>/.gradle/init.d`` if it does not exist.
-- Download and copy :download:`this file <resources/microej.init.gradle.kts>` in the previously created folder.
+.. tabs::
+
+   .. tab:: Manually
+
+      - Create the folder ``<USER_HOME>/.gradle/init.d`` if it does not exist.
+      - Download and copy :download:`this file <../_static/resources/microej.init.gradle.kts>` in the previously created folder.
+
+   .. tab:: Command Line Interface
+
+      From the command line interface:
+
+      .. code-block:: bash
+
+         mkdir -p ~/.gradle/init.d/ && curl -L -o ~/.gradle/init.d/microej.init.gradle.kts https://docs.microej.com/en/latest/_static/resources/microej.init.gradle.kts
+
 
 At this stage, you can already build a project from the command line, 
 for example, by executing the command ``./gradlew build`` at the root of the project.
@@ -287,7 +300,7 @@ Once your favorite IDE is installed, plugins must be installed to develop MicroE
 
 
 ..
-   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free
+   | Copyright 2008-2026, MicroEJ Corp. Content in this space is free
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

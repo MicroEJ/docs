@@ -370,7 +370,7 @@ This section explains the different ways to add a module to an existing project.
    you must :ref:`configure the repositories <sdk_6_configure_repositories>` before creating the module.
    If the repositories used by your project are `centralized <https://docs.gradle.org/current/userguide/declaring_repositories_adv.html#sub:centralized-repository-declaration>`__ 
    in the :guilabel:`settings.gradle.kts` file of the project, the MicroEJ repositories defined in 
-   :download:`this file <resources/microej.init.gradle.kts>` must be added to your :guilabel:`settings.gradle.kts` file.
+   :download:`this file <../_static/resources/microej.init.gradle.kts>` must be added to your :guilabel:`settings.gradle.kts` file.
 
 .. tabs::
 
@@ -536,7 +536,7 @@ Refer to `the official Gradle documentation <https://docs.gradle.org/current/use
 
 
 ..
-   | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2026, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
