@@ -26,6 +26,9 @@ MicroEJ Glossary
    Architecture
       An Architecture is a software package that includes the Core Engine port to a target instruction set and a C compiler, core Foundation Libraries (:ref:`[EDC], [BON], [SNI], [KF] <runtime_core_libraries>`) and the Simulator. Architectures are distributed either as evaluation or production version.
 
+   BSP
+      A Board Support Package (BSP) is a collection of native C code and configuration files that exposes the capabilities of a specific hardware board through low-level software APIs.
+
    C Module
       A C Module is a collection of C source files packaged together with its own versioning and delivery lifecycle. A C Module represents an Abstraction Layer, a third-party library integration, or a set of reusable generic C code intended to be shared across different VEE Ports.
 
