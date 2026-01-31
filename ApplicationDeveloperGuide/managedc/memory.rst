@@ -1,0 +1,126 @@
+.. _managedc.linear.memory:
+
+The Linear Memory
+=================
+
+The WebAssembly specification defines the linear memory as a contiguous, byte-addressable memory region used by Wasm programs to read and write data.
+
+The linear memory is composed of the following sections:
+
+* **Main Stack**: Used for temporary allocations and to store some local variables. The stack grows downward (toward lower memory addresses).
+* **Static Data**: Contains statically linked constants and global variables.
+* **Malloc Heap** (optional): Used for dynamic memory allocations. The malloc heap grows upward (toward upper memory addresses).
+
+The linear memory is initialized during the execution of :ref:`soar_clinit`. It is allocated in the Managed Heap and zero-initialized (once).
+Each :ref:`Wasm Module <managedc.bind.module>` declares its own linear memory. 
+The following figure illustrates the Managed Heap layout. 
+
+.. figure:: ../images/linear-memory-overview.png
+   :scale: 75%
+   :align: center
+
+   Managed Heap Overview with Wasm Module Linear Memory
+
+The linear memory is available in the Java host as an array of bytes (``byte[]``). See :ref:`managedc.communication.managedc_memory` for more details.
+
+.. note::
+  
+    The :ref:`Managed Heap size <option_managed_heap>` must be greater than the sum of the :ref:`linear memory sizes <managedc.linear.memory.size.configuration>` allocated by all Wasm Modules.
+
+.. note::
+
+  In :ref:`multisandbox` mode, the sum of the linear memory sizes allocated by all Wasm Modules in a Feature must be lower than :ref:`the Feature memory limit configured by the Kernel <ram_control>` (if any).
+ 
+
+.. _managedc.linear.memory.layout:
+
+Configure the Linear Memory Layout
+----------------------------------
+
+MicroEJ recommends linking a Wasm module using the ``-Wl,--stack-first`` `linker option <https://lld.llvm.org/WebAssembly.html#cmdoption-stack-first>`_.
+
+Thus, you will get the following memory layout:
+
+.. figure:: ../images/linear_memory_layout.png
+   :scale: 75%
+   :align: center
+
+   Wasm Linear Memory Layout
+
+This ensures that both main stack overflows and malloc heap overflows trigger an exception when accessing out-of-bounds memory.
+
+.. _managedc.linear.memory.size.configuration:
+
+Configure the Linear Memory Size
+--------------------------------
+
+The WebAssembly specification organizes the linear memory in pages, where each page is 64 KB (65,536 bytes).
+This page-based structure has been designed for efficient memory allocation and potential growth during runtime for large environments.
+However, the minimum page size (64KB) is not suitable for constrained embedded environments, where memory resources are limited.
+
+MicroEJ implementation allocates the linear memory once at module startup and is not dynamically resized.
+
+By default, the size of the linear memory is initialized with the Wasm module initial number of pages.
+The Wasm module initial number of pages can be configured using the ``-Wl,--initial-memory=[size_in_bytes]`` `linker option <https://lld.llvm.org/WebAssembly.html#cmdoption-initial-memory>`__. 
+The given size must be a multiple of 64KB, i.e. a number of pages.
+
+The size of the linear memory can be reduced below 64KB if both of the following conditions are met:
+
+* the Wasm module does not embed neither the ``memory.size`` nor the ``memory.grow`` instructions. This is the case if the C code does not transitively calls the ``malloc`` implementation declared in WASI libc.
+* the Wasm module exports the ``__heap_base`` global using the ``-Wl,--export=__heap_base`` `linker option <https://lld.llvm.org/WebAssembly.html#exports>`__.
+
+In this case, the linear memory is initialized to the value of the ``__heap_base`` global, which represents the sum of the main stack size and the static data size.
+
+.. _managedc.linear.memory.size.stack:
+
+Configure the Main Stack Size
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+By default, the main stack size is initialized to ``65536``.
+You can adjust the main stack size to using the ``-z stack-size=[size_in_bytes]`` `linker option <https://man.archlinux.org/man/extra/lld/ld.lld.1.en#stack-size>`__.
+
+Configuration Examples
+~~~~~~~~~~~~~~~~~~~~~~
+
+The following Managed C code declares a static array of ``100`` bytes, and does not embed neither the ``memory.size`` nor the ``memory.grow`` instructions.
+
+.. code:: c
+
+    char my_static_data[100];
+
+
+The C code is compiled with the following options: ``-Wl,--no-entry -nostdlib -Wl,--export-all -Wl,--stack-first``.
+
+The next table shows the impacts of additionnal options on the allocated linear memory size:
+
+.. list-table::
+   :widths: 40 10 11 39
+
+   * - **Extra Options**
+     - **Required Size**
+       
+       **(bytes)**
+     - **Allocated Size**
+       
+       **(bytes)**
+     - **Comments**
+   * - `none`
+     - ``65636``
+     - ``131072``
+     - By default, the main stack size is initialized to ``65536``.
+       The required linear memory size is greater than one page, so it is aligned on ``2`` pages.
+   * - ``-Wl,--initial-memory=262144``
+     - ``262144``
+     - ``262144``
+     - The linear memory size is set to the Wasm module initial number of pages (``4`` pages).
+   * - ``-z stack-size=512``
+     - ``612``
+     - ``65536``
+     - The main stack size is initialized to ``512``, but the Wasm module does not export the ``__heap_base`` symbol.
+       The linear memory size is aligned on ``1`` page. 
+   * - ``-z stack-size=512 -Wl,--export=__heap_base``
+     - ``612``
+     - ``612``
+     - The linear memory size is set to the value of the ``__heap_base`` global (``512`` bytes of main stack + ``100`` bytes of static data).
+   
+
