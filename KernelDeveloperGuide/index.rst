@@ -7,6 +7,7 @@ Kernel Developer Guide
    :maxdepth: 3
 
    overview
+   kernelConsiderations
    kf
    kernelCreation
    kernelAPI
@@ -20,6 +21,7 @@ Kernel Developer Guide
    kfTestsuite
    kernelLink
    applicationLink
+   kernelFAQ
    
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 

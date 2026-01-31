@@ -33,6 +33,8 @@ The following figure shows the general process of building a Sandboxed Applicati
 
 Please refer to the :ref:`kernel-developer-guide` to learn more on writing Kernel Applications and building Multi-Sandbox Executable and Virtual Devices.
 
+.. _sandboxed_application.appconnect:
+
 .. include:: sandboxedAppAppConnect.rst
 
 ..
