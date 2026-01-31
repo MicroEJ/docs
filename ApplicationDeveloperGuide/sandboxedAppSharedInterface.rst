@@ -41,8 +41,8 @@ has been stopped or uninstalled.
 
 Applications with a Shared Interface must provide a dedicated
 implementation (called the Proxy class implementation). Its main goal is
-to perform the remote invocation and provide a reliable implementation
-regarding the interface contract even if the remote application fails to
+to forward calls from the user application to the provider application and to provide a reliable implementation
+regarding the interface contract even if the provider application fails to
 fulfill its contract (unexpected exceptions, application killed, …). The
 Core Engine will allocate instances of this Proxy class when an
 implementation (of the Shared Interface) owned by another application is
