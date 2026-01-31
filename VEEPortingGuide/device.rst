@@ -30,7 +30,7 @@ To enable it, the Device Information :ref:`Pack <pack_overview>` module must be 
 
       .. code-block:: kotlin
 
-         microejPack("com.microej.pack.device:device-pack:1.2.0")
+         microejPack("ej.api:device:1.4.0")
 
    .. tab:: SDK 5 (module.ivy)
 
@@ -76,13 +76,13 @@ The `Device API Module`_ must be added to the project build file to use the Devi
 
       .. code-block:: kotlin
 
-         implementation("ej.api:device:1.0.2")
+         implementation("ej.api:device:1.4.0")
 
    .. tab:: SDK 5 (module.ivy)
 
       .. code-block:: xml
 
-         <dependency org="ej.api" name="device" rev="1.0.2"/>
+         <dependency org="ej.api" name="device" rev="1.2.0"/>
 
 .. _Device API Module: https://repository.microej.com/modules/ej/api/device/
 
